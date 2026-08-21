@@ -1,0 +1,1 @@
+import {researchClient} from '../../../lib/research/client-research.js';export async function POST(req){const b=await req.json();if(!b?.clientName)return Response.json({error:'clientName required'},{status:400});return Response.json(await researchClient({clientName:b.clientName,scope:b.scope||'Road LTL'}))}

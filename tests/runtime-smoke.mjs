@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {routeIntents,run} from '../lib/agents/orchestrator.js';
+import {llmCapability} from '../lib/llm/gateway.js';
+import {supabaseCapability} from '../lib/persistence/supabase.js';
+import {capabilityManifest} from '../lib/runtime/capabilities.js';
+import {auditResponse} from '../lib/agents/audit.js';
+assert.deepEqual(routeIntents('Who performs LTL-01?'),['actors']);
+assert.ok(routeIntents('show exception impact for LTL-14').includes('exception'));
+assert.ok(routeIntents('show exception impact for LTL-14').includes('impact'));
+assert.equal(typeof llmCapability().enabled,'boolean'); assert.equal(typeof supabaseCapability().enabled,'boolean');
+const cap=capabilityManifest();assert.equal(cap.version,'0.6.4');assert.equal(cap.frozenAtlasReadOnly,true);assert.equal(cap.runtime.humanReviewInbox,true);assert.equal(cap.integration.fullAtlas,true);
+const res=await run('Who performs LTL-01?');assert.ok(res.answer.includes('LTL-01'));assert.equal(res.meta.audit.passed,true);assert.ok(res.meta.agentPath.includes('actors'));assert.equal(res.meta.atlasWrites,false);
+const pod=await run('track POD');assert.ok(pod.answer.includes('LTL-13'));assert.equal(pod.meta.audit.passed,true);assert.ok(pod.meta.agentPath.includes('lineage'));assert.ok(pod.uiActions.some(a=>a.type==='TRACE_PROCESS'&&(a.processIds||[]).length>1));
+const model=await run('build me a FedEx LTL operating model');assert.match(model.answer,/REFERENCE_ONLY/);assert.ok(model.uiActions.some(a=>a.type==='PLAY_EXISTING_FLOW'));
+const bad=auditResponse({answer:'See LTL-99',uiActions:[]});assert.equal(bad.passed,false);
+console.log('runtime-smoke: PASS');

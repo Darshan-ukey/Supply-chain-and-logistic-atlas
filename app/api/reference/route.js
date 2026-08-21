@@ -1,0 +1,1 @@
+import {getModel} from '../../../lib/atlas/store.js';export async function GET(){const m=getModel();return Response.json({atlasVersion:'V6.2.2 + Road LTL V1.2',readOnly:true,processes:m.processes.map(p=>({id:p.id,label:p.label,phase:p.phase,pathType:p.pathType,authoritySystem:p.authoritySystem,actor:p.actor,performer:p.performer,owner:p.owner}))})}

@@ -1,0 +1,32 @@
+{
+  "contract": "READ_ONLY_INTELLIGENCE_OVER_FROZEN_ATLAS",
+  "release": "0.6.4",
+  "frozenPage0": {
+    "name": "Supply-Chain-Logistics-Process-Atlas-V6.2.2-Frozen-Page0(1).html",
+    "sha256": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002"
+  },
+  "integratedRoadLtl": {
+    "name": "Supply-Chain-Logistics-Process-Atlas-V6.2.2-Integrated-Road-LTL-V1.2(1).html",
+    "deployedPath": "public/atlas.html",
+    "sha256": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747"
+  },
+  "extractedModel": {
+    "name": "road-ltl-v1.2-model.json",
+    "sha256": "ca423290aad7d81d486134aa6a34da929708cd7cc72f13ec18638e9956b9df16"
+  },
+  "mutationPolicy": {
+    "atlasContentWrites": false,
+    "taxonomyWrites": false,
+    "sourceWrites": false,
+    "relationshipWrites": false,
+    "page0Writes": false,
+    "roadLtlWrites": false,
+    "uiStateOnly": true,
+    "workspaceWritesSeparate": true
+  },
+  "scenarioCreation": true,
+  "clientTwinCreation": true,
+  "automaticAtlasCorrection": false,
+  "automaticClientFactConfirmation": false,
+  "humanReviewRequiredForPromotion": true
+}
