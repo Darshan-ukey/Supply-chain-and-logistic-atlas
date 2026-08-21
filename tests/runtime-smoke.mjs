@@ -8,7 +8,7 @@ assert.deepEqual(routeIntents('Who performs LTL-01?'),['actors']);
 assert.ok(routeIntents('show exception impact for LTL-14').includes('exception'));
 assert.ok(routeIntents('show exception impact for LTL-14').includes('impact'));
 assert.equal(typeof llmCapability().enabled,'boolean'); assert.equal(typeof supabaseCapability().enabled,'boolean');
-const cap=capabilityManifest();assert.equal(cap.version,'0.6.5');assert.equal(cap.frozenAtlasReadOnly,true);assert.equal(cap.runtime.humanReviewInbox,true);assert.equal(cap.integration.fullAtlas,true);assert.equal(cap.integration.atlasRelease,'V6.2.3');assert.equal(cap.runtime.provenanceFirstResolver,true);assert.equal(cap.runtime.ambiguityClarification,true);
+const cap=capabilityManifest();assert.equal(cap.version,'0.6.6');assert.equal(cap.frozenAtlasReadOnly,true);assert.equal(cap.runtime.humanReviewInbox,true);assert.equal(cap.integration.fullAtlas,true);assert.equal(cap.integration.atlasRelease,'V6.2.3');assert.equal(cap.runtime.provenanceFirstResolver,true);assert.equal(cap.runtime.ambiguityClarification,true);
 const res=await run('Who performs LTL-01?');assert.ok(res.answer.includes('LTL-01'));assert.equal(res.meta.audit.passed,true);assert.ok(res.meta.agentPath.includes('actors'));assert.equal(res.meta.atlasWrites,false);
 const pod=await run('track POD');assert.ok(pod.answer.includes('LTL-13'));assert.equal(pod.meta.audit.passed,true);assert.ok(pod.meta.agentPath.includes('lineage'));assert.ok(pod.uiActions.some(a=>a.type==='TRACE_PROCESS'&&(a.processIds||[]).length>1));
 const model=await run('build me a FedEx LTL operating model');assert.match(model.answer,/REFERENCE_ONLY/);assert.ok(model.uiActions.some(a=>a.type==='PLAY_EXISTING_FLOW'));
