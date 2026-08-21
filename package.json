@@ -1,13 +1,13 @@
 {
-  "name": "atlas-intelligence-v0.6.4",
+  "name": "atlas-integrated-v6.2.3-intelligence-v0.6.5",
   "private": true,
-  "version": "0.6.4",
+  "version": "0.6.5",
   "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node tests/smoke.mjs && node tests/scenario-smoke.mjs && node tests/intake-smoke.mjs && node tests/runtime-smoke.mjs && node tests/review-smoke.mjs && node tests/integration-smoke.mjs && node tests/semantic-smoke.mjs"
+    "test": "node tests/smoke.mjs && node tests/scenario-smoke.mjs && node tests/intake-smoke.mjs && node tests/runtime-smoke.mjs && node tests/review-smoke.mjs && node tests/integration-smoke.mjs && node tests/semantic-smoke.mjs && node tests/governance-smoke.mjs"
   },
   "dependencies": {
     "next": "15.5.23",

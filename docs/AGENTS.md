@@ -20,3 +20,9 @@ No agent can mutate the frozen Atlas. Workspace/evidence persistence is separate
 
 ## Full Atlas integration
 Generic Page 0/current-Atlas questions use a read-only full-Atlas evidence index. Road LTL questions preferentially use the structured V1.2 process graph. No agent gains Atlas write permission.
+
+
+## v0.6.5 Atlas Explainer / Constitution
+The `explainer` specialist resolves exact Atlas entity/namespace/provenance before the LLM is asked to explain it. It reads `data/atlas-constitution-v6.2.3.json`, which is also the source for the V6.2.3 How-to-Read guide. If two valid namespaces remain, it asks the user to clarify and does not invoke the LLM.
+
+The LLM is an explanation layer only: practical plain-English meaning first, followed by classification, provenance, source boundaries and applicability/confidence.

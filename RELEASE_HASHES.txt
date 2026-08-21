@@ -1,4 +1,10 @@
-70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747  public/atlas.html
-ca423290aad7d81d486134aa6a34da929708cd7cc72f13ec18638e9956b9df16  data/road-ltl-v1.2-model.json
+# Atlas V6.2.3 + Intelligence v0.6.5 release hashes
+# Frozen foundation
 47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002  frozen/Supply-Chain-Logistics-Process-Atlas-V6.2.2-Frozen-Page0(1).html
 70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747  frozen/Supply-Chain-Logistics-Process-Atlas-V6.2.2-Integrated-Road-LTL-V1.2(1).html
+70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747  public/atlas-v6.2.2-frozen.html
+ca423290aad7d81d486134aa6a34da929708cd7cc72f13ec18638e9956b9df16  data/road-ltl-v1.2-model.json
+# Additive release / knowledge
+45ea5ad55c6f0103bdb70ee33c05e2ca68587d98453a8c0c2c160e67d51e73c7  public/atlas.html
+f2d0c924f623fd2d1976c25e24721405eff1a5499037e6f28d1b57f610d995ba  data/atlas-constitution-v6.2.3.json
+ba28d5b6db8b07ee3fee7f8af228900c1c54485c148e6358958023ffb156a6eb  data/integrity-manifest.json
