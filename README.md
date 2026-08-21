@@ -20,3 +20,4 @@ Agents can read, explain, highlight, grey, trace, compare, simulate and recommen
 
 ## Deploy
 Deploy this folder as the Vercel project root. See `docs/V0.6.4_LLM_SETUP.md` and `docs/DEPLOY.md`.
+Deployment trigger for v0.6.4
