@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "test": "node tests/smoke.mjs && node tests/scenario-smoke.mjs && node tests/intake-smoke.mjs && node tests/runtime-smoke.mjs && node tests/review-smoke.mjs && node tests/integration-smoke.mjs && node tests/semantic-smoke.mjs && node tests/governance-smoke.mjs && node tests/adaptive-density-smoke.mjs && node tests/simulation-engine-smoke.mjs && node tests/handoff-smoke.mjs && node tests/data-provenance-smoke.mjs && node tests/risk-guardrail-smoke.mjs && node tests/client-twin-simulation-smoke.mjs && node tests/chat-intent-smoke.mjs && node tests/ui-action-smoke.mjs && node tests/context-applicability-smoke.mjs && node tests/browser-contract-smoke.mjs",
-    "reaudit": "node tests/stage6-reaudit.mjs"
+    "reaudit": "node tests/stage6-reaudit.mjs",
+    "prebuild": "node scripts/verify-deploy.mjs"
   },
   "dependencies": {
     "next": "15.5.23",
@@ -18,6 +19,6 @@
     "pdf-parse": "1.1.1"
   },
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   }
 }
