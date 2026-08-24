@@ -1,2 +1,0 @@
-import assert from 'node:assert/strict';import {getModel,verifyModelIntegrity} from '../lib/atlas/store.js';import {run} from '../lib/agents/orchestrator.js';
-const m=getModel();assert.equal(m.processes.length,22);assert.equal(m.sources.length,29);assert.equal(verifyModelIntegrity().ok,true);const a=await run('Who performs LTL-01?');assert.equal(a.meta.audit.passed,true);assert.equal(a.meta.atlasWrites,false);const b=await run('What is the purpose of Page 0?');assert.equal(b.meta.audit.passed,true);console.log('smoke: PASS');

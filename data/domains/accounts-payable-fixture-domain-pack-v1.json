@@ -1,0 +1,22 @@
+{
+  "id": "accounts-payable-fixture-domain-pack-v1",
+  "version": "0.1",
+  "label": "Accounts Payable Neutrality Fixture",
+  "labOnly": true,
+  "territories": [
+    "Invoice Intake",
+    "Validation",
+    "Match",
+    "Exception",
+    "Approval",
+    "Posting",
+    "Payment"
+  ],
+  "signals": [
+    "INFORMATION",
+    "DATA_DOCUMENT",
+    "FINANCIAL",
+    "CONTROL_EVIDENCE"
+  ],
+  "purpose": "Proves generic engines do not depend on shipment or logistics semantics."
+}

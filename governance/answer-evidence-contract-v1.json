@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "classes": [
+    "ATLAS_REFERENCE",
+    "CLIENT_CONFIRMED",
+    "CLIENT_OBSERVED",
+    "CLIENT_INFERRED",
+    "REFERENCE_ONLY",
+    "UNKNOWN",
+    "TRANSFORMATION_HYPOTHESIS"
+  ],
+  "requirements": [
+    "Atlas-grounded answers cite retrieved source IDs/process IDs.",
+    "Missing evidence is stated explicitly.",
+    "Client evidence and Atlas reference remain structurally separate."
+  ]
+}

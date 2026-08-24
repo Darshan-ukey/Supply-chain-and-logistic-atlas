@@ -1,3 +1,0 @@
-import {createReviewItem,listReviewItems,resolveReviewItem} from '../../../lib/runtime/review.js';
-export async function GET(){return Response.json(await listReviewItems())}
-export async function POST(req){const b=await req.json();if(b.action==='resolve'){if(!b.id||!b.status)return Response.json({error:'id and status required'},{status:400});return Response.json(await resolveReviewItem(b.id,b.status,b.notes||''))}if(!b.type||!b.summary)return Response.json({error:'type and summary required'},{status:400});return Response.json(await createReviewItem({type:b.type,summary:b.summary,client_name:b.clientName||null,process_id:b.processId||null,payload:b.payload||{},severity:b.severity||'MEDIUM'}))}

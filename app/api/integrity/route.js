@@ -1,1 +1,0 @@
-import {verifyModelIntegrity,getIntegrityManifest} from '../../../lib/atlas/store.js';export async function GET(){return Response.json({verification:verifyModelIntegrity(),manifest:getIntegrityManifest()})}

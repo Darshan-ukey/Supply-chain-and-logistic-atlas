@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "atlas-data-contract-v1.0",
+  "title": "Atlas Data Contract v1.0",
+  "type": "object",
+  "required": [
+    "processes"
+  ],
+  "properties": {
+    "processes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string"
+          },
+          "a3ParentId": {
+            "type": "string"
+          },
+          "sourceIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "applicability": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array"
+    },
+    "processFlowEdges": {
+      "type": "array"
+    }
+  }
+}

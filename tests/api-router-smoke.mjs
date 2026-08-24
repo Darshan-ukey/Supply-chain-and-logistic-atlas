@@ -1,0 +1,7 @@
+import{createRequire}from'node:module';const require=createRequire(import.meta.url);const router=require('../api/router.js');
+const expected=['release-integrity','config','telemetry','session-fact-confirm','document-facts','client-state','workspaces','readiness','saved-views','session-document-ingest','document-ingest','transformation-export','auth-login','health','pilot-evaluation','version','llm-status','collaboration','command-validate','audit','auth-signup','pilot-readiness','evidence-upload','documents','auth-logout','ask-atlas','auth-session','foundation-proposals'];
+for(const r of expected)if(typeof router.routes[r]!=='function')throw new Error(`Missing route ${r}`);
+if(Object.keys(router.routes).length!==expected.length)throw new Error('Unexpected route count');
+const simple=['config','health','version','llm-status','pilot-readiness','documents','evidence-upload','release-integrity'];
+for(const r of simple){let ended=false,status=0,payload='';const req={method:'GET',query:{__atlasRoute:r},headers:{}};const res={statusCode:200,headers:{},setHeader(k,v){this.headers[k]=v},end(v=''){ended=true;status=this.statusCode;payload=String(v)}};await router(req,res);if(!ended)throw new Error(`${r} did not end response`);if(status<200||status>=600)throw new Error(`${r} invalid status ${status}`);if(!payload)throw new Error(`${r} empty response`)}
+console.log(`PASS · API router smoke · ${expected.length} preserved routes · ${simple.length} executed`)

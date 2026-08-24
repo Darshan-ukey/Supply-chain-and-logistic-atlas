@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#071a2a" />
+  <title>Supply Chain Operations Intelligence · Atlas V6.2.3 · Road LTL V1.2</title>
+  <meta name="description" content="Explore, execute, compare and transform supply-chain operations using governed Atlas knowledge and authorized client evidence." />
+  <link rel="stylesheet" href="/assets/app.css" />
+</head>
+<body>
+<div id="app" class="app" data-view="explore">
+  <header class="topbar">
+    <button class="brand" id="fitUniverse" aria-label="Fit Universe">
+      <span class="brand-mark">OI</span>
+      <span><b>Supply Chain Operations Intelligence</b><small>Atlas V6.2.3 · Road LTL V1.2</small></span>
+    </button>
+    <nav class="primary" aria-label="Primary">
+      <button data-view="explore" class="active">Explore</button>
+      <button data-view="execute">Execute</button>
+      <button data-view="compare">Compare</button>
+      <button data-view="transform">Transform</button>
+    </nav>
+    <div class="top-actions">
+      <button class="chip" id="coverageBtn"><span id="coverageStatus">Road LTL · A5</span></button>
+      <button class="chip" id="workspaceBtn">Local Workspace</button>
+      <button class="ask-main" id="askBtn">Ask Atlas</button>
+    </div>
+  </header>
+
+  <div class="context-ribbon" id="contextRibbon">
+    <span class="context-title">Active Context</span>
+    <button data-open="context" class="context-pill">Road · LTL</button>
+    <span id="contextChips"></span>
+    <button class="ghost small" id="resetContext">Reset</button>
+  </div>
+
+  <main class="shell">
+    <aside class="left-rail" id="leftRail">
+      <div class="rail-head"><b>Context</b><button class="icon" id="collapseRail" aria-label="Collapse context">‹</button></div>
+      <section class="rail-section">
+        <label>Mode / Service
+          <select id="moduleSelect"><option value="road-ltl">Road LTL · A5 verified</option><option disabled>Road FTL · reference only</option><option disabled>Ocean FCL · planned</option><option disabled>Ocean LCL · planned</option><option disabled>Air Cargo · planned</option></select>
+        </label>
+        <label>Role<select id="roleSelect"></select></label>
+        <label>Movement<select id="movementSelect"></select></label>
+        <label>Node<select id="nodeSelect"></select></label>
+        <label>Jurisdiction<select id="jurisdictionSelect"></select></label>
+        <label>Condition<select id="conditionSelect"></select></label>
+        <button class="primary-btn" id="applyContext">Apply & collapse context</button>
+      </section>
+      <section class="rail-section">
+        <div class="eyebrow">Semantic depth</div>
+        <div class="segmented" id="depthButtons"><button data-depth="universe" class="active">Universe</button><button data-depth="a3">A3</button><button data-depth="a4">A4</button><button data-depth="a5">A5</button></div>
+      </section>
+      <section class="rail-section">
+        <div class="eyebrow">Lens</div>
+        <div class="lens-grid" id="lensButtons"></div>
+      </section>
+      <section class="rail-section coverage-mini">
+        <div class="eyebrow">Coverage</div>
+        <b>Road LTL</b><span>A5 VERIFIED</span>
+        <div class="bar"><i style="width:100%"></i></div>
+        <small>Deep execution coverage: Road LTL only. Other destinations are planned/reference-only. No LLM backfill.</small>
+      </section>
+    </aside>
+
+    <section class="workbench">
+      <div class="canvas-toolbar">
+        <div class="view-title"><span id="viewEyebrow">LEVEL 0 · UNIVERSE</span><b id="viewTitle">Supply Chain Operating Universe</b></div>
+        <div class="toolbar-actions">
+          <button class="ghost" id="traceBtn">Trace</button>
+          <button class="ghost" id="sourceBtn">Sources</button>
+          <button class="ghost" id="presentationBtn">Present</button>
+          <button class="ghost" id="deliverBtn">Deliver</button>
+        </div>
+      </div>
+
+      <div class="canvas-wrap" id="canvasWrap">
+        <svg class="ambient" id="ambientMesh" viewBox="0 0 1200 720" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div class="canvas" id="canvas" tabindex="0" aria-label="Supply Chain operational canvas"></div>
+        <div class="signal-legend" id="signalLegend"></div>
+        <div class="coverage-watermark">Atlas V6.2.3 · Road LTL V1.2</div>
+      </div>
+
+      <div class="playback" id="playbackBar">
+        <button class="round" id="prevStep" title="Previous">←</button>
+        <button class="round play" id="playPause" title="Play">▶</button>
+        <button class="round" id="nextStep" title="Next">→</button>
+        <button class="ghost small" id="freezeBtn">Freeze</button>
+        <select id="speedSelect" aria-label="Playback speed"><option value="1200">0.5×</option><option selected value="700">1×</option><option value="350">2×</option></select>
+        <div class="timeline"><i id="timelineProgress"></i></div>
+        <span id="stepCounter">—</span>
+        <button class="ghost small" id="exceptionBtn">Inject exception</button>
+      </div>
+    </section>
+
+    <aside class="inspector" id="inspector">
+      <div class="inspector-head"><span class="eyebrow" id="inspectorType">INSPECTOR</span><button class="icon" id="closeInspector" aria-label="Close inspector">×</button></div>
+      <div id="inspectorBody" class="inspector-body"></div>
+    </aside>
+  </main>
+
+  <div class="drawer" id="drawer" aria-hidden="true"><div class="drawer-card"><div class="drawer-head"><div><span class="eyebrow" id="drawerEyebrow">WORK SURFACE</span><h2 id="drawerTitle">Panel</h2></div><button class="icon large" id="drawerClose">×</button></div><div id="drawerBody" class="drawer-body"></div></div></div>
+  <div class="toast" id="toast"></div>
+</div>
+<script src="/assets/atlas-data.js"></script>
+<script src="/assets/app.js"></script>
+</body>
+</html>

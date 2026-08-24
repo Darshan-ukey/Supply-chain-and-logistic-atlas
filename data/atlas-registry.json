@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.1",
+  "release": {
+    "product": "Supply Chain Operations Intelligence Platform",
+    "releaseName": "Road LTL V1.0.1 + Foundation Hardening v1.1",
+    "releaseId": "scoip-foundation-v1.1-2026.08.24",
+    "channel": "pilot",
+    "stage": "Foundation Hardening v1.1",
+    "technicalLineage": {
+      "atlasProductRelease": "V6.2.3",
+      "frozenPage0": "V6.2.2",
+      "roadLtlModule": "V1.2",
+      "atlasIntelligence": "v0.6.6",
+      "platform": "Stage 23 V1",
+      "foundationHardening": "v1.1"
+    },
+    "canonicalSourceHashes": {
+      "page0V6.2.2FrozenOriginal": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
+      "page0RoadLtlV1.2IntegratedOriginal": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747"
+    },
+    "capabilities": [
+      "Explore",
+      "Execute",
+      "Compare",
+      "Transform",
+      "Ask Atlas",
+      "Semantic Zoom",
+      "Execution Playback",
+      "Freeze Time",
+      "Trace",
+      "Actor/System/Source lenses",
+      "Client Mapping",
+      "Document Intelligence",
+      "Findings & Opportunities",
+      "Future State",
+      "Presentation Mode",
+      "Executive Summary",
+      "Exports",
+      "Collaboration",
+      "Telemetry",
+      "Admin Governance",
+      "Pilot Evaluation"
+    ],
+    "externalGoLiveGates": [
+      "Live LLM synthetic certification when provider enabled",
+      "Exact deployed Vercel E2E",
+      "Dependency lockfile generation with registry access",
+      "Optional isolated database restore/PITR rehearsal before confidential production retention"
+    ],
+    "generatedAt": "2026-08-24T00:00:00+05:30"
+  },
+  "baseModule": {
+    "id": "ecosystem-page-0",
+    "label": "Supply Chain & Logistics Process Atlas",
+    "productVersion": "V6.2.3",
+    "contentVersion": "V6.2.2",
+    "status": "ACTIVE",
+    "depth": "PAGE_0",
+    "source": "data/page0/page0-v6.2.2.json"
+  },
+  "modules": [
+    {
+      "id": "road-ltl",
+      "label": "Road LTL / Groupage",
+      "version": "1.2",
+      "status": "ACTIVE",
+      "depth": "A5_VERIFIED",
+      "processCount": 22,
+      "a3Count": 13,
+      "edgeCount": 39,
+      "sourceCount": 29,
+      "source": "data/modules/road-ltl-v1.2.json"
+    }
+  ],
+  "plannedModules": [
+    "road-ftl",
+    "ocean-fcl",
+    "ocean-lcl",
+    "air-cargo",
+    "rail-freight",
+    "inland-waterway",
+    "pipeline",
+    "parcel-cep",
+    "freight-forwarder",
+    "nvocc",
+    "warehousing",
+    "planning",
+    "procurement"
+  ],
+  "guardrails": {
+    "noLlmBackfill": true,
+    "canonicalFoundationAdminOnly": true,
+    "sessionEphemeralDocuments": true,
+    "unknownRemainsUnknown": true,
+    "differenceIsNotAutomaticallyGap": true
+  },
+  "foundation": {
+    "dataContract": "data/contracts/atlas-data-contract-v1.1.schema.json",
+    "relationshipVocabulary": "governance/relationship-vocabulary-v1.json",
+    "processConceptCrosswalk": "data/crosswalks/process-concept-crosswalk-v1.json",
+    "sourceRegistry": "data/governance/source-registry-v1.json",
+    "sourceVersionRegister": "data/governance/source-version-register-v1.json",
+    "sourceCoverageRegister": "data/governance/source-to-atlas-coverage-register-v1.json",
+    "sourceGapRegister": "data/governance/source-gap-register-v1.json",
+    "destinationCoverageRegistry": "data/governance/destination-coverage-registry-v1.json",
+    "modulePublicationContract": "governance/module-publication-contract-v1.json"
+  }
+}

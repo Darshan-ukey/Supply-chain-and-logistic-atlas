@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.vercel/
+.DS_Store
+*.log
+release/packages/
+# keep source archives out of commits unless explicitly generated
+*.zip

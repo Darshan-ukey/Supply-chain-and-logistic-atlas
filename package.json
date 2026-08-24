@@ -1,24 +1,25 @@
 {
-  "name": "atlas-integrated-v6.2.3-intelligence-v0.6.6",
+  "name": "supply-chain-operations-intelligence-platform",
+  "version": "1.1.2-team-test-github-hobby",
   "private": true,
-  "version": "0.6.6",
-  "type": "module",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "test": "node tests/smoke.mjs && node tests/scenario-smoke.mjs && node tests/intake-smoke.mjs && node tests/runtime-smoke.mjs && node tests/review-smoke.mjs && node tests/integration-smoke.mjs && node tests/semantic-smoke.mjs && node tests/governance-smoke.mjs && node tests/adaptive-density-smoke.mjs && node tests/simulation-engine-smoke.mjs && node tests/handoff-smoke.mjs && node tests/data-provenance-smoke.mjs && node tests/risk-guardrail-smoke.mjs && node tests/client-twin-simulation-smoke.mjs && node tests/chat-intent-smoke.mjs && node tests/ui-action-smoke.mjs && node tests/context-applicability-smoke.mjs && node tests/browser-contract-smoke.mjs",
-    "reaudit": "node tests/stage6-reaudit.mjs",
-    "prebuild": "node scripts/verify-deploy.mjs"
-  },
-  "dependencies": {
-    "next": "15.5.23",
-    "react": "19.1.5",
-    "react-dom": "19.1.5",
-    "mammoth": "1.10.0",
-    "pdf-parse": "1.1.1"
-  },
+  "description": "GitHub/Vercel Hobby deployment source \u00b7 v1.1.1 foundation + single-function API consolidation; canonical Atlas and Road LTL unchanged",
   "engines": {
     "node": "24.x"
+  },
+  "scripts": {
+    "dev": "npx serve . -l 3000",
+    "build": "node tests/build-check.mjs && node tests/api-router-smoke.mjs",
+    "test": "node tests/static-regression.mjs && node tests/build-check.mjs && node tests/api-router-smoke.mjs"
+  },
+  "dependencies": {
+    "jszip": "3.10.1",
+    "mammoth": "1.10.0",
+    "pdf-lib": "1.17.1",
+    "pdf-parse": "1.1.1",
+    "pptxgenjs": "3.12.0",
+    "xlsx": "0.18.5"
+  },
+  "devDependencies": {
+    "serve": "14.2.4"
   }
 }

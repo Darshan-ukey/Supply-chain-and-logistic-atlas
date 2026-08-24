@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "pipeline": [
+    "INGEST",
+    "NORMALIZE",
+    "SCHEMA_VALIDATE",
+    "ONTOLOGY_VALIDATE",
+    "RELATIONSHIP_VALIDATE",
+    "SOURCE_EVIDENCE_VALIDATE",
+    "APPLICABILITY_VALIDATE",
+    "CROSS_MODULE_ALIGNMENT_VALIDATE",
+    "REGRESSION_TEST",
+    "PUBLISHABLE",
+    "ADMIN_APPROVAL",
+    "ACTIVE"
+  ],
+  "failClosed": true,
+  "adminApprovalRequired": true,
+  "depthRules": {
+    "A5_VERIFIED": "Atlas Data Contract v1.1 completeness required"
+  },
+  "productionUnaffectedOnFailure": true
+}

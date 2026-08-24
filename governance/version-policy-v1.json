@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "rules": [
+    "Every saved configuration pins Atlas release, module and overlay versions.",
+    "Saved work never silently upgrades.",
+    "An explicit upgrade may show a delta before adoption.",
+    "Deprecated knowledge remains auditable."
+  ]
+}
