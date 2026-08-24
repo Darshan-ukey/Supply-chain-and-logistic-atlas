@@ -30,3 +30,7 @@ npm run release:all      # complete release certification + package build/check
 The build is release-certified locally. Real deployment still requires Vercel Lab E2E and, when confidential document testing is enabled, live Gemini/provider certification. The isolated Supabase restore/PITR rehearsal remains deferred and is not a runtime dependency.
 
 See `RELEASE_V1.1.6.md` and `audits/v1.1.6/`.
+
+## v1.1.7 Reference Parity Release
+
+v1.1.7 preserves the Stage-23 spatial canvas and the v1.1.6 hardened runtime while restoring the complete V6.2.3 Page 0 and Road LTL V1.2 legacy navigation as a first-class **Reference Atlas**. Selecting `Ecosystem / Page 0` now opens the preserved reference experience; the spatial Universe remains available through Explore/Execute. See `RELEASE_V1.1.7.md` and `audits/v1.1.7/FULL_RELEASE_AUDIT.md`.

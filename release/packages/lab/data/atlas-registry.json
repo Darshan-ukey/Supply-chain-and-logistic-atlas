@@ -2,10 +2,10 @@
   "schemaVersion": "1.1.4",
   "release": {
     "product": "Supply Chain Operations Intelligence Platform",
-    "releaseName": "Release Certified v1.1.6",
-    "releaseId": "scoip-v1.1.6-release-certified-2026.08.24",
+    "releaseName": "Reference Parity v1.1.7",
+    "releaseId": "scoip-v1.1.7-reference-parity-2026.08.24",
     "channel": "pilot",
-    "stage": "Release Certified v1.1.6",
+    "stage": "Reference Parity v1.1.7",
     "technicalLineage": {
       "atlasProductRelease": "V6.2.3",
       "frozenPage0": "V6.2.2",
@@ -15,7 +15,8 @@
       "foundationHardening": "v1.1",
       "fullParityRecovery": "v1.1.4",
       "integrityGuards": "v1.1.5",
-      "releaseCertification": "v1.1.6"
+      "releaseCertification": "v1.1.6",
+      "legacyNavigationRestoration": "v1.1.7"
     },
     "canonicalSourceHashes": {
       "page0V6.2.2FrozenOriginal": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
@@ -42,7 +43,10 @@
       "Collaboration",
       "Telemetry",
       "Admin Governance",
-      "Pilot Evaluation"
+      "Pilot Evaluation",
+      "Reference Atlas",
+      "Legacy Page 0 Navigation",
+      "Legacy Road LTL Reference Navigation"
     ],
     "externalGoLiveGates": [
       "Live LLM synthetic certification when provider enabled",
@@ -50,7 +54,13 @@
       "Dependency lockfile generation with registry access",
       "Optional isolated database restore/PITR rehearsal before confidential production retention"
     ],
-    "generatedAt": "2026-08-24T17:04:00+05:30"
+    "generatedAt": "2026-08-24T17:04:00+05:30",
+    "referenceSurfaces": {
+      "page0V6.2.3": "reference/legacy-v0.6.6/page0-v6.2.3.html",
+      "roadLtlV1.2": "reference/legacy-v0.6.6/road-ltl-v1.2.html",
+      "frozenPage0V6.2.2": "reference/legacy-v0.6.6/page0-v6.2.2-frozen.html",
+      "frozenIntegrated": "reference/legacy-v0.6.6/page0-road-ltl-v1.2-integrated-frozen.html"
+    }
   },
   "baseModule": {
     "id": "ecosystem-page-0",

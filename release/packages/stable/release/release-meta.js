@@ -1,10 +1,10 @@
 export const RELEASE_META=Object.freeze({
-  stage:'v1.1.6',
-  releaseId:'scoip-v1.1.6-release-certified-2026.08.24',
+  stage:'v1.1.7',
+  releaseId:'scoip-v1.1.7-reference-parity-2026.08.24',
   product:'Supply Chain Operations Intelligence Platform',
   activeDomainPack:'supply-chain',
   canonicalModule:'road-ltl@1.2',
-  sourceStage:'Stage 23 + Foundation v1.1 + Function Consolidation v1.1.3 + Integrity Guards v1.1.5 + Release Certification v1.1.6',
+  sourceStage:'Legacy V6.2.3 + Road LTL V1.2 + Intelligence v0.6.6 + Stage 23 + Foundation v1.1 + v1.1.6 release certification + v1.1.7 Reference Atlas restoration',
   nodeRuntime:'24.x',
   releaseContract:'atlas-release-contract-v1',
   parityContract:'stage23-full-product-parity-v1',

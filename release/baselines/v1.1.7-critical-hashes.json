@@ -1,26 +1,16 @@
 {
-  "schemaVersion": "v1.1.6-critical-integrity-v1",
-  "releaseId": "scoip-v1.1.6-release-certified-2026.08.24",
-  "purpose": "Protect Stage 23 spatial/full-feature parity, Stage 17\u201321 real client layers, Foundation v1.1 canonical hardening, 8-function routing, and v1.1.6 release identity.",
+  "schemaVersion": "v1.1.7-critical-integrity-v1",
+  "releaseId": "scoip-v1.1.7-reference-parity-2026.08.24",
+  "purpose": "Fail-closed release integrity across spatial canvas, focused A3\u2192A4\u2192A5 semantic zoom, Stage 17\u201321, hardened foundation/backend, and restored legacy Reference Atlas surfaces.",
   "provenance": {
-    "from": "scoip-v1.1.5-parity-plus-guards-2026.08.24",
-    "certification": "v1.1.6 closes release identity drift, fail-open browser certification, and stale rebaseline provenance without changing canonical Page 0/Road LTL, Foundation schema/catalog content, or Stage 17\u201321 donor behavior.",
-    "versioningRule": "Application release version is independent from Atlas schema/catalog versions. Unchanged schema/catalog version fields remain at their prior values.",
-    "frozenSourceHashes": {
-      "page0-v6.2.2-frozen-original.html": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
-      "page0-road-ltl-v1.2-integrated-original.html": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747"
-    },
-    "canonicalJsonHashes": {
-      "page0-v6.2.2.json": "c8805c194f87cd795014e4a44f362d67c921f5e0e978b9a29014befafc0fbbd0",
-      "road-ltl-v1.2.json": "2d5c78d4480bb693747bcb18a2c006b3fe0a63e6150c506e84ea3e4c5f3f6cfd"
-    },
-    "stage17To21UnchangedFromV1.1.5": true,
-    "canonicalDataUnchangedFromV1.1.5": true,
-    "moduleCatalogUnchangedFromV1.1.5": true,
-    "domainPackCatalogUnchangedFromV1.1.5": true
+    "spatialFrontend": "Stage 23 golden runtime recovered in v1.1.4 and certified in v1.1.6",
+    "referencePage0": "Exact V6.2.3 public/atlas.html donor from atlas-v6.2.3-intelligence-v0.6.6-deploy",
+    "referenceRoadLtl": "Exact Road LTL V1.2 public/road-ltl.html donor from atlas-v6.2.3-intelligence-v0.6.6-deploy",
+    "foundation": "Foundation Hardening v1.1",
+    "release": "v1.1.7 final parity integration + semantic-focus correction: A4/A5 require spatial focus; no canonical Page 0/Road LTL JSON, Stage 17\u201321, or legacy donor changes."
   },
   "files": {
-    "index.html": "c63ed39ca929f283b3bf5ae16b0bdc18af03b32b6df1f9cae99b7d3cccdf0f9e",
+    "index.html": "c3535e343fc8db6c84d8a24ea1ee3ae1df6823a5d1e4323fb6dc2a1a853166ba",
     "stage17-client.js": "c5b29ceb9eb365541d0598cfd9f59a134ed866a9bd0c21bcbf03ee460c64f35d",
     "stage18-client.js": "52170214df14f9412db05682195d7c5a26a6fb691eb5d1e25a044913490259f1",
     "stage19-client.js": "f1c92dd1c09eb3714a7cf204f125221ca31156dbc3e148846866442c810dffaa",
@@ -29,7 +19,7 @@
     "engine/domain-neutral-core.js": "63eaf10e1c54480fe353012818ea22ed5a865f3a5adca56ea2b6a22644866251",
     "engine/adapters/supply-chain-legacy-v1.js": "7ea6b4465d8cf3a50cb03a60a34de03d2332a8dff0fd9eb3726b89325991d4f1",
     "engine/adapters/legacy-canvas-compat.js": "07455cba9bd6220014c33023e3cf76dd6135352c8784cb83fb69af6847eeec03",
-    "data/atlas-registry.json": "f0b3fe8417b9844c733d2eba4f680f6bfd658f38609cb5c6ab5fcfec6326fd69",
+    "data/atlas-registry.json": "a02a92e5aa090b27e6924d4bc8fb5252bc3744822e6b4559307e3d4ee6cf7776",
     "data/module-catalog.json": "07f5eb404336b93cd2dae2916797e8c15bb6398dafb400d5c136e2f06e3c3c5c",
     "data/domain-pack-catalog.json": "0d0e83159dc16bf1aa008e44b44e5325d7ef51b0e76e5c35d7270364af82d238",
     "data/page0/page0-v6.2.2.json": "c8805c194f87cd795014e4a44f362d67c921f5e0e978b9a29014befafc0fbbd0",
@@ -43,10 +33,15 @@
     "governance/relationship-vocabulary-v1.json": "5fd59c52f6617d7d55f862af23cac0561423babdb4085ba20f28031edf498382",
     "governance/rule-registry-v1.1.json": "b2c47fbdec3fefecae6108c38c28cbf223f89561edb40c0ff1099f7717ef46c7",
     "governance/overlay-registry-v1.1.json": "2b4a39cc90658a9cd9c827e259cddb00cf0c13f2af2f2a54a55b62a6efd62299",
-    "package.json": "ef4d9f72846db40ec081f1d1d2bd283d923288a31a7fc5261232c7b737fad010",
+    "package.json": "be45ea2c20d6ee24b0fe8f6d875d675470e303e2585c524ee8a972d5d9b1a3ef",
     "vercel.json": "675f861281928c76514777486e7eb91f8b7274aac3c4ba73237d3ad94e8b454b",
-    ".env.example": "9dadb48d2580ddbf2a2c1621818f8d5e8b20f8670ef46a6e34efeedb9365e27c",
-    "release/release-meta.js": "1a9054b9dc1e31d67c77b1e1802227c277a37f4d22a3609706ff41638642f4c6",
-    "lib/api/release-integrity.js": "01f831610d6e94a413ba9ced7d76ca8351afbe5c130cd473f81b454ff53b8d72"
+    ".env.example": "65a153edc7a5a0f029ba77f487822e2fe8f038a3fda0b0bc007ccda7bc8c2217",
+    "release/release-meta.js": "2dd29cbf54305efa2bfcc74e62b9e1574bcf33d366597358b3e5bb25f0fc0a1d",
+    "lib/api/release-integrity.js": "fa29cd37b80b83b8dc94cb3ad83fdd585bea74aa543042fb63d507f5863dd22d",
+    "legacy-reference-client.js": "a5fd0c48e0bbee6b4fd39fd8889872790f7a0dd26dc5762da750b54906d1fa4c",
+    "reference/legacy-v0.6.6/page0-v6.2.3.html": "45ea5ad55c6f0103bdb70ee33c05e2ca68587d98453a8c0c2c160e67d51e73c7",
+    "reference/legacy-v0.6.6/road-ltl-v1.2.html": "a75ca386b0048af94aa8f8f9ea726dbe10f3c819c602d90daff4f90ddf942c92",
+    "reference/legacy-v0.6.6/page0-v6.2.2-frozen.html": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
+    "reference/legacy-v0.6.6/page0-road-ltl-v1.2-integrated-frozen.html": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747"
   }
 }
