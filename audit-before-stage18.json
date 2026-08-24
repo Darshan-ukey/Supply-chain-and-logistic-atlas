@@ -1,0 +1,38 @@
+{
+  "stage": "18-prebuild",
+  "generatedAt": "2026-08-23T04:00:14.182288+00:00",
+  "baseline": "Stage 17 production boundary",
+  "counts": {
+    "destinations": 71,
+    "page0Domains": 15,
+    "a3Parents": 13,
+    "processes": 22,
+    "processFlowEdges": 39,
+    "executionTransitions": 22,
+    "sources": 29
+  },
+  "hashes": {
+    "registry": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8",
+    "page0": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374",
+    "roadLtl": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55",
+    "rules": "cf58593eac7be3ff2ac995fd1b3b5d5c6411205fcaff97a71446c51238684251",
+    "overlays": "d133e735156dde3299036491ecd7336fe16b6d7978c413803a03c94ebad6175f"
+  },
+  "stage18Objectives": [
+    "grounded retrieval before generation",
+    "provider-agnostic server-only LLM gateway",
+    "structured Canvas Command API",
+    "deterministic command validation",
+    "evidence/citation contract",
+    "conversational canvas state",
+    "client-vs-global knowledge boundary",
+    "deterministic fallback when no provider key"
+  ],
+  "guardrails": [
+    "LLM may propose commands but cannot execute directly",
+    "citations must resolve to retrieved evidence IDs",
+    "unpublished A4/A5 detail may not be backfilled",
+    "client evidence retrieval requires authenticated workspace",
+    "canonical Atlas files remain unchanged"
+  ]
+}

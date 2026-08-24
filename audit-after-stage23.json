@@ -1,0 +1,120 @@
+{
+  "stage": "23",
+  "title": "Pilot Validation & Quality Gates",
+  "status": "PASS_WITH_EXTERNAL_GATES",
+  "generatedAt": "2026-08-23T10:30:18.151985+00:00",
+  "checks": [
+    {
+      "name": "canonical unchanged:data/core/enterprise-core-ontology-v1.json",
+      "ok": true,
+      "detail": "dd39177c2621a37253f156b1d6bd47cfd110d36e4d737b3903496226e9a95a98"
+    },
+    {
+      "name": "canonical unchanged:data/contracts/domain-extension-contract-v1.schema.json",
+      "ok": true,
+      "detail": "7802793fb4fc03a16dc79a8d2714b7c69b6babe8582f74055a16445d3a5f8799"
+    },
+    {
+      "name": "canonical unchanged:data/domains/supply-chain-domain-pack-v1.json",
+      "ok": true,
+      "detail": "3d17ba3dc5dd5c9ecae9eb97d3cfbd984f416a78e595b7794ee4ddbbd67d0237"
+    },
+    {
+      "name": "canonical unchanged:data/atlas-registry.json",
+      "ok": true,
+      "detail": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8"
+    },
+    {
+      "name": "canonical unchanged:data/page0/page0-v6.2.2.json",
+      "ok": true,
+      "detail": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374"
+    },
+    {
+      "name": "canonical unchanged:data/modules/road-ltl-v1.2.json",
+      "ok": true,
+      "detail": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55"
+    },
+    {
+      "name": "canonical unchanged:data/fixtures/accounts-payable-module-v0.1.json",
+      "ok": true,
+      "detail": "435806d83dafe4efcc23cb1fca49dae1e13d9648412950ae9345d65d7ec0cef6"
+    },
+    {
+      "name": "10-case synthetic pilot corpus",
+      "ok": true,
+      "detail": 10
+    },
+    {
+      "name": "LLM owns semantic relevance for ephemeral readable docs",
+      "ok": true,
+      "detail": "keyword relevance is diagnostic hint only"
+    },
+    {
+      "name": "prompt injection boundary",
+      "ok": true,
+      "detail": "document text treated as untrusted evidence"
+    },
+    {
+      "name": "invalid process IDs removed",
+      "ok": true,
+      "detail": "deterministic Atlas validation"
+    },
+    {
+      "name": "ephemeral Atlas persistence writes",
+      "ok": true,
+      "detail": "NONE"
+    },
+    {
+      "name": "evaluation RLS",
+      "ok": true,
+      "detail": "atlas_pilot_evaluations"
+    },
+    {
+      "name": "offline pre-provider evaluation",
+      "ok": true,
+      "detail": "OFFLINE_PRE_PROVIDER"
+    },
+    {
+      "name": "browser regression",
+      "ok": true,
+      "detail": "desktop + mobile + evaluation harness"
+    },
+    {
+      "name": "release validation",
+      "ok": true,
+      "detail": "Stage 23"
+    },
+    {
+      "name": "release smoke",
+      "ok": true,
+      "detail": "Stable excludes pilot corpus; Lab includes it"
+    },
+    {
+      "name": "load smoke",
+      "ok": true,
+      "detail": "Ask Atlas p95 71.752 ms"
+    }
+  ],
+  "externalGates": [
+    {
+      "name": "Live Gemini synthetic certification",
+      "status": "PENDING",
+      "reason": "Gemini API key/model/provider approval will be configured during Vercel deployment walkthrough."
+    },
+    {
+      "name": "Exact deployed Vercel E2E",
+      "status": "PENDING",
+      "reason": "Requires deployment of exact Stage 23 Lab artifact."
+    },
+    {
+      "name": "True isolated DB restore rehearsal",
+      "status": "DEFERRED",
+      "reason": "Not a runtime dependency; requires optional $0.01344/hour Supabase branch approval."
+    },
+    {
+      "name": "Dependency lockfile",
+      "status": "PENDING",
+      "reason": "Requires npm registry/network access."
+    }
+  ]
+}

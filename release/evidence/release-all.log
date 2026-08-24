@@ -1,0 +1,901 @@
+
+> enterprise-operations-atlas-stage22@22.0.0 release:all
+> npm run check && npm run release:validate && npm run release:manifest && npm run release:packages && npm run release:smoke && npm run release:load
+
+
+> enterprise-operations-atlas-stage22@22.0.0 check
+> node --check engine/domain-neutral-core.js && node --check engine/adapters/supply-chain-legacy-v1.js && node --check engine/adapters/legacy-canvas-compat.js && node --check stage17-client.js && node --check stage18-client.js && node --check stage19-client.js && for f in api/*.js; do node --check "$f"; done && node tests/stage18.5-domain-neutral-smoke.mjs && node tests/stage19-ingestion-smoke.mjs && node tests/stage19-domain-document-adapter-smoke.mjs && node --check stage20-client.js && node --check api/_office.js && node --check api/transformation-export.js && node tests/stage20-product-completion-smoke.mjs && node --check stage21-client.js && node --check api/collaboration.js && node --check api/telemetry.js && node tests/stage21-collaboration-telemetry-smoke.mjs
+
+{
+  "moduleRegistry": "PASS",
+  "rules": "PASS",
+  "canvas": "PASS",
+  "semanticZoom": "PASS",
+  "playback": "PASS",
+  "inspector": "PASS",
+  "trace": "PASS",
+  "transformation": "PASS",
+  "engineChangesRequiredForAP": 0,
+  "fixtureWarning": "Architecture fixture only; no Finance taxonomy or best-practice claim."
+}
+{
+  "ok": true,
+  "tests": [
+    {
+      "name": "readable-document-pass",
+      "pass": true,
+      "detail": {
+        "status": "ACCEPTED",
+        "class": "VALID",
+        "reason": "Readable content extracted.",
+        "chars": 285
+      }
+    },
+    {
+      "name": "garbage-rejected",
+      "pass": true,
+      "detail": {
+        "status": "REJECTED",
+        "class": "GARBAGE",
+        "reason": "Insufficient readable content after extraction.",
+        "chars": 12
+      }
+    },
+    {
+      "name": "atlas-relevance",
+      "pass": true,
+      "detail": {
+        "status": "ACCEPTED",
+        "class": "VALID",
+        "reason": "14 Atlas/domain vocabulary matches.",
+        "score": 1,
+        "terms": [
+          "transport",
+          "shipment",
+          "management",
+          "handling",
+          "unit",
+          "carrier",
+          "receive",
+          "origin",
+          "centre",
+          "verify",
+          "terminal",
+          "consolidation",
+          "operator",
+          "reconcile"
+        ]
+      }
+    },
+    {
+      "name": "low-relevance-does-not-pollute",
+      "pass": true,
+      "detail": {
+        "status": "REVIEW_REQUIRED",
+        "class": "LOW_RELEVANCE",
+        "reason": "Only 1 direct Atlas/domain vocabulary match(es); review before promotion.",
+        "score": 0.1,
+        "terms": [
+          "reservations"
+        ]
+      }
+    },
+    {
+      "name": "deterministic-candidate-mapping",
+      "pass": true,
+      "detail": [
+        {
+          "factKey": "DF-bae5899bca982cafb7",
+          "factType": "OTHER",
+          "statement": "Client document states: At the origin service centre, the carrier receives the shipment, verifies the handling unit state, records the arrival event and reconciles the transport document before consolidation.",
+          "processId": "LTL-06",
+          "canonicalType": "PROCESS",
+          "canonicalId": "LTL-06",
+          "canonicalLabel": "Receive at origin service centre and verify handling-unit state",
+          "evidenceQuote": "At the origin service centre, the carrier receives the shipment, verifies the handling unit state, records the arrival event and reconciles the transport document before consolidation.",
+          "evidenceLocator": "chunk:1",
+          "confidence": 0.82,
+          "extractionMethod": "DETERMINISTIC_ATLAS_MATCH_V1",
+          "mappingStatus": "MAPPED",
+          "proposedPatch": {
+            "documentFactOnly": true
+          }
+        },
+        {
+          "factKey": "DF-2b9006a2c5553a0d27",
+          "factType": "OTHER",
+          "statement": "Client document states: The terminal operator uses the transport management system and scan evidence to verify the shipment.",
+          "processId": "LTL-06",
+          "canonicalType": "PROCESS",
+          "canonicalId": "LTL-06",
+          "canonicalLabel": "Receive at origin service centre and verify handling-unit state",
+          "evidenceQuote": "The terminal operator uses the transport management system and scan evidence to verify the shipment.",
+          "evidenceLocator": "chunk:1",
+          "confidence": 0.82,
+          "extractionMethod": "DETERMINISTIC_ATLAS_MATCH_V1",
+          "mappingStatus": "MAPPED",
+          "proposedPatch": {
+            "documentFactOnly": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "only-confirmed-document-facts-enter-retrieval",
+      "pass": true,
+      "detail": [
+        {
+          "class": "CLIENT_DOCUMENT_FACT",
+          "title": "Confirmed client document fact · LTL-06"
+        }
+      ]
+    },
+    {
+      "name": "documents-auth-gate",
+      "pass": true,
+      "detail": {
+        "ok": false,
+        "error": "Authentication required"
+      }
+    },
+    {
+      "name": "ingest-auth-gate",
+      "pass": true,
+      "detail": {
+        "ok": false,
+        "error": "Authentication required"
+      }
+    },
+    {
+      "name": "candidate-review-auth-gate",
+      "pass": true,
+      "detail": {
+        "ok": false,
+        "error": "Authentication required"
+      }
+    }
+  ]
+}
+{
+  "ok": true,
+  "relevance": {
+    "status": "ACCEPTED",
+    "class": "VALID",
+    "reason": "10 Atlas/domain vocabulary matches.",
+    "score": 1,
+    "terms": [
+      "invoice",
+      "receipt",
+      "validate",
+      "match",
+      "purchase",
+      "order",
+      "exception",
+      "approval",
+      "post",
+      "posting"
+    ]
+  },
+  "facts": [
+    {
+      "factKey": "DF-0e63421dc24eccc58c",
+      "factType": "OTHER",
+      "statement": "Client document states: The invoice is validated and matched to the purchase order and receipt.",
+      "processId": "APF-03",
+      "canonicalType": "PROCESS",
+      "canonicalId": "APF-03",
+      "canonicalLabel": "Match",
+      "evidenceQuote": "The invoice is validated and matched to the purchase order and receipt.",
+      "evidenceLocator": "chunk:1",
+      "confidence": 0.82,
+      "extractionMethod": "DETERMINISTIC_ATLAS_MATCH_V1",
+      "mappingStatus": "MAPPED",
+      "proposedPatch": {
+        "documentFactOnly": true
+      }
+    },
+    {
+      "factKey": "DF-3c937d124214820694",
+      "factType": "OTHER",
+      "statement": "Client document states: If the invoice does not match, an exception is created before approval and posting.",
+      "processId": "APF-04",
+      "canonicalType": "PROCESS",
+      "canonicalId": "APF-04",
+      "canonicalLabel": "Exception",
+      "evidenceQuote": "If the invoice does not match, an exception is created before approval and posting.",
+      "evidenceLocator": "chunk:1",
+      "confidence": 0.6599999999999999,
+      "extractionMethod": "DETERMINISTIC_ATLAS_MATCH_V1",
+      "mappingStatus": "MAPPED",
+      "proposedPatch": {
+        "documentFactOnly": true
+      }
+    }
+  ],
+  "productionGate": {
+    "pass": true,
+    "message": "Client-document ingestion is not published for domain pack accounts-payable-fixture."
+  }
+}
+{
+  "stage": "20",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "frozen:data/atlas-registry.json",
+      "ok": true,
+      "detail": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8"
+    },
+    {
+      "name": "frozen:data/page0/page0-v6.2.2.json",
+      "ok": true,
+      "detail": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374"
+    },
+    {
+      "name": "frozen:data/modules/road-ltl-v1.2.json",
+      "ok": true,
+      "detail": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55"
+    },
+    {
+      "name": "frozen:data/core/enterprise-core-ontology-v1.json",
+      "ok": true,
+      "detail": "dd39177c2621a37253f156b1d6bd47cfd110d36e4d737b3903496226e9a95a98"
+    },
+    {
+      "name": "frozen:data/contracts/domain-extension-contract-v1.schema.json",
+      "ok": true,
+      "detail": "7802793fb4fc03a16dc79a8d2714b7c69b6babe8582f74055a16445d3a5f8799"
+    },
+    {
+      "name": "frozen:data/domains/supply-chain-domain-pack-v1.json",
+      "ok": true,
+      "detail": "3d17ba3dc5dd5c9ecae9eb97d3cfbd984f416a78e595b7794ee4ddbbd67d0237"
+    },
+    {
+      "name": "frozen:data/fixtures/accounts-payable-module-v0.1.json",
+      "ok": true,
+      "detail": "435806d83dafe4efcc23cb1fca49dae1e13d9648412950ae9345d65d7ec0cef6"
+    },
+    {
+      "name": "frozen:accounts-payable-fixture-standalone.html",
+      "ok": true,
+      "detail": "514bd716adbcb18ca2bcdebd816c337c11ef6fd9ce65d5b1adb32faefa6993a1"
+    },
+    {
+      "name": "stage20:PILOT",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stage20:IMPLEMENTED",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stage20:MEASURED",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stage20:investigationCollections",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stage20:Executive Transformation Summary",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stage20:Presentation Mode",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stage20:enterprise-transformation-pack-v1.0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "index loads stage20 client",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "standalone inlines stage20 client",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "xlsx ZIP signature",
+      "ok": true,
+      "detail": 3560
+    },
+    {
+      "name": "xlsx workbook entry",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "pptx ZIP signature",
+      "ok": true,
+      "detail": 13383
+    },
+    {
+      "name": "pptx presentation entry",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "pdf signature",
+      "ok": true,
+      "detail": 974
+    }
+  ]
+}
+{
+  "stage": "21",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "frozen:data/atlas-registry.json",
+      "ok": true,
+      "detail": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8"
+    },
+    {
+      "name": "frozen:data/page0/page0-v6.2.2.json",
+      "ok": true,
+      "detail": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374"
+    },
+    {
+      "name": "frozen:data/modules/road-ltl-v1.2.json",
+      "ok": true,
+      "detail": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55"
+    },
+    {
+      "name": "frozen:data/core/enterprise-core-ontology-v1.json",
+      "ok": true,
+      "detail": "dd39177c2621a37253f156b1d6bd47cfd110d36e4d737b3903496226e9a95a98"
+    },
+    {
+      "name": "frozen:data/contracts/domain-extension-contract-v1.schema.json",
+      "ok": true,
+      "detail": "7802793fb4fc03a16dc79a8d2714b7c69b6babe8582f74055a16445d3a5f8799"
+    },
+    {
+      "name": "frozen:data/domains/supply-chain-domain-pack-v1.json",
+      "ok": true,
+      "detail": "3d17ba3dc5dd5c9ecae9eb97d3cfbd984f416a78e595b7794ee4ddbbd67d0237"
+    },
+    {
+      "name": "frozen:data/fixtures/accounts-payable-module-v0.1.json",
+      "ok": true,
+      "detail": "435806d83dafe4efcc23cb1fca49dae1e13d9648412950ae9345d65d7ec0cef6"
+    },
+    {
+      "name": "frozen:accounts-payable-fixture-standalone.html",
+      "ok": true,
+      "detail": "514bd716adbcb18ca2bcdebd816c337c11ef6fd9ce65d5b1adb32faefa6993a1"
+    },
+    {
+      "name": "client:Review & Collaboration",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "client:LOCAL REVIEW MODE",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "client:Product telemetry",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "client:Privacy boundary",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "client:comment_add",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "client:review_request",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "client:atlas-stage21-events",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "migration:atlas_collaboration_comments",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "migration RLS:atlas_collaboration_comments",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "migration:atlas_review_requests",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "migration RLS:atlas_review_requests",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "migration:atlas_usage_events",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "migration RLS:atlas_usage_events",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "index loads Stage21 client",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "standalone inlines Stage21 client",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "telemetry keeps safe metadata",
+      "ok": true,
+      "detail": "{\"view\":\"transform\",\"semanticLevel\":3,\"result\":\"grounded\",\"citationCount\":4}"
+    },
+    {
+      "name": "telemetry strips free text",
+      "ok": true,
+      "detail": "{\"view\":\"transform\",\"semanticLevel\":3,\"result\":\"grounded\",\"citationCount\":4}"
+    },
+    {
+      "name": "aggregate event count",
+      "ok": true,
+      "detail": 3
+    },
+    {
+      "name": "aggregate users/sessions",
+      "ok": true,
+      "detail": "2/2"
+    },
+    {
+      "name": "aggregate Ask Atlas",
+      "ok": true,
+      "detail": 2
+    },
+    {
+      "name": "collaboration unauthenticated guard",
+      "ok": true,
+      "detail": "401"
+    },
+    {
+      "name": "telemetry unauthenticated guard",
+      "ok": true,
+      "detail": "401"
+    },
+    {
+      "name": "telemetry schema comments prohibit free text",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}
+
+> enterprise-operations-atlas-stage22@22.0.0 release:validate
+> node release/scripts/release-validate.mjs
+
+{
+  "stage": "22",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "node engine pinned 24.x",
+      "ok": true,
+      "detail": "24.x"
+    },
+    {
+      "name": "frozen:data/atlas-registry.json",
+      "ok": true,
+      "detail": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8"
+    },
+    {
+      "name": "frozen:data/page0/page0-v6.2.2.json",
+      "ok": true,
+      "detail": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374"
+    },
+    {
+      "name": "frozen:data/modules/road-ltl-v1.2.json",
+      "ok": true,
+      "detail": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55"
+    },
+    {
+      "name": "frozen:data/core/enterprise-core-ontology-v1.json",
+      "ok": true,
+      "detail": "dd39177c2621a37253f156b1d6bd47cfd110d36e4d737b3903496226e9a95a98"
+    },
+    {
+      "name": "frozen:data/contracts/domain-extension-contract-v1.schema.json",
+      "ok": true,
+      "detail": "7802793fb4fc03a16dc79a8d2714b7c69b6babe8582f74055a16445d3a5f8799"
+    },
+    {
+      "name": "frozen:data/domains/supply-chain-domain-pack-v1.json",
+      "ok": true,
+      "detail": "3d17ba3dc5dd5c9ecae9eb97d3cfbd984f416a78e595b7794ee4ddbbd67d0237"
+    },
+    {
+      "name": "frozen:data/fixtures/accounts-payable-module-v0.1.json",
+      "ok": true,
+      "detail": "435806d83dafe4efcc23cb1fca49dae1e13d9648412950ae9345d65d7ec0cef6"
+    },
+    {
+      "name": "frozen:accounts-payable-fixture-standalone.html",
+      "ok": true,
+      "detail": "514bd716adbcb18ca2bcdebd816c337c11ef6fd9ce65d5b1adb32faefa6993a1"
+    },
+    {
+      "name": "release endpoint:api/health.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "release endpoint:api/readiness.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "release endpoint:api/version.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "release endpoint:api/release-integrity.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "release endpoint:release/release-meta.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "security header:X-Content-Type-Options",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "security header:X-Frame-Options",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "security header:Referrer-Policy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "security header:Permissions-Policy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "security header:Strict-Transport-Security",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "env contract:ATLAS_RELEASE_CHANNEL",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "env contract:SUPABASE_URL",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "env contract:SUPABASE_PUBLISHABLE_KEY",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "env contract:ATLAS_LLM_PROVIDER",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime has no /mnt/data absolute dependency",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime secret scan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "release channel contract only stable/lab",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}
+
+> enterprise-operations-atlas-stage22@22.0.0 release:manifest
+> node release/scripts/build-manifest.mjs
+
+{
+  "ok": true,
+  "files": 62,
+  "releaseId": "stage22-2026.08.23-r1"
+}
+
+> enterprise-operations-atlas-stage22@22.0.0 release:packages
+> node release/scripts/build-packages.mjs
+
+{
+  "ok": true,
+  "stable": "/mnt/data/atlas-canvas-stage22/release/packages/stable",
+  "lab": "/mnt/data/atlas-canvas-stage22/release/packages/lab"
+}
+
+> enterprise-operations-atlas-stage22@22.0.0 release:smoke
+> node release/scripts/release-smoke.mjs
+
+{
+  "stage": "22",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "liveness 200",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "kind": "liveness",
+        "release": {
+          "stage": "22",
+          "releaseId": "stage22-2026.08.23-r1",
+          "product": "Enterprise Operations Platform",
+          "activeDomainPack": "supply-chain",
+          "canonicalModule": "road-ltl@1.2",
+          "sourceStage": "21",
+          "nodeRuntime": "24.x",
+          "releaseContract": "atlas-release-contract-v1",
+          "builtAt": "2026-08-23T07:45:00Z",
+          "channel": "lab",
+          "vercelEnv": "local",
+          "commitSha": null,
+          "productionUrl": null
+        },
+        "uptimeSeconds": 0,
+        "secretsExposed": false
+      }
+    },
+    {
+      "name": "version stage22",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "stage": "22",
+        "releaseId": "stage22-2026.08.23-r1",
+        "product": "Enterprise Operations Platform",
+        "activeDomainPack": "supply-chain",
+        "canonicalModule": "road-ltl@1.2",
+        "sourceStage": "21",
+        "nodeRuntime": "24.x",
+        "releaseContract": "atlas-release-contract-v1",
+        "builtAt": "2026-08-23T07:45:00Z",
+        "channel": "lab",
+        "vercelEnv": "local",
+        "commitSha": null,
+        "productionUrl": null,
+        "node": "v22.16.0"
+      }
+    },
+    {
+      "name": "release core integrity",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "readiness success with dependency",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "kind": "readiness",
+        "release": {
+          "stage": "22",
+          "releaseId": "stage22-2026.08.23-r1",
+          "product": "Enterprise Operations Platform",
+          "activeDomainPack": "supply-chain",
+          "canonicalModule": "road-ltl@1.2",
+          "sourceStage": "21",
+          "nodeRuntime": "24.x",
+          "releaseContract": "atlas-release-contract-v1",
+          "builtAt": "2026-08-23T07:45:00Z",
+          "channel": "lab",
+          "vercelEnv": "local",
+          "commitSha": null,
+          "productionUrl": null
+        },
+        "checks": [
+          {
+            "name": "release-channel",
+            "ok": true,
+            "required": true,
+            "detail": "lab"
+          },
+          {
+            "name": "supabase-url",
+            "ok": true,
+            "required": true,
+            "detail": "configured"
+          },
+          {
+            "name": "supabase-publishable-key",
+            "ok": true,
+            "required": true,
+            "detail": "configured"
+          },
+          {
+            "name": "llm-gateway",
+            "ok": true,
+            "required": false,
+            "detail": "deterministic fallback"
+          }
+        ],
+        "dependencies": {
+          "supabase": {
+            "ok": true,
+            "status": 200,
+            "latencyMs": 1,
+            "error": null
+          }
+        },
+        "secretsExposed": false
+      }
+    },
+    {
+      "name": "readiness fails missing required config",
+      "ok": true,
+      "detail": [
+        {
+          "name": "release-channel",
+          "ok": true,
+          "required": true,
+          "detail": "lab"
+        },
+        {
+          "name": "supabase-url",
+          "ok": false,
+          "required": true,
+          "detail": "missing"
+        },
+        {
+          "name": "supabase-publishable-key",
+          "ok": true,
+          "required": true,
+          "detail": "configured"
+        },
+        {
+          "name": "llm-gateway",
+          "ok": true,
+          "required": false,
+          "detail": "deterministic fallback"
+        }
+      ]
+    },
+    {
+      "name": "Ask Atlas deterministic grounded response",
+      "ok": true,
+      "detail": {
+        "status": 200,
+        "citations": 1
+      }
+    },
+    {
+      "name": "command gate rejects unpublished A5 module",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "stage": "18",
+        "valid": [],
+        "rejected": [
+          {
+            "command": {
+              "type": "activate_module",
+              "args": {
+                "moduleId": "road-ftl"
+              }
+            },
+            "reason": "Module is not A5-verified/published."
+          }
+        ]
+      }
+    },
+    {
+      "name": "stable package excludes AP standalone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lab package retains AP standalone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stable package has API",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stable package has Supply Chain module",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}
+
+> enterprise-operations-atlas-stage22@22.0.0 release:load
+> node release/scripts/load-smoke.mjs
+
+{
+  "stage": "22",
+  "status": "PASS",
+  "environment": {
+    "node": "v22.16.0",
+    "note": "in-process serverless handler benchmark; network/CDN not included"
+  },
+  "results": [
+    {
+      "name": "health",
+      "requests": 1000,
+      "concurrency": 50,
+      "statuses": {
+        "200": 1000
+      },
+      "p50Ms": 0.303,
+      "p95Ms": 1.013,
+      "p99Ms": 1.45,
+      "maxMs": 2.346
+    },
+    {
+      "name": "command-validation",
+      "requests": 500,
+      "concurrency": 25,
+      "statuses": {
+        "200": 500
+      },
+      "p50Ms": 0.337,
+      "p95Ms": 2.404,
+      "p99Ms": 12.468,
+      "maxMs": 12.706
+    },
+    {
+      "name": "ask-atlas-deterministic",
+      "requests": 200,
+      "concurrency": 20,
+      "statuses": {
+        "200": 200
+      },
+      "p50Ms": 35.861,
+      "p95Ms": 63.326,
+      "p99Ms": 63.552,
+      "maxMs": 63.893
+    }
+  ]
+}

@@ -1,5 +1,26 @@
-# Deployment status
+# Stage 22 Deployment Status
 
-Package-side validation can be completed locally. Live deployment remains environment-specific and is not asserted by this ZIP.
+## Supabase
+Connected project: active.
 
-Open external gates: connect Vercel target, configure environment variables, install dependencies / create lockfile, apply Supabase migrations, run deployed E2E, and run live provider certification if enabled.
+Observed migration chain:
+- 20260823033648 `atlas_stage17_production_boundary`
+- 20260823033714 `atlas_stage17_security_hardening`
+- 20260823033805 `atlas_stage17_private_rls_helpers`
+- 20260823034235 `atlas_stage17_performance_hardening`
+- 20260823042333 `atlas_stage19_document_ingestion`
+- Stage-19 index hardening migrations
+- 20260823061826 `atlas_stage21_collaboration_telemetry`
+
+Current validation:
+- 16 `atlas_*` public tables found; RLS enabled on all 16.
+- `atlas-client-evidence`: private, 20 MB object limit.
+- `atlas-client-documents`: private, 25 MB object limit.
+- Supabase security advisor: 0 findings.
+
+## Vercel
+Connected team: `ukeydarsh-2051s-projects` (`team_82G0YS5CSlKdabFzFBgLUj3r`).
+
+Current project inventory returned by the connected Vercel account: **0 projects**.
+
+Therefore Stage 22 does not claim a deployed Lab or Stable release. Creating/overwriting an unidentified deployment target would violate the release-control objective. The build is packaged for both targets and the remaining deployment gate is explicit in `GO_LIVE_CHECKLIST.md`.

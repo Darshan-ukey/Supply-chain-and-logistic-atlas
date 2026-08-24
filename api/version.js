@@ -1,1 +1,0 @@
-'use strict';const {json}=require('./_utils');const release=require('../data/releases/pilot-v1.0.json');module.exports=(req,res)=>json(res,200,{ok:true,...release,commit:process.env.VERCEL_GIT_COMMIT_SHA||process.env.GIT_COMMIT||null,environment:process.env.VERCEL_ENV||'local'});

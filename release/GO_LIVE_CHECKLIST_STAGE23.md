@@ -1,18 +1,30 @@
-# Go-Live Checklist — Pilot V1.0
+# Stage 23 — Pilot Go-Live Checklist
 
-- [x] Node engine pinned to 24.x.
-- [x] Frozen source hashes protected.
-- [x] Road LTL V1.2 counts validated.
-- [x] Domain-neutral core + AP fixture present.
-- [x] Health/readiness/version/integrity APIs present.
-- [x] Session-ephemeral document path has no persistence writes.
-- [x] Supabase RLS migration set included.
-- [x] Admin/Pilot governance boundary defined.
-- [x] Collaboration/telemetry privacy boundaries defined.
-- [x] Offline Stage-23 evaluation harness included.
-- [ ] Dependency lockfile generated with npm registry access.
-- [ ] Vercel Lab target connected and environment variables audited.
-- [ ] Deployed HTTP/browser E2E passed.
-- [ ] Live LLM synthetic certification passed if provider is enabled.
-- [ ] Exact tested Lab artifact promoted to Stable.
-- [ ] Isolated database restore/PITR rehearsal completed before persistent confidential production retention (not required for current session-ephemeral source mode unless policy requires it).
+## Already closed by code/build
+- [x] Canonical Enterprise Core and Supply Chain content unchanged.
+- [x] Ephemeral document source persistence = none in Atlas-controlled storage.
+- [x] Gemini request contract sets `store=false`.
+- [x] LLM document text is treated as untrusted evidence, never as instructions.
+- [x] Deterministic canonical-ID validation runs after LLM extraction.
+- [x] Invalid/unpublished process IDs cannot become mapped Atlas facts.
+- [x] Pilot evaluation table uses RLS.
+- [x] Synthetic 10-case test corpus created.
+- [x] Stable package excludes synthetic pilot corpus.
+- [x] Isolated Supabase restore branch is not a runtime dependency.
+
+## Complete during Vercel/Gemini deployment walkthrough
+- [ ] Configure Lab `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`.
+- [ ] Configure Lab `ATLAS_LLM_PROVIDER=gemini`.
+- [ ] Add Gemini API key as a server-only Vercel secret.
+- [ ] Select/freeze `ATLAS_LLM_MODEL`.
+- [ ] Confirm AI Studio paid-project/data/log settings.
+- [ ] Set `ATLAS_EPHEMERAL_DOCUMENT_PROVIDER_APPROVED=true` only after review.
+- [ ] Run `npm run pilot:eval:live` on the synthetic corpus.
+- [ ] Verify all hard gates and mapping precision/recall thresholds.
+- [ ] Set `ATLAS_PILOT_LIVE_EVAL_PASSED=true` only after the run passes.
+- [ ] Verify `/api/pilot-readiness` returns 200 in Lab.
+- [ ] Run deployed desktop/mobile E2E.
+- [ ] Only then begin confidential RFP/SOP pilot testing.
+
+## Deferred production-recovery certification
+- [ ] True isolated database restore/PITR rehearsal on a temporary Supabase branch. This is not required to run the controlled pilot; it remains a recovery-certification gate before stricter production use.

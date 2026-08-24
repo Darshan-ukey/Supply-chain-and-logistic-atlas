@@ -1,0 +1,285 @@
+{
+  "stage": "23",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "liveness 200",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "kind": "liveness",
+        "release": {
+          "stage": "23",
+          "releaseId": "stage23-2026.08.23-r1",
+          "product": "Enterprise Operations Platform",
+          "activeDomainPack": "supply-chain",
+          "canonicalModule": "road-ltl@1.2",
+          "sourceStage": "22.2",
+          "nodeRuntime": "24.x",
+          "releaseContract": "atlas-release-contract-v1",
+          "builtAt": "2026-08-23T10:11:00Z",
+          "channel": "lab",
+          "vercelEnv": "local",
+          "commitSha": null,
+          "productionUrl": null
+        },
+        "uptimeSeconds": 0,
+        "secretsExposed": false
+      }
+    },
+    {
+      "name": "version stage23",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "stage": "23",
+        "releaseId": "stage23-2026.08.23-r1",
+        "product": "Enterprise Operations Platform",
+        "activeDomainPack": "supply-chain",
+        "canonicalModule": "road-ltl@1.2",
+        "sourceStage": "22.2",
+        "nodeRuntime": "24.x",
+        "releaseContract": "atlas-release-contract-v1",
+        "builtAt": "2026-08-23T10:11:00Z",
+        "channel": "lab",
+        "vercelEnv": "local",
+        "commitSha": null,
+        "productionUrl": null,
+        "node": "v22.16.0"
+      }
+    },
+    {
+      "name": "release core integrity",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "readiness success with dependency",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "kind": "readiness",
+        "release": {
+          "stage": "23",
+          "releaseId": "stage23-2026.08.23-r1",
+          "product": "Enterprise Operations Platform",
+          "activeDomainPack": "supply-chain",
+          "canonicalModule": "road-ltl@1.2",
+          "sourceStage": "22.2",
+          "nodeRuntime": "24.x",
+          "releaseContract": "atlas-release-contract-v1",
+          "builtAt": "2026-08-23T10:11:00Z",
+          "channel": "lab",
+          "vercelEnv": "local",
+          "commitSha": null,
+          "productionUrl": null
+        },
+        "checks": [
+          {
+            "name": "release-channel",
+            "ok": true,
+            "required": true,
+            "detail": "lab"
+          },
+          {
+            "name": "supabase-url",
+            "ok": true,
+            "required": true,
+            "detail": "configured"
+          },
+          {
+            "name": "supabase-publishable-key",
+            "ok": true,
+            "required": true,
+            "detail": "configured"
+          },
+          {
+            "name": "llm-gateway",
+            "ok": true,
+            "required": false,
+            "detail": "deterministic fallback"
+          }
+        ],
+        "dependencies": {
+          "supabase": {
+            "ok": true,
+            "status": 200,
+            "latencyMs": 1,
+            "error": null
+          }
+        },
+        "secretsExposed": false
+      }
+    },
+    {
+      "name": "readiness fails missing required config",
+      "ok": true,
+      "detail": [
+        {
+          "name": "release-channel",
+          "ok": true,
+          "required": true,
+          "detail": "lab"
+        },
+        {
+          "name": "supabase-url",
+          "ok": false,
+          "required": true,
+          "detail": "missing"
+        },
+        {
+          "name": "supabase-publishable-key",
+          "ok": true,
+          "required": true,
+          "detail": "configured"
+        },
+        {
+          "name": "llm-gateway",
+          "ok": true,
+          "required": false,
+          "detail": "deterministic fallback"
+        }
+      ]
+    },
+    {
+      "name": "pilot readiness fails before Gemini approval/eval",
+      "ok": true,
+      "detail": [
+        {
+          "name": "provider-configured",
+          "ok": false,
+          "detail": "none"
+        },
+        {
+          "name": "provider-allowed",
+          "ok": false,
+          "detail": "gemini"
+        },
+        {
+          "name": "provider-approved",
+          "ok": false,
+          "detail": "administrative privacy approval"
+        },
+        {
+          "name": "request-storage-off",
+          "ok": false,
+          "detail": "provider-specific"
+        },
+        {
+          "name": "live-synthetic-evaluation",
+          "ok": false,
+          "detail": "set true only after npm run pilot:eval:live passes against the deployed provider"
+        }
+      ]
+    },
+    {
+      "name": "pilot readiness passes after configured synthetic gate",
+      "ok": true,
+      "detail": [
+        {
+          "name": "release-channel",
+          "ok": true,
+          "detail": "lab"
+        },
+        {
+          "name": "supabase",
+          "ok": true,
+          "detail": "private workspace/auth boundary"
+        },
+        {
+          "name": "ephemeral-documents-enabled",
+          "ok": true,
+          "detail": "session-only source handling"
+        },
+        {
+          "name": "llm-structuring-enabled",
+          "ok": true,
+          "detail": "no deterministic production fallback"
+        },
+        {
+          "name": "provider-configured",
+          "ok": true,
+          "detail": "gemini"
+        },
+        {
+          "name": "provider-allowed",
+          "ok": true,
+          "detail": "gemini"
+        },
+        {
+          "name": "provider-approved",
+          "ok": true,
+          "detail": "administrative privacy approval"
+        },
+        {
+          "name": "request-storage-off",
+          "ok": true,
+          "detail": "store=false"
+        },
+        {
+          "name": "live-synthetic-evaluation",
+          "ok": true,
+          "detail": "set true only after npm run pilot:eval:live passes against the deployed provider"
+        }
+      ]
+    },
+    {
+      "name": "Ask Atlas deterministic grounded response",
+      "ok": true,
+      "detail": {
+        "status": 200,
+        "citations": 1
+      }
+    },
+    {
+      "name": "command gate rejects unpublished A5 module",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "stage": "18",
+        "valid": [],
+        "rejected": [
+          {
+            "command": {
+              "type": "activate_module",
+              "args": {
+                "moduleId": "road-ftl"
+              }
+            },
+            "reason": "Module is not A5-verified/published."
+          }
+        ]
+      }
+    },
+    {
+      "name": "stable package excludes AP standalone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lab package retains AP standalone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stable package excludes pilot corpus",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lab package includes pilot evaluator",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stable package has API",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stable package has Supply Chain module",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

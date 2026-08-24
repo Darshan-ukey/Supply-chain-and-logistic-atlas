@@ -1,0 +1,28 @@
+{
+  "version": "1.1",
+  "registrations": [
+    {
+      "registrationId": "road-ltl-overlays-v1",
+      "moduleId": "road-ltl",
+      "domainPackId": "supply-chain-domain-pack-v1",
+      "source": "governance/overlay-registry-v1.json",
+      "status": "ACTIVE"
+    }
+  ],
+  "domainDimensions": {
+    "supply-chain-domain-pack-v1": {
+      "role": "roleApplicability",
+      "movement": "movementApplicability",
+      "node": "nodeApplicability",
+      "jurisdiction": "jurisdictionApplicability",
+      "carriageRegime": "regimeApplicability",
+      "condition": "conditionApplicability",
+      "contract": "contractApplicability"
+    }
+  },
+  "principles": [
+    "Overlays are reusable governed knowledge components, not saved scenarios.",
+    "Module-specific applicability resolves reusable dimensions into execution rules.",
+    "Unknown overlay interactions create a governance gap; they are not LLM-backfilled."
+  ]
+}

@@ -1,18 +1,22 @@
-# Go-Live Checklist — Pilot V1.0
+# Go-Live Checklist
 
-- [x] Node engine pinned to 24.x.
-- [x] Frozen source hashes protected.
-- [x] Road LTL V1.2 counts validated.
-- [x] Domain-neutral core + AP fixture present.
-- [x] Health/readiness/version/integrity APIs present.
-- [x] Session-ephemeral document path has no persistence writes.
-- [x] Supabase RLS migration set included.
-- [x] Admin/Pilot governance boundary defined.
-- [x] Collaboration/telemetry privacy boundaries defined.
-- [x] Offline Stage-23 evaluation harness included.
-- [ ] Dependency lockfile generated with npm registry access.
-- [ ] Vercel Lab target connected and environment variables audited.
-- [ ] Deployed HTTP/browser E2E passed.
-- [ ] Live LLM synthetic certification passed if provider is enabled.
-- [ ] Exact tested Lab artifact promoted to Stable.
-- [ ] Isolated database restore/PITR rehearsal completed before persistent confidential production retention (not required for current session-ephemeral source mode unless policy requires it).
+- [x] Node engine pinned to 24.x in `package.json`.
+- [x] Stable/Lab release contract defined.
+- [x] Liveness/readiness/version/integrity endpoints added.
+- [x] Security headers hardened.
+- [x] Canonical core/SCM hashes frozen.
+- [x] Regression tests made path-portable (no `/mnt/data/stageXX` dependency).
+- [x] Stage 17/18/18.5/19/20/21 source regression passes.
+- [x] Supabase Stage 17/19/21 migration history present.
+- [x] All current `atlas_*` client-work tables have RLS enabled.
+- [x] Both client Storage buckets are private.
+- [x] Supabase security advisor: zero findings.
+- [x] Stable package excludes AP standalone fixture.
+- [x] Lab package retains AP neutrality fixture.
+- [ ] Vercel Lab project connected/created.
+- [ ] Vercel Stable project connected/created.
+- [ ] Target environment variables configured and audited.
+- [ ] Deployed Lab readiness/integrity/E2E run completed.
+- [ ] Live LLM-provider test completed if provider is enabled for go-live.
+- [ ] Isolated database restore/PITR rehearsal completed before real client data.
+- [ ] Stable promoted from exact tested Lab artifact.

@@ -1,0 +1,32 @@
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';
+const root=path.resolve(new URL('../..',import.meta.url).pathname),sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex'),checks=[],add=(n,x,d='')=>checks.push([n,!!x,d]);
+const RELEASE='scoip-v1.1.6-release-certified-2026.08.24';
+for(const ch of ['stable','lab']){
+ const d=path.join(root,'release/packages',ch);
+ add(`${ch}: index exact`,sha(path.join(d,'index.html'))===sha(path.join(root,'index.html')));
+ for(let i=17;i<=21;i++)add(`${ch}: Stage${i} donor exact`,sha(path.join(d,`stage${i}-client.js`))===sha(path.join(root,`stage${i}-client.js`)));
+ add(`${ch}: exactly 8 functions`,fs.readdirSync(path.join(d,'api')).filter(x=>x.endsWith('.js')).length===8);
+ const rewrites=JSON.parse(fs.readFileSync(path.join(d,'vercel.json'),'utf8')).rewrites.filter(x=>x.source.startsWith('/api/'));
+ add(`${ch}: exactly 28 public API paths`,rewrites.length===28,rewrites.length);
+ const idx=fs.readFileSync(path.join(d,'index.html'),'utf8');
+ add(`${ch}: spatial field/mesh/minimap`,idx.includes('.field{')&&idx.includes('ambient-mesh152')&&idx.includes('mini-map'));
+ add(`${ch}: boxed renderer absent`,!idx.includes('.territory{width:150px'));
+ add(`${ch}: v1.1 contract`,JSON.parse(fs.readFileSync(path.join(d,'data/modules/road-ltl-v1.2.json'),'utf8')).contractVersion==='atlas-data-contract-v1.1');
+ const pkg=JSON.parse(fs.readFileSync(path.join(d,'package.json'),'utf8'));
+ add(`${ch}: package identity 1.1.6`,pkg.version==='1.1.6'&&pkg.name==='supply-chain-operations-intelligence-v1.1.6');
+ const meta=fs.readFileSync(path.join(d,'release/release-meta.js'),'utf8');
+ add(`${ch}: release meta identity`,meta.includes("stage:'v1.1.6'")&&meta.includes(RELEASE));
+ const env=fs.readFileSync(path.join(d,'.env.example'),'utf8');
+ add(`${ch}: env release identity`,env.includes(`ATLAS_RELEASE_ID=${RELEASE}`));
+ const dep=fs.readFileSync(path.join(d,'README_DEPLOY.txt'),'utf8');
+ add(`${ch}: deploy README identity`,dep.includes('v1.1.6')&&dep.includes(RELEASE));
+ const reg=JSON.parse(fs.readFileSync(path.join(d,'data/atlas-registry.json'),'utf8'));
+ add(`${ch}: registry release identity`,reg.release?.releaseId===RELEASE&&reg.release?.technicalLineage?.releaseCertification==='v1.1.6');
+ const baseline=JSON.parse(fs.readFileSync(path.join(d,'release/baselines/v1.1.6-critical-hashes.json'),'utf8'));
+ add(`${ch}: v1.1.6 integrity baseline`,baseline.releaseId===RELEASE&&baseline.schemaVersion==='v1.1.6-critical-integrity-v1');
+}
+add('stable: AP standalone excluded',!fs.existsSync(path.join(root,'release/packages/stable/accounts-payable-fixture-standalone.html')));
+add('stable: pilot corpus excluded',!fs.existsSync(path.join(root,'release/packages/stable/pilot')));
+add('lab: AP standalone retained',fs.existsSync(path.join(root,'release/packages/lab/accounts-payable-fixture-standalone.html')));
+add('lab: evaluation workbench retained',fs.existsSync(path.join(root,'release/packages/lab/pilot/evaluation-harness.html')));
+for(const[n,ok,d]of checks)console.log(`${ok?'PASS':'FAIL'} · ${n}${d!==''?' · '+d:''}`);if(checks.some(x=>!x[1]))process.exit(1);

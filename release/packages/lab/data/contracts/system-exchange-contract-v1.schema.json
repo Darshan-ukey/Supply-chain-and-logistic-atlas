@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "system-exchange-contract-v1",
+  "title": "System Exchange / Interface Contract v1",
+  "type": "object",
+  "required": [
+    "exchangeId",
+    "producerSystemId",
+    "consumerSystemId",
+    "payloadObjectIds"
+  ],
+  "properties": {
+    "exchangeId": {
+      "type": "string"
+    },
+    "producerSystemId": {
+      "type": "string"
+    },
+    "consumerSystemId": {
+      "type": "string"
+    },
+    "payloadObjectIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "interfaceType": {
+      "enum": [
+        "API",
+        "EDI",
+        "EVENT",
+        "FILE",
+        "DOCUMENT",
+        "UI",
+        "MESSAGE",
+        "OTHER"
+      ]
+    },
+    "standardOrMessage": {
+      "type": "string"
+    },
+    "acknowledgement": {
+      "type": "string"
+    },
+    "evidenceObjectIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sourceIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  }
+}

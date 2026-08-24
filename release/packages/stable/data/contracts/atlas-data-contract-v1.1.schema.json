@@ -1,0 +1,385 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "atlas-data-contract-v1.1",
+  "title": "Atlas Data Contract v1.1",
+  "type": "object",
+  "required": [
+    "processes",
+    "sources",
+    "processFlowEdges"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "processes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "level",
+          "a3ParentId",
+          "trigger",
+          "before",
+          "event",
+          "decision",
+          "rule",
+          "control",
+          "clock",
+          "action",
+          "evidence",
+          "after",
+          "outcome",
+          "inputs",
+          "outputs",
+          "sourceIds",
+          "applicability",
+          "pathType",
+          "participants",
+          "confidenceModel",
+          "stateBeforeId",
+          "stateAfterId",
+          "decisionId",
+          "ruleId",
+          "controlId",
+          "actionId",
+          "evidenceId",
+          "outcomeId"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "level": {
+            "type": "string",
+            "minLength": 1
+          },
+          "a3ParentId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "trigger": {
+            "type": "string",
+            "minLength": 1
+          },
+          "before": {
+            "type": "string",
+            "minLength": 1
+          },
+          "event": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decision": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rule": {
+            "type": "string",
+            "minLength": 1
+          },
+          "control": {
+            "type": "string",
+            "minLength": 1
+          },
+          "clock": {
+            "type": "string",
+            "minLength": 1
+          },
+          "action": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1
+          },
+          "after": {
+            "type": "string",
+            "minLength": 1
+          },
+          "outcome": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pathType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "stateBeforeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "stateAfterId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decisionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ruleId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "controlId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "actionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "outcomeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sourceIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "documentIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "eventIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "participants": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "actorId",
+                "responsibilities"
+              ],
+              "properties": {
+                "actorId": {
+                  "type": "string"
+                },
+                "responsibilities": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "basis": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "applicability": {
+            "type": "object",
+            "minProperties": 1
+          },
+          "confidenceModel": {
+            "type": "object",
+            "minProperties": 1
+          },
+          "paths": {
+            "type": "object"
+          },
+          "canonicalProcessConceptId": {
+            "type": "string"
+          },
+          "equivalentTo": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "variantOf": {
+            "type": "string"
+          },
+          "provenanceClaims": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/provenanceClaim"
+            }
+          },
+          "temporalConstraints": {
+            "type": "array",
+            "items": {
+              "$ref": "temporal-constraint-contract-v1.schema.json"
+            }
+          },
+          "extensions": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "issuer",
+          "title"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "issuer": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "accessDate": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "processFlowEdges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "from",
+          "type",
+          "to"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "iteration": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "executionTransitions": {
+      "type": "array"
+    },
+    "ontologyEdges": {
+      "type": "array"
+    },
+    "a3Parents": {
+      "type": "array"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "provenanceClaim": {
+      "type": "object",
+      "required": [
+        "claimId",
+        "statement",
+        "sourceIds",
+        "evidenceClass"
+      ],
+      "properties": {
+        "claimId": {
+          "type": "string"
+        },
+        "statement": {
+          "type": "string"
+        },
+        "sourceIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidenceClass": {
+          "enum": [
+            "SOURCE_NATIVE",
+            "ATLAS_CROSSWALK",
+            "ATLAS_SYNTHESIS",
+            "CLIENT_CONFIRMED",
+            "DERIVED_SIGNAL",
+            "HYPOTHESIS"
+          ]
+        },
+        "effectiveFrom": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "effectiveTo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "RESEARCH_REQUIRED"
+          ]
+        }
+      }
+    }
+  }
+}

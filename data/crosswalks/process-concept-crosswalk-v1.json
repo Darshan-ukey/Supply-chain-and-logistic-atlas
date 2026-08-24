@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "1.0",
+  "purpose": "Aligns mode/domain process implementations to stable concepts so Compare can distinguish common concepts from mode-specific implementations.",
+  "concepts": [
+    {
+      "conceptId": "scp-transport-service-eligibility",
+      "label": "Resolve service demand and execution eligibility",
+      "enterpriseTerritory": "commercial",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-01"
+    },
+    {
+      "conceptId": "scp-transport-rate-offer-commitment",
+      "label": "Classify, rate and commit the commercial offer",
+      "enterpriseTerritory": "commercial",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-02"
+    },
+    {
+      "conceptId": "scp-shipment-transport-identity",
+      "label": "Create and validate shipment, consignment and transport-document identity",
+      "enterpriseTerritory": "transport",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-03"
+    },
+    {
+      "conceptId": "scp-pickup-request-readiness",
+      "label": "Request pickup and prove shipment readiness",
+      "enterpriseTerritory": "transport",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-04"
+    },
+    {
+      "conceptId": "scp-resource-equipment-readiness",
+      "label": "Assure vehicle, equipment and qualified resource readiness",
+      "enterpriseTerritory": "assets",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-20"
+    },
+    {
+      "conceptId": "scp-pickup-custody-acceptance",
+      "label": "Dispatch pickup, accept freight and establish custody",
+      "enterpriseTerritory": "transport",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-05"
+    },
+    {
+      "conceptId": "scp-origin-node-receipt-verification",
+      "label": "Receive at origin service centre and verify handling-unit state",
+      "enterpriseTerritory": "warehouse",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-06"
+    },
+    {
+      "conceptId": "scp-consolidation-load-authorization",
+      "label": "Build consolidation and authorize origin load",
+      "enterpriseTerritory": "transport",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-07"
+    },
+    {
+      "conceptId": "scp-main-carriage-leg-execution",
+      "label": "Execute line-haul leg and publish actual movement state",
+      "enterpriseTerritory": "transport",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-08"
+    },
+    {
+      "conceptId": "scp-intermediate-node-sort-crossdock",
+      "label": "Unload, sort and cross-dock at an intermediate service centre",
+      "enterpriseTerritory": "warehouse",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-09"
+    },
+    {
+      "conceptId": "scp-network-leg-interchange",
+      "label": "Transfer or interchange to the next network leg",
+      "enterpriseTerritory": "transport",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-10"
+    },
+    {
+      "conceptId": "scp-destination-deconsolidation-load-build",
+      "label": "Deconsolidate and build the destination-delivery load",
+      "enterpriseTerritory": "transport",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-11"
+    },
+    {
+      "conceptId": "scp-destination-readiness-delivery-dispatch",
+      "label": "Confirm destination readiness, appointment and delivery dispatch",
+      "enterpriseTerritory": "delivery",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-12"
+    },
+    {
+      "conceptId": "scp-delivery-attempt-acceptance-custody-close",
+      "label": "Attempt delivery, capture acceptance/reservations and close custody",
+      "enterpriseTerritory": "delivery",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-13"
+    },
+    {
+      "conceptId": "scp-execution-variance-detection-assignment",
+      "label": "Detect, classify and assign execution variance",
+      "enterpriseTerritory": "exception",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-14"
+    },
+    {
+      "conceptId": "scp-service-recovery",
+      "label": "Contain, replan and recover service",
+      "enterpriseTerritory": "exception",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-15"
+    },
+    {
+      "conceptId": "scp-freight-charge-calculation",
+      "label": "Calculate preliminary and executed freight charges",
+      "enterpriseTerritory": "finance",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-16"
+    },
+    {
+      "conceptId": "scp-transport-invoice-settlement",
+      "label": "Invoice, audit, approve and settle transport obligations",
+      "enterpriseTerritory": "finance",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-17"
+    },
+    {
+      "conceptId": "scp-claim-dispute-adjudication",
+      "label": "Adjudicate cargo/service claim or billing dispute",
+      "enterpriseTerritory": "claims",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-18"
+    },
+    {
+      "conceptId": "scp-regulatory-scope-hold-release",
+      "label": "Resolve regulatory scope, operate hold/release and retain evidence",
+      "enterpriseTerritory": "trade",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-19"
+    },
+    {
+      "conceptId": "scp-identity-reconciliation",
+      "label": "Reconcile party, location, shipment, unit and network identities",
+      "enterpriseTerritory": "masterdata",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-21"
+    },
+    {
+      "conceptId": "scp-customer-resolution-communication",
+      "label": "Coordinate customer communication and resolution evidence",
+      "enterpriseTerritory": "customer",
+      "definitionStatus": "ATLAS_CANONICAL_CROSS_MODULE_CONCEPT",
+      "sourceModuleSeed": "road-ltl",
+      "sourceProcessId": "LTL-22"
+    }
+  ],
+  "mappings": [
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-01",
+      "canonicalProcessConceptId": "scp-transport-service-eligibility",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-02",
+      "canonicalProcessConceptId": "scp-transport-rate-offer-commitment",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-03",
+      "canonicalProcessConceptId": "scp-shipment-transport-identity",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-04",
+      "canonicalProcessConceptId": "scp-pickup-request-readiness",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-20",
+      "canonicalProcessConceptId": "scp-resource-equipment-readiness",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-05",
+      "canonicalProcessConceptId": "scp-pickup-custody-acceptance",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-06",
+      "canonicalProcessConceptId": "scp-origin-node-receipt-verification",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-07",
+      "canonicalProcessConceptId": "scp-consolidation-load-authorization",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-08",
+      "canonicalProcessConceptId": "scp-main-carriage-leg-execution",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-09",
+      "canonicalProcessConceptId": "scp-intermediate-node-sort-crossdock",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-10",
+      "canonicalProcessConceptId": "scp-network-leg-interchange",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-11",
+      "canonicalProcessConceptId": "scp-destination-deconsolidation-load-build",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-12",
+      "canonicalProcessConceptId": "scp-destination-readiness-delivery-dispatch",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-13",
+      "canonicalProcessConceptId": "scp-delivery-attempt-acceptance-custody-close",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-14",
+      "canonicalProcessConceptId": "scp-execution-variance-detection-assignment",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-15",
+      "canonicalProcessConceptId": "scp-service-recovery",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-16",
+      "canonicalProcessConceptId": "scp-freight-charge-calculation",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-17",
+      "canonicalProcessConceptId": "scp-transport-invoice-settlement",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-18",
+      "canonicalProcessConceptId": "scp-claim-dispute-adjudication",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-19",
+      "canonicalProcessConceptId": "scp-regulatory-scope-hold-release",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-21",
+      "canonicalProcessConceptId": "scp-identity-reconciliation",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    },
+    {
+      "moduleId": "road-ltl",
+      "processId": "LTL-22",
+      "canonicalProcessConceptId": "scp-customer-resolution-communication",
+      "mappingType": "SPECIALIZES",
+      "status": "APPROVED_BASELINE",
+      "effectiveFrom": "2026-08-24"
+    }
+  ],
+  "rules": {
+    "moduleIdsRemainStable": true,
+    "noProcessIdRewrite": true,
+    "futureModuleMappingsRequiredForA5Compare": true
+  }
+}

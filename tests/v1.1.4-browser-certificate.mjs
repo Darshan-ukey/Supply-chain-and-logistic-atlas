@@ -1,0 +1,4 @@
+import fs from 'node:fs';
+const a=JSON.parse(fs.readFileSync('audits/v1.1.4/browser-parity.json','utf8'));const checks=[];const add=(n,x)=>checks.push([n,!!x]);
+add('browser parity certificate PASS',a.status==='PASS');for(const c of a.checks||[])add(c.name,c.ok===true);for(const n of ['desktop','mobile']){const x=a.cases?.[n];add(`${n} zero runtime errors`,Array.isArray(x?.runtimeErrors)&&x.runtimeErrors.length===0);add(`${n} zero overflow`,x?.finalOverflow===0);add(`${n} Stage17-21 all live`,x?.base?.stage17&&x?.base?.stage18&&x?.base?.stage19&&x?.base?.stage20&&x?.base?.stage21);add(`${n} no boxed territories`,x?.base?.boxedTerritories===0);add(`${n} spatial mesh/minimap`,x?.base?.ambientMesh>=1&&x?.base?.miniMap>=1)}
+for(const[n,ok]of checks)console.log(`${ok?'PASS':'FAIL'} · ${n}`);if(checks.some(x=>!x[1]))process.exit(1);

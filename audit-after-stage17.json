@@ -1,0 +1,73 @@
+{
+  "stage": "17",
+  "audit": "POST_BUILD",
+  "status": "PASS_WITH_DEPLOYMENT_PENDING",
+  "canonicalRegression": {
+    "destinations": 71,
+    "page0Domains": 15,
+    "roadLtlA3Parents": 13,
+    "roadLtlA5Tasks": 22,
+    "processRelationships": 39,
+    "executionTransitions": 22,
+    "sources": 29
+  },
+  "canonicalHashes": {
+    "registryHash": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8",
+    "page0Hash": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374",
+    "roadLtlHash": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55",
+    "registryMatchesStage16": true,
+    "page0MatchesStage16": true,
+    "roadLtlMatchesStage16": true
+  },
+  "runtimeAssets": {
+    "referencesChecked": [
+      "data/atlas-registry.json",
+      "data/contracts/atlas-data-contract-v1.0.schema.json",
+      "data/module-catalog.json",
+      "data/page0/page0-v6.2.2.json",
+      "data/reports/road-ltl-v1.2.validation.json"
+    ],
+    "missing": []
+  },
+  "codeChecks": {
+    "nodeSyntax": "PASS",
+    "apiSmoke": "PASS",
+    "staticHttpServe": "PASS",
+    "browserVisualRegression": "NOT_RE-RUN_CHROMIUM_HUNG_IN_CONTAINER"
+  },
+  "productionBoundary": {
+    "apiFunctions": 11,
+    "httpOnlyCookieAuth": true,
+    "rlsTables": 10,
+    "privateEvidenceBucket": "atlas-client-evidence",
+    "bucketLimitBytes": 20971520,
+    "referenceProxyUploadLimitBytes": 4194304,
+    "auditTriggers": true,
+    "localLabFallback": true,
+    "nodeEngine": "24.x"
+  },
+  "supabaseValidation": {
+    "projectStatus": "ACTIVE_HEALTHY",
+    "securityAdvisorFindings": 0,
+    "performanceBlockingFindings": 0,
+    "performanceInfo": "Only unused-index informational notices remain on the newly empty schema.",
+    "allClientTablesRls": true,
+    "evidenceBucketPublic": false
+  },
+  "vercel": {
+    "connectedTeamFound": true,
+    "projectsVisible": 0,
+    "deploymentAttempted": false,
+    "reason": "No identifiable existing Vercel project was exposed by the connected team; no production target was guessed or overwritten."
+  },
+  "secretScan": {
+    "status": "PASS",
+    "hits": []
+  },
+  "limitations": [
+    "No authenticated end-to-end browser session was executed because there are currently zero auth users and the container cannot resolve the external Supabase hostname.",
+    "Chromium headless did not complete in this container; Stage 15.2 remains the last browser-validated visual baseline.",
+    "Reference evidence proxy is capped at 4 MB; larger production documents should move to signed direct upload.",
+    "Stage 17 does not yet implement enterprise SSO, malware/DLP scanning, legal retention, CMK or private networking."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "stage": "15.1-closeout + 16",
+  "phase": "pre-build",
+  "status": "PASS",
+  "baselineStage": "15.2",
+  "identifiedRemaining15_1": [
+    "Full keyboard/focus/accessibility hardening not explicitly closed in Stage 15.2 audit.",
+    "Performance baseline/instrumentation not explicitly closed in Stage 15.2 audit."
+  ],
+  "stage16Targets": [
+    "Reusable deterministic rule service",
+    "Reusable overlay registry",
+    "Content/version pinning",
+    "Saved-work no-silent-mutation compatibility",
+    "Knowledge-gap governance queue"
+  ],
+  "canonicalBaseline": {
+    "destinations": 71,
+    "page0Domains": 15,
+    "a3Parents": 13,
+    "processes": 22,
+    "processFlowEdges": 39,
+    "executionTransitions": 22,
+    "sources": 29,
+    "runtimeAssetHashes": {
+      "data/atlas-registry.json": "03816ee0361a76b2d9546a52f01bff81964982917c5cbf01691cc47de740a8b5",
+      "data/module-catalog.json": "7f85520e12487e6d487fb84a01f13b8d19b7994bda6998c6838753b1965e1e9f",
+      "data/page0/page0-v6.2.2.json": "5fd6915bc5f6819a12b170ac58f92d7d5ecb481e8e688d3f80bb57e8f8166c85",
+      "data/modules/road-ltl-v1.2.json": "62b040950a80467a5bea357f480cdd76334508397b323673bcf0e43a94ca1c89"
+    }
+  }
+}

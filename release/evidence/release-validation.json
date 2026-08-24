@@ -1,0 +1,141 @@
+{
+  "stage": "23",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "node engine pinned 24.x",
+      "ok": true,
+      "detail": "24.x"
+    },
+    {
+      "name": "frozen:data/atlas-registry.json",
+      "ok": true,
+      "detail": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8"
+    },
+    {
+      "name": "frozen:data/page0/page0-v6.2.2.json",
+      "ok": true,
+      "detail": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374"
+    },
+    {
+      "name": "frozen:data/modules/road-ltl-v1.2.json",
+      "ok": true,
+      "detail": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55"
+    },
+    {
+      "name": "frozen:data/core/enterprise-core-ontology-v1.json",
+      "ok": true,
+      "detail": "dd39177c2621a37253f156b1d6bd47cfd110d36e4d737b3903496226e9a95a98"
+    },
+    {
+      "name": "frozen:data/contracts/domain-extension-contract-v1.schema.json",
+      "ok": true,
+      "detail": "7802793fb4fc03a16dc79a8d2714b7c69b6babe8582f74055a16445d3a5f8799"
+    },
+    {
+      "name": "frozen:data/domains/supply-chain-domain-pack-v1.json",
+      "ok": true,
+      "detail": "3d17ba3dc5dd5c9ecae9eb97d3cfbd984f416a78e595b7794ee4ddbbd67d0237"
+    },
+    {
+      "name": "frozen:data/fixtures/accounts-payable-module-v0.1.json",
+      "ok": true,
+      "detail": "435806d83dafe4efcc23cb1fca49dae1e13d9648412950ae9345d65d7ec0cef6"
+    },
+    {
+      "name": "frozen:accounts-payable-fixture-standalone.html",
+      "ok": true,
+      "detail": "514bd716adbcb18ca2bcdebd816c337c11ef6fd9ce65d5b1adb32faefa6993a1"
+    },
+    {
+      "name": "release endpoint:api/health.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "release endpoint:api/readiness.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "release endpoint:api/pilot-readiness.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "release endpoint:api/version.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "release endpoint:api/release-integrity.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "release endpoint:release/release-meta.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "security header:X-Content-Type-Options",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "security header:X-Frame-Options",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "security header:Referrer-Policy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "security header:Permissions-Policy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "security header:Strict-Transport-Security",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "env contract:ATLAS_RELEASE_CHANNEL",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "env contract:SUPABASE_URL",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "env contract:SUPABASE_PUBLISHABLE_KEY",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "env contract:ATLAS_LLM_PROVIDER",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime has no /mnt/data absolute dependency",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime secret scan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "release channel contract only stable/lab",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

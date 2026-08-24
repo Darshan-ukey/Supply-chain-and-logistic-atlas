@@ -1,0 +1,110 @@
+{
+  "release": "v1.1.4",
+  "frontendDonor": {
+    "stage17-client.js": {
+      "stage23": "c5b29ceb9eb365541d0598cfd9f59a134ed866a9bd0c21bcbf03ee460c64f35d",
+      "v1.1.4": "c5b29ceb9eb365541d0598cfd9f59a134ed866a9bd0c21bcbf03ee460c64f35d",
+      "exact": true,
+      "v1.1.3Bytes": 166
+    },
+    "stage18-client.js": {
+      "stage23": "52170214df14f9412db05682195d7c5a26a6fb691eb5d1e25a044913490259f1",
+      "v1.1.4": "52170214df14f9412db05682195d7c5a26a6fb691eb5d1e25a044913490259f1",
+      "exact": true,
+      "v1.1.3Bytes": 166
+    },
+    "stage19-client.js": {
+      "stage23": "f1c92dd1c09eb3714a7cf204f125221ca31156dbc3e148846866442c810dffaa",
+      "v1.1.4": "f1c92dd1c09eb3714a7cf204f125221ca31156dbc3e148846866442c810dffaa",
+      "exact": true,
+      "v1.1.3Bytes": 166
+    },
+    "stage20-client.js": {
+      "stage23": "86f707a669edb2ec8a1cd58e4de399f6b46147455fa6e596172c025e22f45e67",
+      "v1.1.4": "86f707a669edb2ec8a1cd58e4de399f6b46147455fa6e596172c025e22f45e67",
+      "exact": true,
+      "v1.1.3Bytes": 166
+    },
+    "stage21-client.js": {
+      "stage23": "b1d0c420efb31bba3a9cadd31cf0bdafa51d79563d5615268db66068451ab5a7",
+      "v1.1.4": "b1d0c420efb31bba3a9cadd31cf0bdafa51d79563d5615268db66068451ab5a7",
+      "exact": true,
+      "v1.1.3Bytes": 166
+    }
+  },
+  "semanticRoadLtl": {
+    "a3Parents": {
+      "stage23Count": 13,
+      "v11Count": 13,
+      "recoveryCount": 13,
+      "stage23EqualsV11": true,
+      "recoveryContainsStage23Exact": true
+    },
+    "processes": {
+      "stage23Count": 22,
+      "v11Count": 22,
+      "recoveryCount": 22,
+      "stage23EqualsV11": true,
+      "recoveryContainsStage23Exact": true
+    },
+    "processFlowEdges": {
+      "stage23Count": 39,
+      "v11Count": 39,
+      "recoveryCount": 39,
+      "stage23EqualsV11": true,
+      "recoveryContainsStage23Exact": true
+    },
+    "executionTransitions": {
+      "stage23Count": 22,
+      "v11Count": 22,
+      "recoveryCount": 22,
+      "stage23EqualsV11": true,
+      "recoveryContainsStage23Exact": true
+    },
+    "sources": {
+      "stage23Count": 29,
+      "v11Count": 29,
+      "recoveryCount": 29,
+      "stage23EqualsV11": true,
+      "recoveryContainsStage23Exact": true
+    },
+    "lenses": {
+      "stage23Count": 27,
+      "v11Count": 27,
+      "recoveryCount": 27,
+      "stage23EqualsV11": true,
+      "recoveryContainsStage23Exact": true
+    },
+    "childActors": {
+      "stage23Count": 15,
+      "v11Count": 15,
+      "recoveryCount": 15,
+      "stage23EqualsV11": true,
+      "recoveryContainsStage23Exact": true
+    },
+    "ontologyEdges": {
+      "stage23Count": 176,
+      "v11Count": 176,
+      "recoveryCount": 176,
+      "stage23EqualsV11": true,
+      "recoveryContainsStage23Exact": true
+    },
+    "ontologyNodes/entityNodes": {
+      "stage23Count": 220,
+      "v11Count": 220,
+      "recoveryCount": 220,
+      "stage23EqualsV11": true,
+      "recoveryContainsStage23Exact": true
+    }
+  },
+  "page0": {
+    "stage23Domains": 15,
+    "v11Domains": 15,
+    "recoveryDomains": 15,
+    "stage23EqualsV11": true,
+    "recoveryExact": true
+  },
+  "v1_1_3ApiFunctions": 8,
+  "recoveryApiFunctions": 8,
+  "recoveryBoxedAssetsDirectory": false
+}

@@ -1,0 +1,2054 @@
+{
+  "schemaVersion": "1.0",
+  "allowedDispositions": [
+    "PAGE0",
+    "CHILD_MODULE",
+    "OVERLAY",
+    "CROSSWALKED",
+    "ALIAS_DUPLICATE",
+    "NOT_APPLICABLE",
+    "RESEARCH_REQUIRED",
+    "MISSING",
+    "PAGE0_REFERENCE_PLACEMENT"
+  ],
+  "records": [
+    {
+      "coverageId": "P0-REF-01-001",
+      "sourceName": "SCOR Digital Standard",
+      "issuer": "ASCM",
+      "sourceIds": [
+        "src-scor"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-01-002",
+      "sourceName": "Cross-Industry Process Classification Framework (PCF) 8.0",
+      "issuer": "APQC",
+      "sourceIds": [
+        "src-apqc-pcf"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-01-003",
+      "sourceName": "4.0 Manage Supply Chain for Physical Products",
+      "issuer": "APQC",
+      "sourceIds": [
+        "src-apqc-pcf"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-01-004",
+      "sourceName": "Business Process Model and Notation 2.0.2",
+      "issuer": "OMG",
+      "sourceIds": [
+        "src-bpmn"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-01-005",
+      "sourceName": "Decision Model and Notation 1.5",
+      "issuer": "OMG",
+      "sourceIds": [
+        "src-dmn"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-01-006",
+      "sourceName": "ISA-95 / IEC 62264 Enterprise–Control System Integration",
+      "issuer": "ISA / IEC",
+      "sourceIds": [
+        "src-isa95"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-01-007",
+      "sourceName": "ISO 22400 Manufacturing Operations Management KPIs",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-001",
+      "sourceName": "Buy–Ship–Pay Reference Data Model",
+      "issuer": "UN/CEFACT",
+      "sourceIds": [
+        "src-uncefact-rdm"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-002",
+      "sourceName": "Multimodal Transport Reference Data Model",
+      "issuer": "UN/CEFACT",
+      "sourceIds": [
+        "src-uncefact-rdm"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-003",
+      "sourceName": "Supply Chain Reference Data Model",
+      "issuer": "UN/CEFACT",
+      "sourceIds": [
+        "src-uncefact-rdm"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-004",
+      "sourceName": "Core Component Library",
+      "issuer": "UN/CEFACT",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-005",
+      "sourceName": "UN/EDIFACT D.25A",
+      "issuer": "UN/CEFACT",
+      "sourceIds": [
+        "src-unedifact-d25a"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-006",
+      "sourceName": "UN/LOCODE",
+      "issuer": "UNECE",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-007",
+      "sourceName": "GS1 General Specifications",
+      "issuer": "GS1",
+      "sourceIds": [
+        "src-gs1-genspec"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-008",
+      "sourceName": "EPCIS",
+      "issuer": "GS1",
+      "sourceIds": [
+        "src-gs1-epcis"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-009",
+      "sourceName": "Core Business Vocabulary",
+      "issuer": "GS1",
+      "sourceIds": [
+        "src-gs1-cbv"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-010",
+      "sourceName": "Transport & Logistics standards",
+      "issuer": "GS1",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-011",
+      "sourceName": "GS1 ID keys: SSCC, GLN, GTIN, GRAI, GIAI, GINC, GSIN",
+      "issuer": "GS1",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-012",
+      "sourceName": "ISO 8000 Data and Master Data Quality",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso8000"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-013",
+      "sourceName": "ISO 3166 Country codes",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-014",
+      "sourceName": "ISO 4217 Currency codes",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-02-015",
+      "sourceName": "ISO 8601 Date and time representation",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-03-001",
+      "sourceName": "WCO Data Model",
+      "issuer": "WCO",
+      "sourceIds": [
+        "src-wco-dm"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-03-002",
+      "sourceName": "Revised Kyoto Convention",
+      "issuer": "WCO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-03-003",
+      "sourceName": "SAFE Framework of Standards",
+      "issuer": "WCO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-03-004",
+      "sourceName": "Harmonized System (HS)",
+      "issuer": "WCO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-03-005",
+      "sourceName": "Trade Facilitation Agreement",
+      "issuer": "WTO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-03-006",
+      "sourceName": "Incoterms® 2020",
+      "issuer": "ICC",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-03-007",
+      "sourceName": "Model Law on Electronic Transferable Records (MLETR)",
+      "issuer": "UNCITRAL",
+      "sourceIds": [
+        "src-mletr"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-03-008",
+      "sourceName": "Electronic commerce and electronic-signature instruments",
+      "issuer": "UNCITRAL",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-03-009",
+      "sourceName": "Jurisdiction source slot — resolve at execution modelling · customs, export control, sanctions and tax",
+      "issuer": "Jurisdiction-specific competent authorities",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-001",
+      "sourceName": "Booking Standard",
+      "issuer": "DCSA",
+      "sourceIds": [
+        "src-dcsa-booking"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-002",
+      "sourceName": "Bill of Lading / eBL Standard",
+      "issuer": "DCSA",
+      "sourceIds": [
+        "src-dcsa-ebl"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-003",
+      "sourceName": "Track & Trace Standard",
+      "issuer": "DCSA",
+      "sourceIds": [
+        "src-dcsa-tt"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-004",
+      "sourceName": "Commercial Schedules Standard",
+      "issuer": "DCSA",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-005",
+      "sourceName": "Just-in-Time Port Call Standard",
+      "issuer": "DCSA",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-006",
+      "sourceName": "Verified Gross Mass Standard",
+      "issuer": "DCSA",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-007",
+      "sourceName": "Arrival Notice Standard",
+      "issuer": "DCSA",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-008",
+      "sourceName": "FAL Convention",
+      "issuer": "IMO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-009",
+      "sourceName": "Maritime Single Window",
+      "issuer": "IMO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-010",
+      "sourceName": "SOLAS",
+      "issuer": "IMO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-011",
+      "sourceName": "Verified Gross Mass requirements",
+      "issuer": "IMO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-012",
+      "sourceName": "IMDG Code",
+      "issuer": "IMO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-013",
+      "sourceName": "International Convention for Safe Containers",
+      "issuer": "IMO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-014",
+      "sourceName": "Bills of lading, charter parties, contracts and clauses",
+      "issuer": "BIMCO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-015",
+      "sourceName": "BAPLIE, MOVINS, COPRAR, COPARN, CODECO, COARRI guides",
+      "issuer": "SMDG",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-016",
+      "sourceName": "Container-terminal semantics and data standards",
+      "issuer": "TIC4.0",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-017",
+      "sourceName": "Port Community System / Maritime Single Window practice",
+      "issuer": "IPCSA",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-018",
+      "sourceName": "ISO 6346 Freight-container identification",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso6346"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-019",
+      "sourceName": "ISO 668 Freight-container dimensions and ratings",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-020",
+      "sourceName": "ISO 1496 Freight-container specifications and testing",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-04-021",
+      "sourceName": "ISO 17712 High-security seals",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-05-001",
+      "sourceName": "Negotiable FIATA Multimodal Transport Bill of Lading (FBL / eFBL)",
+      "issuer": "FIATA",
+      "sourceIds": [
+        "src-fiata"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-05-002",
+      "sourceName": "Forwarders Certificate of Receipt (FCR)",
+      "issuer": "FIATA",
+      "sourceIds": [
+        "src-fiata"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-05-003",
+      "sourceName": "Forwarders Certificate of Transport (FCT)",
+      "issuer": "FIATA",
+      "sourceIds": [
+        "src-fiata"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-05-004",
+      "sourceName": "Warehouse Receipt (FWR)",
+      "issuer": "FIATA",
+      "sourceIds": [
+        "src-fiata"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-05-005",
+      "sourceName": "Non-negotiable Multimodal Transport Waybill (FWB)",
+      "issuer": "FIATA",
+      "sourceIds": [
+        "src-fiata"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-05-006",
+      "sourceName": "Freight-forwarding standards and guidance",
+      "issuer": "FIATA",
+      "sourceIds": [
+        "src-fiata"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-05-007",
+      "sourceName": "Multimodal Transport Reference Data Model",
+      "issuer": "UN/CEFACT",
+      "sourceIds": [
+        "src-uncefact-rdm"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-05-008",
+      "sourceName": "Ocean Transportation Intermediary regulations",
+      "issuer": "Federal Maritime Commission",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-05-009",
+      "sourceName": "NVOCC definition and licensing",
+      "issuer": "Federal Maritime Commission",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-05-010",
+      "sourceName": "Ocean Freight Forwarder definition and licensing",
+      "issuer": "Federal Maritime Commission",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-05-011",
+      "sourceName": "Jurisdiction source slot — resolve at execution modelling · forwarding / NVOCC",
+      "issuer": "Jurisdiction-specific competent authorities",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-001",
+      "sourceName": "ONE Record",
+      "issuer": "IATA",
+      "sourceIds": [
+        "src-iata-one-record"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-002",
+      "sourceName": "Cargo-XML",
+      "issuer": "IATA",
+      "sourceIds": [
+        "src-iata-cargo"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-003",
+      "sourceName": "e-AWB",
+      "issuer": "IATA",
+      "sourceIds": [
+        "src-iata-cargo"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-004",
+      "sourceName": "Cargo Services Conference resolutions",
+      "issuer": "IATA",
+      "sourceIds": [
+        "src-iata-cargo"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-005",
+      "sourceName": "Cargo Handling Manual",
+      "issuer": "IATA",
+      "sourceIds": [
+        "src-iata-cargo"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-006",
+      "sourceName": "Dangerous Goods Regulations",
+      "issuer": "IATA",
+      "sourceIds": [
+        "src-iata-cargo"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-007",
+      "sourceName": "ULD Regulations",
+      "issuer": "IATA",
+      "sourceIds": [
+        "src-iata-cargo"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-008",
+      "sourceName": "Perishable Cargo Regulations",
+      "issuer": "IATA",
+      "sourceIds": [
+        "src-iata-cargo"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-009",
+      "sourceName": "Live Animals Regulations",
+      "issuer": "IATA",
+      "sourceIds": [
+        "src-iata-cargo"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-010",
+      "sourceName": "Annex 18",
+      "issuer": "ICAO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-011",
+      "sourceName": "Technical Instructions for Dangerous Goods by Air",
+      "issuer": "ICAO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-012",
+      "sourceName": "Annex 17 Aviation Security",
+      "issuer": "ICAO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-013",
+      "sourceName": "Montreal Convention 1999",
+      "issuer": "ICAO",
+      "sourceIds": [
+        "src-montreal"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-06-014",
+      "sourceName": "Jurisdiction source slot — resolve at execution modelling · civil aviation and air customs",
+      "issuer": "ICAO member states / competent authorities",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-001",
+      "sourceName": "CMR Convention",
+      "issuer": "UNECE",
+      "sourceIds": [
+        "src-cmr"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-002",
+      "sourceName": "e-CMR Protocol and e-CMR BRS",
+      "issuer": "UNECE",
+      "sourceIds": [
+        "src-cmr",
+        "src-ecmr"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-003",
+      "sourceName": "TIR Convention",
+      "issuer": "UNECE",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-004",
+      "sourceName": "eTIR",
+      "issuer": "UNECE",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-005",
+      "sourceName": "ADR",
+      "issuer": "UNECE",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-006",
+      "sourceName": "ATP",
+      "issuer": "UNECE",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-007",
+      "sourceName": "National Motor Freight Classification (NMFC)",
+      "issuer": "NMFTA",
+      "sourceIds": [
+        "src-nmfc"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-008",
+      "sourceName": "eBOL API Standard 2.1 and Digital LTL API family",
+      "issuer": "NMFTA DSDC · Digital LTL Council",
+      "sourceIds": [
+        "src-nmfta-dsdc-ltl"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-009",
+      "sourceName": "SCAC",
+      "issuer": "NMFTA",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-010",
+      "sourceName": "SPLC",
+      "issuer": "NMFTA",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-011",
+      "sourceName": "Transportation transaction sets — profile-specific applicability",
+      "issuer": "ANSI ASC X12",
+      "sourceIds": [
+        "src-x12"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-012",
+      "sourceName": "Motor-carrier regulations",
+      "issuer": "FMCSA",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-013",
+      "sourceName": "Hours of Service",
+      "issuer": "FMCSA",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-014",
+      "sourceName": "Cargo securement",
+      "issuer": "FMCSA",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-015",
+      "sourceName": "Jurisdiction source slot — resolve at execution modelling · road transport",
+      "issuer": "Jurisdiction-specific competent authorities",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-07-016",
+      "sourceName": "Road transport legal instruments",
+      "issuer": "UNECE",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-001",
+      "sourceName": "COTIF",
+      "issuer": "OTIF",
+      "sourceIds": [
+        "src-cotif-cim"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-002",
+      "sourceName": "CIM Uniform Rules",
+      "issuer": "OTIF",
+      "sourceIds": [
+        "src-cotif-cim"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-003",
+      "sourceName": "RID",
+      "issuer": "OTIF",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-004",
+      "sourceName": "CIM Consignment Note",
+      "issuer": "CIT",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-005",
+      "sourceName": "CIM/SMGS Consignment Note Manual",
+      "issuer": "CIT",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-006",
+      "sourceName": "SMGS",
+      "issuer": "OSJD",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-007",
+      "sourceName": "Freight standards and data exchange",
+      "issuer": "UIC",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-008",
+      "sourceName": "ORFEUS",
+      "issuer": "RailData / UIC",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-009",
+      "sourceName": "Commodity, location and reference codes",
+      "issuer": "UIC",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-010",
+      "sourceName": "Telematics Applications for Freight TSI",
+      "issuer": "EU Agency for Railways",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-011",
+      "sourceName": "Rail transaction sets",
+      "issuer": "ANSI ASC X12",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-012",
+      "sourceName": "North-American rail standards and rules",
+      "issuer": "Association of American Railroads",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-013",
+      "sourceName": "CMNI — Budapest Convention on the Contract for the Carriage of Goods by Inland Waterway",
+      "issuer": "UNECE / CCNR",
+      "sourceIds": [
+        "src-cmni"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-014",
+      "sourceName": "CCNR Rhine navigation regulations",
+      "issuer": "Central Commission for the Navigation of the Rhine",
+      "sourceIds": [
+        "src-ccnr"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-015",
+      "sourceName": "ES-TRIN 2025/1",
+      "issuer": "CESNI",
+      "sourceIds": [
+        "src-cesni-trin"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-016",
+      "sourceName": "ES-RIS 2025/1",
+      "issuer": "CESNI",
+      "sourceIds": [
+        "src-cesni-ris"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-08-017",
+      "sourceName": "Jurisdiction source slot — resolve at execution modelling · rail regulator and infrastructure manager",
+      "issuer": "Jurisdiction-specific competent authorities",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-09-001",
+      "sourceName": "Technical Standards",
+      "issuer": "Universal Postal Union",
+      "sourceIds": [
+        "src-upu"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-09-002",
+      "sourceName": "Postal EDI standards",
+      "issuer": "Universal Postal Union",
+      "sourceIds": [
+        "src-upu"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-09-003",
+      "sourceName": "S10 postal-item identification",
+      "issuer": "Universal Postal Union",
+      "sourceIds": [
+        "src-upu"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-09-004",
+      "sourceName": "ITMATT / M33",
+      "issuer": "Universal Postal Union",
+      "sourceIds": [
+        "src-upu"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-09-005",
+      "sourceName": "Postal supply-chain standards",
+      "issuer": "Universal Postal Union",
+      "sourceIds": [
+        "src-upu"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-09-006",
+      "sourceName": "Transport & Logistics / EPCIS",
+      "issuer": "GS1",
+      "sourceIds": [
+        "src-gs1-epcis"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-09-007",
+      "sourceName": "Jurisdiction source slot — resolve at execution modelling · postal and private CEP",
+      "issuer": "Jurisdiction-specific competent authorities",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-10-001",
+      "sourceName": "4.4 Manage logistics and warehousing",
+      "issuer": "APQC",
+      "sourceIds": [
+        "src-apqc-pcf"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-10-002",
+      "sourceName": "Fulfill and Return",
+      "issuer": "ASCM SCOR",
+      "sourceIds": [
+        "src-scor"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-10-003",
+      "sourceName": "General Specifications",
+      "issuer": "GS1",
+      "sourceIds": [
+        "src-gs1-genspec"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-10-004",
+      "sourceName": "EPCIS / Core Business Vocabulary",
+      "issuer": "GS1",
+      "sourceIds": [
+        "src-gs1-epcis",
+        "src-gs1-cbv"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-10-005",
+      "sourceName": "ISA-95 / IEC 62264",
+      "issuer": "ISA / IEC",
+      "sourceIds": [
+        "src-isa95"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-10-006",
+      "sourceName": "ISO 9001 Quality Management",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-10-007",
+      "sourceName": "ISO 8000 Master Data Quality",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso8000"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-10-008",
+      "sourceName": "ISO 28000 Supply-chain security management",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-10-009",
+      "sourceName": "ISO 17712 High-security seals",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-11-001",
+      "sourceName": "Transform",
+      "issuer": "ASCM SCOR",
+      "sourceIds": [
+        "src-scor"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-11-002",
+      "sourceName": "4.3 Produce/Assemble/Test product",
+      "issuer": "APQC",
+      "sourceIds": [
+        "src-apqc-pcf"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-11-003",
+      "sourceName": "ISA-95 / IEC 62264",
+      "issuer": "ISA / IEC",
+      "sourceIds": [
+        "src-isa95"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-11-004",
+      "sourceName": "ISO 22400",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-11-005",
+      "sourceName": "ISO 9001",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-11-006",
+      "sourceName": "Identification and traceability standards",
+      "issuer": "GS1",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-11-007",
+      "sourceName": "EPCIS",
+      "issuer": "GS1",
+      "sourceIds": [
+        "src-gs1-epcis"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-12-001",
+      "sourceName": "Source",
+      "issuer": "ASCM SCOR",
+      "sourceIds": [
+        "src-scor"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-12-002",
+      "sourceName": "4.2 Procure materials and services",
+      "issuer": "APQC",
+      "sourceIds": [
+        "src-apqc-pcf"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-12-003",
+      "sourceName": "Global Standard for Procurement & Supply",
+      "issuer": "CIPS",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-12-004",
+      "sourceName": "Supply-management body of knowledge",
+      "issuer": "Institute for Supply Management",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-12-005",
+      "sourceName": "ISO 20400 Sustainable Procurement",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-12-006",
+      "sourceName": "ISO 9001 supplier-quality principles",
+      "issuer": "ISO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-13-001",
+      "sourceName": "UN Recommendations on the Transport of Dangerous Goods – Model Regulations",
+      "issuer": "United Nations / UNECE",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-13-002",
+      "sourceName": "ADR",
+      "issuer": "UNECE",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-13-003",
+      "sourceName": "RID",
+      "issuer": "OTIF",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-13-004",
+      "sourceName": "ADN",
+      "issuer": "UNECE",
+      "sourceIds": [
+        "src-adn"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-13-005",
+      "sourceName": "IMDG Code",
+      "issuer": "IMO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-13-006",
+      "sourceName": "Technical Instructions",
+      "issuer": "ICAO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-13-007",
+      "sourceName": "Dangerous Goods Regulations",
+      "issuer": "IATA",
+      "sourceIds": [
+        "src-iata-cargo"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-13-008",
+      "sourceName": "Jurisdiction source slot — resolve at execution modelling · dangerous-goods variations",
+      "issuer": "Jurisdiction-specific competent authorities",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-14-001",
+      "sourceName": "Financial Management PCF – revenue accounting and AP",
+      "issuer": "APQC",
+      "sourceIds": [
+        "src-apqc-pcf"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-14-002",
+      "sourceName": "Buy–Ship–Pay Reference Data Model",
+      "issuer": "UN/CEFACT",
+      "sourceIds": [
+        "src-uncefact-rdm"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-14-003",
+      "sourceName": "UN/EDIFACT financial and invoice messages",
+      "issuer": "UN/CEFACT",
+      "sourceIds": [
+        "src-unedifact-d25a"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-14-004",
+      "sourceName": "ISO 20022",
+      "issuer": "ISO 20022 Registration Authority",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-14-005",
+      "sourceName": "SWIFT standards",
+      "issuer": "SWIFT",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-14-006",
+      "sourceName": "UCP 600",
+      "issuer": "ICC",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-14-007",
+      "sourceName": "URC 522",
+      "issuer": "ICC",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-14-008",
+      "sourceName": "URDG 758",
+      "issuer": "ICC",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-15-001",
+      "sourceName": "ISO 14083",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso14083"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-15-002",
+      "sourceName": "GLEC Framework",
+      "issuer": "Smart Freight Centre",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-15-003",
+      "sourceName": "Maritime GHG and emissions requirements",
+      "issuer": "IMO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-15-004",
+      "sourceName": "CORSIA and aviation emissions schemes",
+      "issuer": "ICAO",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-15-005",
+      "sourceName": "EU ETS maritime overlay",
+      "issuer": "European Commission",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-15-006",
+      "sourceName": "FuelEU Maritime",
+      "issuer": "European Commission",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-16-001",
+      "sourceName": "CMR",
+      "issuer": "UNECE",
+      "sourceIds": [
+        "src-cmr"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-16-002",
+      "sourceName": "COTIF / CIM",
+      "issuer": "OTIF",
+      "sourceIds": [
+        "src-cotif-cim"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-16-003",
+      "sourceName": "Montreal Convention 1999",
+      "issuer": "ICAO",
+      "sourceIds": [
+        "src-montreal"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-16-004",
+      "sourceName": "Hague / Hague–Visby Rules",
+      "issuer": "International instrument · Government of Belgium depositary",
+      "sourceIds": [
+        "src-hague-visby"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-16-005",
+      "sourceName": "Hamburg Rules",
+      "issuer": "UNCITRAL",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-16-006",
+      "sourceName": "Rotterdam Rules",
+      "issuer": "UNCITRAL",
+      "sourceIds": [
+        "src-rotterdam"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-16-007",
+      "sourceName": "United Nations Convention on Negotiable Cargo Documents",
+      "issuer": "UNCITRAL / United Nations",
+      "sourceIds": [
+        "src-ncd"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-16-008",
+      "sourceName": "Model Law on Electronic Transferable Records",
+      "issuer": "UNCITRAL",
+      "sourceIds": [
+        "src-mletr"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-16-009",
+      "sourceName": "Incoterms® 2020",
+      "issuer": "ICC",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-16-010",
+      "sourceName": "Jurisdiction source slot — resolve at execution modelling · carriage, commercial and contract law",
+      "issuer": "Jurisdiction-specific competent authorities",
+      "sourceIds": [],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-001",
+      "sourceName": "ISO 9001:2015 Quality management systems",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso9001"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-002",
+      "sourceName": "ISO 10002:2018 Complaints handling",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso10002"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-003",
+      "sourceName": "ISO 22301:2019 Business continuity management systems",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso22301"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-004",
+      "sourceName": "ISO 30414:2025 Human capital reporting and disclosure",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso30414"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-005",
+      "sourceName": "ISO 30401:2018 Knowledge management systems",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso30401"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-006",
+      "sourceName": "ISO 31000:2018 Risk management",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso31000"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-007",
+      "sourceName": "ISO 37301:2021 Compliance management systems",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso37301"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-008",
+      "sourceName": "ISO 44001:2017 Collaborative business relationship management systems",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso44001"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-009",
+      "sourceName": "ISO 55001:2024 Asset management systems",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso55001"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-010",
+      "sourceName": "ISO 14064-1:2018 Organizational GHG inventories",
+      "issuer": "ISO",
+      "sourceIds": [
+        "src-iso14064"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-011",
+      "sourceName": "Corporate Value Chain (Scope 3) Standard",
+      "issuer": "GHG Protocol",
+      "sourceIds": [
+        "src-ghg-scope3"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-012",
+      "sourceName": "Contract Management Standard · 4th edition",
+      "issuer": "CCM Institute / World Commerce & Contracting",
+      "sourceIds": [
+        "src-worldcc-cms"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-013",
+      "sourceName": "Global Traceability Standard 2.0.0",
+      "issuer": "GS1",
+      "sourceIds": [
+        "src-gs1-trace"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    },
+    {
+      "coverageId": "P0-REF-17-014",
+      "sourceName": "Global Data Synchronisation Network",
+      "issuer": "GS1",
+      "sourceIds": [
+        "src-gs1-gdsn"
+      ],
+      "disposition": "PAGE0_REFERENCE_PLACEMENT",
+      "atlasTarget": "PAGE0",
+      "reviewStatus": "BASELINE_IMPORTED",
+      "notes": "Resolved to governed source IDs where available. Does not imply every source-native concept is represented on Page0."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "stage": "23",
+  "status": "PASS",
+  "results": [
+    {
+      "name": "desktop",
+      "file": "preview-standalone.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "runtimeErrors": [],
+      "horizontalOverflowPx": 0,
+      "title": "Enterprise Operations Platform \u00b7 Supply Chain",
+      "inspectorCloseControls": 1
+    },
+    {
+      "name": "mobile",
+      "file": "preview-standalone.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "runtimeErrors": [],
+      "horizontalOverflowPx": 0,
+      "title": "Enterprise Operations Platform \u00b7 Supply Chain",
+      "inspectorCloseControls": 1
+    },
+    {
+      "name": "evaluation",
+      "file": "pilot/evaluation-harness.html",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "runtimeErrors": [],
+      "horizontalOverflowPx": 0,
+      "title": "Atlas Stage 23 \u00b7 Pilot Evaluation",
+      "inspectorCloseControls": 0
+    }
+  ]
+}

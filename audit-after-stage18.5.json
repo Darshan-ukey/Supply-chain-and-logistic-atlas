@@ -1,0 +1,187 @@
+{
+  "stage": "18.5",
+  "auditType": "POST_BUILD",
+  "status": "PASS",
+  "canonicalCounts": {
+    "registryItems": 71,
+    "page0Domains": 15,
+    "roadLtlA3": 13,
+    "roadLtlProcesses": 22,
+    "roadLtlEdges": 39,
+    "roadLtlTransitions": 22,
+    "roadLtlSources": 29
+  },
+  "checks": [
+    {
+      "name": "Canonical unchanged: data/atlas-registry.json",
+      "status": "PASS",
+      "details": {
+        "stage18": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8",
+        "stage18.5": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8"
+      }
+    },
+    {
+      "name": "Canonical unchanged: data/page0/page0-v6.2.2.json",
+      "status": "PASS",
+      "details": {
+        "stage18": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374",
+        "stage18.5": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374"
+      }
+    },
+    {
+      "name": "Canonical unchanged: data/modules/road-ltl-v1.2.json",
+      "status": "PASS",
+      "details": {
+        "stage18": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55",
+        "stage18.5": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55"
+      }
+    },
+    {
+      "name": "Canonical counts retained",
+      "status": "PASS",
+      "details": {
+        "registry": 71,
+        "page0": 15,
+        "a3": 13,
+        "processes": 22,
+        "edges": 39,
+        "transitions": 22,
+        "sources": 29
+      }
+    },
+    {
+      "name": "Core ontology has requested 15 concepts",
+      "status": "PASS",
+      "details": [
+        "Process",
+        "Task",
+        "State",
+        "Event",
+        "Decision",
+        "Rule",
+        "Control",
+        "Actor",
+        "System",
+        "Business Object",
+        "Evidence",
+        "Outcome",
+        "Relationship",
+        "Provenance",
+        "Applicability"
+      ]
+    },
+    {
+      "name": "Domain packs validate against one extension contract",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "name": "AP fixture validates against enterprise module contract",
+      "status": "PASS",
+      "details": null
+    },
+    {
+      "name": "SCM specificity moved to Supply Chain domain pack",
+      "status": "PASS",
+      "details": {
+        "territories": 15,
+        "dimensions": 7,
+        "signals": [
+          "physical",
+          "information",
+          "data",
+          "financial",
+          "control"
+        ],
+        "heuristics": 8
+      }
+    },
+    {
+      "name": "AP pack differs structurally from SCM pack",
+      "status": "PASS",
+      "details": {
+        "territories": 7,
+        "dimensions": [
+          "entity",
+          "invoiceType",
+          "matchPolicy"
+        ],
+        "signals": [
+          "document",
+          "data",
+          "financial",
+          "control"
+        ]
+      }
+    },
+    {
+      "name": "Domain-neutral engine contains no SCM vocabulary/legacy field assumptions",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "AP fixture is registry-driven but non-publishable",
+      "status": "PASS",
+      "details": {
+        "id": "accounts-payable-fixture",
+        "name": "Accounts Payable Architectural Fixture",
+        "version": "0.1",
+        "depth": "A5_FIXTURE",
+        "publicationState": "TEST_ONLY",
+        "approved": false,
+        "domainPackId": "accounts-payable-fixture",
+        "url": "data/fixtures/accounts-payable-module-v0.1.json",
+        "testOnly": true,
+        "mustNotPublish": true
+      }
+    },
+    {
+      "name": "Domain-neutral AP acceptance test passes",
+      "status": "PASS",
+      "details": "{\n  \"moduleRegistry\": \"PASS\",\n  \"rules\": \"PASS\",\n  \"canvas\": \"PASS\",\n  \"semanticZoom\": \"PASS\",\n  \"playback\": \"PASS\",\n  \"inspector\": \"PASS\",\n  \"trace\": \"PASS\",\n  \"transformation\": \"PASS\",\n  \"engineChangesRequiredForAP\": 0,\n  \"fixtureWarning\": \"Architecture fixture only; no Finance taxonomy or best-practice claim.\"\n}"
+    },
+    {
+      "name": "Acceptance path complete",
+      "status": "PASS",
+      "details": {
+        "moduleRegistry": "PASS",
+        "rules": "PASS",
+        "canvas": "PASS",
+        "semanticZoom": "PASS",
+        "playback": "PASS",
+        "inspector": "PASS",
+        "trace": "PASS",
+        "transformation": "PASS",
+        "engineChangesRequiredForAP": 0,
+        "fixtureWarning": "Architecture fixture only; no Finance taxonomy or best-practice claim."
+      }
+    },
+    {
+      "name": "Source JavaScript syntax",
+      "status": "PASS",
+      "details": {
+        "files": 22
+      }
+    },
+    {
+      "name": "Inline/standalone JavaScript syntax",
+      "status": "PASS",
+      "details": "PASS"
+    },
+    {
+      "name": "No duplicate IDs in initial static DOM",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "All domain-boundary artifacts present",
+      "status": "PASS",
+      "details": []
+    }
+  ],
+  "browserRuntime": {
+    "status": "NOT_RUN",
+    "reason": "Container Chromium hangs on local/file navigation; pure engine, contracts, syntax, and fixture acceptance were validated instead."
+  },
+  "stage19Status": "PAUSED_PROVISIONAL_UNTIL_REBASED_ON_18_5"
+}

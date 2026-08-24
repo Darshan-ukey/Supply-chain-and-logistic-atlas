@@ -1,0 +1,68 @@
+{
+  "stage": "15.2",
+  "phase": "post-build",
+  "status": "PASS",
+  "objective": "Canvas visual simplification and spatial semantic zoom with zero business-knowledge change.",
+  "canonicalRegression": {
+    "destinations": 71,
+    "page0Domains": 15,
+    "a3Parents": 13,
+    "processes": 22,
+    "processFlowEdges": 39,
+    "executionTransitions": 22,
+    "sources": 29,
+    "registrySha256": "dc87b4f8d14fb88bfd68cdc74ab7997a771c4a7ff4237c7a2a66ede9aa2dfdf7",
+    "roadLtlSha256": "f0a8c4fab6d13f111d1a07f5cf21c7c4770f4448470f57de39087303768076db",
+    "moduleCatalogSha256": "8d3a19382d727f0612d3aeb8fad4bf8dde29f479dc219fea4d228f7f9c6c5fc7",
+    "canonicalHashesMatchStage15": true
+  },
+  "stage152Acceptance": {
+    "semanticZoomBands": ["Universe", "A3", "A4", "A5"],
+    "desktopWheelZoom": "PASS",
+    "pointFocusedZoom": "PASS",
+    "mobilePinchSemanticZoom": "PASS",
+    "fitUniverseControl": "PASS",
+    "progressiveLabelDisclosure": "PASS",
+    "labelDeclutterDuringMotion": "PASS",
+    "a4FocusDimsUnrelatedNodes": "PASS",
+    "ambientComplexityMesh": "PASS",
+    "ambientMeshNonSemantic": true,
+    "ambientMeshInteractive": false,
+    "permanentNewProcessArrowsAdded": false,
+    "coverageRegistryCollapsedByDefault": true,
+    "dataContractAdminHiddenFromStandardHeader": true,
+    "singleMajorWorkSurfaceRule": "PASS",
+    "compactPlaybackDefault": "PASS",
+    "richInspectorPreserved": true,
+    "mobileInspectorCloseVisible": true,
+    "mobileInspectorCloseWorks": true
+  },
+  "runtimeRegression": {
+    "desktop1440x900": {"pageErrors": 0, "horizontalOverflowPx": 0, "universeVisibleLabels": 12},
+    "laptop1366x768": {"pageErrors": 0, "horizontalOverflowPx": 0},
+    "tablet820x1180": {"pageErrors": 0, "horizontalOverflowPx": 0},
+    "mobile390x844": {"pageErrors": 0, "horizontalOverflowPx": 0, "pinchSupported": true},
+    "duplicateDomIds": 0,
+    "standardPlaybackSteps": 13,
+    "representativeTraceTouchpoints": 11,
+    "transformationFindings": 71,
+    "compareAvailable": true
+  },
+  "visualDensityChecks": {
+    "universeLabels": 12,
+    "a3Labels": 11,
+    "a4FocusedLabels": 2,
+    "a4UnrelatedNodesDimmed": 20,
+    "a3TextVisibleAtA4": 0,
+    "a5FocusedMicroLabels": 2
+  },
+  "guardrails": [
+    "No canonical Atlas content modified.",
+    "Ambient mesh carries no semantic process meaning.",
+    "No new permanent process network introduced.",
+    "A5 source terminology and execution contract remain available in Inspector.",
+    "Existing product capabilities remain callable after visual simplification.",
+    "Administrative publication controls remain available under the architecture but are removed from normal user chrome."
+  ],
+  "result": "PASS — Stage 15.2 meets the agreed visual-hardening acceptance criteria and preserves Stage-15 architecture and functionality."
+}

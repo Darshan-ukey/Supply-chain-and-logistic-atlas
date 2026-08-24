@@ -1,0 +1,58 @@
+{
+  "stage": "18.5",
+  "auditType": "PRE_BUILD",
+  "baseline": "Stage 18",
+  "status": "GAPS_IDENTIFIED",
+  "canonicalBaseline": {
+    "registryItems": 71,
+    "page0Domains": 15,
+    "roadLtlA3": 13,
+    "roadLtlProcesses": 22,
+    "roadLtlEdges": 39,
+    "roadLtlTransitions": 22,
+    "roadLtlSources": 29,
+    "hashes": {
+      "registry": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8",
+      "page0": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374",
+      "roadLtl": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55"
+    }
+  },
+  "boundaryFindings": [
+    {
+      "id": "DN-01",
+      "severity": "P0",
+      "finding": "Current child-module schema is titled Supply Chain Atlas and directly requires SCM applicability keys."
+    },
+    {
+      "id": "DN-02",
+      "severity": "P0",
+      "finding": "Canvas anchor coordinate system is encoded in the application shell rather than registered by a domain contract."
+    },
+    {
+      "id": "DN-03",
+      "severity": "P0",
+      "finding": "Five execution signals are defined as fixed platform constants, including Physical."
+    },
+    {
+      "id": "DN-04",
+      "severity": "P0",
+      "finding": "Context Composer dimensions are fixed to operating role, movement, node, jurisdiction, carriage regime, condition and contract."
+    },
+    {
+      "id": "DN-05",
+      "severity": "P0",
+      "finding": "Transformation heuristics are embedded in the product runtime instead of registered by a domain pack."
+    },
+    {
+      "id": "DN-06",
+      "severity": "P1",
+      "finding": "No formal Enterprise Operations Core ontology or Domain Extension Contract exists."
+    },
+    {
+      "id": "DN-07",
+      "severity": "P1",
+      "finding": "The previous generic-engine fixture was still SCM-adjacent; domain neutrality had not been proven with a non-SCM module."
+    }
+  ],
+  "decision": "Refactor contracts and registries only; do not alter canonical Supply Chain content."
+}
