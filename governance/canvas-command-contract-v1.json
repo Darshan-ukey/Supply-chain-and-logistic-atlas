@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "allowedCommands": [
+    "SET_CONTEXT",
+    "RESET_CONTEXT",
+    "SELECT_PROCESS",
+    "SET_LENS",
+    "START_PLAYBACK",
+    "PAUSE_PLAYBACK",
+    "STEP_NEXT",
+    "STEP_PREVIOUS",
+    "TRACE_OBJECT",
+    "COMPARE_CONTEXT",
+    "OPEN_EVIDENCE",
+    "ADD_FINDING"
+  ],
+  "rule": "LLM output is a proposed command. Deterministic validation decides whether it may execute."
+}

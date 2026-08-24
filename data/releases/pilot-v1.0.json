@@ -1,0 +1,48 @@
+{
+  "product": "Supply Chain Operations Intelligence Platform",
+  "releaseName": "Pilot V1.0",
+  "releaseId": "scoip-pilot-v1.0-2026.08.23",
+  "channel": "pilot",
+  "stage": "23 V1",
+  "technicalLineage": {
+    "atlasProductRelease": "V6.2.3",
+    "frozenPage0": "V6.2.2",
+    "roadLtlModule": "V1.2",
+    "atlasIntelligence": "v0.6.6",
+    "platform": "Stage 23 V1"
+  },
+  "canonicalSourceHashes": {
+    "page0V6.2.2FrozenOriginal": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
+    "page0RoadLtlV1.2IntegratedOriginal": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747"
+  },
+  "capabilities": [
+    "Explore",
+    "Execute",
+    "Compare",
+    "Transform",
+    "Ask Atlas",
+    "Semantic Zoom",
+    "Execution Playback",
+    "Freeze Time",
+    "Trace",
+    "Actor/System/Source lenses",
+    "Client Mapping",
+    "Document Intelligence",
+    "Findings & Opportunities",
+    "Future State",
+    "Presentation Mode",
+    "Executive Summary",
+    "Exports",
+    "Collaboration",
+    "Telemetry",
+    "Admin Governance",
+    "Pilot Evaluation"
+  ],
+  "externalGoLiveGates": [
+    "Live LLM synthetic certification when provider enabled",
+    "Exact deployed Vercel E2E",
+    "Dependency lockfile generation with registry access",
+    "Optional isolated database restore/PITR rehearsal before confidential production retention"
+  ],
+  "generatedAt": "2026-08-23T19:48:00+05:30"
+}

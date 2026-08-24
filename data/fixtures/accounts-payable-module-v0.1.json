@@ -1,0 +1,50 @@
+{
+  "id": "accounts-payable-fixture",
+  "version": "0.1",
+  "status": "LAB_ONLY",
+  "processes": [
+    {
+      "id": "APF-01",
+      "label": "Invoice receipt",
+      "level": "A5",
+      "parent": "ap"
+    },
+    {
+      "id": "APF-02",
+      "label": "Validate",
+      "level": "A5",
+      "parent": "ap"
+    },
+    {
+      "id": "APF-03",
+      "label": "Match",
+      "level": "A5",
+      "parent": "ap"
+    },
+    {
+      "id": "APF-04",
+      "label": "Exception",
+      "level": "A5",
+      "parent": "ap"
+    },
+    {
+      "id": "APF-05",
+      "label": "Approval",
+      "level": "A5",
+      "parent": "ap"
+    },
+    {
+      "id": "APF-06",
+      "label": "Posting",
+      "level": "A5",
+      "parent": "ap"
+    },
+    {
+      "id": "APF-07",
+      "label": "Payment",
+      "level": "A5",
+      "parent": "ap"
+    }
+  ],
+  "engineChangesRequiredForAP": 0
+}
