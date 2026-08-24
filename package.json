@@ -1,25 +1,24 @@
 {
-  "name": "supply-chain-operations-intelligence-platform",
-  "version": "1.1.1-team-test-github",
+  "name": "atlas-integrated-v6.2.3-intelligence-v0.6.6",
   "private": true,
-  "description": "GitHub deployment source · Atlas V6.2.3 + Road LTL V1.2 + Intelligence v0.6.6 + Stage 23 + Foundation Hardening v1.1 + validation clarity v1.1.1",
-  "engines": {
-    "node": "24.x"
-  },
+  "version": "0.6.6",
+  "type": "module",
   "scripts": {
-    "dev": "npx serve . -l 3000",
-    "build": "node tests/build-check.mjs",
-    "test": "node tests/static-regression.mjs && node tests/build-check.mjs"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node tests/smoke.mjs && node tests/scenario-smoke.mjs && node tests/intake-smoke.mjs && node tests/runtime-smoke.mjs && node tests/review-smoke.mjs && node tests/integration-smoke.mjs && node tests/semantic-smoke.mjs && node tests/governance-smoke.mjs && node tests/adaptive-density-smoke.mjs && node tests/simulation-engine-smoke.mjs && node tests/handoff-smoke.mjs && node tests/data-provenance-smoke.mjs && node tests/risk-guardrail-smoke.mjs && node tests/client-twin-simulation-smoke.mjs && node tests/chat-intent-smoke.mjs && node tests/ui-action-smoke.mjs && node tests/context-applicability-smoke.mjs && node tests/browser-contract-smoke.mjs",
+    "reaudit": "node tests/stage6-reaudit.mjs",
+    "prebuild": "node scripts/verify-deploy.mjs"
   },
   "dependencies": {
-    "jszip": "3.10.1",
+    "next": "15.5.23",
+    "react": "19.1.5",
+    "react-dom": "19.1.5",
     "mammoth": "1.10.0",
-    "pdf-lib": "1.17.1",
-    "pdf-parse": "1.1.1",
-    "pptxgenjs": "3.12.0",
-    "xlsx": "0.18.5"
+    "pdf-parse": "1.1.1"
   },
-  "devDependencies": {
-    "serve": "14.2.4"
+  "engines": {
+    "node": "24.x"
   }
 }

@@ -1,1 +1,0 @@
-'use strict';const {json}=require('./_utils');const {userFromReq}=require('./_auth');module.exports=async(req,res)=>{const user=await userFromReq(req);json(res,200,{ok:true,authenticated:Boolean(user),user:user||null})};
