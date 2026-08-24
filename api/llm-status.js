@@ -1,1 +1,0 @@
-'use strict';const {json}=require('./_utils');module.exports=(req,res)=>json(res,200,{provider:process.env.ATLAS_LLM_PROVIDER||'none',model:process.env.ATLAS_LLM_MODEL||null,configured:Boolean(process.env.ATLAS_LLM_API_KEY),required:String(process.env.ATLAS_REQUIRE_LLM||'false')==='true'});
