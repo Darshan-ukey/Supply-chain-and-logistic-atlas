@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "domain-extension-contract-v1",
+  "type": "object",
+  "required": [
+    "id",
+    "extends"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "extends": {
+      "const": "enterprise-core-v1"
+    },
+    "territories": {
+      "type": "array"
+    },
+    "signals": {
+      "type": "array"
+    },
+    "applicabilityDimensions": {
+      "type": "array"
+    }
+  }
+}

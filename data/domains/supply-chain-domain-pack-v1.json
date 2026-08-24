@@ -1,0 +1,124 @@
+{
+  "id": "supply-chain-domain-pack-v1",
+  "version": "1.0",
+  "label": "Supply Chain & Logistics Domain Pack",
+  "extends": "enterprise-core-v1",
+  "territories": [
+    {
+      "id": "plan",
+      "label": "Plan supply chain & network",
+      "scope": "Demand/supply/capacity planning, inventory and deployment policy, logistics network design, service policy and performance targets."
+    },
+    {
+      "id": "commercial",
+      "label": "Customer, commercial & order",
+      "scope": "Customer enquiry, solution/rate design, quote and terms, order capture, validation, promise, amendment and cancellation. Quote and order remain separate underlying processes."
+    },
+    {
+      "id": "source",
+      "label": "Source & procure",
+      "scope": "Sourcing governance, category planning, supplier/provider selection, contracts, requisition and purchase order, direct/indirect procurement, supplier management and source returns."
+    },
+    {
+      "id": "transform",
+      "label": "Transform, manufacture & value-add",
+      "scope": "Product manufacture, service transformation, maintenance/repair/overhaul and logistics value-added services, including scheduling, issue, execute, inspect/test, pack and release."
+    },
+    {
+      "id": "warehouse",
+      "label": "Inventory & warehousing",
+      "scope": "Inbound receiving/unloading/inspection, putaway, storage, slotting, replenishment, picking, packing, staging, loading, cross-dock, counting/adjustment, VAS and yard/dock work."
+    },
+    {
+      "id": "transport",
+      "label": "Transportation & distribution",
+      "scope": "Transport request, mode/service selection, rating, routing, consolidation, capacity procurement, tender/booking, appointment/equipment, pickup, origin handling, carriage, transshipment, visibility and freight-settlement handoffs. Transportation terminates at the handoff into destination/last-mile execution."
+    },
+    {
+      "id": "trade",
+      "label": "Trade, customs & regulatory",
+      "scope": "Classification, origin, valuation, licensing, restricted-party/sanctions controls, security filings, export/import declarations, duties/taxes, broker management, inspection/hold/release and post-entry activity."
+    },
+    {
+      "id": "delivery",
+      "label": "Delivery & last mile",
+      "scope": "Destination readiness, appointment, last-mile dispatch, delivery or installation, delivery attempt, POD/acceptance and failed-delivery handoff. Customer interaction is mapped separately under Customer Service & Operations."
+    },
+    {
+      "id": "returns",
+      "label": "Returns, reverse & recovery",
+      "scope": "Return initiation/authorization, reverse transport, receiving, diagnosis/test, repair/refurbish, disposition, storage, document update, replacement and financial/contract adjustment."
+    },
+    {
+      "id": "finance",
+      "label": "Finance, billing & settlement",
+      "scope": "Customer billing/AR/collections and adjustments; supplier/carrier invoice audit/AP/payment; freight accrual, rating, allocation and settlement; trade-finance touchpoints where applicable."
+    },
+    {
+      "id": "exception",
+      "label": "Execution control & exception recovery",
+      "scope": "A cross-domain control rail for expected/actual state comparison, severity, ownership, response clock, containment, recovery, communication, escalation, closure and root-cause feedback."
+    },
+    {
+      "id": "claims",
+      "label": "Resolution, claims & disputes",
+      "scope": "A Page-0 umbrella with separate branches for cargo/service claims, billing/commercial disputes and insurance recovery/subrogation. Each branch uses different standing, evidence, liability, approval and settlement rules."
+    },
+    {
+      "id": "customer",
+      "label": "Customer service & operations",
+      "scope": "Customer contact and service operations linked to—rather than substituted for—authoritative order, shipment, delivery, billing and claim states."
+    },
+    {
+      "id": "assets",
+      "label": "Assets, equipment & maintenance",
+      "scope": "Fleet, vehicle, trailer, container, ULD, wagon/railcar, material-handling equipment and facility-asset availability, allocation, inspection, maintenance, utilization and repositioning—conditional by operating model."
+    },
+    {
+      "id": "masterdata",
+      "label": "Master & reference data",
+      "scope": "Cross-enterprise identity, reference-data, code-set, hierarchy, relationship, quality, stewardship, version and distribution controls. No universal shipment identifier is assumed."
+    }
+  ],
+  "applicabilityDimensions": [
+    "mode",
+    "service",
+    "movementPattern",
+    "operatingModel",
+    "actor",
+    "node",
+    "jurisdiction",
+    "carriageRegime",
+    "condition",
+    "contract"
+  ],
+  "signals": [
+    "PHYSICAL",
+    "INFORMATION",
+    "DATA_DOCUMENT",
+    "FINANCIAL",
+    "CONTROL_EVIDENCE"
+  ],
+  "moduleIds": [
+    "road-ltl"
+  ],
+  "contractVersion": "1.1",
+  "contracts": [
+    "atlas-data-contract-v1.1",
+    "execution-instance-contract-v1",
+    "document-state-contract-v1",
+    "temporal-constraint-contract-v1",
+    "measurement-contract-v1",
+    "system-exchange-contract-v1"
+  ],
+  "relationshipVocabulary": "relationship-vocabulary-v1",
+  "overlayRegistry": "overlay-registry-v1.1",
+  "ruleRegistry": "rule-registry-v1.1",
+  "baselineSidecars": {
+    "road-ltl": {
+      "claimProvenance": "data/provenance/road-ltl-claim-provenance-v1.json",
+      "temporalConstraints": "data/temporal/road-ltl-temporal-constraints-v1.json",
+      "systemExchanges": "data/exchanges/road-ltl-system-exchanges-v1.json"
+    }
+  }
+}
