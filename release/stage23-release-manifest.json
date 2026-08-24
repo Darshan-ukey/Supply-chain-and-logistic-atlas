@@ -1,0 +1,11 @@
+{
+  "release": "Supply Chain Operations Intelligence Platform — Pilot V1.0",
+  "technicalLineage": "Atlas V6.2.3 + Page 0 V6.2.2 frozen + Road LTL V1.2 + Intelligence v0.6.6 + Stage 23 V1",
+  "canonicalSources": {
+    "page0FrozenSha256": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
+    "integratedRoadLtlSha256": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747"
+  },
+  "roadLtl": { "a3Parents": 13, "a5Tasks": 22, "processFlowEdges": 39, "executionTransitions": 22, "sources": 29, "enterpriseLenses": 27, "referenceConfigurations": 10 },
+  "packageSideValidation": "PASS",
+  "externalGates": ["live provider synthetic certification if enabled", "deployed Vercel E2E", "dependency lockfile", "restore/PITR rehearsal before persistent confidential production retention"]
+}

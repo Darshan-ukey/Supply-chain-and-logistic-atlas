@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.0",
   "modules": [
     {
       "id": "road-ltl",
@@ -80,6 +80,5 @@
       "status": "PLANNED",
       "depth": "REFERENCE_ONLY"
     }
-  ],
-  "coverageRegistry": "data/governance/destination-coverage-registry-v1.json"
+  ]
 }

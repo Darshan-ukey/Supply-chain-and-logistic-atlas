@@ -1,0 +1,1 @@
+import{execFileSync}from'node:child_process';const suites=['tests/static-regression.mjs','tests/domain-neutral-smoke.mjs','tests/api-smoke.mjs','tests/pilot-security-smoke.mjs','tests/build-check.mjs'];for(const s of suites){console.log(`\n== ${s} ==`);execFileSync(process.execPath,[s],{stdio:'inherit'})}console.log('\nPASS · Pilot V1.0 release validation')

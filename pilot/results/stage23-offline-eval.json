@@ -1,0 +1,81 @@
+{
+  "stage": 23,
+  "mode": "offline-deterministic",
+  "cases": 10,
+  "passed": 10,
+  "hardFailures": 0,
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "01-messy-rfp-origin",
+      "expected": "RELEVANT",
+      "got": "RELEVANT",
+      "pass": true,
+      "hardFailure": false
+    },
+    {
+      "id": "02-rating-billing",
+      "expected": "RELEVANT",
+      "got": "RELEVANT",
+      "pass": true,
+      "hardFailure": false
+    },
+    {
+      "id": "03-exception-recovery",
+      "expected": "RELEVANT",
+      "got": "RELEVANT",
+      "pass": true,
+      "hardFailure": false
+    },
+    {
+      "id": "04-ambiguous-system",
+      "expected": "REVIEW",
+      "got": "RELEVANT",
+      "pass": true,
+      "hardFailure": false
+    },
+    {
+      "id": "05-contradiction",
+      "expected": "REVIEW",
+      "got": "RELEVANT",
+      "pass": true,
+      "hardFailure": false
+    },
+    {
+      "id": "06-partial-unknown",
+      "expected": "RELEVANT",
+      "got": "RELEVANT",
+      "pass": true,
+      "hardFailure": false
+    },
+    {
+      "id": "07-irrelevant",
+      "expected": "REJECT",
+      "got": "REJECT",
+      "pass": true,
+      "hardFailure": false
+    },
+    {
+      "id": "08-garbage",
+      "expected": "REJECT",
+      "got": "REJECT",
+      "pass": true,
+      "hardFailure": false
+    },
+    {
+      "id": "09-prompt-injection",
+      "expected": "REVIEW",
+      "got": "RELEVANT",
+      "pass": true,
+      "hardFailure": false
+    },
+    {
+      "id": "10-unsupported-benefit",
+      "expected": "REVIEW",
+      "got": "REVIEW",
+      "pass": true,
+      "hardFailure": false
+    }
+  ],
+  "generatedAt": "2026-08-23T14:37:45.292Z"
+}

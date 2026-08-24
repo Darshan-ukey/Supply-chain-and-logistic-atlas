@@ -1,18 +1,17 @@
 {
-  "schemaVersion": "1.1",
+  "schemaVersion": "1.0",
   "release": {
     "product": "Supply Chain Operations Intelligence Platform",
-    "releaseName": "Road LTL V1.0.1 + Foundation Hardening v1.1",
-    "releaseId": "scoip-foundation-v1.1-2026.08.24",
+    "releaseName": "Pilot V1.0",
+    "releaseId": "scoip-pilot-v1.0-2026.08.23",
     "channel": "pilot",
-    "stage": "Foundation Hardening v1.1",
+    "stage": "23 V1",
     "technicalLineage": {
       "atlasProductRelease": "V6.2.3",
       "frozenPage0": "V6.2.2",
       "roadLtlModule": "V1.2",
       "atlasIntelligence": "v0.6.6",
-      "platform": "Stage 23 V1",
-      "foundationHardening": "v1.1"
+      "platform": "Stage 23 V1"
     },
     "canonicalSourceHashes": {
       "page0V6.2.2FrozenOriginal": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
@@ -47,7 +46,7 @@
       "Dependency lockfile generation with registry access",
       "Optional isolated database restore/PITR rehearsal before confidential production retention"
     ],
-    "generatedAt": "2026-08-24T00:00:00+05:30"
+    "generatedAt": "2026-08-23T19:48:00+05:30"
   },
   "baseModule": {
     "id": "ecosystem-page-0",
@@ -93,16 +92,5 @@
     "sessionEphemeralDocuments": true,
     "unknownRemainsUnknown": true,
     "differenceIsNotAutomaticallyGap": true
-  },
-  "foundation": {
-    "dataContract": "data/contracts/atlas-data-contract-v1.1.schema.json",
-    "relationshipVocabulary": "governance/relationship-vocabulary-v1.json",
-    "processConceptCrosswalk": "data/crosswalks/process-concept-crosswalk-v1.json",
-    "sourceRegistry": "data/governance/source-registry-v1.json",
-    "sourceVersionRegister": "data/governance/source-version-register-v1.json",
-    "sourceCoverageRegister": "data/governance/source-to-atlas-coverage-register-v1.json",
-    "sourceGapRegister": "data/governance/source-gap-register-v1.json",
-    "destinationCoverageRegistry": "data/governance/destination-coverage-registry-v1.json",
-    "modulePublicationContract": "governance/module-publication-contract-v1.json"
   }
 }

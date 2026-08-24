@@ -1,68 +1,52 @@
-# Supply Chain Operations Intelligence — Road LTL + Foundation Hardening v1.1
+# Supply Chain Operations Intelligence Platform — Pilot V1.0
 
-A cumulative GitHub/Vercel project carrying the governed Atlas V6.2.3 foundation, Road LTL V1.2, Atlas Intelligence v0.6.6, the Stage-23 workbench, and the backward-compatible Foundation Hardening v1.1 layer for scaling additional modes and domains.
+A single cumulative GitHub/Vercel project that consolidates the governed Supply Chain Atlas and the complete pilot workbench.
 
 ## Technical lineage
 
-| Layer | Version |
+| Layer | Version carried into Pilot V1.0 |
 |---|---|
 | Atlas product / integrated release | **V6.2.3** |
 | Frozen canonical Page 0 | **V6.2.2** |
-| First A5-verified child module | **Road LTL V1.2** |
+| First production-grade child module | **Road LTL V1.2** |
 | Intelligence baseline | **v0.6.6** |
-| Product/workbench baseline | **Stage 23 V1** |
-| Foundation hardening | **v1.1** |
+| Platform evolution | **Stage 23 V1** |
+| Consolidated product release | **Pilot V1.0** |
 
-V6.2.3 remains the product/release lineage. Page 0 V6.2.2 and Road LTL V1.2 are deliberately preserved as canonical inputs. Foundation Hardening v1.1 strengthens the contracts and registries around them; it does **not** rewrite the frozen knowledge.
+V6.2.3 is the product/release lineage; Page 0 V6.2.2 remains the deliberately frozen canonical foundation inside it. The exact frozen Page-0 and integrated Road-LTL HTML sources are preserved under `reference/source/` with their known hashes.
 
-## What Foundation Hardening v1.1 adds
+## What is included
 
-- unified **Source Registry**, source-version register, source-change register, Source→Atlas coverage register and gap register;
-- six-month routine source-review policy, with earlier review on material framework releases;
-- resolved catalogue of the **185 Page-0 reference placements across 17 authority domains** plus all module-specific Road-LTL sources;
-- **Atlas Data Contract v1.1**, which requires the full A5 execution contract for an `A5_VERIFIED` publication;
-- formal process-flow, ontology-execution, object/data and system-exchange relationship vocabularies;
-- cross-module canonical process-concept alignment for meaningful LTL/FTL/Ocean comparisons;
-- registry-driven Ask Atlas, command validation and session-document mapping rather than a hard-coded Road-LTL module path;
-- fail-closed module validation/publication CLI with explicit admin approval;
-- generic rule/overlay registration and evaluation layer;
-- first-class contracts for execution instances/legs, document/legal state, temporal constraints, KPI/measurement and system exchanges;
-- conservative Road-LTL sidecars for field-level provenance, structured timing migration and system-exchange migration without changing Road LTL itself;
-- authoritative **Page-0 destination coverage registry** derived from the 71-entry governed universe; it is a roadmap/depth registry, not a claim of delivered execution coverage;
-- **synthetic engine scale smoke** across 71 registry entries / 2,130 uniform synthetic processes; this validates generic-engine scale/performance only, not real-domain readiness.
-
-See `FOUNDATION_HARDENING_V1.1.md` and the before/after audit files for the exact closure record.
-
-## Current validation priority
-
-Foundation breadth is now **frozen pending product evidence**. Do not add architecture merely to support unbuilt domains. The next priority sequence is:
-
-1. exact deployed-environment / Vercel E2E certification;
-2. live LLM synthetic certification with approved provider settings;
-3. realistic non-confidential RFP/SOP engagement test across upload → extraction → mapping → findings → opportunity → TO-BE → export;
-4. controlled team usage and feedback.
-
-Architecture changes should now be driven by defects or evidence from these tests.
-
-## Governed reference foundation
-
+### Governed reference foundation
 - Page 0 V6.2.2 source architecture and extracted machine-readable Page-0 data.
 - Road LTL V1.2 with 22 governed process/task records, 13 A3 parents, 39 process-flow relationships, 22 execution transitions, 27 enterprise lenses, 29 evidence sources and 10 reference configurations.
+- V6.2.3 release lineage metadata and constitutional guardrails.
 - Enterprise Core Ontology + Supply Chain domain pack + domain extension contracts.
 - Rule/overlay registries, evidence contract, command contract and version policy.
-- Source/version/coverage/gap governance and module publication controls.
 
-## Product capabilities retained
+### Intelligence v0.6.6 retained in the cumulative experience
+- adaptive information density and context ribbon;
+- deterministic reference-execution simulation;
+- Play/Pause/Previous/Next/Freeze and speed control;
+- Physical / Information / Data-Document / Financial / Control-Evidence signals;
+- A5 Step Inspector and source evidence;
+- trace / lineage;
+- exception/recovery boundary;
+- grounded Ask Atlas with deterministic command validation and no LLM path selection.
 
-- persistent operational canvas with Universe → Context → Execution → Inspect;
-- Explore / Execute / Compare / Transform and persistent Ask Atlas;
-- semantic zoom, deterministic execution playback, Freeze Time and five synchronized signals;
-- A5 Inspector, Trace/lineage and actor/system/source lenses;
+### Stage 23 V1 cumulative platform
+- persistent operational canvas with semantic levels: Universe → Context → Execution → Inspect;
+- Explore / Execute / Compare / Transform;
+- data-driven module registry and depth-aware feature availability;
+- domain-neutral core and non-SCM Accounts-Payable architecture fixture;
 - deterministic transformation signals, findings, opportunities and future-state work;
-- Client Mapping, document intelligence, investigation collections, Executive Summary, Presentation Mode and Transformation Pack exports;
-- authenticated Supabase workspace architecture, collaboration/review and privacy-bounded telemetry;
-- Admin/user governance separation and foundation proposal workflow;
-- session-ephemeral document mode;
+- Reference ↔ Client mapping boundaries;
+- investigation collections, Executive Summary, Presentation Mode and Transformation Pack export;
+- authenticated Supabase workspace architecture and RLS migrations;
+- session-ephemeral document intelligence;
+- Admin/Pilot governance separation and foundation proposal workflow;
+- collaboration/review and privacy-bounded telemetry;
+- pilot evaluation corpus/harness;
 - Stable/Lab packaging, health/readiness/version/integrity APIs and release runbooks.
 
 ## Critical epistemic rules
@@ -73,79 +57,67 @@ Architecture changes should now be driven by defects or evidence from these test
 4. No probability, severity, SLA impact, ROI, savings or financial loss is generated without evidence.
 5. If a module is not published to the requested depth, Ask Atlas and Compare must refuse to fabricate deeper execution knowledge.
 6. LLM output is never the state-machine or security boundary.
-7. A module cannot become `A5_VERIFIED` unless the stronger v1.1 publication validator passes and the canonical process-concept alignment exists.
 
-## Source governance
+## Pilot privacy mode
 
-The new source governance layer deliberately separates the exhaustive source repository from Page 0:
-
-`Authoritative Sources → Source Registry / Native Reference Registry → Coverage & Gap Registers → Curated Page 0 / Domain Modules`
-
-The machinery is complete, but the **source-by-source native concept extraction program remains a governed research activity**. It is not falsely marked complete. Candidate additions currently in the gap register (CTU Code, IMO Compendium and EU eFTI) remain `RESEARCH_REQUIRED` until issuer-level review and approval.
-
-## Session-ephemeral document mode
-
-Uploaded documents are processed as:
+Uploaded documents are processed in **SESSION-EPHEMERAL DOCUMENT MODE**:
 
 `upload → parse in memory → structure/map → deterministic Atlas validation → current-session use → discard source/chunks/vectors`
 
-The application does not write raw source, parsed text, chunks or embeddings into canonical Atlas storage. Only an explicitly user-confirmed normalized client fact may be persisted to an authenticated workspace, under the existing controlled-workspace rules.
+The application does not write the raw source, parsed text, chunks or embeddings into canonical Atlas storage. Only an explicitly user-confirmed **normalized client fact** may be persisted to an authenticated workspace, and the current confirmed-fact schema intentionally omits the raw document, quote and locator.
+
+A browser cannot guarantee a server callback when a device/app is killed. For any future server-side session cache, use a short server-enforced TTL in addition to best-effort explicit cleanup. Confirm the selected LLM provider's contractual/API retention controls before testing real confidential material.
 
 ## Local preview
+
+The front-end is self-contained and can be served by any static HTTP server:
 
 ```bash
 python -m http.server 8080
 # open http://localhost:8080
 ```
 
-or:
+Or:
 
 ```bash
 npm run dev
 ```
 
-Local preview is for synthetic/non-confidential testing.
+Local preview uses browser-local work state and is for synthetic/non-confidential testing only.
 
-## Module validation/publication
+## Vercel + Supabase deployment
 
-Validate a candidate module:
+1. Upload this folder **at repository root** to GitHub.
+2. Create/connect the Vercel project to that repository.
+3. Use Node **24.x**.
+4. Create a Supabase project and apply migrations in `migrations/`.
+5. Configure Vercel environment variables from `.env.example`.
+6. Deploy **Lab** first.
+7. Run `/api/health`, `/api/readiness`, `/api/release-integrity` and the pilot smoke/evaluation checks.
+8. If an LLM is enabled, complete a live synthetic provider certification before confidential-document testing.
+9. Promote the exact tested artifact to Stable.
 
-```bash
-npm run atlas:validate-module -- path/to/module.json A5_VERIFIED module-id
-```
+## LLM configuration
 
-Publication is fail-closed. Without explicit approval it validates but does not publish:
-
-```bash
-npm run atlas:publish-module -- path/to/module.json module-id "Module Label" 1.0 A5_VERIFIED
-```
-
-Approved publication additionally requires:
+The server supports `gemini`, `openai`, `anthropic`, or `none`. Secrets never enter the browser bundle.
 
 ```text
-ATLAS_ADMIN_APPROVAL=1
+ATLAS_LLM_PROVIDER=gemini
+ATLAS_LLM_MODEL=<approved Gemini model>
+ATLAS_LLM_API_KEY=<server-side secret>
 ```
 
-## Source governance audit
-
-```bash
-node scripts/source-governance-audit.mjs
-```
-
-This surfaces due reviews and open source/coverage gaps. Routine review cadence is six months or earlier for a material source release.
+The provider interprets/structures/explains. Deterministic Atlas code validates process IDs, trace targets and canvas commands.
 
 ## Tests
 
 ```bash
 npm test
-npm run foundation:test
-npm run build
 npm run reaudit
-npm run release:smoke
-npm run pilot:eval:offline
+npm run build
 ```
 
-`npm run build` is a deterministic validation step for this static + Vercel Functions architecture. It does not mutate the frozen Atlas sources.
+`npm run build` is a deterministic project validation step for this static + Vercel Functions architecture. It does not mutate the frozen Atlas sources.
 
 ## Exact frozen-source integrity
 
@@ -157,32 +129,8 @@ Page 0 V6.2.2 frozen original
 
 Page 0 V6.2.2 + Road LTL V1.2 integrated original
 70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747
-
-Machine-readable Page 0 V6.2.2
-69872e9893703c6b1ad0c1b63b0dd5a58dc55351f1b4fdcf16e609f0366cb44d
-
-Machine-readable Road LTL V1.2
-ee1feea86c800d038c0f8836b729484cdc7d3ff18af5f6e2fcb84fce29ade209
 ```
 
-## Deployment
+## Release note about consolidation
 
-1. Upload the complete repository root to GitHub.
-2. Connect Vercel to that repository and use Node **24.x**.
-3. Apply Supabase migrations and environment variables from `.env.example`.
-4. Deploy/test the **Lab** candidate first.
-5. Run health/readiness/integrity plus the full test and evaluation suites.
-6. If an LLM is enabled, complete the live synthetic provider certification.
-7. Promote the exact tested artifact to Stable.
-
-External/deferred gates remain documented in `release/`: deployed Vercel E2E, provider certification when enabled, dependency lockfile generation with registry access, and isolated restore/PITR rehearsal before any future persistent confidential-data posture that requires it.
-
-## GitHub deployment-source package
-
-This repository package is intentionally trimmed for direct GitHub/Vercel deployment. Generated release snapshots (`release/packages/lab` and `release/packages/stable`), standalone previews, historical audit artifacts, offline pilot corpora, release-build tooling, and internal documentation are excluded because they are not required by the deployed runtime.
-
-The package retains the complete application/API/data/governance runtime, the canonical originals required by the live integrity endpoint, and minimal `npm test` / `npm run build` regression gates. Road LTL V1.2 remains the only A5-verified execution module in this release.
-
-## Vercel Hobby deployment compatibility · v1.1.2
-
-The public `/api/*` contract is preserved, but all API endpoints are dispatched through one `api/router.js` Vercel Function. Handler modules live under `server/api/` and are bundled into that single function. This keeps the deployment below the Hobby plan's Serverless Function-count limit without changing frontend API URLs or canonical Atlas data.
+This is a **new consolidated Pilot V1.0 project folder** built from the exact recovered frozen source artifacts plus the Stage-23 functional/release contracts. The previous historical Stage-23 ZIP is not byte-for-byte reproduced; its capabilities and project structure were used as the cumulative release contract, while this package has a cleaner unified runtime under `assets/app.js`.

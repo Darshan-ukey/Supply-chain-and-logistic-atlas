@@ -1,0 +1,16 @@
+{
+  "note": "Compatibility baseline carried into consolidated Pilot V1.0",
+  "canonicalSourceHashes": {
+    "page0-v6.2.2-frozen-original.html": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
+    "page0-road-ltl-v1.2-integrated-original.html": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747"
+  },
+  "canonicalCounts": {
+    "page0Domains": 15,
+    "roadLtlA3Parents": 13,
+    "roadLtlProcesses": 22,
+    "roadLtlFlowEdges": 39,
+    "roadLtlExecutionTransitions": 22,
+    "roadLtlSources": 29,
+    "enterpriseLenses": 27
+  }
+}

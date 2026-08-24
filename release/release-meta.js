@@ -1,0 +1,1 @@
+module.exports={product:'Supply Chain Operations Intelligence Platform',release:'Pilot V1.0',releaseId:'scoip-pilot-v1.0-2026.08.23',atlas:'V6.2.3',page0:'V6.2.2',roadLtl:'V1.2',intelligence:'v0.6.6',platform:'Stage 23 V1'};

@@ -101,24 +101,5 @@
   ],
   "moduleIds": [
     "road-ltl"
-  ],
-  "contractVersion": "1.1",
-  "contracts": [
-    "atlas-data-contract-v1.1",
-    "execution-instance-contract-v1",
-    "document-state-contract-v1",
-    "temporal-constraint-contract-v1",
-    "measurement-contract-v1",
-    "system-exchange-contract-v1"
-  ],
-  "relationshipVocabulary": "relationship-vocabulary-v1",
-  "overlayRegistry": "overlay-registry-v1.1",
-  "ruleRegistry": "rule-registry-v1.1",
-  "baselineSidecars": {
-    "road-ltl": {
-      "claimProvenance": "data/provenance/road-ltl-claim-provenance-v1.json",
-      "temporalConstraints": "data/temporal/road-ltl-temporal-constraints-v1.json",
-      "systemExchanges": "data/exchanges/road-ltl-system-exchanges-v1.json"
-    }
-  }
+  ]
 }

@@ -1,0 +1,22 @@
+source_id,issuing_body,source_family,version_or_status,atlas_use,access_type,format,official_url,notes
+1,ASCM,SCOR Digital Standard,Maintained digital standard,Primary process architecture,Free issuer download,Web download page,https://www.ascm.org/corporate-solutions/standards-tools/scor-ds/,Creative Commons; follow ASCM reuse guidance
+1,ASCM,SCOR Digital Standard,Maintained digital standard,Reuse terms,Public guidance,Web page,https://www.ascm.org/corporate-solutions/standards-tools/scor-ds/open-access-guidance/,Official open-access guidance
+2,APQC,Cross-Industry Process Classification Framework,8.0 - 2026-02-27,Cross-enterprise process coverage,Public issuer page,PDF,https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-cross-industry-pdf-13,Site may prompt registration or sign-in
+2,APQC,Cross-Industry Process Classification Framework,8.0 - 2026-02-27,Cross-enterprise process coverage,Public issuer page,XLSX,https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-cross-industry-excel-12,Retain licence and attribution included by APQC
+3,OMG,Business Process Model and Notation,2.0.2,Future L4/L5 workflow notation,Direct public download,PDF,https://www.omg.org/spec/BPMN/2.0.2/PDF,Normative specification
+4,GS1,General Specifications,26.0.0 - Jan 2026,Identifiers and logistic units,Direct public download,PDF,https://ref.gs1.org/standards/genspecs/26.0.0/,Persistent versioned GS1 link
+5,GS1,EPCIS,2.0.1,Visibility event semantics,Direct public download,PDF,https://ref.gs1.org/standards/epcis/2.0.1/,Persistent versioned GS1 link
+5,GS1,Core Business Vocabulary,2.0.0,Visibility vocabulary,Direct public download,PDF,https://ref.gs1.org/standards/cbv/2.0.0/,Used with EPCIS
+6,UN/CEFACT,Buy-Ship-Pay and Multi-Modal Transport Reference Data Models,Maintained reference models,Trade and transport business semantics,Official catalogue,Mixed,https://unece.org/trade/uncefact/rdm,Select BSP-RDM and MMT-RDM artefacts from the issuer catalogue
+7,UN/CEFACT,UN/EDIFACT,Latest public listing used D.24A,EDI message semantics,Official download directory,Mixed,https://unece.org/trade/uncefact/unedifact/download,Use the version agreed by parties and regulators
+7,UN/CEFACT,UN/EDIFACT D.24A,D.24A,EDI message semantics,Public online directory,HTML,https://service.unece.org/trade/untdid/d24a/,Online message segment and data-element directory
+8,WCO,WCO Data Model,4.3.0 - approved Jun 2026,Customs and Single Window exchange,Free account required,Portal package,https://datamodel.wcoomd.org/,Library Information Package and Download sections
+9,IATA,ONE Record,Maintained standard family,Air-cargo data model and API,Direct public download,ZIP,https://github.com/IATA-Cargo/ONE-Record/archive/refs/heads/master.zip,Use a named release when freezing an implementation baseline
+9,IATA,ONE Record,Maintained standard family,Air-cargo data model and API,Public repository,Git repository,https://github.com/IATA-Cargo/ONE-Record,Official IATA Cargo repository
+10,DCSA,Booking Interface Standard,2.0.0,Ocean-container booking,Contact form,PDF,https://go.dcsa.org/booking-2-standard-interface-document,Contact details required by issuer
+10,DCSA,Booking Data Overview,2.0.0,Ocean-container booking,Direct public download,XLSX,https://dcsa-website.cdn.prismic.io/dcsa-website/Z1lP95bqstJ98S49_DCSA_Dataoverview_Booking_v2.0.0_241217_Release_NOTC.xlsx,Official issuer CDN
+10,DCSA,Bill of Lading Interface Standard,3.0.0,Shipping instructions and transport documents,Contact form,PDF,https://go.dcsa.org/billoflading-3-standard-interface-document,Contact details required by issuer
+10,DCSA,Bill of Lading Data Overview,3.0.0,Shipping instructions and transport documents,Direct public download,XLSX,https://dcsa-website.cdn.prismic.io/dcsa-website/Z1lgEJbqstJ98TE2_DCSA_Dataoverview_Bill_of_Lading_v3.0.0_241217_Release_NOTC.xlsx,Official issuer CDN
+11,ISO,ISO 6346,2022 edition 4,Freight-container identity and markings,Purchase,PDF,https://www.iso.org/standard/83558.html,Copyrighted paid standard; do not mirror
+12,UNCITRAL,Model Law on Electronic Transferable Records,2017,Electronic transferable records,Official public page,HTML,https://uncitral.un.org/en/texts/ecommerce/modellaw/electronic_transferable_records,Legal effect depends on enactment and jurisdiction
+12,United Nations,UNCITRAL MLETR publication,2017,Electronic transferable records,Official publication page,PDF reader,https://www.un-ilibrary.org/content/books/9789213627341,UN iLibrary publication record

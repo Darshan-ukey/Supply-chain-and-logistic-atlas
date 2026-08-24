@@ -3,158 +3,18 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
-    "api/router.js": {
-      "maxDuration": 30
-    }
+    "api/*.js": { "maxDuration": 30 }
   },
   "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        }
-      ]
-    },
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        }
-      ]
-    }
+    { "source": "/(.*)", "headers": [
+      { "key": "X-Content-Type-Options", "value": "nosniff" },
+      { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+      { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+    ]},
+    { "source": "/api/(.*)", "headers": [ { "key": "Cache-Control", "value": "no-store" } ] }
   ],
   "rewrites": [
-    {
-      "source": "/api/release-integrity",
-      "destination": "/api/router?__atlasRoute=release-integrity"
-    },
-    {
-      "source": "/api/config",
-      "destination": "/api/router?__atlasRoute=config"
-    },
-    {
-      "source": "/api/telemetry",
-      "destination": "/api/router?__atlasRoute=telemetry"
-    },
-    {
-      "source": "/api/session-fact-confirm",
-      "destination": "/api/router?__atlasRoute=session-fact-confirm"
-    },
-    {
-      "source": "/api/document-facts",
-      "destination": "/api/router?__atlasRoute=document-facts"
-    },
-    {
-      "source": "/api/client-state",
-      "destination": "/api/router?__atlasRoute=client-state"
-    },
-    {
-      "source": "/api/workspaces",
-      "destination": "/api/router?__atlasRoute=workspaces"
-    },
-    {
-      "source": "/api/readiness",
-      "destination": "/api/router?__atlasRoute=readiness"
-    },
-    {
-      "source": "/api/saved-views",
-      "destination": "/api/router?__atlasRoute=saved-views"
-    },
-    {
-      "source": "/api/session-document-ingest",
-      "destination": "/api/router?__atlasRoute=session-document-ingest"
-    },
-    {
-      "source": "/api/document-ingest",
-      "destination": "/api/router?__atlasRoute=document-ingest"
-    },
-    {
-      "source": "/api/transformation-export",
-      "destination": "/api/router?__atlasRoute=transformation-export"
-    },
-    {
-      "source": "/api/auth-login",
-      "destination": "/api/router?__atlasRoute=auth-login"
-    },
-    {
-      "source": "/api/health",
-      "destination": "/api/router?__atlasRoute=health"
-    },
-    {
-      "source": "/api/pilot-evaluation",
-      "destination": "/api/router?__atlasRoute=pilot-evaluation"
-    },
-    {
-      "source": "/api/version",
-      "destination": "/api/router?__atlasRoute=version"
-    },
-    {
-      "source": "/api/llm-status",
-      "destination": "/api/router?__atlasRoute=llm-status"
-    },
-    {
-      "source": "/api/collaboration",
-      "destination": "/api/router?__atlasRoute=collaboration"
-    },
-    {
-      "source": "/api/command-validate",
-      "destination": "/api/router?__atlasRoute=command-validate"
-    },
-    {
-      "source": "/api/audit",
-      "destination": "/api/router?__atlasRoute=audit"
-    },
-    {
-      "source": "/api/auth-signup",
-      "destination": "/api/router?__atlasRoute=auth-signup"
-    },
-    {
-      "source": "/api/pilot-readiness",
-      "destination": "/api/router?__atlasRoute=pilot-readiness"
-    },
-    {
-      "source": "/api/evidence-upload",
-      "destination": "/api/router?__atlasRoute=evidence-upload"
-    },
-    {
-      "source": "/api/documents",
-      "destination": "/api/router?__atlasRoute=documents"
-    },
-    {
-      "source": "/api/auth-logout",
-      "destination": "/api/router?__atlasRoute=auth-logout"
-    },
-    {
-      "source": "/api/ask-atlas",
-      "destination": "/api/router?__atlasRoute=ask-atlas"
-    },
-    {
-      "source": "/api/auth-session",
-      "destination": "/api/router?__atlasRoute=auth-session"
-    },
-    {
-      "source": "/api/foundation-proposals",
-      "destination": "/api/router?__atlasRoute=foundation-proposals"
-    },
-    {
-      "source": "/app",
-      "destination": "/index.html"
-    }
+    { "source": "/app", "destination": "/index.html" }
   ]
 }
