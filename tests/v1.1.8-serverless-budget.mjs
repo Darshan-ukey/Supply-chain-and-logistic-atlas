@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+let failures=0;const check=(ok,l,d='')=>{console.log(`${ok?'PASS':'FAIL'} · ${l}${d!==''?' · '+d:''}`);if(!ok)failures++};
+const funcs=fs.readdirSync('api').filter(x=>x.endsWith('.js')).sort();
+const vercel=JSON.parse(fs.readFileSync('vercel.json','utf8'));const apiRoutes=(vercel.rewrites||[]).filter(x=>x.source.startsWith('/api/'));
+check(funcs.length===8,'exactly 8 Vercel serverless functions',funcs.join(', '));
+check(funcs.length<=12,'Vercel 12-function budget not exceeded',`${funcs.length}/12`);
+check(apiRoutes.length===28,'28 public API paths consolidated behind 8 routers',apiRoutes.length);
+const destinations=new Set(apiRoutes.map(x=>x.destination.split('?')[0]));check([...destinations].every(d=>/^\/api\/(atlas|auth|collab|documents|evaluation|system|transform|workspace)$/.test(d)),'all API rewrites terminate at the 8 consolidated routers',[...destinations].join(', '));
+check(!fs.existsSync('api/stage24.js')&&!fs.existsSync('api/composer.js'),'v1.1.8 adds zero serverless functions');
+console.log(failures?'FAIL · serverless budget':'PASS · serverless budget 8/12');if(failures)process.exit(1);
