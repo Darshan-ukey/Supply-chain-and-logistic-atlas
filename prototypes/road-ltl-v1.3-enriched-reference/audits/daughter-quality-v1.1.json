@@ -1,0 +1,21 @@
+{
+  "module": {
+    "id": "road-ltl",
+    "name": "Road LTL / Groupage",
+    "version": "V1.3",
+    "status": "ACTIVE",
+    "depth": "A5_VERIFIED",
+    "enrichmentProfile": "atlas-daughter-production-standard-v1",
+    "semanticChangeClass": "NON_LOSSY_STRUCTURED_ENRICHMENT"
+  },
+  "processCount": 22,
+  "a3Count": 13,
+  "edgeCount": 39,
+  "transitionCount": 22,
+  "hardGateStatus": "PASS",
+  "hardErrors": [],
+  "richnessStatus": "PASS",
+  "warnings": [],
+  "documentLinkedTaskCount": 8,
+  "documentContextDependentTaskCount": 14
+}

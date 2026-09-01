@@ -1,0 +1,48 @@
+name: Specmatic Smoke
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  specmatic-smoke:
+    name: Real Specmatic Adapter Smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Run Specmatic adapter smoke
+        run: npm run smoke:specmatic
+
+      - name: Upload Specmatic artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brisk-aitesting-specmatic-artifacts
+          path: |
+            .brisk-aitesting-reference-serious-saas/**
+          if-no-files-found: ignore
+          retention-days: 7

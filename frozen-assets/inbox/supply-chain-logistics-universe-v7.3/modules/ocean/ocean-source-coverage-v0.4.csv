@@ -1,0 +1,33 @@
+sourceId,issuer,title,version,status,sourceScope,FCL_process_count,LCL_process_count,coverageDisposition,changeWatch
+src-apqc-pcf,APQC,Process Classification Framework,Maintained edition,ACTIVE,UNIVERSE_INHERITED,0,0,REGISTERED_NOT_PROCESS_MAPPED,
+src-bimco,BIMCO,Bills of Lading / Charter Party Clauses and Contracts,Current clause library,ACTIVE,DAUGHTER_SPECIFIC,3,0,MAPPED,
+src-ctu-code-2014,IMO/ILO/UNECE,IMO/ILO/UNECE Code of Practice for Packing of Cargo Transport Units,2014 published baseline · 2025 revision under 2026 finalization/endorsement; not promoted,ACTIVE_REFERENCE_WITH_WATCH,UNIVERSE_INHERITED,1,6,MAPPED,"CTU Code 2025 revision · ECE/TRANS/WP.24/2026/8 · finalization in progress, not promoted."
+src-dcsa-arrival,DCSA,Arrival Notice Standard,1.0.1,ACTIVE,UNIVERSE_INHERITED,2,1,MAPPED,
+src-dcsa-blueprint-2026q1,DCSA,Industry Blueprint,2026.Q1,ACTIVE,UNIVERSE_INHERITED,21,9,MAPPED,
+src-dcsa-booking,DCSA,Booking Standard,2.0.4 · 13 Apr 2026,ACTIVE,UNIVERSE_INHERITED,3,2,MAPPED,
+src-dcsa-commercial-schedules,DCSA,Commercial Schedules Standard,1.0.3 · 12 Jun 2026,ACTIVE,UNIVERSE_INHERITED,2,1,MAPPED,
+src-dcsa-ebl,DCSA,Bill of Lading / eBL Standard,3.0.3 · 13 Apr 2026,ACTIVE,UNIVERSE_INHERITED,4,3,MAPPED,
+src-dcsa-port-call,DCSA,Port Call Standard,2.0 · current 2.0 family at Universe V7 snapshot,ACTIVE,UNIVERSE_INHERITED,2,0,MAPPED,
+src-dcsa-tt,DCSA,Track & Trace Standard,2.2,ACTIVE,UNIVERSE_INHERITED,7,7,MAPPED,DCSA 2026 roadmap indicates Track & Trace 3.0 development; 2.2 remains current implementable standard at this snapshot.
+src-dcsa-vgm,DCSA,Verified Gross Mass Standard,1.0.1,ACTIVE,UNIVERSE_INHERITED,1,1,MAPPED,
+src-fiata,FIATA,"FIATA freight-forwarding definition, documents and resources",Current FIATA reference family,ACTIVE,UNIVERSE_INHERITED,0,10,MAPPED,
+src-fiata-efbl-guide-2026,FIATA,Practical Guide to the Electronic FIATA Multimodal Bill of Lading (eFBL),1 Apr 2026,ACTIVE,UNIVERSE_INHERITED,0,1,MAPPED,
+src-fmc-oti-nvocc,US Federal Maritime Commission,Ocean Transportation Intermediary / NVOCC regulatory definitions,Shipping Act / 46 CFR Part 515 context · current FMC guidance,ACTIVE_JURISDICTION_OVERLAY,UNIVERSE_INHERITED,0,1,MAPPED,
+src-imdg-2024-a42-24,IMO,International Maritime Dangerous Goods Code,2024 Edition · Amendment 42-24 · mandatory 1 Jan 2026,ACTIVE,UNIVERSE_INHERITED,2,4,MAPPED,
+src-imo-compendium-2026,IMO,IMO Compendium on Facilitation and Electronic Business,FAL.5/Circ.56 · approved Mar 2026,ACTIVE,UNIVERSE_INHERITED,2,0,MAPPED,
+src-imo-csc,IMO,International Convention for Safe Containers,"1972, as amended",ACTIVE,DAUGHTER_SPECIFIC,2,1,MAPPED,
+src-imo-fal,IMO,Convention on Facilitation of International Maritime Traffic (FAL),As amended; MSW mandatory since 1 Jan 2024,ACTIVE,DAUGHTER_SPECIFIC,2,0,MAPPED,
+src-iso17712,ISO,ISO 17712 — Freight containers — Mechanical seals,ISO 17712:2013,ACTIVE,DAUGHTER_SPECIFIC,1,2,MAPPED,
+src-iso6346,ISO,"ISO 6346 — Freight containers — Coding, identification and marking",ISO 6346:2022 · Edition 4,ACTIVE,UNIVERSE_INHERITED,3,3,MAPPED,Edition 5 is under publication in Aug 2026; do not silently replace 2022 until published.
+src-mletr,UNCITRAL,Model Law on Electronic Transferable Records,2017; jurisdiction adoption varies,ACTIVE_MODEL_LAW,UNIVERSE_INHERITED,3,3,MAPPED,
+src-ncd,UNCITRAL / United Nations,United Nations Convention on Negotiable Cargo Documents (Accra Convention),Adopted 15 Dec 2025 · not yet in force at 29 Aug 2026,ADOPTED_NOT_IN_FORCE,UNIVERSE_INHERITED,0,0,REGISTERED_NOT_PROCESS_MAPPED,Convention is adopted but not yet in force and opens for signature in Accra on 26 Oct 2026; keep legal applicability conditional.
+src-scor,ASCM,SCOR Digital Standard,Maintained digital edition,ACTIVE,UNIVERSE_INHERITED,0,0,REGISTERED_NOT_PROCESS_MAPPED,
+src-smdg-terminal-messages,SMDG,Recommended stable terminal / ship-planning message guides,BAPLIE 3.1.1 (D.13B) recommended stable; MOVINS 2.1.2 maintained stable; COPRAR/COARRI/COPARN/CODECO 2.1.3 (D.00B) recommended stable,ACTIVE_REFERENCE_WITH_ADOPTION_CONTEXT,UNIVERSE_INHERITED,5,3,MAPPED,Re-check maintained/recommended SMDG message-guide versions and implementation adoption at each source review.
+src-solas-vgm,IMO,SOLAS VI/2 + VGM Guidelines,MSC.380(94) / MSC.1-Circ.1475,ACTIVE,DAUGHTER_SPECIFIC,1,1,MAPPED,
+src-tic40-2025-019,TIC4.0,"TIC4.0 semantics, dataset, data model and definitions",Release 2025.019 · May 2026,ACTIVE,UNIVERSE_INHERITED,2,2,MAPPED,
+src-uncefact-cbm,UN/CEFACT,Cross-Border Management Reference Data Model,BRS v0.5,ACTIVE,DAUGHTER_SPECIFIC,2,1,MAPPED,
+src-uncefact-ift-brs-v2,UN/CEFACT,International Forwarding and Transport BRS · Overall v2,Overall v2,ACTIVE_REFERENCE,UNIVERSE_INHERITED,0,13,MAPPED,
+src-uncefact-multimodal-visibility-brs-v1,UN/CEFACT,Visibility and Collaborative Planning in Multimodal Supply Chain Operations BRS,v1.0 · Jun 2026 · published 3 Jul 2026,ACTIVE_REFERENCE,UNIVERSE_INHERITED,3,3,MAPPED,
+src-uncefact-rdm,UN/CEFACT,UN/CEFACT Reference Data Models — Multi-Modal Transport / Buy-Ship-Pay transport semantics,MMT RDM + current D25A transport views · 11 Jun 2026,ACTIVE,UNIVERSE_INHERITED,1,17,MAPPED,
+src-wco-dm,World Customs Organization,WCO Data Model,4.3.0 · approved Jun 2026 / unveiled Jul 2026,ACTIVE,UNIVERSE_INHERITED,3,3,MAPPED,
+src-wto-tfa,WTO,Trade Facilitation Agreement,In force 22 Feb 2017,ACTIVE,DAUGHTER_SPECIFIC,2,2,MAPPED,

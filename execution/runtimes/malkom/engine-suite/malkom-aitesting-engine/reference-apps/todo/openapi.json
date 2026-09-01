@@ -1,0 +1,32 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "Todo Reference API", "version": "1.0.0" },
+  "paths": {
+    "/api/todos": {
+      "get": {
+        "operationId": "listTodos",
+        "responses": {
+          "200": { "description": "Todos", "content": { "application/json": { "schema": { "type": "object", "required": ["todos", "total"], "properties": { "todos": { "type": "array", "items": { "type": "object" } }, "total": { "type": "number" } } } } } }
+        }
+      },
+      "post": {
+        "operationId": "createTodo",
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "required": ["title"], "properties": { "title": { "type": "string" } } } } } },
+        "responses": {
+          "201": { "description": "Created", "content": { "application/json": { "schema": { "type": "object", "required": ["todo"], "properties": { "todo": { "type": "object" } } } } } },
+          "400": { "description": "Invalid" }
+        }
+      }
+    },
+    "/api/todos/{id}": {
+      "patch": {
+        "operationId": "completeTodo",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "200": { "description": "Completed", "content": { "application/json": { "schema": { "type": "object", "required": ["todo"], "properties": { "todo": { "type": "object" } } } } } },
+          "404": { "description": "Missing" }
+        }
+      }
+    }
+  }
+}

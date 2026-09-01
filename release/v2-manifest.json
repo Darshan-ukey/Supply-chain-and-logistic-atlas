@@ -1,0 +1,32 @@
+{
+  "release": "v2.0.1",
+  "builtAt": "2026-09-01T09:20:13.447Z",
+  "files": {
+    "index.html": "c949918d89cf4c8dea6a65549fd1c644f68c018e9457198a2a8f6c9af343c2aa",
+    "admin.html": "1500bad7bb62579f1e2bbe198201dd5ee414246d2d1fa6999934f7a905b6fbdc",
+    "preview-standalone.html": "9d4735364c0cae9597e034ef8219554a62e60e5dd0f9262755f33b3e8a1fdfc6",
+    "stage18-client.js": "6d818b2048ad80e0e2bc7d80aee95d28d822d02848705985091f5a52ec39d899",
+    "runtime/universal-ask-atlas.js": "f47c4fcbbfca38022f773e1771e2ec75865e0e3ba7f2adcb67ff78eb10c4eb31",
+    "reference/reference-with-ask.html": "3be67424274fdc794d45c89c08bdb680f3924bb0f095359ed9648963c38a4684",
+    "governance/ask-atlas-surface-contract-v1.json": "dcd83d7472ccfd76e097fde8d06c63d7f1ff475b8b2c7e875187b60558ac93fc",
+    "lib/api/ask-atlas.js": "48d495a161366082261c3990e46fc22c99fe14b6da06ab724fc2a78ceecf35f0",
+    "lib/api/_atlas.js": "91cd50b33b22fba39ca273193060d17ce36e00c6a4d735e569da6048366a69d3",
+    "production/ask-atlas-architecture.md": "2557b57929c6d9e6b8b98c02d3d86946b261e50d14c06b4bdf325478b712cfa2",
+    "UNIVERSAL_ASK_ATLAS_INTEGRATION.md": "f9940e1caa9508df7a7ec83789e627cd208e134add20d7cf7b28c95182d74789",
+    "package.json": "98737f8427bb82cc278592b572d68d883e3ef2e34733776bf5cce739b486a51d",
+    "vercel.json": "942c4557de25119b6e35ba30b0586e118593ffd2b64edd8319660a0438ad52f1",
+    ".env.example": "3c5b8817f126cef46fe2281e59cbaddd3d6a4fff5eb123947271302dfe7368f2",
+    "release/release-meta.js": "e8b3cb66971983d653c58d613087f4359124bf0846db96f278f817ba65239ab2",
+    "migrations/v2-admin-workdefinitions.sql": "0a8d62d2ed6a9af941f370aa87606b1eeaac4fb0b502f3495bb7c6fe88baf3ba",
+    "lib/api/_utils.js": "4aae3becbd8ab6de440d03dd30455a9361636ca2d13043e19601315e1b07502e",
+    "lib/api/auth-admin-login.js": "9f81879d56a45e593a8b0bcbc7e7f1daf7f20f6a1ad56b2ab325bc225682901b",
+    "lib/api/auth-admin-session.js": "6a6d4505c81bed24cb117280779a8814e38c8899e521f6a473beb28799cdb8db",
+    "lib/api/auth-admin-logout.js": "8864533b70657fc2f37044de1cd44a2a03bb4f2ae4ff492538b7c245bcf5a2c5",
+    "lib/api/admin-workdefinitions.js": "e5977b26e5a3f73863e19415ff7cc0c699292a2fbbd1db2af80b622e37e9a8f6",
+    "reference/legacy-v0.6.6/page0-v6.2.3.html": "45ea5ad55c6f0103bdb70ee33c05e2ca68587d98453a8c0c2c160e67d51e73c7",
+    "reference/legacy-v0.6.6/road-ltl-v1.2.html": "a75ca386b0048af94aa8f8f9ea726dbe10f3c819c602d90daff4f90ddf942c92",
+    "data/page0/page0-v6.2.2.json": "c8805c194f87cd795014e4a44f362d67c921f5e0e978b9a29014befafc0fbbd0",
+    "data/modules/road-ltl-v1.2.json": "2d5c78d4480bb693747bcb18a2c006b3fe0a63e6150c506e84ea3e4c5f3f6cfd"
+  },
+  "privateSeedCommitted": false
+}

@@ -1,0 +1,33 @@
+{
+  "name": "malkom-miniemail-engine",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Malkom Mini Email Engine — renders a single email inside the Malkom runtime task detail exactly as its provider mailbox would, with full mail actions (reply, reply all, forward, participants, attachments, send, undo send) and real provider mailbox search. Gmail and Microsoft Graph adapters behind one agnostic, fully typed API.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -b packages/core packages/react",
+    "build:cjs": "node scripts/build-cjs.mjs",
+    "clean": "tsc -b --clean packages/core packages/react",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -b packages/core packages/react --force"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "jsdom": "^25.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}

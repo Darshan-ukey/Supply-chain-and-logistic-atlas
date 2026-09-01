@@ -1,0 +1,47 @@
+// Host-owned example only. Adapt names/IDs to the actual malkom-command Prisma schema.
+model DwDomainPack {
+  id        String   @id
+  version   String
+  domain    String
+  status    String
+  payload   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([id, version])
+}
+model DwWorkDefinition {
+  id        String
+  version   String
+  domain    String
+  taskId    String
+  status    String
+  payload   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@id([id, version])
+}
+model DwClientBinding {
+  id        String   @id
+  clientId  String
+  payload   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model DwClientExtension {
+  id               String   @id
+  clientId         String
+  workDefinitionId String
+  payload          Json
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+model DwMaterialization {
+  id               String   @id
+  clientId         String?
+  workDefinitionId String
+  target           String
+  sourceVersion    String
+  payload          Json
+  blockerCount     Int      @default(0)
+  createdAt        DateTime @default(now())
+}

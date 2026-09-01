@@ -1,0 +1,32 @@
+{
+  "release": "v2.1.0-dev.1",
+  "architecture": "Atlas Execution Fabric Architecture V1",
+  "architectureStatus": "FROZEN",
+  "generatedAt": "2026-09-01T07:24:53.825Z",
+  "files": {
+    "governance/ATLAS_EXECUTION_FABRIC_ARCHITECTURE_V1_FROZEN.md": "917815901b0cb8257050fd089dacb04897974eb2b7056f89c2c31fd096dad4a6",
+    "execution/manifest.json": "b83de469ecb030ec65dc952956b0a50b519351c13cbd3d6c391e21461301a182",
+    "execution/contracts/work-decomposition-v1.1.schema.json": "afbae14c150f5f00d4b64f542d1725849f962415a402cb5d20e4524712631bd4",
+    "execution/contracts/execution-adapter-standard-v1.schema.json": "41ac2b65eaf5c41b4d6f34bfe4a9b9d5e0669beafcfe4ecc639631ff0e437c1b",
+    "execution/contracts/runtime-projection-v1.schema.json": "c2e606dfb84040ce7896efabe6c40a320f8737856266fbaf894cca9168463ce1",
+    "execution/contracts/malkom-adapter-manifest-v1.json": "cd26d8ff6119323c0711a8a790dc85f3c0ca98b8c96e3316e23bfa7ba6efc29d",
+    "execution/core/runtime-adapter-registry.mjs": "7ef9beca91dca980e9420c898c841c2876d2943914ce951c15973aa6f8472b3c",
+    "execution/adapters/malkom/malkom-adapter.mjs": "df268203891603ba278abab9ea95035b06d1b1ac5b6f3453b4d6efad4641a11a",
+    "execution/ui/atlas-execution-flow.js": "b6d1e8164785899725b4d684caefdf7d62e1f0fe97b6856dd832394b9dfeddb6",
+    "execution/ui/atlas-execution-flow.css": "bd70244f14ff1019c7b0ac61b5698d93d3a9b96b8057d4d36ae7b879e4158f41",
+    "execution/ui/runtime-access-shell.js": "cf66aaabde1ebdac09b96db13dd9fb042ef76c09420c1ec4af69fd3b4fd2a48f",
+    "execution/SECURITY_BOUNDARY.md": "d5e477dd1fa8193cae5e5f6b7a580c2b8c231b359d9e83c239c21fe49df871ec",
+    "migrations/v2.1-execution-fabric.sql": "cac53fe1b59208fd8a82184937b57a74075abf88b1c535001778bd7948de8906",
+    "lib/api/_utils.js": "d3d2db32e2ebb000d8d479edc7fc286f5c0d15cb175d43d77c13eb2b99efa834",
+    "lib/api/runtime-access.js": "d5c529c8af3a2fd5cd4de8dff9de03d3752643349300148b16611624fa8aa2fa",
+    "lib/api/malkom-projections.js": "0f946d913bd0656a4be9701db608220931d0891d347dd976a0390f5b87b58e5e",
+    "api/atlas.js": "eeb600b26009bab6fc48e9f7f9e302045e673064458b69f8d163ac0e55da8e43",
+    "vercel.json": "4a203e993519355b9b167991a24eab4b93115cf6cc21a6fc8332fb772780700b",
+    ".vercelignore": "e9cbb036bbbeeb38c3246d4f9aea8eca8ce61c6a7a8a5994d69e578d22e65f82",
+    "index.html": "cb2075e209b5601902cb26f384314e132b487f93a7c9cf9adda2afd2d6680a6c",
+    "admin.html": "9e6d07726ffa243371c7ddd3a607b4c33ff2d6ce902e7e65ecd3f8603bf48cce",
+    "V2.1_EXECUTION_FABRIC_BUILD_AUDIT.md": "7f090a8d0b89e74b6b4ab0b0f4f20c68da5be2f35062b7d88f21e5afdae87942",
+    "package.json": "f8af68585b74ecfa707f2b7afc4be4caa35adc640ea558009ecc3f4e46e24030"
+  },
+  "malkomRuntimeSuiteEmbedded": true
+}

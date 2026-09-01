@@ -1,0 +1,162 @@
+{
+  "ocean-fcl-v0.5": {
+    "desktop": {
+      "title": "Ocean FCL Full Container Load · Atlas V0.5",
+      "overflow": 0,
+      "nav": [
+        "Overview",
+        "Compose context",
+        "Execution graph",
+        "Reference configurations",
+        "Enterprise lenses",
+        "Sources"
+      ],
+      "sections": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "tasks": 30,
+      "controls": 7,
+      "projections": 10,
+      "configs": 5,
+      "lenses": 14,
+      "sources": 28,
+      "globalSwitcher": 3,
+      "api": true,
+      "inspector": {
+        "open": true,
+        "tabs": 6,
+        "body": 449
+      },
+      "runtimeErrors": 0,
+      "viewport": {
+        "w": 1440,
+        "h": 900,
+        "mobile": false
+      }
+    },
+    "mobile": {
+      "title": "Ocean FCL Full Container Load · Atlas V0.5",
+      "overflow": 0,
+      "nav": [
+        "Overview",
+        "Compose context",
+        "Execution graph",
+        "Reference configurations",
+        "Enterprise lenses",
+        "Sources"
+      ],
+      "sections": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "tasks": 30,
+      "controls": 7,
+      "projections": 10,
+      "configs": 5,
+      "lenses": 14,
+      "sources": 28,
+      "globalSwitcher": 3,
+      "api": true,
+      "inspector": {
+        "open": true,
+        "tabs": 6,
+        "body": 449
+      },
+      "runtimeErrors": 0,
+      "viewport": {
+        "w": 390,
+        "h": 844,
+        "mobile": true
+      }
+    }
+  },
+  "ocean-lcl-v0.5": {
+    "desktop": {
+      "title": "Ocean LCL Less than Container Load · Atlas V0.5",
+      "overflow": 0,
+      "nav": [
+        "Overview",
+        "Compose context",
+        "Execution graph",
+        "Reference configurations",
+        "Enterprise lenses",
+        "Sources"
+      ],
+      "sections": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "tasks": 30,
+      "controls": 7,
+      "projections": 10,
+      "configs": 5,
+      "lenses": 13,
+      "sources": 28,
+      "globalSwitcher": 3,
+      "api": true,
+      "inspector": {
+        "open": true,
+        "tabs": 6,
+        "body": 514
+      },
+      "runtimeErrors": 0,
+      "viewport": {
+        "w": 1440,
+        "h": 900,
+        "mobile": false
+      }
+    },
+    "mobile": {
+      "title": "Ocean LCL Less than Container Load · Atlas V0.5",
+      "overflow": 0,
+      "nav": [
+        "Overview",
+        "Compose context",
+        "Execution graph",
+        "Reference configurations",
+        "Enterprise lenses",
+        "Sources"
+      ],
+      "sections": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "tasks": 30,
+      "controls": 7,
+      "projections": 10,
+      "configs": 5,
+      "lenses": 13,
+      "sources": 28,
+      "globalSwitcher": 3,
+      "api": true,
+      "inspector": {
+        "open": true,
+        "tabs": 6,
+        "body": 514
+      },
+      "runtimeErrors": 0,
+      "viewport": {
+        "w": 390,
+        "h": 844,
+        "mobile": true
+      }
+    }
+  }
+}

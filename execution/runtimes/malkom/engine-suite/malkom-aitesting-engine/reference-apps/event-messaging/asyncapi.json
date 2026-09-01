@@ -1,0 +1,36 @@
+{
+  "asyncapi": "2.6.0",
+  "info": { "title": "Event Messaging Proof App", "version": "1.0.0" },
+  "channels": {
+    "orders.created": {
+      "publish": {
+        "message": {
+          "name": "OrderCreated",
+          "contentType": "application/json",
+          "payload": {
+            "type": "object",
+            "required": ["orderId", "amount"],
+            "properties": {
+              "orderId": { "type": "string" },
+              "amount": { "type": "number" }
+            }
+          }
+        }
+      },
+      "subscribe": {
+        "message": {
+          "name": "OrderCreated",
+          "contentType": "application/json",
+          "payload": {
+            "type": "object",
+            "required": ["orderId", "amount"],
+            "properties": {
+              "orderId": { "type": "string" },
+              "amount": { "type": "number" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "1.0",
+  "moduleId": "road-ltl",
+  "constraints": [
+    {
+      "id": "TIME-LTL-01",
+      "moduleId": "road-ltl",
+      "processId": "LTL-01",
+      "type": "CUT_OFF",
+      "rawText": "Quote/request validity and pickup cut-off.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-scor",
+        "src-apqc-pcf",
+        "src-uncefact-rdm"
+      ]
+    },
+    {
+      "id": "TIME-LTL-02",
+      "moduleId": "road-ltl",
+      "processId": "LTL-02",
+      "type": "VALIDITY",
+      "rawText": "Quote validity; tender/request response clock.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-apqc-pcf",
+        "src-nmfc",
+        "src-uncefact-rdm"
+      ]
+    },
+    {
+      "id": "TIME-LTL-03",
+      "moduleId": "road-ltl",
+      "processId": "LTL-03",
+      "type": "CUT_OFF",
+      "rawText": "Before pickup acceptance and applicable document cut-off.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-uncefact-rdm",
+        "src-nmfta-dsdc-ltl",
+        "src-49cfr373",
+        "src-cmr",
+        "src-ecmr",
+        "src-nmfta-scac",
+        "src-nmfta-splc"
+      ]
+    },
+    {
+      "id": "TIME-LTL-04",
+      "moduleId": "road-ltl",
+      "processId": "LTL-04",
+      "type": "CUT_OFF",
+      "rawText": "Pickup response SLA and local cut-off.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-dsdc-pickup",
+        "src-uncefact-rdm",
+        "src-x12"
+      ]
+    },
+    {
+      "id": "TIME-LTL-20",
+      "moduleId": "road-ltl",
+      "processId": "LTL-20",
+      "type": "OTHER",
+      "rawText": "Before dispatch and before load acceptance.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-scor",
+        "src-apqc-pcf"
+      ]
+    },
+    {
+      "id": "TIME-LTL-05",
+      "moduleId": "road-ltl",
+      "processId": "LTL-05",
+      "type": "SCHEDULE",
+      "rawText": "Appointment window; acceptance/refusal communication clock.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-49cfr373",
+        "src-cmr",
+        "src-gs1-epcis"
+      ]
+    },
+    {
+      "id": "TIME-LTL-06",
+      "moduleId": "road-ltl",
+      "processId": "LTL-06",
+      "type": "OTHER",
+      "rawText": "Unload/receiving and discrepancy-notification clock.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-gs1-epcis",
+        "src-gs1-cbv",
+        "src-gs1-genspec",
+        "src-nmfc"
+      ]
+    },
+    {
+      "id": "TIME-LTL-07",
+      "moduleId": "road-ltl",
+      "processId": "LTL-07",
+      "type": "CUT_OFF",
+      "rawText": "Outbound cut-off and dispatch deadline.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-scor",
+        "src-uncefact-rdm",
+        "src-gs1-epcis"
+      ]
+    },
+    {
+      "id": "TIME-LTL-08",
+      "moduleId": "road-ltl",
+      "processId": "LTL-08",
+      "type": "OTHER",
+      "rawText": "Planned milestones and exception thresholds.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-gs1-epcis",
+        "src-gs1-cbv",
+        "src-uncefact-rdm",
+        "src-x12",
+        "src-dsdc-visibility-draft",
+        "src-nmfta-splc"
+      ]
+    },
+    {
+      "id": "TIME-LTL-09",
+      "moduleId": "road-ltl",
+      "processId": "LTL-09",
+      "type": "CUT_OFF",
+      "rawText": "Connection cut-off, dwell threshold and exception escalation clock.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-gs1-epcis",
+        "src-gs1-cbv",
+        "src-scor"
+      ]
+    },
+    {
+      "id": "TIME-LTL-10",
+      "moduleId": "road-ltl",
+      "processId": "LTL-10",
+      "type": "CUT_OFF",
+      "rawText": "Connection cut-off and acceptance clock.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-uncefact-rdm",
+        "src-cmr",
+        "src-gs1-epcis"
+      ]
+    },
+    {
+      "id": "TIME-LTL-11",
+      "moduleId": "road-ltl",
+      "processId": "LTL-11",
+      "type": "CUT_OFF",
+      "rawText": "Delivery-plan cut-off and commitment window.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-scor",
+        "src-gs1-epcis",
+        "src-uncefact-rdm"
+      ]
+    },
+    {
+      "id": "TIME-LTL-12",
+      "moduleId": "road-ltl",
+      "processId": "LTL-12",
+      "type": "SCHEDULE",
+      "rawText": "Appointment and promised-delivery window.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-apqc-pcf",
+        "src-uncefact-rdm"
+      ]
+    },
+    {
+      "id": "TIME-LTL-13",
+      "moduleId": "road-ltl",
+      "processId": "LTL-13",
+      "type": "OTHER",
+      "rawText": "Delivery window; damage/shortage/refusal notification and claim clocks remain source/contract specific.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-cmr",
+        "src-gs1-epcis",
+        "src-apqc-pcf"
+      ]
+    },
+    {
+      "id": "TIME-LTL-14",
+      "moduleId": "road-ltl",
+      "processId": "LTL-14",
+      "type": "OTHER",
+      "rawText": "Condition/service/legal/contract clock selected by active context; generic clock is not fabricated.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-scor",
+        "src-apqc-pcf",
+        "src-gs1-epcis",
+        "src-iso10002"
+      ]
+    },
+    {
+      "id": "TIME-LTL-15",
+      "moduleId": "road-ltl",
+      "processId": "LTL-15",
+      "type": "OTHER",
+      "rawText": "Assigned exception/recovery clock.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-scor",
+        "src-apqc-pcf",
+        "src-iso10002"
+      ]
+    },
+    {
+      "id": "TIME-LTL-16",
+      "moduleId": "road-ltl",
+      "processId": "LTL-16",
+      "type": "CUT_OFF",
+      "rawText": "Accrual/billing cut-off and dispute-notice windows by contract/policy.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-dsdc-pfc",
+        "src-x12",
+        "src-apqc-pcf"
+      ]
+    },
+    {
+      "id": "TIME-LTL-17",
+      "moduleId": "road-ltl",
+      "processId": "LTL-17",
+      "type": "OTHER",
+      "rawText": "Invoice, approval, payment-term and deduction/dispute clocks.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-apqc-pcf",
+        "src-x12",
+        "src-uncefact-rdm"
+      ]
+    },
+    {
+      "id": "TIME-LTL-18",
+      "moduleId": "road-ltl",
+      "processId": "LTL-18",
+      "type": "OTHER",
+      "rawText": "Exact notice/claim/action clocks from active contract/regime; no generic LTL clock asserted.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-cmr",
+        "src-49usc14706",
+        "src-49cfr370",
+        "src-apqc-pcf",
+        "src-iso10002"
+      ]
+    },
+    {
+      "id": "TIME-LTL-19",
+      "moduleId": "road-ltl",
+      "processId": "LTL-19",
+      "type": "SLA",
+      "rawText": "Authority, transit, filing and response clock from operative source.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-wco-dm",
+        "src-49cfr177",
+        "src-cmr",
+        "src-adr",
+        "src-atp",
+        "src-tir",
+        "src-india-eway"
+      ]
+    },
+    {
+      "id": "TIME-LTL-21",
+      "moduleId": "road-ltl",
+      "processId": "LTL-21",
+      "type": "OTHER",
+      "rawText": "Before dependent action; exception clock based on operational consequence.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-uncefact-rdm",
+        "src-gs1-genspec",
+        "src-scor",
+        "src-nmfta-scac",
+        "src-nmfta-splc"
+      ]
+    },
+    {
+      "id": "TIME-LTL-22",
+      "moduleId": "road-ltl",
+      "processId": "LTL-22",
+      "type": "SLA",
+      "rawText": "Service/contract SLA and active exception/claim clock.",
+      "normalizationStatus": "RAW_TEXT_PRESERVED_NO_UNSUPPORTED_DURATION_INFERENCE",
+      "sourceIds": [
+        "src-apqc-pcf",
+        "src-iso10002"
+      ]
+    }
+  ]
+}

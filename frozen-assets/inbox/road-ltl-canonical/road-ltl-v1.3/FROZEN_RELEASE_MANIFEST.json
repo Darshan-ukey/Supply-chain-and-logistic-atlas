@@ -1,0 +1,82 @@
+{
+  "release": "Road LTL / Groupage V1.3",
+  "status": "FROZEN",
+  "depth": "A5_VERIFIED",
+  "basis": "Road LTL V1.2",
+  "parentUniverse": "V7.3",
+  "daughterRendererShell": "Universe V7.3",
+  "canvasTarget": "v1.1.8",
+  "canvasParity": "PASS_NO_PATCH_REQUIRED",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1019,
+      "sha256": "62e02f651d10ab79e5338f6cecf09dcc179a6f0b9439b5acfef7d90df71dedea"
+    },
+    {
+      "path": "RELEASE_NOTES.md",
+      "bytes": 1549,
+      "sha256": "27de5332bdfef6c6a9f754fa5112eb9fc33e4d91ef21984e3c194d0aa2ef2fe4"
+    },
+    {
+      "path": "audits/CANVAS_COMPOSITION_PARITY_V1_2_TO_V1_3.json",
+      "bytes": 750,
+      "sha256": "4c3be64ed2bfeb728f9ab0452c197262e4f72d1284faaa97190ba9988e809d58"
+    },
+    {
+      "path": "audits/DAUGHTER_QUALITY_V1_3.json",
+      "bytes": 361,
+      "sha256": "c930b178a18d707640f9732aa8a2a96141fe5252f5f7d02cbbede33279541877"
+    },
+    {
+      "path": "audits/MODULE_VALIDATION_V1_3.json",
+      "bytes": 183,
+      "sha256": "50ce8d5d8b9e85204547b3ce587b9a829c3a3226025cc9050f82f1b4abb4570b"
+    },
+    {
+      "path": "audits/POST_BUILD_AUDIT.md",
+      "bytes": 1060,
+      "sha256": "34d499d946b078214ff8c3f24b286e2f6767df4ea044ebe05da1b94b01c1150b"
+    },
+    {
+      "path": "audits/V1_1_8_CANVAS_INPUT_PARITY.json",
+      "bytes": 250,
+      "sha256": "42c2b340bb8393480ab85da6d2280b232497339368dd20813b3a1a0d36947376"
+    },
+    {
+      "path": "audits/V1_2_TO_V1_3_SEMANTIC_PARITY.json",
+      "bytes": 1073,
+      "sha256": "ef4ff9528581552d66803e0e797fd0d9a93f26050a90ba97c1dcf51d5f2d5a16"
+    },
+    {
+      "path": "data/road-ltl-v1.3.json",
+      "bytes": 639418,
+      "sha256": "0f855cc0b11991a0f58a76791d64def8b688f4349b0e5bd1105161241f7ad808"
+    },
+    {
+      "path": "governance/road-ltl-rule-pack-v1.3.json",
+      "bytes": 1040,
+      "sha256": "a03c0418199c7cdb8ba7ee137a4a644f51f2d4c893964544f637c0d13ccfcda9"
+    },
+    {
+      "path": "reference/road-ltl-v1.3.html",
+      "bytes": 553270,
+      "sha256": "5d8fdc6bd88d1c2c69b70afa66e19f37fc8d9576b536295d40822c507d7814d6"
+    },
+    {
+      "path": "sidecars/road-ltl-claim-provenance-v1.3.json",
+      "bytes": 134458,
+      "sha256": "9552fd4278c50ed14dfa1625c49b0d4bc866f6561bd37eba88055d5721d23373"
+    },
+    {
+      "path": "sidecars/road-ltl-system-exchanges-v1.3.json",
+      "bytes": 23899,
+      "sha256": "40c307b9f1164232e58991346e2ecd0594ed754bd06f943b6b036dc671c79963"
+    },
+    {
+      "path": "sidecars/road-ltl-temporal-constraints-v1.3.json",
+      "bytes": 8924,
+      "sha256": "2f3e5347965a5c1c54a740049c8cfbcbcc23db0d64509639922f69ed71f14fe1"
+    }
+  ]
+}

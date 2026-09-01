@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "brisk-aitesting.application-under-test-manifest.v1",
+  "applications": [
+    {
+      "id": "directus",
+      "displayName": "Directus local proof",
+      "baseAddress": "http://127.0.0.1:18055",
+      "allowedHosts": ["127.0.0.1"],
+      "authentication": { "state": "bootstrap-only", "secretReferences": ["BRISK_TEST_DIRECTUS_ADMIN_EMAIL", "BRISK_TEST_DIRECTUS_ADMIN_PASSWORD"] },
+      "isolationBoundary": { "project": "brisk-aitesting-real-systems", "service": "directus", "dataStores": ["directus_database", "directus_uploads", "directus_extensions"], "testDataPrefix": "brisk_aitesting_" },
+      "cleanupPolicy": { "scope": "test-created-only", "receiptRequired": true, "unknownMutationReplay": "forbidden", "residualState": "report" },
+      "readiness": { "method": "GET", "path": "/server/health", "authentication": "secret-reference", "acceptedHttpStatuses": [200], "acceptedReportedStatuses": ["ok", "warn"] },
+      "authoritativeEvidenceSources": [
+        { "kind": "source", "location": "C:\\Users\\u306076\\Documents\\azure-pubsub\\directus" },
+        { "kind": "runtime-metadata", "location": "/server/specs/oas" },
+        { "kind": "runtime-metadata", "location": "/graphql/system" },
+        { "kind": "runtime-observation", "location": "/server/health" }
+      ],
+      "capabilityLabels": ["http", "rest", "graphql", "schema-metadata", "role-policy", "mutation", "cleanup"]
+    },
+    {
+      "id": "medusa",
+      "displayName": "Medusa local proof",
+      "baseAddress": "http://127.0.0.1:19000",
+      "allowedHosts": ["127.0.0.1"],
+      "authentication": { "state": "not-prepared", "secretReferences": [] },
+      "isolationBoundary": { "project": "brisk-aitesting-real-systems", "service": "medusa", "dataStores": ["medusa_postgres"], "testDataPrefix": "brisk_aitesting_" },
+      "cleanupPolicy": { "scope": "test-created-only", "receiptRequired": true, "unknownMutationReplay": "forbidden", "residualState": "report" },
+      "readiness": { "method": "GET", "path": "/health", "authentication": "none", "acceptedHttpStatuses": [200], "acceptedReportedStatuses": [] },
+      "authoritativeEvidenceSources": [
+        { "kind": "source", "location": "C:\\Users\\u306076\\Documents\\azure-pubsub\\medusa" },
+        { "kind": "source", "location": "C:\\Users\\u306076\\Documents\\azure-pubsub\\medusa-reference" },
+        { "kind": "runtime-observation", "location": "/health" }
+      ],
+      "capabilityLabels": ["http", "rest", "commerce-state", "workflow", "event", "job", "mutation", "cleanup"]
+    },
+    {
+      "id": "n8n",
+      "displayName": "n8n local proof",
+      "baseAddress": "http://127.0.0.1:15678",
+      "allowedHosts": ["127.0.0.1"],
+      "authentication": { "state": "not-prepared", "secretReferences": [] },
+      "isolationBoundary": { "project": "brisk-aitesting-real-systems", "service": "n8n", "dataStores": ["n8n_data"], "testDataPrefix": "brisk_aitesting_" },
+      "cleanupPolicy": { "scope": "test-created-only", "receiptRequired": true, "unknownMutationReplay": "forbidden", "residualState": "report" },
+      "readiness": { "method": "GET", "path": "/healthz/readiness", "authentication": "none", "acceptedHttpStatuses": [200], "acceptedReportedStatuses": ["ok"] },
+      "authoritativeEvidenceSources": [
+        { "kind": "source", "location": "C:\\Users\\u306076\\Documents\\azure-pubsub\\n8n" },
+        { "kind": "runtime-metadata", "location": "/rest/workflows" },
+        { "kind": "runtime-metadata", "location": "/rest/executions" },
+        { "kind": "runtime-observation", "location": "/healthz/readiness" }
+      ],
+      "capabilityLabels": ["http", "webhook", "workflow", "branch", "wait", "retry", "event", "mutation", "cleanup"]
+    }
+  ]
+}

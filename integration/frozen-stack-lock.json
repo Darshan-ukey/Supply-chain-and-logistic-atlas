@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "atlas-final-integration-lock-v1",
+  "releaseTarget": "Supply Chain Atlas 2.0",
+  "status": "FROZEN_STACK_CONFIRMED_ASSEMBLY_INPUTS_NOT_MOUNTED",
+  "knowledgeStack": {
+    "universe": {"version": "7.3", "required": true},
+    "modules": {
+      "road-ltl": {
+        "version": "1.3",
+        "depth": "A5_VERIFIED",
+        "sha256": "0f855cc0b11991a0f58a76791d64def8b688f4349b0e5bd1105161241f7ad808",
+        "expected": {"processes": 22, "a3": 13, "edges": 39, "transitions": 22, "sources": 29}
+      },
+      "ocean-fcl": {
+        "version": "0.5",
+        "depth": "A5_VERIFIED",
+        "sha256": "71526914c600cb10c47434a5b6dc064e851062776a336ae480f37e487e108ebc",
+        "expected": {"processes": 30, "a3": 15, "edges": 56, "transitions": 30, "ontologyEdges": 240}
+      },
+      "ocean-lcl": {
+        "version": "0.5",
+        "depth": "A5_VERIFIED",
+        "sha256": "9dbaadc129a6c8be30e9e77c7ff319af40a9f5c4226e82817c2389cde01d18e6",
+        "expected": {"processes": 30, "a3": 14, "edges": 56, "transitions": 30, "ontologyEdges": 240}
+      }
+    },
+    "foundation": {"version": "1.2", "sourceRegistryCount": 87, "sourceToAtlasCoverageCount": 445},
+    "atlasWarehouse": {"version": "1", "modules": 3, "workDecompositions": 82, "workDefinitions": 82, "dependencyRecords": 82},
+    "canvas": {
+      "version": "2.0.0",
+      "frozenZipSha256": "bc340946d703ef25297ffd67e6de2e5879958c132722e71d95be058c5ba2c1cb"
+    },
+    "universalAsk": {"version": "2.0.1", "status": "CERTIFIED_IN_THIS_PACKAGE"}
+  },
+  "rules": [
+    "Never substitute legacy Page 0 or Road LTL for a missing frozen asset.",
+    "Only ACTIVE + A5_VERIFIED daughters can expose A5 execution.",
+    "No LLM backfilling of unpublished execution depth.",
+    "Public and Admin retrieval must remain separate authorization scopes.",
+    "Canvas must remain daughter-generic; no Ocean-specific renderer branches.",
+    "Final release status may become CERTIFIED only after exact frozen assets are materialized and the full regression suite passes."
+  ]
+}

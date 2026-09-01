@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Malkom Agent Engine</title>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  :root {
+    --ground: #F5F4EF;
+    --surface: #FDFCF8;
+    --sunken: #EAE8DF;
+    --ink: #191D2B;
+    --ink-2: #4A4F60;
+    --ink-3: #787D8C;
+    --line: #CBC9BE;
+    --line-soft: #DDDBD1;
+    --agent: #2450D8;
+    --agent-wash: #E4E9FA;
+    --human: #A85E14;
+    --human-wash: #F5E7D4;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #12141C;
+      --surface: #1A1D29;
+      --sunken: #232736;
+      --ink: #E7E8EF;
+      --ink-2: #ABAFBE;
+      --ink-3: #7F8494;
+      --line: #333850;
+      --line-soft: #282C3F;
+      --agent: #86A3FF;
+      --agent-wash: #1C2647;
+      --human: #E89B4C;
+      --human-wash: #342310;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #12141C;
+    --surface: #1A1D29;
+    --sunken: #232736;
+    --ink: #E7E8EF;
+    --ink-2: #ABAFBE;
+    --ink-3: #7F8494;
+    --line: #333850;
+    --line-soft: #282C3F;
+    --agent: #86A3FF;
+    --agent-wash: #1C2647;
+    --human: #E89B4C;
+    --human-wash: #342310;
+  }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(1.25rem, 1fr)
+      [main-start] minmax(0, 41rem) [main-end]
+      minmax(1.25rem, 1fr) [full-end];
+    padding: 0 0 5rem;
+  }
+  .wrap > * { grid-column: main; min-width: 0; }
+  .wrap > .full { grid-column: full; }
+
+  header.masthead { padding: 4rem 0 2.2rem; display: flex; flex-direction: column; gap: 0.9rem; }
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
+  }
+  h1 {
+    font-size: clamp(2rem, 5.6vw, 3rem);
+    line-height: 1.08; font-weight: 700; letter-spacing: -0.015em;
+    margin: 0; text-wrap: balance;
+  }
+  .standfirst { font-size: 1.15rem; line-height: 1.55; color: var(--ink-2); max-width: 44ch; margin: 0; }
+  hr.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+  section { padding: 2.9rem 0 0; }
+  .mark {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3);
+    display: block; margin-bottom: 0.55rem;
+  }
+  .mark b { color: var(--agent); font-weight: 400; }
+  h2 {
+    font-size: 1.55rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em;
+    margin: 0 0 0.9rem; text-wrap: balance;
+  }
+  h3 { font-size: 1rem; font-weight: 650; margin: 1.7rem 0 0.35rem; }
+  p { margin: 0 0 1.05rem; }
+  p:last-child { margin-bottom: 0; }
+  .lede { font-size: 1.08rem; color: var(--ink-2); }
+  strong { font-weight: 650; color: var(--ink); }
+  code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.86em; }
+
+  .asked {
+    background: var(--sunken);
+    border-radius: 3px;
+    padding: 0.8rem 1.1rem;
+    margin: 0 0 1.2rem;
+    font-size: 0.95rem;
+    color: var(--ink-2);
+  }
+  .asked b {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-3); font-weight: 400; display: block; margin-bottom: 0.25rem;
+  }
+
+  ul.tight { list-style: none; display: grid; gap: 0.55rem; margin: 0.6rem 0 1.05rem; padding: 0; }
+  ul.tight > li { color: var(--ink-2); font-size: 0.98rem; padding-left: 1.1rem; position: relative; }
+  ul.tight > li::before {
+    content: ""; position: absolute; left: 0; top: 0.68em;
+    width: 5px; height: 5px; background: var(--agent); border-radius: 50%;
+  }
+  ul.tight > li strong { color: var(--ink); }
+
+  ol.steps { list-style: none; display: grid; gap: 1.1rem; margin: 0.6rem 0 1.05rem; padding: 0; }
+  ol.steps > li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.9rem; align-items: start; }
+  .n {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.75rem; line-height: 1.5rem; height: 1.5rem; text-align: center;
+    color: var(--agent); background: var(--agent-wash); border-radius: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  ol.steps p { margin: 0; color: var(--ink-2); font-size: 0.98rem; }
+  ol.steps strong { color: var(--ink); }
+
+  .law {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-left: 3px solid var(--agent);
+    border-radius: 3px;
+    padding: 1.3rem 1.4rem;
+    margin: 1.4rem 0;
+  }
+  .law p { margin: 0; }
+  .law p + p { margin-top: 0.7rem; }
+  .law .big { font-size: 1.15rem; line-height: 1.5; font-weight: 600; }
+
+  .tablewrap { overflow-x: auto; margin: 0.7rem 0 1.05rem; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.94rem; min-width: 30rem; }
+  th, td { text-align: left; padding: 0.6rem 0.9rem 0.6rem 0; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  th {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.67rem; letter-spacing: 0.11em; text-transform: uppercase;
+    color: var(--ink-3); font-weight: 400; border-bottom-color: var(--line);
+  }
+  td { color: var(--ink-2); }
+  td:first-child { color: var(--ink); font-weight: 600; padding-right: 1.3rem; white-space: nowrap; }
+  td.mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.8rem; font-weight: 400; }
+
+  figure { margin: 2.2rem auto 0; max-width: 66rem; width: 100%; min-width: 0; padding: 0 1.25rem; }
+  .figframe {
+    background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
+    padding: 1.4rem 1.2rem; overflow-x: auto; min-width: 0; color: var(--ink);
+  }
+  figure svg { display: block; width: 100%; height: auto; }
+  figcaption { font-size: 0.9rem; color: var(--ink-3); margin-top: 0.8rem; max-width: 56ch; line-height: 1.55; }
+
+  .d-t  { fill: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; font-weight: 600; }
+  .d-s  { fill: var(--ink-2); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; }
+  .d-m  { fill: var(--ink-3); font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 10.5px; }
+  .d-ma { fill: var(--agent); font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 10.5px; }
+  .d-mh { fill: var(--human); font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 10.5px; }
+  .d-box  { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
+  .d-sunk { fill: var(--sunken); stroke: var(--line); stroke-width: 1.2; }
+  .d-ab   { fill: var(--agent-wash); stroke: var(--agent); stroke-width: 1.4; }
+  .d-hb   { fill: var(--human-wash); stroke: var(--human); stroke-width: 1.4; }
+  .d-ln   { fill: none; stroke: var(--ink-3); stroke-width: 1.4; }
+  .d-la   { fill: none; stroke: var(--agent); stroke-width: 1.6; }
+  .d-lh   { fill: none; stroke: var(--human); stroke-width: 1.6; }
+  .d-ld   { fill: none; stroke: var(--ink-3); stroke-width: 1.2; stroke-dasharray: 5 4; }
+
+  .closing { margin-top: 3.4rem; border-top: 1px solid var(--line); padding-top: 2rem; }
+  .closing p { font-size: 1.1rem; line-height: 1.6; max-width: 44ch; color: var(--ink-2); }
+  .closing strong { color: var(--ink); }
+
+  a { color: var(--agent); }
+  a:focus-visible { outline: 2px solid var(--agent); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="eyebrow">Malkom · agent engine · plan</span>
+    <h1>Malkom Agent Engine</h1>
+    <p class="standfirst">How we will build AI agents for Malkom. Agents are created in the Command. They run in the client runtime. This page answers every challenge you listed, in simple words.</p>
+  </header>
+
+  <hr class="rule" />
+
+  <section>
+    <span class="mark">Rule 1 — read this first</span>
+    <h2>Agents are autonomous</h2>
+    <p class="lede">This rule controls everything else on this page.</p>
+
+    <div class="law">
+      <p class="big">An agent gets a goal. It does not get a list of steps.</p>
+      <p>The agent looks at the case. It decides its own steps for that case. It decides which tools to use, in which order, and how many times. If it needs more information, it goes and gets it. If its first approach fails, it tries a different one. It decides on its own when it is finished, and when it is stuck.</p>
+      <p>Two identical cases can be handled in two different ways by the same agent. <strong>That is normal and correct.</strong> If the steps are fixed before the run starts, it is not an agent — it is a workflow. We do not ship workflows and call them agents.</p>
+    </div>
+
+    <p>We only define four things about an agent, and they are all limits, not steps:</p>
+    <ul class="tight">
+      <li><strong>Its goal</strong> — what a finished case looks like.</li>
+      <li><strong>What it may access</strong> — which data fields and which tools.</li>
+      <li><strong>What it may spend</strong> — time and money limits per run.</li>
+      <li><strong>The four ways it can finish</strong> — done, question, handover, parked (explained below).</li>
+    </ul>
+    <p>Inside those limits, the agent works however it decides to. This mix — free inside the limits — is what makes it safe to run autonomous agents on a customer's machine.</p>
+  </section>
+
+  <figure class="full">
+    <div class="figframe">
+      <svg viewBox="0 0 900 330" role="img" aria-label="Inside one agent: a goal goes in. The agent runs its own loop of look, plan, act with tools, and check. The agent alone decides which of four endings to take: done, question, handover to a person, or parked.">
+        <defs>
+          <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)" /></marker>
+          <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--agent)" /></marker>
+          <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--human)" /></marker>
+        </defs>
+
+        <rect x="16" y="138" width="112" height="46" rx="3" class="d-sunk" />
+        <text x="72" y="158" class="d-t" text-anchor="middle">The goal</text>
+        <text x="72" y="174" class="d-s" text-anchor="middle">plus the case</text>
+
+        <path d="M128,161 H172" class="d-ln" marker-end="url(#a1)" />
+
+        <rect x="176" y="52" width="352" height="222" rx="4" class="d-ab" />
+        <text x="352" y="80" class="d-t" text-anchor="middle">The agent decides these steps itself</text>
+
+        <rect x="200" y="100" width="140" height="40" rx="3" class="d-box" />
+        <text x="270" y="125" class="d-t" text-anchor="middle">Look</text>
+        <rect x="364" y="100" width="140" height="40" rx="3" class="d-box" />
+        <text x="434" y="125" class="d-t" text-anchor="middle">Plan</text>
+        <rect x="364" y="196" width="140" height="40" rx="3" class="d-box" />
+        <text x="434" y="221" class="d-t" text-anchor="middle">Act — use tools</text>
+        <rect x="200" y="196" width="140" height="40" rx="3" class="d-box" />
+        <text x="270" y="221" class="d-t" text-anchor="middle">Check own work</text>
+
+        <path d="M340,120 H360" class="d-la" marker-end="url(#a2)" />
+        <path d="M434,140 V192" class="d-la" marker-end="url(#a2)" />
+        <path d="M364,216 H344" class="d-la" marker-end="url(#a2)" />
+        <path d="M270,196 V144" class="d-la" marker-end="url(#a2)" />
+        <text x="352" y="176" class="d-ma" text-anchor="middle">repeats as many times as the agent decides</text>
+
+        <path d="M528,110 H584" class="d-la" marker-end="url(#a2)" />
+        <path d="M528,258 H584" class="d-lh" marker-end="url(#a3)" />
+
+        <rect x="588" y="60" width="288" height="46" rx="3" class="d-ab" />
+        <text x="732" y="80" class="d-t" text-anchor="middle">done — work is finished</text>
+        <text x="732" y="96" class="d-s" text-anchor="middle">task becomes PROCESSED / CLOSED</text>
+
+        <rect x="588" y="118" width="288" height="46" rx="3" class="d-box" />
+        <text x="732" y="138" class="d-t" text-anchor="middle">question — needs one answer</text>
+        <text x="732" y="154" class="d-s" text-anchor="middle">task becomes QUERY, takes a person seconds</text>
+
+        <rect x="588" y="176" width="288" height="46" rx="3" class="d-hb" />
+        <text x="732" y="196" class="d-t" text-anchor="middle">handover — gives up, work attached</text>
+        <text x="732" y="212" class="d-s" text-anchor="middle">goes to work allocation, then the HITL queue</text>
+
+        <rect x="588" y="234" width="288" height="46" rx="3" class="d-box" />
+        <text x="732" y="254" class="d-t" text-anchor="middle">parked — waiting for something</text>
+        <text x="732" y="270" class="d-s" text-anchor="middle">task becomes PARKED, says what wakes it</text>
+
+        <text x="556" y="100" class="d-ma" text-anchor="middle">it</text>
+        <text x="556" y="290" class="d-mh" text-anchor="middle">decides</text>
+      </svg>
+    </div>
+    <figcaption>One agent. The goal goes in. The middle part is the agent's own decision. The only fixed parts are the limits and the four endings — and the agent itself chooses which ending, and when.</figcaption>
+  </figure>
+
+  <section>
+    <span class="mark">The full picture</span>
+    <h2>Two sides, one flow</h2>
+    <p>The system has two sides, and they stay separate:</p>
+    <ul class="tight">
+      <li><strong>The Command</strong> — agents are developed here, assembled into pipelines here, tested on the customer's UAT from here, put in the shop here, and shipped from here.</li>
+      <li><strong>The client runtime</strong> — agents run here. Monitoring and observing also happens here, including which Integrations the agents use.</li>
+    </ul>
+    <p>Work flows exactly as you described: email and EDI come in. The ML engine classifies the task to a sub-queue and extracts fields. The queue's agent pipeline takes it. Every case ends in one of the four endings. When an agent fails, the case goes to your HITL queue <strong>with the agent's work attached</strong> — the fields it filled, its confidence numbers, what it tried, and why it stopped. A person never starts from zero.</p>
+  </section>
+
+  <figure class="full">
+    <div class="figframe">
+      <svg viewBox="0 0 940 420" role="img" aria-label="The Command builds, tests and ships agent packs. In the client runtime, input flows through the ML engine into the queue's agent pipeline. Agents reach engines and Integrations only through one MCP gateway. Cases end done, or go to the HITL queue with work attached. Only summary numbers go back to the Command. Customer data never does.">
+        <defs>
+          <marker id="b1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)" /></marker>
+          <marker id="b2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--agent)" /></marker>
+          <marker id="b3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--human)" /></marker>
+        </defs>
+
+        <rect x="16" y="30" width="196" height="330" rx="4" class="d-sunk" />
+        <text x="114" y="58" class="d-t" text-anchor="middle">THE COMMAND</text>
+        <text x="114" y="76" class="d-s" text-anchor="middle">agents are built here</text>
+
+        <rect x="34" y="96" width="160" height="40" rx="3" class="d-box" />
+        <text x="114" y="121" class="d-t" text-anchor="middle">Studio — build</text>
+        <rect x="34" y="148" width="160" height="40" rx="3" class="d-box" />
+        <text x="114" y="173" class="d-t" text-anchor="middle">Canvas — assemble</text>
+        <rect x="34" y="200" width="160" height="40" rx="3" class="d-box" />
+        <text x="114" y="225" class="d-t" text-anchor="middle">Test on customer UAT</text>
+        <rect x="34" y="252" width="160" height="40" rx="3" class="d-box" />
+        <text x="114" y="277" class="d-t" text-anchor="middle">Shop — with test results</text>
+        <rect x="34" y="304" width="160" height="40" rx="3" class="d-box" />
+        <text x="114" y="329" class="d-t" text-anchor="middle">Ship to targets</text>
+
+        <path d="M212,195 H262" class="d-la" marker-end="url(#b2)" />
+        <text x="237" y="186" class="d-ma" text-anchor="middle">ships</text>
+
+        <rect x="266" y="30" width="658" height="330" rx="4" class="d-box" />
+        <text x="595" y="58" class="d-t" text-anchor="middle">THE CLIENT RUNTIME</text>
+        <text x="595" y="76" class="d-s" text-anchor="middle">agents run here — monitoring happens here</text>
+
+        <rect x="286" y="106" width="108" height="46" rx="3" class="d-sunk" />
+        <text x="340" y="126" class="d-t" text-anchor="middle">Input</text>
+        <text x="340" y="142" class="d-s" text-anchor="middle">email · EDI · API</text>
+
+        <path d="M394,129 H434" class="d-ln" marker-end="url(#b1)" />
+
+        <rect x="438" y="106" width="118" height="46" rx="3" class="d-sunk" />
+        <text x="497" y="126" class="d-t" text-anchor="middle">ML engine</text>
+        <text x="497" y="142" class="d-s" text-anchor="middle">classify · extract</text>
+
+        <path d="M556,129 H596" class="d-ln" marker-end="url(#b1)" />
+
+        <rect x="600" y="92" width="304" height="106" rx="4" class="d-ab" />
+        <text x="752" y="114" class="d-t" text-anchor="middle">The queue's agent pipeline</text>
+        <rect x="616" y="126" width="80" height="34" rx="3" class="d-box" />
+        <text x="656" y="147" class="d-s" text-anchor="middle">agent</text>
+        <rect x="712" y="126" width="80" height="34" rx="3" class="d-box" />
+        <text x="752" y="147" class="d-s" text-anchor="middle">agent</text>
+        <rect x="808" y="126" width="80" height="34" rx="3" class="d-box" />
+        <text x="848" y="147" class="d-s" text-anchor="middle">agent</text>
+        <path d="M696,143 H708" class="d-la" marker-end="url(#b2)" />
+        <path d="M792,143 H804" class="d-la" marker-end="url(#b2)" />
+        <text x="752" y="184" class="d-ma" text-anchor="middle">connected to each other — each one autonomous inside</text>
+
+        <path d="M752,198 V232" class="d-la" marker-end="url(#b2)" />
+        <rect x="600" y="236" width="304" height="40" rx="3" class="d-box" />
+        <text x="752" y="261" class="d-t" text-anchor="middle">MCP gateway — the only door to data</text>
+        <path d="M752,276 V306" class="d-ln" marker-end="url(#b1)" />
+        <rect x="600" y="310" width="304" height="36" rx="3" class="d-sunk" />
+        <text x="752" y="333" class="d-s" text-anchor="middle">rules · validation · integration engines · org data · Integrations</text>
+
+        <path d="M497,152 V240 H438" class="d-lh" marker-end="url(#b3)" />
+        <rect x="286" y="218" width="148" height="44" rx="3" class="d-hb" />
+        <text x="360" y="237" class="d-t" text-anchor="middle">Your HITL queue</text>
+        <text x="360" y="253" class="d-s" text-anchor="middle">work always attached</text>
+        <text x="497" y="212" class="d-mh" text-anchor="middle">when stuck</text>
+
+        <rect x="286" y="284" width="148" height="44" rx="3" class="d-ab" />
+        <text x="360" y="303" class="d-t" text-anchor="middle">Done · Output</text>
+        <text x="360" y="319" class="d-s" text-anchor="middle">EDI · API · history</text>
+
+        <path d="M266,388 H114 V360" class="d-ld" marker-end="url(#b1)" />
+        <path d="M595,360 V388 H270" class="d-ld" />
+        <text x="480" y="404" class="d-m" text-anchor="middle">only summary numbers go back to the Command — customer data never does</text>
+      </svg>
+    </div>
+    <figcaption>The Command builds and ships. The runtime runs and is monitored. Every tool an agent uses goes through one recorded gateway. Only counts, timings and costs travel back to the Command — never customer data.</figcaption>
+  </figure>
+
+  <section>
+    <span class="mark">Challenge <b>01</b></span>
+    <h2>Which framework?</h2>
+    <div class="asked"><b>You asked</b>Which agentic framework should be used for development?</div>
+    <p><strong>We do not lock into one framework.</strong> Instead, the engine defines a small contract, and every framework connects to it through an adapter. To Malkom, an agent is three things:</p>
+    <ol class="steps">
+      <li><span class="n">1</span><p><strong>A manifest</strong> — one small file that states: the agent's goal, its queue, which fields it reads and writes, its tools, its rules, its limits, its telemetry settings. Limits only — never steps.</p></li>
+      <li><span class="n">2</span><p><strong>A container</strong> — the agent's code, packaged. It can be written in Python, TypeScript, Go, or anything else. It can use LangGraph, CrewAI, PydanticAI, or plain code. Malkom does not need to know what is inside.</p></li>
+      <li><span class="n">3</span><p><strong>A connection</strong> — one standard way to start the agent, one way for it to report what it is doing, and the four endings.</p></li>
+    </ol>
+    <p>On day one we ship two ready adapters so developers can start fast: <strong>TypeScript</strong> and <strong>LangGraph (Python)</strong>. Any other framework that follows the contract also works. In every framework, the agent inside is autonomous — the adapter passes the goal in and the endings out. It never controls the agent's steps.</p>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>02</b></span>
+    <h2>Full agent development, inside the Command</h2>
+    <div class="asked"><b>You asked</b>Full agentic development capability, and it has to happen in the Command.</div>
+    <p>The Command gets an <strong>Agent Studio</strong>. Not a settings form — a place where agents are fully developed:</p>
+    <ul class="tight">
+      <li><strong>Start from a template.</strong> Pick a framework and a queue type. The studio creates a working autonomous agent you can then change — goal written, connection wired, telemetry already on.</li>
+      <li><strong>A real code editor in the browser.</strong> You edit the agent's code directly, with the manifest next to it as a form. Every save creates a draft version. Every publish creates a numbered version. Git runs underneath automatically.</li>
+      <li><strong>A run button.</strong> One click runs the draft on sample cases in a sandbox. You see every step and every tool call, live, while it runs.</li>
+      <li><strong>The outside door also works.</strong> A developer who prefers their own editor can push code from there. It arrives in the studio as a draft version. Both paths lead to the same place.</li>
+      <li><strong>Publishing puts it in the shop</strong> as "pending". It cannot reach a customer until it has passed testing (Challenge 04).</li>
+    </ul>
+    <p>Creating, editing, testing and approving agents — all of it happens in the Command.</p>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>03</b></span>
+    <h2>The agent pipeline for a queue and its sub-queues</h2>
+    <div class="asked"><b>You asked</b>Defining an agentic pipeline for a queue and/or its sub-queues. And how do agents for a queue speak to each other — connected agents?</div>
+    <p>On the <strong>canvas</strong> in the Command: pick a queue, place agents on it, draw the connections. A sub-queue can override the queue's pipeline — the same override pattern Malkom already uses everywhere else.</p>
+    <p>Agents speak to each other in two ways:</p>
+    <ul class="tight">
+      <li><strong>The shared case record.</strong> Every agent that works on a case writes its results onto the case — fields, confidence numbers, notes. The next agent sees all of it. Nothing is worked out twice. When a person gets the case in HITL, they see the same record.</li>
+      <li><strong>Direct calls.</strong> An agent can call another agent in its pack when it decides it needs help — for example a rate-lookup agent. Which agent may call which is declared on the canvas. Whether and when to actually call is always the agent's own decision.</li>
+    </ul>
+    <p>Important: the pipeline only defines connections <strong>between</strong> agents — who hands work to whom, who may help whom. It never defines the steps <strong>inside</strong> an agent. Inside, every agent follows Rule 1.</p>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>04</b></span>
+    <h2>Testing — on a running system, never in the workshop</h2>
+    <div class="asked"><b>You asked</b>The ability to test created agents directly on the customer's UAT runtime.</div>
+    <p><strong>The factory that builds an agent never also judges it.</strong> The studio's run button is only a quick check while you build. Even that check runs on real plumbing — the same Integration pipes and the same pre-built MCP servers a live case would travel, never a hand-rolled fake. Real testing happens somewhere else: on a deployed, running client runtime.</p>
+    <p>Getting there uses the shipping line you already have. The assembled setup is committed and pushed by the Command's CI/CD — every customer has its own branch, with a UAT and a Prod. It lands on the branch, deploys to a UAT, and is tested there. <strong>Nothing reaches Prod until the Command's CI/CD approves it.</strong></p>
+    <p>There are two running systems it can be tested on, and everything lands at the first before the second:</p>
+    <ol class="steps">
+      <li><span class="n">1</span><p><strong>Malkom's own UAT and Demo.</strong> Fully deployed client runtimes Malkom runs for itself. Whatever we build from the Command bears out here first — before it is ever pushed down to a customer.</p></li>
+      <li><span class="n">2</span><p><strong>The customer's own UAT.</strong> The same setup, on the customer's own running system, only after it has proven out on Malkom's own.</p></li>
+    </ol>
+    <p>On a running UAT — Malkom's or the customer's — the agent is tested three ways:</p>
+    <ol class="steps">
+      <li><span class="n">1</span><p><strong>Replay.</strong> Run on that system's past cases, where the correct answer is already known. Fast, cheap, sends nothing anywhere.</p></li>
+      <li><span class="n">2</span><p><strong>Shadow.</strong> Run on real UAT traffic. The agent does the full work but delivers nothing — its access pass blocks every write, so it cannot change anything even if its code tries. Its answers are compared with what the people actually did. The most reliable test, because the traffic is real.</p></li>
+      <li><span class="n">3</span><p><strong>Canary.</strong> A small share of live UAT traffic, handled for real. If the results get worse, it rolls back on its own.</p></li>
+    </ol>
+    <p>Each run produces a <strong>scorecard</strong>: how often it was right, how fast, what it cost, where it failed. And one fixed gate, enforced by the Command's CI/CD: <strong>no scorecard on a deployed UAT = no promotion to Prod.</strong></p>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>05</b></span>
+    <h2>The shop</h2>
+    <div class="asked"><b>You asked</b>A shop of pre-developed agents per queue, to pick and choose and assemble for an organization.</div>
+    <p>The shop holds <strong>agent packs, built per queue</strong> — your words: a bookings pack works for an ocean liner and a freight forwarder alike. You can attach it to any org that runs that process.</p>
+    <p><strong>The shop feeds assembly.</strong> A ready-made agentic system is piped into an organization while it is assembled — the way in. The finished assembly is what the Command's CI/CD commits to that customer's branch and ships to a UAT — the way out. A pack is never hand-carried: it flows in from the shop and out through the pipeline you already have.</p>
+    <ul class="tight">
+      <li>A pack's card shows <strong>measured numbers</strong>: how often it is right, how much it raises the straight-through rate, cost per case, worst-case speed, and which orgs run it today. Not marketing text.</li>
+      <li>Attaching a pack to an org is done on the canvas: pick the org, pick the queue and sub-queues, set that org's thresholds. Minutes, not a project.</li>
+      <li>Versions never change after publishing. An upgrade is a new version with its own scorecard. You can run two versions on the same case, side by side, before switching.</li>
+      <li>Also important: every case a person completes in HITL becomes a stored example with a known correct answer. These examples are what scorecards are built from. Collection starts on day one.</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>06</b></span>
+    <h2>Input, output, rules, tools — and telemetry that cannot be forgotten</h2>
+    <div class="asked"><b>You asked</b>The ability to define input, output, rules, tools for an agent — with OpenTelemetry by default.</div>
+    <p>All five are defined in the manifest, using the org's own field names:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>what</th><th>how it is defined</th></tr></thead>
+        <tbody>
+          <tr><td>Input</td><td>which task fields the agent may read — these point at the org's existing field schemas, nothing new is invented</td></tr>
+          <tr><td>Output</td><td>which fields it fills in, and the minimum confidence needed on each field before "done" counts</td></tr>
+          <tr><td>Rules</td><td>rule sets and validation sets from the engines the org already runs. Rules are never copied into agent code. One rulebook, used by agents and people alike</td></tr>
+          <tr><td>Tools</td><td>a named list. The MCP gateway blocks any tool not on the list. But the agent alone decides which listed tools to use, when, and how often</td></tr>
+          <tr><td>Telemetry</td><td><strong>on by default, produced by the engine itself</strong> — the agent developer cannot forget it or turn it off. The manifest only adds extra fields and redaction rules on top</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>07</b></span>
+    <h2>One engine for both sides — and how it is packaged</h2>
+    <div class="asked"><b>You asked</b>How do we package agentic in the client runtime? I want engine-based. Can one engine work for both Command and client?</div>
+    <p><strong>Yes. One engine, one repo, several parts</strong> — the same shape as your other engines:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th class="mono">part</th><th>what it does</th><th>used by</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">contract</td><td>the manifest format, the run events, the connection, the access pass — and the <strong>presentation definitions</strong>: how a run reads as plain sentences, how a pipeline draws, the connection words. Small. Fixed early. This is the only part both sides must agree on.</td><td>both</td></tr>
+          <tr><td class="mono">studio</td><td>building agents, versions, replay, shadow, canary, scorecards, the shop</td><td>Command</td></tr>
+          <tr><td class="mono">runner</td><td>runs pipelines and agents: retries, timeouts, resume, park, spend limits. Exposes the <strong>host-integration seam</strong> — the host hands in the AI provider, the tools, the event sink, the adapters; the engine never learns the model's name or the machine it runs on.</td><td>runtime</td></tr>
+          <tr><td class="mono">gateway</td><td>the MCP gateway — tools generated from org config, passes checked, every call recorded</td><td>runtime</td></tr>
+          <tr><td class="mono">adapters</td><td>one per framework, one per workflow engine (Camunda goes here). Also holds the sandbox stand-in model — the one framework-shaped stub the engine keeps, so a draft runs with no provider configured.</td><td>both</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>The engine is the definition centre — and nothing else.</strong> It ships pure capability and pure presentation <em>definitions</em>: schemas, the sentences a timeline reads as, the words on a connection, the shape of a pipeline graph, the fit-checks. It ships no React, no framework, no screen. The screens live in the web apps — Command and the client runtime — and <strong>comply</strong> with those definitions. The test for anything entering the engine: would a Vue, a Python, or a plain-CLI team want this exact package? If it only helps a React app, it belongs in the app, not the engine.</p>
+    <p>Packaging uses the machinery you already have: the runner and the gateway are <strong>containers in the org's bundle</strong>, listed in the engine manifest like every other engine. The org's agent packs travel inside the config bundle, stamped with the config generation, and are promoted from UAT to production unchanged.</p>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>08</b></span>
+    <h2>Where agents run — deployment targets</h2>
+    <div class="asked"><b>You asked</b>How will agentic really be deployed? Will it need its own target beyond the runtime's target? How is that set up in the Command?</div>
+    <p>One question decides it: <strong>where is this org's data allowed to be?</strong> There are three placements. All are set up in the Command's deployment targets — the existing target registry gets a <code>role</code> field (runtime / agent / both), and the org's deployment page gets a placement setting:</p>
+    <ol class="steps">
+      <li><span class="n">1</span><p><strong>Next to the runtime</strong> — extra containers on the org's existing target. This is the default. No data moves anywhere.</p></li>
+      <li><span class="n">2</span><p><strong>Its own agent target</strong> — a second machine for the same org, defined in the Command like any other target. Used when agents need a GPU, different network rules, or would slow down the runtime under heavy load. So yes: an agent target can exist beyond the runtime's target, and setting it up is a page in the Command.</p></li>
+      <li><span class="n">3</span><p><strong>A shared pool on our machines</strong> — only for agents that store nothing and touch nothing except an AI model.</p></li>
+    </ol>
+    <p>The deployer already builds "only the containers this org needs". Agent containers are simply added to that list. Fixed rule: <strong>agents run where the org's data is allowed to be. The Command never receives case data.</strong></p>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>09</b></span>
+    <h2>MCP — yes it is needed, and here is exactly how</h2>
+    <div class="asked"><b>You asked</b>Will MCP be needed? Where are the MCP servers written? How are they packaged for the client? How do they emit telemetry? How do we define what telemetry each run emits?</div>
+    <p><strong>Yes, MCP is needed — you were right.</strong> MCP is how an agent written in any language reaches data safely. And the key decision: <strong>we do not write MCP servers one by one. We build one gateway, and its tools are generated automatically.</strong></p>
+    <ul class="tight">
+      <li><strong>Where it is written:</strong> once, inside the agent engine — the <code>gateway</code> part. Not per customer. Not per queue.</li>
+      <li><strong>How it is packaged:</strong> one container in the org's bundle, like every other engine container.</li>
+      <li><strong>Where its tools come from:</strong> generated from what the org already has — its queues and fields, its deployed engines (rules, validation, integration, extraction), its configured Integrations. Add a new Integration to the org, and the gateway gets a new tool. No code written.</li>
+      <li><strong>Security:</strong> an agent never holds a password or key. For each run it gets a short-lived access pass: one org, one task, the named tools, valid for minutes. Nothing else is reachable.</li>
+      <li><strong>Telemetry from the gateway:</strong> the gateway records and times every tool call itself. So you see exactly what an agent touched, even if the agent's code is badly written.</li>
+      <li><strong>Per-run telemetry:</strong> defined in the manifest — which extra fields to record, what percentage of runs keep a full trace, which values must be redacted before writing. All configurable.</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>10</b></span>
+    <h2>Retries, timeouts, resumption, long-running agents</h2>
+    <div class="asked"><b>You asked</b>How do we handle retries, timeouts, resumption, long-running agents? Engine-based, everything configurable.</div>
+    <p>All of this lives in the <strong>runner</strong>, not in agent code. Agents stay simple; the engine handles the hard parts:</p>
+    <ul class="tight">
+      <li><strong>Retries are configured, and split by type of failure.</strong> A network error or a dead AI endpoint is worth retrying. A wrong answer is not — retrying it costs money and still gives a wrong answer. The manifest states which failure types get retried, how many times, and with what delay.</li>
+      <li><strong>Three limits per run:</strong> a timeout per step, a total time limit, and a money limit. Hitting any limit is a normal ending, not a crash — the case goes to a person. Same principle as "never silently guess": <strong>never silently overspend.</strong></li>
+      <li><strong>Resumption:</strong> every step is written to the event log before the next step starts — the model's reply, the tool's reply, the time. If a machine dies mid-run, the run continues from the last written step. Any old run can also be replayed exactly, which means "why did it do that?" always has an answer.</li>
+      <li><strong>Long-running agents:</strong> the agent ends with <em>parked</em> and states what should wake it — a reply, a document, a date. This uses the existing PARKED task state. No new system is invented.</li>
+    </ul>
+    <p>Every number above is a manifest field, and each org can override it. Nothing is hard-coded.</p>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>11</b></span>
+    <h2>The AI provider</h2>
+    <div class="asked"><b>You asked</b>The AI provider they use can come from Integrations for that client or org.</div>
+    <p>Exactly that. The AI provider is an <strong>Integration, set per org</strong> — configured once, key stored as a vault reference. A pack never names a provider; it uses "this org's AI provider". Changing providers or rotating a key is an Integrations action. No agent changes needed.</p>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>12</b></span>
+    <h2>The UI</h2>
+    <div class="asked"><b>You asked</b>How are new agents created? How are they modified? How do we see the shop? How do we design observability on the client, and the channel that sends agent health and metrics back? Human-centered and top quality.</div>
+    <p>The center of the UI: <strong>one pipeline diagram, used in three places.</strong> The same diagram of a queue's pipeline appears three times and always means the same thing:</p>
+    <ol class="steps">
+      <li><span class="n">1</span><p><strong>Design</strong> — in the Command. Editable. Drag agents in, draw connections. A connection that does not fit (wrong field types) is refused immediately.</p></li>
+      <li><span class="n">2</span><p><strong>Test</strong> — in the Command, running against the customer's UAT. The same diagram replays one real case. Each agent lights up as it works, showing what it read, what it decided, and what it cost.</p></li>
+      <li><span class="n">3</span><p><strong>Monitor</strong> — in the client runtime. The same diagram, live. Case volume moving along the connections. Problems highlighted. This is the client-side monitoring screen.</p></li>
+    </ol>
+    <p>Learn the diagram once, and you understand all three screens. Around it:</p>
+    <ul class="tight">
+      <li><strong>Creating and modifying agents:</strong> the Studio (Challenge 02). Modifying = open the agent, change it, save as a new version, test it, publish it. Published versions never change.</li>
+      <li><strong>The run timeline:</strong> every run, ever, can be opened as a timeline and stepped through — what the agent read, what it decided, which tools it called, what it cost. Every run is recorded, so every run can be reviewed, forever.</li>
+      <li><strong>The shop:</strong> pack cards with measured numbers (Challenge 05), one click away when assembling an org.</li>
+      <li><strong>The health channel back to the Command:</strong> the runtime already sends regular status updates to the Command. Agent health data rides on that same channel — counts, durations, costs, decisions, error types, broken down by org, queue, agent and version. The Command shows all customers' agent health on one screen. <strong>Case data never travels on this channel.</strong> Full run details stay on the client's machine, where the client's own team can see everything.</li>
+      <li><strong>Simple words, enforced:</strong> the UI never shows framework terms. Not "LangGraph node" — "step". Not "MCP tool invocation" — "looked up the customer's rate card". Every agent and every tool must have a plain-language label in its manifest — the manifest is rejected without one. The technical name is one click deeper for whoever wants it.</li>
+      <li><strong>Where the screens live:</strong> in the web apps, not the engine. The engine defines <em>what a run reads as</em> and <em>how a pipeline draws</em> (Challenge 07's presentation definitions); Command and the runtime paint those definitions with their own components. So the diagram and the timeline read identically in both apps — same words, same fit-checks — because both comply with one definition, not because they share one React bundle. A screen can be rebuilt in any framework without touching the engine.</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>13</b></span>
+    <h2>Future frameworks — and Camunda</h2>
+    <div class="asked"><b>You asked</b>How do we make sure completely new frameworks can easily be used in the future? And if a customer insists on their own workflow engine, like Camunda?</div>
+    <p><strong>A new framework = a new adapter.</strong> The contract does not change; the adapter translates. A framework that does not exist yet will cost one adapter when it appears — days of work, not a rewrite. This is what Challenge 01's decision buys permanently.</p>
+    <p><strong>Camunda is also an adapter.</strong> A customer who insists gets an adapter that maps their workflow onto Malkom's pipeline steps. Their engine controls the order of the steps. But four things always stay with Malkom:</p>
+    <ul class="tight">
+      <li>the manifest and the four endings</li>
+      <li>the gateway and the per-run access pass — their workflow never gives an agent a credential</li>
+      <li>the telemetry format</li>
+      <li>the routing to your HITL queue, with work attached</li>
+    </ul>
+    <p>They control the sequence. Malkom keeps the rules, the security, and the audit trail.</p>
+  </section>
+
+  <section>
+    <span class="mark">Challenge <b>14</b></span>
+    <h2>Human-centered and simple — how, exactly</h2>
+    <div class="asked"><b>You asked</b>Everything in the UI developed and tested in a human-centered, simple, easy-to-understand way — how can that be achieved?</div>
+    <ul class="tight">
+      <li><strong>One diagram, learned once</strong> — the three-place pipeline diagram means nobody has to learn three different tools.</li>
+      <li><strong>The simple-words rule is enforced by the software</strong>, not by good intentions — a manifest without plain-language labels is rejected.</li>
+      <li><strong>Agent questions must be quick to answer.</strong> When an agent asks a question, the format is forced: one sentence, two to five choices, and the field the answer fills. Answering takes seconds.</li>
+      <li><strong>Every screen answers exactly one question.</strong> The pipeline diagram: "is my queue healthy?" The run timeline: "why did it do that?" The shop: "is this pack good?" If a screen starts answering two questions, it becomes two screens.</li>
+      <li><strong>Test with real users, every sprint.</strong> An operations person who has never seen Malkom works a real task while we watch. Every place they hesitate becomes the next fix. This repeats forever.</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="mark">Build order</span>
+    <h2>The order of work</h2>
+    <p>Five stages. Each stage produces something that runs, and each builds on the previous one.</p>
+    <ol class="steps">
+      <li><span class="n">1</span><p><strong>Core.</strong> The contract, the runner, the gateway. One real autonomous agent on one queue, on one org's UAT, using all four endings, with HITL handover carrying its work. This proves Rule 1 works end to end.</p></li>
+      <li><span class="n">2</span><p><strong>Studio and canvas.</strong> Agent development inside the Command. Build a second agent entirely in the browser to prove it.</p></li>
+      <li><span class="n">3</span><p><strong>Testing and shop.</strong> Replay, shadow and canary on UAT. Scorecards. The promotion gate. The shop with measured numbers on the cards.</p></li>
+      <li><span class="n">4</span><p><strong>Monitoring.</strong> The live pipeline diagram in the client runtime, the run timeline, and agent health flowing back to the Command.</p></li>
+      <li><span class="n">5</span><p><strong>Adapters and agent targets.</strong> The LangGraph adapter proves any framework can be used. The Camunda adapter proves a customer's workflow engine can be integrated. Separate agent targets for heavy packs.</p></li>
+    </ol>
+  </section>
+
+  <div class="closing">
+    <p><strong>Summary:</strong> agents decide their own steps, inside fixed limits. They are built in the Command, run in the client runtime, and reach production only after passing tests on the customer's own UAT. That is the whole plan.</p>
+  </div>
+
+</div>
+
+</body>
+</html>

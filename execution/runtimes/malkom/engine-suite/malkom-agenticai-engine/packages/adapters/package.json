@@ -1,0 +1,24 @@
+{
+  "name": "@malkom/agenticai-adapters",
+  "version": "0.1.0",
+  "description": "Adapters — one per framework. The adapter passes the goal in and the endings out. It never controls the agent's steps.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "@malkom/agenticai-contract": "*",
+    "ai": "^7.0.66",
+    "zod": "^3.24.1"
+  }
+}

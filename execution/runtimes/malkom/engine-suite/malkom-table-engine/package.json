@@ -1,0 +1,35 @@
+{
+  "name": "malkom-table-engine",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Malkom Table Engine — a first-class, config-driven grid engine for the Malkom runtime client. Wraps Tabulator with a fully typed shell: global search, smart prefilters, excel-style column filters, grouping, persistence, skeletons and pluggable exporters.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -b packages/core packages/react",
+    "build:cjs": "node scripts/build-cjs.mjs",
+    "clean": "tsc -b --clean packages/core packages/react",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:node25": "vitest run --config vitest.node25.config.ts",
+    "test:consumers": "node scripts/check-consumers.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "jsdom": "^25.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tabulator-tables": "^6.3.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "Event Messaging Proof App", "version": "1.0.0" },
+  "paths": {
+    "/api/health": { "get": { "responses": { "200": { "description": "healthy", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Health" } } } } } } },
+    "/api/channels": {
+      "get": { "responses": { "200": { "description": "channels", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ChannelList" } } } } } },
+      "post": {
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CreateName" }, "example": { "name": "Payments" } } } },
+        "responses": {
+          "201": { "description": "created", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ChannelResponse" } } } },
+          "400": { "description": "bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } }
+        }
+      }
+    },
+    "/api/channels/{channelId}/topics": {
+      "post": {
+        "parameters": [{ "name": "channelId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CreateName" }, "example": { "name": "orders.created" } } } },
+        "responses": {
+          "201": { "description": "topic", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/TopicResponse" } } } },
+          "404": { "description": "not found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } }
+        }
+      }
+    },
+    "/api/topics/{topicId}/subscriptions": {
+      "post": {
+        "parameters": [{ "name": "topicId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "201": { "description": "subscription", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SubscriptionResponse" } } } },
+          "404": { "description": "not found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } }
+        }
+      }
+    },
+    "/api/topics/{topicId}/messages": {
+      "post": {
+        "parameters": [{ "name": "topicId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PublishMessage" }, "example": { "payload": { "orderId": "order_1", "amount": 42 } } } } },
+        "responses": {
+          "202": { "description": "accepted", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PublishResponse" } } } },
+          "400": { "description": "bad payload", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } },
+          "404": { "description": "not found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } }
+        }
+      }
+    },
+    "/api/subscriptions/{subscriptionId}/messages": {
+      "get": {
+        "parameters": [{ "name": "subscriptionId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "200": { "description": "messages", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/DeliveredMessages" } } } },
+          "404": { "description": "not found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } }
+        }
+      }
+    },
+    "/api/metrics": { "get": { "responses": { "200": { "description": "metrics", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Metrics" } } } } } } }
+  },
+  "components": {
+    "schemas": {
+      "Health": { "type": "object", "required": ["ok", "service"], "properties": { "ok": { "type": "boolean" }, "service": { "type": "string" } } },
+      "CreateName": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" } } },
+      "Channel": { "type": "object", "required": ["id", "name"], "properties": { "id": { "type": "string" }, "name": { "type": "string" } } },
+      "Topic": { "type": "object", "required": ["id", "channelId", "name"], "properties": { "id": { "type": "string" }, "channelId": { "type": "string" }, "name": { "type": "string" } } },
+      "Subscription": { "type": "object", "required": ["id", "topicId"], "properties": { "id": { "type": "string" }, "topicId": { "type": "string" } } },
+      "Message": { "type": "object", "required": ["id", "topicId", "payload"], "properties": { "id": { "type": "string" }, "topicId": { "type": "string" }, "payload": { "type": "object" } } },
+      "ChannelList": { "type": "object", "required": ["channels", "total"], "properties": { "channels": { "type": "array", "items": { "$ref": "#/components/schemas/Channel" } }, "total": { "type": "integer" } } },
+      "ChannelResponse": { "type": "object", "required": ["channel"], "properties": { "channel": { "$ref": "#/components/schemas/Channel" } } },
+      "TopicResponse": { "type": "object", "required": ["topic"], "properties": { "topic": { "$ref": "#/components/schemas/Topic" } } },
+      "SubscriptionResponse": { "type": "object", "required": ["subscription"], "properties": { "subscription": { "$ref": "#/components/schemas/Subscription" } } },
+      "PublishMessage": { "type": "object", "required": ["payload"], "properties": { "payload": { "type": "object" } } },
+      "PublishResponse": { "type": "object", "required": ["messageId", "delivered"], "properties": { "messageId": { "type": "string" }, "delivered": { "type": "integer" } } },
+      "DeliveredMessages": { "type": "object", "required": ["subscriptionId", "messages", "total"], "properties": { "subscriptionId": { "type": "string" }, "messages": { "type": "array", "items": { "$ref": "#/components/schemas/Message" } }, "total": { "type": "integer" } } },
+      "Metrics": { "type": "object", "required": ["published", "delivered"], "properties": { "published": { "type": "integer" }, "delivered": { "type": "integer" } } },
+      "ErrorResponse": { "type": "object", "required": ["error"], "properties": { "error": { "type": "object", "required": ["code"], "properties": { "code": { "type": "string" } } } } }
+    }
+  }
+}

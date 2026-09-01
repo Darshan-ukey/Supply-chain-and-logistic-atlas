@@ -1,0 +1,14 @@
+{
+  "files": {
+    "ocean-fcl-v0.5.html": {
+      "styleSha256": "3f2d7284bfb6f28ff2174e7fd0a1aac0a6ac6ed8feed637d72e3f7dacda18aac",
+      "rendererJsSha256": "0d5a8cb5cc081fad20970e1cb88a27bf30068908f19a6cd55d57eae7cf0e29d4"
+    },
+    "ocean-lcl-v0.5.html": {
+      "styleSha256": "3f2d7284bfb6f28ff2174e7fd0a1aac0a6ac6ed8feed637d72e3f7dacda18aac",
+      "rendererJsSha256": "0d5a8cb5cc081fad20970e1cb88a27bf30068908f19a6cd55d57eae7cf0e29d4"
+    }
+  },
+  "styleIdentical": true,
+  "rendererJsIdentical": true
+}

@@ -1,0 +1,1244 @@
+[
+  {
+    "taskId": "LTL-01",
+    "lifecycle": {
+      "id": "DW_LTL_01",
+      "name": "Resolve service demand and execution eligibility",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_ELIGIBLE",
+            "OUT_REJECTED"
+          ]
+        },
+        {
+          "key": "OUT_ELIGIBLE",
+          "label": "Eligible",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_REJECTED",
+          "label": "Rejected",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "ELIGIBLE",
+      "REJECTED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-02",
+    "lifecycle": {
+      "id": "DW_LTL_02",
+      "name": "Classify, rate and commit the commercial offer",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_COMMITTED",
+            "OUT_REFERRED",
+            "OUT_REJECTED"
+          ]
+        },
+        {
+          "key": "OUT_COMMITTED",
+          "label": "Committed",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_REFERRED",
+          "label": "Referred",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        },
+        {
+          "key": "OUT_REJECTED",
+          "label": "Rejected",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "COMMITTED",
+      "REFERRED",
+      "REJECTED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-03",
+    "lifecycle": {
+      "id": "DW_LTL_03",
+      "name": "Create and validate shipment, consignment and transport-document identity",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_VALIDATED",
+            "OUT_BLOCKED"
+          ]
+        },
+        {
+          "key": "OUT_VALIDATED",
+          "label": "Validated",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_BLOCKED",
+          "label": "Blocked",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "VALIDATED",
+      "BLOCKED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-04",
+    "lifecycle": {
+      "id": "DW_LTL_04",
+      "name": "Request pickup and prove shipment readiness",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_ACCEPTED",
+            "OUT_CONDITIONAL",
+            "OUT_REJECTED",
+            "OUT_CANCELLED"
+          ]
+        },
+        {
+          "key": "OUT_ACCEPTED",
+          "label": "Accepted",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_CONDITIONAL",
+          "label": "Conditional",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        },
+        {
+          "key": "OUT_REJECTED",
+          "label": "Rejected",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_CANCELLED",
+          "label": "Cancelled",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "ACCEPTED",
+      "CONDITIONAL",
+      "REJECTED",
+      "CANCELLED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-05",
+    "lifecycle": {
+      "id": "DW_LTL_05",
+      "name": "Dispatch pickup, accept freight and establish custody",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_ACCEPTED",
+            "OUT_ACCEPTED_WITH_RESERVATION",
+            "OUT_REFUSED"
+          ]
+        },
+        {
+          "key": "OUT_ACCEPTED",
+          "label": "Accepted",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_ACCEPTED_WITH_RESERVATION",
+          "label": "Accepted With Reservation",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_REFUSED",
+          "label": "Refused",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "ACCEPTED",
+      "ACCEPTED_WITH_RESERVATION",
+      "REFUSED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-06",
+    "lifecycle": {
+      "id": "DW_LTL_06",
+      "name": "Receive at origin service centre and verify handling-unit state",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_RECEIVED",
+            "OUT_HELD",
+            "OUT_EXCEPTION"
+          ]
+        },
+        {
+          "key": "OUT_RECEIVED",
+          "label": "Received",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_HELD",
+          "label": "Held",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        },
+        {
+          "key": "OUT_EXCEPTION",
+          "label": "Exception",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "RECEIVED",
+      "HELD",
+      "EXCEPTION"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-07",
+    "lifecycle": {
+      "id": "DW_LTL_07",
+      "name": "Build consolidation and authorize origin load",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_BUILT_AND_AUTHORIZED",
+            "OUT_BLOCKED"
+          ]
+        },
+        {
+          "key": "OUT_BUILT_AND_AUTHORIZED",
+          "label": "Built And Authorized",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_BLOCKED",
+          "label": "Blocked",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "BUILT_AND_AUTHORIZED",
+      "BLOCKED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-08",
+    "lifecycle": {
+      "id": "DW_LTL_08",
+      "name": "Execute line-haul leg and publish actual movement state",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_IN_TRANSIT",
+            "OUT_ARRIVED",
+            "OUT_STOPPED",
+            "OUT_EXCEPTION"
+          ]
+        },
+        {
+          "key": "OUT_IN_TRANSIT",
+          "label": "In Transit",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_ARRIVED",
+          "label": "Arrived",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_STOPPED",
+          "label": "Stopped",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        },
+        {
+          "key": "OUT_EXCEPTION",
+          "label": "Exception",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "IN_TRANSIT",
+      "ARRIVED",
+      "STOPPED",
+      "EXCEPTION"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-09",
+    "lifecycle": {
+      "id": "DW_LTL_09",
+      "name": "Unload, sort and cross-dock at an intermediate service centre",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_TRANSFERRED",
+            "OUT_STAGED",
+            "OUT_HELD",
+            "OUT_MISSORTED",
+            "OUT_EXCEPTION"
+          ]
+        },
+        {
+          "key": "OUT_TRANSFERRED",
+          "label": "Transferred",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_STAGED",
+          "label": "Staged",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_HELD",
+          "label": "Held",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        },
+        {
+          "key": "OUT_MISSORTED",
+          "label": "Missorted",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        },
+        {
+          "key": "OUT_EXCEPTION",
+          "label": "Exception",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "TRANSFERRED",
+      "STAGED",
+      "HELD",
+      "MISSORTED",
+      "EXCEPTION"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-10",
+    "lifecycle": {
+      "id": "DW_LTL_10",
+      "name": "Transfer or interchange to the next network leg",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_SUCCESSOR_LEG_OPEN",
+            "OUT_TRANSFER_BLOCKED"
+          ]
+        },
+        {
+          "key": "OUT_SUCCESSOR_LEG_OPEN",
+          "label": "Successor Leg Open",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_TRANSFER_BLOCKED",
+          "label": "Transfer Blocked",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "SUCCESSOR_LEG_OPEN",
+      "TRANSFER_BLOCKED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-11",
+    "lifecycle": {
+      "id": "DW_LTL_11",
+      "name": "Deconsolidate and build the destination-delivery load",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_READY",
+            "OUT_HELD",
+            "OUT_EXCEPTION"
+          ]
+        },
+        {
+          "key": "OUT_READY",
+          "label": "Ready",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_HELD",
+          "label": "Held",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        },
+        {
+          "key": "OUT_EXCEPTION",
+          "label": "Exception",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "READY",
+      "HELD",
+      "EXCEPTION"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-12",
+    "lifecycle": {
+      "id": "DW_LTL_12",
+      "name": "Confirm destination readiness, appointment and delivery dispatch",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_DISPATCHED",
+            "OUT_RESCHEDULED",
+            "OUT_HELD"
+          ]
+        },
+        {
+          "key": "OUT_DISPATCHED",
+          "label": "Dispatched",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_RESCHEDULED",
+          "label": "Rescheduled",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        },
+        {
+          "key": "OUT_HELD",
+          "label": "Held",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "DISPATCHED",
+      "RESCHEDULED",
+      "HELD"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-13",
+    "lifecycle": {
+      "id": "DW_LTL_13",
+      "name": "Attempt delivery, capture acceptance/reservations and close custody",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_DELIVERED",
+            "OUT_DELIVERED_WITH_RESERVATION",
+            "OUT_FAILED",
+            "OUT_REFUSED"
+          ]
+        },
+        {
+          "key": "OUT_DELIVERED",
+          "label": "Delivered",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_DELIVERED_WITH_RESERVATION",
+          "label": "Delivered With Reservation",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_FAILED",
+          "label": "Failed",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_REFUSED",
+          "label": "Refused",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "DELIVERED",
+      "DELIVERED_WITH_RESERVATION",
+      "FAILED",
+      "REFUSED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-14",
+    "lifecycle": {
+      "id": "DW_LTL_14",
+      "name": "Detect, classify and assign execution variance",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_DETECTED_CLASSIFIED_OWNED"
+          ]
+        },
+        {
+          "key": "OUT_DETECTED_CLASSIFIED_OWNED",
+          "label": "Detected Classified Owned",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "DETECTED_CLASSIFIED_OWNED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-15",
+    "lifecycle": {
+      "id": "DW_LTL_15",
+      "name": "Contain, replan and recover service",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_RECOVERED",
+            "OUT_ESCALATED",
+            "OUT_CLOSED_WITH_CONSEQUENCE"
+          ]
+        },
+        {
+          "key": "OUT_RECOVERED",
+          "label": "Recovered",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_ESCALATED",
+          "label": "Escalated · runtime binding required",
+          "terminal": false,
+          "holdsClock": true,
+          "to": []
+        },
+        {
+          "key": "OUT_CLOSED_WITH_CONSEQUENCE",
+          "label": "Closed With Consequence",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": false,
+    "blockers": [
+      {
+        "workDefinitionId": "road-ltl:LTL-15",
+        "outcomeCode": "ESCALATED",
+        "nextStep": "ESCALATE",
+        "targetTaskId": "LTL-14",
+        "capability": "workflow.escalate",
+        "reason": "Current Malkom workflow lifecycle does not define required cross-queue/runtime semantics for ESCALATE.",
+        "disposition": "UNSUPPORTED_CURRENT_MALKOM"
+      }
+    ],
+    "supportedOutcomeCodes": [
+      "RECOVERED",
+      "CLOSED_WITH_CONSEQUENCE"
+    ],
+    "unsupportedOutcomeCodes": [
+      "ESCALATED"
+    ]
+  },
+  {
+    "taskId": "LTL-16",
+    "lifecycle": {
+      "id": "DW_LTL_16",
+      "name": "Calculate preliminary and executed freight charges",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_PRELIMINARY",
+            "OUT_ACCRUED",
+            "OUT_BILLABLE",
+            "OUT_IN_DISPUTE"
+          ]
+        },
+        {
+          "key": "OUT_PRELIMINARY",
+          "label": "Preliminary",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_ACCRUED",
+          "label": "Accrued",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_BILLABLE",
+          "label": "Billable",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_IN_DISPUTE",
+          "label": "In Dispute",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "PRELIMINARY",
+      "ACCRUED",
+      "BILLABLE",
+      "IN_DISPUTE"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-17",
+    "lifecycle": {
+      "id": "DW_LTL_17",
+      "name": "Invoice, audit, approve and settle transport obligations",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_INVOICED",
+            "OUT_APPROVED",
+            "OUT_DISPUTED",
+            "OUT_PAID_OR_COLLECTED",
+            "OUT_SETTLED"
+          ]
+        },
+        {
+          "key": "OUT_INVOICED",
+          "label": "Invoiced",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_APPROVED",
+          "label": "Approved",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_DISPUTED",
+          "label": "Disputed",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        },
+        {
+          "key": "OUT_PAID_OR_COLLECTED",
+          "label": "Paid Or Collected",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_SETTLED",
+          "label": "Settled",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "INVOICED",
+      "APPROVED",
+      "DISPUTED",
+      "PAID_OR_COLLECTED",
+      "SETTLED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-18",
+    "lifecycle": {
+      "id": "DW_LTL_18",
+      "name": "Adjudicate cargo/service claim or billing dispute",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_SETTLED",
+            "OUT_DECLINED",
+            "OUT_WITHDRAWN",
+            "OUT_ESCALATED"
+          ]
+        },
+        {
+          "key": "OUT_SETTLED",
+          "label": "Settled",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_DECLINED",
+          "label": "Declined",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_WITHDRAWN",
+          "label": "Withdrawn",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_ESCALATED",
+          "label": "Escalated · runtime binding required",
+          "terminal": false,
+          "holdsClock": true,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": false,
+    "blockers": [
+      {
+        "workDefinitionId": "road-ltl:LTL-18",
+        "outcomeCode": "ESCALATED",
+        "nextStep": "ESCALATE",
+        "targetTaskId": "LTL-14",
+        "capability": "workflow.escalate",
+        "reason": "Current Malkom workflow lifecycle does not define required cross-queue/runtime semantics for ESCALATE.",
+        "disposition": "UNSUPPORTED_CURRENT_MALKOM"
+      }
+    ],
+    "supportedOutcomeCodes": [
+      "SETTLED",
+      "DECLINED",
+      "WITHDRAWN"
+    ],
+    "unsupportedOutcomeCodes": [
+      "ESCALATED"
+    ]
+  },
+  {
+    "taskId": "LTL-19",
+    "lifecycle": {
+      "id": "DW_LTL_19",
+      "name": "Resolve regulatory scope, operate hold/release and retain evidence",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_RESOLVED",
+            "OUT_HELD",
+            "OUT_RELEASED",
+            "OUT_RESEARCH_REQUIRED"
+          ]
+        },
+        {
+          "key": "OUT_RESOLVED",
+          "label": "Resolved",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_HELD",
+          "label": "Held",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        },
+        {
+          "key": "OUT_RELEASED",
+          "label": "Released",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_RESEARCH_REQUIRED",
+          "label": "Research Required",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "RESOLVED",
+      "HELD",
+      "RELEASED",
+      "RESEARCH_REQUIRED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-20",
+    "lifecycle": {
+      "id": "DW_LTL_20",
+      "name": "Assure vehicle, equipment and qualified resource readiness",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_READY",
+            "OUT_BLOCKED"
+          ]
+        },
+        {
+          "key": "OUT_READY",
+          "label": "Ready",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_BLOCKED",
+          "label": "Blocked",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "READY",
+      "BLOCKED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-21",
+    "lifecycle": {
+      "id": "DW_LTL_21",
+      "name": "Reconcile party, location, shipment, unit and network identities",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_RECONCILED",
+            "OUT_BLOCKED"
+          ]
+        },
+        {
+          "key": "OUT_RECONCILED",
+          "label": "Reconciled",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_BLOCKED",
+          "label": "Blocked",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": true,
+    "blockers": [],
+    "supportedOutcomeCodes": [
+      "RECONCILED",
+      "BLOCKED"
+    ],
+    "unsupportedOutcomeCodes": []
+  },
+  {
+    "taskId": "LTL-22",
+    "lifecycle": {
+      "id": "DW_LTL_22",
+      "name": "Coordinate customer communication and resolution evidence",
+      "initialState": "OPEN",
+      "states": [
+        {
+          "key": "OPEN",
+          "label": "Open",
+          "terminal": false,
+          "holdsClock": false,
+          "to": [
+            "OUT_RESOLVED",
+            "OUT_WAITING",
+            "OUT_ESCALATED",
+            "OUT_LINKED_TO_RECOVERY_OR_CLAIM"
+          ]
+        },
+        {
+          "key": "OUT_RESOLVED",
+          "label": "Resolved",
+          "terminal": true,
+          "holdsClock": false,
+          "to": []
+        },
+        {
+          "key": "OUT_WAITING",
+          "label": "Waiting",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        },
+        {
+          "key": "OUT_ESCALATED",
+          "label": "Escalated · runtime binding required",
+          "terminal": false,
+          "holdsClock": true,
+          "to": []
+        },
+        {
+          "key": "OUT_LINKED_TO_RECOVERY_OR_CLAIM",
+          "label": "Linked To Recovery Or Claim",
+          "terminal": false,
+          "holdsClock": true,
+          "to": [
+            "OPEN"
+          ]
+        }
+      ],
+      "slaMinutes": 0,
+      "enabled": true
+    },
+    "materializable": false,
+    "blockers": [
+      {
+        "workDefinitionId": "road-ltl:LTL-22",
+        "outcomeCode": "ESCALATED",
+        "nextStep": "ESCALATE",
+        "targetTaskId": "LTL-14",
+        "capability": "workflow.escalate",
+        "reason": "Current Malkom workflow lifecycle does not define required cross-queue/runtime semantics for ESCALATE.",
+        "disposition": "UNSUPPORTED_CURRENT_MALKOM"
+      }
+    ],
+    "supportedOutcomeCodes": [
+      "RESOLVED",
+      "WAITING",
+      "LINKED_TO_RECOVERY_OR_CLAIM"
+    ],
+    "unsupportedOutcomeCodes": [
+      "ESCALATED"
+    ]
+  }
+]

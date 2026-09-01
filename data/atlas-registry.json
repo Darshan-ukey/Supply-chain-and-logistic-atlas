@@ -1,22 +1,29 @@
 {
   "schemaVersion": "1.1.4",
   "release": {
-    "product": "Supply Chain Operations Intelligence Platform",
-    "releaseName": "Reference Parity v1.1.7",
-    "releaseId": "scoip-v1.1.7-reference-parity-2026.08.24",
+    "product": "Supply Chain Atlas",
+    "releaseName": "Atlas 2.0 Final Integration",
+    "releaseId": "atlas-v2.0-final-integrated",
     "channel": "pilot",
-    "stage": "Reference Parity v1.1.7",
+    "stage": "V2.0 FINAL INTEGRATION",
     "technicalLineage": {
       "atlasProductRelease": "V6.2.3",
       "frozenPage0": "V6.2.2",
-      "roadLtlModule": "V1.2",
+      "roadLtlModule": "V1.3",
       "atlasIntelligence": "v0.6.6",
       "platform": "Stage 23 V1",
       "foundationHardening": "v1.1",
       "fullParityRecovery": "v1.1.4",
       "integrityGuards": "v1.1.5",
       "releaseCertification": "v1.1.6",
-      "legacyNavigationRestoration": "v1.1.7"
+      "legacyNavigationRestoration": "v1.1.7",
+      "universe": "V7.3",
+      "oceanFclModule": "V0.5",
+      "oceanLclModule": "V0.5",
+      "canvas": "V2.0",
+      "universalAsk": "V2.0.1",
+      "atlasWarehouse": "V1",
+      "foundation": "V1.2"
     },
     "canonicalSourceHashes": {
       "page0V6.2.2FrozenOriginal": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
@@ -59,7 +66,11 @@
       "page0V6.2.3": "reference/legacy-v0.6.6/page0-v6.2.3.html",
       "roadLtlV1.2": "reference/legacy-v0.6.6/road-ltl-v1.2.html",
       "frozenPage0V6.2.2": "reference/legacy-v0.6.6/page0-v6.2.2-frozen.html",
-      "frozenIntegrated": "reference/legacy-v0.6.6/page0-road-ltl-v1.2-integrated-frozen.html"
+      "frozenIntegrated": "reference/legacy-v0.6.6/page0-road-ltl-v1.2-integrated-frozen.html",
+      "universeV7_3": "reference/universe-v7.3.html",
+      "roadLtlV1_3": "reference/daughters/road-ltl-v1.3.html",
+      "oceanFclV0_5": "reference/daughters/ocean-fcl-v0.5.html",
+      "oceanLclV0_5": "reference/daughters/ocean-lcl-v0.5.html"
     }
   },
   "baseModule": {
@@ -75,20 +86,40 @@
     {
       "id": "road-ltl",
       "label": "Road LTL / Groupage",
-      "version": "1.2",
+      "version": "1.3",
       "status": "ACTIVE",
       "depth": "A5_VERIFIED",
       "processCount": 22,
       "a3Count": 13,
       "edgeCount": 39,
       "sourceCount": 29,
-      "source": "data/modules/road-ltl-v1.2.json"
+      "source": "data/modules/road-ltl-v1.3.json"
+    },
+    {
+      "id": "ocean-fcl",
+      "label": "Ocean FCL / Full Container Load",
+      "version": "0.5",
+      "status": "ACTIVE",
+      "depth": "A5_VERIFIED",
+      "processCount": 30,
+      "a3Count": 15,
+      "edgeCount": 56,
+      "source": "data/modules/ocean-fcl-v0.5.json"
+    },
+    {
+      "id": "ocean-lcl",
+      "label": "Ocean LCL / Less than Container Load",
+      "version": "0.5",
+      "status": "ACTIVE",
+      "depth": "A5_VERIFIED",
+      "processCount": 30,
+      "a3Count": 14,
+      "edgeCount": 56,
+      "source": "data/modules/ocean-lcl-v0.5.json"
     }
   ],
   "plannedModules": [
     "road-ftl",
-    "ocean-fcl",
-    "ocean-lcl",
     "air-cargo",
     "rail-freight",
     "inland-waterway",
@@ -146,15 +177,15 @@
       "id": "ocean-fcl",
       "name": "Ocean FCL",
       "family": "Mode & Service Execution Models",
-      "status": "PLANNED",
-      "depth": "REFERENCE_ONLY"
+      "status": "ACTIVE",
+      "depth": "A5_VERIFIED"
     },
     {
       "id": "ocean-lcl",
       "name": "Ocean LCL",
       "family": "Mode & Service Execution Models",
-      "status": "PLANNED",
-      "depth": "REFERENCE_ONLY"
+      "status": "ACTIVE",
+      "depth": "A5_VERIFIED"
     },
     {
       "id": "air-cargo",
@@ -214,7 +245,7 @@
     },
     {
       "id": "sea-air",
-      "name": "Sea\u2013Air",
+      "name": "Sea–Air",
       "family": "Movement Patterns",
       "status": "PLANNED",
       "depth": "REFERENCE_ONLY"
@@ -277,7 +308,7 @@
     },
     {
       "id": "carrier-role-family",
-      "name": "Carrier \u00b7 Role Family",
+      "name": "Carrier · Role Family",
       "family": "Operating Models",
       "status": "PLANNED",
       "depth": "REFERENCE_ONLY"

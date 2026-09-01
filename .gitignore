@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+.vercel/
+*.log
+# V2 protected execution IP must not be committed into a public GitHub repository.
+road-ltl-workdefinition-registry-v2.json
+*PRIVATE_WORKDEFINITION_SEED*.json
+private-seed/

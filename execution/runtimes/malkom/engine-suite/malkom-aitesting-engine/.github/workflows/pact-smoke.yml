@@ -1,0 +1,42 @@
+name: Pact Smoke
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pact-smoke:
+    name: Real Pact Message Adapter Smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Run Pact adapter smoke
+        run: npm run smoke:pact
+
+      - name: Upload Pact artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brisk-aitesting-pact-artifacts
+          path: |
+            .brisk-aitesting-pact-smoke/**
+          if-no-files-found: ignore
+          retention-days: 7

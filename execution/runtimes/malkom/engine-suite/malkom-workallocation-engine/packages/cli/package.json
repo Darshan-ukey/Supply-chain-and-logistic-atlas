@@ -1,0 +1,20 @@
+{
+  "name": "@malkom/alloc-cli",
+  "version": "0.1.0",
+  "description": "Malkom work allocation engine — ops CLI. A pure typed client of the REST control plane; contains zero engine logic.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "main": "./dist/bin.js",
+  "bin": {
+    "malkom-alloc": "./dist/bin.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@malkom/alloc-core": "*"
+  }
+}

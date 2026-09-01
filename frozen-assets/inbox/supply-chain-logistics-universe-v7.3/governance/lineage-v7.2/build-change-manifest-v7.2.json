@@ -1,0 +1,33 @@
+{
+  "release": "Universe V7.2",
+  "version": "7.2.0",
+  "date": "2026-08-30",
+  "baseline": {
+    "file": "Supply-Chain-Logistics-Universe-V7.1.html",
+    "sha256": "8570cc045b60001447f03dde8b2ba970b43f55802458d3ca9cf0e92713825cb8"
+  },
+  "artifact": {
+    "file": "Supply-Chain-Logistics-Universe-V7.2.html",
+    "sha256": "a9408b8a06e580a397256e86893e782ebc62c9fab61553dc16094b760e6dec8a"
+  },
+  "approvedChanges": [
+    "Add UN/CEFACT multimodal visibility/collaboration BRS v1.0 source + one parent reference placement",
+    "Refresh CTU revision-watch metadata without replacing 2014 baseline",
+    "Refresh Negotiable Cargo Documents Convention legal-status metadata without changing applicability",
+    "Advance release identity 7.1.0 \u2192 7.2.0"
+  ],
+  "protectedNoChange": [
+    "71 destinations",
+    "27 lenses",
+    "9 cycles",
+    "51 context rules",
+    "728 compatibility combinations",
+    "canonical entity IDs",
+    "relationship vocabulary",
+    "36 directional exchanges",
+    "Road LTL daughter",
+    "Location Master stable identity",
+    "v1.1.8 Canvas/Intelligence code"
+  ],
+  "nextCorrectionPolicy": "New parent findings queue for Universe V7.3."
+}

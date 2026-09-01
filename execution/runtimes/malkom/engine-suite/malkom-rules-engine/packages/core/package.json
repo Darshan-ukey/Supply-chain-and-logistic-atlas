@@ -1,0 +1,32 @@
+{
+  "name": "@malkom/rules-core",
+  "version": "0.2.0",
+  "description": "Malkom rules engine core: entity registry, rule groups, selector-indexed evaluation, lifecycle + decision log, rule-domain queries, backtesting, and the control-plane router.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "zod": "^4.0.0"
+  },
+  "keywords": [
+    "rules-engine",
+    "business-rules",
+    "decision-engine",
+    "queue",
+    "metadata-driven",
+    "typescript"
+  ]
+}

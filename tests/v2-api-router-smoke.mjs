@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import path from 'node:path';
+let failures=0;const check=(ok,label)=>{console.log(`${ok?'PASS':'FAIL'} · ${label}`);if(!ok)failures++};
+const root=process.cwd();
+const api=fs.readdirSync(path.join(root,'api')).filter(x=>x.endsWith('.js')).sort();
+check(api.length===8,`Vercel top-level function count remains 8 / <=12 · ${api.length}`);
+const auth=fs.readFileSync(path.join(root,'api/auth.js'),'utf8');
+const atlas=fs.readFileSync(path.join(root,'api/atlas.js'),'utf8');
+for(const a of ['auth-admin-login','auth-admin-session','auth-admin-logout'])check(auth.includes(a),`auth router exposes ${a}`);
+check(atlas.includes('admin-workdefinitions'),'atlas router exposes protected admin-workdefinitions action');
+const v=JSON.parse(fs.readFileSync(path.join(root,'vercel.json'),'utf8'));
+const rw=new Map((v.rewrites||[]).map(x=>[x.source,x.destination]));
+for(const src of ['/api/auth-admin-login','/api/auth-admin-session','/api/auth-admin-logout','/api/admin-workdefinitions','/admin'])check(rw.has(src),`Vercel rewrite present · ${src}`);
+check(v.functions?.['api/*.js']?.maxDuration===30,'existing consolidated api/*.js function policy preserved');
+console.log(failures?`FAIL · ${failures} API/router check(s) failed`:'PASS · V2 API/router · 8 consolidated functions retained');
+if(failures)process.exit(1);

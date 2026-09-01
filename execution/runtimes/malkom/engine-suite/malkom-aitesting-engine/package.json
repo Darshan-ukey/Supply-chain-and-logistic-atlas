@@ -1,0 +1,136 @@
+{
+  "name": "brisk-aitesting",
+  "version": "0.2.0",
+  "description": "Locally embeddable software testing engine using AI planning and precise execution.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Hasmukh Jain",
+  "contributors": [
+    "Hasmukh Jain"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oshjain/brisk-aitesting.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oshjain/brisk-aitesting/issues"
+  },
+  "homepage": "https://github.com/oshjain/brisk-aitesting#readme",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "brisk-aitesting": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.map",
+    "README.md",
+    "CHANGELOG.md",
+    "adapters/manifest.json",
+    "docs/GETTING_STARTED.md",
+    "docs/HOST_INTEGRATION.md",
+    "docs/CONFIGURATION.md",
+    "docs/API_REFERENCE.md",
+    "docs/SECURITY.md",
+    "docs/TROUBLESHOOTING.md",
+    "docs/COMPATIBILITY.md",
+    "docs/UNIVERSAL_COMPILER.md",
+    "docs/EVIDENCE_PROVIDERS.md",
+    "docs/EVIDENCE_AUTHORITY.md",
+    "docs/INCREMENTAL_RECOMPILATION.md",
+    "docs/TYPED_VALUE_FLOW.md",
+    "docs/OPERATION_LIFECYCLE.md",
+    "docs/CLEANUP_AND_RECOVERY.md",
+    "docs/FIXTURE_PROVISIONING.md",
+    "docs/SYSTEM_COMPATIBILITY_FOUNDATIONS.md",
+    "docs/CROSS_ARCHITECTURE_PROOF.md",
+    "docs/engineering/REAL_SYSTEM_PROOF_LOG.md",
+    "docs/engineering/REAL_SYSTEM_CHANGE_GATE.md",
+    "docs/engineering/REAL_SYSTEM_TARGET_DEPTH.md",
+    "docs/engineering/REAL_SYSTEM_AI_PIPELINE.md",
+    "docs/engineering/WORLD_CLASS_REAL_VALIDATION_GATE.md"
+  ],
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "npm run clean && tsc",
+    "smoke": "node smoke/run-smoke.mjs",
+    "smoke:contracts": "node smoke/run-contracts.mjs",
+    "smoke:engine-conformance": "node smoke/run-engine-conformance.mjs",
+    "smoke:auth-login": "node smoke/run-auth-login.mjs",
+    "smoke:check-accounting": "node smoke/run-check-accounting.mjs",
+    "smoke:value-identity": "node smoke/run-value-identity.mjs",
+    "smoke:plugin-conformance": "node smoke/run-plugin-conformance.mjs",
+    "smoke:extension-conformance": "node smoke/run-extension-conformance.mjs",
+    "smoke:adapter-readiness": "node smoke/run-adapter-readiness.mjs",
+    "smoke:schemathesis": "node smoke/run-schemathesis-smoke.mjs",
+    "smoke:specmatic": "node smoke/run-specmatic-smoke.mjs",
+    "smoke:pact": "node smoke/run-pact-smoke.mjs",
+    "smoke:reference-serious-saas": "node smoke/run-reference-serious-saas.mjs",
+    "smoke:reference-proof-apps": "node smoke/run-reference-proof-apps.mjs",
+    "smoke:golden-fixtures": "node smoke/run-golden-fixtures.mjs",
+    "smoke:cli": "node smoke/run-cli.mjs",
+    "smoke:ai-fixtures": "node smoke/run-ai-fixtures.mjs",
+    "smoke:empty-response-recovery": "node smoke/run-empty-response-recovery.mjs",
+    "smoke:no-generation-recipe-recovery": "node smoke/run-no-generation-recipe-recovery.mjs",
+    "smoke:ai-fault-matrix": "node smoke/run-ai-fault-matrix.mjs",
+    "smoke:real-ai": "node smoke/run-real-ai-smoke.mjs",
+    "smoke:real-ai-directus": "node smoke/run-real-ai-directus.mjs",
+    "smoke:packed-real-ai-directus": "npm run build && node smoke/run-packed-real-ai-directus.mjs",
+    "smoke:real-ai-brisk": "node smoke/run-real-ai-brisk.mjs",
+    "smoke:real-validation-contracts": "node smoke/run-real-validation-contracts.mjs",
+    "smoke:reliability": "node smoke/run-reliability.mjs",
+    "smoke:universal-compiler": "node smoke/run-universal-compiler.mjs",
+    "smoke:fixture-provisioning": "node smoke/run-fixture-provisioning.mjs",
+    "smoke:semantic-workflow": "node smoke/run-semantic-workflow.mjs",
+    "smoke:engineering-records": "node smoke/run-engineering-records.mjs",
+    "smoke:host-config": "node smoke/run-host-config.mjs",
+    "smoke:pipeline-contracts": "node smoke/run-pipeline-contracts.mjs",
+    "smoke:evidence-acquisition": "node smoke/run-evidence-acquisition.mjs",
+    "smoke:evidence-provider-conformance": "node smoke/run-evidence-provider-conformance.mjs",
+    "smoke:evidence-provider-security": "node smoke/run-evidence-provider-security.mjs",
+    "smoke:evidence-worker-security": "node smoke/run-evidence-worker-security.mjs",
+    "smoke:evidence-conflicts": "node smoke/run-evidence-conflicts.mjs",
+    "smoke:incremental-recompilation": "node smoke/run-incremental-recompilation.mjs",
+    "smoke:typed-value-flow": "node smoke/run-typed-value-flow.mjs",
+    "smoke:operation-lifecycle": "node smoke/run-operation-lifecycle.mjs",
+    "smoke:real-system-lab": "node smoke/run-real-system-lab.mjs",
+    "smoke:real-system-target-inventory": "node smoke/run-real-system-target-inventory.mjs",
+    "smoke:ci": "npm run smoke:engineering-records && npm run smoke:host-config && npm run smoke:pipeline-contracts && npm run smoke:evidence-acquisition && npm run smoke:evidence-provider-conformance && npm run smoke:evidence-provider-security && npm run smoke:evidence-worker-security && npm run smoke:evidence-conflicts && npm run smoke:incremental-recompilation && npm run smoke:typed-value-flow && npm run smoke:operation-lifecycle && npm run smoke:contracts && npm run smoke:universal-compiler && npm run smoke:fixture-provisioning && npm run smoke:semantic-workflow && npm run smoke:engine-conformance && npm run smoke:auth-login && npm run smoke:check-accounting && npm run smoke:value-identity && npm run smoke:plugin-conformance && npm run smoke:extension-conformance && npm run smoke:adapter-readiness && npm run smoke:reference-serious-saas && npm run smoke:reference-proof-apps && npm run smoke:pact && npm run smoke:golden-fixtures && npm run smoke:cli && npm run smoke:ai-fixtures && npm run smoke:empty-response-recovery && npm run smoke:no-generation-recipe-recovery && npm run smoke:ai-fault-matrix && npm run smoke:reliability && npm run smoke && npm run pack:check",
+    "smoke:all": "npm run smoke:ci && npm run smoke:real-ai",
+    "try:local": "npm run build && npm run smoke:cli && npm run smoke:reference-serious-saas",
+    "benchmark": "npm run build && node smoke/run-benchmark.mjs",
+    "pack:check": "npm run build && node smoke/run-pack-check.mjs",
+    "release:check": "npm run typecheck && npm run build && npm run smoke:ci && npm run benchmark && node smoke/run-release-readiness.mjs",
+    "typecheck": "tsc --noEmit",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "clean:artifacts": "node dist/cli.js clean"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "peerDependencies": {
+    "@playwright/test": ">=1.52.0"
+  },
+  "peerDependenciesMeta": {
+    "@playwright/test": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@pact-foundation/pact": "^17.0.1",
+    "@playwright/test": "^1.62.0",
+    "@tailwindcss/cli": "^4.3.3",
+    "@types/node": "^22.0.0",
+    "specmatic": "^2.51.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "dependencies": {
+    "@apidevtools/swagger-parser": "^12.1.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "jsonpath-rfc9535": "^1.3.0",
+    "openapi-sampler": "^1.7.4",
+    "typescript": "^5.8.0",
+    "yaml": "^2.9.0"
+  }
+}

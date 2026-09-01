@@ -1,0 +1,2530 @@
+{
+  "release": "Road LTL V1.3",
+  "failures": 0,
+  "results": {
+    "390": {
+      "title": "Road LTL / Groupage Execution Atlas V1.2 Frozen Child",
+      "nav": [
+        "Overview",
+        "Compose context",
+        "Execution graph",
+        "Reference configurations",
+        "Enterprise lenses",
+        "Sources"
+      ],
+      "overflow": 0,
+      "integrity": {
+        "status": "passed",
+        "errors": [],
+        "warnings": [],
+        "version": "Road LTL V1.3 Freeze Candidate",
+        "page0Version": "V6.2.2",
+        "page0Changed": false,
+        "page0Inheritance": "PASS",
+        "processCount": 22,
+        "a3ParentCount": 13,
+        "a4WorkflowCount": 22,
+        "a5EntityCount": 198,
+        "processFlowRelationshipCount": 39,
+        "ontologyRelationshipCount": 176,
+        "executionTransitionCount": 22,
+        "projectionCount": 12,
+        "enterpriseLensCount": 27,
+        "overlayFamilyCount": 8,
+        "sourceCount": 29,
+        "referenceConfigurationCount": 10,
+        "compositionTestCount": 18,
+        "visibleAuditLog": false,
+        "releaseConclusion": "ROAD LTL V1.3 — READY FOR FINAL FREEZE AUDIT"
+      },
+      "modelVersion": "V1.3",
+      "processCount": 22,
+      "enriched": true,
+      "direct": {
+        "context": {
+          "role": "shipper",
+          "movement": "mp-direct-shipment",
+          "node": "none",
+          "lens": "none",
+          "jurisdiction": "none",
+          "regimes": [],
+          "conditions": [],
+          "contract": "contract-unresolved",
+          "view": "end",
+          "query": "",
+          "intent": "all",
+          "selected": null,
+          "notice": ""
+        },
+        "compatibilityIssues": [],
+        "activeNodes": [
+          "LTL-01",
+          "LTL-02",
+          "LTL-03",
+          "LTL-04",
+          "LTL-05",
+          "LTL-08",
+          "LTL-12",
+          "LTL-13",
+          "LTL-16",
+          "LTL-17"
+        ],
+        "availableNodes": [
+          "LTL-20",
+          "LTL-14",
+          "LTL-15",
+          "LTL-18",
+          "LTL-19",
+          "LTL-21",
+          "LTL-22"
+        ],
+        "bypassedNodes": [
+          "LTL-06",
+          "LTL-07",
+          "LTL-09",
+          "LTL-10",
+          "LTL-11"
+        ],
+        "blockedNodes": [],
+        "incompatibleNodes": [],
+        "activeEdges": [
+          {
+            "id": "FLOW-01",
+            "from": "LTL-01",
+            "type": "PRECEDES",
+            "to": "LTL-02"
+          },
+          {
+            "id": "FLOW-02",
+            "from": "LTL-02",
+            "type": "PRECEDES",
+            "to": "LTL-03"
+          },
+          {
+            "id": "FLOW-03",
+            "from": "LTL-03",
+            "type": "PRECEDES",
+            "to": "LTL-04"
+          },
+          {
+            "id": "FLOW-04",
+            "from": "LTL-04",
+            "type": "PRECEDES",
+            "to": "LTL-05"
+          },
+          {
+            "id": "FLOW-15",
+            "from": "LTL-12",
+            "type": "PRECEDES",
+            "to": "LTL-13"
+          },
+          {
+            "id": "FLOW-16",
+            "from": "LTL-02",
+            "type": "ENABLES",
+            "to": "LTL-16"
+          },
+          {
+            "id": "FLOW-19",
+            "from": "LTL-13",
+            "type": "PRECEDES",
+            "to": "LTL-16"
+          },
+          {
+            "id": "FLOW-20",
+            "from": "LTL-16",
+            "type": "PRECEDES",
+            "to": "LTL-17"
+          },
+          {
+            "id": "VAR-DIRECT-01",
+            "from": "LTL-05",
+            "type": "DIRECT_VARIANT_TO",
+            "to": "LTL-08",
+            "variant": "DIRECT_SHIPMENT"
+          },
+          {
+            "id": "VAR-DIRECT-02",
+            "from": "LTL-08",
+            "type": "DIRECT_VARIANT_TO",
+            "to": "LTL-12",
+            "variant": "DIRECT_SHIPMENT"
+          }
+        ],
+        "conditionalEdges": [],
+        "bypassEdges": [
+          {
+            "id": "VAR-DIRECT-01",
+            "from": "LTL-05",
+            "type": "DIRECT_VARIANT_TO",
+            "to": "LTL-08",
+            "variant": "DIRECT_SHIPMENT"
+          },
+          {
+            "id": "VAR-DIRECT-02",
+            "from": "LTL-08",
+            "type": "DIRECT_VARIANT_TO",
+            "to": "LTL-12",
+            "variant": "DIRECT_SHIPMENT"
+          }
+        ],
+        "recoveryEdges": [],
+        "iterationEdges": [],
+        "projection": [
+          {
+            "processId": "LTL-01",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-02",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-03",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-04",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-20",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-05",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-06",
+            "disposition": "BYPASSED",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-07",
+            "disposition": "BYPASSED",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-08",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-09",
+            "disposition": "BYPASSED",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-10",
+            "disposition": "BYPASSED",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-11",
+            "disposition": "BYPASSED",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-12",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-13",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-14",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-15",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-16",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-17",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-18",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-19",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-21",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-22",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          }
+        ],
+        "responsibilities": {
+          "LTL-01": [
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "OWNS",
+                "PROVIDES_INPUT",
+                "AUTHORIZES"
+              ],
+              "basis": "Demand and service request",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "When contractually appointed",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Receives eligible request",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-02": [
+            {
+              "actorId": "actor-pricing",
+              "actorName": "Pricing / rating authority",
+              "responsibilities": [
+                "PERFORMS",
+                "OWNS",
+                "APPROVES"
+              ],
+              "basis": "Rate and exception authority",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Cargo and service facts",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "BILLS"
+              ],
+              "basis": "When carrier owns the offer",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-03": [
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "AUTHORIZES"
+              ],
+              "basis": "Party, cargo and instruction data",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "RECEIVES_OUTPUT",
+                "OBSERVES"
+              ],
+              "basis": "Execution identity consumer",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-forwarder",
+              "actorName": "Freight forwarder",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Where mandated",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-04": [
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "ARRANGES"
+              ],
+              "basis": "Pickup request and readiness",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "AUTHORIZES",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Accepts or rejects pickup",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Where appointed",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-20": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "OWNS",
+                "AUTHORIZES"
+              ],
+              "basis": "Vehicle/resource readiness",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-warehouse-operator",
+              "actorName": "Warehouse / terminal operator",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "OBSERVES"
+              ],
+              "basis": "Facility compatibility and readiness",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-05": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "OWNS"
+              ],
+              "basis": "Pickup and physical acceptance",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Tenders freight and receives acceptance evidence",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Where appointed",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-06": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "OWNS"
+              ],
+              "basis": "Origin terminal execution",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-warehouse-operator",
+              "actorName": "Warehouse / terminal operator",
+              "responsibilities": [
+                "PERFORMS",
+                "OBSERVES"
+              ],
+              "basis": "When separately operated",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-07": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "AUTHORIZES"
+              ],
+              "basis": "Consolidation and load authorization",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-warehouse-operator",
+              "actorName": "Warehouse / terminal operator",
+              "responsibilities": [
+                "PERFORMS",
+                "PROVIDES_INPUT"
+              ],
+              "basis": "Sort/load operations where appointed",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-08": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "OWNS"
+              ],
+              "basis": "Road line-haul leg",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-4pl",
+              "actorName": "4PL / LLP",
+              "responsibilities": [
+                "OBSERVES",
+                "ESCALATES"
+              ],
+              "basis": "Managed-control context only",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-09": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY"
+              ],
+              "basis": "Intermediate terminal receipt/sort",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-warehouse-operator",
+              "actorName": "Warehouse / terminal operator",
+              "responsibilities": [
+                "PERFORMS",
+                "OBSERVES"
+              ],
+              "basis": "When separately operated",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-10": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Transfer and custody evidence",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-forwarder",
+              "actorName": "Freight forwarder",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Wider multi-leg mandate",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-4pl",
+              "actorName": "4PL / LLP",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Managed multi-provider context",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-11": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "OWNS"
+              ],
+              "basis": "Destination terminal execution",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-warehouse-operator",
+              "actorName": "Warehouse / terminal operator",
+              "responsibilities": [
+                "PERFORMS",
+                "OBSERVES"
+              ],
+              "basis": "When separately operated",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-12": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "AUTHORIZES"
+              ],
+              "basis": "Delivery readiness and dispatch",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-consignee",
+              "actorName": "Consignee / receiving party",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Appointment/readiness where applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-13": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "PROVIDES_INPUT"
+              ],
+              "basis": "Delivery attempt and evidence capture",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-consignee",
+              "actorName": "Consignee / receiving party",
+              "responsibilities": [
+                "RECEIVES_OUTPUT",
+                "PROVIDES_INPUT"
+              ],
+              "basis": "Receipt, refusal or qualification",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-customer",
+              "actorName": "Customer / entitled party",
+              "responsibilities": [
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Receives delivery status/evidence",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-14": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "ESCALATES"
+              ],
+              "basis": "Observed execution variance",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "OWNS",
+                "OBSERVES",
+                "ESCALATES"
+              ],
+              "basis": "When managed service owns the case",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-4pl",
+              "actorName": "4PL / LLP",
+              "responsibilities": [
+                "OWNS",
+                "OBSERVES",
+                "ESCALATES"
+              ],
+              "basis": "When lead-logistics control applies",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-15": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "PROVIDES_INPUT"
+              ],
+              "basis": "Physical recovery actions",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "ARRANGES",
+                "OWNS",
+                "ESCALATES"
+              ],
+              "basis": "Managed recovery",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "APPROVES",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Where commercial approval is required",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-16": [
+            {
+              "actorId": "actor-pricing",
+              "actorName": "Pricing / rating authority",
+              "responsibilities": [
+                "PERFORMS",
+                "APPROVES"
+              ],
+              "basis": "Executed charge calculation",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "BILLS",
+                "PROVIDES_INPUT"
+              ],
+              "basis": "Carrier revenue/charge evidence",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PAYS",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Customer/payer context",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Managed charge visibility",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-17": [
+            {
+              "actorId": "actor-finance",
+              "actorName": "Billing, audit, AR/AP or treasury",
+              "responsibilities": [
+                "PERFORMS",
+                "OWNS",
+                "APPROVES",
+                "AUTHORIZES"
+              ],
+              "basis": "Invoice, audit and settlement control",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "BILLS",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Carrier receivable",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PAYS",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Customer or buyer payable",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-18": [
+            {
+              "actorId": "actor-claims",
+              "actorName": "Claims / dispute function",
+              "responsibilities": [
+                "PERFORMS",
+                "OWNS",
+                "APPROVES"
+              ],
+              "basis": "Claim/dispute adjudication",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Claimant/payer as applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Carrier/respondent as applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-insurer",
+              "actorName": "Insurer / recovery party",
+              "responsibilities": [
+                "OBSERVES",
+                "PAYS",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Only where policy/coverage applies",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-19": [
+            {
+              "actorId": "actor-customs-broker",
+              "actorName": "Customs broker",
+              "responsibilities": [
+                "PERFORMS",
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Only under authorized mandate",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-competent-authority",
+              "actorName": "Competent authority",
+              "responsibilities": [
+                "REGULATES",
+                "AUTHORIZES",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Only within operative jurisdiction/procedure",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "OBSERVES"
+              ],
+              "basis": "Duty holder where applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "OWNS"
+              ],
+              "basis": "Compliance obligation where applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-21": [
+            {
+              "actorId": "actor-data-steward",
+              "actorName": "Data steward",
+              "responsibilities": [
+                "PERFORMS",
+                "OWNS",
+                "APPROVES"
+              ],
+              "basis": "Identity survivorship and publication",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Master/reference-data consumer",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Execution identity consumer",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-22": [
+            {
+              "actorId": "actor-customer",
+              "actorName": "Customer / entitled party",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Authenticated service interaction",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "OWNS",
+                "APPROVES"
+              ],
+              "basis": "Customer promise/entitlement where applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "PERFORMS",
+                "ARRANGES",
+                "ESCALATES"
+              ],
+              "basis": "Managed customer interface",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "PERFORMS"
+              ],
+              "basis": "Carrier service response where applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ]
+        },
+        "sourceStates": [
+          {
+            "sourceId": "src-scor",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-01",
+              "LTL-20",
+              "LTL-07",
+              "LTL-09",
+              "LTL-11",
+              "LTL-14",
+              "LTL-15",
+              "LTL-21"
+            ]
+          },
+          {
+            "sourceId": "src-apqc-pcf",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-01",
+              "LTL-02",
+              "LTL-20",
+              "LTL-12",
+              "LTL-13",
+              "LTL-14",
+              "LTL-15",
+              "LTL-16",
+              "LTL-17",
+              "LTL-18",
+              "LTL-22"
+            ]
+          },
+          {
+            "sourceId": "src-uncefact-rdm",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-01",
+              "LTL-02",
+              "LTL-03",
+              "LTL-04",
+              "LTL-07",
+              "LTL-08",
+              "LTL-10",
+              "LTL-11",
+              "LTL-12",
+              "LTL-17",
+              "LTL-21"
+            ]
+          },
+          {
+            "sourceId": "src-gs1-genspec",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-06",
+              "LTL-21"
+            ]
+          },
+          {
+            "sourceId": "src-gs1-epcis",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-05",
+              "LTL-06",
+              "LTL-07",
+              "LTL-08",
+              "LTL-09",
+              "LTL-10",
+              "LTL-11",
+              "LTL-13",
+              "LTL-14"
+            ]
+          },
+          {
+            "sourceId": "src-gs1-cbv",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-06",
+              "LTL-08",
+              "LTL-09"
+            ]
+          },
+          {
+            "sourceId": "src-nmfta-dsdc-ltl",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03"
+            ]
+          },
+          {
+            "sourceId": "src-dsdc-pickup",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-04"
+            ]
+          },
+          {
+            "sourceId": "src-dsdc-pfc",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-16"
+            ]
+          },
+          {
+            "sourceId": "src-dsdc-visibility-draft",
+            "relationshipState": "RESEARCH_REQUIRED",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-08"
+            ]
+          },
+          {
+            "sourceId": "src-nmfc",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-02",
+              "LTL-06"
+            ]
+          },
+          {
+            "sourceId": "src-x12",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-04",
+              "LTL-08",
+              "LTL-16",
+              "LTL-17"
+            ]
+          },
+          {
+            "sourceId": "src-49cfr373",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03",
+              "LTL-05"
+            ]
+          },
+          {
+            "sourceId": "src-fmcsa-roles",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "AVAILABLE / UNMAPPED",
+            "processIds": []
+          },
+          {
+            "sourceId": "src-49cfr177",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-49usc14706",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-18"
+            ]
+          },
+          {
+            "sourceId": "src-49cfr370",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-18"
+            ]
+          },
+          {
+            "sourceId": "src-cmr",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03",
+              "LTL-05",
+              "LTL-10",
+              "LTL-13",
+              "LTL-18",
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-ecmr",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03"
+            ]
+          },
+          {
+            "sourceId": "src-adr",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-atp",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-tir",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-india-eway",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-wco-dm",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-iso14083",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "CANDIDATE OVERLAY SOURCE",
+            "processIds": []
+          },
+          {
+            "sourceId": "src-iso10002",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-14",
+              "LTL-15",
+              "LTL-18",
+              "LTL-22"
+            ]
+          },
+          {
+            "sourceId": "src-uncefact-ecmr-brs",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "AVAILABLE / UNMAPPED",
+            "processIds": []
+          },
+          {
+            "sourceId": "src-nmfta-scac",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03",
+              "LTL-21"
+            ]
+          },
+          {
+            "sourceId": "src-nmfta-splc",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03",
+              "LTL-08",
+              "LTL-21"
+            ]
+          }
+        ],
+        "researchGaps": []
+      }
+    },
+    "1440": {
+      "title": "Road LTL / Groupage Execution Atlas V1.2 Frozen Child",
+      "nav": [
+        "Overview",
+        "Compose context",
+        "Execution graph",
+        "Reference configurations",
+        "Enterprise lenses",
+        "Sources"
+      ],
+      "overflow": 0,
+      "integrity": {
+        "status": "passed",
+        "errors": [],
+        "warnings": [],
+        "version": "Road LTL V1.3 Freeze Candidate",
+        "page0Version": "V6.2.2",
+        "page0Changed": false,
+        "page0Inheritance": "PASS",
+        "processCount": 22,
+        "a3ParentCount": 13,
+        "a4WorkflowCount": 22,
+        "a5EntityCount": 198,
+        "processFlowRelationshipCount": 39,
+        "ontologyRelationshipCount": 176,
+        "executionTransitionCount": 22,
+        "projectionCount": 12,
+        "enterpriseLensCount": 27,
+        "overlayFamilyCount": 8,
+        "sourceCount": 29,
+        "referenceConfigurationCount": 10,
+        "compositionTestCount": 18,
+        "visibleAuditLog": false,
+        "releaseConclusion": "ROAD LTL V1.3 — READY FOR FINAL FREEZE AUDIT"
+      },
+      "modelVersion": "V1.3",
+      "processCount": 22,
+      "enriched": true,
+      "direct": {
+        "context": {
+          "role": "shipper",
+          "movement": "mp-direct-shipment",
+          "node": "none",
+          "lens": "none",
+          "jurisdiction": "none",
+          "regimes": [],
+          "conditions": [],
+          "contract": "contract-unresolved",
+          "view": "end",
+          "query": "",
+          "intent": "all",
+          "selected": null,
+          "notice": ""
+        },
+        "compatibilityIssues": [],
+        "activeNodes": [
+          "LTL-01",
+          "LTL-02",
+          "LTL-03",
+          "LTL-04",
+          "LTL-05",
+          "LTL-08",
+          "LTL-12",
+          "LTL-13",
+          "LTL-16",
+          "LTL-17"
+        ],
+        "availableNodes": [
+          "LTL-20",
+          "LTL-14",
+          "LTL-15",
+          "LTL-18",
+          "LTL-19",
+          "LTL-21",
+          "LTL-22"
+        ],
+        "bypassedNodes": [
+          "LTL-06",
+          "LTL-07",
+          "LTL-09",
+          "LTL-10",
+          "LTL-11"
+        ],
+        "blockedNodes": [],
+        "incompatibleNodes": [],
+        "activeEdges": [
+          {
+            "id": "FLOW-01",
+            "from": "LTL-01",
+            "type": "PRECEDES",
+            "to": "LTL-02"
+          },
+          {
+            "id": "FLOW-02",
+            "from": "LTL-02",
+            "type": "PRECEDES",
+            "to": "LTL-03"
+          },
+          {
+            "id": "FLOW-03",
+            "from": "LTL-03",
+            "type": "PRECEDES",
+            "to": "LTL-04"
+          },
+          {
+            "id": "FLOW-04",
+            "from": "LTL-04",
+            "type": "PRECEDES",
+            "to": "LTL-05"
+          },
+          {
+            "id": "FLOW-15",
+            "from": "LTL-12",
+            "type": "PRECEDES",
+            "to": "LTL-13"
+          },
+          {
+            "id": "FLOW-16",
+            "from": "LTL-02",
+            "type": "ENABLES",
+            "to": "LTL-16"
+          },
+          {
+            "id": "FLOW-19",
+            "from": "LTL-13",
+            "type": "PRECEDES",
+            "to": "LTL-16"
+          },
+          {
+            "id": "FLOW-20",
+            "from": "LTL-16",
+            "type": "PRECEDES",
+            "to": "LTL-17"
+          },
+          {
+            "id": "VAR-DIRECT-01",
+            "from": "LTL-05",
+            "type": "DIRECT_VARIANT_TO",
+            "to": "LTL-08",
+            "variant": "DIRECT_SHIPMENT"
+          },
+          {
+            "id": "VAR-DIRECT-02",
+            "from": "LTL-08",
+            "type": "DIRECT_VARIANT_TO",
+            "to": "LTL-12",
+            "variant": "DIRECT_SHIPMENT"
+          }
+        ],
+        "conditionalEdges": [],
+        "bypassEdges": [
+          {
+            "id": "VAR-DIRECT-01",
+            "from": "LTL-05",
+            "type": "DIRECT_VARIANT_TO",
+            "to": "LTL-08",
+            "variant": "DIRECT_SHIPMENT"
+          },
+          {
+            "id": "VAR-DIRECT-02",
+            "from": "LTL-08",
+            "type": "DIRECT_VARIANT_TO",
+            "to": "LTL-12",
+            "variant": "DIRECT_SHIPMENT"
+          }
+        ],
+        "recoveryEdges": [],
+        "iterationEdges": [],
+        "projection": [
+          {
+            "processId": "LTL-01",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-02",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-03",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-04",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-20",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-05",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-06",
+            "disposition": "BYPASSED",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-07",
+            "disposition": "BYPASSED",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-08",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-09",
+            "disposition": "BYPASSED",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-10",
+            "disposition": "BYPASSED",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-11",
+            "disposition": "BYPASSED",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-12",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-13",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-14",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-15",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-16",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-17",
+            "disposition": "ACTIVE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-18",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-19",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-21",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          },
+          {
+            "processId": "LTL-22",
+            "disposition": "AVAILABLE",
+            "emphasis": "OTHER_LTL_KNOWLEDGE"
+          }
+        ],
+        "responsibilities": {
+          "LTL-01": [
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "OWNS",
+                "PROVIDES_INPUT",
+                "AUTHORIZES"
+              ],
+              "basis": "Demand and service request",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "When contractually appointed",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Receives eligible request",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-02": [
+            {
+              "actorId": "actor-pricing",
+              "actorName": "Pricing / rating authority",
+              "responsibilities": [
+                "PERFORMS",
+                "OWNS",
+                "APPROVES"
+              ],
+              "basis": "Rate and exception authority",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Cargo and service facts",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "BILLS"
+              ],
+              "basis": "When carrier owns the offer",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-03": [
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "AUTHORIZES"
+              ],
+              "basis": "Party, cargo and instruction data",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "RECEIVES_OUTPUT",
+                "OBSERVES"
+              ],
+              "basis": "Execution identity consumer",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-forwarder",
+              "actorName": "Freight forwarder",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Where mandated",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-04": [
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "ARRANGES"
+              ],
+              "basis": "Pickup request and readiness",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "AUTHORIZES",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Accepts or rejects pickup",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Where appointed",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-20": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "OWNS",
+                "AUTHORIZES"
+              ],
+              "basis": "Vehicle/resource readiness",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-warehouse-operator",
+              "actorName": "Warehouse / terminal operator",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "OBSERVES"
+              ],
+              "basis": "Facility compatibility and readiness",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-05": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "OWNS"
+              ],
+              "basis": "Pickup and physical acceptance",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Tenders freight and receives acceptance evidence",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Where appointed",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-06": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "OWNS"
+              ],
+              "basis": "Origin terminal execution",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-warehouse-operator",
+              "actorName": "Warehouse / terminal operator",
+              "responsibilities": [
+                "PERFORMS",
+                "OBSERVES"
+              ],
+              "basis": "When separately operated",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-07": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "AUTHORIZES"
+              ],
+              "basis": "Consolidation and load authorization",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-warehouse-operator",
+              "actorName": "Warehouse / terminal operator",
+              "responsibilities": [
+                "PERFORMS",
+                "PROVIDES_INPUT"
+              ],
+              "basis": "Sort/load operations where appointed",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-08": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "OWNS"
+              ],
+              "basis": "Road line-haul leg",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-4pl",
+              "actorName": "4PL / LLP",
+              "responsibilities": [
+                "OBSERVES",
+                "ESCALATES"
+              ],
+              "basis": "Managed-control context only",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-09": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY"
+              ],
+              "basis": "Intermediate terminal receipt/sort",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-warehouse-operator",
+              "actorName": "Warehouse / terminal operator",
+              "responsibilities": [
+                "PERFORMS",
+                "OBSERVES"
+              ],
+              "basis": "When separately operated",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-10": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Transfer and custody evidence",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-forwarder",
+              "actorName": "Freight forwarder",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Wider multi-leg mandate",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-4pl",
+              "actorName": "4PL / LLP",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Managed multi-provider context",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-11": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "OWNS"
+              ],
+              "basis": "Destination terminal execution",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-warehouse-operator",
+              "actorName": "Warehouse / terminal operator",
+              "responsibilities": [
+                "PERFORMS",
+                "OBSERVES"
+              ],
+              "basis": "When separately operated",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-12": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "AUTHORIZES"
+              ],
+              "basis": "Delivery readiness and dispatch",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-consignee",
+              "actorName": "Consignee / receiving party",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Appointment/readiness where applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-13": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "HAS_CUSTODY",
+                "PROVIDES_INPUT"
+              ],
+              "basis": "Delivery attempt and evidence capture",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-consignee",
+              "actorName": "Consignee / receiving party",
+              "responsibilities": [
+                "RECEIVES_OUTPUT",
+                "PROVIDES_INPUT"
+              ],
+              "basis": "Receipt, refusal or qualification",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-customer",
+              "actorName": "Customer / entitled party",
+              "responsibilities": [
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Receives delivery status/evidence",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-14": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "ESCALATES"
+              ],
+              "basis": "Observed execution variance",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "OWNS",
+                "OBSERVES",
+                "ESCALATES"
+              ],
+              "basis": "When managed service owns the case",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-4pl",
+              "actorName": "4PL / LLP",
+              "responsibilities": [
+                "OWNS",
+                "OBSERVES",
+                "ESCALATES"
+              ],
+              "basis": "When lead-logistics control applies",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-15": [
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PERFORMS",
+                "PROVIDES_INPUT"
+              ],
+              "basis": "Physical recovery actions",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "ARRANGES",
+                "OWNS",
+                "ESCALATES"
+              ],
+              "basis": "Managed recovery",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "APPROVES",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Where commercial approval is required",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-16": [
+            {
+              "actorId": "actor-pricing",
+              "actorName": "Pricing / rating authority",
+              "responsibilities": [
+                "PERFORMS",
+                "APPROVES"
+              ],
+              "basis": "Executed charge calculation",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "BILLS",
+                "PROVIDES_INPUT"
+              ],
+              "basis": "Carrier revenue/charge evidence",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PAYS",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Customer/payer context",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "ARRANGES",
+                "OBSERVES"
+              ],
+              "basis": "Managed charge visibility",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-17": [
+            {
+              "actorId": "actor-finance",
+              "actorName": "Billing, audit, AR/AP or treasury",
+              "responsibilities": [
+                "PERFORMS",
+                "OWNS",
+                "APPROVES",
+                "AUTHORIZES"
+              ],
+              "basis": "Invoice, audit and settlement control",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "BILLS",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Carrier receivable",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PAYS",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Customer or buyer payable",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-18": [
+            {
+              "actorId": "actor-claims",
+              "actorName": "Claims / dispute function",
+              "responsibilities": [
+                "PERFORMS",
+                "OWNS",
+                "APPROVES"
+              ],
+              "basis": "Claim/dispute adjudication",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Claimant/payer as applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Carrier/respondent as applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-insurer",
+              "actorName": "Insurer / recovery party",
+              "responsibilities": [
+                "OBSERVES",
+                "PAYS",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Only where policy/coverage applies",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-19": [
+            {
+              "actorId": "actor-customs-broker",
+              "actorName": "Customs broker",
+              "responsibilities": [
+                "PERFORMS",
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Only under authorized mandate",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-competent-authority",
+              "actorName": "Competent authority",
+              "responsibilities": [
+                "REGULATES",
+                "AUTHORIZES",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Only within operative jurisdiction/procedure",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "OBSERVES"
+              ],
+              "basis": "Duty holder where applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "OWNS"
+              ],
+              "basis": "Compliance obligation where applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-21": [
+            {
+              "actorId": "actor-data-steward",
+              "actorName": "Data steward",
+              "responsibilities": [
+                "PERFORMS",
+                "OWNS",
+                "APPROVES"
+              ],
+              "basis": "Identity survivorship and publication",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Master/reference-data consumer",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Execution identity consumer",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ],
+          "LTL-22": [
+            {
+              "actorId": "actor-customer",
+              "actorName": "Customer / entitled party",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "RECEIVES_OUTPUT"
+              ],
+              "basis": "Authenticated service interaction",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-shipper",
+              "actorName": "Shipper / BCO",
+              "responsibilities": [
+                "OWNS",
+                "APPROVES"
+              ],
+              "basis": "Customer promise/entitlement where applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-3pl",
+              "actorName": "3PL",
+              "responsibilities": [
+                "PERFORMS",
+                "ARRANGES",
+                "ESCALATES"
+              ],
+              "basis": "Managed customer interface",
+              "overlayBasis": "BASE PARTICIPATION"
+            },
+            {
+              "actorId": "actor-operating-carrier",
+              "actorName": "Operating carrier",
+              "responsibilities": [
+                "PROVIDES_INPUT",
+                "PERFORMS"
+              ],
+              "basis": "Carrier service response where applicable",
+              "overlayBasis": "BASE PARTICIPATION"
+            }
+          ]
+        },
+        "sourceStates": [
+          {
+            "sourceId": "src-scor",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-01",
+              "LTL-20",
+              "LTL-07",
+              "LTL-09",
+              "LTL-11",
+              "LTL-14",
+              "LTL-15",
+              "LTL-21"
+            ]
+          },
+          {
+            "sourceId": "src-apqc-pcf",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-01",
+              "LTL-02",
+              "LTL-20",
+              "LTL-12",
+              "LTL-13",
+              "LTL-14",
+              "LTL-15",
+              "LTL-16",
+              "LTL-17",
+              "LTL-18",
+              "LTL-22"
+            ]
+          },
+          {
+            "sourceId": "src-uncefact-rdm",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-01",
+              "LTL-02",
+              "LTL-03",
+              "LTL-04",
+              "LTL-07",
+              "LTL-08",
+              "LTL-10",
+              "LTL-11",
+              "LTL-12",
+              "LTL-17",
+              "LTL-21"
+            ]
+          },
+          {
+            "sourceId": "src-gs1-genspec",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-06",
+              "LTL-21"
+            ]
+          },
+          {
+            "sourceId": "src-gs1-epcis",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-05",
+              "LTL-06",
+              "LTL-07",
+              "LTL-08",
+              "LTL-09",
+              "LTL-10",
+              "LTL-11",
+              "LTL-13",
+              "LTL-14"
+            ]
+          },
+          {
+            "sourceId": "src-gs1-cbv",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-06",
+              "LTL-08",
+              "LTL-09"
+            ]
+          },
+          {
+            "sourceId": "src-nmfta-dsdc-ltl",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03"
+            ]
+          },
+          {
+            "sourceId": "src-dsdc-pickup",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-04"
+            ]
+          },
+          {
+            "sourceId": "src-dsdc-pfc",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-16"
+            ]
+          },
+          {
+            "sourceId": "src-dsdc-visibility-draft",
+            "relationshipState": "RESEARCH_REQUIRED",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-08"
+            ]
+          },
+          {
+            "sourceId": "src-nmfc",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-02",
+              "LTL-06"
+            ]
+          },
+          {
+            "sourceId": "src-x12",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-04",
+              "LTL-08",
+              "LTL-16",
+              "LTL-17"
+            ]
+          },
+          {
+            "sourceId": "src-49cfr373",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03",
+              "LTL-05"
+            ]
+          },
+          {
+            "sourceId": "src-fmcsa-roles",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "AVAILABLE / UNMAPPED",
+            "processIds": []
+          },
+          {
+            "sourceId": "src-49cfr177",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-49usc14706",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-18"
+            ]
+          },
+          {
+            "sourceId": "src-49cfr370",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-18"
+            ]
+          },
+          {
+            "sourceId": "src-cmr",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03",
+              "LTL-05",
+              "LTL-10",
+              "LTL-13",
+              "LTL-18",
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-ecmr",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03"
+            ]
+          },
+          {
+            "sourceId": "src-adr",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-atp",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-tir",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-india-eway",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-wco-dm",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-19"
+            ]
+          },
+          {
+            "sourceId": "src-iso14083",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "CANDIDATE OVERLAY SOURCE",
+            "processIds": []
+          },
+          {
+            "sourceId": "src-iso10002",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "MODEL SOURCE",
+            "processIds": [
+              "LTL-14",
+              "LTL-15",
+              "LTL-18",
+              "LTL-22"
+            ]
+          },
+          {
+            "sourceId": "src-uncefact-ecmr-brs",
+            "relationshipState": "AVAILABLE_NOT_CURRENTLY_ACTIVE",
+            "usageClass": "AVAILABLE / UNMAPPED",
+            "processIds": []
+          },
+          {
+            "sourceId": "src-nmfta-scac",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03",
+              "LTL-21"
+            ]
+          },
+          {
+            "sourceId": "src-nmfta-splc",
+            "relationshipState": "MODEL_EVIDENCE",
+            "usageClass": "ACTIVE PROCESS SOURCE",
+            "processIds": [
+              "LTL-03",
+              "LTL-08",
+              "LTL-21"
+            ]
+          }
+        ],
+        "researchGaps": []
+      }
+    }
+  }
+}

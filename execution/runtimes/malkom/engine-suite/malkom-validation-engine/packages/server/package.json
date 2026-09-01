@@ -1,0 +1,14 @@
+{
+  "name": "@malkom/validate-server",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "malkom-validate-server": "./dist/bin.js"
+  },
+  "engines": {
+    "node": ">=22.5"
+  },
+  "dependencies": {
+    "@malkom/validate-core": "0.1.0"
+  }
+}

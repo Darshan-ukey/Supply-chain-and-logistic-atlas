@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "checked": 7,
+  "failed": 0,
+  "result": [
+    {
+      "name": "workflow",
+      "ok": true,
+      "file": "malkom-workflow-engine/packages/core/src/schemas.ts",
+      "missing": []
+    },
+    {
+      "name": "validation",
+      "ok": true,
+      "file": "malkom-validation-engine/packages/core/src/schemas.ts",
+      "missing": []
+    },
+    {
+      "name": "integration",
+      "ok": true,
+      "file": "malkom-integration-engine/packages/core/src/schemas.ts",
+      "missing": []
+    },
+    {
+      "name": "allocation",
+      "ok": true,
+      "file": "malkom-workallocation-engine/packages/core/src/config/schemas.ts",
+      "missing": []
+    },
+    {
+      "name": "exceptions",
+      "ok": true,
+      "file": "malkom-exceptionmanagement-engine/packages/core/src/schemas.ts",
+      "missing": []
+    },
+    {
+      "name": "rules",
+      "ok": true,
+      "file": "malkom-rules-engine/packages/core/src/config/schemas.ts",
+      "missing": []
+    },
+    {
+      "name": "agentic",
+      "ok": true,
+      "file": "malkom-agenticai-engine/packages/contract/src/manifest.ts",
+      "missing": []
+    }
+  ]
+}

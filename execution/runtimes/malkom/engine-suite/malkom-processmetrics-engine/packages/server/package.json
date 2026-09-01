@@ -1,0 +1,26 @@
+{
+  "name": "@malkom/metrics-server",
+  "version": "0.1.0",
+  "description": "Malkom process-metrics engine server shell: serves the core's web-standard fetch handler over node:http. No web framework, no dependencies beyond core.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "malkom-metrics-server": "./dist/bin.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@malkom/metrics-core": "*"
+  }
+}

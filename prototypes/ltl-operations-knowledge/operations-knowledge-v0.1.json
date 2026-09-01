@@ -1,0 +1,1890 @@
+{
+  "meta": {
+    "name": "Road LTL Operations Knowledge Layer Prototype",
+    "version": "0.1",
+    "date": "2026-09-01",
+    "location": "Road LTL > Work Definitions > Operations Knowledge",
+    "basis": [
+      "Supply Chain Atlas V2.0 repository",
+      "Road LTL V1.2",
+      "Malkom Domain Warehouse V2.3 lossless projection",
+      "Authoritative/public web research"
+    ],
+    "purpose": "Test whether source-backed operational knowledge can materially enrich WorkDefinitions beyond current A5/projection depth."
+  },
+  "audit": {
+    "roadLtlTasks": 22,
+    "projectionDecisionsNull": 22,
+    "projectionSystemsNull": 22,
+    "sourceAtlasDecisionPresent": 22,
+    "rulesPerDefinition": 1.0,
+    "controlsPerDefinition": 1.0,
+    "workTypes": 70,
+    "humanInLoopWorkTypes": 65,
+    "universalGenericFields": [
+      "shipmentID",
+      "consignmentID",
+      "handlingUnitID",
+      "partyLocationIDs",
+      "evidenceRef",
+      "reasonCode"
+    ]
+  },
+  "verdict": {
+    "result": "PROVEN AS A VIABLE ENRICHMENT METHOD — WITH SOURCE BOUNDARIES",
+    "summary": "All four cases expose material operational detail beyond the current WorkDefinition projection. Claims and U.S. hazmat provide near execution-ready decision/timer/control logic from public regulation; GS1 provides precise identity/event semantics for terminal receipt; NMFTA provides the correct LTL pickup lifecycle but full field-level completeness requires access to the full downloadable standard.",
+    "implication": "The existing Atlas is the scaffold and task boundary. The missing product layer is claim-level operational knowledge: canonical data elements, validation rules, decision tables, timers, control evidence, state transitions and explicit client-binding gaps."
+  },
+  "sources": {
+    "src-dsdc-pickup": {
+      "issuer": "NMFTA DSDC / Digital LTL Council",
+      "title": "Pickup Request and Visibility API Standard",
+      "version": "1.0.0",
+      "url": "https://dsdc.nmfta.org/apis/pickup-request-and-visibility-api-standard",
+      "access": "PUBLIC_SUMMARY; FULL_STANDARD_FORM_GATED",
+      "supports": "LTL pickup scheduling, status, update/reschedule, cancel, delay visibility, dock/shipment readiness and equipment-related coordination.",
+      "boundary": "The public page does not expose the complete OpenAPI field schema or every carrier operating rule."
+    },
+    "src-uncefact-mmt": {
+      "issuer": "UNECE / UN/CEFACT",
+      "title": "Multi Modal Transport Reference Data Model",
+      "version": "BRS / RDM",
+      "url": "https://unece.org/trade/documents/2018/01/standards/multi-modal-transport-reference-data-model-brs",
+      "access": "PUBLIC",
+      "supports": "Generic transport business areas, parties and information entities for transport-related exchanges.",
+      "boundary": "Does not prescribe a North-American LTL pickup operating workflow."
+    },
+    "src-gs1-label": {
+      "issuer": "GS1",
+      "title": "GS1 Logistic Label Guideline",
+      "version": "1.3",
+      "url": "https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3",
+      "access": "PUBLIC",
+      "supports": "SSCC-based logistic-unit identity, label rules, physical-to-electronic linkage, receiving/cross-dock enablement and verification guidance.",
+      "boundary": "Does not define a complete LTL terminal SOP or carrier-specific reweigh policy."
+    },
+    "src-gs1-epcis": {
+      "issuer": "GS1",
+      "title": "EPCIS",
+      "version": "2.0.1",
+      "url": "https://ref.gs1.org/standards/epcis/2.0.1/",
+      "access": "PUBLIC",
+      "supports": "Event model for What/When/Where/Why/How, ObjectEvent fields, event time, read point, business location, business step, disposition and transactions.",
+      "boundary": "Does not mandate which events an LTL carrier must capture."
+    },
+    "src-gs1-cbv": {
+      "issuer": "GS1",
+      "title": "Core Business Vocabulary",
+      "version": "2.0.0",
+      "url": "https://ref.gs1.org/standards/cbv/2.0.0/",
+      "access": "PUBLIC",
+      "supports": "Standard business-step/disposition vocabulary including receiving, accepting, shipping and related event semantics.",
+      "boundary": "Vocabulary semantics, not an LTL-specific operating sequence."
+    },
+    "src-49cfr370": {
+      "issuer": "U.S. DOT / FMCSA (eCFR)",
+      "title": "49 CFR Part 370",
+      "version": "Current 2026 eCFR",
+      "url": "https://www.law.cornell.edu/cfr/text/49/part-370",
+      "access": "PUBLIC",
+      "supports": "Claim filing sufficiency, acknowledgment, claim-file creation, investigation, evidence, disposition/status timers and salvage rules.",
+      "boundary": "Applies only when Part 370 scope resolves; does not govern every service complaint, billing dispute or non-U.S. claim."
+    },
+    "src-49cfr172": {
+      "issuer": "U.S. DOT / PHMSA (eCFR)",
+      "title": "49 CFR Part 172",
+      "version": "Current as of 2026-08-28",
+      "url": "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-C/part-172",
+      "access": "PUBLIC",
+      "supports": "Hazardous-material classification/table, shipping description, shipping papers, certification, labeling, placarding, emergency information and related controls.",
+      "boundary": "Rules are material/class/quantity/exception dependent; not every provision applies to every shipment."
+    },
+    "src-49cfr177": {
+      "issuer": "U.S. DOT / PHMSA (eCFR)",
+      "title": "49 CFR Part 177 · Carriage by Public Highway",
+      "version": "Current 2026 eCFR",
+      "url": "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-C/part-177",
+      "access": "PUBLIC",
+      "supports": "Highway acceptance restrictions, shipping-paper controls, driver training, loading/unloading, securement and hazardous-material segregation.",
+      "boundary": "United States highway carriage only and subject to detailed exceptions/scope."
+    }
+  },
+  "cases": [
+    {
+      "id": "LTL-04",
+      "title": "Request pickup and prove shipment readiness",
+      "caseName": "Pickup request & readiness",
+      "verdict": "STRONG LIFECYCLE / PARTIAL FIELD ACCESS",
+      "confidence": "MEDIUM-HIGH",
+      "sources": [
+        "src-dsdc-pickup",
+        "src-uncefact-mmt"
+      ],
+      "baseline": {
+        "atlas": {
+          "trigger": "Validated shipment and transport-document identity.",
+          "before": "Shipment valid; pickup not yet accepted; freight may not be ready.",
+          "event": "evt-booking-requested · pickup/service request submitted.",
+          "decision": "Can the carrier/service accept requested location, window, quantity and freight readiness?",
+          "rule": "Valid identity, serviceability, pickup window, cargo readiness and condition-specific prerequisites required.",
+          "control": "Request/response correlation, idempotency, change/cancel reason and stale-version rejection.",
+          "clock": "Pickup response SLA and local cut-off.",
+          "action": "Schedule, update/reschedule or cancel pickup and publish response.",
+          "evidence": "Pickup request, acknowledgement/status, appointment and change history.",
+          "after": "Pickup ACCEPTED, CONDITIONAL, REJECTED or CANCELLED.",
+          "outcome": "Executable pickup commitment synchronized with shipper and carrier.",
+          "authoritySystem": "sys-carrier-platform",
+          "producer": "sys-tms / sys-customer-portal",
+          "consumers": "sys-carrier-platform / sys-dispatch / sys-wms",
+          "sourceIds": [
+            "src-dsdc-pickup",
+            "src-uncefact-rdm",
+            "src-x12"
+          ],
+          "claimBoundary": "DSDC supports adopted North-American pickup interface states; it does not prove physical acceptance or universal carrier rules."
+        },
+        "projection": {
+          "fields": [
+            {
+              "name": "shipmentID",
+              "label": "Shipment ID",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "consignmentID",
+              "label": "consignment ID",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "handlingUnitID",
+              "label": "handling-unit ID",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "partyLocationIDs",
+              "label": "party/location IDs",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "shipmentReference",
+              "label": "Shipment Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "transportDocumentReference",
+              "label": "Transport Document Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "shipmentReadinessReference",
+              "label": "Shipment Readiness Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "appointmentReference",
+              "label": "Appointment Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "evidenceRef",
+              "label": "Evidence Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "reasonCode",
+              "label": "Reason Code",
+              "type": "string",
+              "required": false
+            }
+          ],
+          "subQueues": [
+            {
+              "name": "New",
+              "workTypes": [
+                "New"
+              ],
+              "outcomes": [
+                "out-accepted",
+                "out-conditional",
+                "out-rejected",
+                "out-cancelled"
+              ]
+            },
+            {
+              "name": "Change / Reschedule",
+              "workTypes": [
+                "Change / Reschedule"
+              ],
+              "outcomes": [
+                "out-accepted",
+                "out-conditional",
+                "out-rejected",
+                "out-cancelled"
+              ]
+            },
+            {
+              "name": "Cancellation",
+              "workTypes": [
+                "Cancellation"
+              ],
+              "outcomes": [
+                "out-accepted",
+                "out-conditional",
+                "out-rejected",
+                "out-cancelled"
+              ]
+            }
+          ],
+          "workTypes": [
+            {
+              "name": "New",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "New handling for Pickup Request."
+            },
+            {
+              "name": "Change / Reschedule",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Change / Reschedule handling for Pickup Request."
+            },
+            {
+              "name": "Cancellation",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Cancellation handling for Pickup Request."
+            }
+          ],
+          "outcomes": [
+            {
+              "id": "out-accepted",
+              "code": "ACCEPTED",
+              "label": "Accepted",
+              "family": "ACCEPT",
+              "route": "SYSTEM",
+              "status": "COMPLETED",
+              "businessState": "ACCEPTED",
+              "nextStep": "END_WORK_ITEM"
+            },
+            {
+              "id": "out-conditional",
+              "code": "CONDITIONAL",
+              "label": "Conditional",
+              "family": "PENDING",
+              "route": "REQUESTER",
+              "status": "PENDING",
+              "businessState": "CONDITIONAL",
+              "nextStep": "STAY_IN_QUEUE"
+            },
+            {
+              "id": "out-rejected",
+              "code": "REJECTED",
+              "label": "Rejected",
+              "family": "REJECT",
+              "route": "REQUESTER",
+              "status": "REJECTED",
+              "businessState": "REJECTED",
+              "nextStep": "END_WORK_ITEM"
+            },
+            {
+              "id": "out-cancelled",
+              "code": "CANCELLED",
+              "label": "Cancelled",
+              "family": "CANCEL",
+              "route": "REQUESTER",
+              "status": "CANCELLED",
+              "businessState": "CANCELLED",
+              "nextStep": "END_WORK_ITEM"
+            }
+          ],
+          "decisions": [
+            null
+          ],
+          "rules": [
+            "Valid identity, serviceability, pickup window, cargo readiness and condition-specific prerequisites required."
+          ],
+          "controls": [
+            "Request/response correlation, idempotency, change/cancel reason and stale-version rejection."
+          ],
+          "systems": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "gap": "The Atlas already identifies the correct business decision and lifecycle, but the WorkDefinition projection drops the decision/system detail and the public DSDC page does not expose the complete field schema. Current fields are mostly generic references rather than operationally validated data elements.",
+      "sourceExplicit": [
+        "The LTL standard supports digital pickup scheduling, status tracking, request updates/rescheduling, cancellation and delay information.",
+        "It explicitly covers dock/shipment readiness and coordination for required equipment such as liftgates.",
+        "The standard is intended to reduce rejected requests by improving completeness of shipment information before pickup.",
+        "UN/CEFACT MMT RDM provides a reusable transport information-model foundation for parties and transport information entities."
+      ],
+      "canonicalFields": [
+        {
+          "name": "pickupRequestId",
+          "type": "identifier",
+          "required": "on accepted request",
+          "basis": "ATLAS_DERIVED",
+          "validation": "unique within carrier/requester relationship"
+        },
+        {
+          "name": "shipmentId",
+          "type": "identifier",
+          "required": "yes",
+          "basis": "ATLAS_EXISTING",
+          "validation": "must resolve to current shipment identity"
+        },
+        {
+          "name": "pickupLocation",
+          "type": "location",
+          "required": "yes",
+          "basis": "ATLAS_DERIVED",
+          "validation": "valid serviceable location / client binding"
+        },
+        {
+          "name": "requestedWindow",
+          "type": "time window",
+          "required": "yes",
+          "basis": "ATLAS_DERIVED",
+          "validation": "start < end; local timezone bound"
+        },
+        {
+          "name": "shipmentReadyState",
+          "type": "enum",
+          "required": "yes",
+          "basis": "SOURCE_FUNCTION_DERIVED",
+          "validation": "READY / NOT_READY / READY_BY_TIME"
+        },
+        {
+          "name": "handlingUnitSummary",
+          "type": "object",
+          "required": "yes",
+          "basis": "ATLAS_DERIVED",
+          "validation": "count/weight/dimensions where known"
+        },
+        {
+          "name": "equipmentNeeds",
+          "type": "set",
+          "required": "conditional",
+          "basis": "SOURCE_FUNCTION_DERIVED",
+          "validation": "carrier-supported equipment/accessorial mapping"
+        },
+        {
+          "name": "requestAction",
+          "type": "enum",
+          "required": "yes",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "CREATE / UPDATE_RESCHEDULE / CANCEL"
+        },
+        {
+          "name": "pickupStatus",
+          "type": "enum",
+          "required": "response",
+          "basis": "SOURCE_FUNCTION_DERIVED",
+          "validation": "carrier lifecycle mapping"
+        },
+        {
+          "name": "delayReason",
+          "type": "code/text",
+          "required": "when delayed",
+          "basis": "SOURCE_EXPLICIT_FUNCTION",
+          "validation": "client/carrier value-list binding"
+        },
+        {
+          "name": "estimatedArrival",
+          "type": "timestamp",
+          "required": "when supplied",
+          "basis": "SOURCE_EXPLICIT_FUNCTION",
+          "validation": "timezone-aware"
+        },
+        {
+          "name": "requestVersion",
+          "type": "integer/string",
+          "required": "recommended",
+          "basis": "ATLAS_EXISTING_CONTROL",
+          "validation": "reject stale update"
+        }
+      ],
+      "decisionTable": [
+        [
+          "D1",
+          "Shipment identity and pickup location resolve?",
+          "No",
+          "REJECT / REQUEST CORRECTION",
+          "Atlas rule + derived field validation"
+        ],
+        [
+          "D2",
+          "Shipment/dock readiness sufficient for requested window?",
+          "No",
+          "CONDITIONAL / RESCHEDULE",
+          "DSDC readiness function + Atlas"
+        ],
+        [
+          "D3",
+          "Required equipment/service can be provided?",
+          "No",
+          "CONDITIONAL or REJECT",
+          "DSDC equipment coordination; carrier policy binding"
+        ],
+        [
+          "D4",
+          "Update/cancel references current request version?",
+          "No",
+          "REJECT STALE CHANGE",
+          "Existing Atlas control"
+        ],
+        [
+          "D5",
+          "Carrier accepts request?",
+          "Yes",
+          "ACCEPTED + publish status/ETA",
+          "DSDC pickup lifecycle"
+        ]
+      ],
+      "states": [
+        "DRAFT_REQUEST",
+        "SUBMITTED",
+        "ACKNOWLEDGED",
+        "ACCEPTED",
+        "CONDITIONAL",
+        "RESCHEDULED",
+        "DELAYED",
+        "CANCELLED",
+        "REJECTED"
+      ],
+      "controls": [
+        "Request/response correlation",
+        "Idempotency/version control",
+        "Readiness evidence",
+        "Equipment requirement resolution",
+        "Cut-off/SLA clock (carrier/client bound)",
+        "Reason code for change/cancel/reject"
+      ],
+      "notYetDefensible": [
+        "Exact NMFTA OpenAPI field names and required/nullable rules without downloading the full standard",
+        "Universal carrier cut-off times, serviceability rules or accessorial policies",
+        "Client system endpoints and code mappings"
+      ],
+      "stats": {
+        "currentFields": 10,
+        "candidateFields": 12,
+        "currentRules": 1,
+        "decisionRows": 5,
+        "sourceCount": 2
+      }
+    },
+    {
+      "id": "LTL-06",
+      "title": "Receive at origin service centre and verify handling-unit state",
+      "caseName": "Origin receipt & handling-unit state",
+      "verdict": "RICH OPEN STANDARD SEMANTICS",
+      "confidence": "HIGH",
+      "sources": [
+        "src-gs1-label",
+        "src-gs1-epcis",
+        "src-gs1-cbv"
+      ],
+      "baseline": {
+        "atlas": {
+          "trigger": "Accepted freight arrives at the origin LTL node.",
+          "before": "Carrier custody active; origin-node receipt not reconciled.",
+          "event": "Arrival/receiving scan and inspection recorded.",
+          "decision": "Do handling-unit identity, count, weight/dimensions, condition and routing attributes reconcile?",
+          "rule": "Receive only against authoritative shipment/handling-unit identity; quarantine or case any discrepancy.",
+          "control": "Scan/measurement provenance, scale/device validity where required, duplicate/missing-unit and damage controls.",
+          "clock": "Unload/receiving and discrepancy-notification clock.",
+          "action": "Unload, identify, inspect, measure/reweigh where controlled, receive or hold.",
+          "evidence": "Node receipt, scans, measurements, condition images/records and variance case.",
+          "after": "Handling units RECEIVED, HELD or EXCEPTION.",
+          "outcome": "Reliable origin inventory/custody state for network planning.",
+          "authoritySystem": "sys-wms",
+          "producer": "sys-wms / sys-carrier-platform",
+          "consumers": "sys-tms / sys-event-platform / sys-rate-engine",
+          "sourceIds": [
+            "src-gs1-epcis",
+            "src-gs1-cbv",
+            "src-gs1-genspec",
+            "src-nmfc"
+          ],
+          "claimBoundary": "Cross-dock/service-centre execution is an A3–A5 specialization of Page‑0 Warehouse/Cross‑Dock; no new top-level node taxonomy is claimed."
+        },
+        "projection": {
+          "fields": [
+            {
+              "name": "shipmentID",
+              "label": "Shipment ID",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "consignmentID",
+              "label": "consignment ID",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "handlingUnitID",
+              "label": "handling-unit ID",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "partyLocationIDs",
+              "label": "party/location IDs",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "shipmentReference",
+              "label": "Shipment Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "handlingUnitReference",
+              "label": "Handling Unit Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "custodyRecordReference",
+              "label": "Custody Record Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "transportDocumentReference",
+              "label": "Transport Document Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "evidenceRef",
+              "label": "Evidence Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "reasonCode",
+              "label": "Reason Code",
+              "type": "string",
+              "required": false
+            }
+          ],
+          "subQueues": [
+            {
+              "name": "Standard Receipt",
+              "workTypes": [
+                "Standard Receipt"
+              ],
+              "outcomes": [
+                "out-received",
+                "out-held",
+                "out-exception"
+              ]
+            },
+            {
+              "name": "Discrepancy / Hold",
+              "workTypes": [
+                "Discrepancy / Hold"
+              ],
+              "outcomes": [
+                "out-received",
+                "out-held",
+                "out-exception"
+              ]
+            },
+            {
+              "name": "Reweigh / Reclass Review",
+              "workTypes": [
+                "Reweigh / Reclass Review"
+              ],
+              "outcomes": [
+                "out-received",
+                "out-held",
+                "out-exception"
+              ]
+            }
+          ],
+          "workTypes": [
+            {
+              "name": "Standard Receipt",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Standard Receipt handling for Origin Receipt."
+            },
+            {
+              "name": "Discrepancy / Hold",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Discrepancy / Hold handling for Origin Receipt."
+            },
+            {
+              "name": "Reweigh / Reclass Review",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Reweigh / Reclass Review handling for Origin Receipt."
+            }
+          ],
+          "outcomes": [
+            {
+              "id": "out-received",
+              "code": "RECEIVED",
+              "label": "Received",
+              "family": "ACCEPT",
+              "route": "SYSTEM",
+              "status": "COMPLETED",
+              "businessState": "RECEIVED",
+              "nextStep": "END_WORK_ITEM"
+            },
+            {
+              "id": "out-held",
+              "code": "HELD",
+              "label": "Held",
+              "family": "PENDING",
+              "route": "INTERNAL_QUEUE",
+              "status": "PENDING",
+              "businessState": "HELD",
+              "nextStep": "STAY_IN_QUEUE"
+            },
+            {
+              "id": "out-exception",
+              "code": "EXCEPTION",
+              "label": "Exception",
+              "family": "PENDING",
+              "route": "INTERNAL_QUEUE",
+              "status": "PENDING",
+              "businessState": "EXCEPTION",
+              "nextStep": "STAY_IN_QUEUE"
+            }
+          ],
+          "decisions": [
+            null
+          ],
+          "rules": [
+            "Receive only against authoritative shipment/handling-unit identity; quarantine or case any discrepancy."
+          ],
+          "controls": [
+            "Scan/measurement provenance, scale/device validity where required, duplicate/missing-unit and damage controls."
+          ],
+          "systems": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "gap": "The current Atlas says to scan, inspect, measure and reconcile, but it does not yet expose the precise event and identification semantics needed to make that work machine-consumable. GS1 supplies a large part of this layer.",
+      "sourceExplicit": [
+        "GS1 identifies each logistic unit using an SSCC; the SSCC is the mandatory element on a GS1 Logistic Label.",
+        "Scanning the SSCC links physical movement to electronic business messages and supports automated receiving/cross-docking.",
+        "If a received logistic unit lacks an SSCC, a subsequent supply-chain party may allocate one; an existing SSCC must not be replaced when label segments change.",
+        "EPCIS provides eventTime, eventTimeZoneOffset, readPoint, bizLocation, bizStep, disposition and business-transaction context.",
+        "CBV distinguishes receiving from accepting; accepting is tied to a possession/ownership handoff, while receiving adds objects into the receiver context."
+      ],
+      "canonicalFields": [
+        {
+          "name": "sscc",
+          "type": "GS1 SSCC",
+          "required": "yes for GS1 logistic label",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "AI(00), 18-digit key/check digit under GS1 rules"
+        },
+        {
+          "name": "eventTime",
+          "type": "timestamp",
+          "required": "yes for EPCIS event",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "dateTimeStamp"
+        },
+        {
+          "name": "eventTimeZoneOffset",
+          "type": "offset",
+          "required": "yes for EPCIS event",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "±HH:MM within EPCIS constraints"
+        },
+        {
+          "name": "readPoint",
+          "type": "location ref",
+          "required": "recommended/contextual",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "scan/read location"
+        },
+        {
+          "name": "bizLocation",
+          "type": "location ref",
+          "required": "contextual",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "location where object is considered to reside"
+        },
+        {
+          "name": "bizStep",
+          "type": "CBV vocabulary",
+          "required": "yes in this Atlas profile",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "receiving vs accepting chosen by business meaning"
+        },
+        {
+          "name": "disposition",
+          "type": "CBV vocabulary",
+          "required": "profile-required",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "governed CBV value"
+        },
+        {
+          "name": "bizTransactionRef",
+          "type": "transaction ref",
+          "required": "when reconciliation uses BOL/order",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "links event to governing business transaction"
+        },
+        {
+          "name": "expectedUnitCount",
+          "type": "integer",
+          "required": "when expected quantity known",
+          "basis": "ATLAS_DERIVED",
+          "validation": ">=0"
+        },
+        {
+          "name": "observedUnitCount",
+          "type": "integer",
+          "required": "yes",
+          "basis": "ATLAS_DERIVED",
+          "validation": ">=0"
+        },
+        {
+          "name": "declaredWeight",
+          "type": "measure",
+          "required": "where available",
+          "basis": "ATLAS_EXISTING",
+          "validation": "unit-of-measure required"
+        },
+        {
+          "name": "measuredWeight",
+          "type": "measure",
+          "required": "when reweighed",
+          "basis": "ATLAS_EXISTING",
+          "validation": "device provenance required"
+        },
+        {
+          "name": "conditionCode",
+          "type": "enum",
+          "required": "yes",
+          "basis": "ATLAS_DERIVED",
+          "validation": "OK / DAMAGED / SHORT / OVER / UNKNOWN"
+        },
+        {
+          "name": "evidenceRefs",
+          "type": "list",
+          "required": "for exception",
+          "basis": "ATLAS_EXISTING",
+          "validation": "scan/measurement/image/case refs"
+        }
+      ],
+      "decisionTable": [
+        [
+          "D1",
+          "SSCC or authoritative handling-unit identity present?",
+          "No",
+          "ALLOCATE ID if policy permits, otherwise HOLD",
+          "GS1 permits subsequent party allocation; policy binding required"
+        ],
+        [
+          "D2",
+          "Is this an internal receipt or a possession/ownership acceptance event?",
+          "Internal receipt",
+          "bizStep = receiving",
+          "GS1 CBV semantic choice"
+        ],
+        [
+          "D3",
+          "Observed units/count reconcile with governing shipment/transaction?",
+          "No",
+          "HOLD + discrepancy case",
+          "Atlas-derived using source event/transaction model"
+        ],
+        [
+          "D4",
+          "Condition/weight/dimensions within declared or policy tolerance?",
+          "No",
+          "HOLD / REWEIGH / RECLASS REVIEW",
+          "Atlas + client/carrier policy"
+        ],
+        [
+          "D5",
+          "No unresolved discrepancy?",
+          "Yes",
+          "RECEIVED + publish EPCIS event",
+          "Atlas + GS1 event model"
+        ]
+      ],
+      "states": [
+        "ARRIVED_UNVERIFIED",
+        "IDENTIFIED",
+        "RECONCILED",
+        "RECEIVED",
+        "HELD",
+        "EXCEPTION"
+      ],
+      "controls": [
+        "SSCC integrity",
+        "Do not replace existing SSCC",
+        "Event timestamp/timezone provenance",
+        "Read point / business location resolution",
+        "Receiving vs accepting semantic guard",
+        "Duplicate/missing-unit detection",
+        "Measurement-device provenance where used"
+      ],
+      "notYetDefensible": [
+        "Universal reweigh/reclass tolerances from GS1",
+        "Carrier-specific terminal damage codes or inspection SOP",
+        "Whether a specific client uses EPCIS/GS1 identifiers at all"
+      ],
+      "stats": {
+        "currentFields": 10,
+        "candidateFields": 14,
+        "currentRules": 1,
+        "decisionRows": 5,
+        "sourceCount": 3
+      }
+    },
+    {
+      "id": "LTL-18",
+      "title": "Adjudicate cargo/service claim or billing dispute",
+      "caseName": "U.S. cargo claim adjudication",
+      "verdict": "NEAR EXECUTION-READY FROM PUBLIC REGULATION",
+      "confidence": "HIGH",
+      "sources": [
+        "src-49cfr370"
+      ],
+      "baseline": {
+        "atlas": {
+          "trigger": "Preserved loss/damage/service/billing evidence and asserted claim or dispute.",
+          "before": "Issue alleged; standing, liability/charge basis, quantum and time state unresolved.",
+          "event": "Claim/dispute filed, acknowledged, evaluated, decided and settled/declined.",
+          "decision": "Does claimant have standing and do contract/regime, evidence, causation, time bar, liability/charge and quantum support relief?",
+          "rule": "Keep cargo/service claim, billing dispute and insurance recovery separate; apply only resolved contract/regime/policy.",
+          "control": "Completeness, evidence integrity, conflict, reserve, authority, time-bar and settlement controls.",
+          "clock": "Exact notice/claim/action clocks from active contract/regime; no generic LTL clock asserted.",
+          "action": "Acknowledge, investigate, request evidence, reserve, decide, settle/decline and pursue recovery/subrogation where valid.",
+          "evidence": "Claim file, liability/coverage position, decision, settlement/decline and recovery evidence.",
+          "after": "CLAIM/DISPUTE SETTLED, DECLINED, WITHDRAWN or ESCALATED.",
+          "outcome": "Controlled financial/customer resolution without invented liability.",
+          "authoritySystem": "sys-claims",
+          "producer": "sys-claims / sys-billing-dispute",
+          "consumers": "sys-erp / sys-insurance / sys-crm / sys-dms",
+          "sourceIds": [
+            "src-cmr",
+            "src-49usc14706",
+            "src-49cfr370",
+            "src-apqc-pcf",
+            "src-iso10002"
+          ],
+          "claimBoundary": "CMR supports claims/liability only when Convention scope resolves. 49 U.S.C. §14706 and 49 CFR Part 370 apply only when their U.S. statutory/regulatory scope resolves. Service claims, billing disputes, insurance recovery and non-U.S. claims remain separately governed; no universal LTL liability hierarchy or time bar is asserted."
+        },
+        "projection": {
+          "fields": [
+            {
+              "name": "shipmentID",
+              "label": "Shipment ID",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "consignmentID",
+              "label": "consignment ID",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "handlingUnitID",
+              "label": "handling-unit ID",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "partyLocationIDs",
+              "label": "party/location IDs",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "claimFileReference",
+              "label": "Claim File Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "deliveryEvidenceReference",
+              "label": "Delivery Evidence Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "custodyRecordReference",
+              "label": "Custody Record Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "conditionRecordReference",
+              "label": "Condition Record Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "invoiceReference",
+              "label": "Invoice Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "evidenceRef",
+              "label": "Evidence Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "reasonCode",
+              "label": "Reason Code",
+              "type": "string",
+              "required": false
+            }
+          ],
+          "subQueues": [
+            {
+              "name": "New Claim / Dispute",
+              "workTypes": [
+                "New Claim / Dispute"
+              ],
+              "outcomes": [
+                "out-settled",
+                "out-declined",
+                "out-withdrawn",
+                "out-escalated"
+              ]
+            },
+            {
+              "name": "Evidence / Investigation",
+              "workTypes": [
+                "Evidence / Investigation"
+              ],
+              "outcomes": [
+                "out-settled",
+                "out-declined",
+                "out-withdrawn",
+                "out-escalated"
+              ]
+            },
+            {
+              "name": "Decision",
+              "workTypes": [
+                "Decision"
+              ],
+              "outcomes": [
+                "out-settled",
+                "out-declined",
+                "out-withdrawn",
+                "out-escalated"
+              ]
+            },
+            {
+              "name": "Settlement / Recovery",
+              "workTypes": [
+                "Settlement / Recovery"
+              ],
+              "outcomes": [
+                "out-settled",
+                "out-declined",
+                "out-withdrawn",
+                "out-escalated"
+              ]
+            }
+          ],
+          "workTypes": [
+            {
+              "name": "New Claim / Dispute",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "New Claim / Dispute handling for Claim / Billing Dispute."
+            },
+            {
+              "name": "Evidence / Investigation",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Evidence / Investigation handling for Claim / Billing Dispute."
+            },
+            {
+              "name": "Decision",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Decision handling for Claim / Billing Dispute."
+            },
+            {
+              "name": "Settlement / Recovery",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Settlement / Recovery handling for Claim / Billing Dispute."
+            }
+          ],
+          "outcomes": [
+            {
+              "id": "out-settled",
+              "code": "SETTLED",
+              "label": "Settled",
+              "family": "COMPLETE",
+              "route": "SYSTEM",
+              "status": "COMPLETED",
+              "businessState": "SETTLED",
+              "nextStep": "END_WORK_ITEM"
+            },
+            {
+              "id": "out-declined",
+              "code": "DECLINED",
+              "label": "Declined",
+              "family": "REJECT",
+              "route": "REQUESTER",
+              "status": "REJECTED",
+              "businessState": "DECLINED",
+              "nextStep": "END_WORK_ITEM"
+            },
+            {
+              "id": "out-withdrawn",
+              "code": "WITHDRAWN",
+              "label": "Withdrawn",
+              "family": "CANCEL",
+              "route": "REQUESTER",
+              "status": "CANCELLED",
+              "businessState": "WITHDRAWN",
+              "nextStep": "END_WORK_ITEM"
+            },
+            {
+              "id": "out-escalated",
+              "code": "ESCALATED",
+              "label": "Escalated",
+              "family": "ESCALATE",
+              "route": "INTERNAL_QUEUE",
+              "status": "ESCALATED",
+              "businessState": "ESCALATED",
+              "nextStep": "ESCALATE"
+            }
+          ],
+          "decisions": [
+            null
+          ],
+          "rules": [
+            "Keep cargo/service claim, billing dispute and insurance recovery separate; apply only resolved contract/regime/policy."
+          ],
+          "controls": [
+            "Completeness, evidence integrity, conflict, reserve, authority, time-bar and settlement controls."
+          ],
+          "systems": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "gap": "This is the strongest proof case. The current WorkDefinition has a generic claims queue and one rule/control sentence. Part 370 supplies explicit claim-sufficiency tests, required records, investigation evidence and statutory operating clocks that can be represented directly as a decision/state machine.",
+      "sourceExplicit": [
+        "A sufficient written claim identifies the shipment, asserts liability and claims a specified or determinable amount.",
+        "Damage/shortage notations, inspection reports or similar records do not by themselves constitute a sufficient claim.",
+        "A carrier generally acknowledges a proper claim within 30 days unless it has already paid or declined it in writing within that period.",
+        "The carrier creates a separate claim file/number and records receipt date; records must be available and examined in the investigation and procedures must prevent duplicate or unlawful payment.",
+        "When necessary, supporting evidence includes the bill of lading, freight-charge evidence and invoice/value evidence; complete-package loss may require a consignee non-receipt statement.",
+        "The carrier pays, declines or makes a firm compromise settlement offer within 120 days; unresolved claims receive a status/reason notice at 120 days and every succeeding 60 days."
+      ],
+      "canonicalFields": [
+        {
+          "name": "claimFileNumber",
+          "type": "identifier",
+          "required": "yes after receipt",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "unique successive claim file number"
+        },
+        {
+          "name": "claimReceivedAt",
+          "type": "date/timestamp",
+          "required": "yes",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "recorded on claim record"
+        },
+        {
+          "name": "claimant",
+          "type": "party",
+          "required": "yes",
+          "basis": "SOURCE_DERIVED",
+          "validation": "claimant/standing resolved"
+        },
+        {
+          "name": "shipmentIdentificationFacts",
+          "type": "object",
+          "required": "yes",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "sufficient to identify shipment(s)"
+        },
+        {
+          "name": "liabilityAssertion",
+          "type": "text/enum",
+          "required": "yes",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "asserts carrier liability for alleged loss/damage/injury/delay"
+        },
+        {
+          "name": "claimedAmount",
+          "type": "money",
+          "required": "yes/determinable",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "specified or determinable amount"
+        },
+        {
+          "name": "billOfLadingRef",
+          "type": "document ref",
+          "required": "when necessary",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "supporting document"
+        },
+        {
+          "name": "freightChargeEvidenceRef",
+          "type": "document ref",
+          "required": "when necessary",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "supporting evidence"
+        },
+        {
+          "name": "invoiceOrValueEvidenceRef",
+          "type": "document ref",
+          "required": "when necessary",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "value basis"
+        },
+        {
+          "name": "consigneeNonReceiptStatement",
+          "type": "document ref",
+          "required": "conditional",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "needed when total package/shipment loss cannot otherwise be authenticated"
+        },
+        {
+          "name": "additionalEvidenceNeeded",
+          "type": "list",
+          "required": "conditional",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "identified in acknowledgment/preliminary review"
+        },
+        {
+          "name": "overlappingClaimFlag",
+          "type": "boolean",
+          "required": "yes",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "if similar claim found, notify claimants and seek substantiation"
+        },
+        {
+          "name": "ackDueAt",
+          "type": "date",
+          "required": "derived",
+          "basis": "SOURCE_DERIVED",
+          "validation": "receipt + 30 days"
+        },
+        {
+          "name": "dispositionDueAt",
+          "type": "date",
+          "required": "derived",
+          "basis": "SOURCE_DERIVED",
+          "validation": "receipt + 120 days"
+        },
+        {
+          "name": "nextPendingStatusDueAt",
+          "type": "date",
+          "required": "when unresolved",
+          "basis": "SOURCE_DERIVED",
+          "validation": "120 days then +60-day cadence"
+        }
+      ],
+      "decisionTable": [
+        [
+          "D1",
+          "Written communication filed with proper carrier within applicable contractual/legal time?",
+          "No",
+          "NOT QUALIFIED / legal review",
+          "49 CFR 370.3(a)-(b)"
+        ],
+        [
+          "D2",
+          "Identifies shipment + asserts liability + specified/determinable amount?",
+          "No",
+          "DEFICIENT — request correction",
+          "49 CFR 370.3(b)"
+        ],
+        [
+          "D3",
+          "Is the submission only a damage notation/report/inspection record?",
+          "Yes",
+          "NOT A CLAIM by itself",
+          "49 CFR 370.3(c)"
+        ],
+        [
+          "D4",
+          "Proper claim received and not paid/declined within 30 days?",
+          "Yes",
+          "ACKNOWLEDGE + identify missing evidence",
+          "49 CFR 370.5(a)"
+        ],
+        [
+          "D5",
+          "Supporting documents necessary to investigate?",
+          "Yes",
+          "REQUEST / EXAMINE evidence",
+          "49 CFR 370.7(b)"
+        ],
+        [
+          "D6",
+          "Entire package/shipment loss cannot otherwise be authenticated?",
+          "Yes",
+          "REQUIRE consignee non-receipt statement",
+          "49 CFR 370.7(c)"
+        ],
+        [
+          "D7",
+          "Similar/overlapping claim exists on same shipment?",
+          "Yes",
+          "NOTIFY claimants + require further substantiation",
+          "49 CFR 370.3(e)"
+        ],
+        [
+          "D8",
+          "Ready for final disposition by day 120?",
+          "Yes",
+          "PAY / DECLINE / FIRM COMPROMISE",
+          "49 CFR 370.9(a)"
+        ],
+        [
+          "D9",
+          "Still pending at day 120 or each next 60 days?",
+          "Yes",
+          "SEND status + reason for delay; retain copy",
+          "49 CFR 370.9(a)"
+        ]
+      ],
+      "states": [
+        "RECEIVED",
+        "QUALIFICATION_CHECK",
+        "DEFICIENT",
+        "ACKNOWLEDGED",
+        "INVESTIGATING",
+        "PENDING_EVIDENCE",
+        "DECISION_READY",
+        "SETTLED",
+        "DECLINED",
+        "COMPROMISE_OFFERED",
+        "WITHDRAWN",
+        "ESCALATED"
+      ],
+      "controls": [
+        "30-day acknowledgment timer",
+        "Claim-file number and receipt-date audit trail",
+        "Evidence completeness and examination record",
+        "Duplicate/unlawful payment prevention",
+        "Overlapping-claim conflict control",
+        "120-day final-disposition timer",
+        "60-day recurring pending-status timer"
+      ],
+      "notYetDefensible": [
+        "Actual liability outcome without resolved contract/statutory facts",
+        "Client reserve thresholds/settlement authority",
+        "Non-U.S. claims logic",
+        "Billing disputes treated as if Part 370 cargo claims"
+      ],
+      "stats": {
+        "currentFields": 11,
+        "candidateFields": 15,
+        "currentRules": 1,
+        "decisionRows": 9,
+        "sourceCount": 1
+      }
+    },
+    {
+      "id": "LTL-19",
+      "title": "Resolve regulatory scope, operate hold/release and retain evidence",
+      "caseName": "U.S. hazardous-material acceptance / hold-release",
+      "verdict": "VERY RICH CONDITIONAL REGULATORY LOGIC",
+      "confidence": "HIGH",
+      "sources": [
+        "src-49cfr172",
+        "src-49cfr177"
+      ],
+      "baseline": {
+        "atlas": {
+          "trigger": "Jurisdiction, carriage regime or controlled-goods/transit/bonded/security condition selected.",
+          "before": "Execution case exists; applicable authority/instrument and release state unresolved.",
+          "event": "Scope determination, filing/response, inspection, hold or release event.",
+          "decision": "Which operative authority/instrument and participant duty apply to this lane, goods, party, facility and procedure?",
+          "rule": "No regime loads from mode name alone; resolve legal scope separately and block movement when an operative hold exists.",
+          "control": "Source/effective-date record, filing correlation, authority-response provenance and hold-release segregation.",
+          "clock": "Authority, transit, filing and response clock from operative source.",
+          "action": "Classify/screen, file where required, receive response, inspect, hold, release or escalate.",
+          "evidence": "Scope record, declaration/shipping paper, authority response, inspection, hold/release and retained evidence.",
+          "after": "REGULATORY STATUS RESOLVED, HELD, RELEASED or RESEARCH REQUIRED.",
+          "outcome": "Compliant execution without jurisdictional overgeneralization.",
+          "authoritySystem": "sys-gtm",
+          "producer": "sys-gtm / sys-broker-platform / sys-customs-platform",
+          "consumers": "sys-tms / sys-wms / sys-control-tower",
+          "sourceIds": [
+            "src-wco-dm",
+            "src-49cfr177",
+            "src-cmr",
+            "src-adr",
+            "src-atp",
+            "src-tir",
+            "src-india-eway"
+          ],
+          "claimBoundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+        },
+        "projection": {
+          "fields": [
+            {
+              "name": "shipmentID",
+              "label": "Shipment ID",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "consignmentID",
+              "label": "consignment ID",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "handlingUnitID",
+              "label": "handling-unit ID",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "partyLocationIDs",
+              "label": "party/location IDs",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "productMasterReference",
+              "label": "Product Master Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "transportDocumentReference",
+              "label": "Transport Document Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "regulatoryStatusReference",
+              "label": "Regulatory Status Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "contractReference",
+              "label": "Contract Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "evidenceRef",
+              "label": "Evidence Reference",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "reasonCode",
+              "label": "Reason Code",
+              "type": "string",
+              "required": false
+            }
+          ],
+          "subQueues": [
+            {
+              "name": "Scope / Screening",
+              "workTypes": [
+                "Scope / Screening"
+              ],
+              "outcomes": [
+                "out-resolved",
+                "out-held",
+                "out-released",
+                "out-research-required"
+              ]
+            },
+            {
+              "name": "Filing / Response",
+              "workTypes": [
+                "Filing / Response"
+              ],
+              "outcomes": [
+                "out-resolved",
+                "out-held",
+                "out-released",
+                "out-research-required"
+              ]
+            },
+            {
+              "name": "Hold / Release",
+              "workTypes": [
+                "Hold / Release"
+              ],
+              "outcomes": [
+                "out-resolved",
+                "out-held",
+                "out-released",
+                "out-research-required"
+              ]
+            },
+            {
+              "name": "Research Required",
+              "workTypes": [
+                "Research Required"
+              ],
+              "outcomes": [
+                "out-resolved",
+                "out-held",
+                "out-released",
+                "out-research-required"
+              ]
+            }
+          ],
+          "workTypes": [
+            {
+              "name": "Scope / Screening",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Scope / Screening handling for Regulatory Hold / Release."
+            },
+            {
+              "name": "Filing / Response",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Filing / Response handling for Regulatory Hold / Release."
+            },
+            {
+              "name": "Hold / Release",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Hold / Release handling for Regulatory Hold / Release."
+            },
+            {
+              "name": "Research Required",
+              "executionMode": "HUMAN_IN_LOOP",
+              "purpose": "Research Required handling for Regulatory Hold / Release."
+            }
+          ],
+          "outcomes": [
+            {
+              "id": "out-resolved",
+              "code": "RESOLVED",
+              "label": "Resolved",
+              "family": "COMPLETE",
+              "route": "SYSTEM",
+              "status": "COMPLETED",
+              "businessState": "RESOLVED",
+              "nextStep": "END_WORK_ITEM"
+            },
+            {
+              "id": "out-held",
+              "code": "HELD",
+              "label": "Held",
+              "family": "PENDING",
+              "route": "INTERNAL_QUEUE",
+              "status": "PENDING",
+              "businessState": "HELD",
+              "nextStep": "STAY_IN_QUEUE"
+            },
+            {
+              "id": "out-released",
+              "code": "RELEASED",
+              "label": "Released",
+              "family": "COMPLETE",
+              "route": "SYSTEM",
+              "status": "COMPLETED",
+              "businessState": "RELEASED",
+              "nextStep": "END_WORK_ITEM"
+            },
+            {
+              "id": "out-research-required",
+              "code": "RESEARCH_REQUIRED",
+              "label": "Research Required",
+              "family": "PENDING",
+              "route": "INTERNAL_QUEUE",
+              "status": "PENDING",
+              "businessState": "RESEARCH_REQUIRED",
+              "nextStep": "STAY_IN_QUEUE"
+            }
+          ],
+          "decisions": [
+            null
+          ],
+          "rules": [
+            "No regime loads from mode name alone; resolve legal scope separately and block movement when an operative hold exists."
+          ],
+          "controls": [
+            "Source/effective-date record, filing correlation, authority-response provenance and hold-release segregation."
+          ],
+          "systems": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "gap": "The Atlas correctly uses a generic regulatory shell because scope matters. Once the context is explicitly United States + highway + regulated hazardous material, Parts 172 and 177 expose a detailed ruleset that can populate fields, validations, controls and hold/release branches instead of a single generic compliance sentence.",
+      "sourceExplicit": [
+        "Part 177 prohibits acceptance/transport of forbidden hazardous material or hazardous material not prepared in accordance with the hazardous-material regulations.",
+        "The 172.101 Hazardous Materials Table supplies proper shipping name, hazard class/division, identification number, packing group, labels, special provisions and packaging authorizations.",
+        "A highway carrier generally may not accept hazardous material without the required shipping paper; the initial carrier generally requires the shipper certification unless an exception applies.",
+        "Part 172 specifies basic shipping-description information and labeling/placarding requirements; Part 177 governs highway carriage, loading/unloading and segregation.",
+        "Part 177 requires securement and orientation controls, restricts smoking/fire for specified classes, and contains a segregation table in which an X indicates materials may not be loaded/transported/stored together.",
+        "Hazmat shipping papers retained by the carrier are generally kept for one year after acceptance; hazardous-waste shipping papers are retained for three years."
+      ],
+      "canonicalFields": [
+        {
+          "name": "hazmatScopeResolved",
+          "type": "boolean",
+          "required": "yes",
+          "basis": "ATLAS_GOVERNANCE",
+          "validation": "US highway + material facts + applicable exception status"
+        },
+        {
+          "name": "identificationNumber",
+          "type": "UN/NA/ID number",
+          "required": "when regulated",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "49 CFR 172.101 column 4"
+        },
+        {
+          "name": "properShippingName",
+          "type": "string",
+          "required": "when regulated",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "49 CFR 172.101 column 2"
+        },
+        {
+          "name": "hazardClassDivision",
+          "type": "code",
+          "required": "when regulated",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "49 CFR 172.101 column 3"
+        },
+        {
+          "name": "packingGroup",
+          "type": "enum",
+          "required": "when applicable",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "49 CFR 172.101 column 5"
+        },
+        {
+          "name": "primaryAndSubsidiaryLabels",
+          "type": "set",
+          "required": "when applicable",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "table column 6 + labeling rules"
+        },
+        {
+          "name": "specialProvisions",
+          "type": "set",
+          "required": "when present",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "table column 7"
+        },
+        {
+          "name": "packagingAuthorization",
+          "type": "reference",
+          "required": "when applicable",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "table column 8 + Part 173"
+        },
+        {
+          "name": "shippingPaperRef",
+          "type": "document ref",
+          "required": "unless excepted",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "Part 172 description + Part 177 carriage requirements"
+        },
+        {
+          "name": "shipperCertificationPresent",
+          "type": "boolean",
+          "required": "initial carrier unless exception",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "49 CFR 172.204 / 177.817"
+        },
+        {
+          "name": "placardRequirement",
+          "type": "derived rule result",
+          "required": "conditional",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "Part 172 Subpart F / quantity/material rules"
+        },
+        {
+          "name": "segregationCompatibility",
+          "type": "rule result",
+          "required": "mixed loads",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "49 CFR 177.848 matrix + subsidiary hazards"
+        },
+        {
+          "name": "packageSecurementVerified",
+          "type": "boolean",
+          "required": "before movement",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "49 CFR 177.834"
+        },
+        {
+          "name": "driverTrainingQualification",
+          "type": "evidence ref",
+          "required": "when applicable",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "49 CFR 177.816 / 172.704"
+        },
+        {
+          "name": "carrierAcceptanceDate",
+          "type": "date",
+          "required": "yes",
+          "basis": "SOURCE_EXPLICIT",
+          "validation": "supports retention clock"
+        },
+        {
+          "name": "shippingPaperRetentionUntil",
+          "type": "date",
+          "required": "derived",
+          "basis": "SOURCE_DERIVED",
+          "validation": "1 year; 3 years hazardous waste"
+        }
+      ],
+      "decisionTable": [
+        [
+          "D1",
+          "Does the material/quantity/context fall within regulated hazardous-material scope?",
+          "No",
+          "ROUTE ordinary-freight process",
+          "Scope resolver; never infer from mode alone"
+        ],
+        [
+          "D2",
+          "Material forbidden or not prepared in accordance with HMR?",
+          "Yes",
+          "REJECT / HOLD — cannot accept",
+          "49 CFR 177.801"
+        ],
+        [
+          "D3",
+          "Hazard table classification and required description resolved?",
+          "No",
+          "HOLD / research",
+          "49 CFR 172.101, 172.202"
+        ],
+        [
+          "D4",
+          "Required shipping paper available or valid exception established?",
+          "No",
+          "HOLD — do not accept/transport",
+          "49 CFR 177.817(a)"
+        ],
+        [
+          "D5",
+          "Initial carrier requires shipper certification and it is missing?",
+          "Yes",
+          "HOLD — do not accept",
+          "49 CFR 177.817(b), 172.204"
+        ],
+        [
+          "D6",
+          "Required labels/placards/packaging conditions satisfied?",
+          "No",
+          "HOLD / correct before movement",
+          "49 CFR 172 Subparts E/F + 172.101/Part 173"
+        ],
+        [
+          "D7",
+          "Mixed-load segregation matrix prohibits combination?",
+          "Yes",
+          "BLOCK LOAD / REPLAN",
+          "49 CFR 177.848"
+        ],
+        [
+          "D8",
+          "Package securement/orientation/loading controls satisfied?",
+          "No",
+          "HOLD",
+          "49 CFR 177.834"
+        ],
+        [
+          "D9",
+          "All applicable checks passed?",
+          "Yes",
+          "RELEASE FOR HIGHWAY CARRIAGE",
+          "Derived outcome from source controls"
+        ]
+      ],
+      "states": [
+        "SCOPE_UNRESOLVED",
+        "IN_SCOPE",
+        "EXCEPTED",
+        "CLASSIFIED",
+        "DOCUMENT_CHECK",
+        "PACKAGING_LABEL_CHECK",
+        "SEGREGATION_CHECK",
+        "HELD",
+        "RELEASED",
+        "REJECTED",
+        "RESEARCH_REQUIRED"
+      ],
+      "controls": [
+        "No acceptance of forbidden/non-compliant hazmat",
+        "Shipping paper + certification gate",
+        "Hazard description validation",
+        "Labels/placards conditional logic",
+        "Package securement/orientation",
+        "Segregation matrix",
+        "Driver qualification/training evidence",
+        "Shipping-paper accessibility and retention"
+      ],
+      "notYetDefensible": [
+        "Applying every hazmat provision to every material without resolving class/quantity/exceptions",
+        "Client-specific dangerous-goods SOPs/approval hierarchy",
+        "ADR/Canada/India rules from U.S. regulations",
+        "Packaging technical requirements not explicitly modelled from Part 173 in this prototype"
+      ],
+      "stats": {
+        "currentFields": 10,
+        "candidateFields": 16,
+        "currentRules": 1,
+        "decisionRows": 9,
+        "sourceCount": 2
+      }
+    }
+  ],
+  "taskIndex": [
+    {
+      "id": "LTL-01",
+      "label": "Resolve service demand and execution eligibility",
+      "a3": "Commercial, order and service commitment"
+    },
+    {
+      "id": "LTL-02",
+      "label": "Classify, rate and commit the commercial offer",
+      "a3": "Commercial, order and service commitment"
+    },
+    {
+      "id": "LTL-03",
+      "label": "Create and validate shipment, consignment and transport-document identity",
+      "a3": "Shipment and transport-document establishment"
+    },
+    {
+      "id": "LTL-04",
+      "label": "Request pickup and prove shipment readiness",
+      "a3": "Pickup request, readiness and acceptance"
+    },
+    {
+      "id": "LTL-20",
+      "label": "Assure vehicle, equipment and qualified resource readiness",
+      "a3": "Vehicle, equipment and qualified-resource readiness"
+    },
+    {
+      "id": "LTL-05",
+      "label": "Dispatch pickup, accept freight and establish custody",
+      "a3": "Pickup request, readiness and acceptance"
+    },
+    {
+      "id": "LTL-06",
+      "label": "Receive at origin service centre and verify handling-unit state",
+      "a3": "Origin terminal receipt and consolidation"
+    },
+    {
+      "id": "LTL-07",
+      "label": "Build consolidation and authorize origin load",
+      "a3": "Origin terminal receipt and consolidation"
+    },
+    {
+      "id": "LTL-08",
+      "label": "Execute line-haul leg and publish actual movement state",
+      "a3": "Road network movement and transfer"
+    },
+    {
+      "id": "LTL-09",
+      "label": "Unload, sort and cross-dock at an intermediate service centre",
+      "a3": "Road network movement and transfer"
+    },
+    {
+      "id": "LTL-10",
+      "label": "Transfer or interchange to the next network leg",
+      "a3": "Road network movement and transfer"
+    },
+    {
+      "id": "LTL-11",
+      "label": "Deconsolidate and build the destination-delivery load",
+      "a3": "Destination readiness, delivery and acceptance"
+    },
+    {
+      "id": "LTL-12",
+      "label": "Confirm destination readiness, appointment and delivery dispatch",
+      "a3": "Destination readiness, delivery and acceptance"
+    },
+    {
+      "id": "LTL-13",
+      "label": "Attempt delivery, capture acceptance/reservations and close custody",
+      "a3": "Destination readiness, delivery and acceptance"
+    },
+    {
+      "id": "LTL-14",
+      "label": "Detect, classify and assign execution variance",
+      "a3": "Execution exception and recovery"
+    },
+    {
+      "id": "LTL-15",
+      "label": "Contain, replan and recover service",
+      "a3": "Execution exception and recovery"
+    },
+    {
+      "id": "LTL-16",
+      "label": "Calculate preliminary and executed freight charges",
+      "a3": "Freight charge, invoice and settlement"
+    },
+    {
+      "id": "LTL-17",
+      "label": "Invoice, audit, approve and settle transport obligations",
+      "a3": "Freight charge, invoice and settlement"
+    },
+    {
+      "id": "LTL-18",
+      "label": "Adjudicate cargo/service claim or billing dispute",
+      "a3": "Claims and disputes resolution"
+    },
+    {
+      "id": "LTL-19",
+      "label": "Resolve regulatory scope, operate hold/release and retain evidence",
+      "a3": "Trade, regulatory hold and release"
+    },
+    {
+      "id": "LTL-21",
+      "label": "Reconcile party, location, shipment, unit and network identities",
+      "a3": "Master and reference-data control"
+    },
+    {
+      "id": "LTL-22",
+      "label": "Coordinate customer communication and resolution evidence",
+      "a3": "Customer service coordination and resolution"
+    }
+  ]
+}

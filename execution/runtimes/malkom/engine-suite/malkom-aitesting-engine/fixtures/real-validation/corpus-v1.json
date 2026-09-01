@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "brisk-aitesting.real-validation-manifest.v1",
+  "corpusVersion": "brisk-real-apps-2026-08-03.v1",
+  "productVersion": "0.2.0",
+  "generatedAt": "2026-08-03T00:00:00.000Z",
+  "requiredTotal": 300,
+  "acceptedScenarioCount": 0,
+  "applications": [
+    {
+      "id": "directus",
+      "name": "Directus",
+      "requiredScenarios": 100,
+      "buckets": [
+        { "id": "rest", "name": "REST and generated collections", "requiredScenarios": 25 },
+        { "id": "graphql", "name": "GraphQL operations and permissions", "requiredScenarios": 20 },
+        { "id": "ui", "name": "UI and accessibility", "requiredScenarios": 20 },
+        { "id": "authorization", "name": "Roles, policies, authentication, and authorization", "requiredScenarios": 15 },
+        { "id": "data-integrity", "name": "Contracts, schema, database, and data integrity", "requiredScenarios": 10 },
+        { "id": "recovery", "name": "Drift, healing, interruption, recovery, and cleanup", "requiredScenarios": 10 }
+      ]
+    },
+    {
+      "id": "medusa",
+      "name": "Medusa",
+      "requiredScenarios": 100,
+      "buckets": [
+        { "id": "admin-api", "name": "Admin API and permissions", "requiredScenarios": 20 },
+        { "id": "commerce", "name": "Store and commerce state", "requiredScenarios": 25 },
+        { "id": "ui", "name": "Admin and storefront UI", "requiredScenarios": 20 },
+        { "id": "workflows", "name": "Workflows, events, jobs, retries, and compensation", "requiredScenarios": 15 },
+        { "id": "data-integrity", "name": "Contracts, transactions, database, and data integrity", "requiredScenarios": 10 },
+        { "id": "recovery", "name": "Drift, security, interruption, recovery, and cleanup", "requiredScenarios": 10 }
+      ]
+    },
+    {
+      "id": "n8n",
+      "name": "n8n",
+      "requiredScenarios": 100,
+      "buckets": [
+        { "id": "rest", "name": "REST identity, credential, project, and permissions", "requiredScenarios": 15 },
+        { "id": "webhook", "name": "Test and production webhooks", "requiredScenarios": 15 },
+        { "id": "ui", "name": "Workflow UI and accessibility", "requiredScenarios": 20 },
+        { "id": "workflow", "name": "Nodes, branches, waits, retries, errors, and data flow", "requiredScenarios": 25 },
+        { "id": "execution", "name": "Executions, workers, queues, database, and concurrency", "requiredScenarios": 15 },
+        { "id": "recovery", "name": "Drift, security, interruption, recovery, and cleanup", "requiredScenarios": 10 }
+      ]
+    }
+  ],
+  "scenarios": [],
+  "excludedEvidence": [
+    {
+      "id": "directus-historical-api-journey-2026-08-03",
+      "applicationId": "directus",
+      "reasonCode": "AI_CONTRIBUTION_RECORD_INCOMPLETE",
+      "reason": "The real model was consumed and seven operations passed, but the run did not retain the newly required raw-response digest and token availability record, so it cannot count in the stricter corpus.",
+      "references": ["TCV-0034", "TCV-0035", "CLM-0022", "REG-0023", "REG-0024"]
+    }
+  ]
+}

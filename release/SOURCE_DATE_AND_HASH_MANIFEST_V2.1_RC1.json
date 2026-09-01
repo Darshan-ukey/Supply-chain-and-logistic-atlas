@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "atlas-source-date-validation-v1",
+  "release": "2.1.0-rc.1",
+  "validatedAtUtc": "2026-09-01T17:24:23Z",
+  "inventoryScope": "/AiFY academy (recursive)",
+  "orderingRule": "modified_at descending; release/freeze status and SHA-256 break same-name ambiguity",
+  "sources": [
+    {
+      "component": "execution-fabric",
+      "libraryFile": "supply-chain-atlas-v2.1.0-dev1-execution-fabric.zip",
+      "createdAtUtc": "2026-09-01T07:27:13.184173Z",
+      "modifiedAtUtc": "2026-09-01T07:27:13.184173Z",
+      "sha256": "aa97a0cc39cdca8b7720d5ea6d4ad06889d5499256e567a727d06eba65082b30",
+      "use": "rebased implementation source"
+    },
+    {
+      "component": "canvas",
+      "libraryFile": "atlas-canvas-v2.0-frozen.zip",
+      "createdAtUtc": "2026-09-01T08:46:55.723696Z",
+      "modifiedAtUtc": "2026-09-01T08:46:55.723696Z",
+      "sha256": "bc340946d703ef25297ffd67e6de2e5879958c132722e71d95be058c5ba2c1cb",
+      "use": "frozen production asset"
+    },
+    {
+      "component": "universal-ask-and-integration-base",
+      "libraryFile": "supply-chain-atlas-v2-branch-ready.zip",
+      "createdAtUtc": "2026-09-01T12:37:26.008252Z",
+      "modifiedAtUtc": "2026-09-01T12:37:26.008252Z",
+      "sha256": "3c797e598099aaff84b014e89a982570fc40daec4fb3a649064a4cee808a4d0c",
+      "use": "later integration base"
+    },
+    {
+      "component": "universe",
+      "libraryFile": "universe-v7.3.html",
+      "createdAtUtc": "2026-08-31T10:46:05.501725Z",
+      "modifiedAtUtc": "2026-08-31T10:46:05.501725Z",
+      "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "use": "latest standalone and byte-matched release surface"
+    },
+    {
+      "component": "road-ltl-model",
+      "libraryFile": "road-ltl-v1.3.json",
+      "createdAtUtc": "2026-08-31T08:09:26.232475Z",
+      "modifiedAtUtc": "2026-08-31T09:15:06.832447Z",
+      "libraryVersion": 1,
+      "sha256": "0f855cc0b11991a0f58a76791d64def8b688f4349b0e5bd1105161241f7ad808",
+      "use": "latest version and final-stack locked canonical model"
+    },
+    {
+      "component": "road-ltl-reference",
+      "libraryFile": "road-ltl-v1.3.html",
+      "createdAtUtc": "2026-08-31T08:09:22.013031Z",
+      "modifiedAtUtc": "2026-08-31T09:14:53.595594Z",
+      "libraryVersion": 1,
+      "sha256": "5d8fdc6bd88d1c2c69b70afa66e19f37fc8d9576b536295d40822c507d7814d6",
+      "use": "latest version and byte-matched release surface"
+    },
+    {
+      "component": "ocean-fcl-reference",
+      "libraryFile": "ocean-fcl-v0.5.html",
+      "createdAtUtc": "2026-08-31T10:45:56.371715Z",
+      "modifiedAtUtc": "2026-08-31T10:45:56.371715Z",
+      "sha256": "66733685630f383909d6f0aad6bf0e5d0ad2c76123d2cb0596b6905aba1d220b",
+      "use": "latest standalone and byte-matched release surface"
+    },
+    {
+      "component": "ocean-lcl-reference",
+      "libraryFile": "ocean-lcl-v0.5.html",
+      "createdAtUtc": "2026-08-31T10:46:01.074477Z",
+      "modifiedAtUtc": "2026-08-31T10:46:01.074477Z",
+      "sha256": "f5cb0897b488cad3bd5a658e6a9bf4dd2a47752f70e60eb8464a37dfa351f40d",
+      "use": "latest standalone and byte-matched release surface"
+    },
+    {
+      "component": "atlas-warehouse",
+      "libraryFile": "atlas-warehouse-v1.json",
+      "createdAtUtc": "2026-08-31T11:47:18.980432Z",
+      "modifiedAtUtc": "2026-08-31T11:47:18.980432Z",
+      "sha256": "8d8ba7369a715c226ceaf3b4856b79b2ab9ebb92b0ffeef711ed0787b6bb5653",
+      "use": "latest governed warehouse"
+    },
+    {
+      "component": "foundation",
+      "libraryFile": "foundation-v1.2.json",
+      "createdAtUtc": "2026-08-31T11:47:27.752488Z",
+      "modifiedAtUtc": "2026-08-31T11:47:27.752488Z",
+      "sha256": "952dac937be0facfec31029b137233aa6203a1cd07d79ed461241601452eb6df",
+      "use": "latest governed foundation"
+    },
+    {
+      "component": "operations-knowledge-prototype",
+      "libraryFile": "atlas-ltl-operations-knowledge-prototype.zip",
+      "createdAtUtc": "2026-09-01T12:39:03.438764Z",
+      "modifiedAtUtc": "2026-09-01T12:39:03.438764Z",
+      "sha256": "df20f97d533d8de3eace3dd7fae45592c8f790c9781d205bc888c510b4e8f4ce",
+      "use": "isolated prototype; not production-registered"
+    }
+  ],
+  "supersession": {
+    "supersedes": "2.0.3",
+    "reason": "2.0.3 omitted the earlier valid Execution Fabric capability while incorporating later frozen assets",
+    "laterSourceFoundAfterOperationsKnowledgeBeforeValidationCutoff": false
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "API-only Reference API", "version": "1.0.0" },
+  "paths": {
+    "/api/health": {
+      "get": {
+        "operationId": "getHealth",
+        "responses": {
+          "200": {
+            "description": "Healthy",
+            "content": { "application/json": { "schema": { "type": "object", "required": ["ok", "service"], "properties": { "ok": { "type": "boolean" }, "service": { "type": "string" } } } } }
+          }
+        }
+      }
+    },
+    "/api/items": {
+      "get": {
+        "operationId": "listItems",
+        "responses": {
+          "200": {
+            "description": "Items",
+            "content": { "application/json": { "schema": { "type": "object", "required": ["items", "total"], "properties": { "items": { "type": "array", "items": { "type": "object" } }, "total": { "type": "number" } } } } }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createItem",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" } } } } }
+        },
+        "responses": {
+          "201": { "description": "Created", "content": { "application/json": { "schema": { "type": "object", "required": ["item"], "properties": { "item": { "type": "object" } } } } } },
+          "400": { "description": "Invalid" }
+        }
+      }
+    }
+  }
+}
