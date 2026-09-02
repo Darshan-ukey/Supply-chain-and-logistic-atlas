@@ -1,9 +1,9 @@
 # BOL Information Resolution Baseline v0.1 — Road LTL / Malkom
 
-Status: CANDIDATE BASELINE — researched, source-backed, not yet production-promoted  
-Date: 2 September 2026  
-Target daughter release: Road LTL v1.5 candidate  
-Operational contract: Operational Knowledge Contract v2 candidate
+Status: **FROZEN_REFERENCE_BASELINE** — immutable reference candidate, not production promotion  
+Freeze date: 2 September 2026  
+Target daughter release: Road LTL v1.5 frozen execution-reference candidate  
+Operational contract: Operational Knowledge Contract v2 frozen schema candidate
 
 ## Purpose
 Establish the first governed reference implementation of field/object-level Information Resolution inside Atlas Operational Knowledge. The baseline converts the Malkom BOL extraction problem from a flat field-accuracy exercise into canonical object semantics, applicability, evidence, association, validation, exception and feedback contracts that can later compile into executor-neutral WorkDefinitions and Malkom runtime projections.
@@ -53,9 +53,9 @@ LTL-03 v1.5 enrichment must instantiate canonical document/consignment objects; 
 Downstream A5 consumers of validated shipment/document identity require regression validation, but no Page-0/Universe taxonomy change is currently evidenced.
 
 ## Version decision
-- Road LTL v1.5 candidate: REQUIRED.
-- Operational Knowledge Contract v2: REQUIRED.
-- Supply Chain Universe 7.4: NOT REQUIRED solely for this use case under current evidence.
+- Road LTL v1.5: **FROZEN_EXECUTION_REFERENCE_CANDIDATE**.
+- Operational Knowledge Contract v2: **FROZEN_SCHEMA_CANDIDATE**.
+- Supply Chain Universe 7.4: **NOT REQUIRED** solely for this use case under current evidence.
 
 ## Related governed assets
 - schemas/operational-knowledge-contract-v2.json
@@ -64,5 +64,8 @@ Downstream A5 consumers of validated shipment/document identity require regressi
 - data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json
 - governance/proposals/ROAD_LTL_V1.5_BOL_OPERATIONAL_ENRICHMENT_CHARTER.md
 
-## Promotion gates
-Source coverage -> information-resolution completeness -> LTL-03 operational-depth validation -> downstream regression -> recursive Work Decomposition implementation -> WorkDefinition compilation -> Malkom projection -> metric-integrity validation -> measured post-change Validated STP Yield -> governance freeze/promotion.
+## Promotion gates still open after reference freeze
+Reference freeze does not equal production promotion. The following remain downstream gates: resolve the source-reported Malkom metric definition; obtain governing client/Malkom schemas for unresolved labels; complete recursive Work Decomposition; compile WorkDefinition VNext; execute downstream runtime regression and measured Validated STP proof before any production activation claim.
+
+## Freeze basis
+The GitHub executable freeze validation verified lossless v1.4 inheritance, LTL-03-only change scope, claim-reference integrity, Operational Knowledge v2 and Information Resolution linkage, canonical object depth, jurisdiction boundaries, metric-anomaly disclosure, and preservation of the production baseline. The immutable freeze is therefore authorized as a reference candidate only.
