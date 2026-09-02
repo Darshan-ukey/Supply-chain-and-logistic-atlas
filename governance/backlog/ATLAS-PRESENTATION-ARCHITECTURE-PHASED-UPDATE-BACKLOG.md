@@ -17,15 +17,18 @@ Scope:
 Exit gate: later changes can be proven not to mutate frozen semantic assets.
 
 ## Phase 1 — Presentation and access contracts
-**Status: NOT STARTED**
+**Status: COMPLETE — EXIT GATE PASS**
 
-Deliver:
+Delivered:
 - Operational Knowledge Presentation Contract V1;
 - Execution Readiness Presentation Contract V1;
 - authorization projection matrix covering Public/Anonymous, authenticated Atlas, Pilot, Client Workspace, Admin/Governor and Owner;
-- field-by-field classification: canonical field, presentation label/type, visibility, masking, aggregation, unresolved behavior, provenance visibility.
+- field-by-field classification covering canonical field/path, presentation type, visibility, masking, aggregation, unresolved behavior and provenance visibility;
+- machine-readable authorization and field-classification companions for P2;
+- deny-by-default classification for unmatched/new canonical fields;
+- P1 completion audit confirming no semantic/runtime/UI changes.
 
-Exit gate: every canonical execution-depth field has an explicit consumer, projection and authorization rule.
+Exit gate: **PASS** — every current canonical execution-depth field family has an explicit consumer, projection and authorization rule; unmatched future fields are private/not projected by default.
 
 ## Phase 2 — Backend projection boundary
 **Status: NOT STARTED**
