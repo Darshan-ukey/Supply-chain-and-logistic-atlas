@@ -24,6 +24,14 @@
     "clientBindingResolutionPrinciple",
     "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1"
   ],
+  "presentationContracts": {
+    "operationalKnowledge": "operationalKnowledgePresentationContractV1",
+    "executionReadiness": "executionReadinessPresentationContractV1",
+    "authorizationProjection": "authorizationProjectionMatrixV1",
+    "fieldClassification": "executionDepthFieldClassificationV1",
+    "completedThroughPhase": "P1",
+    "nextPhase": "P2_BACKEND_PROJECTION_BOUNDARY"
+  },
   "nextImplementation": [
     "canonicalWorkDecompositionContract",
     "canonicalWorkDefinitionContract"
