@@ -1,0 +1,137 @@
+{
+  "manifestId": "ATLAS-P0-PRESENTATION-BASELINE-2026-09-02",
+  "status": "FROZEN",
+  "phase": "P0",
+  "baseline": {
+    "repository": "Darshan-ukey/Supply-chain-and-logistic-atlas",
+    "baselineBranch": "atlas-v2.1.0-rc1",
+    "baselineCommit": "1b2b07c1690570203db148cabbb16ace3b7355de",
+    "p0Branch": "atlas-p0-presentation-freeze",
+    "functionalChangesAllowed": false
+  },
+  "presentationArchitecture": {
+    "id": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
+    "status": "FROZEN",
+    "sequence": [
+      "OVERVIEW",
+      "OPERATIONAL_KNOWLEDGE",
+      "EXECUTION_READINESS",
+      "PROTECTED_WORK_DECOMPOSITION",
+      "PROTECTED_WORKDEFINITION"
+    ]
+  },
+  "assets": [
+    {
+      "asset": "Universe",
+      "version": "7.3",
+      "anchor": "4d6b3224caf32b6172fb0958ee94eeb63dc80c61",
+      "anchorType": "dedicatedBranchCommit",
+      "status": "FROZEN_FOUNDATION"
+    },
+    {
+      "asset": "Road LTL",
+      "version": "1.4",
+      "anchor": "1b2b07c1690570203db148cabbb16ace3b7355de",
+      "anchorType": "repositoryBaselinePlusSemanticVersion",
+      "status": "FROZEN_CANDIDATE_NOT_SILENTLY_PROMOTED"
+    },
+    {
+      "asset": "Ocean FCL",
+      "version": "0.6",
+      "anchor": "1b2b07c1690570203db148cabbb16ace3b7355de",
+      "anchorType": "repositoryBaselinePlusSemanticVersion",
+      "status": "FROZEN_CANDIDATE_NOT_SILENTLY_PROMOTED"
+    },
+    {
+      "asset": "Ocean LCL",
+      "version": "0.6",
+      "anchor": "1b2b07c1690570203db148cabbb16ace3b7355de",
+      "anchorType": "repositoryBaselinePlusSemanticVersion",
+      "status": "FROZEN_CANDIDATE_NOT_SILENTLY_PROMOTED"
+    },
+    {
+      "asset": "Operational Knowledge Contract",
+      "version": "1",
+      "anchor": "1b2b07c1690570203db148cabbb16ace3b7355de",
+      "anchorType": "repositoryBaselinePlusContractVersion",
+      "status": "FROZEN_CANONICAL_CONTRACT"
+    },
+    {
+      "asset": "Client Binding Contract",
+      "version": "1",
+      "anchor": "1b2b07c1690570203db148cabbb16ace3b7355de",
+      "anchorType": "repositoryBaselinePlusContractVersion",
+      "status": "FROZEN_CANONICAL_CONTRACT"
+    },
+    {
+      "asset": "Universal Daughter Renderer",
+      "version": "pre-V2 presentation baseline",
+      "anchor": "1b2b07c1690570203db148cabbb16ace3b7355de",
+      "anchorType": "repositoryBaseline",
+      "status": "REGRESSION_BASELINE_P3_UPDATE_PLANNED"
+    },
+    {
+      "asset": "Canvas",
+      "version": "2.0",
+      "anchor": "e885ecb883881686dea5989a928a69b7db27324e",
+      "anchorType": "dedicatedBranchCommit",
+      "status": "FROZEN_VISUAL_ARCHITECTURE_P4_SEMANTIC_PATCH_PLANNED"
+    },
+    {
+      "asset": "Ask Atlas",
+      "version": "2.0.1 universal baseline",
+      "anchor": "d0dfd8b2e4343f7ea86af249407e33f158267959",
+      "anchorType": "certificationBlob",
+      "status": "REGRESSION_BASELINE_P5_ACCESS_PATCH_PLANNED"
+    },
+    {
+      "asset": "Atlas Warehouse",
+      "version": "1",
+      "anchor": "1b2b07c1690570203db148cabbb16ace3b7355de",
+      "anchorType": "repositoryBaselinePlusArchitectureVersion",
+      "status": "GOVERNED_STORAGE_BASELINE"
+    },
+    {
+      "asset": "Admin Runtime UI",
+      "version": "2.1 RC1",
+      "anchor": "c33f69dbd4d62739fc7be79110d3d160735b1537",
+      "anchorType": "gitBlobSha",
+      "status": "REGRESSION_BASELINE"
+    }
+  ],
+  "regressionFixtures": {
+    "roadLtlV1_4": {
+      "a5Tasks": 22,
+      "requiredInformationContracts": 152,
+      "decisionGates": 75,
+      "branchTransitions": 150,
+      "clientBindingSlots": 128,
+      "provenanceClaims": 132
+    },
+    "oceanFclV0_6": {
+      "a5Tasks": 30,
+      "requiredInformationContracts": 113,
+      "decisionGates": 34,
+      "branchTransitions": 68,
+      "clientBindingSlots": 99,
+      "provenanceClaims": 90
+    },
+    "oceanLclV0_6": {
+      "a5Tasks": 30,
+      "requiredInformationContracts": 127,
+      "decisionGates": 34,
+      "branchTransitions": 68,
+      "clientBindingSlots": 99,
+      "provenanceClaims": 90
+    }
+  },
+  "securityAssertions": [
+    "UNAUTHORIZED_BROWSER_MUST_NOT_RECEIVE_FULL_WORK_DECOMPOSITION",
+    "UNAUTHORIZED_BROWSER_MUST_NOT_RECEIVE_FULL_WORKDEFINITION",
+    "UNAUTHORIZED_BROWSER_MUST_NOT_RECEIVE_RESTRICTED_CLIENT_BINDINGS",
+    "UNAUTHORIZED_BROWSER_MUST_NOT_RECEIVE_PROTECTED_RUNTIME_PROJECTIONS",
+    "ASK_ATLAS_MUST_OBEY_THE_SAME_AUTHORIZATION_PROJECTION_POLICY",
+    "RENDERERS_MUST_NOT_BECOME_A_SECOND_SOURCE_OF_OPERATIONAL_TRUTH"
+  ],
+  "exitGate": "PASS"
+}
