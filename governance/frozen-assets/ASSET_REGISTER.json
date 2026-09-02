@@ -1,8 +1,8 @@
 {
   "schemaVersion": "atlas-frozen-asset-register-v1",
-  "updatedAt": "2026-09-02T12:15:00+05:30",
+  "updatedAt": "2026-09-02T15:30:00+05:30",
   "repository": "Darshan-ukey/Supply-chain-and-logistic-atlas",
-  "governanceBranch": "atlas-governance-registry-v2.1",
+  "governanceBranch": "atlas-presentation-architecture-v1-p0",
   "latestIntegrationLock": {"version":"2.1","path":"governance/frozen-assets/history/frozen-stack-lock-v2.1.json"},
   "rules": [
     "Read CURRENT.json or LATEST.md first; do not search old chat threads for latest asset identity.",
@@ -34,6 +34,7 @@
     {"assetId":"knowledge-execution-warehouse-schema-1","family":"backend-schema","name":"Knowledge Execution Warehouse Schema","version":"1","status":"FROZEN_SCHEMA_CANDIDATE_NOT_APPLIED","category":"backend","current":true,"source":"repository","repositoryPath":"backend/supabase/001_knowledge_execution_warehouse.sql","sha256":"89bf4faad892117655653dc835582b8894959304ae3bc440f31020376003ca30"},
     {"assetId":"canvas-2.0.0","family":"canvas","name":"Canvas","version":"2.0.0","status":"FROZEN_PRODUCTION_BASELINE","category":"platform","current":true,"source":"metadata","sha256":"bc340946d703ef25297ffd67e6de2e5879958c132722e71d95be058c5ba2c1cb"},
     {"assetId":"universal-ask-2.0.1","family":"universal-ask","name":"Universal Ask","version":"2.0.1","status":"CERTIFIED_IN_BASELINE_PACKAGE","category":"platform","current":true,"source":"metadata"},
-    {"assetId":"atlas-warehouse-1","family":"atlas-warehouse","name":"Atlas Warehouse","version":"1","status":"FROZEN_PRODUCTION_BASELINE","category":"backend","current":true,"source":"metadata"}
+    {"assetId":"atlas-warehouse-1","family":"atlas-warehouse","name":"Atlas Warehouse","version":"1","status":"FROZEN_PRODUCTION_BASELINE","category":"backend","current":true,"source":"metadata"},
+    {"assetId":"ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1","family":"presentation-architecture","name":"Atlas Daughter Execution-Depth Presentation Architecture","version":"1.0.0","status":"FROZEN","category":"governance","current":true,"source":"repository","repositoryPath":"governance/architecture/ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1.md","sha256":"cd4cb0a0f7ae7c3715f2d11e65e5f8fa961108d0cafc551d96cb2f4bdb278033","semanticImpact":"NONE","implementationStatus":"PHASED_BACKLOG"}
   ]
 }
