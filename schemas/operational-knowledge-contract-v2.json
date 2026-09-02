@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "atlas-operational-knowledge-contract-v2",
+  "status": "CANDIDATE_FOR_FREEZE",
+  "supersedes": "atlas-operational-knowledge-contract-v1",
+  "purpose": "Make operational knowledge structurally sufficient for execution readiness by embedding information/object resolution, evidence, applicability, validation, authority, exception and runtime-feedback semantics before recursive work decomposition.",
+  "principles": [
+    "Operational Knowledge is executor-neutral canonical truth, not a runtime queue schema.",
+    "Information Resolution is a first-class component of Operational Knowledge v2, not a disconnected permanent layer.",
+    "Frozen assets are immutable; material enrichment creates a newer candidate version.",
+    "Authoritative claims are activated only within their stated jurisdiction, regime, condition and applicability.",
+    "Client/runtime labels without authoritative semantics remain explicit bindings or source-context gaps.",
+    "Runtime feedback may suggest knowledge gaps but cannot silently mutate canonical truth."
+  ],
+  "taskOperationalKnowledge": {
+    "identity": ["taskId", "canonicalTaskRef", "module", "version"],
+    "meaning": ["businessMeaning", "why", "businessOutcome", "preconditions", "postconditions"],
+    "applicability": ["requiredWhen", "prohibitedWhen", "jurisdictionIds", "carriageRegimeIds", "conditionIds"],
+    "inputsOutputs": ["inputObjectRefs", "outputObjectRefs", "systemOfRecordRoles"],
+    "authority": ["authorityOwner", "sourceClaims", "sourceBasis"],
+    "executionReadiness": ["ambiguities", "unresolvedDependencies", "clientBindingRequirements", "resolutionStatus"]
+  },
+  "informationResolution": {
+    "$ref": "information-resolution-contract-v1",
+    "requiredFor": "Every canonical information field/object whose meaning, applicability, origin, association, normalization, validation or conflict handling materially affects execution.",
+    "minimumSemantics": [
+      "canonicalFieldId", "canonicalObjectRef", "businessMeaning", "scope", "datatype", "cardinality",
+      "requiredWhen", "prohibitedWhen", "valueOrigin", "allowedEvidenceSources", "associationRule",
+      "normalizationRule", "validationRules", "crossFieldRules", "crossObjectRules", "authoritySource",
+      "authorityOwner", "systemOfRecordRole", "conflictResolution", "missingValuePolicy", "confidencePolicy",
+      "humanReviewPolicy", "sourceClaims", "jurisdictionApplicability", "clientBindingSlot", "runtimeMappings",
+      "measurementProfile", "runtimeFeedbackProfile"
+    ]
+  },
+  "objectSemantics": {
+    "required": ["canonicalObjectId", "businessMeaning", "relationships", "cardinality", "lifecycleOrStateWhereRelevant", "sourceClaims"],
+    "rule": "Documents and data objects are first-class reusable information contracts, not attachments to tasks."
+  },
+  "exceptionsAndConflicts": {
+    "required": ["missingInformationPolicy", "conflictingSourcePolicy", "lowConfidencePolicy", "authorityEscalation", "humanReviewTrigger"]
+  },
+  "provenance": {
+    "required": ["claimId", "sourceId", "evidenceClass", "applicability", "resolutionEffect"],
+    "rule": "Task-level citation does not automatically prove every field-level rule."
+  },
+  "clientBinding": {
+    "required": ["bindingStatus", "clientFieldMapping", "targetSystem", "clientValidationOrPolicyOverrides", "collectionQuestionWhereNeeded"],
+    "statuses": ["CANONICAL_RESOLVED", "CLIENT_BINDING_REQUIRED", "SOURCE_CONTEXT_PENDING", "RESOLVED_CLIENT_SPECIFIC"]
+  },
+  "runtimeFeedback": {
+    "required": ["runtime", "modelOrVersion", "documentPopulation", "client", "layoutOrTemplate", "measurementMethod", "sampleSize", "errorClass", "observedMetric"],
+    "errorClasses": ["DETECTION_RECALL", "OBJECT_ASSOCIATION", "SEMANTIC_CLASSIFICATION", "NORMALIZATION_VALIDATION", "CONDITIONAL_APPLICABILITY"],
+    "governanceFlow": "runtime observation -> suggested gap -> source/owner validation -> canonical update where applicable -> new WorkDefinition/runtime projection -> retest"
+  },
+  "downstreamContract": {
+    "nextLayer": "Recursive Work Decomposition",
+    "gate": "Do not compile executor-ready WorkDefinitions until material operational ambiguities and unresolved information semantics are either resolved or explicitly bound/escalated."
+  }
+}
