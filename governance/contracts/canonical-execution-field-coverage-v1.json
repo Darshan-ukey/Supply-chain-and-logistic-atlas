@@ -1,0 +1,217 @@
+{
+  "registryId": "ATLAS-CANONICAL-EXECUTION-FIELD-COVERAGE-V1",
+  "version": "1.0.0",
+  "status": "FROZEN_P1_CONTRACT",
+  "defaultPolicy": "DENY_UNLESS_EXPLICITLY_CLASSIFIED",
+  "purpose": "Provide the P1 field-coverage register across the full canonical chain so P2 can implement projections without inventing access rules.",
+  "classificationLegend": {
+    "PUBLIC_SAFE": "Human-readable canonical/reference knowledge may be delivered publicly.",
+    "AUTHENTICATED_SAFE": "May be delivered to authenticated general users.",
+    "AGGREGATE_ONLY": "Only count/band/status summary may leave the protected layer.",
+    "INTERNAL_PROTECTED": "Detailed execution IP; authorized internal/client scope only.",
+    "CLIENT_AUTHORIZED": "Client-specific configuration/evidence; workspace-scoped only.",
+    "ADMIN_ONLY": "Governance/research detail; Admin/Governor/Owner only.",
+    "OWNER_ONLY": "Access/governance-policy detail; Owner only.",
+    "NOT_RENDERED": "No presentation surface for this field in the specified projection."
+  },
+  "fieldFamilies": [
+    {
+      "layer": "A5_OVERVIEW",
+      "paths": ["identity.moduleId", "identity.moduleVersion", "identity.a5ProcessId", "identity.name", "identity.purpose", "identity.scopeBoundary", "trigger", "stateBefore", "stateAfter", "applicability"],
+      "defaultClassification": "PUBLIC_SAFE",
+      "publicForm": "human-readable overview",
+      "projection": "OVERVIEW"
+    },
+    {
+      "layer": "OPERATIONAL_KNOWLEDGE_REQUIRED_INFORMATION",
+      "paths": ["requiredInformation[].name", "requiredInformation[].why", "requiredInformation[].requiredWhen", "requiredInformation[].valueOrigin", "requiredInformation[].validation"],
+      "defaultClassification": "PUBLIC_SAFE",
+      "publicForm": "human-readable summaries",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "layer": "OPERATIONAL_KNOWLEDGE_INFORMATION_RESOLUTION_DETAIL",
+      "paths": ["requiredInformation[].id", "requiredInformation[].derivationRules", "requiredInformation[].conflictResolution", "requiredInformation[].sourceRefs", "requiredInformation[].exactAuthoritativeOrigin"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "origin/basis/status indicator only",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "layer": "OPERATIONAL_KNOWLEDGE_DECISIONS",
+      "paths": ["decisions[].question"],
+      "defaultClassification": "PUBLIC_SAFE",
+      "publicForm": "decision summary",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "layer": "OPERATIONAL_KNOWLEDGE_DECISION_LOGIC",
+      "paths": ["decisions[].inputs", "decisions[].gates", "decisions[].conditionExpressions", "decisions[].passFailHoldLogic"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "input/gate/outcome-family counts and high-level summary",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "layer": "OPERATIONAL_KNOWLEDGE_RULES_CONTROLS_ACTIONS",
+      "paths": ["rules[].statement", "validations[].summary", "constraints[].summary", "controls[].objective", "actions[].summary"],
+      "defaultClassification": "PUBLIC_SAFE",
+      "publicForm": "reference-level human-readable summary",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "layer": "OPERATIONAL_KNOWLEDGE_EXECUTABLE_LOGIC",
+      "paths": ["rules[].conditionExpression", "controls[].failureBehavior", "actions[].preconditions", "actions[].postconditions", "validatorImplementation"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "not rendered; summary comes from safe field family",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "layer": "OPERATIONAL_KNOWLEDGE_OUTCOMES",
+      "paths": ["outcomes[].code", "outcomes[].meaning", "exceptions.summary", "timing[].type", "actors.performerRole", "actors.ownerRole", "systems[].role", "systems[].canonicalSystemType", "objects[].canonicalName", "documents[].canonicalName", "evidence[].type"],
+      "defaultClassification": "PUBLIC_SAFE",
+      "publicForm": "human-readable summary",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "layer": "OPERATIONAL_KNOWLEDGE_BRANCH_EXCEPTION_DETAIL",
+      "paths": ["branchTransitions[]", "exceptions.retryLogic", "exceptions.escalationLogic", "exceptions.recoveryLogic", "timing[].referenceSemantics", "systemExchanges[].interfaceContract", "documents[].requiredFields", "evidence[].acceptanceCriteria"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "counts/completeness/status only",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "layer": "PROVENANCE_PUBLIC",
+      "paths": ["provenanceClaims[].basisClass", "provenanceClaims[].authorityClass", "evidenceStatus", "coverageStatus"],
+      "defaultClassification": "PUBLIC_SAFE",
+      "publicForm": "badges/status",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "layer": "PROVENANCE_PROTECTED",
+      "paths": ["provenanceClaims[].sourceId", "provenanceClaims[].sourceName", "provenanceClaims[].sourceUrl", "provenanceClaims[].sourceVersion", "provenanceClaims[].claimMapping", "provenanceClaims[].claimBoundaryDetail"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "authority class only",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "layer": "RESEARCH_GOVERNANCE",
+      "paths": ["researchNotes", "crosswalkLogic", "internalConfidenceRationale", "sourceLicenseNotes", "approvalNotes"],
+      "defaultClassification": "ADMIN_ONLY",
+      "publicForm": "not rendered",
+      "projection": "ADMIN_GOVERNANCE"
+    },
+    {
+      "layer": "EXECUTION_READINESS_PUBLIC",
+      "paths": ["decompositionRequired", "decompositionStatus", "executorReady", "independentExecutorProof", "workDefinitionAvailability", "requiredInformationCoverage", "decisionCoverage", "branchCoverage", "evidenceCoverage", "exceptionRecoveryCompleteness", "hitlDependency", "clientBindingExpected", "automationSuitability"],
+      "defaultClassification": "PUBLIC_SAFE",
+      "publicForm": "status/percentage/band summary",
+      "projection": "EXECUTION_READINESS"
+    },
+    {
+      "layer": "EXECUTION_READINESS_AGGREGATES",
+      "paths": ["unresolvedOperationalKnowledge", "unresolvedClientBinding", "deterministicWorkRatio", "systemActionDependency"],
+      "defaultClassification": "AGGREGATE_ONLY",
+      "publicForm": "count/category/band only",
+      "projection": "EXECUTION_READINESS"
+    },
+    {
+      "layer": "EXECUTION_READINESS_PROTECTED",
+      "paths": ["unresolvedOperationalKnowledge[].detail", "unresolvedClientBinding[].detail", "runtimeProjectionStatus", "executorProofEvidence"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "not rendered beyond public aggregate/status",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "layer": "WORK_DECOMPOSITION_SUMMARY",
+      "paths": ["workDecomposition.available", "workDecomposition.nodeCount", "workDecomposition.typeCounts", "workDecomposition.depth", "workDecomposition.executorReadyNodeCount"],
+      "defaultClassification": "AGGREGATE_ONLY",
+      "publicForm": "availability/counts/type families/depth summary",
+      "projection": "EXECUTION_READINESS"
+    },
+    {
+      "layer": "WORK_DECOMPOSITION_DETAIL",
+      "paths": ["workDecompositionNodes[].decompositionId", "workDecompositionNodes[].parentA5Id", "workDecompositionNodes[].parentNodeId", "workDecompositionNodes[].type", "workDecompositionNodes[].purpose", "workDecompositionNodes[].trigger", "workDecompositionNodes[].inputs", "workDecompositionNodes[].decision", "workDecompositionNodes[].action", "workDecompositionNodes[].systemInteraction", "workDecompositionNodes[].humanBoundary", "workDecompositionNodes[].control", "workDecompositionNodes[].outcome", "workDecompositionNodes[].exception", "workDecompositionNodes[].evidence", "workDecompositionNodes[].provenance", "workDecompositionNodes[].confidence"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "not rendered; summary only",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "layer": "WORKDEFINITION_STATUS",
+      "paths": ["workDefinition.available", "workDefinition.status", "workDefinition.version"],
+      "defaultClassification": "PUBLIC_SAFE",
+      "publicForm": "availability/status/version family where safe",
+      "projection": "EXECUTION_READINESS"
+    },
+    {
+      "layer": "WORKDEFINITION_IDENTITY_LINEAGE",
+      "paths": ["workDefinition.identity", "workDefinition.lineage", "workDefinition.derivedFrom", "workDefinition.schemaVersion", "workDefinition.generatedAt"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "status only",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "layer": "WORKDEFINITION_EXECUTION_CONTRACT",
+      "paths": ["workDefinition.applicability", "workDefinition.workObject", "workDefinition.entryEvent", "workDefinition.requiredInputs", "workDefinition.canonicalFields", "workDefinition.decisions", "workDefinition.rules", "workDefinition.validations", "workDefinition.controls", "workDefinition.actions", "workDefinition.systems", "workDefinition.actors", "workDefinition.outcomes", "workDefinition.transitions", "workDefinition.waits", "workDefinition.clocks", "workDefinition.retries", "workDefinition.escalations", "workDefinition.recovery", "workDefinition.evidence", "workDefinition.stateAfter", "workDefinition.completionCriteria", "workDefinition.executionCharacteristics"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "WorkDefinition available + execution-profile summary only",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "layer": "WORKDEFINITION_CLIENT_BINDING_POINTS",
+      "paths": ["workDefinition.clientBindingPoints"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "binding count/categories only",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "layer": "CLIENT_BINDING_REQUIREMENT_DETAIL",
+      "paths": ["clientBindingRequirements[].requiredWhen", "clientBindingRequirements[].why", "clientBindingRequirements[].valueOrigin", "clientBindingRequirements[].validation", "clientBindingRequirements[].sourceRefsOrBasis", "clientBindingRequirements[].systemOfRecord", "clientBindingRequirements[].clientFieldMapping", "clientBindingRequirements[].authorityOwner", "clientBindingRequirements[].collectionQuestion", "clientBindingRequirements[].resolutionStatus"],
+      "defaultClassification": "CLIENT_AUTHORIZED",
+      "publicForm": "aggregate count/category only",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "layer": "CLIENT_BINDING_VALUES",
+      "paths": ["clientBindingValues[].actualValue", "clientBindingValues[].actualSystem", "clientBindingValues[].actualField", "clientBindingValues[].localCode", "clientBindingValues[].threshold", "clientBindingValues[].sla", "clientBindingValues[].teamRoute", "clientBindingValues[].evidence", "clientBindingValues[].confirmedBy"],
+      "defaultClassification": "CLIENT_AUTHORIZED",
+      "publicForm": "never rendered",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "layer": "RUNTIME_PROJECTION_STATUS",
+      "paths": ["runtimeProjection.runtimeType", "runtimeProjection.status", "runtimeProjection.capabilityCoverage"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "not rendered",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "layer": "RUNTIME_PROJECTION_DETAIL",
+      "paths": ["runtimeProjection.supported", "runtimeProjection.mapped", "runtimeProjection.transformed", "runtimeProjection.clientBindingRequired", "runtimeProjection.unsupportedCurrentRuntime", "runtimeProjection.futureEnhancement", "runtimeProjection.queueStructures", "runtimeProjection.workflowStructures", "runtimeProjection.agentStructures", "runtimeProjection.compiledPackage"],
+      "defaultClassification": "INTERNAL_PROTECTED",
+      "publicForm": "never rendered",
+      "projection": "RUNTIME_AUTHORIZED"
+    },
+    {
+      "layer": "EXECUTION_EVIDENCE",
+      "paths": ["executionEvidence.status", "executionEvidence.businessState", "executionEvidence.reasonCode", "executionEvidence.evidence", "executionEvidence.exception", "executionEvidence.actualOutcome", "executionEvidence.startedAt", "executionEvidence.completedAt", "executionEvidence.performance"],
+      "defaultClassification": "CLIENT_AUTHORIZED",
+      "publicForm": "never rendered",
+      "projection": "CLIENT_WORKSPACE_OR_RUNTIME_AUTHORIZED"
+    },
+    {
+      "layer": "GOVERNANCE_IMPACT_AUDIT",
+      "paths": ["suggestedGaps", "changeRequests", "impactAnalysis", "regenerationPlan", "approvals", "validationRuns", "auditLog"],
+      "defaultClassification": "ADMIN_ONLY",
+      "publicForm": "never rendered",
+      "projection": "ADMIN_GOVERNANCE"
+    },
+    {
+      "layer": "ACCESS_POLICY",
+      "paths": ["roles", "entitlements", "workspaceMemberships", "delegatedAuthority", "projectionPolicyOverrides"],
+      "defaultClassification": "OWNER_ONLY",
+      "publicForm": "never rendered",
+      "projection": "OWNER_GOVERNANCE"
+    }
+  ],
+  "coverageRule": "Any canonical execution field introduced after P1 must be added to this registry before it can be returned by a presentation/runtime projection. Unclassified fields are denied by default.",
+  "p1ExitAssertion": "Field families across Overview, Operational Knowledge, Execution Readiness, Work Decomposition, WorkDefinition, Client Binding, Runtime Projection, Execution Evidence and Governance are explicitly classified."
+}
