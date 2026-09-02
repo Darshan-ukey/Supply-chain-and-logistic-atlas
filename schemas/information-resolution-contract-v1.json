@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas.local/schemas/information-resolution-contract-v1.json",
+  "title": "Atlas Information Resolution Contract v1",
+  "description": "Executor-neutral field/object resolution contract used beneath/alongside Operational Knowledge. It makes information meaning, applicability, evidence, association, validation, authority, client binding and runtime feedback explicit without leaking runtime-specific semantics into canonical Atlas truth.",
+  "type": "object",
+  "required": [
+    "canonicalFieldId",
+    "canonicalObjectRef",
+    "businessMeaning",
+    "scope",
+    "shape",
+    "applicability",
+    "valueOrigin",
+    "resolutionRules",
+    "validation",
+    "authority",
+    "runtimePolicy",
+    "sourceClaims",
+    "binding",
+    "measurement"
+  ],
+  "properties": {
+    "canonicalFieldId": {"type": "string", "minLength": 1},
+    "canonicalObjectRef": {"type": "string", "minLength": 1},
+    "businessMeaning": {"type": "string", "minLength": 1},
+    "scope": {"type": "string", "enum": ["DOCUMENT", "CONSIGNMENT", "PARTY", "REFERENCE", "HANDLING_UNIT", "LINE_ITEM", "DANGEROUS_GOODS", "INSTRUCTION", "SERVICE_EVENT_WINDOW", "OTHER"]},
+    "shape": {
+      "type": "object",
+      "required": ["datatype", "cardinality"],
+      "properties": {
+        "datatype": {"type": "string"},
+        "cardinality": {"type": "string"},
+        "unit": {"type": ["string", "null"]},
+        "codeAuthority": {"type": ["string", "null"]}
+      }
+    },
+    "applicability": {
+      "type": "object",
+      "required": ["requiredWhen", "prohibitedWhen", "jurisdictionApplicability"],
+      "properties": {
+        "requiredWhen": {"type": ["string", "object", "array"]},
+        "prohibitedWhen": {"type": ["string", "object", "array", "null"]},
+        "jurisdictionApplicability": {"type": "array", "items": {"type": "string"}},
+        "conditionIds": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "valueOrigin": {
+      "type": "object",
+      "required": ["originClass", "allowedEvidenceSources"],
+      "properties": {
+        "originClass": {"type": "string", "enum": ["SOURCE_RESOLVED", "DOCUMENT_EXTRACTED", "TRANSACTION_DERIVED", "MASTER_DATA", "POLICY_CONFIGURED", "CLIENT_BOUND", "UNKNOWN"]},
+        "allowedEvidenceSources": {"type": "array", "items": {"type": "string"}},
+        "labelSynonyms": {"type": "array", "items": {"type": "string"}},
+        "documentRegionHints": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "resolutionRules": {
+      "type": "object",
+      "required": ["extraction", "derivation", "association", "normalization"],
+      "properties": {
+        "extraction": {"type": ["string", "array", "object"]},
+        "derivation": {"type": ["string", "array", "object", "null"]},
+        "association": {"type": ["string", "array", "object"]},
+        "normalization": {"type": ["string", "array", "object"]},
+        "allowedValues": {"type": ["array", "object", "null"]}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": ["fieldRules", "crossFieldRules", "crossObjectRules"],
+      "properties": {
+        "fieldRules": {"type": "array"},
+        "crossFieldRules": {"type": "array"},
+        "crossObjectRules": {"type": "array"}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": ["authoritySource", "authorityOwner", "systemOfRecordRole"],
+      "properties": {
+        "authoritySource": {"type": "array", "items": {"type": "string"}},
+        "authorityOwner": {"type": "string"},
+        "systemOfRecordRole": {"type": "string"}
+      }
+    },
+    "runtimePolicy": {
+      "type": "object",
+      "required": ["conflictPolicy", "missingValuePolicy", "confidencePolicy", "humanReviewPolicy"],
+      "properties": {
+        "conflictPolicy": {"type": "string"},
+        "missingValuePolicy": {"type": "string"},
+        "confidencePolicy": {"type": "string"},
+        "humanReviewPolicy": {"type": "string"}
+      }
+    },
+    "sourceClaims": {"type": "array", "items": {"type": "string"}},
+    "binding": {
+      "type": "object",
+      "required": ["resolutionStatus", "clientBindingSlots", "runtimeMappings"],
+      "properties": {
+        "resolutionStatus": {"type": "string", "enum": ["SOURCE_RESOLVED", "SOURCE_CONTEXT_PENDING", "CLIENT_BINDING_REQUIRED", "METRIC_DEFINITION_REQUIRED", "UNKNOWN"]},
+        "clientBindingSlots": {"type": "array"},
+        "runtimeMappings": {"type": "array"}
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "required": ["measurementProfile", "feedbackProfile"],
+      "properties": {
+        "measurementProfile": {"type": "array", "items": {"type": "string"}},
+        "feedbackProfile": {"type": "object"}
+      }
+    }
+  }
+}
