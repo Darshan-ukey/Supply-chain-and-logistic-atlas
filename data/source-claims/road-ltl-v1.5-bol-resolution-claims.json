@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "atlas-source-claim-pack-v1",
+  "module": "road-ltl",
+  "targetVersion": "1.5-candidate",
+  "useCase": "Malkom BOL extraction and information resolution",
+  "status": "RESEARCHED_NOT_PROMOTED",
+  "researchDate": "2026-09-02",
+  "principle": "Claims establish canonical operational knowledge only within their stated applicability. Runtime/client labels without authoritative semantics remain explicit bindings or source-context gaps.",
+  "sources": [
+    {
+      "sourceId": "src-ecfr-49-172-201",
+      "issuer": "U.S. Government / eCFR",
+      "title": "49 CFR 172.201 — General requirements for shipping papers",
+      "url": "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-C/part-172/subpart-C/section-172.201",
+      "tier": "REGULATION_AUTHORITY",
+      "applicability": "United States hazardous-material transportation where the regulation applies"
+    },
+    {
+      "sourceId": "src-ecfr-49-172-202",
+      "issuer": "U.S. Government / eCFR",
+      "title": "49 CFR 172.202 — Description of hazardous material on shipping papers",
+      "url": "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-C/part-172/subpart-C/section-172.202",
+      "tier": "REGULATION_AUTHORITY",
+      "applicability": "United States hazardous-material transportation where the regulation applies"
+    },
+    {
+      "sourceId": "src-ecfr-49-172-203",
+      "issuer": "U.S. Government / eCFR",
+      "title": "49 CFR 172.203 — Additional description requirements",
+      "url": "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-C/part-172/subpart-C/section-172.203",
+      "tier": "REGULATION_AUTHORITY",
+      "applicability": "United States hazardous-material transportation where the regulation applies"
+    },
+    {
+      "sourceId": "src-ecfr-49-172-604",
+      "issuer": "U.S. Government / eCFR",
+      "title": "49 CFR 172.604 — Emergency response telephone number",
+      "url": "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-C/part-172/subpart-G/section-172.604",
+      "tier": "REGULATION_AUTHORITY",
+      "applicability": "United States hazardous-material transportation where the regulation applies"
+    },
+    {
+      "sourceId": "src-ecfr-49-373-101",
+      "issuer": "U.S. Government / eCFR",
+      "title": "49 CFR 373.101 — For-hire, non-exempt motor carrier bills of lading",
+      "url": "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-373/subpart-A/section-373.101",
+      "tier": "REGULATION_AUTHORITY",
+      "applicability": "For-hire, non-exempt U.S. motor carriers subject to 49 CFR 373.100"
+    },
+    {
+      "sourceId": "src-dsdc-eb ol-2.1",
+      "issuer": "Digital Standards Development Council / NMFTA",
+      "title": "Digital LTL eBOL API Standard v2.1",
+      "url": "https://digitalltl.nmfta.org/api-documentation/v2.1.0",
+      "tier": "INDUSTRY_STANDARD",
+      "applicability": "Digital LTL eBOL information exchange; confirm client/carrier conformance profile"
+    },
+    {
+      "sourceId": "src-nmfta-nmfc",
+      "issuer": "NMFTA",
+      "title": "National Motor Freight Classification / LTL reference semantics",
+      "url": "https://nmfta.org/",
+      "tier": "INDUSTRY_STANDARD",
+      "applicability": "North American LTL classification and related industry semantics subject to active NMFC edition"
+    },
+    {
+      "sourceId": "src-uncefact-transport-logistics",
+      "issuer": "UN/CEFACT",
+      "title": "UN/CEFACT transport/logistics canonical information models",
+      "url": "https://unece.org/trade/uncefact/mainstandards",
+      "tier": "CANONICAL_DATA_MODEL",
+      "applicability": "Canonical object/relationship semantics; does not by itself establish client runtime field names"
+    }
+  ],
+  "claims": [
+    {
+      "claimId": "bol-us-required-content",
+      "statement": "A regulated U.S. motor-carrier bill of lading under 49 CFR 373.101 contains consignor and consignee names, origin and destination points, number of packages, description of freight, and weight/volume/measurement when applicable to rating.",
+      "evidenceClass": "SOURCE_EXPLICIT",
+      "sourceIds": ["src-ecfr-49-373-101"],
+      "mapsTo": ["LTL-03", "TransportDocument", "Consignment", "Party", "LineItem"],
+      "resolutionEffect": "Establishes authoritative canonical content obligations within the regulation's scope; does not define all client BOL fields."
+    },
+    {
+      "claimId": "hazmat-entry-identification",
+      "statement": "When hazardous and non-hazardous materials share a shipping paper, 49 CFR 172.201 provides governed methods for identifying hazardous entries, including sequencing, contrasting/highlighting, or an HM-column X where the rule applies.",
+      "evidenceClass": "SOURCE_EXPLICIT",
+      "sourceIds": ["src-ecfr-49-172-201"],
+      "mapsTo": ["LTL-03", "LineItem.dangerousGoodsIndicator"],
+      "resolutionEffect": "Hazardous Flag becomes a semantic/regulatory classification with line-item association and evidence rules; it must not be inferred from unrelated text."
+    },
+    {
+      "claimId": "hazmat-basic-description-object",
+      "statement": "49 CFR 172.202 defines the hazardous-material basic description as a linked set including identification number, proper shipping name, hazard class/division, and packing group when applicable, with quantity information as required.",
+      "evidenceClass": "SOURCE_EXPLICIT",
+      "sourceIds": ["src-ecfr-49-172-202"],
+      "mapsTo": ["LTL-03", "DangerousGoods", "Hazardous UNNA Number", "Hazardous Proper Name", "Hazardous Class", "Hazardous Packing Group"],
+      "resolutionEffect": "Treat these values as one DangerousGoods object and run cross-field validation rather than independent extraction-only checks."
+    },
+    {
+      "claimId": "hazmat-technical-name-conditional",
+      "statement": "Under 49 CFR 172.203(k), technical name is conditionally required for specified n.o.s./generic hazardous descriptions and related cases rather than universally required.",
+      "evidenceClass": "SOURCE_EXPLICIT",
+      "sourceIds": ["src-ecfr-49-172-203"],
+      "mapsTo": ["LTL-03", "DangerousGoods.technicalName"],
+      "resolutionEffect": "Populate requiredWhen/prohibitedWhen and suppress false-positive expectations on non-applicable lines."
+    },
+    {
+      "claimId": "hazmat-zone-conditional",
+      "statement": "Under 49 CFR 172.203(m), inhalation-hazard zone information is required for poisonous-by-inhalation materials in the stated circumstances and is not a universal hazardous-material field.",
+      "evidenceClass": "SOURCE_EXPLICIT",
+      "sourceIds": ["src-ecfr-49-172-203"],
+      "mapsTo": ["LTL-03", "DangerousGoods.inhalationHazardZone"],
+      "resolutionEffect": "Zone must be gated by poisonous-by-inhalation applicability and validated against the associated dangerous-goods line."
+    },
+    {
+      "claimId": "hazmat-emergency-provider-identity",
+      "statement": "49 CFR 172.604 links an applicable emergency-response telephone number with the responsible person or ERI-provider registrant identified by name, contract number, or other unique identifier in the prescribed manner.",
+      "evidenceClass": "SOURCE_EXPLICIT",
+      "sourceIds": ["src-ecfr-49-172-604"],
+      "mapsTo": ["LTL-03", "Emergency Contact Phone", "Emergency Contact Name", "Line Item Hazardous Contract Number"],
+      "resolutionEffect": "Emergency contact identity/contract number are relationship-aware evidence for the emergency-response contact and may be alternative identity mechanisms under the rule."
+    },
+    {
+      "claimId": "ltl-eb ol-standard-version",
+      "statement": "DSDC/NMFTA eBOL 2.1 is the current referenced LTL digital BOL standard used by this baseline and provides standardized BOL data structures/value-list families for digital exchange.",
+      "evidenceClass": "SOURCE_EXPLICIT",
+      "sourceIds": ["src-dsdc-eb ol-2.1"],
+      "mapsTo": ["LTL-03", "TransportDocument", "HandlingUnit", "LineItem", "Reference", "Instruction", "ServiceEventWindow"],
+      "resolutionEffect": "Use the active eBOL contract/value lists where authoritative; do not substitute inferred client labels for standard semantics."
+    },
+    {
+      "claimId": "canonical-object-first-resolution",
+      "statement": "Transport/logistics canonical models separate consignment, party, package/handling, consignment-item, reference and dangerous-goods concepts; field resolution should attach values to canonical object instances before client mapping.",
+      "evidenceClass": "SOURCE_DERIVED",
+      "sourceIds": ["src-uncefact-transport-logistics", "src-dsdc-eb ol-2.1"],
+      "mapsTo": ["LTL-03", "TransportDocument", "Consignment", "Party", "Reference", "HandlingUnit", "LineItem", "DangerousGoods"],
+      "resolutionEffect": "Makes object association a first-class validation dimension and prevents flat-label extraction from becoming canonical truth."
+    }
+  ],
+  "explicitBoundaries": [
+    "This claim pack does not assign semantics to Code, SHC, Related Value, BOL Type, Reference Number Type Full Name, Handling Unit Line No, Shipper Code, exact account-number meanings, exact Instruction Type values, or exact Time Critical Details coding without the actual governing schema/context.",
+    "U.S. 49 CFR claims must be activated only when U.S. jurisdiction/regulatory applicability is satisfied; they are not globally universalized.",
+    "Reported Malkom Accuracy values above 100 percent are preserved as source-reported metrics but are not treated as correctness rates until the metric definition is resolved."
+  ]
+}
