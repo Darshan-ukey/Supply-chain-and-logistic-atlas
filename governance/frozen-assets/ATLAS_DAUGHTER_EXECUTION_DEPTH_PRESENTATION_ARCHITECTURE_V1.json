@@ -7,7 +7,7 @@
   "effectiveDate": "2026-09-02",
   "category": "presentation-architecture",
   "repositoryPath": "governance/architecture/ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1.md",
-  "sha256": "ce93c8ab8ddadc258e3889b499cbd341f0df29bdb41aa40f81a3914bfec5430d",
+  "sha256": "cd4cb0a0f7ae7c3715f2d11e65e5f8fa961108d0cafc551d96cb2f4bdb278033",
   "semanticImpact": "NONE",
   "implementationStatus": "PHASED_BACKLOG",
   "canonicalPresentationSequence": [
