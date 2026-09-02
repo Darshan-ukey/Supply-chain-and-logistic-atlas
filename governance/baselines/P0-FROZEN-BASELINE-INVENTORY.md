@@ -4,7 +4,7 @@
 **Status:** COMPLETE  
 **Baseline branch:** `atlas-governance-registry-v2.1`  
 **P0 branch:** `atlas-presentation-architecture-v1-p0`  
-**Baseline head at branch creation:** `95d431297892f7e06a9db652221490ad83b9e6e0`
+**Baseline merge-base:** `134a40cba268225f7a5fe0a431a885c38407a758`
 
 ## 1. Frozen target semantic assets
 
