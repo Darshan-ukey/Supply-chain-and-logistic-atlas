@@ -1,6 +1,6 @@
 {
   "schemaVersion": "atlas-current-assets-pointer-v1",
-  "updatedAt": "2026-09-02T12:00:00+05:30",
+  "updatedAt": "2026-09-02T21:00:00+05:30",
   "integrationLock": "governance/frozen-assets/history/frozen-stack-lock-v2.1.json",
   "productionBaseline": {
     "universe": "universe-7.3",
@@ -15,6 +15,14 @@
     "roadLtl": "road-ltl-1.4-candidate",
     "oceanFcl": "ocean-fcl-0.6-candidate",
     "oceanLcl": "ocean-lcl-0.6-candidate"
+  },
+  "activeEnrichmentCandidates": {
+    "registry": "governance/frozen-assets/ENRICHMENT_CANDIDATES.json",
+    "roadLtl": "road-ltl-1.5-candidate",
+    "roadLtlOperationalKnowledge": "road-ltl-1.5-operational-candidate",
+    "operationalKnowledgeContract": "operational-knowledge-contract-2-candidate",
+    "bolInformationResolutionBaseline": "bol-information-resolution-baseline-0.1",
+    "note": "Active candidate work only. latestFrozenCandidates remains unchanged until freeze gates pass."
   },
   "governingStandards": [
     "insideOutOutsideInOperationalResearch",
