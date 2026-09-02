@@ -2,7 +2,7 @@
   "schemaVersion": "atlas-frozen-asset-register-v1",
   "updatedAt": "2026-09-02T15:30:00+05:30",
   "repository": "Darshan-ukey/Supply-chain-and-logistic-atlas",
-  "governanceBranch": "atlas-presentation-architecture-v1-p0",
+  "governanceBranch": "atlas-presentation-architecture-v1-p1",
   "latestIntegrationLock": {"version":"2.1","path":"governance/frozen-assets/history/frozen-stack-lock-v2.1.json"},
   "rules": [
     "Read CURRENT.json or LATEST.md first; do not search old chat threads for latest asset identity.",
@@ -10,6 +10,7 @@
     "CURRENT.json is the only mutable latest-pointer file.",
     "Candidate and production-baseline status are separate; freezing a candidate does not activate it.",
     "Every frozen repository asset should carry SHA-256, lineage, status and repository path where materialized.",
+    "Git blob identities may additionally be recorded for branch-level diff verification where connector-side SHA-256 is not available.",
     "Execution-contract assets marked IMPLEMENTATION_PENDING are architecture commitments, not completed implementations."
   ],
   "assets": [
@@ -35,6 +36,10 @@
     {"assetId":"canvas-2.0.0","family":"canvas","name":"Canvas","version":"2.0.0","status":"FROZEN_PRODUCTION_BASELINE","category":"platform","current":true,"source":"metadata","sha256":"bc340946d703ef25297ffd67e6de2e5879958c132722e71d95be058c5ba2c1cb"},
     {"assetId":"universal-ask-2.0.1","family":"universal-ask","name":"Universal Ask","version":"2.0.1","status":"CERTIFIED_IN_BASELINE_PACKAGE","category":"platform","current":true,"source":"metadata"},
     {"assetId":"atlas-warehouse-1","family":"atlas-warehouse","name":"Atlas Warehouse","version":"1","status":"FROZEN_PRODUCTION_BASELINE","category":"backend","current":true,"source":"metadata"},
-    {"assetId":"ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1","family":"presentation-architecture","name":"Atlas Daughter Execution-Depth Presentation Architecture","version":"1.0.0","status":"FROZEN","category":"governance","current":true,"source":"repository","repositoryPath":"governance/architecture/ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1.md","sha256":"cd4cb0a0f7ae7c3715f2d11e65e5f8fa961108d0cafc551d96cb2f4bdb278033","semanticImpact":"NONE","implementationStatus":"PHASED_BACKLOG"}
+    {"assetId":"ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1","family":"presentation-architecture","name":"Atlas Daughter Execution-Depth Presentation Architecture","version":"1.0.0","status":"FROZEN","category":"governance","current":true,"source":"repository","repositoryPath":"governance/architecture/ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1.md","sha256":"cd4cb0a0f7ae7c3715f2d11e65e5f8fa961108d0cafc551d96cb2f4bdb278033","semanticImpact":"NONE","implementationStatus":"PHASED_BACKLOG"},
+    {"assetId":"operationalKnowledgePresentationContractV1","family":"presentation-contract","name":"Operational Knowledge Presentation Contract","version":"1.0.0","status":"FROZEN","category":"presentation-governance","current":true,"source":"repository","repositoryPath":"governance/presentation/OPERATIONAL_KNOWLEDGE_PRESENTATION_CONTRACT_V1_FROZEN.md","gitBlobSha":"0bd62a446a7516b5a7d718dfe91d46b8bdc91e8c","semanticImpact":"NONE","implementationTarget":"P2"},
+    {"assetId":"executionReadinessPresentationContractV1","family":"presentation-contract","name":"Execution Readiness Presentation Contract","version":"1.0.0","status":"FROZEN","category":"presentation-governance","current":true,"source":"repository","repositoryPath":"governance/presentation/EXECUTION_READINESS_PRESENTATION_CONTRACT_V1_FROZEN.md","gitBlobSha":"5dfa066c19d494d09e7c1480314735989a3874ae","semanticImpact":"NONE","implementationTarget":"P2"},
+    {"assetId":"authorizationProjectionMatrixV1","family":"authorization-projection","name":"Authorization Projection Matrix","version":"1.0.0","status":"FROZEN","category":"presentation-governance","current":true,"source":"repository","repositoryPath":"governance/presentation/AUTHORIZATION_PROJECTION_MATRIX_V1_FROZEN.md","gitBlobSha":"58ab959cce4c69471bdbde1bb3ab7b04835679d9","machineReadablePath":"governance/presentation/authorization-projection-matrix-v1.json","machineReadableGitBlobSha":"bc7a0aa7e1d6821912c807009b3ba51ba7ba89fe","semanticImpact":"NONE","implementationTarget":"P2"},
+    {"assetId":"executionDepthFieldClassificationV1","family":"presentation-field-classification","name":"Execution-Depth Field Classification","version":"1.0.0","status":"FROZEN","category":"presentation-governance","current":true,"source":"repository","repositoryPath":"governance/presentation/EXECUTION_DEPTH_FIELD_CLASSIFICATION_V1_FROZEN.md","gitBlobSha":"3b8651ecb6e3851449ee81dec5276ad769ef3c0f","machineReadablePath":"governance/presentation/execution-depth-field-classification-v1.json","machineReadableGitBlobSha":"37c0520a42f967d6cd902361c0a6dc906b6348c5","defaultUnmatchedFieldPolicy":"PRIVATE_DEFAULT","semanticImpact":"NONE","implementationTarget":"P2"}
   ]
 }
