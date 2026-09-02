@@ -1,8 +1,8 @@
 {
   "schemaVersion": "atlas-frozen-asset-register-v1",
-  "updatedAt": "2026-09-02T21:42:00+05:30",
+  "updatedAt": "2026-09-02T21:47:00+05:30",
   "repository": "Darshan-ukey/Supply-chain-and-logistic-atlas",
-  "governanceBranch": "road-ltl-v1.5-bol-operational-enrichment",
+  "governanceBranch": "atlas-governance-registry-v2.1",
   "latestIntegrationLock": {"version":"2.2","path":"governance/frozen-assets/history/frozen-stack-lock-v2.2.json"},
   "rules": [
     "Read CURRENT.json or LATEST.md first; do not search old chat threads for latest asset identity.",
