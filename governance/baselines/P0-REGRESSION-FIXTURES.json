@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "atlas-presentation-p0-regression-fixtures-v1",
+  "baseline": {
+    "repository": "Darshan-ukey/Supply-chain-and-logistic-atlas",
+    "branch": "atlas-governance-registry-v2.1",
+    "headSha": "95d431297892f7e06a9db652221490ad83b9e6e0"
+  },
+  "p0Branch": "atlas-presentation-architecture-v1-p0",
+  "semanticFixtureExpectations": {
+    "road-ltl-1.4": {"a5":22,"requiredInformation":152,"decisionGates":75,"branchTransitions":150,"clientBindings":128,"provenanceClaims":132},
+    "ocean-fcl-0.6": {"a5":30,"requiredInformation":113,"decisionGates":34,"branchTransitions":68,"clientBindings":99,"provenanceClaims":90},
+    "ocean-lcl-0.6": {"a5":30,"requiredInformation":127,"decisionGates":34,"branchTransitions":68,"clientBindings":99,"provenanceClaims":90}
+  },
+  "assetIdentityExpectations": {
+    "roadLtl14Sha256":"c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+    "oceanFcl06Sha256":"334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a",
+    "oceanLcl06Sha256":"73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f",
+    "operationalKnowledgeContractSha256":"75cefb11bfabfcb77c7cdab8b17d2cbdb2f4cc3a684150a4da3d94be045f6846",
+    "clientBindingContractSha256":"d67786bb7c8f5749fc77fd20d15b2ac4d449874a5ff22a87212ddeef861856df",
+    "canvas20Sha256":"bc340946d703ef25297ffd67e6de2e5879958c132722e71d95be058c5ba2c1cb"
+  },
+  "securityFixtureExpectations": {
+    "deploymentExcluded":["execution/runtimes/","execution/adapters/","execution/core/","execution/contracts/","execution/manifest.json"],
+    "publicNeverReceives":["fullWorkDecomposition","fullWorkDefinition","runtimeProjection","restrictedClientBindings"],
+    "operationalKnowledgeProjection":"ALLOWLIST_REQUIRED"
+  },
+  "allowedP0ChangeScope":["governance/architecture/","governance/baselines/","governance/backlog/","governance/frozen-assets/CURRENT.json","governance/frozen-assets/ATLAS_DAUGHTER_EXECUTION_DEPTH_PRESENTATION_ARCHITECTURE_V1.json"],
+  "forbiddenP0ChangeScope":["index.html","admin.html","preview-standalone.html","canvas-v2/","runtime/","execution/","schemas/","tests/","api/","lib/","backend/"],
+  "candidatePromotionExpected":false,
+  "functionalChangeExpected":false
+}
