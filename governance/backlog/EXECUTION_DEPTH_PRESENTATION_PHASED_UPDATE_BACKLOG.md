@@ -25,18 +25,26 @@ Execute phases sequentially. Do not combine semantic content promotion with pres
 
 ## P1 — Presentation & Access Contracts
 
-**Status: NOT STARTED**
+**Status: COMPLETE / PASS**
 
-Create:
+- [x] Operational Knowledge Presentation Contract V1.
+- [x] Execution Readiness Presentation Contract V1.
+- [x] Authorization Projection Matrix covering Anonymous/Public, Authenticated Atlas User, Pilot User, Client Workspace User, Admin/Governor and Owner.
+- [x] Explicit field-by-field/family classification: public-safe, authenticated-safe, client-authorized, internal-protected, admin-only, owner-only, masked/aggregated/not-rendered.
+- [x] Provenance visibility rules.
+- [x] Empty/unresolved rendering behavior.
+- [x] Full canonical field-family coverage register across Operational Knowledge, Execution Readiness, Work Decomposition, WorkDefinition, Client Binding, Runtime Projection, Execution Evidence and Governance.
+- [x] Positive-allowlist / deny-unless-classified rule frozen for P2 implementation.
 
-- Operational Knowledge Presentation Contract V1.
-- Execution Readiness Presentation Contract V1.
-- Authorization Projection Matrix covering Anonymous/Public, Authenticated Atlas User, Pilot User, Client Workspace User, Admin/Governor and Owner.
-- Explicit field-by-field classification: public-safe, authenticated-safe, client-authorized, admin-only, masked/aggregated/not-rendered.
-- Provenance visibility rules.
-- Empty/unresolved rendering behavior.
+**Frozen P1 assets:**
 
-**Exit gate:** Every canonical execution field has an explicit audience, presentation form and projection path.
+- `governance/contracts/operational-knowledge-presentation-contract-v1.json`
+- `governance/contracts/execution-readiness-presentation-contract-v1.json`
+- `governance/contracts/authorization-projection-matrix-v1.json`
+- `governance/contracts/canonical-execution-field-coverage-v1.json`
+- `governance/frozen/P1_PRESENTATION_AND_ACCESS_CONTRACTS.md`
+
+**Exit gate: PASS.** Every canonical execution field family now has an explicit audience, presentation form and projection path. Unclassified future fields are denied by default until governed.
 
 ## P2 — Backend Projection Boundary
 
