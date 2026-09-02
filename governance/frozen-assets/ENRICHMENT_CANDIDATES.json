@@ -1,15 +1,17 @@
 {
   "schemaVersion": "atlas-active-enrichment-candidates-v1",
-  "updatedAt": "2026-09-02T21:34:00+05:30",
+  "updatedAt": "2026-09-02T21:38:00+05:30",
   "validationRequestedAt": "2026-09-02T21:34:00+05:30",
-  "note": "These assets are versioned candidates under formal freeze validation. They are not production-promoted by this process.",
+  "validationResult": "PASS",
+  "freezeMaterializationState": "READY_FOR_REGISTRY_LOCK",
+  "note": "The candidate set passed executable freeze validation. Core assets are now marked frozen reference candidates; canonical ASSET_REGISTER/CURRENT lock is the final freeze step. This is not production promotion.",
   "assets": [
     {
       "assetId": "road-ltl-1.5-candidate",
       "family": "road-ltl",
       "name": "Road LTL",
       "version": "1.5",
-      "status": "VALIDATION_IN_PROGRESS",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
       "repositoryPath": "data/modules/road-ltl-v1.5.json",
       "baseAssetId": "road-ltl-1.4-candidate",
       "baseSha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
@@ -22,7 +24,7 @@
       "family": "road-ltl-operational-knowledge",
       "name": "Road LTL Operational Knowledge",
       "version": "1.5 / OKv2",
-      "status": "VALIDATION_IN_PROGRESS",
+      "status": "FROZEN_OPERATIONAL_REFERENCE",
       "repositoryPath": "data/operational-knowledge/road-ltl-v1.5-operational.json",
       "baseArtifactPath": "data/operational-knowledge/road-ltl-v1.4-operational.json",
       "baseSha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e"
@@ -32,30 +34,26 @@
       "family": "operational-knowledge-contract",
       "name": "Operational Knowledge Contract",
       "version": "2",
-      "status": "VALIDATION_IN_PROGRESS",
+      "status": "FROZEN_SCHEMA_CANDIDATE",
       "repositoryPath": "schemas/operational-knowledge-contract-v2.json",
-      "supersedesAfterFreeze": "operational-knowledge-contract-1"
+      "supersedes": "operational-knowledge-contract-1"
     },
     {
       "assetId": "bol-information-resolution-baseline-0.1",
       "family": "information-resolution-reference-baseline",
       "name": "BOL Information Resolution Baseline — Road LTL / Malkom",
       "version": "0.1",
-      "status": "VALIDATION_IN_PROGRESS",
+      "status": "FROZEN_REFERENCE_BASELINE",
       "repositoryPath": "data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md",
       "fieldBaselinePath": "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
       "sourceClaimPackPath": "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
     }
   ],
   "freezeScope": "IMMUTABLE_REFERENCE_CANDIDATE_FREEZE_NOT_PRODUCTION_PROMOTION",
-  "freezeGates": [
-    "Source and claim coverage validated within declared applicability",
-    "Information Resolution completeness validated for target field/object families",
-    "LTL-03 operational-depth validation complete",
-    "Lossless v1.4 inheritance and task identity preservation validated",
-    "Known downstream regression obligations explicitly recorded",
-    "Metric-integrity anomalies explicitly disclosed and prohibited from unsupported performance interpretation",
-    "Open client/runtime bindings explicitly retained rather than fabricated",
-    "Recursive Work Decomposition and WorkDefinition compilation remain separate production-promotion gates"
+  "knownOpenPromotionGates": [
+    "Resolve source-reported Malkom Accuracy metric numerator/denominator/counting method for values above 100%.",
+    "Obtain governing Malkom/client schema for explicit unresolved labels.",
+    "Implement Recursive Work Decomposition and WorkDefinition VNext compilation.",
+    "Complete downstream runtime regression and measured Validated STP proof before production promotion."
   ]
 }
