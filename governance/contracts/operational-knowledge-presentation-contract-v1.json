@@ -1,0 +1,646 @@
+{
+  "contractId": "ATLAS-OPERATIONAL-KNOWLEDGE-PRESENTATION-CONTRACT-V1",
+  "version": "1.0.0",
+  "status": "FROZEN_P1_CONTRACT",
+  "architecture": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
+  "canonicalSemanticsChanged": false,
+  "purpose": "Define how canonical Operational Knowledge is projected to each audience without making the renderer a second source of truth or exposing protected execution/client IP.",
+  "defaultPolicy": "DENY_UNLESS_EXPLICITLY_ALLOWED",
+  "renderingPrinciples": [
+    "Operational Knowledge is a human-readable projection of governed canonical records.",
+    "Public and general authenticated projections use positive allowlists.",
+    "Exact client mappings, local values, protected source lineage and runtime implementation details are never included in public payloads.",
+    "Unknown and unresolved values remain explicit; the presentation layer must not infer or fabricate them.",
+    "Presentation-only changes do not change daughter semantic versions.",
+    "Field-level authorization is evaluated before payload delivery, not by hiding browser-delivered data."
+  ],
+  "audiences": [
+    "ANONYMOUS_PUBLIC",
+    "AUTHENTICATED_ATLAS_USER",
+    "PILOT_USER",
+    "CLIENT_WORKSPACE_USER",
+    "ADMIN_GOVERNOR",
+    "OWNER"
+  ],
+  "presentationClasses": {
+    "PUBLIC_SAFE": "May be delivered to all audiences in approved human-readable form.",
+    "AUTHENTICATED_SAFE": "May be delivered to authenticated audiences but not anonymous public.",
+    "INTERNAL_PROTECTED": "May be delivered to authorized Pilot, Admin/Governor and Owner audiences; client users only where explicitly allowed.",
+    "CLIENT_AUTHORIZED": "May be delivered only inside an authorized client workspace and to Admin/Governor/Owner with legitimate scope.",
+    "ADMIN_ONLY": "May be delivered only to Admin/Governor and Owner.",
+    "OWNER_ONLY": "May be delivered only to Owner.",
+    "AGGREGATE_ONLY": "Only count/band/status summaries may be delivered; underlying items remain protected.",
+    "MASKED": "A sanitized value may be delivered but the canonical/raw value remains protected.",
+    "NOT_RENDERED": "Never rendered in that projection."
+  },
+  "provenancePolicy": {
+    "public": {
+      "allowed": ["evidenceStatus", "basisClass", "authorityClass", "coverageStatus"],
+      "notAllowed": ["exactSourceId", "sourceUrl", "sourceVersion", "claimMapping", "claimBoundaryDetail", "researchNotes", "crosswalkLogic"]
+    },
+    "authenticatedAtlasUser": {
+      "allowed": ["evidenceStatus", "basisClass", "authorityClass", "coverageStatus"],
+      "notAllowed": ["exactSourceId", "sourceUrl", "sourceVersion", "claimMapping", "researchNotes", "crosswalkLogic"]
+    },
+    "pilot": {
+      "allowed": ["exactSourceId", "sourceName", "sourceVersion", "claimMapping", "claimBoundaryDetail"],
+      "notAllowed": ["restrictedLicensePayload", "ownerOnlyGovernanceNotes"]
+    },
+    "clientWorkspace": {
+      "allowed": ["evidenceStatus", "basisClass", "authorityClass", "clientEvidenceRefs", "approvedSourceSummary"],
+      "conditional": ["exactSourceId where workspace policy permits"]
+    },
+    "adminGovernorOwner": {
+      "allowed": ["full governed provenance subject to source-license constraints"]
+    }
+  },
+  "emptyUnresolvedPolicy": {
+    "UNKNOWN": "Render as Unknown — evidence not established. Never infer a value.",
+    "NOT_APPLICABLE": "Render as Not applicable in current governed context.",
+    "CLIENT_BINDING_REQUIRED": "Render a dependency indicator; do not expose restricted mapping/value outside the authorized client workspace.",
+    "SOURCE_RESOLUTION_REQUIRED": "Render as Reference research required for protected/internal audiences; public receives only an incompleteness indicator.",
+    "PENDING_VALIDATION": "Render as Candidate / validation pending; never present as approved operational truth.",
+    "EMPTY_OPTIONAL": "Do not render an empty card; preserve the canonical null state.",
+    "CONFLICT": "Render Conflict / resolution required and expose only the conflict summary permitted by audience."
+  },
+  "fieldRules": [
+    {
+      "canonicalPath": "identity.moduleId",
+      "label": "Module",
+      "renderType": "TEXT",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OVERVIEW",
+      "notes": "Stable module identity only; internal storage path is not exposed."
+    },
+    {
+      "canonicalPath": "identity.moduleVersion",
+      "label": "Module version",
+      "renderType": "STATUS_TEXT",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OVERVIEW"
+    },
+    {
+      "canonicalPath": "identity.a5ProcessId",
+      "label": "A5 ID",
+      "renderType": "IDENTIFIER",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OVERVIEW"
+    },
+    {
+      "canonicalPath": "identity.a5ContractId",
+      "label": "Execution-reference contract",
+      "renderType": "IDENTIFIER_OR_STATUS",
+      "classification": "AUTHENTICATED_SAFE",
+      "projection": "OVERVIEW",
+      "publicForm": "Contract available"
+    },
+    {
+      "canonicalPath": "identity.name",
+      "label": "Task",
+      "renderType": "TITLE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OVERVIEW"
+    },
+    {
+      "canonicalPath": "identity.purpose",
+      "label": "Purpose",
+      "renderType": "PARAGRAPH",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OVERVIEW"
+    },
+    {
+      "canonicalPath": "identity.scopeBoundary",
+      "label": "Scope / boundary",
+      "renderType": "PARAGRAPH",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OVERVIEW"
+    },
+    {
+      "canonicalPath": "trigger",
+      "label": "Trigger",
+      "renderType": "SUMMARY",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "stateBefore",
+      "label": "State before",
+      "renderType": "STATE_BADGE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "stateAfter",
+      "label": "Expected state after",
+      "renderType": "STATE_BADGE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "applicability.*",
+      "label": "Applicability",
+      "renderType": "CHIPS_AND_RULE_SUMMARY",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE",
+      "restriction": "Only approved applicability dimensions and safe human-readable rules; no protected compiler expressions."
+    },
+    {
+      "canonicalPath": "requiredInformation[].id",
+      "label": "Information requirement ID",
+      "renderType": "INTERNAL_REFERENCE",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION",
+      "publicForm": "not rendered"
+    },
+    {
+      "canonicalPath": "requiredInformation[].name",
+      "label": "Required information",
+      "renderType": "LIST_ITEM",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "requiredInformation[].why",
+      "label": "Why it is needed",
+      "renderType": "PARAGRAPH",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "requiredInformation[].requiredWhen",
+      "label": "When required",
+      "renderType": "CONDITION_SUMMARY",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE",
+      "restriction": "Render human-readable condition, not protected executable expression if separately stored."
+    },
+    {
+      "canonicalPath": "requiredInformation[].valueOrigin",
+      "label": "Where the value originates",
+      "renderType": "ORIGIN_SUMMARY",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE",
+      "restriction": "Canonical origin classes are safe; actual client system/field remains client-authorized."
+    },
+    {
+      "canonicalPath": "requiredInformation[].authoritativeOrigin",
+      "label": "Authoritative origin",
+      "renderType": "AUTHORITY_SUMMARY",
+      "classification": "AUTHENTICATED_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE",
+      "publicForm": "Authority class only"
+    },
+    {
+      "canonicalPath": "requiredInformation[].derivationRules",
+      "label": "How it can be established",
+      "renderType": "RULE_SUMMARY",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION",
+      "publicForm": "Derived / supplied / validated indicator only"
+    },
+    {
+      "canonicalPath": "requiredInformation[].validation",
+      "label": "Validation",
+      "renderType": "VALIDATION_SUMMARY",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE",
+      "restriction": "Human-readable validation summary is public-safe; exact executable validator/pattern is protected unless separately classified."
+    },
+    {
+      "canonicalPath": "requiredInformation[].conflictResolution",
+      "label": "If sources conflict",
+      "renderType": "RESOLUTION_SUMMARY",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION",
+      "publicForm": "Conflict requires resolution / HITL indicator"
+    },
+    {
+      "canonicalPath": "requiredInformation[].systemOfRecordRequirement",
+      "label": "Authority system requirement",
+      "renderType": "SYSTEM_ROLE_SUMMARY",
+      "classification": "AUTHENTICATED_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE",
+      "restriction": "Canonical system role/type only; client application name is CLIENT_AUTHORIZED."
+    },
+    {
+      "canonicalPath": "requiredInformation[].sourceRefs",
+      "label": "Source basis",
+      "renderType": "PROVENANCE",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION",
+      "publicForm": "Evidence status / authority class only"
+    },
+    {
+      "canonicalPath": "decisions[].question",
+      "label": "Decision",
+      "renderType": "QUESTION",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "decisions[].inputs",
+      "label": "Decision inputs",
+      "renderType": "LIST_SUMMARY",
+      "classification": "AUTHENTICATED_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE",
+      "publicForm": "input count / major categories"
+    },
+    {
+      "canonicalPath": "decisions[].gates[]",
+      "label": "Decision gates",
+      "renderType": "GATE_SUMMARY",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION",
+      "publicForm": "gate count + high-level outcome families"
+    },
+    {
+      "canonicalPath": "rules[].statement",
+      "label": "Rules",
+      "renderType": "RULE_SUMMARY",
+      "classification": "AUTHENTICATED_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE",
+      "restriction": "Reference-level human-readable rule summary may render; exact derived execution logic remains protected."
+    },
+    {
+      "canonicalPath": "rules[].conditionExpression",
+      "label": "Executable rule condition",
+      "renderType": "CODE_OR_EXPRESSION",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "canonicalPath": "validations[]",
+      "label": "Validations",
+      "renderType": "VALIDATION_SUMMARY",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE",
+      "restriction": "Summary only for public; validator implementation protected."
+    },
+    {
+      "canonicalPath": "constraints[]",
+      "label": "Constraints",
+      "renderType": "CONSTRAINT_SUMMARY",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "controls[].objective",
+      "label": "Control objective",
+      "renderType": "PARAGRAPH",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "controls[].executionPoint",
+      "label": "Control point",
+      "renderType": "SUMMARY",
+      "classification": "AUTHENTICATED_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "controls[].failureBehavior",
+      "label": "If control fails",
+      "renderType": "SUMMARY",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION",
+      "publicForm": "Hold / exception / escalation indicator"
+    },
+    {
+      "canonicalPath": "actions[].summary",
+      "label": "Canonical actions",
+      "renderType": "ACTION_SUMMARY",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "actions[].preconditions",
+      "label": "Action prerequisites",
+      "renderType": "SUMMARY",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "canonicalPath": "actions[].postconditions",
+      "label": "Action completion condition",
+      "renderType": "SUMMARY",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "canonicalPath": "outcomes[].code",
+      "label": "Outcome family",
+      "renderType": "BADGE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "outcomes[].meaning",
+      "label": "Outcome meaning",
+      "renderType": "PARAGRAPH",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "branchTransitions[]",
+      "label": "Branch transitions",
+      "renderType": "FLOW_DETAIL",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION",
+      "publicForm": "branch/outcome count and presence of pass/fail/hold/retry/escalation paths"
+    },
+    {
+      "canonicalPath": "exceptions.summary",
+      "label": "Exceptions",
+      "renderType": "SUMMARY",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "exceptions.retryLogic",
+      "label": "Retry logic",
+      "renderType": "FLOW_DETAIL",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "canonicalPath": "exceptions.escalationLogic",
+      "label": "Escalation logic",
+      "renderType": "FLOW_DETAIL",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "canonicalPath": "exceptions.recoveryLogic",
+      "label": "Recovery logic",
+      "renderType": "FLOW_DETAIL",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "canonicalPath": "timing[].type",
+      "label": "Timing dependency",
+      "renderType": "TYPE_BADGE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "timing[].referenceSemantics",
+      "label": "Timing semantics",
+      "renderType": "SUMMARY",
+      "classification": "AUTHENTICATED_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "timing[].resolvedValue",
+      "label": "Resolved clock / threshold",
+      "renderType": "VALUE",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE",
+      "restriction": "Where the value is a universal/source-governed constant, a separately approved public-safe reference value may be rendered."
+    },
+    {
+      "canonicalPath": "actors.performerRole",
+      "label": "Performer",
+      "renderType": "ROLE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "actors.ownerRole",
+      "label": "Owner",
+      "renderType": "ROLE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "actors.decisionAuthorityRole",
+      "label": "Decision authority",
+      "renderType": "ROLE",
+      "classification": "AUTHENTICATED_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "actors.exceptionOwnerRole",
+      "label": "Exception owner",
+      "renderType": "ROLE",
+      "classification": "AUTHENTICATED_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "actors.clientPersonOrTeamBinding",
+      "label": "Client owner/team",
+      "renderType": "ROLE_BINDING",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "canonicalPath": "systems[].role",
+      "label": "System role",
+      "renderType": "SYSTEM_ROLE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "systems[].canonicalSystemType",
+      "label": "System type",
+      "renderType": "SYSTEM_TYPE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "systems[].clientApplication",
+      "label": "Client application",
+      "renderType": "SYSTEM_BINDING",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "canonicalPath": "systemExchanges[].direction",
+      "label": "Exchange direction",
+      "renderType": "ARROW_SUMMARY",
+      "classification": "AUTHENTICATED_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "systemExchanges[].payloadSummary",
+      "label": "Information exchanged",
+      "renderType": "SUMMARY",
+      "classification": "AUTHENTICATED_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "systemExchanges[].interfaceContract",
+      "label": "Interface contract",
+      "renderType": "TECHNICAL_DETAIL",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "canonicalPath": "objects[].canonicalName",
+      "label": "Business objects",
+      "renderType": "CHIPS",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "documents[].canonicalName",
+      "label": "Documents",
+      "renderType": "CHIPS",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "documents[].requiredFields",
+      "label": "Required document fields",
+      "renderType": "FIELD_LIST",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION",
+      "publicForm": "field count / high-level section names where approved"
+    },
+    {
+      "canonicalPath": "evidence[].type",
+      "label": "Evidence required",
+      "renderType": "EVIDENCE_TYPE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "evidence[].acceptanceCriteria",
+      "label": "Evidence acceptance criteria",
+      "renderType": "CRITERIA",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION",
+      "publicForm": "evidence completeness indicator"
+    },
+    {
+      "canonicalPath": "clientBindingRequirements[].classification",
+      "label": "Client binding dependency",
+      "renderType": "CATEGORY_COUNT",
+      "classification": "AGGREGATE_ONLY",
+      "projection": "EXECUTION_READINESS"
+    },
+    {
+      "canonicalPath": "clientBindingRequirements[].requiredWhen",
+      "label": "Binding required when",
+      "renderType": "CONDITION",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "canonicalPath": "clientBindingRequirements[].why",
+      "label": "Why client input is needed",
+      "renderType": "PARAGRAPH",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "canonicalPath": "clientBindingRequirements[].valueOrigin",
+      "label": "Expected value origin",
+      "renderType": "ORIGIN",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "canonicalPath": "clientBindingRequirements[].validation",
+      "label": "Binding validation",
+      "renderType": "VALIDATION",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "canonicalPath": "clientBindingRequirements[].sourceRefsOrBasis",
+      "label": "Binding basis",
+      "renderType": "PROVENANCE",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION",
+      "clientWorkspaceForm": "approved basis summary"
+    },
+    {
+      "canonicalPath": "clientBindingRequirements[].systemOfRecord",
+      "label": "Client system of record",
+      "renderType": "SYSTEM_BINDING",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "canonicalPath": "clientBindingRequirements[].clientFieldMapping",
+      "label": "Client field/API mapping",
+      "renderType": "FIELD_BINDING",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "canonicalPath": "clientBindingRequirements[].authorityOwner",
+      "label": "Client authority owner",
+      "renderType": "ROLE_BINDING",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "canonicalPath": "clientBindingRequirements[].collectionQuestion",
+      "label": "Client collection question",
+      "renderType": "QUESTION",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE"
+    },
+    {
+      "canonicalPath": "clientBindingRequirements[].resolutionStatus",
+      "label": "Binding resolution",
+      "renderType": "STATUS",
+      "classification": "CLIENT_AUTHORIZED",
+      "projection": "CLIENT_WORKSPACE",
+      "aggregateForm": "resolved/unresolved counts may feed Execution Readiness"
+    },
+    {
+      "canonicalPath": "provenanceClaims[].basisClass",
+      "label": "Evidence basis",
+      "renderType": "BADGE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "provenanceClaims[].authorityClass",
+      "label": "Authority class",
+      "renderType": "BADGE",
+      "classification": "PUBLIC_SAFE",
+      "projection": "OPERATIONAL_KNOWLEDGE_SAFE"
+    },
+    {
+      "canonicalPath": "provenanceClaims[].sourceId",
+      "label": "Exact source",
+      "renderType": "SOURCE_LINK",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "canonicalPath": "provenanceClaims[].sourceVersion",
+      "label": "Source version",
+      "renderType": "TEXT",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "canonicalPath": "provenanceClaims[].claimMapping",
+      "label": "Claim-to-source mapping",
+      "renderType": "TRACE_DETAIL",
+      "classification": "INTERNAL_PROTECTED",
+      "projection": "PROTECTED_EXECUTION"
+    },
+    {
+      "canonicalPath": "researchNotes|crosswalkLogic|internalConfidenceRationale",
+      "label": "Internal research/governance detail",
+      "renderType": "INTERNAL",
+      "classification": "ADMIN_ONLY",
+      "projection": "ADMIN_GOVERNANCE"
+    }
+  ],
+  "projectionPaths": {
+    "OVERVIEW": "/projection/a5/overview",
+    "OPERATIONAL_KNOWLEDGE_SAFE": "/projection/a5/operational-knowledge",
+    "EXECUTION_READINESS": "/projection/a5/execution-readiness",
+    "CLIENT_WORKSPACE": "/projection/client-workspace/a5",
+    "PROTECTED_EXECUTION": "/projection/protected/a5",
+    "ADMIN_GOVERNANCE": "/projection/admin/a5"
+  },
+  "p1ExitAssertion": "Every Operational Knowledge field family has an explicit presentation class, audience boundary and projection path; fields not listed are denied until classified."
+}
