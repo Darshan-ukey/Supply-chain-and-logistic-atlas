@@ -1,0 +1,286 @@
+{
+  "matrixId": "ATLAS-AUTHORIZATION-PROJECTION-MATRIX-V1",
+  "version": "1.0.0",
+  "status": "FROZEN_P1_CONTRACT",
+  "architecture": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
+  "defaultPolicy": "DENY_UNLESS_EXPLICITLY_ALLOWED",
+  "roles": {
+    "ANONYMOUS_PUBLIC": "Unauthenticated public Atlas visitor.",
+    "AUTHENTICATED_ATLAS_USER": "Authenticated general Atlas user without protected-execution entitlement.",
+    "PILOT_USER": "Invited internal pilot user with functional product access but no canonical governance authority.",
+    "CLIENT_WORKSPACE_USER": "Authorized user scoped to one client workspace and its permitted canonical/protected execution views.",
+    "ADMIN_GOVERNOR": "Governed internal administrator with canonical review/approval responsibilities within assigned scope.",
+    "OWNER": "Platform owner with full cross-domain access/governance authority subject to external license constraints."
+  },
+  "accessActions": [
+    "READ_PUBLIC",
+    "READ_AUTHENTICATED",
+    "READ_PROTECTED",
+    "READ_CLIENT_SCOPED",
+    "READ_ADMIN_GOVERNANCE",
+    "PROPOSE_CHANGE",
+    "APPROVE_CANONICAL_CHANGE",
+    "MANAGE_ACCESS_POLICY"
+  ],
+  "assets": [
+    {
+      "asset": "Universe / Page-0 public reference knowledge",
+      "ANONYMOUS_PUBLIC": "READ_PUBLIC",
+      "AUTHENTICATED_ATLAS_USER": "READ_PUBLIC",
+      "PILOT_USER": "READ_PUBLIC",
+      "CLIENT_WORKSPACE_USER": "READ_PUBLIC",
+      "ADMIN_GOVERNOR": "READ_PUBLIC",
+      "OWNER": "READ_PUBLIC"
+    },
+    {
+      "asset": "Daughter A3/A4/A5 overview knowledge",
+      "ANONYMOUS_PUBLIC": "READ_PUBLIC",
+      "AUTHENTICATED_ATLAS_USER": "READ_PUBLIC",
+      "PILOT_USER": "READ_PUBLIC",
+      "CLIENT_WORKSPACE_USER": "READ_PUBLIC",
+      "ADMIN_GOVERNOR": "READ_PUBLIC",
+      "OWNER": "READ_PUBLIC"
+    },
+    {
+      "asset": "Operational Knowledge safe projection",
+      "ANONYMOUS_PUBLIC": "READ_PUBLIC",
+      "AUTHENTICATED_ATLAS_USER": "READ_AUTHENTICATED",
+      "PILOT_USER": "READ_AUTHENTICATED",
+      "CLIENT_WORKSPACE_USER": "READ_AUTHENTICATED",
+      "ADMIN_GOVERNOR": "READ_AUTHENTICATED",
+      "OWNER": "READ_AUTHENTICATED"
+    },
+    {
+      "asset": "Operational Knowledge protected detail",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "READ_PROTECTED_IF_PILOT_SCOPE",
+      "CLIENT_WORKSPACE_USER": "READ_PROTECTED_IF_WORKSPACE_SCOPE",
+      "ADMIN_GOVERNOR": "READ_PROTECTED",
+      "OWNER": "READ_PROTECTED"
+    },
+    {
+      "asset": "Execution Readiness safe projection",
+      "ANONYMOUS_PUBLIC": "READ_PUBLIC",
+      "AUTHENTICATED_ATLAS_USER": "READ_PUBLIC",
+      "PILOT_USER": "READ_PUBLIC",
+      "CLIENT_WORKSPACE_USER": "READ_PUBLIC",
+      "ADMIN_GOVERNOR": "READ_PUBLIC",
+      "OWNER": "READ_PUBLIC"
+    },
+    {
+      "asset": "Execution Readiness protected gap detail",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "READ_PROTECTED_IF_PILOT_SCOPE",
+      "CLIENT_WORKSPACE_USER": "READ_PROTECTED_IF_WORKSPACE_SCOPE",
+      "ADMIN_GOVERNOR": "READ_PROTECTED",
+      "OWNER": "READ_PROTECTED"
+    },
+    {
+      "asset": "Work Decomposition summary/counts",
+      "ANONYMOUS_PUBLIC": "READ_PUBLIC_SUMMARY_ONLY",
+      "AUTHENTICATED_ATLAS_USER": "READ_PUBLIC_SUMMARY_ONLY",
+      "PILOT_USER": "READ_AUTHENTICATED_SUMMARY",
+      "CLIENT_WORKSPACE_USER": "READ_AUTHENTICATED_SUMMARY",
+      "ADMIN_GOVERNOR": "READ_AUTHENTICATED_SUMMARY",
+      "OWNER": "READ_AUTHENTICATED_SUMMARY"
+    },
+    {
+      "asset": "Full recursive Work Decomposition",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "READ_PROTECTED_IF_PILOT_SCOPE",
+      "CLIENT_WORKSPACE_USER": "READ_PROTECTED_IF_WORKSPACE_SCOPE",
+      "ADMIN_GOVERNOR": "READ_PROTECTED",
+      "OWNER": "READ_PROTECTED"
+    },
+    {
+      "asset": "WorkDefinition status/availability",
+      "ANONYMOUS_PUBLIC": "READ_PUBLIC_STATUS_ONLY",
+      "AUTHENTICATED_ATLAS_USER": "READ_PUBLIC_STATUS_ONLY",
+      "PILOT_USER": "READ_AUTHENTICATED_STATUS",
+      "CLIENT_WORKSPACE_USER": "READ_AUTHENTICATED_STATUS",
+      "ADMIN_GOVERNOR": "READ_AUTHENTICATED_STATUS",
+      "OWNER": "READ_AUTHENTICATED_STATUS"
+    },
+    {
+      "asset": "Full canonical WorkDefinition",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "READ_PROTECTED_IF_PILOT_SCOPE",
+      "CLIENT_WORKSPACE_USER": "READ_PROTECTED_IF_WORKSPACE_SCOPE",
+      "ADMIN_GOVERNOR": "READ_PROTECTED",
+      "OWNER": "READ_PROTECTED"
+    },
+    {
+      "asset": "Machine-readable WorkDefinition JSON/export",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "DENY_UNLESS_EXPLICIT_EXPORT_ENTITLEMENT",
+      "CLIENT_WORKSPACE_USER": "DENY_UNLESS_EXPLICIT_EXPORT_ENTITLEMENT",
+      "ADMIN_GOVERNOR": "READ_PROTECTED_EXPORT_IF_SCOPE",
+      "OWNER": "READ_PROTECTED_EXPORT"
+    },
+    {
+      "asset": "Client Binding requirement aggregate counts/categories",
+      "ANONYMOUS_PUBLIC": "READ_PUBLIC_AGGREGATE",
+      "AUTHENTICATED_ATLAS_USER": "READ_PUBLIC_AGGREGATE",
+      "PILOT_USER": "READ_AUTHENTICATED_AGGREGATE",
+      "CLIENT_WORKSPACE_USER": "READ_AUTHENTICATED_AGGREGATE",
+      "ADMIN_GOVERNOR": "READ_AUTHENTICATED_AGGREGATE",
+      "OWNER": "READ_AUTHENTICATED_AGGREGATE"
+    },
+    {
+      "asset": "Canonical Client Binding requirements detail",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "READ_PROTECTED_IF_PILOT_SCOPE_NO_CLIENT_VALUES",
+      "CLIENT_WORKSPACE_USER": "READ_CLIENT_SCOPED",
+      "ADMIN_GOVERNOR": "READ_PROTECTED",
+      "OWNER": "READ_PROTECTED"
+    },
+    {
+      "asset": "Client Binding values/mappings/evidence",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "DENY_UNLESS_EXPLICIT_WORKSPACE_MEMBERSHIP",
+      "CLIENT_WORKSPACE_USER": "READ_CLIENT_SCOPED",
+      "ADMIN_GOVERNOR": "READ_CLIENT_SCOPED_IF_AUTHORIZED",
+      "OWNER": "READ_CLIENT_SCOPED_IF_AUTHORIZED"
+    },
+    {
+      "asset": "Other client workspace data",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "DENY",
+      "CLIENT_WORKSPACE_USER": "DENY",
+      "ADMIN_GOVERNOR": "DENY_UNLESS_EXPLICIT_AUTHORIZED_SCOPE",
+      "OWNER": "DENY_UNLESS_LEGITIMATE_AUTHORIZED_SCOPE"
+    },
+    {
+      "asset": "Runtime projection summary",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "READ_PROTECTED_STATUS_IF_PILOT_SCOPE",
+      "CLIENT_WORKSPACE_USER": "READ_PROTECTED_STATUS_IF_WORKSPACE_SCOPE",
+      "ADMIN_GOVERNOR": "READ_PROTECTED",
+      "OWNER": "READ_PROTECTED"
+    },
+    {
+      "asset": "Detailed runtime projection / Malkom projection / compiler output",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "DENY_UNLESS_EXPLICIT_RUNTIME_ENTITLEMENT",
+      "CLIENT_WORKSPACE_USER": "DENY_UNLESS_EXPLICIT_RUNTIME_ENTITLEMENT",
+      "ADMIN_GOVERNOR": "READ_PROTECTED_IF_RUNTIME_SCOPE",
+      "OWNER": "READ_PROTECTED"
+    },
+    {
+      "asset": "Execution Flow Explorer — canonical detailed flow",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "READ_PROTECTED_IF_PILOT_SCOPE",
+      "CLIENT_WORKSPACE_USER": "READ_PROTECTED_IF_WORKSPACE_SCOPE",
+      "ADMIN_GOVERNOR": "READ_PROTECTED",
+      "OWNER": "READ_PROTECTED"
+    },
+    {
+      "asset": "Evidence basis class / authority class / coverage status",
+      "ANONYMOUS_PUBLIC": "READ_PUBLIC",
+      "AUTHENTICATED_ATLAS_USER": "READ_PUBLIC",
+      "PILOT_USER": "READ_PUBLIC",
+      "CLIENT_WORKSPACE_USER": "READ_PUBLIC",
+      "ADMIN_GOVERNOR": "READ_PUBLIC",
+      "OWNER": "READ_PUBLIC"
+    },
+    {
+      "asset": "Exact source inventory, versions, URLs and claim mappings",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "READ_PROTECTED_IF_PILOT_SCOPE",
+      "CLIENT_WORKSPACE_USER": "READ_APPROVED_SOURCE_SUMMARY_ONLY_UNLESS_POLICY_PERMITS",
+      "ADMIN_GOVERNOR": "READ_ADMIN_GOVERNANCE",
+      "OWNER": "READ_ADMIN_GOVERNANCE"
+    },
+    {
+      "asset": "Research notes / source crosswalk logic / internal confidence rationale",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "DENY_UNLESS_EXPLICIT_RESEARCH_ENTITLEMENT",
+      "CLIENT_WORKSPACE_USER": "DENY",
+      "ADMIN_GOVERNOR": "READ_ADMIN_GOVERNANCE",
+      "OWNER": "READ_ADMIN_GOVERNANCE"
+    },
+    {
+      "asset": "Suggested gaps / proposed canonical changes",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "PROPOSE_CHANGE_IF_ENABLED",
+      "PILOT_USER": "PROPOSE_CHANGE",
+      "CLIENT_WORKSPACE_USER": "PROPOSE_CHANGE_FROM_WORKSPACE",
+      "ADMIN_GOVERNOR": "READ_ADMIN_GOVERNANCE_AND_REVIEW",
+      "OWNER": "READ_ADMIN_GOVERNANCE_AND_REVIEW"
+    },
+    {
+      "asset": "Approve/reject canonical changes",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "DENY",
+      "CLIENT_WORKSPACE_USER": "DENY",
+      "ADMIN_GOVERNOR": "APPROVE_CANONICAL_CHANGE_WITHIN_SCOPE",
+      "OWNER": "APPROVE_CANONICAL_CHANGE"
+    },
+    {
+      "asset": "Access-policy / role / entitlement administration",
+      "ANONYMOUS_PUBLIC": "DENY",
+      "AUTHENTICATED_ATLAS_USER": "DENY",
+      "PILOT_USER": "DENY",
+      "CLIENT_WORKSPACE_USER": "DENY",
+      "ADMIN_GOVERNOR": "DENY_UNLESS_DELEGATED",
+      "OWNER": "MANAGE_ACCESS_POLICY"
+    }
+  ],
+  "projectionAllowlist": {
+    "public": [
+      "Overview Projection",
+      "Operational Knowledge Safe Projection",
+      "Execution Readiness Safe Projection",
+      "Work Decomposition summary/counts",
+      "WorkDefinition status/availability",
+      "client-binding aggregate counts/categories",
+      "evidence basis/authority class"
+    ],
+    "authenticatedGeneral": [
+      "public allowlist",
+      "authenticated-safe Operational Knowledge summaries"
+    ],
+    "pilot": [
+      "public/authenticated allowlist",
+      "protected execution detail only for explicit pilot scope"
+    ],
+    "clientWorkspace": [
+      "public/authenticated allowlist",
+      "workspace-authorized protected execution detail",
+      "workspace client-binding requirements/values/evidence"
+    ],
+    "adminGovernor": [
+      "full canonical/protected execution detail within governed scope",
+      "full provenance/research detail subject to source-license constraints",
+      "canonical change review/approval"
+    ],
+    "owner": [
+      "all platform assets subject to legitimate purpose and external license/privacy constraints",
+      "access-policy administration"
+    ]
+  },
+  "securityAssertions": [
+    "Authorization must be enforced before retrieval/projection.",
+    "The LLM is never an authorization boundary.",
+    "Unauthorized browser HTML/state/network responses must not contain denied assets.",
+    "Client workspace retrieval must include workspace authorization in the database/query boundary.",
+    "No client-derived content automatically mutates canonical Atlas knowledge.",
+    "Public Ask Atlas cannot retrieve a field denied by the public projection contract.",
+    "A protected UI control is not proof of security unless the underlying payload is also protected."
+  ],
+  "p1ExitAssertion": "Every execution-depth asset has an explicit read/propose/approve boundary across all six audience classes."
+}
