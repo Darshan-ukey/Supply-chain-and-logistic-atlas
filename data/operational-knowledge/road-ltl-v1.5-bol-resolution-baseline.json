@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "atlas-bol-information-resolution-baseline-v1",
+  "module": "road-ltl",
+  "targetVersion": "1.5-candidate",
+  "status": "DRAFT_RESEARCHED_NOT_PROMOTED",
+  "supersessionPolicy": "Road LTL 1.4 remains immutable; this enrichment is a new candidate only after validation and freeze gates.",
+  "universeImpact": {
+    "currentUniverse": "7.3",
+    "requiresUniverse7_4": false,
+    "rationale": "BOL findings enrich downstream A5 operational information, object-resolution and execution contracts. They do not currently change Page-0 canonical taxonomy, process identity or Universe semantics. Reassess only if research changes canonical Universe concepts."
+  },
+  "a5Impacts": [
+    {
+      "taskId": "LTL-03",
+      "task": "Create and validate shipment, consignment and transport-document identity",
+      "impact": "PRIMARY",
+      "requiredUpdate": [
+        "Add canonical BOL/transport-document object model and field-level information contracts.",
+        "Resolve values to object instances before client/runtime mapping.",
+        "Add source-backed requiredWhen/prohibitedWhen, association, normalization, validation, conflict, confidence and human-review policies.",
+        "Treat DangerousGoods as a conditional regulatory object and apply cross-field validation.",
+        "Distinguish handling-unit structure from line-item/piece structure.",
+        "Model references as typed Reference objects rather than untyped strings.",
+        "Emit structured evidence and unresolved client-binding requirements for downstream work decomposition."
+      ]
+    },
+    {
+      "taskId": "DOWNSTREAM_CONSUMERS_OF_LTL-03",
+      "impact": "DEPENDENCY_REVALIDATION",
+      "requiredUpdate": [
+        "Revalidate downstream A5 inputs/controls that consume validated shipment or transport-document identity.",
+        "Do not change downstream task identity unless the new information contract changes the governed business step itself."
+      ]
+    }
+  ],
+  "canonicalObjectModel": {
+    "root": "TransportDocument/BOL",
+    "children": {
+      "Consignment": [
+        "Parties[Shipper/Consignor,Consignee,BillTo]",
+        "References[]",
+        "HandlingUnits[]",
+        "LineItems[]",
+        "Instructions[]",
+        "ServiceEventWindows[]"
+      ],
+      "HandlingUnits[]": ["LineItems[] (contain/relate according to source/client structure)"],
+      "LineItems[]": ["DangerousGoods[] (conditional)"]
+    },
+    "principle": "Canonical objects and relationships are resolved before client labels/fields. Address 2/3 and similar layout-specific labels are bindings to canonical addressLines[], not standalone global business concepts."
+  },
+  "informationResolutionContract": "schemas/information-resolution-contract-v1.json",
+  "sourceClaimPack": "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+  "errorTaxonomy": [
+    "DETECTION_RECALL",
+    "OBJECT_ASSOCIATION",
+    "SEMANTIC_CLASSIFICATION",
+    "NORMALIZATION_VALIDATION",
+    "CONDITIONAL_APPLICABILITY"
+  ],
+  "measurementModel": [
+    "Extraction Recall",
+    "Value Accuracy",
+    "Object Association Accuracy",
+    "Semantic Classification Accuracy",
+    "Normalization Accuracy",
+    "Validation Pass Rate",
+    "Critical False-Negative Rate",
+    "HITL Rate",
+    "Validated STP Yield"
+  ],
+  "metricIntegrity": {
+    "status": "METRIC_DEFINITION_REQUIRED",
+    "reportedAccuracyAbove100Count": 11,
+    "policy": "Never clamp or normalize source-reported values. Preserve reported values and resolve metric name, numerator, denominator, population, field applicability, sample size, document/occurrence count, model version and measurement method before treating the column as accuracy."
+  },
+  "priorityFindings": [
+    {
+      "field": "Line Item Hazardous Flag",
+      "reportedAccuracy": 19.83,
+      "reportedExtraction": 96.71,
+      "primaryErrorClass": "SEMANTIC_CLASSIFICATION",
+      "intervention": "Use line-item object association plus regulatory evidence/cross-field validation. High extraction with very low reported correctness indicates that capture alone is not the principal failure."
+    },
+    {
+      "field": "Line Item Piece Count",
+      "reportedAccuracy": 59.50,
+      "reportedExtraction": 94.14,
+      "primaryErrorClass": "OBJECT_ASSOCIATION",
+      "intervention": "Resolve line-item/package quantity independently from handling-unit count/type and validate hierarchy."
+    },
+    {
+      "field": "Reference Number",
+      "reportedAccuracy": 69.79,
+      "reportedExtraction": 61.78,
+      "primaryErrorClass": "SEMANTIC_CLASSIFICATION",
+      "intervention": "Instantiate Reference objects with value, type, issuer/role and related object; bind client vocabulary only after canonical classification."
+    },
+    {
+      "fieldFamily": "Handling Unit Line No / Count / Type",
+      "reportedExtractionRange": "10.26–44.30",
+      "primaryErrorClass": "DETECTION_RECALL+OBJECT_ASSOCIATION",
+      "intervention": "Detect the handling-unit structure and associate child/related line items before extracting dependent values."
+    },
+    {
+      "fieldFamily": "Hazmat technical/proper name/class/packing group/zone/UNNA",
+      "primaryErrorClass": "CONDITIONAL_APPLICABILITY",
+      "intervention": "Resolve as a DangerousGoods object with jurisdiction-sensitive requiredWhen rules and cross-field validation; do not score every field as universally expected."
+    }
+  ],
+  "unresolvedSemantics": [
+    {"label":"Code","status":"SOURCE_CONTEXT_PENDING"},
+    {"label":"SHC","status":"SOURCE_CONTEXT_PENDING"},
+    {"label":"Related Value","status":"SOURCE_CONTEXT_PENDING"},
+    {"label":"BOL Type","status":"CLIENT_BINDING_REQUIRED"},
+    {"label":"Reference Number Type Full Name","status":"CLIENT_BINDING_REQUIRED"},
+    {"label":"Handling Unit Line No","status":"SOURCE_CONTEXT_PENDING"},
+    {"label":"Shipper Code","status":"CLIENT_BINDING_REQUIRED"},
+    {"label":"Bill To/Consignee Account Number exact semantics","status":"CLIENT_BINDING_REQUIRED"},
+    {"label":"Instruction Type value set","status":"CLIENT_BINDING_REQUIRED"},
+    {"label":"Time Critical Details coding","status":"CLIENT_BINDING_REQUIRED"}
+  ],
+  "fieldPerformanceBaseline": [
+    ["Line Item Hazardous Flag",19.83,96.71],["Line Item Description",56.78,87.51],["Line Item Piece Count",59.50,94.14],["Instruction",60.96,75.20],["Reference Number",69.79,61.78],["Reference Number Type Full Name",74.98,77.73],["Consignee Address 2",75.42,95.72],["Line Item Packaging Type",77.27,71.28],["Consignee Address 3",78.15,99.56],["Consignee Name",78.51,99.95],["Reference Number Type",79.01,78.81],["Bill To Name",79.52,90.59],["Consignee Address",80.24,99.70],["Consignee Zip",80.64,98.88],["Bill To Address",80.70,90.27],["Bill To Address 2",82.67,91.65],["Line Item Freight Class",82.72,88.19],["Bill To Account Number",84.41,84.77],["Line Item NMFC Sub",86.44,82.29],["Bill To Zip",86.75,89.14],["Bill To Address 3",87.94,97.25],["Line Item Weight",88.04,88.69],["Shipper Zip Code",88.08,99.78],["Shipper Name",88.19,99.96],["Shipper Address",88.42,99.94],["Instruction Type",88.89,75.58],["Payment Term",89.58,89.26],["Bill To Phone Extension",89.89,99.97],["Bill To City",90.31,87.80],["Consignee Phone Extension",90.36,99.80],["Code",90.61,69.47],["Consignee Account Number",91.32,87.44],["Line Item NMFC",91.48,73.86],["Bill To State",91.77,87.61],["Shipper Address 2",92.66,99.51],["Shipper Contact Phone",93.58,98.28],["Shipper Phone Extension",93.75,99.84],["Shipper City",94.02,99.77],["Consignee Phone",94.27,93.53],["Consignee City",94.36,98.11],["Bill To Phone",95.55,98.36],["Shipper State",96.43,99.44],["SHC",96.60,89.76],["Weight",96.80,99.93],["Emergency Contact Phone",96.96,96.65],["Time Critical Details Date Begin",97.12,96.81],["Consignee Email",97.29,98.04],["Line Item Hazardous Contract Number",97.34,99.25],["Emergency Contact Name",97.39,97.13],["Piece Count",97.89,99.97],["Delivery Appointment Date Begin",97.91,97.58],["Delivery Appointment Date End",98.34,99.92],["Bill To Country",98.46,88.20],["Shipper Code",98.60,85.40],["Time Critical Details Date End",98.69,99.96],["Consignee State",98.83,97.16],["BOL Type",99.14,100.00],["Related Value",99.22,99.99],["Pro Number",99.30,100.00],["Interline SCAC",99.46,99.95],["Bill To Email",99.55,97.87],["Time Critical Details Type",99.56,93.41],["Shipper Country",99.88,99.62],["Shipper Address 3",99.92,99.97],["Consignee Country",99.97,97.16],["Handling Unit Dimensions",100.63,85.01],["Line Item Hazardous Technical Name",100.91,96.45],["Line Item Square Yards",101.04,96.98],["Line Item Hazardous Packing Group",101.24,96.61],["Line Item Hazardous UNNA Number",101.28,97.04],["Line Item Hazardous Class",101.32,97.01],["Handling Unit Type",101.73,44.30],["Line Item Hazardous Zone",102.20,97.25],["Line Item Hazardous Proper Name",102.27,94.23],["Handling Unit Count",105.30,37.33],["Handling Unit Line No",120.83,10.26]
+  ],
+  "performanceColumnOrder": ["fieldName","reportedAccuracyMetric","reportedExtractionMetric"],
+  "promotionGates": [
+    "Source/provenance gate for material information-resolution assertions",
+    "Field/object contract completeness or explicit binding/gap classification",
+    "A5 LTL-03 operational-depth revalidation",
+    "Downstream dependency regression",
+    "Work Decomposition compatibility",
+    "WorkDefinition compilability once VNext is implemented",
+    "Metric-integrity gate",
+    "Runtime-neutrality gate",
+    "Regression/UI/trace gate"
+  ]
+}
