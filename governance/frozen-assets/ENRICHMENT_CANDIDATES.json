@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "atlas-active-enrichment-candidates-v1",
+  "updatedAt": "2026-09-02",
+  "note": "These assets are ready/versioned candidates but are not added to latestFrozenCandidates until their freeze gates pass.",
+  "assets": [
+    {
+      "assetId": "road-ltl-1.5-candidate",
+      "family": "road-ltl",
+      "name": "Road LTL",
+      "version": "1.5",
+      "status": "CANDIDATE_FOR_FREEZE",
+      "repositoryPath": "data/modules/road-ltl-v1.5.json",
+      "sha256": "3d0a8fd02f0e2fd9864c5c1abcb6e6b54f8d14422d0063ec9fd8b3ffa04beade",
+      "baseAssetId": "road-ltl-1.4-candidate",
+      "baseSha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+      "changedTaskIds": ["LTL-03"],
+      "representation": "LOSSLESS_VERSIONED_OVERLAY",
+      "universeVersion": "7.3"
+    },
+    {
+      "assetId": "road-ltl-1.5-operational-candidate",
+      "family": "road-ltl-operational-knowledge",
+      "name": "Road LTL Operational Knowledge",
+      "version": "1.5 / OKv2",
+      "status": "CANDIDATE_FOR_FREEZE",
+      "repositoryPath": "data/operational-knowledge/road-ltl-v1.5-operational.json",
+      "sha256": "ef831f30134b7743313341de0621886c5c91459e1a77c1b720f68faff7534843",
+      "baseArtifactPath": "data/operational-knowledge/road-ltl-v1.4-operational.json",
+      "baseSha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e"
+    },
+    {
+      "assetId": "operational-knowledge-contract-2-candidate",
+      "family": "operational-knowledge-contract",
+      "name": "Operational Knowledge Contract",
+      "version": "2",
+      "status": "CANDIDATE_FOR_FREEZE",
+      "repositoryPath": "schemas/operational-knowledge-contract-v2.json",
+      "gitBlobSha": "6a124afce6e732b839b4e9c8675e177600157934",
+      "supersedesAfterFreeze": "operational-knowledge-contract-1"
+    },
+    {
+      "assetId": "bol-information-resolution-baseline-0.1",
+      "family": "information-resolution-reference-baseline",
+      "name": "BOL Information Resolution Baseline — Road LTL / Malkom",
+      "version": "0.1",
+      "status": "CANDIDATE_REFERENCE_BASELINE",
+      "repositoryPath": "data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md",
+      "gitBlobSha": "b54f948074799eaef9a157750ec388e0bd3e8cf6",
+      "fieldBaselinePath": "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+      "sourceClaimPackPath": "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+    }
+  ],
+  "freezeGates": [
+    "Source and claim coverage validated within declared applicability",
+    "Information Resolution completeness validated for target field/object families",
+    "LTL-03 operational-depth validation complete",
+    "Downstream regression complete",
+    "Metric-integrity anomalies documented/resolved to the level required for performance claims",
+    "Recursive Work Decomposition and WorkDefinition compilation gates passed where required for promotion"
+  ]
+}
