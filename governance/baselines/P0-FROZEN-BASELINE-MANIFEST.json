@@ -4,7 +4,7 @@
   "status": "P0_COMPLETE_NO_FUNCTIONAL_CHANGE",
   "repository": "Darshan-ukey/Supply-chain-and-logistic-atlas",
   "baselineBranch": "atlas-governance-registry-v2.1",
-  "baselineHeadSha": "95d431297892f7e06a9db652221490ad83b9e6e0",
+  "baselineHeadSha": "134a40cba268225f7a5fe0a431a885c38407a758",
   "p0Branch": "atlas-presentation-architecture-v1-p0",
   "frozenPresentationArchitecture": {
     "assetId": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
