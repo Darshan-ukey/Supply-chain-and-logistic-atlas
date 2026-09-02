@@ -3,7 +3,7 @@
   "baseline": {
     "repository": "Darshan-ukey/Supply-chain-and-logistic-atlas",
     "branch": "atlas-governance-registry-v2.1",
-    "headSha": "95d431297892f7e06a9db652221490ad83b9e6e0"
+    "headSha": "134a40cba268225f7a5fe0a431a885c38407a758"
   },
   "p0Branch": "atlas-presentation-architecture-v1-p0",
   "semanticFixtureExpectations": {
@@ -24,7 +24,7 @@
     "publicNeverReceives":["fullWorkDecomposition","fullWorkDefinition","runtimeProjection","restrictedClientBindings"],
     "operationalKnowledgeProjection":"ALLOWLIST_REQUIRED"
   },
-  "allowedP0ChangeScope":["governance/architecture/","governance/baselines/","governance/backlog/","governance/frozen-assets/CURRENT.json","governance/frozen-assets/ATLAS_DAUGHTER_EXECUTION_DEPTH_PRESENTATION_ARCHITECTURE_V1.json"],
+  "allowedP0ChangeScope":["governance/architecture/","governance/baselines/","governance/backlog/","governance/frozen-assets/CURRENT.json","governance/frozen-assets/ATLAS_DAUGHTER_EXECUTION_DEPTH_PRESENTATION_ARCHITECTURE_V1.json","governance/frozen-assets/ASSET_REGISTER.json"],
   "forbiddenP0ChangeScope":["index.html","admin.html","preview-standalone.html","canvas-v2/","runtime/","execution/","schemas/","tests/","api/","lib/","backend/"],
   "candidatePromotionExpected":false,
   "functionalChangeExpected":false
