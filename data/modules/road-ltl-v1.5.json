@@ -2,7 +2,8 @@
   "schemaVersion": "atlas-daughter-module-versioned-overlay-v1",
   "moduleId": "road-ltl",
   "version": "1.5",
-  "status": "CANDIDATE_FOR_FREEZE",
+  "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+  "freezeScope": "IMMUTABLE_REFERENCE_CANDIDATE_NOT_PRODUCTION_PROMOTION",
   "representation": "LOSSLESS_VERSIONED_OVERLAY",
   "baseAsset": {
     "assetId": "road-ltl-1.4-candidate",
