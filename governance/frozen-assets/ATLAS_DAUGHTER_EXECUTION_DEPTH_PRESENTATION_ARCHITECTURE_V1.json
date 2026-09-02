@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "atlas-frozen-architecture-asset-v1",
+  "assetId": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
+  "name": "Atlas Daughter Execution-Depth Presentation Architecture",
+  "version": "1.0.0",
+  "status": "FROZEN",
+  "effectiveDate": "2026-09-02",
+  "category": "presentation-architecture",
+  "repositoryPath": "governance/architecture/ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1.md",
+  "sha256": "ce93c8ab8ddadc258e3889b499cbd341f0df29bdb41aa40f81a3914bfec5430d",
+  "semanticImpact": "NONE",
+  "implementationStatus": "PHASED_BACKLOG",
+  "canonicalPresentationSequence": [
+    "Overview",
+    "Operational Knowledge",
+    "Execution Readiness",
+    "[Protected] Work Decomposition",
+    "[Protected] WorkDefinition"
+  ],
+  "immutability": "A superseding version must be created for any architectural change; this record and referenced V1 content remain immutable."
+}
