@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "atlas-active-enrichment-candidates-v1",
+  "updatedAt": "2026-09-02T21:42:00+05:30",
+  "state": "CLOSED_FROZEN",
+  "validationResult": "PASS",
+  "freezeLock": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json",
+  "canonicalRegister": "governance/frozen-assets/ASSET_REGISTER.json",
+  "note": "This enrichment set is no longer active. It has been frozen as immutable reference assets and registered canonically. Production promotion remains separate.",
+  "assets": [
+    {"assetId":"road-ltl-1.5-candidate","status":"FROZEN_EXECUTION_REFERENCE_CANDIDATE","repositoryPath":"data/modules/road-ltl-v1.5.json","sha256":"22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f"},
+    {"assetId":"road-ltl-1.5-operational","status":"FROZEN_OPERATIONAL_REFERENCE","repositoryPath":"data/operational-knowledge/road-ltl-v1.5-operational.json","sha256":"6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9"},
+    {"assetId":"operational-knowledge-contract-2-candidate","status":"FROZEN_SCHEMA_CANDIDATE","repositoryPath":"schemas/operational-knowledge-contract-v2.json","sha256":"d58d33c38adc0ac3e63400b66680115699c0cfa5c4c831e44b22c19eedfa4a18"},
+    {"assetId":"bol-information-resolution-baseline-0.1","status":"FROZEN_REFERENCE_BASELINE","repositoryPath":"data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md","sha256":"8d1593ca7133c6c0ebe72099e01e18feccd5bb906851a6affa1a36ccbddb8400"}
+  ],
+  "knownOpenPromotionGates": [
+    "Resolve source-reported Malkom Accuracy metric numerator/denominator/counting method for values above 100%.",
+    "Obtain governing Malkom/client schema for explicit unresolved labels.",
+    "Implement Recursive Work Decomposition and WorkDefinition VNext compilation.",
+    "Complete downstream runtime regression and measured Validated STP proof before production promotion."
+  ]
+}
