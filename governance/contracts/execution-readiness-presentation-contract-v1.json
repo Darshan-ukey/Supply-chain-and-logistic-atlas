@@ -1,0 +1,250 @@
+{
+  "contractId": "ATLAS-EXECUTION-READINESS-PRESENTATION-CONTRACT-V1",
+  "version": "1.0.0",
+  "status": "FROZEN_P1_CONTRACT",
+  "architecture": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
+  "canonicalSemanticsChanged": false,
+  "purpose": "Define a consistent, non-misleading presentation of how close an A5 task or daughter module is to independently executable work, while keeping detailed decomposition and WorkDefinition logic protected.",
+  "defaultPolicy": "DENY_UNLESS_EXPLICITLY_ALLOWED",
+  "statusModel": {
+    "operationalKnowledge": [
+      "INCOMPLETE",
+      "PARTIAL",
+      "REFERENCE_COMPLETE_CANDIDATE",
+      "VALIDATED"
+    ],
+    "decomposition": [
+      "NOT_ASSESSED",
+      "COMPOSITE_REQUIRES_RECURSIVE_DECOMPOSITION",
+      "DECOMPOSITION_IN_PROGRESS",
+      "DECOMPOSED_NOT_EXECUTOR_PROVEN",
+      "EXECUTOR_READY"
+    ],
+    "workDefinition": [
+      "NOT_COMPILED",
+      "CANDIDATE",
+      "COMPILED_NOT_VERIFIED",
+      "VERIFIED",
+      "SUPERSEDED"
+    ],
+    "independentExecutorProof": [
+      "NOT_STARTED",
+      "PENDING",
+      "FAILED",
+      "PASS_WITH_CONDITIONS",
+      "PASS"
+    ]
+  },
+  "truthRules": [
+    "A5_VERIFIED does not imply EXECUTOR_READY.",
+    "REFERENCE_COMPLETE_CANDIDATE does not imply independent runtime proof.",
+    "A missing client runtime value is not an Operational Knowledge gap when the required object, applicability, authoritative origin and validation are explicitly defined as bindable.",
+    "Executor readiness cannot be PASS while undocumented operational UNKNOWN remains in a required execution path.",
+    "Runtime support is not the same as canonical executability; unsupported runtime features remain canonical and are reported as projection gaps.",
+    "Public readiness metrics are summaries and must not expose protected branch logic, exact Work Decomposition or full WorkDefinition content."
+  ],
+  "metrics": [
+    {
+      "field": "decompositionRequired",
+      "label": "Further decomposition required",
+      "type": "BOOLEAN",
+      "publicForm": "YES_NO",
+      "classification": "PUBLIC_SAFE",
+      "derivation": "Canonical executability assessment only; renderer may not infer."
+    },
+    {
+      "field": "decompositionStatus",
+      "label": "Decomposition status",
+      "type": "ENUM",
+      "publicForm": "STATUS_BADGE",
+      "classification": "PUBLIC_SAFE"
+    },
+    {
+      "field": "executorReady",
+      "label": "Executor ready",
+      "type": "BOOLEAN",
+      "publicForm": "YES_NO_WITH_EXPLANATION",
+      "classification": "PUBLIC_SAFE",
+      "hardRule": "True only when stop criterion is satisfied and required execution knowledge has no undocumented UNKNOWN."
+    },
+    {
+      "field": "independentExecutorProof",
+      "label": "Independent execution proof",
+      "type": "ENUM",
+      "publicForm": "STATUS_BADGE",
+      "classification": "PUBLIC_SAFE"
+    },
+    {
+      "field": "workDefinitionAvailability",
+      "label": "WorkDefinition",
+      "type": "ENUM",
+      "publicForm": "AVAILABLE_NOT_AVAILABLE_STATUS_ONLY",
+      "classification": "PUBLIC_SAFE",
+      "restriction": "Public payload never includes WorkDefinition content."
+    },
+    {
+      "field": "requiredInformationCoverage",
+      "label": "Required-information coverage",
+      "type": "PERCENT_OR_RATIO",
+      "publicForm": "PERCENT_AND_BAND",
+      "classification": "PUBLIC_SAFE",
+      "definition": "Required information objects with explicit purpose, required-when, origin class and validation divided by required information objects in assessed scope."
+    },
+    {
+      "field": "decisionCoverage",
+      "label": "Decision coverage",
+      "type": "PERCENT_OR_RATIO",
+      "publicForm": "PERCENT_AND_BAND",
+      "classification": "PUBLIC_SAFE",
+      "definition": "Decision gates with explicit required inputs and defined branch handling divided by identified decision gates."
+    },
+    {
+      "field": "branchCoverage",
+      "label": "Branch coverage",
+      "type": "PERCENT_OR_RATIO",
+      "publicForm": "PERCENT_AND_BAND",
+      "classification": "PUBLIC_SAFE",
+      "definition": "Identified pass/fail/hold/retry/escalation/recovery outcomes with defined next state or governed unresolved dependency divided by identified branches."
+    },
+    {
+      "field": "evidenceCoverage",
+      "label": "Evidence coverage",
+      "type": "PERCENT_OR_RATIO",
+      "publicForm": "PERCENT_AND_BAND",
+      "classification": "PUBLIC_SAFE",
+      "definition": "Completion/control outcomes with explicit evidence requirement divided by outcomes requiring evidence."
+    },
+    {
+      "field": "exceptionRecoveryCompleteness",
+      "label": "Exception / recovery completeness",
+      "type": "ENUM_OR_PERCENT",
+      "publicForm": "BAND",
+      "classification": "PUBLIC_SAFE"
+    },
+    {
+      "field": "unresolvedOperationalKnowledge",
+      "label": "Unresolved operational knowledge",
+      "type": "COUNT_AND_ITEMS",
+      "publicForm": "COUNT_AND_SEVERITY_ONLY",
+      "classification": "AGGREGATE_ONLY",
+      "protectedForm": "Full gap items, reason, affected branch and source-resolution state."
+    },
+    {
+      "field": "unresolvedClientBinding",
+      "label": "Client-binding dependency",
+      "type": "COUNT_AND_ITEMS",
+      "publicForm": "COUNT_AND_CATEGORY_ONLY",
+      "classification": "AGGREGATE_ONLY",
+      "clientWorkspaceForm": "Full authorized binding requirements and resolution status."
+    },
+    {
+      "field": "hitlDependency",
+      "label": "Human dependency",
+      "type": "ENUM",
+      "values": ["NONE_IDENTIFIED", "CONDITIONAL", "MATERIAL", "UNRESOLVED"],
+      "publicForm": "STATUS_BADGE",
+      "classification": "PUBLIC_SAFE"
+    },
+    {
+      "field": "deterministicWorkRatio",
+      "label": "Deterministic work",
+      "type": "RATIO",
+      "publicForm": "LOW_MEDIUM_HIGH_BAND",
+      "classification": "AGGREGATE_ONLY",
+      "protectedForm": "Exact ratio and node classification."
+    },
+    {
+      "field": "systemActionDependency",
+      "label": "System-action dependency",
+      "type": "ENUM_OR_RATIO",
+      "publicForm": "LOW_MEDIUM_HIGH_BAND",
+      "classification": "AGGREGATE_ONLY",
+      "protectedForm": "Exact system actions and interface dependencies."
+    },
+    {
+      "field": "automationSuitability",
+      "label": "Execution profile",
+      "type": "CATEGORY_BANDS",
+      "categories": ["RULES", "WORKFLOW", "API_SYSTEM", "RPA", "DOCUMENT_AI", "COPILOT", "AI_AGENT", "HITL", "HYBRID"],
+      "publicForm": "CATEGORY_BANDS_WITHOUT_NODE_LOGIC",
+      "classification": "PUBLIC_SAFE",
+      "truthRule": "Suitability is advisory until Work Decomposition and executor proof; it must not be presented as selected runtime architecture."
+    },
+    {
+      "field": "clientBindingExpected",
+      "label": "Client binding required",
+      "type": "BOOLEAN",
+      "publicForm": "YES_NO",
+      "classification": "PUBLIC_SAFE"
+    },
+    {
+      "field": "runtimeValuesPopulated",
+      "label": "Runtime/client values populated",
+      "type": "BOOLEAN",
+      "publicForm": "NOT_RENDERED",
+      "classification": "CLIENT_AUTHORIZED",
+      "clientWorkspaceForm": "YES_NO_WITH_RESOLUTION_PROGRESS"
+    },
+    {
+      "field": "runtimeProjectionStatus",
+      "label": "Runtime projection",
+      "type": "ENUM",
+      "publicForm": "NOT_RENDERED",
+      "classification": "INTERNAL_PROTECTED",
+      "pilotForm": "status only",
+      "adminForm": "full supported/mapped/transformed/client-binding-required/unsupported classification"
+    }
+  ],
+  "compositeCards": [
+    {
+      "cardId": "OPERATIONAL_COMPLETENESS",
+      "public": true,
+      "fields": ["requiredInformationCoverage", "decisionCoverage", "branchCoverage", "evidenceCoverage", "exceptionRecoveryCompleteness"],
+      "rule": "Display each metric independently; never collapse to one score that hides a critical zero/unknown."
+    },
+    {
+      "cardId": "EXECUTABILITY",
+      "public": true,
+      "fields": ["decompositionRequired", "decompositionStatus", "executorReady", "independentExecutorProof", "workDefinitionAvailability"]
+    },
+    {
+      "cardId": "DEPENDENCIES",
+      "public": true,
+      "fields": ["hitlDependency", "systemActionDependency", "clientBindingExpected", "unresolvedOperationalKnowledge", "unresolvedClientBinding"]
+    },
+    {
+      "cardId": "EXECUTION_PROFILE",
+      "public": true,
+      "fields": ["deterministicWorkRatio", "automationSuitability"]
+    }
+  ],
+  "audienceRules": {
+    "ANONYMOUS_PUBLIC": {
+      "allow": ["all PUBLIC_SAFE fields", "AGGREGATE_ONLY publicForm"],
+      "deny": ["protected gap items", "decomposition nodes", "WorkDefinition content", "client values/mappings", "runtime projection detail"]
+    },
+    "AUTHENTICATED_ATLAS_USER": {
+      "allow": ["same readiness payload as public", "authenticated-safe explanatory text"],
+      "deny": ["protected decomposition/WorkDefinition", "client data", "runtime implementation detail"]
+    },
+    "PILOT_USER": {
+      "allow": ["public readiness fields", "exact readiness metrics", "protected readiness explanations", "Work Decomposition/WorkDefinition where explicitly authorized by pilot scope"],
+      "deny": ["other-client binding values", "governance write controls", "owner-only access policy"]
+    },
+    "CLIENT_WORKSPACE_USER": {
+      "allow": ["public readiness fields", "workspace-specific binding resolution", "authorized protected execution detail for the active workspace"],
+      "deny": ["other workspaces", "canonical governance writes", "unapproved source/research internals"]
+    },
+    "ADMIN_GOVERNOR": {
+      "allow": ["all readiness metrics", "full gap items", "full decomposition/WorkDefinition readiness detail", "runtime projection gap classifications", "governance trace"],
+      "deny": ["owner-only access-policy administration where separately restricted"]
+    },
+    "OWNER": {
+      "allow": ["all fields and governance/access metadata subject to external source-license constraints"]
+    }
+  },
+  "projectionPath": "/projection/a5/execution-readiness",
+  "protectedDetailPath": "/projection/protected/a5/execution-readiness",
+  "clientWorkspacePath": "/projection/client-workspace/a5/execution-readiness",
+  "p1ExitAssertion": "Every readiness field has a truth definition, public form, protected form where applicable, and explicit audience rule."
+}
