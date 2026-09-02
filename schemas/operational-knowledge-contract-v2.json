@@ -1,6 +1,7 @@
 {
   "schemaVersion": "atlas-operational-knowledge-contract-v2",
-  "status": "CANDIDATE_FOR_FREEZE",
+  "status": "FROZEN_SCHEMA_CANDIDATE",
+  "freezeScope": "IMMUTABLE_REFERENCE_CANDIDATE_NOT_PRODUCTION_PROMOTION",
   "supersedes": "atlas-operational-knowledge-contract-v1",
   "purpose": "Make operational knowledge structurally sufficient for execution readiness by embedding information/object resolution, evidence, applicability, validation, authority, exception and runtime-feedback semantics before recursive work decomposition.",
   "principles": [
