@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "atlas-authorization-projection-matrix-v1",
+  "version": "1.0.0",
+  "status": "FROZEN",
+  "consumerClasses": ["PUBLIC_ANONYMOUS","AUTHENTICATED_ATLAS","PILOT","CLIENT_WORKSPACE","ADMIN_GOVERNOR","OWNER"],
+  "capabilities": [
+    "atlas.overview.read",
+    "atlas.operational.safe.read",
+    "atlas.readiness.read",
+    "atlas.binding.canonical.read",
+    "atlas.binding.own.read",
+    "atlas.binding.own.write",
+    "atlas.provenance.safe.read",
+    "atlas.provenance.full.read",
+    "atlas.execution.summary.read",
+    "atlas.work_decomposition.full.read",
+    "atlas.workdefinition.full.read",
+    "atlas.runtime.assigned.read",
+    "atlas.governance.propose",
+    "atlas.governance.approve",
+    "atlas.owner"
+  ],
+  "matrix": {
+    "overview": {"PUBLIC_ANONYMOUS":"ALLOW","AUTHENTICATED_ATLAS":"ALLOW","PILOT":"ALLOW","CLIENT_WORKSPACE":"ALLOW","ADMIN_GOVERNOR":"ALLOW","OWNER":"ALLOW"},
+    "operationalKnowledgeSafe": {"PUBLIC_ANONYMOUS":"ALLOW","AUTHENTICATED_ATLAS":"ALLOW","PILOT":"ALLOW","CLIENT_WORKSPACE":"ALLOW","ADMIN_GOVERNOR":"ALLOW","OWNER":"ALLOW"},
+    "executionReadinessSafe": {"PUBLIC_ANONYMOUS":"ALLOW","AUTHENTICATED_ATLAS":"ALLOW","PILOT":"ALLOW","CLIENT_WORKSPACE":"ALLOW","ADMIN_GOVERNOR":"ALLOW","OWNER":"ALLOW"},
+    "safeProvenance": {"PUBLIC_ANONYMOUS":"ALLOW","AUTHENTICATED_ATLAS":"ALLOW","PILOT":"ALLOW","CLIENT_WORKSPACE":"ALLOW","ADMIN_GOVERNOR":"ALLOW","OWNER":"ALLOW"},
+    "fullProvenance": {"PUBLIC_ANONYMOUS":"DENY","AUTHENTICATED_ATLAS":"DENY","PILOT":"DENY_DEFAULT","CLIENT_WORKSPACE":"DENY_DEFAULT","ADMIN_GOVERNOR":"ALLOW","OWNER":"ALLOW"},
+    "bindingCanonicalNeed": {"PUBLIC_ANONYMOUS":"ALLOW","AUTHENTICATED_ATLAS":"ALLOW","PILOT":"ALLOW","CLIENT_WORKSPACE":"ALLOW","ADMIN_GOVERNOR":"ALLOW","OWNER":"ALLOW"},
+    "bindingCollectionQuestion": {"PUBLIC_ANONYMOUS":"DENY","AUTHENTICATED_ATLAS":"DENY","PILOT":"OWN_WORKSPACE","CLIENT_WORKSPACE":"OWN_WORKSPACE","ADMIN_GOVERNOR":"ALLOW_BY_SCOPE","OWNER":"ALLOW"},
+    "bindingLocalValue": {"PUBLIC_ANONYMOUS":"DENY","AUTHENTICATED_ATLAS":"DENY","PILOT":"OWN_WORKSPACE","CLIENT_WORKSPACE":"OWN_WORKSPACE","ADMIN_GOVERNOR":"ALLOW_BY_SCOPE","OWNER":"ALLOW"},
+    "clientSystemMapping": {"PUBLIC_ANONYMOUS":"DENY","AUTHENTICATED_ATLAS":"DENY","PILOT":"OWN_WORKSPACE","CLIENT_WORKSPACE":"OWN_WORKSPACE","ADMIN_GOVERNOR":"ALLOW_BY_SCOPE","OWNER":"ALLOW"},
+    "workDecompositionSummary": {"PUBLIC_ANONYMOUS":"ALLOW","AUTHENTICATED_ATLAS":"ALLOW","PILOT":"ALLOW","CLIENT_WORKSPACE":"ALLOW","ADMIN_GOVERNOR":"ALLOW","OWNER":"ALLOW"},
+    "workDecompositionFull": {"PUBLIC_ANONYMOUS":"DENY","AUTHENTICATED_ATLAS":"DENY","PILOT":"EXECUTION_CAPABILITY_REQUIRED","CLIENT_WORKSPACE":"EXECUTION_CAPABILITY_REQUIRED","ADMIN_GOVERNOR":"EXECUTION_CAPABILITY_REQUIRED","OWNER":"ALLOW"},
+    "workDefinitionSummary": {"PUBLIC_ANONYMOUS":"ALLOW","AUTHENTICATED_ATLAS":"ALLOW","PILOT":"ALLOW","CLIENT_WORKSPACE":"ALLOW","ADMIN_GOVERNOR":"ALLOW","OWNER":"ALLOW"},
+    "workDefinitionFull": {"PUBLIC_ANONYMOUS":"DENY","AUTHENTICATED_ATLAS":"DENY","PILOT":"EXECUTION_CAPABILITY_REQUIRED","CLIENT_WORKSPACE":"EXECUTION_CAPABILITY_REQUIRED","ADMIN_GOVERNOR":"EXECUTION_CAPABILITY_REQUIRED","OWNER":"ALLOW"},
+    "runtimeProjection": {"PUBLIC_ANONYMOUS":"DENY","AUTHENTICATED_ATLAS":"DENY","PILOT":"RUNTIME_ASSIGNMENT_REQUIRED","CLIENT_WORKSPACE":"RUNTIME_ASSIGNMENT_REQUIRED","ADMIN_GOVERNOR":"RUNTIME_ASSIGNMENT_OR_GOVERNANCE_SCOPE","OWNER":"ALLOW"},
+    "machineCompilerPayload": {"PUBLIC_ANONYMOUS":"DENY","AUTHENTICATED_ATLAS":"DENY","PILOT":"DENY_DEFAULT","CLIENT_WORKSPACE":"EXECUTION_CAPABILITY_REQUIRED","ADMIN_GOVERNOR":"EXECUTION_CAPABILITY_REQUIRED","OWNER":"ALLOW"},
+    "canonicalMutation": {"PUBLIC_ANONYMOUS":"DENY","AUTHENTICATED_ATLAS":"DENY","PILOT":"PROPOSE_ONLY","CLIENT_WORKSPACE":"PROPOSE_ONLY","ADMIN_GOVERNOR":"APPROVE_BY_SCOPE","OWNER":"ALLOW"}
+  },
+  "workspaceRoleCompatibility": {
+    "VIEWER":"AUTHENTICATED_ATLAS safe projections plus RLS-scoped workspace read where allowed",
+    "PILOT_USER":"PILOT plus own pilot-workspace data",
+    "ADMIN":"workspace manager; does not imply global ADMIN_GOVERNOR protected-execution capability",
+    "OWNER":"workspace owner; must not be conflated with global Atlas OWNER unless explicitly granted"
+  },
+  "invariants": [
+    "Consumer class is resolved server-side.",
+    "RLS/data authorization remains authoritative for workspace isolation.",
+    "Projection allowlists are additional boundaries, not substitutes for RLS.",
+    "Full Work Decomposition and WorkDefinition require explicit execution capability.",
+    "Frontend hiding is not authorization.",
+    "Unclassified new fields are denied by default."
+  ]
+}
