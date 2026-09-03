@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "atlas-p2-projection-implementation-register-v1",
+  "phase": "P2_BACKEND_PROJECTION_BOUNDARY",
+  "status": "COMPLETE_CANDIDATE_FOR_PHASE_FREEZE",
+  "governingPresentationContracts": {
+    "operationalKnowledge": "1.1.0",
+    "executionReadiness": "1.1.0",
+    "executionDepthFieldClassification": "1.1.0",
+    "authorizationProjectionMatrix": "1.0.0"
+  },
+  "canonicalSemanticBaseline": "frozen-stack-lock-v2.2",
+  "firstProof": {
+    "moduleId": "road-ltl",
+    "moduleVersion": "1.5",
+    "taskId": "LTL-03",
+    "focus": "BOL Information Resolution"
+  },
+  "routes": [
+    {
+      "path": "/api/execution-depth-projection",
+      "projectionClass": "PUBLIC_SAFE",
+      "authentication": "NOT_REQUIRED",
+      "authorization": "EXPLICIT_ALLOWLIST_CONSTRUCTION",
+      "cachePolicy": "PLATFORM_API_NO_STORE"
+    },
+    {
+      "path": "/api/governance-operational-projection",
+      "projectionClass": "GOVERNANCE_CANONICAL_NO_EXECUTION_IP",
+      "authentication": "REQUIRED",
+      "capability": "atlas.operational.full.read",
+      "cachePolicy": "PRIVATE_NO_STORE"
+    },
+    {
+      "path": "/api/work-decomposition",
+      "projectionClass": "EXECUTION_PROTECTED",
+      "authentication": "REQUIRED",
+      "capability": "atlas.work_decomposition.full.read",
+      "materializationStatus": "NOT_YET_COMPILED"
+    },
+    {
+      "path": "/api/admin-workdefinitions",
+      "projectionClass": "EXECUTION_PROTECTED",
+      "authentication": "REQUIRED",
+      "capabilityAny": ["atlas.workdefinition.full.read", "WORKDEFINITION_VIEW"],
+      "note": "Existing V2 protected WorkDefinition store retained; this is not the future Road LTL 1.5 WorkDefinition VNext compilation."
+    }
+  ],
+  "implementation": {
+    "sourceRegistry": "governance/presentation/p2-projection-source-registry.json",
+    "projectionBuilder": "lib/projections/execution-depth-projection.js",
+    "publicHandler": "lib/api/execution-depth-projection.js",
+    "governanceHandler": "lib/api/governance-operational-projection.js",
+    "workDecompositionBoundary": "lib/api/work-decomposition.js",
+    "router": "api/atlas.js",
+    "vercelRouting": "vercel.json",
+    "capabilityModel": "lib/api/_utils.js"
+  },
+  "securityInvariants": [
+    "Request parameters cannot become filesystem paths; canonical source paths come only from the projection source registry.",
+    "Public output is constructed field-by-field and never passes through raw canonical containers.",
+    "Public output excludes exact source claim IDs/crosswalks, client/runtime values and labels, field-performance baseline, resolution workflow, work-decomposition seed, Work Decomposition, WorkDefinition and runtime mappings.",
+    "Governance output may expose governed canonical/runtime-feedback evidence but still strips execution-protected reconstruction fields.",
+    "Full WorkDefinition and future full Work Decomposition remain capability-gated and private/no-store.",
+    "Unclassified/new fields remain excluded until a future superseding classification explicitly permits them."
+  ],
+  "verification": {
+    "workflow": ".github/workflows/p2-projection-boundary.yml",
+    "command": "npm run p2:check",
+    "proofRunId": 33721105230,
+    "proofHeadSha": "ce5745ee5a896e61f0521e4c1036532526dff595",
+    "proofConclusion": "SUCCESS",
+    "vercelStatusAtProofHead": "SUCCESS"
+  },
+  "nextPhase": "P3_UNIVERSAL_DAUGHTER_RENDERER_V2"
+}
