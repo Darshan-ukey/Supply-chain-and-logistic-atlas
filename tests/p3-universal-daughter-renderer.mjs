@@ -59,7 +59,7 @@ check(fetchUrl.includes('moduleVersion=1.2')&&fetchUrl.includes('taskId=T-4'),'r
 let failedClosed=false;
 try{await fetchPublicProjection(selection,{fetchImpl:async()=>({ok:false,status:404,json:async()=>({ok:false,error:'not registered'})})})}catch(e){failedClosed=e.code==='PROJECTION_UNAVAILABLE'}
 check(failedClosed,'unpublished exact selection fails closed');
-check(renderUnavailable('not registered').includes('No alternate version has been substituted.'),'failure UI explicitly rejects silent version substitution');
+check(renderUnavailable('not registered').includes('No alternate Daughter version has been substituted.'),'failure UI explicitly rejects silent version substitution');
 
 const daughter=read('daughter.html');
 check(daughter.includes("from '/assets/universal-daughter-renderer-v2.js'"),'Daughter route uses shared V2 renderer module');
