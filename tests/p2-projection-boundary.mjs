@@ -35,12 +35,14 @@ for(const token of ['Shipper Code','Handling Unit Line No','exact Bill To Accoun
 
 const gov=buildGovernanceOperationalProjection(args);
 const govText=JSON.stringify(gov);
+const govCanonicalText=JSON.stringify(gov.canonical||{});
 check(gov.projectionClass==='GOVERNANCE_CANONICAL_NO_EXECUTION_IP','governance projection class is explicit');
 check(govText.includes('fieldPerformanceBaseline'),'governance projection can retain governed runtime-feedback evidence');
 check(govText.includes('Shipper Code'),'governance projection can retain exact unresolved source/client labels');
-check(!govText.includes('workDecompositionSeed'),'governance projection still strips protected decomposition seed');
-check(!govText.includes('resolutionWorkflow'),'governance projection strips reconstructive resolution workflow');
-check(!govText.includes('sourceClaimIds'),'governance operational projection strips detailed execution/source crosswalk from task rules');
+check(Array.isArray(gov.executionProtectedOmissions)&&gov.executionProtectedOmissions.length>=5,'governance projection declares protected omissions');
+check(!govCanonicalText.includes('workDecompositionSeed'),'governance canonical data strips protected decomposition seed');
+check(!govCanonicalText.includes('resolutionWorkflow'),'governance canonical data strips reconstructive resolution workflow');
+check(!govCanonicalText.includes('sourceClaimIds'),'governance canonical data strips detailed execution/source crosswalk from task rules');
 
 let badPath=false;
 try{buildPublicExecutionDepthProjection({moduleId:'../../private-seed',moduleVersion:'1',taskId:'x'})}catch(e){badPath=e?.status===404}
