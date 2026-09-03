@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "atlas-p1r-baseline-reconciliation-v1",
+  "phase": "P1R",
+  "status": "FROZEN_RECONCILIATION_BASELINE",
+  "effectiveDate": "2026-09-02",
+  "repository": "Darshan-ukey/Supply-chain-and-logistic-atlas",
+  "branch": "atlas-presentation-architecture-v1-p1r",
+  "baseGovernanceBranch": "atlas-governance-registry-v2.1",
+  "baseGovernanceCommit": "1bea4b93cca6df65de4f5c4442f53439808472bb",
+  "historicalP1Branch": "atlas-presentation-architecture-v1-p1",
+  "historicalP1Tip": "92ee7f90db111225e86591f71cff5eb26f6b8d54",
+  "historicalMergeBase": "134a40cba268225f7a5fe0a431a885c38407a758",
+  "integrationLock": {
+    "version": "2.2",
+    "path": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json",
+    "freezeType": "IMMUTABLE_REFERENCE_CANDIDATE_FREEZE_NOT_PRODUCTION_PROMOTION"
+  },
+  "productionBaseline": {
+    "universe": "7.3",
+    "roadLtl": "1.3",
+    "oceanFcl": "0.5",
+    "oceanLcl": "0.5",
+    "canvas": "2.0.0",
+    "universalAsk": "2.0.1",
+    "atlasWarehouse": "1"
+  },
+  "latestFrozenCandidates": {
+    "roadLtl": {
+      "version": "1.5",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "path": "data/modules/road-ltl-v1.5.json",
+      "sha256": "22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f",
+      "baseVersion": "1.4",
+      "baseSha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+      "changedTaskIds": ["LTL-03"],
+      "changeRule": "LOSSLESS_VERSIONED_OVERLAY; every unchanged v1.4 element is inherited and LTL-03 is the only material A5 enrichment."
+    },
+    "oceanFcl": {
+      "version": "0.6",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "sha256": "334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a"
+    },
+    "oceanLcl": {
+      "version": "0.6",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "sha256": "73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f"
+    }
+  },
+  "frozenReferenceAssets": {
+    "roadLtlOperationalKnowledge": {
+      "version": "1.5 / OKv2",
+      "path": "data/operational-knowledge/road-ltl-v1.5-operational.json",
+      "sha256": "6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9"
+    },
+    "operationalKnowledgeContract": {
+      "version": "2",
+      "path": "schemas/operational-knowledge-contract-v2.json",
+      "sha256": "d58d33c38adc0ac3e63400b66680115699c0cfa5c4c831e44b22c19eedfa4a18"
+    },
+    "informationResolutionContract": {
+      "version": "1",
+      "path": "schemas/information-resolution-contract-v1.json",
+      "sha256": "77224aaaef03689f1d918e41c6c2a4bd6e126dd5872782f09894c818a76dda73"
+    },
+    "bolInformationResolutionBaseline": {
+      "version": "0.1",
+      "path": "data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md",
+      "sha256": "8d1593ca7133c6c0ebe72099e01e18feccd5bb906851a6affa1a36ccbddb8400",
+      "full76FieldBaselineSha256": "b130da47c06a849c53980201027b6eaa05e440afd349e949c4bc8f3f4ac25480",
+      "sourceClaimPackSha256": "4a799a8cfa9252b8ebf0f191aa054d5c4942d8f9e35ffe670d1cfdefba6ae69c"
+    }
+  },
+  "presentationBaseline": {
+    "architecture": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
+    "sequence": ["Overview","Operational Knowledge","Execution Readiness","Protected Work Decomposition","Protected WorkDefinition"],
+    "authorizationProjectionMatrix": "1.0.0",
+    "operationalKnowledgePresentationContract": "1.1.0",
+    "executionReadinessPresentationContract": "1.1.0",
+    "executionDepthFieldClassification": "1.1.0"
+  },
+  "semanticDecisions": [
+    "Information Resolution is embedded inside Operational Knowledge; it is not a new presentation or semantic layer.",
+    "Production baselines remain unchanged by P1R.",
+    "Road LTL 1.5 is a frozen reference candidate and does not replace production Road LTL 1.3.",
+    "Universe remains 7.3.",
+    "Ocean FCL/LCL 0.6 candidate identities are unchanged.",
+    "Full Work Decomposition and WorkDefinition remain protected execution IP.",
+    "Unclassified new fields default to PRIVATE_DEFAULT and are omitted."
+  ],
+  "p2FirstDeepProof": {
+    "module": "road-ltl",
+    "version": "1.5",
+    "taskId": "LTL-03",
+    "focus": "BOL Information Resolution",
+    "requirements": [
+      "Project safe canonical information meaning, scope, applicability, value-origin class, association/normalization/validation summaries and resolution status.",
+      "Do not emit exact source claims, runtime mappings, client mappings, machine-ready cross-field logic, Work Decomposition or WorkDefinition.",
+      "Distinguish CLIENT_BINDING_REQUIRED from knowledge gaps.",
+      "Remain schema-tolerant for Ocean FCL/LCL 0.6 where field-level Information Resolution is not equally populated."
+    ]
+  },
+  "nextPhase": "P2_BACKEND_PROJECTION_BOUNDARY"
+}
