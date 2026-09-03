@@ -1,0 +1,29 @@
+name: P3 Universal Daughter Renderer
+on:
+  push:
+    branches:
+      - atlas-presentation-architecture-v1-p3
+  pull_request:
+    paths:
+      - 'daughter.html'
+      - 'assets/universal-daughter-renderer-v2.js'
+      - 'governance/presentation/**'
+      - 'governance/baselines/**'
+      - 'tests/p3-universal-daughter-renderer.mjs'
+      - 'tests/p2-projection-boundary.mjs'
+      - 'vercel.json'
+      - 'package.json'
+      - '.github/workflows/p3-universal-daughter-renderer.yml'
+
+jobs:
+  p3-renderer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify P3 renderer and inherited P2 boundary
+        run: npm run p3:check
