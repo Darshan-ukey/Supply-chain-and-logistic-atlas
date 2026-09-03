@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "atlas-presentation-asset-register-v1.1",
+  "status": "FROZEN",
+  "phase": "P1R",
+  "canonicalSemanticBaseline": "frozen-stack-lock-v2.2",
+  "assets": [
+    {
+      "assetId": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
+      "version": "1.0.0",
+      "status": "FROZEN",
+      "path": "governance/architecture/ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1.md"
+    },
+    {
+      "assetId": "AUTHORIZATION-PROJECTION-MATRIX-V1",
+      "version": "1.0.0",
+      "status": "FROZEN",
+      "path": "governance/presentation/AUTHORIZATION_PROJECTION_MATRIX_V1_FROZEN.md",
+      "machinePath": "governance/presentation/authorization-projection-matrix-v1.json",
+      "reconciliationDecision": "UNCHANGED_AFTER_V2.2_REVALIDATION"
+    },
+    {
+      "assetId": "OPERATIONAL-KNOWLEDGE-PRESENTATION-CONTRACT-V1.1",
+      "version": "1.1.0",
+      "status": "FROZEN",
+      "path": "governance/presentation/OPERATIONAL_KNOWLEDGE_PRESENTATION_CONTRACT_V1.1_FROZEN.md",
+      "supersedesForFutureImplementation": "OPERATIONAL-KNOWLEDGE-PRESENTATION-CONTRACT-V1",
+      "canonicalInputs": ["Operational Knowledge Contract v2","Information Resolution Contract v1"]
+    },
+    {
+      "assetId": "EXECUTION-READINESS-PRESENTATION-CONTRACT-V1.1",
+      "version": "1.1.0",
+      "status": "FROZEN",
+      "path": "governance/presentation/EXECUTION_READINESS_PRESENTATION_CONTRACT_V1.1_FROZEN.md",
+      "supersedesForFutureImplementation": "EXECUTION-READINESS-PRESENTATION-CONTRACT-V1"
+    },
+    {
+      "assetId": "EXECUTION-DEPTH-FIELD-CLASSIFICATION-V1.1",
+      "version": "1.1.0",
+      "status": "FROZEN",
+      "path": "governance/presentation/EXECUTION_DEPTH_FIELD_CLASSIFICATION_V1.1_FROZEN.md",
+      "machinePath": "governance/presentation/execution-depth-field-classification-v1.1.json",
+      "supersedesForFutureImplementation": "EXECUTION-DEPTH-FIELD-CLASSIFICATION-V1"
+    },
+    {
+      "assetId": "P1R-FROZEN-STACK-V2.2-RECONCILIATION-BASELINE",
+      "version": "1.0.0",
+      "status": "FROZEN_RECONCILIATION_BASELINE",
+      "path": "governance/baselines/P1R_FROZEN_STACK_V2.2_RECONCILIATION.json"
+    }
+  ],
+  "invariants": [
+    "The five-depth presentation architecture remains unchanged.",
+    "Information Resolution is a substructure of Operational Knowledge, not a new layer.",
+    "The Authorization Projection Matrix V1 remains valid.",
+    "Unclassified fields fail closed.",
+    "P1 historical frozen files are not overwritten; v1.1 files supersede them only for future implementation.",
+    "Production semantic baselines are not promoted by this presentation reconciliation."
+  ],
+  "completedThroughPhase": "P1R",
+  "nextPhase": "P2_BACKEND_PROJECTION_BOUNDARY"
+}
