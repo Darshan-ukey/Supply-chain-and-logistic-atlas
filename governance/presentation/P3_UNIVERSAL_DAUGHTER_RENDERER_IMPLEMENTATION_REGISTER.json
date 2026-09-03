@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "atlas-p3-universal-daughter-renderer-register-v1",
+  "status": "IMPLEMENTED_CANDIDATE_PENDING_P3_EXIT_GATE",
+  "phase": "P3",
+  "renderer": {
+    "assetId": "UNIVERSAL-DAUGHTER-RENDERER-V2",
+    "version": "2.0.0",
+    "contract": "governance/presentation/UNIVERSAL_DAUGHTER_RENDERER_CONTRACT_V2_FROZEN.md",
+    "browserModule": "assets/universal-daughter-renderer-v2.js",
+    "daughterRoute": "/daughter",
+    "daughterShell": "daughter.html",
+    "canvasIntegration": "NOT_IN_P3"
+  },
+  "canonicalDepths": [
+    "OVERVIEW",
+    "OPERATIONAL_KNOWLEDGE",
+    "EXECUTION_READINESS",
+    "PROTECTED_WORK_DECOMPOSITION",
+    "PROTECTED_WORKDEFINITION"
+  ],
+  "projectionDependencies": {
+    "public": "/api/execution-depth-projection",
+    "governance": "NOT_CALLED_BY_PUBLIC_RENDERER",
+    "workDecomposition": "NOT_CALLED_BY_PUBLIC_RENDERER",
+    "workDefinition": "NOT_CALLED_BY_PUBLIC_RENDERER"
+  },
+  "selectionContract": {
+    "required": ["moduleId", "moduleVersion", "taskId"],
+    "exactVersionOnly": true,
+    "silentVersionSubstitution": false,
+    "failClosed": true
+  },
+  "securityInvariants": [
+    "Public renderer consumes PUBLIC_SAFE projection only.",
+    "Protected tabs render status/availability only.",
+    "Protected endpoints are not referenced or prefetched by the shared public renderer.",
+    "Canonical Operational Knowledge and execution files are not browser data sources.",
+    "Protected execution detail is never hidden in DOM/CSS after delivery; it is absent from the public projection.",
+    "No daughter-specific business rules exist in the shared renderer."
+  ],
+  "phaseBoundary": {
+    "indexHtmlChanged": false,
+    "canvasChanged": false,
+    "daughterSemanticAssetsChanged": false,
+    "nextCanvasIntegrationPhase": "P4_CANVAS_V2_0_1_INTEGRATION_PATCH"
+  }
+}
