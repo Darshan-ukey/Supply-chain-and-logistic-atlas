@@ -68,6 +68,7 @@
     {"source": "/api/transformation-export", "destination": "/api/transform?action=transformation-export"},
     {"source": "/api/foundation-proposals", "destination": "/api/transform?action=foundation-proposals"},
     {"source": "/api/pilot-evaluation", "destination": "/api/evaluation?action=pilot-evaluation"},
+    {"source": "/daughter", "destination": "/daughter.html"},
     {"source": "/app", "destination": "/index.html"}
   ]
 }
