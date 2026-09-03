@@ -1,0 +1,329 @@
+{
+  "schemaVersion": "atlas-execution-depth-field-classification-v1.1",
+  "version": "1.1.0",
+  "status": "FROZEN",
+  "phase": "P1R",
+  "governingArchitecture": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
+  "canonicalBaseline": {
+    "integrationLock": "frozen-stack-lock-v2.2",
+    "operationalKnowledgeContract": "atlas-operational-knowledge-contract-v2",
+    "informationResolutionContract": "information-resolution-contract-v1"
+  },
+  "defaultClassification": {
+    "visibility": "PRIVATE_DEFAULT",
+    "masking": "OMIT",
+    "aggregation": "NONE",
+    "unresolvedBehavior": "EMIT_STATUS_ONLY_IF_CLASSIFIED",
+    "provenanceVisibility": "NONE"
+  },
+  "visibilityProfiles": {
+    "SAFE_ALL": ["PUBLIC_ANONYMOUS","AUTHENTICATED_ATLAS","PILOT","CLIENT_WORKSPACE","ADMIN_GOVERNOR","OWNER"],
+    "SAFE_TRACE": ["PUBLIC_ANONYMOUS","AUTHENTICATED_ATLAS","PILOT","CLIENT_WORKSPACE","ADMIN_GOVERNOR","OWNER"],
+    "SAFE_SUMMARY": ["PUBLIC_ANONYMOUS","AUTHENTICATED_ATLAS","PILOT","CLIENT_WORKSPACE","ADMIN_GOVERNOR","OWNER"],
+    "OWN_WORKSPACE": ["PILOT","CLIENT_WORKSPACE","ADMIN_GOVERNOR","OWNER"],
+    "GOVERNANCE": ["ADMIN_GOVERNOR","OWNER"],
+    "EXECUTION_PROTECTED": ["ADMIN_GOVERNOR_WITH_EXECUTION_CAPABILITY","OWNER"],
+    "PRIVATE_DEFAULT": []
+  },
+  "canonicalStatusMappings": {
+    "CANONICAL_RESOLVED": "RESOLVED_REFERENCE",
+    "SOURCE_RESOLVED": "RESOLVED_REFERENCE",
+    "SOURCE_CONTEXT_PENDING": "CONTEXT_REQUIRED",
+    "CLIENT_BINDING_REQUIRED": "CLIENT_BINDING_REQUIRED",
+    "RESOLVED_CLIENT_SPECIFIC": "RESOLVED_CLIENT_SPECIFIC",
+    "METRIC_DEFINITION_REQUIRED": "METRIC_DEFINITION_REQUIRED",
+    "UNKNOWN": "UNKNOWN"
+  },
+  "rules": [
+    {
+      "paths": ["taskId","identity.taskId","identity.canonicalTaskRef","identity.a5ContractId","identity.canonicalProcessConceptId","a3ParentId"],
+      "presentationType": "TRACE_IDENTIFIER",
+      "visibility": "SAFE_TRACE",
+      "masking": "NONE",
+      "aggregation": "NONE",
+      "unresolvedBehavior": "OMIT_IF_OPTIONAL",
+      "provenanceVisibility": "SAFE"
+    },
+    {
+      "paths": ["title","a3ParentLabel","category","identity.purpose","identity.boundary","meaning.businessMeaning","meaning.why","meaning.businessOutcome","meaning.preconditions","meaning.postconditions"],
+      "presentationType": "TASK_SUMMARY",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "OPTIONAL",
+      "unresolvedBehavior": "EXPLICIT_STATUS",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["applicability.requiredWhen","applicability.prohibitedWhen","applicability.jurisdictionIds","applicability.carriageRegimeIds","applicability.conditionIds","applicability.*.required","applicability.*.primary","applicability.*.applicable","applicability.*.conditional","applicability.*.notDirect","applicability.*.incompatible","applicability.*.researchRequired","applicability.*.defaultState"],
+      "presentationType": "APPLICABILITY",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "OPTIONAL",
+      "unresolvedBehavior": "CONTEXT_OR_RESEARCH_STATUS",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["inputsOutputs.inputObjectRefs","inputsOutputs.outputObjectRefs","inputsOutputs.systemOfRecordRoles","baseline.inputs","baseline.outputs","baseline.authorityObject","baseline.authoritySystem","baseline.producer","baseline.consumers"],
+      "presentationType": "OBJECT_SYSTEM_SUMMARY",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "COUNTS_GROUPS_ALLOWED",
+      "unresolvedBehavior": "CONTEXT_REQUIRED",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["requiredInformation[].fieldRequirementId","requiredInformation[].canonicalFieldId"],
+      "presentationType": "TRACE_IDENTIFIER",
+      "visibility": "SAFE_TRACE",
+      "masking": "NONE",
+      "aggregation": "NONE",
+      "unresolvedBehavior": "OMIT_IF_OPTIONAL",
+      "provenanceVisibility": "SAFE"
+    },
+    {
+      "paths": ["requiredInformation[].name","requiredInformation[].category","requiredInformation[].cardinality","requiredInformation[].requiredWhen","requiredInformation[].why","requiredInformation[].valueOrigin","requiredInformation[].evidenceClass","requiredInformation[].clientBindingRequired"],
+      "presentationType": "REQUIRED_INFORMATION",
+      "visibility": "SAFE_ALL",
+      "masking": "NONE",
+      "aggregation": "COUNTS_ALLOWED",
+      "unresolvedBehavior": "EXPLICIT_STATUS",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["requiredInformation[].validation"],
+      "presentationType": "VALIDATION_SUMMARY",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "NONE",
+      "unresolvedBehavior": "CONTEXT_REQUIRED",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["requiredInformation[].sourceRefs","baseline.sourceIds","baseline.claimBoundary","authority.sourceClaims","authority.sourceBasis","sourceClaims","provenanceClaims[].sourceRefs","provenanceClaims[].claimBoundary"],
+      "presentationType": "PROVENANCE_DETAIL",
+      "visibility": "GOVERNANCE",
+      "masking": "OMIT",
+      "aggregation": "SAFE_BASIS_ONLY",
+      "unresolvedBehavior": "OMIT",
+      "provenanceVisibility": "FULL_GOVERNANCE"
+    },
+    {
+      "paths": ["informationResolution[].canonicalFieldId","informationResolution[].canonicalObjectRef"],
+      "presentationType": "INFORMATION_RESOLUTION_TRACE",
+      "visibility": "SAFE_TRACE",
+      "masking": "NONE",
+      "aggregation": "NONE",
+      "unresolvedBehavior": "ERROR_IF_REQUIRED",
+      "provenanceVisibility": "SAFE"
+    },
+    {
+      "paths": ["informationResolution[].businessMeaning","informationResolution[].scope","informationResolution[].shape.datatype","informationResolution[].shape.cardinality"],
+      "presentationType": "INFORMATION_RESOLUTION_SEMANTICS",
+      "visibility": "SAFE_ALL",
+      "masking": "NONE",
+      "aggregation": "OPTIONAL",
+      "unresolvedBehavior": "EXPLICIT_STATUS",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["informationResolution[].shape.unit","informationResolution[].shape.codeAuthority","informationResolution[].applicability.requiredWhen","informationResolution[].applicability.prohibitedWhen","informationResolution[].applicability.jurisdictionApplicability","informationResolution[].applicability.conditionIds"],
+      "presentationType": "INFORMATION_RESOLUTION_CONTEXT",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "OPTIONAL",
+      "unresolvedBehavior": "CONTEXT_REQUIRED",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["informationResolution[].valueOrigin.originClass"],
+      "presentationType": "VALUE_ORIGIN_CLASS",
+      "visibility": "SAFE_ALL",
+      "masking": "NONE",
+      "aggregation": "COUNTS_ALLOWED",
+      "unresolvedBehavior": "EXPLICIT_STATUS",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["informationResolution[].valueOrigin.allowedEvidenceSources"],
+      "presentationType": "EVIDENCE_SOURCE_CLASS_SUMMARY",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "SOURCE_FAMILIES_ONLY",
+      "unresolvedBehavior": "SOURCE_CONTEXT_PENDING",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["informationResolution[].valueOrigin.labelSynonyms","informationResolution[].valueOrigin.documentRegionHints"],
+      "presentationType": "EXTRACTION_HINT",
+      "visibility": "PRIVATE_DEFAULT",
+      "masking": "OMIT",
+      "aggregation": "NONE",
+      "unresolvedBehavior": "OMIT",
+      "provenanceVisibility": "NONE"
+    },
+    {
+      "paths": ["informationResolution[].resolutionRules.extraction","informationResolution[].resolutionRules.derivation","informationResolution[].resolutionRules.association","informationResolution[].resolutionRules.normalization","informationResolution[].resolutionRules.allowedValues"],
+      "presentationType": "RESOLUTION_RULE_SUMMARY",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "COUNTS_ALLOWED",
+      "unresolvedBehavior": "EXPLICIT_STATUS",
+      "provenanceVisibility": "SAFE_CLASS",
+      "protectionRule": "Any machine-ready expression, prompt, selector, regex, model instruction, client code list or executable derivation within these paths is EXECUTION_PROTECTED or OWN_WORKSPACE and must be removed before summary construction."
+    },
+    {
+      "paths": ["informationResolution[].validation.fieldRules","informationResolution[].validation.crossFieldRules","informationResolution[].validation.crossObjectRules"],
+      "presentationType": "INFORMATION_VALIDATION_SUMMARY",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "COUNTS_ALLOWED",
+      "unresolvedBehavior": "EXPLICIT_STATUS",
+      "provenanceVisibility": "SAFE_CLASS",
+      "protectionRule": "Exact executable predicates, client thresholds, restricted classification logic and compiler forms are EXECUTION_PROTECTED or OWN_WORKSPACE."
+    },
+    {
+      "paths": ["informationResolution[].authority.authorityOwner","informationResolution[].authority.systemOfRecordRole"],
+      "presentationType": "AUTHORITY_ROLE_SUMMARY",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "ROLE_GROUPS_ALLOWED",
+      "unresolvedBehavior": "CONTEXT_REQUIRED",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["informationResolution[].authority.authoritySource","informationResolution[].sourceClaims"],
+      "presentationType": "SOURCE_LINEAGE",
+      "visibility": "GOVERNANCE",
+      "masking": "OMIT",
+      "aggregation": "SAFE_AUTHORITY_CLASS_ONLY",
+      "unresolvedBehavior": "OMIT",
+      "provenanceVisibility": "FULL_GOVERNANCE"
+    },
+    {
+      "paths": ["informationResolution[].runtimePolicy.conflictPolicy","informationResolution[].runtimePolicy.missingValuePolicy","informationResolution[].runtimePolicy.confidencePolicy","informationResolution[].runtimePolicy.humanReviewPolicy"],
+      "presentationType": "RUNTIME_POLICY_SUMMARY",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "COUNTS_ALLOWED",
+      "unresolvedBehavior": "EXPLICIT_STATUS",
+      "provenanceVisibility": "SAFE_CLASS",
+      "protectionRule": "Exact confidence thresholds, queue routes, escalation targets and client-local values are OWN_WORKSPACE or EXECUTION_PROTECTED."
+    },
+    {
+      "paths": ["informationResolution[].binding.resolutionStatus"],
+      "presentationType": "RESOLUTION_STATUS",
+      "visibility": "SAFE_ALL",
+      "masking": "NONE",
+      "aggregation": "COUNTS_ALLOWED",
+      "unresolvedBehavior": "EMIT_CANONICAL_STATUS",
+      "provenanceVisibility": "SAFE"
+    },
+    {
+      "paths": ["informationResolution[].binding.clientBindingSlots","clientBindingRequirements[].collectionQuestion","clientBindings.*","clientValues.*","runtimeValues.*"],
+      "presentationType": "CLIENT_BINDING",
+      "visibility": "OWN_WORKSPACE",
+      "masking": "OWN_SCOPE_ONLY",
+      "aggregation": "SAFE_CANONICAL_NEED_ONLY",
+      "unresolvedBehavior": "CLIENT_BINDING_REQUIRED",
+      "provenanceVisibility": "OWN_OR_GOVERNANCE"
+    },
+    {
+      "paths": ["informationResolution[].binding.runtimeMappings","runtimeProjection.*","workDefinition.*.compiled*","decisionGates[].expression","decisionGates[].ast","atomicActions[].command","atomicActions[].endpoint","atomicActions[].payloadMapping","atomicActions[].runtimeFunction","atomicActions[].agentPrompt","atomicActions[].toolParameters","branchTransitions[].compiledGuard"],
+      "presentationType": "EXECUTION_MACHINE_DETAIL",
+      "visibility": "EXECUTION_PROTECTED",
+      "masking": "OMIT",
+      "aggregation": "STATUS_ONLY",
+      "unresolvedBehavior": "STATUS_ONLY",
+      "provenanceVisibility": "PROTECTED"
+    },
+    {
+      "paths": ["informationResolution[].measurement.measurementProfile"],
+      "presentationType": "MEASUREMENT_PROFILE_SUMMARY",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "METRIC_CLASSES_ONLY",
+      "unresolvedBehavior": "METRIC_DEFINITION_REQUIRED",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["informationResolution[].measurement.feedbackProfile","runtimeFeedback.*","runtimeObservations.*"],
+      "presentationType": "RUNTIME_FEEDBACK",
+      "visibility": "OWN_WORKSPACE",
+      "masking": "OWN_SCOPE_ONLY",
+      "aggregation": "GOVERNED_AGGREGATE_ONLY",
+      "unresolvedBehavior": "OMIT_OUTSIDE_SCOPE",
+      "provenanceVisibility": "OWN_OR_GOVERNANCE"
+    },
+    {
+      "paths": ["decisionGates[].gateId","controls[].controlId","atomicActions[].actionId","branchTransitions[].transitionId","temporalConstraints[].temporalId","systemExchanges[].exchangeId","documents[].documentId","evidenceContracts[].evidenceId","provenanceClaims[].claimId","clientBindingRequirements[].bindingId"],
+      "presentationType": "TRACE_IDENTIFIER",
+      "visibility": "SAFE_TRACE",
+      "masking": "NONE",
+      "aggregation": "NONE",
+      "unresolvedBehavior": "OMIT_IF_OPTIONAL",
+      "provenanceVisibility": "SAFE"
+    },
+    {
+      "paths": ["decisionGates[].gate","decisionGates[].question","decisionGates[].decisionQuestion","decisionGates[].condition","decisionGates[].onPass","decisionGates[].onFail","constraints[].constraint","constraints[].type","controls[].objective","controls[].executionPoint","controls[].failureBehavior","atomicActions[].action","atomicActions[].precondition","atomicActions[].postcondition","states.*","branchTransitions[].fromState","branchTransitions[].event","branchTransitions[].condition","branchTransitions[].toState","branchTransitions[].branch","branchTransitions[].nextHandling","branchTransitions[].nextStep","branchTransitions[].evidenceRequired","temporalConstraints[].type","temporalConstraints[].requiredWhen","temporalConstraints[].startWhen","temporalConstraints[].stopWhen","temporalConstraints[].durationOrDeadline","temporalConstraints[].timezone","temporalConstraints[].resolutionStatus","responsibility.*","systemExchanges[].producerSystemRole","systemExchanges[].authoritySystemRole","systemExchanges[].consumerSystemRoles","systemExchanges[].payloadObjectIds","systemExchanges[].interfaceType","documents[].role","documents[].requiredWhen","documents[].fieldContract","evidenceContracts[].type","evidenceContracts[].requirement","evidenceContracts[].acceptanceCriteria","expectedOutcomes[].code","expectedOutcomes[].meaning","expectedOutcomes[].stateAfter","expectedOutcomes[].requiredEvidence"],
+      "presentationType": "OPERATIONAL_KNOWLEDGE_SUMMARY",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "COUNTS_GROUPS_ALLOWED",
+      "unresolvedBehavior": "EXPLICIT_STATUS",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["clientBindingRequirements[].bindingObject","clientBindingRequirements[].bindingType","clientBindingRequirements[].requiredWhen","clientBindingRequirements[].why","clientBindingRequirements[].valueOrigin","clientBindingRequirements[].resolutionStatus","clientBindingRequirements[].systemOfRecord.canonicalAuthoritySystemRole","clientBindingRequirements[].clientFieldMapping.canonicalConcept","clientBindingRequirements[].authorityOwner.canonicalRole"],
+      "presentationType": "CANONICAL_BINDING_NEED",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "COUNTS_ALLOWED",
+      "unresolvedBehavior": "CLIENT_BINDING_REQUIRED",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["clientBindingRequirements[].sourceRefs","clientBindingRequirements[].basis","provenanceClaims[].sourceRefs","provenanceClaims[].claimBoundary"],
+      "presentationType": "GOVERNANCE_LINEAGE",
+      "visibility": "GOVERNANCE",
+      "masking": "OMIT",
+      "aggregation": "SAFE_CLASS_ONLY",
+      "unresolvedBehavior": "OMIT",
+      "provenanceVisibility": "FULL_GOVERNANCE"
+    },
+    {
+      "paths": ["executability.status","executability.decompositionRequired","workDefinitionReadiness.daughterOperationalContract","workDefinitionReadiness.clientBindingContract","workDefinitionReadiness.workDecomposition","workDefinitionReadiness.canonicalWorkDefinition","workDefinitionReadiness.independentExecutorProof","executionReadiness.*"],
+      "presentationType": "EXECUTION_READINESS",
+      "visibility": "SAFE_SUMMARY",
+      "masking": "SUMMARY_ONLY",
+      "aggregation": "APPROVED_DIAGNOSTICS_ONLY",
+      "unresolvedBehavior": "EXPLICIT_STATUS",
+      "provenanceVisibility": "SAFE_CLASS"
+    },
+    {
+      "paths": ["executability.candidateDecomposition","workDecomposition.*","recursiveWorkDecomposition.*"],
+      "presentationType": "WORK_DECOMPOSITION_DETAIL",
+      "visibility": "EXECUTION_PROTECTED",
+      "masking": "OMIT",
+      "aggregation": "NON_RECONSTRUCTIVE_SUMMARY_ONLY",
+      "unresolvedBehavior": "STATUS_ONLY",
+      "provenanceVisibility": "PROTECTED"
+    },
+    {
+      "paths": ["canonicalWorkDefinition.*","workDefinitions.*","runtimeProjections.*","malkomProjection.*"],
+      "presentationType": "WORKDEFINITION_OR_RUNTIME_DETAIL",
+      "visibility": "EXECUTION_PROTECTED",
+      "masking": "OMIT",
+      "aggregation": "STATUS_ONLY",
+      "unresolvedBehavior": "STATUS_ONLY",
+      "provenanceVisibility": "PROTECTED"
+    }
+  ],
+  "invariants": [
+    "Renderer judgement cannot widen visibility.",
+    "Canonical status values are retained in the backend; presentation aliases are labels only.",
+    "Unresolved client binding is not automatically an operational-knowledge gap.",
+    "Exact source-to-claim lineage remains governance-controlled by default.",
+    "Exact machine/runtime logic remains execution-protected.",
+    "Unclassified paths fail closed as PRIVATE_DEFAULT."
+  ]
+}
