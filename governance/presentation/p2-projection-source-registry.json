@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "atlas-p2-projection-source-registry-v1",
+  "status": "ACTIVE_IMPLEMENTATION_CONTRACT",
+  "projectionContractVersion": "1.1.0",
+  "sources": [
+    {
+      "sourceKey": "road-ltl@1.5",
+      "moduleId": "road-ltl",
+      "moduleVersion": "1.5",
+      "modulePath": "data/modules/road-ltl-v1.5.json",
+      "operationalKnowledgePath": "data/operational-knowledge/road-ltl-v1.5-operational.json",
+      "informationResolutionBaselinePath": "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+      "sourceProfile": "DAUGHTER_OVERLAY_PLUS_OPERATIONAL_KNOWLEDGE_V2",
+      "taskCollection": "taskOverrides",
+      "taskIdField": "id",
+      "operationalTaskCollection": "taskOperationalKnowledge",
+      "operationalTaskIdField": "taskId",
+      "firstProofTaskId": "LTL-03",
+      "materialized": true
+    }
+  ],
+  "rules": [
+    "Projection code resolves canonical source paths only from this registry; request parameters never become filesystem paths.",
+    "A source absent from this registry is not projected by P2.",
+    "Non-materialized frozen candidates remain governed references but are not silently substituted with older semantic versions.",
+    "Adding another Daughter requires only a registry entry when it conforms to a supported canonical profile; renderer/domain-specific projection logic is prohibited."
+  ]
+}
