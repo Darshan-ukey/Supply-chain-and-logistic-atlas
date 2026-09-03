@@ -8,7 +8,7 @@
     "node": "24.x"
   },
   "scripts": {
-    "check": "node tests/v1.1.7-canonical-integrity.mjs && node tests/v2-universal-ask-smoke.mjs && node tests/v2-public-ip-boundary.mjs && node tests/p2-projection-boundary.mjs && node tests/v2-admin-auth-smoke.mjs && node tests/v2-api-router-smoke.mjs && node tests/v2-ui-browser-smoke.mjs",
+    "check": "node tests/v1.1.7-canonical-integrity.mjs && node tests/v2-universal-ask-smoke.mjs && node tests/v2-public-ip-boundary.mjs && node tests/p2-projection-boundary.mjs && node tests/p3-universal-daughter-renderer.mjs && node tests/v2-admin-auth-smoke.mjs && node tests/v2-api-router-smoke.mjs && node tests/v2-ui-browser-smoke.mjs",
     "parity:static": "node tests/v1.1.4-static-parity.mjs",
     "foundation:test": "node tests/v1.1.4-foundation-smoke.mjs",
     "api:test": "node tests/v1.1.7-api-router-smoke.mjs",
@@ -21,17 +21,18 @@
     "canonical:integrity": "node tests/v1.1.7-canonical-integrity.mjs",
     "browser:live": "node tests/v1.1.7-live-browser-certificate.mjs",
     "scale:test": "node tests/v1.1.7-scale-smoke.mjs",
-    "test": "node tests/v1.1.7-canonical-integrity.mjs && node tests/v2-universal-ask-smoke.mjs && node tests/v2-public-ip-boundary.mjs && node tests/p2-projection-boundary.mjs && node tests/v2-admin-auth-smoke.mjs && node tests/v2-api-router-smoke.mjs && node tests/v2-ui-browser-smoke.mjs",
+    "test": "node tests/v1.1.7-canonical-integrity.mjs && node tests/v2-universal-ask-smoke.mjs && node tests/v2-public-ip-boundary.mjs && node tests/p2-projection-boundary.mjs && node tests/p3-universal-daughter-renderer.mjs && node tests/v2-admin-auth-smoke.mjs && node tests/v2-api-router-smoke.mjs && node tests/v2-ui-browser-smoke.mjs",
     "browser:certify": "node tests/v2-ui-browser-smoke.mjs",
     "browser:reference": "node tests/v1.1.7-reference-navigation-browser.mjs",
     "seed:workdefinitions": "node scripts/seed-v2-workdefinitions.mjs",
-    "v2:check": "node tests/v1.1.7-canonical-integrity.mjs && node tests/v2-universal-ask-smoke.mjs && node tests/v2-public-ip-boundary.mjs && node tests/p2-projection-boundary.mjs && node tests/v2-admin-auth-smoke.mjs && node tests/v2-api-router-smoke.mjs && node tests/v2-ui-browser-smoke.mjs",
+    "v2:check": "node tests/v1.1.7-canonical-integrity.mjs && node tests/v2-universal-ask-smoke.mjs && node tests/v2-public-ip-boundary.mjs && node tests/p2-projection-boundary.mjs && node tests/p3-universal-daughter-renderer.mjs && node tests/v2-admin-auth-smoke.mjs && node tests/v2-api-router-smoke.mjs && node tests/v2-ui-browser-smoke.mjs",
     "final:materialize": "node scripts/materialize-atlas-v2-final.mjs",
     "final:verify": "node scripts/verify-atlas-v2-final.mjs",
     "execution:test": "node tests/v2.1-execution-fabric-smoke.mjs",
     "execution:manifest": "node scripts/v2.1-execution-manifest.mjs",
-    "v2.1:check": "node tests/v1.1.7-canonical-integrity.mjs && node tests/v2-universal-ask-smoke.mjs && node tests/v2-public-ip-boundary.mjs && node tests/p2-projection-boundary.mjs && node tests/v2-admin-auth-smoke.mjs && node tests/v2-api-router-smoke.mjs && node tests/v2.1-execution-fabric-smoke.mjs",
+    "v2.1:check": "node tests/v1.1.7-canonical-integrity.mjs && node tests/v2-universal-ask-smoke.mjs && node tests/v2-public-ip-boundary.mjs && node tests/p2-projection-boundary.mjs && node tests/p3-universal-daughter-renderer.mjs && node tests/v2-admin-auth-smoke.mjs && node tests/v2-api-router-smoke.mjs && node tests/v2.1-execution-fabric-smoke.mjs",
     "p2:check": "node tests/p2-projection-boundary.mjs && node tests/v2-public-ip-boundary.mjs && node tests/v2-api-router-smoke.mjs",
+    "p3:check": "node tests/p3-universal-daughter-renderer.mjs && npm run p2:check",
     "execution:browser": "node tests/v2.1-ui-browser-smoke.mjs"
   },
   "dependencies": {
