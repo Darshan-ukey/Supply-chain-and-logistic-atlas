@@ -1,6 +1,6 @@
 {
   "schemaVersion": "atlas-current-assets-pointer-v1",
-  "updatedAt": "2026-09-03T00:00:00+05:30",
+  "updatedAt": "2026-09-03T11:30:00+05:30",
   "integrationLock": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json",
   "productionBaseline": {
     "universe": "universe-7.3",
@@ -33,20 +33,30 @@
   "presentationArchitecture": {
     "assetId": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
     "status": "FROZEN",
-    "completedThroughPhase": "P1R",
+    "completedThroughPhase": "P2",
     "presentationAssetRegister": "governance/presentation/PRESENTATION_ASSET_REGISTER_V1.1.json",
     "operationalKnowledgePresentationContract": "1.1.0",
     "executionReadinessPresentationContract": "1.1.0",
     "executionDepthFieldClassification": "1.1.0",
     "authorizationProjectionMatrix": "1.0.0",
     "reconciliationBaseline": "governance/baselines/P1R_FROZEN_STACK_V2.2_RECONCILIATION.json",
-    "audit": "governance/baselines/P1R_RECONCILIATION_AUDIT_COMPLETE.md",
-    "nextPhase": "P2_BACKEND_PROJECTION_BOUNDARY"
+    "projectionImplementationRegister": "governance/presentation/P2_PROJECTION_IMPLEMENTATION_REGISTER.json",
+    "p2Audit": "governance/baselines/P2_BACKEND_PROJECTION_BOUNDARY_AUDIT_COMPLETE.md",
+    "backendProjectionBoundary": {
+      "status": "COMPLETE",
+      "publicSafeEndpoint": "/api/execution-depth-projection",
+      "governanceEndpoint": "/api/governance-operational-projection",
+      "protectedWorkDecompositionEndpoint": "/api/work-decomposition",
+      "protectedWorkDefinitionEndpoint": "/api/admin-workdefinitions",
+      "projectionSourceRegistry": "governance/presentation/p2-projection-source-registry.json",
+      "ciWorkflow": ".github/workflows/p2-projection-boundary.yml"
+    },
+    "nextPhase": "P3_UNIVERSAL_DAUGHTER_RENDERER_V2"
   },
   "nextImplementation": [
     "canonicalWorkDecompositionContract",
     "canonicalWorkDefinitionContract"
   ],
   "readHumanSummary": "governance/frozen-assets/LATEST.md",
-  "statusNote": "Road LTL 1.5, Operational Knowledge Contract v2 and BOL Information Resolution Baseline v0.1 are frozen reference assets. Production Road LTL remains 1.3 until separate promotion gates pass. Universe remains 7.3. Presentation architecture reconciliation is complete through P1R; P2 must use the v1.1 presentation contracts."
+  "statusNote": "Road LTL 1.5, Operational Knowledge Contract v2 and BOL Information Resolution Baseline v0.1 remain frozen reference assets; production Road LTL remains 1.3. Presentation architecture is complete through P2. The tested backend projection boundary now separates public-safe, governance and execution-protected data before P3 renderer work."
 }
