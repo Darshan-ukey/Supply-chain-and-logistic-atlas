@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "atlas-presentation-asset-register-v1.2",
+  "status": "FROZEN",
+  "phase": "P3",
+  "canonicalSemanticBaseline": "frozen-stack-lock-v2.2",
+  "assets": [
+    {
+      "assetId": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
+      "version": "1.0.0",
+      "status": "FROZEN",
+      "path": "governance/architecture/ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1.md"
+    },
+    {
+      "assetId": "AUTHORIZATION-PROJECTION-MATRIX-V1",
+      "version": "1.0.0",
+      "status": "FROZEN",
+      "path": "governance/presentation/AUTHORIZATION_PROJECTION_MATRIX_V1_FROZEN.md",
+      "machinePath": "governance/presentation/authorization-projection-matrix-v1.json"
+    },
+    {
+      "assetId": "OPERATIONAL-KNOWLEDGE-PRESENTATION-CONTRACT-V1.1",
+      "version": "1.1.0",
+      "status": "FROZEN",
+      "path": "governance/presentation/OPERATIONAL_KNOWLEDGE_PRESENTATION_CONTRACT_V1.1_FROZEN.md"
+    },
+    {
+      "assetId": "EXECUTION-READINESS-PRESENTATION-CONTRACT-V1.1",
+      "version": "1.1.0",
+      "status": "FROZEN",
+      "path": "governance/presentation/EXECUTION_READINESS_PRESENTATION_CONTRACT_V1.1_FROZEN.md"
+    },
+    {
+      "assetId": "EXECUTION-DEPTH-FIELD-CLASSIFICATION-V1.1",
+      "version": "1.1.0",
+      "status": "FROZEN",
+      "path": "governance/presentation/EXECUTION_DEPTH_FIELD_CLASSIFICATION_V1.1_FROZEN.md",
+      "machinePath": "governance/presentation/execution-depth-field-classification-v1.1.json"
+    },
+    {
+      "assetId": "P2-BACKEND-PROJECTION-BOUNDARY",
+      "version": "1.0.0",
+      "status": "COMPLETE",
+      "path": "governance/presentation/P2_PROJECTION_IMPLEMENTATION_REGISTER.json"
+    },
+    {
+      "assetId": "UNIVERSAL-DAUGHTER-RENDERER-V2",
+      "version": "2.0.0",
+      "status": "FROZEN_IMPLEMENTATION_BASELINE",
+      "contractPath": "governance/presentation/UNIVERSAL_DAUGHTER_RENDERER_CONTRACT_V2_FROZEN.md",
+      "implementationPath": "assets/universal-daughter-renderer-v2.js",
+      "routeShell": "daughter.html",
+      "implementationRegister": "governance/presentation/P3_UNIVERSAL_DAUGHTER_RENDERER_IMPLEMENTATION_REGISTER.json"
+    }
+  ],
+  "invariants": [
+    "The five-depth presentation architecture remains unchanged.",
+    "Information Resolution remains inside Operational Knowledge.",
+    "Universal Daughter Renderer V2 consumes the P2 public-safe projection only on the normal Daughter surface.",
+    "Protected Work Decomposition and WorkDefinition are never preloaded by the public renderer.",
+    "Exact module/version/task selection fails closed; no semantic version substitution is allowed.",
+    "Renderer V2 contains no daughter-specific business logic.",
+    "Canvas/index semantics are unchanged in P3.",
+    "Daughter semantic versions are unchanged by Renderer V2."
+  ],
+  "completedThroughPhase": "P3",
+  "nextPhase": "P4_CANVAS_V2_0_1_INTEGRATION_PATCH"
+}
