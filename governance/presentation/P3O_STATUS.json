@@ -1,9 +1,23 @@
 {
   "phase": "P3O",
-  "status": "SOURCE_RECOVERY_IN_PROGRESS",
+  "status": "BLOCKED_EXACT_SOURCE_MATERIALIZATION",
   "semanticChange": false,
   "productionPromotion": false,
   "branch": "atlas-presentation-architecture-v1-p3o",
-  "blockedBy": "Exact frozen Ocean 0.6 bytes not yet materialized on branch",
-  "forbiddenRecoveryMethods": ["regenerate", "infer", "backfill from Ocean 0.5", "derive from renderer HTML", "derive from WorkDefinition output"]
+  "certificationWorkflowRunId": 33836186003,
+  "certificationResult": "FAIL_EXPECTED_SOURCE_GATE",
+  "passedWithoutOceanBytes": [
+    "shared renderer remains daughter-generic",
+    "Canvas/index.html byte-identical to P3",
+    "Road LTL 1.5 byte-identical to P3"
+  ],
+  "blockedBy": "The ten exact frozen Ocean FCL/LCL 0.6 JSON payloads are registered by immutable SHA-256 but are not retrievable from the current GitHub branch, retained GitHub Actions artifacts, connected Drive, active sandbox, or File Library as raw bytes. File Library retains standalone HTML materializations and the release SHA record, not the exact release ZIP/JSON byte payloads.",
+  "requiredToResume": "Recover or re-upload the exact frozen atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip whose SHA-256 is b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289, or the ten exact JSON files matching the frozen manifest.",
+  "forbiddenRecoveryMethods": [
+    "regenerate",
+    "infer",
+    "backfill from Ocean 0.5",
+    "re-serialize from standalone HTML and treat as the original without hash match",
+    "derive from WorkDefinition output"
+  ]
 }
