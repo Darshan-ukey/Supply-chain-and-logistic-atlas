@@ -1,0 +1,9 @@
+{
+  "phase": "P3O",
+  "status": "SOURCE_RECOVERY_IN_PROGRESS",
+  "semanticChange": false,
+  "productionPromotion": false,
+  "branch": "atlas-presentation-architecture-v1-p3o",
+  "blockedBy": "Exact frozen Ocean 0.6 bytes not yet materialized on branch",
+  "forbiddenRecoveryMethods": ["regenerate", "infer", "backfill from Ocean 0.5", "derive from renderer HTML", "derive from WorkDefinition output"]
+}
