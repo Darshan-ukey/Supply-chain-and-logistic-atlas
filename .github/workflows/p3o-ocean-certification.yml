@@ -33,7 +33,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          base64 -d data/materialized/ocean-0.6-canonical-payloads.tar.gz.b64 > /tmp/ocean-0.6-canonical-payloads.tar.gz
+          base64 -d -i data/materialized/ocean-0.6-canonical-payloads.tar.gz.b64 > /tmp/ocean-0.6-canonical-payloads.tar.gz
           echo '0cca7c23fdd36b397653b198b85552ad96678636fad5015d76522322a636e17d  /tmp/ocean-0.6-canonical-payloads.tar.gz' | sha256sum -c -
           tar -xzf /tmp/ocean-0.6-canonical-payloads.tar.gz
       - name: Verify all frozen canonical SHA-256 values
