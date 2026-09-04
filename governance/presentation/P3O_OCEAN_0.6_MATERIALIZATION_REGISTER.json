@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "atlas-p3o-ocean-materialization-register-v1",
+  "status": "IN_PROGRESS",
+  "semanticChange": false,
+  "productionPromotion": false,
+  "targets": [
+    {
+      "sourceKey": "ocean-fcl@0.6",
+      "moduleId": "ocean-fcl",
+      "version": "0.6",
+      "expectedModuleSha256": "334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a",
+      "expectedOperationalKnowledgeSha256": "c665f946fa30ccea081fa6a8ad3129e7217cfdff1d20ea7ee15e4ac70506aae3",
+      "expectedBindingsSha256": "9a86fe6c26360993673fc899ac8529103704a55a1a7f3d7b8455123e4261a005",
+      "expectedSourceClaimsSha256": "99cd023485c0e632d387defcd8419d64ad1e68b58a0136db535721421946d1ef",
+      "expectedSystemExchangesSha256": "e0e19d7f7e81d5a44f2e7b03669e150c86ca74f8e22f37b61355efb0490cc346"
+    },
+    {
+      "sourceKey": "ocean-lcl@0.6",
+      "moduleId": "ocean-lcl",
+      "version": "0.6",
+      "expectedModuleSha256": "73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f",
+      "expectedOperationalKnowledgeSha256": "3ba54c522a28e8e05f1f65e418eb450ba46c701de0a0d353234d467c9033307e",
+      "expectedBindingsSha256": "47633373b70ac43fc02e271eb22b4a2b678107160f17385faf277b9e5a903a46",
+      "expectedSourceClaimsSha256": "4d06be7436755ebddfc66ff74da2fe67583bd104def6b6c598a0e77a3d31fd21",
+      "expectedSystemExchangesSha256": "5df868d6714454e239186d6097d39e261219858fc39b38d345f5b68a440a0828"
+    }
+  ]
+}
