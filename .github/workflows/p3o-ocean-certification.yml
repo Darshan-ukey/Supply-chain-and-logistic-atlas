@@ -1,0 +1,28 @@
+name: P3O Ocean 0.6 Certification
+
+on:
+  push:
+    branches:
+      - atlas-presentation-architecture-v1-p3o
+    paths:
+      - 'data/modules/ocean-*-v0.6.json'
+      - 'data/operational-knowledge/ocean-*-v0.6-operational.json'
+      - 'data/client-binding-requirements/ocean-*-v0.6-bindings.json'
+      - 'data/source-claims/ocean-*-v0.6-claims.json'
+      - 'data/exchanges/ocean-*-v0.6-system-exchanges.json'
+      - 'governance/presentation/p2-projection-source-registry.json'
+      - 'tests/p3o-ocean-0.6-certification.mjs'
+      - 'package.json'
+      - '.github/workflows/p3o-ocean-certification.yml'
+  workflow_dispatch:
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --ignore-scripts
+      - run: npm run p3o:check
