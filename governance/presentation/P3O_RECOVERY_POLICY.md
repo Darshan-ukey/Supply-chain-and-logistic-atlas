@@ -1,0 +1,1 @@
+Only exact frozen artifact bytes may be materialized for Ocean 0.6. If exact bytes cannot be recovered from frozen source storage, P3O must remain incomplete rather than inventing replacement payloads.
