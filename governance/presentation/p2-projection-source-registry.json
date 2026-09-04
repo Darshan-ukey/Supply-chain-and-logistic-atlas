@@ -17,12 +17,36 @@
       "operationalTaskIdField": "taskId",
       "firstProofTaskId": "LTL-03",
       "materialized": true
+    },
+    {
+      "sourceKey": "ocean-fcl@0.6",
+      "moduleId": "ocean-fcl",
+      "moduleVersion": "0.6",
+      "sourceProfile": "FROZEN_DAUGHTER_OKV1_PRECOMPILED_PUBLIC_SAFE",
+      "canonicalSourceVault": "drive:Atlas P3O — Ocean 0.6 Materialization & Certification",
+      "canonicalModuleSha256": "334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a",
+      "publicProjectionBundlePath": "data/materialized/ocean-0.6-public-safe-projections.json.gz.b64",
+      "informationResolutionDepth": "NOT_POPULATED_AT_OKV2_DEPTH",
+      "materialized": true
+    },
+    {
+      "sourceKey": "ocean-lcl@0.6",
+      "moduleId": "ocean-lcl",
+      "moduleVersion": "0.6",
+      "sourceProfile": "FROZEN_DAUGHTER_OKV1_PRECOMPILED_PUBLIC_SAFE",
+      "canonicalSourceVault": "drive:Atlas P3O — Ocean 0.6 Materialization & Certification",
+      "canonicalModuleSha256": "73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f",
+      "publicProjectionBundlePath": "data/materialized/ocean-0.6-public-safe-projections.json.gz.b64",
+      "informationResolutionDepth": "NOT_POPULATED_AT_OKV2_DEPTH",
+      "materialized": true
     }
   ],
   "rules": [
     "Projection code resolves canonical source paths only from this registry; request parameters never become filesystem paths.",
     "A source absent from this registry is not projected by P2.",
     "Non-materialized frozen candidates remain governed references but are not silently substituted with older semantic versions.",
-    "Adding another Daughter requires only a registry entry when it conforms to a supported canonical profile; renderer/domain-specific projection logic is prohibited."
+    "Adding another Daughter requires only a registry entry when it conforms to a supported canonical profile; renderer/domain-specific projection logic is prohibited.",
+    "A precompiled PUBLIC_SAFE projection may materialize a frozen candidate for the public Daughter renderer when the exact canonical source is retained in the governed source vault and its SHA-256 is pinned; this does not materialize a governance-canonical projection or manufacture missing semantic depth.",
+    "Operational Knowledge v1 sources must report Information Resolution v2 depth as not populated rather than infer or fabricate it."
   ]
 }
