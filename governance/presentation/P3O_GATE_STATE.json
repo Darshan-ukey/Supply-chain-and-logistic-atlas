@@ -1,1 +1,10 @@
-{"materialization":"PENDING_EXACT_SOURCE_RECOVERY","hashVerification":"PENDING","projectionRegistration":"PENDING","rendererCertification":"PENDING","roadLtlRegression":"PENDING","canvasRegression":"PENDING","overall":"IN_PROGRESS"}
+{
+  "materialization": "BLOCKED_EXACT_SOURCE_RECOVERY",
+  "hashVerification": "BLOCKED_NO_BYTES",
+  "projectionRegistration": "PENDING_MATERIALIZATION",
+  "rendererCertification": "PARTIAL_GENERICITY_PASS_OCEAN_EXACT_TUPLES_BLOCKED",
+  "roadLtlRegression": "PASS_BYTE_IDENTICAL_TO_P3",
+  "canvasRegression": "PASS_BYTE_IDENTICAL_TO_P3",
+  "certificationWorkflowRunId": 33836186003,
+  "overall": "BLOCKED_NOT_CERTIFIED"
+}
