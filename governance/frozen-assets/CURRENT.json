@@ -1,6 +1,6 @@
 {
   "schemaVersion": "atlas-current-assets-pointer-v1",
-  "updatedAt": "2026-09-03T21:55:00+05:30",
+  "updatedAt": "2026-09-05T08:10:00+05:30",
   "integrationLock": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json",
   "productionBaseline": {
     "universe": "universe-7.3",
@@ -33,8 +33,8 @@
   "presentationArchitecture": {
     "assetId": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
     "status": "FROZEN",
-    "completedThroughPhase": "P3",
-    "presentationAssetRegister": "governance/presentation/PRESENTATION_ASSET_REGISTER_V1.2.json",
+    "completedThroughPhase": "P3O",
+    "presentationAssetRegister": "governance/presentation/PRESENTATION_ASSET_REGISTER_V1.3.json",
     "operationalKnowledgePresentationContract": "1.1.0",
     "executionReadinessPresentationContract": "1.1.0",
     "executionDepthFieldClassification": "1.1.0",
@@ -66,6 +66,25 @@
       "protectedExecutionPreloaded": false,
       "canvasChangedInP3": false
     },
+    "ocean06Certification": {
+      "phase": "P3O",
+      "status": "COMPLETE",
+      "oceanFclCandidate": "0.6",
+      "oceanLclCandidate": "0.6",
+      "canonicalSourceVaultProvider": "GOOGLE_DRIVE",
+      "canonicalSourceVaultFileId": "1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI",
+      "canonicalReleaseSha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+      "sourceCertification": "governance/baselines/P3O_OCEAN_0_6_SOURCE_CERTIFICATION.json",
+      "publicProjectionBundle": "data/materialized/ocean-0.6-public-safe-projections.json.gz.b64",
+      "audit": "governance/baselines/P3O_OCEAN_0_6_MATERIALIZATION_CERTIFICATION_AUDIT_COMPLETE.md",
+      "ciWorkflow": ".github/workflows/p3o-ocean-certification.yml",
+      "fclTaskCoverage": "30/30",
+      "lclTaskCoverage": "30/30",
+      "informationResolutionDepth": "NOT_POPULATED_AT_OKV2_DEPTH",
+      "semanticMutation": false,
+      "productionPromotion": false,
+      "canvasChangedInP3O": false
+    },
     "nextPhase": "P4_CANVAS_V2_0_1_INTEGRATION_PATCH"
   },
   "nextImplementation": [
@@ -73,5 +92,5 @@
     "canonicalWorkDefinitionContract"
   ],
   "readHumanSummary": "governance/frozen-assets/LATEST.md",
-  "statusNote": "Road LTL 1.5, Operational Knowledge Contract v2 and BOL Information Resolution Baseline v0.1 remain frozen reference assets; production Road LTL remains 1.3. Presentation architecture is complete through P3. Universal Daughter Renderer V2 consumes only the P2 public-safe projection, fails closed on unpublished exact versions, never preloads protected execution data, and does not modify Canvas."
+  "statusNote": "Presentation architecture is complete through P3O. Ocean FCL/LCL 0.6 remain frozen execution-reference candidates, not production baselines. Their exact canonical release is retained in the governed Drive source vault with frozen hashes; GitHub runtime materializes only the certified PUBLIC_SAFE Ocean projection. Ocean OKv1 does not fabricate OKv2 Information Resolution. Universal Daughter Renderer V2 remains generic, protected execution is not preloaded, Road LTL and Canvas baselines are unchanged, and P4 is next."
 }
