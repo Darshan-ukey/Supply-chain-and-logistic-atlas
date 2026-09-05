@@ -1,6 +1,6 @@
 {
   "schemaVersion": "atlas-current-assets-pointer-v1",
-  "updatedAt": "2026-09-05T12:23:00+05:30",
+  "updatedAt": "2026-09-05T21:41:00+05:30",
   "integrationLock": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json",
   "productionBaseline": {
     "universe": "universe-7.3",
@@ -17,9 +17,9 @@
     "status": "APPROVED",
     "oceanFcl": "ocean-fcl-0.6",
     "oceanLcl": "ocean-lcl-0.6",
-    "p4RequiredBaseline": true,
     "p4IntegrationStatus": "COMPLETE_PASS",
-    "productionCutover": "P4_INTEGRATION_CERTIFIED_PENDING_INTERACTIVE_DEPLOYED_SMOKE_AND_RELEASE_CUTOVER",
+    "p5AskIntegrationStatus": "COMPLETE_PASS",
+    "productionCutover": "P4_P5_INTEGRATION_CERTIFIED_PENDING_INTERACTIVE_DEPLOYED_SMOKE_AND_RELEASE_CUTOVER",
     "deployOcean05First": false,
     "daughterPublicationSeparateFromExecutorCertification": true
   },
@@ -34,7 +34,6 @@
     "informationResolutionContract": "information-resolution-contract-1",
     "bolInformationResolutionBaseline": "bol-information-resolution-baseline-0.1"
   },
-  "activeEnrichmentCandidates": null,
   "governingStandards": [
     "insideOutOutsideInOperationalResearch",
     "executabilityRecursiveDecomposition",
@@ -45,57 +44,38 @@
   "presentationArchitecture": {
     "assetId": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
     "status": "FROZEN",
-    "completedThroughPhase": "P4",
-    "presentationAssetRegister": "governance/presentation/PRESENTATION_ASSET_REGISTER_V1.4.json",
+    "completedThroughPhase": "P5",
+    "presentationAssetRegister": "governance/presentation/PRESENTATION_ASSET_REGISTER_V1.5.json",
     "operationalKnowledgePresentationContract": "1.1.0",
     "executionReadinessPresentationContract": "1.1.0",
     "executionDepthFieldClassification": "1.1.0",
     "authorizationProjectionMatrix": "1.0.0",
-    "reconciliationBaseline": "governance/baselines/P1R_FROZEN_STACK_V2.2_RECONCILIATION.json",
-    "projectionImplementationRegister": "governance/presentation/P2_PROJECTION_IMPLEMENTATION_REGISTER.json",
-    "p2Audit": "governance/baselines/P2_BACKEND_PROJECTION_BOUNDARY_AUDIT_COMPLETE.md",
     "backendProjectionBoundary": {
       "status": "COMPLETE",
       "publicSafeEndpoint": "/api/execution-depth-projection",
       "governanceEndpoint": "/api/governance-operational-projection",
       "protectedWorkDecompositionEndpoint": "/api/work-decomposition",
       "protectedWorkDefinitionEndpoint": "/api/admin-workdefinitions",
-      "projectionSourceRegistry": "governance/presentation/p2-projection-source-registry.json",
-      "ciWorkflow": ".github/workflows/p2-projection-boundary.yml"
+      "projectionSourceRegistry": "governance/presentation/p2-projection-source-registry.json"
     },
     "universalDaughterRenderer": {
       "assetId": "UNIVERSAL-DAUGHTER-RENDERER-V2",
       "version": "2.0.0",
       "status": "COMPLETE",
       "route": "/daughter",
-      "shell": "daughter.html",
-      "browserModule": "assets/universal-daughter-renderer-v2.js",
-      "contract": "governance/presentation/UNIVERSAL_DAUGHTER_RENDERER_CONTRACT_V2_FROZEN.md",
-      "implementationRegister": "governance/presentation/P3_UNIVERSAL_DAUGHTER_RENDERER_IMPLEMENTATION_REGISTER.json",
-      "audit": "governance/baselines/P3_UNIVERSAL_DAUGHTER_RENDERER_V2_AUDIT_COMPLETE.md",
-      "ciWorkflow": ".github/workflows/p3-universal-daughter-renderer.yml",
       "exactVersionFailClosed": true,
-      "protectedExecutionPreloaded": false,
-      "canvasChangedInP3": false
+      "protectedExecutionPreloaded": false
     },
     "ocean06Certification": {
       "phase": "P3O",
       "status": "COMPLETE",
       "oceanFclCandidate": "0.6",
       "oceanLclCandidate": "0.6",
-      "canonicalSourceVaultProvider": "GOOGLE_DRIVE",
-      "canonicalSourceVaultFileId": "1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI",
-      "canonicalReleaseSha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
-      "sourceCertification": "governance/baselines/P3O_OCEAN_0_6_SOURCE_CERTIFICATION.json",
-      "publicProjectionBundle": "data/materialized/ocean-0.6-public-safe-projections.json.gz.b64",
-      "audit": "governance/baselines/P3O_OCEAN_0_6_MATERIALIZATION_CERTIFICATION_AUDIT_COMPLETE.md",
-      "ciWorkflow": ".github/workflows/p3o-ocean-certification.yml",
       "fclTaskCoverage": "30/30",
       "lclTaskCoverage": "30/30",
       "informationResolutionDepth": "NOT_POPULATED_AT_OKV2_DEPTH",
       "semanticMutation": false,
-      "productionPromotion": "APPROVED_GO_LIVE_TARGET_CUTOVER_PENDING",
-      "canvasChangedInP3O": false
+      "productionPromotion": "APPROVED_GO_LIVE_TARGET_CUTOVER_PENDING"
     },
     "canvasIntegration": {
       "phase": "P4",
@@ -103,29 +83,45 @@
       "version": "2.0.1",
       "status": "COMPLETE",
       "route": "/app",
-      "bridge": "assets/canvas-daughter-bridge-v2.0.1.mjs",
-      "targetRegistry": "governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json",
-      "implementationRegister": "governance/presentation/P4_CANVAS_V2_0_1_INTEGRATION_REGISTER.json",
-      "audit": "governance/baselines/P4_CANVAS_V2_0_1_INTEGRATION_AUDIT_COMPLETE.md",
-      "ciWorkflow": ".github/workflows/p4-canvas-daughter-integration.yml",
-      "ciRunId": 33952566571,
-      "ciConclusion": "success",
-      "vercelCommitStatus": "success",
       "exactVersionFailClosed": true,
       "protectedExecutionPreloaded": false,
       "oceanFclTarget": "0.6",
       "oceanLclTarget": "0.6",
       "ocean05ExecutionDepthFallback": false,
       "canvasVisualShellChanged": false,
-      "semanticMutation": false,
-      "interactivePreviewSmoke": "NOT_PROVEN_FROM_CONNECTOR_AUTH_BOUNDARY"
+      "semanticMutation": false
     },
-    "nextPhase": "P5_ASK_ATLAS_TRACE_GOVERNANCE"
+    "askTraceGovernanceIntegration": {
+      "phase": "P5",
+      "assetId": "P5-ASK-ATLAS-TRACE-GOVERNANCE-INTEGRATION",
+      "version": "1.0.0",
+      "status": "COMPLETE",
+      "askHandler": "lib/api/ask-atlas.js",
+      "governedRetrievalAdapter": "lib/ask/p5-governed-retrieval.js",
+      "implementationRegister": "governance/presentation/P5_ASK_ATLAS_TRACE_GOVERNANCE_REGISTER.json",
+      "audit": "governance/baselines/P5_ASK_ATLAS_TRACE_GOVERNANCE_AUDIT_COMPLETE.md",
+      "ciWorkflow": ".github/workflows/p5-ask-trace-governance.yml",
+      "ciRunId": 33977868874,
+      "ciConclusion": "success",
+      "vercelCommitStatus": "success",
+      "publicA5Grounding": "PUBLIC_SAFE",
+      "governanceGrounding": "EXPLICIT_CAPABILITY_GATED",
+      "automaticProtectedExecutionGrounding": false,
+      "traceSchema": "atlas-ask-trace-v1",
+      "traceIsSemanticDepth": false,
+      "oceanFclTarget": "0.6",
+      "oceanLclTarget": "0.6",
+      "ocean05Fallback": false,
+      "roadLtl15Coverage": "LTL_03_MATERIALIZED_OTHER_INHERITED_TASKS_FAIL_CLOSED_PENDING_BASE_MATERIALIZATION",
+      "semanticMutation": false
+    },
+    "nextPhase": "P6_COMPILE_OPERATIONAL_LAYER_ATLAS_V2_UPGRADE"
   },
   "nextImplementation": [
+    "roadLtl15EffectiveInheritedPublicSafeMaterializationRemediation",
     "canonicalWorkDecompositionContract",
     "canonicalWorkDefinitionContract"
   ],
   "readHumanSummary": "governance/frozen-assets/LATEST.md",
-  "statusNote": "Presentation architecture is complete through P4. Canvas V2.0.1 now hands selected A5 work to the governed Universal Daughter Renderer using exact module/version/task tuples. Ocean FCL/LCL handoffs target approved go-live version 0.6 and never fall back to 0.5. Canvas visual/frozen assets remain byte-identical and protected execution is not preloaded. P4 CI and Vercel deployment status passed. Final Ocean 0.6 production catalog/alias cutover remains separate and pending an interactive deployed-environment smoke because the protected preview could not be fetched through the connected Vercel authorization boundary. Downstream executor proof and WorkDefinition compilation remain pending and are not implied by Daughter publication. P5 is next and has not started."
+  "statusNote": "Presentation architecture is complete through P5. Ask Atlas A5 grounding now uses the same governed projection boundary and exact P4 target registry as Daughter/Canvas. Public A5 Ask is PUBLIC_SAFE; governance-safe Ask is explicit and capability-gated; protected WorkDefinition grounding is not automatically injected and remains blocked in Ask pending canonical P6 compilation. Trace is safe lineage metadata, not a sixth depth. Ocean FCL/LCL Ask targets 0.6 with no 0.5 fallback. P5 discovered that Road LTL 1.5 GitHub materialization is task-scoped to LTL-03 because its referenced frozen v1.4 base is not materialized in the runtime source set; other Road LTL 1.5 tasks therefore fail closed until a separately governed effective-inheritance materialization is completed. P5 CI and Vercel commit status passed. Final Ocean production cutover remains separate and pending interactive deployed smoke. P6 has not started."
 }
