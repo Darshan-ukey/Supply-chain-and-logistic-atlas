@@ -1,0 +1,32 @@
+name: P5 Ask Atlas Trace Governance
+
+on:
+  push:
+    branches:
+      - atlas-presentation-architecture-v1-p5
+    paths:
+      - 'lib/api/ask-atlas.js'
+      - 'lib/ask/p5-governed-retrieval.js'
+      - 'runtime/universal-ask-atlas.js'
+      - 'daughter.html'
+      - 'governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json'
+      - 'governance/presentation/p2-projection-source-registry.json'
+      - 'tests/p5-ask-trace-governance.mjs'
+      - 'tests/v2-universal-ask-smoke.mjs'
+      - 'package.json'
+      - '.github/workflows/p5-ask-trace-governance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run P5 Ask/Trace/Governance and inherited P4/P3O/P3/P2 regressions
+        run: npm run p5:check
