@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "atlas-p4-canvas-v2.0.1-integration-register-v1",
+  "phase": "P4",
+  "status": "COMPLETE",
+  "integrationVersion": "2.0.1",
+  "baselineBranch": "atlas-ocean-0.6-production-target",
+  "implementationBranch": "atlas-presentation-architecture-v1-p4",
+  "canonicalSemanticBaseline": "frozen-stack-lock-v2.2",
+  "presentationPredecessor": "governance/presentation/PRESENTATION_ASSET_REGISTER_V1.3.json",
+  "architecture": {
+    "canvasSurface": "/app",
+    "daughterSurface": "/daughter",
+    "bridge": "assets/canvas-daughter-bridge-v2.0.1.mjs",
+    "bootstrap": "execution/ui/runtime-access-shell.js",
+    "targetRegistry": "governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json",
+    "handoffShape": ["moduleId", "moduleVersion", "taskId"],
+    "projectionBoundary": "/api/execution-depth-projection"
+  },
+  "governedTargets": {
+    "road-ltl": {"canvasBaseline":"1.3","daughterTarget":"1.5"},
+    "ocean-fcl": {"canvasPreCutoverBaseline":"0.5","daughterTarget":"0.6","goLiveTarget":true,"deploy05First":false},
+    "ocean-lcl": {"canvasPreCutoverBaseline":"0.5","daughterTarget":"0.6","goLiveTarget":true,"deploy05First":false}
+  },
+  "security": {
+    "protectedExecutionPreloaded": false,
+    "canvasCallsProtectedEndpoints": false,
+    "versionInferenceInCanvas": false,
+    "unknownTupleBehavior": "FAIL_CLOSED",
+    "ocean05ExecutionDepthFallback": false
+  },
+  "regression": {
+    "productionCanvasIndexByteIdentical": true,
+    "frozenCanvasPackageHtmlByteIdentical": true,
+    "frozenCanvasPackageJsByteIdentical": true,
+    "frozenCanvasPackageCssByteIdentical": true,
+    "semanticMutation": false,
+    "oceanCanonicalMutation": false
+  },
+  "certification": {
+    "test": "tests/p4-canvas-daughter-integration.mjs",
+    "workflow": ".github/workflows/p4-canvas-daughter-integration.yml",
+    "workflowRunId": 33952566571,
+    "workflowConclusion": "success",
+    "inheritedChain": ["P3O","P3","P2"],
+    "vercelCommitStatus": "success",
+    "vercelDeploymentCommit": "104d837a930e9e12224f276b8ffde224b7bae2dc",
+    "interactivePreviewSmoke": "NOT_PROVEN_FROM_CONNECTOR_AUTH_BOUNDARY"
+  },
+  "productionCutover": {
+    "ocean06ApprovedGoLiveTarget": true,
+    "cutoverPerformedInP4": false,
+    "status": "PENDING_INTERACTIVE_DEPLOYED_SMOKE_AND_RELEASE_CUTOVER",
+    "reason": "P4 certifies Canvas-to-Daughter integration. The existing Canvas module catalog remains pre-cutover; production alias/catalog cutover is a separate controlled release action."
+  },
+  "exitGate": "PASS",
+  "nextPhase": "P5_ASK_ATLAS_TRACE_GOVERNANCE"
+}
