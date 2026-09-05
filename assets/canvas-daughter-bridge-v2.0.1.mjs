@@ -31,12 +31,14 @@ export function selectionForCanvasState(registry,state){
   };
 }
 
+const selectionKey=s=>s?`${s.moduleId}@${s.moduleVersion}#${s.taskId}`:'';
+
 export function bridgeMarkup(selection){
   if(!selection)return'';
   const href=buildDaughterHref(selection);
   if(!href)return'';
   const status=String(selection.targetStatus||'GOVERNED_TARGET').replaceAll('_',' ');
-  return `<div class="ins-section atlas-p4-depth" id="atlasP4DepthBridge" data-bridge-version="${CANVAS_DAUGHTER_BRIDGE_VERSION}"><h3>Execution depth</h3><div class="atlas-p4-depth-card"><div><b>Governed Daughter target</b><span>${esc(selection.moduleId)} · ${esc(selection.moduleVersion)} · ${esc(selection.taskId)}</span><small>${esc(status)}</small></div><a class="atlas-p4-depth-action" href="${esc(href)}" data-atlas-daughter-handoff="true">Open Operational Knowledge & readiness →</a></div><p class="atlas-p4-depth-note">Full Work Decomposition and WorkDefinition remain protected. Canvas does not preload protected execution detail.</p></div>`;
+  return `<div class="ins-section atlas-p4-depth" id="atlasP4DepthBridge" data-bridge-version="${CANVAS_DAUGHTER_BRIDGE_VERSION}" data-selection-key="${esc(selectionKey(selection))}"><h3>Execution depth</h3><div class="atlas-p4-depth-card"><div><b>Governed Daughter target</b><span>${esc(selection.moduleId)} · ${esc(selection.moduleVersion)} · ${esc(selection.taskId)}</span><small>${esc(status)}</small></div><a class="atlas-p4-depth-action" href="${esc(href)}" data-atlas-daughter-handoff="true">Open Operational Knowledge & readiness →</a></div><p class="atlas-p4-depth-note">Full Work Decomposition and WorkDefinition remain protected. Canvas does not preload protected execution detail.</p></div>`;
 }
 
 function installStyle(){
@@ -58,9 +60,12 @@ async function loadRegistry(fetchImpl=globalThis.fetch){
 export function decorateCanvasInspector(registry,state=globalThis.S){
   const body=document.getElementById('inspectorBody');
   if(!body)return false;
-  body.querySelector('#atlasP4DepthBridge')?.remove();
   const selection=selectionForCanvasState(registry,state);
-  if(!selection)return false;
+  const existing=body.querySelector('#atlasP4DepthBridge');
+  if(!selection){existing?.remove();return false}
+  const key=selectionKey(selection);
+  if(existing?.dataset?.selectionKey===key)return true;
+  existing?.remove();
   body.insertAdjacentHTML('beforeend',bridgeMarkup(selection));
   return true;
 }
