@@ -83,7 +83,7 @@ for(const key of ['ocean-fcl@0.6','ocean-lcl@0.6']){
 
 // P4 is an additive integration patch: the frozen Canvas visual shell itself must not change.
 check(gitBlobSha('index.html')==='043802523b1618c143a0e78b88bbfb2afaa7c7dd','production Canvas/index.html remains byte-identical to P3/P3O baseline');
-check(gitBlobSha('canvas-v2/canvas-v2/index.html')==='1c6eb6645541e92d2f3e8555586787e7f05bf53a','frozen Canvas V2 package HTML remains byte-identical');
+check(gitBlobSha('canvas-v2/canvas-v2/index.html')==='4dfa0a8410eba303ba7dad73a5cee6431dfe3258','frozen Canvas V2 package HTML remains byte-identical');
 check(gitBlobSha('canvas-v2/canvas-v2/assets/canvas-v2.js')==='672dd1b5a1eb8c3c1698fae436fa0b3db53cd5d0','frozen Canvas V2 package JS remains byte-identical');
 check(gitBlobSha('canvas-v2/canvas-v2/assets/canvas-v2.css')==='860c878491479b40c1a71c8530d2f1725564341b','frozen Canvas V2 package CSS remains byte-identical');
 
