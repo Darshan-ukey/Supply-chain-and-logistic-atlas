@@ -1,6 +1,6 @@
 {
   "schemaVersion": "atlas-current-assets-pointer-v1",
-  "updatedAt": "2026-09-05T08:10:00+05:30",
+  "updatedAt": "2026-09-05T08:30:00+05:30",
   "integrationLock": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json",
   "productionBaseline": {
     "universe": "universe-7.3",
@@ -9,7 +9,18 @@
     "oceanLcl": "ocean-lcl-0.5",
     "canvas": "canvas-2.0.0",
     "universalAsk": "universal-ask-2.0.1",
-    "atlasWarehouse": "atlas-warehouse-1"
+    "atlasWarehouse": "atlas-warehouse-1",
+    "note": "Ocean 0.5 remains only the historical pre-live baseline until final cutover; it is not the intended go-live version."
+  },
+  "goLiveTarget": {
+    "decisionId": "OCEAN-0.6-PRODUCTION-GO-LIVE-TARGET-V1",
+    "status": "APPROVED",
+    "oceanFcl": "ocean-fcl-0.6",
+    "oceanLcl": "ocean-lcl-0.6",
+    "p4RequiredBaseline": true,
+    "productionCutover": "PENDING_P4_INTEGRATION_AND_DEPLOYMENT_SMOKE",
+    "deployOcean05First": false,
+    "daughterPublicationSeparateFromExecutorCertification": true
   },
   "latestFrozenCandidates": {
     "roadLtl": "road-ltl-1.5-candidate",
@@ -82,7 +93,7 @@
       "lclTaskCoverage": "30/30",
       "informationResolutionDepth": "NOT_POPULATED_AT_OKV2_DEPTH",
       "semanticMutation": false,
-      "productionPromotion": false,
+      "productionPromotion": "APPROVED_GO_LIVE_TARGET_CUTOVER_PENDING",
       "canvasChangedInP3O": false
     },
     "nextPhase": "P4_CANVAS_V2_0_1_INTEGRATION_PATCH"
@@ -92,5 +103,5 @@
     "canonicalWorkDefinitionContract"
   ],
   "readHumanSummary": "governance/frozen-assets/LATEST.md",
-  "statusNote": "Presentation architecture is complete through P3O. Ocean FCL/LCL 0.6 remain frozen execution-reference candidates, not production baselines. Their exact canonical release is retained in the governed Drive source vault with frozen hashes; GitHub runtime materializes only the certified PUBLIC_SAFE Ocean projection. Ocean OKv1 does not fabricate OKv2 Information Resolution. Universal Daughter Renderer V2 remains generic, protected execution is not preloaded, Road LTL and Canvas baselines are unchanged, and P4 is next."
+  "statusNote": "Presentation architecture is complete through P3O. Ocean FCL/LCL 0.6 are the approved production go-live Daughter targets; Ocean 0.5 is a historical pre-live baseline and will not be deployed first. P4 must integrate against 0.6. Exact canonical 0.6 source remains in the governed Drive vault and GitHub runtime materializes the certified PUBLIC_SAFE projection. Recursive executability remains modeled-not-executor-proven, WorkDefinition compilation remains pending and independent execution proof remains pending; those downstream statuses do not block truthful Daughter publication. Final production cutover follows P4 integration regression and deployed-environment smoke checks."
 }
