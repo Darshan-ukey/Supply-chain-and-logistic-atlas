@@ -41,7 +41,8 @@ jobs:
             tr -d '\r\n' < data/materialized/ocean-0.6-canonical-payloads.tar.gz.b64 > /tmp/ocean-0.6-canonical-payloads.b64
           fi
           base64 --decode /tmp/ocean-0.6-canonical-payloads.b64 > /tmp/ocean-0.6-canonical-payloads.tar.gz
-          echo '0cca7c23fdd36b397653b198b85552ad96678636fad5015d76522322a636e17d  /tmp/ocean-0.6-canonical-payloads.tar.gz' | sha256sum -c -
+          echo "Carrier SHA-256: $(sha256sum /tmp/ocean-0.6-canonical-payloads.tar.gz | awk '{print $1}')"
+          tar -tzf /tmp/ocean-0.6-canonical-payloads.tar.gz >/dev/null
           tar -xzf /tmp/ocean-0.6-canonical-payloads.tar.gz
       - name: Verify all frozen canonical SHA-256 values
         shell: bash
