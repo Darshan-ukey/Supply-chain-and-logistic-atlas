@@ -1,0 +1,32 @@
+name: P4 Canvas V2.0.1 Integration
+
+on:
+  push:
+    branches:
+      - atlas-presentation-architecture-v1-p4
+    paths:
+      - 'assets/canvas-daughter-bridge-v2.0.1.mjs'
+      - 'execution/ui/runtime-access-shell.js'
+      - 'governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json'
+      - 'governance/presentation/p2-projection-source-registry.json'
+      - 'daughter.html'
+      - 'assets/universal-daughter-renderer-v2.js'
+      - 'data/materialized/ocean-0.6-public-safe-projections.json.gz.b64'
+      - 'tests/p4-canvas-daughter-integration.mjs'
+      - 'package.json'
+      - '.github/workflows/p4-canvas-daughter-integration.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run P4 Canvas integration and inherited P3O/P3/P2 regressions
+        run: npm run p4:check
