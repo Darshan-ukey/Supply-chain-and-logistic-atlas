@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "atlas-p3o-ocean-source-certification-v1",
+  "status": "PASS",
+  "certifiedAt": "2026-09-05T08:00:00+05:30",
+  "phase": "P3O",
+  "purpose": "Certify the exact frozen Ocean FCL/LCL 0.6 canonical source independently from the public-safe GitHub materialization.",
+  "sourceVault": {
+    "provider": "GOOGLE_DRIVE",
+    "folderId": "1O5tXUgvYi6x1y-PcQBrNvBsAZ5KENyYz",
+    "fileId": "1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI",
+    "fileName": "atlas-daughter-release-ltl-v1.4-ocean-v0.6-FROZEN.zip",
+    "mimeType": "application/zip"
+  },
+  "releaseZip": {
+    "sha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+    "verification": "EXACT_BYTE_SHA256_PASS"
+  },
+  "canonicalFiles": [
+    {"path":"data/modules/ocean-fcl-v0.6.json","sha256":"334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a"},
+    {"path":"data/modules/ocean-lcl-v0.6.json","sha256":"73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f"},
+    {"path":"data/operational-knowledge/ocean-fcl-v0.6-operational.json","sha256":"c665f946fa30ccea081fa6a8ad3129e7217cfdff1d20ea7ee15e4ac70506aae3"},
+    {"path":"data/operational-knowledge/ocean-lcl-v0.6-operational.json","sha256":"3ba54c522a28e8e05f1f65e418eb450ba46c701de0a0d353234d467c9033307e"},
+    {"path":"data/client-binding-requirements/ocean-fcl-v0.6-bindings.json","sha256":"9a86fe6c26360993673fc899ac8529103704a55a1a7f3d7b8455123e4261a005"},
+    {"path":"data/client-binding-requirements/ocean-lcl-v0.6-bindings.json","sha256":"47633373b70ac43fc02e271eb22b4a2b678107160f17385faf277b9e5a903a46"},
+    {"path":"data/source-claims/ocean-fcl-v0.6-claims.json","sha256":"99cd023485c0e632d387defcd8419d64ad1e68b58a0136db535721421946d1ef"},
+    {"path":"data/source-claims/ocean-lcl-v0.6-claims.json","sha256":"4d06be7436755ebddfc66ff74da2fe67583bd104def6b6c598a0e77a3d31fd21"},
+    {"path":"data/exchanges/ocean-fcl-v0.6-system-exchanges.json","sha256":"e0e19d7f7e81d5a44f2e7b03669e150c86ca74f8e22f37b61355efb0490cc346"},
+    {"path":"data/exchanges/ocean-lcl-v0.6-system-exchanges.json","sha256":"5df868d6714454e239186d6097d39e261219858fc39b38d345f5b68a440a0828"}
+  ],
+  "verification": {
+    "canonicalFileCount": 10,
+    "canonicalFileHashResult": "PASS",
+    "semanticMutation": false,
+    "candidateVersionChange": false,
+    "sourceRecoveredFromFrozenReleasePackage": true
+  },
+  "semanticBoundary": {
+    "oceanFclVersion": "0.6",
+    "oceanLclVersion": "0.6",
+    "operationalKnowledgeProfile": "V1",
+    "informationResolutionDepth": "NOT_POPULATED_AT_OKV2_DEPTH",
+    "productionPromotion": false
+  },
+  "materializationPolicy": {
+    "canonicalSourceLocation": "GOVERNED_DRIVE_VAULT",
+    "githubRuntimeMaterialization": "PRECOMPILED_PUBLIC_SAFE_ONLY",
+    "governanceCanonicalProjectionOnRuntime": false,
+    "protectedExecutionIncluded": false
+  }
+}
