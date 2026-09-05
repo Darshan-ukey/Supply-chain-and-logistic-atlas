@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "atlas-presentation-asset-register-v1.5",
+  "status": "FROZEN",
+  "phase": "P5",
+  "canonicalSemanticBaseline": "frozen-stack-lock-v2.2",
+  "supersedes": "governance/presentation/PRESENTATION_ASSET_REGISTER_V1.4.json",
+  "assets": [
+    {"assetId":"ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1","version":"1.0.0","status":"FROZEN","path":"governance/architecture/ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1.md"},
+    {"assetId":"AUTHORIZATION-PROJECTION-MATRIX-V1","version":"1.0.0","status":"FROZEN","path":"governance/presentation/AUTHORIZATION_PROJECTION_MATRIX_V1_FROZEN.md","machinePath":"governance/presentation/authorization-projection-matrix-v1.json"},
+    {"assetId":"OPERATIONAL-KNOWLEDGE-PRESENTATION-CONTRACT-V1.1","version":"1.1.0","status":"FROZEN","path":"governance/presentation/OPERATIONAL_KNOWLEDGE_PRESENTATION_CONTRACT_V1.1_FROZEN.md"},
+    {"assetId":"EXECUTION-READINESS-PRESENTATION-CONTRACT-V1.1","version":"1.1.0","status":"FROZEN","path":"governance/presentation/EXECUTION_READINESS_PRESENTATION_CONTRACT_V1.1_FROZEN.md"},
+    {"assetId":"EXECUTION-DEPTH-FIELD-CLASSIFICATION-V1.1","version":"1.1.0","status":"FROZEN","path":"governance/presentation/EXECUTION_DEPTH_FIELD_CLASSIFICATION_V1.1_FROZEN.md","machinePath":"governance/presentation/execution-depth-field-classification-v1.1.json"},
+    {"assetId":"P2-BACKEND-PROJECTION-BOUNDARY","version":"1.0.0","status":"COMPLETE","path":"governance/presentation/P2_PROJECTION_IMPLEMENTATION_REGISTER.json"},
+    {"assetId":"UNIVERSAL-DAUGHTER-RENDERER-V2","version":"2.0.0","status":"FROZEN_IMPLEMENTATION_BASELINE","contractPath":"governance/presentation/UNIVERSAL_DAUGHTER_RENDERER_CONTRACT_V2_FROZEN.md","implementationPath":"assets/universal-daughter-renderer-v2.js","routeShell":"daughter.html","implementationRegister":"governance/presentation/P3_UNIVERSAL_DAUGHTER_RENDERER_IMPLEMENTATION_REGISTER.json"},
+    {"assetId":"P3O-OCEAN-0.6-MATERIALIZATION-CERTIFICATION","version":"1.0.0","status":"COMPLETE","sourceCertification":"governance/baselines/P3O_OCEAN_0_6_SOURCE_CERTIFICATION.json","projectionSourceRegistry":"governance/presentation/p2-projection-source-registry.json","publicProjectionBundle":"data/materialized/ocean-0.6-public-safe-projections.json.gz.b64","test":"tests/p3o-ocean-0.6-certification.mjs","ciWorkflow":".github/workflows/p3o-ocean-certification.yml"},
+    {"assetId":"CANVAS-V2.0.1-DAUGHTER-INTEGRATION","version":"2.0.1","status":"FROZEN_IMPLEMENTATION_BASELINE","bridge":"assets/canvas-daughter-bridge-v2.0.1.mjs","targetRegistry":"governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json","implementationRegister":"governance/presentation/P4_CANVAS_V2_0_1_INTEGRATION_REGISTER.json","audit":"governance/baselines/P4_CANVAS_V2_0_1_INTEGRATION_AUDIT_COMPLETE.md","test":"tests/p4-canvas-daughter-integration.mjs","ciWorkflow":".github/workflows/p4-canvas-daughter-integration.yml"},
+    {"assetId":"P5-ASK-ATLAS-TRACE-GOVERNANCE-INTEGRATION","version":"1.0.0","status":"FROZEN_IMPLEMENTATION_BASELINE","askHandler":"lib/api/ask-atlas.js","governedRetrievalAdapter":"lib/ask/p5-governed-retrieval.js","implementationRegister":"governance/presentation/P5_ASK_ATLAS_TRACE_GOVERNANCE_REGISTER.json","audit":"governance/baselines/P5_ASK_ATLAS_TRACE_GOVERNANCE_AUDIT_COMPLETE.md","test":"tests/p5-ask-trace-governance.mjs","ciWorkflow":".github/workflows/p5-ask-trace-governance.yml"}
+  ],
+  "invariants": [
+    "The five-depth presentation architecture remains unchanged; Trace is not a sixth depth.",
+    "Information Resolution remains inside Operational Knowledge.",
+    "A5 Ask, Daughter and Canvas use the same governed projection boundary and target registry rather than creating a second operational truth source.",
+    "PUBLIC_SAFE Ask never receives protected Work Decomposition, WorkDefinition, exact source-claim crosswalks, client values or runtime projection detail.",
+    "Governance-safe Ask requires explicit capability authorization and still excludes execution IP.",
+    "Protected execution evidence is never automatically injected into ordinary Ask Atlas.",
+    "Exact module/version/task resolution fails closed and no semantic version substitution is allowed.",
+    "Ocean FCL/LCL Ask targets 0.6 and never falls back to Ocean 0.5.",
+    "Road LTL 1.5 non-materialized inherited tasks fail closed until the effective inherited projection set is separately materialized; Road LTL 1.3/1.4 is not a hidden fallback.",
+    "P5 does not mutate Daughter, Universe, Canvas, Operational Knowledge or WorkDefinition semantics."
+  ],
+  "completedThroughPhase": "P5",
+  "nextPhase": "P6_COMPILE_OPERATIONAL_LAYER_ATLAS_V2_UPGRADE"
+}
