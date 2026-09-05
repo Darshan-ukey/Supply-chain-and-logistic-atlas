@@ -6,6 +6,7 @@ on:
       - atlas-presentation-architecture-v1-p3o
     paths:
       - 'data/materialized/ocean-0.6-canonical-payloads.tar.gz.b64'
+      - 'data/materialized/ocean-0.6-canonical-payloads.parts/*.b64'
       - 'data/modules/ocean-*-v0.6.json'
       - 'data/operational-knowledge/ocean-*-v0.6-operational.json'
       - 'data/client-binding-requirements/ocean-*-v0.6-bindings.json'
@@ -33,7 +34,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          base64 -d -i data/materialized/ocean-0.6-canonical-payloads.tar.gz.b64 > /tmp/ocean-0.6-canonical-payloads.tar.gz
+          PARTS='data/materialized/ocean-0.6-canonical-payloads.parts/part-*.b64'
+          if compgen -G "$PARTS" > /dev/null; then
+            cat data/materialized/ocean-0.6-canonical-payloads.parts/part-*.b64 | tr -d '\r\n' > /tmp/ocean-0.6-canonical-payloads.b64
+          else
+            tr -d '\r\n' < data/materialized/ocean-0.6-canonical-payloads.tar.gz.b64 > /tmp/ocean-0.6-canonical-payloads.b64
+          fi
+          base64 --decode /tmp/ocean-0.6-canonical-payloads.b64 > /tmp/ocean-0.6-canonical-payloads.tar.gz
           echo '0cca7c23fdd36b397653b198b85552ad96678636fad5015d76522322a636e17d  /tmp/ocean-0.6-canonical-payloads.tar.gz' | sha256sum -c -
           tar -xzf /tmp/ocean-0.6-canonical-payloads.tar.gz
       - name: Verify all frozen canonical SHA-256 values
