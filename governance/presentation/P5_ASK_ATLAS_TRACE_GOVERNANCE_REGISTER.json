@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "atlas-p5-ask-trace-governance-register-v1",
+  "phase": "P5",
+  "status": "COMPLETE_PASS",
+  "canonicalSemanticBaseline": "frozen-stack-lock-v2.2",
+  "basePhase": "P4",
+  "branch": "atlas-presentation-architecture-v1-p5",
+  "certifiedImplementationCommit": "b3295a1664c8b795abb5293e7554053521fc67d9",
+  "implementation": {
+    "askHandler": "lib/api/ask-atlas.js",
+    "governedRetrievalAdapter": "lib/ask/p5-governed-retrieval.js",
+    "publicProjectionClass": "PUBLIC_SAFE",
+    "governanceProjectionClass": "GOVERNANCE_CANONICAL_NO_EXECUTION_IP",
+    "executionProtectedAutomaticGrounding": false,
+    "traceSchema": "atlas-ask-trace-v1",
+    "targetRegistry": "governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json",
+    "projectionSourceRegistry": "governance/presentation/p2-projection-source-registry.json"
+  },
+  "certification": {
+    "test": "tests/p5-ask-trace-governance.mjs",
+    "ciWorkflow": ".github/workflows/p5-ask-trace-governance.yml",
+    "ciRunId": 33977868874,
+    "ciConclusion": "success",
+    "inheritedChain": ["P4","P3O","P3","P2"],
+    "vercelCommitStatus": "success"
+  },
+  "securityInvariants": [
+    "A5 Ask evidence is grounded from the governed projection boundary, not raw task/source JSON.",
+    "PUBLIC_SAFE Ask responses do not expose protected Work Decomposition, WorkDefinition, exact source-claim crosswalks, client values, or runtime projection detail.",
+    "Governance-safe Ask requires explicit projection preference plus atlas.operational.full.read capability.",
+    "Protected WorkDefinition grounding is never automatic on Admin and remains disabled in Ask until canonical P6 compilation is materialized.",
+    "Trace is diagnostic lineage metadata and is not a sixth semantic depth.",
+    "Exact module/version selection fails closed and never silently substitutes another Daughter version.",
+    "Ocean FCL/LCL Ask targets 0.6 and never falls back to 0.5."
+  ],
+  "knownCoverageConstraint": {
+    "roadLtl15": "TASK_SCOPED_MATERIALIZATION_ONLY",
+    "materializedProofTask": "LTL-03",
+    "cause": "Road LTL 1.5 declares lossless inheritance from Road LTL 1.4, but the referenced 1.4 canonical artifact is not materialized in the current GitHub runtime source set.",
+    "behavior": "Non-materialized Road LTL 1.5 tasks fail closed; Ask does not read Road LTL 1.3/1.4 as a hidden semantic fallback.",
+    "remediation": "Materialize the effective inherited Road LTL 1.5 PUBLIC_SAFE projection set as a separately governed correction before claiming full Road LTL P5 task coverage."
+  },
+  "semanticMutation": false,
+  "nextPhase": "P6_COMPILE_OPERATIONAL_LAYER_ATLAS_V2_UPGRADE",
+  "p6Started": false
+}
