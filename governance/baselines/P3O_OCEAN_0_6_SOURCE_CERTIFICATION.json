@@ -32,7 +32,10 @@
     "canonicalFileHashResult": "PASS",
     "semanticMutation": false,
     "candidateVersionChange": false,
-    "sourceRecoveredFromFrozenReleasePackage": true
+    "sourceRecoveredFromFrozenReleasePackage": true,
+    "publicProjectionCertification": "PASS",
+    "publicProjectionTaskCoverage": {"oceanFcl":"30/30","oceanLcl":"30/30"},
+    "inheritedP3P2SecurityRegression": "PASS"
   },
   "semanticBoundary": {
     "oceanFclVersion": "0.6",
@@ -45,6 +48,13 @@
     "canonicalSourceLocation": "GOVERNED_DRIVE_VAULT",
     "githubRuntimeMaterialization": "PRECOMPILED_PUBLIC_SAFE_ONLY",
     "governanceCanonicalProjectionOnRuntime": false,
-    "protectedExecutionIncluded": false
+    "protectedExecutionIncluded": false,
+    "obsoleteCanonicalRuntimeCarriersRemoved": true
+  },
+  "certificationEvidence": {
+    "passingWorkflowCommit": "d549e6ead93060b1790c1d81bf931b4864a17364",
+    "workflow": ".github/workflows/p3o-ocean-certification.yml",
+    "test": "tests/p3o-ocean-0.6-certification.mjs",
+    "runtimeProjectionBundle": "data/materialized/ocean-0.6-public-safe-projections.json.gz.b64"
   }
 }
