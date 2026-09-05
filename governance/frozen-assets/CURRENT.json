@@ -1,6 +1,6 @@
 {
   "schemaVersion": "atlas-current-assets-pointer-v1",
-  "updatedAt": "2026-09-05T08:30:00+05:30",
+  "updatedAt": "2026-09-05T12:23:00+05:30",
   "integrationLock": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json",
   "productionBaseline": {
     "universe": "universe-7.3",
@@ -10,7 +10,7 @@
     "canvas": "canvas-2.0.0",
     "universalAsk": "universal-ask-2.0.1",
     "atlasWarehouse": "atlas-warehouse-1",
-    "note": "Ocean 0.5 remains only the historical pre-live baseline until final cutover; it is not the intended go-live version."
+    "note": "Ocean 0.5 remains only the historical/pre-cutover runtime baseline until final release cutover; it is not the intended go-live version."
   },
   "goLiveTarget": {
     "decisionId": "OCEAN-0.6-PRODUCTION-GO-LIVE-TARGET-V1",
@@ -18,7 +18,8 @@
     "oceanFcl": "ocean-fcl-0.6",
     "oceanLcl": "ocean-lcl-0.6",
     "p4RequiredBaseline": true,
-    "productionCutover": "PENDING_P4_INTEGRATION_AND_DEPLOYMENT_SMOKE",
+    "p4IntegrationStatus": "COMPLETE_PASS",
+    "productionCutover": "P4_INTEGRATION_CERTIFIED_PENDING_INTERACTIVE_DEPLOYED_SMOKE_AND_RELEASE_CUTOVER",
     "deployOcean05First": false,
     "daughterPublicationSeparateFromExecutorCertification": true
   },
@@ -44,8 +45,8 @@
   "presentationArchitecture": {
     "assetId": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
     "status": "FROZEN",
-    "completedThroughPhase": "P3O",
-    "presentationAssetRegister": "governance/presentation/PRESENTATION_ASSET_REGISTER_V1.3.json",
+    "completedThroughPhase": "P4",
+    "presentationAssetRegister": "governance/presentation/PRESENTATION_ASSET_REGISTER_V1.4.json",
     "operationalKnowledgePresentationContract": "1.1.0",
     "executionReadinessPresentationContract": "1.1.0",
     "executionDepthFieldClassification": "1.1.0",
@@ -96,12 +97,35 @@
       "productionPromotion": "APPROVED_GO_LIVE_TARGET_CUTOVER_PENDING",
       "canvasChangedInP3O": false
     },
-    "nextPhase": "P4_CANVAS_V2_0_1_INTEGRATION_PATCH"
+    "canvasIntegration": {
+      "phase": "P4",
+      "assetId": "CANVAS-V2.0.1-DAUGHTER-INTEGRATION",
+      "version": "2.0.1",
+      "status": "COMPLETE",
+      "route": "/app",
+      "bridge": "assets/canvas-daughter-bridge-v2.0.1.mjs",
+      "targetRegistry": "governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json",
+      "implementationRegister": "governance/presentation/P4_CANVAS_V2_0_1_INTEGRATION_REGISTER.json",
+      "audit": "governance/baselines/P4_CANVAS_V2_0_1_INTEGRATION_AUDIT_COMPLETE.md",
+      "ciWorkflow": ".github/workflows/p4-canvas-daughter-integration.yml",
+      "ciRunId": 33952566571,
+      "ciConclusion": "success",
+      "vercelCommitStatus": "success",
+      "exactVersionFailClosed": true,
+      "protectedExecutionPreloaded": false,
+      "oceanFclTarget": "0.6",
+      "oceanLclTarget": "0.6",
+      "ocean05ExecutionDepthFallback": false,
+      "canvasVisualShellChanged": false,
+      "semanticMutation": false,
+      "interactivePreviewSmoke": "NOT_PROVEN_FROM_CONNECTOR_AUTH_BOUNDARY"
+    },
+    "nextPhase": "P5_ASK_ATLAS_TRACE_GOVERNANCE"
   },
   "nextImplementation": [
     "canonicalWorkDecompositionContract",
     "canonicalWorkDefinitionContract"
   ],
   "readHumanSummary": "governance/frozen-assets/LATEST.md",
-  "statusNote": "Presentation architecture is complete through P3O. Ocean FCL/LCL 0.6 are the approved production go-live Daughter targets; Ocean 0.5 is a historical pre-live baseline and will not be deployed first. P4 must integrate against 0.6. Exact canonical 0.6 source remains in the governed Drive vault and GitHub runtime materializes the certified PUBLIC_SAFE projection. Recursive executability remains modeled-not-executor-proven, WorkDefinition compilation remains pending and independent execution proof remains pending; those downstream statuses do not block truthful Daughter publication. Final production cutover follows P4 integration regression and deployed-environment smoke checks."
+  "statusNote": "Presentation architecture is complete through P4. Canvas V2.0.1 now hands selected A5 work to the governed Universal Daughter Renderer using exact module/version/task tuples. Ocean FCL/LCL handoffs target approved go-live version 0.6 and never fall back to 0.5. Canvas visual/frozen assets remain byte-identical and protected execution is not preloaded. P4 CI and Vercel deployment status passed. Final Ocean 0.6 production catalog/alias cutover remains separate and pending an interactive deployed-environment smoke because the protected preview could not be fetched through the connected Vercel authorization boundary. Downstream executor proof and WorkDefinition compilation remain pending and are not implied by Daughter publication. P5 is next and has not started."
 }
