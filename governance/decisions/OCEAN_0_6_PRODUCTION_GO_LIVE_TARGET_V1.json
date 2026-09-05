@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "atlas-production-go-live-target-decision-v1",
+  "decisionId": "OCEAN-0.6-PRODUCTION-GO-LIVE-TARGET-V1",
+  "decisionDate": "2026-09-05",
+  "status": "APPROVED",
+  "scope": ["ocean-fcl", "ocean-lcl"],
+  "decision": {
+    "oceanFclGoLiveVersion": "0.6",
+    "oceanLclGoLiveVersion": "0.6",
+    "previousBaselineDisposition": "HISTORICAL_PRE_LIVE_BASELINE_NOT_TO_BE_DEPLOYED_FIRST",
+    "productionCutover": "PENDING_P4_INTEGRATION_AND_DEPLOYMENT_SMOKE",
+    "p4RequiredBaseline": {
+      "ocean-fcl": "0.6",
+      "ocean-lcl": "0.6"
+    }
+  },
+  "architectureClarification": {
+    "daughterProductionPublication": "SEPARATE_FROM_EXECUTOR_CERTIFICATION",
+    "meaning": "A Daughter can be the production reference/go-live baseline while recursive Work Decomposition, canonical WorkDefinition compilation and independent executor proof remain pending, provided those readiness states are exposed truthfully and protected execution detail is not fabricated.",
+    "doesNotImplyExecutorReady": true,
+    "doesNotImplyWorkDefinitionCompiled": true,
+    "doesNotImplyIndependentRuntimeProof": true
+  },
+  "evidence": {
+    "p3oCertification": "PASS",
+    "oceanFclPublicSafeTaskCoverage": "30/30",
+    "oceanLclPublicSafeTaskCoverage": "30/30",
+    "canonicalReleaseSha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+    "canonicalSourceVaultFileId": "1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI",
+    "semanticMutationDuringP3O": false,
+    "canvasChangedDuringP3O": false
+  },
+  "readinessThatRemainsExplicit": {
+    "recursiveExecutability": "MODELED_NOT_EXECUTOR_PROVEN",
+    "workDefinitionCompilation": "NEXT_LAYER_NOT_INCLUDED",
+    "independentExecutionProof": "PENDING",
+    "informationResolutionDepth": "NOT_POPULATED_AT_OKV2_DEPTH"
+  },
+  "cutoverRule": "Do not activate Ocean 0.5 as an interim public release. P4 and the final production deployment must resolve Ocean FCL/LCL to 0.6. Production cutover requires P4 integration regression and deployed-environment smoke checks, but does not require falsely relabelling 0.6 as executor-proven.",
+  "supersedesForOceanGoLivePlanning": [
+    "the earlier assumption that Ocean 0.5 must be the next deployed baseline",
+    "the coupling of Daughter production publication to downstream executor-certification completion"
+  ]
+}
