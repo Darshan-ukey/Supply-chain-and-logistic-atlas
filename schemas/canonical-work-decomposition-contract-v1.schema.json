@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas.aify.local/schemas/canonical-work-decomposition-contract-v1.schema.json",
+  "title": "Atlas Canonical Work Decomposition Contract V1",
+  "type": "object",
+  "required": ["schemaVersion","decompositionId","contractVersion","status","daughterModule","daughterVersion","sourceTaskId","sourceTaskTitle","executionReadinessStatus","semanticLineage","parentLink","stopCriterion","workUnits","summary"],
+  "properties": {
+    "schemaVersion": {"const":"atlas-canonical-work-decomposition-v1"},
+    "decompositionId": {"type":"string","minLength":1},
+    "contractVersion": {"const":"1.0.0"},
+    "status": {"enum":["DRAFT","VALIDATED_REFERENCE_DECOMPOSITION","APPROVED","ACTIVE","DEPRECATED"]},
+    "daughterModule": {"type":"string","minLength":1},
+    "daughterVersion": {"type":"string","minLength":1},
+    "sourceTaskId": {"type":"string","minLength":1},
+    "sourceTaskTitle": {"type":"string","minLength":1},
+    "executionReadinessStatus": {"type":"string","minLength":1},
+    "semanticLineage": {"type":"object","required":["semanticSourceVersion","effectiveModuleVersion","inheritance"],"additionalProperties":true},
+    "parentLink": {"type":"object","required":["parentLevel","parentTaskId"],"additionalProperties":true},
+    "stopCriterion": {"type":"string","minLength":1},
+    "workUnits": {"type":"array","minItems":1,"items":{"$ref":"#/$defs/workUnit"}},
+    "summary": {"$ref":"#/$defs/summary"},
+    "nonBlockingKnownGaps": {"type":"object","additionalProperties":true}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "executorReadiness": {
+      "type":"object",
+      "required":["status","blockingReasons","requiredClientBindings","requiredKnowledgeGaps","downstreamCompilationTarget"],
+      "properties": {
+        "status":{"enum":["NEEDS_DECOMPOSITION","EXECUTOR_READY","BLOCKED_BY_KNOWLEDGE_GAP","BLOCKED_BY_CLIENT_BINDING"]},
+        "blockingReasons":{"type":"array","items":{"type":"string"}},
+        "requiredClientBindings":{"type":"array","items":{"type":"string"}},
+        "requiredKnowledgeGaps":{"type":"array","items":{"type":"string"}},
+        "downstreamCompilationTarget":{"const":"CANONICAL_WORKDEFINITION"}
+      },
+      "additionalProperties":false
+    },
+    "workUnit": {
+      "type":"object",
+      "required":["workUnitId","parentWorkUnitId","sequence","unitType","name","purpose","sourceRefs","executorReadiness"],
+      "properties": {
+        "workUnitId":{"type":"string","minLength":1},
+        "parentWorkUnitId":{"type":["string","null"]},
+        "sequence":{"type":"integer","minimum":1},
+        "unitType":{"enum":["TASK_ROOT","INFORMATION_RESOLUTION","DECISION_EVALUATION","DECISION_GATE","ACTION_EXECUTION","ACTION_GROUP","ATOMIC_ACTION_CANDIDATE","ATOMIC_ACTION","TEMPORAL_CONTROL","TEMPORAL_GATE","EVIDENCE_AND_STATE","EVIDENCE_CAPTURE"]},
+        "name":{"type":"string","minLength":1},
+        "purpose":{"type":"string"},
+        "sourceRefs":{"type":"array","items":{"type":"string"}},
+        "executorReadiness":{"$ref":"#/$defs/executorReadiness"},
+        "trigger":{"type":"string"},
+        "inputs":{"type":"array","items":{"oneOf":[{"type":"string"},{"type":"object","additionalProperties":true}]}},
+        "entryConditions":{"type":"array","items":{"type":"string"}},
+        "decisionGates":{"type":"array","items":{"oneOf":[{"type":"string"},{"type":"object","additionalProperties":true}]}},
+        "atomicActions":{"type":"array","items":{"oneOf":[{"type":"string"},{"type":"object","additionalProperties":true}]}},
+        "branchTransitions":{"type":"array","items":{"oneOf":[{"type":"string"},{"type":"object","additionalProperties":true}]}},
+        "temporalConstraints":{"type":"array","items":{"oneOf":[{"type":"string"},{"type":"object","additionalProperties":true}]}},
+        "evidenceRequirements":{"type":"array","items":{"oneOf":[{"type":"string"},{"type":"object","additionalProperties":true}]}},
+        "dependencies":{"type":"array","items":{}},
+        "outputState":{"oneOf":[{"type":"string"},{"type":"array","items":{"type":"string"}}]},
+        "fallbackIfBlocked":{"type":"string"}
+      },
+      "additionalProperties":false
+    },
+    "summary": {
+      "type":"object",
+      "required":["workUnitCount","leafCount","leafStatusCounts","knowledgeGapCount","clientBindingRefCount","requiredKnowledgeGaps","requiredClientBindings","executorProof","workDefinitionCompilationStatus"],
+      "properties": {
+        "workUnitCount":{"type":"integer","minimum":1},
+        "leafCount":{"type":"integer","minimum":1},
+        "leafStatusCounts":{"type":"object","properties":{"EXECUTOR_READY":{"type":"integer","minimum":0},"BLOCKED_BY_CLIENT_BINDING":{"type":"integer","minimum":0},"BLOCKED_BY_KNOWLEDGE_GAP":{"type":"integer","minimum":0}},"additionalProperties":false},
+        "knowledgeGapCount":{"type":"integer","minimum":0},
+        "clientBindingRefCount":{"type":"integer","minimum":0},
+        "requiredKnowledgeGaps":{"type":"array","items":{"type":"string"}},
+        "requiredClientBindings":{"type":"array","items":{"type":"string"}},
+        "executorProof":{"type":"string"},
+        "workDefinitionCompilationStatus":{"type":"string"}
+      },
+      "additionalProperties":false
+    }
+  }
+}
