@@ -39,9 +39,10 @@ check(askProjectionCoverage(fcl.tuple).status==='FULL_PRECOMPILED_PUBLIC_SAFE','
 const lcl=buildAskProjectionEvidence({question:'Explain LCL-01',state:{surface:'canvas',moduleId:'ocean-lcl',selectedProcess:'LCL-01'}});
 check(lcl.projection?.trace?.moduleVersion==='0.6','Ocean LCL Canvas Ask resolves exact 0.6 target without 0.5 fallback');
 
-let roadGap=false;try{buildAskProjectionEvidence({question:'Explain LTL-04',state:{surface:'daughter',moduleId:'road-ltl',moduleVersion:'1.5',selectedProcess:'LTL-04'}})}catch(e){roadGap=Number(e.status)===404}
-check(roadGap,'Road LTL 1.5 non-materialized inherited task fails closed instead of reading older raw semantic source');
-check(askProjectionCoverage(resolveAskTuple({moduleId:'road-ltl',selectedProcess:'LTL-03'},'')).status==='REGISTERED_CANONICAL_PROFILE_TASK_SCOPED','Road LTL 1.5 task-scoped P2 materialization limitation is explicit');
+const ltl04=buildAskProjectionEvidence({question:'Explain LTL-04',state:{surface:'daughter',moduleId:'road-ltl',moduleVersion:'1.5',selectedProcess:'LTL-04'}});
+check(ltl04.projectionClass==='PUBLIC_SAFE'&&ltl04.projection?.trace?.moduleVersion==='1.5','Road LTL 1.5 inherited task resolves from effective exact-version materialization');
+check(ltl04.projection?.trace?.effectiveLineage?.semanticSourceVersion==='1.4','Road LTL inherited task preserves explicit frozen 1.4 semantic lineage inside effective 1.5');
+check(askProjectionCoverage(resolveAskTuple({moduleId:'road-ltl',selectedProcess:'LTL-03'},'')).status==='FULL_PRECOMPILED_PUBLIC_SAFE','Road LTL 1.5 reports full precompiled public-safe coverage after P6.0 remediation');
 
 function res(){return{statusCode:200,headers:{},setHeader(k,v){this.headers[k]=v},end(x){this.body=x}}}
 async function call(payload){const r=res();await ask({method:'POST',body:payload,headers:{}},r);return{status:r.statusCode,headers:r.headers,body:JSON.parse(r.body)}}
@@ -53,6 +54,9 @@ check(x.body.citations.some(c=>c.class==='ATLAS_EXECUTION_DEPTH_PROJECTION'),'P5
 check(!x.body.citations.some(c=>c.class==='ATLAS_PROCESS'||c.class==='ATLAS_SOURCE'||c.class==='PROTECTED_WORK_DEFINITION'),'P5 A5 API excludes raw process/source/protected WD evidence classes');
 const serialized=JSON.stringify(x.body);
 for(const token of ['workDecompositionSeed','resolutionWorkflow','sourceClaimIds','sourceClaimPackRef','runtimeMappings','clientApplication','clientEnvironment'])check(!serialized.includes(token),`P5 public Ask response excludes protected token · ${token}`);
+
+x=await call({question:'Explain LTL-04',surfaceState:{surface:'daughter',moduleId:'road-ltl',moduleVersion:'1.5',selectedProcess:'LTL-04'}});
+check(x.status===200&&x.body.trace?.moduleVersion==='1.5'&&x.body.trace?.taskId==='LTL-04','P5 Ask API now resolves inherited Road LTL task at exact 1.5 without fallback');
 
 x=await call({question:'Explain FCL-01',surfaceState:{surface:'canvas',moduleId:'ocean-fcl',selectedProcess:'FCL-01'}});
 check(x.status===200&&x.body.trace?.moduleVersion==='0.6','Canvas Ask resolves Ocean FCL to governed 0.6 target');
