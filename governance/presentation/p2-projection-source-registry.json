@@ -17,6 +17,7 @@
       "operationalTaskIdField": "taskId",
       "firstProofTaskId": "LTL-03",
       "publicProjectionBundlePath": "data/materialized/road-ltl-1.5-public-safe-projections.json.gz.b64",
+      "decompositionSummaryPath": "governance/presentation/P6_1_PUBLIC_DECOMPOSITION_SUMMARY.json",
       "canonicalSourceVault": "drive:Atlas P3O governed frozen release vault",
       "canonicalSourceVaultFileId": "1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI",
       "baseVersion": "1.4",
@@ -62,6 +63,7 @@
     "Adding another Daughter requires only a registry entry when it conforms to a supported canonical profile; renderer/domain-specific projection logic is prohibited.",
     "A precompiled PUBLIC_SAFE projection may materialize a frozen candidate or effective governed version when the exact canonical source is retained in the governed source vault and its SHA-256 is pinned; this does not manufacture missing semantic depth.",
     "A lossless versioned overlay may publish an exact effective-version PUBLIC_SAFE projection by inheriting unchanged tasks from its pinned frozen base and applying only declared overrides; runtime semantic fallback to the base version remains prohibited.",
+    "A protected Work Decomposition may publish only an allowlisted count/status summary through decompositionSummaryPath; work-unit names/actions/gates/source crosswalks/blocker identifiers remain protected.",
     "Operational Knowledge v1 sources must report Information Resolution v2 depth as not populated rather than infer or fabricate it."
   ]
 }
