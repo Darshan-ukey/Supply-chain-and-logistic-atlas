@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
+import zlib from 'node:zlib';
 
 const source=process.argv[2]||process.env.ATLAS_WORK_DECOMPOSITION_SEED_FILE;
 const url=String(process.env.SUPABASE_URL||'').replace(/\/$/,'');
@@ -20,10 +21,12 @@ const rows=items.map(d=>({
   contract_version:d.contractVersion,
   semantic_source_version:d.semanticLineage?.semanticSourceVersion||d.daughterVersion,
   status:d.status,
-  payload:d,
+  payload:null,
+  payload_encoding:'GZIP_BASE64',
+  payload_compressed_base64:zlib.gzipSync(Buffer.from(JSON.stringify(d),'utf8'),{level:9}).toString('base64'),
   content_hash:hash(d),
   updated_at:new Date().toISOString()
 }));
 const r=await fetch(`${url}/rest/v1/atlas_work_decompositions?on_conflict=decomposition_id`,{method:'POST',headers:{apikey:key,Authorization:`Bearer ${key}`,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify(rows)});
 if(!r.ok)throw new Error(`P6.1 seed failed ${r.status}: ${await r.text()}`);
-console.log(`Seeded ${rows.length} protected Work Decompositions. No decomposition-detail JSON was written into the web bundle.`);
+console.log(`Seeded ${rows.length} losslessly compressed protected Work Decompositions. No decomposition-detail JSON was written into the web bundle.`);
