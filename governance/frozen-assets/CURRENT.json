@@ -1,6 +1,6 @@
 {
   "schemaVersion": "atlas-current-assets-pointer-v1",
-  "updatedAt": "2026-09-05T21:41:00+05:30",
+  "updatedAt": "2026-09-06T08:04:00+05:30",
   "integrationLock": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json",
   "productionBaseline": {
     "universe": "universe-7.3",
@@ -10,7 +10,7 @@
     "canvas": "canvas-2.0.0",
     "universalAsk": "universal-ask-2.0.1",
     "atlasWarehouse": "atlas-warehouse-1",
-    "note": "Ocean 0.5 remains only the historical/pre-cutover runtime baseline until final release cutover; it is not the intended go-live version."
+    "note": "Production semantic baselines remain unchanged by P6.0. Ocean 0.5 is historical/pre-cutover only; Ocean 0.6 remains the approved go-live Daughter target. Road LTL 1.5 remains the latest frozen candidate and now has complete effective PUBLIC_SAFE runtime materialization."
   },
   "goLiveTarget": {
     "decisionId": "OCEAN-0.6-PRODUCTION-GO-LIVE-TARGET-V1",
@@ -44,8 +44,8 @@
   "presentationArchitecture": {
     "assetId": "ATLAS-DAUGHTER-EXECUTION-DEPTH-PRESENTATION-ARCHITECTURE-V1",
     "status": "FROZEN",
-    "completedThroughPhase": "P5",
-    "presentationAssetRegister": "governance/presentation/PRESENTATION_ASSET_REGISTER_V1.5.json",
+    "completedThroughPhase": "P6.0",
+    "presentationAssetRegister": "governance/presentation/PRESENTATION_ASSET_REGISTER_V1.6.json",
     "operationalKnowledgePresentationContract": "1.1.0",
     "executionReadinessPresentationContract": "1.1.0",
     "executionDepthFieldClassification": "1.1.0",
@@ -112,16 +112,37 @@
       "oceanFclTarget": "0.6",
       "oceanLclTarget": "0.6",
       "ocean05Fallback": false,
-      "roadLtl15Coverage": "LTL_03_MATERIALIZED_OTHER_INHERITED_TASKS_FAIL_CLOSED_PENDING_BASE_MATERIALIZATION",
+      "roadLtl15Coverage": "FULL_EFFECTIVE_PUBLIC_SAFE_22_OF_22_AFTER_P6_0",
       "semanticMutation": false
     },
-    "nextPhase": "P6_COMPILE_OPERATIONAL_LAYER_ATLAS_V2_UPGRADE"
+    "roadLtl15EffectiveMaterialization": {
+      "phase": "P6.0",
+      "assetId": "P6.0-ROAD-LTL-1.5-EFFECTIVE-MATERIALIZATION",
+      "version": "1.0.0",
+      "status": "COMPLETE",
+      "effectiveTarget": "road-ltl@1.5",
+      "effectiveTaskCoverage": "22/22",
+      "inheritedFromFrozen14": "21/21",
+      "directOverrideTaskIds": ["LTL-03"],
+      "runtimeSemanticFallback": false,
+      "okv2FabricatedForInheritedTasks": false,
+      "sourceCertification": "governance/baselines/P6_0_ROAD_LTL_1_5_SOURCE_MATERIALIZATION_CERTIFICATION.json",
+      "implementationRegister": "governance/presentation/P6_0_ROAD_LTL_1_5_EFFECTIVE_MATERIALIZATION_REGISTER.json",
+      "audit": "governance/baselines/P6_0_ROAD_LTL_1_5_EFFECTIVE_MATERIALIZATION_AUDIT_COMPLETE.md",
+      "ciWorkflow": ".github/workflows/p6-0-road-ltl-effective-materialization.yml",
+      "ciRunId": 34006690452,
+      "ciConclusion": "success",
+      "vercelCertifiedImplementationCommit": "c0aebaaf404e4c3df7cbd3af550fb2bcfacd72f3",
+      "vercelCommitStatus": "success",
+      "semanticMutation": false
+    },
+    "nextPhase": "P6_1_RECURSIVE_WORK_DECOMPOSITION"
   },
   "nextImplementation": [
-    "roadLtl15EffectiveInheritedPublicSafeMaterializationRemediation",
-    "canonicalWorkDecompositionContract",
-    "canonicalWorkDefinitionContract"
+    "canonicalRecursiveWorkDecompositionContractAndCompilation",
+    "canonicalWorkDefinitionContractAndCompilation",
+    "atlasWarehousePopulation"
   ],
   "readHumanSummary": "governance/frozen-assets/LATEST.md",
-  "statusNote": "Presentation architecture is complete through P5. Ask Atlas A5 grounding now uses the same governed projection boundary and exact P4 target registry as Daughter/Canvas. Public A5 Ask is PUBLIC_SAFE; governance-safe Ask is explicit and capability-gated; protected WorkDefinition grounding is not automatically injected and remains blocked in Ask pending canonical P6 compilation. Trace is safe lineage metadata, not a sixth depth. Ocean FCL/LCL Ask targets 0.6 with no 0.5 fallback. P5 discovered that Road LTL 1.5 GitHub materialization is task-scoped to LTL-03 because its referenced frozen v1.4 base is not materialized in the runtime source set; other Road LTL 1.5 tasks therefore fail closed until a separately governed effective-inheritance materialization is completed. P5 CI and Vercel commit status passed. Final Ocean production cutover remains separate and pending interactive deployed smoke. P6 has not started."
+  "statusNote": "Presentation architecture is complete through P6.0. Road LTL 1.5 effective PUBLIC_SAFE runtime materialization now resolves all 22 A5 tasks at exact version 1.5: 21 unchanged tasks inherit losslessly from the hash-pinned frozen 1.4 base and LTL-03 remains the sole direct 1.5 override. No runtime fallback to Road LTL 1.4/1.3 is registered, inherited tasks do not fabricate OKv2 Information Resolution, and protected Work Decomposition/WorkDefinition remain excluded. P6.0 CI passed the complete inherited P5/P4/P3O/P3/P2/public-IP chain and the certified implementation commit has Vercel SUCCESS. Ocean FCL/LCL remain 0.6 approved go-live targets. P6.1 Recursive Work Decomposition has not started."
 }
