@@ -104,8 +104,11 @@ check(base404,'runtime request for unregistered road-ltl@1.4 fails closed; no ba
 try{
   const gov=buildGovernanceOperationalProjection({moduleId:'road-ltl',moduleVersion:'1.5',taskId:'LTL-03'});
   check(gov.projectionClass==='GOVERNANCE_CANONICAL_NO_EXECUTION_IP','existing direct LTL-03 governance projection remains available');
-  const s=JSON.stringify(gov);
-  for(const token of ['workDecompositionSeed','resolutionWorkflow','sourceClaimIds'])check(!s.includes(token),`LTL-03 governance projection still strips execution IP · ${token}`);
+  const canonical=JSON.stringify(gov.canonical||{});
+  for(const token of ['workDecompositionSeed','resolutionWorkflow','sourceClaimIds']){
+    check(!canonical.includes(token),`LTL-03 governance canonical payload strips execution IP · ${token}`);
+    check((gov.executionProtectedOmissions||[]).some(x=>String(x).includes(token)),`LTL-03 governance audit explicitly records protected omission · ${token}`);
+  }
   check(Boolean(gov.canonical?.informationResolutionBaseline?.fieldPerformanceBaseline),'LTL-03 governance projection retains governed diagnostic baseline as before P6.0');
 }catch(err){check(false,`existing LTL-03 governance projection remains available · ${err.message}`);}
 
