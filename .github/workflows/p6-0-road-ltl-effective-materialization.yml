@@ -1,0 +1,46 @@
+name: P6.0 Road LTL 1.5 Effective Materialization
+
+on:
+  push:
+    branches:
+      - atlas-presentation-architecture-v1-p6-0
+    paths:
+      - 'data/materialized/road-ltl-1.5-public-safe-projections.json.gz.b64'
+      - 'data/modules/road-ltl-v1.5.json'
+      - 'data/operational-knowledge/road-ltl-v1.5-operational.json'
+      - 'data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json'
+      - 'governance/baselines/P6_0_ROAD_LTL_1_5_SOURCE_MATERIALIZATION_CERTIFICATION.json'
+      - 'governance/presentation/p2-projection-source-registry.json'
+      - 'lib/projections/execution-depth-projection.js'
+      - 'lib/ask/p5-governed-retrieval.js'
+      - 'lib/api/ask-atlas.js'
+      - 'tests/p6-0-road-ltl-1.5-effective-materialization.mjs'
+      - 'tests/p5-ask-trace-governance.mjs'
+      - '.github/workflows/p6-0-road-ltl-effective-materialization.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Certify P6.0 Road LTL 1.5 effective materialization
+        run: node tests/p6-0-road-ltl-1.5-effective-materialization.mjs
+      - name: Run inherited P5 Ask/Trace/Governance regression
+        run: node tests/p5-ask-trace-governance.mjs
+      - name: Run inherited P4 Canvas integration regression
+        run: node tests/p4-canvas-daughter-integration.mjs
+      - name: Run inherited P3O Ocean 0.6 certification
+        run: node tests/p3o-ocean-0.6-certification.mjs
+      - name: Run inherited P3 Universal Daughter Renderer regression
+        run: node tests/p3-universal-daughter-renderer.mjs
+      - name: Run inherited P2 projection-boundary regression
+        run: node tests/p2-projection-boundary.mjs
+      - name: Run inherited public execution-IP boundary regression
+        run: node tests/v2-public-ip-boundary.mjs
