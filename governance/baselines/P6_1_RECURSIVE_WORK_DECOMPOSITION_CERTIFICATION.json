@@ -1,10 +1,14 @@
 {
   "schemaVersion":"atlas-p6-1-recursive-work-decomposition-certification-v1",
   "phase":"P6.1",
-  "status":"VALIDATED_REFERENCE_COMPILE_PENDING_BACKEND_AND_CI_FREEZE",
-  "moduleId":"road-ltl","moduleVersion":"1.5","contractVersion":"1.0.0","classification":"GOVERNANCE_CERTIFICATION_SAFE",
+  "status":"COMPLETE_PASS",
+  "moduleId":"road-ltl",
+  "moduleVersion":"1.5",
+  "contractVersion":"1.0.0",
+  "classification":"GOVERNANCE_CERTIFICATION_SAFE",
+  "certifiedImplementationCommit":"ba9d47f07b59ecf79ff6cde9145c0185cc18d39d",
   "sourceLineage":{"semanticBaseVersion":"1.4","effectiveModuleVersion":"1.5","baseModuleSha256":"c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4","baseOperationalKnowledgeSha256":"6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e","v15ModuleOverlayGitBlobSha":"b69883d5369be8aad15bb9325f910610da875771","v15OperationalOverlayGitBlobSha":"91408e34382a26bd96f1d6224b252dfb9f8b8d53"},
-  "protectedBundle":{"classification":"EXECUTION_PROTECTED","committedToGitHub":false,"bundleSha256":"6a8ff9d11e8ee93da668452e9a083eef7f2a1ac07ac7f5815d6baf18a000cf8a","taskCount":22,"workUnitCount":603,"leafCount":444,"executorReadyLeafCount":185,"blockedByClientBindingLeafCount":163,"blockedByKnowledgeGapLeafCount":96,"independentExecutorProofStatus":"NOT_INDEPENDENTLY_PROVEN","workDefinitionCompilationStatus":"NOT_STARTED"},
+  "protectedBundle":{"classification":"EXECUTION_PROTECTED","committedToGitHub":false,"compileBundleSha256":"6a8ff9d11e8ee93da668452e9a083eef7f2a1ac07ac7f5815d6baf18a000cf8a","protectedStoreContentHash":"2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab","taskCount":22,"workUnitCount":603,"leafCount":444,"executorReadyLeafCount":185,"blockedByClientBindingLeafCount":163,"blockedByKnowledgeGapLeafCount":96,"independentExecutorProofStatus":"NOT_INDEPENDENTLY_PROVEN","workDefinitionCompilationStatus":"NOT_STARTED"},
   "perTask":[
     {"taskId":"LTL-01","contentHashSha256":"b5a17d0bba2f1443b7f4ec686f33433fb731dfc7e5bee70cb8d03b8d24bc1469","workUnitCount":23,"leafCount":16,"executorReadyLeafCount":7,"blockedByClientBindingLeafCount":9,"blockedByKnowledgeGapLeafCount":0,"semanticSourceVersion":"1.4","inheritance":"LOSSLESS_UNCHANGED_TASK"},
     {"taskId":"LTL-02","contentHashSha256":"24a66f9af88e6e0de815d6ff7261c677b547085b70dafcfbabb22a4f91b12cb0","workUnitCount":25,"leafCount":17,"executorReadyLeafCount":5,"blockedByClientBindingLeafCount":7,"blockedByKnowledgeGapLeafCount":5,"semanticSourceVersion":"1.4","inheritance":"LOSSLESS_UNCHANGED_TASK"},
@@ -29,7 +33,10 @@
     {"taskId":"LTL-21","contentHashSha256":"fac7ce02a05a982d574baff7dd2ede811f0cf1ec87f886ad7dfd84069740a47a","workUnitCount":27,"leafCount":19,"executorReadyLeafCount":8,"blockedByClientBindingLeafCount":5,"blockedByKnowledgeGapLeafCount":6,"semanticSourceVersion":"1.4","inheritance":"LOSSLESS_UNCHANGED_TASK"},
     {"taskId":"LTL-22","contentHashSha256":"5c43d1b7e6e7ee6407d87c4b0187d06c8186d92e5f517ee981f79ee181eb9568","workUnitCount":27,"leafCount":20,"executorReadyLeafCount":9,"blockedByClientBindingLeafCount":5,"blockedByKnowledgeGapLeafCount":6,"semanticSourceVersion":"1.4","inheritance":"LOSSLESS_UNCHANGED_TASK"}
   ],
-  "invariants":{"orphanParentCount":0,"cycleCount":0,"leafNeedsDecompositionCount":0,"clientSpecificValuesEmbedded":false,"runtimeMappingsEmbedded":false,"exactVersionRuntimeFallbackPermitted":false,"daughterSemanticMutation":false,"operationalLayerAddition":true},
-  "backend":{"store":"SUPABASE_PROTECTED_EXECUTION_STORE","rowCountExpected":22,"rlsRequired":true,"anonAuthenticatedDirectAccessPermitted":false},
-  "ci":{"status":"PENDING"}
+  "invariants":{"orphanParentCount":0,"cycleCount":0,"leafNeedsDecompositionCount":0,"clientSpecificValuesEmbedded":false,"runtimeMappingsEmbedded":false,"exactVersionRuntimeFallbackPermitted":false,"daughterSemanticMutation":false,"operationalLayerAddition":true,"fullAggregateReturnedByProtectedApi":false,"publicDetailIncluded":false},
+  "backend":{"store":"SUPABASE_PROTECTED_EXECUTION_STORE","physicalRowCountExpected":1,"aggregateSourceTaskId":"__ALL_22__","logicalTaskCountExpected":22,"payloadEncoding":"BROTLI_BASE64","rlsRequired":true,"anonAuthenticatedDirectAccessPermitted":false,"authorizedExactTaskResolution":true},
+  "ci":{"status":"PASS","workflow":".github/workflows/p6-1-recursive-work-decomposition.yml","runId":34092195930,"conclusion":"success","inheritedRegressionChain":["P6.0","P5","P4","P3O","P3","P2","PUBLIC_EXECUTION_IP_BOUNDARY"]},
+  "deployment":{"provider":"VERCEL","certifiedImplementationCommit":"ba9d47f07b59ecf79ff6cde9145c0185cc18d39d","status":"success"},
+  "exitGate":"PASS",
+  "nextPhase":"P6_2_CANONICAL_WORKDEFINITION_COMPILATION"
 }
