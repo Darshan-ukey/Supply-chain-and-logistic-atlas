@@ -8,7 +8,7 @@ on:
       - 'lib/api/work-decomposition.js'
       - 'scripts/seed-p6-1-work-decompositions.mjs'
       - 'tests/p6-1-protected-work-decomposition-api.mjs'
-      - 'tests/p6-0-road-ltl-1.5-effective-materialization.mjs'
+      - 'tests/p6-1-p6-0-inherited-regression.mjs'
       - 'tests/p5-ask-trace-governance.mjs'
       - 'tests/p4-canvas-daughter-integration.mjs'
       - 'tests/p3o-ocean-0.6-certification.mjs'
@@ -31,8 +31,8 @@ jobs:
           node-version: 24
       - name: Certify P6.1 protected exact-task resolver
         run: node tests/p6-1-protected-work-decomposition-api.mjs
-      - name: Run inherited P6.0 Road LTL 1.5 materialization regression
-        run: node tests/p6-0-road-ltl-1.5-effective-materialization.mjs
+      - name: Run inherited P6.0 Road LTL 1.5 semantic/materialization regression
+        run: node tests/p6-1-p6-0-inherited-regression.mjs
       - name: Run inherited P5 Ask/Trace/Governance regression
         run: node tests/p5-ask-trace-governance.mjs
       - name: Run inherited P4 Canvas integration regression
