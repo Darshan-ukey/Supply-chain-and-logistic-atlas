@@ -1,73 +1,110 @@
 # Atlas — Latest Frozen Assets (READ THIS FIRST)
 
-Updated: **2026-09-02**  
+Updated: **2026-09-07**  
 Canonical frozen registry: `governance/frozen-assets/ASSET_REGISTER.json`  
 Machine latest pointer: `governance/frozen-assets/CURRENT.json`  
+Presentation asset register: `governance/presentation/PRESENTATION_ASSET_REGISTER_V1.7.json`  
 Integration lock: `governance/frozen-assets/history/frozen-stack-lock-v2.2.json`
 
 ## Production baseline — unchanged
 - Universe **7.3**
 - Road LTL **1.3** — `FROZEN_PRODUCTION_BASELINE`
-- Ocean FCL **0.5** — `FROZEN_PRODUCTION_BASELINE`
-- Ocean LCL **0.5** — `FROZEN_PRODUCTION_BASELINE`
+- Ocean FCL **0.5** — historical/pre-cutover production baseline
+- Ocean LCL **0.5** — historical/pre-cutover production baseline
 - Canvas **2.0.0**
 - Universal Ask **2.0.1**
 - Atlas Warehouse **1**
 
-## Latest frozen execution-reference candidates
+P6.1 does not promote or mutate these production semantic baselines.
+
+## Approved/current Daughter targets
 - Road LTL **1.5** — `FROZEN_EXECUTION_REFERENCE_CANDIDATE`
-  - Lossless successor of frozen Road LTL 1.4.
-  - Only `LTL-03 — Create and validate shipment, consignment and transport-document identity` is materially enriched.
-  - All unchanged Road LTL 1.4 content is inherited unchanged.
-  - SHA-256: `22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f`
-- Ocean FCL **0.6** — `FROZEN_EXECUTION_REFERENCE_CANDIDATE`
-- Ocean LCL **0.6** — `FROZEN_EXECUTION_REFERENCE_CANDIDATE`
+  - exact effective PUBLIC_SAFE runtime coverage: **22/22**
+  - 21 unchanged tasks inherit losslessly from pinned frozen Road LTL 1.4
+  - `LTL-03` remains the sole direct governed 1.5 semantic override
+  - no runtime fallback to Road LTL 1.4 or 1.3
+- Ocean FCL **0.6** — approved production go-live Daughter target; immutable
+- Ocean LCL **0.6** — approved production go-live Daughter target; immutable
 
-These are immutable reference candidates. **They do not replace production baselines** until separate promotion gates pass.
+Ocean 0.5 is not an execution-depth fallback for 0.6.
 
-## Newly frozen reference assets
+## Presentation / execution-depth architecture status
+
+Completed through **P6.1**:
+
+- P0 — architecture/register baseline
+- P1 — presentation contracts and authorization matrix
+- P1R — Information Resolution-safe presentation refinement
+- P2 — authorization-aware backend projection boundary
+- P3 — Universal Daughter Renderer V2
+- P3O — Ocean FCL/LCL 0.6 materialization/certification
+- P4 — Canvas V2.0.1 → Daughter integration bridge
+- P5 — Ask Atlas / Trace / Governance integration
+- P6.0 — Road LTL 1.5 effective materialization
+- P6.1 — Recursive Work Decomposition
+
+## P6.1 — Recursive Work Decomposition — COMPLETE PASS
+
+Canonical Work Decomposition Contract V1 is frozen and Road LTL 1.5 is recursively decomposed across all 22 A5 tasks.
+
+Compiled protected graph:
+
+- A5 tasks: **22**
+- work units: **603**
+- terminal leaves: **444**
+- `EXECUTOR_READY`: **185**
+- `BLOCKED_BY_CLIENT_BINDING`: **163**
+- `BLOCKED_BY_KNOWLEDGE_GAP`: **96**
+- cycles: **0**
+- orphan parents: **0**
+- invalid terminal `NEEDS_DECOMPOSITION`: **0**
+
+Full Work Decomposition remains `EXECUTION_PROTECTED`.
+
+The protected Supabase store uses one server-only `BROTLI_BASE64` aggregate row containing 22 logical task decompositions. `/api/work-decomposition` requires `atlas.work_decomposition.full.read`, resolves the exact module/version/task tuple, decompresses server-side, and returns only the requested task decomposition. The aggregate 22-task payload is never returned.
+
+PUBLIC_SAFE surfaces expose only approved non-reconstructive decomposition status/count summaries with `detailIncluded=false`.
+
+## P6.1 certification
+
+- Dedicated GitHub Actions run: **34092195930 — SUCCESS**
+- Certified implementation commit: `ba9d47f07b59ecf79ff6cde9145c0185cc18d39d`
+- Vercel commit status: **SUCCESS**
+- inherited regression chain: **P6.0 → P5 → P4 → P3O → P3 → P2 → public execution-IP boundary — PASS**
+- Daughter semantic mutation: **none**
+- runtime semantic fallback: **none**
+- independent executor proof: **not yet claimed**
+- Canonical WorkDefinition compilation: **not started**
+
+Authoritative P6.1 records:
+
+- `governance/presentation/P6_1_STATUS.json`
+- `governance/presentation/P6_1_RECURSIVE_WORK_DECOMPOSITION_REGISTER.json`
+- `governance/baselines/P6_1_RECURSIVE_WORK_DECOMPOSITION_CERTIFICATION.json`
+- `governance/baselines/P6_1_RECURSIVE_WORK_DECOMPOSITION_AUDIT_COMPLETE.md`
+
+## Frozen operational reference assets
 - Road LTL 1.5 Operational Knowledge — `FROZEN_OPERATIONAL_REFERENCE`
-  - `data/operational-knowledge/road-ltl-v1.5-operational.json`
-  - SHA-256: `6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9`
-- Operational Knowledge Contract **v2** — `FROZEN_SCHEMA_CANDIDATE`
-  - Information Resolution is embedded as a first-class component of Operational Knowledge.
-  - `schemas/operational-knowledge-contract-v2.json`
-  - SHA-256: `d58d33c38adc0ac3e63400b66680115699c0cfa5c4c831e44b22c19eedfa4a18`
-- Information Resolution Contract **v1** — `FROZEN_SCHEMA_REFERENCE`
-  - `schemas/information-resolution-contract-v1.json`
-  - SHA-256: `77224aaaef03689f1d918e41c6c2a4bd6e126dd5872782f09894c818a76dda73`
-- **BOL Information Resolution Baseline v0.1 — Road LTL / Malkom** — `FROZEN_REFERENCE_BASELINE`
-  - `data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md`
-  - SHA-256: `8d1593ca7133c6c0ebe72099e01e18feccd5bb906851a6affa1a36ccbddb8400`
+- Operational Knowledge Contract **v2**
+- Information Resolution Contract **v1**
+- BOL Information Resolution Baseline **v0.1**
+- Canonical Work Decomposition Contract **v1**
 
-Supporting BOL evidence snapshot locked by stack lock v2.2:
-- `data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json` — `b130da47c06a849c53980201027b6eaa05e440afd349e949c4bc8f3f4ac25480`
-- `data/source-claims/road-ltl-v1.5-bol-resolution-claims.json` — `4a799a8cfa9252b8ebf0f191aa054d5c4942d8f9e35ffe670d1cfdefba6ae69c`
+Information Resolution remains nested inside Operational Knowledge; it is not a separate semantic layer.
 
-## Freeze validation
-GitHub Actions workflow **Frozen Asset Registry** passed the dedicated Road LTL v1.5 freeze validator. Validation covered base-hash integrity, lossless inheritance, LTL-03-only scope, task identity preservation, source-claim references, OKv2/Information Resolution linkage, canonical BOL object depth, jurisdiction boundaries, 76-field baseline preservation, metric-anomaly disclosure, and preservation of the production baseline.
+## Next controlled phase
 
-Freeze type: **immutable reference-candidate freeze, not production promotion**.
+**P6.2 — Canonical WorkDefinition Compilation**
 
-## Universe decision
-**Supply Chain Universe remains 7.3.** No Universe 7.4 change is required by this BOL/Operational Knowledge enrichment under current evidence.
+The next phase may compile WorkDefinition only from governed executable Work Decomposition nodes. It must remain executor-neutral, preserve explicit blockers, keep client-specific values in Client Binding rather than the canonical definition, and must not claim independent executor proof until separately demonstrated.
 
-## Frozen production method
-1. Daughter Production Standard V2
-2. Inside-Out / Outside-In Operational Research Standard V1
-3. Executability & Recursive Decomposition Standard V1
-4. Evidence / Epistemic Classification Vocabulary V1
-5. Knowledge-to-Execution Architecture V1
-6. Client Binding Resolution Principle V1
-7. Operational Knowledge Contract V2
-8. Information Resolution Contract V1
-9. Client Binding Requirement Contract V1
+## Remaining promotion work
 
-## Remaining production-promotion work
-1. Resolve the source-reported Malkom Accuracy metric numerator/denominator/counting method for the 11 values above 100%.
-2. Obtain governing Malkom/client schemas for unresolved client/runtime labels.
-3. Implement Recursive Work Decomposition and WorkDefinition VNext compilation.
-4. Complete downstream runtime regression and measured **Validated STP Yield** proof before production promotion.
+1. Compile Canonical WorkDefinition from P6.1 executable nodes.
+2. Populate the governed Atlas Warehouse with the compiled operational layer.
+3. Resolve required client-binding dependencies without mutating canonical reference definitions.
+4. Build runtime projections/adapters only after canonical compilation.
+5. Complete independent executor proof and downstream measured validation before execution-reference candidates are promoted as executor-proven production assets.
 
 ## How to use this registry
-Never determine the latest asset from filenames in chat history. Start with this file or `CURRENT.json`. Historical frozen versions remain immutable under `governance/frozen-assets/history/`.
+Never determine the current Atlas state from filenames or old chat history. Start with this file and `CURRENT.json`. Historical frozen versions remain immutable under `governance/frozen-assets/history/`.
