@@ -1,191 +1,159 @@
-# Next Production Release — Execution Intelligence + Adapter Ready Critical Path
+# Atlas V2 — Governed Execution Roadmap and Production Critical Path
 
-Status: ACTIVE BACKLOG / RELEASE GATE  
-Baseline policy date: 2 September 2026
+Status: ACTIVE BACKLOG / MACHINE-ACTIONABLE ROADMAP  
+Updated: 8 September 2026  
+Canonical technical backlog: this GitHub file + `ATLAS_V2_AGENT_EXECUTION_QUEUE.json` on branch `atlas-governance-registry-v2.1`.
 
-## Production policy
-The production release last deployed on 23 August 2026 remains the only live production version. All subsequent frozen assets are governed development/reference assets until the complete execution-intelligence release gate below is satisfied.
+## Operating rule
 
-The next production version MUST NOT be promoted merely because Universe, daughter pages, Operational Knowledge, Canvas or other individual assets are richer. The next production release must demonstrate lossless governed knowledge-to-execution transformation and adapter readiness.
+This roadmap is the standing implementation sequence for Atlas V2. An implementation agent must read the machine queue before beginning or selecting work. Chat instructions may refine an already-authorized phase, but must not silently replace this roadmap.
 
-## Required production chain
-Authoritative Sources
-→ Supply Chain Universe
-→ Verified Daughter A5
-→ Operational Knowledge v2
-→ Recursive Work Decomposition
-→ Canonical WorkDefinition
-→ Atlas Warehouse
-→ Universal Adapter Contract
-→ Runtime-specific Projection / Domain Warehouse
-→ Compiler / Verifier
-→ Client Binding
-→ Runtime Connector
-→ Executable Intelligence
-→ Execution Evidence / Feedback
-→ Governed Learning Loop
+Only a phase whose queue status is `AUTHORIZED` may be implemented. A completed implementation stops at `AWAITING_INDEPENDENT_QA`; the agent must not self-authorize the next phase. The owner / independent QA gate advances the queue.
 
-## Critical-path backlog
+Frozen architecture and governed source conflicts always outrank implementation convenience.
 
-### CP-01 — Canonical Work Decomposition Contract v1
-Status: IMPLEMENTATION_PENDING
+## Current governed baseline
 
-Deliverables:
-- Implement the frozen recursive-decomposition architecture as a machine-readable canonical contract.
-- Recursively decompose A5 work until every leaf satisfies the executability criterion; do not stop at a fixed hierarchy depth.
-- Preserve canonical task/object/source/provenance lineage at every decomposition node.
-- Define executor-neutral inputs, outputs, decisions, controls, exceptions, evidence and state transitions.
-- Define explicit stop/executability tests.
+- Supply Chain Universe 7.3 — governed frozen baseline/reference.
+- Road LTL 1.5 — current frozen execution-reference candidate.
+- Road LTL 1.5 Operational Knowledge / OKv2 — frozen operational reference.
+- Ocean FCL 0.6 — governed go-live candidate; 30/30 A5 PUBLIC_SAFE materialized through the universal renderer.
+- Ocean LCL 0.6 — governed go-live candidate; 30/30 A5 PUBLIC_SAFE materialized through the universal renderer.
+- Canvas 2.0.0 / Canvas V2.0.1 integration baseline — frozen visual shell; no redesign authorized.
+- Universal Daughter Renderer V2 — frozen implementation baseline.
+- P6.1 Road LTL 1.5 Recursive Work Decomposition — COMPLETE/PASS: 22 A5 tasks, 603 work units, 444 terminal leaves.
+- P6.1 decomposition generation implementation is not retained in GitHub; certified output is governed/hash-anchored. Reproducibility is tracked as explicit debt below.
 
-Acceptance gate:
-- LTL-03 can be recursively decomposed without semantic loss from Road LTL v1.5 + Operational Knowledge v2.
-- Every leaf is unambiguous enough to be assigned to an executor class or explicitly marked unresolved.
+## Atlas V2 implementation sequence
 
-### CP-02 — Canonical WorkDefinition VNext
-Status: IMPLEMENTATION_COMPILATION_PENDING
+### P6.2 — Canonical WorkDefinition Compilation — Road LTL 1.5
+Status: AUTHORIZED / IN IMPLEMENTATION
 
-Deliverables:
-- Implement WorkDefinition at executable nodes rather than one monolithic definition per A5.
-- Define input/output contracts, action/decision semantics, validation, state, temporal constraints, authority, exception paths, evidence and completion criteria.
-- Preserve sourceRefs, operational-knowledge lineage and client-binding slots.
-- Make the contract executor-neutral and compilable to human, workflow, RPA, agent, API/system, document-AI and Malkom runtimes where applicable.
+Objective:
+Compile executor-neutral Canonical WorkDefinitions from the certified P6.1 Road LTL 1.5 decomposition.
 
-Acceptance gate:
-- Every executable LTL-03 decomposition leaf can compile to a valid WorkDefinition or produces an explicit governed gap.
+Required boundaries:
+- target exact `road-ltl@1.5`;
+- preserve per-task 1.4 inheritance and direct 1.5 LTL-03 lineage;
+- no 1.4 runtime fallback;
+- persist canonical definitions in protected Atlas backend storage;
+- no Malkom/runtime-specific structures inside canonical WorkDefinition;
+- blocked leaves remain blocked; do not fabricate executability;
+- no Canvas, Daughter, Ocean, Client Binding or runtime redesign.
 
-### CP-03 — Atlas Warehouse materialization
-Status: REQUIRED FOR NEXT PRODUCTION
+Exit gate:
+- deterministic compiler + verifier;
+- protected persistence/API and non-reconstructive PUBLIC_SAFE status;
+- full inherited regression chain passes;
+- implementation report + commit/evidence returned;
+- phase stops at independent QA.
+
+### P6.3 — Identity, Authorization & Public/Protected Certification
+Status: BLOCKED_UNTIL_P6_2_QA
+
+Objective:
+Make the existing Supabase-auth/capability architecture operational and certify the real public/admin boundary.
 
 Deliverables:
-- Materialize the canonical knowledge/execution warehouse schema in the selected backend.
-- Persist Universe, daughter, Operational Knowledge, Information Resolution, Work Decomposition, WorkDefinition, provenance, client-binding requirements and version lineage.
-- Preserve immutable frozen versions plus mutable governed pointers.
-- Support trace from runtime execution back to authoritative basis.
+- provision at least one real Atlas admin identity through Supabase Auth;
+- configure governed admin/capability assignment (`ATLAS_ADMIN_EMAILS` and/or app metadata / capability records);
+- verify login, HttpOnly session, refresh/session expiry and logout;
+- certify anonymous PUBLIC_SAFE access;
+- certify authenticated protected access for Operational Knowledge, provenance, Work Decomposition and WorkDefinition according to capability;
+- certify 401/403/fail-closed behavior;
+- verify protected execution knowledge cannot leak through Canvas, Daughter, Ask Atlas or direct API discovery.
 
-Acceptance gate:
-- LTL-03 knowledge-to-execution graph is queryable end-to-end from warehouse records without relying on static files as the runtime source of truth.
+Exit gate:
+- end-to-end user login works in deployed environment;
+- public user cannot retrieve protected payloads even with direct endpoint knowledge;
+- authorized admin can retrieve only capability-approved protected payloads;
+- security regression evidence captured.
 
-### CP-04 — Universal Adapter Contract
-Status: REQUIRED FOR NEXT PRODUCTION
+### P6.4 — Generic Recursive Decomposition Compiler + Ocean 0.6 Execution Depth
+Status: BLOCKED_UNTIL_P6_3_QA
 
-Deliverables:
-- Define the stable interface between canonical Atlas WorkDefinitions and runtime-specific projections.
-- Specify capability negotiation, supported executor types, input/output mapping, state/outcome mapping, exception semantics, evidence callbacks, version compatibility and validation.
-- Prevent runtime-specific semantics from leaking upstream into canonical Atlas knowledge.
-
-Acceptance gate:
-- A runtime adapter can consume the same canonical WorkDefinition without changing the canonical definition.
-
-### CP-05 — Malkom Adapter + Domain Warehouse Projection
-Status: REQUIRED REFERENCE IMPLEMENTATION
+Objective:
+Close P6.1 reproducibility debt and prove Atlas can take new governed modules through the same generic execution-depth pipeline.
 
 Deliverables:
-- Project the required Atlas subset into the Malkom Domain Warehouse.
-- Map WorkDefinitions to Malkom queue/sub-queue, worktype, outcome, outcome route/status, next-step and lifecycle structures.
-- Map BOL Information Resolution into Malkom document-AI/IDP work units and exception/HITL paths.
-- Keep client-specific bindings downstream of canonical resolution.
+- recover or implement a deterministic, module-neutral Recursive Work Decomposition compiler conforming to the frozen decomposition contract and executability standard;
+- prove it reproduces/certifies Road LTL 1.5 semantics without changing the governed P6.1 baseline;
+- run Ocean FCL 0.6 (30 A5 tasks) through recursive decomposition;
+- run Ocean LCL 0.6 (30 A5 tasks) through recursive decomposition;
+- preserve source/module/Operational Knowledge lineage, blockers, exceptions, controls and executability state;
+- compile Ocean Canonical WorkDefinitions through the already-certified generic P6.2 WorkDefinition compiler;
+- do not manually author Ocean WorkDefinitions and do not introduce Ocean-specific logic into generic compilers/renderers.
 
-Acceptance gate:
-- LTL-03 / BOL can generate valid Malkom execution structures from canonical Atlas assets without manual semantic reconstruction.
+Exit gate:
+- Road LTL, Ocean FCL and Ocean LCL all traverse governed Operational Knowledge → Work Decomposition → Canonical WorkDefinition through reusable contracts;
+- zero hidden fallback to older Ocean/LTL versions;
+- structural/verifier gates pass for each module;
+- independent QA approves execution-depth parity.
 
-### CP-06 — Compiler / Verifier
-Status: REQUIRED FOR NEXT PRODUCTION
+### P6.5 — Atlas V2 Integration & Production Certification
+Status: BLOCKED_UNTIL_P6_4_QA
 
-Deliverables:
-- Compile canonical WorkDefinitions through the adapter into runtime artifacts.
-- Validate schema compatibility, required mappings, state transitions, outcomes, evidence requirements, unresolved bindings and version compatibility.
-- Fail closed on unresolved critical semantics.
+Objective:
+Certify the integrated Atlas V2 product and production deployment.
 
-Acceptance gate:
-- Invalid or incomplete runtime projections are rejected with traceable errors; valid LTL-03 projection compiles deterministically.
-
-### CP-07 — Client Binding + Runtime Connector
-Status: REQUIRED FOR NEXT PRODUCTION
-
-Deliverables:
-- Bind canonical fields/objects to client-specific layouts, target systems, field names, policies and validation overrides.
-- Resolve the currently explicit SOURCE_CONTEXT_PENDING / CLIENT_BINDING_REQUIRED BOL semantics from governing Malkom/client schemas.
-- Implement runtime connector/materialization path.
-
-Acceptance gate:
-- Client-specific configuration changes do not mutate canonical Atlas knowledge.
-- Bound LTL-03 can execute through the Malkom connector in a controlled environment.
-
-### CP-08 — End-to-end LTL execution proof
-Status: RELEASE BLOCKER
-
-Reference proof: LTL-03 / BOL Information Resolution.
-
-Required proof:
-1. Start from frozen Road LTL v1.5 + Operational Knowledge v2.
-2. Recursively decompose LTL-03.
-3. Compile executable-node WorkDefinitions.
-4. Persist/read through Atlas Warehouse.
-5. Project through Universal Adapter.
-6. Materialize Malkom Domain Warehouse/queue structures.
-7. Apply client binding.
-8. Execute or simulate the runtime path.
-9. Capture evidence/outcomes/exceptions.
-10. Trace runtime result back to WorkDefinition → Work Decomposition → Operational Knowledge → daughter A5 → authoritative source claim.
-
-Acceptance gate:
-- No semantic reconstruction outside governed Atlas contracts.
-- Full bidirectional trace works.
-
-### CP-09 — Runtime quality and measurement proof
-Status: RELEASE BLOCKER
+Integrated product scope:
+- Page 0 / Atlas navigation;
+- Canvas V2 frozen visual architecture;
+- Road LTL 1.5 Daughter;
+- Ocean FCL 0.6 Daughter;
+- Ocean LCL 0.6 Daughter;
+- Overview → Operational Knowledge → Execution Readiness → protected Work Decomposition → protected WorkDefinition;
+- Ask Atlas / Trace / Governance boundaries;
+- anonymous/public-safe and authenticated/protected behavior.
 
 Deliverables:
-- Resolve the Malkom source-reported Accuracy metric definition, including values currently above 100%.
-- Implement governed metrics: Extraction Recall, Value Accuracy, Object Association Accuracy, Semantic Classification Accuracy, Normalization Accuracy, Validation Pass Rate, Critical False-Negative Rate, HITL Rate and Validated STP Yield.
-- Compare pre/post execution-intelligence performance on a controlled sample.
+- integrate execution-depth status and protected retrieval without Canvas redesign;
+- certify exact module/version/task routing and fail-closed behavior;
+- run complete regression across P2–P6.4 plus public execution-IP boundaries;
+- connect/verify correct Vercel project/account;
+- verify deployed branch + commit parity against GitHub;
+- production smoke tests for Page 0, LTL, Ocean FCL/LCL, auth, public/admin surfaces and protected APIs;
+- update governed release evidence, frozen pointer/register and durable Drive release package where applicable.
 
-Acceptance gate:
-- Metric definitions are mathematically valid and versioned.
-- Post-change Validated STP Yield and critical-error performance are measurable and defensible.
+Exit gate:
+- current live deployment health independently verified;
+- correct certified commit is served;
+- no protected-data leakage;
+- LTL/FCL/LCL all render through universal architecture;
+- independent QA marks Atlas V2 production release PASS.
 
-### CP-10 — Regression, governance, security and public/protected presentation
-Status: RELEASE BLOCKER
+### Atlas V2.0 — GO LIVE
+Status: BLOCKED_UNTIL_P6_5_QA
 
-Deliverables:
-- Regression-test unchanged Road LTL tasks and downstream LTL-03 consumers.
-- Verify frozen-asset immutability and version lineage.
-- Verify role/capability access and protected execution IP.
-- Ensure public/sanitized views expose Operational Knowledge/Execution Readiness at the approved level while detailed Work Decomposition, WorkDefinition, machine-readable runtime contracts and protected sources remain controlled.
-- Verify Trace/Audit across changes and runtime execution.
+Promotion rule:
+No implementation agent may declare production go-live. Promotion requires explicit independent QA / owner authorization after P6.5.
 
-Acceptance gate:
-- No regression against frozen baselines.
-- Protected/private execution intelligence cannot leak through public views.
+## Explicit technical/governance debt
 
-### CP-11 — Next production release gate
-Status: BLOCKED UNTIL CP-01 THROUGH CP-10 PASS
+### DEBT-01 — P6.1 Decomposition Reproducibility
+Status: MUST_BE_RESOLVED_IN_P6_4
 
-Production-ready definition:
-> Atlas is production-ready only when governed domain knowledge can be transformed losslessly into executor-ready WorkDefinitions and projected through an adapter into at least one real execution runtime, while preserving provenance, client-binding boundaries, validation, traceability and governed runtime feedback.
+The certified Road LTL 1.5 P6.1 decomposition exists and is hash-anchored, but the original generator implementation that produced the 603-node graph is not retained in GitHub. P6.2 may consume the certified output; Atlas must not claim scalable module-neutral decomposition capability until P6.4 restores deterministic reproducibility and proves it on Ocean 0.6.
 
-Minimum runtime proof for first release: Malkom using Road LTL LTL-03 / BOL Information Resolution.
+## Deferred post-V2 execution-fabric backlog
 
-## Explicit non-gates
-The following are not sufficient by themselves to promote the next production release:
-- richer Universe/daughter HTML pages;
-- Operational Knowledge v2 freeze;
-- Work Decomposition architecture without implementation;
-- WorkDefinition schema without compilation;
-- Canvas 2.0 completion;
-- Atlas Warehouse schema without materialization;
-- adapter architecture without a working runtime projection;
-- Malkom UI/demo without canonical Atlas lineage;
-- isolated extraction accuracy improvements without governed information resolution and end-to-end proof.
+The following remain valid but are not blockers for the Canvas + LTL + Ocean Atlas V2 product release unless explicitly promoted into the V2 gate:
+- Universal Adapter Contract;
+- Malkom Adapter / Domain Warehouse runtime projection;
+- runtime compiler/verifier beyond canonical WorkDefinition;
+- Client Binding and runtime connectors;
+- controlled Malkom end-to-end execution proof;
+- governed runtime measurement / feedback loop.
 
-## Current starting assets
-- Supply Chain Universe 7.3 — frozen baseline/reference as governed.
-- Road LTL 1.5 — FROZEN_EXECUTION_REFERENCE_CANDIDATE.
-- Road LTL 1.5 Operational Knowledge — FROZEN_OPERATIONAL_REFERENCE.
-- Operational Knowledge Contract v2 — FROZEN_SCHEMA_CANDIDATE.
-- Information Resolution Contract v1 — FROZEN_SCHEMA_REFERENCE.
-- BOL Information Resolution Baseline v0.1 — FROZEN_REFERENCE_BASELINE.
-- Frozen Stack Lock v2.2.
+These are downstream execution-fabric phases. They must preserve the frozen boundary:
+`Canonical WorkDefinition → Client Binding → Runtime Projection / Adapter → Execution`.
 
-## Release principle
-No intermediate asset freeze changes the live-production declaration. The 23 August 2026 production release remains live until CP-01 through CP-10 pass and CP-11 is explicitly approved/promoted through governance.
+## Source-of-truth hierarchy for roadmap execution
+
+1. Frozen architecture/governance contracts — architectural authority.
+2. `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json` — machine-readable current phase authorization.
+3. This roadmap — human-readable phase intent, scope and acceptance gates.
+4. GitHub implementation/evidence — actual code and technical lineage.
+5. Drive — durable frozen release packages, evidence and human-consumable vault copies; not a competing mutable backlog.
+
+If any of these conflict, stop and report the conflict rather than silently selecting the easiest interpretation.
