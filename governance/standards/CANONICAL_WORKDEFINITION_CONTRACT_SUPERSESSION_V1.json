@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "atlas-governance-supersession-record-v1",
+  "recordId": "CANONICAL-WORKDEFINITION-CONTRACT-SUPERSESSION-V1",
+  "phase": "P6.2",
+  "classification": "GOVERNANCE_SUPERSESSION_SAFE",
+  "createdAt": "2026-09-07",
+  "mechanism": "ADDITIVE_SUPERSESSION_HISTORICAL_ARTIFACT_PRESERVED_UNMODIFIED",
+
+  "supersededAsset": {
+    "assetId": "canonicalWorkDefinitionContract",
+    "name": "Canonical WorkDefinition Contract",
+    "version": "VNext",
+    "status": "IMPLEMENTATION_COMPILATION_PENDING",
+    "repositoryPath": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_VNEXT_PENDING.md",
+    "sha256": "0f91a03e837dceadb57fdb83099a5882c46a286dc7f52b37924ab117a1978550",
+    "registeredSha256Matches": true,
+    "modifiedByThisPhase": false,
+    "retention": "IMMUTABLE_HISTORICAL_ARCHITECTURE_COMMITMENT"
+  },
+
+  "supersedingAsset": {
+    "assetId": "canonicalWorkDefinitionContractV1",
+    "name": "Canonical WorkDefinition Contract",
+    "version": "1.0.0",
+    "status": "FROZEN",
+    "repositoryPath": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md",
+    "sha256": "f51dfdb0719ba4b005f287e8293634a7b031cb87d5ad23ede29658d0dfa816f4",
+    "supersedes": "canonicalWorkDefinitionContract"
+  },
+
+  "supersededInstruction": {
+    "location": "CANONICAL_WORKDEFINITION_CONTRACT_VNEXT_PENDING.md, closing 'Next action' sentence",
+    "effect": "Directed compilation and validation of Road LTL V1.4.",
+    "assessment": "STALE_RELATIVE_TO_LATER_GOVERNED_CHAIN",
+    "reason": "The instruction was authored before P6.0 and P6.1. The governed execution chain subsequently advanced the effective execution-reference target to Road LTL 1.5, and P6.1 recursively decomposed exact road-ltl@1.5. Compiling 1.4 would contradict the certified upstream input and the prohibition on runtime semantic fallback.",
+    "resolution": "Superseded, not rewritten. The historical artifact retains its original text and SHA-256."
+  },
+
+  "effectiveCompileTarget": {
+    "moduleId": "road-ltl",
+    "effectiveModuleVersion": "1.5",
+    "semanticBaseVersion": "1.4",
+    "semanticBaseRole": "PINNED_FROZEN_SEMANTIC_BASE_FOR_INHERITED_UNCHANGED_TASKS",
+    "inheritedTaskCount": 21,
+    "inheritedTaskSemanticSourceVersion": "1.4",
+    "directGovernedOverrideTaskIds": ["LTL-03"],
+    "directGovernedOverrideSemanticSourceVersion": "1.5",
+    "perTaskSemanticLineageRequired": true,
+    "runtimeSemanticFallbackToBasePermitted": false,
+    "exactTupleResolutionRequired": true
+  },
+
+  "evidence": [
+    {
+      "artifact": "governance/frozen-assets/LATEST.md",
+      "statement": "Road LTL 1.5 is FROZEN_EXECUTION_REFERENCE_CANDIDATE with 22/22 effective PUBLIC_SAFE coverage; no runtime fallback to Road LTL 1.4 or 1.3."
+    },
+    {
+      "artifact": "governance/baselines/P6_1_RECURSIVE_WORK_DECOMPOSITION_CERTIFICATION.json",
+      "statement": "moduleVersion 1.5; sourceLineage.semanticBaseVersion 1.4; sourceLineage.effectiveModuleVersion 1.5; LTL-03 inheritance DIRECT_GOVERNED_OVERRIDE at semanticSourceVersion 1.5; 21 tasks LOSSLESS_UNCHANGED_TASK at semanticSourceVersion 1.4."
+    },
+    {
+      "artifact": "governance/frozen-assets/ASSET_REGISTER.json",
+      "statement": "road-ltl-1.5-candidate is current and supersedes road-ltl-1.4-candidate; road-ltl-1.4-candidate is retained as an immutable historical candidate."
+    },
+    {
+      "artifact": "live Supabase atlas_work_decompositions",
+      "statement": "Single protected aggregate row module_version 1.5, semantic_source_version MIXED_1.4_INHERITANCE_PLUS_1.5_LTL03, content_hash 2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab matching the P6.1 certification."
+    }
+  ],
+
+  "registerAction": {
+    "status": "RECOMMENDED_NOT_APPLIED_BY_THIS_PHASE",
+    "target": "governance/frozen-assets/ASSET_REGISTER.json",
+    "recommendation": "Register canonicalWorkDefinitionContractV1 as current:true with supersedes canonicalWorkDefinitionContract, and set canonicalWorkDefinitionContract current:false while retaining its payload and SHA-256 unchanged.",
+    "rationale": "The frozen asset register is a governance-owned registry. P6.2 records the supersession and its evidence but does not self-authorize the registry mutation."
+  },
+
+  "knownGovernanceDebt": [
+    {
+      "id": "P6-1-GENERATOR-NOT-RETAINED",
+      "statement": "The P6.1 recursive decomposition generator is not retained in the repository. The certified decomposition output is governed and hash-anchored, so it remains a valid P6.2 input, but the generation step is not independently reproducible from source.",
+      "impact": "Blocks byte-level regeneration of the P6.1 decomposition; does not block P6.2 compilation.",
+      "requiredControls": [
+        "Pin and verify the certified governedInputContentHash on every compile.",
+        "Preserve per-task semantic lineage exactly as governed.",
+        "Never reconstruct or re-derive the decomposition during P6.2."
+      ],
+      "recommendedResolutionPhase": "Before multi-module scaling beyond Road LTL."
+    }
+  ]
+}

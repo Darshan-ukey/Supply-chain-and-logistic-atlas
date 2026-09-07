@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas.aify.local/schemas/canonical-workdefinition-contract-v1.schema.json",
+  "title": "Atlas Canonical WorkDefinition Contract V1",
+  "type": "object",
+  "required": ["schemaVersion","workDefinitionId","contractVersion","version","status","title","purpose","lineage","provenance","applicability","executability","executionCharacteristics"],
+  "properties": {
+    "schemaVersion": {"const":"atlas-canonical-workdefinition-v1"},
+    "workDefinitionId": {"type":"string","minLength":1},
+    "contractVersion": {"const":"1.0.0"},
+    "version": {"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "status": {"enum":["DRAFT","VALIDATED_REFERENCE_DEFINITION","APPROVED","ACTIVE","DEPRECATED"]},
+    "title": {"type":"string","minLength":1},
+    "purpose": {"type":"string"},
+
+    "lineage": {"$ref":"#/$defs/lineage"},
+    "provenance": {"$ref":"#/$defs/provenance"},
+    "applicability": {"$ref":"#/$defs/applicability"},
+    "executability": {"$ref":"#/$defs/executability"},
+    "executionCharacteristics": {"$ref":"#/$defs/executionCharacteristics"},
+
+    "trigger": {"type":["string","null"]},
+    "inputs": {"$ref":"#/$defs/semanticList"},
+    "actors": {"$ref":"#/$defs/semanticList"},
+    "systems": {"$ref":"#/$defs/semanticList"},
+    "decisions": {"$ref":"#/$defs/semanticList"},
+    "rules": {"$ref":"#/$defs/semanticList"},
+    "validations": {"$ref":"#/$defs/semanticList"},
+    "controls": {"$ref":"#/$defs/semanticList"},
+    "actions": {"$ref":"#/$defs/semanticList"},
+    "outcomes": {"$ref":"#/$defs/semanticList"},
+    "transitions": {"$ref":"#/$defs/semanticList"},
+    "clocks": {"$ref":"#/$defs/semanticList"},
+    "evidence": {"$ref":"#/$defs/semanticList"},
+    "exceptions": {"$ref":"#/$defs/semanticList"},
+    "dependencies": {"$ref":"#/$defs/semanticList"},
+    "clientBindingRequirements": {"type":"array","items":{"type":"string","minLength":1}}
+  },
+  "additionalProperties": false,
+
+  "$defs": {
+    "semanticList": {
+      "type": "array",
+      "items": {"oneOf":[{"type":"string"},{"type":"object","additionalProperties":true}]}
+    },
+    "lineage": {
+      "type": "object",
+      "required": ["daughterModule","daughterVersion","semanticSourceVersion","inheritance","sourceTaskId","sourceTaskTitle","decompositionId","decompositionContractVersion","sourceWorkUnitId","workUnitPath","unitType"],
+      "properties": {
+        "daughterModule": {"type":"string","minLength":1},
+        "daughterVersion": {"type":"string","minLength":1},
+        "semanticSourceVersion": {"type":"string","minLength":1},
+        "inheritance": {"type":"string","minLength":1},
+        "sourceTaskId": {"type":"string","minLength":1},
+        "sourceTaskTitle": {"type":"string","minLength":1},
+        "decompositionId": {"type":"string","minLength":1},
+        "decompositionContractVersion": {"const":"1.0.0"},
+        "sourceWorkUnitId": {"type":"string","minLength":1},
+        "workUnitPath": {"type":"array","minItems":1,"items":{"type":"string","minLength":1}},
+        "unitType": {"enum":["TASK_ROOT","INFORMATION_RESOLUTION","DECISION_EVALUATION","DECISION_GATE","ACTION_EXECUTION","ACTION_GROUP","ATOMIC_ACTION_CANDIDATE","ATOMIC_ACTION","TEMPORAL_CONTROL","TEMPORAL_GATE","EVIDENCE_AND_STATE","EVIDENCE_CAPTURE"]},
+        "parentWorkUnitId": {"type":["string","null"]},
+        "sequence": {"type":"integer","minimum":1}
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["compiledFrom","compilerVersion","governedInputContentHash","sourceRefs"],
+      "properties": {
+        "compiledFrom": {"const":"CANONICAL_WORK_DECOMPOSITION_V1"},
+        "compilerVersion": {"type":"string","minLength":1},
+        "governedInputContentHash": {"type":"string","pattern":"^[0-9a-f]{64}$"},
+        "sourceRefs": {"type":"array","items":{"type":"string"}}
+      },
+      "additionalProperties": false
+    },
+    "applicability": {
+      "type": "object",
+      "required": ["requiredWhen","prohibitedWhen","entryConditions"],
+      "properties": {
+        "requiredWhen": {"type":"array","items":{"type":"string"}},
+        "prohibitedWhen": {"type":"array","items":{"type":"string"}},
+        "entryConditions": {"type":"array","items":{"type":"string"}}
+      },
+      "additionalProperties": false
+    },
+    "executability": {
+      "type": "object",
+      "required": ["status","executorClass","independentExecutorProofStatus","requiredClientBindings","requiredKnowledgeGaps"],
+      "properties": {
+        "status": {"const":"EXECUTOR_READY"},
+        "executorClass": {"enum":["EXECUTABLE_HUMAN","EXECUTABLE_RULE","EXECUTABLE_SYSTEM","EXECUTABLE_API","EXECUTABLE_RPA","EXECUTABLE_DOCUMENT_AI","EXECUTABLE_AGENT","EXECUTABLE_HYBRID","EXECUTOR_CLASS_UNBOUND"]},
+        "independentExecutorProofStatus": {"const":"NOT_INDEPENDENTLY_PROVEN"},
+        "requiredClientBindings": {"type":"array","items":{"type":"string"}},
+        "requiredKnowledgeGaps": {"type":"array","items":{"type":"string"}}
+      },
+      "additionalProperties": false
+    },
+    "executionCharacteristics": {
+      "type": "object",
+      "required": ["executorClassBound","clientBindingRequired","knowledgeGapPresent"],
+      "properties": {
+        "executorClassBound": {"type":"boolean"},
+        "clientBindingRequired": {"type":"boolean"},
+        "knowledgeGapPresent": {"type":"boolean"},
+        "outputState": {"oneOf":[{"type":"string"},{"type":"array","items":{"type":"string"}},{"type":"null"}]},
+        "fallbackIfBlocked": {"type":["string","null"]}
+      },
+      "additionalProperties": false
+    }
+  }
+}
