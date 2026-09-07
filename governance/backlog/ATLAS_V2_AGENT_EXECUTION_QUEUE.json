@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "atlas-v2-agent-execution-queue-v1",
+  "updatedAt": "2026-09-08T00:00:00+05:30",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "roadmapPath": "governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md",
+  "executionPolicy": {
+    "readBeforeSelectingWork": true,
+    "implementOnlyStatus": "AUTHORIZED",
+    "selfAuthorizeNextPhase": false,
+    "completionTransition": "AWAITING_INDEPENDENT_QA",
+    "conflictPolicy": "STOP_AND_REPORT",
+    "frozenArchitectureOverridesImplementationConvenience": true,
+    "neverWorkDirectlyOnMain": true,
+    "neverRedesignFrozenCanvasWithoutOwnerApproval": true
+  },
+  "currentPhase": "P6.2",
+  "phases": [
+    {
+      "id": "P6.2",
+      "name": "Canonical WorkDefinition Compilation — Road LTL 1.5",
+      "status": "AUTHORIZED",
+      "scope": ["road-ltl@1.5", "certified P6.1 decomposition", "canonical WorkDefinition compiler", "verifier", "protected persistence/API", "PUBLIC_SAFE status"],
+      "excluded": ["Ocean FCL/LCL", "Malkom projection", "Client Binding", "Canvas redesign", "Daughter redesign", "P6.1 regeneration"],
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "id": "P6.3",
+      "name": "Identity, Authorization & Public/Protected Certification",
+      "status": "BLOCKED_UNTIL_P6_2_QA",
+      "scope": ["Supabase Auth admin provisioning", "login/session/logout", "capability assignment", "PUBLIC_SAFE certification", "protected API certification", "401/403/fail-closed tests"],
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "id": "P6.4",
+      "name": "Generic Recursive Decomposition Compiler + Ocean 0.6 Execution Depth",
+      "status": "BLOCKED_UNTIL_P6_3_QA",
+      "scope": ["generic decomposition compiler", "P6.1 reproducibility proof", "ocean-fcl@0.6 30 A5", "ocean-lcl@0.6 30 A5", "Ocean canonical WorkDefinitions through generic P6.2 compiler"],
+      "excluded": ["manual Ocean WorkDefinitions", "Ocean-specific generic-compiler logic", "runtime/client-specific semantics"],
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "id": "P6.5",
+      "name": "Atlas V2 Integration & Production Certification",
+      "status": "BLOCKED_UNTIL_P6_4_QA",
+      "scope": ["Canvas V2", "Page 0", "Road LTL 1.5", "Ocean FCL 0.6", "Ocean LCL 0.6", "Daughter execution depth", "Ask/Trace boundaries", "public/admin behavior", "Vercel deployment parity", "production smoke", "release governance"],
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "id": "ATLAS_V2_GO_LIVE",
+      "name": "Atlas V2.0 Production Promotion",
+      "status": "BLOCKED_UNTIL_P6_5_QA",
+      "ownerApprovalRequired": true
+    }
+  ],
+  "debts": [
+    {
+      "id": "DEBT-01",
+      "name": "P6.1 Decomposition Reproducibility",
+      "status": "MUST_BE_RESOLVED_IN_P6_4",
+      "description": "Certified Road LTL 1.5 P6.1 output is governed/hash-anchored, but the original 603-node decomposition generator implementation is not retained in GitHub."
+    }
+  ],
+  "deferredPostV2": [
+    "Universal Adapter Contract",
+    "Malkom Adapter / Domain Warehouse projection",
+    "runtime adapter compiler/verifier",
+    "Client Binding + runtime connector",
+    "controlled Malkom execution proof",
+    "governed runtime measurement / feedback loop"
+  ]
+}
