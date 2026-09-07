@@ -2,9 +2,9 @@
   "phase": "P6.1",
   "title": "Recursive Work Decomposition",
   "branch": "atlas-presentation-architecture-v1-p6-1",
-  "status": "IN_PROGRESS",
+  "status": "COMPLETE_PASS",
   "authoritativeTracker": true,
-  "updatedAt": "2026-09-07T11:13:00+05:30",
+  "updatedAt": "2026-09-07T19:09:00+05:30",
   "completed": [
     "P6.1 branch created from frozen P6.0 head",
     "Canonical Work Decomposition Contract V1 frozen",
@@ -14,25 +14,28 @@
     "Terminal state metrics established: 185 EXECUTOR_READY / 163 BLOCKED_BY_CLIENT_BINDING / 96 BLOCKED_BY_KNOWLEDGE_GAP",
     "Structural validation passed: 0 cycles / 0 orphan parents / 0 invalid terminal NEEDS_DECOMPOSITION leaves",
     "Protected Supabase Work Decomposition store created with RLS and no browser SELECT policy",
-    "Canonical 22-task Road LTL 1.5 protected bundle materialized as BROTLI_BASE64 in Supabase",
-    "Protected bundle canonical SHA-256 verified: 2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab",
-    "Protected bundle encoded length/hash verified: 29999 chars / 6242ad963a5229c72c6029adc38e30d4c9e28d6a229beb823ceb3d9f0dfde718",
+    "Canonical 22-task Road LTL 1.5 protected bundle materialized as one BROTLI_BASE64 aggregate row in Supabase",
+    "Protected store content hash verified: 2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab",
     "Supabase security advisor reviewed: RLS-enabled/no-policy finding is intentional for server-side capability-gated protected execution IP",
-    "Public projection limited to safe decomposition status/count summaries; detailIncluded remains false"
+    "Public projection limited to safe decomposition status/count summaries; detailIncluded remains false",
+    "Protected Work Decomposition API updated to decode BROTLI_BASE64 only after authorization and return exactly one requested logical task",
+    "Exact-task lineage, unknown-task, wrong-version, ambiguity and tuple-mismatch behavior certified fail-closed",
+    "Dedicated P6.1 protected API certification test added and passed",
+    "P6.0 semantic/materialization regression adapted for P6.1 additive decomposition summary and passed",
+    "Full inherited regression chain passed: P6.0 -> P5 -> P4 -> P3O -> P3 -> P2 -> public execution-IP boundary",
+    "Dedicated GitHub Actions run 34092195930 completed successfully",
+    "Certified implementation commit ba9d47f07b59ecf79ff6cde9145c0185cc18d39d has Vercel SUCCESS",
+    "P6.1 completion implementation register created",
+    "P6.1 completion audit created",
+    "Presentation Asset Register V1.7 frozen through P6.1"
   ],
-  "pending": [
-    "Update protected Work Decomposition API to decode BROTLI_BASE64 bundle after authorization and return only the exact requested task",
-    "Verify exact-task lineage/fail-closed behavior and ensure the complete bundle is never returned",
-    "Add/finalize dedicated P6.1 certification test and GitHub Actions gate",
-    "Run inherited P6.0 -> P5 -> P4 -> P3O -> P3 -> P2 -> public-IP regression chain",
-    "Verify Vercel deployment on final P6.1 head",
-    "Create P6.1 completion register/audit and advance CURRENT pointer",
-    "Mirror P6.1 completion/current pointer to Drive governance vault"
+  "pending": [],
+  "resolvedIssues": [
+    "Earlier GitHub Actions run 34013834926 failed on an early contract-only commit and is superseded by successful P6.1 run 34092195930.",
+    "Earlier protected API could not resolve the BROTLI_BASE64 __ALL_22__ aggregate bundle; final API now resolves exact authorized logical tasks server-side without returning the aggregate container.",
+    "Legacy P6.0 byte-identical runtime assertion did not account for the approved P6.1 public decomposition summary; P6.1 now certifies unchanged P6.0 business semantics plus the explicitly allowed non-reconstructive decomposition metadata."
   ],
-  "knownIssues": [
-    "Earlier GitHub Actions run 34013834926 failed on an early contract-only commit and does not certify the current head",
-    "Current protected API supports JSONB/GZIP row-per-task lookup but does not yet resolve the BROTLI_BASE64 __ALL_22__ protected bundle"
-  ],
-  "nextAction": "Patch and certify exact-task resolution from the protected Brotli bundle, then run the final regression/deployment/governance closeout gates",
-  "exitGate": "NOT_YET_PASSED"
+  "nextAction": "Begin P6.2 Canonical WorkDefinition Compilation from the frozen P6.1 Recursive Work Decomposition baseline.",
+  "nextPhase": "P6_2_CANONICAL_WORKDEFINITION_COMPILATION",
+  "exitGate": "PASSED"
 }
