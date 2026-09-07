@@ -1,0 +1,35 @@
+{
+  "phase": "P6.1",
+  "title": "Recursive Work Decomposition",
+  "branch": "atlas-presentation-architecture-v1-p6-1",
+  "status": "IN_PROGRESS",
+  "authoritativeTracker": true,
+  "updatedAt": "2026-09-07T07:42:00+05:30",
+  "completed": [
+    "P6.1 branch created from frozen P6.0 head",
+    "Canonical Work Decomposition Contract V1 frozen",
+    "Machine-readable Work Decomposition schema added",
+    "Road LTL 1.5 recursive decomposition compiled and schema-validated",
+    "Compiled graph metrics established: 22 tasks / 603 work units / 444 terminal leaves",
+    "Terminal state metrics established: 185 EXECUTOR_READY / 163 BLOCKED_BY_CLIENT_BINDING / 96 BLOCKED_BY_KNOWLEDGE_GAP",
+    "Protected Supabase Work Decomposition store created with RLS and no anon/authenticated SELECT",
+    "Protected endpoint changed from NOT_YET_COMPILED placeholder to capability-gated exact-version resolver",
+    "Protected payload compression/decompression implemented server-side after authorization",
+    "Public projection limited to safe decomposition status/count summaries; detailIncluded remains false"
+  ],
+  "pending": [
+    "Load all 22 protected Road LTL 1.5 task decompositions into Supabase",
+    "Verify stored content hashes/counts against P6.1 certification manifest",
+    "Add/finalize dedicated P6.1 certification test and GitHub Actions gate",
+    "Run inherited P6.0 -> P5 -> P4 -> P3O -> P3 -> P2 -> public-IP regression chain",
+    "Run Supabase security/performance advisors and resolve P6.1-relevant findings",
+    "Verify Vercel deployment on final P6.1 head",
+    "Create P6.1 completion register/audit and advance CURRENT pointer",
+    "Mirror P6.1 completion/current pointer to Drive governance vault"
+  ],
+  "knownIssues": [
+    "Earlier GitHub Actions run 34013834926 failed on an early contract-only commit and does not certify the current head"
+  ],
+  "nextAction": "Load and verify all protected decomposition rows, then run final certification chain",
+  "exitGate": "NOT_YET_PASSED"
+}
