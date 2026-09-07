@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Supply Chain Atlas V2.1 release candidate: Execution Fabric plus the later frozen Universe, daughters, Canvas V2, Universal Ask, Foundation and Atlas Warehouse stack.",
-  "engines": {"node":"24.x"},
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "check": "node tests/v1.1.7-canonical-integrity.mjs && node tests/v2-universal-ask-smoke.mjs && node tests/v2-public-ip-boundary.mjs && node tests/p2-projection-boundary.mjs && node tests/p3-universal-daughter-renderer.mjs && node tests/v2-admin-auth-smoke.mjs && node tests/v2-api-router-smoke.mjs && node tests/v2-ui-browser-smoke.mjs",
     "parity:static": "node tests/v1.1.4-static-parity.mjs",
@@ -34,8 +36,19 @@
     "p3o:check": "node tests/p3o-ocean-0.6-certification.mjs && npm run p3:check",
     "p4:check": "node tests/p4-canvas-daughter-integration.mjs && npm run p3o:check",
     "p5:check": "node tests/p5-ask-trace-governance.mjs && node tests/v2-universal-ask-smoke.mjs && npm run p4:check",
-    "execution:browser": "node tests/v2.1-ui-browser-smoke.mjs"
+    "execution:browser": "node tests/v2.1-ui-browser-smoke.mjs",
+    "p6.2:test": "node tests/p6-2-canonical-workdefinition-compiler.mjs && node tests/p6-2-protected-workdefinition-api.mjs",
+    "p6.2:compile": "node scripts/compile-p6-2-work-definitions.mjs"
   },
-  "dependencies": {"jszip":"3.10.1","mammoth":"1.10.0","pdf-lib":"1.17.1","pdf-parse":"1.1.1","pptxgenjs":"3.12.0","xlsx":"0.18.5"},
-  "devDependencies": {"serve":"14.2.4"}
+  "dependencies": {
+    "jszip": "3.10.1",
+    "mammoth": "1.10.0",
+    "pdf-lib": "1.17.1",
+    "pdf-parse": "1.1.1",
+    "pptxgenjs": "3.12.0",
+    "xlsx": "0.18.5"
+  },
+  "devDependencies": {
+    "serve": "14.2.4"
+  }
 }

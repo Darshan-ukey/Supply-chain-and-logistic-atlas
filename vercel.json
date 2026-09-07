@@ -36,6 +36,7 @@
     {"source": "/api/execution-depth-projection", "destination": "/api/atlas?action=execution-depth-projection"},
     {"source": "/api/governance-operational-projection", "destination": "/api/atlas?action=governance-operational-projection"},
     {"source": "/api/work-decomposition", "destination": "/api/atlas?action=work-decomposition"},
+    {"source": "/api/work-definition", "destination": "/api/atlas?action=work-definition"},
     {"source": "/api/admin-workdefinitions", "destination": "/api/atlas?action=admin-workdefinitions"},
     {"source": "/api/runtime-access", "destination": "/api/atlas?action=runtime-access"},
     {"source": "/api/malkom-projections", "destination": "/api/atlas?action=malkom-projections"},
