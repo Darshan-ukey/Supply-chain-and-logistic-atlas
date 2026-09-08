@@ -29,25 +29,45 @@ After independent QA create/synchronize `POST_QA_GOVERNED_STATE`, registers/poin
 ## R0.1 Universe rule
 R0.1 is split into governed substages and must not be combined.
 
-- `R0.1A` is historical **COMPLETE / QA PASS AT TIME OF CERTIFICATION**, but superseded for canonical promotion by R0.1A-R. Its artifacts remain immutable evidence.
-- `R0.1A-R` is **COMPLETE / INDEPENDENT QA PASS**. Corrected semantic structures SHA-256: `82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d`. Checkpoint C: `governance/recovery/R0.1A-R/POST_QA_GOVERNED_STATE.json`.
-- `R0.1B` is the **only currently AUTHORIZED stage**, and only for **FINAL AUTHORITY CLOSURE** against the corrected R0.1A-R candidate.
-- R0.1B must preserve its original `UNIVERSE_IDENTITY_AUTHORITY_DETERMINATION.json` as immutable historical evidence. Do not rewrite it. Create distinct final-closure evidence.
-- R0.1B may confirm D1-D3 against the corrected payload; record D4-D6 as remediated; bind semantic authority to the corrected normalized payload if evidence stays consistent; finalize separate `releaseVersion=7.3` and `semanticPayloadVersion=7.2.0`; finalize release-shell/later-repackage treatment and R0.1A supersession; produce `POST_IMPLEMENTATION_PRE_QA`; then stop at `AWAITING_INDEPENDENT_QA`.
-- R0.1B may **not** rerun or modify R0.1A-R extraction, modify historical R0.1B determination evidence, promote CURRENT/LATEST/ASSET_REGISTER before independent QA, invent identifiers, create Universe 7.4, mutate Road LTL/reference models, create crosswalks, or perform R0.1C ownership decisions.
-- `R0.1C` remains **BLOCKED_UNTIL_R0_1B_FINAL_QA**. Until R0.1C approval use `UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT` for unresolved daughter references.
+- `R0.1A` is historical **COMPLETE / QA PASS AT TIME OF CERTIFICATION**, superseded for canonical promotion by R0.1A-R. Its artifacts remain immutable evidence.
+- `R0.1A-R` is **COMPLETE / INDEPENDENT QA PASS**. Corrected semantic structures SHA-256: `82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d`.
+- `R0.1B` is **COMPLETE / INDEPENDENT QA PASS**. Final authority closure is recorded at `governance/recovery/R0.1B/UNIVERSE_FINAL_AUTHORITY_CLOSURE.json` and `governance/recovery/R0.1B/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json`.
+- R0.1B finalized two distinct governed identities: `releaseVersion=7.3` and `semanticPayloadVersion=7.2.0`. Semantic authority is bound to `data/universe/r0-1a-r/universe-semantic-payload.json` with semantic structures SHA-256 `82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d`.
+- Release-shell authority is the documented V7.3 copy SHA-256 `31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd`; later repackage SHA-256 `d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef` remains governed evidence, not authoritative shell.
+- Production `CURRENT/LATEST/ASSET_REGISTER` pointers were **not promoted** by R0.1B closure. Do not infer production promotion from authority certification.
+- `R0.1C` is the **only currently AUTHORIZED stage**.
 
-## Current R0.1B final-closure required inputs
-All must resolve on `atlas-governance-registry-v2.1` before work:
-- `governance/recovery/R0.1A-R/POST_QA_GOVERNED_STATE.json`
-- `governance/recovery/R0.1B/UNIVERSE_IDENTITY_AUTHORITY_DETERMINATION.json`
+## Current R0.1C ownership-audit rule
+R0.1C is an evidence/classification stage, not a repair stage.
+
+Required scope:
+- inventory unresolved references from governed Road LTL and Universe evidence;
+- classify each reference as Universe canonical, Daughter-local, Operational Knowledge, Canonical Information/Object, cross-layer contract, or orphan;
+- determine `a5-ltl-*` ownership using evidence;
+- determine `scp-*` ownership using evidence;
+- distinguish actual defects from valid Daughter-local or cross-layer identifiers;
+- recommend repair type without mutation;
+- retain `canonicalReferenceResolution=UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT` until evidence supports a governed classification;
+- create `PRE_CHANGE_BASELINE`, then `POST_IMPLEMENTATION_PRE_QA`, and stop at `AWAITING_INDEPENDENT_QA`.
+
+R0.1C may not:
+- invent crosswalks or identifiers;
+- create Universe 7.4;
+- mutate Universe, Daughter, Road LTL, Operational Knowledge or canonical-reference semantics;
+- modify `CURRENT/LATEST/ASSET_REGISTER`;
+- begin R0.2 work;
+- resume P6.
+
+Minimum governed inputs:
+- `governance/recovery/R0.1B/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json`
+- `governance/recovery/R0.1B/UNIVERSE_FINAL_AUTHORITY_CLOSURE.json`
 - `data/universe/r0-1a-r/universe-semantic-payload.json`
-- `data/universe/r0-1a-r/universe-extraction-report.json`
-- `data/universe/r0-1a-r/universe-copy-comparison.json`
-- `data/universe/r0-1a-r/universe-declaration-inventory.json`
 - `governance/registry/UNIVERSE_MACHINE_READABLE_INPUT_REGISTRY.json`
 
-If any required input or hash does not resolve, stop and report rather than selecting another branch by assumption.
+If required Road LTL evidence needed for ownership classification is not in governed custody, stop and report the dependency gap rather than importing an adjacent version or making an ownership assumption.
+
+## Historical-test lifecycle rule
+A completed stage's immutable pre-QA test may contain assertions whose lifecycle preconditions expire after independent QA creates Checkpoint C. Do not edit historical tests merely to make them pass later. Later stages must run only assertions whose preconditions are still valid, preserve the historical test byte-for-byte, and record superseded lifecycle assertions as governed technical debt.
 
 ## Architecture and source-integrity rule
 Frozen architecture outranks implementation convenience. The recovery standard is a certification/recovery overlay, not redesign authority.
