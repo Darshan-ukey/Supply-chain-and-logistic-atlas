@@ -82,7 +82,7 @@ jobs:
             const b=JSON.parse(fs.readFileSync("governance/recovery/R0.1B/POST_IMPLEMENTATION_PRE_QA_FINAL_CLOSURE.json","utf8"));
             if(b.nextAuthorization!=="AWAITING_INDEPENDENT_QA")throw new Error("stage must stop at AWAITING_INDEPENDENT_QA");
             if(b.qaDisposition!==null)throw new Error("implementation agent must not set qaDisposition");
-            if(fs.existsSync("governance/recovery/R0.1B/POST_QA_GOVERNED_STATE.json"))throw new Error("Checkpoint C is not written by the implementation agent");
+            if(fs.existsSync("governance/recovery/R0.1B/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json"))throw new Error("Checkpoint C is not written by the implementation agent");
             console.log("scope and stop condition verified");
           '
 
@@ -94,3 +94,20 @@ jobs:
             fi
             echo "unchanged: $f"
           done
+
+      - name: Package custody bundle
+        run: |
+          mkdir -p custody/R0.1B-final-closure
+          cp governance/recovery/R0.1B/UNIVERSE_FINAL_AUTHORITY_CLOSURE.json custody/R0.1B-final-closure/
+          cp governance/recovery/R0.1B/PRE_CHANGE_BASELINE_FINAL_CLOSURE.json custody/R0.1B-final-closure/
+          cp governance/recovery/R0.1B/POST_IMPLEMENTATION_PRE_QA_FINAL_CLOSURE.json custody/R0.1B-final-closure/
+          cp tests/r0-1b-final-authority-closure.mjs custody/R0.1B-final-closure/
+          cp .github/workflows/r0-1b-final-authority-closure.yml custody/R0.1B-final-closure/
+          (cd custody/R0.1B-final-closure && sha256sum * > SHA256SUMS.txt)
+
+      - name: Upload custody bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-r0-1b-final-closure-custody-bundle
+          path: custody/R0.1B-final-closure/
+          if-no-files-found: error
