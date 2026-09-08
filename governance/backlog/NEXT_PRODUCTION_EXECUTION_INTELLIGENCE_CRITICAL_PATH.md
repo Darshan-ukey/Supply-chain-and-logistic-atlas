@@ -15,13 +15,15 @@ Before any work, implementation agents must read:
 4. `governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md`;
 5. the frozen architecture/contracts referenced by the authorized recovery stage.
 
-Only a stage whose queue status is exactly `AUTHORIZED` may be implemented. Completion stops at `AWAITING_INDEPENDENT_QA`. No agent may self-authorize the next stage.
+Only a stage or sub-stage whose queue status is exactly `AUTHORIZED` may be implemented. Completion stops at `AWAITING_INDEPENDENT_QA`. No agent may self-authorize the next stage or sub-stage.
 
 ## Why recovery was inserted
 
 The Frozen Stack Completeness & Reproducibility Audit identified cross-layer issues that must be repaired before Canonical WorkDefinition compilation resumes:
 
-- Universe 7.3 is not yet retained as a governed machine-readable canonical payload and Road LTL canonical references are not presently machine-resolvable against it.
+- Universe release 7.3 is not yet retained as a governed machine-readable semantic payload. Inspection shows substantial structured data embedded in the HTML and embedded release metadata declaring semantic payload 7.2.0.
+- Two retained Universe HTML copies have different source hashes and therefore require authority/identity reconciliation before any one copy is treated as the sole canonical source.
+- Previously unresolved Road LTL `a5-*` and `scp-*` references must not automatically be classified as missing Universe identifiers; their intended governing-layer ownership has to be established first.
 - Road LTL 1.4 has been recovered and hash-verified, closing a prior dependency gap, but it must be placed into governed custody.
 - Effective Road LTL 1.5 is valid as 21 inherited 1.4 tasks + direct LTL-03 1.5 override, with merge-key drift requiring explicit normalization.
 - Road LTL Operational Knowledge is materially strong and task-specific, but objects/documents and canonical information semantics require hardening.
@@ -42,26 +44,115 @@ Outcome:
 - recovery architecture and staged backlog established;
 - historical frozen/certified assets remain immutable evidence.
 
-## R0.1 — Canonical Universe 7.3 Materialization & Referential Integrity
+## R0.1 — Universe Materialization, Identity Reconciliation & Reference Ownership
+Status: IN_PROGRESS_VIA_SUBSTAGES
+
+R0.1 is deliberately split. It must not be executed as one broad task. The queue controls which sub-stage is mutable.
+
+### R0.1A — Universe Semantic Materialization
 Status: AUTHORIZED
 
 Objective:
-Create a governed, deterministic machine-readable materialization of Universe 7.3 and prove canonical reference resolution without semantic redesign.
+Mechanically materialize the existing governed Universe semantic content without changing its meaning or inventing missing identifiers.
 
-Required deliverables:
-- inspect authoritative Universe 7.3 HTML/reference and retained upstream evidence;
-- determine whether lossless machine materialization is possible from authoritative content;
-- create canonical machine-readable Universe payload + schema/materializer/validator;
-- reconcile all Road LTL canonical references against it;
-- report truly absent IDs as governed defects rather than inventing them;
-- add referential-integrity CI tests;
-- hash/register authoritative input and materialized output.
+Required work:
+- inspect both retained Universe HTML copies;
+- record SHA-256 of each source copy;
+- retain a deterministic extractor/materializer in GitHub;
+- mechanically extract embedded structured data;
+- run a deterministic second pass for structures that depend on previously declared variables where this can be done without semantic inference;
+- normalize the extracted semantic payload into a stable machine-readable form;
+- preserve dual lineage unless contrary evidence is found:
+  - release shell: Universe 7.3;
+  - embedded semantic payload: Universe 7.2.0;
+- compare the normalized semantic payload from the two source HTML copies;
+- report all unresolved structures explicitly;
+- add reproducibility tests and hashes.
 
-Exit gate:
-- Universe payload retained and reproducible;
-- valid Road LTL canonical references resolve or explicit defects are owner-governed;
-- no silent semantic changes;
-- independent QA PASS.
+Prohibited during R0.1A:
+- no Universe semantic redesign;
+- no Universe 7.4 creation;
+- no invention of `a5-*` or `scp-*` identifiers;
+- no crosswalk creation;
+- no Road LTL reference mutation;
+- no Road LTL OK rewrite;
+- no P6.1 regeneration;
+- no WorkDefinition compilation;
+- no Ocean uplift;
+- no Canvas redesign.
+
+R0.1A exit evidence:
+- source HTML hashes;
+- extractor source and reproducibility test;
+- normalized semantic-payload hash;
+- structure and record counts;
+- unresolved extraction list;
+- proof whether the two source copies yield identical or different normalized semantic payloads.
+
+Completion rule:
+Return evidence and stop at `AWAITING_INDEPENDENT_QA`. Do not start R0.1B.
+
+### R0.1B — Universe Release Identity & Authority Reconciliation
+Status: BLOCKED_UNTIL_R0_1A_QA
+
+Objective:
+Determine the governed relationship between Universe 7.3 release identity, embedded 7.2.0 semantic identity and the two differing HTML source copies.
+
+Required work after authorization:
+- determine whether source-copy differences are semantic, presentation-only, build-state or other non-semantic variation;
+- establish which source copy is authoritative, or whether authority should attach to a normalized semantic payload rather than one HTML binary;
+- verify retained release-note/evidence support for the interpretation that 7.3 is a UX/foundation release over 7.2 semantics;
+- define explicit governed identity fields such as `releaseVersion` and `semanticPayloadVersion`;
+- recommend exactly which source and normalized hashes/assets belong in the frozen registry.
+
+Prohibited during R0.1B:
+- no semantic rewrite;
+- no relabeling 7.2.0 semantics as 7.3 without evidence;
+- no Universe 7.4;
+- no reference-model mutation.
+
+Completion rule:
+Return identity/authority recommendation and stop at `AWAITING_INDEPENDENT_QA`. Do not start R0.1C.
+
+### R0.1C — Canonical Reference Ownership Audit
+Status: BLOCKED_UNTIL_R0_1B_QA
+
+Objective:
+Classify every unresolved Road LTL reference by its intended governing layer before deciding whether an extension, crosswalk or reference-contract correction is required.
+
+Required work after authorization:
+- inventory every Road LTL reference previously treated as an unresolved Universe canonical reference;
+- classify each as one of:
+  - Universe canonical ID;
+  - Daughter-local structural ID;
+  - Operational Knowledge ID;
+  - Canonical Information/Object ID;
+  - cross-layer concept ID;
+  - invalid/orphaned reference;
+- determine whether `a5-ltl-*` identifiers are Daughter-local rather than Universe-canonical;
+- determine intended ownership of `scp-*` identifiers using frozen architecture/contracts and retained evidence;
+- distinguish true referential defects from valid cross-layer/local identifiers;
+- recommend the appropriate repair path: Universe extension, governed crosswalk, reference-contract correction or orphan cleanup.
+
+Prohibited during R0.1C:
+- no crosswalk invention;
+- no new canonical IDs;
+- no Universe 7.4 creation;
+- no Daughter-ID mutation;
+- no Road LTL semantic changes;
+- no canonical-reference mutation.
+
+Required interim status language:
+`canonicalReferenceResolution = UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT`
+
+Do not describe `0/22` as 22 proven Universe defects before ownership has been established.
+
+R0.1 overall exit gate:
+- machine-readable Universe semantic materialization retained and reproducible;
+- release/semantic identity and authority explicitly governed;
+- unresolved references classified by intended layer;
+- actual referential defects distinguished from Daughter-local/cross-layer identifiers;
+- independent QA approves the repair path before R0.2 begins.
 
 ## R0.2 — Road LTL Source Closure & Effective 1.5 Re-certification
 Status: BLOCKED_UNTIL_R0_1_QA
@@ -74,7 +165,7 @@ Required deliverables:
 - normalize `taskId`/`id` overlay handling without mutating source assets;
 - deterministically materialize 22-task effective 1.5: 21 inherited 1.4 + LTL-03 direct 1.5 override;
 - preserve per-task lineage and prove no silent drop/duplication;
-- rerun Universe referential-integrity checks.
+- rerun reference-integrity checks using the ownership rules established in R0.1C.
 
 Exit gate:
 - complete Road LTL source dependency closure;
