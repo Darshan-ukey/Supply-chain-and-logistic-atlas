@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import zlib from 'node:zlib';
 import { compileBundle, canonicalHash, COMPILER_VERSION, WORKDEFINITION_CONTRACT_VERSION, DEFINITION_VERSION } from '../lib/compile/workdefinition-compiler.js';
 import { verifyCompilation } from '../lib/compile/workdefinition-verifier.js';
+import { preflightCertification, assertCertifiedInput, reconcileCompilation } from '../lib/compile/p6-1-certification-gate.js';
 
 // P6.2 — compile Canonical WorkDefinitions from the certified protected P6.1 Work Decomposition.
 //
@@ -42,6 +43,16 @@ function decode(row) {
   throw new Error('Protected decomposition payload is missing or uses an unsupported encoding');
 }
 
+// ---- 0. MANDATORY certification pre-flight (before any network access) ---------------
+// Fails fast if governed certification evidence is missing, mismatched or inconsistent.
+const certificationPath = process.env.ATLAS_P6_1_CERTIFICATION_PATH || 'governance/baselines/P6_1_RECURSIVE_WORK_DECOMPOSITION_CERTIFICATION.json';
+const summaryPath = process.env.ATLAS_P6_1_SUMMARY_PATH || 'governance/presentation/P6_1_PUBLIC_DECOMPOSITION_SUMMARY.json';
+const pinnedContentHash = process.env.ATLAS_EXPECTED_DECOMPOSITION_HASH || null;
+const expectations = preflightCertification({ moduleId, moduleVersion, certificationPath, summaryPath, pinnedContentHash });
+console.log(`P6.2 certification pre-flight PASS for ${moduleId}@${moduleVersion}`);
+console.log(`  certified decomposition    : ${expectations.certifiedContentHash}`);
+console.log(`  expected WorkDefinitions   : ${expectations.expected.executorReadyLeafCount}`);
+
 // ---- 1. load certified governed input ------------------------------------------------
 const select = 'decomposition_id,module_id,module_version,source_task_id,contract_version,semantic_source_version,status,payload,payload_encoding,payload_compressed_base64,content_hash';
 const rows = await rest(`/rest/v1/atlas_work_decompositions?module_id=eq.${encodeURIComponent(moduleId)}&module_version=eq.${encodeURIComponent(moduleVersion)}&contract_version=eq.1.0.0&status=in.(VALIDATED_REFERENCE_DECOMPOSITION,APPROVED,ACTIVE)&select=${select}`);
@@ -52,17 +63,19 @@ const row = rows[0];
 const governedInputContentHash = String(row.content_hash);
 if (!/^[0-9a-f]{64}$/.test(governedInputContentHash)) throw new Error('Governed input content hash is not a 64-hex digest; failed closed.');
 
-const expectedHash = process.env.ATLAS_EXPECTED_DECOMPOSITION_HASH;
-if (expectedHash && expectedHash !== governedInputContentHash) {
-  throw new Error(`Governed input hash ${governedInputContentHash} does not match the pinned certified hash ${expectedHash}; failed closed.`);
-}
-
 const bundle = decode(row);
 if (String(bundle.moduleId) !== moduleId || String(bundle.moduleVersion) !== moduleVersion) {
   throw new Error('Governed bundle lineage does not match the requested tuple; failed closed.');
 }
 
-// ---- 2. compile + verify -------------------------------------------------------------
+// ---- 2. MANDATORY upstream certification gate (no skip path) -------------------------
+// Runs before compilation. A missing, mismatched or inconsistent certification artifact
+// is a hard failure. This gate is enforced by the runtime, not only by tests.
+const attestation = assertCertifiedInput({ moduleId, moduleVersion, governedInputContentHash, certificationPath, summaryPath, pinnedContentHash });
+console.log(`  certified upstream         : ${attestation.moduleId}@${attestation.effectiveModuleVersion} (base ${attestation.semanticBaseVersion})`);
+console.log(`  certified commit           : ${attestation.certifiedImplementationCommit}`);
+
+// ---- 3. compile + verify -------------------------------------------------------------
 const compilation = compileBundle(bundle, { governedInputContentHash });
 const verification = verifyCompilation(compilation);
 if (!verification.ok) {
@@ -71,62 +84,12 @@ if (!verification.ok) {
   process.exit(1);
 }
 
+// ---- 4. MANDATORY reconciliation against certified counts ----------------------------
+const attested = reconcileCompilation(attestation, compilation);
+console.log('  cross-check vs certified P6.1: PASS');
+
 const t = compilation.totals;
-
-// ---- 2b. independent cross-check against the governed P6.1 summary -------------------
-// The certified P6.1 PUBLIC_SAFE summary is an independent governed oracle. Because the
-// compilation unit is exactly the EXECUTOR_READY terminal leaf, compiled counts must equal
-// the certified decomposition counts. Any divergence means the compiler or the governed
-// input disagrees with certification, and the run fails closed rather than self-reporting.
-const oraclePath = process.env.ATLAS_P6_1_SUMMARY_PATH || 'governance/presentation/P6_1_PUBLIC_DECOMPOSITION_SUMMARY.json';
-if (fs.existsSync(oraclePath)) {
-  const oracle = JSON.parse(fs.readFileSync(oraclePath, 'utf8'));
-  const mismatches = [];
-  if (String(oracle.moduleId) === moduleId && String(oracle.moduleVersion) === moduleVersion) {
-    const ot = oracle.totals || {};
-    const pairs = [
-      ['taskCount', ot.taskCount, t.taskCount],
-      ['workUnitCount', ot.workUnitCount, t.workUnitCount],
-      ['leafCount', ot.leafCount, t.leafCount],
-      ['executorReadyLeafCount -> workDefinitionCount', ot.executorReadyLeafCount, t.workDefinitionCount],
-      ['blockedByClientBindingLeafCount', ot.blockedByClientBindingLeafCount, t.blockedByClientBindingLeafCount],
-      ['blockedByKnowledgeGapLeafCount', ot.blockedByKnowledgeGapLeafCount, t.blockedByKnowledgeGapLeafCount]
-    ];
-    for (const [label, expected, actual] of pairs) {
-      if (expected !== undefined && Number(expected) !== Number(actual)) mismatches.push(`${label}: certified ${expected}, compiled ${actual}`);
-    }
-    for (const task of oracle.tasks || []) {
-      const c = compilation.coverage.find(x => x.sourceTaskId === task.taskId);
-      if (!c) { mismatches.push(`${task.taskId}: certified in P6.1 but absent from compilation`); continue; }
-      if (Number(task.executorReadyLeafCount) !== Number(c.compiledCount)) mismatches.push(`${task.taskId}: certified ${task.executorReadyLeafCount} executor-ready, compiled ${c.compiledCount}`);
-      if (Number(task.leafCount) !== Number(c.leafCount)) mismatches.push(`${task.taskId}: certified ${task.leafCount} leaves, traversed ${c.leafCount}`);
-    }
-    if (mismatches.length) {
-      console.error('P6.2 cross-check against certified P6.1 decomposition FAILED:');
-      for (const m of mismatches) console.error(`  - ${m}`);
-      process.exit(1);
-    }
-    console.log(`  cross-check vs certified P6.1: PASS (${oraclePath})`);
-  } else {
-    console.log(`  cross-check skipped: ${oraclePath} does not describe ${moduleId}@${moduleVersion}`);
-  }
-} else {
-  console.log('  cross-check skipped: no governed P6.1 summary available for this module');
-}
-
-console.log(`P6.2 compiled ${moduleId}@${moduleVersion}`);
-console.log(`  governed input hash        : ${governedInputContentHash}`);
-console.log(`  tasks                      : ${t.taskCount}`);
-console.log(`  work units                 : ${t.workUnitCount}`);
-console.log(`  terminal leaves            : ${t.leafCount}`);
-console.log(`  WorkDefinitions compiled   : ${t.workDefinitionCount}`);
-console.log(`  leaves not compiled        : ${t.notCompiledLeafCount}`);
-console.log(`    blocked by client binding: ${t.blockedByClientBindingLeafCount}`);
-console.log(`    blocked by knowledge gap : ${t.blockedByKnowledgeGapLeafCount}`);
-console.log(`  fully compiled tasks       : ${t.fullyCompiledTaskCount}`);
-console.log(`  compilation hash           : ${canonicalHash(compilation)}`);
-
-// ---- 3. emit PUBLIC_SAFE summary (counts/status only) --------------------------------
+// ---- 5. emit PUBLIC_SAFE summary (counts/status only) --------------------------------
 const publicSummary = {
   schemaVersion: 'atlas-p6-2-public-workdefinition-summary-v1',
   phase: 'P6.2',
@@ -163,10 +126,21 @@ if (outPath) {
   console.log(`  PUBLIC_SAFE summary written: ${outPath}`);
 }
 
-// ---- 4. persist protected aggregate --------------------------------------------------
+// ---- 6. persist protected aggregate --------------------------------------------------
 if (!persist) {
-  console.log('Dry run complete. Re-run with --persist to write the protected store.');
+  console.log('Dry run complete. No write was made to atlas_work_definitions.');
+  console.log('Re-run with --persist to write the protected store.');
   process.exit(0);
+}
+
+// --persist cannot bypass certification: the write path requires the reconciled attestation.
+if (attested?.attested !== true || attested?.reconciled !== true) {
+  console.error('Refusing to persist: upstream certification was not attested and reconciled. Failed closed.');
+  process.exit(1);
+}
+if (attested.certifiedContentHash !== governedInputContentHash || attested.workDefinitionCount !== t.workDefinitionCount) {
+  console.error('Refusing to persist: attestation does not match the compiled artifact. Failed closed.');
+  process.exit(1);
 }
 
 const tasks = compilation.coverage.map(c => ({

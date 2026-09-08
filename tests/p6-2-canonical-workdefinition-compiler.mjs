@@ -262,7 +262,15 @@ assert.equal(
   'oracle leaf classification must account for every terminal leaf'
 );
 const compileScript = fs.readFileSync(new URL('../scripts/compile-p6-2-work-definitions.mjs', import.meta.url), 'utf8');
-assert.match(compileScript, /cross-check against certified P6\.1 decomposition FAILED/, 'compile must fail closed on cross-check divergence');
-assert.match(compileScript, /process\.exit\(1\)/, 'cross-check divergence must be a hard failure');
+assert.match(compileScript, /preflightCertification\(\{/, 'compile must run the certification pre-flight before any network access');
+assert.match(compileScript, /assertCertifiedInput\(\{/, 'compile must bind certification to the actual store hash');
+assert.match(compileScript, /reconcileCompilation\(attestation, compilation\)/, 'compile must reconcile output against certified counts');
+assert.ok(!/existsSync\s*\(\s*oracle/i.test(compileScript), 'the conditional oracle skip path must not exist');
+assert.ok(!/cross-check skipped/i.test(compileScript), 'certification must have no skip messaging');
+// the pre-flight must precede the store fetch, so uncertified runs never reach the network
+assert.ok(
+  compileScript.indexOf('preflightCertification({') < compileScript.indexOf('await rest('),
+  'certification pre-flight must run before the first network call'
+);
 
 console.log('P6.2 Canonical WorkDefinition compiler/verifier certification PASS');
