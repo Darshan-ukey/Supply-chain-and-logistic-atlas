@@ -2,10 +2,11 @@
   "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
   "stageId": "R0.1A",
   "checkpoint": "POST_IMPLEMENTATION_PRE_QA",
-  "timestamp": "2026-09-08T04:47:37.485Z",
+  "timestamp": "2026-09-08T05:40:03.092Z",
   "governanceBranch": "atlas-governance-registry-v2.1",
+  "governanceBaselineCommit": "4776146",
   "implementationBranch": "atlas-recovery-r0-1a-universe-materialization",
-  "commitSha": "b444a4312bcfe50574300200576a00e4228a0f6c",
+  "commitSha": "630f31a2794090f9e77c60056ab2391cb6cd0922",
   "qaDisposition": null,
   "assets": [
     {
@@ -14,19 +15,16 @@
       "repositoryPath": "data/universe/universe-semantic-payload.json",
       "driveLocation": null,
       "liveStoreReference": null,
-      "version": "release shell 7.3 / embedded semantic 7.2.0",
+      "version": "1",
       "classification": "CANDIDATE_MECHANICAL_MATERIALIZATION_AWAITING_QA",
-      "sha256": "a3e8bc28876880e378d87a5c63173cfb41a329a57fef43c8597e2f92ae088e43",
-      "lineage": [
-        "source reference/universe-v7.3.html sha256 d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
-        "embedded semantic identity supply-chain-logistics-universe-v7.2 / 7.2.0"
-      ],
+      "sha256": "17b4973e18a4bb93fc81908d9fc605dfbe989d79ca0c6ac3e086f2feac5958b8",
+      "lineage": [],
       "dependencies": [
         "reference/universe-v7.3.html"
       ],
       "dependencyClosure": "PASS",
       "custodyState": "CANDIDATE",
-      "notes": "52 structures / 906 records. Semantic hash 95d976ff862ef77facb07503c89489addedbecbf47bac64d3e477619a304a062"
+      "notes": "61 structures / 1330 records; semantic hash 2d6405c534b96f4054cb87ac2428a0a7a1bf4626334a86e5cc96ec342add4043"
     },
     {
       "assetId": "universe-extraction-report",
@@ -36,12 +34,12 @@
       "liveStoreReference": null,
       "version": "1",
       "classification": "CANDIDATE_EVIDENCE",
-      "sha256": "8c13019e1662065834f2228e624dfbc4563142f5361d9ea5a319931acc7898d5",
+      "sha256": "97c89af18ef637864a2019b25c2d90b26fbbddf8eb03804531d0c7ad5f0c8a67",
       "lineage": [],
       "dependencies": [],
       "dependencyClosure": "PASS",
       "custodyState": "CANDIDATE",
-      "notes": "0 unresolved structures"
+      "notes": "0 unresolved; independent denominator 61/61 materialized"
     },
     {
       "assetId": "universe-copy-comparison",
@@ -51,12 +49,27 @@
       "liveStoreReference": null,
       "version": "1",
       "classification": "CANDIDATE_EVIDENCE",
-      "sha256": "0bf49c7995d2d6a3ede452893308362c5b2bca4949a7aba863cb64f3ab9c0823",
+      "sha256": "48916f8488968dbfa50e33b60d1029c03030e5a5b6d657410957246962262928",
       "lineage": [],
       "dependencies": [],
       "dependencyClosure": "PASS",
       "custodyState": "CANDIDATE",
-      "notes": "CORE_SEMANTICS_IDENTICAL_SHELL_NAVIGATION_DIFFERS"
+      "notes": "3 differing structures, classification PENDING_R0_1B"
+    },
+    {
+      "assetId": "universe-declaration-inventory",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-declaration-inventory.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "CANDIDATE_EVIDENCE",
+      "sha256": "ab099a6b154a155961f1bac1ffdc6b2dcc0e0b787f80a6233d6e3f8bce9b022f",
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "113 module-scope declarations; 61 must materialize"
     }
   ],
   "tools": [
@@ -64,22 +77,30 @@
       "toolId": "universe-semantic-extractor",
       "repositoryPath": "tools/universe/extract-universe-semantics.mjs",
       "version": "atlas-universe-semantic-extractor-1.0.0",
-      "sha256": "83fd00187aba87608aab8f08a150cda2f93e57c3becf9a556283cfb4cc5cabdc",
-      "purpose": "Deterministic three-pass mechanical extraction of embedded Universe semantics"
+      "sha256": "df94bf3c2ab28b235a003a1c4adb0a07a934d8479c5c668d716835d0c9c5bf63",
+      "purpose": "Deterministic mechanical extraction with declaration-boundary snapshot capture"
     },
     {
       "toolId": "universe-copy-comparator",
       "repositoryPath": "tools/universe/compare-universe-copies.mjs",
       "version": "atlas-universe-semantic-extractor-1.0.0",
-      "sha256": "51eec1c7667a1a9e111c8e9b0d2c03ab1a3aefd229c755f08daa462ffb2c9733",
-      "purpose": "Deterministic semantic comparison of retained Universe HTML copies"
+      "sha256": "f598e3941989e6190e1bda37b483b91c40487d896d47c781836a04a0bd4ef594",
+      "purpose": "Raw observational comparison of retained copies; no interpretation"
+    },
+    {
+      "toolId": "universe-declaration-inventory",
+      "repositoryPath": "tools/universe/inventory-module-declarations.mjs",
+      "version": "1.0.0",
+      "sha256": "718766c2ea851627719a7c073adecf33370e4a3514f1fef8c6c1233e4597ebb4",
+      "purpose": "Independent completeness denominator using a separate parser"
     }
   ],
   "liveState": [],
   "driveEvidence": [
     {
       "status": "NOT_MIRRORED",
-      "reason": "Drive mirroring of R0.1A candidate evidence not performed by the implementation agent; required by custody standard before QA close."
+      "owner": "INDEPENDENT_QA",
+      "reason": "Implementation agent has Drive read/search only. QA holds Drive write capability and will mirror candidate evidence to 02_FROZEN_CANDIDATES/Universe before QA close."
     }
   ],
   "findings": [
@@ -91,45 +112,65 @@
     {
       "id": "R0.1A-02",
       "severity": "MEDIUM",
-      "statement": "Three retained HTML copies, two distinct hashes. Core Universe semantics identical across all copies (6522bc162bb591d7c385fc4668c49f48c634ceeb112d5fb28eb03da67d124058). Only defaults, liveModuleRoutes and moduleCoverageStatus differ, all shell navigation."
+      "statement": "Three retained HTML copies, two distinct source hashes. 58 structures identical, 3 differing (defaults, liveModuleRoutes, moduleCoverageStatus). Difference classification PENDING_R0_1B."
     },
     {
       "id": "R0.1A-03",
-      "severity": "MEDIUM",
-      "statement": "Copy 31503394 carries older daughter navigation pointers (Road LTL v1.2, Ocean 0.4) than copy d674a8f7 (Road LTL v1.3, Ocean 0.5), indicating an earlier build state rather than a semantic variant."
+      "severity": "HIGH",
+      "statement": "Construction-boundary field-set divergence observed: 189 records reachable from multiple structures carry different field sets depending on capture boundary (paths: businessObjectRecords, domains, executiveIntents, firstClassEntities.businessObjects, firstClassEntities.systems, models, systemRecords). The source enriches record objects between declarations. Which boundary is canonical is PENDING_R0_1B."
     },
     {
       "id": "R0.1A-04",
       "severity": "MEDIUM",
-      "statement": "Universe sources are absent from the default branch and unregistered in ASSET_REGISTER.json. Registration is a governance action, not taken by this stage."
+      "statement": "Universe sources are absent from the default branch and unregistered in ASSET_REGISTER.json with no repositoryPath or sha256. Registration is a governance action not taken by this stage."
     },
     {
       "id": "R0.1A-05",
-      "severity": "INFO",
-      "statement": "24 nested function-local declarations were deliberately excluded as working variables, not Universe semantics."
+      "severity": "MEDIUM",
+      "statement": "Independent inventory found 113 module-scope declarations; 61 are data-bearing. An earlier literal-only denominator would have under-counted by 9. All 61 are now materialized."
     },
     {
       "id": "R0.1A-06",
+      "severity": "MEDIUM",
+      "statement": "Earlier reference-based capture recorded a runtime-added domainIds field on all 78 system records. Declaration-boundary snapshot capture removes it. Prior payload hash 95d976ff is superseded and must not be used."
+    },
+    {
+      "id": "R0.1A-07",
       "severity": "INFO",
-      "statement": "Daughter a5-*/scp-* reference resolution remains UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT. R0.1A makes no claim about missing Universe identifiers."
+      "statement": "Structure \"state\" is materialized but classified CALL_DERIVED_DATA and may be runtime state rather than canonical semantics. Recorded without pruning; classification is PENDING_R0_1B."
+    },
+    {
+      "id": "R0.1A-08",
+      "severity": "INFO",
+      "statement": "Daughter a5-*/scp-* reference resolution remains UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT. Zero such identifiers were observed in the payload; this is an observed result, not an assumption."
     }
   ],
   "tests": [
     {
       "path": "tests/r0-1a-universe-materialization.mjs",
       "result": "PASS",
+      "ci": ".github/workflows/r0-1a-universe-materialization.yml",
       "covers": [
         "determinism",
-        "completeness",
+        "independent completeness denominator",
+        "declaration-boundary snapshot regression",
+        "deliberate pass-3 termination",
         "payload reproducibility",
         "dual lineage",
-        "no invented identifiers",
-        "copy comparison",
+        "no introduced identifiers",
+        "raw observational comparison",
         "scope guards"
       ]
     }
   ],
-  "supersedes": [],
+  "supersedes": [
+    {
+      "assetId": "universe-semantic-payload",
+      "priorCommit": "b444a431",
+      "priorSemanticHash": "95d976ff862ef77facb07503c89489addedbecbf47bac64d3e477619a304a062",
+      "reason": "Reference-capture contamination and incomplete denominator corrected under QA FIX_REQUIRED."
+    }
+  ],
   "supersededBy": [],
   "nextAuthorization": "AWAITING_INDEPENDENT_QA"
 }
