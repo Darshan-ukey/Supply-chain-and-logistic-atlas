@@ -5,7 +5,7 @@
   "implementationBranch": "atlas-recovery-r0-1a-universe-materialization",
   "checkpoint": "PRE_CHANGE_BASELINE",
   "timestamp": "2026-09-08T04:47:09.105Z",
-  "commitSha": null,
+  "commitSha": "28f7c30a6be065497c5fe36ebc3164eefdd4cf52",
   "qaDisposition": null,
   "assets": [
     {
@@ -93,10 +93,22 @@
       "id": "R0.1A-PRE-03",
       "severity": "MEDIUM",
       "statement": "Universe HTML sources are absent from the default branch (main); they exist only on P6.x and governance branches."
+    },
+    {
+      "id": "R0.1A-PRE-04",
+      "severity": "PROCESS_NONCONFORMANCE",
+      "statement": "PRE_CHANGE_BASELINE was prepared before implementation but was not independently committed as a standalone checkpoint before the implementation commit. Baseline is nevertheless deterministically recoverable because the implementation commit is additive and its parent is 28f7c30a6be065497c5fe36ebc3164eefdd4cf52. No retained Universe source was overwritten.",
+      "remediation": "Future stages must commit Checkpoint A as its own commit before any implementation commit."
     }
   ],
   "tests": [],
   "supersedes": [],
   "supersededBy": [],
-  "nextAuthorization": null
+  "nextAuthorization": null,
+  "baselineResolution": {
+    "method": "PARENT_OF_IMPLEMENTATION_COMMIT",
+    "implementationCommit": "b444a431",
+    "baselineCommit": "28f7c30a6be065497c5fe36ebc3164eefdd4cf52",
+    "verified": "git rev-parse b444a43^ == 28f7c30a6be065497c5fe36ebc3164eefdd4cf52"
+  }
 }

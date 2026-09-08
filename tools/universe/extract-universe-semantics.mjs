@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { inventoryModuleDeclarations, maskLiterals } from './inventory-module-declarations.mjs';
 import crypto from 'node:crypto';
 
 // R0.1A — Universe Semantic Materialization.
@@ -99,6 +100,40 @@ function balancedEnd(s, start) {
 const EVAL_TIMEOUT_MS = 5000;
 
 /**
+ * Locate the statement-terminating `;` at module depth for each named declaration, whatever
+ * the shape of its right-hand side. Uses a masked copy so semicolons inside strings/comments
+ * are never mistaken for statement ends. Enables declaration-boundary capture of values built
+ * by factory/derivation calls, not only object/array literals.
+ */
+function namedDeclarationBoundaries(block, names) {
+  const masked = maskLiterals(block);
+  const depth = new Int32Array(masked.length);
+  let d = 0;
+  for (let i = 0; i < masked.length; i++) {
+    const c = masked[i];
+    if (c === '{' || c === '[' || c === '(') d++;
+    else if (c === '}' || c === ']' || c === ')') d--;
+    depth[i] = d;
+  }
+  const all = [];
+  const dre = /\b(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=/g;
+  let m;
+  while ((m = dre.exec(masked))) all.push({ name: m[1], at: m.index, depth: depth[m.index] });
+  if (!all.length) return [];
+  const moduleDepth = Math.min(...all.map(x => x.depth));
+  const out = [];
+  for (const decl of all) {
+    if (decl.depth !== moduleDepth || !names.includes(decl.name)) continue;
+    let end = -1;
+    for (let i = decl.at; i < masked.length; i++) {
+      if (masked[i] === ';' && depth[i] === moduleDepth) { end = i + 1; break; }
+    }
+    if (end > 0) out.push({ name: decl.name, end });
+  }
+  return out;
+}
+
+/**
  * Extract Universe semantic structures from HTML.
  *
  * Pass 1 evaluates each top-level literal in an empty sandbox (pure literals only).
@@ -106,7 +141,7 @@ const EVAL_TIMEOUT_MS = 5000;
  * structures that merely reference earlier declarations (e.g. spreads/concats).
  * Nothing is inferred: a structure that cannot be evaluated is reported unresolved.
  */
-export function extractUniverseSemantics(html) {
+export function extractUniverseSemantics(html, { additionalTargets = [] } = {}) {
   const blocks = scriptBlocks(html);
   const declarations = [];
   blocks.forEach((block, blockIndex) => {
@@ -151,44 +186,74 @@ export function extractUniverseSemantics(html) {
     remaining = still;
   }
 
-  // Pass 3 — controlled whole-block execution for structures built by data-factory helpers
-  // (e.g. sourceRecords built via S(...)). Module-scope declarations are rewritten to
-  // assignments on a capture object and the block is executed in an isolated sandbox with
-  // inert DOM stubs. Execution stops at the first DOM-dependent statement; whatever was
-  // declared before that point is captured verbatim. No value is inferred or synthesized.
+  // Pass 3 — controlled execution bounded at the governed construction boundary.
+  //
+  // Each module-scope literal declaration is followed by an injected *deep-snapshot* capture,
+  // so the recorded value is the declaration-time value, not a live reference that later
+  // runtime code could mutate. Immediately after the last required target is captured, a
+  // sentinel throw halts execution deliberately, so no subsequent application/UI logic runs
+  // at all. DOM stubs exist only to let construction complete, not to absorb runtime behaviour.
+  const CAPTURE_COMPLETE = '__ATLAS_R0_1A_CAPTURE_COMPLETE__';
   const pass3 = [];
-  if (remaining.length) {
+  const pass3Termination = [];
+  // Targets come from the literal-detection remainder PLUS any externally supplied
+  // declaration names (the independent inventory), so completeness is measured against a
+  // denominator this module did not produce.
+  const extraTargets = additionalTargets.filter(n => !(n in values));
+  if (remaining.length || extraTargets.length) {
     blocks.forEach((block, blockIndex) => {
-      const wanted = remaining.filter(d => d.blockIndex === blockIndex).map(d => d.name);
-      if (!wanted.length) return;
-      // Preserve every original binding and append a capture statement after each
-      // module-scope literal declaration. Nothing is rewritten or removed, so all
-      // subsequent references still resolve exactly as in the source.
       const found = findDeclarations(block);
       if (!found.length) return;
+      const extraPoints = namedDeclarationBoundaries(block, extraTargets);
+      const wanted = [
+        ...remaining.filter(d => d.blockIndex === blockIndex).map(d => d.name),
+        ...extraPoints.map(p => p.name)
+      ];
+      if (!wanted.length) return;
       const moduleDepth = Math.min(...found.map(d => d.depth));
-      // Only inject where the declaration genuinely terminates. A literal followed by a
-      // chained call or a further declarator is not a safe injection point, and injecting
-      // there would corrupt the source rather than capture it.
-      const points = found
+      // Inject only where a declaration genuinely terminates; a literal followed by a chained
+      // call or further declarator is not a safe injection point.
+      const literalPoints = found
         .filter(d => d.depth === moduleDepth && /^\s*;/.test(block.slice(d.end, d.end + 40)))
-        .sort((a, b) => b.end - a.end);
+        .map(d => ({ name: d.name, end: d.end }));
+      // Merge literal-declaration points with boundaries located for arbitrary declarations.
+      const seenEnds = new Set();
+      const points = [...literalPoints, ...extraPoints]
+        .filter(p => (seenEnds.has(`${p.name}@${p.end}`) ? false : seenEnds.add(`${p.name}@${p.end}`)))
+        .sort((a, b) => a.end - b.end);
+      if (!points.length) return;
+
+      // Capture at every safe point; terminate after the last point overall so externally
+      // supplied targets declared later in the block are still reached.
+      const lastWantedEnd = Math.max(...points.map(d => d.end), -1);
+      if (lastWantedEnd < 0) return;
+
       let src = block;
-      for (const d of points) src = `${src.slice(0, d.end)};__cap.${d.name}=${d.name};${src.slice(d.end)}`;
+      for (const d of [...points].sort((a, b) => b.end - a.end)) {
+        // Deep snapshot at the declaration boundary; JSON round-trip freezes the value.
+        let inject = `;try{__cap.${d.name}=JSON.parse(JSON.stringify(${d.name}))}catch(e){};`;
+        if (d.end === lastWantedEnd) inject += `throw new Error(${JSON.stringify(CAPTURE_COMPLETE)});`;
+        src = `${src.slice(0, d.end)}${inject}${src.slice(d.end)}`;
+      }
 
       const inert = new Proxy(function () {}, {
         get: () => inert, set: () => true, apply: () => inert, construct: () => inert, has: () => true
       });
       const cap = {};
       const sandbox = { __cap: cap, document: inert, window: inert, navigator: inert, location: inert, console: { log() {}, warn() {}, error() {} } };
-      try { vm.runInNewContext(src, sandbox, { timeout: EVAL_TIMEOUT_MS }); } catch { /* partial capture retained */ }
+      let termination = 'UNEXPECTED_NO_THROW';
+      try {
+        vm.runInNewContext(src, sandbox, { timeout: EVAL_TIMEOUT_MS });
+      } catch (e) {
+        termination = String(e?.message).includes(CAPTURE_COMPLETE) ? 'DELIBERATE_SENTINEL_AFTER_LAST_CAPTURE' : `EARLY_ABORT: ${String(e?.message).slice(0, 120)}`;
+      }
+      pass3Termination.push({ blockIndex, termination });
+
       for (const name of wanted) {
         const v = cap[name];
         if (v === undefined || typeof v === 'function') continue;
-        let plain;
-        try { plain = JSON.parse(JSON.stringify(v)); } catch { continue; }
-        values[name] = plain;
-        pass3.push(name);
+        values[name] = v;   // already a JSON deep snapshot taken at declaration time
+        if (!pass3.includes(name)) pass3.push(name);
       }
     });
     remaining = remaining.filter(d => !pass3.includes(d.name));
@@ -215,8 +280,53 @@ export function extractUniverseSemantics(html) {
       recoveredPass2: pass2.sort(),
       recoveredPass3: pass3.sort(),
       unresolved: remaining.map(d => d.name).sort(),
+      pass3Termination,
       scriptBlocks: blocks.length
     }
+  };
+}
+
+/**
+ * Detect where two extracted structures describe the same underlying records but disagree
+ * on field sets. The source enriches record objects between declarations, so a value captured
+ * at one declaration boundary can legitimately differ from the same record captured at a later
+ * boundary. R0.1A reports this; deciding which boundary is canonical belongs to R0.1B.
+ */
+export function constructionBoundaryConsistency(structures) {
+  const recordSets = [];
+  for (const [name, value] of Object.entries(structures)) {
+    if (Array.isArray(value) && value.length && value.every(x => x && typeof x === 'object' && typeof x.id === 'string')) {
+      recordSets.push({ name, path: name, records: value });
+    } else if (value && typeof value === 'object' && !Array.isArray(value)) {
+      for (const [k, v] of Object.entries(value)) {
+        if (Array.isArray(v) && v.length && v.every(x => x && typeof x === 'object' && typeof x.id === 'string')) {
+          recordSets.push({ name, path: `${name}.${k}`, records: v });
+        }
+      }
+    }
+  }
+  const byId = new Map();
+  for (const set of recordSets) {
+    for (const r of set.records) {
+      if (!byId.has(r.id)) byId.set(r.id, []);
+      byId.get(r.id).push({ path: set.path, fields: Object.keys(r).sort().join(',') });
+    }
+  }
+  const divergences = [];
+  for (const [id, entries] of byId) {
+    const distinct = [...new Set(entries.map(e => e.fields))];
+    if (distinct.length > 1) {
+      divergences.push({ recordId: id, observedFieldSets: entries.map(e => ({ path: e.path, fields: e.fields })) });
+    }
+  }
+  const affectedPaths = [...new Set(divergences.flatMap(d => d.observedFieldSets.map(f => f.path)))].sort();
+  return {
+    status: divergences.length ? 'FIELD_SET_DIVERGENCE_OBSERVED' : 'CONSISTENT',
+    divergentRecordCount: divergences.length,
+    affectedPaths,
+    interpretation: 'PENDING_R0_1B',
+    note: 'Records reachable from more than one structure were captured at different declaration boundaries. Differing field sets reflect source-side enrichment between declarations, recorded here without deciding which boundary is canonical.',
+    sample: divergences.slice(0, 3)
   };
 }
 
@@ -227,8 +337,23 @@ export function embeddedReleaseIdentity(structures) {
   return { id: m.id ?? null, version: m.version ?? null, releaseDate: m.releaseDate ?? null, classification: m.classification ?? null };
 }
 
-export function buildPayload({ sourcePath, html, releaseShellVersion }) {
-  const result = extractUniverseSemantics(html);
+export function buildPayload({ sourcePath, html, releaseShellVersion, additionalTargets = null }) {
+  // Completeness denominator comes from the independent declaration inventory.
+  const inventory = inventoryModuleDeclarations(html);
+  const targets = additionalTargets ?? inventory.mustMaterialize;
+  const result = extractUniverseSemantics(html, { additionalTargets: targets });
+  result.inventoryDenominator = {
+    totalModuleScopeDeclarations: inventory.totalModuleScopeDeclarations,
+    mustMaterialize: inventory.mustMaterialize,
+    mustMaterializeCount: inventory.mustMaterializeCount,
+    materialized: inventory.mustMaterialize.filter(n => n in result.structures).sort(),
+    notMaterialized: inventory.mustMaterialize.filter(n => !(n in result.structures)).sort(),
+    excludedByClassification: {
+      FUNCTION_HELPER: inventory.byClassification.FUNCTION_HELPER || [],
+      SCALAR_CONFIG: inventory.byClassification.SCALAR_CONFIG || [],
+      RUNTIME_UI_STATE: inventory.byClassification.RUNTIME_UI_STATE || []
+    }
+  };
   const identity = embeddedReleaseIdentity(result.structures);
   const payload = {
     schemaVersion: PAYLOAD_SCHEMA_VERSION,
@@ -301,10 +426,12 @@ if (import.meta.url === `file://${process.argv[1]}`) {
         unresolvedCount: result.extraction.unresolved.length,
         unresolved: result.extraction.unresolved,
         nestedDeclarationsIgnored: result.extraction.nestedDeclarationsIgnored,
-        nestedNamesIgnored: result.extraction.nestedNames
+        nestedNamesIgnored: result.extraction.nestedNames,
+        independentInventory: result.inventoryDenominator
       },
       structureProvenance: result.provenance,
       semanticBlockIndex: result.semanticBlockIndex,
+      constructionBoundaryConsistency: constructionBoundaryConsistency(payload.structures),
       inventory: result.inventory.sort((a, b) => b.records - a.records || a.name.localeCompare(b.name)),
       totalRecords: result.inventory.reduce((n, x) => n + x.records, 0)
     };
