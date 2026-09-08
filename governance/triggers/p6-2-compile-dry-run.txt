@@ -1,0 +1,14 @@
+P6.2 Canonical WorkDefinition compile — DRY RUN request
+=======================================================
+Editing this file triggers .github/workflows/p6-2-compile-dry-run.yml
+on branch atlas-presentation-architecture-v1-p6-2.
+
+That workflow is DRY RUN ONLY. It contains no --persist path and asserts
+that atlas_work_definitions row count is unchanged after the run.
+
+Target : road-ltl@1.5
+Pinned  : 2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab
+Expected: 22 tasks / 603 work units / 444 leaves / 185 WorkDefinitions
+          163 blocked by client binding / 96 blocked by knowledge gap
+
+run: 1

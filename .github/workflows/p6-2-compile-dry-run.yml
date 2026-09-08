@@ -1,0 +1,112 @@
+name: P6.2 Compile Dry Run (Road LTL 1.5)
+
+# Push-triggered DRY RUN ONLY.
+#
+# GitHub registers workflow_dispatch only for workflows present on the default branch.
+# Push triggers have no such constraint, so this workflow lets the governed P6.2 dry run
+# execute from the P6.2 branch without importing anything into the default branch.
+#
+# This workflow can NEVER persist: it does not pass --persist anywhere, and it asserts
+# that no write occurred. Persistence remains exclusively an explicit, separately
+# authorized action via the default-branch dispatcher.
+#
+# Fire it by editing: governance/triggers/p6-2-compile-dry-run.txt
+#
+# Repository secrets (never printed): SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+
+on:
+  push:
+    branches:
+      - atlas-presentation-architecture-v1-p6-2
+    paths:
+      - 'governance/triggers/p6-2-compile-dry-run.txt'
+
+permissions:
+  contents: read
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    env:
+      MODULE_ID: road-ltl
+      MODULE_VERSION: '1.5'
+      CERTIFIED_HASH: 2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Certify gate, compiler and verifier
+        run: |
+          node tests/p6-2-certification-gate.mjs
+          node tests/p6-2-canonical-workdefinition-compiler.mjs
+          node tests/p6-2-protected-workdefinition-api.mjs
+
+      - name: Assert this workflow cannot persist
+        run: |
+          if grep -n 'compile-p6-2-work-definitions.mjs' .github/workflows/p6-2-compile-dry-run.yml \
+             | grep -q -- '-[-]persist'; then
+            echo "Dry-run workflow must never invoke the compiler with persistence"; exit 1;
+          fi
+          echo "Confirmed: no compiler invocation in this workflow requests persistence."
+
+      - name: Record protected store state BEFORE the dry run
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          node -e '
+            const u=process.env.SUPABASE_URL.replace(/\/$/,""),k=process.env.SUPABASE_SERVICE_ROLE_KEY;
+            fetch(u+"/rest/v1/atlas_work_definitions?select=work_definition_id",{headers:{apikey:k,Authorization:"Bearer "+k,Prefer:"count=exact"}})
+              .then(r=>r.json()).then(rows=>{console.log("atlas_work_definitions rows BEFORE:",rows.length);require("fs").writeFileSync("before.count",String(rows.length));})
+              .catch(e=>{console.error("preflight store read failed:",e.message);process.exit(1)});
+          '
+
+      - name: Dry-run compile with mandatory certification gate
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          ATLAS_EXPECTED_DECOMPOSITION_HASH: ${{ env.CERTIFIED_HASH }}
+        run: |
+          node scripts/compile-p6-2-work-definitions.mjs \
+            "$MODULE_ID" "$MODULE_VERSION" \
+            --out "P6_2_PUBLIC_WORKDEFINITION_SUMMARY.json"
+
+      - name: Assert the summary is PUBLIC_SAFE and non-reconstructive
+        run: |
+          node -e '
+            const s=JSON.parse(require("fs").readFileSync("P6_2_PUBLIC_WORKDEFINITION_SUMMARY.json","utf8"));
+            if(s.classification!=="PUBLIC_SAFE_SUMMARY_ONLY")throw new Error("summary is not PUBLIC_SAFE");
+            if(s.detailIncluded!==false)throw new Error("summary must not include detail");
+            const text=JSON.stringify(s);
+            for(const t of ["workDefinitionId","definitions","sourceRefs","requiredClientBindings","requiredKnowledgeGaps","workUnitId"]){
+              if(text.includes(t))throw new Error("summary leaked protected token: "+t);
+            }
+            console.log("PUBLIC_SAFE totals:",JSON.stringify(s.totals));
+            console.log("PER-TASK:");
+            for(const t of s.tasks)console.log("  "+t.taskId+" wd="+t.workDefinitionCount+" notCompiled="+t.notCompiledLeafCount+" status="+t.coverageStatus);
+          '
+
+      - name: Assert the dry run wrote nothing to the protected store
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          node -e '
+            const fs=require("fs");
+            const before=Number(fs.readFileSync("before.count","utf8"));
+            const u=process.env.SUPABASE_URL.replace(/\/$/,""),k=process.env.SUPABASE_SERVICE_ROLE_KEY;
+            fetch(u+"/rest/v1/atlas_work_definitions?select=work_definition_id",{headers:{apikey:k,Authorization:"Bearer "+k}})
+              .then(r=>r.json()).then(rows=>{
+                console.log("atlas_work_definitions rows AFTER:",rows.length);
+                if(rows.length!==before){console.error("DRY RUN WROTE TO THE PROTECTED STORE");process.exit(1)}
+                console.log("Confirmed: dry run made no write to atlas_work_definitions.");
+              }).catch(e=>{console.error(e.message);process.exit(1)});
+          '
+
+      - name: Upload PUBLIC_SAFE summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: p6-2-public-workdefinition-summary
+          path: P6_2_PUBLIC_WORKDEFINITION_SUMMARY.json
