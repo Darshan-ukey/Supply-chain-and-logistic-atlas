@@ -27,7 +27,12 @@ After implementation create/commit `POST_IMPLEMENTATION_PRE_QA` with outputs, ha
 After independent QA create/synchronize `POST_QA_GOVERNED_STATE`, registers/pointers/classifications and durable Drive evidence before the next stage is authorized.
 
 ## R0.1 Universe rule
-R0.1 is split into R0.1A/B/C and must not be combined. R0.1A is the only currently authorized sub-stage. It may mechanically materialize Universe semantics but may not redesign semantics, create Universe 7.4, invent `a5-*`/`scp-*` IDs, create a crosswalk or mutate Road LTL references. R0.1B and R0.1C remain blocked until independent QA advances them. Until R0.1C approval use `UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT` for unresolved daughter references.
+R0.1 is split into R0.1A/B/C and must not be combined.
+
+- `R0.1A` is **COMPLETE / INDEPENDENT QA PASS**. Its certified mechanical materialization is evidence for R0.1B; do not rerun, reinterpret or replace it unless a new governed defect is found and reported.
+- `R0.1B` is the **only currently AUTHORIZED sub-stage**. Use the R0.1A Checkpoint C and certified artifacts to reconcile release shell 7.3 versus embedded semantic 7.2.0, classify the three observed source-copy differences, establish source/normalized-payload authority, determine the canonical construction boundary for the 189 field-set-divergent records, classify materialized `state` as canonical semantic vs runtime/UI state, and recommend exact canonical/frozen hashes/assets.
+- R0.1B may **not** rewrite Universe semantics, relabel 7.2.0 as 7.3 without evidence, create Universe 7.4, invent fields/IDs, mutate Road LTL/reference models, create crosswalks, or perform R0.1C reference-ownership decisions.
+- `R0.1C` remains **BLOCKED_UNTIL_R0_1B_QA**. Until R0.1C approval use `UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT` for unresolved daughter references.
 
 ## Architecture and source-integrity rule
 Frozen architecture outranks implementation convenience. The recovery standard is a certification/recovery overlay, not redesign authority.
