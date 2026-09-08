@@ -35,12 +35,61 @@ async function rest(path, init = {}) {
   return text ? JSON.parse(text) : null;
 }
 
+// Decode the protected payload. The declared payload_encoding is tried first. If it fails,
+// known-safe variants are attempted so an encoding-label defect is diagnosable rather than
+// opaque. Any divergence between declared and actual encoding is reported as a governance
+// finding and blocks persistence: the store's own metadata must be trustworthy before we
+// write derived truth alongside it.
+const encodingFinding = { declared: null, actual: null, mismatch: false };
+
 function decode(row) {
-  const encoding = String(row.payload_encoding || '').toUpperCase();
-  if (encoding === 'BROTLI_BASE64') return JSON.parse(zlib.brotliDecompressSync(Buffer.from(row.payload_compressed_base64, 'base64')).toString('utf8'));
-  if (encoding === 'GZIP_BASE64') return JSON.parse(zlib.gunzipSync(Buffer.from(row.payload_compressed_base64, 'base64')).toString('utf8'));
-  if (row.payload) return row.payload;
-  throw new Error('Protected decomposition payload is missing or uses an unsupported encoding');
+  const declared = String(row.payload_encoding || '').toUpperCase();
+  encodingFinding.declared = declared;
+  const b64 = row.payload_compressed_base64;
+
+  if (declared === 'JSONB' || (!b64 && row.payload)) {
+    encodingFinding.actual = 'JSONB';
+    return row.payload;
+  }
+  if (!b64) throw new Error('Protected decomposition payload is missing');
+  const buffer = Buffer.from(b64, 'base64');
+
+  const C = zlib.constants;
+  const strategies = [
+    ['BROTLI_BASE64', b => zlib.brotliDecompressSync(b)],
+    ['BROTLI_BASE64_LARGE_WINDOW', b => zlib.brotliDecompressSync(b, { params: { [C.BROTLI_DECODER_PARAM_LARGE_WINDOW]: 1 } })],
+    ['GZIP_BASE64', b => zlib.gunzipSync(b)],
+    ['DEFLATE_BASE64', b => zlib.inflateSync(b)],
+    ['DEFLATE_RAW_BASE64', b => zlib.inflateRawSync(b)],
+    ['ZSTD_BASE64', b => { if (typeof zlib.zstdDecompressSync !== 'function') throw new Error('zstd unavailable'); return zlib.zstdDecompressSync(b); }],
+    ['PLAIN_BASE64_JSON', b => b]
+  ];
+  // Try the declared encoding first, then the rest.
+  strategies.sort((a, x) => (a[0] === declared ? -1 : x[0] === declared ? 1 : 0));
+
+  const attempts = [];
+  for (const [name, fn] of strategies) {
+    try {
+      const parsed = JSON.parse(fn(buffer).toString('utf8'));
+      encodingFinding.actual = name;
+      encodingFinding.mismatch = name !== declared;
+      if (encodingFinding.mismatch) {
+        console.error('');
+        console.error('  GOVERNANCE FINDING — protected store encoding label is incorrect');
+        console.error(`    declared payload_encoding : ${declared}`);
+        console.error(`    actual encoding           : ${name}`);
+        console.error('    Impact: any consumer trusting the declared label fails to decode this row.');
+        console.error('    Persistence is blocked until this is resolved by governance.');
+        console.error('');
+      }
+      return parsed;
+    } catch (e) {
+      attempts.push(`${name}: ${String(e.message).slice(0, 80)}`);
+    }
+  }
+  console.error('Unable to decode the protected payload. Attempts:');
+  for (const a of attempts) console.error(`  - ${a}`);
+  throw new Error('Protected decomposition payload could not be decoded by any known encoding; failed closed.');
 }
 
 // ---- 0. MANDATORY certification pre-flight (before any network access) ---------------
@@ -161,6 +210,12 @@ if (!persist) {
   console.log('Dry run complete. No write was made to atlas_work_definitions.');
   console.log('Re-run with --persist to write the protected store.');
   process.exit(0);
+}
+
+if (encodingFinding.mismatch) {
+  console.error(`Refusing to persist: protected store declares ${encodingFinding.declared} but is actually ${encodingFinding.actual}.`);
+  console.error('Resolve the store encoding label through governance before writing derived truth. Failed closed.');
+  process.exit(1);
 }
 
 // --persist cannot bypass certification: the write path requires the reconciled attestation.
