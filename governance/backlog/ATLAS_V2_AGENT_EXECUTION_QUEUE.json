@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "atlas-v2-agent-execution-queue-v4",
-  "updatedAt": "2026-09-08T09:28:00+05:30",
+  "schemaVersion": "atlas-v2-agent-execution-queue-v5",
+  "updatedAt": "2026-09-08T10:33:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "recoveryStandardPath": "governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md",
   "assetCustodyStandardPath": "governance/standards/ATLAS_ASSET_CUSTODY_AND_GOVERNANCE_SYNC_STANDARD_V1.md",
@@ -42,51 +42,16 @@
       "id": "R0.1",
       "name": "Universe Materialization, Identity Reconciliation & Reference Ownership",
       "status": "IN_PROGRESS_VIA_SUBSTAGES",
-      "note": "R0.1 may not be executed as one undifferentiated task. Only its explicitly authorized sub-stage may be mutated; later sub-stages remain blocked until independent QA advances the queue.",
+      "note": "R0.1 may not be executed as one undifferentiated task. Only its explicitly authorized sub-stage may mutate assets.",
       "subStages": [
         {
           "stageId": "R0.1A",
           "id": "R0.1A",
           "name": "Universe Semantic Materialization",
           "status": "AUTHORIZED",
-          "objective": "Mechanically materialize the existing governed Universe semantic content without changing its meaning or inventing missing identifiers.",
-          "scope": [
-            "inspect both retained Universe HTML copies",
-            "record SHA-256 for each source HTML copy",
-            "build and retain deterministic extractor/materializer",
-            "extract all mechanically recoverable embedded data structures",
-            "perform a second deterministic extraction pass for structures that depend on previously declared variables where possible without semantic inference",
-            "produce normalized machine-readable semantic payload",
-            "preserve dual lineage: release shell Universe 7.3 and embedded semantic payload 7.2.0 unless evidence disproves that relationship",
-            "record extraction completeness and unresolved structures",
-            "compare normalized semantic payload produced from both HTML copies",
-            "add extractor/materialization tests and reproducibility hashes",
-            "create PRE_CHANGE_BASELINE custody manifest before mutation",
-            "create POST_IMPLEMENTATION_PRE_QA custody manifest and Drive candidate evidence before stopping for QA"
-          ],
-          "excluded": [
-            "Universe semantic redesign",
-            "creating Universe 7.4",
-            "inventing a5-* or scp-* identifiers",
-            "creating a crosswalk",
-            "changing Road LTL references",
-            "Road LTL OK rewrite",
-            "P6.1 regeneration",
-            "WorkDefinition compilation",
-            "Ocean uplift",
-            "Canvas redesign"
-          ],
-          "requiredEvidence": [
-            "source HTML hashes",
-            "extractor source",
-            "normalized payload hash",
-            "structure/record counts",
-            "unresolved extraction list",
-            "semantic equality/difference result for the two source copies",
-            "PRE_CHANGE_BASELINE manifest",
-            "POST_IMPLEMENTATION_PRE_QA manifest",
-            "Drive durable candidate/evidence references"
-          ],
+          "objective": "Mechanically materialize the existing governed Universe semantic content without changing meaning or inventing identifiers.",
+          "scope": ["inspect both retained Universe HTML copies", "record source SHA-256", "retain deterministic extractor/materializer", "extract mechanically recoverable embedded structures", "second deterministic pass for dependent structures without inference", "produce normalized machine-readable semantic payload", "preserve dual lineage release 7.3 / semantic payload 7.2.0 unless disproved", "record extraction completeness", "compare normalized outputs from both HTML copies", "add reproducibility tests/hashes", "create PRE_CHANGE_BASELINE", "create POST_IMPLEMENTATION_PRE_QA and Drive candidate evidence"],
+          "excluded": ["Universe semantic redesign", "Universe 7.4", "inventing a5-* or scp-* identifiers", "crosswalk creation", "Road LTL reference mutation", "Road LTL OK rewrite", "P6.1 regeneration", "WorkDefinition compilation", "Ocean uplift", "Canvas redesign"],
           "qaRequiredBeforeNext": true
         },
         {
@@ -94,20 +59,9 @@
           "id": "R0.1B",
           "name": "Universe Release Identity & Authority Reconciliation",
           "status": "BLOCKED_UNTIL_R0_1A_QA",
-          "objective": "Determine the authoritative relationship between Universe 7.3 release identity, embedded 7.2.0 semantic identity, and the two differing HTML source copies.",
-          "scope": [
-            "determine whether HTML-copy differences are semantic, presentation, build-state or non-semantic noise",
-            "determine which source copy is authoritative or whether authority attaches to a normalized semantic payload rather than one HTML file",
-            "verify release notes/evidence for the 7.3 UX/foundation-over-7.2-semantics interpretation",
-            "define governed identity fields for releaseVersion and semanticPayloadVersion",
-            "recommend exactly what hashes/assets should be registered as canonical/frozen"
-          ],
-          "excluded": [
-            "rewriting Universe semantics",
-            "renaming embedded 7.2.0 payload to 7.3 without evidence",
-            "creating Universe 7.4",
-            "reference-model mutation"
-          ],
+          "objective": "Govern the relationship between release 7.3, embedded semantic 7.2.0 and differing HTML source copies.",
+          "scope": ["classify source differences", "determine authoritative source or normalized-payload authority", "verify release-note evidence", "define releaseVersion and semanticPayloadVersion", "recommend canonical/frozen hashes/assets"],
+          "excluded": ["semantic rewrite", "unsupported relabeling", "Universe 7.4", "reference-model mutation"],
           "qaRequiredBeforeNext": true
         },
         {
@@ -115,42 +69,22 @@
           "id": "R0.1C",
           "name": "Canonical Reference Ownership Audit",
           "status": "BLOCKED_UNTIL_R0_1B_QA",
-          "objective": "Classify every unresolved Road LTL reference by its intended governing layer before deciding whether any Universe extension or crosswalk is required.",
-          "scope": [
-            "inventory all unresolved Road LTL references previously treated as Universe canonical references",
-            "classify each reference as Universe canonical ID, Daughter-local structural ID, Operational Knowledge ID, Canonical Information/Object ID, cross-layer concept ID, or invalid/orphaned reference",
-            "determine whether a5-ltl-* identifiers are Daughter-local rather than Universe-canonical",
-            "determine intended ownership of scp-* identifiers from frozen architecture/contracts and retained evidence",
-            "identify whether the actual repair is Universe extension, governed crosswalk, reference-contract correction, or orphan cleanup",
-            "produce an owner-decision recommendation without mutating the reference model"
-          ],
-          "excluded": [
-            "inventing a crosswalk",
-            "creating new canonical IDs",
-            "creating Universe 7.4",
-            "changing Daughter identifiers",
-            "changing Road LTL semantics",
-            "mutating canonical-reference fields"
-          ],
-          "requiredStatusLanguage": "Use canonicalReferenceResolution=UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT until R0.1C is independently approved; do not represent 0/22 as 22 proven Universe defects before ownership is established.",
+          "objective": "Classify unresolved Road LTL references by governing layer before selecting any repair.",
+          "scope": ["inventory unresolved references", "classify as Universe/Daughter/OK/Canonical Object/cross-layer/orphan", "determine a5-ltl-* ownership", "determine scp-* ownership", "recommend Universe extension/crosswalk/reference-contract correction/orphan cleanup without mutation"],
+          "excluded": ["inventing crosswalks", "creating canonical IDs", "Universe 7.4", "Daughter-ID mutation", "Road LTL semantic mutation", "canonical-reference mutation"],
+          "requiredStatusLanguage": "canonicalReferenceResolution=UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT",
           "qaRequiredBeforeNext": true
         }
       ],
-      "exitGate": [
-        "machine-readable Universe semantic payload is retained and reproducible",
-        "release/semantic identity and authority are explicitly governed",
-        "reference ownership is classified by layer",
-        "any true referential defects are distinguished from Daughter-local or cross-layer identifiers",
-        "POST_QA_GOVERNED_STATE custody manifest and Drive final evidence are synchronized",
-        "independent QA approves the appropriate repair path before R0.2"
-      ]
+      "exitGate": ["machine-readable reproducible Universe semantics", "governed release/semantic identity", "reference ownership classified", "true defects distinguished from valid local/cross-layer identifiers", "POST_QA_GOVERNED_STATE synchronized", "independent QA approves repair path"]
     },
     {
       "stageId": "R0.2",
       "id": "R0.2",
-      "name": "Road LTL Source Closure & Effective 1.5 Re-certification",
+      "name": "Road LTL Source Closure, Effective 1.5 & P6.0 Re-certification",
       "status": "BLOCKED_UNTIL_R0_1_QA",
-      "scope": ["governed Road LTL 1.4 custody", "taskId/id overlay normalization", "deterministic road-ltl@1.5 materialization", "21x1.4 + LTL-03x1.5 lineage", "reference-ownership-aware integrity recheck"],
+      "scope": ["place recovered Road LTL 1.4 package/module/Operational Knowledge into governed GitHub/Drive custody with verified hashes", "normalize taskId/id overlay without mutating sources", "deterministically materialize effective road-ltl@1.5", "prove 21x1.4 + LTL-03x1.5 lineage", "rerun ownership-aware reference integrity", "reproduce and re-certify P6.0 effective materialization from retained governed inputs/tooling", "record any historical-vs-current hash identity discrepancy rather than normalize by assumption", "custody checkpoints"],
+      "exitGate": ["Road LTL source dependency closure", "deterministic 22-task effective 1.5", "P6.0 materialization reproducible from retained sources/tooling", "lineage independently certified", "registry/custody evidence synchronized"],
       "qaRequiredBeforeNext": true
     },
     {
@@ -158,7 +92,7 @@
       "id": "R0.3",
       "name": "Road LTL Operational Knowledge + Canonical Information Hardening",
       "status": "BLOCKED_UNTIL_R0_2_QA",
-      "scope": ["22-task OK coverage matrix", "objects/documents gaps", "recovery/jurisdiction classification", "canonical BOL sections/fields/cardinality/validation/relationships/provenance/applicability/client-binding requirements", "explicit unresolved gaps"],
+      "scope": ["22-task OK coverage matrix", "objects/documents gaps", "recovery/jurisdiction classification", "canonical BOL sections/fields/cardinality/validation/relationships/provenance/applicability/client-binding requirements", "explicit unresolved gaps", "custody checkpoints"],
       "excluded": ["client-specific canonical values", "fabricated operational knowledge"],
       "qaRequiredBeforeNext": true
     },
@@ -167,17 +101,17 @@
       "id": "R0.4",
       "name": "Generic Recursive Decomposition Compiler & Road LTL Re-certification",
       "status": "BLOCKED_UNTIL_R0_3_QA",
-      "scope": ["historical P6.1 evidence preservation", "optional exact decoder recovery", "module-neutral recursive compiler", "executability stop criterion", "Road LTL re-decomposition", "derived-count certification", "governed persistence/readback", "repo/live schema reconciliation"],
+      "scope": ["preserve historical P6.1 evidence", "search/recover original readable bundle/decoder/generator/CI artifact where available", "optional exact decoder recovery", "module-neutral recursive compiler", "executability stop criterion", "Road LTL re-decomposition", "derived-count certification", "governed persistence/readback", "repo/live schema reconciliation", "custody checkpoints"],
       "excluded": ["tuning to 603/444/185/163/96", "manual decomposition invention", "WorkDefinition compilation"],
       "qaRequiredBeforeNext": true
     },
     {
       "stageId": "R0.5",
       "id": "R0.5",
-      "name": "Ocean FCL/LCL 0.6 Operational Knowledge Depth Uplift",
+      "name": "Ocean FCL/LCL 0.6 Source Closure & Operational Knowledge Depth Uplift",
       "status": "BLOCKED_UNTIL_R0_4_QA",
-      "scope": ["30 FCL + 30 LCL OK audit", "Ocean-specific knowledge research/curation", "triggers/inputs/rules/exceptions/recovery/jurisdiction/evidence/actors/systems/controls/gaps", "Ocean canonical objects/documents", "provenance"],
-      "excluded": ["copying LTL knowledge to satisfy coverage", "manual WorkDefinitions"],
+      "scope": ["verify canonical Ocean FCL/LCL 0.6 source/package/module custody and identity before knowledge uplift", "audit 30 FCL + 30 LCL tasks", "Ocean-specific knowledge research/curation", "triggers/inputs/rules/exceptions/recovery/jurisdiction/evidence/actors/systems/controls/gaps", "Ocean canonical objects/documents", "provenance", "custody checkpoints"],
+      "excluded": ["copying LTL knowledge to satisfy coverage", "manual WorkDefinitions", "treating PUBLIC_SAFE materializations as canonical private source"],
       "qaRequiredBeforeNext": true
     },
     {
@@ -185,7 +119,7 @@
       "id": "R0.6",
       "name": "Multi-Mode Decomposition Proof & Pre-P6 Readiness Certification",
       "status": "BLOCKED_UNTIL_R0_5_QA",
-      "scope": ["generic decomposition of Ocean FCL", "generic decomposition of Ocean LCL", "module-neutral proof", "Universe-to-Decomposition certification matrix across LTL/FCL/LCL", "truthful registry reclassification", "pre-P6 readiness QA"],
+      "scope": ["generic decomposition of Ocean FCL", "generic decomposition of Ocean LCL", "module-neutral proof", "Universe-to-Decomposition certification matrix across LTL/FCL/LCL", "truthful registry reclassification", "GitHub/Drive/Supabase coherence check", "pre-P6 readiness QA", "custody checkpoints"],
       "qaRequiredBeforeNext": true
     },
     {
@@ -196,71 +130,17 @@
       "scope": ["retain existing P6.2 implementation WIP", "resume only after R0.6 independent QA using re-certified decomposition inputs"],
       "qaRequiredBeforeNext": true
     },
-    {
-      "stageId": "P6.3",
-      "id": "P6.3",
-      "name": "Identity, Authorization & Public/Protected Certification",
-      "status": "BLOCKED_UNTIL_P6_2_QA",
-      "qaRequiredBeforeNext": true
-    },
-    {
-      "stageId": "P6.4",
-      "id": "P6.4",
-      "name": "Former Generic Recursive Decomposition + Ocean Execution Depth",
-      "status": "TO_BE_RESCOPED_AFTER_RECOVERY",
-      "note": "Former scope is absorbed by R0.4-R0.6. Do not execute old P6.4 as written."
-    },
-    {
-      "stageId": "P6.5",
-      "id": "P6.5",
-      "name": "Atlas V2 Integration & Production Certification",
-      "status": "BLOCKED_UNTIL_PRIOR_QA",
-      "qaRequiredBeforeNext": true
-    },
-    {
-      "stageId": "ATLAS_V2_GO_LIVE",
-      "id": "ATLAS_V2_GO_LIVE",
-      "name": "Atlas V2.0 Production Promotion",
-      "status": "BLOCKED",
-      "ownerApprovalRequired": true
-    }
+    {"stageId": "P6.3", "id": "P6.3", "name": "Identity, Authorization & Public/Protected Certification", "status": "BLOCKED_UNTIL_P6_2_QA", "qaRequiredBeforeNext": true},
+    {"stageId": "P6.4", "id": "P6.4", "name": "Former Generic Recursive Decomposition + Ocean Execution Depth", "status": "TO_BE_RESCOPED_AFTER_RECOVERY", "note": "Former scope is absorbed by R0.4-R0.6. Do not execute old P6.4 as written."},
+    {"stageId": "P6.5", "id": "P6.5", "name": "Atlas V2 Integration & Production Certification", "status": "BLOCKED_UNTIL_PRIOR_QA", "qaRequiredBeforeNext": true},
+    {"stageId": "ATLAS_V2_GO_LIVE", "id": "ATLAS_V2_GO_LIVE", "name": "Atlas V2.0 Production Promotion", "status": "BLOCKED", "ownerApprovalRequired": true}
   ],
-  "certificationDimensions": [
-    "SEMANTICS",
-    "COVERAGE",
-    "EVIDENCE",
-    "DEPENDENCY_CLOSURE",
-    "REPRODUCIBILITY",
-    "REFERENTIAL_INTEGRITY",
-    "LIVE_READABILITY",
-    "SECURITY_BOUNDARY",
-    "REGRESSION",
-    "DEPLOYMENT_PARITY"
-  ],
+  "certificationDimensions": ["PHYSICAL_EXISTENCE", "SEMANTICS", "COVERAGE", "EVIDENCE", "DEPENDENCY_CLOSURE", "REPRODUCIBILITY", "REFERENTIAL_INTEGRITY", "LIVE_READABILITY", "REGISTRY_COHERENCE", "CLASSIFICATION_ACCURACY", "SECURITY_BOUNDARY", "REGRESSION", "DEPLOYMENT_PARITY"],
   "historicalFindings": [
-    {
-      "stageId": "FINDING-UNIVERSE-01",
-      "id": "FINDING-UNIVERSE-01",
-      "status": "RECOVERY_REQUIRED",
-      "description": "Universe release 7.3 is not yet retained as a governed machine-readable semantic materialization. Embedded metadata self-declares semantic payload 7.2.0; two retained HTML copies differ in source hash and require authority reconciliation."
-    },
-    {
-      "stageId": "FINDING-UNIVERSE-02",
-      "id": "FINDING-UNIVERSE-02",
-      "status": "OWNERSHIP_AUDIT_REQUIRED",
-      "description": "Previously unresolved a5-* and scp-* references must not be presumed to be missing Universe identifiers until governing-layer ownership is established in R0.1C."
-    },
-    {
-      "stageId": "FINDING-P6-1-01",
-      "id": "FINDING-P6-1-01",
-      "status": "RECERTIFICATION_REQUIRED",
-      "description": "Historical P6.1 generator is not retained and live protected payload is not readable by retained tooling; historical certification remains immutable evidence but is insufficient for reproducibility claims."
-    },
-    {
-      "stageId": "FINDING-OCEAN-01",
-      "id": "FINDING-OCEAN-01",
-      "status": "RECOVERY_REQUIRED",
-      "description": "Ocean FCL/LCL 0.6 are below Road-LTL-equivalent Operational Knowledge/decomposition depth and cannot claim execution-depth parity before uplift."
-    }
+    {"stageId": "FINDING-UNIVERSE-01", "id": "FINDING-UNIVERSE-01", "status": "RECOVERY_REQUIRED", "description": "Universe release 7.3 requires governed machine-readable semantic materialization and release/semantic identity reconciliation."},
+    {"stageId": "FINDING-UNIVERSE-02", "id": "FINDING-UNIVERSE-02", "status": "OWNERSHIP_AUDIT_REQUIRED", "description": "a5-* and scp-* references must not be presumed missing Universe identifiers until ownership is established."},
+    {"stageId": "FINDING-LTL-BASE-01", "id": "FINDING-LTL-BASE-01", "status": "RECOVERED_PENDING_GOVERNED_CUSTODY_AND_RECERTIFICATION", "description": "Road LTL 1.4 package/module/Operational Knowledge were subsequently recovered and hash-verified outside current governed repo custody; R0.2 must close custody and P6.0 reproducibility."},
+    {"stageId": "FINDING-P6-1-01", "id": "FINDING-P6-1-01", "status": "RECERTIFICATION_REQUIRED", "description": "Historical P6.1 generator is not retained and live protected payload is not readable by retained tooling."},
+    {"stageId": "FINDING-OCEAN-01", "id": "FINDING-OCEAN-01", "status": "RECOVERY_REQUIRED", "description": "Ocean FCL/LCL 0.6 require canonical source/package closure plus Road-LTL-equivalent OK/decomposition depth before parity claims."}
   ]
 }
