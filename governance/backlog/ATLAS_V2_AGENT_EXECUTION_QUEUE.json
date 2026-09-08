@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "atlas-v2-agent-execution-queue-v2",
+  "schemaVersion": "atlas-v2-agent-execution-queue-v3",
   "updatedAt": "2026-09-08T09:28:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "recoveryStandardPath": "governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md",
@@ -16,10 +16,12 @@
     "neverRedesignFrozenCanvasWithoutOwnerApproval": true,
     "neverFabricateBusinessKnowledge": true,
     "neverTargetHistoricalCountsDuringRebuild": true,
-    "neverMutateHistoricalCertifiedEvidence": true
+    "neverMutateHistoricalCertifiedEvidence": true,
+    "neverInventUniverseOrCrosswalkIdentifiers": true,
+    "subStageAuthorizationIsBinding": true
   },
   "mode": "PRE_P6_FOUNDATION_RECOVERY",
-  "currentPhase": "R0.1",
+  "currentPhase": "R0.1A",
   "phases": [
     {
       "id": "R0.0",
@@ -29,17 +31,107 @@
     },
     {
       "id": "R0.1",
-      "name": "Canonical Universe 7.3 Materialization & Referential Integrity",
-      "status": "AUTHORIZED",
-      "scope": ["authoritative Universe 7.3 inspection", "machine-readable canonical Universe", "schema/materializer/validator", "Road LTL canonical reference reconciliation", "referential-integrity CI", "hash/registry evidence"],
-      "excluded": ["Universe semantic redesign", "inventing absent canonical IDs", "Road LTL OK rewrite", "P6.1 regeneration", "WorkDefinition compilation", "Ocean uplift", "Canvas redesign"],
-      "qaRequiredBeforeNext": true
+      "name": "Universe Materialization, Identity Reconciliation & Reference Ownership",
+      "status": "IN_PROGRESS_VIA_SUBSTAGES",
+      "note": "R0.1 may not be executed as one undifferentiated task. Only its explicitly authorized sub-stage may be mutated; later sub-stages remain blocked until independent QA advances the queue.",
+      "subStages": [
+        {
+          "id": "R0.1A",
+          "name": "Universe Semantic Materialization",
+          "status": "AUTHORIZED",
+          "objective": "Mechanically materialize the existing governed Universe semantic content without changing its meaning or inventing missing identifiers.",
+          "scope": [
+            "inspect both retained Universe HTML copies",
+            "record SHA-256 for each source HTML copy",
+            "build and retain deterministic extractor/materializer",
+            "extract all mechanically recoverable embedded data structures",
+            "perform a second deterministic extraction pass for structures that depend on previously declared variables where possible without semantic inference",
+            "produce normalized machine-readable semantic payload",
+            "preserve dual lineage: release shell Universe 7.3 and embedded semantic payload 7.2.0 unless evidence disproves that relationship",
+            "record extraction completeness and unresolved structures",
+            "compare normalized semantic payload produced from both HTML copies",
+            "add extractor/materialization tests and reproducibility hashes"
+          ],
+          "excluded": [
+            "Universe semantic redesign",
+            "creating Universe 7.4",
+            "inventing a5-* or scp-* identifiers",
+            "creating a crosswalk",
+            "changing Road LTL references",
+            "Road LTL OK rewrite",
+            "P6.1 regeneration",
+            "WorkDefinition compilation",
+            "Ocean uplift",
+            "Canvas redesign"
+          ],
+          "requiredEvidence": [
+            "source HTML hashes",
+            "extractor source",
+            "normalized payload hash",
+            "structure/record counts",
+            "unresolved extraction list",
+            "semantic equality/difference result for the two source copies"
+          ],
+          "qaRequiredBeforeNext": true
+        },
+        {
+          "id": "R0.1B",
+          "name": "Universe Release Identity & Authority Reconciliation",
+          "status": "BLOCKED_UNTIL_R0_1A_QA",
+          "objective": "Determine the authoritative relationship between Universe 7.3 release identity, embedded 7.2.0 semantic identity, and the two differing HTML source copies.",
+          "scope": [
+            "determine whether HTML-copy differences are semantic, presentation, build-state or non-semantic noise",
+            "determine which source copy is authoritative or whether authority attaches to a normalized semantic payload rather than one HTML file",
+            "verify release notes/evidence for the 7.3 UX/foundation-over-7.2-semantics interpretation",
+            "define governed identity fields for releaseVersion and semanticPayloadVersion",
+            "recommend exactly what hashes/assets should be registered as canonical/frozen"
+          ],
+          "excluded": [
+            "rewriting Universe semantics",
+            "renaming embedded 7.2.0 payload to 7.3 without evidence",
+            "creating Universe 7.4",
+            "reference-model mutation"
+          ],
+          "qaRequiredBeforeNext": true
+        },
+        {
+          "id": "R0.1C",
+          "name": "Canonical Reference Ownership Audit",
+          "status": "BLOCKED_UNTIL_R0_1B_QA",
+          "objective": "Classify every unresolved Road LTL reference by its intended governing layer before deciding whether any Universe extension or crosswalk is required.",
+          "scope": [
+            "inventory all unresolved Road LTL references previously treated as Universe canonical references",
+            "classify each reference as Universe canonical ID, Daughter-local structural ID, Operational Knowledge ID, Canonical Information/Object ID, cross-layer concept ID, or invalid/orphaned reference",
+            "determine whether a5-ltl-* identifiers are Daughter-local rather than Universe-canonical",
+            "determine intended ownership of scp-* identifiers from frozen architecture/contracts and retained evidence",
+            "identify whether the actual repair is Universe extension, governed crosswalk, reference-contract correction, or orphan cleanup",
+            "produce an owner-decision recommendation without mutating the reference model"
+          ],
+          "excluded": [
+            "inventing a crosswalk",
+            "creating new canonical IDs",
+            "creating Universe 7.4",
+            "changing Daughter identifiers",
+            "changing Road LTL semantics",
+            "mutating canonical-reference fields"
+          ],
+          "requiredStatusLanguage": "Use canonicalReferenceResolution=UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT until R0.1C is independently approved; do not represent 0/22 as 22 proven Universe defects before ownership is established.",
+          "qaRequiredBeforeNext": true
+        }
+      ],
+      "exitGate": [
+        "machine-readable Universe semantic payload is retained and reproducible",
+        "release/semantic identity and authority are explicitly governed",
+        "reference ownership is classified by layer",
+        "any true referential defects are distinguished from Daughter-local or cross-layer identifiers",
+        "independent QA approves the appropriate repair path before R0.2"
+      ]
     },
     {
       "id": "R0.2",
       "name": "Road LTL Source Closure & Effective 1.5 Re-certification",
       "status": "BLOCKED_UNTIL_R0_1_QA",
-      "scope": ["governed Road LTL 1.4 custody", "taskId/id overlay normalization", "deterministic road-ltl@1.5 materialization", "21x1.4 + LTL-03x1.5 lineage", "Universe reference recheck"],
+      "scope": ["governed Road LTL 1.4 custody", "taskId/id overlay normalization", "deterministic road-ltl@1.5 materialization", "21x1.4 + LTL-03x1.5 lineage", "reference-ownership-aware integrity recheck"],
       "qaRequiredBeforeNext": true
     },
     {
@@ -121,7 +213,12 @@
     {
       "id": "FINDING-UNIVERSE-01",
       "status": "RECOVERY_REQUIRED",
-      "description": "Universe 7.3 lacks a governed machine-readable canonical materialization for deterministic daughter reference resolution."
+      "description": "Universe release 7.3 is not yet retained as a governed machine-readable semantic materialization. Embedded metadata self-declares semantic payload 7.2.0; two retained HTML copies differ in source hash and require authority reconciliation."
+    },
+    {
+      "id": "FINDING-UNIVERSE-02",
+      "status": "OWNERSHIP_AUDIT_REQUIRED",
+      "description": "Previously unresolved a5-* and scp-* references must not be presumed to be missing Universe identifiers until governing-layer ownership is established in R0.1C."
     },
     {
       "id": "FINDING-P6-1-01",
