@@ -83,3 +83,22 @@ jobs:
             fi
             echo "unchanged: $f"
           done
+
+      - name: Build custody bundle
+        run: |
+          mkdir -p /tmp/r0-1c-custody
+          cp governance/recovery/R0.1C/REFERENCE_OWNERSHIP_DETERMINATION.json /tmp/r0-1c-custody/
+          cp governance/recovery/R0.1C/PRE_CHANGE_BASELINE.json /tmp/r0-1c-custody/
+          cp governance/recovery/R0.1C/POST_IMPLEMENTATION_PRE_QA.json /tmp/r0-1c-custody/
+          cp data/references/reference-ownership-audit.json /tmp/r0-1c-custody/
+          cp tools/references/audit-reference-ownership.mjs /tmp/r0-1c-custody/
+          cp tests/r0-1c-reference-ownership.mjs /tmp/r0-1c-custody/
+          cp .github/workflows/r0-1c-reference-ownership.yml /tmp/r0-1c-custody/
+          (cd /tmp/r0-1c-custody && sha256sum * > SHA256SUMS.txt)
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-r0-1c-custody-bundle
+          path: /tmp/r0-1c-custody
+          if-no-files-found: error
+          retention-days: 90
