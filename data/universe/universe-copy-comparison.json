@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "atlas-universe-copy-comparison-v1",
+  "stageId": "R0.1A",
+  "extractorVersion": "atlas-universe-semantic-extractor-1.0.0",
+  "copies": [
+    {
+      "path": "reference/universe-v7.3.html",
+      "sourceSha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "embeddedSemanticIdentity": {
+        "id": "supply-chain-logistics-universe-v7.2",
+        "version": "7.2.0",
+        "releaseDate": "2026-08-30",
+        "classification": "PRIVATE_CANONICAL"
+      },
+      "structureCount": 52,
+      "recordCount": 906,
+      "unresolved": [],
+      "fullSemanticHash": "95d976ff862ef77facb07503c89489addedbecbf47bac64d3e477619a304a062",
+      "coreSemanticHash": "6522bc162bb591d7c385fc4668c49f48c634ceeb112d5fb28eb03da67d124058",
+      "shellNavigationHash": "6c8368e8caa8a8024314882c80593c09a4ca40c8c7705c1d81f53692464ce14a"
+    },
+    {
+      "path": "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html",
+      "sourceSha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+      "embeddedSemanticIdentity": {
+        "id": "supply-chain-logistics-universe-v7.2",
+        "version": "7.2.0",
+        "releaseDate": "2026-08-30",
+        "classification": "PRIVATE_CANONICAL"
+      },
+      "structureCount": 52,
+      "recordCount": 906,
+      "unresolved": [],
+      "fullSemanticHash": "17f6fd764fac1346190632917c50d1c8889d04d258ebdd94f02dbf90cfa8294d",
+      "coreSemanticHash": "6522bc162bb591d7c385fc4668c49f48c634ceeb112d5fb28eb03da67d124058",
+      "shellNavigationHash": "f75078e71b493295b9115e430de85b1708e0a34b7ea673bd01987774175c0b68"
+    },
+    {
+      "path": "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html",
+      "sourceSha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "embeddedSemanticIdentity": {
+        "id": "supply-chain-logistics-universe-v7.2",
+        "version": "7.2.0",
+        "releaseDate": "2026-08-30",
+        "classification": "PRIVATE_CANONICAL"
+      },
+      "structureCount": 52,
+      "recordCount": 906,
+      "unresolved": [],
+      "fullSemanticHash": "95d976ff862ef77facb07503c89489addedbecbf47bac64d3e477619a304a062",
+      "coreSemanticHash": "6522bc162bb591d7c385fc4668c49f48c634ceeb112d5fb28eb03da67d124058",
+      "shellNavigationHash": "6c8368e8caa8a8024314882c80593c09a4ca40c8c7705c1d81f53692464ce14a"
+    }
+  ],
+  "distinctSourceHashes": 2,
+  "distinctCoreSemanticHashes": 1,
+  "distinctFullSemanticHashes": 2,
+  "differingStructures": [
+    {
+      "name": "defaults",
+      "classification": "SHELL_NAVIGATION"
+    },
+    {
+      "name": "liveModuleRoutes",
+      "classification": "SHELL_NAVIGATION"
+    },
+    {
+      "name": "moduleCoverageStatus",
+      "classification": "SHELL_NAVIGATION"
+    }
+  ],
+  "result": "CORE_SEMANTICS_IDENTICAL_SHELL_NAVIGATION_DIFFERS",
+  "authorityDetermination": "NOT_DETERMINED_PENDING_R0_1B"
+}
