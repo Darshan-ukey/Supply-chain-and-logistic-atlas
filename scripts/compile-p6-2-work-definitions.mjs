@@ -87,8 +87,10 @@ function decode(row) {
       attempts.push(`${name}: ${String(e.message).slice(0, 80)}`);
     }
   }
-  console.error('Unable to decode the protected payload. Attempts:');
-  for (const a of attempts) console.error(`  - ${a}`);
+  const head = buffer.subarray(0, 16).toString('hex');
+  const tail = buffer.subarray(-16).toString('hex');
+  console.error(`DECODE_FAIL bytes=${buffer.length} head=${head} tail=${tail}`);
+  console.error(`DECODE_ATTEMPTS ${attempts.map(a => a.replace(/\s+/g, ' ')).join(' || ')}`);
   throw new Error('Protected decomposition payload could not be decoded by any known encoding; failed closed.');
 }
 

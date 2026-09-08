@@ -83,9 +83,8 @@ jobs:
             [ -n "$line" ] && echo "::notice::$line"
           done
           if [ $code -ne 0 ]; then
-            tail -6 compile.safe | while IFS= read -r line; do
-              [ -n "$line" ] && echo "::error::$line"
-            done
+            grep -E 'DECODE_FAIL|DECODE_ATTEMPTS|GOVERNANCE FINDING|declared |actual |Error:|Failed closed' compile.safe \
+              | head -8 | while IFS= read -r line; do echo "::error::$line"; done
             exit $code
           fi
 
