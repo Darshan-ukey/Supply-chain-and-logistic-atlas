@@ -1,0 +1,412 @@
+{
+  "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
+  "stageId": "R0.2",
+  "checkpoint": "POST_IMPLEMENTATION_PRE_QA",
+  "timestamp": "2026-09-08T00:00:00Z",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "governanceBaselineCommit": "795cbae551d0788489e862ca9ef893f0ca14178f",
+  "implementationBranch": "atlas-recovery-r0-2-road-ltl-source-closure",
+  "commitSha": "b10a17a19e398a2cdd392bc819d197bb0a180109",
+  "qaDisposition": null,
+  "lineage": {
+    "checkpointACommit": "99b11c2",
+    "consumesStage": "R0.1C QA PASS"
+  },
+  "assets": [
+    {
+      "assetId": "ROAD_LTL_SOURCE_CLOSURE_RECORD",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.2/ROAD_LTL_SOURCE_CLOSURE_RECORD.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "7e22fcf02247352892ff78a0fdd9b7e257e2183987c1be796e596288055553dc",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "PRE_CHANGE_BASELINE",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.2/PRE_CHANGE_BASELINE.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "feea1634c6c6626b3f0d5089dd866fa0af444bd1ebdc4f783dd000e04c837e31",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "PACKAGE_SHA256SUMS",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.2/PACKAGE_SHA256SUMS.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "227de59d72cd106b02e16ea0e30e560cab5b42d5c92379c1951a2167809628d3",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "PACKAGE_VALIDATION",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.2/PACKAGE_VALIDATION.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "bae9f19b5d7c4a28c67397270161e4557679cc86deb0b6cc7a92b17ec83930be",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "road-ltl-v1",
+      "assetType": "evidence",
+      "repositoryPath": "data/modules/road-ltl-v1.4.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "road-ltl-v1",
+      "assetType": "evidence",
+      "repositoryPath": "data/operational-knowledge/road-ltl-v1.4-operational.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "road-ltl-v1",
+      "assetType": "evidence",
+      "repositoryPath": "data/client-binding-requirements/road-ltl-v1.4-bindings.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "d461990914038a90277a06299faa5663221b6c6b371493758893a19cd71a384c",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "road-ltl-v1",
+      "assetType": "evidence",
+      "repositoryPath": "data/source-claims/road-ltl-v1.4-claims.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "379e48422906732cc6e01a1e324108ca23a2f1ff05faab8cb53c3ba342000ac0",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "effective-road-ltl-1",
+      "assetType": "evidence",
+      "repositoryPath": "data/road-ltl/effective-road-ltl-1.5-materialization.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "a303d30d1c415d0bbfa9efab27ae1ac1edcd32fffb5f9e236e8c1ebf629bf7f6",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "reference-ownership-audit-r0-2",
+      "assetType": "evidence",
+      "repositoryPath": "data/references/reference-ownership-audit-r0-2.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "bb6c7b49b32eab75ea3eeffcef71a4b8d36865089a34c6d5c48aa6a6188978f8",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "materialize-effective-road-ltl",
+      "assetType": "tool",
+      "repositoryPath": "tools/road-ltl/materialize-effective-road-ltl.mjs",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "3b10323b9e3694f3e05cde71c7b34400bdee7a732318c72d7aa1d2611a26d527",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "r0-2-road-ltl-source-closure",
+      "assetType": "evidence",
+      "repositoryPath": "tests/r0-2-road-ltl-source-closure.mjs",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "06f1fad425bab234d06c108e670792be95c699f71d593ac6d1b463a8dddfdc7f",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "r0-2-road-ltl-source-closure",
+      "assetType": "evidence",
+      "repositoryPath": ".github/workflows/r0-2-road-ltl-source-closure.yml",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "4620305d2b88f78d6c1405fbab8928202c72a6f8bb3d0fde6c36dc8e37c053a0",
+      "lineage": [
+        "R0.1C QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    }
+  ],
+  "tools": [
+    {
+      "toolId": "effective-road-ltl-materializer",
+      "repositoryPath": "tools/road-ltl/materialize-effective-road-ltl.mjs",
+      "version": "atlas-effective-road-ltl-materializer-1.0.0",
+      "sha256": "3b10323b9e3694f3e05cde71c7b34400bdee7a732318c72d7aa1d2611a26d527",
+      "purpose": "Deterministic effective 1.5 materialization with taskId/id normalization in derived tooling only"
+    }
+  ],
+  "liveState": [],
+  "driveEvidence": [
+    {
+      "status": "NOT_MIRRORED",
+      "owner": "INDEPENDENT_QA",
+      "suggestedFolder": "02_FROZEN_CANDIDATES/Road-LTL/R0.2 \u2014 Source Closure & P6.0 Re-certification \u2014 AWAITING_QA",
+      "candidateFiles": [
+        {
+          "repositoryPath": "governance/recovery/R0.2/ROAD_LTL_SOURCE_CLOSURE_RECORD.json",
+          "sha256": "7e22fcf02247352892ff78a0fdd9b7e257e2183987c1be796e596288055553dc"
+        },
+        {
+          "repositoryPath": "governance/recovery/R0.2/PRE_CHANGE_BASELINE.json",
+          "sha256": "feea1634c6c6626b3f0d5089dd866fa0af444bd1ebdc4f783dd000e04c837e31"
+        },
+        {
+          "repositoryPath": "governance/recovery/R0.2/PACKAGE_SHA256SUMS.json",
+          "sha256": "227de59d72cd106b02e16ea0e30e560cab5b42d5c92379c1951a2167809628d3"
+        },
+        {
+          "repositoryPath": "governance/recovery/R0.2/PACKAGE_VALIDATION.json",
+          "sha256": "bae9f19b5d7c4a28c67397270161e4557679cc86deb0b6cc7a92b17ec83930be"
+        },
+        {
+          "repositoryPath": "data/modules/road-ltl-v1.4.json",
+          "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4"
+        },
+        {
+          "repositoryPath": "data/operational-knowledge/road-ltl-v1.4-operational.json",
+          "sha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e"
+        },
+        {
+          "repositoryPath": "data/client-binding-requirements/road-ltl-v1.4-bindings.json",
+          "sha256": "d461990914038a90277a06299faa5663221b6c6b371493758893a19cd71a384c"
+        },
+        {
+          "repositoryPath": "data/source-claims/road-ltl-v1.4-claims.json",
+          "sha256": "379e48422906732cc6e01a1e324108ca23a2f1ff05faab8cb53c3ba342000ac0"
+        },
+        {
+          "repositoryPath": "data/road-ltl/effective-road-ltl-1.5-materialization.json",
+          "sha256": "a303d30d1c415d0bbfa9efab27ae1ac1edcd32fffb5f9e236e8c1ebf629bf7f6"
+        },
+        {
+          "repositoryPath": "data/references/reference-ownership-audit-r0-2.json",
+          "sha256": "bb6c7b49b32eab75ea3eeffcef71a4b8d36865089a34c6d5c48aa6a6188978f8"
+        },
+        {
+          "repositoryPath": "tools/road-ltl/materialize-effective-road-ltl.mjs",
+          "sha256": "3b10323b9e3694f3e05cde71c7b34400bdee7a732318c72d7aa1d2611a26d527"
+        },
+        {
+          "repositoryPath": "tests/r0-2-road-ltl-source-closure.mjs",
+          "sha256": "06f1fad425bab234d06c108e670792be95c699f71d593ac6d1b463a8dddfdc7f"
+        },
+        {
+          "repositoryPath": ".github/workflows/r0-2-road-ltl-source-closure.yml",
+          "sha256": "4620305d2b88f78d6c1405fbab8928202c72a6f8bb3d0fde6c36dc8e37c053a0"
+        }
+      ]
+    }
+  ],
+  "resultSummary": {
+    "hashConflicts": 0,
+    "packageManifestVerified": "30/30",
+    "custodiedRoadLtl14Files": 4,
+    "p60DependencyFilesCustodied": 6,
+    "r01cToolingFilesCustodied": 3,
+    "effectiveTasks": 22,
+    "inherited14": 21,
+    "override15": [
+      "LTL-03"
+    ],
+    "referenceOrphans": 0,
+    "p60Result": "PASS",
+    "p60Gates": 502
+  },
+  "findings": [
+    {
+      "id": "R0.2-01",
+      "severity": "RESOLVED",
+      "statement": "Custody closed. Road LTL 1.4 module, Operational Knowledge, client bindings and source claims are now in repository custody byte-identical to the registered package. The 1.4 module matches its registered sha256 c8a0af37... exactly."
+    },
+    {
+      "id": "R0.2-02",
+      "severity": "RESOLVED",
+      "statement": "Zero hash conflicts. All registered road-ltl/ocean assets present in the repository match their registered hashes, the package matches b81b22d2..., and the package's own SHA256SUMS.json verifies 30/30 with zero mismatches and VALIDATION.json status PASS. No hash was chosen by filename or date."
+    },
+    {
+      "id": "R0.2-03",
+      "severity": "RESOLVED",
+      "statement": "Effective road-ltl@1.5 materialized deterministically from the recovered 1.4 base: 22 tasks, 21 inherited at 1.4 and LTL-03 overridden at 1.5. This lineage is now derived from source rather than asserted from the P6.1 certification record."
+    },
+    {
+      "id": "R0.2-04",
+      "severity": "RESOLVED",
+      "statement": "taskId/id drift normalized in derived tooling only. The 1.4 base still carries taskId with no id, and the 1.5 overlay still carries id with no taskId; tests assert both. Module version paths also differ (module.version versus version) and are read without rewriting either asset."
+    },
+    {
+      "id": "R0.2-05",
+      "severity": "RESOLVED",
+      "statement": "Reference integrity rerun under the R0.1C ownership model with 1.4 in custody: 82 a5-* DAUGHTER_LOCAL, 22 scp-* CROSS_LAYER_CONTRACT, zero orphans. Custodying 1.4 introduced no new unresolved reference and no R0.1C determination was altered."
+    },
+    {
+      "id": "R0.2-06",
+      "severity": "RESOLVED",
+      "statement": "P6.0 re-certified PASS with 502 gates and zero failures from retained inputs and tooling."
+    },
+    {
+      "id": "R0.2-07",
+      "severity": "MEDIUM",
+      "statement": "P6.0 re-certification required the P6.0-generation projection library. The P6.1 branch copy of lib/projections/execution-depth-projection.js requires P6.1 decomposition evidence and produced 22 gate failures when used, which would have conflated generations. Re-certification must be pinned to a stage's own generation."
+    },
+    {
+      "id": "R0.2-08",
+      "severity": "HIGH",
+      "statement": "Third occurrence of the governance-branch dependency-closure gap. R0.2's required P6.0 inputs and the R0.1C ownership tooling were absent from the governance branch and had to be recovered from implementation branches. The R0.1A-R input registry fixed this for Universe inputs only; the pattern recurs for each new stage."
+    },
+    {
+      "id": "R0.2-09",
+      "severity": "MEDIUM",
+      "statement": "ASSET_REGISTER declares road-ltl-1.4-candidate with source=artifact-package and artifactPath but no repositoryPath. The bytes are now in repository custody at that path; adding repositoryPath and updating source is a governed registration action recommended for QA and deliberately not performed here."
+    },
+    {
+      "id": "R0.2-10",
+      "severity": "MEDIUM",
+      "statement": "tests/r0-1c-reference-ownership.mjs is retained byte-identical but one assertion is superseded now that QA has created the R0.1C Checkpoint C. Probe confirmed no other assertion fails. R0.2 CI re-derives the ownership model from the tool instead of running the superseded test. This is the third stage-test supersession of this kind."
+    },
+    {
+      "id": "R0.2-11",
+      "severity": "INFO",
+      "statement": "Ocean FCL/LCL 0.6 package copies match their registered hashes but were deliberately not custodied; Ocean source closure is R0.5 scope."
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/r0-2-road-ltl-source-closure.mjs",
+      "result": "PASS",
+      "ci": ".github/workflows/r0-2-road-ltl-source-closure.yml",
+      "covers": [
+        "custody at registered hashes",
+        "register not mutated",
+        "zero hash conflicts",
+        "package manifest verification",
+        "deterministic effective materialization",
+        "21x1.4 + LTL-03x1.5 lineage",
+        "taskId/id normalization confined to tooling",
+        "sources unmutated",
+        "override targeting unknown task fails closed",
+        "reference integrity under R0.1C model",
+        "zero orphans",
+        "P6.0 re-certification inputs custodied",
+        "no promotion",
+        "Ocean deferred to R0.5"
+      ]
+    },
+    {
+      "path": "tests/p6-0-road-ltl-1.5-effective-materialization.mjs",
+      "result": "PASS",
+      "note": "Retained P6.0 certification, 502 gates."
+    }
+  ],
+  "supersedes": [],
+  "supersededBy": [],
+  "nextAuthorization": "AWAITING_INDEPENDENT_QA"
+}
