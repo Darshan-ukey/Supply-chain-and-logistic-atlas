@@ -29,22 +29,25 @@ After independent QA create/synchronize `POST_QA_GOVERNED_STATE`, registers/poin
 ## R0.1 Universe rule
 R0.1 is split into governed substages and must not be combined.
 
-- `R0.1A` is historical **COMPLETE / INDEPENDENT QA PASS AT TIME OF CERTIFICATION**. Its artifacts and Checkpoints A/B/C remain immutable governed evidence. R0.1B subsequently discovered a deterministic materialization defect; therefore the R0.1A payload is not eligible for canonical promotion and must not be overwritten or silently replaced.
-- `R0.1A-R` is the **only currently AUTHORIZED implementation stage**. Its sole purpose is deterministic Universe semantic re-materialization correction under R0.1B D4/D5/D6.
-- R0.1A-R must capture the full declaration expression including chained transforms and exclude later separate mutation statements; correct `systemRecords` and `businessObjectRecords` generically; retain source-declared `description`; exclude later-derived `domainIds` where applicable; classify/exclude `state` as `RUNTIME_UI_STATE`; correct heterogeneous-ID divergence detection; rerun independent inventory/materialization without targeting historical counts; generate new hashes/supersession lineage; establish governed dependency closure; and stop at `AWAITING_INDEPENDENT_QA`.
-- R0.1A-R may not redesign Universe semantics, relabel semantic 7.2.0 as 7.3, create Universe 7.4, hard-code fields merely to satisfy tests, invent fields/IDs, mutate Road LTL/reference models, create crosswalks, perform R0.1C ownership work, promote CURRENT/LATEST, or resume P6 work.
-- `R0.1B` is **SUSPENDED_PENDING_R0_1A_R_QA**. Its implementation and determination evidence remains governed. After R0.1A-R independent QA passes, R0.1B may return only when governance explicitly re-authorizes it for final authority/canonical-asset closure.
+- `R0.1A` is historical **COMPLETE / QA PASS AT TIME OF CERTIFICATION**, but superseded for canonical promotion by R0.1A-R. Its artifacts remain immutable evidence.
+- `R0.1A-R` is **COMPLETE / INDEPENDENT QA PASS**. Corrected semantic structures SHA-256: `82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d`. Checkpoint C: `governance/recovery/R0.1A-R/POST_QA_GOVERNED_STATE.json`.
+- `R0.1B` is the **only currently AUTHORIZED stage**, and only for **FINAL AUTHORITY CLOSURE** against the corrected R0.1A-R candidate.
+- R0.1B must preserve its original `UNIVERSE_IDENTITY_AUTHORITY_DETERMINATION.json` as immutable historical evidence. Do not rewrite it. Create distinct final-closure evidence.
+- R0.1B may confirm D1-D3 against the corrected payload; record D4-D6 as remediated; bind semantic authority to the corrected normalized payload if evidence stays consistent; finalize separate `releaseVersion=7.3` and `semanticPayloadVersion=7.2.0`; finalize release-shell/later-repackage treatment and R0.1A supersession; produce `POST_IMPLEMENTATION_PRE_QA`; then stop at `AWAITING_INDEPENDENT_QA`.
+- R0.1B may **not** rerun or modify R0.1A-R extraction, modify historical R0.1B determination evidence, promote CURRENT/LATEST/ASSET_REGISTER before independent QA, invent identifiers, create Universe 7.4, mutate Road LTL/reference models, create crosswalks, or perform R0.1C ownership decisions.
 - `R0.1C` remains **BLOCKED_UNTIL_R0_1B_FINAL_QA**. Until R0.1C approval use `UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT` for unresolved daughter references.
 
-## R0.1A-R implementation invariants
-- Preserve R0.1A and R0.1B evidence byte-for-byte.
-- Create a fresh `PRE_CHANGE_BASELINE` before any remediation mutation.
-- Do not target 61 structures, 1,330 records or any historical count. Derive corrected counts from source and classification rules.
-- Do not special-case `description` as a manual patch; fix the declaration-expression capture mechanism generically.
-- `state` must remain visible in audit/inventory evidence as runtime/UI state even though it is excluded from canonical semantics.
-- Correct the prior id-only divergence detector using entity-aware identity such as `(entityKind, id)` or a deterministic equivalent supported by the source structure.
-- Carry certified machine-readable Universe dependencies onto governed repository paths or otherwise make them deterministically resolvable by path/hash/lineage from the governance branch. Do not create uncontrolled duplicate authority.
-- If corrected extraction contradicts any R0.1B determination, stop and report the conflict; do not resolve it architecturally yourself.
+## Current R0.1B final-closure required inputs
+All must resolve on `atlas-governance-registry-v2.1` before work:
+- `governance/recovery/R0.1A-R/POST_QA_GOVERNED_STATE.json`
+- `governance/recovery/R0.1B/UNIVERSE_IDENTITY_AUTHORITY_DETERMINATION.json`
+- `data/universe/r0-1a-r/universe-semantic-payload.json`
+- `data/universe/r0-1a-r/universe-extraction-report.json`
+- `data/universe/r0-1a-r/universe-copy-comparison.json`
+- `data/universe/r0-1a-r/universe-declaration-inventory.json`
+- `governance/registry/UNIVERSE_MACHINE_READABLE_INPUT_REGISTRY.json`
+
+If any required input or hash does not resolve, stop and report rather than selecting another branch by assumption.
 
 ## Architecture and source-integrity rule
 Frozen architecture outranks implementation convenience. The recovery standard is a certification/recovery overlay, not redesign authority.
