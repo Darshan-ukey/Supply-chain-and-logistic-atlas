@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "atlas-p6-0-road-ltl-effective-materialization-source-certification-v1",
+  "status": "PASS",
+  "certificationScope": "Road LTL 1.5 effective PUBLIC_SAFE materialization only; no Work Decomposition or WorkDefinition compilation",
+  "effectiveTarget": {
+    "moduleId": "road-ltl",
+    "moduleVersion": "1.5",
+    "effectiveTaskCount": 22,
+    "inheritedTaskCount": 21,
+    "directOverrideTaskIds": ["LTL-03"]
+  },
+  "sourceVault": {
+    "provider": "GOOGLE_DRIVE",
+    "folderId": "1O5tXUgvYi6x1y-PcQBrNvBsAZ5KENyYz",
+    "fileId": "1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI",
+    "fileName": "atlas-daughter-release-ltl-v1.4-ocean-v0.6-FROZEN.zip",
+    "releaseZipSha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289"
+  },
+  "frozenBase": {
+    "moduleVersion": "1.4",
+    "modulePath": "data/modules/road-ltl-v1.4.json",
+    "moduleSha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+    "operationalKnowledgePath": "data/operational-knowledge/road-ltl-v1.4-operational.json",
+    "operationalKnowledgeSha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e"
+  },
+  "frozenOverlay": {
+    "moduleVersion": "1.5",
+    "modulePath": "data/modules/road-ltl-v1.5.json",
+    "operationalKnowledgePath": "data/operational-knowledge/road-ltl-v1.5-operational.json",
+    "informationResolutionBaselinePath": "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+    "materializationMethod": "LOSSLESS_INHERIT_BASE_THEN_APPLY_DECLARED_OVERRIDE",
+    "changedTaskIds": ["LTL-03"]
+  },
+  "publicSafeMaterialization": {
+    "path": "data/materialized/road-ltl-1.5-public-safe-projections.json.gz.b64",
+    "fileSha256": "13143cc785889465024e7037ad70e841ef731b2d7b4700e7e61da7e0761a1502",
+    "coverage": "22/22",
+    "semanticFallbackPermitted": false,
+    "inheritedSemanticSourceVersion": "1.4",
+    "effectivePublishedVersion": "1.5",
+    "informationResolutionRule": "Only LTL-03 carries the frozen 1.5 OKv2 / Information Resolution enrichment; unchanged inherited tasks explicitly report NOT_POPULATED_AT_OKV2_DEPTH and do not fabricate it."
+  },
+  "verification": {
+    "baseHashMatch": "PASS",
+    "overlayLineageMatch": "PASS",
+    "effectiveTaskCoverage": "PASS_22_OF_22",
+    "protectedTokenScan": "PASS",
+    "semanticMutationOfInheritedTasks": false,
+    "runtimeFallbackToBaseVersion": false
+  }
+}
