@@ -1,0 +1,67 @@
+name: P6.2 Canonical WorkDefinition Compilation
+
+on:
+  push:
+    branches:
+      - atlas-presentation-architecture-v1-p6-2
+    paths:
+      - 'lib/compile/workdefinition-compiler.js'
+      - 'lib/compile/workdefinition-verifier.js'
+      - 'lib/api/work-definition.js'
+      - 'lib/projections/execution-depth-projection.js'
+      - 'schemas/canonical-workdefinition-contract-v1.schema.json'
+      - 'scripts/compile-p6-2-work-definitions.mjs'
+      - 'migrations/p6-2-canonical-work-definitions.sql'
+      - 'tests/p6-2-canonical-workdefinition-compiler.mjs'
+      - 'tests/p6-2-protected-workdefinition-api.mjs'
+      - 'tests/p6-1-protected-work-decomposition-api.mjs'
+      - 'tests/p6-1-p6-0-inherited-regression.mjs'
+      - 'tests/p5-ask-trace-governance.mjs'
+      - 'tests/p4-canvas-daughter-integration.mjs'
+      - 'tests/p3o-ocean-0.6-certification.mjs'
+      - 'tests/p3-universal-daughter-renderer.mjs'
+      - 'tests/p2-projection-boundary.mjs'
+      - 'tests/v2-public-ip-boundary.mjs'
+      - '.github/workflows/p6-2-canonical-workdefinition.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Certify P6.2 Canonical WorkDefinition compiler and verifier
+        run: node tests/p6-2-canonical-workdefinition-compiler.mjs
+      - name: Certify P6.2 protected WorkDefinition API and PUBLIC_SAFE boundary
+        run: node tests/p6-2-protected-workdefinition-api.mjs
+
+      - name: Assert no protected WorkDefinition payload is committed
+        run: |
+          if grep -rlE '"schemaVersion"[[:space:]]*:[[:space:]]*"atlas-canonical-workdefinition-(v1|package-v1)"' \
+              --include='*.json' . | grep -v '^./schemas/'; then
+            echo "Protected WorkDefinition payload committed to the repository bundle"; exit 1;
+          fi
+
+      - name: Run inherited P6.1 protected Work Decomposition regression
+        run: node tests/p6-1-protected-work-decomposition-api.mjs
+      - name: Run inherited P6.0 Road LTL 1.5 semantic/materialization regression
+        run: node tests/p6-1-p6-0-inherited-regression.mjs
+      - name: Run inherited P5 Ask/Trace/Governance regression
+        run: node tests/p5-ask-trace-governance.mjs
+      - name: Run inherited P4 Canvas integration regression
+        run: node tests/p4-canvas-daughter-integration.mjs
+      - name: Run inherited P3O Ocean 0.6 certification
+        run: node tests/p3o-ocean-0.6-certification.mjs
+      - name: Run inherited P3 Universal Daughter Renderer regression
+        run: node tests/p3-universal-daughter-renderer.mjs
+      - name: Run inherited P2 projection-boundary regression
+        run: node tests/p2-projection-boundary.mjs
+      - name: Run inherited public execution-IP boundary regression
+        run: node tests/v2-public-ip-boundary.mjs
