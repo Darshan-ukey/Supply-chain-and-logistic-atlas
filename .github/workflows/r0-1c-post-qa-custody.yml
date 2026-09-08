@@ -6,6 +6,7 @@ on:
       - atlas-governance-registry-v2.1
     paths:
       - 'governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json'
+      - 'governance/recovery/R0.1C/REFERENCE_OWNERSHIP_DETERMINATION.json'
       - 'governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json'
       - 'governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md'
       - 'governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md'
