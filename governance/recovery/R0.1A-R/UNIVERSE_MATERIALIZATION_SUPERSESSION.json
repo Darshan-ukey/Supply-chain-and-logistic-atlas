@@ -15,16 +15,20 @@
     "certifiedCommit": "4eb360a",
     "classification": "IMMUTABLE_HISTORICAL_EVIDENCE_NOT_ELIGIBLE_FOR_CANONICAL_PROMOTION",
     "retained": true,
-    "modifiedByThisStage": false
+    "modifiedByThisStage": false,
+    "extractorVersion": "atlas-universe-semantic-extractor-1.0.0",
+    "stageId": "R0.1A"
   },
   "supersedingArtifact": {
     "stage": "R0.1A-R",
     "repositoryPath": "data/universe/r0-1a-r/universe-semantic-payload.json",
-    "fileSha256": "9b7c6525f764e2d1fe1a2be23b59ffe7607ba1ffe89fa251915e899defaf9604",
+    "fileSha256": "b0d25d9770eb71b012bf2ef56fa1eff9e64e5b4815c75f1899d19db076153b37",
     "semanticStructuresHash": "82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d",
     "structureCount": 60,
     "recordCount": 1327,
-    "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA"
+    "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+    "extractorVersion": "atlas-universe-semantic-extractor-1.1.0",
+    "stageId": "R0.1A-R"
   },
   "hashesDiffer": true,
   "fieldLevelCorrectionEvidence": [
@@ -151,5 +155,11 @@
     "currentPointer": "UNCHANGED",
     "latestPointer": "UNCHANGED",
     "assetRegister": "UNCHANGED"
+  },
+  "toolVersionLineage": {
+    "superseded": "atlas-universe-semantic-extractor-1.0.0",
+    "corrected": "atlas-universe-semantic-extractor-1.1.0",
+    "reason": "Extraction behaviour changed under R0.1B D4/D6 and D7 REC-6, so the corrected implementation carries a new version. The 1.0.0 identity remains attached to immutable R0.1A evidence.",
+    "semanticStructuresHashUnchanged": true
   }
 }

@@ -1,6 +1,8 @@
+import { PRODUCING_STAGE_ID } from './extract-universe-semantics.mjs';
 import fs from 'node:fs';
 
-// R0.1A — INDEPENDENT module-scope declaration inventory.
+// INDEPENDENT module-scope declaration inventory.
+// Corrected implementation produced under R0.1A-R; see extract-universe-semantics.mjs.
 //
 // Deliberately does NOT reuse the extractor's parser. It masks strings/comments first, then
 // enumerates every module-scope declaration regardless of right-hand-side shape, so extraction
@@ -99,7 +101,7 @@ export function inventoryModuleDeclarations(html) {
 
   return {
     schemaVersion: 'atlas-universe-declaration-inventory-v1',
-    stageId: 'R0.1A',
+    stageId: PRODUCING_STAGE_ID,
     classificationLegend: CLASSES,
     totalModuleScopeDeclarations: declarations.length,
     distinctNames: [...new Set(declarations.map(d => d.name))].length,

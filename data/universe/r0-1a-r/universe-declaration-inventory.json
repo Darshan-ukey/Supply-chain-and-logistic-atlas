@@ -1,6 +1,6 @@
 {
   "schemaVersion": "atlas-universe-declaration-inventory-v1",
-  "stageId": "R0.1A",
+  "stageId": "R0.1A-R",
   "classificationLegend": {
     "DATA_STRUCTURE_LITERAL": "canonical data structure — must materialize",
     "CALL_DERIVED_DATA": "data built by a factory/constructor call — must materialize if it yields data",

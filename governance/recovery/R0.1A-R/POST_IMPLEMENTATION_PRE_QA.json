@@ -29,7 +29,7 @@
       "liveStoreReference": null,
       "version": "R0.1A-R",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "9b7c6525f764e2d1fe1a2be23b59ffe7607ba1ffe89fa251915e899defaf9604",
+      "sha256": "b0d25d9770eb71b012bf2ef56fa1eff9e64e5b4815c75f1899d19db076153b37",
       "lineage": [
         "R0.1A 4eb360a",
         "R0.1B 6e9a579"
@@ -47,7 +47,7 @@
       "liveStoreReference": null,
       "version": "R0.1A-R",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "134f0c1480725b59ee6cc7bfca02b7f94efb9844e3df9c03613ad4bf8a706f9b",
+      "sha256": "1d0d901089e6b4f4dd06ef2226d50445e0785b29765d310c2f34dc69762410fe",
       "lineage": [
         "R0.1A 4eb360a",
         "R0.1B 6e9a579"
@@ -65,7 +65,7 @@
       "liveStoreReference": null,
       "version": "R0.1A-R",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "5df212b59f4a8c0e68669620f5107f5219c2cbf99971577bb6d9ac5914b1d7b6",
+      "sha256": "17c59e32237a287ac6e3e7e74e8b2f7622abb34112d78e53f7d0058329389acb",
       "lineage": [
         "R0.1A 4eb360a",
         "R0.1B 6e9a579"
@@ -83,7 +83,7 @@
       "liveStoreReference": null,
       "version": "R0.1A-R",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "ab099a6b154a155961f1bac1ffdc6b2dcc0e0b787f80a6233d6e3f8bce9b022f",
+      "sha256": "b68c5566facf0fed57341d4bd0724f0010e5e66145a98b77973d46e34163d12d",
       "lineage": [
         "R0.1A 4eb360a",
         "R0.1B 6e9a579"
@@ -119,7 +119,7 @@
       "liveStoreReference": null,
       "version": "R0.1A-R",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "9de4b1e95a180acfbd11b9dfe434bed61cd75d95fe62913f2d46e494bab3c180",
+      "sha256": "cce56bce4130dfc168decf1e3b30b5ddb902c3de078181f923ba47d2093b021a",
       "lineage": [
         "R0.1A 4eb360a",
         "R0.1B 6e9a579"
@@ -137,7 +137,7 @@
       "liveStoreReference": null,
       "version": "R0.1A-R",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "94d1786d3c186aa743accbf33248beb31860a6e8c158b3374f96fe5fec40d141",
+      "sha256": "eadeef1d8ee18bafbf51ac279eec013cfba2ce03a338714d03a34af7fb305e7c",
       "lineage": [
         "R0.1A 4eb360a",
         "R0.1B 6e9a579"
@@ -173,7 +173,7 @@
       "liveStoreReference": null,
       "version": "R0.1A-R",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "9feba1f91b46f8b77ea29ca808ebac3968206c17af1b8be33ae8376526fad83d",
+      "sha256": "dcb6ad6733d55864f5a68223d48e6590c9e4783854e5f860c7ab833337b94059",
       "lineage": [
         "R0.1A 4eb360a",
         "R0.1B 6e9a579"
@@ -191,7 +191,7 @@
       "liveStoreReference": null,
       "version": "R0.1A-R",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "f598e3941989e6190e1bda37b483b91c40487d896d47c781836a04a0bd4ef594",
+      "sha256": "48d88ac03d7a437750a714c5ec3c63ee3cb74c287674dfe53c16b9de5ae6afcf",
       "lineage": [
         "R0.1A 4eb360a",
         "R0.1B 6e9a579"
@@ -209,7 +209,7 @@
       "liveStoreReference": null,
       "version": "R0.1A-R",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "718766c2ea851627719a7c073adecf33370e4a3514f1fef8c6c1233e4597ebb4",
+      "sha256": "407214118b0a69a1b06fa641329bf5684864fe7e4d0863f511d97d3ff25b2718",
       "lineage": [
         "R0.1A 4eb360a",
         "R0.1B 6e9a579"
@@ -245,7 +245,7 @@
       "liveStoreReference": null,
       "version": "R0.1A-R",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "fab4de5ccf30faca2a308d3a28d324f060b4d21a2713ec1ed9562ac36e87ad60",
+      "sha256": "7e4f0c77e50f9f6929ea480db5211d2f424f86503e4fa025fddc578fec71b7ac",
       "lineage": [
         "R0.1A 4eb360a",
         "R0.1B 6e9a579"
@@ -260,22 +260,22 @@
     {
       "toolId": "extract-universe-semantics.mjs",
       "repositoryPath": "tools/universe/extract-universe-semantics.mjs",
-      "version": "R0.1A-R",
-      "sha256": "9feba1f91b46f8b77ea29ca808ebac3968206c17af1b8be33ae8376526fad83d",
+      "version": "atlas-universe-semantic-extractor-1.1.0",
+      "sha256": "dcb6ad6733d55864f5a68223d48e6590c9e4783854e5f860c7ab833337b94059",
       "purpose": "Full declaration-expression capture, governed runtime-state exclusion, entity-aware consistency"
     },
     {
       "toolId": "compare-universe-copies.mjs",
       "repositoryPath": "tools/universe/compare-universe-copies.mjs",
       "version": "R0.1A-R",
-      "sha256": "f598e3941989e6190e1bda37b483b91c40487d896d47c781836a04a0bd4ef594",
+      "sha256": "48d88ac03d7a437750a714c5ec3c63ee3cb74c287674dfe53c16b9de5ae6afcf",
       "purpose": "Raw observational copy comparison"
     },
     {
       "toolId": "inventory-module-declarations.mjs",
       "repositoryPath": "tools/universe/inventory-module-declarations.mjs",
       "version": "R0.1A-R",
-      "sha256": "718766c2ea851627719a7c073adecf33370e4a3514f1fef8c6c1233e4597ebb4",
+      "sha256": "407214118b0a69a1b06fa641329bf5684864fe7e4d0863f511d97d3ff25b2718",
       "purpose": "Independent completeness denominator"
     },
     {
@@ -295,19 +295,19 @@
       "candidateFiles": [
         {
           "repositoryPath": "data/universe/r0-1a-r/universe-semantic-payload.json",
-          "sha256": "9b7c6525f764e2d1fe1a2be23b59ffe7607ba1ffe89fa251915e899defaf9604"
+          "sha256": "b0d25d9770eb71b012bf2ef56fa1eff9e64e5b4815c75f1899d19db076153b37"
         },
         {
           "repositoryPath": "data/universe/r0-1a-r/universe-extraction-report.json",
-          "sha256": "134f0c1480725b59ee6cc7bfca02b7f94efb9844e3df9c03613ad4bf8a706f9b"
+          "sha256": "1d0d901089e6b4f4dd06ef2226d50445e0785b29765d310c2f34dc69762410fe"
         },
         {
           "repositoryPath": "data/universe/r0-1a-r/universe-copy-comparison.json",
-          "sha256": "5df212b59f4a8c0e68669620f5107f5219c2cbf99971577bb6d9ac5914b1d7b6"
+          "sha256": "17c59e32237a287ac6e3e7e74e8b2f7622abb34112d78e53f7d0058329389acb"
         },
         {
           "repositoryPath": "data/universe/r0-1a-r/universe-declaration-inventory.json",
-          "sha256": "ab099a6b154a155961f1bac1ffdc6b2dcc0e0b787f80a6233d6e3f8bce9b022f"
+          "sha256": "b68c5566facf0fed57341d4bd0724f0010e5e66145a98b77973d46e34163d12d"
         },
         {
           "repositoryPath": "governance/recovery/R0.1A-R/PRE_CHANGE_BASELINE.json",
@@ -315,11 +315,11 @@
         },
         {
           "repositoryPath": "governance/recovery/R0.1A-R/UNIVERSE_MATERIALIZATION_SUPERSESSION.json",
-          "sha256": "9de4b1e95a180acfbd11b9dfe434bed61cd75d95fe62913f2d46e494bab3c180"
+          "sha256": "cce56bce4130dfc168decf1e3b30b5ddb902c3de078181f923ba47d2093b021a"
         },
         {
           "repositoryPath": "governance/registry/UNIVERSE_MACHINE_READABLE_INPUT_REGISTRY.json",
-          "sha256": "94d1786d3c186aa743accbf33248beb31860a6e8c158b3374f96fe5fec40d141"
+          "sha256": "eadeef1d8ee18bafbf51ac279eec013cfba2ce03a338714d03a34af7fb305e7c"
         },
         {
           "repositoryPath": "governance/recovery/R0.1A/POST_QA_GOVERNED_STATE_SUPPLEMENT.json",
@@ -327,15 +327,15 @@
         },
         {
           "repositoryPath": "tools/universe/extract-universe-semantics.mjs",
-          "sha256": "9feba1f91b46f8b77ea29ca808ebac3968206c17af1b8be33ae8376526fad83d"
+          "sha256": "dcb6ad6733d55864f5a68223d48e6590c9e4783854e5f860c7ab833337b94059"
         },
         {
           "repositoryPath": "tools/universe/compare-universe-copies.mjs",
-          "sha256": "f598e3941989e6190e1bda37b483b91c40487d896d47c781836a04a0bd4ef594"
+          "sha256": "48d88ac03d7a437750a714c5ec3c63ee3cb74c287674dfe53c16b9de5ae6afcf"
         },
         {
           "repositoryPath": "tools/universe/inventory-module-declarations.mjs",
-          "sha256": "718766c2ea851627719a7c073adecf33370e4a3514f1fef8c6c1233e4597ebb4"
+          "sha256": "407214118b0a69a1b06fa641329bf5684864fe7e4d0863f511d97d3ff25b2718"
         },
         {
           "repositoryPath": "tools/universe/analyze-construction-boundary.mjs",
@@ -343,7 +343,7 @@
         },
         {
           "repositoryPath": "tests/r0-1a-r-universe-rematerialization.mjs",
-          "sha256": "fab4de5ccf30faca2a308d3a28d324f060b4d21a2713ec1ed9562ac36e87ad60"
+          "sha256": "7e4f0c77e50f9f6929ea480db5211d2f424f86503e4fa025fddc578fec71b7ac"
         }
       ]
     }
@@ -416,6 +416,16 @@
       "id": "R0.1A-R-09",
       "severity": "INFO",
       "statement": "Checkpoint A was committed as a standalone commit (9ac8dec) before any remediation mutation, correcting the R0.1A process nonconformance R0.1A-PRE-04."
+    },
+    {
+      "id": "R0.1A-R-10",
+      "severity": "RESOLVED",
+      "statement": "Producer identity corrected under independent QA. Candidate artifacts previously carried stageId R0.1A and extractor 1.0.0 despite being produced by the corrected implementation. They now declare stageId R0.1A-R and extractor 1.1.0, and the extractor header no longer describes itself as the R0.1A implementation. Metadata-only: the semantic structures hash 82104521... is unchanged; only metadata-inclusive file and full-payload hashes moved."
+    },
+    {
+      "id": "R0.1A-R-11",
+      "severity": "INFO",
+      "statement": "The historical R0.1A payload and report retain stageId R0.1A and extractor 1.0.0, and the historical R0.1A extractor evidence is unchanged. The 1.0.0 identity remains attached to immutable historical evidence only; it is exported as SUPERSEDED_EXTRACTOR_VERSION solely for lineage assertions."
     }
   ],
   "tests": [
@@ -440,7 +450,11 @@
         "no premature promotion",
         "supersession lineage",
         "determinism",
-        "dependency closure"
+        "dependency closure",
+        "producer stageId R0.1A-R",
+        "new extractor version 1.1.0",
+        "historical R0.1A identity unchanged",
+        "semantic structures hash pinned"
       ]
     },
     {
@@ -459,5 +473,12 @@
     }
   ],
   "supersededBy": [],
-  "nextAuthorization": "AWAITING_INDEPENDENT_QA"
+  "nextAuthorization": "AWAITING_INDEPENDENT_QA",
+  "producerIdentity": {
+    "stageId": "R0.1A-R",
+    "extractorVersion": "atlas-universe-semantic-extractor-1.1.0",
+    "supersededExtractorVersion": "atlas-universe-semantic-extractor-1.0.0",
+    "semanticStructuresHash": "82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d",
+    "semanticStructuresHashUnchangedByMetadataCorrection": true
+  }
 }

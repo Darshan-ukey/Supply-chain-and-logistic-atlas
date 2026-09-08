@@ -1,7 +1,8 @@
 import fs from 'node:fs';
-import { buildPayload, canonicalHash, sha256, EXTRACTOR_VERSION } from './extract-universe-semantics.mjs';
+import { buildPayload, canonicalHash, sha256, EXTRACTOR_VERSION, PRODUCING_STAGE_ID } from './extract-universe-semantics.mjs';
 
-// R0.1A — deterministic comparison of retained Universe HTML copies.
+// Deterministic comparison of retained Universe HTML copies.
+// Corrected implementation produced under R0.1A-R; see extract-universe-semantics.mjs.
 //
 // SCOPE BOUNDARY: this tool records observations only. It does not decide whether a
 // difference is semantic, presentation, build-state or noise, and it does not decide
@@ -38,7 +39,7 @@ export function compareCopies(paths) {
 
   return {
     schemaVersion: 'atlas-universe-copy-comparison-v2',
-    stageId: 'R0.1A',
+    stageId: PRODUCING_STAGE_ID,
     extractorVersion: EXTRACTOR_VERSION,
     classification: 'RAW_OBSERVATION_NO_INTERPRETATION',
     copies: copies.map(({ structures, ...rest }) => rest),

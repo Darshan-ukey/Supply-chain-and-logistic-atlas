@@ -1,7 +1,7 @@
 {
   "schemaVersion": "atlas-universe-extraction-report-v1",
-  "stageId": "R0.1A",
-  "extractorVersion": "atlas-universe-semantic-extractor-1.0.0",
+  "stageId": "R0.1A-R",
+  "extractorVersion": "atlas-universe-semantic-extractor-1.1.0",
   "source": {
     "path": "reference/universe-v7.3.html",
     "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef"
@@ -15,7 +15,7 @@
   },
   "hashes": {
     "semanticStructures": "82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d",
-    "fullPayload": "9ccec5535cd24947fc7f538059a4bfc2c535d8f3bf14a8fa7bb06cef35875888"
+    "fullPayload": "c6e1f726307b9f937f9d52c9573c23bf16c9d9bdb94d3e6cb5b92e85fbdad8c2"
   },
   "completeness": {
     "topLevelDeclarations": 52,

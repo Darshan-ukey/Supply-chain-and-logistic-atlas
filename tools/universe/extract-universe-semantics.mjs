@@ -3,7 +3,16 @@ import vm from 'node:vm';
 import { inventoryModuleDeclarations, maskLiterals } from './inventory-module-declarations.mjs';
 import crypto from 'node:crypto';
 
-// R0.1A — Universe Semantic Materialization.
+// Universe Semantic Materialization — corrected implementation (R0.1A-R).
+//
+// Originally authored for R0.1A at extractor version 1.0.0. R0.1A-R materially changed the
+// extraction behaviour under governed determinations R0.1B D4/D6 and D7 REC-6:
+//   - captures the COMPLETE declaration expression, including declaration-level chained
+//     transforms, instead of stopping at the object/array literal;
+//   - applies governed runtime-state exclusions to the canonical payload;
+//   - compares record identity by logical collection rather than by id alone.
+// Because behaviour changed, this implementation carries a new version and must not be
+// described as, or confused with, the historical 1.0.0 R0.1A implementation.
 //
 // Mechanically extracts embedded semantic data structures from a retained Universe HTML
 // release shell into a normalized machine-readable payload.
@@ -14,7 +23,11 @@ import crypto from 'node:crypto';
 //
 // Usage: node tools/universe/extract-universe-semantics.mjs <source.html> [--out <payload.json>] [--report <report.json>]
 
-export const EXTRACTOR_VERSION = 'atlas-universe-semantic-extractor-1.0.0';
+export const EXTRACTOR_VERSION = 'atlas-universe-semantic-extractor-1.1.0';
+/** Remediation stage that produces artifacts from this implementation. */
+export const PRODUCING_STAGE_ID = 'R0.1A-R';
+/** Historical predecessor retained for lineage; its artifacts remain immutable. */
+export const SUPERSEDED_EXTRACTOR_VERSION = 'atlas-universe-semantic-extractor-1.0.0';
 export const PAYLOAD_SCHEMA_VERSION = 'atlas-universe-semantic-payload-v2';
 
 /**
@@ -347,7 +360,7 @@ export function extractUniverseSemantics(html, { additionalTargets = [] } = {}) 
  * Detect where two extracted structures describe the same underlying records but disagree
  * on field sets. The source enriches record objects between declarations, so a value captured
  * at one declaration boundary can legitimately differ from the same record captured at a later
- * boundary. R0.1A reports this; deciding which boundary is canonical belongs to R0.1B.
+ * boundary. This is reported as observation; deciding which boundary is canonical belongs to R0.1B.
  */
 export function constructionBoundaryConsistency(structures) {
   // Collect every addressable record collection.
@@ -471,7 +484,7 @@ export function buildPayload({ sourcePath, html, releaseShellVersion, additional
   const payload = {
     schemaVersion: PAYLOAD_SCHEMA_VERSION,
     classification: 'MECHANICAL_SEMANTIC_MATERIALIZATION_NO_INFERENCE',
-    stageId: 'R0.1A',
+    stageId: PRODUCING_STAGE_ID,
     extractorVersion: EXTRACTOR_VERSION,
     // Dual lineage preserved: the release shell and the embedded semantic identity are
     // recorded separately. R0.1A does not decide which is authoritative.
@@ -526,7 +539,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   if (rep) {
     const report = {
       schemaVersion: 'atlas-universe-extraction-report-v1',
-      stageId: 'R0.1A',
+      stageId: PRODUCING_STAGE_ID,
       extractorVersion: EXTRACTOR_VERSION,
       source: { path: src, sha256: payload.lineage.sourceSha256 },
       releaseShellVersion: payload.lineage.releaseShellVersion,

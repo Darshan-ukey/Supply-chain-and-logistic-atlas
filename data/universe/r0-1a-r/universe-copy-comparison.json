@@ -1,7 +1,7 @@
 {
   "schemaVersion": "atlas-universe-copy-comparison-v2",
-  "stageId": "R0.1A",
-  "extractorVersion": "atlas-universe-semantic-extractor-1.0.0",
+  "stageId": "R0.1A-R",
+  "extractorVersion": "atlas-universe-semantic-extractor-1.1.0",
   "classification": "RAW_OBSERVATION_NO_INTERPRETATION",
   "copies": [
     {

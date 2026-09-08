@@ -1,8 +1,8 @@
 {
   "schemaVersion": "atlas-universe-semantic-payload-v2",
   "classification": "MECHANICAL_SEMANTIC_MATERIALIZATION_NO_INFERENCE",
-  "stageId": "R0.1A",
-  "extractorVersion": "atlas-universe-semantic-extractor-1.0.0",
+  "stageId": "R0.1A-R",
+  "extractorVersion": "atlas-universe-semantic-extractor-1.1.0",
   "lineage": {
     "releaseShellVersion": "7.3",
     "embeddedSemanticIdentity": {

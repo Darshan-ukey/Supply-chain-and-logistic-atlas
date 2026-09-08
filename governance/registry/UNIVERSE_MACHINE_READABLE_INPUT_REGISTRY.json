@@ -50,7 +50,8 @@
           "resolvable": true,
           "notes": ""
         }
-      ]
+      ],
+      "extractorVersion": "atlas-universe-semantic-extractor-1.0.0"
     },
     {
       "generation": "R0.1A-R",
@@ -59,7 +60,7 @@
         {
           "assetId": "universe-semantic-payload@R0.1A-R",
           "repositoryPath": "data/universe/r0-1a-r/universe-semantic-payload.json",
-          "sha256": "9b7c6525f764e2d1fe1a2be23b59ffe7607ba1ffe89fa251915e899defaf9604",
+          "sha256": "b0d25d9770eb71b012bf2ef56fa1eff9e64e5b4815c75f1899d19db076153b37",
           "classification": "CANDIDATE_CURRENT_WORKING_INPUT",
           "producedByStage": "R0.1A-R",
           "dependencies": [
@@ -71,7 +72,7 @@
         {
           "assetId": "universe-extraction-report@R0.1A-R",
           "repositoryPath": "data/universe/r0-1a-r/universe-extraction-report.json",
-          "sha256": "134f0c1480725b59ee6cc7bfca02b7f94efb9844e3df9c03613ad4bf8a706f9b",
+          "sha256": "1d0d901089e6b4f4dd06ef2226d50445e0785b29765d310c2f34dc69762410fe",
           "classification": "CANDIDATE_EVIDENCE",
           "producedByStage": "R0.1A-R",
           "dependencies": [],
@@ -81,7 +82,7 @@
         {
           "assetId": "universe-copy-comparison@R0.1A-R",
           "repositoryPath": "data/universe/r0-1a-r/universe-copy-comparison.json",
-          "sha256": "5df212b59f4a8c0e68669620f5107f5219c2cbf99971577bb6d9ac5914b1d7b6",
+          "sha256": "17c59e32237a287ac6e3e7e74e8b2f7622abb34112d78e53f7d0058329389acb",
           "classification": "CANDIDATE_EVIDENCE",
           "producedByStage": "R0.1A-R",
           "dependencies": [],
@@ -91,14 +92,15 @@
         {
           "assetId": "universe-declaration-inventory@R0.1A-R",
           "repositoryPath": "data/universe/r0-1a-r/universe-declaration-inventory.json",
-          "sha256": "ab099a6b154a155961f1bac1ffdc6b2dcc0e0b787f80a6233d6e3f8bce9b022f",
+          "sha256": "b68c5566facf0fed57341d4bd0724f0010e5e66145a98b77973d46e34163d12d",
           "classification": "CANDIDATE_EVIDENCE",
           "producedByStage": "R0.1A-R",
           "dependencies": [],
           "resolvable": true,
           "notes": ""
         }
-      ]
+      ],
+      "extractorVersion": "atlas-universe-semantic-extractor-1.1.0"
     }
   ],
   "retainedSources": [
@@ -137,7 +139,7 @@
     {
       "assetId": "tool-extract-universe-semantics.mjs",
       "repositoryPath": "tools/universe/extract-universe-semantics.mjs",
-      "sha256": "9feba1f91b46f8b77ea29ca808ebac3968206c17af1b8be33ae8376526fad83d",
+      "sha256": "dcb6ad6733d55864f5a68223d48e6590c9e4783854e5f860c7ab833337b94059",
       "classification": "GOVERNED_TOOL",
       "producedByStage": "R0.1A-R",
       "dependencies": [],
@@ -147,7 +149,7 @@
     {
       "assetId": "tool-compare-universe-copies.mjs",
       "repositoryPath": "tools/universe/compare-universe-copies.mjs",
-      "sha256": "f598e3941989e6190e1bda37b483b91c40487d896d47c781836a04a0bd4ef594",
+      "sha256": "48d88ac03d7a437750a714c5ec3c63ee3cb74c287674dfe53c16b9de5ae6afcf",
       "classification": "GOVERNED_TOOL",
       "producedByStage": "R0.1A-R",
       "dependencies": [],
@@ -157,7 +159,7 @@
     {
       "assetId": "tool-inventory-module-declarations.mjs",
       "repositoryPath": "tools/universe/inventory-module-declarations.mjs",
-      "sha256": "718766c2ea851627719a7c073adecf33370e4a3514f1fef8c6c1233e4597ebb4",
+      "sha256": "407214118b0a69a1b06fa641329bf5684864fe7e4d0863f511d97d3ff25b2718",
       "classification": "GOVERNED_TOOL",
       "producedByStage": "R0.1A-R",
       "dependencies": [],

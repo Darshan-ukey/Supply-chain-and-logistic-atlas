@@ -3,7 +3,8 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {
   buildPayload, extractUniverseSemantics, canonicalHash, stableStringify,
-  GOVERNED_RUNTIME_STATE_EXCLUSIONS, PAYLOAD_SCHEMA_VERSION
+  GOVERNED_RUNTIME_STATE_EXCLUSIONS, PAYLOAD_SCHEMA_VERSION,
+  EXTRACTOR_VERSION, PRODUCING_STAGE_ID, SUPERSEDED_EXTRACTOR_VERSION
 } from '../tools/universe/extract-universe-semantics.mjs';
 import { compareCopies } from '../tools/universe/compare-universe-copies.mjs';
 import { inventoryModuleDeclarations } from '../tools/universe/inventory-module-declarations.mjs';
@@ -179,5 +180,42 @@ for (const g of reg.generations) for (const asset of g.assets) {
   assert.equal(asset.sha256, sha(asset.repositoryPath), `registry hash must match: ${asset.repositoryPath}`);
 }
 assert.equal(reg.governanceBranchClosure.appliedByThisStage, false, 'governance-branch mutation is a Checkpoint C action');
+
+// ---- producer identity / lineage accuracy -------------------------------------------
+const PINNED_SEMANTIC_HASH = '82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d';
+const cmpArtifact = JSON.parse(fs.readFileSync(NEW_CMP, 'utf8'));
+const invArtifact = JSON.parse(fs.readFileSync(NEW_INV, 'utf8'));
+
+// corrected artifacts must identify their producing remediation stage
+assert.equal(PRODUCING_STAGE_ID, 'R0.1A-R');
+for (const [label, doc] of [['payload', payload], ['report', report], ['comparison', cmpArtifact], ['inventory', invArtifact]]) {
+  assert.equal(doc.stageId, 'R0.1A-R', `corrected ${label} must declare stageId R0.1A-R`);
+}
+// corrected artifacts must carry the new extractor version
+assert.equal(EXTRACTOR_VERSION, 'atlas-universe-semantic-extractor-1.1.0');
+assert.notEqual(EXTRACTOR_VERSION, SUPERSEDED_EXTRACTOR_VERSION, 'corrected extractor must not reuse the R0.1A version');
+for (const [label, doc] of [['payload', payload], ['report', report], ['comparison', cmpArtifact]]) {
+  assert.equal(doc.extractorVersion, EXTRACTOR_VERSION, `corrected ${label} must record the new extractor version`);
+}
+// the extractor must not describe itself as the original R0.1A implementation
+const headComment = extractorSrc.slice(0, extractorSrc.indexOf('export const'));
+assert.doesNotMatch(headComment, /^\/\/ R0\.1A —/m, 'extractor header must not present itself as the R0.1A implementation');
+assert.match(headComment, /R0\.1A-R/, 'extractor header must identify the corrected implementation');
+
+// historical R0.1A identity must remain untouched
+const histPayload = JSON.parse(fs.readFileSync('data/universe/universe-semantic-payload.json', 'utf8'));
+const histReport = JSON.parse(fs.readFileSync('data/universe/universe-extraction-report.json', 'utf8'));
+assert.equal(histPayload.stageId, 'R0.1A', 'historical R0.1A payload must keep its original stageId');
+assert.equal(histPayload.extractorVersion, SUPERSEDED_EXTRACTOR_VERSION, 'historical R0.1A payload must keep extractor 1.0.0');
+assert.equal(histReport.stageId, 'R0.1A');
+assert.equal(histReport.extractorVersion, SUPERSEDED_EXTRACTOR_VERSION);
+
+// metadata-only correction: semantics must be bit-identical to the pinned value
+assert.equal(report.hashes.semanticStructures, PINNED_SEMANTIC_HASH,
+  'metadata correction must not alter the semantic structures hash');
+assert.equal(canonicalHash(payload.structures), PINNED_SEMANTIC_HASH);
+assert.equal(supersession.supersedingArtifact.semanticStructuresHash, PINNED_SEMANTIC_HASH);
+assert.equal(supersession.supersedingArtifact.fileSha256, sha(NEW), 'supersession must record the revised file hash');
+assert.equal(supersession.supersededArtifact.semanticStructuresHash, histReport.hashes.semanticStructures);
 
 console.log('R0.1A-R Universe re-materialization correction certification PASS');
