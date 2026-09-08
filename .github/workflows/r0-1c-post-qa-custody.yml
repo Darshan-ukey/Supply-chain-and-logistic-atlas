@@ -1,0 +1,55 @@
+name: R0.1C Post-QA Governed Custody
+
+on:
+  push:
+    branches:
+      - atlas-governance-registry-v2.1
+    paths:
+      - 'governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json'
+      - 'governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json'
+      - 'governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md'
+      - 'governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md'
+      - 'governance/frozen-assets/ASSET_REGISTER.json'
+      - 'CLAUDE.md'
+      - '.github/workflows/r0-1c-post-qa-custody.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify R0.1C closure and R0.2 authorization
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const q=JSON.parse(fs.readFileSync('governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json','utf8'));
+          const c=JSON.parse(fs.readFileSync('governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json','utf8'));
+          if(c.qaDisposition!=='PASS') throw new Error('R0.1C Checkpoint C must be PASS');
+          if(c.referenceOwnership.trueReferenceDefects!==0 || c.referenceOwnership.orphans!==0) throw new Error('reference closure mismatch');
+          if(q.currentStageId!=='R0.2') throw new Error('R0.2 must be current');
+          const auth=[];
+          for(const p of q.phases){ if(p.status==='AUTHORIZED') auth.push(p.stageId); for(const s of (p.subStages||[])) if(s.status==='AUTHORIZED') auth.push(s.stageId); }
+          if(auth.length!==1 || auth[0]!=='R0.2') throw new Error('R0.2 must be sole AUTHORIZED stage: '+auth.join(','));
+          console.log('R0.1C closure PASS; R0.2 sole AUTHORIZED stage');
+          NODE
+      - name: Build exact governed custody bundle
+        run: |
+          mkdir -p custody/governance/recovery/R0.1C custody/governance/backlog custody/governance/standards custody/governance/frozen-assets
+          cp governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json custody/governance/recovery/R0.1C/
+          cp governance/recovery/R0.1C/REFERENCE_OWNERSHIP_DETERMINATION.json custody/governance/recovery/R0.1C/
+          cp governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json custody/governance/backlog/
+          cp governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md custody/governance/backlog/
+          cp governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md custody/governance/standards/
+          cp governance/frozen-assets/ASSET_REGISTER.json custody/governance/frozen-assets/
+          cp CLAUDE.md custody/
+          cp data/crosswalks/process-concept-crosswalk-v1.json custody/
+          find custody -type f -print0 | sort -z | xargs -0 sha256sum > custody/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-r0-1c-post-qa-governed-custody
+          path: custody
+          if-no-files-found: error
