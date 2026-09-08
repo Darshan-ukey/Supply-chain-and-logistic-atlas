@@ -1,0 +1,114 @@
+name: R0.1A-R Universe Semantic Re-materialization Correction
+
+on:
+  push:
+    branches:
+      - atlas-recovery-r0-1a-r-universe-rematerialization
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Environment
+        run: |
+          echo "node: $(node --version)"
+          echo "commit: ${GITHUB_SHA}"
+
+      - name: Retained source hashes (must be unmodified)
+        run: |
+          sha256sum \
+            reference/universe-v7.3.html \
+            "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html" \
+            "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html"
+
+      - name: Assert R0.1A and R0.1B historical evidence is byte-identical
+        run: |
+          git fetch origin atlas-recovery-r0-1b-universe-identity --depth=1
+          for f in data/universe/universe-semantic-payload.json \
+                   data/universe/universe-extraction-report.json \
+                   data/universe/universe-copy-comparison.json \
+                   data/universe/universe-declaration-inventory.json \
+                   governance/recovery/R0.1A/PRE_CHANGE_BASELINE.json \
+                   governance/recovery/R0.1A/POST_IMPLEMENTATION_PRE_QA.json \
+                   governance/recovery/R0.1A/POST_QA_GOVERNED_STATE.json \
+                   governance/recovery/R0.1B/UNIVERSE_IDENTITY_AUTHORITY_DETERMINATION.json \
+                   governance/recovery/R0.1B/POST_IMPLEMENTATION_PRE_QA.json \
+                   tests/r0-1a-universe-materialization.mjs ; do
+            if ! git diff --quiet origin/atlas-recovery-r0-1b-universe-identity -- "$f"; then
+              echo "R0.1A-R must not modify historical evidence: $f"; exit 1;
+            fi
+            echo "unchanged: $f"
+          done
+
+      - name: R0.1A-R correction certification
+        run: node tests/r0-1a-r-universe-rematerialization.mjs
+
+      - name: R0.1B determination regression (must still hold)
+        run: node tests/r0-1b-universe-identity-authority.mjs
+
+      - name: Reproduce corrected artifacts and assert byte equality
+        run: |
+          mkdir -p /tmp/out
+          node tools/universe/extract-universe-semantics.mjs reference/universe-v7.3.html \
+            --out /tmp/out/payload.json --report /tmp/out/report.json --release-shell 7.3
+          node tools/universe/compare-universe-copies.mjs \
+            reference/universe-v7.3.html \
+            "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html" \
+            "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html" --out /tmp/out/comparison.json
+          node tools/universe/inventory-module-declarations.mjs reference/universe-v7.3.html --out /tmp/out/inventory.json
+          diff -q /tmp/out/payload.json    data/universe/r0-1a-r/universe-semantic-payload.json
+          diff -q /tmp/out/report.json     data/universe/r0-1a-r/universe-extraction-report.json
+          diff -q /tmp/out/comparison.json data/universe/r0-1a-r/universe-copy-comparison.json
+          diff -q /tmp/out/inventory.json  data/universe/r0-1a-r/universe-declaration-inventory.json
+          echo "corrected artifacts reproducible"
+          sha256sum data/universe/r0-1a-r/*.json
+
+      - name: Assert supersession lineage and no canonical promotion
+        run: |
+          node -e '
+            const fs=require("fs");
+            const s=JSON.parse(fs.readFileSync("governance/recovery/R0.1A-R/UNIVERSE_MATERIALIZATION_SUPERSESSION.json","utf8"));
+            if(!s.hashesDiffer)throw new Error("corrected payload must not reuse the R0.1A hash");
+            if(s.supersededArtifact.modifiedByThisStage)throw new Error("superseded artifact must not be modified");
+            for(const [k,v] of Object.entries(s.promotion)) if(!["NOT_PERFORMED","UNCHANGED"].includes(v))
+              throw new Error("premature promotion: "+k+"="+v);
+            const b=JSON.parse(fs.readFileSync("governance/recovery/R0.1A-R/POST_IMPLEMENTATION_PRE_QA.json","utf8"));
+            if(b.nextAuthorization!=="AWAITING_INDEPENDENT_QA")throw new Error("stage must stop at AWAITING_INDEPENDENT_QA");
+            if(b.qaDisposition!==null)throw new Error("implementation agent must not set qaDisposition");
+            if(fs.existsSync("governance/recovery/R0.1A-R/POST_QA_GOVERNED_STATE.json"))throw new Error("Checkpoint C is not written by the implementation agent");
+            console.log("supersession lineage and stop condition verified");
+          '
+
+      - name: Assert dependency-closure registry resolves
+        run: |
+          node -e '
+            const fs=require("fs"),c=require("crypto");
+            const r=JSON.parse(fs.readFileSync("governance/registry/UNIVERSE_MACHINE_READABLE_INPUT_REGISTRY.json","utf8"));
+            const sha=p=>c.createHash("sha256").update(fs.readFileSync(p)).digest("hex");
+            let n=0;
+            for(const g of [...r.generations.flatMap(x=>x.assets), ...r.retainedSources, ...r.tooling]){
+              if(!fs.existsSync(g.repositoryPath))throw new Error("unresolvable: "+g.repositoryPath);
+              if(sha(g.repositoryPath)!==g.sha256)throw new Error("hash mismatch: "+g.repositoryPath);
+              n++;
+            }
+            console.log("dependency closure verified for "+n+" governed inputs");
+          '
+
+      - name: Assert no downstream governed asset promoted
+        run: |
+          git fetch origin atlas-governance-registry-v2.1 --depth=1
+          for f in governance/frozen-assets/ASSET_REGISTER.json governance/frozen-assets/CURRENT.json governance/frozen-assets/LATEST.md; do
+            if ! git diff --quiet origin/atlas-governance-registry-v2.1 -- "$f"; then
+              echo "R0.1A-R must not modify $f"; exit 1;
+            fi
+            echo "unchanged: $f"
+          done

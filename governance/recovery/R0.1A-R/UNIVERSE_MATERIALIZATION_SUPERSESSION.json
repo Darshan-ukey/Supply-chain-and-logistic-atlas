@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "atlas-universe-materialization-supersession-v1",
+  "stageId": "R0.1A-R",
+  "status": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+  "supersedes": "R0.1A",
+  "supersessionType": "CORRECTED_RE_MATERIALIZATION",
+  "reason": "R0.1B D5 governed defect: declaration-level chained transforms were not captured, omitting source-declared description fields. R0.1B D6: runtime UI state was included in the canonical payload. R0.1B D7 REC-6: divergence detection compared heterogeneous records on id alone.",
+  "supersededArtifact": {
+    "stage": "R0.1A",
+    "repositoryPath": "data/universe/universe-semantic-payload.json",
+    "fileSha256": "17b4973e18a4bb93fc81908d9fc605dfbe989d79ca0c6ac3e086f2feac5958b8",
+    "semanticStructuresHash": "2d6405c534b96f4054cb87ac2428a0a7a1bf4626334a86e5cc96ec342add4043",
+    "structureCount": 61,
+    "recordCount": 1330,
+    "certifiedCommit": "4eb360a",
+    "classification": "IMMUTABLE_HISTORICAL_EVIDENCE_NOT_ELIGIBLE_FOR_CANONICAL_PROMOTION",
+    "retained": true,
+    "modifiedByThisStage": false
+  },
+  "supersedingArtifact": {
+    "stage": "R0.1A-R",
+    "repositoryPath": "data/universe/r0-1a-r/universe-semantic-payload.json",
+    "fileSha256": "9b7c6525f764e2d1fe1a2be23b59ffe7607ba1ffe89fa251915e899defaf9604",
+    "semanticStructuresHash": "82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d",
+    "structureCount": 60,
+    "recordCount": 1327,
+    "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA"
+  },
+  "hashesDiffer": true,
+  "fieldLevelCorrectionEvidence": [
+    {
+      "structure": "systemRecords",
+      "declarationForm": "const systemRecords = [ ... ].map(record => ({...record, description: ...}))",
+      "r0_1a_capturedFields": [
+        "aliases",
+        "code",
+        "id",
+        "name"
+      ],
+      "r0_1a_r_capturedFields": [
+        "aliases",
+        "code",
+        "description",
+        "id",
+        "name"
+      ],
+      "fieldRestored": "description",
+      "recordsAffected": 78,
+      "declaredInDeclarationExpression": true,
+      "domainIdsExcluded": true,
+      "domainIdsSource": "added by a separate post-declaration statement systemRecords.forEach(record => { record.domainIds = ... })",
+      "mechanism": "generic full-declaration-expression capture; no field is inserted and no structure is special-cased"
+    },
+    {
+      "structure": "businessObjectRecords",
+      "declarationForm": "const businessObjectRecords = [ ... ].map(record => ({...record, description: ...}))",
+      "r0_1a_capturedFields": [
+        "aliases",
+        "code",
+        "description",
+        "id",
+        "name"
+      ],
+      "r0_1a_r_capturedFields": [
+        "aliases",
+        "code",
+        "description",
+        "id",
+        "name"
+      ],
+      "fieldRestored": "description",
+      "recordsAffected": 128,
+      "declaredInDeclarationExpression": true,
+      "domainIdsExcluded": true,
+      "domainIdsSource": "added by a separate post-declaration statement businessObjectRecords.forEach(record => { record.domainIds = ... })",
+      "mechanism": "generic full-declaration-expression capture; no field is inserted and no structure is special-cased"
+    }
+  ],
+  "stateExclusion": [
+    {
+      "name": "state",
+      "classification": "RUNTIME_UI_STATE",
+      "determination": "R0.1B D6",
+      "sourceEvidence": "Declared as bindStateAliases(createCanonicalState()); createCanonicalState returns navigationState (family, selection, selectedEntityId) and activeContext (mode, role, movementPatternId, nodeId, jurisdictionId), which are user-interface selection values rather than Universe ontology.",
+      "materialized": true,
+      "topLevelKeys": [
+        "activeContext",
+        "analyticalViewState",
+        "navigationState"
+      ],
+      "excludedFromCanonicalPayload": true
+    }
+  ],
+  "detectorCorrection": {
+    "previousRule": "record identity compared on id alone across all record collections",
+    "correctedRule": "SAME_LOGICAL_COLLECTION_BY_IDENTICAL_ID_SET",
+    "rationale": "R0.1B D7 REC-6: heterogeneous records must not be compared on id alone.",
+    "previousFalseDivergences": [
+      {
+        "recordId": "warehouse",
+        "paths": [
+          "domains",
+          "models"
+        ]
+      },
+      {
+        "recordId": "finance",
+        "paths": [
+          "domains",
+          "executiveIntents"
+        ]
+      }
+    ],
+    "correctedTreatment": "DISTINCT_COLLECTIONS_SHARING_AN_ID_NOT_A_DIVERGENCE",
+    "correctedDivergentRecordCount": 0,
+    "heterogeneousIdCollisionCount": 15
+  },
+  "retainedSourceHashes": [
+    {
+      "repositoryPath": "reference/universe-v7.3.html",
+      "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef"
+    },
+    {
+      "repositoryPath": "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html",
+      "sha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd"
+    },
+    {
+      "repositoryPath": "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html",
+      "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef"
+    }
+  ],
+  "countDerivation": {
+    "note": "Counts are derived from the source under corrected rules. No historical total was targeted.",
+    "structureCountChange": "61 -> 60",
+    "structureCountExplanation": "One structure (state) removed from the canonical payload by governed R0.1B D6 classification. No structure was lost from extraction; state remains materialized and recorded in excludedRuntimeState and the declaration inventory.",
+    "recordCountChange": "1330 -> 1327",
+    "recordCountExplanation": "Difference equals the top-level key count of the excluded state structure. Record contents of retained structures are unchanged in count; two structures gained a previously omitted declared field.",
+    "fieldLevelChange": "description restored to 78 systemRecords and 128 businessObjectRecords."
+  },
+  "determinationsUnchanged": {
+    "R0.1B_D1": "UNCHANGED",
+    "R0.1B_D2": "UNCHANGED",
+    "R0.1B_D3": "UNCHANGED",
+    "R0.1B_D4": "IMPLEMENTED",
+    "R0.1B_D5": "REMEDIATED",
+    "R0.1B_D6": "IMPLEMENTED",
+    "note": "Corrected extraction produced no evidence contradicting any R0.1B determination."
+  },
+  "promotion": {
+    "canonicalPromotion": "NOT_PERFORMED",
+    "currentPointer": "UNCHANGED",
+    "latestPointer": "UNCHANGED",
+    "assetRegister": "UNCHANGED"
+  }
+}

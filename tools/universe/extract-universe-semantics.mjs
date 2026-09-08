@@ -15,7 +15,23 @@ import crypto from 'node:crypto';
 // Usage: node tools/universe/extract-universe-semantics.mjs <source.html> [--out <payload.json>] [--report <report.json>]
 
 export const EXTRACTOR_VERSION = 'atlas-universe-semantic-extractor-1.0.0';
-export const PAYLOAD_SCHEMA_VERSION = 'atlas-universe-semantic-payload-v1';
+export const PAYLOAD_SCHEMA_VERSION = 'atlas-universe-semantic-payload-v2';
+
+/**
+ * Declarations excluded from the canonical semantic payload by governed determination.
+ * These are NOT heuristics and NOT test conveniences: each carries the governing decision
+ * and the source evidence behind it. The declaration itself is never removed from the
+ * source or hidden from the inventory; it is materialized, classified and set aside so the
+ * exclusion is auditable.
+ */
+export const GOVERNED_RUNTIME_STATE_EXCLUSIONS = [
+  {
+    name: 'state',
+    classification: 'RUNTIME_UI_STATE',
+    determination: 'R0.1B D6',
+    sourceEvidence: 'Declared as bindStateAliases(createCanonicalState()); createCanonicalState returns navigationState (family, selection, selectedEntityId) and activeContext (mode, role, movementPatternId, nodeId, jurisdictionId), which are user-interface selection values rather than Universe ontology.'
+  }
+];
 
 /** Deterministic, key-sorted serialization for stable hashing. */
 export function stableStringify(value) {
@@ -71,12 +87,53 @@ function findDeclarations(script) {
     if (/[\w$.]/.test(prev)) continue; // not a real keyword boundary
     const name = m[1];
     const litStart = i + m[0].length;
-    const end = balancedEnd(script, litStart);
-    if (end < 0) continue;
-    decls.push({ name, literal: script.slice(litStart, end), depth, end });
+    const literalEnd = balancedEnd(script, litStart);
+    if (literalEnd < 0) continue;
+    // Extend past the literal to the end of the complete declaration expression so
+    // declaration-level chained transforms are included (R0.1B D4).
+    const exprEnd = declarationExpressionEnd(script, litStart);
+    const end = exprEnd > literalEnd ? exprEnd : literalEnd;
+    decls.push({
+      name,
+      literal: script.slice(litStart, end),
+      literalOnly: script.slice(litStart, literalEnd),
+      chained: end > literalEnd,
+      depth,
+      end
+    });
     i = end - 1;
   }
   return decls;
+}
+
+/**
+ * From the start of a declaration's right-hand side, return the index of the end of the
+ * COMPLETE declaration expression: the first `;` or `,` encountered at declarator depth.
+ *
+ * This is what makes `const x = [...].map(...)` capture the mapped value rather than the
+ * bare literal. Transforms chained inside the declaration expression are part of how the
+ * source defines the value (R0.1B D4); statements executed after the declaration are not.
+ */
+function declarationExpressionEnd(s, start) {
+  let depth = 0, inStr = null, esc = false, inLine = false, inBlock = false;
+  for (let i = start; i < s.length; i++) {
+    const c = s[i], n = s[i + 1];
+    if (inLine) { if (c === '\n') inLine = false; continue; }
+    if (inBlock) { if (c === '*' && n === '/') { inBlock = false; i++; } continue; }
+    if (inStr) {
+      if (esc) esc = false;
+      else if (c === '\\') esc = true;
+      else if (c === inStr) inStr = null;
+      continue;
+    }
+    if (c === '/' && n === '/') { inLine = true; i++; continue; }
+    if (c === '/' && n === '*') { inBlock = true; i++; continue; }
+    if (c === '"' || c === "'" || c === '`') { inStr = c; continue; }
+    if (c === '(' || c === '[' || c === '{') { depth++; continue; }
+    if (c === ')' || c === ']' || c === '}') { depth--; continue; }
+    if (depth === 0 && (c === ';' || c === ',')) return i;
+  }
+  return -1;
 }
 
 /** Return the index just past the balanced bracket group beginning at `start`. */
@@ -293,39 +350,72 @@ export function extractUniverseSemantics(html, { additionalTargets = [] } = {}) 
  * boundary. R0.1A reports this; deciding which boundary is canonical belongs to R0.1B.
  */
 export function constructionBoundaryConsistency(structures) {
-  const recordSets = [];
+  // Collect every addressable record collection.
+  const sets = [];
+  const push = (path, recs) => {
+    if (Array.isArray(recs) && recs.length && recs.every(x => x && typeof x === 'object' && typeof x.id === 'string')) {
+      sets.push({ path, records: recs, idSignature: recs.map(r => r.id).sort().join('\u0000') });
+    }
+  };
   for (const [name, value] of Object.entries(structures)) {
-    if (Array.isArray(value) && value.length && value.every(x => x && typeof x === 'object' && typeof x.id === 'string')) {
-      recordSets.push({ name, path: name, records: value });
-    } else if (value && typeof value === 'object' && !Array.isArray(value)) {
-      for (const [k, v] of Object.entries(value)) {
-        if (Array.isArray(v) && v.length && v.every(x => x && typeof x === 'object' && typeof x.id === 'string')) {
-          recordSets.push({ name, path: `${name}.${k}`, records: v });
-        }
+    push(name, value);
+    if (value && typeof value === 'object' && !Array.isArray(value)) {
+      for (const [k, v] of Object.entries(value)) push(`${name}.${k}`, v);
+    }
+  }
+
+  // Entity-aware identity (R0.1B D7 REC-6): two paths describe the SAME logical collection
+  // only when they carry the same id set. Comparing on id alone made unrelated entity types
+  // that happen to share an id string look divergent, which produced two false findings.
+  const collections = new Map();
+  for (const set of sets) {
+    if (!collections.has(set.idSignature)) collections.set(set.idSignature, []);
+    collections.get(set.idSignature).push(set);
+  }
+
+  const divergences = [];
+  for (const group of collections.values()) {
+    if (group.length < 2) continue;
+    const perRecord = new Map();
+    for (const set of group) {
+      for (const r of set.records) {
+        if (!perRecord.has(r.id)) perRecord.set(r.id, []);
+        perRecord.get(r.id).push({ path: set.path, fields: Object.keys(r).sort().join(',') });
       }
     }
+    for (const [id, entries] of perRecord) {
+      if (new Set(entries.map(e => e.fields)).size > 1) divergences.push({ recordId: id, observedFieldSets: entries });
+    }
   }
-  const byId = new Map();
-  for (const set of recordSets) {
+
+  // Records whose id appears in more than one DIFFERENT collection: reported explicitly as
+  // heterogeneous id collisions, never as divergence.
+  const idToCollections = new Map();
+  for (const set of sets) {
     for (const r of set.records) {
-      if (!byId.has(r.id)) byId.set(r.id, []);
-      byId.get(r.id).push({ path: set.path, fields: Object.keys(r).sort().join(',') });
+      if (!idToCollections.has(r.id)) idToCollections.set(r.id, new Set());
+      idToCollections.get(r.id).add(set.idSignature);
     }
   }
-  const divergences = [];
-  for (const [id, entries] of byId) {
-    const distinct = [...new Set(entries.map(e => e.fields))];
-    if (distinct.length > 1) {
-      divergences.push({ recordId: id, observedFieldSets: entries.map(e => ({ path: e.path, fields: e.fields })) });
+  const heterogeneousIdCollisions = [];
+  for (const [id, sigs] of idToCollections) {
+    if (sigs.size > 1) {
+      heterogeneousIdCollisions.push({
+        recordId: id,
+        paths: sets.filter(s => s.records.some(r => r.id === id)).map(s => s.path).sort(),
+        classification: 'DISTINCT_COLLECTIONS_SHARING_AN_ID_NOT_A_DIVERGENCE'
+      });
     }
   }
-  const affectedPaths = [...new Set(divergences.flatMap(d => d.observedFieldSets.map(f => f.path)))].sort();
+
   return {
     status: divergences.length ? 'FIELD_SET_DIVERGENCE_OBSERVED' : 'CONSISTENT',
+    identityRule: 'SAME_LOGICAL_COLLECTION_BY_IDENTICAL_ID_SET',
+    identityRuleRationale: 'R0.1B D7 REC-6: heterogeneous records must not be compared on id alone.',
     divergentRecordCount: divergences.length,
-    affectedPaths,
-    interpretation: 'PENDING_R0_1B',
-    note: 'Records reachable from more than one structure were captured at different declaration boundaries. Differing field sets reflect source-side enrichment between declarations, recorded here without deciding which boundary is canonical.',
+    affectedPaths: [...new Set(divergences.flatMap(d => d.observedFieldSets.map(f => f.path)))].sort(),
+    heterogeneousIdCollisionCount: heterogeneousIdCollisions.length,
+    heterogeneousIdCollisions,
     sample: divergences.slice(0, 3)
   };
 }
@@ -342,12 +432,35 @@ export function buildPayload({ sourcePath, html, releaseShellVersion, additional
   const inventory = inventoryModuleDeclarations(html);
   const targets = additionalTargets ?? inventory.mustMaterialize;
   const result = extractUniverseSemantics(html, { additionalTargets: targets });
+  // Apply governed runtime-state exclusions (R0.1B D6). Excluded declarations remain in the
+  // inventory and in excludedRuntimeState so the decision stays auditable.
+  const excludedRuntimeState = [];
+  for (const rule of GOVERNED_RUNTIME_STATE_EXCLUSIONS) {
+    if (rule.name in result.structures) {
+      excludedRuntimeState.push({
+        ...rule,
+        materialized: true,
+        topLevelKeys: Object.keys(result.structures[rule.name] ?? {}).sort(),
+        excludedFromCanonicalPayload: true
+      });
+      delete result.structures[rule.name];
+    }
+  }
+
+  // Recompute the inventory view so reported structures/records describe the CANONICAL
+  // payload after governed exclusions, not the pre-exclusion extraction.
+  const shapeOf = v => Array.isArray(v) ? 'array' : (v && typeof v === 'object' ? 'object' : typeof v);
+  const sizeOf = v => Array.isArray(v) ? v.length : (v && typeof v === 'object' ? Object.keys(v).length : 0);
+  result.inventory = Object.keys(result.structures).map(n => ({ name: n, type: shapeOf(result.structures[n]), records: sizeOf(result.structures[n]) }));
+
   result.inventoryDenominator = {
     totalModuleScopeDeclarations: inventory.totalModuleScopeDeclarations,
     mustMaterialize: inventory.mustMaterialize,
     mustMaterializeCount: inventory.mustMaterializeCount,
+    governedRuntimeStateExclusions: GOVERNED_RUNTIME_STATE_EXCLUSIONS.map(r => r.name).sort(),
     materialized: inventory.mustMaterialize.filter(n => n in result.structures).sort(),
-    notMaterialized: inventory.mustMaterialize.filter(n => !(n in result.structures)).sort(),
+    notMaterialized: inventory.mustMaterialize
+      .filter(n => !(n in result.structures) && !GOVERNED_RUNTIME_STATE_EXCLUSIONS.some(r => r.name === n)).sort(),
     excludedByClassification: {
       FUNCTION_HELPER: inventory.byClassification.FUNCTION_HELPER || [],
       SCALAR_CONFIG: inventory.byClassification.SCALAR_CONFIG || [],
@@ -373,6 +486,7 @@ export function buildPayload({ sourcePath, html, releaseShellVersion, additional
       status: 'UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT',
       note: 'Daughter a5-* / scp-* identifiers are not resolved by this materialization. Ownership is determined in R0.1C and must not be presumed here.'
     },
+    excludedRuntimeState,
     structures: result.structures,
     structureProvenance: result.provenance,
     semanticBlockIndex: result.semanticBlockIndex
