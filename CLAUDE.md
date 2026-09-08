@@ -8,10 +8,12 @@ Before starting any Atlas implementation/recovery work:
 
 1. Read `governance/frozen-assets/CURRENT.json` and `governance/frozen-assets/LATEST.md` for historical/frozen pointers, but do not assume `FROZEN` alone means complete/reproducible.
 2. Read `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json` from branch `atlas-governance-registry-v2.1`.
-3. Read `governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md` from the same governance branch.
-4. If queue mode is `PRE_P6_FOUNDATION_RECOVERY`, read `governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md` before any other phase-specific implementation work.
-5. Read the frozen architecture/contracts referenced by the authorized stage/sub-stage.
-6. Verify the intended implementation baseline branch/SHA against GitHub before editing.
+3. Resolve stage identity using the canonical `stageId` field and `currentStageId`. `id` is only a backward-compatible alias. Never infer status from rendered/concatenated display text.
+4. Read `governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md` from the same governance branch.
+5. Read `governance/standards/ATLAS_ASSET_CUSTODY_AND_GOVERNANCE_SYNC_STANDARD_V1.md`.
+6. If queue mode is `PRE_P6_FOUNDATION_RECOVERY`, read `governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md` before any other phase-specific implementation work.
+7. Read the frozen architecture/contracts referenced by the authorized stage/sub-stage.
+8. Verify the intended implementation baseline branch/SHA against GitHub before editing.
 
 ## Task-selection rule
 
@@ -22,6 +24,16 @@ Before starting any Atlas implementation/recovery work:
 - If the current authorized stage/sub-stage is already complete locally, return its completion report and stop.
 - Never self-authorize the next stage/sub-stage.
 - Never promote production/go-live without explicit owner / independent QA authorization.
+
+## Asset custody rule — mandatory for every stage
+
+Before mutating governed assets, create and commit the stage's `PRE_CHANGE_BASELINE` custody manifest and ensure required authoritative inputs are in governed custody. A transient chat/local/upload-only asset cannot silently become a stage dependency.
+
+After implementation and before QA, create and commit `POST_IMPLEMENTATION_PRE_QA`, including changed/generated assets, hashes, tooling, source lineage, exact implementation commit/test evidence and Drive candidate/evidence references. Then stop at `AWAITING_INDEPENDENT_QA`.
+
+After independent QA, the owner/QA process creates `POST_QA_GOVERNED_STATE`, updates governed registers/pointers/classification or records FIX_REQUIRED/BLOCKED, mirrors durable final evidence to Drive, and only then may the queue authorize the next stage.
+
+A stage is not complete until all three applicable checkpoints are synchronized under `ATLAS_ASSET_CUSTODY_AND_GOVERNANCE_SYNC_STANDARD_V1.md`.
 
 ## R0.1 Universe recovery rule
 
@@ -49,7 +61,12 @@ Do not:
 - treat a hash/CI success alone as proof of completeness;
 - treat historical deployment success as current production health;
 - repair a downstream symptom while an upstream recovery gate remains unresolved;
-- invent Universe identifiers or cross-layer mappings merely to make reference tests pass.
+- invent Universe identifiers or cross-layer mappings merely to make reference tests pass;
+- proceed when required assets/tooling exist only transiently and are not in governed custody.
+
+## Governance synchronization rule
+
+Chat instructions do not supersede the GitHub governance branch. If the owner/QA changes architecture, recovery path, sequencing, authorization, certification rules or agent behavior, the relevant GitHub governance files must be updated before implementation proceeds. If chat and GitHub disagree, stop and report the conflict.
 
 ## Recovery certification rule
 
@@ -70,9 +87,11 @@ Do not classify an asset `FROZEN_COMPLETE` unless all applicable dimensions pass
 ## Completion rule
 
 At the end of an authorized stage/sub-stage, return:
+- `stageId`;
 - objective;
 - starting branch/SHA;
 - authoritative inputs used and their hashes/lineage;
+- PRE_CHANGE_BASELINE manifest path/hash;
 - files changed;
 - migrations/backend changes;
 - architecture decisions and unresolved conflicts;
@@ -80,10 +99,12 @@ At the end of an authorized stage/sub-stage, return:
 - tests/CI and exact results;
 - evidence and counts (derived, never target-tuned);
 - ending branch/SHA;
+- POST_IMPLEMENTATION_PRE_QA manifest path/hash;
+- Drive candidate/evidence references;
 - governance/pointer changes;
 - limitations/debt;
 - recommended next action.
 
 Then stop at `AWAITING_INDEPENDENT_QA`.
 
-The next stage/sub-stage becomes executable only after the machine queue is updated by governance/owner QA.
+The next stage/sub-stage becomes executable only after independent QA writes/synchronizes the `POST_QA_GOVERNED_STATE` checkpoint and updates the machine queue.
