@@ -237,4 +237,32 @@ const verifierAllowed = new Set([...verifierSource.matchAll(/ALLOWED_TOP_LEVEL =
   .flatMap(m => [...m[1].matchAll(/'([^']+)'/g)].map(x => x[1])));
 assert.deepEqual([...verifierAllowed].sort(), [...schemaProps].sort(), 'verifier and JSON Schema must declare identical canonical properties');
 
+// ------------------------------- governed P6.1 oracle contract for the compile gate
+// The compile script cross-checks compiled counts against the certified P6.1 summary.
+// These field names are the contract between the two; if they drift the gate goes silent.
+const oracle = JSON.parse(fs.readFileSync(new URL('../governance/presentation/P6_1_PUBLIC_DECOMPOSITION_SUMMARY.json', import.meta.url), 'utf8'));
+assert.equal(oracle.classification, 'PUBLIC_SAFE_SUMMARY_ONLY', 'oracle must remain a PUBLIC_SAFE summary');
+for (const field of ['taskCount', 'workUnitCount', 'leafCount', 'executorReadyLeafCount', 'blockedByClientBindingLeafCount', 'blockedByKnowledgeGapLeafCount']) {
+  assert.equal(typeof oracle.totals?.[field], 'number', `oracle totals must expose ${field} for the compile cross-check`);
+}
+assert.ok(Array.isArray(oracle.tasks) && oracle.tasks.length > 0, 'oracle must expose per-task counts');
+for (const task of oracle.tasks) {
+  assert.equal(typeof task.taskId, 'string');
+  assert.equal(typeof task.executorReadyLeafCount, 'number');
+  assert.equal(typeof task.leafCount, 'number');
+}
+// the oracle must be internally consistent, otherwise the gate is meaningless
+assert.equal(
+  oracle.tasks.reduce((n, x) => n + x.executorReadyLeafCount, 0), oracle.totals.executorReadyLeafCount,
+  'oracle per-task executor-ready counts must sum to its total'
+);
+assert.equal(
+  oracle.totals.executorReadyLeafCount + oracle.totals.blockedByClientBindingLeafCount + oracle.totals.blockedByKnowledgeGapLeafCount,
+  oracle.totals.leafCount,
+  'oracle leaf classification must account for every terminal leaf'
+);
+const compileScript = fs.readFileSync(new URL('../scripts/compile-p6-2-work-definitions.mjs', import.meta.url), 'utf8');
+assert.match(compileScript, /cross-check against certified P6\.1 decomposition FAILED/, 'compile must fail closed on cross-check divergence');
+assert.match(compileScript, /process\.exit\(1\)/, 'cross-check divergence must be a hard failure');
+
 console.log('P6.2 Canonical WorkDefinition compiler/verifier certification PASS');

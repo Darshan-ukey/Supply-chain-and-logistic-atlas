@@ -72,6 +72,48 @@ if (!verification.ok) {
 }
 
 const t = compilation.totals;
+
+// ---- 2b. independent cross-check against the governed P6.1 summary -------------------
+// The certified P6.1 PUBLIC_SAFE summary is an independent governed oracle. Because the
+// compilation unit is exactly the EXECUTOR_READY terminal leaf, compiled counts must equal
+// the certified decomposition counts. Any divergence means the compiler or the governed
+// input disagrees with certification, and the run fails closed rather than self-reporting.
+const oraclePath = process.env.ATLAS_P6_1_SUMMARY_PATH || 'governance/presentation/P6_1_PUBLIC_DECOMPOSITION_SUMMARY.json';
+if (fs.existsSync(oraclePath)) {
+  const oracle = JSON.parse(fs.readFileSync(oraclePath, 'utf8'));
+  const mismatches = [];
+  if (String(oracle.moduleId) === moduleId && String(oracle.moduleVersion) === moduleVersion) {
+    const ot = oracle.totals || {};
+    const pairs = [
+      ['taskCount', ot.taskCount, t.taskCount],
+      ['workUnitCount', ot.workUnitCount, t.workUnitCount],
+      ['leafCount', ot.leafCount, t.leafCount],
+      ['executorReadyLeafCount -> workDefinitionCount', ot.executorReadyLeafCount, t.workDefinitionCount],
+      ['blockedByClientBindingLeafCount', ot.blockedByClientBindingLeafCount, t.blockedByClientBindingLeafCount],
+      ['blockedByKnowledgeGapLeafCount', ot.blockedByKnowledgeGapLeafCount, t.blockedByKnowledgeGapLeafCount]
+    ];
+    for (const [label, expected, actual] of pairs) {
+      if (expected !== undefined && Number(expected) !== Number(actual)) mismatches.push(`${label}: certified ${expected}, compiled ${actual}`);
+    }
+    for (const task of oracle.tasks || []) {
+      const c = compilation.coverage.find(x => x.sourceTaskId === task.taskId);
+      if (!c) { mismatches.push(`${task.taskId}: certified in P6.1 but absent from compilation`); continue; }
+      if (Number(task.executorReadyLeafCount) !== Number(c.compiledCount)) mismatches.push(`${task.taskId}: certified ${task.executorReadyLeafCount} executor-ready, compiled ${c.compiledCount}`);
+      if (Number(task.leafCount) !== Number(c.leafCount)) mismatches.push(`${task.taskId}: certified ${task.leafCount} leaves, traversed ${c.leafCount}`);
+    }
+    if (mismatches.length) {
+      console.error('P6.2 cross-check against certified P6.1 decomposition FAILED:');
+      for (const m of mismatches) console.error(`  - ${m}`);
+      process.exit(1);
+    }
+    console.log(`  cross-check vs certified P6.1: PASS (${oraclePath})`);
+  } else {
+    console.log(`  cross-check skipped: ${oraclePath} does not describe ${moduleId}@${moduleVersion}`);
+  }
+} else {
+  console.log('  cross-check skipped: no governed P6.1 summary available for this module');
+}
+
 console.log(`P6.2 compiled ${moduleId}@${moduleVersion}`);
 console.log(`  governed input hash        : ${governedInputContentHash}`);
 console.log(`  tasks                      : ${t.taskCount}`);
