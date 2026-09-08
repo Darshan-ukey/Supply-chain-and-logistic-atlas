@@ -1,0 +1,662 @@
+{
+  "schemaVersion": "atlas-universe-extraction-report-v1",
+  "stageId": "R0.1A",
+  "extractorVersion": "atlas-universe-semantic-extractor-1.0.0",
+  "source": {
+    "path": "reference/universe-v7.3.html",
+    "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef"
+  },
+  "releaseShellVersion": "7.3",
+  "embeddedSemanticIdentity": {
+    "id": "supply-chain-logistics-universe-v7.2",
+    "version": "7.2.0",
+    "releaseDate": "2026-08-30",
+    "classification": "PRIVATE_CANONICAL"
+  },
+  "hashes": {
+    "semanticStructures": "2d6405c534b96f4054cb87ac2428a0a7a1bf4626334a86e5cc96ec342add4043",
+    "fullPayload": "acb49b53cc6d262ecaec2a922f1782af14e7d024bb7328602fd06e3120f3f4a9"
+  },
+  "completeness": {
+    "topLevelDeclarations": 52,
+    "recoveredPass1": 42,
+    "recoveredPass2": 2,
+    "recoveredPass3": 17,
+    "unresolvedCount": 0,
+    "unresolved": [],
+    "nestedDeclarationsIgnored": 24,
+    "nestedNamesIgnored": [
+      "crossModeDiscoveryAudit",
+      "direct",
+      "errors",
+      "filterLabels",
+      "financialPayloads",
+      "forensicSourceIds",
+      "intentLabels",
+      "inventory",
+      "layers",
+      "map",
+      "neutralIds",
+      "ontologyNodes",
+      "order",
+      "outcomeOrder",
+      "records",
+      "requiredCycleNames",
+      "requiredObjectMappings",
+      "requiredSystemMappings",
+      "roadFtlOntologyTerms",
+      "rows",
+      "statusClass"
+    ],
+    "independentInventory": {
+      "totalModuleScopeDeclarations": 113,
+      "mustMaterialize": [
+        "ELIGIBILITY",
+        "RELEVANCE",
+        "SOURCE_SLOT_META",
+        "STATE_ALIASES",
+        "activePage0SourceIds",
+        "actorRecords",
+        "apqc",
+        "authorityRules",
+        "bottomProbes",
+        "businessCycles",
+        "businessObjectDisplayMap",
+        "businessObjectDisplayTerms",
+        "businessObjectRecords",
+        "carriageRegimes",
+        "compatibilityProfiles",
+        "conditions",
+        "contextOptions",
+        "contextRules",
+        "contractServiceContexts",
+        "coverage",
+        "dataStages",
+        "defaults",
+        "documentRecords",
+        "domains",
+        "enterpriseCoverage",
+        "entityRegistryGroups",
+        "eventRecords",
+        "evidenceProfiles",
+        "exchanges",
+        "executiveIntents",
+        "firstClassEntities",
+        "jurisdictions",
+        "liveModuleRoutes",
+        "logisticsNodes",
+        "modeRelevance",
+        "models",
+        "modes",
+        "moduleCoverageStatus",
+        "movementPatterns",
+        "navigatorFamilies",
+        "neutralContext",
+        "objectTree",
+        "official",
+        "ontologyContract",
+        "orchestrate",
+        "processRelationshipRecords",
+        "referenceGroups",
+        "relationshipTypeVocabulary",
+        "roleProfiles",
+        "ruleAxes",
+        "scor",
+        "sourceForensicNotes",
+        "sourceRecords",
+        "sourceRoleByLayer",
+        "state",
+        "systemClasses",
+        "systemDisplayMap",
+        "systemDisplayTerms",
+        "systemRecords",
+        "topProbes",
+        "universeReleaseMetadata"
+      ],
+      "mustMaterializeCount": 61,
+      "materialized": [
+        "ELIGIBILITY",
+        "RELEVANCE",
+        "SOURCE_SLOT_META",
+        "STATE_ALIASES",
+        "activePage0SourceIds",
+        "actorRecords",
+        "apqc",
+        "authorityRules",
+        "bottomProbes",
+        "businessCycles",
+        "businessObjectDisplayMap",
+        "businessObjectDisplayTerms",
+        "businessObjectRecords",
+        "carriageRegimes",
+        "compatibilityProfiles",
+        "conditions",
+        "contextOptions",
+        "contextRules",
+        "contractServiceContexts",
+        "coverage",
+        "dataStages",
+        "defaults",
+        "documentRecords",
+        "domains",
+        "enterpriseCoverage",
+        "entityRegistryGroups",
+        "eventRecords",
+        "evidenceProfiles",
+        "exchanges",
+        "executiveIntents",
+        "firstClassEntities",
+        "jurisdictions",
+        "liveModuleRoutes",
+        "logisticsNodes",
+        "modeRelevance",
+        "models",
+        "modes",
+        "moduleCoverageStatus",
+        "movementPatterns",
+        "navigatorFamilies",
+        "neutralContext",
+        "objectTree",
+        "official",
+        "ontologyContract",
+        "orchestrate",
+        "processRelationshipRecords",
+        "referenceGroups",
+        "relationshipTypeVocabulary",
+        "roleProfiles",
+        "ruleAxes",
+        "scor",
+        "sourceForensicNotes",
+        "sourceRecords",
+        "sourceRoleByLayer",
+        "state",
+        "systemClasses",
+        "systemDisplayMap",
+        "systemDisplayTerms",
+        "systemRecords",
+        "topProbes",
+        "universeReleaseMetadata"
+      ],
+      "notMaterialized": [],
+      "excludedByClassification": {
+        "FUNCTION_HELPER": [
+          "$",
+          "B",
+          "C",
+          "E",
+          "MR",
+          "R",
+          "S",
+          "add",
+          "addContextOption",
+          "aliasIndex",
+          "allResolvedReferences",
+          "bindStateAliases",
+          "compatibilityLabel",
+          "compatibilityReason",
+          "contextApplicability",
+          "contextName",
+          "contextOptionLabel",
+          "contextOptionsFromModel",
+          "contextResolution",
+          "contextRulesFor",
+          "createCanonicalState",
+          "domainById",
+          "eligibilityInfo",
+          "entityById",
+          "entityRelevance",
+          "entityType",
+          "evidenceFor",
+          "modeStandards",
+          "modifierCode",
+          "moduleStatusFor",
+          "normalizeSearch",
+          "objectIdsForLabel",
+          "optionMarkup",
+          "relevanceCss",
+          "relevanceRecord",
+          "removeContextOption",
+          "resolveCanonicalIds",
+          "resolvedReferenceGroups",
+          "roleFor",
+          "selectedContextModel",
+          "selectedContextOptions",
+          "setNeutralExecutionContext",
+          "shortMap",
+          "systemIdsForLabel",
+          "unavailableStatus",
+          "unique"
+        ],
+        "SCALAR_CONFIG": [
+          "CONTEXT_REQUIRED",
+          "SOURCE_ACCESS_DATE",
+          "contextChangeNotice"
+        ],
+        "RUNTIME_UI_STATE": [
+          "cfg",
+          "modelSelect",
+          "sel"
+        ]
+      }
+    }
+  },
+  "structureProvenance": {
+    "official": 0,
+    "domains": 0,
+    "models": 0,
+    "roleProfiles": 0,
+    "neutralContext": 0,
+    "jurisdictions": 0,
+    "carriageRegimes": 0,
+    "conditions": 0,
+    "contextOptions": 0,
+    "contractServiceContexts": 0,
+    "modes": 0,
+    "modeRelevance": 0,
+    "contextRules": 0,
+    "scor": 0,
+    "orchestrate": 0,
+    "apqc": 0,
+    "coverage": 0,
+    "navigatorFamilies": 0,
+    "moduleCoverageStatus": 0,
+    "liveModuleRoutes": 0,
+    "executiveIntents": 0,
+    "ontologyContract": 0,
+    "sourceForensicNotes": 0,
+    "businessCycles": 0,
+    "enterpriseCoverage": 0,
+    "topProbes": 0,
+    "bottomProbes": 0,
+    "dataStages": 0,
+    "objectTree": 0,
+    "systemClasses": 0,
+    "exchanges": 0,
+    "authorityRules": 0,
+    "systemRecords": 0,
+    "businessObjectRecords": 0,
+    "systemDisplayMap": 0,
+    "businessObjectDisplayMap": 0,
+    "eventRecords": 0,
+    "documentRecords": 0,
+    "relationshipTypeVocabulary": 0,
+    "processRelationshipRecords": 0,
+    "firstClassEntities": 0,
+    "entityRegistryGroups": 0,
+    "evidenceProfiles": 0,
+    "SOURCE_SLOT_META": 0,
+    "sourceRecords": 0,
+    "universeReleaseMetadata": 0,
+    "referenceGroups": 0,
+    "sourceRoleByLayer": 0,
+    "STATE_ALIASES": 0,
+    "compatibilityProfiles": 0,
+    "ruleAxes": 0,
+    "defaults": 2
+  },
+  "semanticBlockIndex": 0,
+  "constructionBoundaryConsistency": {
+    "status": "FIELD_SET_DIVERGENCE_OBSERVED",
+    "divergentRecordCount": 189,
+    "affectedPaths": [
+      "businessObjectRecords",
+      "domains",
+      "executiveIntents",
+      "firstClassEntities.businessObjects",
+      "firstClassEntities.systems",
+      "models",
+      "systemRecords"
+    ],
+    "interpretation": "PENDING_R0_1B",
+    "note": "Records reachable from more than one structure were captured at different declaration boundaries. Differing field sets reflect source-side enrichment between declarations, recorded here without deciding which boundary is canonical.",
+    "sample": [
+      {
+        "recordId": "obj-handling-unit",
+        "observedFieldSets": [
+          {
+            "path": "businessObjectRecords",
+            "fields": "aliases,code,id,name"
+          },
+          {
+            "path": "firstClassEntities.businessObjects",
+            "fields": "aliases,code,description,id,name"
+          }
+        ]
+      },
+      {
+        "recordId": "obj-purchase-order",
+        "observedFieldSets": [
+          {
+            "path": "businessObjectRecords",
+            "fields": "aliases,code,id,name"
+          },
+          {
+            "path": "firstClassEntities.businessObjects",
+            "fields": "aliases,code,description,id,name"
+          }
+        ]
+      },
+      {
+        "recordId": "obj-asn",
+        "observedFieldSets": [
+          {
+            "path": "businessObjectRecords",
+            "fields": "aliases,code,id,name"
+          },
+          {
+            "path": "firstClassEntities.businessObjects",
+            "fields": "aliases,code,description,id,name"
+          }
+        ]
+      }
+    ]
+  },
+  "inventory": [
+    {
+      "name": "businessObjectDisplayTerms",
+      "type": "array",
+      "records": 241
+    },
+    {
+      "name": "businessObjectRecords",
+      "type": "array",
+      "records": 128
+    },
+    {
+      "name": "systemRecords",
+      "type": "array",
+      "records": 78
+    },
+    {
+      "name": "activePage0SourceIds",
+      "type": "array",
+      "records": 67
+    },
+    {
+      "name": "sourceRecords",
+      "type": "object",
+      "records": 67
+    },
+    {
+      "name": "systemDisplayTerms",
+      "type": "array",
+      "records": 67
+    },
+    {
+      "name": "contextRules",
+      "type": "array",
+      "records": 51
+    },
+    {
+      "name": "businessObjectDisplayMap",
+      "type": "object",
+      "records": 41
+    },
+    {
+      "name": "official",
+      "type": "object",
+      "records": 39
+    },
+    {
+      "name": "exchanges",
+      "type": "array",
+      "records": 36
+    },
+    {
+      "name": "systemDisplayMap",
+      "type": "object",
+      "records": 33
+    },
+    {
+      "name": "relationshipTypeVocabulary",
+      "type": "array",
+      "records": 30
+    },
+    {
+      "name": "enterpriseCoverage",
+      "type": "array",
+      "records": 27
+    },
+    {
+      "name": "coverage",
+      "type": "array",
+      "records": 20
+    },
+    {
+      "name": "processRelationshipRecords",
+      "type": "array",
+      "records": 20
+    },
+    {
+      "name": "documentRecords",
+      "type": "array",
+      "records": 19
+    },
+    {
+      "name": "STATE_ALIASES",
+      "type": "object",
+      "records": 18
+    },
+    {
+      "name": "referenceGroups",
+      "type": "array",
+      "records": 17
+    },
+    {
+      "name": "apqc",
+      "type": "array",
+      "records": 15
+    },
+    {
+      "name": "domains",
+      "type": "array",
+      "records": 15
+    },
+    {
+      "name": "logisticsNodes",
+      "type": "array",
+      "records": 15
+    },
+    {
+      "name": "contextOptions",
+      "type": "array",
+      "records": 14
+    },
+    {
+      "name": "modeRelevance",
+      "type": "object",
+      "records": 14
+    },
+    {
+      "name": "modes",
+      "type": "array",
+      "records": 14
+    },
+    {
+      "name": "orchestrate",
+      "type": "array",
+      "records": 13
+    },
+    {
+      "name": "authorityRules",
+      "type": "array",
+      "records": 12
+    },
+    {
+      "name": "models",
+      "type": "array",
+      "records": 12
+    },
+    {
+      "name": "movementPatterns",
+      "type": "array",
+      "records": 12
+    },
+    {
+      "name": "roleProfiles",
+      "type": "object",
+      "records": 12
+    },
+    {
+      "name": "actorRecords",
+      "type": "array",
+      "records": 11
+    },
+    {
+      "name": "universeReleaseMetadata",
+      "type": "object",
+      "records": 10
+    },
+    {
+      "name": "businessCycles",
+      "type": "array",
+      "records": 9
+    },
+    {
+      "name": "eventRecords",
+      "type": "array",
+      "records": 9
+    },
+    {
+      "name": "executiveIntents",
+      "type": "array",
+      "records": 9
+    },
+    {
+      "name": "ontologyContract",
+      "type": "array",
+      "records": 8
+    },
+    {
+      "name": "sourceForensicNotes",
+      "type": "array",
+      "records": 8
+    },
+    {
+      "name": "bottomProbes",
+      "type": "array",
+      "records": 6
+    },
+    {
+      "name": "contractServiceContexts",
+      "type": "array",
+      "records": 6
+    },
+    {
+      "name": "dataStages",
+      "type": "array",
+      "records": 6
+    },
+    {
+      "name": "entityRegistryGroups",
+      "type": "array",
+      "records": 6
+    },
+    {
+      "name": "evidenceProfiles",
+      "type": "object",
+      "records": 6
+    },
+    {
+      "name": "firstClassEntities",
+      "type": "object",
+      "records": 6
+    },
+    {
+      "name": "navigatorFamilies",
+      "type": "array",
+      "records": 6
+    },
+    {
+      "name": "scor",
+      "type": "array",
+      "records": 6
+    },
+    {
+      "name": "systemClasses",
+      "type": "array",
+      "records": 6
+    },
+    {
+      "name": "topProbes",
+      "type": "array",
+      "records": 6
+    },
+    {
+      "name": "carriageRegimes",
+      "type": "array",
+      "records": 5
+    },
+    {
+      "name": "conditions",
+      "type": "array",
+      "records": 5
+    },
+    {
+      "name": "neutralContext",
+      "type": "object",
+      "records": 5
+    },
+    {
+      "name": "SOURCE_SLOT_META",
+      "type": "object",
+      "records": 5
+    },
+    {
+      "name": "sourceRoleByLayer",
+      "type": "object",
+      "records": 5
+    },
+    {
+      "name": "ELIGIBILITY",
+      "type": "object",
+      "records": 4
+    },
+    {
+      "name": "moduleCoverageStatus",
+      "type": "object",
+      "records": 4
+    },
+    {
+      "name": "objectTree",
+      "type": "array",
+      "records": 4
+    },
+    {
+      "name": "RELEVANCE",
+      "type": "object",
+      "records": 4
+    },
+    {
+      "name": "compatibilityProfiles",
+      "type": "object",
+      "records": 3
+    },
+    {
+      "name": "defaults",
+      "type": "object",
+      "records": 3
+    },
+    {
+      "name": "jurisdictions",
+      "type": "array",
+      "records": 3
+    },
+    {
+      "name": "liveModuleRoutes",
+      "type": "object",
+      "records": 3
+    },
+    {
+      "name": "ruleAxes",
+      "type": "array",
+      "records": 3
+    },
+    {
+      "name": "state",
+      "type": "object",
+      "records": 3
+    }
+  ],
+  "totalRecords": 1330
+}

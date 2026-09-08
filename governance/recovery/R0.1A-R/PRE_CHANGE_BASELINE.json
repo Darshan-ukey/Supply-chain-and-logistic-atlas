@@ -1,0 +1,281 @@
+{
+  "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
+  "stageId": "R0.1A-R",
+  "checkpoint": "PRE_CHANGE_BASELINE",
+  "timestamp": "2026-09-08T00:00:00Z",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "governanceBaselineCommit": "47fe0769fc2d093c300cb6f70b6ead27a70e96a6",
+  "implementationBranch": "atlas-recovery-r0-1a-r-universe-rematerialization",
+  "commitSha": "18850e6191ea8c4635e263ac8c3839741d0da3fd",
+  "qaDisposition": null,
+  "lineage": {
+    "correctsStage": "R0.1A",
+    "defectDiscoveredByStage": "R0.1B",
+    "governingDeterminations": [
+      "R0.1B D4 construction boundary",
+      "R0.1B D5 defect",
+      "R0.1B D6 state classification",
+      "R0.1B D7 REC-6 detector"
+    ],
+    "r0_1a_certified_commit": "4eb360a",
+    "r0_1b_commit": "6e9a579"
+  },
+  "assets": [
+    {
+      "assetId": "r0-1a-post-qa-governed-state",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.1A/POST_QA_GOVERNED_STATE.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "IMMUTABLE_HISTORICAL_EVIDENCE_MUST_NOT_BE_MODIFIED",
+      "sha256": "f6e6427308382d48b070546e770edb027a9976dbbbbf91729d5bd5945f300ec5",
+      "lineage": [
+        "R0.1A/R0.1B governed evidence"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Read-only input. R0.1A-R must leave this byte-identical."
+    },
+    {
+      "assetId": "r0-1b-determination",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.1B/UNIVERSE_IDENTITY_AUTHORITY_DETERMINATION.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "IMMUTABLE_HISTORICAL_EVIDENCE_MUST_NOT_BE_MODIFIED",
+      "sha256": "cf1b70116d1899a32b439df02efefc5f3562224635301a20c018a5080a5f792d",
+      "lineage": [
+        "R0.1A/R0.1B governed evidence"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Read-only input. R0.1A-R must leave this byte-identical."
+    },
+    {
+      "assetId": "r0-1b-post-implementation",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.1B/POST_IMPLEMENTATION_PRE_QA.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "IMMUTABLE_HISTORICAL_EVIDENCE_MUST_NOT_BE_MODIFIED",
+      "sha256": "6d9b70eff089e8a083d92cadbf6bac1b3d7d245409d6130ce63df398805d63f3",
+      "lineage": [
+        "R0.1A/R0.1B governed evidence"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Read-only input. R0.1A-R must leave this byte-identical."
+    },
+    {
+      "assetId": "r0-1a-universe-semantic-payload",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-semantic-payload.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "IMMUTABLE_HISTORICAL_EVIDENCE_MUST_NOT_BE_MODIFIED",
+      "sha256": "17b4973e18a4bb93fc81908d9fc605dfbe989d79ca0c6ac3e086f2feac5958b8",
+      "lineage": [
+        "R0.1A/R0.1B governed evidence"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Read-only input. R0.1A-R must leave this byte-identical."
+    },
+    {
+      "assetId": "r0-1a-universe-extraction-report",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-extraction-report.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "IMMUTABLE_HISTORICAL_EVIDENCE_MUST_NOT_BE_MODIFIED",
+      "sha256": "97c89af18ef637864a2019b25c2d90b26fbbddf8eb03804531d0c7ad5f0c8a67",
+      "lineage": [
+        "R0.1A/R0.1B governed evidence"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Read-only input. R0.1A-R must leave this byte-identical."
+    },
+    {
+      "assetId": "r0-1a-universe-copy-comparison",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-copy-comparison.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "IMMUTABLE_HISTORICAL_EVIDENCE_MUST_NOT_BE_MODIFIED",
+      "sha256": "48916f8488968dbfa50e33b60d1029c03030e5a5b6d657410957246962262928",
+      "lineage": [
+        "R0.1A/R0.1B governed evidence"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Read-only input. R0.1A-R must leave this byte-identical."
+    },
+    {
+      "assetId": "r0-1a-universe-declaration-inventory",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-declaration-inventory.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "IMMUTABLE_HISTORICAL_EVIDENCE_MUST_NOT_BE_MODIFIED",
+      "sha256": "ab099a6b154a155961f1bac1ffdc6b2dcc0e0b787f80a6233d6e3f8bce9b022f",
+      "lineage": [
+        "R0.1A/R0.1B governed evidence"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Read-only input. R0.1A-R must leave this byte-identical."
+    },
+    {
+      "assetId": "universe-source-html-1",
+      "assetType": "source",
+      "repositoryPath": "reference/universe-v7.3.html",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "release shell 7.3",
+      "classification": "RETAINED_SOURCE_UNMODIFIED",
+      "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Authoritative extraction input; not mutated."
+    },
+    {
+      "assetId": "universe-source-html-2",
+      "assetType": "source",
+      "repositoryPath": "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "release shell 7.3",
+      "classification": "RETAINED_SOURCE_UNMODIFIED",
+      "sha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Authoritative extraction input; not mutated."
+    },
+    {
+      "assetId": "universe-source-html-3",
+      "assetType": "source",
+      "repositoryPath": "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "release shell 7.3",
+      "classification": "RETAINED_SOURCE_UNMODIFIED",
+      "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Authoritative extraction input; not mutated."
+    },
+    {
+      "assetId": "tool-extract-universe-semantics.mjs",
+      "assetType": "tool",
+      "repositoryPath": "tools/universe/extract-universe-semantics.mjs",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "pre-remediation",
+      "classification": "TO_BE_CORRECTED_BY_THIS_STAGE",
+      "sha256": "df94bf3c2ab28b235a003a1c4adb0a07a934d8479c5c668d716835d0c9c5bf63",
+      "lineage": [
+        "R0.1A/R0.1B"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Extraction/detection tooling in scope for correction."
+    },
+    {
+      "assetId": "tool-compare-universe-copies.mjs",
+      "assetType": "tool",
+      "repositoryPath": "tools/universe/compare-universe-copies.mjs",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "pre-remediation",
+      "classification": "TO_BE_CORRECTED_BY_THIS_STAGE",
+      "sha256": "f598e3941989e6190e1bda37b483b91c40487d896d47c781836a04a0bd4ef594",
+      "lineage": [
+        "R0.1A/R0.1B"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Extraction/detection tooling in scope for correction."
+    },
+    {
+      "assetId": "tool-inventory-module-declarations.mjs",
+      "assetType": "tool",
+      "repositoryPath": "tools/universe/inventory-module-declarations.mjs",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "pre-remediation",
+      "classification": "TO_BE_CORRECTED_BY_THIS_STAGE",
+      "sha256": "718766c2ea851627719a7c073adecf33370e4a3514f1fef8c6c1233e4597ebb4",
+      "lineage": [
+        "R0.1A/R0.1B"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Extraction/detection tooling in scope for correction."
+    },
+    {
+      "assetId": "tool-analyze-construction-boundary.mjs",
+      "assetType": "tool",
+      "repositoryPath": "tools/universe/analyze-construction-boundary.mjs",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "pre-remediation",
+      "classification": "TO_BE_CORRECTED_BY_THIS_STAGE",
+      "sha256": "8d03e92f693c9d9eb0f628ee45f757249eb43614ece9561e063e51a8a552bac2",
+      "lineage": [
+        "R0.1A/R0.1B"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Extraction/detection tooling in scope for correction."
+    }
+  ],
+  "tools": [],
+  "liveState": [],
+  "driveEvidence": [],
+  "findings": [
+    {
+      "id": "R0.1A-R-PRE-01",
+      "severity": "INFO",
+      "statement": "Checkpoint A is committed as a standalone commit before any remediation mutation, correcting the R0.1A process nonconformance recorded as R0.1A-PRE-04."
+    },
+    {
+      "id": "R0.1A-R-PRE-02",
+      "severity": "INFO",
+      "statement": "Corrected outputs will be written to new repository paths under data/universe/r0-1a-r/ so R0.1A artifacts remain byte-identical."
+    },
+    {
+      "id": "R0.1A-R-PRE-03",
+      "severity": "INFO",
+      "statement": "No historical count is treated as a target. Corrected structure and record counts will be derived from the source under corrected classification rules."
+    }
+  ],
+  "tests": [],
+  "supersedes": [],
+  "supersededBy": [],
+  "nextAuthorization": null
+}

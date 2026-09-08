@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
+  "stageId": "R0.1B",
+  "checkpoint": "POST_IMPLEMENTATION_PRE_QA",
+  "timestamp": "2026-09-08T00:00:00Z",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "governanceBaselineCommit": "dae7a72",
+  "implementationBranch": "atlas-recovery-r0-1b-universe-identity",
+  "commitSha": "73f6fa376fefcc79800d3a71e420244e5f665853",
+  "qaDisposition": null,
+  "assets": [
+    {
+      "assetId": "universe-identity-authority-determination",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.1B/UNIVERSE_IDENTITY_AUTHORITY_DETERMINATION.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "CANDIDATE_DETERMINATION_AWAITING_QA",
+      "sha256": "cf1b70116d1899a32b439df02efefc5f3562224635301a20c018a5080a5f792d",
+      "lineage": [
+        "R0.1A certified artifacts at commit 4eb360a"
+      ],
+      "dependencies": [
+        "data/universe/universe-semantic-payload.json"
+      ],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "Six determinations D1-D6 plus advisory recommendations D7."
+    },
+    {
+      "assetId": "universe-construction-boundary-evidence",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-construction-boundary-evidence.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "CANDIDATE_EVIDENCE",
+      "sha256": "d1485fbf45dd36bcf481004b0bb7d88f1e1375e678386fdae275bee07807f1d2",
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "Chained declarations, post-declaration mutations and divergence groups."
+    }
+  ],
+  "tools": [
+    {
+      "toolId": "universe-construction-boundary-analyzer",
+      "repositoryPath": "tools/universe/analyze-construction-boundary.mjs",
+      "version": "1.0.0",
+      "sha256": "8d03e92f693c9d9eb0f628ee45f757249eb43614ece9561e063e51a8a552bac2",
+      "purpose": "Distinguish in-declaration chained transforms from post-declaration mutation statements"
+    }
+  ],
+  "liveState": [],
+  "driveEvidence": [
+    {
+      "status": "NOT_MIRRORED",
+      "owner": "INDEPENDENT_QA",
+      "reason": "Implementation agent has Drive read/search only. QA holds write capability and mirrors candidate evidence before QA close.",
+      "suggestedFolder": "02_FROZEN_CANDIDATES/Universe/R0.1B \u2014 Universe Identity & Authority \u2014 AWAITING_QA"
+    }
+  ],
+  "findings": [
+    {
+      "id": "R0.1B-01",
+      "severity": "HIGH",
+      "statement": "NEW GOVERNED DEFECT in the R0.1A certified payload: systemRecords and businessObjectRecords were captured at the pre-chain array literal, omitting the description field their declaration expressions add. 187 of the 189 reported divergent records are caused by this. The certified payload must not be promoted to canonical until remediated."
+    },
+    {
+      "id": "R0.1B-02",
+      "severity": "MEDIUM",
+      "statement": "2 of the 189 reported divergences are detector artifacts: the R0.1A consistency check keys on id alone, so unrelated entity types sharing an id string appear divergent. Recommend keying on (entityKind, id)."
+    },
+    {
+      "id": "R0.1B-03",
+      "severity": "INFO",
+      "statement": "R0.1A-01 is superseded from HIGH to INFO. Release shell 7.3 over embedded semantic 7.2.0 is intentional two-axis versioning corroborated by the V7.3 release notes, not a labeling defect."
+    },
+    {
+      "id": "R0.1B-04",
+      "severity": "INFO",
+      "statement": "R0.1A-07 resolved: materialized state is runtime UI state (navigationState/activeContext) and should be excluded from the canonical semantic payload."
+    },
+    {
+      "id": "R0.1B-05",
+      "severity": "MEDIUM",
+      "statement": "The governance branch declares R0.1B requiredInputs that do not exist on that branch; only the R0.1A Checkpoint C is present. R0.1B branched from the R0.1A implementation branch to obtain them."
+    },
+    {
+      "id": "R0.1B-06",
+      "severity": "LOW",
+      "statement": "R0.1A POST_QA_GOVERNED_STATE.json records qaDisposition PASS but has empty assets/tools/findings arrays and a null commitSha, so the certified commit 4eb360a is not recorded in the governed state."
+    },
+    {
+      "id": "R0.1B-07",
+      "severity": "INFO",
+      "statement": "Both retained source copies are preserved. Neither is discarded; d674a8f7 is classified as the later repackage, not as invalid."
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/r0-1b-universe-identity-authority.mjs",
+      "result": "PASS",
+      "ci": ".github/workflows/r0-1b-universe-identity.yml",
+      "covers": [
+        "D1 navigation/build-state evidence",
+        "D2 authority hashes",
+        "D3 release-note corroboration",
+        "D4 boundary rule against source",
+        "D5 defect demonstrability and arithmetic",
+        "D6 state content",
+        "no mutation of certified R0.1A artifacts",
+        "recommendations advisory only"
+      ]
+    },
+    {
+      "path": "tests/r0-1a-universe-materialization.mjs",
+      "result": "PASS",
+      "note": "Inherited R0.1A certification still passes unchanged."
+    }
+  ],
+  "supersedes": [
+    {
+      "findingId": "R0.1A-01",
+      "treatment": "Severity reduced to INFO; reclassified as correct two-axis versioning."
+    },
+    {
+      "findingId": "R0.1A-07",
+      "treatment": "Resolved as RUNTIME_UI_STATE."
+    }
+  ],
+  "supersededBy": [],
+  "nextAuthorization": "AWAITING_INDEPENDENT_QA"
+}
