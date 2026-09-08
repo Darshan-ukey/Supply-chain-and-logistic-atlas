@@ -112,3 +112,39 @@ jobs:
             fi
             echo "unchanged: $f"
           done
+
+      - name: Prepare independent-QA custody bundle
+        run: |
+          ROOT=/tmp/atlas-r0-1a-r-custody
+          mkdir -p "$ROOT"
+          files=(
+            data/universe/r0-1a-r/universe-semantic-payload.json
+            data/universe/r0-1a-r/universe-extraction-report.json
+            data/universe/r0-1a-r/universe-copy-comparison.json
+            data/universe/r0-1a-r/universe-declaration-inventory.json
+            governance/recovery/R0.1A-R/PRE_CHANGE_BASELINE.json
+            governance/recovery/R0.1A-R/UNIVERSE_MATERIALIZATION_SUPERSESSION.json
+            governance/registry/UNIVERSE_MACHINE_READABLE_INPUT_REGISTRY.json
+            governance/recovery/R0.1A/POST_QA_GOVERNED_STATE_SUPPLEMENT.json
+            tools/universe/extract-universe-semantics.mjs
+            tools/universe/compare-universe-copies.mjs
+            tools/universe/inventory-module-declarations.mjs
+            tools/universe/analyze-construction-boundary.mjs
+            tests/r0-1a-r-universe-rematerialization.mjs
+            governance/recovery/R0.1A-R/POST_IMPLEMENTATION_PRE_QA.json
+          )
+          for f in "${files[@]}"; do
+            mkdir -p "$ROOT/$(dirname "$f")"
+            cp "$f" "$ROOT/$f"
+          done
+          (cd "$ROOT" && sha256sum "${files[@]}" > SHA256SUMS.txt)
+          printf 'stageId=R0.1A-R\nsourceCommit=%s\nqaRole=INDEPENDENT_QA\nsemanticStructuresSha256=82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d\n' "$GITHUB_SHA" > "$ROOT/CUSTODY_CONTEXT.txt"
+          test "$(wc -l < "$ROOT/SHA256SUMS.txt")" -eq 14
+
+      - name: Upload independent-QA custody bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-r0-1a-r-custody-bundle
+          path: /tmp/atlas-r0-1a-r-custody
+          if-no-files-found: error
+          compression-level: 0
