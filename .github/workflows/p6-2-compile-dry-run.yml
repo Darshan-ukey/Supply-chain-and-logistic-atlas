@@ -68,10 +68,26 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           ATLAS_EXPECTED_DECOMPOSITION_HASH: ${{ env.CERTIFIED_HASH }}
+          ATLAS_COMPILE_DIAGNOSTICS: '1'
         run: |
+          set +e
           node scripts/compile-p6-2-work-definitions.mjs \
             "$MODULE_ID" "$MODULE_VERSION" \
-            --out "P6_2_PUBLIC_WORKDEFINITION_SUMMARY.json"
+            --out "P6_2_PUBLIC_WORKDEFINITION_SUMMARY.json" > compile.out 2>&1
+          code=$?
+          # Surface output as annotations: job logs are not retrievable via the API.
+          # Redact anything resembling a host or key before emitting.
+          sed -e 's|https://[A-Za-z0-9._-]*|[URL]|g' -e 's|eyJ[A-Za-z0-9._-]\{20,\}|[REDACTED]|g' compile.out > compile.safe
+          cat compile.safe
+          tail -12 compile.safe | while IFS= read -r line; do
+            [ -n "$line" ] && echo "::notice::$line"
+          done
+          if [ $code -ne 0 ]; then
+            tail -6 compile.safe | while IFS= read -r line; do
+              [ -n "$line" ] && echo "::error::$line"
+            done
+            exit $code
+          fi
 
       - name: Assert the summary is PUBLIC_SAFE and non-reconstructive
         run: |

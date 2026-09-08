@@ -64,7 +64,20 @@ const governedInputContentHash = String(row.content_hash);
 if (!/^[0-9a-f]{64}$/.test(governedInputContentHash)) throw new Error('Governed input content hash is not a 64-hex digest; failed closed.');
 
 const bundle = decode(row);
+
+// Structural diagnostics: key names only, never values. Key names are schema-level and
+// carry no business content, so this is safe to print while remaining useful when the
+// governed bundle shape differs from what the contract schema implies.
+function shape(value, depth = 0) {
+  if (Array.isArray(value)) return `array[${value.length}]` + (value.length && depth < 2 ? ` of ${shape(value[0], depth + 1)}` : '');
+  if (value && typeof value === 'object') return `{${Object.keys(value).join(',')}}`;
+  return typeof value;
+}
+if (process.env.ATLAS_COMPILE_DIAGNOSTICS === '1') {
+  console.log(`  bundle shape               : ${shape(bundle)}`);
+}
 if (String(bundle.moduleId) !== moduleId || String(bundle.moduleVersion) !== moduleVersion) {
+  console.error(`Governed bundle lineage mismatch. Observed top-level shape: ${shape(bundle)}`);
   throw new Error('Governed bundle lineage does not match the requested tuple; failed closed.');
 }
 
@@ -76,7 +89,24 @@ console.log(`  certified upstream         : ${attestation.moduleId}@${attestatio
 console.log(`  certified commit           : ${attestation.certifiedImplementationCommit}`);
 
 // ---- 3. compile + verify -------------------------------------------------------------
-const compilation = compileBundle(bundle, { governedInputContentHash });
+let compilation;
+try {
+  compilation = compileBundle(bundle, { governedInputContentHash });
+} catch (e) {
+  const raw = bundle?.decompositions;
+  const items = Array.isArray(raw) ? raw : (raw && typeof raw === 'object' ? Object.values(raw) : null);
+  console.error('Compilation failed against the governed bundle.');
+  console.error(`  bundle top-level     : ${shape(bundle)}`);
+  console.error(`  decompositions       : ${shape(raw)}`);
+  if (items && items[0]) {
+    console.error(`  first decomposition  : ${shape(items[0])}`);
+    const units = items[0].workUnits;
+    console.error(`  workUnits            : ${shape(units)}`);
+    if (Array.isArray(units) && units[0]) console.error(`  first workUnit       : ${shape(units[0])}`);
+    if (Array.isArray(units) && units[0]?.executorReadiness) console.error(`  executorReadiness    : ${shape(units[0].executorReadiness)}`);
+  }
+  throw e;
+}
 const verification = verifyCompilation(compilation);
 if (!verification.ok) {
   console.error('P6.2 verification FAILED:');
