@@ -1,0 +1,94 @@
+name: P6.2 Compile Canonical WorkDefinitions
+
+# Runs the P6.2 compile where credentials belong: in CI against the live protected store.
+# Dry run by default. Persistence requires an explicit input and prints its own evidence.
+#
+# Required repository secrets:
+#   SUPABASE_URL
+#   SUPABASE_SERVICE_ROLE_KEY
+
+on:
+  workflow_dispatch:
+    inputs:
+      moduleId:
+        description: 'Daughter module id (exact)'
+        required: true
+        default: 'road-ltl'
+      moduleVersion:
+        description: 'Effective module version (exact; no fallback is permitted)'
+        required: true
+        default: '1.5'
+      expectedDecompositionHash:
+        description: 'Pinned certified P6.1 decomposition content hash (optional but recommended)'
+        required: false
+        default: '2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab'
+      persist:
+        description: 'Write the protected WorkDefinition package to the store'
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Certify compiler and verifier before touching the governed store
+        run: |
+          node tests/p6-2-canonical-workdefinition-compiler.mjs
+          node tests/p6-2-protected-workdefinition-api.mjs
+
+      - name: Compile (dry run) and cross-check against certified P6.1
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          ATLAS_EXPECTED_DECOMPOSITION_HASH: ${{ inputs.expectedDecompositionHash }}
+        run: |
+          node scripts/compile-p6-2-work-definitions.mjs \
+            "${{ inputs.moduleId }}" "${{ inputs.moduleVersion }}" \
+            --out "P6_2_PUBLIC_WORKDEFINITION_SUMMARY.json"
+
+      - name: Assert the emitted summary is PUBLIC_SAFE and non-reconstructive
+        run: |
+          node -e '
+            const fs=require("fs");
+            const s=JSON.parse(fs.readFileSync("P6_2_PUBLIC_WORKDEFINITION_SUMMARY.json","utf8"));
+            if(s.classification!=="PUBLIC_SAFE_SUMMARY_ONLY")throw new Error("summary is not PUBLIC_SAFE");
+            if(s.detailIncluded!==false)throw new Error("summary must not include detail");
+            const text=JSON.stringify(s);
+            for(const token of ["workDefinitionId","definitions","sourceRefs","requiredClientBindings","requiredKnowledgeGaps","workUnitId"]){
+              if(text.includes(token))throw new Error("summary leaked protected token: "+token);
+            }
+            console.log("PUBLIC_SAFE summary verified:",JSON.stringify(s.totals));
+          '
+
+      - name: Upload PUBLIC_SAFE summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: p6-2-public-workdefinition-summary
+          path: P6_2_PUBLIC_WORKDEFINITION_SUMMARY.json
+
+      - name: Persist protected WorkDefinition package
+        if: ${{ inputs.persist }}
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          ATLAS_EXPECTED_DECOMPOSITION_HASH: ${{ inputs.expectedDecompositionHash }}
+        run: |
+          node scripts/compile-p6-2-work-definitions.mjs \
+            "${{ inputs.moduleId }}" "${{ inputs.moduleVersion }}" --persist
+
+      - name: Confirm no protected payload entered the workspace bundle
+        run: |
+          if grep -rlE '"schemaVersion"[[:space:]]*:[[:space:]]*"atlas-canonical-workdefinition-(v1|package-v1)"' \
+              --include='*.json' . | grep -v '^./schemas/'; then
+            echo "Protected WorkDefinition payload present in workspace"; exit 1;
+          fi
+          echo "No protected WorkDefinition payload in the repository bundle."
