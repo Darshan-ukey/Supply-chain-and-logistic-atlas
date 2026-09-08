@@ -2,11 +2,12 @@
   "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
   "stageId": "R0.1A",
   "checkpoint": "POST_IMPLEMENTATION_PRE_QA",
-  "timestamp": "2026-09-08T05:40:03.092Z",
+  "timestamp": "2026-09-08T05:50:27Z",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "governanceBaselineCommit": "4776146",
   "implementationBranch": "atlas-recovery-r0-1a-universe-materialization",
   "commitSha": "630f31a2794090f9e77c60056ab2391cb6cd0922",
+  "custodyPackagingCommit": "42d8ecd474015738b282cc732fc2ba044117feee",
   "qaDisposition": null,
   "assets": [
     {
@@ -19,9 +20,7 @@
       "classification": "CANDIDATE_MECHANICAL_MATERIALIZATION_AWAITING_QA",
       "sha256": "17b4973e18a4bb93fc81908d9fc605dfbe989d79ca0c6ac3e086f2feac5958b8",
       "lineage": [],
-      "dependencies": [
-        "reference/universe-v7.3.html"
-      ],
+      "dependencies": ["reference/universe-v7.3.html"],
       "dependencyClosure": "PASS",
       "custodyState": "CANDIDATE",
       "notes": "61 structures / 1330 records; semantic hash 2d6405c534b96f4054cb87ac2428a0a7a1bf4626334a86e5cc96ec342add4043"
@@ -98,9 +97,14 @@
   "liveState": [],
   "driveEvidence": [
     {
-      "status": "NOT_MIRRORED",
+      "status": "MIRRORED_CANDIDATE",
       "owner": "INDEPENDENT_QA",
-      "reason": "Implementation agent has Drive read/search only. QA holds Drive write capability and will mirror candidate evidence to 02_FROZEN_CANDIDATES/Universe before QA close."
+      "folderId": "1rtHlurv1WCRC3KtoWjw0bzvUALymFgmY",
+      "folderUrl": "https://drive.google.com/drive/folders/1rtHlurv1WCRC3KtoWjw0bzvUALymFgmY",
+      "bundleFileId": "1gcHBmK7vFDgKGiMoGjFt5N6eoSTYs7b8",
+      "bundleFileName": "atlas-r0-1a-custody-bundle.zip",
+      "bundleMimeType": "application/zip",
+      "note": "Exact candidate custody bundle mirrored by independent QA. Bundle bytes are refreshed from the post-manifest-sync CI artifact before Checkpoint C close."
     }
   ],
   "findings": [
