@@ -10,17 +10,26 @@ Before starting any Atlas implementation/recovery work:
 2. Read `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json` from branch `atlas-governance-registry-v2.1`.
 3. Read `governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md` from the same governance branch.
 4. If queue mode is `PRE_P6_FOUNDATION_RECOVERY`, read `governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md` before any other phase-specific implementation work.
-5. Read the frozen architecture/contracts referenced by the authorized stage.
+5. Read the frozen architecture/contracts referenced by the authorized stage/sub-stage.
 6. Verify the intended implementation baseline branch/SHA against GitHub before editing.
 
 ## Task-selection rule
 
-- Implement only the stage/phase whose queue status is exactly `AUTHORIZED`.
+- Implement only the stage or sub-stage whose queue status is exactly `AUTHORIZED`.
+- If a parent stage is split into sub-stages, the parent status does not authorize broad execution. Only the explicitly `AUTHORIZED` sub-stage may mutate assets.
 - Do not start work marked `BLOCKED_*`, `SUSPENDED_*`, `TO_BE_RESCOPED_*`, `AWAITING_INDEPENDENT_QA`, or equivalent.
 - While recovery mode is active, do not resume P6.2/P6.3/P6.4/P6.5 regardless of prior authorization/history.
-- If the current authorized stage is already complete locally, return its completion report and stop.
-- Never self-authorize the next stage.
+- If the current authorized stage/sub-stage is already complete locally, return its completion report and stop.
+- Never self-authorize the next stage/sub-stage.
 - Never promote production/go-live without explicit owner / independent QA authorization.
+
+## R0.1 Universe recovery rule
+
+R0.1 is explicitly split into R0.1A, R0.1B and R0.1C. Do not combine them.
+
+- `R0.1A` may mechanically materialize and test the existing Universe semantics. It may not redesign semantics, create Universe 7.4, invent `a5-*`/`scp-*` IDs, create a crosswalk, or mutate Road LTL references.
+- `R0.1B` is an identity/authority reconciliation stage and remains blocked until R0.1A independent QA.
+- `R0.1C` is a reference-ownership audit and remains blocked until R0.1B independent QA. Until R0.1C is approved, unresolved daughter references must not be represented as proven missing Universe identifiers. Use `UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT`.
 
 ## Architecture rule
 
@@ -39,7 +48,8 @@ Do not:
 - overwrite, relabel or mutate frozen historical evidence to make a test pass;
 - treat a hash/CI success alone as proof of completeness;
 - treat historical deployment success as current production health;
-- repair a downstream symptom while an upstream recovery gate remains unresolved.
+- repair a downstream symptom while an upstream recovery gate remains unresolved;
+- invent Universe identifiers or cross-layer mappings merely to make reference tests pass.
 
 ## Recovery certification rule
 
@@ -59,7 +69,7 @@ Do not classify an asset `FROZEN_COMPLETE` unless all applicable dimensions pass
 
 ## Completion rule
 
-At the end of an authorized stage/phase, return:
+At the end of an authorized stage/sub-stage, return:
 - objective;
 - starting branch/SHA;
 - authoritative inputs used and their hashes/lineage;
@@ -76,4 +86,4 @@ At the end of an authorized stage/phase, return:
 
 Then stop at `AWAITING_INDEPENDENT_QA`.
 
-The next stage becomes executable only after the machine queue is updated by governance/owner QA.
+The next stage/sub-stage becomes executable only after the machine queue is updated by governance/owner QA.
