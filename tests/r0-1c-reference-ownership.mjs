@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-import { auditOwnership, derivabilityFromModuleIdentity, collectDefinitions, LAYERS } from '../tools/references/audit-reference-ownership.mjs';
+import { auditOwnership, derivabilityFromModuleIdentity, collectDefinitions, LAYERS, EXCLUDED_EVIDENCE_PATHS } from '../tools/references/audit-reference-ownership.mjs';
 
 const sha = p => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const D = JSON.parse(fs.readFileSync('governance/recovery/R0.1C/REFERENCE_OWNERSHIP_DETERMINATION.json', 'utf8'));
@@ -81,6 +81,31 @@ const toolSrc = fs.readFileSync('tools/references/audit-reference-ownership.mjs'
   .replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/.*$/gm, '$1');
 assert.doesNotMatch(toolSrc, /writeFileSync\([^)]*crosswalk/i, 'audit tool must never write a crosswalk');
 assert.ok(Object.keys(LAYERS).includes('ORPHAN'), 'orphan must remain a reachable classification');
+
+// ---- the audit must not read its own output (self-reference regression) -------------------
+// Its findings quote the very identifiers it inventories, so scanning them would make the
+// counts change once the audit is committed.
+for (const p of ['data/references', 'governance/recovery']) {
+  assert.ok(EXCLUDED_EVIDENCE_PATHS.includes(p), `${p} must be excluded from the evidence scan`);
+}
+assert.ok(fs.existsSync('data/references/reference-ownership-audit.json'));
+const auditBlob = fs.readFileSync('data/references/reference-ownership-audit.json', 'utf8');
+assert.ok(/a5-ltl-01/.test(auditBlob) && /scp-/.test(auditBlob),
+  'the audit output does quote identifiers, which is why it must be excluded');
+const rerun = auditOwnership({
+  roots: ['data', 'governance'], universePayloadPath: UP, crosswalkPath: CW, warehousePath: 'data/atlas-warehouse-v1.json'
+});
+assert.equal(rerun.classes.find(c => c.identifierClass === 'a5').referencedCount,
+  A.classes.find(c => c.identifierClass === 'a5').referencedCount,
+  'audit counts must be stable with its own committed output present');
+assert.equal(rerun.classes.find(c => c.identifierClass === 'scp').referencedCount,
+  A.classes.find(c => c.identifierClass === 'scp').referencedCount);
+for (const c of rerun.classes) for (const i of c.identifiers) {
+  for (const ref of i.referencedBy) {
+    assert.ok(!EXCLUDED_EVIDENCE_PATHS.some(x => ref.startsWith(x)),
+      `reference evidence must come from source artifacts, not audit records: ${ref}`);
+  }
+}
 
 assert.ok(!fs.existsSync('governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json'),
   'Checkpoint C is not written by the implementation agent');

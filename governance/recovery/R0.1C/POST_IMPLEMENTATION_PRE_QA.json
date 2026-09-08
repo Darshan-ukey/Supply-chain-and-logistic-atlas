@@ -22,7 +22,7 @@
       "liveStoreReference": null,
       "version": "R0.1C",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "4d4a9ef4c81396633d317489dc5af325778062e31bfee11cca74a1b8b86d0b1f",
+      "sha256": "007ac32cca7e07cdf03beb9d5010659694811359f0501b2ffb655d24643a7ac9",
       "lineage": [
         "R0.1B QA PASS"
       ],
@@ -56,7 +56,7 @@
       "liveStoreReference": null,
       "version": "R0.1C",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "7569d51d83afd926121bc5575714bf9bd29df8e97df0669a8704997cba133a03",
+      "sha256": "760543402c658573e96a527cf62fdeb64cd95c83756703aae6c167f81efdeee1",
       "lineage": [
         "R0.1B QA PASS"
       ],
@@ -73,7 +73,7 @@
       "liveStoreReference": null,
       "version": "R0.1C",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "67df640fc54ce54610ac6d5cf3fa12ae2916271a02ca163c287d69ad7ce239cc",
+      "sha256": "ce1f256de6eb27ac0fad87684ddd51b13bba028e09876e0f23d6c4b4be291247",
       "lineage": [
         "R0.1B QA PASS"
       ],
@@ -90,7 +90,7 @@
       "liveStoreReference": null,
       "version": "R0.1C",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "28c621205584f0baeefbdea24f3185f5ed667a9772d1daa8455ddd8f6b16e815",
+      "sha256": "0b923799c12cb30b9114ac31231d5c241fdb6f5d0767a855f06326ac260f6360",
       "lineage": [
         "R0.1B QA PASS"
       ],
@@ -122,7 +122,7 @@
       "toolId": "reference-ownership-audit",
       "repositoryPath": "tools/references/audit-reference-ownership.mjs",
       "version": "atlas-reference-ownership-audit-1.0.0",
-      "sha256": "67df640fc54ce54610ac6d5cf3fa12ae2916271a02ca163c287d69ad7ce239cc",
+      "sha256": "ce1f256de6eb27ac0fad87684ddd51b13bba028e09876e0f23d6c4b4be291247",
       "purpose": "Evidence-based governing-layer classification of identifier references; read-only, creates no identifiers"
     }
   ],
@@ -135,7 +135,7 @@
       "candidateFiles": [
         {
           "repositoryPath": "governance/recovery/R0.1C/REFERENCE_OWNERSHIP_DETERMINATION.json",
-          "sha256": "4d4a9ef4c81396633d317489dc5af325778062e31bfee11cca74a1b8b86d0b1f"
+          "sha256": "007ac32cca7e07cdf03beb9d5010659694811359f0501b2ffb655d24643a7ac9"
         },
         {
           "repositoryPath": "governance/recovery/R0.1C/PRE_CHANGE_BASELINE.json",
@@ -143,15 +143,15 @@
         },
         {
           "repositoryPath": "data/references/reference-ownership-audit.json",
-          "sha256": "7569d51d83afd926121bc5575714bf9bd29df8e97df0669a8704997cba133a03"
+          "sha256": "760543402c658573e96a527cf62fdeb64cd95c83756703aae6c167f81efdeee1"
         },
         {
           "repositoryPath": "tools/references/audit-reference-ownership.mjs",
-          "sha256": "67df640fc54ce54610ac6d5cf3fa12ae2916271a02ca163c287d69ad7ce239cc"
+          "sha256": "ce1f256de6eb27ac0fad87684ddd51b13bba028e09876e0f23d6c4b4be291247"
         },
         {
           "repositoryPath": "tests/r0-1c-reference-ownership.mjs",
-          "sha256": "28c621205584f0baeefbdea24f3185f5ed667a9772d1daa8455ddd8f6b16e815"
+          "sha256": "0b923799c12cb30b9114ac31231d5c241fdb6f5d0767a855f06326ac260f6360"
         },
         {
           "repositoryPath": ".github/workflows/r0-1c-reference-ownership.yml",
@@ -218,6 +218,11 @@
       "id": "R0.1C-08",
       "severity": "INFO",
       "statement": "Road LTL 1.4 module and Operational Knowledge remain outside governed repo custody. This audit used governed repo evidence only and did not depend on the out-of-custody package."
+    },
+    {
+      "id": "R0.1C-09",
+      "severity": "RESOLVED",
+      "statement": "CI caught a self-reference defect: the audit scanned data/ and governance/, so once its own output was committed it read its findings as evidence and became non-reproducible. Evidence scope now excludes data/references, governance/recovery, governance/backlog and governance/registry. Counts are unchanged at 82 a5-* and 22 scp-*, confirming only self-referential noise was removed. A regression test asserts stability with the audit's own output present."
     }
   ],
   "tests": [
@@ -239,7 +244,8 @@
         "no mutation or invention",
         "crosswalk untouched",
         "no promotion",
-        "stop condition"
+        "stop condition",
+        "audit cannot read its own output"
       ]
     },
     {

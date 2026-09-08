@@ -28,11 +28,30 @@ const walkJson = (value, visit, pathStr = '') => {
   }
 };
 
+/**
+ * Paths excluded from the evidence scan.
+ *
+ * The audit must inventory references carried by governed source/model evidence, not
+ * references quoted inside audit or governance records ABOUT those references. Without
+ * this, the audit reads its own output and its counts change once its findings are
+ * committed, making the result non-reproducible.
+ */
+export const EXCLUDED_EVIDENCE_PATHS = [
+  'data/references',            // this audit's own output
+  'governance/recovery',        // stage records that quote identifiers as findings
+  'governance/backlog',         // queue/roadmap prose
+  'governance/registry'         // input registry metadata
+];
+
+const isExcluded = p => EXCLUDED_EVIDENCE_PATHS.some(x => path.normalize(p).startsWith(path.normalize(x)));
+
 const listJson = dir => {
   const out = [];
   const rec = d => {
+    if (isExcluded(d)) return;
     for (const e of fs.readdirSync(d, { withFileTypes: true })) {
       const p = path.join(d, e.name);
+      if (isExcluded(p)) continue;
       if (e.isDirectory()) rec(p);
       else if (e.name.endsWith('.json')) out.push(p);
     }
@@ -147,6 +166,7 @@ export function auditOwnership({ roots, universePayloadPath, crosswalkPath, ware
     stageId: 'R0.1C',
     auditVersion: AUDIT_VERSION,
     classification: 'EVIDENCE_BASED_OWNERSHIP_AUDIT_NO_MUTATION',
+    excludedEvidencePaths: EXCLUDED_EVIDENCE_PATHS,
     layerLegend: LAYERS,
     universeSemanticStructuresConsulted: universe.lineage?.sourceSha256 ? true : false,
     classes

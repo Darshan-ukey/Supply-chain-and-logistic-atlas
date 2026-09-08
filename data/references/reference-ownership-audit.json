@@ -3,6 +3,12 @@
   "stageId": "R0.1C",
   "auditVersion": "atlas-reference-ownership-audit-1.0.0",
   "classification": "EVIDENCE_BASED_OWNERSHIP_AUDIT_NO_MUTATION",
+  "excludedEvidencePaths": [
+    "data/references",
+    "governance/recovery",
+    "governance/backlog",
+    "governance/registry"
+  ],
   "layerLegend": {
     "UNIVERSE_CANONICAL": "Identifier defined by the governed Universe semantic payload.",
     "CROSS_LAYER_CONTRACT": "Identifier defined by a governed cross-module contract/crosswalk layer that sits between Universe and daughters.",

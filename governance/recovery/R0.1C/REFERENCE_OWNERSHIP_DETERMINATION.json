@@ -13,7 +13,7 @@
     "data/modules/road-ltl-v1.5.json": "22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f",
     "data/modules/ocean-fcl-v0.5.json": "71526914c600cb10c47434a5b6dc064e851062776a336ae480f37e487e108ebc",
     "data/modules/ocean-lcl-v0.5.json": "9dbaadc129a6c8be30e9e77c7ff319af40a9f5c4226e82817c2389cde01d18e6",
-    "data/references/reference-ownership-audit.json": "7569d51d83afd926121bc5575714bf9bd29df8e97df0669a8704997cba133a03"
+    "data/references/reference-ownership-audit.json": "760543402c658573e96a527cf62fdeb64cd95c83756703aae6c167f81efdeee1"
   },
   "priorClaimCorrected": {
     "priorStatement": "R0.1B audit reported 0/23 canonical references resolve against the Universe.",
@@ -158,5 +158,14 @@
     "currentPointer": "UNCHANGED",
     "latestPointer": "UNCHANGED",
     "assetRegister": "UNCHANGED"
+  },
+  "auditScope": {
+    "excludedEvidencePaths": [
+      "data/references",
+      "governance/recovery",
+      "governance/backlog",
+      "governance/registry"
+    ],
+    "rationale": "The audit inventories references carried by governed source/model evidence. Audit and governance records that quote identifiers as findings are excluded so the audit cannot read its own output; counts are unaffected by the exclusion."
   }
 }
