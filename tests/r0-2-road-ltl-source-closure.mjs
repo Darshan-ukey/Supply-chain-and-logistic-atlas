@@ -107,13 +107,60 @@ for (const p of ['tests/p6-0-road-ltl-1.5-effective-materialization.mjs',
 }
 
 // ---- scope ---------------------------------------------------------------------------------------
-for (const [k, v] of Object.entries(C.promotion)) {
-  if (k === 'note') continue;
-  assert.ok(['NOT_PERFORMED', 'UNCHANGED'].includes(v), `promotion: ${k}=${v}`);
+// Only the promotion STATUS fields carry NOT_PERFORMED/UNCHANGED; the rest is metadata.
+for (const k of ['canonicalPromotion', 'currentPointer', 'latestPointer', 'assetRegister']) {
+  assert.ok(['NOT_PERFORMED', 'UNCHANGED'].includes(C.promotion[k]), `promotion: ${k}=${C.promotion[k]}`);
 }
 assert.ok(C.outOfScopeConfirmations.some(x => /not reconstructed from 1\.3/i.test(x)));
 assert.ok(C.outOfScopeConfirmations.some(x => /No hash was selected by filename or date/i.test(x)));
 assert.ok(!fs.existsSync('data/modules/ocean-fcl-v0.6.json'), 'Ocean custody is R0.5 scope and must not be performed here');
 assert.ok(!fs.existsSync('governance/recovery/R0.2/POST_QA_GOVERNED_STATE.json'), 'Checkpoint C is not written by the implementation agent');
+
+// ---- original frozen release ZIP is in governed binary custody -----------------------------
+const CANON = 'b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289';
+const PKG = 'release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip';
+const BC = JSON.parse(fs.readFileSync('governance/recovery/R0.2/BINARY_PACKAGE_CUSTODY_RECORD.json', 'utf8'));
+assert.ok(fs.existsSync(PKG), 'the exact original release ZIP must be in governed custody');
+assert.equal(sha(PKG), CANON, 'custodied ZIP must be the exact original bytes');
+assert.equal(BC.package.custodiedSha256, CANON);
+assert.equal(BC.package.shaMatchesCanonical, true);
+assert.equal(BC.package.recompressed, false, 'the archive must not have been re-compressed');
+assert.equal(BC.package.reconstructedFromExtractedFiles, false, 'the archive must not have been rebuilt from extracts');
+assert.equal(BC.package.custodiedRepositoryPath, PKG);
+assert.equal(reg['daughter-release-ltl1.4-ocean0.6'].sha256, CANON, 'canonical identity comes from the register');
+// identity by hash, never by filename
+assert.match(BC.identitySelectionRule, /never by filename or date/i);
+assert.ok(BC.filenameVariantsObserved.length >= 3, 'observed filename variants must be recorded');
+for (const v of BC.filenameVariantsObserved) {
+  if (v.sha256 !== 'NOT_OBSERVED_AS_A_DISTINCT_ARTIFACT') assert.equal(v.sha256, CANON, `variant ${v.filename} must resolve to the canonical bytes`);
+}
+// provenance must be explicit
+assert.match(BC.provenance.readFrom, /uploads/, 'provenance must state where the bytes were read from');
+assert.equal(BC.provenance.readFromSha256, CANON);
+assert.equal(BC.provenance.driveBytesIndependentlyRetrievedByThisStage, false,
+  'the stage must not claim to have retrieved Drive bytes it did not fetch');
+assert.equal(BC.provenance.driveSourceFileIdFromHistoricalEvidence, '1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI');
+// historical hash evidence retained, not used for identity
+const hist = BC.historicalHashEvidence.find(h => h.sha256 === '00ef9905');
+assert.ok(hist, 'historical hash reference must be retained');
+assert.equal(hist.status, 'HISTORICAL_REFERENCE_RETAINED');
+assert.notEqual(hist.sha256, CANON);
+
+// the original ZIP must still verify its own internal manifest
+const zip = fs.readFileSync(PKG);
+assert.equal(crypto.createHash('sha256').update(zip).digest('hex'), CANON);
+assert.equal(BC.internalManifestVerification.entries, 30);
+assert.equal(BC.internalManifestVerification.mismatches, 0);
+
+// ---- closure record states registration accurately -------------------------------------------
+assert.equal(C.promotion.assetRegisterBindsRecoveredRepositoryPaths, false,
+  'the record must not imply ASSET_REGISTER already binds the recovered paths');
+assert.equal(C.promotion.registrationPending, 'INDEPENDENT_QA_AND_GOVERNANCE_CLOSURE');
+assert.match(C.promotion.note, /has NOT been updated/i);
+assert.equal(reg['road-ltl-1.4-candidate'].repositoryPath, undefined, 'register must still lack repositoryPath');
+assert.equal(reg['daughter-release-ltl1.4-ocean0.6'].repositoryBinaryMaterialization, 'PENDING_CONNECTOR_BINARY_UPLOAD',
+  'register binary materialization must still be pending; QA owns that change');
+assert.equal(BC.registerTreatment.registerMutatedByThisStage, false);
+assert.equal(C.B_custodyClosure.originalPackageBinaryCustody.matchesCanonicalRegisteredSha256, true);
 
 console.log('R0.2 Road LTL source closure certification PASS');

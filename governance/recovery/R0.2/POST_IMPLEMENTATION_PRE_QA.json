@@ -21,7 +21,7 @@
       "liveStoreReference": null,
       "version": "R0.2",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "7e22fcf02247352892ff78a0fdd9b7e257e2183987c1be796e596288055553dc",
+      "sha256": "f46c95f87e61be447ba41f8a4b022441ab3fc24e24e0ddd465d7d974c739bd54",
       "lineage": [
         "R0.1C QA PASS"
       ],
@@ -208,7 +208,7 @@
       "liveStoreReference": null,
       "version": "R0.2",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "06f1fad425bab234d06c108e670792be95c699f71d593ac6d1b463a8dddfdc7f",
+      "sha256": "60586c685a09eaf5ec49031aefa1cf1f8b38d261f5ba03eeb0fb475aa1395685",
       "lineage": [
         "R0.1C QA PASS"
       ],
@@ -225,7 +225,7 @@
       "liveStoreReference": null,
       "version": "R0.2",
       "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
-      "sha256": "4620305d2b88f78d6c1405fbab8928202c72a6f8bb3d0fde6c36dc8e37c053a0",
+      "sha256": "17b91532db2bdaa3684db51dad20875f47ad022f9028651e0edb2fec9305fc62",
       "lineage": [
         "R0.1C QA PASS"
       ],
@@ -233,6 +233,40 @@
       "dependencyClosure": "PASS",
       "custodyState": "CANDIDATE",
       "notes": null
+    },
+    {
+      "assetId": "atlas-daughter-release-ltl-v1.4-ocean-v0.6",
+      "assetType": "binary_release_package",
+      "repositoryPath": "release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+      "lineage": [
+        "registered asset daughter-release-ltl1.4-ocean0.6"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "Exact original frozen release ZIP, not re-compressed."
+    },
+    {
+      "assetId": "BINARY_PACKAGE_CUSTODY_RECORD",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.2/BINARY_PACKAGE_CUSTODY_RECORD.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.2",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "d613ab244814c8e5f740f80ce5fb6286fdf96a6d94813805f77094390bb0bc08",
+      "lineage": [
+        "registered asset daughter-release-ltl1.4-ocean0.6"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "Binary custody provenance and identity record."
     }
   ],
   "tools": [
@@ -253,57 +287,88 @@
       "candidateFiles": [
         {
           "repositoryPath": "governance/recovery/R0.2/ROAD_LTL_SOURCE_CLOSURE_RECORD.json",
-          "sha256": "7e22fcf02247352892ff78a0fdd9b7e257e2183987c1be796e596288055553dc"
+          "sha256": "f46c95f87e61be447ba41f8a4b022441ab3fc24e24e0ddd465d7d974c739bd54",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": "governance/recovery/R0.2/PRE_CHANGE_BASELINE.json",
-          "sha256": "feea1634c6c6626b3f0d5089dd866fa0af444bd1ebdc4f783dd000e04c837e31"
+          "sha256": "feea1634c6c6626b3f0d5089dd866fa0af444bd1ebdc4f783dd000e04c837e31",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": "governance/recovery/R0.2/PACKAGE_SHA256SUMS.json",
-          "sha256": "227de59d72cd106b02e16ea0e30e560cab5b42d5c92379c1951a2167809628d3"
+          "sha256": "227de59d72cd106b02e16ea0e30e560cab5b42d5c92379c1951a2167809628d3",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": "governance/recovery/R0.2/PACKAGE_VALIDATION.json",
-          "sha256": "bae9f19b5d7c4a28c67397270161e4557679cc86deb0b6cc7a92b17ec83930be"
+          "sha256": "bae9f19b5d7c4a28c67397270161e4557679cc86deb0b6cc7a92b17ec83930be",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": "data/modules/road-ltl-v1.4.json",
-          "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4"
+          "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": "data/operational-knowledge/road-ltl-v1.4-operational.json",
-          "sha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e"
+          "sha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": "data/client-binding-requirements/road-ltl-v1.4-bindings.json",
-          "sha256": "d461990914038a90277a06299faa5663221b6c6b371493758893a19cd71a384c"
+          "sha256": "d461990914038a90277a06299faa5663221b6c6b371493758893a19cd71a384c",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": "data/source-claims/road-ltl-v1.4-claims.json",
-          "sha256": "379e48422906732cc6e01a1e324108ca23a2f1ff05faab8cb53c3ba342000ac0"
+          "sha256": "379e48422906732cc6e01a1e324108ca23a2f1ff05faab8cb53c3ba342000ac0",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": "data/road-ltl/effective-road-ltl-1.5-materialization.json",
-          "sha256": "a303d30d1c415d0bbfa9efab27ae1ac1edcd32fffb5f9e236e8c1ebf629bf7f6"
+          "sha256": "a303d30d1c415d0bbfa9efab27ae1ac1edcd32fffb5f9e236e8c1ebf629bf7f6",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": "data/references/reference-ownership-audit-r0-2.json",
-          "sha256": "bb6c7b49b32eab75ea3eeffcef71a4b8d36865089a34c6d5c48aa6a6188978f8"
+          "sha256": "bb6c7b49b32eab75ea3eeffcef71a4b8d36865089a34c6d5c48aa6a6188978f8",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": "tools/road-ltl/materialize-effective-road-ltl.mjs",
-          "sha256": "3b10323b9e3694f3e05cde71c7b34400bdee7a732318c72d7aa1d2611a26d527"
+          "sha256": "3b10323b9e3694f3e05cde71c7b34400bdee7a732318c72d7aa1d2611a26d527",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": "tests/r0-2-road-ltl-source-closure.mjs",
-          "sha256": "06f1fad425bab234d06c108e670792be95c699f71d593ac6d1b463a8dddfdc7f"
+          "sha256": "60586c685a09eaf5ec49031aefa1cf1f8b38d261f5ba03eeb0fb475aa1395685",
+          "binaryCustodyItem": false
         },
         {
           "repositoryPath": ".github/workflows/r0-2-road-ltl-source-closure.yml",
-          "sha256": "4620305d2b88f78d6c1405fbab8928202c72a6f8bb3d0fde6c36dc8e37c053a0"
+          "sha256": "17b91532db2bdaa3684db51dad20875f47ad022f9028651e0edb2fec9305fc62",
+          "binaryCustodyItem": false
+        },
+        {
+          "repositoryPath": "release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+          "sha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+          "binaryCustodyItem": true
+        },
+        {
+          "repositoryPath": "governance/recovery/R0.2/BINARY_PACKAGE_CUSTODY_RECORD.json",
+          "sha256": "d613ab244814c8e5f740f80ce5fb6286fdf96a6d94813805f77094390bb0bc08",
+          "binaryCustodyItem": false
         }
-      ]
+      ],
+      "githubActionsArtifact": {
+        "artifactName": "r0-2-frozen-release-package-b81b22d2",
+        "workflow": ".github/workflows/r0-2-road-ltl-source-closure.yml",
+        "retentionDays": 90,
+        "contains": "release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+        "sha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+        "note": "Retrievable from the R0.2 workflow run so independent QA can mirror the exact original bytes to Drive."
+      }
     }
   ],
   "resultSummary": {
@@ -376,6 +441,31 @@
       "id": "R0.2-11",
       "severity": "INFO",
       "statement": "Ocean FCL/LCL 0.6 package copies match their registered hashes but were deliberately not custodied; Ocean source closure is R0.5 scope."
+    },
+    {
+      "id": "R0.2-12",
+      "severity": "RESOLVED",
+      "statement": "Exact original frozen release ZIP placed into governed GitHub-side binary custody at release/packages/frozen/. SHA-256 is b81b22d2..., matching the canonical registered value and byte-for-byte identical (cmp) to the bytes R0.2 originally read. Not re-compressed and not rebuilt from extracted files; the archive retains its original 31 entries and 2026-09-02 internal timestamps."
+    },
+    {
+      "id": "R0.2-13",
+      "severity": "INFO",
+      "statement": "Provenance: the bytes were read from /mnt/user-data/uploads/atlas-daughter-release-ltl-v1_4-ocean-v0_6.zip, uploaded into this session by the project owner. The extraction under /home/claude/pkg was a working copy, never a custody source. The Drive file id 1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI is carried from historical evidence; this stage did not download from Drive and does not claim to have."
+    },
+    {
+      "id": "R0.2-14",
+      "severity": "MEDIUM",
+      "statement": "Three filename variants exist for one identity: the session upload used underscores, ASSET_REGISTER records atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip, and independent QA referenced a -FROZEN suffix. Only the canonical SHA-256 was used to establish identity; every hashed variant resolves to the same bytes. No -FROZEN-suffixed artifact was observed as distinct."
+    },
+    {
+      "id": "R0.2-15",
+      "severity": "RESOLVED",
+      "statement": "Closure-record contradiction corrected. The record now states that recovered files physically exist at governed repository paths while ASSET_REGISTER has NOT been updated to bind them, and that registration is pending independent QA and governance closure. Metadata only; no recovered bytes or semantic findings changed."
+    },
+    {
+      "id": "R0.2-16",
+      "severity": "INFO",
+      "statement": "Historical hash reference 00ef9905 retained as historical evidence and explicitly excluded from current identity determination. It does not appear in this branch's content; recorded for lineage completeness."
     }
   ],
   "tests": [
@@ -397,7 +487,13 @@
         "zero orphans",
         "P6.0 re-certification inputs custodied",
         "no promotion",
-        "Ocean deferred to R0.5"
+        "Ocean deferred to R0.5",
+        "original ZIP byte custody",
+        "identity by hash not filename",
+        "provenance explicit",
+        "historical hash retained",
+        "register still unbound",
+        "closure record accuracy"
       ]
     },
     {
@@ -408,5 +504,26 @@
   ],
   "supersedes": [],
   "supersededBy": [],
-  "nextAuthorization": "AWAITING_INDEPENDENT_QA"
+  "nextAuthorization": "AWAITING_INDEPENDENT_QA",
+  "originalPackageCustody": {
+    "canonicalSha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+    "custodiedSha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+    "match": true,
+    "readFrom": "/mnt/user-data/uploads/atlas-daughter-release-ltl-v1_4-ocean-v0_6.zip",
+    "recompressed": false,
+    "record": "governance/recovery/R0.2/BINARY_PACKAGE_CUSTODY_RECORD.json"
+  },
+  "remediationRegression": {
+    "packageSha": "UNCHANGED_b81b22d2",
+    "packageManifestEntries": "30/30 PASS",
+    "roadLtl14ModuleSha": "UNCHANGED_c8a0af37",
+    "roadLtl14OperationalSha": "UNCHANGED_6e5899b2",
+    "effectiveMaterializationOutput": "UNCHANGED",
+    "lineage": "UNCHANGED_21_inherited_1_direct",
+    "referenceResult": "UNCHANGED_82_a5_22_scp_0_orphans",
+    "p60": "PASS_502_502",
+    "assetRegister": "UNCHANGED",
+    "currentLatest": "UNCHANGED",
+    "semanticOrMaterializedHashChanged": false
+  }
 }

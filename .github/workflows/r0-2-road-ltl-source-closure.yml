@@ -54,6 +54,45 @@ jobs:
             echo "unchanged: $f"
           done
 
+      - name: Verify and publish the exact original frozen release ZIP
+        run: |
+          PKG=release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip
+          CANON=b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289
+          ACTUAL=$(sha256sum "$PKG" | cut -d' ' -f1)
+          echo "custodied package sha256 : $ACTUAL"
+          echo "canonical registered     : $CANON"
+          [ "$ACTUAL" = "$CANON" ] || { echo "original package bytes do not match the canonical SHA"; exit 1; }
+          # the archive must be the original, not a re-compression of extracted files
+          python3 - <<'PY'
+          import zipfile
+          z=zipfile.ZipFile("release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip")
+          names=z.namelist()
+          assert len(names)==31, f"unexpected entry count {len(names)}"
+          assert all(n.startswith("atlas-daughter-release-ltl-v1.4-ocean-v0.6/") for n in names), "unexpected archive root"
+          print(f"archive verified: {len(names)} entries, original release root preserved")
+          PY
+          # every one of the 30 manifest entries must still verify from inside the original ZIP
+          python3 - <<'PY'
+          import zipfile,json,hashlib
+          z=zipfile.ZipFile("release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip")
+          root="atlas-daughter-release-ltl-v1.4-ocean-v0.6/"
+          man=json.loads(z.read(root+"validation/SHA256SUMS.json"))
+          ok=0
+          for rel,h in man.items():
+              if hashlib.sha256(z.read(root+rel)).hexdigest()!=h:
+                  raise SystemExit(f"manifest mismatch inside original ZIP: {rel}")
+              ok+=1
+          print(f"internal manifest verified from the original ZIP: {ok}/{len(man)}")
+          PY
+
+      - name: Publish original frozen release ZIP as custody artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: r0-2-frozen-release-package-b81b22d2
+          path: release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip
+          if-no-files-found: error
+          retention-days: 90
+
       - name: R0.2 source closure certification
         run: node tests/r0-2-road-ltl-source-closure.mjs
 
@@ -94,8 +133,9 @@ jobs:
           node -e '
             const fs=require("fs");
             const c=JSON.parse(fs.readFileSync("governance/recovery/R0.2/ROAD_LTL_SOURCE_CLOSURE_RECORD.json","utf8"));
-            for(const [k,v] of Object.entries(c.promotion)){ if(k==="note")continue;
-              if(!["NOT_PERFORMED","UNCHANGED"].includes(v))throw new Error("premature promotion: "+k+"="+v); }
+            for(const k of ["canonicalPromotion","currentPointer","latestPointer","assetRegister"]){
+              if(!["NOT_PERFORMED","UNCHANGED"].includes(c.promotion[k]))throw new Error("premature promotion: "+k+"="+c.promotion[k]); }
+            if(c.promotion.assetRegisterBindsRecoveredRepositoryPaths!==false)throw new Error("record must not imply register binding");
             if(c.B_custodyClosure.registerTreatment.registerMutatedByThisStage)throw new Error("register must not be mutated");
             if(fs.existsSync("data/modules/ocean-fcl-v0.6.json"))throw new Error("Ocean custody is R0.5 scope");
             const b=JSON.parse(fs.readFileSync("governance/recovery/R0.2/POST_IMPLEMENTATION_PRE_QA.json","utf8"));

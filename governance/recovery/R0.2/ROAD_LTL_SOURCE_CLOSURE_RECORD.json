@@ -134,6 +134,13 @@
       "custodyAction": "Bytes placed in the repository at the declared artifactPath, byte-identical to the package and matching the registered sha256.",
       "registerMutatedByThisStage": false,
       "recommendedGovernedAction": "Add repositoryPath and update source for road-ltl-1.4-candidate so later stages resolve it from the repository rather than from an external package. Registration is a governed action after independent QA."
+    },
+    "originalPackageBinaryCustody": {
+      "repositoryPath": "release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+      "sha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+      "matchesCanonicalRegisteredSha256": true,
+      "recompressed": false,
+      "record": "governance/recovery/R0.2/BINARY_PACKAGE_CUSTODY_RECORD.json"
     }
   },
   "C_effectiveMaterialization": {
@@ -225,6 +232,8 @@
     "currentPointer": "UNCHANGED",
     "latestPointer": "UNCHANGED",
     "assetRegister": "UNCHANGED",
-    "note": "ASSET_REGISTER now has resolvable repositoryPaths for road-ltl-1.4-candidate, but registration status changes remain a governed action after QA."
+    "note": "Recovered files now physically exist at governed repository paths, and the exact original release ZIP is in governed binary custody. ASSET_REGISTER has NOT been updated to bind those repository paths: road-ltl-1.4-candidate still declares source=artifact-package with artifactPath and no repositoryPath, and daughter-release-ltl1.4-ocean0.6 still declares repositoryBinaryMaterialization=PENDING_CONNECTOR_BINARY_UPLOAD. Registration is pending independent QA and governance closure and was deliberately not performed by this stage.",
+    "assetRegisterBindsRecoveredRepositoryPaths": false,
+    "registrationPending": "INDEPENDENT_QA_AND_GOVERNANCE_CLOSURE"
   }
 }
