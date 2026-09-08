@@ -27,12 +27,24 @@ After implementation create/commit `POST_IMPLEMENTATION_PRE_QA` with outputs, ha
 After independent QA create/synchronize `POST_QA_GOVERNED_STATE`, registers/pointers/classifications and durable Drive evidence before the next stage is authorized.
 
 ## R0.1 Universe rule
-R0.1 is split into R0.1A/B/C and must not be combined.
+R0.1 is split into governed substages and must not be combined.
 
-- `R0.1A` is **COMPLETE / INDEPENDENT QA PASS**. Its certified mechanical materialization is evidence for R0.1B; do not rerun, reinterpret or replace it unless a new governed defect is found and reported.
-- `R0.1B` is the **only currently AUTHORIZED sub-stage**. Use the R0.1A Checkpoint C and certified artifacts to reconcile release shell 7.3 versus embedded semantic 7.2.0, classify the three observed source-copy differences, establish source/normalized-payload authority, determine the canonical construction boundary for the 189 field-set-divergent records, classify materialized `state` as canonical semantic vs runtime/UI state, and recommend exact canonical/frozen hashes/assets.
-- R0.1B may **not** rewrite Universe semantics, relabel 7.2.0 as 7.3 without evidence, create Universe 7.4, invent fields/IDs, mutate Road LTL/reference models, create crosswalks, or perform R0.1C reference-ownership decisions.
-- `R0.1C` remains **BLOCKED_UNTIL_R0_1B_QA**. Until R0.1C approval use `UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT` for unresolved daughter references.
+- `R0.1A` is historical **COMPLETE / INDEPENDENT QA PASS AT TIME OF CERTIFICATION**. Its artifacts and Checkpoints A/B/C remain immutable governed evidence. R0.1B subsequently discovered a deterministic materialization defect; therefore the R0.1A payload is not eligible for canonical promotion and must not be overwritten or silently replaced.
+- `R0.1A-R` is the **only currently AUTHORIZED implementation stage**. Its sole purpose is deterministic Universe semantic re-materialization correction under R0.1B D4/D5/D6.
+- R0.1A-R must capture the full declaration expression including chained transforms and exclude later separate mutation statements; correct `systemRecords` and `businessObjectRecords` generically; retain source-declared `description`; exclude later-derived `domainIds` where applicable; classify/exclude `state` as `RUNTIME_UI_STATE`; correct heterogeneous-ID divergence detection; rerun independent inventory/materialization without targeting historical counts; generate new hashes/supersession lineage; establish governed dependency closure; and stop at `AWAITING_INDEPENDENT_QA`.
+- R0.1A-R may not redesign Universe semantics, relabel semantic 7.2.0 as 7.3, create Universe 7.4, hard-code fields merely to satisfy tests, invent fields/IDs, mutate Road LTL/reference models, create crosswalks, perform R0.1C ownership work, promote CURRENT/LATEST, or resume P6 work.
+- `R0.1B` is **SUSPENDED_PENDING_R0_1A_R_QA**. Its implementation and determination evidence remains governed. After R0.1A-R independent QA passes, R0.1B may return only when governance explicitly re-authorizes it for final authority/canonical-asset closure.
+- `R0.1C` remains **BLOCKED_UNTIL_R0_1B_FINAL_QA**. Until R0.1C approval use `UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT` for unresolved daughter references.
+
+## R0.1A-R implementation invariants
+- Preserve R0.1A and R0.1B evidence byte-for-byte.
+- Create a fresh `PRE_CHANGE_BASELINE` before any remediation mutation.
+- Do not target 61 structures, 1,330 records or any historical count. Derive corrected counts from source and classification rules.
+- Do not special-case `description` as a manual patch; fix the declaration-expression capture mechanism generically.
+- `state` must remain visible in audit/inventory evidence as runtime/UI state even though it is excluded from canonical semantics.
+- Correct the prior id-only divergence detector using entity-aware identity such as `(entityKind, id)` or a deterministic equivalent supported by the source structure.
+- Carry certified machine-readable Universe dependencies onto governed repository paths or otherwise make them deterministically resolvable by path/hash/lineage from the governance branch. Do not create uncontrolled duplicate authority.
+- If corrected extraction contradicts any R0.1B determination, stop and report the conflict; do not resolve it architecturally yourself.
 
 ## Architecture and source-integrity rule
 Frozen architecture outranks implementation convenience. The recovery standard is a certification/recovery overlay, not redesign authority.

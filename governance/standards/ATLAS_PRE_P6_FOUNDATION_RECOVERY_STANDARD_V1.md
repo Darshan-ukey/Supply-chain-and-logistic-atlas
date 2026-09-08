@@ -2,7 +2,7 @@
 
 Status: OWNER_AUTHORIZED_RECOVERY_STANDARD  
 Effective: 8 September 2026  
-Current revision: R0.1A independently QA-certified; R0.1B authorized.  
+Current revision: R0.1B discovered a governed R0.1A materialization defect; R0.1A-R authorized for deterministic remediation.  
 Applies before any further P6.2/P6.3/P6.4/P6.5 execution.
 
 ## 1. Purpose
@@ -15,9 +15,11 @@ Every recovery stage also follows `governance/standards/ATLAS_ASSET_CUSTODY_AND_
 ## 2. Current disposition
 - Governance architecture, contracts, Canvas/Daughter/Ask/Trace projection architecture remain intact.
 - R0.1A independently certified a reproducible mechanical Universe materialization under governed GitHub and Drive custody: three retained physical HTML copies, two distinct source hashes, 113 independently inventoried module-scope declarations, 61 data-bearing structures materialized, 1,330 records, and 0 unresolved extraction targets.
-- Universe release shell 7.3 still contains embedded metadata self-declaring semantic payload 7.2.0. Release/semantic identity and authority remain unresolved and are owned by R0.1B.
-- Three structures differ across the retained source copies (`defaults`, `liveModuleRoutes`, `moduleCoverageStatus`); R0.1A records those differences without classifying them. R0.1B determines whether they are semantic, presentation, build-state or noise.
-- Construction-boundary field-set divergence is reproducibly observed across 189 records reachable from multiple structures. R0.1B must determine the canonical payload/construction boundary without inventing or dropping fields by assumption. The materialized `state` structure must likewise be classified as canonical semantic content or runtime/UI state in R0.1B.
+- R0.1B subsequently identified a governed defect in that certified materialization: `systemRecords` and `businessObjectRecords` were captured before completion of declaration-level chained transforms, omitting source-declared `description` fields from 187 records. This does not indicate lost Universe source semantics; it is a deterministic extraction-boundary defect.
+- R0.1B also determined that `state` is `RUNTIME_UI_STATE` and should be excluded from the canonical semantic payload, and that two of the 189 prior divergence findings were detector artifacts caused by heterogeneous records sharing an `id`.
+- The R0.1A payload and all R0.1A/R0.1B evidence remain immutable historical evidence. The R0.1A payload is not eligible for canonical promotion pending R0.1A-R remediation and independent QA.
+- R0.1B's D1-D4/D6 determinations remain governed evidence. R0.1B is suspended pending remediation and will return for final authority closure only after R0.1A-R independent QA passes.
+- Universe release shell 7.3 and semantic payload 7.2.0 remain separate governed identities; unsupported relabeling is prohibited.
 - Road LTL `a5-*` and `scp-*` references must not be presumed missing Universe identifiers until governing-layer ownership is established in R0.1C.
 - Road LTL 1.4 package/module/Operational Knowledge were subsequently recovered and hash-verified outside final governed repo custody. They are no longer treated as unrecoverable; R0.2 must place them in governed custody and re-certify dependent materialization.
 - Effective Road LTL 1.5 is 21 unchanged tasks inherited from 1.4 plus direct governed LTL-03 1.5 override; `taskId`/`id` drift requires governed normalization.
@@ -29,7 +31,7 @@ Every recovery stage also follows `governance/standards/ATLAS_ASSET_CUSTODY_AND_
 
 ## 3. Permanent recovery principles
 1. Preserve before repair: historical frozen/certified artifacts are immutable evidence; corrections are supersessions/materializations with explicit lineage.
-2. No count-target reconstruction: historical P6.1 counts are evidence, never rebuild targets.
+2. No count-target reconstruction: historical counts are evidence, never rebuild targets.
 3. No business-knowledge fabrication: missing knowledge remains a governed gap until evidenced.
 4. Dependency closure is mandatory: required base/overlay/source/schema/tooling/live representation must resolve.
 5. Physical existence matters: a pointer or completion note is not a substitute for the actual machine-readable payload where one is required.
@@ -40,6 +42,7 @@ Every recovery stage also follows `governance/standards/ATLAS_ASSET_CUSTODY_AND_
 10. Classification accuracy is mandatory: `FROZEN`, `COMPLETE`, `REFERENCE`, `DELTA`, `CANDIDATE`, etc. must reflect actual evidence and dependency state.
 11. Asset custody checkpoints are mandatory: `PRE_CHANGE_BASELINE` → `POST_IMPLEMENTATION_PRE_QA` → `POST_QA_GOVERNED_STATE`.
 12. Any architecture/governance/recovery-path/authorization/certification-rule change must be committed to the governance branch before implementation agents act. Chat alone is not execution authority.
+13. Discovery of a new governed defect after certification does not permit rewriting historical evidence. A discrete remediation stage must supersede the affected candidate with explicit lineage.
 
 ## 4. Certification dimensions
 An asset is not `FROZEN_COMPLETE` because a hash or CI run exists. Assess all applicable dimensions:
@@ -66,33 +69,47 @@ Status: COMPLETE
 Status: IN_PROGRESS_VIA_SUBSTAGES
 
 #### R0.1A — Universe Semantic Materialization
-Status: COMPLETE — INDEPENDENT QA PASS
+Status: COMPLETE — HISTORICAL QA PASS / SUPERSEDED FOR CANONICAL PROMOTION
 
-Certified result: 61/61 data-bearing structures materialized, 1,330 records, 0 unresolved extraction targets; exact candidate custody mirrored and hash-verified in Drive. Checkpoint C: `governance/recovery/R0.1A/POST_QA_GOVERNED_STATE.json`.
+Certified result at the time of QA: 61/61 data-bearing structures materialized, 1,330 records, 0 unresolved extraction targets; exact candidate custody mirrored and hash-verified in Drive. Checkpoint C: `governance/recovery/R0.1A/POST_QA_GOVERNED_STATE.json`.
 
-R0.1A mechanically materialized existing Universe content without semantic redesign, unsupported version relabeling, invented IDs, crosswalk creation, daughter mutation, P6.1/WorkDefinition/Ocean/Canvas work, or authority selection. The earlier 52-structure / `95d976ff...` materialization is superseded and must not be reused.
+R0.1B later discovered D5/D6 defects affecting canonical-promotion eligibility. R0.1A artifacts remain immutable evidence and must not be overwritten, relabeled or silently replaced.
 
-#### R0.1B — Universe Release Identity & Authority Reconciliation
+#### R0.1A-R — Universe Semantic Re-materialization Correction
 Status: AUTHORIZED
 
-Use the independently certified R0.1A evidence to:
-- determine whether the three source-copy differences are semantic, presentation, build-state or noise;
-- establish authoritative source-copy or normalized-payload authority;
-- verify release-note/lineage evidence for release shell 7.3 versus embedded semantic 7.2.0;
-- define governed `releaseVersion` and `semanticPayloadVersion` semantics;
-- determine the canonical construction boundary for the 189 field-set-divergent records without fabricating fields;
-- determine whether materialized `state` belongs in canonical semantic payload or runtime/UI state;
-- recommend exact canonical/frozen hashes, asset identities and supersession treatment.
+Objective: correct the R0.1A materialization mechanically using the R0.1B construction-boundary and runtime-state determinations without changing Universe source semantics.
 
-No semantic rewrite, unsupported relabeling, Universe 7.4, reference-model mutation, invented fields/IDs, or R0.1C ownership decisions.
+Required treatment:
+- create `PRE_CHANGE_BASELINE` before implementation;
+- preserve all R0.1A/R0.1B artifacts byte-for-byte;
+- canonical capture boundary is the end of the full declaration expression, including chained transforms inside that expression, excluding later separate mutation statements;
+- correct `systemRecords` and `businessObjectRecords` generically so source-declared `description` is included while later-added `domainIds` remain excluded where applicable;
+- classify `state` as `RUNTIME_UI_STATE`, exclude it from canonical semantic payload, and retain explicit inventory evidence of that classification;
+- correct divergence detection so heterogeneous entity types are not compared by `id` alone;
+- re-run the independent declaration inventory and all retained-copy materialization without targeting 61 structures, 1,330 records or any historical result;
+- generate new corrected hashes and explicit old→new supersession lineage;
+- prove no source field is invented and no historical evidence is mutated;
+- establish governed repository-path/hash/lineage dependency closure for certified machine-readable Universe inputs required by subsequent stages;
+- close R0.1A governed-state metadata gaps using supplemental evidence, not by rewriting historical Checkpoint C;
+- create `POST_IMPLEMENTATION_PRE_QA` and stop at `AWAITING_INDEPENDENT_QA`.
+
+Excluded: semantic redesign, unsupported relabeling, Universe 7.4, hard-coded special-case field insertion, invented fields/IDs, Road LTL/reference mutation, crosswalk creation, R0.1C ownership decisions, P6 work, canonical pointer promotion.
+
+#### R0.1B — Universe Release Identity & Authority Reconciliation
+Status: SUSPENDED_PENDING_R0_1A_R_QA
+
+R0.1B implementation evidence remains valid and records: source-copy differences as presentation/navigation build state; release shell 7.3 over semantic payload 7.2.0 as intentional two-axis versioning; the full-declaration-expression construction boundary; D5 extraction-boundary defect; D6 runtime/UI `state` classification.
+
+After R0.1A-R independent QA, R0.1B returns only for final authority/canonical-asset closure against the corrected payload. It may not bypass remediation or self-authorize R0.1C.
 
 #### R0.1C — Canonical Reference Ownership Audit
-Status: BLOCKED_UNTIL_R0_1B_QA
+Status: BLOCKED_UNTIL_R0_1B_FINAL_QA
 Classify unresolved Road LTL references as Universe canonical, Daughter-local, OK, Canonical Information/Object, cross-layer or orphan. Determine `a5-ltl-*` and `scp-*` ownership. Recommend repair without mutation. Until QA use `canonicalReferenceResolution=UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT`.
 
 ### R0.2 — Road LTL Source Closure, Effective 1.5 & P6.0 Re-certification
 Status: BLOCKED_UNTIL_R0_1_QA
-Place recovered Road LTL 1.4 package/module/Operational Knowledge into governed GitHub/Drive custody with verified hashes; reconcile any historical-vs-current identity discrepancy without assumption; normalize `taskId`/`id` overlay handling without mutating source assets; deterministically materialize effective Road LTL 1.5; prove 21×1.4 + LTL-03×1.5 lineage; rerun ownership-aware reference checks; reproduce and re-certify P6.0 effective materialization from retained governed inputs/tooling. The historical source-vault ZIP is high-value evidence if recovered, but exact hash-verified underlying assets can close dependency custody without making that ZIP a mandatory blocker.
+Place recovered Road LTL 1.4 package/module/Operational Knowledge into governed GitHub/Drive custody with verified hashes; reconcile any historical-vs-current identity discrepancy without assumption; normalize `taskId`/`id` overlay handling without mutating source assets; deterministically materialize effective Road LTL 1.5; prove 21×1.4 + LTL-03×1.5 lineage; rerun ownership-aware reference checks; reproduce and re-certify P6.0 effective materialization from retained governed inputs/tooling.
 
 ### R0.3 — Road LTL Operational Knowledge + Canonical Information Hardening
 Status: BLOCKED_UNTIL_R0_2_QA
@@ -100,18 +117,18 @@ Retain strong LTL OK; complete/classify objects/documents gaps; distinguish reus
 
 ### R0.4 — Generic Recursive Decomposition Compiler & Road LTL Re-certification
 Status: BLOCKED_UNTIL_R0_3_QA
-Preserve historical P6.1 evidence. Search for/recover original readable bundle/decoder/generator and CI artifacts where available. Exact decoder recovery is preferred if it proves the original content without invention, but reproducibility still requires retained deterministic generation capability or a newly governed compiler. Run governed effective Road LTL 1.5 through a module-neutral recursive compiler; stop by executability criterion; derive counts honestly; persist via retained codec/schema; prove real protected readback; reconcile repo/live migrations. Never tune to 603/444/185/163/96.
+Preserve historical P6.1 evidence. Search for/recover original readable bundle/decoder/generator and CI artifacts where available. Exact decoder recovery is preferred if it proves the original content without invention, but reproducibility still requires retained deterministic generation capability or a newly governed compiler. Never tune to historical node/count totals.
 
 ### R0.5 — Ocean FCL/LCL 0.6 Source Closure & Operational Knowledge Depth Uplift
 Status: BLOCKED_UNTIL_R0_4_QA
-Before knowledge uplift, verify canonical Ocean FCL/LCL 0.6 source/package/module custody, exact identity and dependency closure. PUBLIC_SAFE materializations are evidence, not canonical private source. Then audit all 30 FCL + 30 LCL tasks against the LTL OK standard, curate genuine Ocean-specific knowledge/provenance, extend canonical objects/documents, and preserve unresolved gaps. Do not copy LTL semantics merely to satisfy coverage.
+Before knowledge uplift, verify canonical Ocean FCL/LCL 0.6 source/package/module custody, exact identity and dependency closure. PUBLIC_SAFE materializations are evidence, not canonical private source. Then audit all 30 FCL + 30 LCL tasks against the LTL OK standard and preserve unresolved gaps.
 
 ### R0.6 — Multi-Mode Decomposition Proof & Pre-P6 Readiness Certification
 Status: BLOCKED_UNTIL_R0_5_QA
-Run the same generic recursive compiler on Ocean FCL/LCL; prove module neutrality; certify Universe → Daughter → OK → Decomposition across Road LTL/FCL/LCL; reconcile GitHub/Drive/Supabase hashes/codecs/pointers/classifications; truthfully update registers; complete custody checkpoints; independent QA authorizes return to P6.2.
+Run the same generic recursive compiler on Ocean FCL/LCL; prove module neutrality; certify Universe → Daughter → OK → Decomposition across Road LTL/FCL/LCL; reconcile GitHub/Drive/Supabase hashes/codecs/pointers/classifications; complete independent pre-P6 QA.
 
 ## 6. Phase 6 resumption rule
-P6.2/P6.3/P6.4/P6.5 remain suspended/blocked while recovery is active. P6.2 may resume only after R0.6 independent QA using re-certified decomposition inputs. Former P6.4 generic-decomposition/Ocean scope is absorbed by R0.4–R0.6 and must be re-scoped before execution.
+P6.2/P6.3/P6.4/P6.5 remain suspended/blocked while recovery is active. P6.2 may resume only after R0.6 independent QA using re-certified decomposition inputs.
 
 ## 7. Queue identifier rule
 Canonical queue identifier is `stageId`; `currentStageId` selects current work. `id` is backward-compatible alias only. `stageId` and `status` are separate fields.
