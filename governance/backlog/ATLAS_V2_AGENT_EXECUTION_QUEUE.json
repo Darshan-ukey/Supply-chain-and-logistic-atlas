@@ -1,7 +1,8 @@
 {
-  "schemaVersion": "atlas-v2-agent-execution-queue-v1",
-  "updatedAt": "2026-09-08T00:00:00+05:30",
+  "schemaVersion": "atlas-v2-agent-execution-queue-v2",
+  "updatedAt": "2026-09-08T09:28:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
+  "recoveryStandardPath": "governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md",
   "roadmapPath": "governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md",
   "executionPolicy": {
     "readBeforeSelectingWork": true,
@@ -10,62 +11,127 @@
     "completionTransition": "AWAITING_INDEPENDENT_QA",
     "conflictPolicy": "STOP_AND_REPORT",
     "frozenArchitectureOverridesImplementationConvenience": true,
+    "recoveryStandardOverridesSuspendedPhase6Execution": true,
     "neverWorkDirectlyOnMain": true,
-    "neverRedesignFrozenCanvasWithoutOwnerApproval": true
+    "neverRedesignFrozenCanvasWithoutOwnerApproval": true,
+    "neverFabricateBusinessKnowledge": true,
+    "neverTargetHistoricalCountsDuringRebuild": true,
+    "neverMutateHistoricalCertifiedEvidence": true
   },
-  "currentPhase": "P6.2",
+  "mode": "PRE_P6_FOUNDATION_RECOVERY",
+  "currentPhase": "R0.1",
   "phases": [
     {
-      "id": "P6.2",
-      "name": "Canonical WorkDefinition Compilation — Road LTL 1.5",
+      "id": "R0.0",
+      "name": "Forensic Baseline & Recovery Governance",
+      "status": "COMPLETE",
+      "scope": ["pause P6.2", "record audit findings", "establish recovery architecture", "preserve historical evidence"]
+    },
+    {
+      "id": "R0.1",
+      "name": "Canonical Universe 7.3 Materialization & Referential Integrity",
       "status": "AUTHORIZED",
-      "scope": ["road-ltl@1.5", "certified P6.1 decomposition", "canonical WorkDefinition compiler", "verifier", "protected persistence/API", "PUBLIC_SAFE status"],
-      "excluded": ["Ocean FCL/LCL", "Malkom projection", "Client Binding", "Canvas redesign", "Daughter redesign", "P6.1 regeneration"],
+      "scope": ["authoritative Universe 7.3 inspection", "machine-readable canonical Universe", "schema/materializer/validator", "Road LTL canonical reference reconciliation", "referential-integrity CI", "hash/registry evidence"],
+      "excluded": ["Universe semantic redesign", "inventing absent canonical IDs", "Road LTL OK rewrite", "P6.1 regeneration", "WorkDefinition compilation", "Ocean uplift", "Canvas redesign"],
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "id": "R0.2",
+      "name": "Road LTL Source Closure & Effective 1.5 Re-certification",
+      "status": "BLOCKED_UNTIL_R0_1_QA",
+      "scope": ["governed Road LTL 1.4 custody", "taskId/id overlay normalization", "deterministic road-ltl@1.5 materialization", "21x1.4 + LTL-03x1.5 lineage", "Universe reference recheck"],
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "id": "R0.3",
+      "name": "Road LTL Operational Knowledge + Canonical Information Hardening",
+      "status": "BLOCKED_UNTIL_R0_2_QA",
+      "scope": ["22-task OK coverage matrix", "objects/documents gaps", "recovery/jurisdiction classification", "canonical BOL sections/fields/cardinality/validation/relationships/provenance/applicability/client-binding requirements", "explicit unresolved gaps"],
+      "excluded": ["client-specific canonical values", "fabricated operational knowledge"],
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "id": "R0.4",
+      "name": "Generic Recursive Decomposition Compiler & Road LTL Re-certification",
+      "status": "BLOCKED_UNTIL_R0_3_QA",
+      "scope": ["historical P6.1 evidence preservation", "optional exact decoder recovery", "module-neutral recursive compiler", "executability stop criterion", "Road LTL re-decomposition", "derived-count certification", "governed persistence/readback", "repo/live schema reconciliation"],
+      "excluded": ["tuning to 603/444/185/163/96", "manual decomposition invention", "WorkDefinition compilation"],
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "id": "R0.5",
+      "name": "Ocean FCL/LCL 0.6 Operational Knowledge Depth Uplift",
+      "status": "BLOCKED_UNTIL_R0_4_QA",
+      "scope": ["30 FCL + 30 LCL OK audit", "Ocean-specific knowledge research/curation", "triggers/inputs/rules/exceptions/recovery/jurisdiction/evidence/actors/systems/controls/gaps", "Ocean canonical objects/documents", "provenance"],
+      "excluded": ["copying LTL knowledge to satisfy coverage", "manual WorkDefinitions"],
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "id": "R0.6",
+      "name": "Multi-Mode Decomposition Proof & Pre-P6 Readiness Certification",
+      "status": "BLOCKED_UNTIL_R0_5_QA",
+      "scope": ["generic decomposition of Ocean FCL", "generic decomposition of Ocean LCL", "module-neutral proof", "Universe-to-Decomposition certification matrix across LTL/FCL/LCL", "truthful registry reclassification", "pre-P6 readiness QA"],
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "id": "P6.2",
+      "name": "Canonical WorkDefinition Compilation",
+      "status": "SUSPENDED_BY_RECOVERY_GATE",
+      "scope": ["retain existing P6.2 implementation WIP", "resume only after R0.6 independent QA using re-certified decomposition inputs"],
       "qaRequiredBeforeNext": true
     },
     {
       "id": "P6.3",
       "name": "Identity, Authorization & Public/Protected Certification",
       "status": "BLOCKED_UNTIL_P6_2_QA",
-      "scope": ["Supabase Auth admin provisioning", "login/session/logout", "capability assignment", "PUBLIC_SAFE certification", "protected API certification", "401/403/fail-closed tests"],
       "qaRequiredBeforeNext": true
     },
     {
       "id": "P6.4",
-      "name": "Generic Recursive Decomposition Compiler + Ocean 0.6 Execution Depth",
-      "status": "BLOCKED_UNTIL_P6_3_QA",
-      "scope": ["generic decomposition compiler", "P6.1 reproducibility proof", "ocean-fcl@0.6 30 A5", "ocean-lcl@0.6 30 A5", "Ocean canonical WorkDefinitions through generic P6.2 compiler"],
-      "excluded": ["manual Ocean WorkDefinitions", "Ocean-specific generic-compiler logic", "runtime/client-specific semantics"],
-      "qaRequiredBeforeNext": true
+      "name": "Former Generic Recursive Decomposition + Ocean Execution Depth",
+      "status": "TO_BE_RESCOPED_AFTER_RECOVERY",
+      "note": "Former scope is absorbed by R0.4-R0.6. Do not execute old P6.4 as written."
     },
     {
       "id": "P6.5",
       "name": "Atlas V2 Integration & Production Certification",
-      "status": "BLOCKED_UNTIL_P6_4_QA",
-      "scope": ["Canvas V2", "Page 0", "Road LTL 1.5", "Ocean FCL 0.6", "Ocean LCL 0.6", "Daughter execution depth", "Ask/Trace boundaries", "public/admin behavior", "Vercel deployment parity", "production smoke", "release governance"],
+      "status": "BLOCKED_UNTIL_PRIOR_QA",
       "qaRequiredBeforeNext": true
     },
     {
       "id": "ATLAS_V2_GO_LIVE",
       "name": "Atlas V2.0 Production Promotion",
-      "status": "BLOCKED_UNTIL_P6_5_QA",
+      "status": "BLOCKED",
       "ownerApprovalRequired": true
     }
   ],
-  "debts": [
-    {
-      "id": "DEBT-01",
-      "name": "P6.1 Decomposition Reproducibility",
-      "status": "MUST_BE_RESOLVED_IN_P6_4",
-      "description": "Certified Road LTL 1.5 P6.1 output is governed/hash-anchored, but the original 603-node decomposition generator implementation is not retained in GitHub."
-    }
+  "certificationDimensions": [
+    "SEMANTICS",
+    "COVERAGE",
+    "EVIDENCE",
+    "DEPENDENCY_CLOSURE",
+    "REPRODUCIBILITY",
+    "REFERENTIAL_INTEGRITY",
+    "LIVE_READABILITY",
+    "SECURITY_BOUNDARY",
+    "REGRESSION",
+    "DEPLOYMENT_PARITY"
   ],
-  "deferredPostV2": [
-    "Universal Adapter Contract",
-    "Malkom Adapter / Domain Warehouse projection",
-    "runtime adapter compiler/verifier",
-    "Client Binding + runtime connector",
-    "controlled Malkom execution proof",
-    "governed runtime measurement / feedback loop"
+  "historicalFindings": [
+    {
+      "id": "FINDING-UNIVERSE-01",
+      "status": "RECOVERY_REQUIRED",
+      "description": "Universe 7.3 lacks a governed machine-readable canonical materialization for deterministic daughter reference resolution."
+    },
+    {
+      "id": "FINDING-P6-1-01",
+      "status": "RECERTIFICATION_REQUIRED",
+      "description": "Historical P6.1 generator is not retained and live protected payload is not readable by retained tooling; historical certification remains immutable evidence but is insufficient for reproducibility claims."
+    },
+    {
+      "id": "FINDING-OCEAN-01",
+      "status": "RECOVERY_REQUIRED",
+      "description": "Ocean FCL/LCL 0.6 are below Road-LTL-equivalent Operational Knowledge/decomposition depth and cannot claim execution-depth parity before uplift."
+    }
   ]
 }
