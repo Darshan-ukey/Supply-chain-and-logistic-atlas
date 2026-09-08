@@ -1,0 +1,96 @@
+name: R0.1B Universe Final Authority Closure
+
+on:
+  push:
+    branches:
+      - atlas-recovery-r0-1b-final-authority-closure
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Environment
+        run: |
+          echo "node: $(node --version)"
+          echo "commit: ${GITHUB_SHA}"
+
+      - name: Assert all governed evidence is byte-identical to the governance baseline
+        run: |
+          git fetch origin atlas-governance-registry-v2.1 --depth=1
+          for f in governance/recovery/R0.1A/PRE_CHANGE_BASELINE.json \
+                   governance/recovery/R0.1A/POST_IMPLEMENTATION_PRE_QA.json \
+                   governance/recovery/R0.1A/POST_QA_GOVERNED_STATE.json \
+                   governance/recovery/R0.1A-R/PRE_CHANGE_BASELINE.json \
+                   governance/recovery/R0.1A-R/POST_IMPLEMENTATION_PRE_QA.json \
+                   governance/recovery/R0.1A-R/POST_QA_GOVERNED_STATE.json \
+                   governance/recovery/R0.1A-R/UNIVERSE_MATERIALIZATION_SUPERSESSION.json \
+                   governance/recovery/R0.1B/UNIVERSE_IDENTITY_AUTHORITY_DETERMINATION.json \
+                   governance/recovery/R0.1B/POST_IMPLEMENTATION_PRE_QA.json \
+                   governance/registry/UNIVERSE_MACHINE_READABLE_INPUT_REGISTRY.json \
+                   data/universe/universe-semantic-payload.json \
+                   data/universe/r0-1a-r/universe-semantic-payload.json \
+                   data/universe/r0-1a-r/universe-extraction-report.json \
+                   data/universe/r0-1a-r/universe-copy-comparison.json \
+                   data/universe/r0-1a-r/universe-declaration-inventory.json \
+                   tools/universe/extract-universe-semantics.mjs \
+                   tests/r0-1a-universe-materialization.mjs \
+                   tests/r0-1a-r-universe-rematerialization.mjs ; do
+            if ! git diff --quiet origin/atlas-governance-registry-v2.1 -- "$f"; then
+              echo "R0.1B closure must not modify governed evidence: $f"; exit 1;
+            fi
+            echo "unchanged: $f"
+          done
+
+      - name: R0.1B final authority closure certification
+        run: node tests/r0-1b-final-authority-closure.mjs
+
+      - name: R0.1B original determination regression (must still hold)
+        run: node tests/r0-1b-universe-identity-authority.mjs
+
+      - name: Assert the bound semantic authority hash is live and reproducible
+        run: |
+          node tools/universe/extract-universe-semantics.mjs reference/universe-v7.3.html \
+            --out /tmp/payload.json --report /tmp/report.json --release-shell 7.3
+          diff -q /tmp/payload.json data/universe/r0-1a-r/universe-semantic-payload.json
+          node -e '
+            const fs=require("fs");
+            const SEM="82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d";
+            const r=JSON.parse(fs.readFileSync("/tmp/report.json","utf8"));
+            if(r.hashes.semanticStructures!==SEM)throw new Error("semantic authority hash drifted: "+r.hashes.semanticStructures);
+            const f=JSON.parse(fs.readFileSync("governance/recovery/R0.1B/UNIVERSE_FINAL_AUTHORITY_CLOSURE.json","utf8"));
+            if(f.finalAuthority.semanticPayloadAuthority.semanticStructuresSha256!==SEM)throw new Error("closure binds the wrong hash");
+            console.log("semantic authority hash verified live: "+SEM);
+          '
+
+      - name: Assert closure performed no promotion and no R0.1C work
+        run: |
+          node -e '
+            const fs=require("fs");
+            const f=JSON.parse(fs.readFileSync("governance/recovery/R0.1B/UNIVERSE_FINAL_AUTHORITY_CLOSURE.json","utf8"));
+            for(const [k,v] of Object.entries(f.promotion)){ if(k==="note")continue;
+              if(!["NOT_PERFORMED","UNCHANGED"].includes(v))throw new Error("premature promotion: "+k+"="+v); }
+            if(f.referenceResolution.status!=="UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT")throw new Error("R0.1C work must not begin");
+            const b=JSON.parse(fs.readFileSync("governance/recovery/R0.1B/POST_IMPLEMENTATION_PRE_QA_FINAL_CLOSURE.json","utf8"));
+            if(b.nextAuthorization!=="AWAITING_INDEPENDENT_QA")throw new Error("stage must stop at AWAITING_INDEPENDENT_QA");
+            if(b.qaDisposition!==null)throw new Error("implementation agent must not set qaDisposition");
+            if(fs.existsSync("governance/recovery/R0.1B/POST_QA_GOVERNED_STATE.json"))throw new Error("Checkpoint C is not written by the implementation agent");
+            console.log("scope and stop condition verified");
+          '
+
+      - name: Assert no canonical pointer promoted
+        run: |
+          for f in governance/frozen-assets/ASSET_REGISTER.json governance/frozen-assets/CURRENT.json governance/frozen-assets/LATEST.md; do
+            if ! git diff --quiet origin/atlas-governance-registry-v2.1 -- "$f"; then
+              echo "R0.1B closure must not modify $f"; exit 1;
+            fi
+            echo "unchanged: $f"
+          done

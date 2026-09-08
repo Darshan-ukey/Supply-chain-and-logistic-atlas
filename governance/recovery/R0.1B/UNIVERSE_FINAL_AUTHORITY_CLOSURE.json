@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "atlas-universe-final-authority-closure-v1",
+  "stageId": "R0.1B",
+  "recordType": "FINAL_AUTHORITY_CLOSURE",
+  "status": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+  "objective": "Finalize Universe release/semantic authority against the independently certified R0.1A-R corrected materialization.",
+  "relationshipToOriginalDetermination": {
+    "originalRecord": "governance/recovery/R0.1B/UNIVERSE_IDENTITY_AUTHORITY_DETERMINATION.json",
+    "originalSha256": "cf1b70116d1899a32b439df02efefc5f3562224635301a20c018a5080a5f792d",
+    "originalModified": false,
+    "treatment": "Preserved unchanged as historical determination evidence. This is a separate closure record, not a revision."
+  },
+  "inputs": {
+    "governance/recovery/R0.1A-R/POST_QA_GOVERNED_STATE.json": "2cc398967237ff63e13294979ec8a377432d75af736a40d1e9db4a6278fcf78b",
+    "data/universe/r0-1a-r/universe-semantic-payload.json": "b0d25d9770eb71b012bf2ef56fa1eff9e64e5b4815c75f1899d19db076153b37",
+    "data/universe/r0-1a-r/universe-extraction-report.json": "1d0d901089e6b4f4dd06ef2226d50445e0785b29765d310c2f34dc69762410fe",
+    "data/universe/r0-1a-r/universe-copy-comparison.json": "17c59e32237a287ac6e3e7e74e8b2f7622abb34112d78e53f7d0058329389acb",
+    "data/universe/r0-1a-r/universe-declaration-inventory.json": "b68c5566facf0fed57341d4bd0724f0010e5e66145a98b77973d46e34163d12d",
+    "governance/registry/UNIVERSE_MACHINE_READABLE_INPUT_REGISTRY.json": "eadeef1d8ee18bafbf51ac279eec013cfba2ce03a338714d03a34af7fb305e7c"
+  },
+  "determinationReverification": {
+    "method": "Re-evaluated the original D1-D3 determinations against the corrected R0.1A-R artifacts and the retained sources. No determination was re-derived or re-decided.",
+    "D1": {
+      "determination": "PRESENTATION_NAVIGATION_BUILD_STATE",
+      "status": "CONFIRMED_UNCHANGED",
+      "evidence": "Corrected materialization yields the same three differing structures ['defaults', 'liveModuleRoutes', 'moduleCoverageStatus'] across 3 retained copies, with 57 structures identical and 2 distinct source hashes. The correction introduced no new copy-level difference and removed none."
+    },
+    "D2": {
+      "determination": "RELEASE_SHELL_AUTHORITY_PLUS_NORMALIZED_PAYLOAD_SEMANTIC_AUTHORITY",
+      "status": "CONFIRMED_UNCHANGED",
+      "evidence": "Recorded authority hash 31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd still matches the documented V7.3 release shell, and the later repackage hash d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef still matches both retained copies of that build."
+    },
+    "D3": {
+      "determination": "TWO_AXIS_VERSIONING_CORRECT_AS_AUTHORED",
+      "status": "CONFIRMED_UNCHANGED",
+      "evidence": "Embedded semantic identity remains 7.2.0 across every retained copy under corrected extraction; the release shell remains 7.3. No relabeling performed."
+    },
+    "D4": {
+      "status": "REMEDIATED_BY_R0_1A_R",
+      "evidence": "Corrected extractor captures the complete declaration expression; systemRecords and businessObjectRecords carry the source-declared description and exclude post-declaration domainIds.",
+      "certifiedBy": "R0.1A-R independent QA PASS"
+    },
+    "D5": {
+      "status": "REMEDIATED_BY_R0_1A_R",
+      "evidence": "Field-set divergence is 0 under the corrected entity-aware identity rule; the two prior findings are recorded as distinct collections sharing an id.",
+      "certifiedBy": "R0.1A-R independent QA PASS"
+    },
+    "D6": {
+      "status": "REMEDIATED_BY_R0_1A_R",
+      "evidence": "state is excluded from the canonical payload and retained with its governing determination in excludedRuntimeState and the declaration inventory.",
+      "certifiedBy": "R0.1A-R independent QA PASS"
+    },
+    "contradictionsFound": 0,
+    "conclusion": "No corrected-extraction evidence contradicts any original R0.1B determination. Closure proceeds."
+  },
+  "finalAuthority": {
+    "semanticPayloadAuthority": {
+      "boundTo": "NORMALIZED_R0_1A_R_PAYLOAD",
+      "repositoryPath": "data/universe/r0-1a-r/universe-semantic-payload.json",
+      "semanticStructuresSha256": "82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d",
+      "fileSha256": "b0d25d9770eb71b012bf2ef56fa1eff9e64e5b4815c75f1899d19db076153b37",
+      "producingStage": "R0.1A-R",
+      "extractorVersion": "atlas-universe-semantic-extractor-1.1.0",
+      "structures": 60,
+      "records": 1327,
+      "rationale": "All retained copies yield identical Universe semantics, so authority attaches to the normalized machine-readable payload rather than to any single HTML copy. The D2 precondition requiring D5 remediation is satisfied by R0.1A-R independent QA PASS.",
+      "preconditionSatisfied": true,
+      "status": "BOUND_PENDING_INDEPENDENT_QA_AND_GOVERNED_PROMOTION"
+    },
+    "governedIdentities": {
+      "releaseVersion": {
+        "value": "7.3",
+        "meaning": "Frozen release shell: interaction hierarchy, navigation and presentation.",
+        "separateFrom": "semanticPayloadVersion"
+      },
+      "semanticPayloadVersion": {
+        "value": "7.2.0",
+        "meaning": "Canonical business/ontology/source semantics carried by the shell.",
+        "separateFrom": "releaseVersion"
+      },
+      "reconciliation": "FINALIZED_AS_TWO_DISTINCT_GOVERNED_IDENTITIES",
+      "prohibited": "Relabeling the 7.2.0 semantic payload as 7.3, or collapsing the two identities into one version number."
+    },
+    "releaseShellAuthority": {
+      "authoritativeCopy": {
+        "repositoryPath": "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html",
+        "sha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+        "basis": "Navigation state matches the daughter set documented in UNIVERSE_V7_3_RELEASE_NOTES.md and packaged in the same release folder."
+      },
+      "retainedLaterRepackage": {
+        "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+        "repositoryPaths": [
+          "reference/universe-v7.3.html",
+          "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html"
+        ],
+        "treatment": "RETAINED_AS_GOVERNED_EVIDENCE_NOT_AUTHORITATIVE_SHELL",
+        "basis": "Identical Universe semantics; navigation advanced to the daughter build it ships with. Not invalid and not discarded."
+      },
+      "discardedCopies": "NONE"
+    },
+    "supersessionOfDefectiveMaterialization": {
+      "supersededArtifact": {
+        "stage": "R0.1A",
+        "repositoryPath": "data/universe/universe-semantic-payload.json",
+        "semanticStructuresSha256": "2d6405c534b96f4054cb87ac2428a0a7a1bf4626334a86e5cc96ec342add4043",
+        "classification": "IMMUTABLE_HISTORICAL_EVIDENCE_NOT_ELIGIBLE_FOR_CANONICAL_PROMOTION",
+        "retained": true,
+        "modified": false
+      },
+      "supersedingArtifact": {
+        "stage": "R0.1A-R",
+        "semanticStructuresSha256": "82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d"
+      },
+      "toolLineage": {
+        "superseded": "atlas-universe-semantic-extractor-1.0.0",
+        "authoritative": "atlas-universe-semantic-extractor-1.1.0"
+      },
+      "treatment": "FINALIZED_SUPERSESSION_WITH_BOTH_GENERATIONS_RETAINED"
+    }
+  },
+  "derivedFacts": {
+    "moduleScopeDeclarations": 113,
+    "dataBearingDeclarations": 61,
+    "materializedStructures": 60,
+    "totalRecords": 1327,
+    "governedRuntimeStateExclusions": [
+      "state"
+    ],
+    "unresolved": 0
+  },
+  "outOfScopeConfirmations": [
+    "R0.1A-R materialization was not rerun or modified.",
+    "No historical R0.1A or R0.1B evidence was changed.",
+    "No R0.1C reference-ownership work performed; daughter references remain UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT.",
+    "No CURRENT/LATEST/ASSET_REGISTER promotion.",
+    "No Universe 7.4.",
+    "No invented identifiers, fields or mappings.",
+    "No Road LTL or reference-model change.",
+    "No P6 work."
+  ],
+  "promotion": {
+    "canonicalPromotion": "NOT_PERFORMED",
+    "currentPointer": "UNCHANGED",
+    "latestPointer": "UNCHANGED",
+    "assetRegister": "UNCHANGED",
+    "note": "Authority is bound in evidence only. Governed promotion of CURRENT/LATEST/ASSET_REGISTER remains a separate authorized action after independent QA."
+  },
+  "referenceResolution": {
+    "status": "UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT",
+    "owner": "R0.1C"
+  }
+}
