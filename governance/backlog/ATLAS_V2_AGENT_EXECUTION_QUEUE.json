@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "atlas-v2-agent-execution-queue-v6",
-  "updatedAt": "2026-09-08T11:23:00+05:30",
+  "schemaVersion": "atlas-v2-agent-execution-queue-v7",
+  "updatedAt": "2026-09-08T12:38:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "recoveryStandardPath": "governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md",
   "assetCustodyStandardPath": "governance/standards/ATLAS_ASSET_CUSTODY_AND_GOVERNANCE_SYNC_STANDARD_V1.md",
@@ -27,8 +27,8 @@
     "subStageAuthorizationIsBinding": true
   },
   "mode": "PRE_P6_FOUNDATION_RECOVERY",
-  "currentStageId": "R0.1B",
-  "currentPhase": "R0.1B",
+  "currentStageId": "R0.1A-R",
+  "currentPhase": "R0.1A-R",
   "phases": [
     {
       "stageId": "R0.0",
@@ -48,8 +48,8 @@
           "stageId": "R0.1A",
           "id": "R0.1A",
           "name": "Universe Semantic Materialization",
-          "status": "COMPLETE",
-          "qaDisposition": "PASS",
+          "status": "COMPLETE_SUPERSEDED_FOR_CANONICAL_PROMOTION_BY_R0_1A_R",
+          "qaDisposition": "PASS_AT_TIME_OF_CERTIFICATION_NEW_DEFECT_DISCOVERED_BY_R0_1B",
           "postQaGovernedStatePath": "governance/recovery/R0.1A/POST_QA_GOVERNED_STATE.json",
           "objective": "Mechanically materialize the existing governed Universe semantic content without changing meaning or inventing identifiers.",
           "certifiedResult": {
@@ -60,28 +60,43 @@
             "recordCount": 1330,
             "unresolvedExtractionCount": 0,
             "semanticStructuresSha256": "2d6405c534b96f4054cb87ac2428a0a7a1bf4626334a86e5cc96ec342add4043",
-            "driveCustodyStatus": "MIRRORED_AND_VERIFIED"
+            "driveCustodyStatus": "MIRRORED_AND_VERIFIED",
+            "canonicalPromotionEligibility": "NO_NEW_DEFECT_R0_1B_D5_D6"
           },
           "scope": ["inspect retained Universe HTML copies", "record source SHA-256", "retain deterministic extractor/materializer", "extract mechanically recoverable embedded structures", "perform deterministic dependent-structure extraction without inference", "produce normalized machine-readable semantic payload", "preserve dual lineage release 7.3 / semantic payload 7.2.0", "record extraction completeness against independent denominator", "compare normalized outputs without interpretation", "add reproducibility tests/hashes", "complete custody checkpoints"],
           "excluded": ["Universe semantic redesign", "Universe 7.4", "inventing a5-* or scp-* identifiers", "crosswalk creation", "Road LTL reference mutation", "Road LTL OK rewrite", "P6.1 regeneration", "WorkDefinition compilation", "Ocean uplift", "Canvas redesign"],
           "qaRequiredBeforeNext": true
         },
         {
+          "stageId": "R0.1A-R",
+          "id": "R0.1A-R",
+          "name": "Universe Semantic Re-materialization Correction",
+          "status": "AUTHORIZED",
+          "objective": "Correct the R0.1A mechanical materialization using the R0.1B D4 construction-boundary rule and D6 runtime-state classification, without changing the underlying Universe semantics or historical evidence.",
+          "scope": ["create PRE_CHANGE_BASELINE before mutation", "preserve all R0.1A and R0.1B historical evidence byte-for-byte", "capture complete declaration expressions including chained transforms", "exclude later post-declaration mutation statements from canonical snapshots", "correct systemRecords and businessObjectRecords declaration-boundary capture generically", "include source-declared description fields and exclude later-added domainIds where applicable", "classify state as RUNTIME_UI_STATE and exclude it from canonical semantic payload while retaining auditable inventory evidence", "correct heterogeneous-record divergence detection using entity-aware identity", "rerun independent declaration inventory without targeting historical counts", "re-materialize all retained Universe copies and prove semantic equivalence/differences", "produce new payload/report/inventory/comparison hashes with explicit supersession lineage", "strengthen regression tests and CI", "establish governance-branch dependency closure for certified machine-readable Universe inputs using governed repository paths/hashes/lineage", "supplement R0.1A governed metadata gaps without rewriting historical Checkpoint C", "produce POST_IMPLEMENTATION_PRE_QA and stop at AWAITING_INDEPENDENT_QA"],
+          "excluded": ["Universe semantic redesign", "manual field insertion or special-case hard-coding to satisfy tests", "unsupported version relabeling", "Universe 7.4", "inventing fields or identifiers", "reference-model mutation", "crosswalk creation", "R0.1C reference-ownership decisions", "Road LTL mutation", "P6 work", "canonical CURRENT/LATEST promotion", "overwriting R0.1A or R0.1B evidence"],
+          "requiredInputs": ["governance/recovery/R0.1A/POST_QA_GOVERNED_STATE.json", "governance/recovery/R0.1B/UNIVERSE_IDENTITY_AUTHORITY_DETERMINATION.json", "governance/recovery/R0.1B/POST_IMPLEMENTATION_PRE_QA.json", "data/universe/universe-semantic-payload.json", "data/universe/universe-extraction-report.json", "data/universe/universe-copy-comparison.json", "data/universe/universe-declaration-inventory.json"],
+          "qaRequiredBeforeNext": true,
+          "completionTransition": "AWAITING_INDEPENDENT_QA"
+        },
+        {
           "stageId": "R0.1B",
           "id": "R0.1B",
           "name": "Universe Release Identity & Authority Reconciliation",
-          "status": "AUTHORIZED",
+          "status": "SUSPENDED_PENDING_R0_1A_R_QA",
+          "implementationState": "AWAITING_INDEPENDENT_QA_WITH_NEW_DEFECT_DISCOVERED",
           "objective": "Govern the relationship between release 7.3, embedded semantic 7.2.0, retained source copies and construction-boundary variants without rewriting Universe semantics.",
           "scope": ["classify the three observed source-copy differences as semantic/presentation/build-state/noise using evidence", "determine authoritative source copy or normalized-payload authority", "verify release-note and lineage evidence for release shell 7.3 versus embedded semantic 7.2.0", "define releaseVersion and semanticPayloadVersion", "determine the canonical construction boundary for the 189 field-set-divergent records without fabricating fields", "determine whether materialized state belongs in canonical semantic payload or runtime/UI state", "recommend exact canonical/frozen hashes/assets and supersession treatment"],
           "excluded": ["semantic rewrite", "unsupported relabeling", "Universe 7.4", "reference-model mutation", "inventing fields or identifiers", "R0.1C reference-ownership decisions"],
           "requiredInputs": ["governance/recovery/R0.1A/POST_QA_GOVERNED_STATE.json", "data/universe/universe-semantic-payload.json", "data/universe/universe-extraction-report.json", "data/universe/universe-copy-comparison.json", "data/universe/universe-declaration-inventory.json"],
+          "remediationDependency": "R0.1A-R independent QA must pass before R0.1B can return for final authority closure.",
           "qaRequiredBeforeNext": true
         },
         {
           "stageId": "R0.1C",
           "id": "R0.1C",
           "name": "Canonical Reference Ownership Audit",
-          "status": "BLOCKED_UNTIL_R0_1B_QA",
+          "status": "BLOCKED_UNTIL_R0_1B_FINAL_QA",
           "objective": "Classify unresolved Road LTL references by governing layer before selecting any repair.",
           "scope": ["inventory unresolved references", "classify as Universe/Daughter/OK/Canonical Object/cross-layer/orphan", "determine a5-ltl-* ownership", "determine scp-* ownership", "recommend Universe extension/crosswalk/reference-contract correction/orphan cleanup without mutation"],
           "excluded": ["inventing crosswalks", "creating canonical IDs", "Universe 7.4", "Daughter-ID mutation", "Road LTL semantic mutation", "canonical-reference mutation"],
@@ -89,7 +104,7 @@
           "qaRequiredBeforeNext": true
         }
       ],
-      "exitGate": ["machine-readable reproducible Universe semantics", "governed release/semantic identity", "reference ownership classified", "true defects distinguished from valid local/cross-layer identifiers", "POST_QA_GOVERNED_STATE synchronized", "independent QA approves repair path"]
+      "exitGate": ["corrected machine-readable reproducible Universe semantics certified after R0.1A-R", "governed release/semantic identity finalized in R0.1B", "reference ownership classified", "true defects distinguished from valid local/cross-layer identifiers", "POST_QA_GOVERNED_STATE synchronized", "independent QA approves repair path"]
     },
     {
       "stageId": "R0.2",
@@ -150,7 +165,7 @@
   ],
   "certificationDimensions": ["PHYSICAL_EXISTENCE", "SEMANTICS", "COVERAGE", "EVIDENCE", "DEPENDENCY_CLOSURE", "REPRODUCIBILITY", "REFERENTIAL_INTEGRITY", "LIVE_READABILITY", "REGISTRY_COHERENCE", "CLASSIFICATION_ACCURACY", "SECURITY_BOUNDARY", "REGRESSION", "DEPLOYMENT_PARITY"],
   "historicalFindings": [
-    {"stageId": "FINDING-UNIVERSE-01", "id": "FINDING-UNIVERSE-01", "status": "MATERIALIZED_PENDING_IDENTITY_AUTHORITY_RECONCILIATION", "description": "R0.1A independently certified a reproducible 61-structure/1330-record mechanical materialization under governed GitHub/Drive custody. Release shell 7.3 versus embedded semantic 7.2.0 and construction-boundary authority remain R0.1B decisions."},
+    {"stageId": "FINDING-UNIVERSE-01", "id": "FINDING-UNIVERSE-01", "status": "REMATERIALIZATION_REQUIRED", "description": "R0.1A independently certified a reproducible mechanical materialization, but R0.1B subsequently found a governed extraction-boundary defect affecting systemRecords/businessObjectRecords and classified state as runtime/UI. The R0.1A payload remains immutable historical evidence but is not eligible for canonical promotion; R0.1A-R is authorized to correct the mechanical materialization."},
     {"stageId": "FINDING-UNIVERSE-02", "id": "FINDING-UNIVERSE-02", "status": "OWNERSHIP_AUDIT_REQUIRED", "description": "a5-* and scp-* references must not be presumed missing Universe identifiers until ownership is established."},
     {"stageId": "FINDING-LTL-BASE-01", "id": "FINDING-LTL-BASE-01", "status": "RECOVERED_PENDING_GOVERNED_CUSTODY_AND_RECERTIFICATION", "description": "Road LTL 1.4 package/module/Operational Knowledge were subsequently recovered and hash-verified outside current governed repo custody; R0.2 must close custody and P6.0 reproducibility."},
     {"stageId": "FINDING-P6-1-01", "id": "FINDING-P6-1-01", "status": "RECERTIFICATION_REQUIRED", "description": "Historical P6.1 generator is not retained and live protected payload is not readable by retained tooling."},
