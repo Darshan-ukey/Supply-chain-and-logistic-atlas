@@ -1,14 +1,21 @@
 # Atlas V2 — Governed Execution Roadmap and Production Critical Path
 
 Status: ACTIVE BACKLOG / RECOVERY MODE  
-Updated: 8 September 2026  
+Updated: 8 September 2026 — R0.1A independent QA PASS; R0.1B AUTHORIZED  
 Canonical technical backlog: this file + `ATLAS_V2_AGENT_EXECUTION_QUEUE.json` on branch `atlas-governance-registry-v2.1`.
 
 ## Operating rule
 Atlas Phase 6 is suspended while Pre-P6 Foundation Recovery is active. Implementation agents must read `CLAUDE.md`, the machine queue, this roadmap, the Asset Custody Standard, the Recovery Standard and referenced frozen contracts. Only exact `AUTHORIZED` `stageId` work may mutate assets. Completion stops at `AWAITING_INDEPENDENT_QA`.
 
+## Current recovery position
+- **R0.1A is COMPLETE — independent QA PASS.** Its reproducible candidate is under governed GitHub/Drive custody: 3 retained physical Universe HTML copies, 2 distinct source hashes, 113 independently inventoried module-scope declarations, 61 data-bearing structures materialized, 1,330 records and 0 unresolved extraction targets.
+- **R0.1B is the only authorized current stage.** It owns release/semantic identity, source/payload authority, the three source-copy differences, the 189 construction-boundary field-set divergences and the canonical/runtime classification of the materialized `state` structure.
+- **R0.1C remains blocked** until independent QA of R0.1B. `a5-*`/`scp-*` ownership must remain unclassified until R0.1C.
+- Phase 6 remains suspended through R0.6 independent QA.
+
 ## Why recovery was inserted
-- Universe 7.3 is not yet retained as a governed machine-readable semantic payload; embedded metadata identifies semantic payload 7.2.0 and two HTML copies differ in source hash.
+- Universe release shell 7.3 has embedded semantic identity 7.2.0; identity/authority must be governed rather than inferred.
+- Three retained physical Universe HTML copies resolve to two distinct source hashes. R0.1A captured the raw differences without classifying them; R0.1B owns interpretation and authority.
 - `a5-*`/`scp-*` ownership is not yet classified and must not be presumed to indicate missing Universe IDs.
 - Road LTL 1.4 package/module/Operational Knowledge were subsequently recovered and hash-verified, but remain pending governed custody and dependent re-certification.
 - Effective Road LTL 1.5 remains 21 inherited 1.4 tasks + direct LTL-03 1.5 override; `taskId`/`id` drift requires governed normalization.
@@ -29,12 +36,23 @@ Status: COMPLETE
 Status: IN_PROGRESS_VIA_SUBSTAGES
 
 ### R0.1A — Universe Semantic Materialization
-Status: AUTHORIZED
-Mechanically materialize existing governed Universe semantic content from both retained HTML copies. Hash both sources, retain deterministic extractor/materializer, perform non-inferential dependent-structure extraction, normalize payload, preserve release 7.3 / semantic 7.2.0 dual lineage unless disproved, compare normalized outputs, record unresolved structures, produce reproducibility evidence and mandatory custody checkpoints. No semantic redesign, 7.4, invented IDs, crosswalk, Road LTL mutation, P6.1/WD/Ocean/Canvas work.
+Status: COMPLETE — INDEPENDENT QA PASS
+
+Certified outcome: 61/61 data-bearing structures, 1,330 records, 0 unresolved extraction targets; exact candidate custody bundle mirrored and SHA-verified in Drive. Checkpoint C is `governance/recovery/R0.1A/POST_QA_GOVERNED_STATE.json`. The superseded 52-structure / `95d976ff...` materialization must not be reused.
 
 ### R0.1B — Universe Release Identity & Authority Reconciliation
-Status: BLOCKED_UNTIL_R0_1A_QA
-Classify source-copy differences, establish source or normalized-payload authority, verify release-note evidence, define releaseVersion/semanticPayloadVersion and recommend canonical hashes/assets. No semantic/reference mutation.
+Status: AUTHORIZED
+
+Use R0.1A's certified evidence. Determine:
+- classification of the three observed source-copy differences (`defaults`, `liveModuleRoutes`, `moduleCoverageStatus`);
+- authoritative source copy or normalized-payload authority;
+- governed relationship between release shell 7.3 and embedded semantic 7.2.0;
+- `releaseVersion` and `semanticPayloadVersion` semantics;
+- canonical construction boundary for the 189 field-set-divergent records;
+- whether materialized `state` is canonical semantic content or runtime/UI state;
+- exact canonical/frozen hashes, identities and supersession treatment.
+
+No semantic rewrite, unsupported relabeling, Universe 7.4, invented fields/IDs, reference mutation or R0.1C ownership decision.
 
 ### R0.1C — Canonical Reference Ownership Audit
 Status: BLOCKED_UNTIL_R0_1B_QA

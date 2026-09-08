@@ -2,7 +2,7 @@
 
 Status: OWNER_AUTHORIZED_RECOVERY_STANDARD  
 Effective: 8 September 2026  
-Current revision: synchronized with R0.1A/B/C, Asset Custody Standard, P6.0 recertification and Ocean source-closure gates.  
+Current revision: R0.1A independently QA-certified; R0.1B authorized.  
 Applies before any further P6.2/P6.3/P6.4/P6.5 execution.
 
 ## 1. Purpose
@@ -14,8 +14,11 @@ Every recovery stage also follows `governance/standards/ATLAS_ASSET_CUSTODY_AND_
 
 ## 2. Current disposition
 - Governance architecture, contracts, Canvas/Daughter/Ask/Trace projection architecture remain intact.
-- Universe release 7.3 contains substantial embedded structured data; embedded metadata self-declares semantic payload 7.2.0. Two retained HTML copies differ in source hash and require controlled materialization plus identity/authority reconciliation.
-- Road LTL `a5-*` and `scp-*` references must not be presumed missing Universe identifiers until governing-layer ownership is established.
+- R0.1A independently certified a reproducible mechanical Universe materialization under governed GitHub and Drive custody: three retained physical HTML copies, two distinct source hashes, 113 independently inventoried module-scope declarations, 61 data-bearing structures materialized, 1,330 records, and 0 unresolved extraction targets.
+- Universe release shell 7.3 still contains embedded metadata self-declaring semantic payload 7.2.0. Release/semantic identity and authority remain unresolved and are owned by R0.1B.
+- Three structures differ across the retained source copies (`defaults`, `liveModuleRoutes`, `moduleCoverageStatus`); R0.1A records those differences without classifying them. R0.1B determines whether they are semantic, presentation, build-state or noise.
+- Construction-boundary field-set divergence is reproducibly observed across 189 records reachable from multiple structures. R0.1B must determine the canonical payload/construction boundary without inventing or dropping fields by assumption. The materialized `state` structure must likewise be classified as canonical semantic content or runtime/UI state in R0.1B.
+- Road LTL `a5-*` and `scp-*` references must not be presumed missing Universe identifiers until governing-layer ownership is established in R0.1C.
 - Road LTL 1.4 package/module/Operational Knowledge were subsequently recovered and hash-verified outside final governed repo custody. They are no longer treated as unrecoverable; R0.2 must place them in governed custody and re-certify dependent materialization.
 - Effective Road LTL 1.5 is 21 unchanged tasks inherited from 1.4 plus direct governed LTL-03 1.5 override; `taskId`/`id` drift requires governed normalization.
 - Road LTL Operational Knowledge is materially deep and task-specific; harden rather than rewrite.
@@ -63,12 +66,25 @@ Status: COMPLETE
 Status: IN_PROGRESS_VIA_SUBSTAGES
 
 #### R0.1A — Universe Semantic Materialization
-Status: AUTHORIZED
-Mechanically materialize existing Universe semantics from both retained HTML copies; hash sources; retain deterministic extractor/materializer; perform non-inferential dependent-structure pass; normalize payload; preserve release 7.3 / semantic 7.2.0 dual lineage unless disproved; compare both normalized outputs; record unresolved structures; produce custody checkpoints. No Universe redesign/7.4, new IDs, crosswalk, Road LTL mutation, P6.1, WD, Ocean or Canvas work.
+Status: COMPLETE — INDEPENDENT QA PASS
+
+Certified result: 61/61 data-bearing structures materialized, 1,330 records, 0 unresolved extraction targets; exact candidate custody mirrored and hash-verified in Drive. Checkpoint C: `governance/recovery/R0.1A/POST_QA_GOVERNED_STATE.json`.
+
+R0.1A mechanically materialized existing Universe content without semantic redesign, unsupported version relabeling, invented IDs, crosswalk creation, daughter mutation, P6.1/WorkDefinition/Ocean/Canvas work, or authority selection. The earlier 52-structure / `95d976ff...` materialization is superseded and must not be reused.
 
 #### R0.1B — Universe Release Identity & Authority Reconciliation
-Status: BLOCKED_UNTIL_R0_1A_QA
-Determine whether source differences are semantic/presentation/build-state/noise; establish source or normalized-payload authority; verify release-note evidence; define `releaseVersion` and `semanticPayloadVersion`; recommend canonical hashes/assets. No semantic rewrite or reference mutation.
+Status: AUTHORIZED
+
+Use the independently certified R0.1A evidence to:
+- determine whether the three source-copy differences are semantic, presentation, build-state or noise;
+- establish authoritative source-copy or normalized-payload authority;
+- verify release-note/lineage evidence for release shell 7.3 versus embedded semantic 7.2.0;
+- define governed `releaseVersion` and `semanticPayloadVersion` semantics;
+- determine the canonical construction boundary for the 189 field-set-divergent records without fabricating fields;
+- determine whether materialized `state` belongs in canonical semantic payload or runtime/UI state;
+- recommend exact canonical/frozen hashes, asset identities and supersession treatment.
+
+No semantic rewrite, unsupported relabeling, Universe 7.4, reference-model mutation, invented fields/IDs, or R0.1C ownership decisions.
 
 #### R0.1C — Canonical Reference Ownership Audit
 Status: BLOCKED_UNTIL_R0_1B_QA
@@ -84,7 +100,7 @@ Retain strong LTL OK; complete/classify objects/documents gaps; distinguish reus
 
 ### R0.4 — Generic Recursive Decomposition Compiler & Road LTL Re-certification
 Status: BLOCKED_UNTIL_R0_3_QA
-Preserve historical P6.1 evidence. Search for/recover original readable bundle, decoder, generator and CI artifacts where available. Exact decoder recovery is preferred if it proves the original content without invention, but reproducibility still requires retained deterministic generation capability or a newly governed compiler. Run governed effective Road LTL 1.5 through a module-neutral recursive compiler; stop by executability criterion; derive counts honestly; persist via retained codec/schema; prove real protected readback; reconcile repo/live migrations. Never tune to 603/444/185/163/96.
+Preserve historical P6.1 evidence. Search for/recover original readable bundle/decoder/generator and CI artifacts where available. Exact decoder recovery is preferred if it proves the original content without invention, but reproducibility still requires retained deterministic generation capability or a newly governed compiler. Run governed effective Road LTL 1.5 through a module-neutral recursive compiler; stop by executability criterion; derive counts honestly; persist via retained codec/schema; prove real protected readback; reconcile repo/live migrations. Never tune to 603/444/185/163/96.
 
 ### R0.5 — Ocean FCL/LCL 0.6 Source Closure & Operational Knowledge Depth Uplift
 Status: BLOCKED_UNTIL_R0_4_QA

@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
+  "stageId": "R0.1A",
+  "checkpoint": "POST_QA_GOVERNED_STATE",
+  "timestamp": "2026-09-08T05:52:30Z",
+  "qaDisposition": "PASS",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "implementationBranch": "atlas-recovery-r0-1a-universe-materialization",
+  "candidateBranchHead": "f6fd6c50d93088ab13889ba86210a8ef51b6857c",
+  "correctedImplementationCommit": "630f31a2794090f9e77c60056ab2391cb6cd0922",
+  "custodyPackagingCommit": "42d8ecd474015738b282cc732fc2ba044117feee",
+  "ci": {
+    "workflow": ".github/workflows/r0-1a-universe-materialization.yml",
+    "runId": 34192210687,
+    "result": "PASS",
+    "artifactId": 10042605562,
+    "artifactDigestSha256": "0fd0d1f4117480171a65aa751c77d766a4a35c0265176affca0cae55573df137"
+  },
+  "driveEvidence": [
+    {
+      "status": "MIRRORED_AND_VERIFIED",
+      "folderId": "1rtHlurv1WCRC3KtoWjw0bzvUALymFgmY",
+      "folderUrl": "https://drive.google.com/drive/folders/1rtHlurv1WCRC3KtoWjw0bzvUALymFgmY",
+      "bundleFileId": "1gcHBmK7vFDgKGiMoGjFt5N6eoSTYs7b8",
+      "bundleFileUrl": "https://drive.google.com/file/d/1gcHBmK7vFDgKGiMoGjFt5N6eoSTYs7b8/view?usp=drivesdk",
+      "bundleFileName": "atlas-r0-1a-custody-bundle.zip",
+      "bundleSizeBytes": 510276,
+      "bundleSha256": "0fd0d1f4117480171a65aa751c77d766a4a35c0265176affca0cae55573df137",
+      "verification": "DRIVE_ROUND_TRIP_SHA256_MATCH"
+    }
+  ],
+  "certifiedCandidate": {
+    "classification": "R0_1A_MECHANICAL_MATERIALIZATION_PASS_PENDING_R0_1B_AUTHORITY",
+    "releaseShellVersion": "7.3",
+    "embeddedSemanticIdentity": "supply-chain-logistics-universe-v7.2 / 7.2.0",
+    "structureCount": 61,
+    "recordCount": 1330,
+    "unresolvedExtractionCount": 0,
+    "semanticStructuresSha256": "2d6405c534b96f4054cb87ac2428a0a7a1bf4626334a86e5cc96ec342add4043",
+    "payloadFileSha256": "17b4973e18a4bb93fc81908d9fc605dfbe989d79ca0c6ac3e086f2feac5958b8",
+    "sourceHashes": [
+      "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd"
+    ]
+  },
+  "qaFindings": [
+    {
+      "id": "QA-R0.1A-01",
+      "disposition": "PASS_WITH_FORWARD_ACTION",
+      "statement": "Release shell 7.3 versus embedded semantic 7.2.0 identity is preserved without resolution. R0.1B owns authority and release/semantic identity reconciliation."
+    },
+    {
+      "id": "QA-R0.1A-02",
+      "disposition": "PASS_WITH_FORWARD_ACTION",
+      "statement": "Three structures differ across retained source copies. R0.1A records only raw differences; semantic/presentation/build-state/noise classification remains R0.1B."
+    },
+    {
+      "id": "QA-R0.1A-03",
+      "disposition": "PASS_WITH_FORWARD_ACTION",
+      "statement": "Construction-boundary field-set divergence across 189 records is real and reproducibly observed. Canonical boundary selection remains R0.1B."
+    },
+    {
+      "id": "QA-R0.1A-04",
+      "disposition": "ACCEPTED_PROCESS_NONCONFORMANCE",
+      "statement": "Checkpoint A was not committed before the first implementation commit. Baseline is deterministically recoverable and retained sources were not mutated. Future stages must commit Checkpoint A before implementation."
+    },
+    {
+      "id": "QA-R0.1A-05",
+      "disposition": "PASS",
+      "statement": "Independent module-scope inventory identified 113 declarations and 61 data-bearing targets; all 61 materialize with 0 unresolved."
+    },
+    {
+      "id": "QA-R0.1A-06",
+      "disposition": "PASS",
+      "statement": "Declaration-boundary deep snapshots eliminate the earlier post-declaration runtime contamination; superseded 95d976ff semantic hash must not be reused."
+    },
+    {
+      "id": "QA-R0.1A-07",
+      "disposition": "PASS_WITH_FORWARD_ACTION",
+      "statement": "Materialized structure 'state' may be runtime state rather than canonical semantic content; retain without pruning until R0.1B authority/payload-boundary determination."
+    },
+    {
+      "id": "QA-R0.1A-08",
+      "disposition": "DEFERRED_TO_R0_1C",
+      "statement": "a5-*/scp-* ownership remains UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT."
+    }
+  ],
+  "governedActions": {
+    "assetRegisterPromotion": "DEFERRED_TO_R0_1B_AUTHORITY_RECONCILIATION",
+    "currentPointerPromotion": "NOT_PERMITTED_AT_R0_1A",
+    "productionUniverseMutation": "NONE",
+    "historicalEvidenceMutation": "NONE",
+    "p6Execution": "REMAINS_SUSPENDED"
+  },
+  "nextAuthorization": "R0.1B"
+}
