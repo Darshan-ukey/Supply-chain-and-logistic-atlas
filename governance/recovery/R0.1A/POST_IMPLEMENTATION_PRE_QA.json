@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
+  "stageId": "R0.1A",
+  "checkpoint": "POST_IMPLEMENTATION_PRE_QA",
+  "timestamp": "2026-09-08T04:47:37.485Z",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "implementationBranch": "atlas-recovery-r0-1a-universe-materialization",
+  "commitSha": "b444a4312bcfe50574300200576a00e4228a0f6c",
+  "qaDisposition": null,
+  "assets": [
+    {
+      "assetId": "universe-semantic-payload",
+      "assetType": "semantic_payload",
+      "repositoryPath": "data/universe/universe-semantic-payload.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "release shell 7.3 / embedded semantic 7.2.0",
+      "classification": "CANDIDATE_MECHANICAL_MATERIALIZATION_AWAITING_QA",
+      "sha256": "a3e8bc28876880e378d87a5c63173cfb41a329a57fef43c8597e2f92ae088e43",
+      "lineage": [
+        "source reference/universe-v7.3.html sha256 d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+        "embedded semantic identity supply-chain-logistics-universe-v7.2 / 7.2.0"
+      ],
+      "dependencies": [
+        "reference/universe-v7.3.html"
+      ],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "52 structures / 906 records. Semantic hash 95d976ff862ef77facb07503c89489addedbecbf47bac64d3e477619a304a062"
+    },
+    {
+      "assetId": "universe-extraction-report",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-extraction-report.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "CANDIDATE_EVIDENCE",
+      "sha256": "8c13019e1662065834f2228e624dfbc4563142f5361d9ea5a319931acc7898d5",
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "0 unresolved structures"
+    },
+    {
+      "assetId": "universe-copy-comparison",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-copy-comparison.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "CANDIDATE_EVIDENCE",
+      "sha256": "0bf49c7995d2d6a3ede452893308362c5b2bca4949a7aba863cb64f3ab9c0823",
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "CORE_SEMANTICS_IDENTICAL_SHELL_NAVIGATION_DIFFERS"
+    }
+  ],
+  "tools": [
+    {
+      "toolId": "universe-semantic-extractor",
+      "repositoryPath": "tools/universe/extract-universe-semantics.mjs",
+      "version": "atlas-universe-semantic-extractor-1.0.0",
+      "sha256": "83fd00187aba87608aab8f08a150cda2f93e57c3becf9a556283cfb4cc5cabdc",
+      "purpose": "Deterministic three-pass mechanical extraction of embedded Universe semantics"
+    },
+    {
+      "toolId": "universe-copy-comparator",
+      "repositoryPath": "tools/universe/compare-universe-copies.mjs",
+      "version": "atlas-universe-semantic-extractor-1.0.0",
+      "sha256": "51eec1c7667a1a9e111c8e9b0d2c03ab1a3aefd229c755f08daa462ffb2c9733",
+      "purpose": "Deterministic semantic comparison of retained Universe HTML copies"
+    }
+  ],
+  "liveState": [],
+  "driveEvidence": [
+    {
+      "status": "NOT_MIRRORED",
+      "reason": "Drive mirroring of R0.1A candidate evidence not performed by the implementation agent; required by custody standard before QA close."
+    }
+  ],
+  "findings": [
+    {
+      "id": "R0.1A-01",
+      "severity": "HIGH",
+      "statement": "Embedded release metadata self-declares supply-chain-logistics-universe-v7.2 / 7.2.0 while the release shell is labelled 7.3. Dual lineage recorded; reconciliation deferred to R0.1B."
+    },
+    {
+      "id": "R0.1A-02",
+      "severity": "MEDIUM",
+      "statement": "Three retained HTML copies, two distinct hashes. Core Universe semantics identical across all copies (6522bc162bb591d7c385fc4668c49f48c634ceeb112d5fb28eb03da67d124058). Only defaults, liveModuleRoutes and moduleCoverageStatus differ, all shell navigation."
+    },
+    {
+      "id": "R0.1A-03",
+      "severity": "MEDIUM",
+      "statement": "Copy 31503394 carries older daughter navigation pointers (Road LTL v1.2, Ocean 0.4) than copy d674a8f7 (Road LTL v1.3, Ocean 0.5), indicating an earlier build state rather than a semantic variant."
+    },
+    {
+      "id": "R0.1A-04",
+      "severity": "MEDIUM",
+      "statement": "Universe sources are absent from the default branch and unregistered in ASSET_REGISTER.json. Registration is a governance action, not taken by this stage."
+    },
+    {
+      "id": "R0.1A-05",
+      "severity": "INFO",
+      "statement": "24 nested function-local declarations were deliberately excluded as working variables, not Universe semantics."
+    },
+    {
+      "id": "R0.1A-06",
+      "severity": "INFO",
+      "statement": "Daughter a5-*/scp-* reference resolution remains UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT. R0.1A makes no claim about missing Universe identifiers."
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/r0-1a-universe-materialization.mjs",
+      "result": "PASS",
+      "covers": [
+        "determinism",
+        "completeness",
+        "payload reproducibility",
+        "dual lineage",
+        "no invented identifiers",
+        "copy comparison",
+        "scope guards"
+      ]
+    }
+  ],
+  "supersedes": [],
+  "supersededBy": [],
+  "nextAuthorization": "AWAITING_INDEPENDENT_QA"
+}
