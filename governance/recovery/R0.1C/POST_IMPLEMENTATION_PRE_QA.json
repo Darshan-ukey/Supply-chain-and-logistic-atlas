@@ -1,0 +1,254 @@
+{
+  "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
+  "stageId": "R0.1C",
+  "checkpoint": "POST_IMPLEMENTATION_PRE_QA",
+  "timestamp": "2026-09-08T00:00:00Z",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "governanceBaselineCommit": "c0d66cd1e23c1689dca517ca57cc81ad38958e5e",
+  "implementationBranch": "atlas-recovery-r0-1c-reference-ownership",
+  "commitSha": null,
+  "qaDisposition": null,
+  "canonicalReferenceResolution": "UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT",
+  "lineage": {
+    "checkpointACommit": "c83b790",
+    "consumesStage": "R0.1B final authority closure QA PASS"
+  },
+  "assets": [
+    {
+      "assetId": "REFERENCE_OWNERSHIP_DETERMINATION",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.1C/REFERENCE_OWNERSHIP_DETERMINATION.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.1C",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "4d4a9ef4c81396633d317489dc5af325778062e31bfee11cca74a1b8b86d0b1f",
+      "lineage": [
+        "R0.1B QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "PRE_CHANGE_BASELINE",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.1C/PRE_CHANGE_BASELINE.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.1C",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "7a28192c3fe1b57b946cdd7351efec747dfb5d2adc85ba1bb845c346c6a9d270",
+      "lineage": [
+        "R0.1B QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "reference-ownership-audit",
+      "assetType": "evidence",
+      "repositoryPath": "data/references/reference-ownership-audit.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.1C",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "7569d51d83afd926121bc5575714bf9bd29df8e97df0669a8704997cba133a03",
+      "lineage": [
+        "R0.1B QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "audit-reference-ownership",
+      "assetType": "tool",
+      "repositoryPath": "tools/references/audit-reference-ownership.mjs",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.1C",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "67df640fc54ce54610ac6d5cf3fa12ae2916271a02ca163c287d69ad7ce239cc",
+      "lineage": [
+        "R0.1B QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "r0-1c-reference-ownership",
+      "assetType": "evidence",
+      "repositoryPath": "tests/r0-1c-reference-ownership.mjs",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.1C",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "28c621205584f0baeefbdea24f3185f5ed667a9772d1daa8455ddd8f6b16e815",
+      "lineage": [
+        "R0.1B QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "r0-1c-reference-ownership",
+      "assetType": "evidence",
+      "repositoryPath": ".github/workflows/r0-1c-reference-ownership.yml",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.1C",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "f1e99e1a788e41991e2c7f170db989e4fe00c09b11c454772ebfc1ee7420ea50",
+      "lineage": [
+        "R0.1B QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    }
+  ],
+  "tools": [
+    {
+      "toolId": "reference-ownership-audit",
+      "repositoryPath": "tools/references/audit-reference-ownership.mjs",
+      "version": "atlas-reference-ownership-audit-1.0.0",
+      "sha256": "67df640fc54ce54610ac6d5cf3fa12ae2916271a02ca163c287d69ad7ce239cc",
+      "purpose": "Evidence-based governing-layer classification of identifier references; read-only, creates no identifiers"
+    }
+  ],
+  "liveState": [],
+  "driveEvidence": [
+    {
+      "status": "NOT_MIRRORED",
+      "owner": "INDEPENDENT_QA",
+      "suggestedFolder": "02_FROZEN_CANDIDATES/Universe/R0.1C \u2014 Canonical Reference Ownership Audit \u2014 AWAITING_QA",
+      "candidateFiles": [
+        {
+          "repositoryPath": "governance/recovery/R0.1C/REFERENCE_OWNERSHIP_DETERMINATION.json",
+          "sha256": "4d4a9ef4c81396633d317489dc5af325778062e31bfee11cca74a1b8b86d0b1f"
+        },
+        {
+          "repositoryPath": "governance/recovery/R0.1C/PRE_CHANGE_BASELINE.json",
+          "sha256": "7a28192c3fe1b57b946cdd7351efec747dfb5d2adc85ba1bb845c346c6a9d270"
+        },
+        {
+          "repositoryPath": "data/references/reference-ownership-audit.json",
+          "sha256": "7569d51d83afd926121bc5575714bf9bd29df8e97df0669a8704997cba133a03"
+        },
+        {
+          "repositoryPath": "tools/references/audit-reference-ownership.mjs",
+          "sha256": "67df640fc54ce54610ac6d5cf3fa12ae2916271a02ca163c287d69ad7ce239cc"
+        },
+        {
+          "repositoryPath": "tests/r0-1c-reference-ownership.mjs",
+          "sha256": "28c621205584f0baeefbdea24f3185f5ed667a9772d1daa8455ddd8f6b16e815"
+        },
+        {
+          "repositoryPath": ".github/workflows/r0-1c-reference-ownership.yml",
+          "sha256": "f1e99e1a788e41991e2c7f170db989e4fe00c09b11c454772ebfc1ee7420ea50"
+        }
+      ]
+    }
+  ],
+  "auditSummary": {
+    "a5": {
+      "referencedCount": 82,
+      "governingLayer": "DAUGHTER_LOCAL",
+      "definitionSites": 0,
+      "defectClassification": "NOT_A_REFERENCE_DEFECT"
+    },
+    "scp": {
+      "referencedCount": 22,
+      "governingLayer": "CROSS_LAYER_CONTRACT",
+      "definitionSite": "data/crosswalks/process-concept-crosswalk-v1.json",
+      "orphans": 0,
+      "defectClassification": "NOT_A_REFERENCE_DEFECT"
+    },
+    "trueReferenceDefects": 0,
+    "orphans": 0,
+    "openCoverageGaps": 1
+  },
+  "findings": [
+    {
+      "id": "R0.1C-01",
+      "severity": "RESOLVED",
+      "statement": "a5-* is Daughter-local. 82 references, zero definition sites in governed custody, and 82/82 deterministically derivable from the daughter module id plus its own process id. Not present in the Universe payload, and not a reference defect."
+    },
+    {
+      "id": "R0.1C-02",
+      "severity": "RESOLVED",
+      "statement": "scp-* is a governed cross-layer contract identifier. All 22 references are defined in data/crosswalks/process-concept-crosswalk-v1.json with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT, zero orphans, all mappings SPECIALIZES/APPROVED_BASELINE."
+    },
+    {
+      "id": "R0.1C-03",
+      "severity": "HIGH",
+      "statement": "A governed cross-module concept layer already exists in custody and was not previously surfaced in the recovery narrative. All 11 distinct enterpriseTerritory values resolve exactly to Universe domain ids, so the concept layer is anchored to the Universe without being defined inside it."
+    },
+    {
+      "id": "R0.1C-04",
+      "severity": "MEDIUM",
+      "statement": "Earlier recovery statements that 0/23 canonical references resolve were accurate only against the Universe layer. Neither class is Universe-owned, so non-resolution there is expected. This is the outcome FINDING-UNIVERSE-02 anticipated by prohibiting a premature missing-identifier conclusion."
+    },
+    {
+      "id": "R0.1C-05",
+      "severity": "MEDIUM",
+      "statement": "Coverage gap, not a reference defect: the concept layer covers road-ltl only (22 mappings) while the a5-* space spans road-ltl 22, ocean-fcl 30 and ocean-lcl 30. Both Ocean modules declare no processConceptMappings. The crosswalk anticipates this via its own rule futureModuleMappingsRequiredForA5Compare=true. Recommended owner R0.5."
+    },
+    {
+      "id": "R0.1C-06",
+      "severity": "MEDIUM",
+      "statement": "data/crosswalks/process-concept-crosswalk-v1.json is not registered in ASSET_REGISTER.json with a repositoryPath or sha256, so scp-* ownership currently depends on rediscovery. Registration recommended, not performed."
+    },
+    {
+      "id": "R0.1C-07",
+      "severity": "INFO",
+      "statement": "Zero true reference defects and zero orphans across both identifier classes."
+    },
+    {
+      "id": "R0.1C-08",
+      "severity": "INFO",
+      "statement": "Road LTL 1.4 module and Operational Knowledge remain outside governed repo custody. This audit used governed repo evidence only and did not depend on the out-of-custody package."
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/r0-1c-reference-ownership.mjs",
+      "result": "PASS",
+      "ci": ".github/workflows/r0-1c-reference-ownership.yml",
+      "covers": [
+        "required status language preserved",
+        "audit reproducible",
+        "input hashes",
+        "a5 daughter-local with zero definition sites",
+        "full derivability",
+        "scp defined with zero orphans",
+        "definitionStatus",
+        "territory anchoring to Universe domains",
+        "defects distinguished from coverage gap",
+        "Ocean gap is genuine",
+        "no mutation or invention",
+        "crosswalk untouched",
+        "no promotion",
+        "stop condition"
+      ]
+    },
+    {
+      "path": "tests/r0-1b-final-authority-closure.mjs",
+      "result": "PASS",
+      "note": "R0.1B closure regression still holds."
+    }
+  ],
+  "supersedes": [],
+  "supersededBy": [],
+  "nextAuthorization": "AWAITING_INDEPENDENT_QA"
+}

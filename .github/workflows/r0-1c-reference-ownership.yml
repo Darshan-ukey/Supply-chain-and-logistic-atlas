@@ -1,0 +1,85 @@
+name: R0.1C Canonical Reference Ownership Audit
+
+on:
+  push:
+    branches:
+      - atlas-recovery-r0-1c-reference-ownership
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Environment
+        run: |
+          echo "node: $(node --version)"
+          echo "commit: ${GITHUB_SHA}"
+
+      - name: Assert no governed evidence was mutated by this audit
+        run: |
+          git fetch origin atlas-governance-registry-v2.1 --depth=1
+          for f in data/crosswalks/process-concept-crosswalk-v1.json \
+                   data/atlas-warehouse-v1.json \
+                   data/modules/road-ltl-v1.3.json \
+                   data/modules/road-ltl-v1.5.json \
+                   data/modules/ocean-fcl-v0.5.json \
+                   data/modules/ocean-lcl-v0.5.json \
+                   data/operational-knowledge/road-ltl-v1.5-operational.json \
+                   data/universe/r0-1a-r/universe-semantic-payload.json \
+                   governance/recovery/R0.1B/UNIVERSE_FINAL_AUTHORITY_CLOSURE.json \
+                   governance/registry/UNIVERSE_MACHINE_READABLE_INPUT_REGISTRY.json ; do
+            if ! git diff --quiet origin/atlas-governance-registry-v2.1 -- "$f"; then
+              echo "R0.1C is a read-only audit and must not modify: $f"; exit 1;
+            fi
+            echo "unchanged: $f"
+          done
+
+      - name: R0.1C reference ownership certification
+        run: node tests/r0-1c-reference-ownership.mjs
+
+      - name: R0.1B closure regression (must still hold)
+        run: |
+          node tests/r0-1b-final-authority-closure.mjs
+          node tests/r0-1b-universe-identity-authority.mjs
+
+      - name: Reproduce the audit and assert byte equality
+        run: |
+          node tools/references/audit-reference-ownership.mjs --out /tmp/audit.json
+          diff -q /tmp/audit.json data/references/reference-ownership-audit.json \
+            || { echo "audit is not reproducible"; exit 1; }
+          echo "reproducible: $(sha256sum data/references/reference-ownership-audit.json | cut -d' ' -f1)"
+
+      - name: Assert required status language preserved and no promotion
+        run: |
+          node -e '
+            const fs=require("fs");
+            const REQ="UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT";
+            const d=JSON.parse(fs.readFileSync("governance/recovery/R0.1C/REFERENCE_OWNERSHIP_DETERMINATION.json","utf8"));
+            if(d.canonicalReferenceResolution!==REQ)throw new Error("required status language not preserved");
+            const u=JSON.parse(fs.readFileSync("data/universe/r0-1a-r/universe-semantic-payload.json","utf8"));
+            if(u.referenceResolution.status!==REQ)throw new Error("governed payload status must not be promoted");
+            for(const [k,v] of Object.entries(d.promotion)) if(!["NOT_PERFORMED","UNCHANGED"].includes(v))
+              throw new Error("premature promotion: "+k+"="+v);
+            const b=JSON.parse(fs.readFileSync("governance/recovery/R0.1C/POST_IMPLEMENTATION_PRE_QA.json","utf8"));
+            if(b.nextAuthorization!=="AWAITING_INDEPENDENT_QA")throw new Error("stage must stop at AWAITING_INDEPENDENT_QA");
+            if(b.qaDisposition!==null)throw new Error("implementation agent must not set qaDisposition");
+            if(fs.existsSync("governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json"))throw new Error("Checkpoint C is not written by the implementation agent");
+            console.log("status language, scope and stop condition verified");
+          '
+
+      - name: Assert no canonical pointer promoted
+        run: |
+          for f in governance/frozen-assets/ASSET_REGISTER.json governance/frozen-assets/CURRENT.json governance/frozen-assets/LATEST.md; do
+            if ! git diff --quiet origin/atlas-governance-registry-v2.1 -- "$f"; then
+              echo "R0.1C must not modify $f"; exit 1;
+            fi
+            echo "unchanged: $f"
+          done
