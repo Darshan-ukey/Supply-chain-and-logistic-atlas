@@ -1,0 +1,40 @@
+name: R0.1B Post-QA Custody
+
+on:
+  push:
+    branches:
+      - atlas-governance-registry-v2.1
+    paths:
+      - governance/recovery/R0.1B/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json
+      - .github/workflows/r0-1b-post-qa-custody.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  custody:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Checkpoint C and current authorization
+        run: |
+          node -e '
+            const fs=require("fs");
+            const c=JSON.parse(fs.readFileSync("governance/recovery/R0.1B/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json","utf8"));
+            const q=JSON.parse(fs.readFileSync("governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json","utf8"));
+            if(c.qaDisposition!=="PASS") throw new Error("R0.1B Checkpoint C is not PASS");
+            if(q.currentStageId!=="R0.1C") throw new Error("queue is not synchronized to R0.1C");
+            const r01b=q.phases.find(x=>x.stageId==="R0.1").subStages.find(x=>x.stageId==="R0.1B");
+            const r01c=q.phases.find(x=>x.stageId==="R0.1").subStages.find(x=>x.stageId==="R0.1C");
+            if(r01b.status!=="COMPLETE" || r01b.qaDisposition!=="PASS") throw new Error("R0.1B queue state not closed");
+            if(r01c.status!=="AUTHORIZED") throw new Error("R0.1C not authorized");
+            console.log("post-QA governance state verified");
+          '
+          sha256sum governance/recovery/R0.1B/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json
+      - name: Upload Checkpoint C
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-r0-1b-post-qa-governed-state
+          path: governance/recovery/R0.1B/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json
+          if-no-files-found: error
