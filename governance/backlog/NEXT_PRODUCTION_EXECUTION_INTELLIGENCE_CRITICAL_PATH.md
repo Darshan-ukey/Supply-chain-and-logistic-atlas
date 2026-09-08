@@ -1,7 +1,7 @@
 # Atlas V2 — Governed Execution Roadmap and Production Critical Path
 
 Status: ACTIVE BACKLOG / RECOVERY MODE  
-Updated: 8 September 2026 — R0.1B final authority closure independent QA PASS; R0.1C ownership audit AUTHORIZED  
+Updated: 8 September 2026 — R0.1C independent QA PASS; R0.2 Road LTL source closure AUTHORIZED  
 Canonical technical backlog: this file + `ATLAS_V2_AGENT_EXECUTION_QUEUE.json` on branch `atlas-governance-registry-v2.1`.
 
 ## Operating rule
@@ -10,12 +10,12 @@ Atlas Phase 6 is suspended while Pre-P6 Foundation Recovery is active. Implement
 ## Current recovery position
 - **R0.1A remains immutable historical QA evidence**, superseded for canonical promotion by R0.1A-R.
 - **R0.1A-R is COMPLETE — independent QA PASS.** Certified semantic structures SHA `82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d`.
-- **R0.1B is COMPLETE — independent QA PASS.** Zero contradictions were found against corrected R0.1A-R evidence.
-- Semantic authority is now certified to `data/universe/r0-1a-r/universe-semantic-payload.json`; `releaseVersion=7.3` and `semanticPayloadVersion=7.2.0` remain separate governed identities.
-- Release-shell authority is SHA `31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd`; later repackage SHA `d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef` remains governed evidence, not authoritative shell.
-- R0.1B Drive custody is exact and round-trip verified at bundle SHA `ac6e937cd480f12b828bc586ef0b514f472ab72c553ab00b7829e9d8ea5e7601`.
-- **R0.1C is now the only authorized current stage.** It may classify ownership but may not mutate references or invent IDs/crosswalks.
-- Production `CURRENT/LATEST/ASSET_REGISTER` pointers remain unchanged.
+- **R0.1B is COMPLETE — independent QA PASS.** Universe semantic/release authority is finalized without production-pointer promotion.
+- **R0.1C is COMPLETE — independent QA PASS.** `a5-*` is Daughter-local; `scp-*` is owned by the existing cross-module process-concept layer; zero true reference defects and zero orphans were found.
+- The process-concept crosswalk is now registered in `ASSET_REGISTER.json` by repository path/hash without semantic mutation.
+- Ocean process-concept mappings remain a coverage gap owned by R0.5, not a reference defect.
+- **R0.2 is now the only authorized current stage.** It must close Road LTL 1.4 package/module/Operational Knowledge custody and re-certify effective 1.5/P6.0 reproducibility without reconstructing semantics.
+- Production `CURRENT/LATEST` pointers remain unchanged.
 - Phase 6 remains suspended through R0.6 independent QA.
 
 ## Permanent completeness standard
@@ -27,7 +27,7 @@ Every applicable asset must be evaluated on: PHYSICAL_EXISTENCE, SEMANTICS, COVE
 Status: COMPLETE
 
 ## R0.1 — Universe Materialization, Identity Reconciliation & Reference Ownership
-Status: IN_PROGRESS_VIA_SUBSTAGES
+Status: COMPLETE
 
 ### R0.1A — Universe Semantic Materialization
 Status: COMPLETE — HISTORICAL QA PASS / SUPERSEDED FOR CANONICAL PROMOTION
@@ -41,24 +41,29 @@ Certified semantic structures SHA: `82104521148e1d1c24d4cc161afa872f6076e6d204e0
 Status: COMPLETE — INDEPENDENT QA PASS
 Final authority evidence: `governance/recovery/R0.1B/UNIVERSE_FINAL_AUTHORITY_CLOSURE.json`.
 Checkpoint C: `governance/recovery/R0.1B/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json`.
-Authority is certified; production pointers were not promoted.
 
 ### R0.1C — Canonical Reference Ownership Audit
-Status: AUTHORIZED
-Required work:
-- inventory unresolved references from governed Universe/Road LTL evidence;
-- classify each reference as Universe canonical, Daughter-local, Operational Knowledge, Canonical Information/Object, cross-layer contract, or orphan;
-- determine `a5-ltl-*` and `scp-*` ownership using evidence;
-- distinguish true defects from valid local/cross-layer IDs;
-- recommend repair type without mutation;
-- retain `UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT` until the audit supports a governed classification;
-- create `PRE_CHANGE_BASELINE` and `POST_IMPLEMENTATION_PRE_QA`; stop at `AWAITING_INDEPENDENT_QA`.
-
-Do not invent identifiers/crosswalks, create Universe 7.4, mutate Daughter/Road LTL/canonical references, promote production pointers, start R0.2, or resume P6.
+Status: COMPLETE — INDEPENDENT QA PASS
+Checkpoint C: `governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json`.
+Certified result:
+- 82 `a5-*` references are Daughter-local and 82/82 derive from daughter module/process identity;
+- 22 `scp-*` references are defined by `data/crosswalks/process-concept-crosswalk-v1.json` as cross-module concepts;
+- true reference defects = 0; orphans = 0;
+- Ocean concept mapping coverage is deferred to R0.5.
 
 ## R0.2 — Road LTL Source Closure, Effective 1.5 & P6.0 Re-certification
-Status: BLOCKED_UNTIL_R0_1_QA
-Place recovered 1.4 package/module/OK into governed GitHub/Drive custody with verified hashes; reconcile historical hash identity discrepancies without assumption; normalize overlay handling; deterministically materialize effective 1.5; prove 21×1.4 + LTL-03×1.5 lineage; rerun ownership-aware integrity checks; reproduce and re-certify P6.0 from retained governed inputs/tooling.
+Status: AUTHORIZED
+Required work:
+- place recovered Road LTL 1.4 release package, module and Operational Knowledge into governed GitHub/Drive custody with exact hashes;
+- preserve originals and reconcile historical hash identity discrepancies without assumption;
+- normalize `taskId`/`id` handling only in derived tooling, never by mutating recovered source bytes;
+- deterministically materialize effective Road LTL 1.5;
+- prove 21×1.4 + LTL-03×1.5 lineage;
+- rerun reference integrity under the R0.1C ownership model;
+- reproduce and re-certify P6.0 from retained governed inputs/tooling;
+- stop at `AWAITING_INDEPENDENT_QA`.
+
+Do not reconstruct 1.4 from 1.3, warehouse/public-safe artifacts, memory or inferred domain knowledge. Do not choose conflicting hashes by filename/date alone. Do not start R0.3, R0.4 or P6 work.
 
 ## R0.3 — Road LTL Operational Knowledge + Canonical Information Hardening
 Status: BLOCKED_UNTIL_R0_2_QA
@@ -70,7 +75,7 @@ Preserve historical P6.1 evidence; recover original readable bundle/decoder/gene
 
 ## R0.5 — Ocean FCL/LCL 0.6 Source Closure & Operational Knowledge Depth Uplift
 Status: BLOCKED_UNTIL_R0_4_QA
-First verify canonical Ocean FCL/LCL 0.6 source/package/module custody, identity and dependency closure. PUBLIC_SAFE materializations are evidence only. Then audit all 30 FCL + 30 LCL tasks using the LTL OK standard.
+First verify canonical Ocean FCL/LCL 0.6 source/package/module custody, identity and dependency closure. PUBLIC_SAFE materializations are evidence only. Then audit all 30 FCL + 30 LCL tasks using the LTL OK standard and extend cross-module process-concept mappings using evidence and the existing crosswalk model; do not invent mappings solely for parity.
 
 ## R0.6 — Multi-Mode Decomposition Proof & Pre-P6 Readiness Certification
 Status: BLOCKED_UNTIL_R0_5_QA
