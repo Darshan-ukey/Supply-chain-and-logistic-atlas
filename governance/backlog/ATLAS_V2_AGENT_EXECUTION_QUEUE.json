@@ -1,6 +1,6 @@
 {
   "schemaVersion": "atlas-v2-agent-execution-queue-v11",
-  "updatedAt": "2026-09-10T08:05:00+05:30",
+  "updatedAt": "2026-09-10T10:14:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "recoveryStandardPath": "governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md",
   "assetCustodyStandardPath": "governance/standards/ATLAS_ASSET_CUSTODY_AND_GOVERNANCE_SYNC_STANDARD_V1.md",
@@ -112,7 +112,19 @@
       },
       "qaRequiredBeforeNext": true
     },
-    {"stageId":"R0.3","id":"R0.3","name":"Road LTL Operational Knowledge + Canonical Information Hardening","status":"AUTHORIZED","qaRequiredBeforeNext":true,"completionTransition":"AWAITING_INDEPENDENT_QA"},
+    {
+      "stageId": "R0.3",
+      "id": "R0.3",
+      "name": "Road LTL Operational Knowledge + Canonical Information Hardening",
+      "status": "AUTHORIZED",
+      "qaDisposition": "FIX_REQUIRED",
+      "authorizedScope": "R0.3_REMEDIATION_ONLY",
+      "remediationFindingPath": "governance/recovery/R0.3/POST_QA_GOVERNED_STATE.json",
+      "remediationFindings": ["R0.3-QA-01", "R0.3-QA-02"],
+      "qaRequiredBeforeNext": true,
+      "completionTransition": "AWAITING_INDEPENDENT_QA",
+      "note": "Independent QA found a blocking effective-module composition defect and an open Drive candidate-custody gap. R0.4 remains blocked."
+    },
     {"stageId":"R0.4","id":"R0.4","name":"Generic Recursive Decomposition Compiler & Road LTL Re-certification","status":"BLOCKED_UNTIL_R0_3_QA","qaRequiredBeforeNext":true},
     {"stageId":"R0.5","id":"R0.5","name":"Ocean FCL/LCL 0.6 Source Closure & Operational Knowledge Depth Uplift","status":"BLOCKED_UNTIL_R0_4_QA","scope":["close Ocean FCL/LCL 0.6 canonical source/package custody","uplift Operational Knowledge depth","extend governed process-concept mappings to Ocean using evidence and the existing crosswalk model","do not invent mappings merely for parity"],"qaRequiredBeforeNext":true},
     {"stageId":"R0.6","id":"R0.6","name":"Multi-Mode Decomposition Proof & Pre-P6 Readiness Certification","status":"BLOCKED_UNTIL_R0_5_QA","qaRequiredBeforeNext":true},
