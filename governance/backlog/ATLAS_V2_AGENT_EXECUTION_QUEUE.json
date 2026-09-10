@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "atlas-v2-agent-execution-queue-v13",
-  "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v12",
-  "updatedAt": "2026-09-11T02:04:00+05:30",
+  "schemaVersion": "atlas-v2-agent-execution-queue-v14",
+  "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v13",
+  "updatedAt": "2026-09-11T02:20:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "recoveryStandardPath": "governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md",
   "assetCustodyStandardPath": "governance/standards/ATLAS_ASSET_CUSTODY_AND_GOVERNANCE_SYNC_STANDARD_V1.md",
@@ -119,10 +119,15 @@
       "stageId":"AR0.1",
       "id":"AR0.1",
       "name":"V1.1 / WorkDefinition Sufficiency Audit",
-      "status":"OWNER_AUTHORIZED_CHATGPT_ONLY",
+      "status":"AWAITING_OWNER_REVIEW",
       "authorizedExecutor":"CHATGPT",
       "claudeExecutionAuthorized":false,
       "primaryObjective":"EXECUTION_IMPLEMENTATION_READINESS",
+      "workingBranch":"atlas-architecture-ar0-1-sufficiency-audit",
+      "candidateHeadSha":"9445e5a1a648b85fcf751f83463a80bbeb041188",
+      "reviewPullRequest":9,
+      "reviewPullRequestState":"OPEN",
+      "candidateDisposition":"CORE_ARCHITECTURE_DIRECTION_VALID__PARTIALLY_SUFFICIENT__TARGETED_SUCCESSOR_REFINEMENT_REQUIRED",
       "scope":[
         "audit current frozen contracts against implementation-readiness North Star",
         "test Road LTL customer-service pickup request for agentic/workflow implementation handoff",
@@ -137,9 +142,25 @@
         "INFERABLE_BUT_UNGOVERNED",
         "ABSENT_READINESS_BLOCKING",
         "DOWNSTREAM_RUNTIME_SPECIFIC_OUTSIDE_ATLAS"
-      ]
+      ],
+      "matrixSummary": {
+        "requirementClassesAudited": 38,
+        "fullyGovernedExistingContract": 18,
+        "governedClientEnterpriseBindingRequired": 6,
+        "inferableButUngoverned": 9,
+        "absentReadinessBlocking": 1,
+        "downstreamRuntimeSpecificOutsideAtlas": 4
+      },
+      "candidateEvidencePath":"governance/architecture-refinement/AR0.1/POST_AUDIT_PRE_OWNER_REVIEW.json",
+      "driveEvidence": {
+        "architectureRefinementFolderId":"1V-yyr-08FGeDvJbCEoWFRM_y4wAmCgk_",
+        "ar0_1FolderId":"16T02_hlEGCxjmHuiTY8fi0-jLxnGS8t1",
+        "candidateDocumentId":"1qKLiOK6I_LP7CUnRHbhdSyN_g_WtNG3cp8NUdQHUDBs",
+        "readbackVerified":true
+      },
+      "nextStageAuthorization":"NONE"
     },
-    {"stageId":"AR0.2","id":"AR0.2","name":"Layer-Boundary Decision","status":"BLOCKED_UNTIL_AR0_1_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
+    {"stageId":"AR0.2","id":"AR0.2","name":"Layer-Boundary Decision","status":"BLOCKED_UNTIL_AR0_1_OWNER_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
     {"stageId":"AR0.3","id":"AR0.3","name":"Candidate Contract Architecture","status":"BLOCKED_UNTIL_AR0_2_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
     {"stageId":"AR0.4","id":"AR0.4","name":"Adversarial Multi-Pattern Validation","status":"BLOCKED_UNTIL_AR0_3_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
     {"stageId":"AR0.5","id":"AR0.5","name":"Successor Architecture Candidate","status":"BLOCKED_UNTIL_AR0_4_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
