@@ -136,6 +136,46 @@ jobs:
             console.log("lineage regression PASS: 21 x 1.4 + LTL-03 x 1.5, agreeing across R0.2 and R0.3");
           '
 
+      - name: R0.3-QA-01 remediation — effective module composition and version rule
+        run: |
+          node -e '
+            const fs=require("fs");
+            const J=p=>JSON.parse(fs.readFileSync(p,"utf8"));
+            const m=J("governance/recovery/R0.3/OK_COVERAGE_MATRIX.json");
+            const L=m.composedSurface.layers.join(" | ");
+            for(const req of ["data/modules/road-ltl-v1.4.json","data/modules/road-ltl-v1.5.json","data/road-ltl/effective-road-ltl-1.5-materialization.json"])
+              if(!L.includes(req))throw new Error("composed surface omits governed module input: "+req);
+            if(m.remediation.finding!=="R0.3-QA-01")throw new Error("remediation finding not recorded");
+            const cells=m.composedSurface.byTask.map(t=>({id:t.taskId,c:t.contractAttributes.find(r=>r.attribute==="version")}));
+            for(const x of cells){
+              if(x.c.layer!=="effectiveModule")throw new Error(x.id+": version must resolve from the effective module surface");
+              if(/module\.version/.test(x.c.path))throw new Error(x.id+": version must not come from a module asset root");
+            }
+            const fifteen=cells.filter(x=>/= 1\.5$/.test(x.c.path)).map(x=>x.id);
+            if(JSON.stringify(fifteen)!==JSON.stringify(["LTL-03"]))throw new Error("exactly LTL-03 must resolve to effective version 1.5, got "+JSON.stringify(fifteen));
+            const e=J("data/operational-knowledge/derived/effective-road-ltl-1.5-operational-knowledge.json");
+            const t3=e.tasks.find(t=>t.taskId==="LTL-03");
+            if(t3.effectiveModuleVersion!=="1.5"||t3.moduleInheritance!=="DIRECT_GOVERNED_OVERRIDE")throw new Error("LTL-03 module lineage not carried");
+            console.log("R0.3-QA-01 remediation verified: effective module surface composed, version rule governed per task");
+          '
+          # Fail closed when the governed v1.5 module overlay is dropped from composition.
+          node -e '
+            const fs=require("fs");
+            const O="data/modules/road-ltl-v1.5.json";
+            const eff=JSON.parse(fs.readFileSync("data/road-ltl/effective-road-ltl-1.5-materialization.json","utf8"));
+            eff.inputs=JSON.parse(JSON.stringify(eff.inputs).split(O).join("REMOVED"));
+            fs.mkdirSync("/tmp/g",{recursive:true});
+            fs.writeFileSync("/tmp/g/eff.json",JSON.stringify(eff));
+            import("./tools/r0-3/ok-hardening.mjs").then(({composeEffectiveOperationalKnowledge:c})=>{
+              try{
+                c({modulePath:"data/modules/road-ltl-v1.4.json",moduleOverlayPath:O,effectiveModulePath:"/tmp/g/eff.json",
+                   okBasePath:"data/operational-knowledge/road-ltl-v1.4-operational.json",
+                   okOverlayPath:"data/operational-knowledge/road-ltl-v1.5-operational.json"});
+              }catch(e){ console.log("fail-closed negative control PASS: "+e.message.split("\n")[0]); return; }
+              console.error("composition did NOT fail closed without the v1.5 module overlay"); process.exit(1);
+            });
+          '
+
       - name: R0.3 stage certification
         run: node tests/r0-3-ok-canonical-information-hardening.mjs
 
@@ -165,7 +205,7 @@ jobs:
         run: |
           node -e '
             const fs=require("fs");
-            const b=JSON.parse(fs.readFileSync("governance/recovery/R0.3/POST_IMPLEMENTATION_PRE_QA.json","utf8"));
+            const b=JSON.parse(fs.readFileSync("governance/recovery/R0.3/POST_IMPLEMENTATION_PRE_QA_REMEDIATION_R1.json","utf8"));
             if(b.nextAuthorization!=="AWAITING_INDEPENDENT_QA")throw new Error("stage must stop at AWAITING_INDEPENDENT_QA");
             if(b.qaDisposition!==null)throw new Error("the implementation agent must not set qaDisposition");
             if(b.status!=="AWAITING_INDEPENDENT_QA")throw new Error("stage status must be AWAITING_INDEPENDENT_QA, not COMPLETE");

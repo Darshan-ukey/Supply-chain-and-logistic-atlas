@@ -11,6 +11,7 @@
       "data/road-ltl/effective-road-ltl-1.5-materialization.json": "a303d30d1c415d0bbfa9efab27ae1ac1edcd32fffb5f9e236e8c1ebf629bf7f6",
       "schemas/information-resolution-contract-v1.json": "77224aaaef03689f1d918e41c6c2a4bd6e126dd5872782f09894c818a76dda73",
       "data/modules/road-ltl-v1.4.json": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+      "data/modules/road-ltl-v1.5.json": "22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f",
       "data/operational-knowledge/road-ltl-v1.4-operational.json": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e",
       "schemas/operational-knowledge-contract-v2.json": "d58d33c38adc0ac3e63400b66680115699c0cfa5c4c831e44b22c19eedfa4a18",
       "data/operational-knowledge/road-ltl-v1.5-operational.json": "6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9"

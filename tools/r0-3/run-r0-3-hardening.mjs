@@ -12,6 +12,7 @@ const STAGE_DATE = '2026-09-10';
 
 const INPUTS = {
   module: 'data/modules/road-ltl-v1.4.json',
+  moduleOverlay: 'data/modules/road-ltl-v1.5.json',
   okBase: 'data/operational-knowledge/road-ltl-v1.4-operational.json',
   okOverlay: 'data/operational-knowledge/road-ltl-v1.5-operational.json',
   okContract: 'schemas/operational-knowledge-contract-v2.json',
@@ -40,7 +41,11 @@ export function run() {
   );
 
   const composition = composeEffectiveOperationalKnowledge({
-    modulePath: INPUTS.module, okBasePath: INPUTS.okBase, okOverlayPath: INPUTS.okOverlay,
+    modulePath: INPUTS.module,
+    moduleOverlayPath: INPUTS.moduleOverlay,
+    effectiveModulePath: INPUTS.effective15,
+    okBasePath: INPUTS.okBase,
+    okOverlayPath: INPUTS.okOverlay,
   });
 
   // Cross-check the composition against the R0.2-certified effective materialization.
@@ -78,7 +83,9 @@ export function run() {
       taskId: c.taskId,
       okSourceVersion: c.okSourceVersion,
       lineage: c.lineage,
-      moduleLayerPath: INPUTS.module,
+      effectiveModuleVersion: c.effectiveModuleVersion,
+      moduleInheritance: c.moduleInheritance,
+      moduleLayerPath: INPUTS.effective15,
       operationalKnowledgePath: c.okOverride ? INPUTS.okOverlay : INPUTS.okBase,
     })),
   };
@@ -115,7 +122,14 @@ export function run() {
       contractAttributeCount: coverage.attributeCount,
       assessedCells: coverage.tasks.length * coverage.attributeCount,
     },
-    evaluationBasis: 'R0.3 measures the EFFECTIVE COMPOSED governed semantic surface: data/modules/road-ltl-v1.4.json (module layer) together with the Operational Knowledge payload and its governed 1.5 overlay. The OK-only surface is reported alongside it as a structural observation about one asset, not as the stage verdict.',
+    evaluationBasis: 'R0.3 measures the EFFECTIVE COMPOSED governed semantic surface: the R0.2-certified effective Road LTL 1.5 module materialization (v1.4 module base composed with the governed v1.5 module overlay) together with the Operational Knowledge payload and its governed 1.5 overlay. The OK-only surface is reported alongside it as a structural observation about one asset, not as the stage verdict.',
+    remediation: {
+      finding: 'R0.3-QA-01',
+      defect: 'The superseded candidate composed data/modules/road-ltl-v1.4.json only, omitting the governed data/modules/road-ltl-v1.5.json module overlay from the semantic surface.',
+      correction: 'The module layer is now the R0.2-certified effective materialization, so LTL-03 is measured against its governed 1.5 module semantics.',
+      versionResolutionRule: 'A task version resolves from the certified per-task semanticSourceVersion of the effective materialization. It is never taken from the v1.4 module root.',
+    },
+    effectiveModuleSurface: composition.effectiveModuleSurface,
     statusSemantics: {
       SATISFIED_DIRECT: 'Populated under the contract attribute name inside the surface.',
       SATISFIED_BY_DECLARED_EQUIVALENT: 'Populated under a different governed name whose equivalence is declared in EQUIVALENCE_MAP with a named basis. Independently rejectable by QA, entry by entry.',
@@ -125,7 +139,13 @@ export function run() {
     complianceRule: 'Only SATISFIED_DIRECT and SATISFIED_BY_DECLARED_EQUIVALENT count as satisfied. PRESENT_NESTED_ONLY_NOT_TASK_LEVEL and ABSENT remain open gaps and were not converted into compliant attributes.',
     composedSurface: {
       surface: 'COMPOSED',
-      layers: ['data/modules/road-ltl-v1.4.json', 'data/operational-knowledge/road-ltl-v1.4-operational.json', 'data/operational-knowledge/road-ltl-v1.5-operational.json'],
+      layers: [
+        'data/road-ltl/effective-road-ltl-1.5-materialization.json (R0.2-certified effective module surface = data/modules/road-ltl-v1.4.json + data/modules/road-ltl-v1.5.json)',
+        'data/modules/road-ltl-v1.4.json',
+        'data/modules/road-ltl-v1.5.json',
+        'data/operational-knowledge/road-ltl-v1.4-operational.json',
+        'data/operational-knowledge/road-ltl-v1.5-operational.json',
+      ],
       totals: totalsOf(coverage),
       byAttribute: coverage.byAttribute,
       byTask: coverage.tasks,

@@ -12,6 +12,7 @@
       "data/road-ltl/effective-road-ltl-1.5-materialization.json": "a303d30d1c415d0bbfa9efab27ae1ac1edcd32fffb5f9e236e8c1ebf629bf7f6",
       "schemas/information-resolution-contract-v1.json": "77224aaaef03689f1d918e41c6c2a4bd6e126dd5872782f09894c818a76dda73",
       "data/modules/road-ltl-v1.4.json": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+      "data/modules/road-ltl-v1.5.json": "22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f",
       "data/operational-knowledge/road-ltl-v1.4-operational.json": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e",
       "schemas/operational-knowledge-contract-v2.json": "d58d33c38adc0ac3e63400b66680115699c0cfa5c4c831e44b22c19eedfa4a18",
       "data/operational-knowledge/road-ltl-v1.5-operational.json": "6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9"
@@ -23,7 +24,37 @@
     "contractAttributeCount": 24,
     "assessedCells": 528
   },
-  "evaluationBasis": "R0.3 measures the EFFECTIVE COMPOSED governed semantic surface: data/modules/road-ltl-v1.4.json (module layer) together with the Operational Knowledge payload and its governed 1.5 overlay. The OK-only surface is reported alongside it as a structural observation about one asset, not as the stage verdict.",
+  "evaluationBasis": "R0.3 measures the EFFECTIVE COMPOSED governed semantic surface: the R0.2-certified effective Road LTL 1.5 module materialization (v1.4 module base composed with the governed v1.5 module overlay) together with the Operational Knowledge payload and its governed 1.5 overlay. The OK-only surface is reported alongside it as a structural observation about one asset, not as the stage verdict.",
+  "remediation": {
+    "finding": "R0.3-QA-01",
+    "defect": "The superseded candidate composed data/modules/road-ltl-v1.4.json only, omitting the governed data/modules/road-ltl-v1.5.json module overlay from the semantic surface.",
+    "correction": "The module layer is now the R0.2-certified effective materialization, so LTL-03 is measured against its governed 1.5 module semantics.",
+    "versionResolutionRule": "A task version resolves from the certified per-task semanticSourceVersion of the effective materialization. It is never taken from the v1.4 module root."
+  },
+  "effectiveModuleSurface": {
+    "path": "data/road-ltl/effective-road-ltl-1.5-materialization.json",
+    "materializerVersion": "atlas-effective-road-ltl-materializer-1.0.0",
+    "effectiveModuleVersion": "1.5",
+    "semanticBaseVersion": "1.4",
+    "declaredInputs": {
+      "base": {
+        "path": "data/modules/road-ltl-v1.4.json",
+        "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+        "version": "1.4",
+        "taskCount": 22
+      },
+      "overlay": {
+        "path": "data/modules/road-ltl-v1.5.json",
+        "sha256": "22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f",
+        "version": "1.5",
+        "overrideCount": 1
+      }
+    },
+    "semanticSourceVersionSpread": {
+      "1.4": 21,
+      "1.5": 1
+    }
+  },
   "statusSemantics": {
     "SATISFIED_DIRECT": "Populated under the contract attribute name inside the surface.",
     "SATISFIED_BY_DECLARED_EQUIVALENT": "Populated under a different governed name whose equivalence is declared in EQUIVALENCE_MAP with a named basis. Independently rejectable by QA, entry by entry.",
@@ -34,15 +65,17 @@
   "composedSurface": {
     "surface": "COMPOSED",
     "layers": [
+      "data/road-ltl/effective-road-ltl-1.5-materialization.json (R0.2-certified effective module surface = data/modules/road-ltl-v1.4.json + data/modules/road-ltl-v1.5.json)",
       "data/modules/road-ltl-v1.4.json",
+      "data/modules/road-ltl-v1.5.json",
       "data/operational-knowledge/road-ltl-v1.4-operational.json",
       "data/operational-knowledge/road-ltl-v1.5-operational.json"
     ],
     "totals": {
       "satisfiedDirect": 50,
-      "satisfiedByDeclaredEquivalent": 240,
+      "satisfiedByDeclaredEquivalent": 241,
       "presentNestedOnly": 64,
-      "absent": 174
+      "absent": 173
     },
     "byAttribute": [
       {
@@ -58,9 +91,9 @@
         "group": "applicability",
         "attribute": "prohibitedWhen",
         "satisfiedDirect": 0,
-        "satisfiedByDeclaredEquivalent": 0,
+        "satisfiedByDeclaredEquivalent": 1,
         "presentNestedOnly": 0,
-        "absent": 22,
+        "absent": 21,
         "taskCount": 22
       },
       {
@@ -392,9 +425,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-01].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -610,9 +643,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-02].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -709,16 +742,16 @@
             "attribute": "requiredWhen",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
             "layer": "module",
-            "path": "baseline.trigger",
-            "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+            "path": "operationalKnowledgeV2.requiredWhen",
+            "equivalenceBasis": "Declared inside the governed v1.5 operationalKnowledgeV2 container."
           },
           {
             "group": "applicability",
             "attribute": "prohibitedWhen",
-            "status": "ABSENT",
-            "layer": null,
-            "path": null,
-            "equivalenceBasis": null
+            "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+            "layer": "module",
+            "path": "operationalKnowledgeV2.prohibitedWhen",
+            "equivalenceBasis": "Declared inside the governed v1.5 operationalKnowledgeV2 container."
           },
           {
             "group": "applicability",
@@ -828,9 +861,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-03].semanticSourceVersion = 1.5",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -898,9 +931,9 @@
           }
         ],
         "satisfiedDirect": 8,
-        "satisfiedByDeclaredEquivalent": 9,
+        "satisfiedByDeclaredEquivalent": 10,
         "presentNestedOnly": 1,
-        "absent": 6,
+        "absent": 5,
         "nestedOnlyAttributes": [
           "sourceBasis"
         ],
@@ -909,7 +942,6 @@
           "carriageRegimeIds",
           "conditionIds",
           "jurisdictionIds",
-          "prohibitedWhen",
           "unresolvedDependencies"
         ]
       },
@@ -1042,9 +1074,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-04].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -1260,9 +1292,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-05].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -1478,9 +1510,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-06].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -1696,9 +1728,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-07].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -1914,9 +1946,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-08].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -2132,9 +2164,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-09].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -2350,9 +2382,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-10].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -2568,9 +2600,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-11].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -2786,9 +2818,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-12].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -3004,9 +3036,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-13].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -3222,9 +3254,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-14].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -3440,9 +3472,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-15].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -3658,9 +3690,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-16].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -3876,9 +3908,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-17].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -4094,9 +4126,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-18].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -4312,9 +4344,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-19].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -4530,9 +4562,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-20].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -4748,9 +4780,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-21].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -4966,9 +4998,9 @@
             "group": "identity",
             "attribute": "version",
             "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
-            "layer": "moduleRoot",
-            "path": "module.version",
-            "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+            "layer": "effectiveModule",
+            "path": "effective-road-ltl-1.5-materialization.tasks[LTL-22].semanticSourceVersion = 1.4",
+            "equivalenceBasis": "Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root."
           },
           {
             "group": "inputsOutputs",
@@ -10332,6 +10364,12 @@
         "composedSatisfied": 22
       },
       {
+        "attribute": "prohibitedWhen",
+        "group": "applicability",
+        "okOnlySatisfied": 0,
+        "composedSatisfied": 1
+      },
+      {
         "attribute": "authorityOwner",
         "group": "authority",
         "okOnlySatisfied": 0,
@@ -10393,5 +10431,5 @@
       }
     ]
   },
-  "semanticHash": "df2a845d59d14993a44641080928f761c8200980a122c56416b1ee39d8a3428b"
+  "semanticHash": "c3dc7c1cd029c2b26a4169665191190925a7dc2834b5a324703bcc9389748b5d"
 }

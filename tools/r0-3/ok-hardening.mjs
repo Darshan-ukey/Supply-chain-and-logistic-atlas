@@ -72,11 +72,10 @@ export const EQUIVALENCE_MAP = {
     layer: 'moduleRoot', path: 'module.id',
     basis: 'Module identity is declared once at asset root rather than repeated per task.',
   }],
-  version: [{
-    layer: 'moduleRoot', path: 'module.version',
-    basis: 'Module version is declared once at asset root rather than repeated per task.',
-  }],
   businessMeaning: [{
+    layer: 'module', path: 'operationalKnowledgeV2.businessMeaning',
+    basis: 'The governed v1.5 module overlay declares this inside an explicit operationalKnowledgeV2 container, i.e. under the contract this stage measures against.',
+  }, {
     layer: 'module', path: 'identity.purpose',
     basis: 'identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning.',
   }],
@@ -92,7 +91,22 @@ export const EQUIVALENCE_MAP = {
     layer: 'module', path: 'baseline.after',
     basis: 'baseline.after states the governed state after the task completes.',
   }],
+  why: [{
+    layer: 'module', path: 'operationalKnowledgeV2.why',
+    basis: 'Declared inside the governed v1.5 operationalKnowledgeV2 container.',
+  }],
+  prohibitedWhen: [{
+    layer: 'module', path: 'operationalKnowledgeV2.prohibitedWhen',
+    basis: 'Declared inside the governed v1.5 operationalKnowledgeV2 container.',
+  }],
+  resolutionStatus: [{
+    layer: 'module', path: 'executionReadiness.status',
+    basis: 'The governed v1.5 module overlay states task execution-readiness status, which is the resolution status the contract requires at task level.',
+  }],
   requiredWhen: [{
+    layer: 'module', path: 'operationalKnowledgeV2.requiredWhen',
+    basis: 'Declared inside the governed v1.5 operationalKnowledgeV2 container.',
+  }, {
     layer: 'module', path: 'baseline.trigger',
     basis: 'baseline.trigger states the governed condition under which the task is required.',
   }],
@@ -120,10 +134,30 @@ export const EQUIVALENCE_MAP = {
 // ---------------------------------------------------------------------------
 // Composition — effective Road LTL 1.5 operational knowledge.
 // ---------------------------------------------------------------------------
-export function composeEffectiveOperationalKnowledge({ modulePath, okBasePath, okOverlayPath }) {
+export function composeEffectiveOperationalKnowledge({
+  modulePath, moduleOverlayPath, effectiveModulePath, okBasePath, okOverlayPath,
+}) {
   const mod = readJson(modulePath);
   const okBase = readJson(okBasePath);
   const overlay = readJson(okOverlayPath);
+
+  // R0.3-QA-01 remediation. The module semantic surface is the R0.2-certified EFFECTIVE
+  // Road LTL 1.5 materialization — v1.4 base composed with the governed v1.5 module
+  // overlay — not the v1.4 module asset alone. Composing v1.4 only silently drops the
+  // governed LTL-03 module semantics.
+  const eff = readJson(effectiveModulePath);
+  const declaredInputs = JSON.stringify(eff.inputs ?? {});
+  for (const required of [modulePath, moduleOverlayPath]) {
+    if (!declaredInputs.includes(required)) {
+      throw new Error(
+        `Effective module materialization does not declare ${required} as an input; ` +
+        'refusing to compose an incomplete module surface (R0.3-QA-01). Failed closed.');
+    }
+  }
+  if (eff.effectiveModuleVersion !== '1.5' || eff.semanticBaseVersion !== '1.4') {
+    throw new Error(`Unexpected effective module identity ${eff.semanticBaseVersion} -> ${eff.effectiveModuleVersion}; failed closed.`);
+  }
+  const effByTask = new Map(eff.tasks.map(t => [taskIdentityOf(t), t]));
 
   const policy = overlay.inheritancePolicy;
   if (policy !== 'LOSSLESS_INHERIT_BASE_AND_OVERRIDE_ONLY_DECLARED_TASKS') {
@@ -140,7 +174,12 @@ export function composeEffectiveOperationalKnowledge({ modulePath, okBasePath, o
     if (!changed.has(id)) throw new Error(`Overlay carries an override for ${id} that is not declared changed; failed closed.`);
   }
 
-  const moduleTasks = new Map(mod.tasks.map(t => [taskIdentityOf(t), t]));
+  // Effective module task records, each carrying its governed semantic source version.
+  const moduleTasks = new Map([...effByTask.entries()].map(([id, e]) => [id, e.task]));
+  const effectiveTaskVersion = new Map([...effByTask.entries()].map(([id, e]) => [id, String(e.semanticSourceVersion)]));
+  for (const id of mod.tasks.map(taskIdentityOf)) {
+    if (!moduleTasks.has(id)) throw new Error(`Base module task ${id} absent from the effective materialization; failed closed.`);
+  }
   const okTasks = new Map(okBase.tasks.map(t => [taskIdentityOf(t), t]));
 
   const composed = [...moduleTasks.keys()].sort().map(taskId => {
@@ -153,6 +192,8 @@ export function composeEffectiveOperationalKnowledge({ modulePath, okBasePath, o
       okTask,
       okOverride: override,
       okSourceVersion: override ? String(overlay.moduleVersion) : String(okBase.version),
+      effectiveModuleVersion: effectiveTaskVersion.get(taskId),
+      moduleInheritance: effByTask.get(taskId).inheritance,
       lineage: override ? 'DIRECT_GOVERNED_1_5_OVERRIDE' : 'INHERITED_FROM_1_4',
     };
   });
@@ -161,6 +202,14 @@ export function composeEffectiveOperationalKnowledge({ modulePath, okBasePath, o
 
   return {
     moduleRoot: mod,
+    effectiveModuleSurface: {
+      path: effectiveModulePath,
+      materializerVersion: eff.materializerVersion ?? null,
+      effectiveModuleVersion: eff.effectiveModuleVersion,
+      semanticBaseVersion: eff.semanticBaseVersion,
+      declaredInputs: eff.inputs ?? null,
+      semanticSourceVersionSpread: eff.lineage?.semanticSourceVersionSpread ?? null,
+    },
     composed,
     orphanOkTaskIds: orphanOk.sort(),
     inheritedCount: composed.filter(c => c.lineage === 'INHERITED_FROM_1_4').length,
@@ -185,6 +234,24 @@ function locateAttribute(attr, entry, moduleRoot, surface) {
   const scope = SURFACES[surface];
   if (!scope) throw new Error(`Unknown measurement surface "${surface}"; failed closed.`);
   const layerObj = { okOverride: entry.okOverride, ok: entry.okTask, module: entry.moduleTask };
+
+  // GOVERNED VERSION-RESOLUTION RULE (R0.3-QA-01).
+  // A task's effective version is the R0.2-certified per-task semanticSourceVersion from
+  // the effective Road LTL 1.5 materialization. It is NEVER taken from the v1.4 module
+  // root, which would misreport LTL-03 — a direct governed 1.5 override — as version 1.4.
+  if (attr === 'version') {
+    if (!scope.equivalenceLayers.includes('module')) {
+      return { status: 'ABSENT', layer: null, path: null, equivalenceBasis: null };
+    }
+    const v = entry.effectiveModuleVersion;
+    if (!isPopulated(v)) return { status: 'ABSENT', layer: null, path: null, equivalenceBasis: null };
+    return {
+      status: 'SATISFIED_BY_DECLARED_EQUIVALENT',
+      layer: 'effectiveModule',
+      path: `effective-road-ltl-1.5-materialization.tasks[${entry.taskId}].semanticSourceVersion = ${v}`,
+      equivalenceBasis: 'Task version resolves from the R0.2-certified per-task semanticSourceVersion of the effective Road LTL 1.5 materialization, not from any single module asset root.',
+    };
+  }
 
   // 1. Direct presence under the contract name, within the surface's layers.
   for (const layer of scope.layers) {

@@ -11,6 +11,8 @@ const sha = p => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('
 const J = p => JSON.parse(fs.readFileSync(p, 'utf8'));
 
 const MODULE = 'data/modules/road-ltl-v1.4.json';
+const MODULE_OVERLAY = 'data/modules/road-ltl-v1.5.json';
+const EFFECTIVE_MODULE = 'data/road-ltl/effective-road-ltl-1.5-materialization.json';
 const OK_BASE = 'data/operational-knowledge/road-ltl-v1.4-operational.json';
 const OK_OVERLAY = 'data/operational-knowledge/road-ltl-v1.5-operational.json';
 const OK_CONTRACT = 'schemas/operational-knowledge-contract-v2.json';
@@ -45,9 +47,11 @@ assert.equal(sha('data/road-ltl/effective-road-ltl-1.5-materialization.json'),
 // =============================================================================
 // 2. R0.2 LINEAGE REGRESSION — effective 1.5 is still 21 inherited + LTL-03 override.
 // =============================================================================
-const comp = composeEffectiveOperationalKnowledge({
-  modulePath: MODULE, okBasePath: OK_BASE, okOverlayPath: OK_OVERLAY,
+const compose = (over = {}) => composeEffectiveOperationalKnowledge({
+  modulePath: MODULE, moduleOverlayPath: MODULE_OVERLAY, effectiveModulePath: EFFECTIVE_MODULE,
+  okBasePath: OK_BASE, okOverlayPath: OK_OVERLAY, ...over,
 });
+const comp = compose();
 assert.equal(comp.composed.length, 22, 'effective Road LTL 1.5 must carry exactly 22 tasks');
 assert.equal(comp.inheritedCount, 21, 'exactly 21 tasks must be inherited unchanged from 1.4');
 assert.equal(comp.overriddenCount, 1, 'exactly 1 task must be a direct governed 1.5 override');
@@ -62,10 +66,55 @@ assert.equal(eff.status, 'DERIVED_VIEW_NOT_A_SOURCE_OF_TRUTH',
 
 // Fail closed rather than guess if the governed inheritance policy ever changes.
 assert.throws(
-  () => composeEffectiveOperationalKnowledge({ modulePath: MODULE, okBasePath: OK_BASE, okOverlayPath: OK_CONTRACT }),
+  () => compose({ okOverlayPath: OK_CONTRACT }),
   /failed closed|inheritancePolicy/i,
-  'an unexpected overlay must fail closed, not be interpreted',
+  'an unexpected Operational Knowledge overlay must fail closed, not be interpreted',
 );
+
+// =============================================================================
+// 2b. R0.3-QA-01 REMEDIATION — the v1.5 MODULE overlay must be part of composition.
+// Deliberately dropping it from the declared effective-module surface must fail closed.
+// =============================================================================
+const effRaw = J(EFFECTIVE_MODULE);
+assert.ok(JSON.stringify(effRaw.inputs).includes(MODULE_OVERLAY),
+  'the certified effective materialization must declare the v1.5 module overlay as an input');
+const stripped = JSON.parse(JSON.stringify(effRaw));
+stripped.inputs = JSON.parse(JSON.stringify(effRaw.inputs).replaceAll(MODULE_OVERLAY, 'REMOVED'));
+fs.mkdirSync('/tmp/r03guard', { recursive: true });
+fs.writeFileSync('/tmp/r03guard/eff-no-overlay.json', JSON.stringify(stripped));
+assert.throws(
+  () => compose({ effectiveModulePath: '/tmp/r03guard/eff-no-overlay.json' }),
+  /R0\.3-QA-01|incomplete module surface/,
+  'composing a module surface without the governed v1.5 overlay must fail closed',
+);
+
+// The composed module surface must actually carry the v1.5 module semantics.
+assert.equal(comp.effectiveModuleSurface.effectiveModuleVersion, '1.5');
+assert.equal(comp.effectiveModuleSurface.semanticBaseVersion, '1.4');
+const ltl03 = comp.composed.find(c => c.taskId === 'LTL-03');
+assert.equal(ltl03.effectiveModuleVersion, '1.5', 'LTL-03 must resolve to effective module version 1.5');
+assert.equal(ltl03.moduleInheritance, 'DIRECT_GOVERNED_OVERRIDE');
+assert.ok(ltl03.moduleTask.operationalKnowledgeV2,
+  'LTL-03 must be measured against the governed v1.5 operationalKnowledgeV2 container');
+for (const c of comp.composed.filter(x => x.taskId !== 'LTL-03')) {
+  assert.equal(c.effectiveModuleVersion, '1.4', `${c.taskId} must remain inherited at 1.4`);
+}
+
+// GOVERNED VERSION-RESOLUTION RULE: never from the v1.4 module root.
+const versionCells = J(MATRIX).composedSurface.byTask.map(t => ({
+  taskId: t.taskId, cell: t.contractAttributes.find(r => r.attribute === 'version'),
+}));
+for (const v of versionCells) {
+  assert.equal(v.cell.status, 'SATISFIED_BY_DECLARED_EQUIVALENT');
+  assert.equal(v.cell.layer, 'effectiveModule', `${v.taskId}: version must resolve from the effective module surface`);
+  assert.ok(!/module\.version/.test(v.cell.path),
+    `${v.taskId}: version must not be taken from a module asset root`);
+  assert.match(v.cell.path, /semanticSourceVersion = (1\.4|1\.5)$/);
+}
+assert.match(versionCells.find(v => v.taskId === 'LTL-03').cell.path, /semanticSourceVersion = 1\.5$/,
+  'LTL-03 version must resolve to 1.5, not to the v1.4 module root');
+assert.equal(versionCells.filter(v => /= 1\.5$/.test(v.cell.path)).length, 1,
+  'exactly one task may resolve to effective version 1.5');
 
 // =============================================================================
 // 3. DUAL SURFACE — both views exist and neither replaces the other.
@@ -77,10 +126,16 @@ assert.equal(m.composedSurface.surface, 'COMPOSED');
 assert.equal(m.okOnlySurface.surface, 'OK_ONLY');
 assert.match(m.evaluationBasis, /COMPOSED/,
   'the matrix must state that the governed evaluation is the composed surface');
-assert.ok(m.composedSurface.layers.includes(MODULE),
-  'the composed surface must include the governed module layer');
-assert.ok(!m.okOnlySurface.layers.includes(MODULE),
+assert.ok(m.composedSurface.layers.some(l => l.includes(MODULE)),
+  'the composed surface must include the governed v1.4 module base');
+assert.ok(m.composedSurface.layers.some(l => l.includes(MODULE_OVERLAY)),
+  'the composed surface must include the governed v1.5 module overlay (R0.3-QA-01)');
+assert.ok(m.composedSurface.layers.some(l => l.includes(EFFECTIVE_MODULE)),
+  'the composed surface must name the R0.2-certified effective module materialization');
+assert.ok(!m.okOnlySurface.layers.some(l => l.includes(MODULE)),
   'the OK-only surface must exclude the module layer');
+assert.equal(m.remediation.finding, 'R0.3-QA-01');
+assert.match(m.remediation.versionResolutionRule, /never taken from the v1\.4 module root/i);
 assert.equal(m.scope.taskCount, 22);
 assert.equal(m.scope.assessedCells, m.scope.taskCount * m.scope.contractAttributeCount);
 
@@ -205,7 +260,7 @@ assert.equal(J(IRCOV).semanticHash, beforeSemantic.ir, 'IR coverage semantic has
 
 // In-memory determinism too: same inputs, same canonical hash, independent of file IO.
 const twice = [0, 1].map(() => {
-  const c = composeEffectiveOperationalKnowledge({ modulePath: MODULE, okBasePath: OK_BASE, okOverlayPath: OK_OVERLAY });
+  const c = compose();
   return canonicalHash({
     composed: assessCoverage({ contract: J(OK_CONTRACT), composition: c, surface: 'COMPOSED' }),
     okOnly: assessCoverage({ contract: J(OK_CONTRACT), composition: c, surface: 'OK_ONLY' }),
@@ -247,6 +302,7 @@ for (const f of changed) {
     f.startsWith('tools/r0-3/') ||
     f.startsWith('tests/r0-3') ||
     f.startsWith('.github/workflows/r0-3') ||
+    f.startsWith('governance/recovery/R0.3/') ||
     f === EFFECTIVE_OK,
     `R0.3 changed a file outside its authorized surface: ${f}`,
   );

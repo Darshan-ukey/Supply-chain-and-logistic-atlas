@@ -373,6 +373,42 @@
       ]
     },
     {
+      "id": "R0.3-GAP-OK-PARTIAL-prohibitedWhen",
+      "kind": "DEPTH_MISMATCH",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 requires \"prohibitedWhen\". It resolves for 1 of 22 tasks and is absent for the remainder.",
+      "context": {
+        "contractGroup": "applicability",
+        "contractAttribute": "prohibitedWhen",
+        "absentTaskCount": 21
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    },
+    {
       "id": "R0.3-GAP-OK-ambiguities",
       "kind": "MISSING_A5_DETAIL",
       "status": "OPEN",
@@ -493,43 +529,6 @@
       "context": {
         "contractGroup": "applicability",
         "contractAttribute": "jurisdictionIds",
-        "absentTaskCount": 22
-      },
-      "affectedProcessIds": [
-        "LTL-01",
-        "LTL-02",
-        "LTL-03",
-        "LTL-04",
-        "LTL-05",
-        "LTL-06",
-        "LTL-07",
-        "LTL-08",
-        "LTL-09",
-        "LTL-10",
-        "LTL-11",
-        "LTL-12",
-        "LTL-13",
-        "LTL-14",
-        "LTL-15",
-        "LTL-16",
-        "LTL-17",
-        "LTL-18",
-        "LTL-19",
-        "LTL-20",
-        "LTL-21",
-        "LTL-22"
-      ]
-    },
-    {
-      "id": "R0.3-GAP-OK-prohibitedWhen",
-      "kind": "INSUFFICIENT_APPLICABILITY_EVIDENCE",
-      "status": "OPEN",
-      "moduleId": "road-ltl",
-      "createdAt": "2026-09-10",
-      "basis": "Operational Knowledge Contract v2 group \"applicability\" requires \"prohibitedWhen\". No governed Road LTL asset carries it, directly or by declared equivalent, for any of the 22 tasks.",
-      "context": {
-        "contractGroup": "applicability",
-        "contractAttribute": "prohibitedWhen",
         "absentTaskCount": 22
       },
       "affectedProcessIds": [
