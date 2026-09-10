@@ -1,7 +1,7 @@
 # Atlas V2 — Governed Execution Roadmap and Production Critical Path
 
 Status: ACTIVE BACKLOG / ARCHITECTURE REFINEMENT GATE  
-Updated: 11 September 2026 — AR0.1 authorized; execution-readiness North Star adopted; R0.4 suspended  
+Updated: 11 September 2026 — AR0.1 audit awaiting Owner review; R0.4 suspended  
 Canonical technical backlog: this file + `ATLAS_V2_AGENT_EXECUTION_QUEUE.json` on branch `atlas-governance-registry-v2.1`.
 
 ## Operating rule
@@ -47,23 +47,30 @@ Status: COMPLETE / OWNER_REVIEWED
 Baseline inventory and challenge register completed. The earlier solution-synthesis framing is retained as historical analysis but superseded as the primary product objective by the execution-readiness North Star.
 
 ## AR0.1 — V1.1 / WorkDefinition Sufficiency Audit
-Status: OWNER_AUTHORIZED_CHATGPT_ONLY — CURRENT
+Status: AWAITING_OWNER_REVIEW — CURRENT
 
-Audit current canonical decomposition, WorkDefinition, Operational Knowledge, Client Binding and related contracts against implementation readiness using concrete scenarios:
+Candidate evidence is on branch `atlas-architecture-ar0-1-sufficiency-audit`; review PR #9 is open and unmerged.
+
+Candidate disposition:
+`CORE_ARCHITECTURE_DIRECTION_VALID / PARTIALLY_SUFFICIENT / TARGETED_SUCCESSOR_REFINEMENT_REQUIRED`
+
+The audit tested:
 1. Road LTL customer-service pickup request -> agentic/workflow implementation handoff;
 2. BOL/document information resolution -> fail-closed readiness with real gaps;
 3. digital-twin/BPM implementation handoff;
 4. ERP/TMS fit-gap / implementation handoff;
 5. adversarial control-flow semantics.
 
-Every required semantic is classified as fully governed, client/enterprise binding required, inferable but ungoverned, absent/readiness-blocking, or legitimately downstream/runtime-specific.
+The 38-class sufficiency matrix found 18 requirement classes fully governed by existing contracts/architecture, 6 correctly owned by enterprise/client binding, 9 inferable but not sufficiently governed/formalized, 1 absent as a first-class readiness mechanism, and 4 legitimately downstream/runtime-specific. These are audit counts, not a product score.
 
-AR0.1 is evidence/audit only; no successor architecture is frozen here.
+The clearest gap is aggregate implementation-scope readiness determination with blocker dependency closure. Additional targeted refinement is indicated for implementation-scope composition, version-closed handoff packaging and formal complex control-flow grammar. No broad monolithic Execution Requirements layer is justified by current evidence.
+
+No successor architecture is approved at AR0.1.
 
 ## AR0.2 — Layer-Boundary Decision
-Status: BLOCKED_UNTIL_AR0_1_REVIEW
+Status: BLOCKED_UNTIL_AR0_1_OWNER_REVIEW
 
-Determine boundaries across Domain/Operational Knowledge, Work Decomposition, Canonical WorkDefinition, Client Binding/Enterprise Context, readiness assessment, implementation handoff and Runtime Adapters. Any optional downstream solution-synthesis capability remains secondary.
+If subsequently authorized, determine boundaries across Domain/Operational Knowledge, Work Decomposition, Canonical WorkDefinition, Client Binding/Enterprise Context, readiness assessment, implementation handoff and Runtime Adapters. Any optional downstream solution-synthesis capability remains secondary.
 
 ## AR0.3 — Candidate Contract Architecture
 Status: BLOCKED_UNTIL_AR0_2_REVIEW
