@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "atlas-v2-agent-execution-queue-v12",
-  "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v11",
-  "updatedAt": "2026-09-11T00:24:00+05:30",
+  "schemaVersion": "atlas-v2-agent-execution-queue-v13",
+  "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v12",
+  "updatedAt": "2026-09-11T02:04:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "recoveryStandardPath": "governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md",
   "assetCustodyStandardPath": "governance/standards/ATLAS_ASSET_CUSTODY_AND_GOVERNANCE_SYNC_STANDARD_V1.md",
@@ -31,10 +31,14 @@
     "subStageAuthorizationIsBinding": true,
     "architectureRefinementExecutor": "CHATGPT",
     "claudeArchitectureRefinementAuthorized": false,
-    "r0_4MayNotStartBeforeArchitectureOwnerDecision": true
+    "r0_4MayNotStartBeforeArchitectureOwnerDecision": true,
+    "architectureNorthStar": "EXECUTION_IMPLEMENTATION_READINESS",
+    "runtimeExecutionOutsideAtlasPrimaryBoundary": true,
+    "solutionSynthesisSecondary": true,
+    "readinessMustFailClosedOnMandatoryKnowledgeGaps": true
   },
   "mode": "ARCHITECTURE_REFINEMENT_PRE_R0_4",
-  "currentStageId": "AR0.0",
+  "currentStageId": "AR0.1",
   "currentPhase": "ARCHITECTURE_REFINEMENT",
   "phases": [
     {
@@ -104,18 +108,37 @@
       "stageId": "AR0.0",
       "id": "AR0.0",
       "name": "Architecture Baseline & Challenge Register",
-      "status": "OWNER_AUTHORIZED_CHATGPT_ONLY",
+      "status": "COMPLETE",
+      "ownerReviewDisposition": "OWNER_REVIEWED_ACCEPTED_AS_REFERENCE_BASELINE",
+      "primaryObjectiveSupersededByDecision": "AR-D011",
       "executionClass": "GOVERNANCE_ARCHITECTURE",
       "authorizedExecutor": "CHATGPT",
-      "claudeExecutionAuthorized": false,
-      "scope": [
-        "inventory frozen Work Decomposition V1.1, Canonical WorkDefinition V1, Client Binding and Runtime Adapter contracts",
-        "map current ownership of executable-solution requirements",
-        "define sufficiency criteria and challenge register",
-        "do not redesign or mutate frozen V1 architecture"
+      "claudeExecutionAuthorized": false
+    },
+    {
+      "stageId":"AR0.1",
+      "id":"AR0.1",
+      "name":"V1.1 / WorkDefinition Sufficiency Audit",
+      "status":"OWNER_AUTHORIZED_CHATGPT_ONLY",
+      "authorizedExecutor":"CHATGPT",
+      "claudeExecutionAuthorized":false,
+      "primaryObjective":"EXECUTION_IMPLEMENTATION_READINESS",
+      "scope":[
+        "audit current frozen contracts against implementation-readiness North Star",
+        "test Road LTL customer-service pickup request for agentic/workflow implementation handoff",
+        "test BOL information resolution with deliberate knowledge gaps and fail-closed readiness",
+        "test digital-twin/BPM implementation handoff",
+        "test ERP/TMS fit-gap implementation handoff",
+        "test adversarial control-flow semantics without redesigning frozen V1"
+      ],
+      "classificationSet":[
+        "FULLY_GOVERNED_EXISTING_CONTRACT",
+        "GOVERNED_CLIENT_ENTERPRISE_BINDING_REQUIRED",
+        "INFERABLE_BUT_UNGOVERNED",
+        "ABSENT_READINESS_BLOCKING",
+        "DOWNSTREAM_RUNTIME_SPECIFIC_OUTSIDE_ATLAS"
       ]
     },
-    {"stageId":"AR0.1","id":"AR0.1","name":"V1.1 / WorkDefinition Sufficiency Audit","status":"BLOCKED_UNTIL_AR0_0_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
     {"stageId":"AR0.2","id":"AR0.2","name":"Layer-Boundary Decision","status":"BLOCKED_UNTIL_AR0_1_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
     {"stageId":"AR0.3","id":"AR0.3","name":"Candidate Contract Architecture","status":"BLOCKED_UNTIL_AR0_2_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
     {"stageId":"AR0.4","id":"AR0.4","name":"Adversarial Multi-Pattern Validation","status":"BLOCKED_UNTIL_AR0_3_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
