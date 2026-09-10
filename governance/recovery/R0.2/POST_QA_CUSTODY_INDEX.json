@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "atlas-post-qa-custody-index-v1",
+  "stageId": "R0.2",
+  "qaDisposition": "PASS",
+  "checkpointCPath": "governance/recovery/R0.2/POST_QA_GOVERNED_STATE.json",
+  "checkpointCCommitSha": "1ca9f0f484c3041c60169c69133a6da949699ddb",
+  "governanceSynchronization": {
+    "dependencyMergeSha": "c75ca6ab6095ecb53260b8f02db9594ca834469f",
+    "assetRegisterBindingSha": "d1f081997a06a04b6ea099539750354d13d706dd",
+    "queueV11Sha": "351586d6923cb326e60e34d10eee82f921634e12",
+    "recoveryStandardSha": "c27e0c94d7994dbca9c72cb2d365978a49b131bd",
+    "roadmapSha": "dfe30086fddad15c0190959fc2e0c809276a965b",
+    "claudeProtocolSha": "facd06863692d812b5f065573f674f76ea4c0712",
+    "postQaPackagingSha": "f6da89e024688e7220fb100d57a343363451d26c"
+  },
+  "sourcePackageCustody": {
+    "repositoryPath": "release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+    "sha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+    "historicalDriveSourceFileId": "1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI",
+    "githubImplementationArtifactId": 10070289750,
+    "githubImplementationArtifactWrapperSha256": "a116a912cb0fe12c9550c077c3633b93b48d3dac081ebca8ff95788fd8a552f2",
+    "githubAndHistoricalDriveExactSourceIdentityVerified": true
+  },
+  "postQaGovernedBundle": {
+    "workflowRunId": 34430436218,
+    "githubArtifactId": 10134267192,
+    "githubArtifactName": "atlas-r0-2-post-qa-governed-custody",
+    "githubArtifactWrapperSha256": "b1f28bc00a5c2c940ed664c9a161b8eada5f9604b3531f99d58f836550199e84",
+    "driveFolderId": "1fQr01v1JWHEmADE_kOiKJh5I_iAjtc0B",
+    "driveFileId": "1iCbilRohsVpVt6qsbLDbQ1-SUCf7DLKg",
+    "driveRoundTripWrapperSha256": "b1f28bc00a5c2c940ed664c9a161b8eada5f9604b3531f99d58f836550199e84",
+    "roundTripVerified": true,
+    "note": "This index is intentionally not embedded in the bundle it indexes, avoiding recursive custody identity."
+  },
+  "authorizationAfterQa": "R0.3",
+  "productionPointersPromoted": false,
+  "phase6Status": "SUSPENDED"
+}
