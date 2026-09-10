@@ -83,7 +83,13 @@ export function run() {
     })),
   };
 
-  const coverage = assessCoverage({ contract: readJson(INPUTS.okContract), composition });
+  // R0.3 evaluates whether Road LTL execution knowledge is complete when the governed
+  // MODULE semantics and the Operational Knowledge payload are COMPOSED. It is not a test
+  // of whether the Operational Knowledge JSON is self-contained. Both surfaces are
+  // measured and both are reported; the composed surface is the governed one.
+  const okContract = readJson(INPUTS.okContract);
+  const coverage = assessCoverage({ contract: okContract, composition, surface: 'COMPOSED' });
+  const coverageOkOnly = assessCoverage({ contract: okContract, composition, surface: 'OK_ONLY' });
   const objectRegister = buildObjectRegister(composition);
   const irCoverage = buildInformationResolutionCoverage({
     irContract: readJson(INPUTS.irContract),
@@ -91,8 +97,15 @@ export function run() {
   });
   const gaps = buildKnowledgeGapQueue({ coverage, objectRegister, irCoverage, createdAt: STAGE_DATE });
 
+  const totalsOf = c => ({
+    satisfiedDirect: c.tasks.reduce((n, t) => n + t.satisfiedDirect, 0),
+    satisfiedByDeclaredEquivalent: c.tasks.reduce((n, t) => n + t.satisfiedByDeclaredEquivalent, 0),
+    presentNestedOnly: c.tasks.reduce((n, t) => n + t.presentNestedOnly, 0),
+    absent: c.tasks.reduce((n, t) => n + t.absent, 0),
+  });
+
   const matrix = {
-    schemaVersion: 'atlas-ok-coverage-matrix-v1',
+    schemaVersion: 'atlas-ok-coverage-matrix-v2',
     stageId: 'R0.3',
     contract: 'atlas-operational-knowledge-contract-v2',
     status: 'CANDIDATE_AWAITING_INDEPENDENT_QA',
@@ -102,16 +115,46 @@ export function run() {
       contractAttributeCount: coverage.attributeCount,
       assessedCells: coverage.tasks.length * coverage.attributeCount,
     },
-    totals: {
-      satisfiedDirect: coverage.tasks.reduce((n, t) => n + t.satisfiedDirect, 0),
-      satisfiedByDeclaredEquivalent: coverage.tasks.reduce((n, t) => n + t.satisfiedByDeclaredEquivalent, 0),
-      presentNestedOnly: coverage.tasks.reduce((n, t) => n + t.presentNestedOnly, 0),
-      absent: coverage.tasks.reduce((n, t) => n + t.absent, 0),
+    evaluationBasis: 'R0.3 measures the EFFECTIVE COMPOSED governed semantic surface: data/modules/road-ltl-v1.4.json (module layer) together with the Operational Knowledge payload and its governed 1.5 overlay. The OK-only surface is reported alongside it as a structural observation about one asset, not as the stage verdict.',
+    statusSemantics: {
+      SATISFIED_DIRECT: 'Populated under the contract attribute name inside the surface.',
+      SATISFIED_BY_DECLARED_EQUIVALENT: 'Populated under a different governed name whose equivalence is declared in EQUIVALENCE_MAP with a named basis. Independently rejectable by QA, entry by entry.',
+      PRESENT_NESTED_ONLY_NOT_TASK_LEVEL: 'Populated only inside a child structure, so not addressable as a task-level contract attribute. NOT counted as compliant.',
+      ABSENT: 'No governed asset in the surface carries it. NOT counted as compliant.',
     },
-    byAttribute: coverage.byAttribute,
-    byTask: coverage.tasks,
+    complianceRule: 'Only SATISFIED_DIRECT and SATISFIED_BY_DECLARED_EQUIVALENT count as satisfied. PRESENT_NESTED_ONLY_NOT_TASK_LEVEL and ABSENT remain open gaps and were not converted into compliant attributes.',
+    composedSurface: {
+      surface: 'COMPOSED',
+      layers: ['data/modules/road-ltl-v1.4.json', 'data/operational-knowledge/road-ltl-v1.4-operational.json', 'data/operational-knowledge/road-ltl-v1.5-operational.json'],
+      totals: totalsOf(coverage),
+      byAttribute: coverage.byAttribute,
+      byTask: coverage.tasks,
+    },
+    okOnlySurface: {
+      surface: 'OK_ONLY',
+      layers: ['data/operational-knowledge/road-ltl-v1.4-operational.json', 'data/operational-knowledge/road-ltl-v1.5-operational.json'],
+      totals: totalsOf(coverageOkOnly),
+      byAttribute: coverageOkOnly.byAttribute,
+      byTask: coverageOkOnly.tasks,
+    },
   };
-  matrix.semanticHash = canonicalHash({ byAttribute: matrix.byAttribute, byTask: matrix.byTask });
+  matrix.surfaceDelta = {
+    note: 'Attributes satisfied only once the governed module layer is composed in. These are carried by the module asset, not missing from Atlas.',
+    satisfiedOnlyWhenComposed: coverage.byAttribute
+      .map(a => {
+        const o = coverageOkOnly.byAttribute.find(x => x.attribute === a.attribute);
+        const composedSat = a.satisfiedDirect + a.satisfiedByDeclaredEquivalent;
+        const okSat = o.satisfiedDirect + o.satisfiedByDeclaredEquivalent;
+        return composedSat > okSat
+          ? { attribute: a.attribute, group: a.group, okOnlySatisfied: okSat, composedSatisfied: composedSat }
+          : null;
+      })
+      .filter(Boolean),
+  };
+  matrix.semanticHash = canonicalHash({
+    composed: { byAttribute: coverage.byAttribute, byTask: coverage.tasks },
+    okOnly: { byAttribute: coverageOkOnly.byAttribute, byTask: coverageOkOnly.tasks },
+  });
 
   const register = {
     schemaVersion: 'atlas-canonical-object-document-register-v1',
@@ -141,7 +184,7 @@ export function run() {
     [OUT.gaps]: write(OUT.gaps, gaps),
   };
 
-  return { composition, coverage, objectRegister, irCoverage, gaps, matrix, register, ir, written, lineageAgreesWithR02 };
+  return { composition, coverage, coverageOkOnly, objectRegister, irCoverage, gaps, matrix, register, ir, written, lineageAgreesWithR02 };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
@@ -149,11 +192,12 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log(`tool: ${TOOL_VERSION}`);
   console.log(`tasks composed: ${r.composition.composed.length} (${r.composition.inheritedCount} inherited 1.4 + ${r.composition.overriddenCount} direct 1.5: ${r.composition.overriddenTaskIds.join(', ')})`);
   console.log(`lineage agrees with R0.2 certified effective materialization: ${r.lineageAgreesWithR02}`);
-  console.log(`contract attributes: ${r.coverage.attributeCount} | cells: ${r.matrix.scope.assessedCells}`);
-  console.log(`  satisfied direct              ${r.matrix.totals.satisfiedDirect}`);
-  console.log(`  satisfied by declared equiv.  ${r.matrix.totals.satisfiedByDeclaredEquivalent}`);
-  console.log(`  present nested only           ${r.matrix.totals.presentNestedOnly}`);
-  console.log(`  absent                        ${r.matrix.totals.absent}`);
+  console.log(`contract attributes: ${r.coverage.attributeCount} | cells per surface: ${r.matrix.scope.assessedCells}`);
+  for (const [label, s2] of [['COMPOSED (governed surface)', r.matrix.composedSurface], ['OK_ONLY  (single asset)', r.matrix.okOnlySurface]]) {
+    const t = s2.totals;
+    console.log(`  ${label}: direct ${t.satisfiedDirect} | declared-equiv ${t.satisfiedByDeclaredEquivalent} | nested-only ${t.presentNestedOnly} | absent ${t.absent}`);
+  }
+  console.log(`  attributes satisfied only when composed: ${r.matrix.surfaceDelta.satisfiedOnlyWhenComposed.length}`);
   console.log(`objects referenced: ${r.objectRegister.objectCount} | with canonical object contract: ${r.objectRegister.objectsWithCanonicalContract}`);
   console.log(`documents declared: ${r.objectRegister.documentCount}`);
   console.log(`BOL fields: ${r.irCoverage.fieldCount} | conformant IR contracts: ${r.irCoverage.fieldsWithConformantContract}`);

@@ -172,15 +172,30 @@ export function composeEffectiveOperationalKnowledge({ modulePath, okBasePath, o
 // ---------------------------------------------------------------------------
 // Coverage assessment.
 // ---------------------------------------------------------------------------
-function locateAttribute(attr, entry, moduleRoot) {
-  // 1. Direct presence under the contract name, in either governed layer.
-  for (const [layer, obj] of [['okOverride', entry.okOverride], ['ok', entry.okTask], ['module', entry.moduleTask]]) {
+// A surface names which governed layers are in scope for a measurement.
+//   OK_ONLY  — the Operational Knowledge payload and its governed 1.5 overlay, alone.
+//   COMPOSED — the effective governed semantic surface: module layer + Operational Knowledge.
+// Both are reported. Neither replaces the other.
+export const SURFACES = {
+  OK_ONLY: { layers: ['okOverride', 'ok'], equivalenceLayers: ['ok'] },
+  COMPOSED: { layers: ['okOverride', 'ok', 'module'], equivalenceLayers: ['ok', 'module', 'moduleRoot'] },
+};
+
+function locateAttribute(attr, entry, moduleRoot, surface) {
+  const scope = SURFACES[surface];
+  if (!scope) throw new Error(`Unknown measurement surface "${surface}"; failed closed.`);
+  const layerObj = { okOverride: entry.okOverride, ok: entry.okTask, module: entry.moduleTask };
+
+  // 1. Direct presence under the contract name, within the surface's layers.
+  for (const layer of scope.layers) {
+    const obj = layerObj[layer];
     if (obj && isPopulated(obj[attr])) {
       return { status: 'SATISFIED_DIRECT', layer, path: attr, equivalenceBasis: null };
     }
   }
-  // 2. Declared equivalent.
+  // 2. Declared equivalent, only where the equivalence lives inside this surface.
   for (const eq of EQUIVALENCE_MAP[attr] ?? []) {
+    if (!scope.equivalenceLayers.includes(eq.layer)) continue;
     const root = eq.layer === 'moduleRoot' ? moduleRoot
       : eq.layer === 'module' ? entry.moduleTask
         : eq.layer === 'ok' ? entry.okTask : null;
@@ -201,7 +216,8 @@ function locateAttribute(attr, entry, moduleRoot) {
       findNested(v, p, depth - 1);
     }
   };
-  for (const [layer, obj] of [['okOverride', entry.okOverride], ['ok', entry.okTask], ['module', entry.moduleTask]]) {
+  for (const layer of scope.layers) {
+    const obj = layerObj[layer];
     if (!obj) continue;
     nested.length = 0;
     findNested(obj, '', 4);
@@ -218,7 +234,7 @@ function locateAttribute(attr, entry, moduleRoot) {
   return { status: 'ABSENT', layer: null, path: null, equivalenceBasis: null };
 }
 
-export function assessCoverage({ contract, composition }) {
+export function assessCoverage({ contract, composition, surface = 'COMPOSED' }) {
   const groups = contract.taskOperationalKnowledge;
   const groupNames = Object.keys(groups).sort();
   const missingGroups = EXPECTED_CONTRACT_GROUPS.filter(g => !groupNames.includes(g));
@@ -231,7 +247,7 @@ export function assessCoverage({ contract, composition }) {
 
   const tasks = composition.composed.map(entry => {
     const results = attributes.map(({ group, attribute }) => ({
-      group, attribute, ...locateAttribute(attribute, entry, composition.moduleRoot),
+      group, attribute, ...locateAttribute(attribute, entry, composition.moduleRoot, surface),
     }));
     const tally = results.reduce((acc, r) => { acc[r.status] = (acc[r.status] ?? 0) + 1; return acc; }, {});
     return {
@@ -262,7 +278,7 @@ export function assessCoverage({ contract, composition }) {
     };
   });
 
-  return { attributeCount: attributes.length, tasks, byAttribute };
+  return { surface, attributeCount: attributes.length, tasks, byAttribute };
 }
 
 // ---------------------------------------------------------------------------
