@@ -50,26 +50,31 @@ Outputs:
 Owner review outcome: baseline accepted as the reference inventory, but the product objective and AR0.1 acceptance criterion were clarified before proceeding. The earlier solution-synthesis hypothesis remains historical/secondary, not the primary architecture objective.
 
 ### AR0.1 — V1.1 / WorkDefinition Sufficiency Audit
-Status: OWNER_AUTHORIZED_CHATGPT_ONLY
+Status: AWAITING_OWNER_REVIEW
 
-Test whether the current canonical decomposition, WorkDefinition, Operational Knowledge, Client Binding and related governed contracts can produce an implementation-ready enterprise specification without runtime contamination or fabricated knowledge.
+Audit evidence is complete on working branch `atlas-architecture-ar0-1-sufficiency-audit` and review PR #9 is open against `atlas-governance-registry-v2.1`.
 
-AR0.1 must test concrete scenarios and classify every required semantic as:
+Candidate disposition:
+`CORE_ARCHITECTURE_DIRECTION_VALID / PARTIALLY_SUFFICIENT / TARGETED_SUCCESSOR_REFINEMENT_REQUIRED`
+
+AR0.1 tested concrete scenarios and classified every required semantic as:
 - fully governed by an existing contract;
 - governed but client/enterprise binding required;
 - inferable but ungoverned;
 - absent and therefore readiness-blocking;
 - legitimately downstream/runtime-specific and outside Atlas.
 
-At minimum, AR0.1 must test:
-1. a Road LTL customer-service pickup-request agentic/workflow implementation skeleton;
-2. a document-information-resolution / BOL case with known knowledge gaps and fail-closed readiness;
-3. a digital-twin/BPM implementation view of a domain operation;
-4. an ERP/TMS implementation handoff / fit-gap view;
-5. an adversarial control-flow case covering parallelism/join, correlation, waiting/timeouts, retry/recovery and idempotency where applicable.
+Scenario evidence covers:
+1. Road LTL customer-service pickup-request agentic/workflow implementation handoff;
+2. BOL/document information-resolution with known knowledge gaps and fail-closed readiness;
+3. digital-twin/BPM implementation handoff;
+4. ERP/TMS implementation handoff / fit-gap;
+5. adversarial control flow covering parallelism/join, correlation, waiting/timeouts, retry/recovery and idempotency.
+
+Key audit finding: current frozen semantic architecture is substantially aligned to the North Star. The clearest first-class gap is aggregate implementation-scope readiness determination with blocker dependency closure. Additional targeted refinements are required around scope composition, version-closed handoff packaging and formal complex control-flow grammar. No broad monolithic Execution Requirements layer is justified by AR0.1 evidence.
 
 ### AR0.2 — Layer-Boundary Decision
-Status: BLOCKED_UNTIL_AR0_1_REVIEW
+Status: BLOCKED_UNTIL_AR0_1_OWNER_REVIEW
 
 Determine what belongs in Domain/Operational Knowledge, Work Decomposition, Canonical WorkDefinition, Client Binding/Enterprise Context, readiness assessment, implementation handoff and Runtime Adapters. Avoid both semantic gaps and technology contamination.
 
@@ -131,4 +136,4 @@ Indicative outcome measures for later product validation:
 These are product-value measures, not AR0.1 contract-compliance scores.
 
 ## 8. Immediate next action
-Execute AR0.1 only. Do not start R0.4. Do not redesign/freeze a successor architecture during AR0.1; record evidence first and defer boundary decisions to AR0.2.
+Owner reviews AR0.1 candidate evidence and disposition in PR #9. Do not merge as an architecture approval merely because the audit evidence exists. Do not start AR0.2 or R0.4 until the Owner explicitly accepts/revises the AR0.1 disposition and authorizes the next stage.
