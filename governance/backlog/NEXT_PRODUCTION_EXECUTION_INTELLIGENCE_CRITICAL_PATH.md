@@ -1,7 +1,7 @@
 # Atlas V2 — Governed Execution Roadmap and Production Critical Path
 
 Status: ACTIVE BACKLOG / RECOVERY MODE  
-Updated: 8 September 2026 — R0.1C independent QA PASS; R0.2 Road LTL source closure AUTHORIZED  
+Updated: 10 September 2026 — R0.2 independent QA PASS; R0.3 Road LTL Operational Knowledge + Canonical Information Hardening AUTHORIZED  
 Canonical technical backlog: this file + `ATLAS_V2_AGENT_EXECUTION_QUEUE.json` on branch `atlas-governance-registry-v2.1`.
 
 ## Operating rule
@@ -12,9 +12,12 @@ Atlas Phase 6 is suspended while Pre-P6 Foundation Recovery is active. Implement
 - **R0.1A-R is COMPLETE — independent QA PASS.** Certified semantic structures SHA `82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d`.
 - **R0.1B is COMPLETE — independent QA PASS.** Universe semantic/release authority is finalized without production-pointer promotion.
 - **R0.1C is COMPLETE — independent QA PASS.** `a5-*` is Daughter-local; `scp-*` is owned by the existing cross-module process-concept layer; zero true reference defects and zero orphans were found.
-- The process-concept crosswalk is now registered in `ASSET_REGISTER.json` by repository path/hash without semantic mutation.
+- The process-concept crosswalk is registered in `ASSET_REGISTER.json` by repository path/hash without semantic mutation.
 - Ocean process-concept mappings remain a coverage gap owned by R0.5, not a reference defect.
-- **R0.2 is now the only authorized current stage.** It must close Road LTL 1.4 package/module/Operational Knowledge custody and re-certify effective 1.5/P6.0 reproducibility without reconstructing semantics.
+- **R0.2 is COMPLETE — independent QA PASS.** Exact Road LTL 1.4 package/module/Operational Knowledge custody is closed, effective Road LTL 1.5 lineage is deterministic, and P6.0 reproducibility is re-certified at 502/502 gates.
+- R0.2 bound the recovered Road LTL 1.4 module/OK and exact release ZIP repository locations in `ASSET_REGISTER.json` without production promotion.
+- **R0.3 is now the only authorized current stage.** It owns Road LTL Operational Knowledge + Canonical Information hardening only.
+- By Checkpoint C, each producing stage must carry subsequent-stage required machine-readable inputs onto the governance branch; implementation-branch-only dependency closure is insufficient.
 - Production `CURRENT/LATEST` pointers remain unchanged.
 - Phase 6 remains suspended through R0.6 independent QA.
 
@@ -52,22 +55,21 @@ Certified result:
 - Ocean concept mapping coverage is deferred to R0.5.
 
 ## R0.2 — Road LTL Source Closure, Effective 1.5 & P6.0 Re-certification
-Status: AUTHORIZED
-Required work:
-- place recovered Road LTL 1.4 release package, module and Operational Knowledge into governed GitHub/Drive custody with exact hashes;
-- preserve originals and reconcile historical hash identity discrepancies without assumption;
-- normalize `taskId`/`id` handling only in derived tooling, never by mutating recovered source bytes;
-- deterministically materialize effective Road LTL 1.5;
-- prove 21×1.4 + LTL-03×1.5 lineage;
-- rerun reference integrity under the R0.1C ownership model;
-- reproduce and re-certify P6.0 from retained governed inputs/tooling;
-- stop at `AWAITING_INDEPENDENT_QA`.
-
-Do not reconstruct 1.4 from 1.3, warehouse/public-safe artifacts, memory or inferred domain knowledge. Do not choose conflicting hashes by filename/date alone. Do not start R0.3, R0.4 or P6 work.
+Status: COMPLETE — INDEPENDENT QA PASS
+Checkpoint C: `governance/recovery/R0.2/POST_QA_GOVERNED_STATE.json`.
+Certified result:
+- exact original frozen package SHA `b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289`, 30/30 internal manifest entries verified;
+- Road LTL 1.4 module SHA `c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4`;
+- Road LTL 1.4 Operational Knowledge SHA `6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e`;
+- effective Road LTL 1.5 = 21×1.4 + direct governed LTL-03×1.5 override;
+- ownership-aware reference integrity remains 82 `a5-*`, 22 `scp-*`, zero orphans;
+- P6.0 re-certification = 502/502 PASS using P6.0-generation tooling;
+- exact source custody is independently verified across governed GitHub and historical Drive evidence;
+- production `CURRENT/LATEST` pointers remain unchanged.
 
 ## R0.3 — Road LTL Operational Knowledge + Canonical Information Hardening
-Status: BLOCKED_UNTIL_R0_2_QA
-Certify 22-task OK coverage; close/classify objects/documents gaps; complete canonical BOL/information semantics; preserve unresolved evidence/knowledge gaps.
+Status: AUTHORIZED
+Certify 22-task OK coverage; close/classify objects/documents gaps; complete canonical BOL/information semantics; preserve unresolved evidence/knowledge gaps. Do not fabricate missing operational knowledge or alter frozen upstream semantics merely to achieve coverage.
 
 ## R0.4 — Generic Recursive Decomposition Compiler & Road LTL Re-certification
 Status: BLOCKED_UNTIL_R0_3_QA
