@@ -1,82 +1,67 @@
 # Atlas — Standing Implementation Agent Protocol
 
-This repository is governed. Do not select the next implementation task from chat history, assumptions or perceived convenience.
+This repository is governed. Do not select work from chat history, assumptions or perceived convenience.
 
 ## Mandatory start-of-work read order
-1. Read `governance/frozen-assets/CURRENT.json` and `governance/frozen-assets/LATEST.md` for historical/frozen pointers, but do not assume `FROZEN` alone means complete/reproducible.
-2. Read `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json` from branch `atlas-governance-registry-v2.1`.
-3. Resolve work using canonical `stageId` and `currentStageId`; `id` is only a backward-compatible alias. Never infer status from rendered text.
+1. Read `governance/frozen-assets/CURRENT.json` and `governance/frozen-assets/LATEST.md` for historical/frozen pointers.
+2. Read `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json` from `atlas-governance-registry-v2.1`.
+3. Resolve work using canonical `stageId` and `currentStageId`; `id` is backward-compatible alias only.
 4. Read `governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md`.
 5. Read `governance/standards/ATLAS_ASSET_CUSTODY_AND_GOVERNANCE_SYNC_STANDARD_V1.md`.
-6. In recovery mode, read `governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md`.
-7. Read frozen architecture/contracts referenced by the authorized stage/sub-stage.
-8. Verify the intended implementation baseline branch/SHA before editing.
+6. Read `governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md` while recovery remains active.
+7. When the architecture-refinement gate is active, read `governance/architecture-refinement/ARCHITECTURE_REFINEMENT_BACKLOG_V1.md` and `governance/architecture-refinement/ARCHITECTURE_DECISION_LEDGER_V1.md`.
+8. Read frozen architecture/contracts referenced by any authorized implementation stage.
+9. Verify the intended baseline branch/SHA before editing.
 
-## Task-selection rule
-- Implement only the exact stage/sub-stage whose queue status is `AUTHORIZED`.
-- A parent stage split into sub-stages does not authorize broad execution.
+## Claude task-selection rule
+- Claude may implement only the exact stage/sub-stage whose queue status is exactly `AUTHORIZED`.
+- `OWNER_AUTHORIZED_CHATGPT_ONLY` is NOT Claude authorization.
+- Never execute a stage whose `authorizedExecutor` is `CHATGPT` or whose `claudeExecutionAuthorized` is false.
 - Do not start `BLOCKED_*`, `SUSPENDED_*`, `TO_BE_RESCOPED_*`, `AWAITING_INDEPENDENT_QA` or equivalent work.
-- While recovery mode is active, do not resume P6.2/P6.3/P6.4/P6.5.
-- Never self-authorize the next stage/sub-stage or production promotion.
+- Never self-authorize a next stage, architecture change or production promotion.
+
+## Current control state
+- R0.1A-R, R0.1B, R0.1C and R0.2 are COMPLETE / independent QA PASS.
+- **R0.3 is COMPLETE / independent QA PASS.** Final closure: `governance/recovery/R0.3/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json`.
+- R0.3 implementation ending SHA: `abfc12a675107555177dfaf2113b7833a7ded644`; remediation CI run `34438976431` passed all 14 steps.
+- R0.3 evidence was merged into the governance branch at `c45c5b443b3a9b19b43fd670d7412fa1144fd026`.
+- R0.3 Drive evidence bundle is round-trip verified at SHA-256 `f643ba016a0f6f75c630fb74d603ec3bd9de7aea70734b62274e2027e096dc8b`.
+- Effective Road LTL 1.5 remains exactly 22 tasks = 21 inherited 1.4 + direct LTL-03 1.5 override.
+- Production `CURRENT/LATEST` pointers remain unchanged.
+
+## Architecture-refinement gate — Claude must stop
+The current queue stage is `AR0.0 — Architecture Baseline & Challenge Register` with status `OWNER_AUTHORIZED_CHATGPT_ONLY`.
+
+The Owner has reserved architecture-refinement work to ChatGPT. Claude is NOT authorized to:
+- redesign Work Decomposition V1.1;
+- redesign Canonical WorkDefinition V1;
+- define an Execution Requirements layer;
+- define a Solution Synthesis / Solution Selection layer;
+- modify runtime-adapter boundaries for this review;
+- start R0.4 recursive-decomposition recovery, reconstruction, rematerialization or compiler work;
+- implement AR0.0–AR0.6;
+- infer that R0.3 completion automatically authorizes R0.4.
+
+If asked in chat to do any of the above while the queue remains in the architecture-refinement gate, stop and report the governance conflict.
+
+## Frozen architecture treatment
+Frozen V1 architecture is an immutable reference baseline during the challenge. The possible addition of execution-requirement/design context or solution-synthesis/selection capability is a hypothesis only until the Owner approves a versioned successor.
+
+Historical decomposition counts, including 603 work units / 444 leaves and any remembered 572/605 figures, are forensic evidence only and must never be used as rebuild targets.
 
 ## Asset custody rule
-Before mutation create/commit `PRE_CHANGE_BASELINE`; required inputs must be in governed custody. A chat/local/upload-only asset cannot silently become a dependency.
+Before an authorized implementation mutation, create/commit `PRE_CHANGE_BASELINE`; required inputs must be in governed custody. Chat/local/upload-only material cannot silently become a dependency.
 
-After implementation create/commit `POST_IMPLEMENTATION_PRE_QA` with outputs, hashes, tooling, lineage, commit/tests and Drive candidate evidence, then stop at `AWAITING_INDEPENDENT_QA`.
+After implementation, create/commit `POST_IMPLEMENTATION_PRE_QA` with outputs, hashes, tooling, lineage, tests and Drive candidate evidence, then stop at `AWAITING_INDEPENDENT_QA`.
 
-After independent QA create/synchronize `POST_QA_GOVERNED_STATE`, registers/pointers/classifications and durable Drive evidence before the next stage is authorized.
+After independent QA, create/synchronize `POST_QA_GOVERNED_STATE`, relevant registers/pointers/classifications and durable Drive evidence before any next implementation stage is authorized.
 
-By Checkpoint C, every machine-readable input required by a subsequent stage must be present and deterministically resolvable on the governance branch. An implementation-branch-only dependency is not closed custody.
+By Checkpoint C, every machine-readable input required by a subsequent stage must be present and deterministically resolvable on the governance branch.
 
-## Completed recovery chain through R0.2
-- `R0.1A` is historical **COMPLETE / QA PASS AT TIME OF CERTIFICATION**, superseded for canonical promotion by R0.1A-R. Its artifacts remain immutable evidence.
-- `R0.1A-R` is **COMPLETE / INDEPENDENT QA PASS**. Corrected semantic structures SHA-256: `82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d`.
-- `R0.1B` is **COMPLETE / INDEPENDENT QA PASS**. It finalized `releaseVersion=7.3` and `semanticPayloadVersion=7.2.0` as separate governed identities and bound semantic authority to `data/universe/r0-1a-r/universe-semantic-payload.json`.
-- `R0.1C` is **COMPLETE / INDEPENDENT QA PASS**. `a5-*` is Daughter-local; 82/82 references are derived from daughter module/process identity. `scp-*` is owned by the pre-existing cross-module process-concept layer at `data/crosswalks/process-concept-crosswalk-v1.json`; 22 definitions/mappings, zero orphans, zero true reference defects.
-- The certified Universe payload remains byte-identical; do not edit its historical `UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT` field merely to reflect the later R0.1C governance outcome.
-- The process-concept crosswalk is registered in `ASSET_REGISTER.json` by current repository path/hash. Registration did not mutate its semantics.
-- Ocean process-concept mappings remain an R0.5 coverage gap, not a reference defect.
-- `R0.2` is **COMPLETE / INDEPENDENT QA PASS**. Exact Road LTL 1.4 package/module/Operational Knowledge custody is closed; effective Road LTL 1.5 is proven as 21 inherited 1.4 tasks plus direct governed LTL-03 1.5 override; P6.0 is re-certified at 502/502 gates using its own generation tooling.
-- Exact frozen Road LTL/Ocean package custody is SHA-256 `b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289` at `release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip`; Road LTL 1.4 module and OK repository paths are registered without production promotion.
-- R0.2 Checkpoint C is `governance/recovery/R0.2/POST_QA_GOVERNED_STATE.json`.
-
-## Current authorized stage: R0.3
-`R0.3` is the **only currently AUTHORIZED stage**.
-
-Name: **Road LTL Operational Knowledge + Canonical Information Hardening**.
-
-Governed purpose from the recovery roadmap: certify 22-task Operational Knowledge coverage; close/classify object/document gaps; complete canonical BOL/information semantics; preserve unresolved evidence and knowledge gaps.
-
-R0.3 must:
-- consume only governed inputs resolvable from `atlas-governance-registry-v2.1`;
-- preserve the R0.2-certified Road LTL 1.4/effective 1.5 lineage and hashes unless the governed stage explicitly requires a new derived artifact;
-- distinguish evidenced Operational Knowledge from unresolved knowledge gaps;
-- preserve canonical versus client-specific boundaries under the frozen Knowledge-to-Execution architecture;
-- treat documents/objects/information semantics as governed canonical contracts where evidenced, not as incidental task attachments;
-- create `PRE_CHANGE_BASELINE` before mutation;
-- create `POST_IMPLEMENTATION_PRE_QA` after implementation and stop at `AWAITING_INDEPENDENT_QA`.
-
-R0.3 must not:
-- fabricate operational knowledge to reach 22-task coverage;
-- reinterpret or mutate R0.1B Universe authority or R0.1C identifier ownership;
-- mutate recovered Road LTL 1.4 source bytes;
-- invent Ocean mappings or perform R0.5 work;
-- begin R0.4 recursive-decomposition implementation;
-- resume P6.1/P6.2;
-- promote `CURRENT`, `LATEST`, Road LTL production status, or Atlas V2 go-live state;
-- move client-specific field names, thresholds, SLAs, routing values or SOP-local values into global canonical truth.
-
-If the R0.3 evidence exposes an upstream contradiction rather than a knowledge gap, stop and report it rather than silently correcting upstream certified artifacts.
-
-## Historical-test lifecycle rule
-A completed stage's immutable pre-QA test may contain assertions whose lifecycle preconditions expire after independent QA creates Checkpoint C. Do not edit historical tests merely to make them pass later. Later stages must run only assertions whose preconditions are still valid, preserve the historical test byte-for-byte, and record superseded lifecycle assertions as governed technical debt.
-
-## Architecture and source-integrity rule
-Frozen architecture outranks implementation convenience. The recovery standard is a certification/recovery overlay, not redesign authority.
-
+## Permanent architecture and source-integrity rules
 Do not:
 - work directly on `main`;
-- redesign frozen Canvas;
+- redesign frozen Canvas without Owner approval;
 - make Malkom/runtime structures canonical Atlas truth;
 - move client-specific values into canonical WorkDefinition/Operational Knowledge;
 - fabricate business/domain knowledge or executability;
@@ -91,12 +76,12 @@ Do not:
 - use PUBLIC_SAFE projections as canonical private source;
 - substitute a historical adjacent version for a missing governed base without exact governed evidence.
 
-R0.5 must verify Ocean FCL/LCL 0.6 canonical source/package closure before OK uplift and may then extend process-concept mappings using evidence and the existing crosswalk model.
+Canonical work remains executor-neutral unless a later Owner-approved successor architecture explicitly changes the boundary. Client-specific field names, thresholds, SLAs, routing values and SOP-local rules remain client bindings.
 
 ## Governance synchronization rule
 Chat instructions do not supersede GitHub governance. Architecture, recovery path, sequencing, authorization, certification or agent-rule changes must be synchronized to GitHub before implementation proceeds. If chat and GitHub disagree, stop and report the conflict.
 
-## Recovery certification rule
+## Recovery certification dimensions
 Assess every applicable asset/stage on:
 - PHYSICAL_EXISTENCE
 - SEMANTICS
@@ -114,5 +99,5 @@ Assess every applicable asset/stage on:
 
 Do not classify `FROZEN_COMPLETE` unless all applicable dimensions pass.
 
-## Completion rule
+## Completion rule for any future Claude-authorized implementation stage
 Return: `stageId`; objective; starting branch/SHA; authoritative inputs + hashes/lineage; PRE_CHANGE_BASELINE; files/migrations changed; architecture decisions/conflicts; certification results; exact tests/CI; derived evidence/counts; ending branch/SHA; POST_IMPLEMENTATION_PRE_QA; Drive evidence references; governance/pointer changes; limitations/debt; recommended next action. Then stop at `AWAITING_INDEPENDENT_QA`.
