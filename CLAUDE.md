@@ -30,11 +30,12 @@ This repository is governed. Do not select work from chat history, assumptions o
 - Production `CURRENT/LATEST` pointers remain unchanged.
 
 ## Architecture-refinement gate — Claude must stop
-The current queue stage is `AR0.0 — Architecture Baseline & Challenge Register` with status `OWNER_AUTHORIZED_CHATGPT_ONLY`.
+The current queue stage is `AR0.1 — V1.1 / WorkDefinition Sufficiency Audit` with status `OWNER_AUTHORIZED_CHATGPT_ONLY`.
 
 The Owner has reserved architecture-refinement work to ChatGPT. Claude is NOT authorized to:
 - redesign Work Decomposition V1.1;
 - redesign Canonical WorkDefinition V1;
+- define or implement an Execution Readiness contract/layer;
 - define an Execution Requirements layer;
 - define a Solution Synthesis / Solution Selection layer;
 - modify runtime-adapter boundaries for this review;
@@ -44,8 +45,21 @@ The Owner has reserved architecture-refinement work to ChatGPT. Claude is NOT au
 
 If asked in chat to do any of the above while the queue remains in the architecture-refinement gate, stop and report the governance conflict.
 
+## Clarified architecture-refinement North Star
+The Owner-approved primary objective for this refinement program is:
+
+> **Atlas turns reusable domain knowledge into execution-ready enterprise specifications.**
+
+Primary objective: execution / implementation readiness.
+
+Governance is a required trust/control property, not the end product. Execution intelligence is the structured semantic capability used to achieve readiness. Runtime execution remains outside Atlas. Autonomous solution generation, candidate solution comparison and runtime architecture selection are secondary/downstream capabilities.
+
+Readiness must fail closed when implementation-critical operational or client knowledge is absent, conflicting, inferred beyond authority or unresolved.
+
+AR0.1 is an audit only. It tests the frozen/current architecture against implementation readiness using concrete agent/workflow, BOL information-resolution, digital-twin/BPM, ERP/TMS handoff and adversarial control-flow scenarios. It must not freeze a successor architecture.
+
 ## Frozen architecture treatment
-Frozen V1 architecture is an immutable reference baseline during the challenge. The possible addition of execution-requirement/design context or solution-synthesis/selection capability is a hypothesis only until the Owner approves a versioned successor.
+Frozen V1 architecture is an immutable reference baseline during the challenge. Any possible addition/refinement of readiness, enterprise-specification or downstream design semantics is a hypothesis only until the Owner approves a versioned successor.
 
 Historical decomposition counts, including 603 work units / 444 leaves and any remembered 572/605 figures, are forensic evidence only and must never be used as rebuild targets.
 
@@ -64,7 +78,7 @@ Do not:
 - redesign frozen Canvas without Owner approval;
 - make Malkom/runtime structures canonical Atlas truth;
 - move client-specific values into canonical WorkDefinition/Operational Knowledge;
-- fabricate business/domain knowledge or executability;
+- fabricate business/domain knowledge or executability/readiness;
 - target historical node/count totals during rebuild;
 - hide blockers/gaps;
 - overwrite/relabel historical evidence;
@@ -76,7 +90,7 @@ Do not:
 - use PUBLIC_SAFE projections as canonical private source;
 - substitute a historical adjacent version for a missing governed base without exact governed evidence.
 
-Canonical work remains executor-neutral unless a later Owner-approved successor architecture explicitly changes the boundary. Client-specific field names, thresholds, SLAs, routing values and SOP-local rules remain client bindings.
+Canonical work remains technology/runtime-neutral unless a later Owner-approved successor architecture explicitly changes the boundary. Client-specific field names, thresholds, SLAs, routing values and SOP-local rules remain client bindings/enterprise context.
 
 ## Governance synchronization rule
 Chat instructions do not supersede GitHub governance. Architecture, recovery path, sequencing, authorization, certification or agent-rule changes must be synchronized to GitHub before implementation proceeds. If chat and GitHub disagree, stop and report the conflict.
