@@ -1,0 +1,230 @@
+name: R0.3 Road LTL Operational Knowledge & Canonical Information Hardening
+
+on:
+  push:
+    branches:
+      - atlas-recovery-r0-3-ok-canonical-information-hardening
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Environment
+        run: |
+          echo "node: $(node --version)"
+          echo "commit: ${GITHUB_SHA}"
+
+      # ---------------------------------------------------------------------
+      # Dependency closure: every input R0.3 declared in Checkpoint A must still
+      # resolve on the governance branch at exactly the hash it was baselined at.
+      # ---------------------------------------------------------------------
+      - name: Dependency closure and input hash drift
+        run: |
+          node -e '
+            const fs=require("fs"),c=require("crypto");
+            const sha=p=>c.createHash("sha256").update(fs.readFileSync(p)).digest("hex");
+            const A=JSON.parse(fs.readFileSync("governance/recovery/R0.3/PRE_CHANGE_BASELINE.json","utf8"));
+            let n=0;
+            for(const a of A.assets){
+              if(!fs.existsSync(a.repositoryPath))throw new Error("dependency closure broken, input missing: "+a.repositoryPath);
+              const actual=sha(a.repositoryPath);
+              if(actual!==a.sha256)throw new Error("input hash drift: "+a.repositoryPath+"\n  baselined "+a.sha256+"\n  actual    "+actual);
+              if(a.dependencyClosure!=="PASS")throw new Error("input not closed: "+a.assetId);
+              n++;
+            }
+            console.log("dependency closure PASS for "+n+" governed inputs at baselined hashes");
+          '
+
+      - name: Governed inputs must not be mutated by this stage
+        run: |
+          git fetch origin atlas-governance-registry-v2.1 --depth=1
+          for f in data/modules/road-ltl-v1.4.json \
+                   data/modules/road-ltl-v1.5.json \
+                   data/operational-knowledge/road-ltl-v1.4-operational.json \
+                   data/operational-knowledge/road-ltl-v1.5-operational.json \
+                   data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json \
+                   data/road-ltl/effective-road-ltl-1.5-materialization.json \
+                   data/source-claims/road-ltl-v1.4-claims.json \
+                   data/source-claims/road-ltl-v1.5-bol-resolution-claims.json \
+                   data/crosswalks/process-concept-crosswalk-v1.json \
+                   schemas/operational-knowledge-contract-v2.json \
+                   schemas/information-resolution-contract-v1.json \
+                   governance/frozen-assets/CURRENT.json \
+                   governance/frozen-assets/LATEST.md \
+                   governance/frozen-assets/ASSET_REGISTER.json \
+                   governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json ; do
+            if ! git diff --quiet origin/atlas-governance-registry-v2.1 -- "$f"; then
+              echo "R0.3 must not mutate governed input or pointer: $f"; exit 1;
+            fi
+            echo "unchanged: $f"
+          done
+          for d in R0.1A R0.1A-R R0.1B R0.1C R0.2 ; do
+            if ! git diff --quiet origin/atlas-governance-registry-v2.1 -- "governance/recovery/$d/"; then
+              echo "R0.3 must not mutate historical stage evidence: $d"; exit 1;
+            fi
+            echo "unchanged: governance/recovery/$d/"
+          done
+
+      # ---------------------------------------------------------------------
+      # The same deterministic runner used locally, re-run in a clean checkout.
+      # Its artifacts must come back byte-identical to the committed ones.
+      # ---------------------------------------------------------------------
+      - name: Deterministic regeneration must be byte-identical
+        run: |
+          mkdir -p /tmp/committed
+          for f in governance/recovery/R0.3/OK_COVERAGE_MATRIX.json \
+                   governance/recovery/R0.3/CANONICAL_OBJECT_DOCUMENT_REGISTER.json \
+                   governance/recovery/R0.3/INFORMATION_RESOLUTION_COVERAGE.json \
+                   governance/recovery/R0.3/KNOWLEDGE_GAP_QUEUE.json \
+                   data/operational-knowledge/derived/effective-road-ltl-1.5-operational-knowledge.json ; do
+            cp "$f" "/tmp/committed/$(basename $f)"
+          done
+          node tools/r0-3/run-r0-3-hardening.mjs
+          for f in governance/recovery/R0.3/OK_COVERAGE_MATRIX.json \
+                   governance/recovery/R0.3/CANONICAL_OBJECT_DOCUMENT_REGISTER.json \
+                   governance/recovery/R0.3/INFORMATION_RESOLUTION_COVERAGE.json \
+                   governance/recovery/R0.3/KNOWLEDGE_GAP_QUEUE.json \
+                   data/operational-knowledge/derived/effective-road-ltl-1.5-operational-knowledge.json ; do
+            diff -q "/tmp/committed/$(basename $f)" "$f" \
+              || { echo "R0.3 evidence is not deterministically reproducible: $f"; exit 1; }
+            echo "byte-identical: $f"
+          done
+          git diff --quiet || { echo "regeneration altered the working tree"; git diff --stat; exit 1; }
+
+      - name: Semantic hashes must be stable across regeneration
+        run: |
+          node -e '
+            const fs=require("fs");
+            const J=p=>JSON.parse(fs.readFileSync(p,"utf8"));
+            const m=J("governance/recovery/R0.3/OK_COVERAGE_MATRIX.json");
+            const r=J("governance/recovery/R0.3/CANONICAL_OBJECT_DOCUMENT_REGISTER.json");
+            const i=J("governance/recovery/R0.3/INFORMATION_RESOLUTION_COVERAGE.json");
+            for(const [n,h] of [["coverage",m.semanticHash],["objects",r.semanticHash],["information-resolution",i.semanticHash]]){
+              if(!/^[0-9a-f]{64}$/.test(h||""))throw new Error("missing or malformed semantic hash: "+n);
+              console.log(n+" semanticHash "+h);
+            }
+          '
+
+      # ---------------------------------------------------------------------
+      # R0.2 lineage regression: 21 inherited + LTL-03 override, unchanged.
+      # ---------------------------------------------------------------------
+      - name: R0.2 effective Road LTL 1.5 lineage regression
+        run: |
+          node tools/road-ltl/materialize-effective-road-ltl.mjs --out /tmp/eff.json
+          diff -q /tmp/eff.json data/road-ltl/effective-road-ltl-1.5-materialization.json \
+            || { echo "R0.2 effective materialization is no longer reproducible"; exit 1; }
+          node -e '
+            const fs=require("fs");
+            const l=JSON.parse(fs.readFileSync("data/road-ltl/effective-road-ltl-1.5-materialization.json","utf8")).lineage;
+            if(l.inheritedUnchangedCount!==21)throw new Error("expected 21 inherited, got "+l.inheritedUnchangedCount);
+            if(l.directGovernedOverrideCount!==1)throw new Error("expected exactly 1 governed override");
+            if(JSON.stringify(l.overriddenTaskIds)!==JSON.stringify(["LTL-03"]))throw new Error("override must be LTL-03");
+            const e=JSON.parse(fs.readFileSync("data/operational-knowledge/derived/effective-road-ltl-1.5-operational-knowledge.json","utf8"));
+            if(e.inheritance.inheritedFrom14!==21||e.inheritance.directGoverned15Overrides!==1)throw new Error("R0.3 composition disagrees with R0.2 lineage");
+            if(e.inheritance.agreesWithR02CertifiedEffectiveMaterialization!==true)throw new Error("R0.3 composition does not agree with the R0.2 certified task set");
+            console.log("lineage regression PASS: 21 x 1.4 + LTL-03 x 1.5, agreeing across R0.2 and R0.3");
+          '
+
+      - name: R0.3-QA-01 remediation — effective module composition and version rule
+        run: |
+          node -e '
+            const fs=require("fs");
+            const J=p=>JSON.parse(fs.readFileSync(p,"utf8"));
+            const m=J("governance/recovery/R0.3/OK_COVERAGE_MATRIX.json");
+            const L=m.composedSurface.layers.join(" | ");
+            for(const req of ["data/modules/road-ltl-v1.4.json","data/modules/road-ltl-v1.5.json","data/road-ltl/effective-road-ltl-1.5-materialization.json"])
+              if(!L.includes(req))throw new Error("composed surface omits governed module input: "+req);
+            if(m.remediation.finding!=="R0.3-QA-01")throw new Error("remediation finding not recorded");
+            const cells=m.composedSurface.byTask.map(t=>({id:t.taskId,c:t.contractAttributes.find(r=>r.attribute==="version")}));
+            for(const x of cells){
+              if(x.c.layer!=="effectiveModule")throw new Error(x.id+": version must resolve from the effective module surface");
+              if(/module\.version/.test(x.c.path))throw new Error(x.id+": version must not come from a module asset root");
+            }
+            const fifteen=cells.filter(x=>/= 1\.5$/.test(x.c.path)).map(x=>x.id);
+            if(JSON.stringify(fifteen)!==JSON.stringify(["LTL-03"]))throw new Error("exactly LTL-03 must resolve to effective version 1.5, got "+JSON.stringify(fifteen));
+            const e=J("data/operational-knowledge/derived/effective-road-ltl-1.5-operational-knowledge.json");
+            const t3=e.tasks.find(t=>t.taskId==="LTL-03");
+            if(t3.effectiveModuleVersion!=="1.5"||t3.moduleInheritance!=="DIRECT_GOVERNED_OVERRIDE")throw new Error("LTL-03 module lineage not carried");
+            console.log("R0.3-QA-01 remediation verified: effective module surface composed, version rule governed per task");
+          '
+          # Fail closed when the governed v1.5 module overlay is dropped from composition.
+          node -e '
+            const fs=require("fs");
+            const O="data/modules/road-ltl-v1.5.json";
+            const eff=JSON.parse(fs.readFileSync("data/road-ltl/effective-road-ltl-1.5-materialization.json","utf8"));
+            eff.inputs=JSON.parse(JSON.stringify(eff.inputs).split(O).join("REMOVED"));
+            fs.mkdirSync("/tmp/g",{recursive:true});
+            fs.writeFileSync("/tmp/g/eff.json",JSON.stringify(eff));
+            import("./tools/r0-3/ok-hardening.mjs").then(({composeEffectiveOperationalKnowledge:c})=>{
+              try{
+                c({modulePath:"data/modules/road-ltl-v1.4.json",moduleOverlayPath:O,effectiveModulePath:"/tmp/g/eff.json",
+                   okBasePath:"data/operational-knowledge/road-ltl-v1.4-operational.json",
+                   okOverlayPath:"data/operational-knowledge/road-ltl-v1.5-operational.json"});
+              }catch(e){ console.log("fail-closed negative control PASS: "+e.message.split("\n")[0]); return; }
+              console.error("composition did NOT fail closed without the v1.5 module overlay"); process.exit(1);
+            });
+          '
+
+      - name: R0.3 stage certification
+        run: node tests/r0-3-ok-canonical-information-hardening.mjs
+
+      # ---------------------------------------------------------------------
+      # Gaps must remain gaps. This step fails if the stage ever starts claiming
+      # semantics that no governed contract actually provides.
+      # ---------------------------------------------------------------------
+      - name: Gaps must not be manufactured closed
+        run: |
+          node -e '
+            const fs=require("fs");
+            const J=p=>JSON.parse(fs.readFileSync(p,"utf8"));
+            const r=J("governance/recovery/R0.3/CANONICAL_OBJECT_DOCUMENT_REGISTER.json");
+            if(r.objectsWithCanonicalContract!==0)throw new Error("object contracts claimed without a governed contract asset");
+            for(const o of r.objects) for(const f of ["businessMeaning","relationships","cardinality","lifecycleOrStateWhereRelevant","sourceClaims"])
+              if(o[f]!==null)throw new Error("invented object semantics on "+o.canonicalObjectId+"."+f);
+            const i=J("governance/recovery/R0.3/INFORMATION_RESOLUTION_COVERAGE.json");
+            if(i.fieldsWithConformantContract!==0)throw new Error("IR field contracts claimed without a governed contract asset");
+            if(i.researchedCanonicalObjectModel.promotedToCanonicalObjectContracts!==false)throw new Error("draft BOL object model was promoted");
+            const g=J("governance/recovery/R0.3/KNOWLEDGE_GAP_QUEUE.json");
+            const closed=g.items.filter(x=>x.status!=="OPEN");
+            if(closed.length)throw new Error("R0.3 closed gaps it did not resolve: "+closed.map(x=>x.id).join(", "));
+            console.log("gap integrity PASS: "+r.objectCount+"/0 object contracts, "+i.fieldCount+"/0 IR contracts, "+g.items.length+" gaps OPEN");
+          '
+
+      - name: Stop condition — AWAITING_INDEPENDENT_QA, no Checkpoint C, no self-authorization
+        run: |
+          node -e '
+            const fs=require("fs");
+            const b=JSON.parse(fs.readFileSync("governance/recovery/R0.3/POST_IMPLEMENTATION_PRE_QA_REMEDIATION_R1.json","utf8"));
+            if(b.nextAuthorization!=="AWAITING_INDEPENDENT_QA")throw new Error("stage must stop at AWAITING_INDEPENDENT_QA");
+            if(b.qaDisposition!==null)throw new Error("the implementation agent must not set qaDisposition");
+            if(b.status!=="AWAITING_INDEPENDENT_QA")throw new Error("stage status must be AWAITING_INDEPENDENT_QA, not COMPLETE");
+            console.log("stop condition verified: "+b.status);
+          '
+          # Lifecycle-safe: this asserts R0.3 did not AUTHOR Checkpoint C. It stays true
+          # after independent QA legitimately creates Checkpoint C on the governance branch.
+          if git diff --name-only origin/atlas-governance-registry-v2.1 \
+             | grep -q "^governance/recovery/R0.3/POST_QA_GOVERNED_STATE.json$"; then
+            echo "Checkpoint C is written by independent QA, not by this stage"; exit 1;
+          fi
+          echo "Checkpoint C not authored by this stage"
+
+      - name: Publish R0.3 pre-QA evidence bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: r0-3-pre-qa-evidence
+          path: |
+            governance/recovery/R0.3/
+            data/operational-knowledge/derived/effective-road-ltl-1.5-operational-knowledge.json
+          if-no-files-found: error
+          retention-days: 90

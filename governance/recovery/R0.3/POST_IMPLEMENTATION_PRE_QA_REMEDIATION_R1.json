@@ -1,0 +1,540 @@
+{
+  "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
+  "stageId": "R0.3",
+  "checkpoint": "POST_IMPLEMENTATION_PRE_QA",
+  "revision": "R1_REMEDIATION",
+  "status": "AWAITING_INDEPENDENT_QA",
+  "qaDisposition": null,
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "governanceBaselineCommitSha": "6fbb139905124362167fdd1d68b4fcd4d5376707",
+  "implementationBranch": "atlas-recovery-r0-3-ok-canonical-information-hardening",
+  "commitSha": "a67f052b682833349dbc2eec342579326a83ecee",
+  "authorizedScope": "R0.3_REMEDIATION_ONLY",
+  "objective": "Remediate the two blocking findings raised by independent QA in governance/recovery/R0.3/POST_QA_GOVERNED_STATE.json. No other R0.3 scope was reopened.",
+  "supersedes": [
+    {
+      "artifact": "governance/recovery/R0.3/POST_IMPLEMENTATION_PRE_QA.json",
+      "commitSha": "a5e34598f5d75847bf7515ee62e23d6e47dd8ae6",
+      "treatment": "PRESERVED_BYTE_IDENTICAL_NOT_REWRITTEN",
+      "reason": "Failed-QA evidence is immutable. This revision supersedes it; it does not replace or edit it.",
+      "ciRun": 34435777420
+    }
+  ],
+  "preservedEvidence": [
+    {
+      "artifact": "governance/recovery/R0.3/PRE_CHANGE_BASELINE.json",
+      "sha256": "d01303943b6657b40108b11d6d88a043562679e9d1eceb8fc53524c3420edc00",
+      "treatment": "UNCHANGED"
+    },
+    {
+      "artifact": "governance/recovery/R0.3/POST_IMPLEMENTATION_PRE_QA.json",
+      "sha256": "a9184a2b95537c66c077b4dfe5ed86d2a619eb3622c9691eea7f06d272826b4b",
+      "treatment": "UNCHANGED"
+    },
+    {
+      "artifact": "governance/recovery/R0.3/POST_QA_GOVERNED_STATE.json",
+      "sha256": "8c352b54ac3ee583f5831fd64b131feb12276412705aebd7a412bad5fded6d15",
+      "treatment": "UNCHANGED_QA_AUTHORED"
+    },
+    {
+      "artifact": "superseded candidate artifacts",
+      "treatment": "RETAINED_IN_GIT_HISTORY_AT_429dc6a7ae7815a17c7bd255f3d1687df0b86848 AND IN CI ARTIFACT r0-3-pre-qa-evidence"
+    }
+  ],
+  "remediation": [
+    {
+      "findingId": "R0.3-QA-01",
+      "severity": "HIGH_BLOCKING",
+      "disposition": "REMEDIATED",
+      "qaStatement": "The R0.3 COMPOSED coverage surface is not the complete governed effective Road LTL 1.5 module surface. The implementation composes data/modules/road-ltl-v1.4.json with the v1.4/v1.5 Operational Knowledge payloads, but omits the governed data/modules/road-ltl-v1.5.json module overlay from semantic composition. R0.2 already certified effective Road LTL 1.5 as the lossless materialization of the v1.4 module base plus the v1.5 module overlay, with 21 inherited tasks and LTL-03 as the single direct module override.",
+      "accepted": "QA is correct. The superseded candidate composed data/modules/road-ltl-v1.4.json with the v1.4/v1.5 Operational Knowledge payloads and omitted data/modules/road-ltl-v1.5.json from the semantic surface, while listing it as a governed input. LTL-03 was therefore measured against v1.4 module semantics and simultaneously classified DIRECT_GOVERNED_1_5_OVERRIDE.",
+      "actions": [
+        "The module semantic surface is now the R0.2-certified effective Road LTL 1.5 materialization at data/road-ltl/effective-road-ltl-1.5-materialization.json, i.e. the v1.4 module base composed with the governed v1.5 module overlay under LOSSLESS_INHERIT_BASE_THEN_APPLY_OVERRIDES.",
+        "Composition validates that the effective materialization declares BOTH data/modules/road-ltl-v1.4.json and data/modules/road-ltl-v1.5.json as inputs, and that its identity is 1.4 -> 1.5. It throws otherwise.",
+        "LTL-03 is re-evaluated across all 24 Operational Knowledge Contract v2 attributes against the effective module surface, including its governed operationalKnowledgeV2 container.",
+        "The v1.4 module-root version equivalence is REMOVED. A governed version-resolution rule replaces it.",
+        "All five R0.3 artifacts, file hashes and semantic hashes were regenerated.",
+        "Regression added in both the stage test and CI: removing the v1.5 module overlay from the declared effective surface must fail closed."
+      ],
+      "versionResolutionRule": {
+        "rule": "A task's effective version is the R0.2-certified per-task semanticSourceVersion in data/road-ltl/effective-road-ltl-1.5-materialization.json. It is never taken from a module asset root.",
+        "resolvedLayer": "effectiveModule",
+        "spread": {
+          "policy": "LOSSLESS_INHERIT_BASE_AND_OVERRIDE_ONLY_DECLARED_TASKS",
+          "taskCount": 22,
+          "inheritedFrom14": 21,
+          "directGoverned15Overrides": 1,
+          "directOverrideTaskIds": [
+            "LTL-03"
+          ],
+          "orphanOkTaskIds": [],
+          "agreesWithR02CertifiedEffectiveMaterialization": true
+        },
+        "ltl03ResolvedVersion": "1.5",
+        "tasksResolvingTo15": [
+          "LTL-03"
+        ],
+        "testedBy": [
+          "stage test: version cell layer, path shape and the single 1.5 task",
+          "CI: version must not come from module.version; exactly LTL-03 at 1.5"
+        ]
+      },
+      "measuredEffect": {
+        "composedBefore": {
+          "satisfiedDirect": 50,
+          "satisfiedByDeclaredEquivalent": 240,
+          "presentNestedOnly": 64,
+          "absent": 174
+        },
+        "composedAfter": {
+          "satisfiedDirect": 50,
+          "satisfiedByDeclaredEquivalent": 241,
+          "presentNestedOnly": 64,
+          "absent": 173
+        },
+        "ltl03AbsentBefore": 8,
+        "ltl03AbsentAfter": 5,
+        "ltl03AbsentAttributesAfter": [
+          "ambiguities",
+          "carriageRegimeIds",
+          "conditionIds",
+          "jurisdictionIds",
+          "unresolvedDependencies"
+        ],
+        "newlySatisfiedForLtl03": [
+          "prohibitedWhen from operationalKnowledgeV2.prohibitedWhen",
+          "requiredWhen from operationalKnowledgeV2.requiredWhen",
+          "businessMeaning from operationalKnowledgeV2.businessMeaning",
+          "version from the certified per-task semanticSourceVersion = 1.5"
+        ],
+        "note": "The aggregate change is small because 21 tasks are inherited unchanged from 1.4. The change is concentrated in LTL-03, which is exactly the task the defect misclassified."
+      },
+      "newDeclaredEquivalences": [
+        "businessMeaning <- operationalKnowledgeV2.businessMeaning",
+        "why <- operationalKnowledgeV2.why",
+        "requiredWhen <- operationalKnowledgeV2.requiredWhen",
+        "prohibitedWhen <- operationalKnowledgeV2.prohibitedWhen",
+        "resolutionStatus <- executionReadiness.status"
+      ],
+      "equivalenceReviewNote": "These five are declared in EQUIVALENCE_MAP in tools/r0-3/ok-hardening.mjs and apply only where the governed v1.5 module overlay actually populates them, which today is LTL-03 alone. Each remains individually rejectable by QA."
+    },
+    {
+      "findingId": "R0.3-QA-02",
+      "severity": "MEDIUM_BLOCKING_FOR_COMPLETION",
+      "disposition": "NOT_REMEDIATED_BLOCKED",
+      "qaStatement": "Checkpoint B candidate evidence has not yet been mirrored to Google Drive. The implementation records the connector result 'No approval received'. The standing custody standard requires candidate/evidence mirroring at Checkpoint B and final governance/evidence mirroring at Checkpoint C before COMPLETE.",
+      "attempted": true,
+      "attempts": [
+        {
+          "action": "Create Drive folder 'R0.3 CANDIDATE \u2014 AWAITING_INDEPENDENT_QA' under Road-LTL (1Fc1oLoZml03tVpfobWzyc-WOqke3VJUJ)",
+          "result": "No approval received"
+        },
+        {
+          "action": "Create Drive folder 'R0.3 REMEDIATION CANDIDATE \u2014 AWAITING_INDEPENDENT_QA' under the same parent",
+          "result": "No approval received"
+        }
+      ],
+      "blocker": "The Google Drive connector rejects write operations in this session with 'No approval received'. This is an environment authorization gap, not a governance decision, and the implementation agent cannot clear it.",
+      "requiredAction": "Grant Drive write approval, or have an operator create the candidate folder and upload the five artifacts listed in this manifest. Only then can Checkpoint B custody close and Checkpoint C mirroring proceed.",
+      "interimEvidenceRetained": [
+        "GitHub branch atlas-recovery-r0-3-ok-canonical-information-hardening",
+        "CI artifact r0-3-pre-qa-evidence (90-day retention)"
+      ],
+      "statusForCompletion": "R0.3 cannot be marked COMPLETE while this remains open, per the Asset Custody Standard and QA finding R0.3-QA-02."
+    }
+  ],
+  "assets": [
+    {
+      "assetId": "r0-3-r1-effective-road-ltl-1.5-operational-knowledge.json",
+      "assetType": "generated_output",
+      "repositoryPath": "data/operational-knowledge/derived/effective-road-ltl-1.5-operational-knowledge.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.3-R1",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "2d91960fd162449c62a518b289b3c4537cbf8715902a42723e8321dd1bff39e2",
+      "lineage": [
+        "regenerated after R0.3-QA-01 remediation from the Checkpoint A inputs at their baselined hashes"
+      ],
+      "dependencies": [
+        "data/operational-knowledge/road-ltl-v1.4-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md",
+        "data/source-claims/road-ltl-v1.4-claims.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+        "data/road-ltl/effective-road-ltl-1.5-materialization.json",
+        "data/modules/road-ltl-v1.4.json",
+        "data/modules/road-ltl-v1.5.json",
+        "data/crosswalks/process-concept-crosswalk-v1.json",
+        "schemas/operational-knowledge-contract-v2.json",
+        "schemas/information-resolution-contract-v1.json",
+        "governance/knowledge-gap-queue.schema.json",
+        "data/core/enterprise-core-ontology-v1.json"
+      ],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "Supersedes the same-path artifact at commit 429dc6a7; the superseded bytes remain in git history and the CI artifact."
+    },
+    {
+      "assetId": "r0-3-r1-OK_COVERAGE_MATRIX.json",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.3/OK_COVERAGE_MATRIX.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.3-R1",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "256bebf0abd33f76c54535fdc1a5c19cf47a832a1aed1eafa4b7ce2ab69fc951",
+      "lineage": [
+        "regenerated after R0.3-QA-01 remediation from the Checkpoint A inputs at their baselined hashes"
+      ],
+      "dependencies": [
+        "data/operational-knowledge/road-ltl-v1.4-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md",
+        "data/source-claims/road-ltl-v1.4-claims.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+        "data/road-ltl/effective-road-ltl-1.5-materialization.json",
+        "data/modules/road-ltl-v1.4.json",
+        "data/modules/road-ltl-v1.5.json",
+        "data/crosswalks/process-concept-crosswalk-v1.json",
+        "schemas/operational-knowledge-contract-v2.json",
+        "schemas/information-resolution-contract-v1.json",
+        "governance/knowledge-gap-queue.schema.json",
+        "data/core/enterprise-core-ontology-v1.json"
+      ],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "Supersedes the same-path artifact at commit 429dc6a7; the superseded bytes remain in git history and the CI artifact."
+    },
+    {
+      "assetId": "r0-3-r1-CANONICAL_OBJECT_DOCUMENT_REGISTER.json",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.3/CANONICAL_OBJECT_DOCUMENT_REGISTER.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.3-R1",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "871b635b2c48ac720aa3fa3de8e12c8ef104d39b2e33957e1c1c15c7eb5436d8",
+      "lineage": [
+        "regenerated after R0.3-QA-01 remediation from the Checkpoint A inputs at their baselined hashes"
+      ],
+      "dependencies": [
+        "data/operational-knowledge/road-ltl-v1.4-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md",
+        "data/source-claims/road-ltl-v1.4-claims.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+        "data/road-ltl/effective-road-ltl-1.5-materialization.json",
+        "data/modules/road-ltl-v1.4.json",
+        "data/modules/road-ltl-v1.5.json",
+        "data/crosswalks/process-concept-crosswalk-v1.json",
+        "schemas/operational-knowledge-contract-v2.json",
+        "schemas/information-resolution-contract-v1.json",
+        "governance/knowledge-gap-queue.schema.json",
+        "data/core/enterprise-core-ontology-v1.json"
+      ],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "Supersedes the same-path artifact at commit 429dc6a7; the superseded bytes remain in git history and the CI artifact."
+    },
+    {
+      "assetId": "r0-3-r1-INFORMATION_RESOLUTION_COVERAGE.json",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.3/INFORMATION_RESOLUTION_COVERAGE.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.3-R1",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "e2bd3ac5ea4eca781907382123028698eae1013880ce249bfbb04346916d75e2",
+      "lineage": [
+        "regenerated after R0.3-QA-01 remediation from the Checkpoint A inputs at their baselined hashes"
+      ],
+      "dependencies": [
+        "data/operational-knowledge/road-ltl-v1.4-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md",
+        "data/source-claims/road-ltl-v1.4-claims.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+        "data/road-ltl/effective-road-ltl-1.5-materialization.json",
+        "data/modules/road-ltl-v1.4.json",
+        "data/modules/road-ltl-v1.5.json",
+        "data/crosswalks/process-concept-crosswalk-v1.json",
+        "schemas/operational-knowledge-contract-v2.json",
+        "schemas/information-resolution-contract-v1.json",
+        "governance/knowledge-gap-queue.schema.json",
+        "data/core/enterprise-core-ontology-v1.json"
+      ],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "Supersedes the same-path artifact at commit 429dc6a7; the superseded bytes remain in git history and the CI artifact."
+    },
+    {
+      "assetId": "r0-3-r1-KNOWLEDGE_GAP_QUEUE.json",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.3/KNOWLEDGE_GAP_QUEUE.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.3-R1",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "5a9a7a1c73d61e7a27af792ce13734034943a608e8a396ce1d70b0cbb7fc532d",
+      "lineage": [
+        "regenerated after R0.3-QA-01 remediation from the Checkpoint A inputs at their baselined hashes"
+      ],
+      "dependencies": [
+        "data/operational-knowledge/road-ltl-v1.4-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md",
+        "data/source-claims/road-ltl-v1.4-claims.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+        "data/road-ltl/effective-road-ltl-1.5-materialization.json",
+        "data/modules/road-ltl-v1.4.json",
+        "data/modules/road-ltl-v1.5.json",
+        "data/crosswalks/process-concept-crosswalk-v1.json",
+        "schemas/operational-knowledge-contract-v2.json",
+        "schemas/information-resolution-contract-v1.json",
+        "governance/knowledge-gap-queue.schema.json",
+        "data/core/enterprise-core-ontology-v1.json"
+      ],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": "Supersedes the same-path artifact at commit 429dc6a7; the superseded bytes remain in git history and the CI artifact."
+    }
+  ],
+  "tools": [
+    {
+      "toolId": "atlas-r0-3-ok-hardening-1.0.0",
+      "repositoryPath": "tools/r0-3/ok-hardening.mjs",
+      "version": "1.0.0",
+      "sha256": "d788e54422f74c72df99ca758f57393e5c10f87f5a834eafe2424496f842ca8b",
+      "purpose": "Composition and coverage library, remediated to compose the certified effective module surface."
+    },
+    {
+      "toolId": "atlas-r0-3-hardening-runner",
+      "repositoryPath": "tools/r0-3/run-r0-3-hardening.mjs",
+      "version": "1.0.0",
+      "sha256": "bcc3dec2383c3f625881a440e63455774982d7b429c88ffd06da1b04ccac7a3d",
+      "purpose": "Deterministic runner; no wall-clock value."
+    },
+    {
+      "toolId": "atlas-r0-3-stage-test",
+      "repositoryPath": "tests/r0-3-ok-canonical-information-hardening.mjs",
+      "version": "1.1.0",
+      "sha256": "db03ba01680802d37436153bde12f1a441df75e133fcd0cbc4166b69b2987dc5",
+      "purpose": "Stage certification including the QA-01 fail-closed negative control and version-rule assertions."
+    },
+    {
+      "toolId": "atlas-r0-3-ci",
+      "repositoryPath": ".github/workflows/r0-3-ok-canonical-information-hardening.yml",
+      "version": "1.1.0",
+      "sha256": "8845f412a4db88a84b0d00d9ca57043e0aeab23ad1c035717c089f0c1e30e58f",
+      "purpose": "Runs the same deterministic runner and the QA-01 remediation checks; fails closed on dependency or hash drift."
+    }
+  ],
+  "results": {
+    "taskCount": 22,
+    "contractAttributeCount": 24,
+    "assessedCellsPerSurface": 528,
+    "composedSurface": {
+      "satisfiedDirect": 50,
+      "satisfiedByDeclaredEquivalent": 241,
+      "presentNestedOnly": 64,
+      "absent": 173
+    },
+    "okOnlySurface": {
+      "satisfiedDirect": 28,
+      "satisfiedByDeclaredEquivalent": 22,
+      "presentNestedOnly": 108,
+      "absent": 370
+    },
+    "composedLayers": [
+      "data/road-ltl/effective-road-ltl-1.5-materialization.json (R0.2-certified effective module surface = data/modules/road-ltl-v1.4.json + data/modules/road-ltl-v1.5.json)",
+      "data/modules/road-ltl-v1.4.json",
+      "data/modules/road-ltl-v1.5.json",
+      "data/operational-knowledge/road-ltl-v1.4-operational.json",
+      "data/operational-knowledge/road-ltl-v1.5-operational.json"
+    ],
+    "effectiveModuleSurface": {
+      "path": "data/road-ltl/effective-road-ltl-1.5-materialization.json",
+      "materializerVersion": "atlas-effective-road-ltl-materializer-1.0.0",
+      "effectiveModuleVersion": "1.5",
+      "semanticBaseVersion": "1.4",
+      "declaredInputs": {
+        "base": {
+          "path": "data/modules/road-ltl-v1.4.json",
+          "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+          "version": "1.4",
+          "taskCount": 22
+        },
+        "overlay": {
+          "path": "data/modules/road-ltl-v1.5.json",
+          "sha256": "22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f",
+          "version": "1.5",
+          "overrideCount": 1
+        }
+      },
+      "semanticSourceVersionSpread": {
+        "1.4": 21,
+        "1.5": 1
+      }
+    },
+    "complianceRule": "Only SATISFIED_DIRECT and SATISFIED_BY_DECLARED_EQUIVALENT count as satisfied. PRESENT_NESTED_ONLY_NOT_TASK_LEVEL and ABSENT remain open gaps and were not converted into compliant attributes.",
+    "canonicalObjects": {
+      "referenced": 66,
+      "withCanonicalObjectContract": 0,
+      "disposition": "OPEN GAP, unchanged by remediation."
+    },
+    "documents": {
+      "declared": 5,
+      "disposition": "OPEN GAP, unchanged by remediation."
+    },
+    "informationResolution": {
+      "bolFields": 76,
+      "withConformantContract": 0,
+      "unresolvedSemanticLabels": 10,
+      "disposition": "OPEN GAP, unchanged by remediation."
+    },
+    "knowledgeGaps": {
+      "count": 24,
+      "allOpen": true
+    },
+    "r02LineageRegression": {
+      "taskCount": 22,
+      "inheritedFrom14": 21,
+      "directGoverned15Overrides": 1,
+      "directOverrideTaskIds": [
+        "LTL-03"
+      ],
+      "agreesWithR02CertifiedEffectiveMaterialization": true,
+      "frozenSourceMutation": "NONE"
+    },
+    "determinism": {
+      "artifactsByteIdenticalOnRegeneration": true,
+      "semanticHashes": {
+        "coverage": "c3dc7c1cd029c2b26a4169665191190925a7dc2834b5a324703bcc9389748b5d",
+        "objectRegister": "9e936273b75555ab671bb941c4c2ceac92dafe9e3e947ae01dd7add9be754817",
+        "informationResolution": "90b0a7f7f606a58689744f86ddf06dcb6ee08daec339748dad6aac336e630e9d"
+      },
+      "supersededSemanticHashes": {
+        "coverage": "df2a845d59d14993a44641080928f761c8200980a122c56416b1ee39d8a3428b",
+        "objectRegister": "9e936273b75555ab671bb941c4c2ceac92dafe9e3e947ae01dd7add9be754817",
+        "informationResolution": "90b0a7f7f606a58689744f86ddf06dcb6ee08daec339748dad6aac336e630e9d"
+      }
+    }
+  },
+  "liveState": [
+    {
+      "store": "supabase",
+      "reference": "atlas_work_decompositions",
+      "state": "NOT_READ_IN_R0_3",
+      "notes": "R0.4 scope."
+    }
+  ],
+  "driveEvidence": [
+    {
+      "status": "NOT_MIRRORED",
+      "reason": "Drive connector returned 'No approval received' on both folder-creation attempts.",
+      "seeFinding": "R0.3-QA-02"
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/r0-3-ok-canonical-information-hardening.mjs",
+      "command": "node tests/r0-3-ok-canonical-information-hardening.mjs",
+      "result": "PASS",
+      "newCoverageThisRevision": [
+        "effective materialization declares both module inputs",
+        "composition fails closed when the v1.5 module overlay is removed",
+        "LTL-03 effective module version is 1.5 and inheritance is DIRECT_GOVERNED_OVERRIDE",
+        "LTL-03 is measured against its operationalKnowledgeV2 container",
+        "all 21 other tasks remain at effective version 1.4",
+        "version resolves from layer effectiveModule for every task and never from module.version",
+        "exactly one task resolves to effective version 1.5",
+        "composed surface layers name the v1.4 base, the v1.5 overlay and the effective materialization"
+      ]
+    },
+    {
+      "path": ".github/workflows/r0-3-ok-canonical-information-hardening.yml",
+      "command": "GitHub Actions",
+      "result": "PENDING_ON_PUSH",
+      "newCoverageThisRevision": [
+        "composed surface must name all three governed module inputs",
+        "version must not resolve from module.version and exactly LTL-03 must be 1.5",
+        "executable fail-closed negative control for a dropped v1.5 overlay"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "R0.3-B1-01",
+      "severity": "HIGH",
+      "statement": "R0.3-QA-01 is remediated. The composed surface is now the R0.2-certified effective Road LTL 1.5 module materialization plus the Operational Knowledge payload and its governed 1.5 overlay. LTL-03 absent attributes fall from 8 to 5; composed satisfied cells move from 290 to 291 of 528."
+    },
+    {
+      "id": "R0.3-B1-02",
+      "severity": "HIGH",
+      "statement": "R0.3-QA-02 is NOT remediated and remains BLOCKING for completion. Drive candidate custody could not be created; the connector returned 'No approval received' on two attempts. This requires an operator or a Drive write approval; the implementation agent cannot clear it."
+    },
+    {
+      "id": "R0.3-B1-03",
+      "severity": "MEDIUM",
+      "statement": "Five new declared equivalences read from the governed v1.5 operationalKnowledgeV2 and executionReadiness containers. Today they apply to LTL-03 only, because it is the only task the governed v1.5 module overlay enriches. QA should review them alongside the original equivalence set."
+    },
+    {
+      "id": "R0.3-B1-04",
+      "severity": "MEDIUM",
+      "statement": "prohibitedWhen is now satisfied for 1 of 22 tasks rather than 0. jurisdictionIds, carriageRegimeIds, conditionIds, ambiguities and unresolvedDependencies remain absent for all 22, including LTL-03. The governed v1.5 enrichment did not supply them and none were invented."
+    },
+    {
+      "id": "R0.3-B1-05",
+      "severity": "MEDIUM",
+      "statement": "REGISTRY/CUSTODY SYNCHRONIZATION STILL OUTSTANDING, carried forward from R0.3-B-06. The Drive recovery-standard and backlog mirrors still read 'Current authorized stage: R0.1C'. R0.3 did not edit them; governance synchronization is not in this stage's authorized scope, which is R0.3_REMEDIATION_ONLY."
+    },
+    {
+      "id": "R0.3-B1-06",
+      "severity": "INFO",
+      "statement": "Gap findings are unchanged by remediation: 66 canonical objects with 0 object contracts, 76 BOL fields with 0 conformant Information Resolution records, 24 knowledge gaps all OPEN. The remediation corrected a measurement surface; it did not author semantics."
+    },
+    {
+      "id": "R0.3-B1-07",
+      "severity": "INFO",
+      "statement": "The post-QA governance state, including the QA-authored Checkpoint C and the updated queue, was merged into this branch before remediation so the stage builds on the governed state rather than a stale baseline. Checkpoint C was not authored or modified by this agent."
+    },
+    {
+      "id": "R0.3-B1-08",
+      "severity": "INFO",
+      "statement": "All 14 Checkpoint A inputs remain byte-identical. No frozen source asset was mutated, no pointer or register was touched, and the queue was not edited."
+    }
+  ],
+  "supersededBy": [],
+  "nextAuthorization": "AWAITING_INDEPENDENT_QA",
+  "queueTreatment": {
+    "queuePath": "governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json",
+    "mutatedByThisStage": false,
+    "note": "The queue records R0.3 AUTHORIZED with authorizedScope R0.3_REMEDIATION_ONLY and qaDisposition FIX_REQUIRED. The implementation agent does not edit it. Advancing it is governance's action after the next independent QA."
+  },
+  "promotion": {
+    "canonicalPromotion": "NOT_PERFORMED",
+    "currentPointer": "UNCHANGED",
+    "latestPointer": "UNCHANGED",
+    "assetRegister": "UNCHANGED",
+    "roadLtlProductionStatus": "UNCHANGED",
+    "atlasV2GoLive": "UNCHANGED",
+    "r0_3Complete": false,
+    "r0_4Authorized": false,
+    "r04Started": false,
+    "architectureRefinementStarted": false,
+    "phase6Status": "SUSPENDED_BY_RECOVERY_GATE"
+  },
+  "knownLimitations": [
+    "R0.3-QA-02 is unresolved; R0.3 cannot be marked COMPLETE until Drive candidate custody closes.",
+    "The five new declared equivalences are a stage judgement awaiting QA acceptance.",
+    "Coverage measures contract attribute presence, not the quality of the knowledge those attributes carry.",
+    "Ocean FCL/LCL untouched; R0.5 scope."
+  ],
+  "recommendedNextAction": "Independent QA of the R0.3 remediation, and an operator action to close Drive candidate custody. Recommendation only. R0.4 remains BLOCKED_UNTIL_R0_3_QA and was not started; architecture refinement remains queued behind R0.3 closure."
+}
