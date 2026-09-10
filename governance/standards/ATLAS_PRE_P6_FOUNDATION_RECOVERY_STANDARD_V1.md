@@ -2,7 +2,7 @@
 
 Status: OWNER_AUTHORIZED_RECOVERY_STANDARD  
 Effective: 8 September 2026  
-Current revision: R0.1A-R, R0.1B and R0.1C independently QA-certified; R0.2 authorized for Road LTL source closure and P6.0 re-certification.  
+Current revision: R0.1A-R, R0.1B, R0.1C and R0.2 independently QA-certified; R0.3 authorized for Road LTL Operational Knowledge + Canonical Information hardening.  
 Applies before any further P6.2/P6.3/P6.4/P6.5 execution.
 
 ## 1. Purpose
@@ -25,11 +25,13 @@ Every recovery stage also follows `governance/standards/ATLAS_ASSET_CUSTODY_AND_
 - R0.1C independently established reference ownership with zero true defects and zero orphans: `a5-*` is Daughter-local and 82/82 references are derivable from daughter module/process identity; `scp-*` is owned by the pre-existing cross-module process-concept layer with 22 governed definitions/mappings.
 - R0.1C Checkpoint C is `governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json`; Drive custody bundle SHA-256 is `8f09a4b6a23474053d48c5ac667ebe63c91cb7eb997f1b14789f3b5914d62bd0`.
 - The certified Universe payload remains byte-identical and retains its historical `UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT` field. R0.1C records the governed resolution externally as `REFERENCE_OWNERSHIP_CLASSIFIED_NO_REFERENCE_DEFECT` rather than mutating the authority-bound payload.
-- The pre-existing `data/crosswalks/process-concept-crosswalk-v1.json` is now registered in `ASSET_REGISTER.json` by repository path and SHA without semantic mutation.
+- The pre-existing `data/crosswalks/process-concept-crosswalk-v1.json` is registered in `ASSET_REGISTER.json` by repository path and SHA without semantic mutation.
 - Ocean FCL/LCL do not yet carry process-concept mappings. This is a coverage gap, not a broken reference, and belongs to R0.5.
-- Road LTL 1.4 package/module/Operational Knowledge were recovered and hash-verified outside final governed repo custody. R0.2 is authorized to close custody and re-certify dependent materialization.
-- Effective Road LTL 1.5 remains 21 unchanged 1.4 tasks plus direct governed LTL-03 1.5 override; `taskId`/`id` drift requires governed normalization in derived tooling only.
-- Historical P6.0 evidence remains evidence but current reproducibility must be re-certified.
+- R0.2 independently closed exact Road LTL 1.4 package/module/Operational Knowledge custody and re-certified the effective Road LTL 1.5 → P6.0 chain without semantic reconstruction.
+- The exact frozen release package is governed at `release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip`, SHA-256 `b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289`; the historical Drive source and GitHub-custodied bytes were independently verified to the same identity.
+- Road LTL 1.4 module is governed at `data/modules/road-ltl-v1.4.json`, SHA-256 `c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4`; its Operational Knowledge base is governed at `data/operational-knowledge/road-ltl-v1.4-operational.json`, SHA-256 `6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e`.
+- Effective Road LTL 1.5 is deterministically certified as 21 unchanged 1.4 tasks plus direct governed LTL-03 1.5 override; derived `taskId`/`id` normalization does not mutate recovered source bytes.
+- R0.2 re-certified P6.0 at 502/502 gates using the P6.0 generation's own retained library/registry/bundle; P6.1-generation projection tooling is not interchangeable evidence for P6.0 reproducibility.
 - Historical P6.1 cannot currently support reproducibility/live-readability claims with retained tooling.
 - Ocean FCL/LCL 0.6 require source/package closure and Road-LTL-equivalent OK/decomposition depth before execution-depth parity claims.
 
@@ -49,6 +51,7 @@ Every recovery stage also follows `governance/standards/ATLAS_ASSET_CUSTODY_AND_
 13. Discovery of a new governed defect after certification requires explicit supersession, never historical rewrite.
 14. Stage-lifecycle assertions in immutable historical tests may legitimately expire after later checkpoints; preserve those tests and record superseded assertions rather than editing history.
 15. Identifier ownership is layer-specific. Non-resolution against Universe is not a defect when the identifier is governed by a daughter-local or cross-layer contract.
+16. By Checkpoint C, every machine-readable input required by a subsequent stage must be present and deterministically resolvable on the governance branch. Implementation-branch-only dependency closure is insufficient.
 
 ## 4. Certification dimensions
 PHYSICAL_EXISTENCE; SEMANTICS; COVERAGE; EVIDENCE; DEPENDENCY_CLOSURE; REPRODUCIBILITY; REFERENTIAL_INTEGRITY; LIVE_READABILITY; REGISTRY_COHERENCE; CLASSIFICATION_ACCURACY; SECURITY_BOUNDARY; REGRESSION; DEPLOYMENT_PARITY.
@@ -85,22 +88,19 @@ Certified result:
 - Ocean concept mapping coverage deferred to R0.5.
 
 ### R0.2 — Road LTL Source Closure, Effective 1.5 & P6.0 Re-certification
-Status: AUTHORIZED
-Objective: close governed custody and reproducibility for the Road LTL 1.4 → effective 1.5 → P6.0 dependency chain without semantic reconstruction.
-Required work:
-- place recovered Road LTL 1.4 package/module/Operational Knowledge into governed GitHub/Drive custody with verified hashes;
-- preserve recovered original bytes and reconcile historical hash discrepancies without assumption;
-- normalize `taskId`/`id` overlay handling in derived tooling without mutating recovered source assets;
-- deterministically materialize effective Road LTL 1.5;
-- prove 21×1.4 + LTL-03×1.5 lineage;
-- rerun reference integrity using the R0.1C ownership model;
-- reproduce and re-certify P6.0 from retained governed inputs/tooling;
-- create custody checkpoints and stop at `AWAITING_INDEPENDENT_QA`.
-
-R0.2 may not reconstruct Road LTL 1.4 from 1.3/warehouse/public-safe/chat/inference; select conflicting hashes by filename/date alone; mutate recovered historical bytes; alter R0.1C ownership determinations; invent Ocean mappings; start R0.3/R0.4/P6 work; or promote `CURRENT/LATEST`.
+Status: COMPLETE — INDEPENDENT QA PASS
+Checkpoint C: `governance/recovery/R0.2/POST_QA_GOVERNED_STATE.json`.
+Certified result:
+- exact original package SHA-256 `b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289`, internal manifest 30/30;
+- Road LTL 1.4 module SHA-256 `c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4`;
+- Road LTL 1.4 Operational Knowledge SHA-256 `6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e`;
+- effective 1.5 = 21×1.4 + LTL-03×1.5, deterministic;
+- ownership-aware references remain 82 `a5-*`, 22 `scp-*`, 0 orphans;
+- P6.0 re-certification = 502/502 PASS;
+- production `CURRENT/LATEST` pointers unchanged.
 
 ### R0.3 — Road LTL Operational Knowledge + Canonical Information Hardening
-Status: BLOCKED_UNTIL_R0_2_QA
+Status: AUTHORIZED
 
 ### R0.4 — Generic Recursive Decomposition Compiler & Road LTL Re-certification
 Status: BLOCKED_UNTIL_R0_3_QA
