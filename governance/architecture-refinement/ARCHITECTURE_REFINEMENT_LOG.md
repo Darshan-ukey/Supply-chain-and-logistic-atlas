@@ -41,3 +41,46 @@ Owner challenged whether frozen Work Decomposition V1.1 + Canonical WorkDefiniti
 `CHALLENGE_VALIDATED / NEW_LAYER_NOT_APPROVED / AWAITING_OWNER_REVIEW`
 
 AR0.1 must rigorously test current contracts with executable-solution scenarios before any successor architecture is designed.
+
+## 11 September 2026 — Owner review and AR0.1 authorization
+
+### Product-vision clarification
+Owner challenged the architecture discussion itself and required a stable end-state before AR0.1. The clarified product objective is:
+
+> **Atlas turns reusable domain knowledge into execution-ready enterprise specifications.**
+
+Primary objective: execution / implementation readiness.  
+Required capabilities: reusable domain execution-reference knowledge, explicit knowledge-gap exposure, enterprise/client binding, fail-closed readiness assessment, governed implementation handoff.  
+Control property: governance/provenance/versioning/lineage.  
+Structured capability: execution intelligence.  
+Outside primary boundary: runtime execution.  
+Secondary/downstream only: autonomous solution generation, candidate solution comparison and runtime architecture selection.
+
+### Value hypothesis
+Atlas is not justified because ChatGPT cannot research or draft implementation requirements. Atlas is justified only if the governed reusable reference materially changes transformation economics and quality by reducing repeated discovery/rework, exposing gaps earlier and providing cross-runtime reusable enterprise specifications.
+
+Later product-value measures are recorded as:
+- Reference Reuse Rate;
+- Discovery Compression;
+- Gap Exposure Rate;
+- Implementation Handoff Quality;
+- Cross-Runtime Reusability.
+
+### AR0.0 owner review
+AR0.0 baseline is accepted as the historical/reference architecture inventory. Its earlier solution-synthesis framing is superseded as the primary acceptance criterion, not deleted.
+
+AR0.0 disposition: `COMPLETE / OWNER_REVIEWED`.
+
+### AR0.1 authorization
+Owner explicitly authorized AR0.1.
+
+AR0.1 execution owner: ChatGPT only. Claude remains unauthorized.
+
+AR0.1 now tests the frozen architecture against implementation readiness using concrete scenarios, including:
+- Road LTL customer-service pickup request -> agentic/workflow implementation skeleton;
+- BOL/document information resolution -> deliberate knowledge gaps and fail-closed readiness;
+- digital twin/BPM implementation handoff;
+- ERP/TMS fit-gap / implementation handoff;
+- adversarial control-flow semantics.
+
+AR0.1 remains an audit only. No successor contract/layer is to be frozen or implemented in this stage. R0.4 remains suspended.
