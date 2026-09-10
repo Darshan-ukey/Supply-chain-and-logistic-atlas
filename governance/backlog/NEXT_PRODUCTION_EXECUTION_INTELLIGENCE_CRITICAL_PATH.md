@@ -1,13 +1,13 @@
 # Atlas V2 — Governed Execution Roadmap and Production Critical Path
 
 Status: ACTIVE BACKLOG / ARCHITECTURE REFINEMENT GATE  
-Updated: 11 September 2026 — R0.3 independent QA PASS; R0.4 suspended pending architecture refinement  
+Updated: 11 September 2026 — AR0.1 authorized; execution-readiness North Star adopted; R0.4 suspended  
 Canonical technical backlog: this file + `ATLAS_V2_AGENT_EXECUTION_QUEUE.json` on branch `atlas-governance-registry-v2.1`.
 
 ## Operating rule
-Atlas recovery/rebuild execution does not continue directly from R0.3 to R0.4. The Owner has inserted a governed architecture-refinement gate to challenge Work Decomposition V1.1 / Canonical WorkDefinition V1 before any recursive-decomposition recovery, rematerialization or rebuild.
+Atlas recovery/rebuild execution does not continue directly from R0.3 to R0.4. The Owner inserted a governed architecture-refinement gate to challenge Work Decomposition V1.1 / Canonical WorkDefinition V1 before any recursive-decomposition recovery, rematerialization or rebuild.
 
-Claude remains an implementation agent and may act only on an exact queue stage whose status is `AUTHORIZED`. Architecture-refinement stages are `OWNER_AUTHORIZED_CHATGPT_ONLY`; Claude must not execute them. ChatGPT owns the architecture review and governance work. Frozen V1 architecture remains immutable unless the Owner later approves a versioned successor.
+Claude remains an implementation agent and may act only on an exact queue stage whose status is `AUTHORIZED`. Architecture-refinement stages are reserved to ChatGPT; Claude must not execute them. Frozen V1 architecture remains immutable unless the Owner later approves a versioned successor.
 
 ## Current position
 - R0.1A-R, R0.1B and R0.1C: COMPLETE — independent QA PASS.
@@ -26,29 +26,44 @@ Governing backlog: `governance/architecture-refinement/ARCHITECTURE_REFINEMENT_B
 Decision ledger: `governance/architecture-refinement/ARCHITECTURE_DECISION_LEDGER_V1.md`  
 Activity log: `governance/architecture-refinement/ARCHITECTURE_REFINEMENT_LOG.md`
 
+## Product North Star
+
+> **Atlas turns reusable domain knowledge into execution-ready enterprise specifications.**
+
+The primary objective is execution / implementation readiness. Governance is a trust/control property. Execution intelligence is the semantic capability used to reach readiness. Runtime execution is downstream/outside Atlas's primary boundary. Autonomous solution generation and runtime architecture selection are secondary/downstream capabilities.
+
 ## Governing challenge
 Determine whether the current frozen chain:
 
-`Governed Domain Knowledge + Client Binding / Rules -> Work Decomposition V1.1 -> Canonical WorkDefinition V1 -> Runtime Adapter / Projection`
+`Governed Domain Knowledge -> Operational Knowledge -> Work Decomposition V1.1 -> Canonical WorkDefinition V1 -> Client Binding / Enterprise Context -> Runtime Adapter / Implementation Handoff`
 
-is sufficient to ideate and select executable solution architectures across human, workflow/BPM, RPA, API/service automation, document AI, agentic AI and hybrid execution patterns.
+can produce or deterministically assemble a technology-neutral implementation-ready enterprise specification when required knowledge is sufficient, while explicitly blocking readiness when required knowledge is missing, conflicting, inferred beyond authority or client-specific and unresolved.
 
-The possible need for an `Execution Requirements / Design Context` and `Solution Synthesis / Selection` layer is a hypothesis only. The review must first determine whether the relevant semantics already belong to existing WorkDefinition, Client Binding or Runtime Adapter contracts.
+The same resolved enterprise semantics should be reusable across different downstream implementation environments such as agent/workflow platforms, Malkom, BPM/digital twin and ERP/TMS fit-gap without redefining canonical business meaning.
 
 ## AR0.0 — Architecture Baseline & Challenge Register
-Status: OWNER_AUTHORIZED_CHATGPT_ONLY
+Status: COMPLETE / OWNER_REVIEWED
 
-Inventory exact frozen V1 architecture/contracts and map every executable-solution requirement to its current governed owner. Define sufficiency criteria and a challenge register before proposing changes.
+Baseline inventory and challenge register completed. The earlier solution-synthesis framing is retained as historical analysis but superseded as the primary product objective by the execution-readiness North Star.
 
 ## AR0.1 — V1.1 / WorkDefinition Sufficiency Audit
-Status: BLOCKED_UNTIL_AR0_0_REVIEW
+Status: OWNER_AUTHORIZED_CHATGPT_ONLY — CURRENT
 
-Test whether current canonical decomposition and WorkDefinition semantics can fully express executable topology and the information needed downstream for solution design.
+Audit current canonical decomposition, WorkDefinition, Operational Knowledge, Client Binding and related contracts against implementation readiness using concrete scenarios:
+1. Road LTL customer-service pickup request -> agentic/workflow implementation handoff;
+2. BOL/document information resolution -> fail-closed readiness with real gaps;
+3. digital-twin/BPM implementation handoff;
+4. ERP/TMS fit-gap / implementation handoff;
+5. adversarial control-flow semantics.
+
+Every required semantic is classified as fully governed, client/enterprise binding required, inferable but ungoverned, absent/readiness-blocking, or legitimately downstream/runtime-specific.
+
+AR0.1 is evidence/audit only; no successor architecture is frozen here.
 
 ## AR0.2 — Layer-Boundary Decision
 Status: BLOCKED_UNTIL_AR0_1_REVIEW
 
-Determine boundaries across Work Decomposition, Canonical WorkDefinition, Client Binding, possible Execution Requirements, possible Solution Synthesis and Runtime Adapter layers.
+Determine boundaries across Domain/Operational Knowledge, Work Decomposition, Canonical WorkDefinition, Client Binding/Enterprise Context, readiness assessment, implementation handoff and Runtime Adapters. Any optional downstream solution-synthesis capability remains secondary.
 
 ## AR0.3 — Candidate Contract Architecture
 Status: BLOCKED_UNTIL_AR0_2_REVIEW
@@ -58,7 +73,7 @@ Only if evidence supports a change, define candidate machine-readable contracts 
 ## AR0.4 — Adversarial Multi-Pattern Validation
 Status: BLOCKED_UNTIL_AR0_3_REVIEW
 
-Validate against deterministic automation, API/service orchestration, RPA, workflow/BPM, document AI, agentic AI, human-only work and hybrid patterns. Do not use Road LTL/BOL as the only test family.
+Validate the candidate architecture across multiple implementation patterns and task families. Do not use Road LTL/BOL as the only test family.
 
 ## AR0.5 — Successor Architecture Candidate
 Status: BLOCKED_UNTIL_AR0_4_REVIEW
