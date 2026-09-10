@@ -26,51 +26,47 @@ After implementation create/commit `POST_IMPLEMENTATION_PRE_QA` with outputs, ha
 
 After independent QA create/synchronize `POST_QA_GOVERNED_STATE`, registers/pointers/classifications and durable Drive evidence before the next stage is authorized.
 
-## Completed R0.1 Universe and reference-ownership chain
+By Checkpoint C, every machine-readable input required by a subsequent stage must be present and deterministically resolvable on the governance branch. An implementation-branch-only dependency is not closed custody.
+
+## Completed recovery chain through R0.2
 - `R0.1A` is historical **COMPLETE / QA PASS AT TIME OF CERTIFICATION**, superseded for canonical promotion by R0.1A-R. Its artifacts remain immutable evidence.
 - `R0.1A-R` is **COMPLETE / INDEPENDENT QA PASS**. Corrected semantic structures SHA-256: `82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d`.
 - `R0.1B` is **COMPLETE / INDEPENDENT QA PASS**. It finalized `releaseVersion=7.3` and `semanticPayloadVersion=7.2.0` as separate governed identities and bound semantic authority to `data/universe/r0-1a-r/universe-semantic-payload.json`.
 - `R0.1C` is **COMPLETE / INDEPENDENT QA PASS**. `a5-*` is Daughter-local; 82/82 references are derived from daughter module/process identity. `scp-*` is owned by the pre-existing cross-module process-concept layer at `data/crosswalks/process-concept-crosswalk-v1.json`; 22 definitions/mappings, zero orphans, zero true reference defects.
-- R0.1C Checkpoint C is `governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json`.
 - The certified Universe payload remains byte-identical; do not edit its historical `UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT` field merely to reflect the later R0.1C governance outcome.
 - The process-concept crosswalk is registered in `ASSET_REGISTER.json` by current repository path/hash. Registration did not mutate its semantics.
 - Ocean process-concept mappings remain an R0.5 coverage gap, not a reference defect.
+- `R0.2` is **COMPLETE / INDEPENDENT QA PASS**. Exact Road LTL 1.4 package/module/Operational Knowledge custody is closed; effective Road LTL 1.5 is proven as 21 inherited 1.4 tasks plus direct governed LTL-03 1.5 override; P6.0 is re-certified at 502/502 gates using its own generation tooling.
+- Exact frozen Road LTL/Ocean package custody is SHA-256 `b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289` at `release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip`; Road LTL 1.4 module and OK repository paths are registered without production promotion.
+- R0.2 Checkpoint C is `governance/recovery/R0.2/POST_QA_GOVERNED_STATE.json`.
 
-## Current authorized stage: R0.2
-`R0.2` is the **only currently AUTHORIZED stage**.
+## Current authorized stage: R0.3
+`R0.3` is the **only currently AUTHORIZED stage**.
 
-Objective: close governed custody and reproducibility for the Road LTL 1.4 → effective Road LTL 1.5 → P6.0 dependency chain without semantic reconstruction.
+Name: **Road LTL Operational Knowledge + Canonical Information Hardening**.
 
-Required scope:
-- place the recovered Road LTL 1.4 release package/module/Operational Knowledge into governed GitHub and Drive custody with exact hashes;
-- preserve each recovered original byte identity and reconcile historical hash discrepancies without assumption;
-- normalize `taskId`/`id` overlay handling only in derived tooling, never by rewriting historical source bytes;
-- deterministically materialize effective `road-ltl@1.5`;
-- prove 21 unchanged 1.4 tasks + direct governed LTL-03 1.5 override;
-- rerun referential-integrity checks using the R0.1C ownership model;
-- reproduce and re-certify P6.0 from retained governed inputs/tooling;
-- produce `PRE_CHANGE_BASELINE` before any mutation and `POST_IMPLEMENTATION_PRE_QA` after implementation, then stop at `AWAITING_INDEPENDENT_QA`.
+Governed purpose from the recovery roadmap: certify 22-task Operational Knowledge coverage; close/classify object/document gaps; complete canonical BOL/information semantics; preserve unresolved evidence and knowledge gaps.
 
-R0.2 must not:
-- reconstruct Road LTL 1.4 from Road LTL 1.3, Atlas Warehouse, PUBLIC_SAFE projections, old HTML, chat memory, or inferred logistics knowledge unless an extracted candidate exactly matches governed identity and is explicitly custodied as such;
-- choose among conflicting historical hashes by filename/date alone;
-- mutate recovered Road LTL 1.4 or frozen Road LTL 1.5 historical source bytes;
-- alter the R0.1C `a5-*` / `scp-*` ownership determinations;
-- invent Ocean process-concept mappings;
-- perform R0.3 OK hardening beyond dependency closure required to reproduce P6.0;
-- perform R0.4 decomposition rebuild/P6.1 repair;
-- resume P6.2;
-- promote `CURRENT` or `LATEST`.
+R0.3 must:
+- consume only governed inputs resolvable from `atlas-governance-registry-v2.1`;
+- preserve the R0.2-certified Road LTL 1.4/effective 1.5 lineage and hashes unless the governed stage explicitly requires a new derived artifact;
+- distinguish evidenced Operational Knowledge from unresolved knowledge gaps;
+- preserve canonical versus client-specific boundaries under the frozen Knowledge-to-Execution architecture;
+- treat documents/objects/information semantics as governed canonical contracts where evidenced, not as incidental task attachments;
+- create `PRE_CHANGE_BASELINE` before mutation;
+- create `POST_IMPLEMENTATION_PRE_QA` after implementation and stop at `AWAITING_INDEPENDENT_QA`.
 
-Minimum governed inputs:
-- `governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json`
-- `governance/recovery/R0.1C/REFERENCE_OWNERSHIP_DETERMINATION.json`
-- `data/crosswalks/process-concept-crosswalk-v1.json`
-- `governance/frozen-assets/ASSET_REGISTER.json`
-- `data/modules/road-ltl-v1.5.json`
-- `data/operational-knowledge/road-ltl-v1.5-operational.json`
+R0.3 must not:
+- fabricate operational knowledge to reach 22-task coverage;
+- reinterpret or mutate R0.1B Universe authority or R0.1C identifier ownership;
+- mutate recovered Road LTL 1.4 source bytes;
+- invent Ocean mappings or perform R0.5 work;
+- begin R0.4 recursive-decomposition implementation;
+- resume P6.1/P6.2;
+- promote `CURRENT`, `LATEST`, Road LTL production status, or Atlas V2 go-live state;
+- move client-specific field names, thresholds, SLAs, routing values or SOP-local values into global canonical truth.
 
-Recovered external Road LTL 1.4 package/module/Operational Knowledge may be used semantically only after their original bytes, hashes and provenance are placed in governed custody and any identity conflict is explicitly recorded.
+If the R0.3 evidence exposes an upstream contradiction rather than a knowledge gap, stop and report it rather than silently correcting upstream certified artifacts.
 
 ## Historical-test lifecycle rule
 A completed stage's immutable pre-QA test may contain assertions whose lifecycle preconditions expire after independent QA creates Checkpoint C. Do not edit historical tests merely to make them pass later. Later stages must run only assertions whose preconditions are still valid, preserve the historical test byte-for-byte, and record superseded lifecycle assertions as governed technical debt.
@@ -95,7 +91,7 @@ Do not:
 - use PUBLIC_SAFE projections as canonical private source;
 - substitute a historical adjacent version for a missing governed base without exact governed evidence.
 
-Road LTL 1.4 package/module/Operational Knowledge are treated as recovered-but-pending-governed-custody until R0.2 closes them. R0.2 must also re-certify P6.0 materialization reproducibility. R0.5 must verify Ocean FCL/LCL 0.6 canonical source/package closure before OK uplift and may then extend process-concept mappings using evidence and the existing crosswalk model.
+R0.5 must verify Ocean FCL/LCL 0.6 canonical source/package closure before OK uplift and may then extend process-concept mappings using evidence and the existing crosswalk model.
 
 ## Governance synchronization rule
 Chat instructions do not supersede GitHub governance. Architecture, recovery path, sequencing, authorization, certification or agent-rule changes must be synchronized to GitHub before implementation proceeds. If chat and GitHub disagree, stop and report the conflict.
