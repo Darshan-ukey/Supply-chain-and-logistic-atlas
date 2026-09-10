@@ -1,0 +1,95 @@
+name: R0.2 Post-QA Governed Custody
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - atlas-governance-registry-v2.1
+    paths:
+      - '.github/workflows/r0-2-post-qa-custody.yml'
+
+jobs:
+  certify-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify R0.2 Checkpoint C and R0.3 authorization
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const c=JSON.parse(fs.readFileSync('governance/recovery/R0.2/POST_QA_GOVERNED_STATE.json','utf8'));
+          if(c.stageId!=='R0.2'||c.status!=='COMPLETE'||c.qaDisposition!=='PASS') throw new Error('R0.2 Checkpoint C not PASS/COMPLETE');
+          const q=JSON.parse(fs.readFileSync('governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json','utf8'));
+          if(q.currentStageId!=='R0.3') throw new Error('currentStageId is not R0.3');
+          const all=[];
+          for(const p of q.phases){ all.push(p); for(const s of (p.subStages||[])) all.push(s); }
+          const auth=all.filter(x=>x.status==='AUTHORIZED').map(x=>x.stageId);
+          if(auth.length!==1||auth[0]!=='R0.3') throw new Error('R0.3 is not sole AUTHORIZED stage: '+auth.join(','));
+          const p6=q.phases.find(x=>x.stageId==='P6.2');
+          if(!p6||!String(p6.status).startsWith('SUSPENDED')) throw new Error('P6.2 is not suspended');
+          console.log('governance gate PASS: R0.2 COMPLETE, R0.3 sole AUTHORIZED, P6.2 suspended');
+          NODE
+
+      - name: Verify exact frozen release package identity
+        run: |
+          PKG=release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip
+          ACTUAL=$(sha256sum "$PKG" | cut -d' ' -f1)
+          EXPECTED=b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289
+          echo "$ACTUAL  $PKG"
+          test "$ACTUAL" = "$EXPECTED"
+
+      - name: Verify Asset Register custody bindings
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('governance/frozen-assets/ASSET_REGISTER.json','utf8'));
+          const by=id=>r.assets.find(x=>x.assetId===id);
+          const m=by('road-ltl-1.4-candidate');
+          const ok=by('road-ltl-1.4-operational');
+          const pkg=by('daughter-release-ltl1.4-ocean0.6');
+          if(m.repositoryPath!=='data/modules/road-ltl-v1.4.json') throw new Error('1.4 module repository binding missing');
+          if(m.sha256!=='c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4') throw new Error('1.4 module SHA drift');
+          if(ok.repositoryPath!=='data/operational-knowledge/road-ltl-v1.4-operational.json') throw new Error('1.4 OK repository binding missing');
+          if(ok.sha256!=='6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e') throw new Error('1.4 OK SHA drift');
+          if(pkg.repositoryPath!=='release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip') throw new Error('package repository binding missing');
+          if(pkg.sha256!=='b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289') throw new Error('package SHA drift');
+          if(pkg.repositoryBinaryMaterialization!=='MATERIALIZED_AND_QA_VERIFIED_R0_2') throw new Error('binary custody not QA verified');
+          if(m.status!=='FROZEN_EXECUTION_REFERENCE_CANDIDATE') throw new Error('candidate status was promoted');
+          console.log('Asset Register custody bindings PASS without production promotion');
+          NODE
+
+      - name: Build post-QA governed custody bundle
+        run: |
+          mkdir -p /tmp/r0-2-post-qa
+          files=(
+            governance/recovery/R0.2/POST_QA_GOVERNED_STATE.json
+            governance/recovery/R0.2/POST_IMPLEMENTATION_PRE_QA.json
+            governance/recovery/R0.2/ROAD_LTL_SOURCE_CLOSURE_RECORD.json
+            governance/recovery/R0.2/BINARY_PACKAGE_CUSTODY_RECORD.json
+            governance/recovery/R0.2/PACKAGE_SHA256SUMS.json
+            governance/recovery/R0.2/PACKAGE_VALIDATION.json
+            governance/frozen-assets/ASSET_REGISTER.json
+            governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json
+            governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md
+            governance/standards/ATLAS_ASSET_CUSTODY_AND_GOVERNANCE_SYNC_STANDARD_V1.md
+            governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md
+            CLAUDE.md
+            data/modules/road-ltl-v1.4.json
+            data/operational-knowledge/road-ltl-v1.4-operational.json
+            data/road-ltl/effective-road-ltl-1.5-materialization.json
+            release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip
+          )
+          for f in "${files[@]}"; do test -f "$f" || { echo "missing $f"; exit 1; }; done
+          printf '%s\n' "${files[@]}" > /tmp/r0-2-post-qa/FILE_LIST.txt
+          sha256sum "${files[@]}" > /tmp/r0-2-post-qa/SHA256SUMS.txt
+          zip -q -j /tmp/r0-2-post-qa/atlas-r0-2-post-qa-governed-custody.zip "${files[@]}" /tmp/r0-2-post-qa/FILE_LIST.txt /tmp/r0-2-post-qa/SHA256SUMS.txt
+          sha256sum /tmp/r0-2-post-qa/atlas-r0-2-post-qa-governed-custody.zip
+
+      - name: Upload post-QA governed custody bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-r0-2-post-qa-governed-custody
+          path: /tmp/r0-2-post-qa/atlas-r0-2-post-qa-governed-custody.zip
+          if-no-files-found: error
+          retention-days: 90
