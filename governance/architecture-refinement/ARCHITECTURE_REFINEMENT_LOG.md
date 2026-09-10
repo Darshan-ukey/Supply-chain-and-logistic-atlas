@@ -14,8 +14,6 @@
 ### Architecture-refinement trigger
 Owner challenged whether frozen Work Decomposition V1.1 + Canonical WorkDefinition V1 are sufficient to ideate executable solutions after client bindings/rules are supplied.
 
-The initial diagnosis indicates a possible gap between canonical WorkDefinition and runtime projection: Atlas may require explicit execution-requirement/design context and a governed solution-synthesis/selection capability. This remains a hypothesis pending rigorous validation.
-
 ### Governance decision
 - Architecture refinement occurs before R0.4.
 - ChatGPT is the authorized architecture-refinement owner/analyst.
@@ -23,7 +21,23 @@ The initial diagnosis indicates a possible gap between canonical WorkDefinition 
 - Frozen V1 architecture remains immutable during the challenge.
 - R0.4 remains suspended until the Owner approves or rejects the architecture-refinement outcome.
 
-### Current architecture stage
-`AR0.0 — Architecture Baseline & Challenge Register`
+## 11 September 2026 — AR0.0 Architecture Baseline & Challenge Register
 
-Immediate work: inventory the frozen Work Decomposition / WorkDefinition / Client Binding / Runtime Adapter contracts and map each executable-solution requirement to its present owner before proposing any new layer.
+### Baseline artifacts created
+- `governance/architecture-refinement/AR0.0/CURRENT_ARCHITECTURE_BASELINE.md`
+- `governance/architecture-refinement/AR0.0/EXECUTION_REQUIREMENT_OWNERSHIP_MATRIX.json`
+- `governance/architecture-refinement/AR0.0/ARCHITECTURE_CHALLENGE_REGISTER.md`
+
+### Findings
+1. Frozen V1 is materially richer than the initial hypothesis. The executability standard recognizes HUMAN, DETERMINISTIC_RULES, WORKFLOW, RPA, API_SYSTEM, DOCUMENT_AI, LLM_AGENT and HYBRID_HITL, with executor-specific decomposition stopping criteria.
+2. Client Binding already owns most client/environment-specific design facts: systems/interfaces, field/API mappings, master/network configuration, SLA/cut-offs/thresholds, policy variants, organizational authority, exception routing, evidence/audit, security/credentials and environment. Road LTL currently carries 128 explicit binding requirements.
+3. Existing contracts already represent system exchange/interface type, temporal constraints and cost/service/risk measurements.
+4. Runtime adapters already own capability/constraint declaration, compatibility assessment, translation, loss reporting, projection and verification — but only after a target runtime has been selected.
+5. The canonical Work Decomposition and WorkDefinition machine-readable contracts are explicitly `IMPLEMENTATION_PENDING`, so the contract grammar can be corrected before implementation rather than reconstructed as a lost frozen implementation.
+6. The main validated challenge is narrower: no first-class governed mechanism has been found that generates multiple feasible solution architectures, composes hybrid patterns, compares them across requirements/constraints and records why a target adapter or combination was selected.
+7. Additional potential gaps require AR0.1 testing: workload/arrival/concurrency characteristics; human capacity/skills; NFRs; and explicit WorkDefinition control-flow semantics including parallelism, joins, correlation, idempotency, compensation, durable state and timeout ownership.
+
+### AR0.0 disposition
+`CHALLENGE_VALIDATED / NEW_LAYER_NOT_APPROVED / AWAITING_OWNER_REVIEW`
+
+AR0.1 must rigorously test current contracts with executable-solution scenarios before any successor architecture is designed.
