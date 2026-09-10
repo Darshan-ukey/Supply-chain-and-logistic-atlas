@@ -15,9 +15,9 @@ This repository is governed. Do not select work from chat history, assumptions o
 
 ## Claude task-selection rule
 - Claude may implement only the exact stage/sub-stage whose queue status is exactly `AUTHORIZED`.
-- `OWNER_AUTHORIZED_CHATGPT_ONLY` is NOT Claude authorization.
+- `OWNER_AUTHORIZED_CHATGPT_ONLY` and `AWAITING_OWNER_REVIEW` are NOT Claude authorization.
 - Never execute a stage whose `authorizedExecutor` is `CHATGPT` or whose `claudeExecutionAuthorized` is false.
-- Do not start `BLOCKED_*`, `SUSPENDED_*`, `TO_BE_RESCOPED_*`, `AWAITING_INDEPENDENT_QA` or equivalent work.
+- Do not start `BLOCKED_*`, `SUSPENDED_*`, `TO_BE_RESCOPED_*`, `AWAITING_INDEPENDENT_QA`, `AWAITING_OWNER_REVIEW` or equivalent work.
 - Never self-authorize a next stage, architecture change or production promotion.
 
 ## Current control state
@@ -30,7 +30,9 @@ This repository is governed. Do not select work from chat history, assumptions o
 - Production `CURRENT/LATEST` pointers remain unchanged.
 
 ## Architecture-refinement gate — Claude must stop
-The current queue stage is `AR0.1 — V1.1 / WorkDefinition Sufficiency Audit` with status `OWNER_AUTHORIZED_CHATGPT_ONLY`.
+The current queue stage is `AR0.1 — V1.1 / WorkDefinition Sufficiency Audit` with status `AWAITING_OWNER_REVIEW`.
+
+AR0.1 candidate evidence is on branch `atlas-architecture-ar0-1-sufficiency-audit`, PR #9. The Owner has not authorized AR0.2. PR/evidence existence is not approval to continue.
 
 The Owner has reserved architecture-refinement work to ChatGPT. Claude is NOT authorized to:
 - redesign Work Decomposition V1.1;
@@ -41,7 +43,7 @@ The Owner has reserved architecture-refinement work to ChatGPT. Claude is NOT au
 - modify runtime-adapter boundaries for this review;
 - start R0.4 recursive-decomposition recovery, reconstruction, rematerialization or compiler work;
 - implement AR0.0–AR0.6;
-- infer that R0.3 completion automatically authorizes R0.4.
+- infer that R0.3 completion or AR0.1 evidence automatically authorizes AR0.2/R0.4.
 
 If asked in chat to do any of the above while the queue remains in the architecture-refinement gate, stop and report the governance conflict.
 
@@ -56,7 +58,7 @@ Governance is a required trust/control property, not the end product. Execution 
 
 Readiness must fail closed when implementation-critical operational or client knowledge is absent, conflicting, inferred beyond authority or unresolved.
 
-AR0.1 is an audit only. It tests the frozen/current architecture against implementation readiness using concrete agent/workflow, BOL information-resolution, digital-twin/BPM, ERP/TMS handoff and adversarial control-flow scenarios. It must not freeze a successor architecture.
+AR0.1 candidate disposition is `CORE_ARCHITECTURE_DIRECTION_VALID / PARTIALLY_SUFFICIENT / TARGETED_SUCCESSOR_REFINEMENT_REQUIRED`. This is an audit finding awaiting Owner review, not an approved successor design.
 
 ## Frozen architecture treatment
 Frozen V1 architecture is an immutable reference baseline during the challenge. Any possible addition/refinement of readiness, enterprise-specification or downstream design semantics is a hypothesis only until the Owner approves a versioned successor.
@@ -68,7 +70,9 @@ Before an authorized implementation mutation, create/commit `PRE_CHANGE_BASELINE
 
 After implementation, create/commit `POST_IMPLEMENTATION_PRE_QA` with outputs, hashes, tooling, lineage, tests and Drive candidate evidence, then stop at `AWAITING_INDEPENDENT_QA`.
 
-After independent QA, create/synchronize `POST_QA_GOVERNED_STATE`, relevant registers/pointers/classifications and durable Drive evidence before any next implementation stage is authorized.
+Architecture audits may use an equivalent `POST_AUDIT_PRE_OWNER_REVIEW` checkpoint and then stop at `AWAITING_OWNER_REVIEW`.
+
+After independent QA/Owner architecture decision, create/synchronize the relevant governed-state record, registers/pointers/classifications and durable Drive evidence before any next stage is authorized.
 
 By Checkpoint C, every machine-readable input required by a subsequent stage must be present and deterministically resolvable on the governance branch.
 
