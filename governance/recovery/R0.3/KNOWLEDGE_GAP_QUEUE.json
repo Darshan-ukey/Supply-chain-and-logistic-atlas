@@ -1,0 +1,598 @@
+{
+  "schemaVersion": "atlas-knowledge-gap-queue-v1.0",
+  "items": [
+    {
+      "id": "R0.3-GAP-BOL-BOL-Type",
+      "kind": "INSUFFICIENT_APPLICABILITY_EVIDENCE",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "BOL information-resolution baseline records \"BOL Type\" as CLIENT_BINDING_REQUIRED. R0.3 preserves it as an explicit governed gap and does not resolve it by inference.",
+      "context": {
+        "label": "BOL Type",
+        "governedStatus": "CLIENT_BINDING_REQUIRED"
+      },
+      "affectedProcessIds": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-BOL-Bill-To-Consignee-Account-Number-exact-semantics",
+      "kind": "INSUFFICIENT_APPLICABILITY_EVIDENCE",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "BOL information-resolution baseline records \"Bill To/Consignee Account Number exact semantics\" as CLIENT_BINDING_REQUIRED. R0.3 preserves it as an explicit governed gap and does not resolve it by inference.",
+      "context": {
+        "label": "Bill To/Consignee Account Number exact semantics",
+        "governedStatus": "CLIENT_BINDING_REQUIRED"
+      },
+      "affectedProcessIds": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-BOL-Code",
+      "kind": "SOURCE_CONFLICT",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "BOL information-resolution baseline records \"Code\" as SOURCE_CONTEXT_PENDING. R0.3 preserves it as an explicit governed gap and does not resolve it by inference.",
+      "context": {
+        "label": "Code",
+        "governedStatus": "SOURCE_CONTEXT_PENDING"
+      },
+      "affectedProcessIds": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-BOL-Handling-Unit-Line-No",
+      "kind": "SOURCE_CONFLICT",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "BOL information-resolution baseline records \"Handling Unit Line No\" as SOURCE_CONTEXT_PENDING. R0.3 preserves it as an explicit governed gap and does not resolve it by inference.",
+      "context": {
+        "label": "Handling Unit Line No",
+        "governedStatus": "SOURCE_CONTEXT_PENDING"
+      },
+      "affectedProcessIds": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-BOL-Instruction-Type-value-set",
+      "kind": "INSUFFICIENT_APPLICABILITY_EVIDENCE",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "BOL information-resolution baseline records \"Instruction Type value set\" as CLIENT_BINDING_REQUIRED. R0.3 preserves it as an explicit governed gap and does not resolve it by inference.",
+      "context": {
+        "label": "Instruction Type value set",
+        "governedStatus": "CLIENT_BINDING_REQUIRED"
+      },
+      "affectedProcessIds": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-BOL-Reference-Number-Type-Full-Name",
+      "kind": "INSUFFICIENT_APPLICABILITY_EVIDENCE",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "BOL information-resolution baseline records \"Reference Number Type Full Name\" as CLIENT_BINDING_REQUIRED. R0.3 preserves it as an explicit governed gap and does not resolve it by inference.",
+      "context": {
+        "label": "Reference Number Type Full Name",
+        "governedStatus": "CLIENT_BINDING_REQUIRED"
+      },
+      "affectedProcessIds": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-BOL-Related-Value",
+      "kind": "SOURCE_CONFLICT",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "BOL information-resolution baseline records \"Related Value\" as SOURCE_CONTEXT_PENDING. R0.3 preserves it as an explicit governed gap and does not resolve it by inference.",
+      "context": {
+        "label": "Related Value",
+        "governedStatus": "SOURCE_CONTEXT_PENDING"
+      },
+      "affectedProcessIds": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-BOL-SHC",
+      "kind": "SOURCE_CONFLICT",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "BOL information-resolution baseline records \"SHC\" as SOURCE_CONTEXT_PENDING. R0.3 preserves it as an explicit governed gap and does not resolve it by inference.",
+      "context": {
+        "label": "SHC",
+        "governedStatus": "SOURCE_CONTEXT_PENDING"
+      },
+      "affectedProcessIds": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-BOL-Shipper-Code",
+      "kind": "INSUFFICIENT_APPLICABILITY_EVIDENCE",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "BOL information-resolution baseline records \"Shipper Code\" as CLIENT_BINDING_REQUIRED. R0.3 preserves it as an explicit governed gap and does not resolve it by inference.",
+      "context": {
+        "label": "Shipper Code",
+        "governedStatus": "CLIENT_BINDING_REQUIRED"
+      },
+      "affectedProcessIds": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-BOL-Time-Critical-Details-coding",
+      "kind": "INSUFFICIENT_APPLICABILITY_EVIDENCE",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "BOL information-resolution baseline records \"Time Critical Details coding\" as CLIENT_BINDING_REQUIRED. R0.3 preserves it as an explicit governed gap and does not resolve it by inference.",
+      "context": {
+        "label": "Time Critical Details coding",
+        "governedStatus": "CLIENT_BINDING_REQUIRED"
+      },
+      "affectedProcessIds": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-DOCUMENT-CONTRACTS",
+      "kind": "MISSING_RELATIONSHIP",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 states documents are first-class reusable information contracts, not attachments to tasks. 5 document identifiers are declared inside task records with no reusable document contract asset.",
+      "context": {
+        "documentCount": 5
+      },
+      "affectedProcessIds": []
+    },
+    {
+      "id": "R0.3-GAP-IR-FIELD-CONTRACTS",
+      "kind": "MISSING_A5_DETAIL",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Information Resolution Contract v1 requires 14 properties per canonical field. 76 BOL fields carry a researched performance baseline and 0 carry a conformant resolution contract.",
+      "context": {
+        "fieldCount": 76,
+        "conformantCount": 0
+      },
+      "affectedProcessIds": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-OBJECT-SEMANTICS",
+      "kind": "MISSING_RELATIONSHIP",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 objectSemantics requires canonicalObjectId, businessMeaning, relationships, cardinality, lifecycleOrStateWhereRelevant and sourceClaims for each canonical object. 66 obj-* identifiers are referenced by governed Road LTL assets and 0 carry a canonical object contract.",
+      "context": {
+        "referencedObjectCount": 66,
+        "contractedObjectCount": 0
+      },
+      "affectedProcessIds": []
+    },
+    {
+      "id": "R0.3-GAP-OK-NESTED-resolutionStatus",
+      "kind": "DEPTH_MISMATCH",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 requires \"resolutionStatus\" at task level. It is populated for 21 of 22 tasks only inside a child structure, so it is not addressable as a task-level contract attribute.",
+      "context": {
+        "contractGroup": "executionReadiness",
+        "contractAttribute": "resolutionStatus",
+        "nestedOnlyTaskCount": 21
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-OK-NESTED-sourceBasis",
+      "kind": "DEPTH_MISMATCH",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 requires \"sourceBasis\" at task level. It is populated for 22 of 22 tasks only inside a child structure, so it is not addressable as a task-level contract attribute.",
+      "context": {
+        "contractGroup": "authority",
+        "contractAttribute": "sourceBasis",
+        "nestedOnlyTaskCount": 22
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-03",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-OK-NESTED-why",
+      "kind": "DEPTH_MISMATCH",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 requires \"why\" at task level. It is populated for 21 of 22 tasks only inside a child structure, so it is not addressable as a task-level contract attribute.",
+      "context": {
+        "contractGroup": "meaning",
+        "contractAttribute": "why",
+        "nestedOnlyTaskCount": 21
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-OK-PARTIAL-inputObjectRefs",
+      "kind": "DEPTH_MISMATCH",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 requires \"inputObjectRefs\". It resolves for 1 of 22 tasks and is absent for the remainder.",
+      "context": {
+        "contractGroup": "inputsOutputs",
+        "contractAttribute": "inputObjectRefs",
+        "absentTaskCount": 21
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-OK-PARTIAL-outputObjectRefs",
+      "kind": "DEPTH_MISMATCH",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 requires \"outputObjectRefs\". It resolves for 1 of 22 tasks and is absent for the remainder.",
+      "context": {
+        "contractGroup": "inputsOutputs",
+        "contractAttribute": "outputObjectRefs",
+        "absentTaskCount": 21
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-OK-ambiguities",
+      "kind": "MISSING_A5_DETAIL",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 group \"executionReadiness\" requires \"ambiguities\". No governed Road LTL asset carries it, directly or by declared equivalent, for any of the 22 tasks.",
+      "context": {
+        "contractGroup": "executionReadiness",
+        "contractAttribute": "ambiguities",
+        "absentTaskCount": 22
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-03",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-OK-carriageRegimeIds",
+      "kind": "INSUFFICIENT_APPLICABILITY_EVIDENCE",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 group \"applicability\" requires \"carriageRegimeIds\". No governed Road LTL asset carries it, directly or by declared equivalent, for any of the 22 tasks.",
+      "context": {
+        "contractGroup": "applicability",
+        "contractAttribute": "carriageRegimeIds",
+        "absentTaskCount": 22
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-03",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-OK-conditionIds",
+      "kind": "INSUFFICIENT_APPLICABILITY_EVIDENCE",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 group \"applicability\" requires \"conditionIds\". No governed Road LTL asset carries it, directly or by declared equivalent, for any of the 22 tasks.",
+      "context": {
+        "contractGroup": "applicability",
+        "contractAttribute": "conditionIds",
+        "absentTaskCount": 22
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-03",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-OK-jurisdictionIds",
+      "kind": "INSUFFICIENT_APPLICABILITY_EVIDENCE",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 group \"applicability\" requires \"jurisdictionIds\". No governed Road LTL asset carries it, directly or by declared equivalent, for any of the 22 tasks.",
+      "context": {
+        "contractGroup": "applicability",
+        "contractAttribute": "jurisdictionIds",
+        "absentTaskCount": 22
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-03",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-OK-prohibitedWhen",
+      "kind": "INSUFFICIENT_APPLICABILITY_EVIDENCE",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 group \"applicability\" requires \"prohibitedWhen\". No governed Road LTL asset carries it, directly or by declared equivalent, for any of the 22 tasks.",
+      "context": {
+        "contractGroup": "applicability",
+        "contractAttribute": "prohibitedWhen",
+        "absentTaskCount": 22
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-03",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    },
+    {
+      "id": "R0.3-GAP-OK-unresolvedDependencies",
+      "kind": "MISSING_A5_DETAIL",
+      "status": "OPEN",
+      "moduleId": "road-ltl",
+      "createdAt": "2026-09-10",
+      "basis": "Operational Knowledge Contract v2 group \"executionReadiness\" requires \"unresolvedDependencies\". No governed Road LTL asset carries it, directly or by declared equivalent, for any of the 22 tasks.",
+      "context": {
+        "contractGroup": "executionReadiness",
+        "contractAttribute": "unresolvedDependencies",
+        "absentTaskCount": 22
+      },
+      "affectedProcessIds": [
+        "LTL-01",
+        "LTL-02",
+        "LTL-03",
+        "LTL-04",
+        "LTL-05",
+        "LTL-06",
+        "LTL-07",
+        "LTL-08",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11",
+        "LTL-12",
+        "LTL-13",
+        "LTL-14",
+        "LTL-15",
+        "LTL-16",
+        "LTL-17",
+        "LTL-18",
+        "LTL-19",
+        "LTL-20",
+        "LTL-21",
+        "LTL-22"
+      ]
+    }
+  ]
+}

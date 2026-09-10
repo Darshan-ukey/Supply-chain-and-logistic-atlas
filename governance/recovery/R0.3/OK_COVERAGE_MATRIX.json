@@ -1,0 +1,5045 @@
+{
+  "schemaVersion": "atlas-ok-coverage-matrix-v1",
+  "stageId": "R0.3",
+  "contract": "atlas-operational-knowledge-contract-v2",
+  "status": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+  "provenance": {
+    "toolVersion": "atlas-r0-3-ok-hardening-1.0.0",
+    "stageId": "R0.3",
+    "governanceBranch": "atlas-governance-registry-v2.1",
+    "inputs": {
+      "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json": "b130da47c06a849c53980201027b6eaa05e440afd349e949c4bc8f3f4ac25480",
+      "data/road-ltl/effective-road-ltl-1.5-materialization.json": "a303d30d1c415d0bbfa9efab27ae1ac1edcd32fffb5f9e236e8c1ebf629bf7f6",
+      "schemas/information-resolution-contract-v1.json": "77224aaaef03689f1d918e41c6c2a4bd6e126dd5872782f09894c818a76dda73",
+      "data/modules/road-ltl-v1.4.json": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+      "data/operational-knowledge/road-ltl-v1.4-operational.json": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e",
+      "schemas/operational-knowledge-contract-v2.json": "d58d33c38adc0ac3e63400b66680115699c0cfa5c4c831e44b22c19eedfa4a18",
+      "data/operational-knowledge/road-ltl-v1.5-operational.json": "6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9"
+    },
+    "derivationRule": "Every value in this artifact is read from, or counted over, the governed inputs listed above. No operational knowledge is authored, inferred or completed by this tool."
+  },
+  "scope": {
+    "taskCount": 22,
+    "contractAttributeCount": 24,
+    "assessedCells": 528
+  },
+  "totals": {
+    "satisfiedDirect": 50,
+    "satisfiedByDeclaredEquivalent": 240,
+    "presentNestedOnly": 64,
+    "absent": 174
+  },
+  "byAttribute": [
+    {
+      "group": "applicability",
+      "attribute": "requiredWhen",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 22,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "applicability",
+      "attribute": "prohibitedWhen",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 0,
+      "absent": 22,
+      "taskCount": 22
+    },
+    {
+      "group": "applicability",
+      "attribute": "jurisdictionIds",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 0,
+      "absent": 22,
+      "taskCount": 22
+    },
+    {
+      "group": "applicability",
+      "attribute": "carriageRegimeIds",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 0,
+      "absent": 22,
+      "taskCount": 22
+    },
+    {
+      "group": "applicability",
+      "attribute": "conditionIds",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 0,
+      "absent": 22,
+      "taskCount": 22
+    },
+    {
+      "group": "authority",
+      "attribute": "authorityOwner",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 22,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "authority",
+      "attribute": "sourceClaims",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 22,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "authority",
+      "attribute": "sourceBasis",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 22,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "executionReadiness",
+      "attribute": "ambiguities",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 0,
+      "absent": 22,
+      "taskCount": 22
+    },
+    {
+      "group": "executionReadiness",
+      "attribute": "unresolvedDependencies",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 0,
+      "absent": 22,
+      "taskCount": 22
+    },
+    {
+      "group": "executionReadiness",
+      "attribute": "clientBindingRequirements",
+      "satisfiedDirect": 22,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "executionReadiness",
+      "attribute": "resolutionStatus",
+      "satisfiedDirect": 1,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 21,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "identity",
+      "attribute": "taskId",
+      "satisfiedDirect": 22,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "identity",
+      "attribute": "canonicalTaskRef",
+      "satisfiedDirect": 1,
+      "satisfiedByDeclaredEquivalent": 21,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "identity",
+      "attribute": "module",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 22,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "identity",
+      "attribute": "version",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 22,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "inputsOutputs",
+      "attribute": "inputObjectRefs",
+      "satisfiedDirect": 1,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 0,
+      "absent": 21,
+      "taskCount": 22
+    },
+    {
+      "group": "inputsOutputs",
+      "attribute": "outputObjectRefs",
+      "satisfiedDirect": 1,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 0,
+      "absent": 21,
+      "taskCount": 22
+    },
+    {
+      "group": "inputsOutputs",
+      "attribute": "systemOfRecordRoles",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 22,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "meaning",
+      "attribute": "businessMeaning",
+      "satisfiedDirect": 1,
+      "satisfiedByDeclaredEquivalent": 21,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "meaning",
+      "attribute": "why",
+      "satisfiedDirect": 1,
+      "satisfiedByDeclaredEquivalent": 0,
+      "presentNestedOnly": 21,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "meaning",
+      "attribute": "businessOutcome",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 22,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "meaning",
+      "attribute": "preconditions",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 22,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    },
+    {
+      "group": "meaning",
+      "attribute": "postconditions",
+      "satisfiedDirect": 0,
+      "satisfiedByDeclaredEquivalent": 22,
+      "presentNestedOnly": 0,
+      "absent": 0,
+      "taskCount": 22
+    }
+  ],
+  "byTask": [
+    {
+      "taskId": "LTL-01",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-02",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-03",
+      "okSourceVersion": "1.5",
+      "lineage": "DIRECT_GOVERNED_1_5_OVERRIDE",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "SATISFIED_DIRECT",
+          "layer": "okOverride",
+          "path": "resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "okOverride",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_DIRECT",
+          "layer": "okOverride",
+          "path": "canonicalTaskRef",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "SATISFIED_DIRECT",
+          "layer": "okOverride",
+          "path": "inputObjectRefs",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "SATISFIED_DIRECT",
+          "layer": "okOverride",
+          "path": "outputObjectRefs",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_DIRECT",
+          "layer": "okOverride",
+          "path": "businessMeaning",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "SATISFIED_DIRECT",
+          "layer": "okOverride",
+          "path": "why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 8,
+      "satisfiedByDeclaredEquivalent": 9,
+      "presentNestedOnly": 1,
+      "absent": 6,
+      "nestedOnlyAttributes": [
+        "sourceBasis"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "jurisdictionIds",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-04",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-05",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-06",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-07",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-08",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-09",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-10",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-11",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-12",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-13",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-14",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-15",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-16",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-17",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-18",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-19",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-20",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-21",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    },
+    {
+      "taskId": "LTL-22",
+      "okSourceVersion": "1.4",
+      "lineage": "INHERITED_FROM_1_4",
+      "contractAttributes": [
+        {
+          "group": "applicability",
+          "attribute": "requiredWhen",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.trigger",
+          "equivalenceBasis": "baseline.trigger states the governed condition under which the task is required."
+        },
+        {
+          "group": "applicability",
+          "attribute": "prohibitedWhen",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "jurisdictionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "carriageRegimeIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "applicability",
+          "attribute": "conditionIds",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "authority",
+          "attribute": "authorityOwner",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "responsibility.decisionAuthority",
+          "equivalenceBasis": "responsibility.decisionAuthority names the governed decision authority for the task."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceClaims",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "ok",
+          "path": "provenanceClaims",
+          "equivalenceBasis": "provenanceClaims carries claimId/sourceRefs/evidenceClass/claimBoundary, which is the provenance structure the contract requires."
+        },
+        {
+          "group": "authority",
+          "attribute": "sourceBasis",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "controls[].sourceBasis",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "ambiguities",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "unresolvedDependencies",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "clientBindingRequirements",
+          "status": "SATISFIED_DIRECT",
+          "layer": "module",
+          "path": "clientBindingRequirements",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "executionReadiness",
+          "attribute": "resolutionStatus",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "temporalConstraints[].resolutionStatus",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "taskId",
+          "status": "SATISFIED_DIRECT",
+          "layer": "ok",
+          "path": "taskId",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "identity",
+          "attribute": "canonicalTaskRef",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.a5ContractId",
+          "equivalenceBasis": "R0.1C certified a5-* as the Daughter-local canonical task identifier layer; identity.a5ContractId is that identifier."
+        },
+        {
+          "group": "identity",
+          "attribute": "module",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.id",
+          "equivalenceBasis": "Module identity is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "identity",
+          "attribute": "version",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "moduleRoot",
+          "path": "module.version",
+          "equivalenceBasis": "Module version is declared once at asset root rather than repeated per task."
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "inputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "outputObjectRefs",
+          "status": "ABSENT",
+          "layer": null,
+          "path": null,
+          "equivalenceBasis": null
+        },
+        {
+          "group": "inputsOutputs",
+          "attribute": "systemOfRecordRoles",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "systemExchanges",
+          "equivalenceBasis": "systemExchanges declares producerSystemRole, authoritySystemRole and consumerSystemRoles per exchange, which is the system-of-record role information the contract requires. Roles are expressed per exchange rather than as one task-level list."
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessMeaning",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "identity.purpose",
+          "equivalenceBasis": "identity.purpose states what the task means in business terms and is the module-layer counterpart of businessMeaning."
+        },
+        {
+          "group": "meaning",
+          "attribute": "why",
+          "status": "PRESENT_NESTED_ONLY_NOT_TASK_LEVEL",
+          "layer": "ok",
+          "path": "requiredInformation[].why",
+          "equivalenceBasis": null
+        },
+        {
+          "group": "meaning",
+          "attribute": "businessOutcome",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the business state reached when the task succeeds."
+        },
+        {
+          "group": "meaning",
+          "attribute": "preconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.before",
+          "equivalenceBasis": "baseline.before states the governed state required before the task runs."
+        },
+        {
+          "group": "meaning",
+          "attribute": "postconditions",
+          "status": "SATISFIED_BY_DECLARED_EQUIVALENT",
+          "layer": "module",
+          "path": "baseline.after",
+          "equivalenceBasis": "baseline.after states the governed state after the task completes."
+        }
+      ],
+      "satisfiedDirect": 2,
+      "satisfiedByDeclaredEquivalent": 11,
+      "presentNestedOnly": 3,
+      "absent": 8,
+      "nestedOnlyAttributes": [
+        "resolutionStatus",
+        "sourceBasis",
+        "why"
+      ],
+      "absentAttributes": [
+        "ambiguities",
+        "carriageRegimeIds",
+        "conditionIds",
+        "inputObjectRefs",
+        "jurisdictionIds",
+        "outputObjectRefs",
+        "prohibitedWhen",
+        "unresolvedDependencies"
+      ]
+    }
+  ],
+  "semanticHash": "aa3d2e0eeadde9984418cad4cb25a6cd57f994ee395895b57e448cc29e835ba3"
+}
