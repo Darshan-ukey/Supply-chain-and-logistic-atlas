@@ -41,9 +41,9 @@ Decision: APPROVED.
 Historical 603 work units / 444 leaves and remembered 572/605 figures are forensic evidence only. They must not constrain refined architecture or later deterministic materialization.
 
 ## Decision AR-D008 — Success criterion for architecture refinement
-Decision: APPROVED FOR VALIDATION.
+Decision: HISTORICAL VALIDATION CRITERION — SUPERSEDED AS PRIMARY OBJECTIVE BY AR-D011.
 
-The target architecture must support, once sufficient client binding exists, both deterministic derivation of executable semantic work and governed ideation/comparison of executable solution architectures, including hybrid patterns, with traceability from canonical rule to client constraint to solution choice to runtime projection.
+The earlier criterion tested whether Atlas could support both deterministic derivation of executable semantic work and governed ideation/comparison of executable solution architectures. Owner discussion after AR0.0 clarified that autonomous solution generation is secondary and should not define the primary product architecture.
 
 ## Decision AR-D009 — Pending contracts are design opportunity, not recovery target
 Decision: AR0.0 FINDING — ACCEPTED FOR NEXT AUDIT.
@@ -53,13 +53,50 @@ Decision: AR0.0 FINDING — ACCEPTED FOR NEXT AUDIT.
 ## Decision AR-D010 — One authoritative owner per fact
 Decision: GOVERNANCE GUARDRAIL.
 
-Any future execution-design layer must reference/assemble existing governed truth rather than duplicate domain rules, client-specific values, interface definitions, temporal constraints, measurements or runtime capability declarations. A monolithic Execution Requirements dumping ground is prohibited.
+Any future execution-readiness or downstream design layer must reference/assemble existing governed truth rather than duplicate domain rules, client-specific values, interface definitions, temporal constraints, measurements or runtime capability declarations. A monolithic Execution Requirements dumping ground is prohibited.
+
+## Decision AR-D011 — Atlas product North Star
+Decision: APPROVED BY OWNER FOR ARCHITECTURE REFINEMENT.
+
+Atlas's primary objective is **execution / implementation readiness**.
+
+Canonical statement:
+
+> Atlas turns reusable domain knowledge into execution-ready enterprise specifications.
+
+Atlas should maintain reusable domain execution-reference knowledge, expose unresolved knowledge, bind the reference model to enterprise/client reality, determine whether implementation-critical semantics are sufficiently resolved, and produce/assemble a technology-neutral implementation-ready specification for downstream use.
+
+Governance is a required trust/control property, not the end product. Execution intelligence is the structured semantic capability used to achieve readiness. Runtime execution remains outside Atlas. Autonomous solution generation, solution selection and runtime architecture recommendation are secondary/downstream capabilities and must not be allowed to distort the primary architecture.
+
+The architecture must support fail-closed readiness: where mandatory operational or client knowledge is absent, conflicting, inferred beyond authority or unresolved, Atlas must expose the gap rather than fabricate executable certainty.
+
+## Decision AR-D012 — AR0.1 authorization and acceptance basis
+Decision: APPROVED BY OWNER.
+
+AR0.0 is Owner-reviewed and closed as the reference baseline. AR0.1 is authorized to ChatGPT only.
+
+AR0.1 must test whether the frozen architecture can support implementation readiness using concrete scenarios, including:
+- Road LTL customer-service pickup request for agentic/workflow implementation;
+- BOL/document information-resolution with deliberate unresolved knowledge and fail-closed behavior;
+- digital-twin/BPM implementation handoff;
+- ERP/TMS fit-gap / implementation handoff;
+- adversarial workflow semantics including waits/timeouts, retry/recovery and, where applicable, parallelism/join, correlation and idempotency.
+
+For every required semantic, AR0.1 must classify it as:
+1. fully governed by existing contract;
+2. governed but enterprise/client binding required;
+3. inferable but ungoverned;
+4. absent and readiness-blocking;
+5. legitimately downstream/runtime-specific and outside Atlas.
+
+AR0.1 is an audit, not a redesign stage. Any contract or layer changes are deferred to AR0.2+.
 
 ## Open decisions for AR0.1–AR0.2
-- Whether a distinct design-context projection is required between Client Binding and solution selection.
-- Whether solution synthesis/selection is a persisted governed artifact, a governed reasoning service, or both.
-- Whether target runtime selection is intentionally human/external or an omitted Atlas capability.
-- Which workload, capacity, economics and NFR facts are mandatory to make a defensible solution recommendation.
-- Whether WorkDefinition requires first-class parallelism, joins, correlation, multi-instance, idempotency, compensation/transaction boundaries, durable-state and timeout semantics.
-- How `executorEligibility` differs formally from executor/solution selection.
+- Whether the current contracts can deterministically assemble an implementation-ready enterprise specification without a new persisted contract.
+- Whether a first-class readiness assessment/status contract is required or existing resolution/status semantics are sufficient.
+- Whether the canonical WorkDefinition grammar sufficiently represents control-flow semantics needed for implementation handoff, including parallelism, joins, event correlation, multi-instance work, idempotency, compensation/transaction boundaries, durable state and timeout ownership.
+- Whether workload/arrival/concurrency, human capacity/skills and non-functional requirements are implementation-readiness requirements, downstream design concerns, or context contracts with another authoritative owner.
+- How to represent unresolved/conflicting/inferred knowledge and prevent false `READY` status deterministically.
+- How the same resolved enterprise semantics map to agent/workflow, BPM/digital twin, Malkom and ERP/TMS implementation without redefining canonical business meaning.
 - What evidence threshold is required before a successor architecture can be frozen.
+- Secondary only: whether a distinct design-context projection or solution-synthesis/selection capability is eventually valuable after execution readiness is solved.
