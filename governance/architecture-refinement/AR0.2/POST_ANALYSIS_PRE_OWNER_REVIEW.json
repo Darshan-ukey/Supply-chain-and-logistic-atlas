@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "atlas-ar0-2-layer-boundary-candidate-v1",
+  "schemaVersion": "atlas-ar0-2-layer-boundary-candidate-v2",
   "stageId": "AR0.2",
   "status": "AWAITING_OWNER_REVIEW",
   "authorizedExecutor": "CHATGPT",
@@ -52,6 +52,16 @@
     "NO_AUTOMATIC_PROMOTION_OF_OPTIONAL_NFR_SIMULATION_CONTEXT_TO_CORE_WORKDEFINITION",
     "NO_RUNTIME_OBSERVATION_MUTATION_OF_CANONICAL_KNOWLEDGE_WITHOUT_GOVERNANCE"
   ],
+  "driveEvidence": {
+    "architectureRefinementFolderId": "1V-yyr-08FGeDvJbCEoWFRM_y4wAmCgk_",
+    "ar0_2FolderId": "1LPjtH4vrnCYFPXok2sr-CoZCBezqn30c",
+    "candidateDocumentId": "1d7nnpJtdPIiEQnZBRxNol1SfFxHZ7g7w7dnQLdjBvZo",
+    "candidateDocumentTitle": "AR0.2 — Layer Boundary Decision — Candidate Evidence",
+    "readbackRevisionId": "ANLCKQkbdzCkn86cXLgQgq3QHiZB2JRqdnH_PD2c8sdzh7QxYXIr31YUeLoxheK6xLrbWHEX9ZBSnDyUcwDcoxnDz5kNx8bNl6f4kdS2eA",
+    "readbackVerified": true,
+    "custodyClass": "CANDIDATE_HUMAN_CONSUMABLE_MIRROR",
+    "note": "GitHub remains canonical mutable architecture evidence. Drive stores the read-back-verified human-consumable AR0.2 candidate mirror."
+  },
   "frozenV1Mutated": false,
   "r0_4Started": false,
   "nextStageAuthorization": "NONE_PENDING_OWNER_REVIEW"
