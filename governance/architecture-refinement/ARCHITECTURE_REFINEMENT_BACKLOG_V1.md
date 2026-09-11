@@ -6,134 +6,132 @@ Owner/Governor: Darshan Ukey
 Architecture lead / independent analyst: ChatGPT  
 Claude execution authorization: NONE for this program unless explicitly granted later by the Owner through governance.
 
-## 1. Why this program exists
-R0.3 is independently QA-certified complete. Before any recovery, reconstruction, rematerialization or generic recursive-decomposition compiler work proceeds, the Owner has challenged whether frozen Work Decomposition V1.1 + Canonical WorkDefinition V1 are sufficient for the clarified Atlas product objective: turning reusable domain knowledge plus enterprise/client reality into an implementation-ready specification without fabricating unresolved operational knowledge.
+## 1. Platform objective
 
-The primary product objective is **execution / implementation readiness**, not autonomous solution generation and not runtime execution. Solution ideation, candidate architecture generation and runtime-specific implementation are optional/downstream capabilities and must not distort the canonical architecture unless evidence later proves additional semantics are required.
+> **Atlas is the governed intelligence and specification layer between enterprise/client operations and the technologies used to transform or execute them.**
+
+Boundary principle:
+
+> **Atlas owns understanding and specification. Downstream platforms own execution.**
+
+Knowledge repository, governance platform, execution/implementation readiness and solution/design support are capabilities or byproducts of the same governed semantic foundation. Runtime business execution itself remains outside Atlas.
 
 ## 2. Governing question
-Can the current frozen chain:
 
-`Governed Domain Knowledge -> Operational Knowledge -> Work Decomposition V1.1 -> Canonical WorkDefinition V1 -> Client Binding / Enterprise Context -> Runtime Adapter / Implementation Handoff`
+Can Atlas preserve one authoritative, technology-neutral representation of enterprise work, bind it to client reality, expose unresolved knowledge, assemble a trustworthy specification and project it to materially different downstream tools without redefining the underlying business meaning?
 
-reliably produce a governed, technology-neutral **implementation-ready enterprise specification** when required knowledge is sufficient, while explicitly blocking readiness and exposing the unresolved requirement when required knowledge is missing, conflicting, inferred or client-specific?
-
-The audit must establish whether the same resolved enterprise model can support materially different downstream implementations such as an agentic workflow, digital twin/BPM model, ERP/TMS fit-gap or Malkom-style workflow without redefining the underlying business semantics.
+Execution readiness remains a critical certification outcome, but is not the sole product identity.
 
 ## 3. Guardrails
-- Work Decomposition V1.1 and Canonical WorkDefinition V1 remain immutable reference baselines during the challenge.
-- No redesign is assumed before evidence supports it.
-- No R0.4 reconstruction or compiler build may start while this refinement gate is active.
-- Historical P6.1 counts (including 603 work units / 444 leaves and any remembered 572/605 figures) are evidence only, never architecture acceptance targets.
-- Canonical work remains technology/runtime-neutral unless this review explicitly proves a boundary change is required.
-- Client-specific values remain client bindings/enterprise context, not global canonical truth.
-- Missing domain or client semantics remain governed gaps; architecture work must not fabricate operational knowledge.
-- Readiness must be fail-closed: unresolved mandatory semantics cannot be hidden by plausible prose or LLM inference.
-- Governance is a control property of the product, not the product objective itself.
-- Runtime execution remains outside Atlas.
-- Solution synthesis/selection is secondary/downstream and is not required for AR0.1 success.
-- One authoritative owner per fact remains mandatory; no monolithic Execution Requirements dumping ground.
+- Frozen Work Decomposition V1.1 and Canonical WorkDefinition V1 remain immutable historical reference baselines until a successor is Owner-frozen.
+- No R0.4 reconstruction/compiler build may start while this refinement gate is active.
+- Historical P6.1 counts are evidence only, never architecture acceptance targets.
+- Canonical business meaning remains technology/runtime-neutral.
+- Client-specific values remain enterprise/client context, not reusable domain truth.
+- Missing domain/client semantics remain governed gaps; architecture work must not fabricate operational knowledge.
+- Readiness must fail closed when mandatory knowledge is unresolved.
+- Runtime execution remains outside Atlas execution ownership.
+- One authoritative owner per fact remains mandatory.
+- No monolithic Execution Requirements dumping ground.
 
 ## 4. Stages
 
 ### AR0.0 — Architecture Baseline & Challenge Register
 Status: COMPLETE / OWNER_REVIEWED
 
-Purpose: establish the exact frozen V1 architecture, contracts, boundaries, assumptions, historical decisions and unresolved challenge questions before proposing changes.
-
-Outputs:
-- architecture baseline inventory;
-- challenge register;
-- explicit sufficiency criteria;
-- evidence map showing which current contract owns each requirement.
-
-Owner review outcome: baseline accepted as the reference inventory, but the product objective and AR0.1 acceptance criterion were clarified before proceeding. The earlier solution-synthesis hypothesis remains historical/secondary, not the primary architecture objective.
+Baseline inventory and challenge register remain the reference inventory.
 
 ### AR0.1 — V1.1 / WorkDefinition Sufficiency Audit
-Status: AWAITING_OWNER_REVIEW
+Status: COMPLETE / OWNER_DIRECTION_APPLIED / REBASED_ON_AR_D013
 
-Audit evidence is complete on working branch `atlas-architecture-ar0-1-sufficiency-audit` and review PR #9 is open against `atlas-governance-registry-v2.1`.
+PR #9 merged into `atlas-governance-registry-v2.1` at merge SHA `206db2b54f40140cc372c4f70bd314934abc489e`.
 
-Candidate disposition:
+The 38-class evidence remains unchanged:
+- 18 fully governed by existing contracts;
+- 6 governed but requiring client/enterprise binding;
+- 9 inferable but insufficiently governed/formalized;
+- 1 absent first-class scope-level readiness mechanism;
+- 4 correctly downstream/runtime-specific.
+
+Final disposition:
 `CORE_ARCHITECTURE_DIRECTION_VALID / PARTIALLY_SUFFICIENT / TARGETED_SUCCESSOR_REFINEMENT_REQUIRED`
 
-AR0.1 tested concrete scenarios and classified every required semantic as:
-- fully governed by an existing contract;
-- governed but client/enterprise binding required;
-- inferable but ungoverned;
-- absent and therefore readiness-blocking;
-- legitimately downstream/runtime-specific and outside Atlas.
-
-Scenario evidence covers:
-1. Road LTL customer-service pickup-request agentic/workflow implementation handoff;
-2. BOL/document information-resolution with known knowledge gaps and fail-closed readiness;
-3. digital-twin/BPM implementation handoff;
-4. ERP/TMS implementation handoff / fit-gap;
-5. adversarial control flow covering parallelism/join, correlation, waiting/timeouts, retry/recovery and idempotency.
-
-Key audit finding: current frozen semantic architecture is substantially aligned to the North Star. The clearest first-class gap is aggregate implementation-scope readiness determination with blocker dependency closure. Additional targeted refinements are required around scope composition, version-closed handoff packaging and formal complex control-flow grammar. No broad monolithic Execution Requirements layer is justified by AR0.1 evidence.
+AR-D013 changed the interpretation, not the evidence: the successor must strengthen Atlas as a reusable enterprise-to-tool intelligence/specification layer, not merely as a readiness calculator.
 
 ### AR0.2 — Layer-Boundary Decision
-Status: BLOCKED_UNTIL_AR0_1_OWNER_REVIEW
+Status: AWAITING_OWNER_REVIEW — CURRENT
 
-Determine what belongs in Domain/Operational Knowledge, Work Decomposition, Canonical WorkDefinition, Client Binding/Enterprise Context, readiness assessment, implementation handoff and Runtime Adapters. Avoid both semantic gaps and technology contamination.
+Working branch: `atlas-architecture-ar0-2-layer-boundary`  
+Review PR: #10
+
+Candidate disposition:
+`TARGETED_LAYER_BOUNDARY_REFINEMENT_REQUIRED__NO_MONOLITHIC_NEW_SEMANTIC_LAYER`
+
+Candidate boundaries:
+1. Reference Domain + Operational Knowledge — authoritative reusable business truth and epistemic state.
+2. Canonical Work Decomposition — business-semantic work topology and lineage; successor stopping criterion based on business-semantic sufficiency rather than target-runtime convenience.
+3. Canonical WorkDefinition — technology-neutral execution-relevant semantics with stronger formal topology/control-flow grammar.
+4. Enterprise Context / Client Binding — client-specific systems, mappings, policies, thresholds, roles and optional operating/NFR context.
+5. Governed Specification Assembly — non-duplicating scope selection, dependency closure/readiness proof and version-closed specification manifest.
+6. Optional Design / Solution Synthesis — non-canonical candidate design capability consuming the governed specification.
+7. Runtime Adapter / Projection — target-tool translation and capability/loss assessment.
+8. Execution Runtime — outside Atlas execution ownership.
+9. Observation / Evidence Reconciliation — optional cross-runtime observations and conformance feedback without direct canonical mutation.
+
+The proposed Governed Specification Assembly boundary is intentionally small and non-authoritative. It references underlying governed facts rather than duplicating them.
 
 ### AR0.3 — Candidate Contract Architecture
-Status: BLOCKED_UNTIL_AR0_2_REVIEW
+Status: BLOCKED_UNTIL_AR0_2_OWNER_REVIEW
 
-Only if AR0.2 supports a change, define candidate machine-readable contracts and ownership boundaries. Any proposed readiness, enterprise-specification or optional downstream design contract must reference existing governed truth rather than duplicate it.
+If AR0.2 is accepted, define the minimum machine-readable successor contracts. Expected candidate contracts include:
+- Specification Scope Manifest;
+- Resolution / Readiness Assessment;
+- Version-Closed Specification Manifest;
+- refined Canonical Work Decomposition grammar;
+- refined Canonical WorkDefinition topology/control-flow grammar;
+- Enterprise Context extensions/umbrella;
+- optional Observation/Evidence contract.
+
+No broad monolithic contract is authorized.
 
 ### AR0.4 — Adversarial Multi-Pattern Validation
 Status: BLOCKED_UNTIL_AR0_3_REVIEW
 
-Validate the candidate architecture across multiple implementation patterns and task families so Road LTL/BOL does not become the architecture by accident.
+Validate the candidate architecture across multiple task families, domains and downstream consumer patterns.
 
 ### AR0.5 — Successor Architecture Candidate
 Status: BLOCKED_UNTIL_AR0_4_REVIEW
 
-Produce an explicit successor candidate with lineage to frozen V1. No existing frozen architecture is overwritten.
+Produce a versioned successor candidate with explicit lineage to frozen V1. Do not overwrite V1.
 
 ### AR0.6 — Owner Freeze Decision & Recovery Re-baseline
 Status: BLOCKED_UNTIL_AR0_5_REVIEW
 
-Owner decides whether to approve, reject or revise the successor. Only after this decision is R0.4/recovery sequencing re-baselined.
+Owner approves, rejects or revises the successor. Only then is R0.4/recovery sequencing re-baselined.
 
-## 5. Clarified product North Star
+## 5. Current conceptual chain
 
-**Atlas turns reusable domain knowledge into execution-ready enterprise specifications.**
+`Reference Domain / Operational Knowledge`
+→ `Canonical Work Decomposition`
+→ `Canonical WorkDefinition`
+→ `Enterprise Context / Client Binding`
+→ `Governed Specification Assembly`
+→ optional `Design / Solution Synthesis`
+→ `Runtime Adapter / Projection`
+→ `Execution Runtime outside Atlas execution ownership`
+→ `Observation / Evidence Reconciliation`
 
-Conceptual chain for validation:
+## 6. Value test
 
-`Reference Domain Model -> Operational Knowledge -> Knowledge Sufficiency / Gap Exposure -> Work Decomposition -> Canonical WorkDefinition -> Enterprise / Client Binding -> Execution Readiness Assessment -> Implementation-Ready Enterprise Specification -> Downstream Implementation`
+Atlas must ultimately demonstrate that the reusable governed layer materially reduces discovery/rework, exposes gaps earlier, improves implementation/specification quality and supports multiple downstream tools from the same business truth.
 
-Possible downstream consumers include Malkom, agent/workflow sandboxes, BPM/digital-twin tools, ERP/TMS implementation programs, RPA, custom applications and other execution platforms.
-
-Atlas does not need to execute the work or autonomously choose the solution in order to fulfil its primary objective.
-
-## 6. AR0.1 success standard
-A current or successor Atlas architecture is sufficient only if, for a mature operation with adequate knowledge, it can:
-1. define the work and its execution-relevant semantics at technology-neutral level;
-2. identify the information/objects/fields, rules, decisions, controls, states/events/transitions, temporal constraints, human boundaries, exceptions/recovery and evidence required for implementation;
-3. distinguish reusable domain truth from enterprise/client-specific bindings;
-4. expose unresolved, conflicting, inferred and missing knowledge explicitly;
-5. fail closed when mandatory knowledge is unresolved;
-6. produce or deterministically assemble a coherent implementation-ready enterprise specification without duplicating authoritative facts;
-7. preserve provenance, versioning, lineage and change impact;
-8. allow the same resolved enterprise semantics to be mapped to different downstream implementation environments without redefining canonical business meaning.
-
-Secondary capabilities such as solution ideation, runtime choice and architecture recommendation may be evaluated later, but are not prerequisites for Atlas execution-readiness success.
-
-## 7. Value test
-Atlas must ultimately demonstrate **Execution Readiness Leverage**: material reduction in discovery/rework and earlier exposure of implementation-critical gaps compared with ChatGPT + documents + conventional consulting discovery alone.
-
-Indicative outcome measures for later product validation:
+Indicative measures remain:
 - Reference Reuse Rate;
 - Discovery Compression;
 - Gap Exposure Rate;
 - Implementation Handoff Quality;
 - Cross-Runtime Reusability.
 
-These are product-value measures, not AR0.1 contract-compliance scores.
+## 7. Immediate next action
 
-## 8. Immediate next action
-Owner reviews AR0.1 candidate evidence and disposition in PR #9. Do not merge as an architecture approval merely because the audit evidence exists. Do not start AR0.2 or R0.4 until the Owner explicitly accepts/revises the AR0.1 disposition and authorizes the next stage.
+Owner reviews AR0.2 candidate PR #10. AR0.3 and R0.4 remain blocked until the AR0.2 boundary decision is accepted or revised.
