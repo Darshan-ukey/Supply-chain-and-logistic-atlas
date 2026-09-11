@@ -41,9 +41,9 @@ Decision: APPROVED.
 Historical 603 work units / 444 leaves and remembered 572/605 figures are forensic evidence only. They must not constrain refined architecture or later deterministic materialization.
 
 ## Decision AR-D008 — Success criterion for architecture refinement
-Decision: HISTORICAL VALIDATION CRITERION — SUPERSEDED AS PRIMARY OBJECTIVE BY AR-D011.
+Decision: HISTORICAL VALIDATION CRITERION — SUPERSEDED AS PRIMARY OBJECTIVE BY AR-D011 AND CLARIFIED BY AR-D013.
 
-The earlier criterion tested whether Atlas could support both deterministic derivation of executable semantic work and governed ideation/comparison of executable solution architectures. Owner discussion after AR0.0 clarified that autonomous solution generation is secondary and should not define the primary product architecture.
+The earlier criterion tested whether Atlas could support both deterministic derivation of executable semantic work and governed ideation/comparison of executable solution architectures. Owner discussion clarified that runtime execution must not define Atlas's product identity.
 
 ## Decision AR-D009 — Pending contracts are design opportunity, not recovery target
 Decision: AR0.0 FINDING — ACCEPTED FOR NEXT AUDIT.
@@ -56,17 +56,11 @@ Decision: GOVERNANCE GUARDRAIL.
 Any future execution-readiness or downstream design layer must reference/assemble existing governed truth rather than duplicate domain rules, client-specific values, interface definitions, temporal constraints, measurements or runtime capability declarations. A monolithic Execution Requirements dumping ground is prohibited.
 
 ## Decision AR-D011 — Atlas product North Star
-Decision: APPROVED BY OWNER FOR ARCHITECTURE REFINEMENT.
+Decision: APPROVED BY OWNER FOR ARCHITECTURE REFINEMENT; CLARIFIED BY AR-D013.
 
-Atlas's primary objective is **execution / implementation readiness**.
+Atlas must convert reusable domain and enterprise knowledge into governed specifications that can support transformation and implementation. Execution / implementation readiness remains a major measurable outcome, but is not the sole identity of Atlas.
 
-Canonical statement:
-
-> Atlas turns reusable domain knowledge into execution-ready enterprise specifications.
-
-Atlas should maintain reusable domain execution-reference knowledge, expose unresolved knowledge, bind the reference model to enterprise/client reality, determine whether implementation-critical semantics are sufficiently resolved, and produce/assemble a technology-neutral implementation-ready specification for downstream use.
-
-Governance is a required trust/control property, not the end product. Execution intelligence is the structured semantic capability used to achieve readiness. Runtime execution remains outside Atlas. Autonomous solution generation, solution selection and runtime architecture recommendation are secondary/downstream capabilities and must not be allowed to distort the primary architecture.
+Governance, knowledge-repository behavior, implementation readiness and solution-architecture support are capabilities/byproducts enabled by the same governed intelligence foundation. They must not independently redefine the platform boundary.
 
 The architecture must support fail-closed readiness: where mandatory operational or client knowledge is absent, conflicting, inferred beyond authority or unresolved, Atlas must expose the gap rather than fabricate executable certainty.
 
@@ -91,12 +85,33 @@ For every required semantic, AR0.1 must classify it as:
 
 AR0.1 is an audit, not a redesign stage. Any contract or layer changes are deferred to AR0.2+.
 
+## Decision AR-D013 — Atlas platform boundary: enterprise-to-tool intelligence and specification layer
+Decision: APPROVED BY OWNER.
+
+Canonical platform statement:
+
+> **Atlas is the governed intelligence and specification layer between enterprise/client operations and the technologies used to transform or execute them.**
+
+Canonical boundary principle:
+
+> **Atlas owns understanding and specification. Downstream platforms own execution.**
+
+Atlas must sit between enterprise/client reality and the downstream transformation/execution ecosystem. It may maintain and generate governed domain knowledge, operational knowledge, canonical information semantics, work decomposition, WorkDefinitions, enterprise/client binding, gap resolution, readiness assessments, solution/design specifications and technology-specific projections/adapters.
+
+Knowledge-repository capability, governance-platform capability, execution/implementation readiness and autonomous/assisted solution-architecture capability are legitimate outcomes or byproducts of a sufficiently capable Atlas. None should be treated as the exclusive product identity.
+
+Runtime business execution itself is the deliberate product boundary. Atlas must not become another Malkom, ERP, TMS/WMS, ServiceNow, RPA/workflow runtime or agent-execution platform. Those systems consume Atlas outputs.
+
+The canonical business/domain layer must remain technology-neutral. Malkom, SAP, ServiceNow, an agent framework or any other current tool must not distort canonical business truth. A new downstream technology should require a new projection/adapter where necessary, not reconstruction of the underlying domain and enterprise semantics.
+
+This decision broadens AR-D011 without weakening implementation readiness. Execution readiness remains a critical certification outcome and fail-closed control, but Atlas's architectural North Star is the governed enterprise-to-tool intelligence/specification boundary.
+
 ## Open decisions for AR0.1–AR0.2
-- Whether the current contracts can deterministically assemble an implementation-ready enterprise specification without a new persisted contract.
+- Whether the current contracts can deterministically assemble governed enterprise specifications and implementation-ready projections without a new monolithic persisted contract.
 - Whether a first-class readiness assessment/status contract is required or existing resolution/status semantics are sufficient.
 - Whether the canonical WorkDefinition grammar sufficiently represents control-flow semantics needed for implementation handoff, including parallelism, joins, event correlation, multi-instance work, idempotency, compensation/transaction boundaries, durable state and timeout ownership.
 - Whether workload/arrival/concurrency, human capacity/skills and non-functional requirements are implementation-readiness requirements, downstream design concerns, or context contracts with another authoritative owner.
 - How to represent unresolved/conflicting/inferred knowledge and prevent false `READY` status deterministically.
-- How the same resolved enterprise semantics map to agent/workflow, BPM/digital twin, Malkom and ERP/TMS implementation without redefining canonical business meaning.
+- How the same governed enterprise semantics map to agent/workflow, BPM/digital twin, Malkom, ERP/TMS and other downstream tools without redefining canonical business meaning.
 - What evidence threshold is required before a successor architecture can be frozen.
-- Secondary only: whether a distinct design-context projection or solution-synthesis/selection capability is eventually valuable after execution readiness is solved.
+- Whether solution synthesis/design should be materialized as an Atlas capability/projection while keeping runtime execution strictly downstream.
