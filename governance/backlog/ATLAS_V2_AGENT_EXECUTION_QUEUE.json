@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "atlas-v2-agent-execution-queue-v14",
-  "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v13",
-  "updatedAt": "2026-09-11T02:20:00+05:30",
+  "schemaVersion": "atlas-v2-agent-execution-queue-v15",
+  "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v14",
+  "updatedAt": "2026-09-11T08:30:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "recoveryStandardPath": "governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md",
   "assetCustodyStandardPath": "governance/standards/ATLAS_ASSET_CUSTODY_AND_GOVERNANCE_SYNC_STANDARD_V1.md",
@@ -32,161 +32,50 @@
     "architectureRefinementExecutor": "CHATGPT",
     "claudeArchitectureRefinementAuthorized": false,
     "r0_4MayNotStartBeforeArchitectureOwnerDecision": true,
-    "architectureNorthStar": "EXECUTION_IMPLEMENTATION_READINESS",
-    "runtimeExecutionOutsideAtlasPrimaryBoundary": true,
-    "solutionSynthesisSecondary": true,
+    "architectureNorthStar": "GOVERNED_ENTERPRISE_TO_TOOL_INTELLIGENCE_AND_SPECIFICATION_LAYER",
+    "canonicalBoundaryPrinciple": "ATLAS_OWNS_UNDERSTANDING_AND_SPECIFICATION__DOWNSTREAM_PLATFORMS_OWN_EXECUTION",
+    "runtimeBusinessExecutionOutsideAtlasBoundary": true,
+    "technologyNeutralCanonicalBusinessTruthRequired": true,
+    "knowledgeRepositoryGovernanceReadinessAndSolutionArchitectureAreSupportedCapabilitiesNotExclusiveIdentity": true,
     "readinessMustFailClosedOnMandatoryKnowledgeGaps": true
   },
   "mode": "ARCHITECTURE_REFINEMENT_PRE_R0_4",
   "currentStageId": "AR0.1",
   "currentPhase": "ARCHITECTURE_REFINEMENT",
   "phases": [
-    {
-      "stageId": "R0.0",
-      "id": "R0.0",
-      "name": "Forensic Baseline & Recovery Governance",
-      "status": "COMPLETE"
-    },
-    {
-      "stageId": "R0.1",
-      "id": "R0.1",
-      "name": "Universe Materialization, Identity Reconciliation & Reference Ownership",
-      "status": "COMPLETE",
-      "subStages": [
-        {"stageId":"R0.1A","id":"R0.1A","status":"COMPLETE_SUPERSEDED_FOR_CANONICAL_PROMOTION_BY_R0_1A_R","qaDisposition":"PASS_AT_TIME_OF_CERTIFICATION_NEW_DEFECT_DISCOVERED_BY_R0_1B"},
-        {"stageId":"R0.1A-R","id":"R0.1A-R","status":"COMPLETE","qaDisposition":"PASS","postQaGovernedStatePath":"governance/recovery/R0.1A-R/POST_QA_GOVERNED_STATE.json","certifiedSemanticStructuresSha256":"82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d"},
-        {"stageId":"R0.1B","id":"R0.1B","status":"COMPLETE","qaDisposition":"PASS","postQaGovernedStatePath":"governance/recovery/R0.1B/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json"},
-        {"stageId":"R0.1C","id":"R0.1C","status":"COMPLETE","qaDisposition":"PASS","postQaGovernedStatePath":"governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json","certifiedResult":{"a5ReferencedCount":82,"a5Derivability":"82_OF_82","scpReferencedCount":22,"scpOrphans":0,"trueReferenceDefects":0}}
-      ]
-    },
-    {
-      "stageId": "R0.2",
-      "id": "R0.2",
-      "name": "Road LTL Source Closure, Effective 1.5 & P6.0 Re-certification",
-      "status": "COMPLETE",
-      "qaDisposition": "PASS",
-      "postQaGovernedStatePath": "governance/recovery/R0.2/POST_QA_GOVERNED_STATE.json",
-      "certifiedResult": {
-        "releasePackageSha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
-        "roadLtl14ModuleSha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
-        "roadLtl14OperationalKnowledgeSha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e",
-        "effectiveRoadLtl15Sha256": "a303d30d1c415d0bbfa9efab27ae1ac1edcd32fffb5f9e236e8c1ebf629bf7f6",
-        "effectiveLineage": "21x1.4_PLUS_LTL-03x1.5",
-        "p6_0Recertification": "502_OF_502_PASS",
-        "driveCustodyStatus": "MIRRORED_AND_ROUNDTRIP_HASH_VERIFIED",
-        "productionPointersPromoted": false
-      }
-    },
-    {
-      "stageId": "R0.3",
-      "id": "R0.3",
-      "name": "Road LTL Operational Knowledge + Canonical Information Hardening",
-      "status": "COMPLETE",
-      "qaDisposition": "PASS",
-      "postQaGovernedStatePath": "governance/recovery/R0.3/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json",
-      "implementationEndingSha": "abfc12a675107555177dfaf2113b7833a7ded644",
-      "governanceMergeSha": "c45c5b443b3a9b19b43fd670d7412fa1144fd026",
-      "ciRunId": 34438976431,
-      "certifiedResult": {
-        "taskCount": 22,
-        "effectiveLineage": "21x1.4_PLUS_LTL-03x1.5",
-        "assessedCellsPerSurface": 528,
-        "composedSatisfied": 291,
-        "composedNestedOnly": 64,
-        "composedAbsent": 173,
-        "canonicalObjectsReferenced": 66,
-        "canonicalObjectContracts": 0,
-        "bolFields": 76,
-        "conformantInformationResolutionContracts": 0,
-        "knowledgeGapsOpen": 24,
-        "driveCustodyStatus": "MIRRORED_AND_ROUNDTRIP_HASH_VERIFIED",
-        "driveEvidenceSha256": "f643ba016a0f6f75c630fb74d603ec3bd9de7aea70734b62274e2027e096dc8b",
-        "productionPointersPromoted": false
-      }
-    },
-    {
-      "stageId": "AR0.0",
-      "id": "AR0.0",
-      "name": "Architecture Baseline & Challenge Register",
-      "status": "COMPLETE",
-      "ownerReviewDisposition": "OWNER_REVIEWED_ACCEPTED_AS_REFERENCE_BASELINE",
-      "primaryObjectiveSupersededByDecision": "AR-D011",
-      "executionClass": "GOVERNANCE_ARCHITECTURE",
-      "authorizedExecutor": "CHATGPT",
-      "claudeExecutionAuthorized": false
-    },
-    {
-      "stageId":"AR0.1",
-      "id":"AR0.1",
-      "name":"V1.1 / WorkDefinition Sufficiency Audit",
-      "status":"AWAITING_OWNER_REVIEW",
-      "authorizedExecutor":"CHATGPT",
-      "claudeExecutionAuthorized":false,
-      "primaryObjective":"EXECUTION_IMPLEMENTATION_READINESS",
-      "workingBranch":"atlas-architecture-ar0-1-sufficiency-audit",
-      "candidateHeadSha":"9445e5a1a648b85fcf751f83463a80bbeb041188",
-      "reviewPullRequest":9,
-      "reviewPullRequestState":"OPEN",
-      "candidateDisposition":"CORE_ARCHITECTURE_DIRECTION_VALID__PARTIALLY_SUFFICIENT__TARGETED_SUCCESSOR_REFINEMENT_REQUIRED",
-      "scope":[
-        "audit current frozen contracts against implementation-readiness North Star",
-        "test Road LTL customer-service pickup request for agentic/workflow implementation handoff",
-        "test BOL information resolution with deliberate knowledge gaps and fail-closed readiness",
-        "test digital-twin/BPM implementation handoff",
-        "test ERP/TMS fit-gap implementation handoff",
-        "test adversarial control-flow semantics without redesigning frozen V1"
-      ],
-      "classificationSet":[
-        "FULLY_GOVERNED_EXISTING_CONTRACT",
-        "GOVERNED_CLIENT_ENTERPRISE_BINDING_REQUIRED",
-        "INFERABLE_BUT_UNGOVERNED",
-        "ABSENT_READINESS_BLOCKING",
-        "DOWNSTREAM_RUNTIME_SPECIFIC_OUTSIDE_ATLAS"
-      ],
-      "matrixSummary": {
-        "requirementClassesAudited": 38,
-        "fullyGovernedExistingContract": 18,
-        "governedClientEnterpriseBindingRequired": 6,
-        "inferableButUngoverned": 9,
-        "absentReadinessBlocking": 1,
-        "downstreamRuntimeSpecificOutsideAtlas": 4
-      },
-      "candidateEvidencePath":"governance/architecture-refinement/AR0.1/POST_AUDIT_PRE_OWNER_REVIEW.json",
-      "driveEvidence": {
-        "architectureRefinementFolderId":"1V-yyr-08FGeDvJbCEoWFRM_y4wAmCgk_",
-        "ar0_1FolderId":"16T02_hlEGCxjmHuiTY8fi0-jLxnGS8t1",
-        "candidateDocumentId":"1qKLiOK6I_LP7CUnRHbhdSyN_g_WtNG3cp8NUdQHUDBs",
-        "readbackVerified":true
-      },
-      "nextStageAuthorization":"NONE"
-    },
-    {"stageId":"AR0.2","id":"AR0.2","name":"Layer-Boundary Decision","status":"BLOCKED_UNTIL_AR0_1_OWNER_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
+    {"stageId":"R0.0","id":"R0.0","name":"Forensic Baseline & Recovery Governance","status":"COMPLETE"},
+    {"stageId":"R0.1","id":"R0.1","name":"Universe Materialization, Identity Reconciliation & Reference Ownership","status":"COMPLETE","subStages":[
+      {"stageId":"R0.1A","id":"R0.1A","status":"COMPLETE_SUPERSEDED_FOR_CANONICAL_PROMOTION_BY_R0_1A_R","qaDisposition":"PASS_AT_TIME_OF_CERTIFICATION_NEW_DEFECT_DISCOVERED_BY_R0_1B"},
+      {"stageId":"R0.1A-R","id":"R0.1A-R","status":"COMPLETE","qaDisposition":"PASS","postQaGovernedStatePath":"governance/recovery/R0.1A-R/POST_QA_GOVERNED_STATE.json","certifiedSemanticStructuresSha256":"82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d"},
+      {"stageId":"R0.1B","id":"R0.1B","status":"COMPLETE","qaDisposition":"PASS","postQaGovernedStatePath":"governance/recovery/R0.1B/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json"},
+      {"stageId":"R0.1C","id":"R0.1C","status":"COMPLETE","qaDisposition":"PASS","postQaGovernedStatePath":"governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json","certifiedResult":{"a5ReferencedCount":82,"a5Derivability":"82_OF_82","scpReferencedCount":22,"scpOrphans":0,"trueReferenceDefects":0}}
+    ]},
+    {"stageId":"R0.2","id":"R0.2","name":"Road LTL Source Closure, Effective 1.5 & P6.0 Re-certification","status":"COMPLETE","qaDisposition":"PASS","postQaGovernedStatePath":"governance/recovery/R0.2/POST_QA_GOVERNED_STATE.json","certifiedResult":{"releasePackageSha256":"b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289","roadLtl14ModuleSha256":"c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4","roadLtl14OperationalKnowledgeSha256":"6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e","effectiveRoadLtl15Sha256":"a303d30d1c415d0bbfa9efab27ae1ac1edcd32fffb5f9e236e8c1ebf629bf7f6","effectiveLineage":"21x1.4_PLUS_LTL-03x1.5","p6_0Recertification":"502_OF_502_PASS","driveCustodyStatus":"MIRRORED_AND_ROUNDTRIP_HASH_VERIFIED","productionPointersPromoted":false}},
+    {"stageId":"R0.3","id":"R0.3","name":"Road LTL Operational Knowledge + Canonical Information Hardening","status":"COMPLETE","qaDisposition":"PASS","postQaGovernedStatePath":"governance/recovery/R0.3/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json","implementationEndingSha":"abfc12a675107555177dfaf2113b7833a7ded644","governanceMergeSha":"c45c5b443b3a9b19b43fd670d7412fa1144fd026","ciRunId":34438976431,"certifiedResult":{"taskCount":22,"effectiveLineage":"21x1.4_PLUS_LTL-03x1.5","assessedCellsPerSurface":528,"composedSatisfied":291,"composedNestedOnly":64,"composedAbsent":173,"canonicalObjectsReferenced":66,"canonicalObjectContracts":0,"bolFields":76,"conformantInformationResolutionContracts":0,"knowledgeGapsOpen":24,"driveCustodyStatus":"MIRRORED_AND_ROUNDTRIP_HASH_VERIFIED","driveEvidenceSha256":"f643ba016a0f6f75c630fb74d603ec3bd9de7aea70734b62274e2027e096dc8b","productionPointersPromoted":false}},
+    {"stageId":"AR0.0","id":"AR0.0","name":"Architecture Baseline & Challenge Register","status":"COMPLETE","ownerReviewDisposition":"OWNER_REVIEWED_ACCEPTED_AS_REFERENCE_BASELINE","primaryObjectiveSupersededByDecision":"AR-D013","executionClass":"GOVERNANCE_ARCHITECTURE","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
+    {"stageId":"AR0.1","id":"AR0.1","name":"V1.1 / WorkDefinition Sufficiency Audit","status":"OWNER_DIRECTION_RECEIVED_REBASE_REQUIRED","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false,"primaryObjective":"GOVERNED_ENTERPRISE_TO_TOOL_INTELLIGENCE_AND_SPECIFICATION_LAYER","workingBranch":"atlas-architecture-ar0-1-sufficiency-audit","candidateHeadSha":"9445e5a1a648b85fcf751f83463a80bbeb041188","reviewPullRequest":9,"reviewPullRequestState":"OPEN","priorCandidateDisposition":"CORE_ARCHITECTURE_DIRECTION_VALID__PARTIALLY_SUFFICIENT__TARGETED_SUCCESSOR_REFINEMENT_REQUIRED","ownerDecision":"AR-D013","rebaseRequirement":"Reinterpret AR0.1 findings against Atlas as governed enterprise-to-tool intelligence/specification layer. Execution readiness remains a critical outcome but is not the exclusive product identity. Preserve runtime execution as downstream boundary.","scope":["audit current frozen contracts against enterprise-to-tool intelligence/specification boundary","test Road LTL customer-service pickup request for agentic/workflow implementation handoff","test BOL information resolution with deliberate knowledge gaps and fail-closed readiness","test digital-twin/BPM implementation handoff","test ERP/TMS fit-gap implementation handoff","test adversarial control-flow semantics without redesigning frozen V1","verify technology-neutral canonical truth can support multiple downstream projections without semantic redefinition"],"classificationSet":["FULLY_GOVERNED_EXISTING_CONTRACT","GOVERNED_CLIENT_ENTERPRISE_BINDING_REQUIRED","INFERABLE_BUT_UNGOVERNED","ABSENT_READINESS_BLOCKING","DOWNSTREAM_RUNTIME_SPECIFIC_OUTSIDE_ATLAS"],"matrixSummary":{"requirementClassesAudited":38,"fullyGovernedExistingContract":18,"governedClientEnterpriseBindingRequired":6,"inferableButUngoverned":9,"absentReadinessBlocking":1,"downstreamRuntimeSpecificOutsideAtlas":4},"candidateEvidencePath":"governance/architecture-refinement/AR0.1/POST_AUDIT_PRE_OWNER_REVIEW.json","driveEvidence":{"architectureRefinementFolderId":"1V-yyr-08FGeDvJbCEoWFRM_y4wAmCgk_","ar0_1FolderId":"16T02_hlEGCxjmHuiTY8fi0-jLxnGS8t1","candidateDocumentId":"1qKLiOK6I_LP7CUnRHbhdSyN_g_WtNG3cp8NUdQHUDBs","readbackVerified":true},"nextStageAuthorization":"NONE"},
+    {"stageId":"AR0.2","id":"AR0.2","name":"Layer-Boundary Decision","status":"BLOCKED_UNTIL_AR0_1_REBASE_AND_OWNER_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
     {"stageId":"AR0.3","id":"AR0.3","name":"Candidate Contract Architecture","status":"BLOCKED_UNTIL_AR0_2_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
     {"stageId":"AR0.4","id":"AR0.4","name":"Adversarial Multi-Pattern Validation","status":"BLOCKED_UNTIL_AR0_3_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
     {"stageId":"AR0.5","id":"AR0.5","name":"Successor Architecture Candidate","status":"BLOCKED_UNTIL_AR0_4_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false},
     {"stageId":"AR0.6","id":"AR0.6","name":"Owner Freeze Decision & Recovery Re-baseline","status":"BLOCKED_UNTIL_AR0_5_REVIEW","authorizedExecutor":"CHATGPT","claudeExecutionAuthorized":false,"ownerApprovalRequired":true},
-    {
-      "stageId": "R0.4",
-      "id": "R0.4",
-      "name": "Generic Recursive Decomposition Compiler & Road LTL Re-certification",
-      "status": "SUSPENDED_BY_ARCHITECTURE_REFINEMENT_GATE",
-      "qaRequiredBeforeNext": true
-    },
+    {"stageId":"R0.4","id":"R0.4","name":"Generic Recursive Decomposition Compiler & Road LTL Re-certification","status":"SUSPENDED_BY_ARCHITECTURE_REFINEMENT_GATE","qaRequiredBeforeNext":true},
     {"stageId":"R0.5","id":"R0.5","name":"Ocean FCL/LCL 0.6 Source Closure & Operational Knowledge Depth Uplift","status":"BLOCKED_UNTIL_ARCHITECTURE_AND_R0_4_QA","qaRequiredBeforeNext":true},
     {"stageId":"R0.6","id":"R0.6","name":"Multi-Mode Decomposition Proof & Pre-P6 Readiness Certification","status":"BLOCKED_UNTIL_R0_5_QA","qaRequiredBeforeNext":true},
     {"stageId":"P6.2","id":"P6.2","name":"Canonical WorkDefinition Compilation","status":"SUSPENDED_BY_RECOVERY_AND_ARCHITECTURE_GATE","qaRequiredBeforeNext":true},
     {"stageId":"P6.3","id":"P6.3","name":"Identity, Authorization & Public/Protected Certification","status":"BLOCKED_UNTIL_P6_2_QA","qaRequiredBeforeNext":true},
-    {"stageId":"P6.4","id":"P6.4","name":"Former Generic Recursive Decomposition + Ocean Execution Depth","status":"TO_BE_RESCOPED_AFTER_ARCHITECTURE_AND_RECOVERY"},
+    {"stageId":"P6.4","id":"P6.4","name":"Multi-mode Execution Depth / Projection Proof","status":"TO_BE_RESCOPED_AFTER_ARCHITECTURE_AND_RECOVERY"},
     {"stageId":"P6.5","id":"P6.5","name":"Atlas V2 Integration & Production Certification","status":"BLOCKED_UNTIL_PRIOR_QA","qaRequiredBeforeNext":true},
     {"stageId":"ATLAS_V2_GO_LIVE","id":"ATLAS_V2_GO_LIVE","name":"Atlas V2.0 Production Promotion","status":"BLOCKED","ownerApprovalRequired":true}
   ],
-  "certificationDimensions": ["PHYSICAL_EXISTENCE","SEMANTICS","COVERAGE","EVIDENCE","DEPENDENCY_CLOSURE","REPRODUCIBILITY","REFERENTIAL_INTEGRITY","LIVE_READABILITY","REGISTRY_COHERENCE","CLASSIFICATION_ACCURACY","SECURITY_BOUNDARY","REGRESSION","DEPLOYMENT_PARITY"],
-  "historicalFindings": [
+  "productionCriticalPath":["AR0.1_REBASE","AR0.2","AR0.3","AR0.4","AR0.5","AR0.6_OWNER_FREEZE","R0.4","R0.5","R0.6","P6.2","P6.3","P6.4","P6.5","ATLAS_V2_GO_LIVE"],
+  "certificationDimensions":["PHYSICAL_EXISTENCE","SEMANTICS","COVERAGE","EVIDENCE","DEPENDENCY_CLOSURE","REPRODUCIBILITY","REFERENTIAL_INTEGRITY","LIVE_READABILITY","REGISTRY_COHERENCE","CLASSIFICATION_ACCURACY","SECURITY_BOUNDARY","REGRESSION","DEPLOYMENT_PARITY"],
+  "historicalFindings":[
     {"stageId":"FINDING-UNIVERSE-01","status":"REMATERIALIZED_AND_AUTHORITY_CERTIFIED_NOT_PRODUCTION_PROMOTED"},
     {"stageId":"FINDING-UNIVERSE-02","status":"RESOLVED_BY_R0_1C_NO_REFERENCE_DEFECT"},
     {"stageId":"FINDING-CROSSWALK-01","status":"REGISTERED_EXISTING_GOVERNED_ASSET"},
     {"stageId":"FINDING-LTL-BASE-01","status":"RESOLVED_BY_R0_2_QA_PASS"},
-    {"stageId":"FINDING-P6-1-01","status":"DEFERRED_TO_ARCHITECTURE_REBASE_BEFORE_ANY_REBUILD","description":"Historical P6.1 generator is not retained and live protected payload is not readable by retained tooling; no recovery/rebuild is authorized until architecture refinement determines the correct materialization path."},
+    {"stageId":"FINDING-P6-1-01","status":"DEFERRED_TO_ARCHITECTURE_REBASE_BEFORE_ANY_REBUILD","description":"Historical P6.1 generator is not retained and live protected payload is not readable by retained tooling; deterministic rematerialization is governed by the post-AR0.6 architecture rather than historical count recreation."},
     {"stageId":"FINDING-OCEAN-01","status":"RECOVERY_REQUIRED_AFTER_ARCHITECTURE_GATE","description":"Ocean FCL/LCL 0.6 source/OK depth work remains deferred until architecture refinement and preceding recovery gates permit it."}
   ]
 }
