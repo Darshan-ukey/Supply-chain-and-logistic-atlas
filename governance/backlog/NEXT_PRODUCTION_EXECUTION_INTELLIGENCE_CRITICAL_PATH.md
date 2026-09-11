@@ -1,150 +1,113 @@
-# Atlas V2 — Governed Execution Roadmap and Production Critical Path
+# Atlas V2 — Governed Roadmap and Critical Paths
 
-Status: ACTIVE BACKLOG / ARCHITECTURE REFINEMENT GATE  
-Updated: 11 September 2026 — AR0.1 closed; AR0.2 candidate awaiting Owner review  
-Canonical technical backlog: this file + `ATLAS_V2_AGENT_EXECUTION_QUEUE.json` on branch `atlas-governance-registry-v2.1`.
+Status: ACTIVE BACKLOG / DEMO SPRINT PRIORITY / ARCHITECTURE REFINEMENT PRESERVED  
+Updated: 11 September 2026  
+Canonical machine queue: `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json` on `atlas-governance-registry-v2.1`.
 
-## Operating rule
-Atlas recovery/rebuild execution does not continue directly from R0.3 to R0.4. Architecture refinement must be completed and Owner-frozen first.
+# Immediate priority — Atlas V2 Demo Sprint
 
-Claude remains an implementation agent and may act only on an exact queue stage whose status is `AUTHORIZED`. Architecture-refinement stages are reserved to ChatGPT unless the Owner explicitly changes governance. Frozen V1 architecture remains immutable until a versioned successor is approved.
+Owner target: **demo-ready functional Atlas 2.0 concept live Monday 14 September 2026** for stakeholder demonstration Tuesday 15 September 2026.
 
-## Current position
-- R0.1A-R, R0.1B and R0.1C: COMPLETE — independent QA PASS.
-- R0.2: COMPLETE — independent QA PASS. Effective Road LTL 1.5 remains 21 inherited 1.4 tasks + direct LTL-03 1.5 override; P6.0 remains 502/502 re-certified.
-- R0.3: COMPLETE — independent QA PASS.
-- AR0.1: COMPLETE — Owner direction applied and rebased on AR-D013. PR #9 merged at `206db2b54f40140cc372c4f70bd314934abc489e`.
-- AR0.2: CANDIDATE COMPLETE / AWAITING OWNER REVIEW in PR #10.
-- R0.4 remains suspended.
-- Production `CURRENT/LATEST` pointers remain unchanged.
+This is a distinct release track:
+- `ATLAS_V2_DEMO_GO_LIVE` = functional concept/demo promotion.
+- `ATLAS_V2_GO_LIVE` = full governed production promotion after architecture/recovery/P6 certification.
 
-# Product / platform North Star
+Primary demo executor: ChatGPT.  
+Hot backup: Claude, authorized to resume the exact current demo stage if ChatGPT is unavailable/fails or the Owner directs takeover.
+
+Governing demo files:
+- `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_PROTOCOL.md`
+- `governance/demo-sprint/ATLAS_V2_DEMO_HANDOVER.md`
+- `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_LOG.md`
+
+## Mandatory demo build discipline
+Every build stage requires PRE_BUILD_AUDIT, MID_BUILD_AUDIT, POST_BUILD_AUDIT, full integration/regression review and a complete immutable repository freeze point. Delta-only certification is invalid. Prior freeze points are never overwritten.
+
+## D2.0.0 — Baseline, handover and release-control setup
+Status: **AUTHORIZED — CURRENT**
+
+Audit the complete current repo/app/deployment state, verify required source assets and establish working branch, rollback/freeze strategy and hot-backup state. No feature mutation.
+
+## D2.0.1 — Atlas shell + scope/future page
+Status: BLOCKED_UNTIL_D2_0_0_PASS
+
+Add `Atlas — From Domain Knowledge to Execution Readiness`, preserving existing navigation and public/protected boundaries.
+
+## D2.0.2 — Ocean 0.6 live surface
+Status: BLOCKED_UNTIL_D2_0_1_PASS
+
+Expose/verify Ocean FCL/LCL 0.6 from existing assets under the Owner-authorized demo assumption. Do not imply Road-LTL-equivalent execution depth unless verified.
+
+## D2.0.3 — Road LTL execution-depth explorer
+Status: BLOCKED_UNTIL_D2_0_2_PASS
+
+Expose Road LTL Operational Knowledge -> Work Decomposition -> Canonical WorkDefinition as a coherent inspectable path.
+
+## D2.0.4 — Malkom adapter/projection
+Status: BLOCKED_UNTIL_D2_0_3_PASS
+
+Demonstrate canonical Atlas semantics projected to Malkom-specific structures while preserving the canonical/runtime boundary.
+
+## D2.0.5 — Trace + readiness + demo narrative integration
+Status: BLOCKED_UNTIL_D2_0_4_PASS
+
+Wire the minimum coherent traceability/readiness/gap surfaces and the end-to-end stakeholder demo journey.
+
+## D2.0.6 — Full integration and regression certification
+Status: BLOCKED_UNTIL_D2_0_5_PASS
+
+Audit complete resulting app across UI, data, architecture, access boundary, build and deployment parity. Resolve defects and freeze release candidate.
+
+## D2.0.7 — Controlled demo promotion
+Status: BLOCKED_UNTIL_D2_0_6_PASS / OWNER APPROVAL REQUIRED
+
+Perform one deliberate tested promotion and live verification with rollback preserved.
+
+## ATLAS_V2_DEMO_GO_LIVE
+Status: BLOCKED_UNTIL_D2_0_7
+
+Functional-concept/demo release only; not full production certification.
+
+# Preserved architecture/recovery state
+
+- R0.1A-R / R0.1B / R0.1C: COMPLETE — QA PASS.
+- R0.2: COMPLETE — QA PASS. Effective Road LTL 1.5 remains 21 inherited 1.4 + direct LTL-03 1.5 override; P6.0 remains 502/502.
+- R0.3: COMPLETE — QA PASS.
+- AR0.1: COMPLETE; PR #9 merged at `206db2b54f40140cc372c4f70bd314934abc489e`.
+- AR0.2: candidate complete / Owner review pending in PR #10; temporarily not current during demo sprint.
+- AR0.3–AR0.6: blocked by preceding architecture gates.
+- R0.4: suspended by architecture-refinement gate.
+- R0.5/R0.6 and P6.2–P6.5 remain blocked/suspended per machine queue.
+- Full production `CURRENT/LATEST` pointers remain unchanged.
+
+The demo sprint may not silently approve, reject or rewrite AR0.2, and may not close production recovery/certification gates by presentation assumption.
+
+# Platform North Star
 
 > **Atlas is the governed intelligence and specification layer between enterprise/client operations and the technologies used to transform or execute them.**
 
-Boundary principle:
-
 > **Atlas owns understanding and specification. Downstream platforms own execution.**
 
-Atlas sits between enterprise/client reality and downstream platforms such as Malkom, agents/workflow engines, SAP/ERP, TMS/WMS, ServiceNow, RPA, BPM/digital-twin platforms and custom applications.
+Atlas may support domain knowledge, governance, execution/implementation readiness, design assistance and target-tool projections. Malkom, agent/workflow engines, SAP/ERP, TMS/WMS, ServiceNow, RPA, BPM/digital-twin platforms and custom applications remain downstream execution/implementation consumers.
 
-Knowledge repository, governance platform, execution/implementation readiness and solution-architecture capability are legitimate capabilities/byproducts. None is the exclusive product identity. Runtime business execution remains outside Atlas.
+# Critical paths
 
-# Architecture Refinement Program
+Demo path:
+`D2.0.0 -> D2.0.1 -> D2.0.2 -> D2.0.3 -> D2.0.4 -> D2.0.5 -> D2.0.6 -> D2.0.7 -> ATLAS_V2_DEMO_GO_LIVE`
 
-## AR0.0 — Architecture Baseline & Challenge Register
-Status: COMPLETE / OWNER_REVIEWED
+Full production path after demo:
+`AR0.2 Owner review -> AR0.3 -> AR0.4 -> AR0.5 -> AR0.6 Owner freeze -> R0.4 -> R0.5 -> R0.6 -> P6.2 -> P6.3 -> P6.4 -> P6.5 -> ATLAS_V2_GO_LIVE`
 
-## AR0.1 — V1.1 / WorkDefinition Sufficiency Audit
-Status: COMPLETE
+# Completeness standard
+Every applicable stage remains subject to PHYSICAL_EXISTENCE, SEMANTICS, COVERAGE, EVIDENCE, DEPENDENCY_CLOSURE, REPRODUCIBILITY, REFERENTIAL_INTEGRITY, LIVE_READABILITY, REGISTRY_COHERENCE, CLASSIFICATION_ACCURACY, SECURITY_BOUNDARY, REGRESSION and DEPLOYMENT_PARITY.
 
-Final disposition:
-`CORE_ARCHITECTURE_DIRECTION_VALID / PARTIALLY_SUFFICIENT / TARGETED_SUCCESSOR_REFINEMENT_REQUIRED`
-
-The 38-class evidence remains unchanged: 18 fully governed, 6 client/enterprise binding, 9 inferable but insufficiently formalized, 1 absent first-class scope-level readiness mechanism and 4 correctly downstream/runtime-specific.
-
-AR-D013 broadened the interpretation from readiness-only to the enterprise-to-tool intelligence/specification boundary.
-
-## AR0.2 — Layer-Boundary Decision
-Status: AWAITING_OWNER_REVIEW — CURRENT
-
-Review PR: #10  
-Candidate disposition:
-`TARGETED_LAYER_BOUNDARY_REFINEMENT_REQUIRED__NO_MONOLITHIC_NEW_SEMANTIC_LAYER`
-
-Candidate successor boundaries:
-1. Reference Domain + Operational Knowledge — authoritative reusable business truth and epistemic state.
-2. Canonical Work Decomposition — business-semantic work topology and lineage; stopping criterion based on business-semantic sufficiency rather than target-runtime convenience.
-3. Canonical WorkDefinition — technology-neutral execution-relevant semantics with stronger formal topology/control-flow grammar.
-4. Enterprise Context / Client Binding — enterprise-specific values, mappings, variants, operating context and optional enterprise NFRs.
-5. Governed Specification Assembly — non-duplicating scope manifest, resolution/readiness proof and version-closed specification manifest.
-6. Optional Design / Solution Synthesis — non-canonical candidate design capability.
-7. Runtime Adapter / Projection — target-tool translation, capability/loss assessment and native structures.
-8. Execution Runtime — outside Atlas execution ownership.
-9. Observation / Evidence Reconciliation — cross-runtime observations, conformance and feedback without automatic canonical mutation.
-
-## AR0.3 — Candidate Contract Architecture
-Status: BLOCKED_UNTIL_AR0_2_OWNER_REVIEW
-
-If AR0.2 is accepted, define only the minimum machine-readable successor contracts required by the approved boundaries. Avoid duplicated truth and monolithic contracts.
-
-## AR0.4 — Adversarial Multi-Pattern Validation
-Status: BLOCKED_UNTIL_AR0_3_REVIEW
-
-Validate the candidate architecture across multiple domains/task families and downstream consumer patterns.
-
-## AR0.5 — Successor Architecture Candidate
-Status: BLOCKED_UNTIL_AR0_4_REVIEW
-
-Produce a versioned successor candidate with explicit lineage to frozen V1. Do not overwrite V1.
-
-## AR0.6 — Owner Freeze Decision & Recovery Re-baseline
-Status: BLOCKED_UNTIL_AR0_5_REVIEW
-
-Owner approves, rejects or revises the successor and only then re-baselines R0.4/recovery sequencing.
-
-# Pre-P6 Recovery Program
-
-## R0.0 — Forensic Baseline & Recovery Governance
-Status: COMPLETE
-
-## R0.1 — Universe Materialization, Identity Reconciliation & Reference Ownership
-Status: COMPLETE
-
-## R0.2 — Road LTL Source Closure, Effective 1.5 & P6.0 Re-certification
-Status: COMPLETE — INDEPENDENT QA PASS
-
-## R0.3 — Road LTL Operational Knowledge + Canonical Information Hardening
-Status: COMPLETE — INDEPENDENT QA PASS
-
-## R0.4 — Generic Recursive Decomposition Compiler & Road LTL Re-certification
-Status: SUSPENDED_BY_ARCHITECTURE_REFINEMENT_GATE
-
-Future decomposition must be deterministically materialized from certified authoritative inputs and the Owner-frozen successor rules. Historical counts remain evidence only.
-
-## R0.5 — Ocean FCL/LCL 0.6 Source Closure & Operational Knowledge Depth Uplift
-Status: BLOCKED_UNTIL_ARCHITECTURE_AND_R0_4_QA
-
-## R0.6 — Multi-Mode Decomposition Proof & Pre-P6 Readiness Certification
-Status: BLOCKED_UNTIL_R0_5_QA
-
-# Phase 6 — Productionization
-
-## P6.2 — Canonical WorkDefinition Compilation
-Status: SUSPENDED_BY_RECOVERY_AND_ARCHITECTURE_GATE
-
-## P6.3 — Identity, Authorization & Public/Protected Certification
-Status: BLOCKED_UNTIL_P6_2_QA
-
-## P6.4 — Multi-mode Execution Depth / Projection Proof
-Status: TO_BE_RESCOPED_AFTER_ARCHITECTURE_AND_RECOVERY
-
-## P6.5 — Atlas V2 Integration & Production Certification
-Status: BLOCKED_UNTIL_PRIOR_QA
-
-## Atlas V2.0 — GO LIVE
-Status: BLOCKED
-
-Owner-approved production promotion only after P6.5 certification.
-
-# Roadmap to make Atlas live
-
-Current critical path:
-
-`AR0.2 Owner review -> AR0.3 candidate contracts -> AR0.4 adversarial validation -> AR0.5 successor candidate -> AR0.6 Owner freeze -> R0.4 deterministic Road LTL decomposition -> R0.5 Ocean source/OK closure -> R0.6 multi-mode proof -> P6.2 canonical WD materialization -> P6.3 identity/security/public-protected certification -> P6.4 projection proof -> P6.5 integrated production certification -> Owner GO LIVE`
-
-This roadmap makes the complete governed Atlas architecture live; it does not attempt to recreate historical derived artifacts merely to preserve old counts.
-
-## Permanent completeness standard
-Every applicable asset/stage must be evaluated on PHYSICAL_EXISTENCE, SEMANTICS, COVERAGE, EVIDENCE, DEPENDENCY_CLOSURE, REPRODUCIBILITY, REFERENTIAL_INTEGRITY, LIVE_READABILITY, REGISTRY_COHERENCE, CLASSIFICATION_ACCURACY, SECURITY_BOUNDARY, REGRESSION and DEPLOYMENT_PARITY.
-
-## Source-of-truth hierarchy
-1. Frozen architecture/contracts for the version currently under assessment.
-2. Owner-authorized architecture-refinement backlog/decision ledger while the refinement gate is active.
-3. Recovery and custody standards.
-4. Machine queue for execution authorization.
-5. This roadmap for human-readable intent.
+# Source-of-truth hierarchy during demo sprint
+1. Frozen architecture/contracts.
+2. Owner-authorized demo protocol + machine queue + handover.
+3. Architecture-refinement backlog/decision ledger.
+4. Recovery/custody standards.
+5. This human-readable roadmap.
 6. GitHub implementation/evidence.
-7. Drive durable governed copies/evidence.
+7. Drive durable governed evidence.
 
 If sources conflict, stop and report the conflict.
