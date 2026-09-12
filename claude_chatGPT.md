@@ -78,3 +78,43 @@ Files / branches / components affected:
 
 Next exact action:
 - Inventory current demo-branch execution-depth state, then import the reference bundle hash-verified.
+
+## 2026-09-12 17:14 IST — Claude — D2.0.3
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: STAGE_CLOSURE
+
+Evidence inspected:
+- Demo branch `6ef1d41` → build `f22b77d` → audit `8184f11`.
+- `canvas-v2/canvas-v2/data/road-ltl-workdefinitions-v2.3.json` (already on branch), adapter + manifest from `atlas-presentation-architecture-v1-p6-2` @ `6ae0035`.
+- `governance/demo-sprint/D2.0.3_POST_BUILD_AUDIT.md` committed at `8184f11`.
+
+Action / finding — took over the stalled stage per Owner direction and closed it.
+
+**Why it stalled, resolved:** the path is double-nested (`canvas-v2/canvas-v2/data/...`). ChatGPT's single-nested queries 404'd, and it correctly refused to import what it couldn't read. **Most of D2.0.3's material was already on the branch** — the v2.3 reference bundle arrived inside the frozen Canvas shell at `45a2888`. Only the Malkom adapter was genuinely missing.
+
+**Changed:** 2 files imported, byte-identical to source (`git hash-object` vs origin blob):
+`execution/adapters/malkom/malkom-adapter.mjs`, `execution/contracts/malkom-adapter-manifest-v1.json`. Nothing else added, modified or deleted.
+
+**Verified by execution, not inspection** — adapter run against all 22 real reference WorkDefinitions: 22/22 adapter-compatible, 22/22 materializable, 176 client bindings correctly flagged `CLIENT_BINDING_REQUIRED`, 3 PARTIAL warnings (`ESCALATE` — runtime-specific cross-queue materialization, honestly reported not suppressed), nextStep kinds `END_WORK_ITEM` / `STAY_IN_QUEUE` / `ESCALATE`.
+
+**Two-lineage separation preserved.** Governed target (already present): Road LTL 1.5 → OK → certified P6.1 decomposition → WD compiler proven, persistence PENDING. Proven reference (completed here): Road LTL **V1.2** → Domain Warehouse **v2.3** → Malkom 3.0 — the bundle self-declares `sourceModel: "Road LTL V1.2"` and labels itself an additive derived prototype projection with canonical A5 semantics remaining authoritative. Not connected; this stage does not connect them. Not claimed: that Malkom output came from 1.5/P6.2; that the 185 leaves are persisted WDs (`atlas_work_definitions` still 0 rows); any Client Binding/runtime-projection closure — 176 bindings remain required.
+
+**Regression:** P4 suite shows the same single pre-existing failure documented at `45a2888` (root `index.html` byte-identity vs the P3/P3O baseline this `main`-cut branch was never expected to match). Not a regression. All Canvas V2 frozen-package byte-identity gates and all Ocean/Road LTL semantic gates pass, including `ocean-lcl@0.6 has no semantic fallback to Ocean 0.5`.
+
+Audit / test result:
+- **D2.0.3 PASS at structural/source/execution level.**
+
+Impact / guardrail:
+- Browser/visual click-through remains **open** — unchanged, and the only demo-readiness item still outstanding alongside it is nothing: checks 1 (visual) is the sole remaining blocker, check 2 (scope page) was closed by ChatGPT's D2.0.1 build.
+- No canonical data, catalog, production pointer, API security boundary, Vercel config or frozen artifact mutated. No Vercel action.
+
+Current/Demo/Target effect:
+- CURRENT: unchanged.
+- DEMO: both lineages now physically present and separately demonstrable on the demo branch; the Malkom adapter chain is proven working end-to-end against real data.
+- TARGET: none. Reference assets remain slated to retire/rebase after canonical parity.
+
+Safe resume point:
+- `atlas-v2-demo-2026-09-14` @ `8184f11`.
+
+Next exact action:
+- D2.0.4 (Malkom adapter/projection surface) is now materially de-risked — the adapter is present and proven. Owner/ChatGPT to direct whether Claude continues or ChatGPT resumes.
