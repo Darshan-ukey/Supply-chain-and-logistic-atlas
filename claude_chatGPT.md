@@ -1015,3 +1015,36 @@ Impact / guardrail:
 
 Next exact action:
 - Inspect the Supabase row; search GitHub and Drive; report findings with evidence, not inference.
+
+## 2026-09-12 13:52 IST — Claude — D2.0.1
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+Evidence inspected:
+- GitHub `atlas-presentation-architecture-v1-p6-1` / `-p6-2`: 15 P6.1 work-decomposition artifacts present on both.
+- `governance/presentation/P6_1_RECURSIVE_WORK_DECOMPOSITION_REGISTER.json` — status `COMPLETE_PASS`, CI run 34092195930 success.
+- `schemas/canonical-work-decomposition-contract-v1.schema.json` — full `workUnit` / `executorReadiness` definitions.
+- `governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_FROZEN.md` — scope/exclusion statements.
+- Live Supabase `atlas_work_decompositions`: 1 row, `road-ltl-1.5::P6.1::bundle`, `__ALL_22__`, `VALIDATED_REFERENCE_DECOMPOSITION`, BROTLI_BASE64, 37,672 b64 chars, content_hash `2c26e760...`, created 2026-09-07.
+
+Action / finding — Owner recalled building recursive Work Decomposition in P0–P6 and asserted it is the layer that bridges LTL-03 to Malkom. **The first half is fully confirmed; the second half is not, and the frozen contract says so explicitly.**
+
+**CONFIRMED — P6.1 Recursive Work Decomposition is real, certified, and live:**
+- 22 logical tasks, **603 work units, 444 terminal leaves**, of which **185 EXECUTOR_READY**, 163 BLOCKED_BY_CLIENT_BINDING, 96 BLOCKED_BY_KNOWLEDGE_GAP.
+- Data is intact in the live Supabase protected store and retrievable via `/api/work-decomposition` (`lib/api/work-decomposition.js`, capability-gated).
+- `fullDetailCommittedToGitHub: false` by design — GitHub holds the schema/contract/register/seed script; the payload lives in the protected store. This is why earlier repo-only searches for "the missing layer" found nothing.
+- This materially narrows the gap I sized at 13:31: work units carry `unitType` (ATOMIC_ACTION / DECISION_GATE / ACTION_GROUP / TEMPORAL_CONTROL / INFORMATION_RESOLUTION / …), `branchTransitions`, `outputState`, `evidenceRequirements`, `dependencies`, `temporalConstraints`, plus per-leaf `executorReadiness` with explicit `requiredClientBindings[]` / `requiredKnowledgeGaps[]`. That is far richer raw material for a Malkom projection than LTL-03's Operational Knowledge alone.
+
+**NOT CONFIRMED — decomposition does not itself close the Malkom gap.** The frozen contract states directly: *"It does not define runtime-native queues, Malkom fields, client-system mappings, RPA steps, agent prompts, API calls, or client values. Those are downstream projections/bindings."* The governed chain is `… → Recursive Work Decomposition → Canonical WorkDefinition → Client Binding → Runtime Projection/Compiler`. Decomposition is the layer *before* the two layers that produce runtime shape. Specifically still absent by design: `queue`/`queuePurpose`/`subQueues` (runtime-native queue naming), and `workTypes[].executionMode` (DETERMINISTIC_RULES/RPA/AI_AGENT/HUMAN — an executor-class assignment the contract explicitly defers). `executorReadiness.status` is a readiness state, not an execution mode; they are not interchangeable.
+
+Net: the Owner's architectural instinct is right — decomposition is exactly the layer that *feeds* any adapter, and it exists and is certified. But the bridge from it to Malkom's required shape is the **Canonical WorkDefinition + Client Binding** step (P6.2 — `SUSPENDED_BY_RECOVERY_AND_ARCHITECTURE_GATE`), which was never built. The gap is smaller and better-founded than my 13:31 assessment implied, but it is not zero and it is not closed by P6.1.
+
+Files / branches / components affected:
+- None. Read-only investigation across GitHub + Supabase.
+
+Impact / guardrail:
+- A demo-grade Malkom projection could now be driven from 185 real EXECUTOR_READY leaves rather than hand-authored from nothing — a materially better and more honest basis than either option I presented at 13:31.
+- Still requires deciding executor-class/queue-shape assignments that no governed layer currently supplies. That remains an Owner authoring/authorization decision, not something derivable from existing data.
+
+Next exact action:
+- Owner decision on whether to drive a clearly-labeled demo projection from the P6.1 decomposition leaves, before returning to the remaining 4 demo-readiness checks.
