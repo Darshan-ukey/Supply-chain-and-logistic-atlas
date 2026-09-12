@@ -15,6 +15,12 @@ Integration lock: `governance/frozen-assets/history/frozen-stack-lock-v2.2.json`
 - Atlas Warehouse **1**
 
 ## Latest frozen execution-reference candidates
+- Canvas **2.0.1** — `FROZEN_EXECUTION_REFERENCE_CANDIDATE`
+  - Shell + governed Canvas→Daughter bridge. The frozen 2.0.0 visual shell is byte-identical and unchanged; 2.0.1 is additive routing, not a shell revision.
+  - Governed targets: Road LTL → Daughter 1.5 (sample LTL-03), Ocean FCL/LCL → Daughter 0.6 (approved go-live target).
+  - Verified 2026-09-12: existing 37-assertion integration suite PASS, JS syntax-validated, local structural serve confirmed. Live/visual DOM rendering not yet observed (Vercel action prohibited this sprint) — this is why it is a candidate, not a production baseline, mirroring Road LTL 1.5's own treatment below.
+  - Registered under explicit Owner direction as permanent scaffolding, not demo-only.
+  - Asset register: `canvas-2.0.1-candidate`.
 - Road LTL **1.5** — `FROZEN_EXECUTION_REFERENCE_CANDIDATE`
   - Lossless successor of frozen Road LTL 1.4.
   - Only `LTL-03 — Create and validate shipment, consignment and transport-document identity` is materially enriched.

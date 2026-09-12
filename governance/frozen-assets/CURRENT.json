@@ -14,7 +14,8 @@
   "latestFrozenCandidates": {
     "roadLtl": "road-ltl-1.5-candidate",
     "oceanFcl": "ocean-fcl-0.6-candidate",
-    "oceanLcl": "ocean-lcl-0.6-candidate"
+    "oceanLcl": "ocean-lcl-0.6-candidate",
+    "canvas": "canvas-2.0.1-candidate"
   },
   "latestFrozenReferenceAssets": {
     "roadLtlOperationalKnowledge": "road-ltl-1.5-operational",
