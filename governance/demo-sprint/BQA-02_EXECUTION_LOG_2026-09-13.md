@@ -1,7 +1,7 @@
 # BQA-02 — Execution-Depth Runtime Failure Remediation Log
 
 Date: 2026-09-13
-Status: IN_PROGRESS
+Status: IN_PROGRESS — EXACT_RUNTIME_DETAIL_PENDING
 Failure gate: BQA-02 only
 Precondition: BQA-01 = CLOSED_RENDERED_PASS (Claude rendered QA)
 Downstream gate: BQA-03 remains blocked until BQA-02 rendered PASS.
@@ -28,3 +28,40 @@ Guardrails:
 - No main merge or production deployment.
 - No successor-baseline promotion as production.
 - BQA-03 remains untouched and blocked.
+
+## MATERIAL FINDING — source/runtime trace before remediation
+No BQA-02 code has been changed yet.
+
+Verified current routing chain on `atlas-v2-demo-2026-09-14`:
+- `api/atlas.js` uses `createRouter('atlas', {'execution-depth-projection':'./execution-depth-projection.js', ...})`.
+- `lib/api/_router.js` performs `await import(spec)` where `spec` is selected dynamically from the route map; its catch returns `{error:'Handler failed to load', detail:<actual import/runtime message>}`.
+- `lib/api/execution-depth-projection.js` statically imports `../projections/execution-depth-projection.js`.
+- `lib/projections/execution-depth-projection.js` reads the projection source registry and public-safe materialized bundles using runtime filesystem paths rooted at `process.cwd()`.
+- Vercel runtime logs on the same BQA-01 preview show `/api/health` and `/api/config` also returning HTTP 500 through the same `createRouter` dynamic-import pattern. This is strong supporting evidence that the failure is at router/serverless dependency loading rather than the Road LTL projection semantics alone.
+
+Important: this is still a technical hypothesis until the exact `detail` field from the failing execution-depth request is captured. The backlog explicitly requires that exact runtime detail before code mutation.
+
+## CLAUDE BROWSER DIAGNOSTIC HANDOFF — TEST/TRACE ONLY
+Claude is authorized to perform the missing diagnostic read because ChatGPT cannot currently obtain the protected endpoint body through its browser session.
+
+Use the exact BQA-01-passed preview:
+- implementation commit: `63e9b54bde58638886fbb64eeae4ad1719877412`
+- deployment: `dpl_CuzQLjp873NxoPUskBs3RrhXxbt7`
+- preview: `https://logisticatlasv2-1m8tu0747-ukeydarsh-2051s-projects.vercel.app`
+
+Claude must do ONLY the following:
+1. Open this exact endpoint in the connected authenticated browser:
+   `https://logisticatlasv2-1m8tu0747-ukeydarsh-2051s-projects.vercel.app/api/execution-depth-projection?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03`
+2. Capture the full JSON response, especially the exact `detail` value accompanying `Handler failed to load`.
+3. If the endpoint is rewritten to `/api/atlas?action=execution-depth-projection`, capture that final URL/status as well.
+4. Optionally open `/api/health` on the same exact preview and capture its full JSON `detail` only as corroborating evidence; do not broaden remediation scope to system APIs.
+5. Write the exact observed error text and HTTP status into this file or `claude_chatGPT.md` under a `BQA-02 EXACT_RUNTIME_ERROR` checkpoint.
+6. Do NOT modify code, deploy, touch BQA-03, merge, or mark BQA-02 closed.
+
+Once the exact error is recorded, ChatGPT may continue BQA-02 implementation.
+
+Current gate state:
+- `BQA-01 = CLOSED_RENDERED_PASS`
+- `BQA-02 = IN_PROGRESS_EXACT_RUNTIME_DETAIL_PENDING`
+- `BQA-03 = BLOCKED_BY_BQA_02_RENDERED_PASS`
+- `D2.0.7 = BLOCKED`
