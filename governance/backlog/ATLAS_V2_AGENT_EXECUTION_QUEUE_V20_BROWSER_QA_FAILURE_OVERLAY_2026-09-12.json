@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "atlas-v2-agent-execution-queue-browser-qa-overlay-v1",
+  "overlayFor": "governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json",
+  "createdAt": "2026-09-12T23:30:00+05:30",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
+  "currentStageId": "D2.0.7",
+  "stageStatusOverride": "BLOCKED_BY_RENDERED_BROWSER_QA_FAILURES",
+  "ownerMergeApprovalRequired": true,
+  "remediationAuthorized": false,
+  "canonicalBacklogPath": "governance/backlog/ATLAS_V2_DEMO_BROWSER_QA_FAILURE_BACKLOG_2026-09-12.md",
+  "renderedQa": {
+    "previewDeploymentId": "dpl_9fQcB127sxCqxfxf3vJp5oeokGFd",
+    "testedDemoHead": "b164874c9faff078196ee7dfb6ed42b6a5a39019",
+    "result": "FAIL",
+    "passedSurfaces": [
+      "/atlas-poc-journey",
+      "/atlas-execution-readiness"
+    ],
+    "blockingFailures": [
+      {
+        "id": "BQA-01",
+        "severity": "BLOCKER",
+        "summary": "Root Canvas runtime contract validation rejects approved enriched Road LTL contract version."
+      },
+      {
+        "id": "BQA-02",
+        "severity": "BLOCKER",
+        "summary": "Road LTL 1.5/LTL-03 execution-depth projection handler fails to load at runtime."
+      },
+      {
+        "id": "BQA-03",
+        "severity": "BLOCKER",
+        "summary": "Daughter Canvas navigation to /app returns Vercel 404."
+      }
+    ]
+  },
+  "requiredBeforeD2_0_7CanResume": [
+    "CAPTURE_EXACT_BQA_02_RUNTIME_ERROR_BEFORE_CODE_CHANGE",
+    "VERIFY_GOVERNED_CONTRACT_COMPATIBILITY_RULE_FOR_BQA_01",
+    "VERIFY_DEPLOYED_APP_ROUTE_BEHAVIOR_FOR_BQA_03",
+    "LOG_PRE_ACTION_BEFORE_REMEDIATION",
+    "IMPLEMENT_BATCHED_DEMO_BRANCH_REMEDIATION",
+    "RUN_STRUCTURAL_AND_FULL_STATE_REGRESSION",
+    "PRESERVE_8_ROUTER_INVARIANT",
+    "PRESERVE_PUBLIC_PROTECTED_BOUNDARY",
+    "REFRESH_SUCCESSOR_CANDIDATE_BASELINE_ONLY",
+    "CREATE_NO_MANUAL_VERCEL_DEPLOYMENT",
+    "RERUN_OPERA_BROWSER_QA_ON_EXACT_NEW_PREVIEW",
+    "ALL_BQA_BLOCKERS_RENDERED_PASS",
+    "OWNER_REAPPROVES_D2_0_7_MERGE_DECISION"
+  ],
+  "guardrails": [
+    "NO_MAIN_MERGE_WHILE_BQA_BLOCKER_OPEN",
+    "NO_PRODUCTION_DEPLOYMENT_OR_PROMOTION",
+    "NO_HISTORICAL_V1_1_8_BASELINE_MUTATION",
+    "NO_BROAD_CONTRACT_VALIDATION_BYPASS",
+    "NO_STATIC_TEST_ONLY_CLOSURE_OF_BROWSER_FAILURE",
+    "NO_FALSE_CROSS_LINEAGE_CLAIM",
+    "BATCH_WRITES_TO_MINIMIZE_VERCEL_DEPLOYMENT_STORAGE_GROWTH"
+  ]
+}
