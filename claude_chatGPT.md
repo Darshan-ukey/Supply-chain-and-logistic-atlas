@@ -1082,3 +1082,36 @@ Impact / guardrail:
 
 Next exact action:
 - Owner decision on sequencing (demo-first vs. reopening the P6 critical path), then return to the 4 outstanding demo-readiness checks.
+
+## 2026-09-12 14:22 IST — Claude — D2.0.1
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+Evidence inspected:
+- `.github/workflows/p6-2-canonical-workdefinition.yml` — 11 certification steps: P6.2 compiler/verifier, P6.2 protected API + PUBLIC_SAFE boundary, no-committed-payload assertion, plus inherited regressions P6.1, P6.0, P5, P4, P3O, P3, P2 and the public execution-IP boundary.
+- Executed `node tests/p6-2-canonical-workdefinition-compiler.mjs` directly — **PASS**, offline, no Supabase required.
+
+Action / finding — Owner challenged the "wait until after demo" recommendation and asked what P6.2 QA actually takes.
+
+**P6.2's technical QA substantially exists and passes today.** The compiler/verifier certification runs green right now on a clean checkout. The CI workflow already chains every inherited phase regression back to P2. This is materially stronger than "suspended" implies, and my earlier framing understated it.
+
+**What P6.2 completion still requires beyond what passes today:**
+1. A persisted compile (185 WorkDefinitions into `atlas_work_definitions`, currently 0 rows) — the dry-run workflow has no `--persist` path by design.
+2. Independent QA + Checkpoint C, same custody pattern as R0.1–R0.3. Empirically this session: each recovery stage took one working session, and R0.3 required a remediation cycle after QA found a real defect (`R0.3-QA-01`). A first-pass-clean P6.2 QA should not be assumed.
+3. Lifting `SUSPENDED_BY_RECOVERY_AND_ARCHITECTURE_GATE` — an Owner action.
+
+**The binding constraint is not P6.2, and this is the part that matters for sequencing:**
+- **Client Binding (163 leaves)** depends on client-supplied values. Per the Client Binding Resolution Principle, Atlas owns the requirement and the client supplies the value. No amount of Atlas-side work produces these; it is an external dependency.
+- **96 leaves** remain blocked on genuine unresolved domain knowledge — the same surface R0.3 recorded (24 open gaps, 66 objects / 0 contracts, 76 BOL fields / 0 conformant IR records). This is research/authoring effort, not compilation effort.
+- **AR0.1 found control-flow grammar a PARTIAL FAIL** for deterministic handoff (ordering, parallel/join, multi-instance, retry vs idempotency, compensation) and escalated **7 boundary questions to AR0.2**, which is `AWAITING_OWNER_REVIEW`. So the premise "we have the architecture" is not fully true: the architecture's own audit says the grammar is insufficient at exactly the layer runtime projection depends on, and the resolution is gated on Owner review that has not happened.
+
+**Honest position on effort/duration:** I can decompose the work but cannot give a credible calendar estimate to P6.5. P6.2 persist+QA is plausibly short. Client Binding is externally gated. The 96 knowledge-gap leaves and the AR0.2 grammar decisions are open-ended. P6.5 (Atlas V2 Production Certification) additionally sits behind P6.3 identity/authorization certification and P6.4 multi-mode projection proof. Presenting a date would be false precision.
+
+Files / branches / components affected:
+- None. Read-only investigation plus one local test execution.
+
+Impact / guardrail:
+- Revised recommendation recorded: P6.2 persist+QA is a legitimate near-term candidate on its technical merits and my earlier blanket "wait" was too strong. The sequencing argument that survives is narrower: it does not advance the Monday demo (P6.2 produces no Malkom-consumable artifact), and it competes for the same ~2 days. The gates remain the Owner's to lift.
+
+Next exact action:
+- Owner sequencing decision, then the 4 outstanding demo-readiness checks.
