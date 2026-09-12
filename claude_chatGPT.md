@@ -563,3 +563,35 @@ Safe resume point:
 
 Next exact action:
 - Owner/ChatGPT to decide whether D2.0.1 builds on canvas-v2/ (A) alone, imports the P4 Canvas-Daughter bridge (B), or both. Claude remains on standby.
+
+## 2026-09-12 10:18 IST — Claude — D2.0.0
+Classification: WORKING_DECISION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Prior MATERIAL_FINDING (10:08 IST): two distinct Canvas V2 assets (A: standalone v2.0.0 bundle; B: P4 Canvas-Daughter bridge v2.0.1).
+- P4 completion doc's own qualifier: interactive browser smoke was NOT observed at certification time (Vercel tool lacked authenticated interactive fetch).
+
+Action / finding:
+- Owner directed: functionally test item (B), the P4 Canvas-Daughter bridge, before deciding whether to import it onto the demo branch; then sync findings here.
+- No Vercel action will be taken (prohibited under the current release policy). Testing will be local/static: fetch the bridge module and governed target registry from `atlas-presentation-architecture-v1-p6-2` (latest propagation), inspect for a local smoke/test harness, execute what can be run in a sandbox (syntax/module load, target-registry lookups, fail-closed behavior on an unregistered tuple), and report exactly what was and was not verified this way.
+
+Files / branches / components affected:
+- Read-only fetch from `atlas-presentation-architecture-v1-p6-2`. No mutation to any content branch. No Vercel call.
+
+Audit / test result:
+- Not yet run.
+
+Impact / guardrail:
+- This is code-level verification only; it cannot substitute for an actual browser/Vercel smoke test, which remains prohibited this sprint. Findings will state that limitation explicitly.
+
+Current/Demo/Target effect:
+- CURRENT: no change.
+- DEMO: informs the A/B/both import decision for D2.0.1.
+- TARGET: none.
+
+Safe resume point:
+- `atlas-governance-registry-v2.1` at `44939c1`.
+
+Next exact action:
+- Fetch and test the bridge locally; log MATERIAL_FINDING with results.
