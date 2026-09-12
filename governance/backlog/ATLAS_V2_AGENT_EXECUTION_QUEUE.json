@@ -1,7 +1,7 @@
 {
   "schemaVersion": "atlas-v2-agent-execution-queue-v19",
   "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v18",
-  "updatedAt": "2026-09-12T19:40:00+05:30",
+  "updatedAt": "2026-09-12T19:52:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
   "demoIntegrationTargetBranch": "main",
@@ -327,8 +327,14 @@
           "executor": "CLAUDE",
           "buildSha": "f22b77d",
           "auditDoc": "governance/demo-sprint/D2.0.3_POST_BUILD_AUDIT.md",
-          "qaType": "SELF_REPORTED_NOT_INDEPENDENT",
-          "note": "Picked up after ChatGPT stalled fail-closed on a double-nested path. Malkom adapter imported byte-identical; 22/22 compatible and materializable."
+          "qaType": "CROSS_AGENT_AUDITED",
+          "note": "Picked up after ChatGPT stalled fail-closed on a double-nested path. Malkom adapter imported byte-identical; 22/22 compatible and materializable.",
+          "crossAgentQA": {
+            "reviewer": "CHATGPT",
+            "result": "PASS",
+            "commit": "34bae44",
+            "caveat": "ChatGPT independently verified source identity, change scope, lineage truth and certification-guard logic from committed artifacts. It did not re-run Node locally; the execution runs (22/22, negative controls) remain executor-run evidence."
+          }
         },
         {
           "stageId": "D2.0.4",
@@ -348,8 +354,14 @@
           "executor": "CLAUDE",
           "buildSha": "457003d",
           "auditDoc": "governance/demo-sprint/D2.0.4_POST_BUILD_AUDIT.md",
-          "qaType": "SELF_REPORTED_NOT_INDEPENDENT",
-          "note": "Deterministic Malkom reference projection artifact; lineage separation mechanically enforced by test; negative controls proven to fail closed."
+          "qaType": "CROSS_AGENT_AUDITED",
+          "note": "Deterministic Malkom reference projection artifact; lineage separation mechanically enforced by test; negative controls proven to fail closed.",
+          "crossAgentQA": {
+            "reviewer": "CHATGPT",
+            "result": "PASS",
+            "commit": "35d0b04",
+            "caveat": "ChatGPT independently verified source identity, change scope, lineage truth and certification-guard logic from committed artifacts. It did not re-run Node locally; the execution runs (22/22, negative controls) remain executor-run evidence."
+          }
         },
         {
           "stageId": "D2.0.5",
@@ -369,8 +381,14 @@
           "executor": "CLAUDE",
           "buildSha": "319147e",
           "auditDoc": "governance/demo-sprint/D2.0.5_POST_BUILD_AUDIT.md",
-          "qaType": "SELF_REPORTED_NOT_INDEPENDENT",
-          "note": "POC journey page; every stated value read from a committed artifact and asserted by test; 3 negative controls proven to fail closed."
+          "qaType": "CROSS_AGENT_AUDITED",
+          "note": "POC journey page; every stated value read from a committed artifact and asserted by test; 3 negative controls proven to fail closed.",
+          "crossAgentQA": {
+            "reviewer": "CHATGPT",
+            "result": "PASS",
+            "commit": "4ac3e4f",
+            "caveat": "ChatGPT independently verified source identity, change scope, lineage truth and certification-guard logic from committed artifacts. It did not re-run Node locally; the execution runs (22/22, negative controls) remain executor-run evidence."
+          }
         },
         {
           "stageId": "D2.0.6",
@@ -562,7 +580,7 @@
   "demoSprintOpenItems": [
     "BROWSER_VISUAL_VERIFICATION_NEVER_PERFORMED \u2014 still the single functional gap; no browser or headless driver available to either executor.",
     "D2.0.0 CREATE_PRE_CHANGE_FULL_STATE_FREEZE never performed; cannot be recreated retroactively (D2.0.6 freeze is post-build only).",
-    "D2.0.3-D2.0.6 are executor self-reported, not independently QA-verified. D2.0.2 is the only cross-agent-audited stage.",
+    "D2.0.3-D2.0.5 are now CROSS_AGENT_AUDITED by ChatGPT (PASS). D2.0.6 remains executor self-reported and is open to the same independent audit.",
     "D2.0.7 auto-deploy conflict unresolved (see D2.0.7.recordedBlocker).",
     "DRIVE CUSTODY GAP: no D2.0.x demo-sprint artifact has been mirrored to Drive. Newest Drive content is AR0.1/AR0.2 dated 2026-09-11. Drive writes are returning \"No approval received\" to the connector."
   ]
