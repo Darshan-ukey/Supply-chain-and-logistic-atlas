@@ -169,3 +169,21 @@ Navigating `/admin` redirected to Vercel authentication; admin visual QA was not
 
 ### Storage guardrail
 Every GitHub push currently creates a Vercel preview, including governance-only pushes. Batch remediation and evidence updates into as few commits as practical. No manual Vercel deployment is authorized or necessary.
+
+---
+
+## 2026-09-12 — ChatGPT — FAILURE BACKLOG FREEZE BEFORE REMEDIATION
+Classification: GOVERNANCE_SYNC + OWNER_DIRECTION
+Checkpoint: PRE_ACTION / BACKLOG_CREATED
+
+No remediation has started. The three browser-QA failures above are now frozen into the dedicated action backlog:
+`governance/backlog/ATLAS_V2_DEMO_BROWSER_QA_FAILURE_BACKLOG_2026-09-12.md`.
+
+Backlog IDs:
+- `BQA-01` — root Canvas contract-version rejection.
+- `BQA-02` — execution-depth projection handler runtime failure.
+- `BQA-03` — Daughter → Canvas `/app` navigation 404.
+
+The backlog also fixes the remediation order: capture exact BQA-02 runtime error first; implement one batched demo-branch fix where safe; run structural/full-state regression; refresh only the successor candidate baseline; allow one Git-triggered preview; rerun Opera; keep D2.0.7 blocked until rendered PASS and separate Owner approval.
+
+**NO FAILURE CLOSURE IS AUTHORIZED BY THIS LOG ENTRY.** This checkpoint records work to be done; it does not certify any fix.
