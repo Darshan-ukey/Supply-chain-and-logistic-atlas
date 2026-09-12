@@ -423,3 +423,76 @@ Safe resume point:
 
 Next exact action:
 - Vercel **preview** deployment of `atlas-v2-demo-2026-09-14` to close the browser/visual verification gap. Blocked on Vercel account access: the connected account returns 403 on `logistic_atlas_v2` (team scope `ukeydarsh-2051s-projects`). Reconnecting under that team, or supplying a scoped token, is the prerequisite. Preview is strongly preferred over a main merge — it avoids both the production auto-deploy risk and the release-integrity condition recorded on D2.0.6.
+
+## 2026-09-12 20:08 IST — Claude — BLOCKER REGISTER / HANDOVER TO CHATGPT
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+Owner is routing the Vercel preview attempt through ChatGPT to test whether its connector has access Claude's does not. Consolidating every blocker in one place so ChatGPT can act without re-deriving any of it.
+
+---
+
+### BLOCKER 1 — Vercel account/team access (PRIMARY, blocks the preview deployment)
+
+**Symptom, from Claude's connector:**
+- `Vercel:list_teams` → `[]` (empty)
+- `Vercel:list_projects(team_82G0YS5CSlKdabFzFBgLUj3r)` → `Failed to list projects`
+- `Vercel:list_projects(ukeydarsh-2051s-projects)` → `Failed to list projects`
+- `Vercel:get_project(logistic_atlas_v2, team_82G0YS5CSlKdabFzFBgLUj3r)` → **403 Forbidden** (authenticated but not authorized — not a 401)
+
+**Known-correct identifiers**, from `release/evidence/vercel-stage22-state.json` committed in this repo:
+- `teamId: team_82G0YS5CSlKdabFzFBgLUj3r`
+- `teamSlug: ukeydarsh-2051s-projects`
+- that same file already recorded `projectsVisible: 0` at Stage 22, so this is a long-standing scope mismatch, not new.
+
+**What ChatGPT should test:** whether its Vercel connector is authenticated to the account that owns `logistic_atlas_v2`. If `list_teams` returns the team above, it has access Claude does not and can proceed.
+
+---
+
+### BLOCKER 2 — Vercel GitHub App auto-deploys on every push (blocks a SAFE merge)
+
+**Evidence gathered 2026-09-12 from the GitHub Deployments API (346 records):**
+- 333 `Preview` + 13 `Production` deployment records.
+- Onset of the storage problem visible in the data: 1 Sep = 1 record, 2 Sep = 88, 8 Sep = 72.
+- My own R0.3 WIP push generated deployment `6364144349` — confirming every branch push triggers a build.
+- Last `Production` deployment: **2026-08-25, `58b14c7d`** = current `main` HEAD.
+
+**Why this matters:** D2.0.7's own guardrail is `STOP_IF_GIT_INTEGRATION_WOULD_AUTO_DEPLOY`. On this evidence a merge to `main` would very likely auto-deploy to production. **A preview deployment of `atlas-v2-demo-2026-09-14` is the lower-risk route** and is recorded in the queue as `D2.0.7.recommendedAlternative`.
+
+**Related, from the same forensic pass:** deployment storage was at 25.22 GB against a 10 GB Hobby allowance, essentially all from `logistic_atlas_v2`. Cleanup was correctly never performed because source integrity could not be proven while the account is unreadable. If ChatGPT gains access, that audit can also finally complete.
+
+---
+
+### BLOCKER 3 — v1.1.8 release-integrity divergence (conditions a MERGE, not a preview)
+
+Two of the 37 hash-pinned critical files now differ from the v1.1.8 baseline:
+- `data/module-catalog.json` — D2.0.2 catalog port (Owner-directed)
+- `vercel.json` — D2.0.6 route-consolidation rewrite
+
+Both intentional and evidenced. **Pinned hashes deliberately NOT updated** — that would forge release integrity. Merging without a governed release-baseline bump means the live `/api/system?action=release-integrity` endpoint reports `criticalIntegrity: false`.
+
+**This does not affect a preview deployment** — only a merge to `main`.
+
+---
+
+### BLOCKER 4 — Drive write authorization (custody, non-blocking for demo)
+
+`Google Drive:create_file` → `No approval received`, on **three separate attempts** this session (R0.3 Checkpoint B, R0.3 remediation, demo-sprint mirror). No D2.0.x artifact has ever been mirrored to Drive; newest Drive content is AR0.1/AR0.2 dated 2026-09-11.
+
+**What ChatGPT should test:** whether its Drive connector can write. If so, the demo-sprint mirror can be created and this custody gap closed.
+
+---
+
+### BLOCKER 5 — Browser/visual verification (the actual open demo item)
+
+Neither executor has a browser or headless driver. Six `*-browser-certificate` suites on the branch fail for want of a Chromium binary. Everything certified to date is structural / source / execution level. **No one has yet seen any demo surface render.** This is what the preview deployment exists to close.
+
+---
+
+### State ChatGPT is picking up from
+- Governance: `atlas-governance-registry-v2.1` @ this commit. Queue `currentStageId: D2.0.7`.
+- Demo branch: `atlas-v2-demo-2026-09-14` @ `60d43c9`. D2.0.0–D2.0.6 closed; D2.0.3–D2.0.5 cross-agent audited by ChatGPT; D2.0.6 self-reported and open to audit.
+- Surfaces that would be checked in a preview: `index.html`, `atlas-poc-journey.html`, `atlas-execution-readiness.html`, `daughter.html` (with `?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03`), plus Ocean daughter routing.
+
+Next exact action:
+- ChatGPT to attempt the Vercel preview of `atlas-v2-demo-2026-09-14` (NOT a main merge) and report which of Blockers 1, 2 and 4 its connectors can clear.
