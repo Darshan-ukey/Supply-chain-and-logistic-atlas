@@ -102,3 +102,23 @@ QA scope note:
 - This cross-agent audit independently verifies source identity, change scope, lineage truth and adapter guardrail behavior from committed artifacts. Claude's earlier 22/22 execution run remains reproducible execution evidence from the build executor; ChatGPT did not re-run Node locally through the GitHub connector in this checkpoint.
 
 **QA disposition:** D2.0.3 may be treated as **cross-agent audited** for demo-governance purposes, with the execution-run provenance caveat above retained.
+
+---
+
+## Cross-agent independent QA — D2.0.4 — 2026-09-12
+
+**Reviewer:** ChatGPT
+**Result:** PASS at artifact / lineage / certification-guard level.
+
+Independent checks performed against `atlas-v2-demo-2026-09-14`:
+- `data/materialized/road-ltl-v2.3-malkom-reference-projection.json` directly records 22 processed definitions, 22 adapter-compatible, 22 materializable, and 176 required client bindings across 8 binding families.
+- The artifact records exactly three `ESCALATE` PARTIAL tasks: `LTL-15`, `LTL-18`, `LTL-22`.
+- The artifact records exactly five disabled adapter operations: `deploy`, `execute`, `materialize`, `reconcileEvidence`, `status`.
+- The artifact declares `DEMO_REFERENCE_PROJECTION_NOT_CANONICAL_TRUTH`, source model `Road LTL V1.2`, and explicitly lists Road LTL 1.5, Operational Knowledge v2, P6.1 and P6.2 under `notGeneratedFrom`.
+- `tests/d2-0-4-malkom-reference-projection.mjs` mechanically asserts the old-reference lineage, rejects governed-target input paths, validates source-file hashes, checks all 22 bundle definitions are processed, requires the three ESCALATE tasks to retain warnings, and asserts the five runtime operations remain disabled.
+- The certification test also checks deterministic byte-identical regeneration and stable semantic hash and verifies the reference bundle and adapter input hashes remain unchanged.
+
+QA scope note:
+- This cross-agent review independently validates the committed artifact and the certification logic that reproduces/guards it. Claude's recorded negative-control execution remains executor-run evidence; the controls themselves are independently visible and materially capable of failing on the documented tampering conditions.
+
+**QA disposition:** D2.0.4 may be treated as **cross-agent audited** for demo-governance purposes.
