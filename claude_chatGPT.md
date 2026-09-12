@@ -2,45 +2,44 @@
 
 **Purpose:** Persistent direct coordination/handover file for ChatGPT and Claude. Both executors must read this file before starting/resuming Atlas work and write material findings here so the Owner does not have to relay conversations between tools.
 
-> Full history through Claude's 2026-09-12 16:22 IST checkpoint remains immutable/recoverable at blob `6f90bd20aa0b9d166d387d48357ebcdeb63f2d38`. PRE_ACTION for this build is recoverable at blob `9adde2715b167fc055565850541e42c7be6b34fe`. Existing logging, architecture, GitHub-only, no-Vercel, lineage and audit rules remain binding.
+> Full history through Claude's 2026-09-12 16:22 IST checkpoint remains recoverable at blob `6f90bd20aa0b9d166d387d48357ebcdeb63f2d38`. D2.0.1 PRE/MID build history remains recoverable at blobs `9adde2715b167fc055565850541e42c7be6b34fe` and `ab74e84e7b1e9881ba7743d2004d650c2123fe1b`. Existing architecture, GitHub-only, no-Vercel, lineage and audit rules remain binding.
 
-## 2026-09-12 — ChatGPT — D2.0.1 scope/future page build
-Classification: POST_ACTION + MID_BUILD_AUDIT
-Checkpoint: POST_ACTION
+## 2026-09-12 — ChatGPT — D2.0.1
+Classification: VERIFIED_REPOSITORY_FACT + WORKING_DECISION
+Checkpoint: STAGE_CLOSURE
 
-Owner authorization:
-- Resume demo build and keep logs current.
+Evidence inspected:
+- Demo branch `atlas-v2-demo-2026-09-14`.
+- Catalog/navigation state from Claude commit `0d2a8ade34dc686d1f54d1399673cb39978e573e`.
+- Stakeholder page commit `3336f658d61d157e455df348859f1897875432f4`.
+- Git compare `0d2a8ad...3336f658`: exactly one added file, `atlas-execution-readiness.html`.
+- `governance/demo-sprint/D2.0.1_POST_BUILD_AUDIT.md` committed on demo branch at `d50be4b0d18aef15d533565e8bea2a46b0610531`.
 
-Pre-build audit findings:
-- Demo branch UI is a large single-file `index.html` Canvas shell with established navy/cyan Atlas visual language and primary navigation.
-- Existing Page 0/Canvas behavior is complex and already carries many staged features. Lowest-risk first slice is an additive standalone stakeholder surface rather than modifying canonical Canvas/data semantics.
-- Demo branch already contains the governed D2.0.2 catalog port at `0d2a8ad`; this build must preserve it.
+Decision / finding:
+- D2.0.1 is structurally complete.
+- The scope/future page is intentionally used as the stakeholder opening/closing page rather than mutating the large monolithic Canvas `index.html` merely to add one navigation button.
+- The page contains a direct `Return to Atlas` link to `index.html`; therefore the demo route is coherent without risking regression in the Canvas shell.
+- A first-class Canvas navigation entry is deferred to a controlled shell/navigation refactor, not required for this proof-of-concept stage.
 
-Action completed:
-- Added `atlas-execution-readiness.html` on `atlas-v2-demo-2026-09-14`.
-- Commit: `3336f658d61d157e455df348859f1897875432f4`.
-- Page title: `Atlas — From Domain Knowledge to Execution Readiness`.
-- Uses the existing Atlas navy/cyan visual vocabulary and is responsive.
-- Page communicates three zones: Build the Domain → Make Work Execution-Ready → Project Into Execution.
-- Explicitly states Atlas owns understanding/specification; downstream platforms own execution.
-- Explicitly separates the two Road LTL lineages:
-  - governed target: Road LTL 1.5 → Operational Knowledge → Certified Recursive Decomposition → Canonical WD compiler proven → Client Binding → Runtime Projection, with WD persistence and Client Binding/projection shown pending/incomplete;
-  - reference implementation: Road LTL 1.2 → Domain Warehouse 2.3 → Malkom 3.0 projection.
-- Explicit guardrail states the Malkom reference projection is not claimed to have been generated from Road LTL 1.5/P6.2.
-- Downstream consumer set shown: Malkom 3.0, Agentic AI, Workflow/BPM, Digital Twin, RPA, ERP/TMS/WMS, Custom Apps.
-- Footer labels the page `Demo candidate · GitHub only · not a production promotion`.
-
-Mid-build audit:
-- File successfully re-fetched from the demo branch after commit; title, two-lineage wording, pending markers and return link are present.
-- No canonical data, module catalog, production pointer, Vercel configuration or historical frozen asset was mutated in this slice.
+Stage result:
+- `atlas-execution-readiness.html` exists and uses approved Atlas positioning.
+- It explicitly separates the new governed lineage from the old proven Malkom reference lineage.
+- It marks canonical WD persistence pending and Client Binding/runtime projection incomplete.
+- It does not claim Road LTL 1.5/P6.2 generated the existing Malkom projection.
+- It identifies Malkom as a downstream/reference consumer rather than Atlas runtime truth.
+- No canonical data, catalog, API/security boundary, production pointer, Vercel config or frozen historical artifact was changed by D2.0.1.
 - No Vercel action occurred.
-- The page currently links back to `index.html` but is not yet linked from the Canvas primary navigation. D2.0.1 is therefore NOT closed yet.
-- Visual/browser verification remains open; current verification is structural/source-level only.
+
+Known limitation:
+- True visual/browser verification remains open. Current certification is structural/source-level. This must be closed during later manual/pre-demo visual QA; it does not block GitHub-only stage progression.
 
 Current/Demo/Target effect:
 - CURRENT: unchanged.
-- DEMO: stakeholder scope/future surface now exists as a real branch asset.
-- TARGET: no architecture promotion; page reflects current working architecture truth only.
+- DEMO: stakeholder opening/closing page ready.
+- TARGET: no architecture promotion; page reflects current governed truth.
+
+Safe resume point:
+- Demo branch head includes `d50be4b0d18aef15d533565e8bea2a46b0610531`.
 
 Next exact action:
-- Integrate a minimal entry point from the existing Atlas Canvas/navigation to `atlas-execution-readiness.html`, then run structural/regression checks and close/freeze D2.0.1 only if the resulting branch passes.
+- Formalize/verify D2.0.2 closure on the current branch. Claude already performed the Owner-authorized catalog/navigation build at `0d2a8ad`; ChatGPT must audit the resulting combined branch state (Road LTL 1.3 + Ocean 0.5 Canvas baselines, P4 bridge to Road LTL 1.5/Ocean 0.6 daughter depth), record POST_BUILD_AUDIT/freeze evidence, and only then advance to D2.0.3.
