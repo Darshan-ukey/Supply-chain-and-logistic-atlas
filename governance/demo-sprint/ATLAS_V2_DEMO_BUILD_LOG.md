@@ -164,3 +164,27 @@ Merge-readiness disposition:
 - Browser/visual QA remains open; this audit does not certify rendering or click-through behavior.
 
 **QA disposition:** D2.0.6 may be treated as **cross-agent audited**. The certified demo state is `atlas-v2-demo-2026-09-14` @ `60d43c97e55b3ad1617f81c2562d2f8790def29b`.
+
+---
+
+## Rendered browser QA failure — 2026-09-12
+
+**Reviewer:** ChatGPT via Opera Browser Connector
+**Preview:** `dpl_9fQcB127sxCqxfxf3vJp5oeokGFd` / demo HEAD `b164874c...`
+**Disposition:** **FAIL — D2.0.7 remains blocked.**
+
+The previously-open browser gap is now closed as a *test activity* but it produced blocking defects rather than a pass.
+
+Confirmed blockers:
+1. `BQA-01` — root Canvas rejects Road LTL enriched contract version and does not render.
+2. `BQA-02` — Road LTL 1.5 / LTL-03 Daughter shell renders but public execution-depth handler fails with `Handler failed to load`.
+3. `BQA-03` — Daughter `Canvas` link to `/app` returns `404: NOT_FOUND` in the preview.
+
+Rendered passes:
+- `/atlas-poc-journey` renders correctly.
+- `/atlas-execution-readiness` renders correctly.
+
+The action backlog is canonicalized at:
+`governance/backlog/ATLAS_V2_DEMO_BROWSER_QA_FAILURE_BACKLOG_2026-09-12.md`.
+
+No remediation has started. The required sequence is: exact BQA-02 runtime trace → one batched demo-branch remediation → regression/full-state checks → successor candidate baseline refresh → one Git-triggered preview → Opera rerun → only then reconsider D2.0.7 under separate Owner approval.
