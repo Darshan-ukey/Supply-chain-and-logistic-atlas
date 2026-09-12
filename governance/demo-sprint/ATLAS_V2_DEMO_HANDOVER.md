@@ -1,19 +1,21 @@
 # Atlas V2 Demo — Hot-Backup Handover
 
-Status: ACTIVE — REMEDIATION REQUIRED BEFORE D2.0.7  
+Status: ACTIVE — SERIAL REMEDIATION REQUIRED BEFORE D2.0.7  
 Primary executor: ChatGPT  
 Backup executor: Claude  
 Current stage: D2.0.7 remains BLOCKED after rendered browser QA FAIL. No failure remediation has started yet.
+Current failure gate: **BQA-01 only**.
 
 ## Mandatory read order
 1. `claude_chatGPT.md`
 2. `governance/backlog/ATLAS_V2_DEMO_BROWSER_QA_FAILURE_BACKLOG_2026-09-12.md`
-3. `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_LOG.md`
-4. `governance/demo-sprint/ATLAS_DEMO_LINEAGE_CORRECTION_2026-09-12.md`
-5. `governance/demo-sprint/ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md`
-6. `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json`
-7. `governance/demo-sprint/ATLAS_GITHUB_ONLY_DEMO_RELEASE_POLICY.md`
-8. `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_PROTOCOL.md`
+3. `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE_V20_BROWSER_QA_FAILURE_OVERLAY_2026-09-12.json`
+4. `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_LOG.md`
+5. `governance/demo-sprint/ATLAS_DEMO_LINEAGE_CORRECTION_2026-09-12.md`
+6. `governance/demo-sprint/ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md`
+7. `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json`
+8. `governance/demo-sprint/ATLAS_GITHUB_ONLY_DEMO_RELEASE_POLICY.md`
+9. `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_PROTOCOL.md`
 
 ## Current rendered-QA disposition
 
@@ -32,6 +34,24 @@ Rendered passes:
 
 Canonical remediation backlog:
 `governance/backlog/ATLAS_V2_DEMO_BROWSER_QA_FAILURE_BACKLOG_2026-09-12.md`.
+
+## Mandatory serial remediation rule
+
+Do **not** fix all three failures together.
+
+Required progression:
+
+`BQA-01 fix → exact preview → Opera test → log PASS/FAIL`
+
+Only if `BQA-01 = CLOSED_RENDERED_PASS`:
+
+`BQA-02 trace/fix → exact preview → Opera test → log PASS/FAIL`
+
+Only if `BQA-02 = CLOSED_RENDERED_PASS`:
+
+`BQA-03 fix → exact preview → Opera test → log PASS/FAIL`
+
+If any browser verification fails, stay on that same BQA item. The next failure is not authorized to start. Static/local tests support the gate but cannot close it.
 
 ## Canonical demo lineage truth — unchanged
 
@@ -53,31 +73,41 @@ This remains the verified runtime/projection proof. Label it `Reference implemen
 ## Governed successor baseline / preview state
 - Historical `release/baselines/v1.1.8-critical-hashes.json` remains immutable.
 - Successor candidate exists at `release/baselines/atlas-v2-demo-2026-09-14-critical-hashes.json`.
-- Candidate is not production baseline and must be refreshed only after remediation is certified.
-- Exact QA preview deployment used: `dpl_9fQcB127sxCqxfxf3vJp5oeokGFd`.
+- Candidate is not production baseline and should be refreshed as required after each independently certified remediation gate and again for the final corrected state.
+- Exact initial QA preview deployment used: `dpl_9fQcB127sxCqxfxf3vJp5oeokGFd`.
 - Build itself is READY with 8 Node functions, but rendered behavior fails as above.
 
 ## Branch/release rules
 - Governance: `atlas-governance-registry-v2.1`.
 - Demo implementation: `atlas-v2-demo-2026-09-14` only.
-- `main` remains integration destination only after browser failures are closed, full regression passes, and Owner explicitly approves D2.0.7.
+- `main` remains integration destination only after all three browser failures are independently closed, final regression passes, and Owner explicitly approves D2.0.7.
 - `atlas-v2-demo-2026-09-14-check` remains unauthorized/do-not-use.
 - No production Vercel deployment, promotion or deletion is authorized.
 - Do not manually create a preview when the GitHub-triggered exact-commit preview already exists.
-- GitHub pushes to governance and demo branches are known to trigger Vercel previews; batch writes/fixes to minimize Deployment Storage growth.
+- Separate browser gates will create separate preview commits by design. Minimize unrelated writes rather than combining failures.
 
 ## Exact safe resume sequence
-Before any fix is made:
-1. read `claude_chatGPT.md` and the browser-QA failure backlog;
-2. capture the exact runtime error detail for `BQA-02` before changing code;
-3. verify approved contract-family semantics for `BQA-01` rather than loosening validation blindly;
-4. verify deployed `/app` routing behavior for `BQA-03`;
-5. log `PRE_ACTION` before remediation under NO LOG → NO ADVANCE;
-6. implement one batched demo-branch remediation where technically safe;
-7. run structural/full-state regression and preserve the 8-router invariant and public/protected boundary;
-8. refresh only the successor candidate integrity baseline;
-9. rely on one Git-triggered preview, then rerun Opera browser QA;
-10. only after all three BQA blockers close with rendered evidence may D2.0.7 be reconsidered.
+
+### Active gate — BQA-01
+1. Read latest `claude_chatGPT.md` and the browser-QA backlog.
+2. Log `PRE_ACTION` for BQA-01.
+3. Verify approved contract-family semantics; do not loosen validation blindly.
+4. Implement BQA-01 only on `atlas-v2-demo-2026-09-14`.
+5. Run relevant structural regression.
+6. Wait for the Git-triggered exact preview.
+7. Test root Canvas in Opera.
+8. Log rendered PASS/FAIL.
+9. If FAIL: remain on BQA-01.
+10. If PASS: mark BQA-01 `CLOSED_RENDERED_PASS`; only then BQA-02 becomes active.
+
+### Future gate — BQA-02
+Not authorized until BQA-01 rendered PASS is logged. Capture exact runtime error before code change; implement BQA-02 only; preview; Opera verify Daughter execution-depth tabs; recheck root Canvas; log PASS/FAIL.
+
+### Future gate — BQA-03
+Not authorized until BQA-02 rendered PASS is logged. Verify route behavior; implement BQA-03 only; preview; Opera verify Daughter → Canvas navigation; recheck earlier closed gates; log PASS/FAIL.
+
+### Final verification
+Only after all three independent gates PASS: perform full demo journey browser QA and then reconsider D2.0.7 separately under Owner approval.
 
 ## Standing guardrails
-Never fabricate domain/client/readiness semantics; never make Malkom runtime structures canonical Atlas truth; never silently bridge old and new lineages; never overwrite frozen evidence; preserve public/protected boundaries; preserve AR0.2+ open decisions; no P6.2 persistence unless separately Owner-authorized and governed; do not mark a browser failure closed from static tests alone.
+Never fabricate domain/client/readiness semantics; never make Malkom runtime structures canonical Atlas truth; never silently bridge old and new lineages; never overwrite frozen evidence; preserve public/protected boundaries; preserve AR0.2+ open decisions; no P6.2 persistence unless separately Owner-authorized and governed; do not mark a browser failure closed from static tests alone; do not combine multiple BQA fixes in one remediation gate.
