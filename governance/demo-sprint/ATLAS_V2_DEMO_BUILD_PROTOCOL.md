@@ -10,186 +10,163 @@ Hot-backup executor: Claude
 ## 1. Purpose
 Deliver a demo-ready functional Atlas 2.0 **hybrid proof of concept** without sacrificing recoverability, architecture integrity or auditability.
 
-The demo track is intentionally separate from the full production-certification path. `ATLAS_V2_DEMO_GO_LIVE` is not equivalent to the governed `ATLAS_V2_GO_LIVE` production gate.
+The Monday objective is not full Atlas V2 production certification. It is a credible representative proof that Atlas domain intelligence can be exposed through a modern Atlas surface and projected into Malkom 3.0 using verified existing execution artifacts while the newer governed tool-agnostic lineage remains distinct.
 
-The Monday objective is not 100% architectural completeness. It is a credible representative proof that Atlas domain intelligence can be exposed through a modern Atlas surface and projected into Malkom 3.0 using verified existing execution artifacts, while the newer governed tool-agnostic lineage remains visibly distinct.
+## 2. Mandatory release policy
+Read and obey `governance/demo-sprint/ATLAS_GITHUB_ONLY_DEMO_RELEASE_POLICY.md`.
 
-## 2. Executor model
-- ChatGPT is the primary build executor for the demo sprint.
-- Claude is the standing hot-backup executor.
-- Claude may resume the exact current demo stage when ChatGPT is unavailable, fails, or the Owner explicitly directs takeover.
-- Both executors must read the current machine queue, this protocol, `ATLAS_V2_DEMO_HANDOVER.md`, and `../../claude_chatGPT.md` / repository-root `claude_chatGPT.md` before action.
-- Both executors must write material findings/actions into `claude_chatGPT.md` so the Owner does not have to relay findings manually.
-- Claude may continue the current authorized demo stage from the last recorded safe-resume point; it may not self-advance to the next stage, reopen architecture decisions, or change scope.
+Current standing rule:
+- **No Vercel deployment, preview, promotion or live change is authorized.**
+- Vercel is read-only for forensic inventory/audit.
+- Demo feature implementation occurs only on `atlas-v2-demo-2026-09-14`.
+- `atlas-v2-demo-2026-09-14` was created from `main` and is the sole authorized demo implementation branch unless the Owner changes this rule.
+- Tomorrow, after full audit/certification and Owner approval, the certified demo branch may be merged to `main`.
+- Merge to `main` does **not** authorize Vercel deployment.
+- If Git integration would automatically deploy a branch or `main` merge, STOP before the action that would create a live effect and report it.
 
-## 3. Small-stage build rule
-No monolithic build is allowed. The demo is built in short, independently auditable stages. Only one demo stage is active at a time.
+## 3. Executor model
+- ChatGPT is the primary build executor.
+- Claude is standing hot backup.
+- Claude may resume the exact current demo stage only when ChatGPT is unavailable/fails or the Owner directs takeover.
+- Both executors must read the machine queue, this protocol, `ATLAS_V2_DEMO_HANDOVER.md`, repository-root `claude_chatGPT.md`, `ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md`, and the GitHub-only release policy before action.
+- Both executors must record material findings/actions in `claude_chatGPT.md`.
+- Neither executor may self-advance a blocked stage or reopen architecture decisions.
+
+## 4. Small-stage build rule
+No monolithic build. Only one demo stage active at a time.
 
 Each stage must follow:
 1. PRE_BUILD_AUDIT
-2. explicit stage scope + acceptance tests
-3. build in small atomic slices
-4. MID_BUILD_AUDIT after each meaningful slice and before widening scope
+2. explicit scope + acceptance tests
+3. small atomic build slices
+4. MID_BUILD_AUDIT after meaningful slices
 5. POST_BUILD_AUDIT
 6. integration/regression check
-7. full-state freeze
+7. complete GitHub-state freeze
 8. handover/shared-log update
-9. only then authorize the next stage
+9. next-stage authorization
 
-A failed audit stops the stage. Fix the current stage before continuing.
+A failed audit stops the stage.
 
-## 4. No delta-only certification
-A stage is never accepted merely because its changed files work.
+## 5. No delta-only certification
+A stage is not accepted merely because changed files work. Validate the complete resulting repository state against architecture boundaries, Page 0/Canvas preservation, public/admin boundary, data/source lineage, navigation, build health and current demo critical path.
 
-Every post-build audit must validate the resulting complete application state against:
-- frozen architecture boundaries;
-- existing Page 0 / Canvas behavior that must remain intact;
-- admin/public access boundary;
-- data/source lineage;
-- cross-feature navigation;
-- runtime/build health;
-- current demo critical path.
+The acceptance artifact must reference the complete repository commit SHA.
 
-The acceptance artifact must reference the complete repository commit, not only the delta.
-
-## 5. Full-state freeze rule
-After every PASS stage:
-- record the exact repository commit SHA as the complete immutable stage state;
+## 6. Full-state freeze rule
+After each PASS stage:
+- record exact complete repository commit SHA;
 - create a stage freeze ref/branch when practical;
-- write/update a frozen-state manifest identifying complete repository SHA, active source assets, tests, known limitations and next stage;
-- never rewrite an earlier stage freeze point;
-- downstream stages branch from the latest certified full-state freeze, not from transient local/chat state.
+- record active source assets, tests, limitations and next stage;
+- never rewrite earlier freeze points;
+- downstream stages build from the latest certified full state.
 
-`frozen` means immutable historical full state. New work creates a newer freeze point; it does not overwrite prior frozen evidence.
+## 7. Three-branch operating model
+- `atlas-governance-registry-v2.1` = governance and authorization state.
+- `atlas-v2-demo-2026-09-14` = active demo implementation branch.
+- `main` = integration destination after Owner-approved D2.0.7 merge.
 
-## 6. Handover durability
-`governance/demo-sprint/ATLAS_V2_DEMO_HANDOVER.md` is the human-readable hot-backup state.  
-`governance/demo-sprint/ATLAS_V2_DEMO_BUILD_LOG.md` is the activity narrative.  
-`claude_chatGPT.md` is the shared ChatGPT↔Claude findings/coordination log.  
-The machine queue is the authorization state.
+Historical/recovery/architecture/presentation branches remain reference assets. Reuse from them must be traceable and deliberate.
 
-If repository state and these records disagree, the backup executor must stop and reconcile before editing.
+The repository currently contains many branches. Do not select another branch merely because it appears newer. D2.0.0 must verify any asset before importing it.
 
-## 7. Hybrid demo strategy
-The selected Monday strategy is:
-
+## 8. Hybrid demo strategy
+Selected strategy:
 `HYBRID_REUSE_PROVEN_EXECUTION_LINEAGE_WITH_ADDITIVE_ATLAS_V2_SURFACE`
 
-Use two clearly distinguished layers:
-
-### A. Proven reference execution proof
+### Proven reference execution proof
 `Road LTL V1.2 → Domain Warehouse v2.3 → Malkom 3.0 projection`
 
-Use only after D2.0.0 verifies the actual assets, counts, scripts, lineage and known gaps.
+Use only after D2.0.0 verifies actual assets, lineage, scripts and known gaps.
 
-### B. New governed Atlas direction
+### New governed Atlas direction
 `Sources → Universe → Daughter Domain → Operational Knowledge → Recursive Work Decomposition → Canonical WorkDefinition → Client Binding → Execution Readiness → Adapters`
 
-This is the tool-agnostic target architecture and must not be falsely represented as already compiling the existing Malkom proof.
+This target direction must not be falsely represented as already compiling the existing Malkom proof.
 
-### Mandatory hybrid guardrails
-- Do not claim Road LTL v1.4/v1.5/R0.3 generates the current Malkom projection unless a real validated bridge exists.
-- Do not silently merge the V1.2/v2.3 and V1.4/v1.5 schemas/lineages.
-- Do not build a full compiler bridge merely for Monday.
-- Do not hand-author LTL-03 into the reference proof lineage without explicit Owner sub-authorization.
-- Malkom remains the first downstream consumer, not canonical Atlas truth.
-- Governance/readiness exists as a secondary view; it is not the primary five-minute narrative.
-- The 60–70% POC target means representative workable execution depth, not a fabricated numeric completeness score.
+Mandatory guardrails:
+- no claim that v1.4/v1.5/R0.3 generates the existing Malkom projection unless a validated bridge exists;
+- no silent schema/lineage merge;
+- no full compiler bridge merely for Monday;
+- no hand-authored LTL-03 without explicit Owner sub-authorization;
+- Malkom is first downstream consumer, not canonical Atlas truth;
+- governance/readiness is secondary to the five-minute POC narrative;
+- 60–70% means representative workable execution depth, not a numeric completeness claim.
 
-## 8. Architecture boundary
-Atlas remains the governed enterprise/domain understanding and specification layer between enterprise reality and downstream tools.
+## 9. Demo stages — GitHub-only release model
 
-Canonical business semantics remain technology-neutral. Runtime queues, subqueues, agent nodes, BPMN implementation nodes, credentials and platform-specific implementation remain downstream projections/bindings unless an Owner-approved successor architecture explicitly changes this boundary.
-
-The AR0 architecture-refinement program remains preserved. Demo implementation must not silently resolve or overwrite open AR0 decisions.
-
-## 9. Demo build stages — REBASED 12 SEP 2026
-
-### D2.0.0 — Baseline seam verification + hybrid release freeze
+### D2.0.0 — Baseline seam verification + branch/freeze setup
 No feature mutation.
 
 Must verify:
-1. exact Road LTL version/data/hash served by the current live Vercel app;
-2. authoritative Canvas V2 asset and whether/where it was previously deployed;
-3. actual V1.2 → Domain Warehouse v2.3 → Malkom artifacts, definition/task counts, scripts and known gaps;
-4. additive compatibility between Canvas V2 components and the live product;
-5. Universe, Road LTL, Ocean and Ask Atlas version/naming facts;
-6. complete pre-change repository freeze point.
+1. exact Road LTL version/data/hash associated with the protected foundation and relevant repository state;
+2. authoritative Canvas V2 asset and deployment/history provenance;
+3. actual V1.2 → Domain Warehouse v2.3 → Malkom assets, counts, scripts and gaps;
+4. additive compatibility with the foundation/current codebase;
+5. Universe/Road LTL/Ocean/Ask Atlas version facts;
+6. GitHub branch inventory and reuse provenance;
+7. `atlas-v2-demo-2026-09-14` exists from `main` and is the active implementation branch;
+8. complete pre-change repository freeze point;
+9. no action in this stage triggers Vercel deployment.
 
 ### D2.0.1 — Additive Canvas V2 shell + Atlas scope/future page
-Reuse verified Canvas V2 presentation components additively without redefining canonical data semantics.
+Build only on `atlas-v2-demo-2026-09-14`.
 
-Add stakeholder page:
-**Atlas — From Domain Knowledge to Execution Readiness**
-
-Show:
-`Universe → Daughter Domain → Operational Knowledge → Work Decomposition → WorkDefinition → Client Binding → Execution Readiness → Adapters / Downstream Tools`
-
-Do not claim this entire successor path is already end-to-end compiled.
+Reuse verified Canvas V2 presentation components additively. Add **Atlas — From Domain Knowledge to Execution Readiness**. Do not redefine canonical data semantics or claim the successor path is already end-to-end compiled.
 
 ### D2.0.2 — Road LTL + Ocean demo domain surfaces
-Expose verified Road LTL domain navigation plus Owner-authorized Ocean 0.6 demo surface.
-
-Correctly distinguish production/reference/candidate/demo states. Fail closed where execution depth is unavailable.
+Expose verified Road LTL domain navigation and Owner-authorized Ocean 0.6 demo candidate surface with accurate status labels. Fail closed where depth is unavailable.
 
 ### D2.0.3 — Proven Road LTL execution-depth integration
-Integrate the verified existing V1.2 / Domain Warehouse v2.3 reference WorkDefinition depth into the additive demo surface.
-
-Use representative patterns rather than manufacturing full completion. Label lineage accurately. Do not relabel this as v1.5 output.
+Integrate verified existing V1.2 / Domain Warehouse v2.3 reference WorkDefinition depth. Use representative patterns; preserve lineage; do not relabel as v1.5 output.
 
 ### D2.0.4 — Malkom 3.0 adapter/projection integration
-Wire and demonstrate the verified existing Malkom adapter/projection from the proven reference lineage.
-
-Demonstrate Atlas → Malkom projection while preserving the canonical/runtime boundary. Known adapter losses/gaps remain visible in evidence, not silently filled.
+Wire the verified existing Malkom projection from the proven reference lineage. Known adapter losses/gaps remain documented.
 
 ### D2.0.5 — Representative POC journey + secondary governance/readiness view
-Wire the five-minute stakeholder journey end-to-end.
-
 Primary journey:
-`Atlas → Road LTL → representative work/execution depth → Malkom projection → larger Atlas scope/future`
+`Atlas → Road LTL → representative execution depth → Malkom projection → larger Atlas scope/future`
 
-Secondary protected/admin capability:
-- provenance;
-- gaps;
-- version state;
-- Operational Knowledge/readiness evidence;
-- accurate lineage/trace.
+Secondary protected/admin evidence may show provenance, gaps, version state, Operational Knowledge/readiness evidence and trace.
 
-Do not lead with raw recovery metrics unless useful/asked.
+### D2.0.6 — GitHub full integration/regression certification
+No deployment parity or Vercel promotion.
 
-### D2.0.6 — Hybrid demo full integration, regression + deployment parity certification
-Run complete UI/data/security/navigation/runtime/deployment audit.
-
-Verify:
+Verify the complete demo branch:
+- full UI/data/navigation integrity;
 - public/admin boundary;
 - no stale/false version labels;
 - no fabricated cross-lineage claims;
-- live readability;
-- deployment parity;
-- rollback readiness.
+- build/repository reproducibility;
+- branch provenance;
+- merge readiness against `main`;
+- rollback/freeze readiness.
 
-Create the full post-build immutable release-candidate freeze point.
+Create immutable release-candidate freeze **in GitHub only**.
 
-### D2.0.7 — Controlled Monday demo promotion
-With Owner approval, promote exactly one tested demo release to the intended live runtime and verify after deployment.
+### D2.0.7 — Owner-approved merge to main
+With explicit Owner approval:
+- compare certified demo branch with `main`;
+- merge only the certified D2.0.6 state to `main`;
+- verify repository integrity after merge;
+- record merge SHA and freeze.
 
-This is `ATLAS_V2_DEMO_GO_LIVE`, not full Atlas V2 production certification.
+**Do not deploy to Vercel.** D2.0.7 ends at GitHub `main`.
 
-## 10. Release discipline
-- GitHub is canonical.
-- Do not edit production directly in Vercel.
-- Use a dedicated demo build branch and controlled Vercel previews.
-- Avoid uncontrolled deployment fan-out from governance-only commits where possible.
-- Promote only a tested release candidate.
-- Preserve the prior live release for rollback.
+### Post-D2.0.7 live deployment
+Not authorized under the current sprint. Any future update to `supplychainatlas.vercel.app` requires separate Owner authorization after Vercel project/domain and auto-deployment behavior are understood.
+
+## 10. Vercel estate rule
+`supplychainatlas.vercel.app` is the Owner-designated Aug 23/25 foundation and eventual live upgrade target.
+
+Other Atlas Vercel projects/deployments are unclassified pending forensic review for unique data/code, duplicates, recoverability and safe deletion. No Vercel deletion is authorized during this demo build.
 
 ## 11. Stop conditions
 Stop and report rather than improvise when:
-- a required governed/reference asset is missing;
-- lineage cannot be proven;
-- an assumption would fabricate domain/client knowledge;
-- the current full-state baseline cannot be reproduced;
-- a change would mutate a historical frozen asset;
-- public/protected data boundaries cannot be preserved;
-- a change would falsely imply the new governed lineage already drives the old Malkom proof;
-- the demo requirement conflicts with an unresolved architecture decision in a way that changes canonical meaning.
+- required asset/lineage cannot be proven;
+- a change would fabricate domain/client knowledge;
+- a historical frozen asset would be mutated;
+- public/protected boundaries cannot be preserved;
+- implementation would falsely imply the new governed lineage drives the old Malkom proof;
+- an unresolved architecture decision would be silently closed;
+- any GitHub action is expected to trigger an unauthorized Vercel deployment or live-site change.
