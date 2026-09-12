@@ -350,3 +350,40 @@ Files / branches / components affected:
 
 Next exact action:
 - Build and run the full-state certification suite, create the freeze manifest, audit, close.
+
+## 2026-09-12 19:26 IST — Claude — D2.0.6
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: STAGE_CLOSURE
+
+Evidence inspected:
+- Demo branch `66918e1` → build `0e6a715` → audit `60d43c9`.
+- 39 pre-existing test suites run on the demo branch AND on main baseline `58b14c7` for comparison.
+- `governance/demo-sprint/D2.0.6_POST_BUILD_AUDIT.md` and `D2.0.6_POST_BUILD_FULL_STATE_FREEZE.json`.
+
+**REGRESSION FOUND IN MY OWN EARLIER WORK — the main reason this stage mattered.**
+Running every pre-existing suite against both branches (as `NO_DELTA_ONLY_CERTIFICATION` demands) showed two suites PASS on main but FAIL on the demo branch: `v1.1.8-serverless-budget` and `v1.1.8-api-router-smoke`. Cause: my D2.0.1 commit `ed7507c` added `api/execution-depth-projection.js` as a **9th top-level serverless function**, violating the "exactly 8 consolidated routers" invariant. The Vercel budget was not exceeded (9/12), so nothing surfaced it at the time — the violated constraint is architectural, not quota. A delta-only certification would have shipped this.
+
+**Fixed in the architecture's own idiom, without weakening the test:** removed the 9th function, registered the handler inside the existing `api/atlas.js` router, added rewrite `/api/execution-depth-projection → /api/atlas?action=execution-depth-projection` matching the 29 existing ones. 8 routers restored; endpoint verified still returning 200 with real LTL-03 content. The rewrite is required because the frozen renderer (hash-pinned in `canvas-2.0.1-candidate`) calls the public path — editing it would break that registration.
+
+**Certification:** new full-state suite `tests/d2-0-6-full-state-certification.mjs` — **17/17 PASS** across full inventory (721 files), referential integrity, public/admin boundaries, version-label accuracy, false-cross-lineage regression, link integrity and no-deployment-dependency.
+
+**Public/admin boundary PASS:** protected execution-IP handlers are absent from this branch and referenced by no router; no public surface, bridge or renderer touches a protected route; every task in both projection bundles is `PUBLIC_SAFE` with `detailIncluded: false`.
+
+**MERGE-READINESS — two conditions recorded, deliberately not resolved.** The v1.1.8 release-integrity endpoint pins 37 critical file hashes; two now differ: `data/module-catalog.json` (D2.0.2 catalog port, Owner-directed) and `vercel.json` (this stage's rewrite). Both are intentional and evidenced, not corruption. **I did not update the pinned hashes** — doing so would forge release integrity. Correct resolution is a governed release-baseline bump, an Owner decision. Consequence if merged as-is: the live release-integrity endpoint will report `criticalIntegrity: false`. Recorded so it is not discovered post-merge.
+
+**Environmental, not regressions:** `stage17`–`stage21` smokes and `v1.1.4-static-parity` fail identically on main; 6 browser-certificate suites need a Chromium binary. Per `NO_DEPLOYMENT_PARITY_REQUIREMENT` no deployment is required. `p4-canvas-daughter-integration` retains its single documented `index.html` lineage gate, unchanged since `45a2888`.
+
+**Freeze created:** `D2.0.6_POST_BUILD_FULL_STATE_FREEZE.json`, 721 files with individual SHA-256s, `fullStateTreeHash` `f79f8c27…`. Flagged `notARetroactivePreChangeFreeze` — D2.0.0's missing pre-change freeze cannot be recreated retroactively and **remains open**.
+
+Audit / test result:
+- **D2.0.6 PASS at full-state level**, with the §6 merge-readiness conditions recorded.
+
+Impact / guardrail:
+- Browser/visual verification remains **open and uncertifiable from here**. This stage certified structure, integrity, boundaries and lineage — not that anything renders.
+- D2.0.3–D2.0.6 remain Claude self-reported; ChatGPT's independent audit is welcome, D2.0.2 being the precedent.
+
+Safe resume point:
+- `atlas-v2-demo-2026-09-14` @ `60d43c9`.
+
+Next exact action:
+- D2.0.7 requires Owner approval and is blocked by its own `STOP_IF_GIT_INTEGRATION_WOULD_AUTO_DEPLOY` guardrail (see the structured `recordedBlocker` in the queue). Recommend resolving Vercel account access and preferring a **preview deployment of the demo branch** over a main merge for browser verification — it closes the last open item without triggering production auto-deploy and without the release-integrity condition above.
