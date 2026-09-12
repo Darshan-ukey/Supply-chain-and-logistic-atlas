@@ -15,12 +15,13 @@
 
 Before any implementation/audit action, read:
 1. `claude_chatGPT.md` — this file.
-2. `governance/demo-sprint/ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md` — **Current Live vs Monday Demo vs Target Atlas V2**.
-3. `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json` — machine authorization/current stage.
-4. `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_PROTOCOL.md`.
-5. `governance/demo-sprint/ATLAS_V2_DEMO_HANDOVER.md`.
-6. `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_LOG.md`.
-7. Frozen architecture/governance assets referenced by the active stage.
+2. `governance/demo-sprint/ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md` — Current Live vs Monday Demo vs Target Atlas V2.
+3. `governance/demo-sprint/ATLAS_VERCEL_PROJECT_AND_DEPLOYMENT_DISPOSITION_AUDIT.md` — protected foundation + Vercel estate cleanup rules.
+4. `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json` — machine authorization/current stage.
+5. `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_PROTOCOL.md`.
+6. `governance/demo-sprint/ATLAS_V2_DEMO_HANDOVER.md`.
+7. `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_LOG.md`.
+8. Frozen architecture/governance assets referenced by the active stage.
 
 If any two records conflict, STOP, reconcile governance first, then implement.
 
@@ -50,10 +51,9 @@ If any two records conflict, STOP, reconcile governance first, then implement.
 Detailed authoritative reference:
 `governance/demo-sprint/ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md`
 
-Every executor must distinguish:
+Every executor must distinguish CURRENT, DEMO and TARGET.
 
 ## A. CURRENT LIVE / REGISTERED PRODUCTION BASELINE
-What Atlas is registered to run today / what the current Vercel project exposes.
 
 Verified frozen production registry:
 - Universe **7.3**
@@ -66,27 +66,60 @@ Verified frozen production registry:
 
 Latest candidate/reference assets include Road LTL 1.5, Road LTL 1.5 Operational Knowledge, Ocean FCL/LCL 0.6, OK Contract v2 candidate, Information Resolution v1 and BOL Information Resolution baseline v0.1. Candidate ≠ production.
 
-### Live Vercel identity — verified 12 Sep 2026
-Connected project:
-- `logistic_atlas_v2`
-- project ID `prj_zoyyLeFrvLKHFU8Unzq3Cr8zWDc0`
-- team ID `team_82G0YS5CSlKdabFzFBgLUj3r`
-- latest observed deployment `dpl_2P7RyifswyrGSmgwFVZ9QVZT2PGL` — `READY`, target `null`
-- project metadata domains observed:
-  - `scoperationsintelligence.vercel.app`
-  - `logisticatlasv2-ukeydarsh-2051s-projects.vercel.app`
-  - `logisticatlasv2-git-main-ukeydarsh-2051s-projects.vercel.app`
+### Owner-designated foundation URL — authoritative operating direction
+**Classification:** `OWNER_DIRECTION`
 
-**Unresolved:** Owner refers to live site as `supplychainatlas.vercel.app`, but connected project metadata did not list that domain. D2.0.0 must verify exact domain/project mapping before promotion.
+The foundation to preserve and eventually update is:
 
-**Unresolved:** frozen registry says Road LTL 1.3 production; older live/Canvas references appear tied to V1.2. Exact runtime-served version/hash must be proven, not assumed.
+> **`supplychainatlas.vercel.app`**
+
+The Owner identifies this as the Atlas foundation release that went live around **23–25 August 2026**.
+
+This is the foundation/rollback reference and eventual upgrade target. Do not substitute another Vercel URL merely because it has a newer deployment or a project name that looks more current.
+
+### Multiple Vercel projects/deployments — treat as unclassified until audited
+**Classification:** `VERIFIED_RUNTIME_FACT + OWNER_DIRECTION`
+
+The Vercel account contains multiple distinct Atlas-related projects, consistent with the earlier uncontrolled deployment/storage problem. Projects observed include:
+- `logistic_atlas_v2` — `prj_zoyyLeFrvLKHFU8Unzq3Cr8zWDc0`
+- `supply-chain-atlas-stable` — `prj_55NW2WX6uUJUIFQiGkCnKeamLHCt`
+- `supply-chain-atlas-lab` — `prj_nGwhhmGv8q8gS6vyRzOprBhqTZQm`
+- `sc-and-logistics-atlas-intelligence-v0` — `prj_LzA4amX6vI7KfGFgZ16LVv5OXLFp`
+- `atlas-intelligence-v0.6.1` — `prj_b8tjr188wT4044p9g0SZuMzIZ4Qb`
+- `atlas-intelligence-v0` — `prj_F181CWtauq0Qrc4GmPRoJO11hVsG`
+- `logistics_atlas1.0` — `prj_rOw8qi3vnUY2YeCa6jXOK0d3GRVj`
+- `atlas-intelligence-v05-compile-test` — `prj_HnBFRmSpydMevZ9HqbZKV4e0w8Uq`
+
+None of these may be assumed to be disposable or authoritative solely by name.
+
+Detailed audit file:
+`governance/demo-sprint/ATLAS_VERCEL_PROJECT_AND_DEPLOYMENT_DISPOSITION_AUDIT.md`
+
+### Vercel deletion rule
+No Atlas-related Vercel project/deployment may be deleted until it is classified as one of:
+- `FOUNDATION_KEEP`
+- `ACTIVE_BUILD_KEEP`
+- `UNIQUE_RECOVERY_REQUIRED`
+- `HISTORICAL_KEEP`
+- `DUPLICATE_SAFE_TO_DELETE`
+- `OBSOLETE_SAFE_TO_DELETE`
+- `TEMPORARY_PREVIEW_SAFE_TO_DELETE`
+- `UNKNOWN_BLOCK_DELETE`
+
+Deletion requires proof that no unique source/work/configuration will be lost and explicit Owner approval of the deletion batch.
+
+### Current live seam still unresolved
+The frozen registry says Road LTL 1.3 production, while older live/Canvas references appear tied to V1.2. Exact runtime-served version/hash must be proven, not assumed.
+
+The exact Vercel project/deployment currently serving `supplychainatlas.vercel.app` must also be proven during D2.0.0. Owner authority establishes the URL's role as foundation; technical mapping still needs evidence.
 
 ### Current-state preservation rule
-The current live/frozen state remains the rollback baseline until target parity is certified. Demo work must not mutate it in place.
+The Aug 23/25 `supplychainatlas.vercel.app` foundation remains the rollback baseline until demo/target parity is certified. Demo work must not mutate it in place.
 
 ---
 
 ## B. MONDAY HYBRID DEMO
+
 Purpose: functional proof, not final architecture.
 
 Owner accepts approximately 60–70% workable/acceptable **representative execution depth** for the POC. Do not turn this into a fabricated numeric Atlas completeness score.
@@ -102,7 +135,7 @@ Communicate:
 Reuse only after verification:
 `Road LTL V1.2 → Domain Warehouse v2.3 / reference WorkDefinition → Malkom 3.0 projection`
 
-This is a proven/reference execution path for demo purposes. **Do not claim Road LTL v1.4/v1.5/R0.3 currently generates it.**
+Do not claim Road LTL v1.4/v1.5/R0.3 currently generates it.
 
 ### Ocean
 Ocean 0.6 may be used as Owner-authorized demo candidate surface. Do not relabel it as production or imply Road-LTL-equivalent execution depth.
@@ -110,7 +143,7 @@ Ocean 0.6 may be used as Owner-authorized demo candidate surface. Do not relabel
 ### Governance/readiness view
 Keep it secondary/admin. The five-minute stakeholder story is capability/proof, not governance theater.
 
-### Demo assets must be classified
+### Demo asset disposition classes
 Every new/reused demo component must be one of:
 - `KEEP`
 - `BUILD_ON`
@@ -119,21 +152,20 @@ Every new/reused demo component must be one of:
 - `RETIRE_AFTER_PARITY`
 - `DEMO_ONLY`
 
-No unclassified demo component may drift into target production.
-
-### Default post-demo disposition
+Default post-demo disposition:
 - Page 0 / Universe UI: **BUILD_ON** if target-data-driven.
 - Universe 7.3: **KEEP** until governed evidence requires successor.
 - Canvas V2 additive shell: **BUILD_ON** if it remains a materialized view over governed data.
 - Old Road LTL V1.2 execution proof: **RETIRE_AFTER_PARITY** from active canonical path; preserve as historical/test reference.
 - Domain Warehouse v2.3 proof fixtures: **BRIDGE/REPLACE** once canonical WD VNext compiler exists.
-- Malkom adapter: **BUILD_ON**, but rebase later to target canonical specification/output.
+- Malkom adapter: **BUILD_ON**, then rebase to target canonical specification/output.
 - Governance/readiness panel: **BUILD_ON**.
 - Hand-authored semantic bridge logic: **DEMO_ONLY/AVOID** unless explicitly Owner-authorized.
 
 ---
 
 ## C. TARGET ATLAS V2
+
 Product identity:
 > **Atlas is the governed intelligence and specification layer between enterprise/client operations and the technologies used to transform or execute them.**
 
@@ -165,7 +197,7 @@ Do not implement candidate layers as frozen truth until Owner approval.
 
 # 3. Target storage / governance / UI model
 
-Detailed specification lives in `ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md`. Minimum rules below are binding design intent.
+Detailed specification lives in `ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md`.
 
 ## 3.1 Canonical persistence
 - Backend **Knowledge Warehouse** = canonical persistent governed knowledge/state.
@@ -196,7 +228,7 @@ Missing knowledge remains explicit. It is not fabricated downstream.
 ## 3.6 Canonical Work Decomposition
 Store parent A5 lineage, canonical child work units, semantic type, trigger/prerequisites/dependencies, business-significant ordering/parallelism, rationale/evidence, human/system business boundary, exception/escalation/retry/recovery relationships and completion/evidence requirements.
 
-Canonical decomposition stops at **business-semantic sufficiency**, not runtime convenience, if/when AR0.2 refinement is approved.
+Canonical decomposition stops at business-semantic sufficiency, not runtime convenience, if/when AR0.2 refinement is approved.
 
 ## 3.7 Canonical WorkDefinition
 Store technology-neutral execution semantics: identity/version/lineage, applicability, canonical inputs/objects/fields, rules/controls, decisions/authority, permitted actions/exchanges, HITL boundary, states/outcomes/transitions, waits/clocks, exceptions/escalation/business retry/recovery, evidence/completion and client-binding requirement references.
@@ -220,8 +252,6 @@ Store canonical/specification reference, execution instance, observed states/eve
 ---
 
 # 4. Target change propagation to UI
-
-Target flow:
 
 `Source change detected`
 → preserve version/hash/snapshot
@@ -258,16 +288,28 @@ No semantic truth is created by directly editing UI copy/data to make a screen l
 
 ## Current → Demo
 Still to verify/build:
-- exact `supplychainatlas.vercel.app` ↔ Vercel project/domain mapping;
+- exact `supplychainatlas.vercel.app` → Vercel project/deployment mapping;
+- exact Aug 23/25 foundation deployment/source identity;
 - exact live Road LTL served version/hash;
 - authoritative Canvas V2 asset/deployment history;
 - old V1.2 → Domain Warehouse v2.3 → Malkom assets/counts/scripts/gaps;
-- additive compatibility with live app;
+- additive compatibility with live foundation;
 - Ocean 0.6 demo wiring;
 - representative execution-depth navigation;
 - Malkom projection in demo surface;
 - public/admin regression;
 - controlled promotion + rollback.
+
+## Vercel estate cleanup gap
+Still required separately from the demo feature build:
+- inventory all Atlas projects/deployments;
+- identify duplicates/previews/labs/historical states;
+- identify any Vercel-only unique work;
+- recover unique work to GitHub before deletion;
+- map backend/config differences;
+- quantify storage contribution where possible;
+- prepare reviewed deletion manifest;
+- delete only after Owner approval.
 
 ## Demo → Target
 Demo will **not** solve:
@@ -285,7 +327,7 @@ Demo will **not** solve:
 - full Atlas V2 production promotion.
 
 ### Post-demo rule
-Resume the governed architecture/production critical path. Demo success does not close AR0.2–AR0.6, R0.4+, P6.2+ or `ATLAS_V2_GO_LIVE`.
+Resume governed architecture/production critical path. Demo success does not close AR0.2–AR0.6, R0.4+, P6.2+ or `ATLAS_V2_GO_LIVE`.
 
 ---
 
@@ -298,12 +340,15 @@ Resume the governed architecture/production critical path. Demo success does not
 - Prefer several representative execution patterns: deterministic, decision-heavy, HITL, exception/escalation, document/information-intensive.
 - New stakeholder page: **Atlas — From Domain Knowledge to Execution Readiness**.
 - Malkom = first downstream consumer/projection, not Atlas canonical truth.
+- `supplychainatlas.vercel.app` = protected Aug 23/25 foundation and eventual upgrade target.
+- Other Atlas Vercel projects/deployments = unclassified until forensic disposition audit.
+- No Vercel cleanup deletion during demo build without explicit evidence + Owner approval.
 
 ---
 
 # 7. Current D2.0 stage plan
 
-- `D2.0.0` — Baseline seam verification + hybrid release freeze.
+- `D2.0.0` — Baseline seam verification + hybrid release freeze, including foundation identification and Vercel estate inventory.
 - `D2.0.1` — Additive Canvas V2 shell + Atlas scope/future page.
 - `D2.0.2` — Road LTL + Ocean demo domain surfaces.
 - `D2.0.3` — Proven Road LTL execution-depth integration from verified V1.2/Domain Warehouse v2.3 proof.
@@ -339,5 +384,3 @@ Current/Demo/Target effect:
 Next action:
 - ...
 ```
-
-Whenever new evidence changes Current, Demo or Target assumptions, update this file and `ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md` before implementation continues.
