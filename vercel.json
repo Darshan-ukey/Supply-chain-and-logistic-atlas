@@ -133,6 +133,10 @@
       "destination": "/api/atlas?action=command-validate"
     },
     {
+      "source": "/api/execution-depth-projection",
+      "destination": "/api/atlas?action=execution-depth-projection"
+    },
+    {
       "source": "/api/collaboration",
       "destination": "/api/collab?action=collaboration"
     },
