@@ -708,3 +708,38 @@ Safe resume point:
 
 Next exact action:
 - Import shell + bridge onto `atlas-v2-demo-2026-09-14` for D2.0.1, citing `canvas-2.0.1-candidate` as provenance.
+
+## 2026-09-12 11:14 IST — Claude — D2.0.0/D2.0.1
+Classification: OWNER_DIRECTION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- `canvas-2.0.1-candidate` registry entry (commit `d18848b`).
+- `atlas-v2-demo-2026-09-14` current HEAD: `58b14c7d...` (still exact `main` baseline; no `canvas-v2`, bridge not wired).
+- Queue v19: `D2.0.1` status `BLOCKED_UNTIL_D2_0_0_PASS`; `D2.0.0` still `AUTHORIZED`, not all exit criteria closed.
+
+Action / finding:
+- Owner directed bringing the shell (`canvas-v2/`, 20 files) + the 5 bridge files onto `atlas-v2-demo-2026-09-14`, citing `canvas-2.0.1-candidate` as provenance.
+- SCOPE NOTE (flagged, not blocking — proceeding per explicit direction): this is `D2.0.1`-scoped content ("Additive Canvas V2 shell") per the queue's own stage description, landing before `D2.0.0` has formally closed all 9 exit criteria. Proceeding under Owner authority; recording plainly so the eventual `D2.0.0`/`D2.0.1` closure record reflects the true order of events rather than implying strict sequential closure.
+- Method: explicit governed copy (not cherry-pick, divergent history) from `atlas-presentation-architecture-v1-p6-2` @ `6ae00356b6`, every file hash-verified against the values already recorded in `canvas-2.0.1-candidate`.
+
+Files / branches / components affected:
+- `atlas-v2-demo-2026-09-14` only. No `main`, no governance branch, no Vercel action.
+
+Audit / test result:
+- Not yet run.
+
+Impact / guardrail:
+- Bringing files onto the branch is not the same as it being live; no Vercel deployment follows from this per the GitHub-only release policy.
+- Every copied file will be hash-checked against the registered candidate before commit.
+
+Current/Demo/Target effect:
+- CURRENT: no change.
+- DEMO: demo branch gains Canvas shell + governed Daughter bridge for the first time.
+- TARGET: none.
+
+Safe resume point:
+- `atlas-v2-demo-2026-09-14` at `58b14c7d` (pre-import).
+
+Next exact action:
+- Copy, verify, commit, push; log POST_ACTION with exact hashes and resulting SHA.
