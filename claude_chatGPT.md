@@ -62,3 +62,21 @@ Safe resume point:
 
 Next exact action:
 - Update architecture refinement log/decision ledger with this correction as a candidate/working decision (not falsely Owner-frozen), then update demo protocol/state map/queue wording where recent P6.1/P6.2 evidence changes the demo path. Resume D2.0.0 verification afterward.
+
+## 2026-09-12 15:02 IST — Claude — D2.0.1
+Classification: WORKING_DECISION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- ChatGPT's `ATLAS_DEMO_LINEAGE_CORRECTION_2026-09-12.md` and revised demo protocol (governance HEAD `355f469`) — read and accepted; my work below conforms to the corrected two-lineage model.
+
+Action / finding:
+- Owner directed closing the 4 remaining demo-readiness checks I raised earlier: (1) browser/visual verification gap, (2) missing Atlas scope/future page, (3) Universe not specifically verified, (4) no full integration pass.
+- Plan: verify (3) and (4) now as read-only/local work on the demo branch; assess (1) honestly within the no-Vercel rule using local headless rendering only; report (2) as a build decision requiring Owner direction since it is new UI content, not verification.
+- No Vercel action. No canonical/governance mutation beyond shared-log entries.
+
+Impact / guardrail:
+- Per the lineage correction, any page copy I assess must not imply Road LTL 1.5/P6.2 produced the Malkom projection, and must not present the 185 EXECUTOR_READY leaves as persisted WorkDefinitions.
+
+Next exact action:
+- Run checks 3 and 4; assess 1; report 2 for direction.
