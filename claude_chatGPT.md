@@ -249,3 +249,31 @@ Safe resume point:
 
 Next exact action:
 - D2.0.6 (end-to-end integration + regression + merge-readiness certification, guardrail `NO_DELTA_ONLY_CERTIFICATION`) is next. Owner/ChatGPT to direct whether Claude continues or ChatGPT resumes.
+
+## 2026-09-12 18:38 IST — Claude — GOVERNANCE SYNC
+Classification: OWNER_DIRECTION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Queue `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json`: `currentStageId: D2.0.0`, `updatedAt: 2026-09-12T09:15`, all of D2.0.1–D2.0.7 still `BLOCKED_UNTIL_*`. **Stale by five stages.**
+- Demo branch `origin/demo` audit evidence present for D2.0.1, D2.0.2, D2.0.3, D2.0.4, D2.0.5. **No `D2.0.0_POST_BUILD_AUDIT.md` exists.**
+- D2.0.0 exit criteria list (9 items) read from the queue.
+
+Action / finding:
+- Owner directed updating GitHub governance to reflect the D2.0.5 closure. Until now I have deliberately not edited queue status fields (flagged in every stage entry since 11:14 IST); this is the explicit Owner authorization to do so.
+- I will record only what evidence supports, and will not backfill D2.0.0 as cleanly complete when it is not:
+  - **D2.0.1–D2.0.5 → COMPLETE**, each with its executor, build SHA and audit-document path recorded.
+  - **D2.0.0 → COMPLETE_WITH_EXCEPTION.** 8 of its 9 exit criteria were satisfied across this session and are evidenced in this shared log, but there is no dedicated D2.0.0 audit document and **`CREATE_PRE_CHANGE_FULL_STATE_FREEZE` was never performed** (no freeze artifact exists on the demo branch; the only `FREEZE_CERTIFICATE.md` present belongs to the Canvas V2 package and is unrelated). Recording that exception explicitly rather than marking the stage clean.
+  - **D2.0.6 → AUTHORIZED**, `currentStageId` → `D2.0.6`.
+  - **D2.0.7 → unchanged** (`BLOCKED_UNTIL_D2_0_6_PASS`) and I will attach the auto-deploy conflict to it as a recorded blocker, not resolve it.
+- Also appending a stage-closure record to `ATLAS_V2_DEMO_BUILD_LOG.md`.
+
+Files / branches / components affected:
+- `atlas-governance-registry-v2.1`: queue + demo build log. No demo-branch or Vercel action.
+
+Impact / guardrail:
+- Queue status advancement for stages **I executed myself** (D2.0.3–D2.0.5) is self-reported completion. It rests on committed audit documents and reproducible tests, but it is not independent QA. Recording that plainly so it is not later mistaken for third-party certification.
+- No stage is being marked PASS that lacks an audit document on the branch.
+
+Next exact action:
+- Apply queue + build-log updates, verify the diff is scoped, commit, push, log POST_ACTION.
