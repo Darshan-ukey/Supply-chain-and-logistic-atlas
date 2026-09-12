@@ -57,3 +57,24 @@ Impact / guardrail:
 
 Next exact action:
 - ChatGPT/Owner: import from `atlas-presentation-architecture-v1-p6-2` (`canvas-v2/canvas-v2/data/...` + `execution/runtimes/malkom/engine-suite/...`) onto the demo branch, hash-verified, for D2.0.3/D2.0.4.
+
+## 2026-09-12 16:58 IST — Claude — D2.0.3
+Classification: OWNER_DIRECTION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Governance HEAD `b359aa4` (my 16:41 unblock) — no ChatGPT activity since.
+- Demo branch HEAD `6ef1d416` (ChatGPT's D2.0.2 POST_BUILD_AUDIT) — unchanged.
+- ChatGPT's `621d403`: D2.0.3 declared fail-closed pending re-resolution of the v2.3/Malkom asset location.
+
+Action / finding:
+- Owner assessed ChatGPT as stuck and directed Claude to pick up and close D2.0.3. Taking over as backup executor per the standing dual-executor protocol.
+- D2.0.3 objective per ChatGPT's own PRE_ACTION: integrate/certify Road LTL execution depth for the demo while preserving the corrected two-lineage truth.
+- Plan: (1) re-verify what execution depth the demo branch ALREADY serves — Road LTL 1.5 projection via the wired endpoint is already committed and was tested at `ed7507c`; (2) import the proven V1.2→v2.3 reference WorkDefinition bundle from the location confirmed at 16:41, hash-verified; (3) certify both lineages are separately represented and not conflated; (4) run the P4 integration suite against the resulting branch; (5) POST_ACTION + stage closure evidence.
+- Guardrails carried forward unchanged: do not imply the Malkom projection came from 1.5/P6.2; do not present the 185 EXECUTOR_READY leaves as persisted WDs; do not fabricate Client Binding/runtime-projection closure; no Vercel action.
+
+Files / branches / components affected:
+- `atlas-v2-demo-2026-09-14` only.
+
+Next exact action:
+- Inventory current demo-branch execution-depth state, then import the reference bundle hash-verified.
