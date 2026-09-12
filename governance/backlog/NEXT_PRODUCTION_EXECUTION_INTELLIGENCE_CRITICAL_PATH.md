@@ -1,113 +1,87 @@
 # Atlas V2 — Governed Roadmap and Critical Paths
 
 Status: ACTIVE BACKLOG / DEMO SPRINT PRIORITY / ARCHITECTURE REFINEMENT PRESERVED  
-Updated: 11 September 2026  
+Updated: 12 September 2026  
 Canonical machine queue: `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json` on `atlas-governance-registry-v2.1`.
 
-# Immediate priority — Atlas V2 Demo Sprint
+## Immediate priority — Atlas V2 Demo Sprint
 
-Owner target: **demo-ready functional Atlas 2.0 concept live Monday 14 September 2026** for stakeholder demonstration Tuesday 15 September 2026.
+Owner target: GitHub-certified functional Atlas 2.0 demo concept by Monday 14 September 2026 for stakeholder demonstration Tuesday 15 September 2026. **No Vercel deployment/preview/promotion is authorized.** Demo branch: `atlas-v2-demo-2026-09-14`; merge to `main` is separately Owner-gated and does not authorize Vercel.
 
-This is a distinct release track:
-- `ATLAS_V2_DEMO_GO_LIVE` = functional concept/demo promotion.
-- `ATLAS_V2_GO_LIVE` = full governed production promotion after architecture/recovery/P6 certification.
+### Corrected two-lineage demo architecture — 12 Sep evidence
 
-Primary demo executor: ChatGPT.  
-Hot backup: Claude, authorized to resume the exact current demo stage if ChatGPT is unavailable/fails or the Owner directs takeover.
+**New governed target lineage**  
+`Road LTL 1.5 → Operational Knowledge → Certified Recursive Decomposition (P6.1) → Canonical WorkDefinition compiler proven (P6.2), persistence pending → Client Binding / Runtime Projection not yet complete`
 
-Governing demo files:
-- `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_PROTOCOL.md`
-- `governance/demo-sprint/ATLAS_V2_DEMO_HANDOVER.md`
-- `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_LOG.md`
+Evidence state: P6.1 = 22 tasks / 603 work units / 444 terminal leaves / 185 EXECUTOR_READY / 163 BLOCKED_BY_CLIENT_BINDING / 96 BLOCKED_BY_KNOWLEDGE_GAP. P6.2 compiler/verifier path is technically proven against its frozen contract, but canonical WD persistence is not authorized/completed. Do not show 185 WDs as persisted/canonical until persistence + QA/custody actually occur.
 
-## Mandatory demo build discipline
-Every build stage requires PRE_BUILD_AUDIT, MID_BUILD_AUDIT, POST_BUILD_AUDIT, full integration/regression review and a complete immutable repository freeze point. Delta-only certification is invalid. Prior freeze points are never overwritten.
+**Proven Malkom execution-reference lineage**  
+`Road LTL 1.2 → Domain Warehouse 2.3 → Malkom 3.0 projection`
 
-## D2.0.0 — Baseline, handover and release-control setup
-Status: **AUTHORIZED — CURRENT**
+This remains the proven Malkom-consumable adapter/projection reference unless D2.0.0+ verifies a new-lineage Client Binding + Malkom projection. **Never imply that the existing Malkom proof was generated from Road LTL 1.5/P6.2.**
 
-Audit the complete current repo/app/deployment state, verify required source assets and establish working branch, rollback/freeze strategy and hot-backup state. No feature mutation.
+### Why the demo path was corrected
+Earlier demo planning conservatively treated recursive decomposition / canonical WD implementation in the new lineage as largely unfinished. Claude's 12 Sep forensic review recovered stronger evidence: P6.1 is certified/live in the protected store and P6.2's compiler infrastructure exists and passes certification. The remaining seam to Malkom is downstream of canonical compilation: persistence/custody where applicable, Client Binding, and Runtime Projection. The hybrid demo therefore remains valid, but its narrative must show the actual maturity of both lineages rather than understating the new lineage or overstating its Malkom connectivity.
 
-## D2.0.1 — Atlas shell + scope/future page
-Status: BLOCKED_UNTIL_D2_0_0_PASS
+## Demo stages
 
-Add `Atlas — From Domain Knowledge to Execution Readiness`, preserving existing navigation and public/protected boundaries.
+### D2.0.0 — Baseline seam verification + branch/freeze setup
+Status: CURRENT / completion evidence must reconcile both lineages.
 
-## D2.0.2 — Ocean 0.6 live surface
-Status: BLOCKED_UNTIL_D2_0_1_PASS
+Verify repository/foundation baseline, Canvas assets/history, exact Road LTL version seams, P6.1/P6.2 evidence, old Domain Warehouse 2.3/Malkom proof assets, branch provenance, additive compatibility and no Vercel side effect. Freeze the complete pre-change state.
 
-Expose/verify Ocean FCL/LCL 0.6 from existing assets under the Owner-authorized demo assumption. Do not imply Road-LTL-equivalent execution depth unless verified.
+### D2.0.1 — Additive Canvas V2 shell + Atlas scope/future page
+Status: Owner separately authorized Claude to execute in parallel; any completed work is valid if logged/audited. Present `Atlas — From Domain Knowledge to Execution Readiness` without redefining canonical truth.
 
-## D2.0.3 — Road LTL execution-depth explorer
-Status: BLOCKED_UNTIL_D2_0_2_PASS
+### D2.0.2 — Road LTL + Ocean demo domain surfaces
+Show verified Road LTL target-lineage maturity and Ocean candidate surface with exact status labels. Fail closed where Ocean execution depth is unavailable.
 
-Expose Road LTL Operational Knowledge -> Work Decomposition -> Canonical WorkDefinition as a coherent inspectable path.
+### D2.0.3 — Road LTL execution-depth integration
+Expose the **new governed lineage** accurately through certified P6.1 decomposition and P6.2 compiler-ready status where inspectable. For actual Malkom execution-depth proof, use the **old proven reference lineage** and label it explicitly. Do not fabricate persisted P6.2 WDs and do not rebrand Domain Warehouse 2.3 artifacts as Road LTL 1.5 outputs.
 
-## D2.0.4 — Malkom adapter/projection
-Status: BLOCKED_UNTIL_D2_0_3_PASS
+### D2.0.4 — Malkom 3.0 adapter/projection integration
+Demonstrate the verified `Road LTL 1.2 → Domain Warehouse 2.3 → Malkom 3.0` reference adapter/projection. Malkom is the first execution consumer, not canonical Atlas truth. If a new-lineage Malkom seam is discovered, it requires independent verification before replacing this reference path.
 
-Demonstrate canonical Atlas semantics projected to Malkom-specific structures while preserving the canonical/runtime boundary.
+### D2.0.5 — Representative POC journey + secondary governance/readiness view
+Connect the stakeholder journey. Governance/readiness remains secondary. Explicit blocker classes may be shown, but no fake numeric completeness score and no claim of persisted 185 WDs before P6.2 authorization/persistence/QA.
 
-## D2.0.5 — Trace + readiness + demo narrative integration
-Status: BLOCKED_UNTIL_D2_0_4_PASS
+### D2.0.6 — GitHub full integration + regression + merge-readiness certification
+Full-state audit, security/public-admin boundary checks, stale/false-version-label checks, complete repository freeze. No Vercel deployment/parity requirement.
 
-Wire the minimum coherent traceability/readiness/gap surfaces and the end-to-end stakeholder demo journey.
+### D2.0.7 — Owner-approved merge to `main`
+Requires D2.0.6 PASS + explicit Owner approval. Merge to `main` is **not** Vercel go-live authorization.
 
-## D2.0.6 — Full integration and regression certification
-Status: BLOCKED_UNTIL_D2_0_5_PASS
+## Preserved architecture/recovery state
+- R0.1A-R/R0.1B/R0.1C/R0.2/R0.3: COMPLETE / QA PASS as recorded in machine queue.
+- AR0.1: COMPLETE; targeted successor refinement required.
+- AR0.2 candidate remains Owner-review pending during demo sprint.
+- P6.1 evidence is now explicitly recognized as certified/live protected decomposition.
+- P6.2 implementation is materially mature but persistence remains gated/unauthorized.
+- No production pointer changes are implied by the demo.
 
-Audit complete resulting app across UI, data, architecture, access boundary, build and deployment parity. Resolve defects and freeze release candidate.
+## Post-demo architecture / production correction
+The historical fully serial `AR0.2 → AR0.6 → R0.4 → R0.6 → P6.2 → P6.5` path must **not be resumed blindly**. Evidence recovered on 12 Sep shows the old blanket recovery/architecture gate is too coarse.
 
-## D2.0.7 — Controlled demo promotion
-Status: BLOCKED_UNTIL_D2_0_6_PASS / OWNER APPROVAL REQUIRED
+Candidate successor certification boundaries, pending Owner freeze:
+1. `P6_2_PARTIAL_WD_COMPILE_GATE`
+2. `SCOPE_EXECUTION_READINESS_GATE`
+3. `RUNTIME_PROJECTION_GATE`
+4. `FULL_DOMAIN_COVERAGE_GATE`
 
-Perform one deliberate tested promotion and live verification with rollback preserved.
+Partial canonical materialization is permissible in principle if each candidate leaf is semantically sufficient and blockers remain explicit. If all current ready leaves pass review, coverage is `444 terminal / 185 compiled / 163 client-binding blocked / 96 knowledge-gap blocked`; this must never be called full Road LTL execution readiness.
 
-## ATLAS_V2_DEMO_GO_LIVE
-Status: BLOCKED_UNTIL_D2_0_7
+Post-demo re-baselining should consider parallel tracks for canonical WD materialization, knowledge hardening, Client Binding framework, architecture refinement, security/public-protected certification and multi-mode/Ocean proof. True upstream contract dependencies remain serial.
 
-Functional-concept/demo release only; not full production certification.
-
-# Preserved architecture/recovery state
-
-- R0.1A-R / R0.1B / R0.1C: COMPLETE — QA PASS.
-- R0.2: COMPLETE — QA PASS. Effective Road LTL 1.5 remains 21 inherited 1.4 + direct LTL-03 1.5 override; P6.0 remains 502/502.
-- R0.3: COMPLETE — QA PASS.
-- AR0.1: COMPLETE; PR #9 merged at `206db2b54f40140cc372c4f70bd314934abc489e`.
-- AR0.2: candidate complete / Owner review pending in PR #10; temporarily not current during demo sprint.
-- AR0.3–AR0.6: blocked by preceding architecture gates.
-- R0.4: suspended by architecture-refinement gate.
-- R0.5/R0.6 and P6.2–P6.5 remain blocked/suspended per machine queue.
-- Full production `CURRENT/LATEST` pointers remain unchanged.
-
-The demo sprint may not silently approve, reject or rewrite AR0.2, and may not close production recovery/certification gates by presentation assumption.
-
-# Platform North Star
-
+## Platform North Star
 > **Atlas is the governed intelligence and specification layer between enterprise/client operations and the technologies used to transform or execute them.**
 
 > **Atlas owns understanding and specification. Downstream platforms own execution.**
 
-Atlas may support domain knowledge, governance, execution/implementation readiness, design assistance and target-tool projections. Malkom, agent/workflow engines, SAP/ERP, TMS/WMS, ServiceNow, RPA, BPM/digital-twin platforms and custom applications remain downstream execution/implementation consumers.
+Knowledge repository, governance platform, execution/implementation readiness and solution-architecture capability are outcomes/byproducts of the governed Atlas foundation. Runtime business execution remains outside Atlas.
 
-# Critical paths
-
-Demo path:
-`D2.0.0 -> D2.0.1 -> D2.0.2 -> D2.0.3 -> D2.0.4 -> D2.0.5 -> D2.0.6 -> D2.0.7 -> ATLAS_V2_DEMO_GO_LIVE`
-
-Full production path after demo:
-`AR0.2 Owner review -> AR0.3 -> AR0.4 -> AR0.5 -> AR0.6 Owner freeze -> R0.4 -> R0.5 -> R0.6 -> P6.2 -> P6.3 -> P6.4 -> P6.5 -> ATLAS_V2_GO_LIVE`
-
-# Completeness standard
-Every applicable stage remains subject to PHYSICAL_EXISTENCE, SEMANTICS, COVERAGE, EVIDENCE, DEPENDENCY_CLOSURE, REPRODUCIBILITY, REFERENTIAL_INTEGRITY, LIVE_READABILITY, REGISTRY_COHERENCE, CLASSIFICATION_ACCURACY, SECURITY_BOUNDARY, REGRESSION and DEPLOYMENT_PARITY.
-
-# Source-of-truth hierarchy during demo sprint
-1. Frozen architecture/contracts.
-2. Owner-authorized demo protocol + machine queue + handover.
-3. Architecture-refinement backlog/decision ledger.
-4. Recovery/custody standards.
-5. This human-readable roadmap.
-6. GitHub implementation/evidence.
-7. Drive durable governed evidence.
-
-If sources conflict, stop and report the conflict.
+## Recovery references
+- Detailed architecture correction: `governance/architecture-refinement/CHATGPT_RESPONSE_TO_CLAUDE_P6_AR_GATES_2026-09-12.md`
+- Architecture log: `governance/architecture-refinement/ARCHITECTURE_REFINEMENT_LOG.md`
+- Decision ledger: `governance/architecture-refinement/ARCHITECTURE_DECISION_LEDGER_V1.md`
+- Shared executor state: `claude_chatGPT.md`
+- Demo protocol/state map/handover must be reconciled to this corrected lineage before later demo-stage closure.
