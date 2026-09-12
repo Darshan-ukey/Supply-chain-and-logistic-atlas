@@ -636,3 +636,39 @@ Safe resume point:
 
 Next exact action:
 - Owner/ChatGPT: confirm import of (B) alongside (A) onto the demo branch, or hold pending live/visual verification.
+
+## 2026-09-12 10:52 IST — Claude — D2.0.0
+Classification: OWNER_DIRECTION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Prior MATERIAL_FINDING (10:34 IST): P4 bridge (item B) 37/37 tests PASS, syntax-valid, local structural serve confirmed, shell verified byte-identical/unchanged.
+- `governance/frozen-assets/ASSET_REGISTER.json` — current Canvas entry (`canvas-2.0.0`, `FROZEN_PRODUCTION_BASELINE`, source=metadata, no repositoryPath).
+- Established candidate-entry pattern (`road-ltl-1.5-candidate`: `FROZEN_EXECUTION_REFERENCE_CANDIDATE`, `supersedes`/`baseAsset`, hash-pinned, explicit "NOT production promotion" note).
+
+Action / finding:
+- Owner directed: register the shell (item A, unchanged) + P4 bridge (item B, tested) together as a frozen Canvas 2.0.1 asset, so it stops being treated as demo-only and becomes permanent scaffolding per the earlier "scaffolding vs placeholder" discussion.
+- Claude will add a new `canvas-2.0.1-candidate` entry to `ASSET_REGISTER.json`, list it under `CURRENT.json`'s `latestFrozenCandidates`, and note it in `LATEST.md` — mirroring exactly how `road-ltl-1.5-candidate` already sits in this same registry: hash-pinned, real, but `FROZEN_EXECUTION_REFERENCE_CANDIDATE`, not `FROZEN_PRODUCTION_BASELINE`.
+- Reasoning for CANDIDATE rather than PRODUCTION_BASELINE, flagged explicitly for Owner/ChatGPT override: the one gap from the 10:34 test remains live/visual DOM rendering, never observed (Vercel prohibited this sprint). Road LTL 1.5 — independently QA-certified through three governed stages with remediation — still sits as CANDIDATE in this same registry for the same category of reason ("separate promotion gates"). Registering the Canvas bridge straight to PRODUCTION_BASELINE while Road LTL 1.5 sits at CANDIDATE would misrepresent relative maturity to anyone reading the register. `canvas-2.0.0`'s existing entry is left untouched (the shell itself did not change).
+- If Owner wants PRODUCTION_BASELINE status specifically, that is a one-line override of `status` field, easy to apply after this entry lands.
+
+Files / branches / components affected:
+- `governance/frozen-assets/ASSET_REGISTER.json`, `governance/frozen-assets/CURRENT.json`, `governance/frozen-assets/LATEST.md` on `atlas-governance-registry-v2.1`.
+- No demo-branch, no Vercel action.
+
+Audit / test result:
+- Not yet written.
+
+Impact / guardrail:
+- This is a governance-canonical registry write, done under explicit Owner direction (not implementation-agent self-promotion). `canvas-2.0.0`'s own entry is not modified. No production pointer changes (`productionBaseline.canvas` stays `canvas-2.0.0`).
+
+Current/Demo/Target effect:
+- CURRENT: `canvas-2.0.1-candidate` becomes a real, hash-pinned frozen reference asset; production baseline unchanged.
+- DEMO: item B formally stops being demo-only scaffolding; D2.0.1 can build on it as a registered asset.
+- TARGET: establishes the registered basis for later registering further module/version tuples in the same bridge registry as VNext content becomes available.
+
+Safe resume point:
+- `atlas-governance-registry-v2.1` at `a812e28`.
+
+Next exact action:
+- Write the three files, verify, commit, push, log POST_ACTION with exact hashes.
