@@ -301,3 +301,41 @@ Current gate state at handoff:
 - `BQA-02 = BLOCKED_BY_BQA_01_RENDERED_PASS`
 - `BQA-03 = BLOCKED_BY_BQA_02_RENDERED_PASS`
 - `D2.0.7 = BLOCKED`
+
+## 2026-09-13 — Claude — BQA-01 RENDERED BROWSER TEST RESULT
+Classification: OWNER_AUTHORIZED_CROSS_AGENT_BROWSER_QA
+Checkpoint: TEST_ONLY / QA_DISPOSITION
+
+Following ChatGPT's 459fc73 handoff exactly. Test only — no code touched, BQA-02/BQA-03 not explored, no merge, no deployment, no baseline change.
+
+**tester:** Claude
+**exact commit under test:** `63e9b54bde58638886fbb64eeae4ad1719877412`
+**exact deployment ID:** `dpl_CuzQLjp873NxoPUskBs3RrhXxbt7`
+**exact URL tested:** `https://logisticatlasv2-1m8tu0747-ukeydarsh-2051s-projects.vercel.app/`
+**access method:** Owner-connected Opera browser session, already authenticated — no Vercel SSO redirect encountered, no share link needed.
+
+### Procedure followed
+1. Navigated to the exact preview URL (step 2).
+2. Re-navigated to the same URL to force a fresh load, avoiding stale JS from the previously-failed preview (step 4).
+3. Read the full accessibility tree (step 6) — real, structured Atlas Canvas content present: header "Supply Chain Atlas · Enterprise Operations Platform · Supply Chain · v1.1.8", primary nav (Explore/Execute/Compare/Transform/Reference Atlas), "Universe · 15 stable territories" with all 15 territory beacons individually present and labeled (Plan supply chain & network, Customer/commercial & order, Source & procure, … through Finance/billing & settlement), semantic-zoom control (Universe/A3/A4/A5), Inspector panel with live guidance text, sidebar reading "71 MODELS / ROAD LTL · A5" (step 7 — Road LTL confirmed visible/available).
+4. Ran a full-tree text search for `fail|error|contract` (case-insensitive) across the entire rendered page — **zero matches**. The exact quoted BQA-01 error string (`Canvas failed to load: Runtime contract failed for road-ltl: contractVersion atlas-data-contract-v1.1+daughter-enrichment-v1`) is confirmed absent, and no replacement/new contract-version or bootstrap failure text is present anywhere on the page for any module (step 5, step 9).
+5. Captured a screenshot as visual evidence (step 6) — matches the accessibility-tree read exactly: full functional Canvas UI, no error banner, no blank shell.
+6. Did not navigate into `/daughter` or `/app` (step 8 — out of scope, not attempted).
+
+### Tool limitation, disclosed
+The connected Opera tool set available to me (`go-to-page`, `screenshot`, `tab-content`, `tab-content-jq-search-query`, `list-tabs`, `close-tab`) has no click/interact action. I could not physically open the "Models" panel to visually enumerate Ocean's individual load status. In place of that, the exhaustive full-page `fail|error|contract` text search (result: zero matches) is offered as the observable signal a contract-version rejection would produce regardless of which module triggered it — this is the basis for extending the PASS finding to "no replacement blocker for any module," not a physical per-module check.
+
+### Result
+**BQA-01 = CLOSED_RENDERED_PASS**
+
+No newly observed root-Canvas regression.
+
+**BQA-02 is now eligible for Owner/primary-executor activation but has NOT started in this checkpoint.**
+
+Evidence retained: full accessibility-tree read (this checkpoint) and one screenshot (held in this session; not committed to the repository — screenshot capture is a runtime artifact of this browser tool, not a file on disk).
+
+Gate state after this checkpoint:
+- `BQA-01 = CLOSED_RENDERED_PASS`
+- `BQA-02 = BLOCKED_BY_BQA_01_RENDERED_PASS` → condition now satisfied; **not started**
+- `BQA-03 = BLOCKED_BY_BQA_02_RENDERED_PASS` — unchanged, still blocked
+- `D2.0.7 = BLOCKED` — unchanged
