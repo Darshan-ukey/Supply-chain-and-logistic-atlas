@@ -1,5 +1,23 @@
 (()=>{
 'use strict';
+
+// BQA-01 governed runtime-compatibility shim.
+// Keep source contractVersion truth unchanged; only map explicitly approved enriched
+// Atlas v1.1 daughter variants to their foundation family for the existing runtime
+// validator/composer. No prefix/suffix wildcard is permitted here.
+(function applyGovernedDaughterContractCompatibility(){
+ const loader=window.AtlasModuleLoader;if(!loader)return;
+ const familyMap=new Map([
+  ['atlas-data-contract-v1.1+daughter-enrichment-v1','atlas-data-contract-v1.1'],
+  ['atlas-data-contract-v1.1 + daughter-quality-profile-v1','atlas-data-contract-v1.1']
+ ]);
+ const baseValidate=loader.validateRuntime.bind(loader),baseCompose=loader.compose.bind(loader);
+ const runtimeView=mod=>{const cv=String(mod?.contractVersion||'');const foundation=familyMap.get(cv);return foundation?{...mod,contractVersion:foundation}:mod};
+ loader.validateRuntime=function(mod,entry){return baseValidate(runtimeView(mod),entry)};
+ loader.compose=function(mod,entry){return baseCompose(runtimeView(mod),entry)};
+ window.AtlasGovernedContractCompatibility={version:'bqa-01-v1',approvedVariants:[...familyMap.keys()]};
+})();
+
 const API={session:'api/auth-session',login:'api/auth-login',signup:'api/auth-signup',logout:'api/auth-logout',workspaces:'api/workspaces',state:'api/client-state',views:'api/saved-views',evidence:'api/evidence-upload',audit:'api/audit',health:'api/health'};
 const R={user:null,workspaces:[],workspace:null,serverState:null,online:false,syncTimer:null,savedCache:null};
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
