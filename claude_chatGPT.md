@@ -329,3 +329,24 @@ Safe resume point:
 
 Next exact action:
 - D2.0.6 is AUTHORIZED (end-to-end integration + regression + merge-readiness, guardrail `NO_DELTA_ONLY_CERTIFICATION`). Owner to direct executor; Vercel access resolution recommended in parallel so browser verification can proceed via preview rather than a main merge.
+
+## 2026-09-12 18:58 IST — Claude — D2.0.6
+Classification: OWNER_DIRECTION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Queue D2.0.6 (now `AUTHORIZED` after the 18:47 sync): scope `END_TO_END_REPOSITORY_UI_DATA_SECURITY_NAVIGATION_BUILD_AND_MERGE_READINESS_CHECKS; CREATE_POST_BUILD_FULL_STATE_FREEZE`; guardrails `NO_DELTA_ONLY_CERTIFICATION`, `VERIFY_PUBLIC_ADMIN_BOUNDARIES`, `VERIFY_NO_STALE_OR_FALSE_VERSION_LABELS`, `NO_DEPLOYMENT_PARITY_REQUIREMENT`, `NO_VERCEL_DEPLOYMENT`.
+- Lineage correction doc requirement: D2.0.6 must add explicit false-cross-lineage regression checks.
+
+Action / finding:
+- Owner directed starting D2.0.6.
+- `NO_DELTA_ONLY_CERTIFICATION` is the defining constraint: this stage must certify the **whole branch state**, not only what changed since `58b14c7`. Building a full-state certification suite rather than extending the per-stage tests.
+- Planned checks: (1) full-state inventory with content hashes, not a diff; (2) data integrity — every catalog/registry/bridge reference resolves and hash-matches; (3) public/admin boundary — public surfaces must not expose protected execution IP or admin-only endpoints; (4) version-label accuracy — no stale or false version strings anywhere in shipped surfaces; (5) **false-cross-lineage regression** — no surface may claim or imply Road LTL 1.5/P6.1/P6.2 produced the Malkom output; (6) navigation/link integrity across all demo surfaces; (7) re-run every existing certification suite on the branch; (8) `CREATE_POST_BUILD_FULL_STATE_FREEZE`.
+- The freeze also partially addresses the D2.0.0 exception recorded at 18:47 (`CREATE_PRE_CHANGE_FULL_STATE_FREEZE` never performed) — a post-build freeze is not a retroactive pre-change freeze, and I will label it accurately rather than claiming the earlier gap is closed.
+- `NO_DEPLOYMENT_PARITY_REQUIREMENT` noted: I will not treat absence of a live deployment as a certification failure.
+
+Files / branches / components affected:
+- `atlas-v2-demo-2026-09-14` only. No Vercel action.
+
+Next exact action:
+- Build and run the full-state certification suite, create the freeze manifest, audit, close.
