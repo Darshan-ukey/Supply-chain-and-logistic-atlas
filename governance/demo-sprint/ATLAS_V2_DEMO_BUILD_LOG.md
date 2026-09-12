@@ -40,3 +40,46 @@ Canonical correction record:
 `governance/demo-sprint/ATLAS_DEMO_LINEAGE_CORRECTION_2026-09-12.md`.
 
 Architecture rationale is separately preserved in the Architecture Refinement Log and AR-D014–AR-D017 working decisions.
+
+---
+
+## Stage closure record — 2026-09-12 18:40 IST
+
+Queue synchronized from a stale `currentStageId: D2.0.0` to actual state. Prior to this the
+queue lagged five stages behind the branch.
+
+| Stage | Status | Executor | Build SHA | Audit document | QA type |
+|---|---|---|---|---|---|
+| D2.0.0 | COMPLETE_WITH_EXCEPTION | ChatGPT + Claude | — | none | self-reported |
+| D2.0.1 | COMPLETE | ChatGPT | `3336f658` | `D2.0.1_POST_BUILD_AUDIT.md` | executor self-certified |
+| D2.0.2 | COMPLETE | Claude build / ChatGPT audit | `0d2a8ad` | `D2.0.2_POST_BUILD_AUDIT.md` | **cross-agent audited** |
+| D2.0.3 | COMPLETE | Claude | `f22b77d` | `D2.0.3_POST_BUILD_AUDIT.md` | self-reported |
+| D2.0.4 | COMPLETE | Claude | `457003d` | `D2.0.4_POST_BUILD_AUDIT.md` | self-reported |
+| D2.0.5 | COMPLETE | Claude | `319147e` | `D2.0.5_POST_BUILD_AUDIT.md` | self-reported |
+| D2.0.6 | AUTHORIZED | — | — | — | — |
+| D2.0.7 | BLOCKED | — | — | — | blocker recorded |
+
+### D2.0.0 exception
+8 of 9 exit criteria are evidenced across the shared executor log. **`CREATE_PRE_CHANGE_FULL_STATE_FREEZE`
+was never performed** — no freeze artifact exists on the demo branch. The stage is recorded as
+complete-with-exception rather than clean, so the gap is not lost.
+
+### QA honesty note
+D2.0.2 is the only stage in this sprint verified by an agent other than the one that built it.
+D2.0.3–D2.0.5 rest on committed audit documents, reproducible generators and certification tests
+with negative controls proving the guards fail closed — but that is executor self-certification,
+not independent QA. This distinction is recorded in the queue per-stage as `qaType`.
+
+### Open items carried into D2.0.6
+1. **Browser/visual verification has never been performed.** Neither executor has a browser or
+   headless driver. All certification to date is structural, source-level and execution-level.
+   D2.0.5's deliverable in particular is a visual page whose layout has never been rendered.
+2. D2.0.0 full-state freeze outstanding.
+3. D2.0.3–D2.0.5 not independently QA-verified.
+4. **D2.0.7 auto-deploy conflict unresolved.** The repository's Vercel GitHub App has historically
+   produced a deployment record on every push to every branch (333 preview + 13 production
+   observed). A merge to `main` would likely auto-deploy to production, conflicting directly with
+   D2.0.7's own `STOP_IF_GIT_INTEGRATION_WOULD_AUTO_DEPLOY` guardrail. The connected Vercel account
+   returns 403 on `logistic_atlas_v2` (scope mismatch), so the integration cannot currently be
+   inspected or disabled. A preview deployment of the demo branch is the lower-risk route to
+   browser verification than a main merge.
