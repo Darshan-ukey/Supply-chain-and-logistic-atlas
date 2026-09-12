@@ -1,0 +1,817 @@
+{
+  "schemaVersion": "atlas-malkom-reference-projection-v1",
+  "classification": "DEMO_REFERENCE_PROJECTION_NOT_CANONICAL_TRUTH",
+  "lineage": {
+    "lineageName": "PROVEN_EXECUTION_REFERENCE",
+    "chain": "Road LTL V1.2 -> Domain Warehouse v2.3 -> Malkom 3.0 projection",
+    "sourceModel": "Road LTL V1.2",
+    "bundleSource": "Malkom-Domain-Warehouse-Engine-V2.3-Lossless(1).html",
+    "bundleNote": "Protected/admin prototype projection. Canonical Atlas A5 semantics remain authoritative; these definitions are additive derived execution assets.",
+    "notGeneratedFrom": [
+      "Road LTL 1.5",
+      "Operational Knowledge v2",
+      "P6.1 recursive work decomposition",
+      "P6.2 canonical WorkDefinition compiler"
+    ],
+    "statement": "This artifact is produced solely from the V1.2-derived Domain Warehouse v2.3 reference bundle. It is NOT evidence that the governed target lineage (Road LTL 1.5 / P6.1 / P6.2) generates Malkom output. Those two lineages are not connected."
+  },
+  "inputs": {
+    "canvas-v2/canvas-v2/data/road-ltl-workdefinitions-v2.3.json": "13ffce67006d7c1ac92c09ff1d265bd8d27457ba7777994748cb23ede39301df",
+    "execution/adapters/malkom/malkom-adapter.mjs": "df268203891603ba278abab9ea95035b06d1b1ac5b6f3453b4d6efad4641a11a",
+    "execution/contracts/malkom-adapter-manifest-v1.json": "cd26d8ff6119323c0711a8a790dc85f3c0ca98b8c96e3316e23bfa7ba6efc29d"
+  },
+  "adapter": {
+    "adapterId": "atlas-adapter-malkom-v1",
+    "runtime": "MALKOM_3",
+    "version": "1.0.0-dev1",
+    "capabilities": [
+      "MANAGED_WORK",
+      "QUEUE",
+      "SUBQUEUE",
+      "WORK_TYPE",
+      "FIELD_SCHEMA",
+      "OUTCOME",
+      "VALUE_LIST",
+      "WORKFLOW",
+      "STAY_RETURN",
+      "FLOW_BPMN",
+      "FLOW_SIMPLE",
+      "CLIENT_BINDING"
+    ],
+    "operationsEnabled": {
+      "assess": true,
+      "requiredBindings": true,
+      "project": true,
+      "verify": true,
+      "compile": true,
+      "materialize": false,
+      "deploy": false,
+      "status": false,
+      "execute": false,
+      "reconcileEvidence": false
+    }
+  },
+  "summary": {
+    "definitionsProcessed": 22,
+    "adapterCompatible": 22,
+    "materializable": 22,
+    "requiredClientBindingsTotal": 176
+  },
+  "knownLossesAndGaps": {
+    "note": "Recorded per the D2.0.4 guardrail DOCUMENT_KNOWN_ADAPTER_LOSSES_GAPS. These are real limitations of the reference adapter, reported rather than suppressed.",
+    "escalateHandling": {
+      "disposition": "PARTIAL",
+      "affectedTasks": [
+        "LTL-15",
+        "LTL-18",
+        "LTL-22"
+      ],
+      "explanation": "Canonical escalation remains visible in the projection, but live cross-queue materialization is runtime-specific and is not performed by this adapter."
+    },
+    "unsupportedNextSteps": {},
+    "clientBindingRequired": {
+      "disposition": "CLIENT_BINDING_REQUIRED",
+      "totalPoints": 176,
+      "distinctFamilies": 8,
+      "familyCounts": {
+        "clocks[]": 22,
+        "fields[]": 22,
+        "outcomes[].route": 22,
+        "outcomes[].status": 22,
+        "queues[].name": 22,
+        "rules[]": 22,
+        "systems[]": 22,
+        "systems[].interfaceTypes": 22
+      },
+      "explanation": "Atlas owns the binding requirement; the client supplies the value. None of these are resolved by this artifact and none are invented."
+    },
+    "adapterOperationsNotEnabled": [
+      "deploy",
+      "execute",
+      "materialize",
+      "reconcileEvidence",
+      "status"
+    ]
+  },
+  "tasks": {
+    "LTL-01": {
+      "taskId": "LTL-01",
+      "taskLabel": "Resolve service demand and execution eligibility",
+      "queue": "Service Eligibility",
+      "queuePurpose": "Eligibility / validation. Reference queue compiled from LTL-01 — Resolve service demand and execution eligibility.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "New Request",
+          "executionMode": "RULE"
+        },
+        {
+          "name": "Eligibility Exception",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Override Review",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 2,
+      "nextSteps": [
+        "END_WORK_ITEM"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-01:2.3"
+    },
+    "LTL-02": {
+      "taskId": "LTL-02",
+      "taskLabel": "Classify, rate and commit the commercial offer",
+      "queue": "Classification & Rating",
+      "queuePurpose": "Rating / commercial decision. Reference queue compiled from LTL-02 — Classify, rate and commit the commercial offer.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "New Rating",
+          "executionMode": "RULE"
+        },
+        {
+          "name": "Re-rate / Change",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Pricing Referral",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 3,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "STAY_IN_QUEUE"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-02:2.3"
+    },
+    "LTL-03": {
+      "taskId": "LTL-03",
+      "taskLabel": "Create and validate shipment, consignment and transport-document identity",
+      "queue": "Shipment & Transport Documentation",
+      "queuePurpose": "Documentation / identity. Reference queue compiled from LTL-03 — Create and validate shipment, consignment and transport-document identity.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Create / Validate",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Amend / Correct",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Blocked / Incomplete",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 2,
+      "nextSteps": [
+        "END_WORK_ITEM"
+      ],
+      "fieldCount": 11,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-03:2.3"
+    },
+    "LTL-04": {
+      "taskId": "LTL-04",
+      "taskLabel": "Request pickup and prove shipment readiness",
+      "queue": "Pickup Request",
+      "queuePurpose": "Request / scheduling. Reference queue compiled from LTL-04 — Request pickup and prove shipment readiness.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "New",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Change / Reschedule",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Cancellation",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 4,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "STAY_IN_QUEUE"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-04:2.3"
+    },
+    "LTL-05": {
+      "taskId": "LTL-05",
+      "taskLabel": "Dispatch pickup, accept freight and establish custody",
+      "queue": "Pickup Acceptance & Custody",
+      "queuePurpose": "Physical acceptance. Reference queue compiled from LTL-05 — Dispatch pickup, accept freight and establish custody.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Dispatch / Present",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Accept with Reservation",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Refusal",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 3,
+      "nextSteps": [
+        "END_WORK_ITEM"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-05:2.3"
+    },
+    "LTL-06": {
+      "taskId": "LTL-06",
+      "taskLabel": "Receive at origin service centre and verify handling-unit state",
+      "queue": "Origin Receipt",
+      "queuePurpose": "Inspection / reconciliation. Reference queue compiled from LTL-06 — Receive at origin service centre and verify handling-unit state.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Standard Receipt",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Discrepancy / Hold",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Reweigh / Reclass Review",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 3,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "STAY_IN_QUEUE"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-06:2.3"
+    },
+    "LTL-07": {
+      "taskId": "LTL-07",
+      "taskLabel": "Build consolidation and authorize origin load",
+      "queue": "Origin Consolidation & Load Authorization",
+      "queuePurpose": "Planning / authorization. Reference queue compiled from LTL-07 — Build consolidation and authorize origin load.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Plan / Build Load",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Load Authorization",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Blocked / Constraint Review",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 2,
+      "nextSteps": [
+        "END_WORK_ITEM"
+      ],
+      "fieldCount": 11,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-07:2.3"
+    },
+    "LTL-08": {
+      "taskId": "LTL-08",
+      "taskLabel": "Execute line-haul leg and publish actual movement state",
+      "queue": "Line-haul Execution",
+      "queuePurpose": "Movement / event management. Reference queue compiled from LTL-08 — Execute line-haul leg and publish actual movement state.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Dispatch / In Transit",
+          "executionMode": "SYSTEM"
+        },
+        {
+          "name": "Stop / Delay Exception",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Arrival",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 4,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "STAY_IN_QUEUE"
+      ],
+      "fieldCount": 11,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-08:2.3"
+    },
+    "LTL-09": {
+      "taskId": "LTL-09",
+      "taskLabel": "Unload, sort and cross-dock at an intermediate service centre",
+      "queue": "Intermediate Cross-dock",
+      "queuePurpose": "Node handling. Reference queue compiled from LTL-09 — Unload, sort and cross-dock at an intermediate service centre.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Inbound / Sort",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Hold / Missort",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Outbound Transfer",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 5,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "STAY_IN_QUEUE"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-09:2.3"
+    },
+    "LTL-10": {
+      "taskId": "LTL-10",
+      "taskLabel": "Transfer or interchange to the next network leg",
+      "queue": "Network Transfer / Interchange",
+      "queuePurpose": "Handoff / custody. Reference queue compiled from LTL-10 — Transfer or interchange to the next network leg.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Transfer Offer",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Transfer Acceptance",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Blocked / Hold",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 2,
+      "nextSteps": [
+        "END_WORK_ITEM"
+      ],
+      "fieldCount": 11,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-10:2.3"
+    },
+    "LTL-11": {
+      "taskId": "LTL-11",
+      "taskLabel": "Deconsolidate and build the destination-delivery load",
+      "queue": "Destination Deconsolidation & Load Build",
+      "queuePurpose": "Destination planning. Reference queue compiled from LTL-11 — Deconsolidate and build the destination-delivery load.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Deconsolidation",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Delivery Load Build",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Hold / Exception",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 3,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "STAY_IN_QUEUE"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-11:2.3"
+    },
+    "LTL-12": {
+      "taskId": "LTL-12",
+      "taskLabel": "Confirm destination readiness, appointment and delivery dispatch",
+      "queue": "Delivery Readiness & Dispatch",
+      "queuePurpose": "Appointment / dispatch. Reference queue compiled from LTL-12 — Confirm destination readiness, appointment and delivery dispatch.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Appointment / Confirm",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Reschedule",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Hold / Redirect",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 3,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "STAY_IN_QUEUE"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-12:2.3"
+    },
+    "LTL-13": {
+      "taskId": "LTL-13",
+      "taskLabel": "Attempt delivery, capture acceptance/reservations and close custody",
+      "queue": "Delivery Attempt & Acceptance",
+      "queuePurpose": "Delivery / acceptance. Reference queue compiled from LTL-13 — Attempt delivery, capture acceptance/reservations and close custody.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Delivery Attempt",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Reservation / Damage / Short",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Failed / Refused",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 4,
+      "nextSteps": [
+        "END_WORK_ITEM"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-13:2.3"
+    },
+    "LTL-14": {
+      "taskId": "LTL-14",
+      "taskLabel": "Detect, classify and assign execution variance",
+      "queue": "Execution Exception",
+      "queuePurpose": "Exception triage. Reference queue compiled from LTL-14 — Detect, classify and assign execution variance.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "New Exception",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Classify / Triage",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Assign / Escalate",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 1,
+      "nextSteps": [
+        "END_WORK_ITEM"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-14:2.3"
+    },
+    "LTL-15": {
+      "taskId": "LTL-15",
+      "taskLabel": "Contain, replan and recover service",
+      "queue": "Service Recovery",
+      "queuePurpose": "Recovery orchestration. Reference queue compiled from LTL-15 — Contain, replan and recover service.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Recovery Plan",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Recovery Execution",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Escalation / Closure",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 3,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "ESCALATE"
+      ],
+      "fieldCount": 9,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [
+        "Canonical escalation remains visible; live cross-queue materialization is runtime-specific."
+      ],
+      "projectionId": "malkom:LTL-15:2.3"
+    },
+    "LTL-16": {
+      "taskId": "LTL-16",
+      "taskLabel": "Calculate preliminary and executed freight charges",
+      "queue": "Freight Charge Calculation",
+      "queuePurpose": "Financial calculation. Reference queue compiled from LTL-16 — Calculate preliminary and executed freight charges.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Preliminary Charge",
+          "executionMode": "SYSTEM"
+        },
+        {
+          "name": "Recalculation / Variance",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Billable / Dispute",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 4,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "STAY_IN_QUEUE"
+      ],
+      "fieldCount": 11,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-16:2.3"
+    },
+    "LTL-17": {
+      "taskId": "LTL-17",
+      "taskLabel": "Invoice, audit, approve and settle transport obligations",
+      "queue": "Invoice Audit & Settlement",
+      "queuePurpose": "Invoice / settlement. Reference queue compiled from LTL-17 — Invoice, audit, approve and settle transport obligations.",
+      "subQueueCount": 4,
+      "workTypes": [
+        {
+          "name": "Invoice Issue / Receipt",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Audit / Approval",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Dispute",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Settlement",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 5,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "STAY_IN_QUEUE"
+      ],
+      "fieldCount": 11,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-17:2.3"
+    },
+    "LTL-18": {
+      "taskId": "LTL-18",
+      "taskLabel": "Adjudicate cargo/service claim or billing dispute",
+      "queue": "Claim / Billing Dispute",
+      "queuePurpose": "Claim / dispute. Reference queue compiled from LTL-18 — Adjudicate cargo/service claim or billing dispute.",
+      "subQueueCount": 4,
+      "workTypes": [
+        {
+          "name": "New Claim / Dispute",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Evidence / Investigation",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Decision",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Settlement / Recovery",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 4,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "ESCALATE"
+      ],
+      "fieldCount": 11,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [
+        "Canonical escalation remains visible; live cross-queue materialization is runtime-specific."
+      ],
+      "projectionId": "malkom:LTL-18:2.3"
+    },
+    "LTL-19": {
+      "taskId": "LTL-19",
+      "taskLabel": "Resolve regulatory scope, operate hold/release and retain evidence",
+      "queue": "Regulatory Hold / Release",
+      "queuePurpose": "Compliance / regulatory. Reference queue compiled from LTL-19 — Resolve regulatory scope, operate hold/release and retain evidence.",
+      "subQueueCount": 4,
+      "workTypes": [
+        {
+          "name": "Scope / Screening",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Filing / Response",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Hold / Release",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Research Required",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 4,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "STAY_IN_QUEUE"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-19:2.3"
+    },
+    "LTL-20": {
+      "taskId": "LTL-20",
+      "taskLabel": "Assure vehicle, equipment and qualified resource readiness",
+      "queue": "Resource Readiness",
+      "queuePurpose": "Resource / qualification. Reference queue compiled from LTL-20 — Assure vehicle, equipment and qualified resource readiness.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "Assignment",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Inspection / Qualification",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Substitute / Block",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 2,
+      "nextSteps": [
+        "END_WORK_ITEM"
+      ],
+      "fieldCount": 11,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-20:2.3"
+    },
+    "LTL-21": {
+      "taskId": "LTL-21",
+      "taskLabel": "Reconcile party, location, shipment, unit and network identities",
+      "queue": "Identity Reconciliation",
+      "queuePurpose": "Master-data reconciliation. Reference queue compiled from LTL-21 — Reconcile party, location, shipment, unit and network identities.",
+      "subQueueCount": 3,
+      "workTypes": [
+        {
+          "name": "New Conflict",
+          "executionMode": "RULE"
+        },
+        {
+          "name": "Reconcile / Correct",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Blocked / Stewardship",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 2,
+      "nextSteps": [
+        "END_WORK_ITEM"
+      ],
+      "fieldCount": 11,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [],
+      "projectionId": "malkom:LTL-21:2.3"
+    },
+    "LTL-22": {
+      "taskId": "LTL-22",
+      "taskLabel": "Coordinate customer communication and resolution evidence",
+      "queue": "Customer Service Resolution",
+      "queuePurpose": "Case / customer service. Reference queue compiled from LTL-22 — Coordinate customer communication and resolution evidence.",
+      "subQueueCount": 4,
+      "workTypes": [
+        {
+          "name": "New Enquiry / Case",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Waiting / Information",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Resolution",
+          "executionMode": "HUMAN_IN_LOOP"
+        },
+        {
+          "name": "Escalation / Claim Link",
+          "executionMode": "HUMAN_IN_LOOP"
+        }
+      ],
+      "outcomeCount": 4,
+      "nextSteps": [
+        "END_WORK_ITEM",
+        "ESCALATE",
+        "STAY_IN_QUEUE"
+      ],
+      "fieldCount": 10,
+      "compatible": true,
+      "materializable": true,
+      "requiredBindingCount": 8,
+      "warnings": [
+        "Canonical escalation remains visible; live cross-queue materialization is runtime-specific."
+      ],
+      "projectionId": "malkom:LTL-22:2.3"
+    }
+  },
+  "semanticHash": "d077166ff0c1c0a0c9cffc3ba368b76a374cd15a73fc23305bd8f1719e6fcb59"
+}
