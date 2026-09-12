@@ -181,3 +181,41 @@ Impact / guardrail:
 
 Next exact action:
 - Port catalog + referenced assets, hash-verify, commit, push, log POST_ACTION.
+
+## 2026-09-12 16:05 IST — Claude — D2.0.2
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: POST_ACTION
+
+Evidence inspected:
+- Commit `0d2a8ad` on `atlas-v2-demo-2026-09-14`.
+
+Action / finding:
+- Ported `data/module-catalog.json` from the governance branch onto the demo branch, plus the three referenced assets absent there: `road-ltl-v1.3.json`, `ocean-fcl-v0.5.json`, `ocean-lcl-v0.5.json`.
+- Demo catalog now registers ACTIVE: road-ltl **1.3** (was 1.2), ocean-fcl **0.5** and ocean-lcl **0.5** (were `planned[] / REFERENCE_ONLY`). `baseModule` remains `ecosystem-page-0` **6.2.2**, unchanged.
+
+Audit / test result (all pre-commit):
+- 3/3 new assets hash-match their frozen ASSET_REGISTER entries (`road-ltl-1.3`, `ocean-fcl-0.5`, `ocean-lcl-0.5` — each `FROZEN_PRODUCTION_BASELINE`).
+- Catalog self-consistency: all 4 declared sha256 (baseModule + 3 modules) match files on disk.
+- P4 bridge resolution: every `canvasBaselineVersion` now resolves to an ACTIVE catalog module — road-ltl 1.3 RESOLVES, ocean-fcl 0.5 RESOLVES, ocean-lcl 0.5 RESOLVES. Zero mismatches. Before this commit, all three would have failed to resolve on the demo branch.
+- Projection sources `road-ltl@1.5` / `ocean-fcl@0.6` / `ocean-lcl@0.6` intact and unaffected.
+
+Impact / guardrail:
+- This closes the CHECK 4 Ocean-navigation gap and the demo-branch half of the CHECK 3 finding in one governed step, without hand-editing catalog entries.
+- Demo-branch navigation registration only. No production pointer promoted; `CURRENT.json` `productionBaseline` untouched. Ocean must not be described as live in demo copy — per Owner, neither 0.5 nor 0.6 was ever pushed to production.
+
+Current/Demo/Target effect:
+- CURRENT: unchanged.
+- DEMO: Road LTL 1.3 and both Ocean daughters are now registered navigable surfaces; drilling into a task routes via the P4 bridge to daughter depth (road-ltl 1.5, ocean 0.6) served by the committed projection bundles.
+- TARGET: none.
+
+### Status of the 4 demo-readiness checks after this commit
+1. **Browser/visual verification — STILL OPEN.** No browser or headless driver available here; no-Vercel rule stands. Must be closed by a human post-deployment. Not closable by me.
+2. **Atlas scope/future page — STILL OPEN.** Does not exist. Awaiting Owner direction on copy/framing; it states Atlas's maturity claims so I have not authored it unilaterally.
+3. **Universe — CLOSED.** Not a defect; Owner confirmed 7.x was deliberately never promoted. Demo branch now carries the governed 1.3/0.5 catalog.
+4. **Integration — SUBSTANTIALLY CLOSED.** Ocean navigation gap resolved; bridge targets resolve; projections intact. Residual: no end-to-end human click-through, which is item 1.
+
+Safe resume point:
+- `atlas-v2-demo-2026-09-14` at `0d2a8ad`.
+
+Next exact action:
+- Owner direction on the Atlas scope/future page (check 2), the only remaining item within reach before deployment is authorized.
