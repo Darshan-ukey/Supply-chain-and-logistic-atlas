@@ -2,49 +2,30 @@
 
 **Purpose:** Persistent direct coordination/handover file for ChatGPT and Claude. Both executors must read this file before starting/resuming Atlas work and write material findings here so the Owner does not have to relay conversations between tools.
 
-> Full history through D2.0.2 closure and D2.0.3 PRE_ACTION remains recoverable at blob `78e4c8091fb7e13bacf7f68c87f3a478de4b039e`. Existing architecture, GitHub-only, no-Vercel, two-lineage and audit rules remain binding.
+> Full prior history remains recoverable in Git history. Existing architecture, GitHub-only, no-Vercel, two-lineage and audit rules remain binding.
 
 ## 2026-09-12 — ChatGPT — D2.0.3
-Classification: VERIFIED_REPOSITORY_FACT
+Classification: CORRECTION + VERIFIED_REPOSITORY_FACT
 Checkpoint: MATERIAL_FINDING
 
-Evidence inspected:
-- Recursive Git tree of current demo branch `atlas-v2-demo-2026-09-14`.
+Correction to immediately preceding D2.0.3 entry:
+- The earlier statement that `canvas-v2/data/road-ltl-workdefinitions-v2.3.json` and the Malkom reference package were physically present on the **current demo branch** is withdrawn.
+- A recursive tree response appeared to expose those historical paths, but direct branch-scoped verification contradicts that interpretation:
+  - `GET contents/canvas-v2/data?ref=atlas-v2-demo-2026-09-14` returns 404;
+  - direct `fetch_file` of `canvas-v2/data/road-ltl-workdefinitions-v2.3.json` on the demo branch returns 404;
+  - direct blob retrieval using the tree-reported blob SHA also returns 404;
+  - current demo-branch root contents do not expose a `canvas-v2/` directory;
+  - repository code search on the default branch does not resolve the exact v2.3 filename.
 
-Material finding:
-- The current demo branch does contain the older/proven Road LTL Domain Warehouse / WorkDefinition / Malkom reference assets needed for D2.0.3–D2.0.4. They are not hypothetical recovery targets.
-- Concrete reference WD asset located: `canvas-v2/data/road-ltl-workdefinitions-v2.3.json`, blob SHA `f1670218f5925c1db5358a5e17d25228107043bf`, size 167,329 bytes.
-- Related reference assets located on the same branch include:
-  - `canvas-v2/data/road-ltl-audit-v2.3.csv`
-  - `canvas-v2/data/road-ltl-canvas-v2.0-map.json`
-  - `canvas-v2/data/road-ltl-domain-contract-v1.0.json`
-  - `canvas-v2/data/road-ltl-roadmap-c1-c5.json`
-  - `canvas-v2/data/road-ltl-v1.3-source.json`
-  - `malkom-adapter-v0.1.html`
-  - `api-secure/malkom-adapter-v0.1.html`
-  - `malkom3-workdefinition-v1.schema.json`
-  - `road-ltl-projection-v0.1.package.json`
-  - `ROAD_LTL_MALKOM3_ADAPTER_BUILD_V0.1.md`
-  - `ROAD_LTL_MALKOM3_ADAPTER_PROJECTION_PACKAGE_V0.1.md`
-  - `ROAD_LTL_MALKOM3_ADAPTER_EMBED_V0.1.md`
-  - `ROAD_LTL_MALKOM3_INTEGRATED_CERTIFICATION_V0.2.md`
-  - `ROAD_LTL_MALKOM3_SEMANTIC_GAP_REGISTER_V0.1.md`
-  - `MALKOM3_ADAPTER_V0.1_TEST_REPORT.md`
-  - `MALKOM3_STAGE3_PROJECTION_VERIFICATION_REPORT.md`
-  - `ROAD_LTL_SHOWCASE_BUILD_REPORT_V2.3.md`
-  - `ROAD_LTL_SHOWCASE_RELEASE_V2.3.md`
-  - `ROAD_LTL_WORKDEFINITION_V2.3_QA_REPORT.md`
-  - `ROAD_LTL_COMPREHENSIVE_LOGIC_AUDIT_V2.3.md`.
+Revised finding:
+- The old v2.3 / Malkom artifacts are historical/reference assets known from earlier Atlas work, but their **authoritative current Git branch/location must be re-resolved before reuse/import**.
+- D2.0.3 may not certify or import them from memory or from the inconsistent tree response.
+- The two-lineage architecture remains unchanged; only the asset-location assertion was incorrect.
 
-Interpretation / guardrail:
-- This strengthens the hybrid strategy: the old execution-reference lineage is physically present on the demo branch and can be audited rather than recreated.
-- Presence alone does not prove exact definition counts, queue/subqueue counts, Malkom semantic fidelity or current UI consumption. Those claims remain unverified until the bundle and certification reports are inspected.
-- This does not connect the reference lineage to Road LTL 1.5/P6.1/P6.2. The two lineages remain separate unless explicit bridge evidence is found.
-
-Current/Demo/Target effect:
-- CURRENT: no mutation.
-- DEMO: D2.0.3 can preferentially reuse/certify existing execution-reference assets instead of authoring new semantics.
-- TARGET: no change; these remain bridge/reference assets to retire/rebase after canonical target parity.
+Impact / guardrail:
+- No feature code was mutated based on the incorrect finding.
+- No false asset was imported.
+- D2.0.3 remains open and fail-closed until the historical branch containing the real reference bundle is identified and its files are directly readable.
 
 Next exact action:
-- Inspect the v2.3 WorkDefinition bundle and Malkom projection/certification/gap reports to verify counts, lineage, mapping behavior, known semantic losses and actual UI/adapter consumption before any D2.0.3 code change.
+- Search the repository's historical/presentation branches for the actual v2.3 WorkDefinition and Malkom package; direct-read and verify lineage/counts/gaps there before deliberate import to `atlas-v2-demo-2026-09-14`.
