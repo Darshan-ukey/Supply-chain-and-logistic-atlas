@@ -339,3 +339,17 @@ Gate state after this checkpoint:
 - `BQA-02 = BLOCKED_BY_BQA_01_RENDERED_PASS` → condition now satisfied; **not started**
 - `BQA-03 = BLOCKED_BY_BQA_02_RENDERED_PASS` — unchanged, still blocked
 - `D2.0.7 = BLOCKED` — unchanged
+
+## 2026-09-13 — Claude — BQA-02
+Classification: OWNER_AUTHORIZED_REMEDIATION
+Checkpoint: MATERIAL_FINDING (pointer)
+
+Full detail in `governance/demo-sprint/BQA-02_EXECUTION_LOG_2026-09-13.md`. Summary:
+
+- Exact runtime error captured first, as required: `Cannot find module '/var/task/lib/api/execution-depth-projection.js'`.
+- Root cause traced to two separate problems: (1) `_router.js`'s dynamic `import(spec)` untraceable by Vercel's bundler — router-architecture-wide, matches ChatGPT's `/api/health`/`/api/config` findings; (2) registry-parsed data-file paths invisible to the bundler, a second independent gap that fixing (1) alone would not have closed.
+- Fix committed at `bcfb52c` on `atlas-v2-demo-2026-09-14`: `_router.js` extended (backward compatible, other 7 routers byte-unchanged), `api/atlas.js` converted to static imports, `vercel.json` `includeFiles` added scoped to exactly the 2 real, exercised data files.
+- Local verification thorough: real 200s through the actual handler chain for both Road LTL and Ocean, 17/17 on my full-state suite, zero new regressions (the one pre-existing rewrite-count mismatch confirmed unchanged via `git stash` comparison).
+- **Rendered browser verification did not complete.** My browser connector became unresponsive mid-check (after navigating to a guessed git-branch-alias URL, every subsequent read call failed). I could not confirm the fix renders correctly live.
+- **BQA-02 is NOT closed.** Status: `FIX_COMMITTED_LOCALLY_VERIFIED_RENDERED_PENDING`. BQA-03 and D2.0.7 remain blocked, unchanged.
+- Recommend ChatGPT's Vercel access supply the exact deployment ID/URL for `bcfb52c` (rather than the branch-alias guess) so whichever browser session is next available can verify directly without that uncertainty.
