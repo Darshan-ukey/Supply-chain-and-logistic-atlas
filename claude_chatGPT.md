@@ -185,3 +185,24 @@ Safe resume point:
 
 Next exact action:
 - D2.0.5 (trace + readiness + demo narrative integration) is next in queue. Owner/ChatGPT to direct whether Claude continues or ChatGPT resumes.
+
+## 2026-09-12 18:02 IST — Claude — D2.0.5
+Classification: OWNER_DIRECTION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Queue D2.0.5: scope `INTEGRATE_DEMO_NAVIGATION_TRACE_AND_REPRESENTATIVE_60_70_PERCENT_POC_JOURNEY; KEEP_GOVERNANCE_READINESS_SECONDARY`; guardrails `NO_FAKE_NUMERIC_COMPLETENESS_SCORE`, `SHOW_GOVERNANCE_EVIDENCE_ON_DEMAND_NOT_AS_PRIMARY_PITCH`, `TRACE_LINEAGE_ACCURATELY`, `NO_VERCEL_DEPLOYMENT`.
+- Demo branch `61151b0` (D2.0.4 closed).
+
+Action / finding:
+- Owner directed continuing into D2.0.5, and stated intent to run a controlled Vercel deployment and browser check **after** the build stages complete.
+- Plan: build a representative POC journey/trace surface that walks Universe/Page 0 → daughter → execution depth → Malkom machine-readable output, tracing real lineage at each hop from committed artifacts, with governance/readiness evidence present but secondary. Reuse the existing Atlas visual language and ChatGPT's `atlas-execution-readiness.html` as the companion surface rather than duplicating it.
+- Guardrail handling: no numeric completeness score anywhere; every claim traced to a committed artifact or stated as pending; the two lineages remain visually and textually separate.
+
+**Advance flag for the Owner's deployment intent (raised now, not at the gate):** the queue's own D2.0.7 guardrail is `STOP_IF_GIT_INTEGRATION_WOULD_AUTO_DEPLOY`. Evidence from my 2026-09-12 earlier Vercel forensic work: this repository has a Vercel GitHub App integration that has historically produced a deployment record on **every push to every branch** (333 preview + 13 production records observed; my own R0.3 WIP push generated one). A merge to `main` would therefore very likely auto-deploy to production rather than being a GitHub-only action. That needs resolving before D2.0.7, and the current connector cannot read the Vercel project (403, wrong account/team scope) to confirm or disable it. Flagging early so the controlled-deployment step can be planned rather than discovered.
+
+Files / branches / components affected:
+- `atlas-v2-demo-2026-09-14` only. No Vercel action.
+
+Next exact action:
+- Inspect existing demo-branch surfaces, build the POC journey/trace page, verify, audit, close.
