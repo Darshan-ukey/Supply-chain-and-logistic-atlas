@@ -672,3 +672,39 @@ Safe resume point:
 
 Next exact action:
 - Write the three files, verify, commit, push, log POST_ACTION with exact hashes.
+
+## 2026-09-12 11:04 IST — Claude — D2.0.0
+Classification: OWNER_DIRECTION
+Checkpoint: POST_ACTION
+
+Evidence inspected:
+- Commit `d18848b` on `atlas-governance-registry-v2.1`.
+- Pre-write semantic diff: exactly 1 asset added (`canvas-2.0.1-candidate`), 0 removed, 0 others changed (verified programmatically before commit).
+
+Action / finding:
+- Added `canvas-2.0.1-candidate` to `governance/frozen-assets/ASSET_REGISTER.json`: shell (byte-identical to `canvas-2.0.0`, hashes re-verified in the entry) + P4 Canvas-Daughter bridge (5 files, sha256-pinned, sourced from `atlas-presentation-architecture-v1-p6-2` @ `6ae00356b6`).
+- Added `canvas: "canvas-2.0.1-candidate"` to `CURRENT.json`'s `latestFrozenCandidates`.
+- Added a Canvas 2.0.1 section to `LATEST.md`, positioned above the Road LTL 1.5 entry.
+- Status: `FROZEN_EXECUTION_REFERENCE_CANDIDATE` — chosen to mirror `road-ltl-1.5-candidate`'s treatment in this same registry, not `FROZEN_PRODUCTION_BASELINE`. Reason stated in the entry's own `verification.notTested` field: live/visual DOM rendering has never been observed (Vercel prohibited this sprint), same category of gap that keeps the independently-QA-certified Road LTL 1.5 at candidate status too. This is a judgment call, explicitly flagged for Owner/ChatGPT override — a one-line `status` change promotes it if PRODUCTION_BASELINE is actually wanted now.
+- `canvas-2.0.0`'s own entry and `productionBaseline.canvas` are untouched — the frozen shell did not change; 2.0.1 is additive routing on top of it, not a shell revision.
+
+Files / branches / components affected:
+- `governance/frozen-assets/ASSET_REGISTER.json`, `CURRENT.json`, `LATEST.md` on `atlas-governance-registry-v2.1` only. No demo-branch, no Vercel action.
+
+Audit / test result:
+- Post-write validation: JSON re-parses cleanly; asset count 29→30; programmatic before/after diff confirms only the new entry differs.
+
+Impact / guardrail:
+- D2.0.1 can now build on a registered asset rather than an ungoverned bundle. Recommend importing the same 5 bridge files + the unchanged shell onto `atlas-v2-demo-2026-09-14` via traceable history, referencing `canvas-2.0.1-candidate` as provenance.
+- This registry write is a canonical governance action, done under explicit Owner direction in this session (not implementation-agent self-promotion) — logged in full per Section 0 so it is auditable as such.
+
+Current/Demo/Target effect:
+- CURRENT: `productionBaseline.canvas` unchanged (`canvas-2.0.0`).
+- DEMO: item B is now permanent scaffolding, not demo-only; ready to import into D2.0.1.
+- TARGET: establishes the registered basis for later adding further module/version tuples (e.g. VNext output) to the same governed bridge registry without rebuilding it.
+
+Safe resume point:
+- `atlas-governance-registry-v2.1` at `d18848b`.
+
+Next exact action:
+- Import shell + bridge onto `atlas-v2-demo-2026-09-14` for D2.0.1, citing `canvas-2.0.1-candidate` as provenance.
