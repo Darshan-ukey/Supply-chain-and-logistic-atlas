@@ -1,365 +1,326 @@
 # Claude ↔ ChatGPT — Atlas Shared Coordination Log
 
-**Purpose:** Persistent direct handover and findings log for ChatGPT and Claude while building Atlas 2.0. Both executors must read this file before starting or resuming Atlas demo work and append/update their findings here so the Owner does not need to copy conversations between tools.
+**Purpose:** Persistent direct coordination/handover file for ChatGPT and Claude. Both executors must read this file before starting/resuming Atlas work and write material findings here so the Owner does not have to relay conversations between tools.
 
 **Repository:** `Darshan-ukey/Supply-chain-and-logistic-atlas`  
 **Canonical governance branch:** `atlas-governance-registry-v2.1`  
-**Current program:** Atlas V2 Demo Sprint  
-**Target:** functional concept live Monday 14 Sep 2026; stakeholder/Malkom 3.0 demo Tuesday 15 Sep 2026.
+**Current program:** Atlas V2 Hybrid Demo Sprint  
+**Target:** functional concept live Monday 14 Sep 2026; stakeholder/Malkom 3.0 demo Tuesday 15 Sep 2026.  
+**Primary executor:** ChatGPT  
+**Hot backup:** Claude
 
 ---
 
-## Collaboration protocol
+# 0. Mandatory read order
 
-1. **ChatGPT is primary executor for the current demo sprint. Claude is hot backup.** Claude may take over when ChatGPT is unavailable/fails or the Owner directs takeover.
-2. Before doing work, **read this file plus the current machine queue and demo build protocol**. Do not reconstruct current state from memory/chat alone.
-3. After every material audit, architecture finding, build decision, stage completion, failure, or discovered discrepancy, update this file.
-4. Each entry must identify **executor, timestamp/date, evidence inspected, finding/decision, impact, and next action**.
-5. Distinguish clearly between:
+Before any implementation/audit action, read:
+1. `claude_chatGPT.md` — this file.
+2. `governance/demo-sprint/ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md` — **Current Live vs Monday Demo vs Target Atlas V2**.
+3. `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json` — machine authorization/current stage.
+4. `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_PROTOCOL.md`.
+5. `governance/demo-sprint/ATLAS_V2_DEMO_HANDOVER.md`.
+6. `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_LOG.md`.
+7. Frozen architecture/governance assets referenced by the active stage.
+
+If any two records conflict, STOP, reconcile governance first, then implement.
+
+---
+
+# 1. Collaboration protocol
+
+1. ChatGPT is primary executor for the current demo sprint. Claude is hot backup.
+2. Claude may take over only when ChatGPT is unavailable/fails or the Owner directs takeover, and only for the exact current authorized demo stage.
+3. After every material audit, architecture finding, build decision, stage completion, defect, deployment observation or discrepancy, update this file.
+4. Every entry should classify the statement as one of:
    - `VERIFIED_REPOSITORY_FACT`
+   - `VERIFIED_RUNTIME_FACT`
    - `OWNER_DIRECTION`
    - `WORKING_DEMO_DECISION`
    - `HYPOTHESIS / REQUIRES_VERIFICATION`
-6. Never silently convert a hypothesis or remembered state into canonical truth.
-7. Do not overwrite frozen historical assets. Demo work is additive/versioned and follows pre-build, in-build and post-build audit checkpoints.
-8. No delta-only certification. Each passed demo stage must leave a complete reproducible repository state/freeze point.
-9. GitHub is canonical source/version history. Vercel is deployment/runtime, not the source of truth.
-10. The Monday release is a **functional proof-of-concept/demo release**, not Atlas V2 full production certification.
-
-### Required companion files
-- `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json`
-- `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_PROTOCOL.md`
-- `governance/demo-sprint/ATLAS_V2_DEMO_HANDOVER.md`
-- `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_LOG.md`
-- Architecture refinement remains separately governed; AR0.2 must not be silently resolved by demo implementation.
+5. Never silently convert remembered/chat information into canonical truth.
+6. GitHub is canonical source/version history. Vercel is deployment/runtime. Backend Knowledge Warehouse/Supabase may be canonical persistence for governed runtime knowledge, but does not replace GitHub/Drive custody requirements.
+7. Do not overwrite historical frozen assets. Create new versioned/frozen full states.
+8. No delta-only certification: every passed demo stage must preserve a complete reproducible repository state.
+9. Monday is a proof-of-concept/demo release, not full Atlas V2 production certification.
 
 ---
 
-# 12 Sep 2026 — Joint baseline discussion
+# 2. Three-state model — NON-NEGOTIABLE
 
-## Owner direction
-**Classification:** `OWNER_DIRECTION`
+Detailed authoritative reference:
+`governance/demo-sprint/ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md`
 
-The Owner clarified the intended product evolution and Monday demo objective:
+Every executor must distinguish:
 
-- Atlas originally developed a working Road LTL → Domain Warehouse → Malkom 3.0 path for the Malkom demo.
-- During that work, gaps became apparent, including missing Operational Knowledge and excessive Malkom/runtime specificity.
-- Atlas was therefore reframed as **tool/runtime agnostic**, with Malkom as the first downstream client/consumer rather than Atlas itself.
-- The newer pipeline was created to make the domain-to-execution path more complete, governed and reusable.
-- For Tuesday, this is a **proof of concept**, not a completeness/governance presentation. Approximately 60–70% workable/acceptable representative decomposition → Malkom projection is sufficient if the demonstrated path is real and useful.
-- Governance/readiness evidence should exist in the product/admin surface but **should not lead the five-minute stakeholder story**.
-- Build in quick stages; audit before/during/after every stage; preserve complete frozen states rather than repeatedly mutating a frozen asset/repository through delta-only changes.
+## A. CURRENT LIVE / REGISTERED PRODUCTION BASELINE
+What Atlas is registered to run today / what the current Vercel project exposes.
+
+Verified frozen production registry:
+- Universe **7.3**
+- Road LTL **1.3** production baseline
+- Ocean FCL **0.5** production baseline
+- Ocean LCL **0.5** production baseline
+- Canvas **2.0.0** registered baseline
+- Universal Ask / Ask Atlas **2.0.1**
+- Atlas Warehouse **1**
+
+Latest candidate/reference assets include Road LTL 1.5, Road LTL 1.5 Operational Knowledge, Ocean FCL/LCL 0.6, OK Contract v2 candidate, Information Resolution v1 and BOL Information Resolution baseline v0.1. Candidate ≠ production.
+
+### Live Vercel identity — verified 12 Sep 2026
+Connected project:
+- `logistic_atlas_v2`
+- project ID `prj_zoyyLeFrvLKHFU8Unzq3Cr8zWDc0`
+- team ID `team_82G0YS5CSlKdabFzFBgLUj3r`
+- latest observed deployment `dpl_2P7RyifswyrGSmgwFVZ9QVZT2PGL` — `READY`, target `null`
+- project metadata domains observed:
+  - `scoperationsintelligence.vercel.app`
+  - `logisticatlasv2-ukeydarsh-2051s-projects.vercel.app`
+  - `logisticatlasv2-git-main-ukeydarsh-2051s-projects.vercel.app`
+
+**Unresolved:** Owner refers to live site as `supplychainatlas.vercel.app`, but connected project metadata did not list that domain. D2.0.0 must verify exact domain/project mapping before promotion.
+
+**Unresolved:** frozen registry says Road LTL 1.3 production; older live/Canvas references appear tied to V1.2. Exact runtime-served version/hash must be proven, not assumed.
+
+### Current-state preservation rule
+The current live/frozen state remains the rollback baseline until target parity is certified. Demo work must not mutate it in place.
 
 ---
 
-## Product North Star retained
-**Classification:** `OWNER_DIRECTION / FROZEN INTENT`
+## B. MONDAY HYBRID DEMO
+Purpose: functional proof, not final architecture.
 
+Owner accepts approximately 60–70% workable/acceptable **representative execution depth** for the POC. Do not turn this into a fabricated numeric Atlas completeness score.
+
+Selected strategy:
+`HYBRID_REUSE_PROVEN_EXECUTION_LINEAGE_WITH_ADDITIVE_ATLAS_V2_SURFACE`
+
+### Demo surface/direction
+Communicate:
+`Sources → Universe → Daughter Domain → Operational Knowledge → Work Decomposition → WorkDefinition → Enterprise/Client Binding → Execution Readiness → Adapters`
+
+### Demo execution proof
+Reuse only after verification:
+`Road LTL V1.2 → Domain Warehouse v2.3 / reference WorkDefinition → Malkom 3.0 projection`
+
+This is a proven/reference execution path for demo purposes. **Do not claim Road LTL v1.4/v1.5/R0.3 currently generates it.**
+
+### Ocean
+Ocean 0.6 may be used as Owner-authorized demo candidate surface. Do not relabel it as production or imply Road-LTL-equivalent execution depth.
+
+### Governance/readiness view
+Keep it secondary/admin. The five-minute stakeholder story is capability/proof, not governance theater.
+
+### Demo assets must be classified
+Every new/reused demo component must be one of:
+- `KEEP`
+- `BUILD_ON`
+- `BRIDGE`
+- `REPLACE`
+- `RETIRE_AFTER_PARITY`
+- `DEMO_ONLY`
+
+No unclassified demo component may drift into target production.
+
+### Default post-demo disposition
+- Page 0 / Universe UI: **BUILD_ON** if target-data-driven.
+- Universe 7.3: **KEEP** until governed evidence requires successor.
+- Canvas V2 additive shell: **BUILD_ON** if it remains a materialized view over governed data.
+- Old Road LTL V1.2 execution proof: **RETIRE_AFTER_PARITY** from active canonical path; preserve as historical/test reference.
+- Domain Warehouse v2.3 proof fixtures: **BRIDGE/REPLACE** once canonical WD VNext compiler exists.
+- Malkom adapter: **BUILD_ON**, but rebase later to target canonical specification/output.
+- Governance/readiness panel: **BUILD_ON**.
+- Hand-authored semantic bridge logic: **DEMO_ONLY/AVOID** unless explicitly Owner-authorized.
+
+---
+
+## C. TARGET ATLAS V2
+Product identity:
 > **Atlas is the governed intelligence and specification layer between enterprise/client operations and the technologies used to transform or execute them.**
 
 Boundary:
-
 > **Atlas owns understanding and specification. Downstream platforms own execution.**
 
-Canonical conceptual direction:
+### Frozen current canonical chain
+`Authoritative Sources → Universe → Daughter Domain Model → Operational Knowledge → Recursive Work Decomposition → Canonical WorkDefinition → Client Binding → Runtime Projection/Compiler → Execution outside Atlas → Evidence/Feedback`
 
-`Authoritative Sources → Universe → Daughter Domain Model → Operational Knowledge → Recursive Work Decomposition → Canonical WorkDefinition → Enterprise/Client Binding → Execution Readiness / Governed Specification → Runtime Adapter/Projection → Downstream Execution`
+### AR0.2 target-candidate refinement — NOT YET OWNER-FROZEN
+`Authoritative Sources`
+→ `Reference Domain + Operational Knowledge`
+→ `Canonical Work Decomposition`
+→ `Canonical WorkDefinition`
+→ `Enterprise Context / Client Binding`
+→ `Governed Specification Assembly`
+   - Scope Manifest
+   - Resolution/Readiness Proof
+   - Version-Closed Specification Manifest
+→ optional `Design / Solution Synthesis`
+→ `Runtime Adapter / Projection`
+→ `Execution Runtime [outside Atlas]`
+→ `Observation / Evidence Reconciliation`
+→ governed feedback/knowledge-gap process
 
-Malkom is the first demonstrated consumer. Other possible consumers include agent/workflow engines, BPM, digital twins, ERP/TMS/WMS, RPA, ServiceNow and custom applications.
-
----
-
-# Claude audit findings supplied by Owner — pending/subject to independent verification where noted
-
-## C-01 — Sourcing layer
-**Executor:** Claude  
-**Classification:** `CLAUDE_REPORTED_VERIFIED_REPOSITORY_FACT — CHATGPT_INDEPENDENT_VERIFICATION_PENDING`
-
-Claude reports a real governed sourcing layer, including `governance/source-review-policy-v1.json`, 66 governed sources, authority-domain coverage, review cadence and no-silent-upgrade policy.
-
-**Impact:** sourcing is a real Atlas layer and should remain upstream of Universe.
-
----
-
-## C-02 — Universe baseline
-**Executor:** Claude  
-**Classification:** `CLAUDE_REPORTED_VERIFIED_REPOSITORY_FACT — CHATGPT_INDEPENDENT_VERIFICATION_PENDING`
-
-Claude reports current production/frozen Universe baseline as **7.3** and found no evidence of 7.4.
-
-**Demo rule:** do not present Universe 7.4 unless independently evidenced.
+Do not implement candidate layers as frozen truth until Owner approval.
 
 ---
 
-## C-03 — Daughter version state
-**Executor:** Claude  
-**Classification:** `CLAUDE_REPORTED_VERIFIED_REPOSITORY_FACT — RUNTIME_SEAM_REQUIRES_VERIFICATION`
+# 3. Target storage / governance / UI model
 
-Claude reports:
-- Road LTL **1.3 = frozen production baseline**.
-- Road LTL 1.4/1.5 = newer governed candidate/successor lineage, not promoted production.
-- Ocean **0.5 live / 0.6 candidate**.
-- Owner has explicitly authorized Ocean 0.6 as the Monday demo target assumption/surface; this does not convert it into full production certification.
+Detailed specification lives in `ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md`. Minimum rules below are binding design intent.
 
-A further discrepancy exists: Canvas V2 audit evidence reportedly validates against Road LTL V1.2, while the frozen asset register lists Road LTL 1.3 as production. Live `index.html` reportedly references a `road-ltl-v1.2.validation.json` filename.
+## 3.1 Canonical persistence
+- Backend **Knowledge Warehouse** = canonical persistent governed knowledge/state.
+- HTML, Canvas, JSON exports, WorkDefinition packages and runtime projections = materialized/derived views.
+- UI never becomes semantic source of truth.
+- GitHub = canonical schemas, code, governance, tooling, version history.
+- Drive = durable governed evidence/custody where required.
 
-**Mandatory D2.0.0 check:** determine from concrete runtime/data/hash evidence whether the deployed Vercel application actually serves Road LTL V1.2 or V1.3. Do not infer from filenames or pointer docs alone.
+## 3.2 Source layer
+Store source identity, publisher/authority, version/effective date, custody location, hash/snapshot, applicability, source claims, supersession/deprecation state, review cadence and provenance links.
 
----
+Current source-review cycle:
+`CHECK_ISSUER_VERSIONS → INGEST_DELTA_METADATA → COMPARE_PRIOR_SNAPSHOT → CLASSIFY_NEW_CHANGED_DEPRECATED → RUN_SOURCE_TO_ATLAS_COVERAGE → OPEN_GAPS → SME_GOVERNANCE_REVIEW → UPDATE_ATLAS_ONLY_IF_APPROVED → REGRESSION_TEST → PUBLISH_VERSIONED_SNAPSHOT`
 
-## C-04 — Operational Knowledge position
-**Executor:** Claude  
-**Classification:** `CLAUDE_REPORTED_VERIFIED_REPOSITORY_FACT / CONSISTENT_WITH_FROZEN ARCHITECTURE`
+Routine cadence: 6 months; material release triggers early review.
 
-Claude reports `KNOWLEDGE_TO_EXECUTION_ARCHITECTURE_V1_FROZEN.md` explicitly places Operational Knowledge between Daughter Domain Model and Recursive Work Decomposition. Backend Knowledge Warehouse/Supabase is described as canonical persistent store, with HTML/Canvas/JSON/WorkDefinition packages treated as materialized views.
+## 3.3 Universe
+Store cross-domain hierarchy/identities, relationships/crosswalks, applicability, versions/supersession and source coverage. Daughter updates do not automatically create a new Universe version.
 
-**Impact:** Operational Knowledge is not optional presentation metadata; it is part of the intended knowledge-to-execution chain.
+## 3.4 Daughter domains
+Store governed domain/process/task reference work linked to Universe IDs: processes/tasks, actors, objects/documents/information concepts, rules/constraints, states/events/outcomes, source claims, version/lineage, unresolved knowledge and applicability.
 
----
+## 3.5 Operational Knowledge
+Store business meaning, required/prohibited conditions, information-resolution logic, validations/controls, decisions/authority, outcomes, exceptions/escalation/recovery, evidence expectations, ambiguity/conflict/UNKNOWN state, provenance and reusable client-binding requirements.
 
-## C-05 — Two WorkDefinition/execution lineages
-**Executor:** Claude  
-**Classification:** `CRITICAL CLAUDE FINDING — REQUIRES ASSET-LEVEL INDEPENDENT VERIFICATION BEFORE FREEZE`
+Missing knowledge remains explicit. It is not fabricated downstream.
 
-Claude reports two currently separate lineages:
+## 3.6 Canonical Work Decomposition
+Store parent A5 lineage, canonical child work units, semantic type, trigger/prerequisites/dependencies, business-significant ordering/parallelism, rationale/evidence, human/system business boundary, exception/escalation/retry/recovery relationships and completion/evidence requirements.
 
-### Existing working/reference pipeline
-`Road LTL V1.2 → Domain Warehouse v2.3 / lossless WorkDefinition → Malkom projection`
+Canonical decomposition stops at **business-semantic sufficiency**, not runtime convenience, if/when AR0.2 refinement is approved.
 
-Reported characteristics:
-- built for the earlier Malkom 3.0 proof;
-- 22-definition proof domain / Malkom-oriented projection;
-- existing compatibility/audit/deep-audit scripts;
-- working adapter/projection path;
-- known runtime gaps documented rather than silently filled.
+## 3.7 Canonical WorkDefinition
+Store technology-neutral execution semantics: identity/version/lineage, applicability, canonical inputs/objects/fields, rules/controls, decisions/authority, permitted actions/exchanges, HITL boundary, states/outcomes/transitions, waits/clocks, exceptions/escalation/business retry/recovery, evidence/completion and client-binding requirement references.
 
-### New governed successor pipeline
-`Road LTL V1.4/V1.5 → Operational Knowledge → Recursive Work Decomposition → Canonical WorkDefinition VNext → Client Binding → adapters/projections`
+Do not place Malkom queues/subqueues, agent prompts/models, BPMN node IDs, vendor configuration or credentials into canonical WD truth.
 
-Reported characteristics:
-- R0.1–R0.3 hardened/certified parts of the source/OK foundation;
-- Canonical WD compilation remains gated/suspended in the production roadmap;
-- open knowledge/contract gaps remain;
-- no verified compiler currently connects the R0.3-certified v1.5 Operational Knowledge directly into the Domain Warehouse v2.3/Malkom format.
+## 3.8 Enterprise Context / Client Binding
+Store client systems/SORs, field/API mappings, masters/network/serviceability, SLA/cutoffs/thresholds, policy variants/precedence, role/authority mapping, exception routing, communication channels, local contractual/regulatory constraints and optional workload/capacity/NFR context.
 
-**Critical guardrail:** until a bridge is actually built and validated, **do not claim that the v1.4/v1.5/R0.3 governed lineage is generating the existing Malkom projection.**
+Client reality overlays reference truth; it does not mutate reusable domain truth.
 
----
+## 3.9 Governed Specification Assembly — candidate
+Derived references/proofs only: scope membership, dependency closure, unresolved/conflicting/client-binding-required facts, readiness/blockers and version-closed specification identity. Must not duplicate canonical truth.
 
-## C-06 — V1.2/V1.3 vs V1.4/V1.5 schema discontinuity
-**Executor:** Claude  
-**Classification:** `CLAUDE_REPORTED_VERIFIED_REPOSITORY_FACT — HIGH IMPORTANCE`
+## 3.10 Runtime adapters/projections
+Store target runtime identity/capabilities, canonical-to-native mappings, semantic loss/capability gaps, native queue/workflow/agent/ERP/TMS/RPA projections, connector/runtime configuration and verification results. Derived/reproducible; never canonical business truth.
 
-Claude compared schemas and reports:
-
-V1.2/V1.3 are process/node-edge oriented, with structures such as roles, movements, nodes, jurisdictions, regimes, conditions, contracts, processes, processFlowEdges, scenarios, views, phases and lenses.
-
-V1.4/V1.5 are task-record oriented, with top-level structures such as module, lineage, designPrinciple, tasks, sourceRegistry and validationProfile.
-
-**Conclusion:** this is not a thin same-schema upgrade. A simple field mapper should not be assumed. The newer task-record/Operational-Knowledge lineage and older Malkom proof lineage require an explicit governed bridge/compiler if they are to become one canonical pipeline later.
-
-**Demo implication:** do not attempt a full compiler/bridge before Monday merely to make versions appear unified.
+## 3.11 Observation/evidence — candidate
+Store canonical/specification reference, execution instance, observed states/events/evidence, conformance/deviation and proposed knowledge gaps. Runtime observations cannot silently mutate canonical knowledge.
 
 ---
 
-## C-07 — Canvas V2.0 additive design
-**Executor:** Claude  
-**Classification:** `CLAUDE_REPORTED_VERIFIED_REPOSITORY_FACT — DEPLOYMENT STATUS REQUIRES VERIFICATION`
+# 4. Target change propagation to UI
 
-Claude reports Canvas V2.0 was explicitly designed as additive:
-- v1.1.8 product surface/APIs/canonical data remain unchanged;
-- new hybrid-spine shell layers on top;
-- reuses existing data contract/module loader/Page-0 composer;
-- optional WorkDefinition-depth panel;
-- fail-closed behavior: where no registered WorkDefinition exists, remain at A5 and say so rather than fabricate depth.
+Target flow:
 
-**Mandatory D2.0.0 check:** determine whether Canvas V2.0 was ever actually branched/deployed or exists only as a frozen standalone bundle, and locate the complete authoritative asset.
+`Source change detected`
+→ preserve version/hash/snapshot
+→ classify affected claims
+→ impact-map Universe/Daughter/OK
+→ open gaps/conflicts
+→ SME/governance review as needed
+→ approve canonical change
+→ write new governed version to Warehouse/GitHub-defined contracts
+→ selectively regenerate daughter/materialized views
+→ selectively regenerate decomposition
+→ selectively regenerate WorkDefinitions
+→ recompute enterprise bindings/readiness/specification packages
+→ regenerate affected runtime projections
+→ regression/security/trace checks
+→ publish versioned snapshot
+→ UI refreshes/materializes approved state
+→ preserve prior version + rollback lineage.
 
----
+No semantic truth is created by directly editing UI copy/data to make a screen look complete.
 
-## C-08 — Ask Atlas naming/version
-**Executor:** Claude  
-**Classification:** `CLAUDE_REPORTED_VERIFIED_REPOSITORY_FACT — CHATGPT_INDEPENDENT_VERIFICATION_PENDING`
-
-Claude reports no canonical `Intelligence layer v0.6` tag. The relevant capability is **Ask Atlas / Universal Ask**, reportedly certified at v2.0.1.
-
-**Demo rule:** do not use invented/remembered `Intelligence 0.6` terminology unless evidence is found.
-
----
-
-# Joint demo strategy decision
-
-## D-01 — Hybrid selected
-**Classification:** `WORKING_DEMO_DECISION — OWNER AGREED`
-
-For Monday, use a **hybrid demo assembly**, but do **not** create a third canonical architecture.
-
-### Reuse proven execution capability
-Use the verified existing Road LTL V1.2 → Domain Warehouse v2.3 → Malkom projection path where it is actually working.
-
-### Use Atlas 2.0 direction around it
-Use the newer Atlas shell/concept to communicate:
-
-`Sources → Universe → Daughter Domain → Operational Knowledge → Work Decomposition → WorkDefinition → Client Binding → Execution Readiness → Adapters`
-
-### Honesty/lineage rule
-The proven Malkom projection is a **reference implementation / proven adapter pattern** unless and until the new governed lineage is compiled into it. Do not relabel old derived content as v1.5 output.
+### Target UI behavior
+- Page 0 reads approved Universe version.
+- Daughter UI reads approved daughter + linked OK.
+- Execution-depth UI resolves OK → decomposition → WD; if missing, displays UNKNOWN/BLOCKED rather than inventing depth.
+- Client view overlays Enterprise Context/Binding without mutating reference truth.
+- Adapter view renders generated target projection with lineage + capability/loss visibility.
+- Public UI remains sanitized.
+- Protected/admin UI may show detailed decomposition, WD, source/provenance, client-binding requirements, runtime projections, readiness and machine-readable artifacts.
 
 ---
 
-## D-02 — Do not build the full new pipeline for Monday
-**Classification:** `WORKING_DEMO_DECISION`
+# 5. Current → Demo → Target gap summary
 
-Do not attempt before Monday:
-- full v1.4/v1.5 → v2.3 compiler;
-- complete canonical WorkDefinition VNext implementation;
-- full Ocean decomposition/WD;
-- full multi-mode compiler;
-- production certification;
-- resolution of AR0.2–AR0.6 merely for demo convenience.
+## Current → Demo
+Still to verify/build:
+- exact `supplychainatlas.vercel.app` ↔ Vercel project/domain mapping;
+- exact live Road LTL served version/hash;
+- authoritative Canvas V2 asset/deployment history;
+- old V1.2 → Domain Warehouse v2.3 → Malkom assets/counts/scripts/gaps;
+- additive compatibility with live app;
+- Ocean 0.6 demo wiring;
+- representative execution-depth navigation;
+- Malkom projection in demo surface;
+- public/admin regression;
+- controlled promotion + rollback.
 
-These remain post-demo governed architecture work.
+## Demo → Target
+Demo will **not** solve:
+- governed compiler from Road LTL 1.4/1.5 + OK into WD VNext;
+- canonical replacement for old V1.2/Domain Warehouse v2.3 proof lineage;
+- complete recursive decomposition compiler;
+- production-complete WD VNext contracts/materialization;
+- remaining canonical object contracts / Information Resolution depth / knowledge gaps;
+- final scope-level readiness/specification architecture;
+- generic observation/evidence contract;
+- Ocean execution-depth parity;
+- full Enterprise Context materialization;
+- adapters beyond Malkom;
+- full P6 security/public-protected certification;
+- full Atlas V2 production promotion.
 
----
-
-## D-03 — Do not hand-author LTL-03 into canonical/demo lineage yet
-**Classification:** `CHATGPT RECOMMENDATION — OWNER HAS NOT OVERRIDDEN`
-
-Claude proposed a possible narrow prototype: retain 21 existing tasks and hand-author one v2.3-shaped LTL-03 WorkDefinition from newer `operationalKnowledgeV2`, labeled prototype/not governed.
-
-ChatGPT recommends **not doing this before the baseline audit** because it introduces manual control-flow/runtime semantics at exactly the seam AR0.2 has not yet resolved. The stakeholder value is limited relative to lineage/confusion risk.
-
-Revisit only if the verified existing projection lacks a representative task needed for the demo.
-
----
-
-## D-04 — Governance/readiness view exists but is secondary
-**Classification:** `OWNER_AGREED WORKING DEMO DECISION`
-
-Keep a protected/secondary **Governance & Readiness** view capable of showing provenance, gaps, version state, Operational Knowledge coverage and readiness evidence.
-
-Do **not** lead the five-minute BU-head/Malkom demo with raw recovery metrics such as 291/528, 66/0 or 76/0.
-
-Primary demo can use concise states such as:
-- `PARTIALLY GOVERNED`
-- `GAPS IDENTIFIED`
-- `READY / PARTIALLY READY / BLOCKED`
-
-Drill into evidence only if useful/asked.
-
-Stakeholder credibility message:
-> Atlas does not assume completeness. It can distinguish what is known/evidenced from what remains unresolved.
+### Post-demo rule
+Resume the governed architecture/production critical path. Demo success does not close AR0.2–AR0.6, R0.4+, P6.2+ or `ATLAS_V2_GO_LIVE`.
 
 ---
 
-## D-05 — 60–70% POC meaning
-**Classification:** `OWNER_DIRECTION + CHATGPT INTERPRETATION`
+# 6. Joint demo strategy decisions retained
 
-Do not interpret 60–70% as a fabricated numeric completeness score for Atlas.
-
-For the Monday POC it means **sufficient representative Road LTL execution depth to demonstrate a credible end-to-end domain → decomposition/WorkDefinition → Malkom adapter/projection concept**, accepting that the platform is not 100% complete/certified.
-
-For the live five-minute journey, prefer a few strong representative execution patterns rather than attempting to demonstrate every task:
-- deterministic work;
-- decision-heavy work;
-- human-in-the-loop;
-- exception/escalation;
-- document/information-intensive work.
-
-The broader 22-task proof can remain accessible if verified.
+- Hybrid demo selected; do not create a third canonical architecture.
+- Do not build a full new v1.4/v1.5 → old v2.3 bridge for Monday.
+- Do not hand-author LTL-03 into canonical/demo execution lineage without explicit Owner sub-authorization.
+- Governance/readiness view exists but is secondary.
+- Prefer several representative execution patterns: deterministic, decision-heavy, HITL, exception/escalation, document/information-intensive.
+- New stakeholder page: **Atlas — From Domain Knowledge to Execution Readiness**.
+- Malkom = first downstream consumer/projection, not Atlas canonical truth.
 
 ---
 
-# Stakeholder hero page
+# 7. Current D2.0 stage plan
 
-## D-06 — New Atlas scope/future page
-**Classification:** `OWNER_APPROVED DEMO REQUIREMENT`
+- `D2.0.0` — Baseline seam verification + hybrid release freeze.
+- `D2.0.1` — Additive Canvas V2 shell + Atlas scope/future page.
+- `D2.0.2` — Road LTL + Ocean demo domain surfaces.
+- `D2.0.3` — Proven Road LTL execution-depth integration from verified V1.2/Domain Warehouse v2.3 proof.
+- `D2.0.4` — Malkom 3.0 adapter/projection integration from proven reference lineage.
+- `D2.0.5` — Representative POC journey + secondary governance/readiness view.
+- `D2.0.6` — Full hybrid integration/regression/deployment-parity certification + full-state freeze.
+- `D2.0.7` — Controlled Monday demo promotion with Owner approval.
 
-Add a page titled approximately:
-
-# Atlas — From Domain Knowledge to Execution Readiness
-
-Core message:
-> **Atlas captures reusable domain and operational knowledge, progressively converts it into execution-ready specifications, and projects those specifications into the tools that execute the work.**
-
-Visual story:
-
-### 1. Build the Domain
-`Universe → Daughter Domain Models → Operational Knowledge`
-
-### 2. Make Work Execution-Ready
-`Knowledge Resolution → Work Decomposition → Canonical WorkDefinition → Enterprise/Client Binding → Execution Readiness`
-
-### 3. Project Into Execution
-`Execution-Ready Specification → Adapter/Projection → Malkom / Agentic AI / Workflow-BPM / Digital Twin / RPA / ERP-TMS-WMS / Custom Applications`
-
-Boundary:
-> **Atlas defines and governs the work. Execution platforms implement and run it.**
-
-Footer concept:
-> **One governed domain model. Multiple enterprise contexts. Multiple execution platforms.**
-
-This page is the subtle larger-capability introduction for the BU head while the primary Tuesday demo remains Malkom 3.0.
+Current authorized stage: **D2.0.0 only**.
 
 ---
 
-# Recommended five-minute demo narrative
-
-**Classification:** `WORKING DEMO NARRATIVE`
-
-1. Briefly introduce Atlas as reusable domain → execution-readiness intelligence.
-2. Enter Road LTL from Page 0 / daughter domain.
-3. Select representative operational work/task.
-4. Show execution depth / WorkDefinition capability using verified existing proof assets.
-5. Project to Malkom 3.0.
-6. Explain that Malkom is the first consumer/projection; Atlas itself does not execute.
-7. If useful, return to the Scope/Future page to show that the same architecture is intended to support other downstream tools.
-8. Governance/readiness evidence remains available but secondary.
-
-Suggested evolution statement:
-> We originally proved the concept specifically for Malkom. That exposed what was missing — deeper operational knowledge, stronger governance and technology neutrality. Atlas 2.0 is the evolution from that Malkom-specific proof toward a reusable domain-to-execution platform.
-
----
-
-# D2.0.0 — Mandatory baseline checks before feature mutation
-
-**Current stage:** `D2.0.0 — Baseline, handover and release-control setup`
-
-Before closing D2.0.0, independently verify and record:
-
-1. **Live Road LTL seam:** what exact Road LTL version/data/hash does the current `logistic_atlas_v2` Vercel application serve — V1.2 or V1.3?
-2. **Canvas V2.0 custody/deployment:** where is the complete authoritative Canvas V2.0 asset and was it ever actually deployed/branched, or only frozen as a standalone bundle?
-3. **Existing Malkom proof assets:** verify the actual V1.2 → Domain Warehouse v2.3 → Malkom artifacts, task/definition counts, scripts and known adapter gaps.
-4. **Additive compatibility:** verify which Canvas V2 components can be reused without mutating/redefining the frozen live product/data semantics.
-5. **Version/naming facts:** independently verify Universe 7.3, Road LTL production/candidate pointers, Ocean 0.5/0.6 state and Ask Atlas version/naming before they appear in UI copy.
-
-**No feature build should be certified until these baseline checks are closed.**
-
----
-
-# Notes to next executor
-
-### If Claude resumes
-- Treat this file as the shared coordination channel, not chat memory.
-- Append findings with concrete repository paths/SHAs/URLs where possible.
-- Do not convert Claude-reported findings above into jointly verified facts without recording evidence.
-- Do not redesign canonical architecture for Monday.
-- Do not silently bridge V1.2/v2.3 and V1.4/v1.5.
-- If ChatGPT is available, leave findings here for ChatGPT to consume rather than requiring Owner to relay them.
-
-### If ChatGPT resumes
-- Read Claude's newest entries here first.
-- Independently validate material claims needed for the current stage.
-- Update the machine queue/build log only after evidence supports a stage transition.
-- Preserve Claude as hot backup with sufficient current state to resume.
-
----
-
-## Update template — both executors
+# 8. Update template — both executors
 
 ```text
 ## YYYY-MM-DD HH:MM — <Executor> — <Stage>
-Classification: VERIFIED_REPOSITORY_FACT | OWNER_DIRECTION | WORKING_DEMO_DECISION | HYPOTHESIS
+Classification: VERIFIED_REPOSITORY_FACT | VERIFIED_RUNTIME_FACT | OWNER_DIRECTION | WORKING_DEMO_DECISION | HYPOTHESIS
 
 Evidence inspected:
 - <path/ref/commit/runtime>
@@ -370,6 +331,13 @@ Finding / action:
 Impact / guardrail:
 - ...
 
+Current/Demo/Target effect:
+- CURRENT: ...
+- DEMO: ...
+- TARGET: ...
+
 Next action:
 - ...
 ```
+
+Whenever new evidence changes Current, Demo or Target assumptions, update this file and `ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md` before implementation continues.
