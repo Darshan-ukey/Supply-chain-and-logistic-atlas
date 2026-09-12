@@ -777,3 +777,46 @@ Safe resume point:
 
 Next exact action:
 - Owner/ChatGPT: decide whether to bring `p2-projection-source-registry.json` over too (closes the Ocean self-check gap) and how to treat the root-`index.html` lineage mismatch, or accept both as known/non-blocking and proceed to wiring Canvas into the demo's active navigation for the remainder of D2.0.1.
+
+## 2026-09-12 11:46 IST — Claude — D2.0.0
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+Evidence inspected:
+- `data/modules/road-ltl-v1.3.json` — full top-level key/count inventory.
+- `data/road-ltl/effective-road-ltl-1.5-materialization.json` — full top-level key inventory, task schema.
+- `data/module-catalog.json` — live routing manifest entry for `road-ltl`.
+- `grep -rl "processFlowEdges|entityNodes|ontologyEdges"` and `grep -rl "operationalKnowledgeV2|road-ltl-v1.5|road-ltl-v1.4"` across `api/` and `execution/ui/`.
+- `api/atlas.js` (router only, confirms no inline schema handling at that layer).
+
+Action / finding — Owner asked what actually differs between production Road LTL 1.3 and candidate 1.5, in the context of the still-open promotion decision. This surfaces a fact beyond the content-completeness gaps already logged:
+
+**v1.3 and v1.5 are not the same data model at different maturity — they are structurally incompatible representations.**
+- v1.3: process-flow ontology graph — `roles`, `movements`, `nodes`, `processFlowEdges` (39), `entityNodes` (220), `ontologyEdges` (176), `executionTransitions`, `jurisdictions`, `regimes`, etc. Same family as v1.2, incrementally enriched (`foundationHardeningVersion: 1.1`).
+- v1.5 (effective materialization): `tasks[]` — 22 discrete governed task records with `baseline`, `controls`, `decisionGates`, `evidenceContracts`, `operationalKnowledgeV2`. Same 22 canonical LTL task identities, but only `LTL-03` carries actual v1.5 content (`inheritance: DIRECT_GOVERNED_OVERRIDE`); the other 21 exist in both but in fundamentally different shapes.
+
+**`data/module-catalog.json` — the live app's own routing manifest — is hardcoded to v1.3**: `"version":"1.3"`, `"url":"data/modules/road-ltl-v1.3.json"`, exact sha256 pin, `"publicationState":"ACTIVE"`.
+
+**No code path in `api/` or `execution/ui/` references the v1.4/v1.5 task-record schema at all** (zero grep matches for `operationalKnowledgeV2` or the v1.4/v1.5 paths). Confirmed the live app has no renderer that knows how to interpret the candidate schema. Even the newly-imported Canvas-Daughter bridge (item B / `canvas-2.0.1-candidate`) doesn't consume this schema directly — it routes to Malkom-shaped v2.3 WorkDefinitions, a third, separate representation derived from V1.2 content.
+
+Files / branches / components affected:
+- Read-only. No mutation. Plus this log entry.
+
+Audit / test result:
+- Confirmed programmatically (schema key inventories, live-code grep, catalog inspection), not inferred from documentation.
+
+Impact / guardrail:
+- Flipping `productionBaseline.roadLtl` from `road-ltl-1.3` to `road-ltl-1.5-candidate` would not be a content upgrade — it would hand the live renderer a JSON shape it has no code path to interpret. This is a second, independent blocker on top of the already-logged content gaps (173/528 absent cells, 66/76 open object/IR contracts, 24 open gaps): a schema/rendering blocker, not only a completeness one.
+- Directly relevant to D2.0.0's open exit criterion `VERIFY_UNIVERSE_ROAD_LTL_OCEAN_ASK_ATLAS_VERSION_FACTS` and to the still-open "live seam" note from the 10:08 IST entry (v1.2-vs-v1.3 in Canvas references) — this finding clarifies the *production* side of that seam specifically.
+- Recommendation stated to Owner: hold production promotion until after demo corrections AND until a compiler/adapter exists that can render the v1.4/v1.5 schema for its intended live surface — not a process-only caution, a rendering-break risk independent of process.
+
+Current/Demo/Target effect:
+- CURRENT: no change; clarifies why `productionBaseline.roadLtl` remaining `1.3` is not merely conservative but structurally necessary until a renderer exists.
+- DEMO: unaffected — the demo already reaches v1.5/LTL-03 content via the bridge's own governed routing (`canvas-2.0.1-candidate`), independent of this production pointer.
+- TARGET: reinforces that a deterministic compiler from the v1.4/v1.5 schema to a renderable projection (Atlas Warehouse / WD VNext compiler, still `SUSPENDED_BY_ARCHITECTURE_REFINEMENT_GATE`) is a precondition for any future production promotion, not merely a nice-to-have.
+
+Safe resume point:
+- `atlas-governance-registry-v2.1` at `7ae3ba8`, unchanged except this log commit.
+
+Next exact action:
+- Owner decision recorded as: HOLD production promotion of Road LTL 1.5 until after demo corrections, pending renderer/compiler capability. No pointer change made.
