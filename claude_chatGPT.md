@@ -927,3 +927,24 @@ Safe resume point:
 
 Next exact action:
 - Owner/ChatGPT: review and decide D2.0.0 exit-criteria closure, or continue D2.0.1 (e.g. Universe/Canvas entry page wiring, or the Malkom connection beat still undecided from the 11:xx demo-narrative discussion).
+
+## 2026-09-12 13:22 IST — Claude — D2.0.1
+Classification: WORKING_DECISION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Prior findings on the two execution proof lineages: Domain Warehouse v2.3's `WorkDefinition` schema (`decomposition: {basis: 'MALKOM_STANDARD', malkom: {...}}` — Malkom-shaped by construction, `packages/contract/src/schemas.ts`) vs LTL-03's real v1.5 `operationalKnowledgeV2` content (executor-neutral by design, per the frozen Knowledge-to-Execution Architecture doc).
+
+Action / finding:
+- Owner asked for a concrete, evidenced assessment of the gap between the two: is deriving a Malkom-consumable output from LTL-03's real v1.5 content a small bridgeable gap or a large effort?
+- Claude will do a field-by-field comparison: what `malkomTaskProjectionSchema` requires (taskId/queue/subQueues/workTypes/fields/outcomes/etc., several with `min(1)` non-empty array requirements) against what LTL-03's real content actually contains, to determine which fields are honestly derivable and which would require inventing content that exists nowhere in governed source data.
+- Read-only investigation only. No code written, no files committed at this step.
+
+Files / branches / components affected:
+- None yet — investigation only.
+
+Impact / guardrail:
+- This directly informs the still-open "Malkom ending" demo-narrative decision (11:xx entries): show the real V1.2/v2.3 pipeline honestly vs. build a new bridge for LTL-03 specifically. No implementation will proceed without a further Owner decision once the gap is sized.
+
+Next exact action:
+- Field-by-field comparison; report findings; await direction before writing anything.
