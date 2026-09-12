@@ -405,3 +405,43 @@ Safe resume point:
 
 Next exact action:
 - Verify `main` and `atlas-v2-demo-2026-09-14` branch SHAs/ancestry and inventory relevant historical branches/assets.
+
+## 2026-09-12 09:36 IST — ChatGPT — D2.0.0
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+Evidence inspected:
+- GitHub branch metadata for `main`.
+- GitHub branch metadata for `atlas-v2-demo-2026-09-14`.
+- Recursive tree for `main`.
+- GitHub branch inventory (35 branches).
+
+Action / finding:
+- `main` and the authorized demo branch are an exact baseline match: both point to commit `5250cf35d1ea4fb24c97822d849e7ac8f17b75e6` and tree `876a3d36eedc25663848514836294bba435e6eaf`.
+- This proves `atlas-v2-demo-2026-09-14` was created cleanly from `main`; no feature divergence exists at D2.0.0 baseline.
+- Repository contains 35 historical/architecture/recovery/presentation/backup branches; reuse must therefore be provenance-driven, not name/newness-driven.
+- Main recursive tree does not contain a `canvas-v2` path, so authoritative Canvas V2 assets must be recovered/verified from historical branches or other governed custody before D2.0.1.
+
+Files / branches / components affected:
+- No repository mutation outside this governance log entry.
+- `main` remains untouched.
+- Demo branch remains exact baseline copy.
+
+Audit / test result:
+- D2.0.0 exit criterion `VERIFY_DEMO_BRANCH_ATLAS_V2_DEMO_2026_09_14_FROM_MAIN` = PASS.
+- Branch-inventory criterion = PARTIAL PASS; inventory exists, asset provenance still being verified.
+
+Impact / guardrail:
+- D2.0.1 can safely use the demo branch once D2.0.0 fully closes.
+- Do not infer Canvas V2 from current main; locate exact source branch/files and record hashes before reuse.
+
+Current/Demo/Target effect:
+- CURRENT: no change.
+- DEMO: clean GitHub baseline established.
+- TARGET: historical branches remain evidence/reference only unless explicitly imported with provenance.
+
+Safe resume point:
+- `main` = `atlas-v2-demo-2026-09-14` at `5250cf35d1ea4fb24c97822d849e7ac8f17b75e6`.
+
+Next exact action:
+- Locate and verify Canvas V2 assets and the V1.2 → Domain Warehouse v2.3 → Malkom proof lineage on historical presentation/backup branches.
