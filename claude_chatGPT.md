@@ -156,19 +156,8 @@ Safe remediation should either fix the rewrite behavior or make the Daughter nav
 ### Admin surface
 Navigating `/admin` redirected to Vercel authentication; admin visual QA was not completed in this pass. This is secondary to the three public/demo blockers above.
 
-### Required remediation sequence
-1. Keep D2.0.7/main merge blocked.
-2. Fix Canvas contract-version validation using an explicit governed compatibility rule for approved enriched contract variants; do not broadly accept arbitrary suffixes.
-3. Fix Daughter execution-depth serverless runtime packaging/handler dependency closure; verify exact failure and ensure required registry/materialized/source files are present in the function bundle or refactor away unsafe dynamic filesystem dependency.
-4. Fix Daughter Canvas navigation (`/app` dead-end).
-5. Add regression/browser checks that would fail on these three defects.
-6. Update the governed successor candidate integrity baseline for intentional remediation changes; do not mutate v1.1.8 historical baseline.
-7. Allow GitHub integration to create a single new preview from the batched remediation commit; do not manually deploy.
-8. Re-run full rendered Opera QA on the new exact preview.
-9. Only after rendered QA passes should D2.0.7/main-merge readiness be reconsidered under explicit Owner approval.
-
 ### Storage guardrail
-Every GitHub push currently creates a Vercel preview, including governance-only pushes. Batch remediation and evidence updates into as few commits as practical. No manual Vercel deployment is authorized or necessary.
+Every GitHub push currently creates a Vercel preview, including governance-only pushes. No manual Vercel deployment is authorized or necessary.
 
 ---
 
@@ -176,7 +165,7 @@ Every GitHub push currently creates a Vercel preview, including governance-only 
 Classification: GOVERNANCE_SYNC + OWNER_DIRECTION
 Checkpoint: PRE_ACTION / BACKLOG_CREATED
 
-No remediation has started. The three browser-QA failures above are now frozen into the dedicated action backlog:
+No remediation has started. The three browser-QA failures above are frozen into the dedicated action backlog:
 `governance/backlog/ATLAS_V2_DEMO_BROWSER_QA_FAILURE_BACKLOG_2026-09-12.md`.
 
 Backlog IDs:
@@ -184,6 +173,39 @@ Backlog IDs:
 - `BQA-02` — execution-depth projection handler runtime failure.
 - `BQA-03` — Daughter → Canvas `/app` navigation 404.
 
-The backlog also fixes the remediation order: capture exact BQA-02 runtime error first; implement one batched demo-branch fix where safe; run structural/full-state regression; refresh only the successor candidate baseline; allow one Git-triggered preview; rerun Opera; keep D2.0.7 blocked until rendered PASS and separate Owner approval.
+The earlier batched-remediation instruction in this checkpoint is **SUPERSEDED** by the Owner correction below.
 
-**NO FAILURE CLOSURE IS AUTHORIZED BY THIS LOG ENTRY.** This checkpoint records work to be done; it does not certify any fix.
+---
+
+## 2026-09-13 — Owner correction — SERIAL BROWSER-GATED FAILURE CLOSURE
+Classification: OWNER_DIRECTION + GOVERNANCE_CORRECTION
+Checkpoint: PRE_ACTION / REMEDIATION_MODE_FROZEN
+
+Owner explicitly rejected closing all three failures in one remediation batch.
+
+Effective immediately, remediation is serial and browser-gated:
+
+1. `BQA-01` is the only active failure gate.
+2. Implement BQA-01 only.
+3. Wait for the exact Git-triggered preview for the BQA-01 commit.
+4. Test BQA-01 in Opera.
+5. Update this shared log with PRE_ACTION, implementation evidence, exact preview/commit, rendered evidence and PASS/FAIL.
+6. If BQA-01 FAILS in browser, remain on BQA-01; BQA-02 stays blocked.
+7. If BQA-01 PASSES in browser, mark only BQA-01 `CLOSED_RENDERED_PASS`; then and only then activate BQA-02.
+8. Repeat the same sequence for BQA-02. BQA-03 remains blocked until BQA-02 rendered PASS.
+9. Repeat the same sequence for BQA-03.
+10. After all three independent rendered passes, perform a final end-to-end browser journey before any D2.0.7 reconsideration.
+
+Current statuses:
+- `BQA-01 = ACTIVE_NEXT_NOT_STARTED`
+- `BQA-02 = BLOCKED_BY_BQA_01_RENDERED_PASS`
+- `BQA-03 = BLOCKED_BY_BQA_02_RENDERED_PASS`
+
+Canonical backlog has been revised accordingly:
+`governance/backlog/ATLAS_V2_DEMO_BROWSER_QA_FAILURE_BACKLOG_2026-09-12.md`.
+
+Queue overlay has been revised to `remediationMode: SERIAL_FAILURE_GATES`.
+
+The prior concept of one batched BQA-01+BQA-02+BQA-03 implementation is void. Storage optimization must come from minimizing unrelated writes, **not** from combining failure closures.
+
+**NO REMEDIATION WAS EXECUTED IN THIS GOVERNANCE-CORRECTION STEP.**
