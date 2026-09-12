@@ -206,3 +206,46 @@ Files / branches / components affected:
 
 Next exact action:
 - Inspect existing demo-branch surfaces, build the POC journey/trace page, verify, audit, close.
+
+## 2026-09-12 18:24 IST — Claude — D2.0.5
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: STAGE_CLOSURE
+
+Evidence inspected:
+- Demo branch `61151b0` → build `319147e` → audit `66918e1`.
+- `governance/demo-sprint/D2.0.5_POST_BUILD_AUDIT.md` at `66918e1`.
+
+Action / finding — D2.0.5 built and closed.
+
+**Added (2 files):** `atlas-poc-journey.html` (six-step POC journey: Page 0 → daughters → depth bridge → operational knowledge → runtime projection → handoff) and `tests/d2-0-5-poc-journey.mjs` (traceability certification). Links to ChatGPT's `atlas-execution-readiness.html` and `index.html`; duplicates neither; Canvas shell untouched.
+
+**Every stated value is read from a committed artifact, none typed by hand:** Page 0 v6.2.2 / road-ltl v1.3 / ocean v0.5 ← `module-catalog.json`; bridges 1.3→1.5, 0.5→0.6 ← `P4_CANVAS_DAUGHTER_TARGETS.json`; 82 tasks (22+30+30) ← the two projection bundles; 22/22 compatible + materializable, 176 bindings/8 families, ESCALATE on LTL-15/18/22, 5 ops not enabled ← the Malkom projection artifact.
+
+**Guardrail compliance:**
+- `NO_FAKE_NUMERIC_COMPLETENESS_SCORE` — zero percentages in visible content (CSS stripped before checking); an explicit panel explains why a single score would mislead.
+- `TRACE_LINEAGE_ACCURATELY` — both lineages side by side and visually distinct; callout states the Malkom output came from **V1.2** and **not** from 1.5 / the certified decomposition / the WD compiler; pending states stay marked pending.
+- `SHOW_GOVERNANCE_EVIDENCE_ON_DEMAND_NOT_AS_PRIMARY_PITCH` — limitations, provenance and the no-score rationale sit behind 3 collapsed `<details>` panels, positioned after the journey; asserted by test.
+- `NO_VERCEL_DEPLOYMENT` — none.
+
+**Verification:** certification suite PASS; HTML tag balance across 8 element types; both outbound links resolve to real files on branch; disclaimer present. **Negative controls run** — injecting `70% complete` FAILS; removing the lineage disclaimer FAILS; understating 176 bindings as 12 FAILS. All restored, clean run re-confirmed.
+
+Audit / test result:
+- **D2.0.5 PASS at structural/source/content-traceability level.**
+
+Impact / guardrail:
+- Browser/visual click-through remains **open**, and is most material for this stage specifically: the deliverable is a visual page whose layout has never been rendered. Structural validation is explicitly not a substitute for looking at it.
+- No canonical data, catalog, production pointer, API security boundary, Vercel config or frozen artifact mutated.
+
+### Carried forward — D2.0.7 conflict, restated at closure
+D2.0.7's guardrail `STOP_IF_GIT_INTEGRATION_WOULD_AUTO_DEPLOY` conflicts with observed repository behaviour: the Vercel GitHub App has historically produced a deployment record on every push to every branch (333 preview + 13 production observed this session). A merge to `main` would likely auto-deploy to production rather than being GitHub-only. The connected Vercel account returns 403 on this project (wrong account/team scope) so the integration cannot currently be inspected or disabled from here. **This needs resolving before D2.0.7 and before any controlled deployment the Owner plans** — it is also the likely mechanism by which a "controlled" deployment could become an uncontrolled production push.
+
+Current/Demo/Target effect:
+- CURRENT: unchanged.
+- DEMO: the narrative arc now has a dedicated, traced journey surface alongside the scope page.
+- TARGET: none.
+
+Safe resume point:
+- `atlas-v2-demo-2026-09-14` @ `66918e1`.
+
+Next exact action:
+- D2.0.6 (end-to-end integration + regression + merge-readiness certification, guardrail `NO_DELTA_ONLY_CERTIFICATION`) is next. Owner/ChatGPT to direct whether Claude continues or ChatGPT resumes.
