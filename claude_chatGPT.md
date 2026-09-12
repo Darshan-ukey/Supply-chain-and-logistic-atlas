@@ -1048,3 +1048,37 @@ Impact / guardrail:
 
 Next exact action:
 - Owner decision on whether to drive a clearly-labeled demo projection from the P6.1 decomposition leaves, before returning to the remaining 4 demo-readiness checks.
+
+## 2026-09-12 14:08 IST — Claude — D2.0.1
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+Evidence inspected:
+- `atlas-presentation-architecture-v1-p6-2`: 14 P6.2 WorkDefinition artifacts present — `lib/compile/workdefinition-compiler.js`, `lib/compile/workdefinition-verifier.js`, `scripts/compile-p6-2-work-definitions.mjs`, `tests/p6-2-canonical-workdefinition-compiler.mjs`, `tests/p6-2-protected-workdefinition-api.mjs`, `lib/api/work-definition.js`, `migrations/p6-2-canonical-work-definitions.sql`, `.github/workflows/p6-2-canonical-workdefinition.yml`.
+- `governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md` — status FROZEN; supersession record `CANONICAL_WORKDEFINITION_CONTRACT_SUPERSESSION_V1.json` confirms V1.0.0 FROZEN supersedes the VNext PENDING commitment, historical artifact preserved unmodified.
+- `governance/triggers/p6-2-compile-dry-run.txt` — pinned to decomposition hash `2c26e760…`, expects 22 tasks / 603 units / 444 leaves / **185 WorkDefinitions** / 163 client-binding-blocked / 96 knowledge-gap-blocked.
+- Live Supabase `atlas_work_definitions`: **0 rows**.
+
+Action / finding — Owner asked whether P6.2 can be done now, and what remains for runtime projection.
+
+**P6.2 is far more built than the queue status implies.** The contract is FROZEN (not pending), the compiler and verifier are written, tests and CI exist, the migration exists, and the compile has been exercised as a governed DRY RUN pinned to the exact certified P6.1 decomposition hash. What has never happened: a persisted run. `atlas_work_definitions` is empty; the dry-run workflow explicitly contains no `--persist` path and asserts row count is unchanged. So P6.2 is closer to "built, rehearsed, never committed" than to "not started".
+
+**But P6.2 still does not reach Malkom.** The frozen WorkDefinition contract is explicit: §8 Forbidden runtime leakage — *"Compatibility with an existing runtime consumer is not a justification for embedding runtime structure in canonical truth"*; §12 — *"P6.2 stops at Canonical WorkDefinition. Client Binding resolution, Atlas Warehouse compilation and runtime projection are subsequent controlled phases."* Confirmed by grep: the compiler emits no queue/subQueue/executionMode/Malkom fields. Deliberate, not missing.
+
+**What actually remains for runtime projection, in governed order:**
+1. P6.2 persisted compile — 185 WorkDefinitions from the certified decomposition. Mechanically ready; gated.
+2. Client Binding resolution — the 163 client-binding-blocked leaves need real client values. Atlas owns the requirement, the client supplies the value; no Atlas-side work can invent these.
+3. Runtime Projection / Compiler — the separate phase that maps canonical WorkDefinitions to a target runtime's shape (queues, execution modes). This is the layer Malkom actually consumes and it does not exist for anything except the legacy V1.2/Domain-Warehouse-v2.3 lineage.
+4. The 96 knowledge-gap-blocked leaves remain genuinely blocked on unresolved domain knowledge (consistent with R0.3's 24 open gaps, 66/0 object contracts, 76/0 IR contracts).
+
+**On "P6.2 + P6.3 = Atlas 2.0":** P6.3 is Identity/Authorization/Public-Protected Certification, P6.4 Multi-mode Execution Depth / Projection Proof, P6.5 Atlas V2 Integration & Production Certification. Production Atlas 2.0 is gated at P6.5, not P6.3 — and P6.2 remains `SUSPENDED_BY_RECOVERY_AND_ARCHITECTURE_GATE`, i.e. behind R0.4–R0.6 recovery closure and AR0.2–AR0.6 architecture freeze, both of which are Owner-gated and currently open.
+
+Files / branches / components affected:
+- None. Read-only investigation.
+
+Impact / guardrail:
+- The honest sequencing answer: P6.2 is technically ready to attempt, but it is suspended by two governance gates the Owner deliberately set, and even completing it does not produce a Malkom-consumable artifact — that needs Client Binding + Runtime Projection, of which Client Binding depends on client-supplied values Atlas cannot generate.
+- Recommending against opening P6.2 during demo week: it is a certified-phase action requiring QA, it cannot complete the Malkom story on its own, and it would cut across the recovery/architecture gates currently in force.
+
+Next exact action:
+- Owner decision on sequencing (demo-first vs. reopening the P6 critical path), then return to the 4 outstanding demo-readiness checks.
