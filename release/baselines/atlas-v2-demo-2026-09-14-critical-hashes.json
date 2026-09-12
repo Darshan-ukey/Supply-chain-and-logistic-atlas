@@ -38,7 +38,7 @@
     "data/governance/source-registry-v1.json": "fae7c3a5411ad0becf35078fba4f200f70f328447fe0685a793f1d9f359f653e",
     "governance/relationship-vocabulary-v1.json": "5fd59c52f6617d7d55f862af23cac0561423babdb4085ba20f28031edf498382",
     "governance/rule-registry-v1.1.json": "b2c47fbdec3fefecae6108c38c28cbf223f89561edb40c0ff1099f7717ef46c7",
-    "governance/overlay-registry-v1.1.json": "2b4a39cc90658a9cd9c827e259cddb00cf0c13b2af2f2a54a55b62a6efd62299",
+    "governance/overlay-registry-v1.1.json": "2b4a39cc90658a9cd9c827e259cddb00cf0c13f2af2f2a54a55b62a6efd62299",
     "package.json": "1825a296adecd643eaf11c2ac1093341829b6a3a2ca8f6cc2504e99b721d2775",
     "vercel.json": "9ef5e5795155ee595e5d16241483b441b610dfbff7bb6ea84661402f6c3b055b",
     ".env.example": "ec3c46c8ea7c52a8618bb86ed45fbd28ba30221bfe14e26a821ea2c9d3d2fe63",
