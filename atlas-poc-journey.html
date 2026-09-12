@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atlas — Representative POC Journey</title>
+<style>
+:root{--navy:#071a2a;--ink:#153241;--muted:#6f838d;--line:#dbe3e7;--paper:#f4f7f8;--white:#fff;--cyan:#0c9fc0;--teal:#13988b;--purple:#7450d8;--amber:#ef8b17;--green:#4aa84b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.hero{background:linear-gradient(90deg,#061625,#0a2133 62%,#071827);color:#dff6fa;padding:44px 0 38px}
+.hero h1{margin:0 0 10px;font-size:30px;letter-spacing:-.3px}
+.hero p{margin:0;max-width:760px;color:#9fc4d2;font-size:15px}
+.kicker{display:inline-block;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#5fd0e6;margin-bottom:12px}
+h2{font-size:19px;margin:0 0 6px}
+.lede{color:var(--muted);font-size:14px;margin:0 0 18px}
+section{padding:34px 0;border-bottom:1px solid var(--line)}
+.step{display:flex;gap:16px;align-items:flex-start;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:12px}
+.n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--cyan);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px}
+.step:nth-child(3) .n{background:var(--teal)}
+.step:nth-child(4) .n{background:var(--teal)}
+.step:nth-child(5) .n{background:var(--purple)}
+.step:nth-child(6) .n{background:var(--purple)}
+.step h3{margin:0 0 4px;font-size:16px}
+.step p{margin:0 0 8px;font-size:14px;color:var(--ink)}
+.trace{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 10px;display:inline-block}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);background:#fbfcfc;color:var(--muted);margin-right:5px}
+.badge.ok{background:#eff9f3;border-color:#bde3c9;color:#2f7a41}
+.badge.pending{background:#fff9e8;border-color:#f0dca6;color:#9a6a12}
+.badge.ref{background:#f5f2fd;border-color:#d8cff2;color:#5a3fb0}
+.tracks{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.tracks{grid-template-columns:1fr}}
+.track{border:1px solid var(--line);border-radius:10px;padding:16px;background:var(--white)}
+.track.governed{border-color:#bde3ea;background:#f2fbfc}
+.track.reference{border-color:#d8cff2;background:#faf8ff}
+.track h3{margin:0 0 8px;font-size:15px}
+.track ol{margin:0;padding-left:18px;font-size:13.5px}
+.track li{margin-bottom:4px}
+.warn{background:#fffaf0;border:1px solid #f0dca6;border-radius:8px;padding:12px 14px;font-size:13.5px;margin-top:14px}
+details{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:8px}
+summary{cursor:pointer;font-weight:600;font-size:14px}
+details table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+details th,details td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line)}
+details th{color:var(--muted);font-weight:600;font-size:12px}
+td.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+footer{padding:24px 0 40px;color:var(--muted);font-size:12.5px}
+a{color:var(--cyan)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="kicker">Proof of concept · representative journey</span>
+    <h1>How an operating model becomes executable work</h1>
+    <p>A walk from the supply-chain universe down to machine-readable output an execution
+       platform can consume. Every step below is traced to a committed artifact in this
+       repository. Where something is incomplete, it says so.</p>
+  </div>
+</div>
+
+<section class="wrap">
+  <h2>The journey</h2>
+  <p class="lede">Six steps, each one a real surface backed by real data.</p>
+
+  <div class="step">
+    <div class="n">1</div>
+    <div>
+      <h3>Start at the universe</h3>
+      <p>Page 0 frames the whole supply-chain and logistics operating model — domains,
+         jurisdictions, carriage regimes, conditions.</p>
+      <span class="badge ok">live surface</span>
+      <span class="trace">ecosystem-page-0 v6.2.2</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">2</div>
+    <div>
+      <h3>Enter a mode</h3>
+      <p>Road LTL and Ocean FCL/LCL are navigable daughter models — the visual map of how
+         that mode actually operates.</p>
+      <span class="badge ok">3 daughters registered</span>
+      <span class="trace">road-ltl v1.3 · ocean-fcl v0.5 · ocean-lcl v0.5 — all A5_VERIFIED</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">3</div>
+    <div>
+      <h3>Open a task's execution depth</h3>
+      <p>Drilling into a task crosses a governed bridge from the visual baseline into the
+         execution-depth model behind it.</p>
+      <span class="badge ok">bridge resolves</span>
+      <span class="trace">road-ltl 1.3 → 1.5 · ocean-fcl 0.5 → 0.6 · ocean-lcl 0.5 → 0.6</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">4</div>
+    <div>
+      <h3>Read the operational knowledge</h3>
+      <p>Execution depth answers what a map cannot: when work is required, when it is
+         prohibited, which controls must pass before proceeding, and which regulations
+         govern it.</p>
+      <span class="badge ok">82 tasks projected</span>
+      <span class="trace">Road LTL 22 · Ocean FCL 30 · Ocean LCL 30</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">5</div>
+    <div>
+      <h3>Project into a runtime</h3>
+      <p>An adapter turns governed work into the shape a specific execution platform needs —
+         queues, subqueues, work types, outcomes.</p>
+      <span class="badge ok">22 / 22 compatible</span>
+      <span class="badge ok">22 / 22 materializable</span>
+      <span class="trace">Malkom 3.0 reference adapter · atlas-adapter-malkom-v1</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">6</div>
+    <div>
+      <h3>Hand off to execution</h3>
+      <p>The output is machine-readable and executor-neutral in intent: Malkom is the first
+         consumer, not the only possible one.</p>
+      <span class="badge pending">176 client bindings required</span>
+      <span class="trace">Atlas owns the requirement · the client supplies the value</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Two lineages, kept separate</h2>
+  <p class="lede">This matters more than any single number. Atlas has a governed target
+     lineage and a proven reference lineage. They are at different stages and are not
+     the same chain.</p>
+
+  <div class="tracks">
+    <div class="track governed">
+      <h3>Governed target lineage</h3>
+      <ol>
+        <li>Road LTL 1.5 <span class="badge ok">frozen candidate</span></li>
+        <li>Operational Knowledge v2 <span class="badge ok">certified</span></li>
+        <li>Recursive work decomposition <span class="badge ok">certified</span></li>
+        <li>Canonical WorkDefinition compiler <span class="badge pending">proven, not persisted</span></li>
+        <li>Client Binding <span class="badge pending">incomplete</span></li>
+        <li>Runtime projection <span class="badge pending">incomplete</span></li>
+      </ol>
+    </div>
+    <div class="track reference">
+      <h3>Proven reference lineage</h3>
+      <ol>
+        <li>Road LTL <strong>V1.2</strong> <span class="badge ref">reference</span></li>
+        <li>Domain Warehouse v2.3 <span class="badge ref">lossless projection</span></li>
+        <li>Malkom 3.0 adapter <span class="badge ok">working end to end</span></li>
+      </ol>
+      <p style="font-size:13px;color:var(--muted);margin:10px 0 0">This is the chain that
+         produces the machine-readable output in step 5.</p>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Stated plainly:</strong> the Malkom output shown here was generated from the
+    <strong>V1.2</strong> reference lineage. It was <strong>not</strong> generated from
+    Road LTL 1.5, the certified decomposition, or the canonical WorkDefinition compiler.
+    Connecting the governed lineage to a runtime adapter is real remaining work, not
+    something this proof of concept demonstrates.
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Evidence, on demand</h2>
+  <p class="lede">Open these only if you want the receipts. Nothing here is required to
+     follow the journey above.</p>
+
+  <details>
+    <summary>What the adapter cannot do yet</summary>
+    <table>
+      <tr><th>Limitation</th><th>Disposition</th><th>Detail</th></tr>
+      <tr><td>Cross-queue escalation</td><td>PARTIAL</td><td>LTL-15, LTL-18, LTL-22 — escalation stays visible, live materialization is runtime-specific</td></tr>
+      <tr><td>Client binding</td><td>REQUIRED</td><td>176 points across 8 families — none resolved, none invented</td></tr>
+      <tr><td>materialize / deploy / execute / status / reconcileEvidence</td><td>NOT ENABLED</td><td>Adapter reports these as unavailable rather than implying support</td></tr>
+    </table>
+  </details>
+
+  <details>
+    <summary>Where each step's data actually comes from</summary>
+    <table>
+      <tr><th>Step</th><th>Committed artifact</th></tr>
+      <tr><td>Universe / daughters</td><td class="mono">data/module-catalog.json</td></tr>
+      <tr><td>Depth bridge</td><td class="mono">governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json</td></tr>
+      <tr><td>Road LTL depth</td><td class="mono">data/materialized/road-ltl-1.5-public-safe-projections.json.gz.b64</td></tr>
+      <tr><td>Ocean depth</td><td class="mono">data/materialized/ocean-0.6-public-safe-projections.json.gz.b64</td></tr>
+      <tr><td>Malkom output</td><td class="mono">data/materialized/road-ltl-v2.3-malkom-reference-projection.json</td></tr>
+    </table>
+  </details>
+
+  <details>
+    <summary>Why there is no completion percentage</summary>
+    <p style="font-size:13.5px;margin:10px 0 0">A single score would average together things
+      that are not comparable — a certified decomposition, an unpersisted compiler, and
+      bindings that depend on a client supplying values Atlas cannot generate. Each layer's
+      real state is shown above instead. Known open items are tracked as explicit gaps, not
+      folded into a number.</p>
+  </details>
+</section>
+
+<footer class="wrap">
+  <p><a href="atlas-execution-readiness.html">Atlas scope &amp; direction</a> ·
+     <a href="index.html">Return to Atlas</a></p>
+  <p>Demo candidate · GitHub only · not a production promotion. Ocean and Road LTL 1.5
+     material is production-ready but has not been promoted to production.</p>
+</footer>
+
+</body>
+</html>
