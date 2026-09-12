@@ -118,3 +118,26 @@ Safe resume point:
 
 Next exact action:
 - D2.0.4 (Malkom adapter/projection surface) is now materially de-risked — the adapter is present and proven. Owner/ChatGPT to direct whether Claude continues or ChatGPT resumes.
+
+## 2026-09-12 17:26 IST — Claude — D2.0.4
+Classification: OWNER_DIRECTION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Queue D2.0.4 definition: scope `WIRE_AND_DEMONSTRATE_VERIFIED_EXISTING_MALKOM_ADAPTER_PROJECTION_FROM_PROVEN_REFERENCE_LINEAGE`; guardrails `MALKOM_IS_FIRST_CONSUMER_NOT_CANONICAL_ATLAS_MODEL`, `NO_FALSE_V15_COMPILER_CLAIM`, `DOCUMENT_KNOWN_ADAPTER_LOSSES_GAPS`, `NO_VERCEL_DEPLOYMENT`.
+- Demo branch `8184f11` (D2.0.3 closed): adapter + manifest present and proven 22/22.
+
+Action / finding:
+- Owner directed Claude to continue into D2.0.4, with emphasis on keeping the log traceable for future failure diagnosis.
+- Note the queue lists D2.0.4 `BLOCKED_UNTIL_D2_0_3_PASS` and `primaryExecutor: CHATGPT`. D2.0.3 now passes (`8184f11`), and Claude is proceeding as authorized backup executor under explicit Owner direction. Queue status fields remain unedited by me, consistent with all prior stages this session — recording the true order of events here rather than self-advancing the queue.
+- Scope is explicitly WIRE AND DEMONSTRATE the **existing verified** adapter from the **proven reference lineage**. Not: build a new adapter, not: connect it to 1.5/P6.2.
+- Plan: (1) generate a deterministic, committed projection artifact from the 22 reference WorkDefinitions via the existing adapter, so the demo shows real machine-readable output rather than a live-computed claim; (2) record the known adapter losses/gaps explicitly (the 3 ESCALATE PARTIALs and the 176 required client bindings) as required by `DOCUMENT_KNOWN_ADAPTER_LOSSES_GAPS`; (3) verify by execution; (4) POST_BUILD_AUDIT + stage closure.
+
+Files / branches / components affected:
+- `atlas-v2-demo-2026-09-14` only. No Vercel action.
+
+Traceability note (per Owner request):
+- Every D2.0.x artifact Claude has produced is reproducible from committed inputs. Chain to date: `45a2888` Canvas shell+bridge → `71c7bc5` Ocean modules → `ed7507c` projection endpoint wired → `f36771e` Ocean bundle → `0d2a8ad` catalog port → `f22b77d` Malkom adapter → `8184f11` D2.0.3 audit. Each commit message states its own verification evidence and its source hashes.
+
+Next exact action:
+- Generate + verify the Malkom projection artifact, then audit and close.
