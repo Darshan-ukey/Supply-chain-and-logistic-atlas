@@ -230,3 +230,74 @@ Serial-gate rules for this action:
 - Only a rendered browser PASS may close BQA-01 and unlock BQA-02.
 
 Status at PRE_ACTION: `BQA-01 = IN_PROGRESS`; `BQA-02 = BLOCKED`; `BQA-03 = BLOCKED`.
+
+---
+
+## 2026-09-13 — ChatGPT → Claude — BQA-01 RENDERED BROWSER TEST HANDOFF
+Classification: OWNER_AUTHORIZED_CROSS_AGENT_BROWSER_QA
+Checkpoint: HANDOFF / TEST_ONLY
+
+Owner has connected Claude to the browser and explicitly directed Claude to run the pending BQA-01 browser verification because ChatGPT's Opera connector is unavailable in this session.
+
+### Exact scope
+Claude is authorized to **test only BQA-01**. Do not modify code, do not touch BQA-02/BQA-03, do not merge to main, and do not create a manual deployment.
+
+### Exact implementation under test
+- Demo branch: `atlas-v2-demo-2026-09-14`
+- BQA-01 implementation commit: `63e9b54bde58638886fbb64eeae4ad1719877412`
+- Vercel deployment ID: `dpl_CuzQLjp873NxoPUskBs3RrhXxbt7`
+- Exact preview URL: `https://logisticatlasv2-1m8tu0747-ukeydarsh-2051s-projects.vercel.app`
+- Vercel state observed by ChatGPT: `READY`
+- Lambda/runtime invariant observed: 8 Node functions
+
+### What ChatGPT changed for BQA-01
+The Canvas runtime previously rejected enriched approved contract strings because `AtlasModuleLoader.validateRuntime` and `compose` only recognized exact base forms.
+
+The BQA-01 patch uses an **explicit exact allowlist/compatibility mapping**, not a wildcard. The approved active forms audited before the patch were:
+1. `atlas-data-contract-v1.1`
+2. `atlas-data-contract-v1.1+daughter-enrichment-v1` — Road LTL
+3. `atlas-data-contract-v1.1 + daughter-quality-profile-v1` — Ocean FCL/LCL
+
+The enriched variants are treated as governed descendants of the existing v1.1 runtime family for validation/composition, while the source JSON contractVersion values themselves remain unchanged. Existing module identity, source, hierarchy/process and Page0 reference validation remains intact.
+
+### Claude test procedure — follow exactly
+1. Read this shared log entry before acting.
+2. Confirm the browser is connected and open the **exact preview URL above**, not production, not a branch alias unless it resolves to the exact deployment ID/commit.
+3. If Vercel Authentication blocks access, use the connected authenticated browser session or obtain a temporary Vercel share link for this exact deployment. Do not deploy anything.
+4. Hard refresh/reload the root `/` page so stale JavaScript from the previous failed preview is not used.
+5. Verify the old BQA-01 error is gone. Specifically, the page must **not** show:
+   `Canvas failed to load: Runtime contract failed for road-ltl: contractVersion atlas-data-contract-v1.1+daughter-enrichment-v1`
+6. Verify the actual Atlas Canvas UI renders, not merely an HTTP 200/blank shell. Capture rendered evidence: screenshot and/or browser accessibility-tree/content evidence.
+7. Confirm the root Canvas loads the active published modules without a new contract rejection. At minimum verify Road LTL is visible/available. If Ocean module loading creates a new contract-version failure, BQA-01 is still FAIL because bootstrap loads all active approved modules.
+8. Do **not** navigate into or attempt to close the known BQA-02 execution-depth failure or BQA-03 `/app` navigation failure as part of this test. Those are intentionally blocked serial gates.
+9. If any new root-Canvas regression appears due to the BQA-01 patch, record it as BQA-01 rendered FAIL with the exact visible error and evidence. Do not repair it unless Owner separately authorizes another BQA-01 remediation iteration.
+10. Update `claude_chatGPT.md` with a new checkpoint containing:
+   - tester = Claude
+   - exact commit = `63e9b54bde58638886fbb64eeae4ad1719877412`
+   - exact deployment ID = `dpl_CuzQLjp873NxoPUskBs3RrhXxbt7`
+   - exact URL tested
+   - rendered evidence summary
+   - screenshot/evidence reference if available
+   - result = PASS or FAIL
+   - any newly observed root-Canvas regression
+11. If PASS, use the exact status wording:
+   `BQA-01 = CLOSED_RENDERED_PASS`
+   and state explicitly:
+   `BQA-02 is now eligible for Owner/primary-executor activation but has NOT started in this checkpoint.`
+12. If FAIL, use the exact status wording:
+   `BQA-01 = IN_PROGRESS_RENDERED_FAIL`
+   and state explicitly:
+   `BQA-02 remains BLOCKED_BY_BQA_01_RENDERED_PASS.`
+13. Do not update the successor release baseline in this browser-test checkpoint. Do not alter v1.1.8 historical baseline. Do not merge. Do not promote/deploy production.
+
+### Pass criterion
+BQA-01 passes only if the exact `63e9b54b...` preview renders the functional root Canvas and the prior contract-version rejection is absent, with no replacement contract-version/bootstrap blocker.
+
+### Fail criterion
+Any remaining/replacement contract-version/bootstrap failure preventing the root Canvas from rendering is a BQA-01 FAIL. HTTP readiness or Vercel `READY` alone is insufficient.
+
+Current gate state at handoff:
+- `BQA-01 = IN_PROGRESS_PENDING_RENDERED_TEST`
+- `BQA-02 = BLOCKED_BY_BQA_01_RENDERED_PASS`
+- `BQA-03 = BLOCKED_BY_BQA_02_RENDERED_PASS`
+- `D2.0.7 = BLOCKED`
