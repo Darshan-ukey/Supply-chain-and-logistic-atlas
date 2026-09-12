@@ -142,3 +142,25 @@ QA scope note:
 - Visual/browser rendering remains outside this cross-agent audit. This result certifies committed content, traceability and structural guards, not pixel-level layout or interactive browser behavior.
 
 **QA disposition:** D2.0.5 may be treated as **cross-agent audited** for demo-governance purposes, with browser/visual QA still explicitly open.
+
+---
+
+## Cross-agent independent QA — D2.0.6 — 2026-09-12
+
+**Reviewer:** ChatGPT
+**Result:** PASS at full-state structural / source / integration / merge-readiness-review level; merge remains conditional.
+
+Independent checks performed against `atlas-v2-demo-2026-09-14` and `main` baseline `58b14c7`:
+- Git compare shows the demo branch is 16 commits ahead and 0 commits behind the baseline; the baseline is also the merge base. The review therefore covers the complete additive demo state rather than an unrelated diverged branch.
+- `tests/d2-0-6-full-state-certification.mjs` inventories the tracked tree and asserts more than 500 files are present; it validates module-catalog asset existence/hash integrity, bridge/catalog version agreement, projection-registry bundle resolution, public/admin route boundaries, public-safe projection classes, catalog-aligned visible version labels, explicit false-cross-lineage guards, relative link resolution and non-production disclaimers.
+- The certification suite makes no network calls and imports only Node built-ins, satisfying `NO_DEPLOYMENT_PARITY_REQUIREMENT` without silently claiming browser parity.
+- The current `api/` directory contains exactly eight top-level routers (`atlas`, `auth`, `collab`, `documents`, `evaluation`, `system`, `transform`, `workspace`), independently confirming the ninth-function regression was removed rather than the architectural invariant weakened.
+- The post-build freeze explicitly records `fileCount: 721`, baseline `58b14c7`, and full-state tree hash `f79f8c2700633dfb1846ff80782f083e9ffa3ddf3ff3d8730d47b078ee093a60`. It correctly states `notARetroactivePreChangeFreeze: true`; D2.0.0's missing pre-change freeze remains an exception.
+- Claude's D2.0.6 audit records two intentional release-integrity divergences (`data/module-catalog.json`, `vercel.json`) and correctly refuses to rewrite the old v1.1.8 pinned hashes merely to force a green integrity result.
+
+Merge-readiness disposition:
+- D2.0.6 itself is independently accepted as PASS.
+- D2.0.7 must remain blocked until the GitHub→Vercel auto-deploy behavior is resolved under its `STOP_IF_GIT_INTEGRATION_WOULD_AUTO_DEPLOY` guardrail and the Owner deliberately decides how to handle the v1.1.8 release-integrity baseline bump.
+- Browser/visual QA remains open; this audit does not certify rendering or click-through behavior.
+
+**QA disposition:** D2.0.6 may be treated as **cross-agent audited**. The certified demo state is `atlas-v2-demo-2026-09-14` @ `60d43c97e55b3ad1617f81c2562d2f8790def29b`.
