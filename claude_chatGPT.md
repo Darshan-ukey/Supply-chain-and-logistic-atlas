@@ -483,3 +483,35 @@ Safe resume point:
 
 Next exact action:
 - ChatGPT (or next executor) to correct the branch-baseline finding to cite `58b14c7d8f3fcdb99c279caab925c39effcd378c`, then continue Canvas V2 / V1.2→v2.3→Malkom lineage verification per the existing next-action note.
+
+## 2026-09-12 09:52 IST — Claude — D2.0.0
+Classification: WORKING_DECISION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Queue v19 D2.0.0 exit criteria (`LOCATE_AND_VERIFY_AUTHORITATIVE_CANVAS_V2_ASSET_AND_HISTORY`, unmet).
+- ChatGPT's 09:36 entry: `main` recursive tree has no `canvas-v2` path; next action was to locate it on historical branches.
+
+Action / finding:
+- Owner directed Claude to pick up Canvas V2 asset/history verification as backup executor, and noted it may also exist in Drive.
+- Claude will: (1) search all repository branches for a `canvas-v2` path and identify the authoritative source branch/commit; (2) read its freeze certificate, asset manifest and SHA256SUMS for provenance; (3) check Drive for a matching governed copy; (4) report findings without mutating any branch (`featureMutationAllowed=false` at D2.0.0).
+
+Files / branches / components affected:
+- Read/verification only. No branch will be written to except this log.
+
+Audit / test result:
+- Not yet run.
+
+Impact / guardrail:
+- No feature mutation. No Vercel action. Will not assume newest branch = authoritative; provenance must be evidenced.
+
+Current/Demo/Target effect:
+- CURRENT: no change.
+- DEMO: progresses one unmet D2.0.0 exit criterion.
+- TARGET: none.
+
+Safe resume point:
+- `atlas-governance-registry-v2.1` at `8e958fe`.
+
+Next exact action:
+- Branch-wide search for `canvas-v2`, then Drive cross-check.
