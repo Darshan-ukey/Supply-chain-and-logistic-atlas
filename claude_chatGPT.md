@@ -387,3 +387,39 @@ Safe resume point:
 
 Next exact action:
 - D2.0.7 requires Owner approval and is blocked by its own `STOP_IF_GIT_INTEGRATION_WOULD_AUTO_DEPLOY` guardrail (see the structured `recordedBlocker` in the queue). Recommend resolving Vercel account access and preferring a **preview deployment of the demo branch** over a main merge for browser verification — it closes the last open item without triggering production auto-deploy and without the release-integrity condition above.
+
+## 2026-09-12 19:56 IST — Claude — GOVERNANCE SYNC + DRIVE CUSTODY
+Classification: OWNER_DIRECTION + VERIFIED_REPOSITORY_FACT
+Checkpoint: POST_ACTION
+
+Evidence inspected:
+- Governance commits `af3259f` (my updates), `e4ca564` (merge), `3912f13` (QA upgrade).
+- ChatGPT's concurrent cross-agent QA commits `34bae44`, `35d0b04`, `4ac3e4f`.
+- Drive: `search_files` for demo/D2 artifacts and for anything modified since 2026-09-10.
+
+### 1. Governance updated
+- **Queue:** D2.0.6 → `COMPLETE` (build `0e6a715`, audit + freeze doc paths, two `mergeReadinessConditions` recorded). D2.0.7 → `AUTHORIZED_BLOCKED_PENDING_VERCEL_INTEGRATION_RESOLUTION` with a `recommendedAlternative` field stating the preview-over-merge route. `currentStageId` → `D2.0.7`.
+- **Asset register (+2, 0 modified, 0 removed):** `road-ltl-v2.3-malkom-reference-projection` (the D2.0.4 artifact — it was unregistered, a real gap) and `d2-0-6-post-build-full-state-freeze` (721 files, treeHash `f79f8c27`, flagged `notARetroactivePreChangeFreeze`).
+- Verified before commit: only the D2.0 phase changed in the queue; exactly 2 assets added.
+
+### 2. ChatGPT cross-agent QA — D2.0.3, D2.0.4, D2.0.5 all PASS
+ChatGPT pushed independent audits concurrently with my update (clean merge, no file conflict). All three returned **PASS**. I have upgraded their `qaType` from `SELF_REPORTED_NOT_INDEPENDENT` to `CROSS_AGENT_AUDITED` and recorded the reviewer's own caveat verbatim: it verified source identity, change scope, lineage truth and certification-guard logic from committed artifacts, but did not re-run Node locally, so the execution runs remain executor-run evidence.
+
+Two independent confirmations worth noting: the demo-branch adapter blob SHA **exactly matches** the historical source-branch blob (import provenance confirmed independently of my claim), and the v2.3 bundle's own `sourceModel` declaration independently rejects any v1.5/P6.2 provenance claim — the two-lineage guardrail now has second-party verification, not just mine.
+
+**D2.0.6 remains self-reported** and is open to the same audit.
+
+### 3. Drive custody — GAP CONFIRMED, WRITES BLOCKED
+- **No D2.0.x demo-sprint artifact has ever been mirrored to Drive.** Newest Drive content is AR0.1/AR0.2 dated 2026-09-11. The entire demo sprint (D2.0.0–D2.0.6, ~14 demo-branch commits, 6 audit documents, 1 freeze manifest) exists only in GitHub.
+- **Attempted to create the mirror folder — refused again.** `Google Drive:create_file` returned `No approval received`. This is the **third** such refusal this session (R0.3 Checkpoint B at ~11:00, R0.3 remediation at ~11:20, and now). Consistent environment authorization gap, not a transient failure.
+- Recorded as `demoSprintOpenItems[4]`. Required action is an operator granting Drive write approval or manually mirroring; I cannot clear it.
+- Per the Asset Custody Standard this is a genuine custody gap. It does not block GitHub-only progression, and the demo does not depend on it — but it should not be silently carried past a demo.
+
+### 4. Frozen assets — assessment complete
+No *existing* frozen asset required updating. `canvas-2.0.1-candidate`, `ocean-*-0.6-candidate`, `road-ltl-1.5-candidate` and the OK-contract candidate are all unchanged by demo-sprint work and their hashes still hold. The only gaps were the two **unregistered** artifacts, now registered. No production pointer touched; `productionBaseline` untouched throughout.
+
+Safe resume point:
+- Governance `atlas-governance-registry-v2.1` @ `3912f13`; demo branch `atlas-v2-demo-2026-09-14` @ `60d43c9`.
+
+Next exact action:
+- Vercel **preview** deployment of `atlas-v2-demo-2026-09-14` to close the browser/visual verification gap. Blocked on Vercel account access: the connected account returns 403 on `logistic_atlas_v2` (team scope `ukeydarsh-2051s-projects`). Reconnecting under that team, or supplying a scoped token, is the prerequisite. Preview is strongly preferred over a main merge — it avoids both the production auto-deploy risk and the release-integrity condition recorded on D2.0.6.
