@@ -209,3 +209,24 @@ Queue overlay has been revised to `remediationMode: SERIAL_FAILURE_GATES`.
 The prior concept of one batched BQA-01+BQA-02+BQA-03 implementation is void. Storage optimization must come from minimizing unrelated writes, **not** from combining failure closures.
 
 **NO REMEDIATION WAS EXECUTED IN THIS GOVERNANCE-CORRECTION STEP.**
+
+---
+
+## 2026-09-13 — ChatGPT — BQA-01 START
+Classification: OWNER_AUTHORIZED_REMEDIATION
+Checkpoint: PRE_ACTION
+
+Owner authorized starting BQA-01. Scope is strictly limited to the root Canvas runtime contract-version rejection.
+
+Serial-gate rules for this action:
+- BQA-02 and BQA-03 remain blocked and MUST NOT be modified.
+- First verify the governed active contract-version variants used by approved Canvas modules.
+- Apply the smallest explicit compatibility correction; do not use an unrestricted prefix/suffix bypass.
+- Preserve existing module identity/source/process validation after contract-family acceptance.
+- Commit BQA-01 implementation only to `atlas-v2-demo-2026-09-14`.
+- Use the exact Git-triggered preview for the implementation commit; no manual deployment.
+- Test root Canvas in Opera before declaring closure.
+- If rendered test fails, BQA-01 stays active and no later BQA gate may start.
+- Only a rendered browser PASS may close BQA-01 and unlock BQA-02.
+
+Status at PRE_ACTION: `BQA-01 = IN_PROGRESS`; `BQA-02 = BLOCKED`; `BQA-03 = BLOCKED`.
