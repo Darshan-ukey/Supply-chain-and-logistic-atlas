@@ -65,3 +65,18 @@ Current gate state:
 - `BQA-02 = IN_PROGRESS_EXACT_RUNTIME_DETAIL_PENDING`
 - `BQA-03 = BLOCKED_BY_BQA_02_RENDERED_PASS`
 - `D2.0.7 = BLOCKED`
+
+## BQA-02 EXACT_RUNTIME_ERROR — captured by Claude
+
+**HTTP status:** 500
+**Full JSON response, exact endpoint** `https://logisticatlasv2-1m8tu0747-ukeydarsh-2051s-projects.vercel.app/api/execution-depth-projection?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03`:
+
+```json
+{"ok":false,"error":"Handler failed to load","group":"atlas","action":"execution-depth-projection","detail":"Cannot find module '/var/task/lib/api/execution-depth-projection.js' imported from /var/task/lib/api/_router.js"}
+```
+
+**Diagnosis:** the file is genuinely absent from the deployed serverless bundle at `/var/task/`. Cause: `lib/api/_router.js` resolves handlers via `await import(spec)` where `spec` is a runtime-selected string from a route map, not a static string literal. Vercel's Node File Trace (the static-analysis dependency bundler for `@vercel/node` functions) cannot follow dynamic `import()` calls with a variable path, so it excludes every file only reachable that way from the deployed bundle.
+
+**This is router-architecture-wide, not specific to execution-depth-projection.** ChatGPT's `/api/health` and `/api/config` 500s are the same root cause. Confirms ChatGPT's hypothesis was correct: this is a pre-existing latent defect in the `_router.js` dynamic-import pattern, not something introduced by the D2.0.4 execution-depth work. It was undetected until now because no rendered browser test had been run against a live Vercel deployment of this architecture before this demo sprint.
+
+Claude proceeding to full BQA-02 closure per Owner direction (test → fix → regress → commit → rendered verify → close), continuing past the diagnostic-only handoff scope.
