@@ -123,3 +123,37 @@ Impact / guardrail:
 
 Next exact action:
 - Owner/ChatGPT adjudication of the CHECK 3 registry-vs-production disagreement; Owner direction on the CHECK 2 page; Owner decision on whether to register Ocean as ACTIVE in the demo catalog (CHECK 4 gap).
+
+## 2026-09-12 15:34 IST — Claude — D2.0.1
+Classification: OWNER_DIRECTION + VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+### Correction to my 15:18 CHECK 3 finding — NOT a defect
+Owner supplied the history: the live 6.2.x Page-0 lineage is what was deployed; Universe 7.x arose during the Ocean work, became a frozen asset and reached production-*ready* status, but was **deliberately never promoted to production** because Canvas and structural work was in flight. Production therefore legitimately remains on the 6.2.x line.
+
+I framed this at 15:18 as a "governance/registry accuracy defect". **That framing was wrong and I'm withdrawing it.** `CURRENT.json`'s `productionBaseline` records the *certified production-grade baseline*, not the *currently deployed* state. Those are different things and the registry was never claiming deployment. The disagreement I flagged is an artifact of my reading, not an error in the record.
+
+### What the evidence does show (verified, both branches)
+| | `main` / demo branch | `atlas-governance-registry-v2.1` |
+|---|---|---|
+| `baseModule` | ecosystem-page-0 **6.2.2** | ecosystem-page-0 **6.2.2** |
+| road-ltl | **v1.2** ACTIVE | **v1.3** ACTIVE |
+| ocean-fcl / ocean-lcl | `planned`, REFERENCE_ONLY | **v0.5** ACTIVE |
+
+Note `baseModule` is 6.2.2 on **both** branches — consistent with Owner's account. Universe 7.3 exists as `data/universe/universe-semantic-payload.json` (schemaVersion `atlas-universe-semantic-payload-v1`, the R0.1A-R re-materialized payload certified at `82104521…`) but is **not wired as `baseModule` in any catalog on any branch**, and outside governance/recovery records nothing references it. It is governed semantic data, not a deployed page.
+
+### Material consequence for the demo — this is the actionable part
+`atlas-v2-demo-2026-09-14` was cut from `main`, so it inherits the **older** catalog: Road LTL v1.2 and Ocean as `PLANNED / REFERENCE_ONLY`. The governance branch's catalog already registers Road LTL **1.3** and Ocean FCL/LCL **0.5** as ACTIVE.
+
+So the CHECK 4 Ocean-navigation gap and this are the same root cause: the demo branch carries `main`'s pre-Ocean catalog. Bringing the governance branch's `data/module-catalog.json` (plus the assets it references) onto the demo branch would register Road LTL 1.3 and Ocean 0.5 as ACTIVE daughters in one governed step, rather than hand-editing catalog entries.
+
+Open question for Owner/ChatGPT before I act: the demo intends Ocean **0.6** as the candidate surface, but the governance catalog registers Ocean **0.5** ACTIVE (0.6 is a frozen candidate, not promoted). Options: (a) port the governance catalog as-is → Ocean 0.5 navigable, 0.6 available via the projection bundles already committed; (b) additionally register 0.6 ACTIVE in the demo catalog only, clearly marked demo-scope; (c) leave Ocean out of navigation. I have not chosen.
+
+Files / branches / components affected:
+- None. Read-only verification plus this log correction.
+
+Impact / guardrail:
+- Demo copy must not state that production runs Universe 7.3 — it does not, by deliberate decision. It may state that the 7.3/Ocean stack is frozen and production-ready but not promoted, which is both true and a stronger, more accurate claim.
+
+Next exact action:
+- Owner decision on the Ocean 0.5-vs-0.6 catalog question above, then proceed through the remaining checks.
