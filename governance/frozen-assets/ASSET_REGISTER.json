@@ -508,6 +508,42 @@
       "category": "backend",
       "current": true,
       "source": "metadata"
+    },
+    {
+      "assetId": "road-ltl-v2.3-malkom-reference-projection",
+      "family": "malkom-projection-candidate",
+      "name": "Road LTL v2.3 Malkom 3.0 Reference Projection",
+      "version": "2.3",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "category": "materialized-projection-candidate",
+      "current": true,
+      "source": "repository",
+      "demoOnly": true,
+      "demoBranch": "atlas-v2-demo-2026-09-14",
+      "demoBranchCommit": "457003d",
+      "repositoryPath": "data/materialized/road-ltl-v2.3-malkom-reference-projection.json",
+      "generatorPath": "tools/malkom-projection/build-malkom-reference-projection.mjs",
+      "lineage": "PROVEN_EXECUTION_REFERENCE: Road LTL V1.2 -> Domain Warehouse v2.3 -> Malkom 3.0",
+      "semanticHash": "d077166ff0c1c0a0c9cffc3ba368b76a374cd15a73fc23305bd8f1719e6fcb59",
+      "notes": "22/22 adapter-compatible and materializable. NOT generated from Road LTL 1.5, Operational Knowledge v2, the P6.1 decomposition or the P6.2 compiler - the artifact declares this explicitly and its certification test enforces it by asserting no declared input matches governed-target-lineage path patterns. Known gaps preserved: 3 ESCALATE PARTIAL tasks, 176 client bindings across 8 families, 5 adapter operations not enabled. Demo-branch artifact; not a production promotion."
+    },
+    {
+      "assetId": "d2-0-6-post-build-full-state-freeze",
+      "family": "demo-sprint-freeze",
+      "name": "D2.0.6 Post-Build Full-State Freeze",
+      "version": "D2.0.6",
+      "status": "FROZEN_DEMO_STATE_RECORD",
+      "category": "freeze-record",
+      "current": true,
+      "source": "repository",
+      "demoOnly": true,
+      "demoBranch": "atlas-v2-demo-2026-09-14",
+      "demoBranchCommit": "0e6a715",
+      "repositoryPath": "governance/demo-sprint/D2.0.6_POST_BUILD_FULL_STATE_FREEZE.json",
+      "fileCount": 721,
+      "fullStateTreeHash": "f79f8c2700633dfb",
+      "notARetroactivePreChangeFreeze": true,
+      "notes": "Post-build freeze of the certified demo state. Does NOT close D2.0.0's missing CREATE_PRE_CHANGE_FULL_STATE_FREEZE, which cannot be recreated retroactively and remains open."
     }
   ]
 }

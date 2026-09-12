@@ -1,7 +1,7 @@
 {
   "schemaVersion": "atlas-v2-agent-execution-queue-v19",
   "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v18",
-  "updatedAt": "2026-09-12T18:40:00+05:30",
+  "updatedAt": "2026-09-12T19:40:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
   "demoIntegrationTargetBranch": "main",
@@ -71,7 +71,7 @@
     "stopBeforeAnyActionExpectedToTriggerVercel": true
   },
   "mode": "ATLAS_V2_HYBRID_DEMO_SPRINT_GITHUB_ONLY",
-  "currentStageId": "D2.0.6",
+  "currentStageId": "D2.0.7",
   "currentPhase": "ATLAS_V2_DEMO_SPRINT",
   "demoTargetDate": "2026-09-14",
   "stakeholderDemoDate": "2026-09-15",
@@ -376,7 +376,7 @@
           "stageId": "D2.0.6",
           "id": "D2.0.6",
           "name": "GitHub full integration + regression + merge-readiness certification",
-          "status": "AUTHORIZED",
+          "status": "COMPLETE",
           "primaryExecutor": "CHATGPT",
           "backupExecutor": "CLAUDE",
           "implementationBranch": "atlas-v2-demo-2026-09-14",
@@ -387,13 +387,23 @@
             "VERIFY_NO_STALE_OR_FALSE_VERSION_LABELS",
             "NO_DEPLOYMENT_PARITY_REQUIREMENT",
             "NO_VERCEL_DEPLOYMENT"
+          ],
+          "executor": "CLAUDE",
+          "buildSha": "0e6a715",
+          "auditDoc": "governance/demo-sprint/D2.0.6_POST_BUILD_AUDIT.md",
+          "freezeDoc": "governance/demo-sprint/D2.0.6_POST_BUILD_FULL_STATE_FREEZE.json",
+          "qaType": "SELF_REPORTED_NOT_INDEPENDENT",
+          "note": "Full-state cert 17/17 across 721 files. Main-baseline comparison exposed a regression from commit ed7507c (9th serverless function breaking the 8-router invariant); fixed architecturally, not by weakening the test.",
+          "mergeReadinessConditions": [
+            "data/module-catalog.json and vercel.json now differ from the v1.1.8 release-integrity pinned baseline (37 critical files). Both changes are intentional and evidenced. Pinned hashes deliberately NOT updated - that would forge release integrity. Requires a governed release-baseline bump (Owner decision).",
+            "If merged without that bump, the live /api/system?action=release-integrity endpoint will report criticalIntegrity:false."
           ]
         },
         {
           "stageId": "D2.0.7",
           "id": "D2.0.7",
           "name": "Owner-approved certified demo branch merge to main",
-          "status": "BLOCKED_UNTIL_D2_0_6_PASS",
+          "status": "AUTHORIZED_BLOCKED_PENDING_VERCEL_INTEGRATION_RESOLUTION",
           "primaryExecutor": "CHATGPT",
           "backupExecutor": "CLAUDE",
           "ownerApprovalRequired": true,
@@ -410,7 +420,8 @@
             "finding": "The Vercel GitHub App on this repository has historically produced a deployment record on every push to every branch (333 preview + 13 production observed 2026-09-12). A merge to main would likely trigger a production deployment rather than being a GitHub-only action.",
             "inspectionBlocked": "The connected Vercel account returns 403 on project logistic_atlas_v2 (account/team scope mismatch), so the integration cannot currently be inspected or disabled.",
             "requiredBeforeStage": "Reconnect Vercel under ukeydarsh-2051s-projects or supply a scoped token, confirm integration behaviour, and prefer a preview deployment of the demo branch over a main merge for browser verification."
-          }
+          },
+          "recommendedAlternative": "Deploy atlas-v2-demo-2026-09-14 as a Vercel PREVIEW rather than merging to main. Closes the outstanding browser/visual verification gap without triggering production auto-deploy and without hitting the release-integrity condition above."
         }
       ]
     },
@@ -549,9 +560,10 @@
     }
   ],
   "demoSprintOpenItems": [
-    "BROWSER_VISUAL_VERIFICATION_NEVER_PERFORMED \u2014 no browser or headless driver available to either executor; all certification to date is structural/source/execution level only.",
-    "D2.0.0 CREATE_PRE_CHANGE_FULL_STATE_FREEZE never performed.",
-    "D2.0.3-D2.0.5 are executor self-reported, not independently QA-verified.",
-    "D2.0.7 auto-deploy conflict unresolved (see D2.0.7.recordedBlocker)."
+    "BROWSER_VISUAL_VERIFICATION_NEVER_PERFORMED \u2014 still the single functional gap; no browser or headless driver available to either executor.",
+    "D2.0.0 CREATE_PRE_CHANGE_FULL_STATE_FREEZE never performed; cannot be recreated retroactively (D2.0.6 freeze is post-build only).",
+    "D2.0.3-D2.0.6 are executor self-reported, not independently QA-verified. D2.0.2 is the only cross-agent-audited stage.",
+    "D2.0.7 auto-deploy conflict unresolved (see D2.0.7.recordedBlocker).",
+    "DRIVE CUSTODY GAP: no D2.0.x demo-sprint artifact has been mirrored to Drive. Newest Drive content is AR0.1/AR0.2 dated 2026-09-11. Drive writes are returning \"No approval received\" to the connector."
   ]
 }
