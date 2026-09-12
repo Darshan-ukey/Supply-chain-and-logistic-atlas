@@ -122,3 +122,23 @@ QA scope note:
 - This cross-agent review independently validates the committed artifact and the certification logic that reproduces/guards it. Claude's recorded negative-control execution remains executor-run evidence; the controls themselves are independently visible and materially capable of failing on the documented tampering conditions.
 
 **QA disposition:** D2.0.4 may be treated as **cross-agent audited** for demo-governance purposes.
+
+---
+
+## Cross-agent independent QA — D2.0.5 — 2026-09-12
+
+**Reviewer:** ChatGPT
+**Result:** PASS at structural / content-traceability / lineage-guard level.
+
+Independent checks performed against `atlas-v2-demo-2026-09-14`:
+- `atlas-poc-journey.html` presents the six-step journey first and places limitations/provenance/no-score rationale behind collapsed `details` panels afterward, preserving governance as secondary evidence rather than the primary pitch.
+- The page explicitly separates `Governed target lineage` from `Proven reference lineage` and states that the demonstrated Malkom output was generated from Road LTL V1.2, not Road LTL 1.5, the certified decomposition or the canonical WorkDefinition compiler.
+- Pending states remain visible: the compiler is `proven, not persisted`; Client Binding and Runtime Projection are `incomplete` on the governed target lineage.
+- The visible page contains no numeric completion percentage and explains why a single completion score would be misleading.
+- `tests/d2-0-5-poc-journey.mjs` derives Page 0/daughter versions from `module-catalog.json`, bridge versions from `P4_CANVAS_DAUGHTER_TARGETS.json`, task counts from the public-safe projection bundles, and Malkom compatibility/binding/gap claims from the committed Malkom reference artifact.
+- The certification logic checks 82 projected tasks as 22 Road LTL + 30 Ocean FCL + 30 Ocean LCL, 22/22 Malkom compatible/materializable, 176 required bindings, the named ESCALATE-limited tasks, all five disabled adapter operations, outbound link existence and HTML tag balance.
+
+QA scope note:
+- Visual/browser rendering remains outside this cross-agent audit. This result certifies committed content, traceability and structural guards, not pixel-level layout or interactive browser behavior.
+
+**QA disposition:** D2.0.5 may be treated as **cross-agent audited** for demo-governance purposes, with browser/visual QA still explicitly open.
