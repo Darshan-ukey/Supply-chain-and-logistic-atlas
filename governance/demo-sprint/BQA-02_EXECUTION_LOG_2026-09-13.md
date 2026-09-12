@@ -80,3 +80,65 @@ Current gate state:
 **This is router-architecture-wide, not specific to execution-depth-projection.** ChatGPT's `/api/health` and `/api/config` 500s are the same root cause. Confirms ChatGPT's hypothesis was correct: this is a pre-existing latent defect in the `_router.js` dynamic-import pattern, not something introduced by the D2.0.4 execution-depth work. It was undetected until now because no rendered browser test had been run against a live Vercel deployment of this architecture before this demo sprint.
 
 Claude proceeding to full BQA-02 closure per Owner direction (test → fix → regress → commit → rendered verify → close), continuing past the diagnostic-only handoff scope.
+
+## BQA-02 IMPLEMENTATION — Claude, continued past diagnostic handoff per Owner direction
+
+Owner directed Claude to close BQA-02, extending beyond the diagnostic-only scope of the
+original handoff. Proceeded through the full required sequence.
+
+### Fix committed
+`atlas-v2-demo-2026-09-14` @ `bcfb52c`. Two root causes, both confirmed by tracing before any
+code change (not assumed):
+
+1. **`lib/api/_router.js`'s dynamic `import(spec)`** — Vercel's Node File Trace cannot follow a
+   runtime-selected import path, so `lib/api/execution-depth-projection.js` was silently excluded
+   from the deployed bundle. Router-architecture-wide (matches ChatGPT's independent `/api/health`
+   and `/api/config` 500 observations) — **only `api/atlas.js`'s 3 routes fixed here**, matching
+   BQA-02's authorized scope. The other 7 routers are byte-unchanged.
+2. **Registry-parsed data-file paths invisible to the bundler** — `execution-depth-projection.js`
+   reads file paths that exist only as JSON *data*, never as source-code literals, so even fixing
+   (1) alone would not have bundled the actual projection data.
+
+Fix: `_router.js` now accepts either a pre-resolved handler function or a spec string (existing
+string-spec behavior byte-identical for the other 7 routers); `api/atlas.js` converted to static
+top-level imports (traceable by Vercel's bundler); `vercel.json` `includeFiles` added, scoped to
+exactly the registry and the two precompiled bundle files that exist on this branch and are
+actually exercised — no globs referencing nonexistent files.
+
+### Local verification — thorough, PASS
+- `execution-depth-projection?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03` → 200, real title,
+  through the actual `api/atlas.js` handler chain (not mocked).
+- `ocean-fcl@0.6/FCL-01` → 200, real title, same handler.
+- Unknown action → still 404 with correct shape (router regression check).
+- `tests/d2-0-6-full-state-certification.mjs`: **17/17 PASS**, no regression.
+- `tests/v1.1.8-api-router-smoke.mjs`: no new failures.
+- `tests/v1.1.8-serverless-budget.mjs`: the one failing assertion (28 vs 29 rewrites) confirmed via
+  `git stash` comparison to be **identical before and after this commit** — pre-existing since
+  D2.0.6's own route consolidation, not introduced by BQA-02.
+
+### Rendered verification — BLOCKED, NOT completed. BQA-02 stays open.
+Attempted per the required sequence: navigated to the standard Vercel git-branch alias
+(`https://logisticatlasv2-git-atlas-v2-demo-2026-09-14-ukeydarsh-2051s-projects.vercel.app/...`),
+expecting it to resolve to the newly auto-built preview for commit `bcfb52c`. The navigation call
+itself returned successfully (tab title/URL updated), but every subsequent read call
+(`tab-content`, `screenshot`, then even `list-tabs`) failed with `No approval received` / a generic
+execution error. The browser connector became unresponsive mid-check, not because of anything the
+page returned. **I did not obtain content, so I cannot confirm the guessed branch-alias URL even
+resolves to the correct deployment, let alone that the fix renders correctly.**
+
+Per the explicit pass criterion already established for this gate — HTTP readiness or a
+successful navigation call alone is insufficient; rendered content must be read — this is
+recorded as **NOT a rendered PASS**. Not closing the gate on local verification alone, however
+strong.
+
+### Result
+**BQA-02 = FIX_COMMITTED_LOCALLY_VERIFIED_RENDERED_PENDING**
+
+`BQA-03 remains BLOCKED_BY_BQA_02_RENDERED_PASS` — unchanged, still blocked.
+`D2.0.7 = BLOCKED` — unchanged.
+
+Next exact action: retry rendered verification once the browser connector is responsive again —
+either Claude's Opera session or ChatGPT's, whichever is available first. The exact deployment ID
+and confirmed preview URL for commit `bcfb52c` should be captured directly from Vercel (ChatGPT has
+working Vercel API access) rather than guessed via URL pattern, to remove that uncertainty from the
+next attempt.
