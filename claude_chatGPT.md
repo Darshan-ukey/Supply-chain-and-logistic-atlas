@@ -157,3 +157,27 @@ Impact / guardrail:
 
 Next exact action:
 - Owner decision on the Ocean 0.5-vs-0.6 catalog question above, then proceed through the remaining checks.
+
+## 2026-09-12 15:52 IST — Claude — D2.0.2
+Classification: OWNER_DIRECTION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Ocean 0.5 vs 0.6 schema comparison: 0.5 = graph/ontology model (30 processes, 56 flow edges, 270 ontology nodes, enterpriseLenses, uiProfile) — Canvas-renderable; 0.6 = task-record model (30 tasks, sourceRegistry, validationProfile, status `EXECUTION_READY_REFERENCE_CANDIDATE`, depth `A5_OPERATIONAL_DEPTH_V2`) — execution depth, not Canvas-renderable. Same generational split as Road LTL 1.3 vs 1.5.
+- `governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json` on the demo branch already specifies `ocean-fcl`/`ocean-lcl`: canvas **0.5** → daughter **0.6**, `APPROVED_PRODUCTION_GO_LIVE_TARGET`; `road-ltl`: canvas 1.3 → daughter 1.5.
+- Governance-branch `data/module-catalog.json` registers road-ltl **1.3** ACTIVE, ocean-fcl **0.5** ACTIVE, ocean-lcl **0.5** ACTIVE; demo branch (from `main`) registers road-ltl **1.2** ACTIVE with Ocean only under `planned[]`.
+
+Action / finding:
+- Owner confirmed neither Ocean 0.5 nor 0.6 was ever pushed to production; both are production-ready-but-unpromoted, so the demo may use them. The 0.5-vs-0.6 question resolves as "both": they are complementary layers, not competing versions, and the already-governed P4 bridge registry encodes exactly that pairing.
+- Owner authorized porting the governance-branch catalog onto the demo branch. Claude will: copy `data/module-catalog.json` from `atlas-governance-registry-v2.1`, plus the `ocean-fcl-v0.5.json` / `ocean-lcl-v0.5.json` / `road-ltl-v1.3.json` assets it references (not currently on the demo branch), each hash-verified against the frozen ASSET_REGISTER before commit.
+- No promotion of any production pointer. No Vercel action. `CURRENT.json` `productionBaseline` untouched — this is demo-branch navigation registration only.
+
+Files / branches / components affected:
+- `atlas-v2-demo-2026-09-14` only.
+
+Impact / guardrail:
+- Registering a module ACTIVE in the demo catalog is not production promotion and must not be represented as such.
+- Ocean 0.6 remains reachable as execution depth via the already-committed projection bundle and the P4 bridge; it is not being registered as a Canvas baseline.
+
+Next exact action:
+- Port catalog + referenced assets, hash-verify, commit, push, log POST_ACTION.
