@@ -515,3 +515,51 @@ Safe resume point:
 
 Next exact action:
 - Branch-wide search for `canvas-v2`, then Drive cross-check.
+
+## 2026-09-12 10:08 IST — Claude — D2.0.0
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+Evidence inspected:
+- GitHub branches API (37 branches) + recursive git-trees search for `canvas-v2` on each.
+- Root-tree entry SHA for the `canvas-v2` path on 5 representative branches spanning the full lineage.
+- `canvas-v2/canvas-v2/ASSET_MANIFEST.json`, `SHA256SUMS.txt`, `FREEZE_CERTIFICATE.md` (local `sha256sum -c` against actual bytes).
+- Google Drive `search_files` for Canvas V2 assets; Drive folder `1m2L1neY6qa-ojiSqfT68ls0j3UndCluj` ("Canvas-V2.0").
+- `atlas-presentation-architecture-v1-p4/p5/p6-0/p6-1/p6-2` trees for `canvas-daughter-bridge`.
+
+Action / finding — TWO DISTINCT CANVAS V2 ASSETS EXIST, NOT ONE:
+
+**(A) canvas-v2/ standalone frozen bundle — v2.0.0, freezeDate 2026-09-01.**
+- Present with an IDENTICAL subtree SHA (`abfdb551a0844f944ffa8d76519224fd946a514f`) on 30 of 37 branches, including the entire presentation lineage (P0→P6.2) AND the entire recovery/governance lineage (R0.1A→R0.3, `atlas-governance-registry-v2.1`). This is one single byte-identical frozen asset, not divergent copies.
+- Absent only from `main`, `backup-v0.6.5`, `backup-v1.1.7`, both `atlas-v2-demo-2026-09-14*` branches (all cut from `main`), and `atlas-governance-p6-2-dispatch-bootstrap`.
+- All 20 files verified byte-exact against `SHA256SUMS.txt` via local `sha256sum -c` — zero mismatches.
+- Contains `data/road-ltl-workdefinitions-v2.3.json` (the Domain Warehouse v2.3 output) as its WorkDefinition-depth data source — this is the asset D2.0.1/D2.0.3 would build on.
+- Drive: a "Canvas-V2.0" folder exists (`1m2L1neY6qa-ojiSqfT68ls0j3UndCluj`, created 2026-09-02, one day after freeze) but has ZERO files in it — confirmed via direct child search and a broader Drive-wide search for the component filenames. GitHub, not Drive, is the actual custody location for this asset; the Drive folder is an unfilled placeholder.
+- One related Drive doc found: "Atlas P4 — Canvas V2.0.1 Integration — COMPLETE" (5 Sep) — this describes item (B) below, not this bundle. Do not conflate the two by version-number similarity (2.0.0 vs 2.0.1).
+
+**(B) Canvas-Daughter bridge — v2.0.1, P4 integration, COMPLETE per Drive doc dated 5 Sep.**
+- Files `assets/canvas-daughter-bridge-v2.0.1.mjs` and `governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json` wire Canvas to a live `/daughter` route via a governed module/version/task registry (per the Drive completion doc: fail-closed on unregistered tuples, PUBLIC_SAFE projection, no Work Decomposition/WorkDefinition preload).
+- Present on `atlas-presentation-architecture-v1-p4` through `-p6-2` (propagates through the whole rest of the presentation lineage).
+- **NOT present on `atlas-governance-registry-v2.1` or, by inheritance, the R0.x recovery lineage** (which branched off before/without this integration reaching it).
+- Governed targets per the Drive doc: Road LTL Canvas 1.3 → Daughter 1.5; Ocean FCL/LCL Canvas 0.5 → Daughter 0.6 (approved go-live target, 0.5 explicitly "not a fallback").
+
+Files / branches / components affected:
+- Read/verification only, plus this log entry. No mutation to any content branch.
+
+Audit / test result:
+- `LOCATE_AND_VERIFY_AUTHORITATIVE_CANVAS_V2_ASSET_AND_HISTORY`: item (A) fully verified — PASS with evidence. Item (B) located and evidenced but its own byte-integrity was not re-verified this pass (no local checkout done); its presence/absence pattern only was confirmed via GitHub tree search.
+
+Impact / guardrail:
+- D2.0.1 ("Additive Canvas V2 shell") needs an explicit decision on which asset(s) it's building on: (A) alone reproduces the demo-authorized `V1.2 → Domain Warehouse v2.3 → Malkom` proof; (B) is a separate, already-"COMPLETE"-certified live wiring to a Daughter renderer that the current governance branch does not carry and that references Road LTL Canvas 1.3 (not 1.2) — potentially relevant to the still-open V1.2-vs-V1.3 live seam question logged earlier.
+- If (B) is wanted for the demo, it must be brought onto `atlas-v2-demo-2026-09-14` through traceable Git history per the GitHub-only release policy (cherry-pick/merge with lineage), not re-authored.
+
+Current/Demo/Target effect:
+- CURRENT: no change.
+- DEMO: `LOCATE_AND_VERIFY_AUTHORITATIVE_CANVAS_V2_ASSET_AND_HISTORY` exit criterion now has verified evidence for both candidate assets; a scope decision (A vs B vs both) is still open.
+- TARGET: none.
+
+Safe resume point:
+- `atlas-governance-registry-v2.1` at `238bf82`, unchanged except this log commit.
+
+Next exact action:
+- Owner/ChatGPT to decide whether D2.0.1 builds on canvas-v2/ (A) alone, imports the P4 Canvas-Daughter bridge (B), or both. Claude remains on standby.
