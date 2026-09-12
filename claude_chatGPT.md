@@ -979,3 +979,20 @@ Impact / guardrail:
 
 Next exact action:
 - Awaiting Owner direction on which path (or neither) for the Malkom ending, before touching the remaining 4 checks.
+
+## 2026-09-12 13:38 IST — Claude — D2.0.1
+Classification: WORKING_DECISION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Prior tangential finding (12:05 IST entry): `atlas_work_decompositions` holds 1 real row, comment "P6.1 protected canonical Work Decomposition instance," never followed up.
+- Canonical-chain document (session start): P6.1 decomposed Road LTL 1.5, "603 work units / 444 terminal leaves... zero cycles/orphans."
+- AR0.1 findings (governed 2026-09-11): explicitly lists "recovering historical 603/444/572/605 outputs as architecture targets" under what it does NOT support, and states machine-readable Work Decomposition contracts are "not yet implemented."
+
+Action / finding:
+- Owner recalls building real Work Decomposition in an earlier P0-P6 phase and believes it is exactly the layer meant to bridge universal Operational Knowledge (LTL-03) to Malkom or any other adapter — i.e., the gap sized in the prior entry (13:31 IST) may already be closed by existing, real work.
+- Claude will check: (1) the actual content of the 1 real Supabase row; (2) GitHub history/governance records for the P6.1 decomposition output and its relationship to the 603/444/572/605 figures; (3) Google Drive for the corresponding P6.1 completion/handover documents; (4) whether that output's structure actually contains the queue/subqueue/execution-mode/outcome-routing content confirmed absent from LTL-03 in the prior entry, or something else.
+- Read-only investigation. No implementation.
+
+Next exact action:
+- Query Supabase row content; search GitHub and Drive; reconcile against AR0.1's caution; report findings.
