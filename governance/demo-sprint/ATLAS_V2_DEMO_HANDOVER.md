@@ -6,65 +6,92 @@ Backup executor: Claude
 Backup takeover: AUTHORIZED for the exact current demo stage if ChatGPT is unavailable/fails or Owner directs takeover.
 
 ## Current program state
-- Program: Atlas V2 Demo Sprint
-- Target: demo-ready functional concept live Monday 14 September 2026
+- Program: Atlas V2 Hybrid Demo Sprint
+- Target: demo-ready functional concept in GitHub by Monday 14 September 2026
 - Stakeholder demo: Tuesday 15 September 2026
-- Current stage: `D2.0.0 — Baseline, handover and release-control setup`
+- Current stage: `D2.0.0 — Baseline seam verification + GitHub branch/freeze setup`
 - Stage status: `AUTHORIZED`
 - Architecture program: AR0.2 remains preserved at Owner-review gate; do not silently advance or overwrite it during demo sprint.
-- Full production gate: `ATLAS_V2_GO_LIVE` remains distinct from `ATLAS_V2_DEMO_GO_LIVE`.
+- `ATLAS_V2_DEMO_GO_LIVE` is **SUSPENDED_BY_OWNER_NO_VERCEL_RULE**.
 
-## Starting governed state
-- Governance branch: `atlas-governance-registry-v2.1`
-- Governance head immediately before demo protocol creation: `227391d64c3e178b4e72ab51cadd5564fbab9720`
-- Current live Vercel project: `logistic_atlas_v2`
-- GitHub repository: `Darshan-ukey/Supply-chain-and-logistic-atlas`
-- Current architecture-review state from queue v16: AR0.1 COMPLETE; AR0.2 AWAITING_OWNER_REVIEW; AR0.3+ blocked; R0.4 suspended.
+## Mandatory release rule — 12 Sep 2026
+- **No Vercel deployment, preview, promotion, live update or deletion is authorized.**
+- Vercel may be read only for forensic audit/inventory.
+- Demo implementation branch: `atlas-v2-demo-2026-09-14`.
+- Integration destination after certification and explicit Owner approval: `main`.
+- A merge to `main` does **not** authorize a Vercel deployment.
+- If Git integration would automatically create a Vercel deployment from branch pushes or a `main` merge, STOP before the triggering action and report the risk.
+- Standing policy: `governance/demo-sprint/ATLAS_GITHUB_ONLY_DEMO_RELEASE_POLICY.md`.
 
-## Owner-authorized demo assumptions
-- Ocean FCL/LCL 0.6 may be treated as available/live for the functional concept, but do not imply Road-LTL-equivalent execution depth unless verified.
-- Road LTL is the execution-depth reference domain.
-- Road LTL Work Decomposition / WorkDefinition is a required demo capability.
-- Malkom adapter/projection is a required demo capability.
-- Add one new Atlas page explaining `Domain Knowledge -> Execution Readiness -> Adapters / Downstream Tools` and the platform evolution/scope.
+## Branch model
+- `atlas-governance-registry-v2.1` — governance/authorization only.
+- `atlas-v2-demo-2026-09-14` — sole authorized demo feature implementation branch.
+- `main` — merge destination after D2.0.6 PASS + explicit Owner approval at D2.0.7.
+- Other presentation/recovery/architecture/backup branches are reference/history only unless an asset is deliberately imported with lineage.
+
+### Branch inventory finding
+A branch inventory on 12 Sep found 35 pre-existing branches before the demo branch creation, including presentation, recovery, architecture, backups and `main`.
+
+During connector verification, an extra empty branch `atlas-v2-demo-2026-09-14-check` was inadvertently created from `main`. It is **UNAUTHORIZED / DO NOT USE / DELETE_LATER**. No work should ever be committed to it. The authorized implementation branch remains only `atlas-v2-demo-2026-09-14`.
+
+## Product/demo state
+- Hybrid strategy remains selected: reuse the verified old execution proof where real, wrapped in the additive Atlas V2 demo surface.
+- Existing proof lineage to verify: `Road LTL V1.2 → Domain Warehouse v2.3 → Malkom 3.0 projection`.
+- New governed target lineage remains separate: `Sources → Universe → Daughter Domain → Operational Knowledge → Work Decomposition → Canonical WorkDefinition → Enterprise/Client Binding → Execution Readiness → Adapters`.
+- Do not claim the new v1.4/v1.5/R0.3 lineage currently generates the old Malkom projection.
+- Governance/readiness remains secondary to the five-minute stakeholder POC story.
+
+## Vercel foundation / estate rule
+- `supplychainatlas.vercel.app` is the Owner-designated Aug 23/25 foundation and eventual live upgrade target.
+- Other Atlas-related Vercel projects/deployments remain unclassified pending forensic review for unique code/data, duplicates, recoverability and safe deletion.
+- Nothing may be deleted or redeployed during the current demo sprint.
 
 ## Current work completed
-1. Owner changed delivery priority to a Monday demo-ready Atlas 2.0 functional concept.
-2. Primary/backup executor model agreed: ChatGPT primary, Claude hot backup.
-3. Small-stage audit discipline agreed: PRE / MID / POST audit for every build stage.
-4. No-delta-only certification rule agreed.
-5. Full-state immutable freeze after each passed stage agreed.
-6. `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_PROTOCOL.md` created.
+1. Owner authorized Monday hybrid POC strategy.
+2. ChatGPT primary / Claude hot-backup model established.
+3. PRE/MID/POST audit and no-delta-only certification rules established.
+4. Shared `claude_chatGPT.md` coordination file established.
+5. Current/Demo/Target state map created.
+6. Vercel estate audit/disposition record created.
+7. GitHub-only release policy created.
+8. Explicit demo branch `atlas-v2-demo-2026-09-14` created from `main`.
+9. Queue rebased to v19: D2.0.7 now means Owner-approved merge to `main`, not live deployment.
 
 ## Work in progress
-D2.0.0 governance setup and baseline audit only. No demo feature code has been changed by ChatGPT under this sprint yet.
+D2.0.0 only. No demo feature implementation has begun under the rebased plan.
 
 ## Last safe resume point
-If ChatGPT becomes unavailable now, Claude should:
-1. read the machine queue on `atlas-governance-registry-v2.1`;
-2. read `ATLAS_V2_DEMO_BUILD_PROTOCOL.md` and this handover;
-3. verify whether queue/CLAUDE/roadmap have already been synchronized to D2.0.0;
-4. finish only D2.0.0 baseline/release-control setup;
-5. do not begin D2.0.1 until D2.0.0 post-audit PASS and next-stage authorization are recorded.
+If ChatGPT becomes unavailable now, Claude must:
+1. read `claude_chatGPT.md`;
+2. read `ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md`;
+3. read queue v19;
+4. read `ATLAS_GITHUB_ONLY_DEMO_RELEASE_POLICY.md` and the demo build protocol;
+5. continue only D2.0.0;
+6. do not work on `main`;
+7. do not use `atlas-v2-demo-2026-09-14-check`;
+8. do not perform any Vercel mutation;
+9. do not start D2.0.1 until D2.0.0 PASS and authorization are recorded.
+
+## D2.0.0 remaining exact actions
+1. Verify foundation/repository relationship, including exact source state associated with `supplychainatlas.vercel.app` where recoverable.
+2. Verify Canvas V2 authoritative asset/history.
+3. Verify the V1.2 → Domain Warehouse v2.3 → Malkom proof assets, counts, scripts and known gaps.
+4. Verify additive compatibility with foundation/current codebase.
+5. Verify Universe/Road LTL/Ocean/Ask Atlas naming/version facts.
+6. Audit existing GitHub branches for assets relevant to the demo; do not infer newest = correct.
+7. Record `atlas-v2-demo-2026-09-14` base SHA from `main` and create D2.0.0 PRE_CHANGE baseline manifest.
+8. Verify Git/Vercel integration behavior sufficiently to avoid accidental deployment from branch pushes/merge.
+9. Freeze D2.0.0 full GitHub state and only then authorize D2.0.1.
 
 ## Guardrails
-- Never work directly on `main`.
-- Never edit Vercel as source of truth.
-- Do not overwrite historical frozen assets; freeze new complete states.
-- Do not certify only changed files; audit the complete resulting app.
-- Do not fabricate Ocean, Road LTL, WorkDefinition, readiness or Malkom semantics.
-- Do not make Malkom queue/subqueue structures canonical Atlas truth.
+- Never build demo features directly on `main`.
+- Never mutate Vercel during the current sprint.
+- Never overwrite historical frozen assets.
+- Never certify only changed files; audit complete repository state.
+- Never fabricate Ocean, Road LTL, WorkDefinition, readiness or Malkom semantics.
+- Never make runtime queue/subqueue structures canonical Atlas truth.
 - Maintain public/protected execution-IP boundaries.
-- Keep AR0.2 evidence and open decisions intact.
-
-## Next exact actions for D2.0.0
-1. Synchronize queue to demo sprint and dual-executor rules.
-2. Update `CLAUDE.md` so Claude reads this handover and can resume the exact active demo stage.
-3. Update human roadmap with the demo sprint and Monday release distinction.
-4. Audit current repository baseline: application structure, current live/preview source branch, existing Ocean 0.6 assets, existing Road LTL decomposition/WorkDefinition assets, existing Malkom adapter/projection assets, auth/public-admin split and Vercel linkage.
-5. Create D2.0.0 PRE_BUILD_AUDIT and POST_BUILD_AUDIT/full-state baseline manifests.
-6. Create dedicated demo build branch from the accepted application baseline.
-7. Freeze D2.0.0 full-state baseline and only then authorize D2.0.1.
+- Preserve AR0.2 open decisions.
 
 ## Handover update rule
-Update this file after every meaningful build slice or audit checkpoint. The backup executor must not rely on chat history when this file can provide the state.
+Update this file after every meaningful build slice/audit checkpoint. The backup executor must not rely on chat history when governed files provide the state.
