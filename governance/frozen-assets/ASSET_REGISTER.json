@@ -161,6 +161,31 @@
       "notes": "Immutable candidate; not ACTIVE production until promotion gates pass."
     },
     {
+      "assetId": "ocean-0.6-public-safe-projections-bundle",
+      "family": "ocean-projection-candidate",
+      "name": "Ocean FCL/LCL 0.6 Public-Safe Execution-Depth Projection Bundle",
+      "version": "0.6",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "category": "materialized-projection-candidate",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "data/materialized/ocean-0.6-public-safe-projections.json.gz.b64",
+      "generatorPath": "tools/ocean-projection/build-ocean-projection.mjs",
+      "demoOnly": true,
+      "demoBranch": "atlas-v2-demo-2026-09-14",
+      "demoBranchCommit": "f36771e",
+      "baseModules": {
+        "ocean-fcl-0.6-candidate": "334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a",
+        "ocean-lcl-0.6-candidate": "73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f"
+      },
+      "taskCoverage": {
+        "ocean-fcl@0.6": 30,
+        "ocean-lcl@0.6": 30
+      },
+      "contentDepth": "OK_V1_MECHANICAL_SUMMARY_NOT_OKV2_NARRATIVE",
+      "notes": "Closes the gap flagged 2026-09-12 12:05 IST: governance/presentation/p2-projection-source-registry.json already registered ocean-fcl@0.6/ocean-lcl@0.6 as materialized:true pointing at this exact bundle path, but the file did not exist. Generated via a dedicated Ocean-specific builder (Ocean tasks use a structurally different OK-v1-era shape than the Road LTL v1.5 function expects -- direct reuse silently produced null content, caught by testing, not shipped). Every field is a direct real value or a mechanical join of real sourced items; no narrative invented; fields with no honest Ocean equivalent left null, consistent with this registrys own pre-existing informationResolutionDepth: NOT_POPULATED_AT_OKV2_DEPTH label. Verified: all 60 tasks (30 FCL + 30 LCL) render cleanly through the real, unmodified renderer; real HTTP simulation through the real route handler confirmed. Demo-branch artifact only; not promoted to any production pointer."
+    },
+    {
       "assetId": "daughter-release-ltl1.4-ocean0.6",
       "family": "release-package",
       "name": "LTL 1.4 + Ocean FCL/LCL 0.6 Daughter V2 Release",

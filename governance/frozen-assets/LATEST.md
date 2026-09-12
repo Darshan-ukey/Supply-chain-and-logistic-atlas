@@ -14,6 +14,12 @@ Integration lock: `governance/frozen-assets/history/frozen-stack-lock-v2.2.json`
 - Universal Ask **2.0.1**
 - Atlas Warehouse **1**
 
+## Demo-branch materialized assets (atlas-v2-demo-2026-09-14, not production)
+- Ocean 0.6 Public-Safe Projection Bundle — `FROZEN_EXECUTION_REFERENCE_CANDIDATE`
+  - 60 tasks (30 FCL + 30 LCL), mechanical summary depth (OK v1), no OK v2 narrative.
+  - Closes a gap where the projection registry already pointed at this bundle path but the file didn't exist.
+  - Asset register: `ocean-0.6-public-safe-projections-bundle`.
+
 ## Latest frozen execution-reference candidates
 - Canvas **2.0.1** — `FROZEN_EXECUTION_REFERENCE_CANDIDATE`
   - Shell + governed Canvas→Daughter bridge. The frozen 2.0.0 visual shell is byte-identical and unchanged; 2.0.1 is additive routing, not a shell revision.
