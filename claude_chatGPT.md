@@ -743,3 +743,37 @@ Safe resume point:
 
 Next exact action:
 - Copy, verify, commit, push; log POST_ACTION with exact hashes and resulting SHA.
+
+## 2026-09-12 11:29 IST — Claude — D2.0.1
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: POST_ACTION
+
+Evidence inspected:
+- Commit `45a2888` on `atlas-v2-demo-2026-09-14` (confirmed via authoritative `git ls-remote`, not local cache).
+- Full test run against the actual demo-branch working tree before committing.
+
+Action / finding:
+- Imported `canvas-2.0.1-candidate` (shell + bridge) onto `atlas-v2-demo-2026-09-14`: 20 shell files (byte-verified unchanged), 4 new bridge files, 1 new-to-this-branch file (`execution/ui/runtime-access-shell.js`, additive import only), plus the original P4 test file kept as reference — 26 files total, every registered file hash-verified against `canvas-2.0.1-candidate` before commit, not re-authored.
+- **MATERIAL FINDING surfaced during this work**: running the original P4 test against the actual demo-branch tree, 34/37 assertions pass unmodified — including the entire fail-closed routing suite and the full `road-ltl/1.5/LTL-03` + `ocean-fcl|lcl/0.6` resolution paths. 3 do not: the test crashes (ENOENT, ATL not a soft fail) on `governance/presentation/p2-projection-source-registry.json`, absent from this `main`-based lineage. Confirmed via `grep` that the bridge/renderer code has zero runtime references to that file — it is a test-only self-check of Ocean's PUBLIC_SAFE materialization, not a functional dependency. The test's final root-`index.html` byte-identity assertion (checking against the P3/P3O presentation-lineage baseline) was never reached; this branch's root `index.html` is provably a different file by lineage (`24ef65a2...` vs expected `04380252...`), which is expected given `atlas-v2-demo-2026-09-14` is cut from `main`, not from the presentation lineage.
+- This is direct evidence for D2.0.0's exit criterion `VERIFY_ADDITIVE_COMPATIBILITY_WITH_FOUNDATION_CODEBASE`: compatibility is real for the functional bridge/routing logic, but the P4 lineage's own self-test assumes presentation-lineage context (`main` doesn't carry it) that this demo branch doesn't have. Not resolved here — left as an open item below.
+
+Files / branches / components affected:
+- `atlas-v2-demo-2026-09-14` only (commit `45a2888`). No `main`, no governance branch beyond this log, no Vercel action.
+
+Audit / test result:
+- 34/37 of the original P4 suite PASS on the actual demo-branch tree, independently confirmed pre-commit. 3 unresolved for the stated non-functional reasons above.
+
+Impact / guardrail:
+- Road LTL and Ocean routing (the demo's actual content paths) are fully verified working on this branch. Ocean's PUBLIC_SAFE materialization self-check specifically, and the P3/P3O-lineage index.html identity check, remain open — low priority unless Ocean's demo panel specifically needs that self-check passing.
+- No Vercel deployment triggered by this push, per policy.
+
+Current/Demo/Target effect:
+- CURRENT: no change.
+- DEMO: `atlas-v2-demo-2026-09-14` now carries the Canvas shell + governed Daughter bridge for the first time; road-ltl/1.5/LTL-03 and ocean-fcl|lcl/0.6 routing confirmed working on the actual branch.
+- TARGET: none.
+
+Safe resume point:
+- `atlas-v2-demo-2026-09-14` at `45a2888`.
+
+Next exact action:
+- Owner/ChatGPT: decide whether to bring `p2-projection-source-registry.json` over too (closes the Ocean self-check gap) and how to treat the root-`index.html` lineage mismatch, or accept both as known/non-blocking and proceed to wiring Canvas into the demo's active navigation for the remainder of D2.0.1.
