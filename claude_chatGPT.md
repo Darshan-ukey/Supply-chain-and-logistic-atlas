@@ -888,3 +888,42 @@ Safe resume point:
 
 Next exact action:
 - Generate the Ocean 0.6 precompiled projection bundle (mirroring the Road LTL one) if Ocean's execution-depth panel is wanted at the same fidelity for the demo, or accept Ocean staying at daughter-page-only depth for now.
+
+## 2026-09-12 13:05 IST — Claude — D2.0.0/D2.0.1
+Classification: OWNER_DIRECTION
+Checkpoint: STAGE_CLOSURE
+
+Purpose: consolidated summary of everything changed for the demo since the 09:41 IST sync entry, for a cold read. Individual entries below remain the detailed record; this is the catch-up.
+
+## Governance branch changes (atlas-governance-registry-v2.1)
+1. `canvas-2.0.1-candidate` registered in ASSET_REGISTER.json (commit `d18848b`) — shell (byte-identical to canvas-2.0.0) + P4 Canvas-Daughter bridge, `FROZEN_EXECUTION_REFERENCE_CANDIDATE`, not production. `canvas-2.0.0` itself untouched.
+2. `ocean-0.6-public-safe-projections-bundle` registered in ASSET_REGISTER.json (commit `b5e168c`) — see below.
+3. `CURRENT.json` / `LATEST.md` updated to reference both new candidates. No `productionBaseline.*` field changed anywhere in this session.
+
+## Demo branch changes (atlas-v2-demo-2026-09-14), in order
+1. `45a2888` — Canvas shell (20 files) + P4 bridge (5 files) imported, hash-verified against the registered candidate. 34/37 of the original P4 test pass unmodified on this lineage; 2 non-functional gaps documented (Ocean self-check file, root index.html lineage mismatch).
+2. `71c7bc5` — Ocean FCL/LCL 0.6 module JSON + standalone HTML pages imported, hash-verified against the ZIP-registered candidate hashes. Confirmed via direct Supabase check (project `aaoyesktlzhaunqqjhdq`) that no Ocean data or knowledge-warehouse schema exists in the live backend — the ZIP is the only real source; **Supabase is not part of the working mechanism for either LTL or Ocean**, contrary to an initial assumption raised and corrected this session.
+3. `ed7507c` — `/api/execution-depth-projection` wired for the first time. The projection-building library, the `road-ltl@1.5` registry entry, and a full 22-task precompiled bundle already existed and were already correct; the only gap was no HTTP route calling any of it. Verified: all 22 LTL tasks render cleanly through the real, unmodified renderer; real HTTP requests simulated through the real handler; fail-closed 404 confirmed for a bad task; Ocean's *then-missing* bundle confirmed to fail closed too (clean 500, no crash).
+4. `f36771e` — Ocean 0.6 precompiled projection bundle generated and committed, closing the gap from step 3. **Important correction made and caught before shipping**: naively reusing the Road LTL v1.5 projection function against Ocean's real data silently produced null titles/empty content, because Ocean's task schema is genuinely structured differently (title/identity/states/controls[]/atomicActions[]/etc., not the flat label/trigger/before/after fields the LTL function expects) — not less rich, differently shaped. Built a separate, Ocean-specific generator (`tools/ocean-projection/build-ocean-projection.mjs`) instead: every field is a direct real value or a mechanical join of real sourced array items; nothing invented; fields with no honest Ocean equivalent left null. Verified against all 60 real tasks (30 FCL + 30 LCL) through the real renderer and real route handler before commit.
+
+## Standing findings still in force, unaffected by this work
+- **Road LTL 1.3 vs 1.5 remain structurally incompatible schemas** (11:46 IST entry) — production graph model vs. candidate task-record model. `productionBaseline.roadLtl` promotion remains on HOLD until after demo corrections, per Owner decision recorded then. None of today's work touches or requires that pointer; everything above is demo-branch only.
+- Canvas/Inspector code itself remains untouched, per Owner direction to leave enrichment there for later.
+- AR0.2 remains preserved at Owner-review gate; nothing above resolves or overwrites it.
+
+## Current demo-branch state
+- HEAD: `atlas-v2-demo-2026-09-14` @ `f36771e`.
+- Road LTL: full 22-task execution-depth content servable once deployed, LTL-03 at real v1.5 depth, 21 others at existing depth.
+- Ocean: standalone pages + full 60-task execution-depth content servable once deployed, at honestly-labeled OK v1 mechanical-summary depth.
+- Canvas shell + governed Daughter bridge: present, tested, unmodified from their frozen source.
+- No Vercel action taken anywhere in this session. GitHub only, per standing policy.
+
+## Queue/backlog status — intentionally NOT changed by this entry
+`D2.0.0` remains `AUTHORIZED`, `D2.0.1` remains `BLOCKED_UNTIL_D2_0_0_PASS` in `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json`. Everything above is D2.0.1-scoped work landing under explicit Owner direction ahead of formal D2.0.0 closure (flagged plainly at 11:14 IST and each entry since) — this record exists so the eventual closure reflects true event order. Advancing stage status remains ChatGPT's/Owner's call, not self-authorized here, consistent with every prior stage this session.
+
+Safe resume point:
+- Governance branch: `atlas-governance-registry-v2.1` at this commit.
+- Demo branch: `atlas-v2-demo-2026-09-14` at `f36771e`.
+
+Next exact action:
+- Owner/ChatGPT: review and decide D2.0.0 exit-criteria closure, or continue D2.0.1 (e.g. Universe/Canvas entry page wiring, or the Malkom connection beat still undecided from the 11:xx demo-narrative discussion).
