@@ -277,3 +277,55 @@ Impact / guardrail:
 
 Next exact action:
 - Apply queue + build-log updates, verify the diff is scoped, commit, push, log POST_ACTION.
+
+## 2026-09-12 18:47 IST — Claude — GOVERNANCE SYNC
+Classification: OWNER_DIRECTION
+Checkpoint: POST_ACTION
+
+Evidence inspected:
+- Commit `19c53fa` on `atlas-governance-registry-v2.1`.
+- Pre-commit structural diff of the queue JSON.
+
+Action / finding — governance synchronized to actual state. The queue had been stale by five stages (`currentStageId: D2.0.0` while the branch had completed through D2.0.5 with an audit document on every stage).
+
+**Queue now records, per stage:** status, executor, build SHA, audit-document path, and a new `qaType` field.
+
+| Stage | Status | Executor | Build | qaType |
+|---|---|---|---|---|
+| D2.0.0 | COMPLETE_WITH_EXCEPTION | ChatGPT + Claude | — | self-reported |
+| D2.0.1 | COMPLETE | ChatGPT | `3336f658` | executor self-certified |
+| D2.0.2 | COMPLETE | Claude build / ChatGPT audit | `0d2a8ad` | **cross-agent audited** |
+| D2.0.3 | COMPLETE | Claude | `f22b77d` | self-reported |
+| D2.0.4 | COMPLETE | Claude | `457003d` | self-reported |
+| D2.0.5 | COMPLETE | Claude | `319147e` | self-reported |
+| D2.0.6 | AUTHORIZED | — | — | — |
+| D2.0.7 | BLOCKED | — | — | blocker attached |
+
+`currentStageId` → `D2.0.6`. `updatedAt` refreshed.
+
+**Three things I deliberately did not smooth over:**
+1. **D2.0.0 is COMPLETE_WITH_EXCEPTION, not clean.** `CREATE_PRE_CHANGE_FULL_STATE_FREEZE` was never performed and no freeze artifact exists on the demo branch. 8 of 9 criteria evidenced; the 9th recorded as outstanding.
+2. **`qaType` makes the QA basis explicit.** D2.0.2 is the only stage in this sprint verified by an agent other than the one that built it. D2.0.3–D2.0.5 rest on committed audits, reproducible generators and tests with negative controls — but that is self-certification, not independent QA, and is now labelled as such rather than reading as third-party certification.
+3. **D2.0.7's blocker is recorded, not resolved.** Added as a structured `recordedBlocker` object naming the guardrail it conflicts with, the evidence, why inspection is blocked (403), and what is required before the stage.
+
+**Added `demoSprintOpenItems`** (4 entries): browser/visual verification never performed; D2.0.0 freeze outstanding; D2.0.3–D2.0.5 not independently QA'd; D2.0.7 auto-deploy conflict unresolved.
+
+Also appended a stage-closure record with the same table and notes to `governance/demo-sprint/ATLAS_V2_DEMO_BUILD_LOG.md`.
+
+Audit / test result:
+- Pre-commit structural verification: exactly 1 top-level key added (`demoSprintOpenItems`), 0 removed, 0 non-D2.0 phases modified, no phases added or removed.
+
+Impact / guardrail:
+- This is a canonical governance write performed under explicit Owner direction, not implementation-agent self-promotion. It advances `currentStageId` to D2.0.6 but marks no stage PASS that lacks an audit document on the branch.
+- ChatGPT: D2.0.3–D2.0.5 are open to your independent audit if you want to convert them from self-reported to cross-agent verified — D2.0.2 is the precedent.
+
+Current/Demo/Target effect:
+- CURRENT: unchanged; no production pointer touched.
+- DEMO: governance record now matches branch reality.
+- TARGET: none.
+
+Safe resume point:
+- Governance `atlas-governance-registry-v2.1` @ `19c53fa`; demo branch `atlas-v2-demo-2026-09-14` @ `66918e1`.
+
+Next exact action:
+- D2.0.6 is AUTHORIZED (end-to-end integration + regression + merge-readiness, guardrail `NO_DELTA_ONLY_CERTIFICATION`). Owner to direct executor; Vercel access resolution recommended in parallel so browser verification can proceed via preview rather than a main merge.
