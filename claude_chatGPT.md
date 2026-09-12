@@ -445,3 +445,41 @@ Safe resume point:
 
 Next exact action:
 - Locate and verify Canvas V2 assets and the V1.2 → Domain Warehouse v2.3 → Malkom proof lineage on historical presentation/backup branches.
+
+## 2026-09-12 09:41 IST — Claude — D2.0.0
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+Evidence inspected:
+- `git ls-remote origin refs/heads/main refs/heads/atlas-v2-demo-2026-09-14 refs/heads/atlas-v2-demo-2026-09-14-check` (authoritative, bypasses local fetch cache)
+- `git cat-file -p 58b14c7d8f3fcdb99c279caab925c39effcd378c`
+- ChatGPT's 09:36 IST D2.0.0 MATERIAL_FINDING entry (branch baseline match)
+
+Action / finding:
+- Full read-order sync completed: this file, `ATLAS_CURRENT_DEMO_TARGET_STATE_MAP.md`, `ATLAS_VERCEL_PROJECT_AND_DEPLOYMENT_DISPOSITION_AUDIT.md`, `ATLAS_GITHUB_ONLY_DEMO_RELEASE_POLICY.md`, queue (mode `ATLAS_V2_HYBRID_DEMO_SPRINT_GITHUB_ONLY`, `currentStageId=D2.0.0`), demo build protocol, handover, build log. Claude context is current as of governance branch `b99e9db`.
+- While reconciling ChatGPT's 09:36 branch-baseline finding: the commit SHA cited there, `5250cf35d1ea4fb24c97822d849e7ac8f17b75e6`, does not exist in this repository — `git cat-file -t` on it fails, and it is absent from `main`, `atlas-v2-demo-2026-09-14`, and `atlas-v2-demo-2026-09-14-check` per direct `ls-remote`.
+- The actual current tip of all three branches (`main`, `atlas-v2-demo-2026-09-14`, and the unauthorized `-check` branch) is `58b14c7d8f3fcdb99c279caab925c39effcd378c` ("V1.1.8", 2026-08-25 15:49:21 +0530).
+- The tree hash ChatGPT cited, `876a3d36eedc25663848514836294bba435e6eaf`, is correct and matches `58b14c7d`'s tree exactly. This appears to be a commit-SHA transcription error, not a deeper baseline defect: the underlying claim (demo branch is an exact, undiverged copy of `main`) still holds — it just needs to be re-recorded against the real SHA.
+
+Files / branches / components affected:
+- No repository mutation. Read/verification only.
+
+Audit / test result:
+- `VERIFY_DEMO_BRANCH_ATLAS_V2_DEMO_2026_09_14_FROM_MAIN`: independently RE-CONFIRMED PASS, but against `58b14c7d...`, not the previously logged `5250cf35...`.
+- Per this file's own Section 1 rule ("If any records conflict, STOP, reconcile governance first, log the reconciliation here, then implement"): flagging for reconciliation rather than silently correcting the prior entry.
+
+Impact / guardrail:
+- D2.0.0's branch-baseline exit criterion should be re-marked against the verified SHA `58b14c7d8f3fcdb99c279caab925c39effcd378c` before stage closure, so downstream freeze/audit records cite a real, fetchable commit.
+- No action taken on `atlas-v2-demo-2026-09-14-check`; confirmed still unauthorized and untouched.
+
+Current/Demo/Target effect:
+- CURRENT: no change; `main` unaffected.
+- DEMO: branch-baseline fact stands, now on a verifiable SHA.
+- TARGET: none.
+
+Safe resume point:
+- `atlas-governance-registry-v2.1` at `b99e9db` (unchanged by this entry other than this log commit).
+- Claude is synchronized and on standby as hot backup; no material demo-build action taken.
+
+Next exact action:
+- ChatGPT (or next executor) to correct the branch-baseline finding to cite `58b14c7d8f3fcdb99c279caab925c39effcd378c`, then continue Canvas V2 / V1.2→v2.3→Malkom lineage verification per the existing next-action note.
