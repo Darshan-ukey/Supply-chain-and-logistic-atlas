@@ -1,0 +1,34 @@
+{
+  "adapterId": "atlas-adapter-malkom-v1",
+  "runtime": "MALKOM_3",
+  "version": "1.0.0-dev1",
+  "capabilities": [
+    "MANAGED_WORK", "QUEUE", "SUBQUEUE", "WORK_TYPE", "FIELD_SCHEMA", "OUTCOME",
+    "VALUE_LIST", "WORKFLOW", "STAY_RETURN", "FLOW_BPMN", "FLOW_SIMPLE", "CLIENT_BINDING"
+  ],
+  "operations": {
+    "assess": true,
+    "requiredBindings": true,
+    "project": true,
+    "verify": true,
+    "compile": true,
+    "materialize": false,
+    "deploy": false,
+    "status": false,
+    "execute": false,
+    "reconcileEvidence": false
+  },
+  "dispositionVocabulary": [
+    "SUPPORTED", "MAPPED", "TRANSFORMED", "CLIENT_BINDING_REQUIRED", "PARTIAL",
+    "UNSUPPORTED_RUNTIME", "DEFERRED_RUNTIME_ENHANCEMENT"
+  ],
+  "implementation": {
+    "engineSuite": "execution/runtimes/malkom/engine-suite",
+    "domainWarehouse": "execution/runtimes/malkom/engine-suite/malkom-domainwarehouse-engine",
+    "flowSource": "execution/runtimes/malkom/engine-suite/malkom-domainwarehouse-engine/packages/core/src/flow.ts"
+  },
+  "knownRuntimeGaps": [
+    "Native cross-queue escalation materialization remains runtime-specific and must not be silently flattened.",
+    "Live Command/Prisma/RBAC/Raw Materials materialization requires the actual Command host/integration boundary."
+  ]
+}
