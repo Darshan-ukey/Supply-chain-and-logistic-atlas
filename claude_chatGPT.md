@@ -2,54 +2,49 @@
 
 **Purpose:** Persistent direct coordination/handover file for ChatGPT and Claude. Both executors must read this file before starting/resuming Atlas work and write material findings here so the Owner does not have to relay conversations between tools.
 
-> Full history remains recoverable from prior Git blobs/commits. Existing architecture, GitHub-only, no-Vercel, two-lineage and audit rules remain binding.
-
-## 2026-09-12 — ChatGPT — D2.0.2
-Classification: VERIFIED_REPOSITORY_FACT
-Checkpoint: STAGE_CLOSURE
-
-Evidence inspected:
-- `data/module-catalog.json` on demo branch.
-- `governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json`.
-- `governance/presentation/p2-projection-source-registry.json`.
-- Claude's Owner-authorized catalog/navigation build at `0d2a8ade34dc686d1f54d1399673cb39978e573e`.
-- D2.0.1 full state at `d50be4b0d18aef15d533565e8bea2a46b0610531`.
-- `governance/demo-sprint/D2.0.2_POST_BUILD_AUDIT.md` committed at `6ef1d416b6c4ddeebdc9dba8cf08b56ad366aa19`.
-
-Verified state:
-- Page 0 / ecosystem base remains 6.2.2.
-- Road LTL 1.3 is ACTIVE Canvas baseline.
-- Ocean FCL 0.5 and Ocean LCL 0.5 are ACTIVE Canvas baselines on the demo branch.
-- Governed P4 bridge targets Road LTL 1.3 → daughter 1.5; Ocean FCL/LCL 0.5 → daughter 0.6.
-- P2 projection registry confirms materialized Road LTL 1.5 and Ocean 0.6 public-safe projection bundles.
-- Ocean 0.6 does not claim OKv2 / Information Resolution v2 depth where absent.
-- Ocean remains demo/prod-ready-but-unpromoted context; nothing here is a production promotion.
-
-Stage result:
-- D2.0.2 PASS at structural/source level.
-- Browser/visual click-through remains deferred to later manual/pre-demo QA.
-- No Vercel mutation occurred.
-
-Safe resume point:
-- Demo branch includes `6ef1d416b6c4ddeebdc9dba8cf08b56ad366aa19`.
+> Full history through D2.0.2 closure and D2.0.3 PRE_ACTION remains recoverable at blob `78e4c8091fb7e13bacf7f68c87f3a478de4b039e`. Existing architecture, GitHub-only, no-Vercel, two-lineage and audit rules remain binding.
 
 ## 2026-09-12 — ChatGPT — D2.0.3
-Classification: PRE_ACTION
-Checkpoint: PRE_ACTION
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
 
-Objective:
-- Integrate/certify Road LTL execution depth for the demo while preserving the corrected two-lineage truth.
+Evidence inspected:
+- Recursive Git tree of current demo branch `atlas-v2-demo-2026-09-14`.
 
-Required distinction:
-1. New governed target evidence: Road LTL 1.5 → Operational Knowledge → certified P6.1 recursive decomposition → canonical WD compiler proven / persistence pending.
-2. Proven reference runtime implementation: Road LTL 1.2 → Domain Warehouse 2.3 → Malkom 3.0 projection.
+Material finding:
+- The current demo branch does contain the older/proven Road LTL Domain Warehouse / WorkDefinition / Malkom reference assets needed for D2.0.3–D2.0.4. They are not hypothetical recovery targets.
+- Concrete reference WD asset located: `canvas-v2/data/road-ltl-workdefinitions-v2.3.json`, blob SHA `f1670218f5925c1db5358a5e17d25228107043bf`, size 167,329 bytes.
+- Related reference assets located on the same branch include:
+  - `canvas-v2/data/road-ltl-audit-v2.3.csv`
+  - `canvas-v2/data/road-ltl-canvas-v2.0-map.json`
+  - `canvas-v2/data/road-ltl-domain-contract-v1.0.json`
+  - `canvas-v2/data/road-ltl-roadmap-c1-c5.json`
+  - `canvas-v2/data/road-ltl-v1.3-source.json`
+  - `malkom-adapter-v0.1.html`
+  - `api-secure/malkom-adapter-v0.1.html`
+  - `malkom3-workdefinition-v1.schema.json`
+  - `road-ltl-projection-v0.1.package.json`
+  - `ROAD_LTL_MALKOM3_ADAPTER_BUILD_V0.1.md`
+  - `ROAD_LTL_MALKOM3_ADAPTER_PROJECTION_PACKAGE_V0.1.md`
+  - `ROAD_LTL_MALKOM3_ADAPTER_EMBED_V0.1.md`
+  - `ROAD_LTL_MALKOM3_INTEGRATED_CERTIFICATION_V0.2.md`
+  - `ROAD_LTL_MALKOM3_SEMANTIC_GAP_REGISTER_V0.1.md`
+  - `MALKOM3_ADAPTER_V0.1_TEST_REPORT.md`
+  - `MALKOM3_STAGE3_PROJECTION_VERIFICATION_REPORT.md`
+  - `ROAD_LTL_SHOWCASE_BUILD_REPORT_V2.3.md`
+  - `ROAD_LTL_SHOWCASE_RELEASE_V2.3.md`
+  - `ROAD_LTL_WORKDEFINITION_V2.3_QA_REPORT.md`
+  - `ROAD_LTL_COMPREHENSIVE_LOGIC_AUDIT_V2.3.md`.
 
-Guardrails:
-- Do not imply the old Malkom projection was generated from Road LTL 1.5/P6.2.
-- Do not represent 185 EXECUTOR_READY leaves as persisted canonical WDs.
-- Do not fabricate Client Binding/runtime projection closure.
-- Prefer existing daughter/execution-depth surfaces and proven reference assets over new hand-authored semantics.
-- No Vercel action.
+Interpretation / guardrail:
+- This strengthens the hybrid strategy: the old execution-reference lineage is physically present on the demo branch and can be audited rather than recreated.
+- Presence alone does not prove exact definition counts, queue/subqueue counts, Malkom semantic fidelity or current UI consumption. Those claims remain unverified until the bundle and certification reports are inspected.
+- This does not connect the reference lineage to Road LTL 1.5/P6.1/P6.2. The two lineages remain separate unless explicit bridge evidence is found.
+
+Current/Demo/Target effect:
+- CURRENT: no mutation.
+- DEMO: D2.0.3 can preferentially reuse/certify existing execution-reference assets instead of authoring new semantics.
+- TARGET: no change; these remain bridge/reference assets to retire/rebase after canonical target parity.
 
 Next exact action:
-- Inventory the actual execution-depth UI/data assets already on the demo branch: daughter renderer, Road LTL 1.5 projection bundle, Domain Warehouse v2.3/reference WorkDefinition assets and Malkom adapter/reference files. Determine what is already usable and what D2.0.3 must add or simply certify.
+- Inspect the v2.3 WorkDefinition bundle and Malkom projection/certification/gap reports to verify counts, lineage, mapping behavior, known semantic losses and actual UI/adapter consumption before any D2.0.3 code change.
