@@ -141,3 +141,47 @@ Traceability note (per Owner request):
 
 Next exact action:
 - Generate + verify the Malkom projection artifact, then audit and close.
+
+## 2026-09-12 17:48 IST — Claude — D2.0.4
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: STAGE_CLOSURE
+
+Evidence inspected:
+- Demo branch `8184f11` → build `457003d` → audit `61151b0`.
+- `governance/demo-sprint/D2.0.4_POST_BUILD_AUDIT.md` at `61151b0`.
+
+Action / finding — D2.0.4 built and closed. Scope was *wire and demonstrate the existing verified adapter*, so the adapter itself was NOT modified; this stage runs it and commits its output as a real artifact rather than a live-computed claim.
+
+**Added (3 files):** `tools/malkom-projection/build-malkom-reference-projection.mjs` (generator), `data/materialized/road-ltl-v2.3-malkom-reference-projection.json` (artifact), `tests/d2-0-4-malkom-reference-projection.mjs` (certification).
+
+**Results:** 22 definitions | 22/22 adapter-compatible | 22/22 materializable | 176 client bindings across 8 families | 3 ESCALATE PARTIAL | 5 adapter operations not enabled | semanticHash `d077166f…`.
+
+**Guardrail compliance:**
+- `NO_FALSE_V15_COMPILER_CLAIM` — enforced mechanically, not just documented. Artifact declares `DEMO_REFERENCE_PROJECTION_NOT_CANONICAL_TRUTH`, `sourceModel: "Road LTL V1.2"`, and an explicit `notGeneratedFrom` list naming 1.5 / OK v2 / P6.1 / P6.2. The generator reads exactly 3 reference-lineage files, and the test asserts no declared input matches governed-target patterns (`road-ltl-v1.[45]`, `operational-knowledge`, `work-decomposition`, `work-definition`, `p6-`). A future change that starts reading 1.5/P6.x data **fails the suite**.
+- `MALKOM_IS_FIRST_CONSUMER_NOT_CANONICAL_ATLAS_MODEL` — classification + lineage statement assert downstream-consumer status; the source bundle's own note is carried through verbatim.
+- `DOCUMENT_KNOWN_ADAPTER_LOSSES_GAPS` — 3 limitation classes recorded, none suppressed: ESCALATE (PARTIAL, LTL-15/18/22 named individually, with reason); client binding (176 points, 8 families with per-family counts, Atlas owns requirement / client supplies value, none resolved or invented); 5 adapter operations honestly reported unavailable.
+- `NO_VERCEL_DEPLOYMENT` — no Vercel action.
+
+**Verification:** byte-identical regeneration, stable semantic hash, zero wall-clock values, independent in-memory rederivation agrees. **Negative controls run** — tampering `sourceModel` to `"Road LTL 1.5"` FAILS the test as designed; emptying the ESCALATE `affectedTasks` list FAILS as designed. Both restored, clean run re-confirmed. Guards proven to bite, not merely to pass.
+
+Audit / test result:
+- **D2.0.4 PASS at structural/source/execution level.**
+
+Impact / guardrail:
+- Browser/visual click-through remains **open** — still the single outstanding demo-readiness item.
+- No canonical data, catalog, production pointer, API security boundary, Vercel config or frozen artifact mutated.
+
+### Traceability chain (per Owner request — full demo-branch lineage)
+`58b14c7` main baseline → `45a2888` Canvas shell + P4 bridge → `71c7bc5` Ocean 0.6 modules → `ed7507c` execution-depth endpoint wired → `f36771e` Ocean projection bundle → `0d2a8ad` catalog port (Road LTL 1.3 + Ocean 0.5 ACTIVE) → `3336f65` scope/future page (ChatGPT) → `d50be4b` D2.0.1 audit (ChatGPT) → `6ef1d41` D2.0.2 audit (ChatGPT) → `f22b77d` Malkom adapter import → `8184f11` D2.0.3 audit → `457003d` Malkom reference projection → `61151b0` D2.0.4 audit.
+Every commit message states its own verification evidence and input hashes; every generated artifact is reproducible from committed inputs by a committed generator.
+
+Current/Demo/Target effect:
+- CURRENT: unchanged.
+- DEMO: the full narrative arc is now materially present — Universe/Page 0 → daughters (Road LTL 1.3, Ocean 0.5) → execution depth (1.5 / 0.6 projections) → Malkom machine-readable output — with the two lineages separately evidenced and never conflated.
+- TARGET: none. Reference assets remain slated to retire/rebase after canonical parity.
+
+Safe resume point:
+- `atlas-v2-demo-2026-09-14` @ `61151b0`.
+
+Next exact action:
+- D2.0.5 (trace + readiness + demo narrative integration) is next in queue. Owner/ChatGPT to direct whether Claude continues or ChatGPT resumes.
