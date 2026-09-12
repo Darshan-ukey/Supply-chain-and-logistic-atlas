@@ -3,115 +3,56 @@
 Status: ACTIVE  
 Effective: 11 September 2026
 
-## Decision AR-D001 — Architecture refinement precedes R0.4
-Decision: APPROVED BY OWNER.
+> Historical AR-D001 through AR-D013 remain immutable/recoverable in Git history at blob `d13bfb2d87ed60c5eacd8b297ec6d70411a403a6`. They are not deleted or reversed by the additions below. In particular AR-D013 remains the approved Atlas platform boundary.
 
-R0.3 is complete. No generic recursive-decomposition recovery/rebuild/rematerialization work begins until the Work Decomposition / WorkDefinition architecture has been critically revalidated.
-
-## Decision AR-D002 — R0.3 completion does not authorize R0.4
-Decision: APPROVED BY OWNER.
-
-R0.3 QA PASS closes the recovery stage only. R0.4 remains suspended behind the architecture-refinement gate.
-
-## Decision AR-D003 — Architecture refinement ownership
-Decision: APPROVED BY OWNER.
-
-ChatGPT owns architecture-refinement analysis, governance artifacts and independent validation. Claude is not authorized to design, modify or implement architecture-refinement stages unless a later Owner-authorized governance update explicitly changes this.
-
-## Decision AR-D004 — Proposed Execution Requirements / Solution Synthesis layer
-Decision: HYPOTHESIS ONLY — NARROWED BY AR0.0 — NOT APPROVED ARCHITECTURE.
-
-AR0.0 shows that Atlas already has substantial executor-aware semantics. The frozen executability standard recognizes HUMAN, DETERMINISTIC_RULES, WORKFLOW, RPA, API_SYSTEM, DOCUMENT_AI, LLM_AGENT and HYBRID_HITL and defines executor-specific decomposition stopping criteria. Client Binding already owns systems/interfaces, fields/mappings, master data, SLA/thresholds, policy variants, authority, exception routing, evidence/audit, security/credentials and environment. System Exchange, Temporal Constraint and Measurement contracts already cover additional design-relevant facts.
-
-The remaining hypothesis is narrower: Atlas may lack a governed bridge that assembles canonical work + client/environment constraints + runtime capabilities to generate, compose, compare and select executable solution architectures before runtime-adapter projection.
-
-## Decision AR-D005 — Frozen V1 remains immutable during challenge
-Decision: APPROVED.
-
-`governance/ATLAS_EXECUTION_FABRIC_ARCHITECTURE_V1_FROZEN.md`, Work Decomposition V1.1 and Canonical WorkDefinition V1 are reference baselines. Architecture refinement creates additive analysis and, if approved later, a versioned successor. It does not overwrite historical frozen architecture.
-
-## Decision AR-D006 — Executor-neutral canonical boundary remains the default
-Decision: AR0.0 SUPPORTS PRESUMPTION; FINAL DECISION DEFERRED.
-
-Current evidence supports keeping domain/canonical work executor-neutral. Runtime-specific implementation should remain downstream. AR0.1 must test whether selected execution characteristics need first-class representation without turning canonical business truth into technology design.
-
-## Decision AR-D007 — Historical decomposition counts are not design targets
-Decision: APPROVED.
-
-Historical 603 work units / 444 leaves and remembered 572/605 figures are forensic evidence only. They must not constrain refined architecture or later deterministic materialization.
-
-## Decision AR-D008 — Success criterion for architecture refinement
-Decision: HISTORICAL VALIDATION CRITERION — SUPERSEDED AS PRIMARY OBJECTIVE BY AR-D011 AND CLARIFIED BY AR-D013.
-
-The earlier criterion tested whether Atlas could support both deterministic derivation of executable semantic work and governed ideation/comparison of executable solution architectures. Owner discussion clarified that runtime execution must not define Atlas's product identity.
-
-## Decision AR-D009 — Pending contracts are design opportunity, not recovery target
-Decision: AR0.0 FINDING — ACCEPTED FOR NEXT AUDIT.
-
-`CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_PENDING.md` and `CANONICAL_WORKDEFINITION_CONTRACT_VNEXT_PENDING.md` are explicitly `IMPLEMENTATION_PENDING`. The machine-readable canonical contracts were therefore not completed/frozen as implementation. AR0.1 may critically test and refine their proposed grammar before implementation without pretending that a lost implemented contract must be reconstructed.
-
-## Decision AR-D010 — One authoritative owner per fact
-Decision: GOVERNANCE GUARDRAIL.
-
-Any future execution-readiness or downstream design layer must reference/assemble existing governed truth rather than duplicate domain rules, client-specific values, interface definitions, temporal constraints, measurements or runtime capability declarations. A monolithic Execution Requirements dumping ground is prohibited.
-
-## Decision AR-D011 — Atlas product North Star
-Decision: APPROVED BY OWNER FOR ARCHITECTURE REFINEMENT; CLARIFIED BY AR-D013.
-
-Atlas must convert reusable domain and enterprise knowledge into governed specifications that can support transformation and implementation. Execution / implementation readiness remains a major measurable outcome, but is not the sole identity of Atlas.
-
-Governance, knowledge-repository behavior, implementation readiness and solution-architecture support are capabilities/byproducts enabled by the same governed intelligence foundation. They must not independently redefine the platform boundary.
-
-The architecture must support fail-closed readiness: where mandatory operational or client knowledge is absent, conflicting, inferred beyond authority or unresolved, Atlas must expose the gap rather than fabricate executable certainty.
-
-## Decision AR-D012 — AR0.1 authorization and acceptance basis
-Decision: APPROVED BY OWNER.
-
-AR0.0 is Owner-reviewed and closed as the reference baseline. AR0.1 is authorized to ChatGPT only.
-
-AR0.1 must test whether the frozen architecture can support implementation readiness using concrete scenarios, including:
-- Road LTL customer-service pickup request for agentic/workflow implementation;
-- BOL/document information-resolution with deliberate unresolved knowledge and fail-closed behavior;
-- digital-twin/BPM implementation handoff;
-- ERP/TMS fit-gap / implementation handoff;
-- adversarial workflow semantics including waits/timeouts, retry/recovery and, where applicable, parallelism/join, correlation and idempotency.
-
-For every required semantic, AR0.1 must classify it as:
-1. fully governed by existing contract;
-2. governed but enterprise/client binding required;
-3. inferable but ungoverned;
-4. absent and readiness-blocking;
-5. legitimately downstream/runtime-specific and outside Atlas.
-
-AR0.1 is an audit, not a redesign stage. Any contract or layer changes are deferred to AR0.2+.
-
-## Decision AR-D013 — Atlas platform boundary: enterprise-to-tool intelligence and specification layer
-Decision: APPROVED BY OWNER.
-
-Canonical platform statement:
+## AR-D013 — Atlas platform boundary
+Decision: APPROVED BY OWNER / UNCHANGED.
 
 > **Atlas is the governed intelligence and specification layer between enterprise/client operations and the technologies used to transform or execute them.**
 
-Canonical boundary principle:
-
 > **Atlas owns understanding and specification. Downstream platforms own execution.**
 
-Atlas must sit between enterprise/client reality and the downstream transformation/execution ecosystem. It may maintain and generate governed domain knowledge, operational knowledge, canonical information semantics, work decomposition, WorkDefinitions, enterprise/client binding, gap resolution, readiness assessments, solution/design specifications and technology-specific projections/adapters.
+Canonical business/domain truth remains technology-neutral. Malkom and other downstream technologies consume Atlas outputs rather than defining Atlas semantics.
 
-Knowledge-repository capability, governance-platform capability, execution/implementation readiness and autonomous/assisted solution-architecture capability are legitimate outcomes or byproducts of a sufficiently capable Atlas. None should be treated as the exclusive product identity.
+## AR-D014 — Split the monolithic architecture/recovery gate by certification boundary
+Decision: CANDIDATE / WORKING ARCHITECTURE CORRECTION — OWNER FREEZE PENDING.
 
-Runtime business execution itself is the deliberate product boundary. Atlas must not become another Malkom, ERP, TMS/WMS, ServiceNow, RPA/workflow runtime or agent-execution platform. Those systems consume Atlas outputs.
+Evidence recovered on 12 September shows R0.3 closed, P6.1 recursive decomposition certified/live in protected persistence, and P6.2 compiler infrastructure technically implemented/rehearsed. Therefore the old blanket gate now over-couples distinct abstraction layers.
 
-The canonical business/domain layer must remain technology-neutral. Malkom, SAP, ServiceNow, an agent framework or any other current tool must not distort canonical business truth. A new downstream technology should require a new projection/adapter where necessary, not reconstruction of the underlying domain and enterprise semantics.
+Candidate successor gates:
+1. `P6_2_PARTIAL_WD_COMPILE_GATE` — terminal identity/boundary stable; certified P6.1 source hash; required canonical business/control semantics sufficient; explicit partial coverage/blockers; deterministic persistence/version/supersession; Owner authorization; independent QA/custody.
+2. `SCOPE_EXECUTION_READINESS_GATE` — implementation-scope composition, blocker/dependency closure, enterprise/client binding, READY/NOT_READY certification and version-closed handoff.
+3. `RUNTIME_PROJECTION_GATE` — runtime capability/constraint declaration, adapter translation/loss reporting and target-specific validation.
+4. `FULL_DOMAIN_COVERAGE_GATE` — maturity/coverage objective, not a prerequisite for compiling already-ready work.
 
-This decision broadens AR-D011 without weakening implementation readiness. Execution readiness remains a critical certification outcome and fail-closed control, but Atlas's architectural North Star is the governed enterprise-to-tool intelligence/specification boundary.
+Rationale: recovery-era serialization was valid while provenance and architecture sufficiency were uncertain. New evidence removes those premises for some layers. A later-layer runtime/readiness question should not automatically prevent deterministic materialization of a semantically complete canonical unit.
 
-## Open decisions for AR0.1–AR0.2
-- Whether the current contracts can deterministically assemble governed enterprise specifications and implementation-ready projections without a new monolithic persisted contract.
-- Whether a first-class readiness assessment/status contract is required or existing resolution/status semantics are sufficient.
-- Whether the canonical WorkDefinition grammar sufficiently represents control-flow semantics needed for implementation handoff, including parallelism, joins, event correlation, multi-instance work, idempotency, compensation/transaction boundaries, durable state and timeout ownership.
-- Whether workload/arrival/concurrency, human capacity/skills and non-functional requirements are implementation-readiness requirements, downstream design concerns, or context contracts with another authoritative owner.
-- How to represent unresolved/conflicting/inferred knowledge and prevent false `READY` status deterministically.
-- How the same governed enterprise semantics map to agent/workflow, BPM/digital twin, Malkom, ERP/TMS and other downstream tools without redefining canonical business meaning.
-- What evidence threshold is required before a successor architecture can be frozen.
-- Whether solution synthesis/design should be materialized as an Atlas capability/projection while keeping runtime execution strictly downstream.
+This decision does not authorize persistence or indiscriminately lift AR0.2–AR0.6.
+
+## AR-D015 — Partial canonical WorkDefinition materialization is permissible in principle
+Decision: CANDIDATE / WORKING DECISION — OWNER FREEZE PENDING.
+
+Atlas may materialize/certify the subset of terminal work that is genuinely ready while retaining all other terminal work as explicit blockers. It must not require artificial 100% domain closure before useful known-ready work can progress.
+
+Current Road LTL evidence: 444 terminal leaves = 185 EXECUTOR_READY + 163 BLOCKED_BY_CLIENT_BINDING + 96 BLOCKED_BY_KNOWLEDGE_GAP. If the 185 pass semantic-sufficiency review, a governed partial compilation must preserve and report the full distribution and exact certified source hash. It must not be labeled full Road LTL execution readiness.
+
+Rationale: client-binding dependencies are intentionally external and knowledge gaps are intentionally fail-closed. Treating either as a reason to suppress unrelated ready work would contradict Atlas's reusable execution-readiness objective.
+
+## AR-D016 — Control-flow semantics are owned by meaning, not by mechanism
+Decision: CANDIDATE / WORKING CLARIFICATION — OWNER FREEZE PENDING.
+
+Where ordering, parallelism/join, multi-instance behavior, correlation, duplicate/stale handling, retry/idempotency, compensation/transaction boundary, durable state or timeout ownership are required **business semantics**, they must be governed before the affected unit can be called executor-ready. A runtime adapter may implement the mechanism but may not invent the business meaning.
+
+Where canonical meaning is already complete and only the target technology's encoding remains, that encoding belongs to runtime projection and does not block canonical WD compilation.
+
+Rationale: this preserves technology neutrality without stripping implementation-critical business semantics out of Atlas.
+
+## AR-D017 — Recovery critical path should be re-baselined, not blindly resumed
+Decision: CANDIDATE / WORKING SEQUENCING DECISION — OWNER FREEZE PENDING.
+
+After the demo sprint, re-evaluate the serial AR0.2→AR0.6→R0.4→R0.6→P6.2→P6.5 chain. Candidate parallel tracks are canonical WD materialization, knowledge hardening, Client Binding framework, architecture refinement, security/public-protected certification and multi-mode proof. True upstream contract dependencies remain serial.
+
+Rationale: recovered P6.1/P6.2 implementation evidence materially changes the critical path. Queue status must reflect real dependencies rather than historical recovery caution.
+
+## Demo guardrail associated with AR-D014–D017
+The demo does not authorize P6.2 persistence. Recent findings change the **truthful narrative**, not the shortest runtime proof path: Road LTL 1.5 now has certified decomposition and a technically proven WD compiler path, but the verified Malkom-consumable projection remains the older V1.2 → Domain Warehouse v2.3 → Malkom reference lineage unless new evidence proves otherwise.
