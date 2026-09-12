@@ -820,3 +820,29 @@ Safe resume point:
 
 Next exact action:
 - Owner decision recorded as: HOLD production promotion of Road LTL 1.5 until after demo corrections, pending renderer/compiler capability. No pointer change made.
+
+## 2026-09-12 12:05 IST — Claude — D2.0.1
+Classification: OWNER_DIRECTION
+Checkpoint: MATERIAL_FINDING
+
+Evidence inspected:
+- `Supabase:list_projects` + `Supabase:list_tables` on `aaoyesktlzhaunqqjhdq` (the Atlas project; confirmed the second project, "Skill Mastery", is an unrelated product).
+- `governance/frozen-assets/ASSET_REGISTER.json` entries for `ocean-fcl-0.6-candidate`, `ocean-lcl-0.6-candidate`, `daughter-release-ltl1.4-ocean0.6`.
+- Direct extraction + sha256 verification from `release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip`.
+
+Action / finding — Owner asked to check the earlier Ocean decision and whether "the data remains in backend": **it does not, currently.**
+- Live Supabase (`aaoyesktlzhaunqqjhdq`) has 20 tables, none Ocean-related, and none matching the knowledge-warehouse schema bundled inside the ZIP (`backend/supabase/001_knowledge_execution_warehouse.sql` was never applied there).
+- Tangential finding, not blocking: `atlas_work_decompositions` holds 1 real row ("P6.1 protected canonical Work Decomposition instance"); `atlas_work_definitions` holds 0. Worth a separate look later, unrelated to Ocean.
+- The real Ocean 0.6 data does exist, but only inside the frozen release ZIP (`repositoryBinaryMaterialization: MATERIALIZED_AND_QA_VERIFIED_R0_2` — the ZIP's own custody is fine). The registered `artifactPath` (`data/modules/ocean-fcl-v0.6.json` / `-lcl-`) was never extracted into the live tree.
+- Extracted both files and verified byte-for-byte against the registered candidate hashes (`334d6a11...`, `73d41668...`) — both PASS.
+- **Ocean 0.6 uses the same task-record schema as Road LTL v1.4/v1.5** (`module/lineage/tasks[]/sourceRegistry`, 30 tasks for FCL) — unlike Road LTL 1.3, there is no schema-incompatibility problem here; Ocean 0.6 is natively shaped like the content the v1.5-into-daughter.html work already targets.
+
+Files / branches / components affected:
+- Read-only Supabase check + local extraction so far. No branch mutation yet from this entry.
+
+Impact / guardrail:
+- To make Ocean genuinely part of the demo: extract these hash-verified files onto the demo branch (mirroring yesterday's Canvas import), same as-is/no-authoring standard.
+- Since Ocean 0.6 shares Road LTL v1.4/v1.5's schema, it's a natural secondary beneficiary of the same daughter.html rendering work about to be done for LTL-03 — not a separate rendering problem.
+
+Next exact action:
+- Import verified Ocean FCL/LCL 0.6 module JSON + standalone HTML onto `atlas-v2-demo-2026-09-14`; then proceed to feeding real v1.5 content into `daughter.html`.
