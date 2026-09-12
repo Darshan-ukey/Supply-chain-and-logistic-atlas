@@ -67,22 +67,8 @@ This explains why governance/log-only commits also contribute to Deployment Stor
 
 The two baseline commits created two previews (`1b65fb9...` and corrected `b164874...`). After identifying this behavior ChatGPT stopped further demo-branch writes before QA and consolidated governance logging into this single checkpoint.
 
-### 6. Browser/visual click-through QA — STILL OPEN, environmental blocker isolated
-Preview protection is active. Vercel MCP can identify the deployment and generate a temporary share URL, but authenticated fetch is redirecting through Vercel SSO rather than returning page content in this runtime.
-
-Independent local browser attempt:
-- Chromium and Playwright are present;
-- navigation to the protected Vercel preview is blocked by the environment (`ERR_BLOCKED_BY_ADMINISTRATOR`).
-
-Opera Browser Connector attempt:
-- FAIL: `Browser not connected. Make sure to enable "Allow AI connection" in the "Browser Connector" and sign in with your Opera account.`
-
-Therefore:
-- build/deployment health is verified;
-- source/full-state/lineage QA remains PASS from D2.0.6;
-- rendered browser/click-through QA must NOT be marked complete yet.
-
-Exact action required to close browser QA: Owner enables Opera Browser Connector **Allow AI connection** and signs into Opera. Then ChatGPT can open the protected preview/share link, click through root → POC journey → execution-readiness → daughter/depth surfaces, inspect console/page errors and screenshots, and record visual closure without another deployment.
+### 6. Browser/visual click-through QA — SUPERSEDED BY FAIL RESULT BELOW
+Preview protection was initially an environmental blocker. Opera Browser Connector was later enabled successfully and ChatGPT completed the first rendered QA pass. See the later BROWSER QA FAIL section below; browser QA is no longer merely open.
 
 ### 7. Google Drive custody blocker — CLOSED from ChatGPT connector
 Claude's connector had three `No approval received` failures. ChatGPT's Drive connector has write access.
@@ -109,15 +95,77 @@ Verified the document parent is the recovery folder. The checkpoint records:
 
 This closes the previously recorded Drive write-authorization/custody blocker at the human-readable recovery-checkpoint level. GitHub remains canonical technical registry.
 
-### Current safe state
+### Current safe state before browser QA disposition
 - Demo branch: `atlas-v2-demo-2026-09-14` @ `b164874c9faff078196ee7dfb6ed42b6a5a39019`
 - D2.0.6 certified build state remains `60d43c97e55b3ad1617f81c2562d2f8790def29b`; later delta is only the governed candidate baseline file.
 - Current preview: READY at deployment `dpl_9fQcB127sxCqxfxf3vJp5oeokGFd`.
 - D2.0.7/main merge: NOT executed; explicit Owner approval still required.
-- Browser visual/click-through: OPEN pending Opera AI connection.
 - Historical v1.1.8 baseline: immutable/unchanged.
 
-Next exact action:
-1. Owner enables Opera Browser Connector `Allow AI connection` and signs in.
-2. ChatGPT performs interactive browser/click-through QA against the existing preview; no new deployment required.
-3. If browser QA passes, record one batched closure update and then make the D2.0.7/main-merge decision separately under explicit Owner approval.
+---
+
+## 2026-09-12 — ChatGPT — ATLAS PREVIEW BROWSER QA
+Classification: CROSS_AGENT_RENDERED_QA + BLOCKING_DEFECT_DISCOVERY
+Checkpoint: MATERIAL_FINDING / QA_DISPOSITION
+
+### QA disposition
+**FAIL — preview is not demo-ready. D2.0.7 remains BLOCKED.**
+
+Opera Browser Connector was successfully connected and the protected Vercel preview was opened using a temporary share URL. Rendered QA found defects that static/full-state certification did not detect.
+
+### What renders correctly
+1. `/atlas-poc-journey` renders cleanly and presents the intended six-step POC narrative.
+2. `/atlas-execution-readiness` renders cleanly and presents the correct product boundary: Atlas owns understanding/specification; downstream platforms own execution.
+3. Both pages visibly preserve the two-lineage distinction and do not falsely claim the V1.2 Malkom projection came from Road LTL 1.5/P6.2.
+
+### Blocking defect BQA-01 — root Canvas fails to load
+Rendered root `/` displays only:
+`Canvas failed to load: Runtime contract failed for road-ltl: contractVersion atlas-data-contract-v1.1+daughter-enrichment-v1`
+
+Repository trace:
+- `index.html` `AtlasModuleLoader.validateRuntime` accepts only exact `atlas-data-contract-v1.0` or `atlas-data-contract-v1.1`.
+- The active Road LTL enrichment contract uses `atlas-data-contract-v1.1+daughter-enrichment-v1`.
+- Ocean module variants also use enriched/quality-profile contract strings, so the fix must be governed and generic enough for known approved contract variants, not a one-off bypass.
+
+Implication: the main Canvas surface is unusable on the preview and must be remediated before demo certification.
+
+### Blocking defect BQA-02 — Daughter execution depth fails at runtime
+Rendered route:
+`/daughter?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03`
+
+The Daughter shell renders, but content fails closed with:
+- `Execution depth unavailable`
+- `Handler failed to load`
+- `No alternate Daughter version has been substituted.`
+
+Repository trace:
+- renderer calls `/api/execution-depth-projection`;
+- `vercel.json` rewrites it to `/api/atlas?action=execution-depth-projection`;
+- `api/atlas.js` routes that action to `./execution-depth-projection.js` relative to `lib/api/_router.js`, therefore to `lib/api/execution-depth-projection.js`;
+- that implementation exists and calls `lib/projections/execution-depth-projection.js`;
+- projection code performs runtime `fs.readFileSync` against registry/materialized/module/operational-knowledge files under `process.cwd()`.
+
+Strong likely cause: required dynamic filesystem dependencies are not included in the Vercel serverless bundle, causing handler execution/import dependency failure at runtime. Exact Vercel JSON error detail was not captured because protected API fetch redirects through Vercel SSO. Remediation must verify the precise failure rather than merely suppressing it.
+
+### Blocking defect BQA-03 — Daughter Canvas navigation is broken
+`daughter.html` links Canvas to `/app`.
+Rendered navigation to `/app` returns Vercel `404: NOT_FOUND` on this preview, despite a rewrite in `vercel.json` intended to map `/app` to `/index.html`.
+
+Safe remediation should either fix the rewrite behavior or make the Daughter navigation point directly to the known root/`index.html` route. Do not leave a demo navigation dead-end.
+
+### Admin surface
+Navigating `/admin` redirected to Vercel authentication; admin visual QA was not completed in this pass. This is secondary to the three public/demo blockers above.
+
+### Required remediation sequence
+1. Keep D2.0.7/main merge blocked.
+2. Fix Canvas contract-version validation using an explicit governed compatibility rule for approved enriched contract variants; do not broadly accept arbitrary suffixes.
+3. Fix Daughter execution-depth serverless runtime packaging/handler dependency closure; verify exact failure and ensure required registry/materialized/source files are present in the function bundle or refactor away unsafe dynamic filesystem dependency.
+4. Fix Daughter Canvas navigation (`/app` dead-end).
+5. Add regression/browser checks that would fail on these three defects.
+6. Update the governed successor candidate integrity baseline for intentional remediation changes; do not mutate v1.1.8 historical baseline.
+7. Allow GitHub integration to create a single new preview from the batched remediation commit; do not manually deploy.
+8. Re-run full rendered Opera QA on the new exact preview.
+9. Only after rendered QA passes should D2.0.7/main-merge readiness be reconsidered under explicit Owner approval.
+
+### Storage guardrail
+Every GitHub push currently creates a Vercel preview, including governance-only pushes. Batch remediation and evidence updates into as few commits as practical. No manual Vercel deployment is authorized or necessary.
