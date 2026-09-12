@@ -1,69 +1,42 @@
 # Atlas V2 Demo Build Log
 
-## 11 September 2026 — Demo sprint authorization
+## Historical sprint authorization and hybrid rebaseline
+Detailed original 11–12 September authorization/rebaseline remains recoverable in Git history at blob `da690fe7c5833f45aa7de54fe2fce21c2e6b319e`.
 
-### Owner direction
-- Atlas 2.0 functional concept to be live by Monday 14 September 2026.
-- Tuesday 15 September demo is primarily for Malkom 3.0; Atlas gets a short stakeholder introduction and Malkom projection demonstration.
-- Additional Atlas page required to communicate larger scope/future: daughter domain knowledge, Operational Knowledge, decomposition, WorkDefinition, execution readiness, adapters and downstream execution platforms.
-- ChatGPT becomes primary executor for the time being.
-- Claude remains hot backup and must be able to resume at any point without reconstructing state from chat.
-- Build must proceed in quick stages with audits before, during and after each stage.
-- No delta-only build/certification. Each passed stage must preserve a complete frozen repository state and update the frozen-state record.
+Standing strategy remains:
+`HYBRID_REUSE_PROVEN_EXECUTION_LINEAGE_WITH_ADDITIVE_ATLAS_V2_SURFACE`.
 
-### Governance response
-- Created `ATLAS_V2_DEMO_BUILD_PROTOCOL.md`.
-- Created `ATLAS_V2_DEMO_HANDOVER.md`.
-- Defined separate `ATLAS_V2_DEMO_GO_LIVE` concept so Monday demo promotion does not falsely represent full Atlas 2.0 production certification.
-- AR0.2 architecture-refinement state is preserved; demo sprint does not erase or silently resolve it.
+No Vercel deployment/preview/promotion/deletion is authorized. Demo work is GitHub-only on `atlas-v2-demo-2026-09-14`; merge to `main` requires D2.0.6 certification and explicit Owner approval.
 
----
+## 12 September 2026 — P6.1/P6.2 discovery changes demo maturity narrative
 
-## 12 September 2026 — Hybrid demo rebaseline
+### Material finding
+Claude verified and ChatGPT reviewed evidence that the new governed Road LTL lineage is substantially farther advanced than assumed during the initial hybrid rebaseline:
+- P6.1 recursive decomposition is certified/live in protected persistence: 22 tasks, 603 work units, 444 terminal leaves.
+- 185 leaves are `EXECUTOR_READY`; 163 are `BLOCKED_BY_CLIENT_BINDING`; 96 are `BLOCKED_BY_KNOWLEDGE_GAP`.
+- P6.2 frozen canonical WorkDefinition contract/compiler/verifier/API/migration/tests/CI exist and compiler certification passes offline.
+- Governed P6.2 WD persistence has not occurred; no claim may be made that 185 canonical WDs are persisted.
+- No verified new-lineage Client Binding → Malkom projection has been established.
 
-### Why the plan changed
-Joint ChatGPT/Claude review surfaced two separate execution lineages:
+### Corrected two-lineage demo architecture
+**New governed target lineage:**
+`Road LTL 1.5 → Operational Knowledge → Certified Recursive Decomposition (P6.1) → Canonical WD compiler proven (P6.2), persistence pending → Client Binding / Runtime Projection not yet complete`
 
-1. Existing proof lineage: `Road LTL V1.2 → Domain Warehouse v2.3 → Malkom 3.0 projection`.
-2. New governed successor lineage: `Road LTL V1.4/V1.5 → Operational Knowledge → Recursive Work Decomposition → Canonical WorkDefinition VNext → Client Binding → future adapters`.
+**Proven Malkom execution-reference lineage:**
+`Road LTL 1.2 → Domain Warehouse 2.3 → Malkom 3.0 projection`
 
-These lineages must not be silently presented as one already-connected pipeline. A full bridge/compiler is not a Monday requirement and remains governed post-demo architecture work.
+### Why this correction is necessary
+The initial hybrid plan correctly avoided falsely joining the two lineages, but it understated the maturity of the new lineage. The recovered evidence proves that recursive decomposition and canonical WD compiler capability are not merely future concepts. The remaining unproven seam is downstream persistence/binding/runtime projection. The hybrid strategy therefore remains correct but the demo must show the newer lineage as real governed progress rather than only future architecture.
 
-### Owner clarification
-The Tuesday/Monday release is a functional proof of concept, not a governance/completeness showcase. Representative 60–70% workable/acceptable execution-depth proof is sufficient; governance/readiness evidence should remain secondary and available on demand.
+### Stage-path correction
+- D2.0.0 now also verifies exact P6.1/P6.2 assets/status and absence/presence of governed persistence/projection.
+- D2.0.1 scope page shows truthful maturity markers and separates the old Malkom reference proof.
+- D2.0.3 presents target-lineage execution-depth evidence separately from the old runtime-reference WorkDefinition/Malkom proof.
+- D2.0.4 continues to use the old/reference Malkom adapter unless a genuine new-lineage adapter seam is proven.
+- D2.0.5 may show P6.1 blocker classes but cannot convert EXECUTOR_READY leaves into persisted WDs by presentation.
+- D2.0.6 adds explicit false-cross-lineage regression checks.
 
-### Selected demo strategy
-`HYBRID_REUSE_PROVEN_EXECUTION_LINEAGE_WITH_ADDITIVE_ATLAS_V2_SURFACE`
+Canonical correction record:
+`governance/demo-sprint/ATLAS_DEMO_LINEAGE_CORRECTION_2026-09-12.md`.
 
-- Reuse the existing verified execution-depth/Malkom proof where it works.
-- Use the newer Atlas V2 shell and scope/future page to communicate the tool-agnostic domain-to-execution direction.
-- Do not claim the v1.4/v1.5/R0.3 lineage currently generates the existing Malkom projection.
-- Do not attempt a full v1.4/v1.5 → v2.3 compiler before Monday.
-- Do not hand-author LTL-03 into the demo lineage unless separately owner-authorized after baseline verification.
-- Governance/readiness is a secondary admin/protected view, not the primary stakeholder journey.
-
-### Rebased D2.0 stages
-- `D2.0.0` — Baseline seam verification + hybrid release freeze.
-- `D2.0.1` — Additive Canvas V2 shell + Atlas scope/future page.
-- `D2.0.2` — Road LTL + Ocean demo domain surfaces.
-- `D2.0.3` — Proven Road LTL execution-depth integration using the verified V1.2 / Domain Warehouse v2.3 reference proof lineage.
-- `D2.0.4` — Malkom 3.0 adapter/projection integration from the proven lineage.
-- `D2.0.5` — Representative POC journey + secondary governance/readiness view.
-- `D2.0.6` — Hybrid demo full integration, regression + deployment parity certification and full-state freeze.
-- `D2.0.7` — Controlled Monday demo promotion with Owner approval.
-
-### Current stage
-`D2.0.0 — Baseline seam verification + hybrid release freeze`
-
-Mandatory D2.0.0 exit checks:
-1. Verify exact Road LTL version/hash actually served by the live Vercel runtime.
-2. Locate and verify the authoritative Canvas V2 asset and deployment history.
-3. Verify existing V1.2 → Domain Warehouse v2.3 → Malkom artifacts, definition counts, scripts and known gaps.
-4. Verify additive compatibility with the currently live app.
-5. Verify Universe/Road LTL/Ocean/Ask Atlas version and naming facts before UI copy is frozen.
-6. Create complete pre-change repository freeze point.
-
-### Shared executor coordination
-Both ChatGPT and Claude must read and update `claude_chatGPT.md` for material findings/actions so the Owner does not need to copy findings between tools.
-
-No feature mutation is authorized until D2.0.0 passes.
+Architecture rationale is separately preserved in the Architecture Refinement Log and AR-D014–AR-D017 working decisions.
