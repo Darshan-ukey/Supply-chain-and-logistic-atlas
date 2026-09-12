@@ -595,3 +595,44 @@ Safe resume point:
 
 Next exact action:
 - Fetch and test the bridge locally; log MATERIAL_FINDING with results.
+
+## 2026-09-12 10:34 IST — Claude — D2.0.0
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+Evidence inspected:
+- Fresh clone of `atlas-presentation-architecture-v1-p6-2` (latest propagation of item B) into an isolated local workspace.
+- `tests/p4-canvas-daughter-integration.mjs` (existing 37-assertion suite) — executed directly with `node`.
+- `node --check` (real parse, not string-matching) on `assets/canvas-daughter-bridge-v2.0.1.mjs`, `assets/universal-daughter-renderer-v2.js`, `execution/ui/runtime-access-shell.js`.
+- Local static HTTP server (127.0.0.1 only, no Vercel involved) serving the checked-out tree; `curl` against `daughter.html`, the renderer script, and the exact resolved tuple URL for `road-ltl/1.5/LTL-03`.
+- `daughter.html` source for its actual form→URL→renderer wiring.
+
+Action / finding — item (B), the P4 Canvas-Daughter bridge, functionally tested (local/static, not live Vercel):
+
+1. **Existing test suite: 37/37 PASS**, independently re-run (not just re-read from the Drive completion doc). Covers fail-closed routing (unregistered module → null, incomplete tuple → null), protected-endpoint isolation (bridge never references `/api/work-decomposition`, `/api/admin-workdefinitions`, `/api/governance-operational-projection`, `/api/malkom-projections`), no Ocean-specific hardcoding, and byte-identity of the frozen Canvas shell (`index.html`, `canvas-v2/` HTML/JS/CSS all match their pinned blob SHAs).
+2. **Correction to my own earlier note**: the governed registry routes `road-ltl` to daughter version **1.5**, sample tuple **LTL-03** — not 1.3 as I speculated in the 10:08 entry. This is a real registered target, already pointed at the same task R0.3 hardened. (Ocean FCL/LCL route to 0.6, matching P4's doc.)
+3. **New verification beyond the existing test** (the existing suite never parses the JS as JS, only pattern-matches strings): all three files pass `node --check` — genuinely valid syntax, not just plausible-looking text.
+4. **New verification**: locally served (loopback only, zero Vercel contact) — `daughter.html` → 200, `universal-daughter-renderer-v2.js` → 200, and the exact fail-closed URL the bridge would emit for `road-ltl/1.5/LTL-03` (`/daughter.html?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03`) → 200. `daughter.html`'s own script imports the real renderer module and round-trips `moduleId`/`moduleVersion`/`taskId` through a form exactly as the bridge/test expect.
+
+What remains UNTESTED and why: actual DOM rendering (does the page visually render task LTL-03's content correctly) and any live Supabase/API-backed data path were not exercised — that needs a browser + live backend, which is out of scope for a local sandbox and would require the Vercel action this sprint prohibits. Static/logic-level integrity is now independently confirmed; visual/live-data behavior is not.
+
+Files / branches / components affected:
+- None. Isolated local clone in a separate workspace; no push, no branch mutation, no Vercel call. Plus this log entry.
+
+Audit / test result:
+- P4 Canvas-Daughter bridge (item B): CODE-LEVEL/STATIC PASS, independently reproduced. LIVE/VISUAL: NOT TESTED (requires Vercel, prohibited).
+
+Impact / guardrail:
+- On the strength of this, item (B) looks safe to import onto `atlas-v2-demo-2026-09-14` for D2.0.1 alongside item (A) — it's real, tested code, not aspirational. Recommend importing via traceable history (cherry-pick/merge) per the GitHub-only release policy, then closing the remaining gap (live/visual) with a real browser check once any deployment is separately authorized.
+- The `road-ltl → 1.5` routing target is worth flagging to Owner explicitly: it means the demo's own governed registry already anticipated pointing Canvas at v1.5-era content, which is one more argument for not silently treating v1.2 as the only intended target.
+
+Current/Demo/Target effect:
+- CURRENT: no change.
+- DEMO: item (B) now has independent test evidence, not just a Drive doc claim; ready for an import decision.
+- TARGET: none.
+
+Safe resume point:
+- `atlas-governance-registry-v2.1` at `de2bce0`, unchanged except this log commit.
+
+Next exact action:
+- Owner/ChatGPT: confirm import of (B) alongside (A) onto the demo branch, or hold pending live/visual verification.
