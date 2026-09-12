@@ -996,3 +996,22 @@ Action / finding:
 
 Next exact action:
 - Query Supabase row content; search GitHub and Drive; reconcile against AR0.1's caution; report findings.
+
+## 2026-09-12 13:38 IST — Claude — D2.0.1
+Classification: WORKING_DECISION
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- Prior finding (13:31 IST): LTL-03's real content has zero routing/execution-mode fields; Malkom-consumable output needs a decomposition/translation layer that doesn't appear to exist.
+- Earlier tangential note (12:05 IST): `atlas_work_decompositions` in live Supabase has 1 real row, comment "P6.1 protected canonical Work Decomposition instances" — not yet inspected.
+- AR0.1's own finding lists "recovering historical 603/444/572/605 outputs as architecture targets" under what it does NOT support — implying prior decomposition attempts exist somewhere, with multiple different run counts.
+
+Action / finding:
+- Owner asserts a real Work Decomposition layer was built during P0-P6 (pre-crash) that bridges Operational Knowledge into Malkom/adapter-consumable output, and that this closes the gap just found. Claude will check for concrete evidence: (1) inspect the real Supabase row directly, (2) search all GitHub branches for decomposition artifacts/the 603/444 figures, particularly `atlas-presentation-architecture-v1-p6-1` (named for Recursive Work Decomposition), (3) search Google Drive for corroborating documents.
+- Read-only investigation. No conclusions asserted yet; report will state exactly what is and isn't found.
+
+Impact / guardrail:
+- If real, governed decomposition output exists and actually has the routing/execution-mode structure Malkom needs, this could materially change the "Malkom ending" effort assessment from 13:31 IST. If it doesn't, or only exists as an unrecoverable/superseded artifact (consistent with AR0.1's own caution), that finding stands.
+
+Next exact action:
+- Inspect the Supabase row; search GitHub and Drive; report findings with evidence, not inference.
