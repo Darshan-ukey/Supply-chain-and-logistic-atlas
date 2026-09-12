@@ -846,3 +846,45 @@ Impact / guardrail:
 
 Next exact action:
 - Import verified Ocean FCL/LCL 0.6 module JSON + standalone HTML onto `atlas-v2-demo-2026-09-14`; then proceed to feeding real v1.5 content into `daughter.html`.
+
+## 2026-09-12 12:38 IST — Claude — D2.0.1
+Classification: OWNER_DIRECTION
+Checkpoint: POST_ACTION
+
+Evidence inspected:
+- `lib/projections/execution-depth-projection.js` (pre-existing, never previously wired to any route).
+- `governance/presentation/p2-projection-source-registry.json` — `road-ltl@1.5` already registered, `materialized:true`, `firstProofTaskId:"LTL-03"`, pointing at a precompiled bundle.
+- `data/materialized/road-ltl-1.5-public-safe-projections.json.gz.b64` — decoded and confirmed real: all 22 LTL-01..LTL-22 tasks present with genuine content (checked LTL-03's full payload directly).
+- `ocean-fcl@0.6` / `ocean-lcl@0.6` registry entries — also `materialized:true`, pointing at `data/materialized/ocean-0.6-public-safe-projections.json.gz.b64`, which does **not** exist (confirmed via direct file search).
+- Commit `ed7507c` on `atlas-v2-demo-2026-09-14`.
+
+Action / finding — Owner chose "feed real v1.5 content into daughter.html" over a new standalone viewer. Investigating what that required surfaced that almost all of it already existed:
+- The projection-building library, the registry entry, and a full precompiled 22-task projection bundle were already written and correct. The only real gap was that **no HTTP route called the library** — `PUBLIC_PROJECTION_ENDPOINT='/api/execution-depth-projection'` in the renderer pointed at a route that didn't exist.
+- Wrote `api/execution-depth-projection.js` + `lib/api/execution-depth-projection.js`, following the exact `createRouter` convention every other `api/*.js` file in this codebase already uses — not a new pattern.
+- Brought the registry, the precompiled bundle, and the (unmodified) library onto `atlas-v2-demo-2026-09-14`. No new content authored — this is wiring, not enrichment.
+- Also confirmed Ocean's precompiled bundle is registered but genuinely absent from the repo. Left as a known, separate, non-blocking gap — did not fabricate it.
+
+Files / branches / components affected:
+- `atlas-v2-demo-2026-09-14` only (commit `ed7507c`): 2 new files, 3 existing governed files brought over unmodified. No Canvas/Inspector code touched, per Owner direction to leave that alone.
+
+Audit / test result (all run against the real data/real renderer before commit, not mocked):
+- `buildPublicExecutionDepthProjection()` succeeds for all 22 LTL tasks.
+- `renderShell()`/`renderDepth()` produce clean HTML for all 5 depth tabs on LTL-03 — 0 crashes, 0 literal `undefined` leaked.
+- Simulated real HTTP requests through the actual handler: 200 (valid), 400 (missing params), 405 (wrong method) — all correct.
+- `LTL-99` (nonexistent) fails closed with a clean 404.
+- Ocean's missing bundle fails closed with a clean 500 JSON envelope, caught by the route's own try/catch — confirmed via a real simulated request, not just reasoning about it. The renderer's existing `renderUnavailable()` state handles this gracefully client-side.
+
+Impact / guardrail:
+- Road LTL execution-depth content (all 22 tasks, LTL-03 at full v1.5 depth) is now genuinely servable through `daughter.html` once deployed. Ocean's equivalent is not yet — the bundle needs generating separately; not attempted here per the "don't fabricate" standard.
+- This closes the loop from two entries ago (Canvas shell/bridge import) and from the schema-incompatibility finding (11:46 IST): that finding was about the **production** Road LTL pointer; this work is entirely on the demo branch and doesn't touch or require moving `productionBaseline.roadLtl`.
+
+Current/Demo/Target effect:
+- CURRENT: no change.
+- DEMO: `daughter.html` can now render real, governed LTL-03 v1.5 content (and all 21 other tasks at their existing depth) once this branch is deployed; Ocean's equivalent remains a known follow-up.
+- TARGET: none directly, though this is the first real instance of the frozen chain's "materialized/derived view" pattern actually being exercised end-to-end for Road LTL.
+
+Safe resume point:
+- `atlas-v2-demo-2026-09-14` at `ed7507c`.
+
+Next exact action:
+- Generate the Ocean 0.6 precompiled projection bundle (mirroring the Road LTL one) if Ocean's execution-depth panel is wanted at the same fidelity for the demo, or accept Ocean staying at daughter-page-only depth for now.
