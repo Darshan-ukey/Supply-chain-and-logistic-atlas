@@ -948,3 +948,34 @@ Impact / guardrail:
 
 Next exact action:
 - Field-by-field comparison; report findings; await direction before writing anything.
+
+## 2026-09-12 13:31 IST — Claude — D2.0.1
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+Evidence inspected:
+- `malkomTaskProjectionSchema` + nested `malkomSubQueueSchema`/`malkomWorkTypeSchema`/`malkomFieldSchema`/`malkomOutcomeSchema` (`packages/contract/src/schemas.ts`) — exact required/optional field list.
+- LTL-03's real content (`data/road-ltl/effective-road-ltl-1.5-materialization.json`) — direct presence check for every routing-related field name.
+
+Action / finding — Owner's read was directionally correct (old pipeline is Malkom-specific, LTL-03 is executor-neutral) and asked for the actual size of the gap. Field-by-field result:
+
+**Cleanly bridgeable (mechanical mapping, no invention, ~hours of work):**
+- `businessObjects` ← `operationalKnowledgeV2.canonicalObjectModel` (11 real object families, e.g. TransportDocument, Consignment, Party:ShipperOrConsignor)
+- `taskId`/`taskLabel`/`a3` ← direct fields
+- `rules`/`controls`/`actions`/`actors`/`systems`/`clientOverridePoints`/`sourceRefs` (all optional, `default([])`) ← constraints/controls/atomicActions/responsibility/systemExchanges/clientBindingRequirements/provenanceClaims, same join-pattern already used for the Ocean bundle
+
+**NOT bridgeable without inventing content that exists nowhere in governed data (confirmed absent, not just thin):**
+- `queue`, `queuePurpose`, `subQueues` (required, min 1) — zero presence anywhere in LTL-03's real content
+- `workTypes` (required, min 1) — requires `executionMode` (DETERMINISTIC_RULES/RPA/AI_AGENT/HUMAN/etc.), a runtime-execution classification with no canonical source
+- `outcomes` (required, min 1) — requires `route`/`status`/`businessState`/`nextStep` (an enum: END_WORK_ITEM/STAY_IN_QUEUE/ESCALATE/RETRY/etc.) — pure runtime routing, zero presence in LTL-03
+
+This isn't thin data that needs filling in — it's a structurally absent layer. It's absent because Atlas's frozen architecture deliberately keeps runtime routing/execution-mode decisions out of canonical Operational Knowledge (Client Binding / Runtime Projection territory, not yet built for anything beyond the old V1.2 lineage). Closing it means either (a) a human making real, new routing/execution decisions for LTL-03 specifically — exactly the "hand-author LTL-03" action the Owner's own governance doc already required separate authorization for — or (b) building the actual Client Binding/Runtime Projection compiler, which is architecture work (AR0.2+ territory), not a demo-week task.
+
+Files / branches / components affected:
+- None. Read-only comparison.
+
+Impact / guardrail:
+- The "Malkom ending" is a large-effort item if done properly (real Client Binding capability) or a scoped-but-real authoring task if done minimally (one hand-authored routing skeleton for LTL-03 alone, clearly labeled as prototype, everything else mechanically mapped from real content). Not a quick bridge either way — recommending Owner decide which before any implementation starts.
+
+Next exact action:
+- Awaiting Owner direction on which path (or neither) for the Malkom ending, before touching the remaining 4 checks.
