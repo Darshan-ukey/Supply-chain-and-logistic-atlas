@@ -83,3 +83,22 @@ not independent QA. This distinction is recorded in the queue per-stage as `qaTy
    returns 403 on `logistic_atlas_v2` (scope mismatch), so the integration cannot currently be
    inspected or disabled. A preview deployment of the demo branch is the lower-risk route to
    browser verification than a main merge.
+
+---
+
+## Cross-agent independent QA — D2.0.3 — 2026-09-12
+
+**Reviewer:** ChatGPT
+**Result:** PASS at source / lineage / change-scope level.
+
+Independent checks performed against `atlas-v2-demo-2026-09-14` and historical source branch `atlas-presentation-architecture-v1-p6-2`:
+- Build commit `f22b77d9765833c9cb15caafcab08273b00a2e54` changes exactly the two files claimed by the D2.0.3 audit: `execution/adapters/malkom/malkom-adapter.mjs` and `execution/contracts/malkom-adapter-manifest-v1.json`.
+- Demo-branch adapter blob SHA `3e027f8286614e9d5b08080124edaac2971fd3f2` exactly matches the historical source-branch blob SHA; import provenance is independently confirmed.
+- `canvas-v2/canvas-v2/data/road-ltl-workdefinitions-v2.3.json` directly declares `sourceModel: "Road LTL V1.2"`, source `Malkom-Domain-Warehouse-Engine-V2.3-Lossless(1).html`, and describes itself as a protected/admin additive derived execution projection. This independently supports the old-reference lineage and rejects any v1.5/P6.2 provenance claim.
+- Adapter implementation preserves unsupported `ESCALATE` next steps as `PARTIAL` with canonical escalation visible; it does not silently flatten cross-queue semantics.
+- Manifest explicitly leaves `materialize`, `deploy`, `status`, `execute`, and `reconcileEvidence` disabled, consistent with Atlas not owning runtime execution.
+
+QA scope note:
+- This cross-agent audit independently verifies source identity, change scope, lineage truth and adapter guardrail behavior from committed artifacts. Claude's earlier 22/22 execution run remains reproducible execution evidence from the build executor; ChatGPT did not re-run Node locally through the GitHub connector in this checkpoint.
+
+**QA disposition:** D2.0.3 may be treated as **cross-agent audited** for demo-governance purposes, with the execution-run provenance caveat above retained.
