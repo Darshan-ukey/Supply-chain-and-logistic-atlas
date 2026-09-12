@@ -80,3 +80,46 @@ Impact / guardrail:
 
 Next exact action:
 - Run checks 3 and 4; assess 1; report 2 for direction.
+
+## 2026-09-12 15:18 IST — Claude — D2.0.1
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: MATERIAL_FINDING
+
+Evidence inspected:
+- `atlas-v2-demo-2026-09-14` @ `f36771e` (cut from `main`): `data/module-catalog.json`, `data/page0/`, `data/modules/`, `governance/presentation/p2-projection-source-registry.json`, `data/materialized/`.
+- `governance/frozen-assets/CURRENT.json` `productionBaseline` on the governance branch.
+- Local tooling availability for headless rendering.
+
+### CHECK 3 — Universe: HIGH-SEVERITY FINDING, resolves the open "live seam"
+
+**The demo branch (and therefore `main`/production) does NOT run Universe 7.3 or Road LTL 1.3.** Its `data/module-catalog.json` — the live routing manifest — declares:
+- `baseModule`: `ecosystem-page-0` **v6.2.2**, `data/page0/page0-v6.2.2.json`, sha `c8805c19…`, `publicationState: ACTIVE`
+- only registered module: `road-ltl` **v1.2**, `data/modules/road-ltl-v1.2.json`, ACTIVE
+- `ocean-fcl` / `ocean-lcl` appear only under `planned[]` as `status: PLANNED`, `depth: REFERENCE_ONLY`
+- `data/page0/` contains exactly one file: `page0-v6.2.2.json`. No `data/universe/` directory exists on this branch at all.
+
+Meanwhile `CURRENT.json` asserts `productionBaseline: {universe: universe-7.3, roadLtl: road-ltl-1.3, oceanFcl: ocean-fcl-0.5, oceanLcl: ocean-lcl-0.5, …}`.
+
+**These disagree.** The frozen registry claims a production baseline that the production branch does not contain. This closes the "live seam" question open since my 10:08 entry and refines my 11:46 finding: the live app is not on 1.3-vs-1.5, it is on **Page 0 v6.2.2 + Road LTL v1.2** — i.e. the same generation as the Domain Warehouse v2.3/Malkom reference lineage, one full generation behind even the registry's claimed production baseline.
+
+This is a governance/registry accuracy defect, not a demo-branch defect. I have not mutated either side. It needs ChatGPT/Owner adjudication: either `main` was never updated to the 7.3/1.3 baseline the registry records, or the registry records an intent that was never materialized to production.
+
+### CHECK 4 — Integration: partially verified, one real gap
+On the demo branch: both projection bundles are present (`road-ltl-1.5-…`, `ocean-0.6-…`), all three registry sources read `materialized: true`, and Ocean module JSONs are in `data/modules/`. The API/renderer path was verified working end-to-end earlier today (22 LTL + 60 Ocean tasks).
+**Gap:** Ocean is `PLANNED / REFERENCE_ONLY` in the live module catalog, so the Canvas/daughter navigation will not surface Ocean as an available daughter even though its data and projections are now present. Making Ocean appear in demo navigation requires a catalog change — a real D2.0.2 build action, not a verification step. Not performed; flagging for authorization.
+
+### CHECK 1 — Browser/visual verification: CANNOT BE CLOSED
+No browser binary and no headless driver are available in this environment. Combined with the standing no-Vercel rule, there is no path to genuine visual verification from here. Everything verified today is code-path and structural. **This check must remain open and be closed by a human opening the pages once deployment is authorized.** I will not represent structural passes as visual confirmation.
+
+### CHECK 2 — Atlas scope/future page: DOES NOT EXIST
+No such page anywhere in the repository (only an unrelated `sample-future-state-delta.md`). This is D2.0.1 scope per the corrected lineage doc, which specifies it must show truthful maturity markers: decomposition certified, canonical WD compiler proven/persistence pending, Client Binding/runtime projection incomplete, with the old Malkom lineage shown separately as a proven reference implementation. This is new UI content requiring Owner direction on copy and framing — not something I should author unilaterally given it is the page that states Atlas's maturity claims.
+
+Files / branches / components affected:
+- None. Read-only verification plus this log entry.
+
+Impact / guardrail:
+- CHECK 3 is the significant one: any demo copy stating "production runs Universe 7.3 / Road LTL 1.3" would be false on current evidence.
+- CHECKS 1 and 2 cannot be closed by me — one needs a human with a browser post-deployment, one needs Owner content direction.
+
+Next exact action:
+- Owner/ChatGPT adjudication of the CHECK 3 registry-vs-production disagreement; Owner direction on the CHECK 2 page; Owner decision on whether to register Ocean as ACTIVE in the demo catalog (CHECK 4 gap).
