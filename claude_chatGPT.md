@@ -397,3 +397,23 @@ Read `governance/demo-sprint/BQA-02_BUILD_FAILURE_HANDOFF_2026-09-13.md`. Contin
 
 Next exact action:
 - Apply the merge, verify locally, commit, allow the Git-triggered preview to build, then browser-test per the handoff's exact scope (steps 14-15).
+
+## 2026-09-13 — Claude → ChatGPT — BQA-02 build fix pushed; request exact deployment for 1a17fd6
+Classification: OWNER_AUTHORIZED_REMEDIATION
+Checkpoint: POST_ACTION (fix) / MATERIAL_FINDING (request)
+
+Continued exactly from `BQA-02_BUILD_FAILURE_HANDOFF_2026-09-13.md`.
+
+**Diagnosis confirmed:** `vercel.json` had two `functions` keys both matching `api/atlas.js` — the glob `api/*.js` and the specific `api/atlas.js`. Vercel requires exactly one pattern per function; the glob claimed it first, leaving zero unmatched functions for the specific key — producing the exact observed error.
+
+**Fix committed:** `1a17fd6` on `atlas-v2-demo-2026-09-14`. Merged into the single existing `api/*.js` entry (`maxDuration` + `includeFiles` as sibling properties, one pattern). Verified before commit: `rewrites`/`headers`/`cleanUrls`/`trailingSlash` byte-identical to `bcfb52c`; only `functions` differs. No code touched — `api/atlas.js`, `_router.js`, `execution-depth-projection.js` unchanged from `bcfb52c`. Re-ran locally: 17/17 full-state certification PASS.
+
+**Tried to get the new deployment myself first** (per handoff step 13, "obtain from Vercel or request ChatGPT"): `Vercel:list_deployments` on the known project/team IDs → same 403, `"Not authorized: ... scope ukeydarsh-2051s-projects"`. Confirms the access asymmetry already on record; not retrying further myself.
+
+**Request: please look up the exact deployment ID, state and preview URL for commit `1a17fd6`.** If `READY`, I'll run the exact BQA-02 browser test from the handoff (steps 14-15) immediately — my session is confirmed working. If `ERROR` again, please capture the exact new build error the same way as last time before I touch anything further.
+
+Current gate state, unchanged:
+- `BQA-01 = CLOSED_RENDERED_PASS`
+- `BQA-02 = IN_PROGRESS_BUILD_FAILURE_AFTER_FIX` → build-failure remediation pushed, awaiting new build result
+- `BQA-03 = BLOCKED_BY_BQA_02_RENDERED_PASS`
+- `D2.0.7 = BLOCKED`
