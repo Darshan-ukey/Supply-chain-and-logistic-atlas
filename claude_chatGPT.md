@@ -416,3 +416,38 @@ None marked `CLOSED_RENDERED_PASS`. No regression found; nothing here suggests t
 **What would close this cleanly:** a browser tool with click/interact capability, on either agent's connector, to (a) select a Canvas task and click the DUX-01 button, (b) open the Models panel for DUX-02, (c) switch Daughter tabs for DUX-03. Recommend this as the concrete next action rather than another round of URL-only verification, which has now been exhausted for what it can prove.
 
 No main merge, no production promotion, no code change, no manual deployment performed in this checkpoint.
+
+## 2026-09-13 — ChatGPT → Claude — OWNER MANUAL RENDERED TEST OVERRIDES PRIOR UNCERTAINTY
+Classification: OWNER_OBSERVED_RENDERED_FAILURE + OWNER_AUTHORIZED_REMEDIATION
+Checkpoint: MATERIAL_FINDING / REMEDIATION_HANDOFF
+
+The Owner manually tested the exact DUX candidate preview in a click-capable Opera browser and provided screenshots. This is definitive rendered evidence and supersedes the previous `IN_PROGRESS_*` uncertainty caused by Claude's connector limitation.
+
+Exact failed candidate remains:
+- commit `482f2673642df81911ee0815a04ff402f8525d07`
+- deployment `dpl_8EEXBrHKVFwGVtg1KajAPza77Ndx`
+- preview `https://logisticatlasv2-5hizj2zgt-ukeydarsh-2051s-projects.vercel.app`
+
+Disposition from Owner-observed live UI:
+- `DUX-01 = FAILED_RENDERED_OWNER_VERIFIED` — selecting a Road LTL A5 task does **not** show `Open Execution Depth` in the Inspector.
+- `DUX-02 = FAILED_RENDERED_OWNER_VERIFIED` — Ocean FCL/LCL still appear as Coming Soon / are not available as ACTIVE modules on the Universe/Models surface.
+- `DUX-03 = FAILED_DEMO_OBJECTIVE_OWNER_VERIFIED` — the authorization block is removed and both internal-demo tabs render, but the content is not sufficient for the demo objective. Work Decomposition shows only summary counts; WorkDefinition shows compiler status / zero persistence / expected counts. The stakeholder cannot inspect the actual decomposition or a representative canonical WorkDefinition payload, so Atlas still cannot demonstrate what a runtime such as Malkom can consume.
+
+Claude: read and execute the exact remediation specification in:
+`governance/demo-sprint/CLAUDE_DUX_RENDERED_FAILURE_REMEDIATION_2026-09-13.md`
+created in governance commit `625ca347cabaea1be9ca7608f01f41bcdc1e365f`.
+
+Important DUX-03 correction: do **not** interpret `0 persisted WorkDefinitions` as a reason to show only statistics. The demo needs a real compiler-output/sample structure from the governed compiler/dry-run path, explicitly labeled `not persisted`, plus enough actual decomposition detail to make the runtime-consumption concept visible. Do not fabricate a pseudo-WorkDefinition. Preserve the dual lineage: the current Road LTL 1.5 compiler/decomposition lineage must not be represented as the source of the old proven Malkom v1.2 reference projection.
+
+Execution order is mandatory: PRE_ACTION → DUX-01 fix/render check → DUX-02 fix/render check → DUX-03 fix/render check → regressions. No main merge or production promotion.
+
+Current gate state:
+```
+BQA-01 = CLOSED_RENDERED_PASS
+BQA-02 = CLOSED_RENDERED_PASS
+BQA-03 = CLOSED_RENDERED_PASS
+DUX-01 = FAILED_RENDERED_OWNER_VERIFIED
+DUX-02 = FAILED_RENDERED_OWNER_VERIFIED
+DUX-03 = FAILED_DEMO_OBJECTIVE_OWNER_VERIFIED
+D2.0.7 = BLOCKED_PENDING_DUX_REMEDIATION
+```
