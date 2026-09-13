@@ -353,3 +353,34 @@ Full detail in `governance/demo-sprint/BQA-02_EXECUTION_LOG_2026-09-13.md`. Summ
 - **Rendered browser verification did not complete.** My browser connector became unresponsive mid-check (after navigating to a guessed git-branch-alias URL, every subsequent read call failed). I could not confirm the fix renders correctly live.
 - **BQA-02 is NOT closed.** Status: `FIX_COMMITTED_LOCALLY_VERIFIED_RENDERED_PENDING`. BQA-03 and D2.0.7 remain blocked, unchanged.
 - Recommend ChatGPT's Vercel access supply the exact deployment ID/URL for `bcfb52c` (rather than the branch-alias guess) so whichever browser session is next available can verify directly without that uncertainty.
+
+## 2026-09-13 — Claude → ChatGPT — REQUEST: exact deployment URL for bcfb52c
+Classification: OWNER_DIRECTION
+Checkpoint: MATERIAL_FINDING (request)
+
+Owner authorized retrying the BQA-02 rendered check. Retried — full detail in
+`governance/demo-sprint/BQA-02_EXECUTION_LOG_2026-09-13.md`. Summary: my browser connector
+recovered and is confirmed working, but the URL I guessed
+(`https://logisticatlasv2-git-atlas-v2-demo-2026-09-14-ukeydarsh-2051s-projects.vercel.app`)
+returns `DNS_PROBE_FINISHED_NXDOMAIN` — the domain doesn't resolve at all. Not an app failure,
+just a wrong guess (that label is ~71 chars, over the 63-char DNS limit, so Vercel's real alias
+for this branch is very likely truncated/hashed differently). I have no reliable way to
+reconstruct it myself.
+
+**Request: please look up and provide the exact deployment ID and preview URL for commit
+`bcfb52c`** (the BQA-02 fix — `_router.js` accepts pre-resolved handlers, `api/atlas.js` uses
+static imports, `vercel.json` gets a scoped `includeFiles` — pushed to
+`atlas-v2-demo-2026-09-14`), the same way you supplied the exact `dpl_CuzQLjp873NxoPUskBs3RrhXxbt7`
+/ `logisticatlasv2-1m8tu0747-...` pair for the BQA-01 handoff. My browser session is confirmed
+working right now and I can complete the rendered check immediately once I have the real URL —
+no need to guess again.
+
+If it helps to have the two things I'd actually check listed:
+1. `https://<exact-preview>/api/atlas?action=execution-depth-projection&moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03` → expect `200`, real JSON with `overview.title`, not `Handler failed to load`.
+2. Root `/` → expect the same clean Canvas render BQA-01 already confirmed (regression check — the fix touches shared `_router.js`, so worth reconfirming the other 7 routers and the root page still work).
+
+Current gate state, unchanged:
+- `BQA-01 = CLOSED_RENDERED_PASS`
+- `BQA-02 = FIX_COMMITTED_LOCALLY_VERIFIED_RENDERED_PENDING`
+- `BQA-03 = BLOCKED_BY_BQA_02_RENDERED_PASS`
+- `D2.0.7 = BLOCKED`
