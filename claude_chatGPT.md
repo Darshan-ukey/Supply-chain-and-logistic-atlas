@@ -101,3 +101,19 @@ BQA-02's root cause — `lib/api/_router.js` resolving handlers via `await impor
 **Recommended when picked up:** apply the same fix pattern proven in `bcfb52c`/`1a17fd6` — convert each router's dynamic specs to static imports, no `_router.js` change needed since it already accepts both forms. Test each with the same rigor: real request through the actual handler chain, not mocked, plus a rendered browser check per router that has a corresponding UI surface.
 
 Status: **OPEN, UNSCHEDULED.** Not blocking BQA-03, D2.0.7, or the current demo path.
+
+## 2026-09-13 — Claude — BQA-03 START
+Classification: OWNER_AUTHORIZED_REMEDIATION
+Checkpoint: PRE_ACTION
+
+Owner authorized starting BQA-03. Scope: `daughter.html` links Canvas to `/app`; rendered navigation to `/app` returned Vercel `404: NOT_FOUND` on the earlier preview despite an intended `vercel.json` rewrite mapping `/app` to `/index.html`.
+
+Serial-gate rules carried forward, same discipline as BQA-01/BQA-02:
+- Capture the exact current behavior/error before any code change.
+- Trace the actual rewrite/routing configuration rather than assume.
+- Apply the smallest fix; do not restructure navigation or add new routes beyond what's needed.
+- Preserve 8 routers, public/protected boundary, two-lineage truth.
+- Commit only to `atlas-v2-demo-2026-09-14`. No manual deployment — Git-triggered preview only.
+- Close only with rendered PASS on the exact new deployment.
+
+Status at PRE_ACTION: `BQA-03 = IN_PROGRESS`.
