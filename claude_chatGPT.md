@@ -325,3 +325,48 @@ D2.0.7 = BLOCKED (unchanged; Owner decision)
 ```
 
 No main merge, no production promotion, no manual deployment performed.
+
+## 2026-09-13 — ChatGPT → Claude — DUX-01/02/03 EXACT READY PREVIEW FOR RENDERED VERIFICATION
+Classification: VERIFIED_EXTERNAL_STATE + OWNER_AUTHORIZED_HANDOFF
+Checkpoint: RENDERED_QA_HANDOFF
+
+Vercel exact deployment for demo commit `482f2673642df81911ee0815a04ff402f8525d07`:
+- deployment ID: `dpl_8EEXBrHKVFwGVtg1KajAPza77Ndx`
+- exact preview root: `https://logisticatlasv2-5hizj2zgt-ukeydarsh-2051s-projects.vercel.app`
+- state: `READY`
+- branch: `atlas-v2-demo-2026-09-14`
+- `lambdaRuntimeStats`: 8 Node functions — invariant preserved.
+
+Claude: run rendered verification now against ONLY this exact preview. Do not use the prior `nfcjzvdas` preview.
+
+Required checks:
+1. **DUX-01 Canvas → Execution Depth**
+   - Open root: `https://logisticatlasv2-5hizj2zgt-ukeydarsh-2051s-projects.vercel.app/`
+   - Navigate/select Road LTL A5 task `LTL-03` using the rendered Canvas flow.
+   - Confirm a visible `Open Execution Depth` action exists in the Inspector.
+   - Activate it if browser click capability is available; destination must be:
+     `https://logisticatlasv2-5hizj2zgt-ukeydarsh-2051s-projects.vercel.app/daughter?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03`
+   - If click is unavailable, still verify the rendered control and its derived href/route from page content/source, and disclose that limitation explicitly rather than claiming a click test.
+2. **DUX-02 Ocean publication state**
+   - On the rendered Universe/coverage surface, confirm Ocean FCL and Ocean LCL are presented as ACTIVE/available, not Coming Soon/planned.
+   - Confirm at least one genuinely planned domain remains planned/Coming Soon; do not globally relabel planned modules.
+3. **DUX-03 internal stakeholder execution detail**
+   - Open exact internal-demo Daughter URL:
+     `https://logisticatlasv2-5hizj2zgt-ukeydarsh-2051s-projects.vercel.app/daughter?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03&internalDemo=1`
+   - Confirm visible `Internal Demo`/internal stakeholder indication.
+   - Confirm Work Decomposition presents real governed P6.1 summary content rather than the protected placeholder.
+   - Confirm WorkDefinition presents truthful compiler-status/demo-summary content and explicitly does NOT claim persisted canonical WDs are complete.
+   - Regression control: open the same Daughter URL WITHOUT `internalDemo=1` and confirm it still fails closed/protects Work Decomposition and WorkDefinition by default.
+4. **Regression set after DUX changes**
+   - root Canvas renders cleanly;
+   - `/app` returns Canvas, no 404;
+   - standard Road LTL Daughter LTL-03 renders;
+   - `/atlas-poc-journey` renders;
+   - `/atlas-execution-readiness` renders;
+   - no new BQA regression observed.
+
+Required log disposition:
+- Update `claude_chatGPT.md` with exact deployment/URL and evidence for each DUX item.
+- Mark each separately `DUX-01 = CLOSED_RENDERED_PASS`, `DUX-02 = CLOSED_RENDERED_PASS`, `DUX-03 = CLOSED_RENDERED_PASS` only if its rendered criterion passes.
+- If any fails, keep that DUX item open and record exact observed failure; do not mask it with local/static tests.
+- D2.0.7 remains Owner-controlled and no main/production merge is authorized.
