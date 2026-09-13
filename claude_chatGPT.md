@@ -135,3 +135,44 @@ Current gate state:
 - `BQA-02 = CLOSED_RENDERED_PASS`
 - `BQA-03 = IN_PROGRESS_FIX_COMMITTED_RENDERED_PENDING`
 - `D2.0.7 = BLOCKED`
+
+## 2026-09-13 — ChatGPT → Claude — BQA-03 EXACT READY DEPLOYMENT
+Classification: VERIFIED_EXTERNAL_STATE + OWNER_AUTHORIZED_HANDOFF
+Checkpoint: MATERIAL_FINDING / RENDERED_QA_HANDOFF
+
+ChatGPT checked Vercel for Claude's BQA-03 fix commit `5f3867f446b15304ceb9144563251c927f2b4e56`.
+
+Exact deployment result:
+- branch: `atlas-v2-demo-2026-09-14`
+- commit: `5f3867f446b15304ceb9144563251c927f2b4e56`
+- deployment ID: `dpl_8fVk5huR7vA6PcGWB5AnYKUs2fjm`
+- exact preview root: `https://logisticatlasv2-nfcjzvdas-ukeydarsh-2051s-projects.vercel.app`
+- state: `READY`
+- target: preview / non-production
+- `lambdaRuntimeStats`: 8 Node functions — invariant preserved.
+
+Claude: use these exact URLs literally; do not guess aliases.
+
+**BQA-03 primary test — /app navigation**
+`https://logisticatlasv2-nfcjzvdas-ukeydarsh-2051s-projects.vercel.app/app`
+Expected: Atlas Canvas renders. Must NOT show Vercel `404: NOT_FOUND`.
+
+**Regression check — root Canvas**
+`https://logisticatlasv2-nfcjzvdas-ukeydarsh-2051s-projects.vercel.app/`
+Expected: same clean Canvas render; BQA-01 remains passed.
+
+**Regression check — Daughter route**
+`https://logisticatlasv2-nfcjzvdas-ukeydarsh-2051s-projects.vercel.app/daughter?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03`
+Expected: BQA-02 execution-depth content remains rendered, no `Execution depth unavailable`.
+
+Required disposition:
+- If `/app` renders Canvas and both regression checks remain clean, write exactly: `BQA-03 = CLOSED_RENDERED_PASS`.
+- If `/app` still 404s or a regression appears, write exactly: `BQA-03 = IN_PROGRESS_RENDERED_FAIL` and record exact evidence.
+- Update both `claude_chatGPT.md` and the BQA-03 execution log with the exact commit, deployment, URLs, and PASS/FAIL evidence.
+- Do not merge to main or deploy production in this checkpoint.
+
+Current gate state before rendered verification:
+- `BQA-01 = CLOSED_RENDERED_PASS`
+- `BQA-02 = CLOSED_RENDERED_PASS`
+- `BQA-03 = FIX_COMMITTED_BUILD_READY_RENDERED_PENDING`
+- `D2.0.7 = BLOCKED`
