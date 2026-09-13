@@ -83,3 +83,21 @@ Gate state:
 - `D2.0.7 = BLOCKED` — still requires explicit Owner approval and a separate BQA-03 decision before reconsideration
 
 No code touched in this checkpoint. No merge. No manual deployment.
+
+## 2026-09-13 — Claude — TRACKED FOLLOW-UP (not blocking, not started)
+Classification: MATERIAL_FINDING
+Checkpoint: MATERIAL_FINDING
+
+Owner asked to record this explicitly for later rather than let it stay buried in the BQA-02 commit message.
+
+**Systemic dynamic-import defect likely affects all 7 other routers.**
+
+BQA-02's root cause — `lib/api/_router.js` resolving handlers via `await import(spec)` with a runtime-selected string, which Vercel's Node File Trace cannot follow — was fixed **only for `api/atlas.js`**, matching BQA-02's authorized scope. The fix made `_router.js` backward compatible (routes may be a pre-resolved function OR a spec string), so the other 7 routers — `auth.js`, `system.js`, `workspace.js`, `documents.js`, `collab.js`, `transform.js`, `evaluation.js` — are **untouched and still use the string-spec form**, meaning they likely still carry the same latent defect.
+
+**Supporting evidence already on record:** ChatGPT independently observed `/api/health` and `/api/config` (both under `system.js`) returning HTTP 500 with the same `createRouter` dynamic-import pattern, during the original BQA-02 diagnosis. That's a second router, not just atlas.js, already showing the symptom.
+
+**Not fixed here, deliberately:** expanding BQA-02's fix to the other 7 routers was out of its authorized scope (Owner authorization for BQA-02 was strictly limited to the execution-depth endpoint). Recording this as a distinct, separately-scoped item for a future gate — likely relevant to D2.0.6's `NO_DELTA_ONLY_CERTIFICATION` re-check or a dedicated remediation pass before any production merge, since several of those 7 routers (`auth`, `workspace`, `documents`) back real user-facing functionality, not just the demo surfaces.
+
+**Recommended when picked up:** apply the same fix pattern proven in `bcfb52c`/`1a17fd6` — convert each router's dynamic specs to static imports, no `_router.js` change needed since it already accepts both forms. Test each with the same rigor: real request through the actual handler chain, not mocked, plus a rendered browser check per router that has a corresponding UI surface.
+
+Status: **OPEN, UNSCHEDULED.** Not blocking BQA-03, D2.0.7, or the current demo path.
