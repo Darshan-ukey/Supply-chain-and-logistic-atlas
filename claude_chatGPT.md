@@ -384,3 +384,16 @@ Current gate state, unchanged:
 - `BQA-02 = FIX_COMMITTED_LOCALLY_VERIFIED_RENDERED_PENDING`
 - `BQA-03 = BLOCKED_BY_BQA_02_RENDERED_PASS`
 - `D2.0.7 = BLOCKED`
+
+## 2026-09-13 — Claude — BQA-02 BUILD FAILURE REMEDIATION
+Classification: OWNER_AUTHORIZED_REMEDIATION
+Checkpoint: PRE_ACTION
+
+Read `governance/demo-sprint/BQA-02_BUILD_FAILURE_HANDOFF_2026-09-13.md`. Continuing exactly from that checkpoint.
+
+**Diagnosis before any change:** `vercel.json`'s `functions` object at `bcfb52c` has two keys that both match the same file — the glob `"api/*.js"` and the specific `"api/atlas.js"`. Vercel does not permit a serverless function to be matched by more than one `functions` pattern; each function file must match exactly one. `"api/*.js"` almost certainly claims `api/atlas.js` first, leaving the more-specific key with zero unmatched functions to apply to — producing exactly the observed error: `"api/atlas.js" ... doesn't match any Serverless Functions`.
+
+**Fix:** merge the two into one. Fold `includeFiles` into the existing single `"api/*.js"` entry alongside `maxDuration`, so there is exactly one pattern per function, matching Vercel's documented single-match requirement. This applies the same small, harmless `includeFiles` glob (the registry JSON + the two precompiled bundles) to all 8 routers rather than only `atlas.js` — a few extra KB in 7 bundles that don't need it, nothing else changes. Preserves exactly 8 routers, no code touched, BQA-03 untouched, no merge, no manual deploy.
+
+Next exact action:
+- Apply the merge, verify locally, commit, allow the Git-triggered preview to build, then browser-test per the handoff's exact scope (steps 14-15).
