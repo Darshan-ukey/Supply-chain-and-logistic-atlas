@@ -294,3 +294,34 @@ Read: `governance/backlog/ATLAS_V2_DEMO_USABILITY_HOTFIX_BACKLOG_2026-09-13.md` 
 - 8-router invariant, public/protected boundary, and two-lineage truth are all preserved by construction (see design notes above); verified by `node tests/d2-0-6-full-state-certification.mjs` — 17/17 PASS on the working copy.
 
 Next exact action: final diff review, push to `atlas-v2-demo-2026-09-14`, then rendered verification per the handoff's required steps.
+
+## 2026-09-13 — Claude — DUX-01/02/03 IMPLEMENTED, PUSHED
+Classification: OWNER_AUTHORIZED_REMEDIATION
+Checkpoint: POST_ACTION (code) / MATERIAL_FINDING (request)
+
+**Commit:** `482f267` on `atlas-v2-demo-2026-09-14`. Full design/verification detail in the commit message; summary below.
+
+**DUX-01** — additive `Open Execution Depth` button in `index.html`'s A5 Inspector, shown only for `S.activeModule==='road-ltl'`, `taskId` derived from the selected task (`p.id`), never hard-coded. Verified functionally against a simulated LTL-03 selection and against a non-road-ltl module (correctly empty).
+
+**DUX-02** — traced first, not patched blindly. The existing sync (`load()` setting `r.status='ACTIVE'` for approved+active catalog modules) was independently simulated against the real registry/catalog files and found correct in isolation — Ocean resolves to ACTIVE/A5_VERIFIED. Rather than trust that one-time mutation's exact timing (which static analysis alone couldn't fully rule out as fragile, and I have no click tool to confirm live), the fix derives status fresh from `S.moduleCatalog.modules` at render time via a new `dux02CatalogState(id)` helper, applied in `stage11RenderRegistry`, the coverage-preview banner, and `stage11SelectCoverage`. Verified: Ocean FCL/LCL → ACTIVE; every genuinely-planned domain → unaffected, confirmed by running the same helper against all of them.
+
+**DUX-03** — two new additive view functions in the renderer; `protectedView` itself is byte-unmodified (confirmed by diff). `renderDepth`/`renderShell`/`attachRendererInteractions`/`bootUniversalDaughterRendererV2` gain an optional `demoData`/`internalDemo` parameter, default `null`/`false` — verified functionally that the default call path still returns `PROTECTED EXECUTION IP` and never `INTERNAL DEMO`. `daughter.html` reads `?internalDemo=1`, shows a page-level banner, passes the flag through — removing the param restores fail-closed behavior with zero code change.
+
+**Content sourcing, both real:** Work Decomposition view uses `data/demo-internal/p6-1-public-decomposition-summary.json`, brought in **byte-identical** from `atlas-presentation-architecture-v1-p6-1`'s existing `PUBLIC_SAFE_SUMMARY_ONLY` artifact (hash-verified). WorkDefinition view uses a new summary authored strictly from facts already independently verified earlier this sprint (compiler certification PASS, 0 persisted rows, the pinned dry-run's 185-from-444 expectation) — explicitly labeled `INTERNAL_DEMO_SUMMARY_NOT_PERSISTED_OUTPUT`.
+
+**Verified before push:** syntax-checked every script block; functional tests for all three DUX items against real data; `tests/d2-0-6-full-state-certification.mjs` 17/17 PASS; 8-router invariant intact; P4 suite shows only the same single pre-existing gate documented since `45a2888`; full diff reviewed line by line — exactly 3 files modified, 2 new files added, nothing else touched.
+
+**Request: please look up the exact deployment ID/state/URL for commit `482f267`**, same pattern as every round today. Once READY, I'll run the rendered checks the handoff specifies: DUX-01/02/03 directly, plus the regression set (root Canvas, Road LTL Daughter LTL-03, `/app` return, POC Journey, Execution Readiness).
+
+Gate state:
+```
+BQA-01 = CLOSED_RENDERED_PASS
+BQA-02 = CLOSED_RENDERED_PASS
+BQA-03 = CLOSED_RENDERED_PASS
+DUX-01 = FIX_COMMITTED_RENDERED_PENDING
+DUX-02 = FIX_COMMITTED_RENDERED_PENDING
+DUX-03 = FIX_COMMITTED_RENDERED_PENDING
+D2.0.7 = BLOCKED (unchanged; Owner decision)
+```
+
+No main merge, no production promotion, no manual deployment performed.
