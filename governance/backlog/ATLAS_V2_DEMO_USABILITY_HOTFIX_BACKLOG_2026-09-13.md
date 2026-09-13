@@ -7,7 +7,7 @@ Reference passed preview before these hotfixes: commit `5f3867f446b15304ceb91445
 
 ## Why this backlog exists
 
-The serial BQA defects are closed and the final rendered E2E journey passed, but Owner manual inspection exposed three demo-usability gaps that would make the stakeholder journey fragmented or misleading.
+The serial BQA defects are closed and the final rendered E2E journey passed, but Owner manual inspection exposed demo-usability gaps that would make the stakeholder journey fragmented or misleading.
 
 These are presentation/integration gaps, not permission to change Atlas semantic truth.
 
@@ -96,14 +96,39 @@ Status: `OWNER_AUTHORIZED_QUICK_FIX`
 
 ---
 
+## DUX-04 — Execution Readiness stakeholder page has no discoverable in-app path
+
+### Owner-observed behavior
+`/atlas-execution-readiness` renders correctly, but the page is effectively a hidden standalone route. During the demo, the Owner must know and type the URL manually; there is no obvious navigation path from the primary Atlas experience.
+
+### Required fix
+1. Add a discoverable navigation entry to **Execution Readiness** from the demo experience; preferred placement is a stable top-level navigation/action on the primary Canvas or stakeholder navigation surface.
+2. Route to the canonical page:
+   `/atlas-execution-readiness`
+3. Do not replace or hide existing Canvas, Daughter, POC Journey, or other current demo navigation.
+4. Keep the label stakeholder-friendly: **Execution Readiness** or **View Execution Readiness**.
+5. Do not create a duplicate readiness page or copy its content into Canvas; link to the existing canonical route.
+6. Ensure the route remains usable on preview and eventual demo deployment without requiring a hard-coded deployment hostname.
+
+### Acceptance
+- Starting from the normal Atlas demo experience, a stakeholder can reach **Execution Readiness** without typing a URL.
+- The action opens `/atlas-execution-readiness` successfully.
+- Existing page content remains unchanged unless separately approved.
+- No regression to Canvas, Daughter, POC Journey, or existing navigation.
+
+Status: `DEMO_READINESS_BACKLOG — DO_NOT_FORGET`
+
+---
+
 ## Execution order
 
-For speed but controlled risk, Claude may implement these in one small demo-branch hotfix **only if** each change is independently traceable in the commit diff and individually verified after deploy.
+For speed but controlled risk, Claude may implement DUX-01/02/03 in one small demo-branch hotfix **only if** each change is independently traceable in the commit diff and individually verified after deploy. DUX-04 is explicitly recorded for demo-readiness closure and may be handled in the same navigation pass only if it does not interfere with active remediation.
 
-Required order inside the change:
+Required order inside the current change:
 1. DUX-01 Canvas → Daughter navigation.
 2. DUX-02 Ocean ACTIVE presentation correction.
 3. DUX-03 demo-only internal stakeholder protected-depth override.
+4. DUX-04 discoverable Execution Readiness navigation before final demo-ready sign-off.
 
 Before mutation, Claude must add PRE_ACTION to `claude_chatGPT.md` pointing to this backlog and record the files expected to change.
 
@@ -111,7 +136,7 @@ After implementation:
 - run existing full-state certification;
 - preserve 8-router invariant;
 - obtain exact Git-triggered Vercel preview;
-- rendered-test all three DUX items;
+- rendered-test the relevant DUX items;
 - recheck BQA-01/02/03 surfaces for regression;
 - update this backlog and `claude_chatGPT.md` with PASS/FAIL and exact commit/deployment.
 
