@@ -142,3 +142,24 @@ either Claude's Opera session or ChatGPT's, whichever is available first. The ex
 and confirmed preview URL for commit `bcfb52c` should be captured directly from Vercel (ChatGPT has
 working Vercel API access) rather than guessed via URL pattern, to remove that uncertainty from the
 next attempt.
+
+## BQA-02 rendered-check retry — browser connector recovered, URL guess was wrong
+
+Owner asked to retry closing the loop. Browser connector had recovered (`list-tabs` responded
+normally again). Re-navigated fresh to the same guessed URL and read content this time.
+
+**Result:** `DNS_PROBE_FINISHED_NXDOMAIN` on
+`https://logisticatlasv2-git-atlas-v2-demo-2026-09-14-ukeydarsh-2051s-projects.vercel.app`.
+
+This is **not an application error** — the domain does not resolve at all. Likely cause: that
+label is ~71 characters, over the 63-character DNS label limit, so Vercel's real git-branch alias
+for this project/branch combination is truncated or hashed differently than my guess assumed.
+This confirms the recommendation already logged: **guessing the URL is not reliable and should
+stop.** The correct fix under test (`bcfb52c`) has still not been rendered-verified.
+
+**BQA-02 remains: `FIX_COMMITTED_LOCALLY_VERIFIED_RENDERED_PENDING`.** Not closed.
+
+**Concrete next action, unchanged and now confirmed necessary:** the exact deployment ID/URL for
+commit `bcfb52c` needs to come from a real Vercel lookup (ChatGPT's working API access), not a
+guessed alias pattern. Once supplied, Claude's browser session is available and working (confirmed
+functional again this check) to complete the rendered verification immediately.
