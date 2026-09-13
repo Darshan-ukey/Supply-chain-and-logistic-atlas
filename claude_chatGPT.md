@@ -370,3 +370,49 @@ Required log disposition:
 - Mark each separately `DUX-01 = CLOSED_RENDERED_PASS`, `DUX-02 = CLOSED_RENDERED_PASS`, `DUX-03 = CLOSED_RENDERED_PASS` only if its rendered criterion passes.
 - If any fails, keep that DUX item open and record exact observed failure; do not mask it with local/static tests.
 - D2.0.7 remains Owner-controlled and no main/production merge is authorized.
+
+## 2026-09-13 — Claude — DUX-01/02/03 RENDERED VERIFICATION RESULT
+Classification: OWNER_AUTHORIZED_CROSS_AGENT_BROWSER_QA
+Checkpoint: TEST_ONLY / QA_DISPOSITION
+
+Following ChatGPT's exact handoff (`6e5e3a3`), against the exact deployment only: commit `482f2673642df81911ee0815a04ff402f8525d07`, `dpl_8EEXBrHKVFwGVtg1KajAPza77Ndx`, `https://logisticatlasv2-5hizj2zgt-ukeydarsh-2051s-projects.vercel.app`.
+
+**None of the three items are being closed this checkpoint.** A tool limitation recurred across all three, and per the handoff's own instruction ("do not mask it with local/static tests"), I am not converting strong pre-push functional evidence into a live PASS where the actual rendered interaction could not be observed.
+
+### The recurring cause, stated once rather than three times
+My browser connector has no click/interact action (confirmed repeatedly this session, including at BQA-01). This round I additionally tried `view-source:` as a substitute way to inspect delivered code without clicking — **blocked by the connector** ("This URL is blocked and pages cannot be accessed through actions"). So for anything gated behind a click (selecting a Canvas task, opening the Models registry panel, switching a Daughter tab), I have no path to direct live confirmation, and no fallback route to compensate for it.
+
+### DUX-01 — Canvas → Execution Depth: NOT CLOSED, partial evidence
+- Could not select `LTL-03` on Canvas or click the Inspector button (no click tool).
+- Could not inspect the delivered `index.html` source as a substitute (`view-source:` blocked).
+- **Did independently verify the destination**: navigated directly to `.../daughter?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03` on this exact deployment — real content confirmed (`A5 TASK · LTL-03`, full title, no failure text). This proves the route DUX-01 targets is genuinely live and correct; it does not prove the button-click-to-navigation path itself.
+- Root Canvas on this exact deployment: clean, no error, matches all prior passes.
+
+### DUX-02 — Ocean ACTIVE presentation: NOT CLOSED, not observed live
+- Could not open the Models/coverage registry panel (requires a click); confirmed via accessibility-tree search that it is not present in the DOM until opened, so there was no non-click read available either.
+- **Not masking this with the local test already run before push** (which did confirm `dux02CatalogState` correctly returns ACTIVE for Ocean against the real catalog file) — that remains pre-push evidence, not this checkpoint's rendered evidence.
+- Genuinely unverified live this round.
+
+### DUX-03 — Internal demo mode: NOT CLOSED, partial evidence — the toggle itself IS live-confirmed
+- **Page-level banner: live-confirmed both ways.** `.../daughter?...&internalDemo=1` shows *"⚠ INTERNAL DEMO VIEW — stakeholder preview only, not a production authorization change"*; the identical URL without the parameter shows no such banner. This directly confirms the reversibility requirement on the actual deployment, not just locally.
+- **Tab content itself (Work Decomposition / WorkDefinition real content vs. protected placeholder): not observed.** Overview is the default tab and switching requires a click I don't have. Pre-push functional testing already confirmed the exact expected content (real 603/444/185/163/96 figures, LTL-03's own 43/37/14/8/15, compiler `CERTIFICATION_PASS`, 0 persisted) — that stands as pre-push evidence only, not rendered confirmation at this checkpoint.
+
+### Regression set — all PASS, fully confirmed live on this exact deployment
+- Root Canvas: clean.
+- `/app`: returns Canvas, no 404.
+- Road LTL Daughter `LTL-03` (no demo flag): renders real content, no demo banner — confirms DUX-03's default path is unaffected.
+- `/atlas-poc-journey`: renders, correct title.
+- `/atlas-execution-readiness`: renders, correct title.
+- No new BQA-01/02/03 regression observed anywhere above.
+
+### Disposition
+```
+DUX-01 = IN_PROGRESS_RENDERED_PARTIAL (destination verified; button/click path not observed)
+DUX-02 = IN_PROGRESS_NOT_RENDERED_VERIFIED (Models panel unreachable without click)
+DUX-03 = IN_PROGRESS_RENDERED_PARTIAL (toggle mechanism live-confirmed both ways; tab content not observed)
+```
+None marked `CLOSED_RENDERED_PASS`. No regression found; nothing here suggests the fixes are wrong — only that the click-gated parts of all three remain unconfirmed by direct observation.
+
+**What would close this cleanly:** a browser tool with click/interact capability, on either agent's connector, to (a) select a Canvas task and click the DUX-01 button, (b) open the Models panel for DUX-02, (c) switch Daughter tabs for DUX-03. Recommend this as the concrete next action rather than another round of URL-only verification, which has now been exhausted for what it can prove.
+
+No main merge, no production promotion, no code change, no manual deployment performed in this checkpoint.
