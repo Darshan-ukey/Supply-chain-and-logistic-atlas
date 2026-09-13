@@ -163,3 +163,58 @@ stop.** The correct fix under test (`bcfb52c`) has still not been rendered-verif
 commit `bcfb52c` needs to come from a real Vercel lookup (ChatGPT's working API access), not a
 guessed alias pattern. Once supplied, Claude's browser session is available and working (confirmed
 functional again this check) to complete the rendered verification immediately.
+
+## BQA-02 RENDERED VERIFICATION — Claude, exact READY deployment
+
+**exact commit:** `1a17fd6d04bbe56386161c7b4fad43266093e106`
+**exact deployment ID:** `dpl_4r6VfAfV46w2K3bYi11atGMKJpgf`
+**exact preview URL:** `https://logisticatlasv2-fmjywi4bk-ukeydarsh-2051s-projects.vercel.app`
+
+All three required checks run against this exact deployment, in order:
+
+### Test URL 1 — API execution-depth projection
+`.../api/atlas?action=execution-depth-projection&moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03`
+
+**Result: PASS.** `{"ok":true,"projection":{...}}` — full real LTL-03 content: `overview.title`
+"Create and validate shipment, consignment and transport-document identity", complete
+`operationalKnowledge` block (businessMeaning, why, informationResolution with 10 unresolved
+items correctly broken down 4 SOURCE_CONTEXT_PENDING / 6 CLIENT_BINDING_REQUIRED, rule/control/
+action/timing/evidence summaries), `executionReadiness.status: CONDITIONAL_READY`. No
+`Handler failed to load`, no `Cannot find module`, no `ENOENT`.
+
+### Test URL 2 — User-facing Daughter route
+`.../daughter?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03`
+
+**Result: PASS.** Tab title "Atlas Daughter · Execution Depth". Full Execution-Depth Inspector
+rendered: all 5 tabs present (Overview, Operational Knowledge, Execution Readiness, Work
+Decomposition, WorkDefinition), "A5 TASK · LTL-03" badge, real title and canonical trace
+(`road-ltl` / `1.5` / `a5-ltl-03` / `scp-shipment-transport-identity`), "Frozen Execution
+Reference Candidate" status, and the governed boundary label "PUBLIC-SAFE PROJECTION · PROTECTED
+DETAIL NOT PRELOADED" displayed exactly as designed. No `Execution depth unavailable`, no
+`Handler failed to load`, no fallback-substitution text.
+
+Observed but not navigated (correctly out of scope): header links "Canvas" → `/app` and "Admin" →
+`/admin` are present in the rendered nav — structural observation only, per instruction not to
+touch BQA-03 in this checkpoint.
+
+### Test URL 3 — Root Canvas regression check
+`.../` (root)
+
+**Result: PASS.** Tab title "Enterprise Operations Platform · Supply Chain · v1.1.8" — identical
+to the confirmed BQA-01 pass state. Full accessibility-tree text search for `fail|error|contract`
+(case-insensitive) → zero matches, same as the BQA-01 check. Screenshot confirms: full Universe
+spatial map, all 15 territories, "71 MODELS · ROAD LTL · A5" sidebar, live Inspector panel — no
+error banner, no regression from BQA-01.
+
+### Result
+
+**BQA-02 = CLOSED_RENDERED_PASS**
+
+**BQA-03 is now eligible for Owner/primary-executor activation but has NOT started in this
+checkpoint.**
+
+Gate state after this checkpoint:
+- `BQA-01 = CLOSED_RENDERED_PASS`
+- `BQA-02 = CLOSED_RENDERED_PASS`
+- `BQA-03 = ELIGIBLE_NOT_STARTED`
+- `D2.0.7 = BLOCKED` — unchanged, still requires explicit Owner approval and a separate decision on `/app` navigation (BQA-03) before reconsideration
