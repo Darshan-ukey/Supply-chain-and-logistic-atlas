@@ -30,7 +30,9 @@ for(const k of ['moduleId','moduleVersion','taskId'])document.getElementById(k).
 document.getElementById('selectionForm').addEventListener('submit',e=>{e.preventDefault();const fd=new FormData(e.currentTarget);const q=new URLSearchParams();for(const k of ['moduleId','moduleVersion','taskId']){const v=String(fd.get(k)||'').trim();if(v)q.set(k,v)}location.assign('/daughter?'+q.toString())});
 const mount=document.getElementById('daughterMount');
 mount.addEventListener('atlas:protected-execution-request',()=>{const n=document.getElementById('protectedNotice');n.classList.add('show');n.scrollIntoView({behavior:'smooth',block:'nearest'})});
-bootUniversalDaughterRendererV2({mount,selection});
+const internalDemo=new URLSearchParams(location.search).get('internalDemo')==='1';
+if(internalDemo){const b=document.createElement('div');b.setAttribute('role','note');b.style.cssText='background:#fff3cd;border:1px solid #e6c266;color:#7a5b06;font:800 11px ui-monospace;padding:8px 12px;text-align:center';b.textContent='⚠ INTERNAL DEMO VIEW — stakeholder preview only, not a production authorization change';document.body.insertBefore(b,document.body.firstChild)}
+bootUniversalDaughterRendererV2({mount,selection,internalDemo});
 </script>
 </body>
 </html>

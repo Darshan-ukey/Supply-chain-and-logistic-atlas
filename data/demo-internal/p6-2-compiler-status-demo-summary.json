@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "atlas-p6-2-compiler-status-demo-summary-v1",
+  "classification": "INTERNAL_DEMO_SUMMARY_NOT_PERSISTED_OUTPUT",
+  "moduleId": "road-ltl",
+  "moduleVersion": "1.5",
+  "contract": {
+    "status": "FROZEN",
+    "path": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md"
+  },
+  "compilerCertification": {
+    "status": "CERTIFICATION_PASS",
+    "testPath": "tests/p6-2-canonical-workdefinition-compiler.mjs",
+    "verifiedBy": "direct offline execution, 2026-09-12, this demo sprint",
+    "note": "The compiler and verifier certify green against the frozen contract, pinned to the certified P6.1 decomposition. This proves the compiler works; it does not mean output has been persisted."
+  },
+  "persistedCanonicalWorkDefinitions": {
+    "count": 0,
+    "store": "atlas_work_definitions (Supabase protected store)",
+    "verifiedBy": "direct query, this demo sprint",
+    "note": "Zero rows. No canonical WorkDefinition has been persisted for any task. This is not a fabricated or estimated figure."
+  },
+  "dryRunExpectation": {
+    "trigger": "governance/triggers/p6-2-compile-dry-run.txt",
+    "pinnedDecompositionHash": "2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab",
+    "expectedWorkDefinitionsIfPersisted": 185,
+    "expectedSourceLeafCount": 444,
+    "note": "A governed dry run has been rehearsed and is pinned to the certified P6.1 decomposition. It has no --persist path by design. These are the counts a real persisted compile is expected to produce, not counts that exist today."
+  },
+  "lineageNote": "This is the governed target lineage (Road LTL 1.5 -> Operational Knowledge -> P6.1 decomposition -> P6.2 compiler). It is separate from, and was not used to produce, the proven reference Malkom projection shown elsewhere in this demo, which is generated from Road LTL V1.2 via Domain Warehouse v2.3."
+}

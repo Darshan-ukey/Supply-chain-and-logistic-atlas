@@ -86,6 +86,23 @@ function readinessView(p){
     section('Dependencies',kv([['Human review / HITL',d.hitlRequired?'Required/possible':'Not indicated'],['System action',d.systemActionRequired?'Required':'Not indicated'],['Client binding',d.clientBindingRequired?'Required':'Not indicated']]))+
     section('Downstream protected assets',kv([['Work Decomposition',down.workDecompositionStatus],['WorkDefinition',down.workDefinitionStatus]]));
 }
+function internalDemoBadge(){return `<div class="udr-demo-banner" role="note"><span aria-hidden="true">\u26A0</span> INTERNAL DEMO VIEW \u2014 not production authorization</div>`}
+function internalDemoDecompositionView(taskId,summary){
+  if(!summary)return `${internalDemoBadge()}<div class="udr-empty">Internal demo decomposition summary is unavailable.</div>`;
+  const t=summary.tasks?.find(x=>x.taskId===taskId)||null;
+  const tot=summary.totals||{};
+  return `${internalDemoBadge()}<div class="udr-eyebrow">P6.1 RECURSIVE WORK DECOMPOSITION \u00B7 PUBLIC-SAFE SUMMARY</div><h2>Work Decomposition</h2><p>${esc(summary.status||'')} \u00B7 governed Road LTL ${esc(summary.moduleVersion||'')}. ${esc(summary.securityNote||'')}</p>`+
+    section('Overall (22 tasks)',kv([['Work units',tot.workUnitCount],['Terminal leaves',tot.leafCount],['Executor-ready',tot.executorReadyLeafCount],['Blocked \u00B7 client binding',tot.blockedByClientBindingLeafCount],['Blocked \u00B7 knowledge gap',tot.blockedByKnowledgeGapLeafCount]]))+
+    (t?section(`This task \u00B7 ${esc(taskId)}`,kv([['Work units',t.workUnitCount],['Terminal leaves',t.leafCount],['Executor-ready',t.executorReadyLeafCount],['Blocked \u00B7 client binding',t.blockedByClientBindingLeafCount],['Blocked \u00B7 knowledge gap',t.blockedByKnowledgeGapLeafCount],['Independent executor proof',t.executorProof]])):'<div class="udr-empty">No per-task row for this task in the public summary.</div>');
+}
+function internalDemoWorkDefinitionView(taskId,summary){
+  if(!summary)return `${internalDemoBadge()}<div class="udr-empty">Internal demo compiler-status summary is unavailable.</div>`;
+  return `${internalDemoBadge()}<div class="udr-eyebrow">P6.2 CANONICAL WORKDEFINITION \u00B7 COMPILER STATUS, NOT PERSISTED OUTPUT</div><h2>WorkDefinition</h2><p>${esc(summary.lineageNote||'')}</p>`+
+    section('Compiler certification',kv([['Status',summary.compilerCertification?.status],['Verified by',summary.compilerCertification?.verifiedBy]]))+
+    section('Persisted canonical WorkDefinitions',kv([['Count',summary.persistedCanonicalWorkDefinitions?.count],['Store',summary.persistedCanonicalWorkDefinitions?.store]]))+
+    `<div class="udr-protected-facts">${esc(summary.persistedCanonicalWorkDefinitions?.note||'')}</div>`+
+    section('If a governed compile were persisted',kv([['Expected WorkDefinitions',summary.dryRunExpectation?.expectedWorkDefinitionsIfPersisted],['From leaves',summary.dryRunExpectation?.expectedSourceLeafCount]]));
+}
 function protectedView(p,type){
   const isWd=type==='work-definition';
   const source=isWd?p?.protectedExecution?.workDefinition:p?.protectedExecution?.workDecomposition;
@@ -93,44 +110,57 @@ function protectedView(p,type){
   return `<div class="udr-protected"><div class="udr-lock" aria-hidden="true">⌾</div><div class="udr-eyebrow">PROTECTED EXECUTION IP</div><h2>${label}</h2><p>The public Daughter receives status only. Full ${label} detail is fetched only by a separately authorized execution surface and is never preloaded here.</p>${badge(source?.status||'NOT_AVAILABLE','protected')}<div class="udr-protected-facts">${kv([['Detail included in this browser',source?.detailIncluded?'Yes':'No'],['Authorization boundary','Separate protected capability required']])}</div><button class="udr-authorized-intent" type="button" data-protected-intent="${esc(type)}">Open authorized execution surface</button></div>`;
 }
 
-export function renderDepth(projection,depthId){
+export function renderDepth(projection,depthId,demoData=null){
+  const taskId=projection?.trace?.taskId;
   switch(depthId){
     case 'overview':return overviewView(projection);
     case 'operational-knowledge':return operationalKnowledgeView(projection);
     case 'execution-readiness':return readinessView(projection);
-    case 'work-decomposition':return protectedView(projection,'work-decomposition');
-    case 'work-definition':return protectedView(projection,'work-definition');
+    case 'work-decomposition':return demoData?internalDemoDecompositionView(taskId,demoData.p61):protectedView(projection,'work-decomposition');
+    case 'work-definition':return demoData?internalDemoWorkDefinitionView(taskId,demoData.p62):protectedView(projection,'work-definition');
     default:return '<div class="udr-empty">Unknown presentation depth</div>';
   }
 }
-export function renderShell(projection,activeDepth='overview'){
+export function renderShell(projection,activeDepth='overview',demoData=null){
   const safeDepth=DEPTHS.some(x=>x.id===activeDepth)?activeDepth:'overview';
-  return `<div class="udr-root" data-renderer-version="${UNIVERSAL_DAUGHTER_RENDERER_VERSION}"><div class="udr-tabs" role="tablist" aria-label="A5 execution depth">${DEPTHS.map(d=>`<button type="button" role="tab" aria-selected="${d.id===safeDepth?'true':'false'}" class="${d.id===safeDepth?'active':''} ${d.protected?'protected':''}" data-depth="${d.id}">${d.protected?'<span aria-hidden="true">⌾</span> ':''}${esc(d.label)}</button>`).join('')}</div><div class="udr-panel" role="tabpanel" data-active-depth="${safeDepth}">${renderDepth(projection,safeDepth)}</div></div>`;
+  return `<div class="udr-root" data-renderer-version="${UNIVERSAL_DAUGHTER_RENDERER_VERSION}"><div class="udr-tabs" role="tablist" aria-label="A5 execution depth">${DEPTHS.map(d=>`<button type="button" role="tab" aria-selected="${d.id===safeDepth?'true':'false'}" class="${d.id===safeDepth?'active':''} ${d.protected?'protected':''}" data-depth="${d.id}">${d.protected?'<span aria-hidden="true">⌾</span> ':''}${esc(d.label)}</button>`).join('')}</div><div class="udr-panel" role="tabpanel" data-active-depth="${safeDepth}">${renderDepth(projection,safeDepth,demoData)}</div></div>`;
 }
 export function renderUnavailable(message='Execution-depth presentation is not published for this exact version/task.'){
   return `<div class="udr-state"><div class="udr-eyebrow">FAIL-CLOSED PRESENTATION BOUNDARY</div><h2>Execution depth unavailable</h2><p>${text(message)}</p><p>No alternate Daughter version has been substituted.</p></div>`;
 }
 
-export function attachRendererInteractions(mount,projection){
+export function attachRendererInteractions(mount,projection,demoData=null){
   mount.querySelectorAll('[data-depth]').forEach(btn=>btn.addEventListener('click',()=>{
     const depth=btn.dataset.depth;
-    mount.innerHTML=renderShell(projection,depth);
-    attachRendererInteractions(mount,projection);
+    mount.innerHTML=renderShell(projection,depth,demoData);
+    attachRendererInteractions(mount,projection,demoData);
   }));
   mount.querySelectorAll('[data-protected-intent]').forEach(btn=>btn.addEventListener('click',()=>{
     mount.dispatchEvent(new CustomEvent('atlas:protected-execution-request',{bubbles:true,detail:{type:btn.dataset.protectedIntent,trace:projection?.trace||{}}}));
   }));
 }
 
-export async function bootUniversalDaughterRendererV2({mount,selection,fetchImpl=globalThis.fetch}={}){
+async function loadInternalDemoData(fetchImpl){
+  try{
+    const [p61,p62]=await Promise.all([
+      fetchImpl('/data/demo-internal/p6-1-public-decomposition-summary.json').then(r=>r.ok?r.json():null),
+      fetchImpl('/data/demo-internal/p6-2-compiler-status-demo-summary.json').then(r=>r.ok?r.json():null)
+    ]);
+    return {p61,p62};
+  }catch{return null}
+}
+export async function bootUniversalDaughterRendererV2({mount,selection,fetchImpl=globalThis.fetch,internalDemo=false}={}){
   const target=typeof mount==='string'?document.querySelector(mount):mount;
   if(!target)throw new Error('Universal Daughter Renderer mount not found.');
   const chosen=selection||parseDaughterSelection(globalThis.location?.search||'');
   target.innerHTML='<div class="udr-state"><div class="udr-spinner" aria-hidden="true"></div><h2>Loading governed execution depth…</h2></div>';
   try{
-    const projection=await fetchPublicProjection(chosen,{fetchImpl});
-    target.innerHTML=renderShell(projection,'overview');
-    attachRendererInteractions(target,projection);
+    const [projection,demoData]=await Promise.all([
+      fetchPublicProjection(chosen,{fetchImpl}),
+      internalDemo?loadInternalDemoData(fetchImpl):Promise.resolve(null)
+    ]);
+    target.innerHTML=renderShell(projection,'overview',demoData);
+    attachRendererInteractions(target,projection,demoData);
     return projection;
   }catch(error){
     target.innerHTML=renderUnavailable(error?.message);
