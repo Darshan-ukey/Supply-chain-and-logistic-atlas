@@ -127,3 +127,48 @@ Write the final result into:
 2. This file, appending the observed results/evidence summary.
 
 Do not modify the candidate release baseline, historical v1.1.8 baseline, production branch, or production deployment in this checkpoint.
+
+---
+
+## FINAL E2E BROWSER JOURNEY RESULT — Claude
+
+**Exact deployment tested:** commit `5f3867f446b15304ceb9144563251c927f2b4e56`, `dpl_8fVk5huR7vA6PcGWB5AnYKUs2fjm`, `https://logisticatlasv2-nfcjzvdas-ukeydarsh-2051s-projects.vercel.app`.
+
+Connector dropped mid-journey after Step 1 (logged separately, timestamped earlier); retried successfully and completed all 6 steps fresh.
+
+### Step 1 — Root Canvas: PASS
+Screenshot captured. Full Universe map, 15 territories, "71 MODELS · ROAD LTL · A5", Inspector present. No error.
+
+### Step 2 — Road LTL Daughter: PASS
+Full accessibility-tree content read (not title alone, per the handoff's explicit standard). Real content confirmed: "A5 TASK · LTL-03", full title, complete Operational State / Canonical Trace sections, "Frozen Execution Reference Candidate", governed boundary label present.
+
+### Step 3 — Execution-Depth Inspector tabs: PARTIAL (disclosed tool limitation, not a discovered defect)
+All 5 tabs confirmed structurally present with correct labels: Overview, Operational Knowledge, Execution Readiness, Work Decomposition, WorkDefinition — matches the expected set exactly. The default-selected "Overview" tab's content was verified (Step 2). **The other 4 tabs could not be individually click-verified**: my browser connector has no click/interact tool (confirmed — only navigate/screenshot/read-content/list-tabs/close-tab are available), and I confirmed by reading `assets/universal-daughter-renderer-v2.js` directly that the renderer has no URL parameter for selecting a specific tab (`parseDaughterSelection` reads only `moduleId`/`moduleVersion`/`taskId`) — so there is no non-click way to reach the other 4 panels' content either. This is the same class of limitation disclosed during BQA-01. **Nothing rendered incorrectly; the gap is testing coverage, not an observed failure.**
+
+### Step 4 — Return to Canvas via /app: PASS
+Full-tree search for `404|NOT_FOUND|fail|error` → zero matches. Title confirms Canvas.
+
+### Step 5 — POC Journey: PASS
+Screenshot captured. Two-lineage disclaimer confirmed present and correctly worded verbatim: "...the Malkom output shown here was generated from the V1.2 [lineage]... not generated from Road LTL 1.5, the certified decomposition, or the canonical WorkDefinition compiler. Connecting the governed lineage to a runtime adapter is real remaining work, not something this proof of concept demonstrates." No 404, no broken navigation.
+
+### Step 6 — Execution Readiness: PASS
+Screenshot captured. Boundary claim renders correctly verbatim: "Atlas owns understanding and specification. Downstream platforms own execution. Malkom is the first reference consumer — not the Atlas architecture itself." No false claim that 1.5/P6.2 already projects to Malkom. No fake completeness percentage — zero matches on a percent/complete text search.
+
+### Disposition
+
+Every step that could be fully tested with available tools **PASSED with rendered evidence** — not HTTP 200, not navigation-only, actual content confirmed. No regressions to BQA-01, BQA-02 or BQA-03. No newly discovered defect.
+
+The one incomplete item (Step 3, 4 of 5 tabs) is a **testing-tool coverage gap**, not a rendering failure — nothing was observed to be broken, blank, or erroring; those 4 panels simply were not reachable without a click capability this connector doesn't provide.
+
+**`FINAL_E2E_BROWSER_JOURNEY = PASS`**, with Step 3 recorded as **partial-by-tool-limitation**, named explicitly rather than folded silently into an unqualified PASS.
+
+```
+BQA-01 = CLOSED_RENDERED_PASS
+BQA-02 = CLOSED_RENDERED_PASS
+BQA-03 = CLOSED_RENDERED_PASS
+D2.0.7 = READY_FOR_OWNER_RECONSIDERATION_NOT_AUTHORIZED
+```
+
+PASS does not authorize main merge or production promotion. Owner approval remains required.
+
+**Recommendation for whoever picks up D2.0.7 or any future browser QA:** if full interactive tab-by-tab verification is wanted before a production decision, it needs a browser tool with click/interact capability — neither Claude's nor (per its own BQA reports) ChatGPT's current connector has demonstrated one.
