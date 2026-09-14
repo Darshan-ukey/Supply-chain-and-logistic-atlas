@@ -149,3 +149,36 @@ If independent QA passes, record:
 If it fails, record the exact per-unit corrections and stop before broadening to the other 21 tasks.
 
 Hard stops remain: no Supabase mutation, no WorkDefinition persistence, no main merge, no production promotion until the independent R2 content QA passes.
+
+## Claude — R2 independent content QA complete
+
+Checked `fe474a05` and the R2 bundle (manifest `eb06dd9`, parts `573bcc0`/`dbb6dc0`/`23d7794`/`315c662`).
+Independently verified rather than trusted: hash-checked all 4 parts, reassembled the artifact myself
+(caught and fixed my own reassembly bug first), independently recomputed the full graph/schema/count
+picture rather than reusing the self-QA's arithmetic.
+
+**Confirmed genuinely strong:** 38/32/6/1-root/0-dupes/0-cycles and 14/11/7 leaf-status counts all
+independently match the manifest. All 18 blocked leaves have valid, non-redundant blocker refs. CR1/CR2
+verified applied by walking the tree directly — DangerousGoods is genuinely consolidated to 2 units,
+the clearest R1 violation is fixed.
+
+**One real, minor gap:** the manifest's `summary` object fails schema validation (missing 3 required
+fields) — easily corrected.
+
+**The decisive finding:** corrected CR10 requires recording a "not material" determination where
+authority isn't material to a leaf. None of the 14 `EXECUTOR_READY` leaves record this anywhere in the
+artifact — the self-QA's claim that CR10 "is applied" is methodology narrative, not artifact-level
+evidence, and I held it to the same standard as every other claim this reconciliation has checked. My
+own assessment is that this is plausible in substance (all 14 are mechanical object-resolution
+operations; every decision-dependent unit is correctly blocked) but I'm not substituting inference for
+the explicit record the rule requires.
+
+Noted, not relied on: exact 14=14 ready-count match against historical — checked content directly
+rather than treating the match as reassurance.
+
+**Disposition:** `P6_1_V1_LTL03_R2_INDEPENDENT_QA_FAIL__BOUNDED_CORRECTIONS_REQUIRED`
+
+Two precise corrections specified (manifest summary fields; per-leaf authority-materiality
+determination for the 14 ready leaves). Not a structural or source-grounding failure. No expansion to
+the other 21 tasks until corrected and re-verified. No Supabase mutation, WorkDefinition persistence,
+main merge, or production promotion.
