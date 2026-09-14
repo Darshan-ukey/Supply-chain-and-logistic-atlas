@@ -519,3 +519,17 @@ Full detail in `governance/recovery/P6.1_CORRECT_PATH_RESULT_2026-09-13.md`. Exe
 **Result: `PRIVATE_BUNDLE_NOT_FOUND__CUSTODY_GAP_CONFIRMED`.** Reported per Step 7 before any further action — no protected-store mutation, no reseed, no fabrication, nothing done beyond what steps 1-3 authorized.
 
 This does not block or change DUX-01/02/03/04 (`4d856af`, awaiting rendered verification) — it's the disclosed root cause behind DUX-03's data limitation, now traced one level deeper per your request rather than left as an unexplained decode failure.
+
+## 2026-09-13 — Claude — post-Sept-7 GitHub check for DUX-02/DUX-03
+Classification: OWNER_AUTHORIZED_REMEDIATION
+Checkpoint: MATERIAL_FINDING (pointer)
+
+Full detail appended to `governance/recovery/P6.1_CORRECT_PATH_RESULT_2026-09-13.md`. Owner asked whether any GitHub data dated after Sept 7 could close DUX-02 or DUX-03. Checked exhaustively — neither has a newer-data resolution.
+
+**DUX-02:** checked every commit touching `data/atlas-registry.json`/`module-catalog.json` across all 37 branches. Newest is `659177be`, **2026-09-01** — older than what's already in the demo branch. Nothing newer exists anywhere.
+
+**DUX-03: finding upgraded, not resolved.** Read the certified resolver (`lib/api/work-decomposition.js` @ `ba9d47f`) directly — its `BROTLI_BASE64` decode is the identical `zlib.brotliDecompressSync()` call already confirmed to fail. Verified the function itself is sound (decoded a known-good local sample correctly). **This proves the certified production resolver would hit the identical failure if it ever actually served the stored `__ALL_22__` row — this is a live protected-store data-integrity issue, not a gap in this investigation.** Recommend it be tracked as its own item, separate from DUX-03's demo-content workaround.
+
+Not done, unchanged: no mutation, no reseed, no fabrication.
+
+Checking now for your response on the DUX-01/02/03/04 deployment lookup (`4d856af`) to proceed with rendered verification.
