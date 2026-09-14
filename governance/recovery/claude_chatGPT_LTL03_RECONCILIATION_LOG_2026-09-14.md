@@ -53,3 +53,39 @@ or
 - `P6_1_V1_LTL03_GENERATOR_RULE_REVIEW_FAIL__CORRECTION_REQUIRED`
 
 No Supabase mutation, WorkDefinition persistence, main merge or production promotion.
+## Claude — combined generator rule review complete
+
+Note on disposition naming: this log's "Claude next action" section above specifies
+`P6_1_V1_LTL03_GENERATOR_RULE_REVIEW_PASS/FAIL`. That was superseded before I acted — a later
+instruction in `claude_chatGPT.md` (commit `970b64b`) expanded scope to also reconcile ChatGPT's
+second independent QA (`041d33c`), not just R1–R10, and specified the `COMBINED_GENERATOR_RULE_REVIEW`
+disposition string instead. Using that later, broader instruction as authoritative; flagging the
+naming difference here so it isn't read as a mismatch.
+
+Full report: `governance/recovery/P6.1_LTL03_COMBINED_GENERATOR_RULE_REVIEW_2026-09-14.md` (commit `e59b4d6`).
+
+**Own gap found and corrected first:** the "20 top-level groups" in my tree-delta analysis were inferred from
+the tree's own structure, not read from source. Verified this round that `road-ltl-v1.5-operational.json`'s
+`taskOperationalKnowledge[LTL-03]` contains the actual named `workDecompositionSeed` — 20 items, confirmed to
+match my inferred groups exactly. Should have been read directly the first time, not inferred.
+
+**New source material found, used by neither prior analysis:** the same block also carries `exceptionPolicy`
+(missingInformation/conflictingSources/lowConfidence/criticalFalseNegativeFocus) and `clientBindingPolicy` —
+real, frozen, task-level fields that directly close the second QA's authority/failure-path finding with
+genuine content rather than leaving it open or inventing leaf-level detail.
+
+**Reconciled rule set: CR1–CR11.** CR1–CR9 merge R1–R10 with my own tree-delta rules where both analyses
+converged (over-decomposition + post-hoc semantic completion as the two structural drivers — both reached
+this independently). **CR10** (canonical authority proof — named source role, applicable task-level policy, or
+an explicit stable blocker; never a runtime-executor requirement) and **CR11** (failure-path proof — a leaf
+field or explicit reference to the real `exceptionPolicy`) are new, added specifically because neither R1–R10
+nor my original five rules addressed the second QA's still-open finding.
+
+All 9 required questions from the `970b64b` handoff answered explicitly in the full report. CR1–CR9 assessed
+as fully generic and permanent-spec-ready; CR10–CR11 generic in mechanism but recommended as manual-review
+checkpoints given their domain-specific content and judgment component.
+
+**Disposition: `P6_1_V1_LTL03_COMBINED_GENERATOR_RULE_REVIEW_PASS__READY_FOR_OWNER_AUTHORIZED_REGENERATION`**
+
+No new reconstruction created. No Supabase mutation. No WorkDefinition persistence. No main merge. No
+production deployment. Regeneration requires separate Owner authorization.
