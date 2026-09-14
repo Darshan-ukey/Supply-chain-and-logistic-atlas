@@ -589,3 +589,21 @@ Full report: `governance/recovery/P6.1_LTL03_TREE_DELTA_ANALYSIS_2026-09-14.md` 
 No Supabase mutation. No WorkDefinition persistence. No main merge. No production deployment. No new reconstruction artifact created this round — analysis only, per instruction to report back first.
 
 **Requesting your independent review of the 5 proposed rules before any regeneration proceeds**, per the Owner's instruction.
+
+## 2026-09-14 — Claude — CORRECTION: missed the second independent QA result
+Classification: MATERIAL_FINDING / PROCESS_CORRECTION
+Checkpoint: MATERIAL_FINDING
+
+Owner flagged that my forensic tree-delta analysis did not reference or reconcile with `governance/recovery/P6.1_LTL03_SECOND_INDEPENDENT_QA_RESULT_2026-09-14.md` (commit `041d33c`, ChatGPT's second independent QA of my `dae0a31` correction). I had not read this document before writing the delta analysis. Correcting that now.
+
+**What the second QA found, independently reconfirmed just now:** my `dae0a31` correction closed the *field-presence* gap from the first QA (all 38 ready leaves do carry trigger/action/evidence/outputState) but did not close the *full* V1 executability test. Direct, verifiable finding: **zero** occurrences anywhere in the artifact of `entryConditions`, `branchTransitions`, `temporalConstraints`, or `fallbackIfBlocked` — all schema-supported fields the frozen Executability Standard requires where material. No leaf encodes a failure/material-alternate branch, only a success `outputState`. And critically: **no leaf establishes resolved executor authority/role, and none carries an explicit authority-binding requirement** — a mandatory V1 dimension distinct from the "runtime certification" over-reading that `2291905`/the historical reconciliation correctly rejected. The reconciliation resolved *what authority means* under V1 (canonical, not runtime); it did not resolve *whether canonical authority is bound* for these leaves — it isn't, anywhere in the tree.
+
+**How this relates to my tree-delta analysis (`d22dc72`):** that analysis is still valid on its own question — which leaves are over-decomposed, and which readiness classifications rest on my sequence-inferred synthesis versus genuine per-unit source grounding. But it did not address this second, orthogonal defect. Concretely: even my 13 `KEEP_READY` leaves (the ones I judged most strongly source-grounded, e.g. `WD-LTL03-09D`/`09E`) still lack authority-binding and failure-branch encoding — they are not exempt from the second QA's finding just because their trigger/action content is solid.
+
+**Combined correction path for any future regeneration, both findings together:**
+1. Apply the tree-delta analysis's structural rules (source-specificity gate on splits, no sequence-inferred triggers, the DangerousGoods "one family" merge).
+2. For every leaf that survives as `EXECUTOR_READY` after that pass, additionally and separately prove or bind: pre-state/entry conditions, a material failure/alternate branch transition (not just success), exception/escalation behavior where applicable, timing where applicable, and executor authority — either resolved from source or represented as an explicit stable binding requirement, per the second QA's required correction path. Where source does not support this, fail closed to `BLOCKED_BY_KNOWLEDGE_GAP`/`BLOCKED_BY_CLIENT_BINDING` rather than leaving it implicit.
+
+**Status:** neither `dae0a31` nor any subsequent artifact should be treated as passing. Both QA rounds' findings stand together. No new correction attempted in this entry — flagging the gap and reconciling the record before any further action, since another premature "fix" without addressing the authority/branch-transition dimension would repeat the same mistake.
+
+No Supabase mutation, no WorkDefinition persistence, no main merge, no production deployment.
