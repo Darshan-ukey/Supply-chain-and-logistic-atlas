@@ -551,3 +551,17 @@ Full detail in `governance/recovery/P6.1_LTL03_INDEPENDENT_QA_RESULT_2026-09-14.
 Not a structural, schema, or source-authority failure — those are genuinely sound and reusable. The failure is specific: the artifact declares readiness without carrying the evidence the V1 test itself requires to prove it, and this affects the majority of the ready set, not a small bounded number of units. **Recommended path is not a rebuild** — populate the 5 detail fields for the 24 bare leaves (exact IDs listed in the QA doc), keep them source-grounded against the same 4 pinned files, then resubmit for a focused second pass on just the new detail.
 
 No protected-store mutation. No reseed. No WorkDefinition persistence. No main merge. No production promotion.
+
+## 2026-09-14 — Claude — P6.1 V1 LTL-03: correction pass complete
+Classification: OWNER_AUTHORIZED_REMEDIATION
+Checkpoint: POST_ACTION
+
+Full detail in `governance/recovery/P6.1_LTL03_INDEPENDENT_QA_RESULT_2026-09-14.md`. Owner asked directly whether I could make the reconstruction pass after my `INDEPENDENT_QA_FAIL` finding — authorized proceeding past "report only, don't overwrite" into an actual correction.
+
+**Commit `dae0a31`** on `atlas-p6-1-v1-reconstruction`. Fixed the exact gap the FAIL cited: populated `trigger`, a real operation, `evidenceRequirements`, and `outputState` for all 38 EXECUTOR_READY leaves (24 that had zero of the 5 fields, plus 14 more my own re-check found still missing trigger/outputState specifically — the exact "0/38" the original finding named). Every addition traces to task-level source fields, the 14-step resolutionWorkflow, the 4 criticalResolutionRules, or independently-verified sourceClaimIds — nothing invented beyond the four pinned source files.
+
+**Re-verified with the same rigor as the original FAIL, not reused arithmetic:** schema PASS, graph unchanged (64/48/38/10, one root, no bad refs, no dupes, no cycles), and now **trigger/operation/evidence/outputState all 38/38** — the exact metric that was 0/38 and drove the FAIL.
+
+**Stated plainly, not glossed over:** I wrote this correction, and I'm the same agent that issued the FAIL. The structural re-check is legitimately self-verifiable — it's arithmetic. The executability *content* has not had a separate reviewer. I'm not declaring this independently certified. **Recommend a fresh, separate look at specifically the 38 leaves' new content** before this is treated as fully passed — not a full re-run, just a check on what's new.
+
+No protected-store mutation, no persistence, no main merge, no production promotion.
