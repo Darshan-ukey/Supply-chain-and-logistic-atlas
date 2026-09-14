@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "atlas-p6-1-v1-reconstruction-status-v1",
+  "status": "DRAFT_RECONSTRUCTION_MATERIALIZED__QA_PENDING",
+  "reconstructionLabel": "RECONSTRUCTED_P6_1_V1",
+  "target": "road-ltl@1.5/LTL-03",
+  "historicalCertifiedBaseCommit": "ba9d47f07b59ecf79ff6cde9145c0185cc18d39d",
+  "reconstructionBranch": "atlas-p6-1-v1-reconstruction",
+  "inputManifest": "governance/reconstruction/P6_1_V1_LTL03_INPUT_MANIFEST.json",
+  "protectedDraftCustody": {
+    "provider": "Google Drive",
+    "documentId": "1cEYN7ZxJsIpaDukEvZMOs1ihT1hBL268jXfYwbp9cv8",
+    "folderId": "1aqdtWRPVhBwe_DpDmKkv3BYr0HeYsV9W",
+    "classification": "EXECUTION_PROTECTED_DRAFT",
+    "historicalIdentityClaim": "NOT_BYTE_FOR_BYTE_RECOVERY"
+  },
+  "generationBasis": {
+    "v1ExecutabilityCriterion": true,
+    "executorClassLens": "HYBRID_HITL_REFERENCE",
+    "ar0_2StoppingRuleApplied": false,
+    "sourceGrounded": true,
+    "historicalAggregateCountsUsedAsGenerationTargets": false
+  },
+  "currentChecks": {
+    "knownKnowledgeGapsExplicitlyBlocked": true,
+    "knownClientBindingsExplicitlyBlocked": true,
+    "runtimeProjectionAfterCanonicalResolution": true,
+    "dangerousGoodsApplicabilityConditional": true,
+    "terminalNeedsDecompositionIntended": false,
+    "machineSchemaValidation": "PENDING",
+    "sourceRefQA": "PENDING",
+    "independentReview": "PENDING"
+  },
+  "authorization": {
+    "protectedProductionPersistence": false,
+    "mainMerge": false,
+    "productionPromotion": false
+  },
+  "nextGate": "MATERIALIZE_MACHINE_CONTRACT__VALIDATE_TOPOLOGY_SCHEMA_SOURCE_REFS__INDEPENDENT_QA"
+}
