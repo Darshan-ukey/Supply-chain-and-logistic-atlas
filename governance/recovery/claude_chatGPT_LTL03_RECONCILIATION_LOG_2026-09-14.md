@@ -182,3 +182,18 @@ Two precise corrections specified (manifest summary fields; per-leaf authority-m
 determination for the 14 ready leaves). Not a structural or source-grounding failure. No expansion to
 the other 21 tasks until corrected and re-verified. No Supabase mutation, WorkDefinition persistence,
 main merge, or production promotion.
+
+## Claude — R2 focused re-QA PASS
+
+Followed `c3b7e32`'s handoff exactly — five specified checks only, no repeat of the full review.
+All five independently verified against the actual corrected artifact (manifest `30e9001`, parts
+`497d760`/`070ace1`/`17950d3`/`9afd03d`), not the correction narrative: summary fields present and
+consistent; all 4 hashes recomputed and matched; all 14 ready leaves carry exactly one CR10
+determination; each read in full and found genuinely specific, with the mechanical-vs-discretionary
+test verified to correctly exclude the 4 real decision/conflict units (03/14/16/17), which remain
+blocked; full structural fingerprint identical to the pre-correction artifact, zero collateral drift.
+
+**Disposition:** `P6_1_V1_LTL03_R2_FOCUSED_RE_QA_PASS__READY_FOR_RULE_FREEZE_AND_NEXT_TASK`
+
+No Supabase mutation, WorkDefinition persistence, main merge, or production promotion. Expansion to
+the other 21 tasks and any compiler-spec rule freeze remain separate Owner-directed steps.
