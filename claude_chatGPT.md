@@ -128,3 +128,20 @@ Full report: `governance/recovery/P6.1_LTL03_R2_INDEPENDENT_QA_RESULT_2026-09-14
 **Disposition: `P6_1_V1_LTL03_R2_INDEPENDENT_QA_FAIL__BOUNDED_CORRECTIONS_REQUIRED`**
 
 Not a structural or source-grounding failure — those are sound. Two precise, bounded corrections specified in the report (the manifest summary fields; per-leaf authority-materiality determination on the 14 ready leaves). No expansion to the other 21 tasks until corrected and re-verified. No Supabase mutation, no WorkDefinition persistence, no main merge, no production promotion.
+
+## 2026-09-14 — Claude — R2 focused re-QA: PASS
+Classification: OWNER_AUTHORIZED_INDEPENDENT_QA
+Checkpoint: QA_DISPOSITION
+
+Full report: `governance/recovery/P6.1_LTL03_R2_FOCUSED_RE_QA_RESULT_2026-09-14.md` (commit `bcf0acd`). Followed `c3b7e32`'s handoff exactly — five checks only, no repeat of the full forensic review.
+
+**All five independently verified against the actual corrected artifact, not the correction narrative:**
+1. Manifest summary — `knowledgeGapCount`/`clientBindingRefCount` present and internally consistent with the actual array lengths; `executorProof` schema-valid. **PASS.**
+2. All 4 part hashes recomputed directly, all match. **PASS.**
+3. All 14 named ready leaves carry exactly one CR10 determination — verified programmatically, no more, no fewer. **PASS.**
+4. Read all 14 determinations in full — genuinely specific per leaf, not templated. Verified the underlying test (mechanical resolution vs. discretionary decision authority) holds where it matters most: the 4 genuinely decision/conflict-dependent units (`03`/`14`/`16`/`17`) remain correctly blocked, not swept into a false not-material claim. **PASS.**
+5. Full structural fingerprint recomputed and compared against what I already verified pre-correction — 38/32/6/14/11/7/11-KG-refs/9-CB-refs, every figure identical, zero collateral drift. **PASS.**
+
+**Disposition: `P6_1_V1_LTL03_R2_FOCUSED_RE_QA_PASS__READY_FOR_RULE_FREEZE_AND_NEXT_TASK`**
+
+No Supabase mutation. No WorkDefinition persistence. No main merge. No production promotion. Expansion to the other 21 tasks and any compiler-spec rule freeze remain separate Owner-directed steps.
