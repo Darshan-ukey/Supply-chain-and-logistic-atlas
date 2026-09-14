@@ -23,22 +23,50 @@ The full 22-task totals remain 603 / 444 / 185 / 163 / 96.
 
 This means the current reconstruction is +21 units, +11 leaves, +24 ready leaves, -1 client blocker, -12 knowledge blockers versus the certified LTL-03 historical profile.
 
-## What to do next
-Do NOT force the historical counts. Use them as evidence that the current compiler/reconstruction semantics are drifting.
+## Tree-delta analysis now complete
+ChatGPT completed the requested forensic analysis in:
+`governance/recovery/P6.1_LTL03_TREE_DELTA_ANALYSIS_RESULT_2026-09-14.md`
+Governance commit: `3b07e253cd17af3e5883dc4dd9b58ead004c5b49`.
 
-Independently analyze the 64-unit tree and identify:
-1. over-decomposition caused by workflow/lexical splitting not supported by historical P6.1 rules;
-2. leaves marked ready using detail added during the 2026-09-14 correction rather than detail present in the frozen pre-P6.1 source;
-3. unresolved canonical semantics that should be knowledge-gap blockers under the frozen V1 contract;
-4. client-specific values/configuration that should be client-binding blockers;
-5. the smallest deterministic rule corrections that explain the historical shape without hard-coding counts.
-
-Use exact frozen sources and standards only. Return a delta table with columns:
-`currentWorkUnitId | currentStatus | sourceSupport | historicalRuleIssue | proposedDisposition | reason`.
-
-Then report whether a source-grounded deterministic regeneration can reasonably converge toward the historical semantic shape. Do not mutate protected runtime state, persist WorkDefinitions, merge main, or promote production.
-
-Required disposition string:
+Disposition:
 `P6_1_V1_LTL03_TREE_DELTA_ANALYSIS_COMPLETE__READY_FOR_REGENERATION`
+
+Decisive finding:
+- historical 43 units / 37 leaves => 6 internal nodes total = TASK_ROOT + only 5 additional composite units;
+- current 64 / 48 => 16 internal nodes total = TASK_ROOT + 15 composite units;
+- therefore current reconstruction over-expanded the 20-step frozen `workDecompositionSeed` and created 10 extra internal nodes / 21 extra total units.
+
+Readiness drift is separate but related: generated elaboration added during reconstruction cannot itself become new source authority proving `EXECUTOR_READY`. Readiness must be proven from pinned pre-generation governed source.
+
+## Corrected deterministic rules to review
+The result defines R1-R10. Key controls:
+1. preserve each `workDecompositionSeed` item as a primary unit;
+2. split only when frozen source contains genuine child-level execution contracts;
+3. no lexical/object-model/claim-per-unit decomposition;
+4. source-only readiness proof;
+5. sequence inference may establish ordering, not missing operational semantics;
+6. missing child-level execution semantics fail closed;
+7. propagate client-binding dependencies instead of creating post-binding ready inflation;
+8. generic validation categories are not executable without actual validation criteria;
+9. missing authority/source precedence is a knowledge gap;
+10. historical counts are validation evidence, never generation targets.
+
+## Next action for Claude
+Do NOT continue QA on `2291905...` and do NOT edit individual leaves of `dae0a31`.
+
+Independently review R1-R10 against:
+- frozen Executability & Recursive Decomposition Standard V1;
+- frozen Canonical Work Decomposition Contract V1;
+- Road LTL 1.5;
+- Operational Knowledge v2;
+- BOL Information Resolution baseline;
+- source claims;
+- historical per-task certification.
+
+Return either:
+`P6_1_V1_LTL03_GENERATOR_RULE_REVIEW_PASS__REGENERATION_AUTHORIZED_BY_OWNER_REQUIRED`
 or
-`P6_1_V1_LTL03_TREE_DELTA_ANALYSIS_INCONCLUSIVE__STOP`.
+`P6_1_V1_LTL03_GENERATOR_RULE_REVIEW_FAIL__CORRECTION_REQUIRED`
+with exact rule-level objections.
+
+Do not regenerate until the rule review passes. Do not mutate protected runtime state, persist WorkDefinitions, merge main, or promote production.
