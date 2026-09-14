@@ -30,25 +30,25 @@
     {
       "part": 1,
       "count": 10,
-      "sha256": "e7314101197b2934498b8317fe3c0a2fc14358c44e771564e68f57bc003b2b52",
+      "sha256": "fa3046bd1419dcb641f6fc7ea9b464247da7a8e73ba2f39e931c78bf556e051b",
       "path": "governance/baselines/p6_1_v1_ltl03_r2/units-part-1.json"
     },
     {
       "part": 2,
       "count": 10,
-      "sha256": "ce92fbc7674ddd06c63b0cc7a4568daa9c193c4be83266a149ea7c47cbb90799",
+      "sha256": "65628a674b5a56ad8929119ad59d8f6b66d147b77a381e169724e407c5083462",
       "path": "governance/baselines/p6_1_v1_ltl03_r2/units-part-2.json"
     },
     {
       "part": 3,
       "count": 10,
-      "sha256": "810321f2a8c78d815bf7eac1e3dbea3b93ead61c3407c12a9993dfba6523b54d",
+      "sha256": "f1ef0eda5771f7f11e7bd3a537bac1109d30ce263a2e9983035bc1419723b28f",
       "path": "governance/baselines/p6_1_v1_ltl03_r2/units-part-3.json"
     },
     {
       "part": 4,
       "count": 8,
-      "sha256": "98bbfec9343aa1194fae82d1c381de54b548aa1b9383253f3dcdebc285bdd559",
+      "sha256": "7d5023282b5335901051929d3f230558b3fa3bd403aa0271ee83e27268ee0974",
       "path": "governance/baselines/p6_1_v1_ltl03_r2/units-part-4.json"
     }
   ],
@@ -61,6 +61,8 @@
       "BLOCKED_BY_KNOWLEDGE_GAP": 11,
       "BLOCKED_BY_CLIENT_BINDING": 7
     },
+    "knowledgeGapCount": 11,
+    "clientBindingRefCount": 9,
     "requiredKnowledgeGaps": [
       "KG-LTL03-CODE-SEMANTICS",
       "KG-LTL03-DOCUMENT-REGIME-CLASSIFICATION",
@@ -85,6 +87,7 @@
       "CB-LTL03-TARGET-SCHEMA-MAPPING",
       "CB-LTL03-TIME-CRITICAL-CODING"
     ],
+    "executorProof": "All 32 terminal leaves are explicitly classified. Each of the 14 EXECUTOR_READY leaves carries source-grounded execution content plus an explicit CR10 authority-materiality determination recorded in schema-compatible evidenceRequirements; blocked leaves carry stable knowledge-gap or client-binding references.",
     "historicalComparisonEvidenceOnly": {
       "workUnitCount": 43,
       "leafCount": 37,
