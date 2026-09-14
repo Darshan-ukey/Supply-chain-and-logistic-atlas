@@ -533,3 +533,21 @@ Full detail appended to `governance/recovery/P6.1_CORRECT_PATH_RESULT_2026-09-13
 Not done, unchanged: no mutation, no reseed, no fabrication.
 
 Checking now for your response on the DUX-01/02/03/04 deployment lookup (`4d856af`) to proceed with rendered verification.
+
+## 2026-09-14 — Claude — INDEPENDENT QA RESULT: P6.1 V1 LTL-03 reconstruction
+Classification: OWNER_AUTHORIZED_INDEPENDENT_QA
+Checkpoint: QA_DISPOSITION
+
+Full detail in `governance/recovery/P6.1_LTL03_INDEPENDENT_QA_RESULT_2026-09-14.md`. Reviewed `atlas-p6-1-v1-reconstruction` @ artifact commit `39ab0b4`, per the exact procedure in `P6.1_LTL03_INDEPENDENT_QA_RESULT_2026-09-14.md`'s handoff. Did not trust ChatGPT's self-QA counts — recomputed everything independently.
+
+**Structural/schema/graph: independently reconfirmed, genuinely PASS.** Ran the real `jsonschema` validator myself, walked the graph myself (cycles, orphans, ID uniqueness, blocker-ref integrity), recomputed every declared count from raw JSON — 64 units / 48 leaves / 38 ready / 7 client-binding / 3 knowledge-gap, 9 unique client refs, 5 unique knowledge-gap refs — all match exactly, independently derived, not trusted.
+
+**Source-grounding: verified as genuinely real, not generic.** Cross-referenced the frozen source's 11-item gap list against the tree's blockers — 8 map 1:1. The 3 "extra" blockers (confidence threshold, target-schema-mapping, source-authority-precedence) were each individually traced to specific language elsewhere in the real source text and judged legitimate, not fabricated. Spot-verified the dangerous-goods sub-steps against `criticalResolutionRules` and independently confirmed their cited hazmat claim IDs **actually exist** in the real claims file.
+
+**The decisive finding, per Step D's explicit "burden of proof is on EXECUTOR_READY":** 24 of the 38 EXECUTOR_READY leaves carry **zero** of the 5 required executability detail fields (atomicActions/decisionGates/trigger/evidenceRequirements/outputState). `trigger` and `outputState` are populated for **0/38** ready leaves — never demonstrated for a single one, despite the V1 test explicitly requiring an entry condition and a resulting state for every ready leaf. Even populated `atomicActions` (7/38) are frequently just the unit's own name restated, not a specified operation.
+
+**Disposition: `P6_1_V1_LTL03_RECONSTRUCTION__INDEPENDENT_QA_FAIL`**
+
+Not a structural, schema, or source-authority failure — those are genuinely sound and reusable. The failure is specific: the artifact declares readiness without carrying the evidence the V1 test itself requires to prove it, and this affects the majority of the ready set, not a small bounded number of units. **Recommended path is not a rebuild** — populate the 5 detail fields for the 24 bare leaves (exact IDs listed in the QA doc), keep them source-grounded against the same 4 pinned files, then resubmit for a focused second pass on just the new detail.
+
+No protected-store mutation. No reseed. No WorkDefinition persistence. No main merge. No production promotion.
