@@ -473,3 +473,35 @@ Files expected to change: `index.html` (correct Inspector/registry path, once lo
 Current disposition carried forward unchanged: `DUX-01 = FAILED_RENDERED_OWNER_VERIFIED`, `DUX-02 = FAILED_RENDERED_OWNER_VERIFIED`, `DUX-03 = FAILED_DEMO_OBJECTIVE_OWNER_VERIFIED`, `D2.0.7 = BLOCKED_PENDING_DUX_REMEDIATION`.
 
 Next exact action: full linear trace of `index.html` to find the actual active Inspector/registry code path.
+
+## 2026-09-13 — Claude — DUX-01/02/03/04 REMEDIATION COMPLETE, PUSHED
+Classification: OWNER_AUTHORIZED_REMEDIATION
+Checkpoint: POST_ACTION (code) / MATERIAL_FINDING (request)
+
+**Commit:** `4d856af` on `atlas-v2-demo-2026-09-14` (rebased cleanly onto ChatGPT's concurrent `6065a89`). Full detail in the commit message; summary below.
+
+**DUX-01 — real root cause found this time.** Read `index.html` linearly (not targeted greps) and found a 13-link `renderInspector` override chain I'd previously only traced partway through. Root cause: selecting a task via "▶ Play execution" sets `S.playback.enabled=true`, routing to a **completely separate** `renderPlaybackInspector()` function that returns before the base inspector — where my first fix lived — is ever reached. Explains exactly the Owner's observation. Fixed by adding the button to both paths, routing with `&internalDemo=1` per the updated instruction.
+
+**DUX-02 — defensive fix, root cause not conclusively located.** Traced the registry-render chain fully (only one reassignment, unlike DUX-01) and independently re-simulated the sync logic against the real files — logically correct in isolation. Checked for a stale inline cache (`window.__ATLAS_INLINE15__`) — referenced but never defined anywhere, dead code. Without click capability to reproduce the Owner's exact observation, I could not pinpoint the mechanism. Applied the most defensible fix regardless: forced `cache:'no-store'` + cache-busting specifically for the catalog and registry fetches, narrowly scoped.
+
+**DUX-03 — a genuine finding, disclosed rather than worked around.** Followed the Owner's exact priority order: attempted to run the real compiler against the real protected P6.1 payload. Fetched it directly from Supabase, **independently verified the base64 text is byte-identical to the stored value via SHA-256 hash comparison** (DB-side `digest()` vs local computation — exact match, 37,672 chars). Despite confirmed-correct transport, the payload fails to decode under **all 7 strategies the real compile script itself tries**, plus Python's independent brotli implementation — 8 attempts, 2 languages, all failing identically. **This is a genuine data/encoding issue in the protected store, not something I introduced or mis-transported.**
+
+Given that blocker, did not fabricate per-unit decomposition or a fake compiled WorkDefinition — deepened both views using only material that's genuinely real: a "shape of this task's tree" breakdown derived by simple arithmetic on the already-verified totals (43−37−1=5 intermediate units for LTL-03 — true, not invented), with an honest disclosure that individual unit names require the protected store; and the compiler's **real output field schema**, transcribed directly from `workdefinition-compiler.js`'s actual `compileLeaf()` function, clearly labeled as schema not as a fabricated instance. Added the exact "Runtime consumption / projection" wording verbatim.
+
+**DUX-04 — added.** Plain relative-URL link to `/atlas-execution-readiness` in the stable top-right nav, inserted first (not last, so unaffected by the existing `:last-child{display:none}` responsive rule). No existing nav touched.
+
+**Regression: zero, confirmed by diff.** Ran the full 39-file test sweep against this working copy and separately against the untouched pre-remediation baseline (`5f3867f`) — **the PASS/FAIL result for every single file is byte-identical between the two**, confirmed via `diff`. Every existing failure is unchanged and pre-existing. `tests/d2-0-6-full-state-certification.mjs`: 17/17 PASS.
+
+**Process note:** first commit attempt accidentally included 4 P6.2 compiler files I'd fetched only for reference (to read the real schema) — caught it before it stayed pushed, reset and recommitted with exactly the 4 intended files.
+
+**Request: exact deployment ID/URL for `4d856af`**, same pattern as every round today. Once READY, I'll run the DUX-specific rendered checks plus the full regression set from the original handoff.
+
+Gate state:
+```
+BQA-01/02/03 = CLOSED_RENDERED_PASS (unchanged)
+DUX-01 = FIX_COMMITTED_RENDERED_PENDING
+DUX-02 = FIX_COMMITTED_RENDERED_PENDING (defensive, root cause undetermined)
+DUX-03 = DEEPENED_HONESTLY_RENDERED_PENDING (one real data blocker disclosed, not resolved)
+DUX-04 = FIX_COMMITTED_RENDERED_PENDING
+D2.0.7 = BLOCKED_PENDING_DUX_REMEDIATION (unchanged)
+```
