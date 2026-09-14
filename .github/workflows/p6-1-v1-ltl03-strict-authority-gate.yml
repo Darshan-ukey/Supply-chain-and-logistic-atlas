@@ -1,0 +1,37 @@
+name: P6.1 V1 LTL-03 strict authority gate
+
+on:
+  push:
+    branches:
+      - atlas-p6-1-v1-reconstruction
+    paths:
+      - scripts/p6-1-v1-ltl03-strict-authority-gate.mjs
+      - .github/workflows/p6-1-v1-ltl03-strict-authority-gate.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: atlas-p6-1-v1-reconstruction
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply strict P6.1 V1 executor-authority gate
+        run: node scripts/p6-1-v1-ltl03-strict-authority-gate.mjs
+      - name: Commit materialized reconstruction if changed
+        shell: bash
+        run: |
+          if git diff --quiet -- governance/baselines/P6_1_V1_LTL03_RECONSTRUCTED_DECOMPOSITION.json; then
+            echo 'No materialization change required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add governance/baselines/P6_1_V1_LTL03_RECONSTRUCTED_DECOMPOSITION.json
+          git commit -m 'P6.1 V1 LTL-03: fail closed unresolved executor authority'
+          git push origin HEAD:atlas-p6-1-v1-reconstruction
