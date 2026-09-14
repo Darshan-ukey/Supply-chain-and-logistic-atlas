@@ -7,7 +7,7 @@
   "daughterVersion": "1.5",
   "sourceTaskId": "LTL-03",
   "sourceTaskTitle": "Create and validate shipment, consignment and transport-document identity",
-  "executionReadinessStatus": "PARTIAL__38_EXECUTOR_READY__7_CLIENT_BINDING_BLOCKED__3_KNOWLEDGE_GAP_BLOCKED",
+  "executionReadinessStatus": "PARTIAL__0_EXECUTOR_READY__45_CLIENT_BINDING_BLOCKED__3_KNOWLEDGE_GAP_BLOCKED",
   "semanticLineage": {
     "semanticSourceVersion": "Road LTL 1.5 + Operational Knowledge v2 + BOL Information Resolution v0.1",
     "effectiveModuleVersion": "1.5",
@@ -259,9 +259,13 @@
         "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -272,7 +276,8 @@
       "outputState": "Candidate values acquired from permitted evidence sources and retained with source evidence, pending object association (WD-LTL03-12).",
       "evidenceRequirements": [
         "Retained source evidence for each acquired candidate value."
-      ]
+      ],
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-12",
@@ -286,9 +291,13 @@
         "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -299,7 +308,8 @@
       "outputState": "Candidate values attached to their correct canonical object instances, pending normalization (WD-LTL03-13).",
       "evidenceRequirements": [
         "Association mapping from each candidate value to its canonical object instance."
-      ]
+      ],
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-13",
@@ -313,9 +323,13 @@
         "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -326,7 +340,8 @@
       "outputState": "Resolved values normalized into governed canonical domains/units with original evidence retained; conditional applicability evaluation follows (WD-LTL03-14).",
       "evidenceRequirements": [
         "Original pre-normalization value retained alongside the normalized canonical value."
-      ]
+      ],
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-14",
@@ -340,9 +355,13 @@
         "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -353,7 +372,8 @@
       "outputState": "Applicable rules activated for the current context; non-applicable rules explicitly not universalized. Field/cross-field/cross-object validation follows (WD-LTL03-15).",
       "evidenceRequirements": [
         "Jurisdiction/condition context evaluated against each requiredWhen/prohibitedWhen rule."
-      ]
+      ],
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-15",
@@ -466,9 +486,13 @@
         "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -483,7 +507,8 @@
       "atomicActions": [
         "Persist the versioned transport document and canonical object graph, field/object resolution evidence, source claims, validation results, exception/HITL record and identifier crosswalk as governed execution evidence with runtime-feedback linkage."
       ],
-      "outputState": "Execution evidence persisted and runtime-feedback linkage captured; canonical execution identity for LTL-03 reaches its declared after-state (VALIDATED, explicit CLIENT_BINDING_REQUIRED/SOURCE_CONTEXT_PENDING, or BLOCKED with governed exception ownership)."
+      "outputState": "Execution evidence persisted and runtime-feedback linkage captured; canonical execution identity for LTL-03 reaches its declared after-state (VALIDATED, explicit CLIENT_BINDING_REQUIRED/SOURCE_CONTEXT_PENDING, or BLOCKED with governed exception ownership).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-01A",
@@ -497,9 +522,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -510,7 +539,8 @@
         "Input evidence identity/provenance"
       ],
       "trigger": "A commercial offer/service request is accepted, or a governed transport-document/BOL instance requires creation, ingestion, amendment or validation for execution, per the task's declared trigger.",
-      "outputState": "Document/API payload acquired and available for provenance capture (WD-LTL03-01B)."
+      "outputState": "Document/API payload acquired and available for provenance capture (WD-LTL03-01B).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-01B",
@@ -524,9 +554,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -537,7 +571,8 @@
       "atomicActions": [
         "Capture and retain the source/evidence identity of the acquired payload before further processing."
       ],
-      "outputState": "Input provenance captured and retained; input-integrity evaluation follows (WD-LTL03-02A)."
+      "outputState": "Input provenance captured and retained; input-integrity evaluation follows (WD-LTL03-02A).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-02A",
@@ -551,20 +586,25 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
       "decisionGates": [
-        "Sufficient \u2192 continue; insufficient \u2192 governed exception/HITL"
+        "Sufficient → continue; insufficient → governed exception/HITL"
       ],
       "trigger": "Input provenance has been captured (WD-LTL03-01B) and the acquired payload requires an integrity determination before further canonical processing.",
       "outputState": "Input determined sufficient (continue to context determination, WD-LTL03-03) or insufficient (route to WD-LTL03-02B).",
       "evidenceRequirements": [
         "Integrity determination evidence for the acquired input."
-      ]
+      ],
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-02B",
@@ -578,9 +618,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -591,7 +635,8 @@
       "outputState": "Missing-value policy applied and the case routed as a governed exception.",
       "evidenceRequirements": [
         "Missing/unusable information identified and the exception routing record."
-      ]
+      ],
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-03A",
@@ -606,9 +651,13 @@
         "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -619,7 +668,8 @@
       "outputState": "Active transport-document context established, required before canonical object/field semantics are applied (WD-LTL03-04 onward).",
       "evidenceRequirements": [
         "Source evidence establishing the active Road LTL/document context."
-      ]
+      ],
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-03B",
@@ -633,20 +683,25 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
       "decisionGates": [
-        "Applicable \u2192 activate relevant 49 CFR claims; not applicable \u2192 do not universalize U.S. rules"
+        "Applicable → activate relevant 49 CFR claims; not applicable → do not universalize U.S. rules"
       ],
       "trigger": "Transport-document context is established (WD-LTL03-03A) and the shipment may be subject to U.S. hazardous-material regulation.",
       "outputState": "Applicable (relevant 49 CFR claims activated for downstream DangerousGoods resolution, WD-LTL03-09) or not applicable (U.S.-specific rules explicitly not universalized to this context).",
       "evidenceRequirements": [
         "Jurisdiction/context evidence evaluated against U.S. hazardous-material applicability."
-      ]
+      ],
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-03C",
@@ -706,9 +761,13 @@
         "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -719,7 +778,8 @@
       "outputState": "Canonical TransportDocument instance instantiated, pending Consignment instantiation and association (WD-LTL03-04B).",
       "evidenceRequirements": [
         "Source evidence establishing the TransportDocument instance."
-      ]
+      ],
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-04B",
@@ -733,9 +793,13 @@
         "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -747,7 +811,8 @@
       "outputState": "Consignment instance instantiated and associated to TransportDocument; party, reference, handling-unit, line-item, dangerous-goods, instruction and service-window resolution follow (WD-LTL03-05 onward).",
       "evidenceRequirements": [
         "Source evidence establishing the Consignment instance and its association to TransportDocument."
-      ]
+      ],
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-05A",
@@ -761,9 +826,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -775,7 +844,8 @@
       "evidenceRequirements": [
         "Source evidence identifying the resolved party role and its associated input values."
       ],
-      "outputState": "Party:ShipperOrConsignor, Party:Consignee and Party:BillTo instances resolved and associated to Consignment; canonical address-line resolution pending (WD-LTL03-05B)."
+      "outputState": "Party:ShipperOrConsignor, Party:Consignee and Party:BillTo instances resolved and associated to Consignment; canonical address-line resolution pending (WD-LTL03-05B).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-05B",
@@ -789,9 +859,13 @@
         "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -802,7 +876,8 @@
       "evidenceRequirements": [
         "Source values for each layout-specific address field mapped."
       ],
-      "outputState": "Resolved Party instance carries canonical addressLines[]/locality values rather than layout-specific address labels."
+      "outputState": "Resolved Party instance carries canonical addressLines[]/locality values rather than layout-specific address labels.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-05C",
@@ -841,9 +916,13 @@
         "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -854,7 +933,8 @@
       "evidenceRequirements": [
         "Source value and context for each instantiated Reference."
       ],
-      "outputState": "Reference[] populated with typed instances associated to their related canonical object; identifiers not yet classifiable by exact type/type-scheme remain pending client-binding resolution."
+      "outputState": "Reference[] populated with typed instances associated to their related canonical object; identifiers not yet classifiable by exact type/type-scheme remain pending client-binding resolution.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-06B",
@@ -890,9 +970,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -904,7 +988,8 @@
       "evidenceRequirements": [
         "Source structure/evidence establishing handling-unit hierarchy prior to count acceptance."
       ],
-      "outputState": "HandlingUnit[] instantiated and associated to Consignment; count/type not yet validated against the resolved hierarchy (WD-LTL03-07B)."
+      "outputState": "HandlingUnit[] instantiated and associated to Consignment; count/type not yet validated against the resolved hierarchy (WD-LTL03-07B).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-07B",
@@ -917,9 +1002,13 @@
         "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -930,7 +1019,8 @@
       "evidenceRequirements": [
         "Declared count/type source value and the resolved hierarchy it is validated against."
       ],
-      "outputState": "HandlingUnit count/type validated as hierarchy-consistent, or flagged as a hierarchy conflict for conflict resolution (WD-LTL03-16)."
+      "outputState": "HandlingUnit count/type validated as hierarchy-consistent, or flagged as a hierarchy conflict for conflict resolution (WD-LTL03-16).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-07C",
@@ -966,9 +1056,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -979,7 +1073,8 @@
       "evidenceRequirements": [
         "Source value(s) identifying each instantiated LineItem."
       ],
-      "outputState": "LineItem[] instantiated, pending hierarchy association (WD-LTL03-08B) and piece-count validation (WD-LTL03-08C)."
+      "outputState": "LineItem[] instantiated, pending hierarchy association (WD-LTL03-08B) and piece-count validation (WD-LTL03-08C).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-08B",
@@ -993,9 +1088,13 @@
         "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1006,7 +1105,8 @@
       "evidenceRequirements": [
         "Source structure evidence supporting the LineItem-to-HandlingUnit association."
       ],
-      "outputState": "LineItem[] associated within the canonical HandlingUnit/Consignment hierarchy."
+      "outputState": "LineItem[] associated within the canonical HandlingUnit/Consignment hierarchy.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-08C",
@@ -1019,9 +1119,13 @@
         "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1032,7 +1136,8 @@
       "evidenceRequirements": [
         "Declared piece-count source value, validated independently of handling-unit count."
       ],
-      "outputState": "LineItem Piece Count validated as hierarchy-consistent and distinct from Handling Unit Count, or flagged as a conflict."
+      "outputState": "LineItem Piece Count validated as hierarchy-consistent and distinct from Handling Unit Count, or flagged as a conflict.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-09A",
@@ -1046,9 +1151,13 @@
         "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1059,7 +1168,8 @@
       "evidenceRequirements": [
         "Source hazardous-indicator value or equivalent evaluated for this decision."
       ],
-      "outputState": "DangerousGoods applicability determined TRUE (route to WD-LTL03-09B) or FALSE (LineItem carries no DangerousGoods object)."
+      "outputState": "DangerousGoods applicability determined TRUE (route to WD-LTL03-09B) or FALSE (LineItem carries no DangerousGoods object).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-09B",
@@ -1073,9 +1183,13 @@
         "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1086,7 +1200,8 @@
       "evidenceRequirements": [
         "Source values for each field in the associated conditional object family."
       ],
-      "outputState": "DangerousGoods object instantiated and associated to LineItem; basic description not yet resolved (WD-LTL03-09C)."
+      "outputState": "DangerousGoods object instantiated and associated to LineItem; basic description not yet resolved (WD-LTL03-09C).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-09C",
@@ -1099,9 +1214,13 @@
         "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1112,7 +1231,8 @@
       "evidenceRequirements": [
         "Source values for proper shipping name, hazard class/division and packing group."
       ],
-      "outputState": "DangerousGoods basic description resolved; conditional technical-name and inhalation-zone requirements evaluated next (WD-LTL03-09D, WD-LTL03-09E)."
+      "outputState": "DangerousGoods basic description resolved; conditional technical-name and inhalation-zone requirements evaluated next (WD-LTL03-09D, WD-LTL03-09E).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-09D",
@@ -1125,9 +1245,13 @@
         "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1138,7 +1262,8 @@
       "evidenceRequirements": [
         "Resolved hazard classification evaluated against the technical-name conditional-requirement rule."
       ],
-      "outputState": "Technical-name requirement determined applicable (value required and resolved or flagged pending) or not applicable to this DangerousGoods object."
+      "outputState": "Technical-name requirement determined applicable (value required and resolved or flagged pending) or not applicable to this DangerousGoods object.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-09E",
@@ -1151,9 +1276,13 @@
         "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1164,7 +1293,8 @@
       "evidenceRequirements": [
         "Resolved hazard classification evaluated against the inhalation-zone conditional-requirement rule."
       ],
-      "outputState": "Inhalation-hazard zone requirement determined applicable (value required and resolved or flagged pending) or not applicable to this DangerousGoods object."
+      "outputState": "Inhalation-hazard zone requirement determined applicable (value required and resolved or flagged pending) or not applicable to this DangerousGoods object.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-09F",
@@ -1177,9 +1307,13 @@
         "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1190,7 +1324,8 @@
       "evidenceRequirements": [
         "Source evidence identifying the emergency-response contact/provider."
       ],
-      "outputState": "DangerousGoods object carries resolved emergency-response contact identity evidence, completing the conditional object family for this LineItem."
+      "outputState": "DangerousGoods object carries resolved emergency-response contact identity evidence, completing the conditional object family for this LineItem.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-10A",
@@ -1204,9 +1339,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1217,7 +1356,8 @@
       "evidenceRequirements": [
         "Source value(s) identifying each instantiated Instruction."
       ],
-      "outputState": "Instruction[] instantiated and associated to Consignment; instruction-type classification pending client-binding resolution."
+      "outputState": "Instruction[] instantiated and associated to Consignment; instruction-type classification pending client-binding resolution.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-10B",
@@ -1253,9 +1393,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1266,7 +1410,8 @@
       "evidenceRequirements": [
         "Source value(s) identifying each instantiated ServiceEventWindow and its applicable cut-off."
       ],
-      "outputState": "ServiceEventWindow[] instantiated and associated to Consignment."
+      "outputState": "ServiceEventWindow[] instantiated and associated to Consignment.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-10D",
@@ -1302,9 +1447,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1315,7 +1464,8 @@
       "evidenceRequirements": [
         "Validation result per evaluated field."
       ],
-      "outputState": "Each evaluated field carries a field-level validation result; cross-field validation follows (WD-LTL03-15B)."
+      "outputState": "Each evaluated field carries a field-level validation result; cross-field validation follows (WD-LTL03-15B).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-15B",
@@ -1329,9 +1479,13 @@
         "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1342,7 +1496,8 @@
       "evidenceRequirements": [
         "Cross-field validation result per evaluated field pair/group."
       ],
-      "outputState": "Cross-field validation result recorded for the evaluated object instance; cross-object validation follows (WD-LTL03-15C)."
+      "outputState": "Cross-field validation result recorded for the evaluated object instance; cross-object validation follows (WD-LTL03-15C).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-15C",
@@ -1356,9 +1511,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1369,7 +1528,8 @@
       "evidenceRequirements": [
         "Cross-object validation result per evaluated object relationship."
       ],
-      "outputState": "Cross-object validation result recorded; any resulting conflict routes to conflict resolution (WD-LTL03-16)."
+      "outputState": "Cross-object validation result recorded; any resulting conflict routes to conflict resolution (WD-LTL03-16).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-16A",
@@ -1383,20 +1543,25 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
       "decisionGates": [
-        "Available \u2192 resolve under declared authority; absent \u2192 block/escalate"
+        "Available → resolve under declared authority; absent → block/escalate"
       ],
       "trigger": "A validation or object-association conflict has been flagged requiring authority-policy determination.",
       "outputState": "Authority/source-of-truth policy determined available (resolve under declared authority, WD-LTL03-16B) or absent (block/escalate).",
       "evidenceRequirements": [
         "Conflict requiring resolution and the authority-policy availability determination."
-      ]
+      ],
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-16B",
@@ -1410,9 +1575,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1423,7 +1592,8 @@
       "evidenceRequirements": [
         "Flagged conflict, the authority policy applied where resolvable, and the resolution outcome."
       ],
-      "outputState": "Conflict resolved under declared authority, or explicitly routed to the source-authority-precedence knowledge gap where precedence is unresolved."
+      "outputState": "Conflict resolved under declared authority, or explicitly routed to the source-authority-precedence knowledge gap where precedence is unresolved.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-16C",
@@ -1483,9 +1653,13 @@
         "data/modules/road-ltl-v1.5.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1496,7 +1670,8 @@
       "evidenceRequirements": [
         "Exception/HITL record for the routed case."
       ],
-      "outputState": "Case routed to governed HITL review with an Exception/HITL record; execution BLOCKED pending governed exception ownership per the task's declared after-state."
+      "outputState": "Case routed to governed HITL review with an Exception/HITL record; execution BLOCKED pending governed exception ownership per the task's declared after-state.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-18A",
@@ -1510,9 +1685,13 @@
         "data/operational-knowledge/road-ltl-v1.5-operational.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1523,7 +1702,8 @@
       "evidenceRequirements": [
         "Versioned canonical object graph; recorded validation results."
       ],
-      "outputState": "Versioned canonical object graph and validation state emitted; unresolved binding/source-context register emission follows (WD-LTL03-18B)."
+      "outputState": "Versioned canonical object graph and validation state emitted; unresolved binding/source-context register emission follows (WD-LTL03-18B).",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-18B",
@@ -1537,9 +1717,13 @@
         "data/operational-knowledge/road-ltl-v1.5-operational.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1550,7 +1734,8 @@
       "evidenceRequirements": [
         "Complete list of unresolved binding/source-context items and their status."
       ],
-      "outputState": "Explicit unresolved binding/source-context register emitted alongside the canonical object graph."
+      "outputState": "Explicit unresolved binding/source-context register emitted alongside the canonical object graph.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     },
     {
       "workUnitId": "WD-LTL03-19A",
@@ -1587,9 +1772,13 @@
         "data/operational-knowledge/road-ltl-v1.5-operational.json"
       ],
       "executorReadiness": {
-        "status": "EXECUTOR_READY",
-        "blockingReasons": [],
-        "requiredClientBindings": [],
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen P6.1 V1 requires resolved system/actor authority or an explicit binding requirement before a terminal leaf may be classified EXECUTOR_READY. The pinned LTL-03 sources do not establish executor authority for these units; fail closed to client binding rather than infer authority."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-EXECUTOR-AUTHORITY"
+        ],
         "requiredKnowledgeGaps": [],
         "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
       },
@@ -1600,19 +1789,20 @@
       "evidenceRequirements": [
         "Approved target schema mapping applied and the resulting projected output."
       ],
-      "outputState": "Canonical information projected to the approved target client/runtime schema; canonical object graph itself remains unchanged."
+      "outputState": "Canonical information projected to the approved target client/runtime schema; canonical object graph itself remains unchanged.",
+      "fallbackIfBlocked": "Do not execute or infer authority. Route to governed client-binding resolution for executor/system/actor authority; retain the source-grounded decomposition and evidence unchanged."
     }
   ],
   "summary": {
     "workUnitCount": 64,
     "leafCount": 48,
     "leafStatusCounts": {
-      "EXECUTOR_READY": 38,
-      "BLOCKED_BY_CLIENT_BINDING": 7,
+      "EXECUTOR_READY": 0,
+      "BLOCKED_BY_CLIENT_BINDING": 45,
       "BLOCKED_BY_KNOWLEDGE_GAP": 3
     },
     "knowledgeGapCount": 5,
-    "clientBindingRefCount": 9,
+    "clientBindingRefCount": 10,
     "requiredKnowledgeGaps": [
       "KG-LTL03-CODE-SEMANTICS",
       "KG-LTL03-HANDLING-UNIT-LINE-NO",
@@ -1625,17 +1815,24 @@
       "CB-LTL03-BOL-TYPE",
       "CB-LTL03-CONSIGNEE-ACCOUNT-SEMANTICS",
       "CB-LTL03-CRITICAL-CONFIDENCE-THRESHOLD",
+      "CB-LTL03-EXECUTOR-AUTHORITY",
       "CB-LTL03-INSTRUCTION-TYPE-VALUE-SET",
       "CB-LTL03-REFERENCE-TYPE-FULL-NAME",
       "CB-LTL03-SHIPPER-CODE",
       "CB-LTL03-TARGET-SCHEMA-MAPPING",
       "CB-LTL03-TIME-CRITICAL-CODING"
     ],
-    "executorProof": "Every terminal leaf is explicitly classified EXECUTOR_READY, BLOCKED_BY_CLIENT_BINDING, or BLOCKED_BY_KNOWLEDGE_GAP; no terminal NEEDS_DECOMPOSITION remains. Internal composite nodes retain NEEDS_DECOMPOSITION and have children.",
-    "workDefinitionCompilationStatus": "NOT_AUTHORIZED__RECONSTRUCTED_REFERENCE_AWAITING_INDEPENDENT_QA_AND_OWNER_GATE"
+    "executorProof": "STRICT_P6_1_V1_FAIL_CLOSED: no leaf is asserted EXECUTOR_READY until executor/system/actor authority is explicitly bound. Source-grounded decomposition details are preserved; 38 formerly ready leaves are now client-binding blocked by CB-LTL03-EXECUTOR-AUTHORITY.",
+    "workDefinitionCompilationStatus": "BLOCKED_PENDING_EXECUTOR_AUTHORITY_BINDING"
   },
   "nonBlockingKnownGaps": {
     "historicalByteIdentity": "Original P6.1 private bundle is unavailable; this artifact is a source-grounded V1 reconstruction and must not be represented as byte-for-byte recovery.",
-    "historicalPerTaskCountComparison": "Historical aggregate counts do not expose certified per-task LTL-03 counts; reconstruction is not forced to match unknown task-level counts."
+    "historicalPerTaskCountComparison": "Historical aggregate counts do not expose certified per-task LTL-03 counts; reconstruction is not forced to match unknown task-level counts.",
+    "reconstructionGovernance": {
+      "classification": "RECONSTRUCTED_P6_1_V1",
+      "authorityGate": "CB-LTL03-EXECUTOR-AUTHORITY",
+      "authorityGateBasis": "EXECUTABILITY_AND_RECURSIVE_DECOMPOSITION_STANDARD_V1_FROZEN.md + CANONICAL_WORK_DECOMPOSITION_COMPILER_SPEC_V1_FROZEN.md",
+      "note": "This change does not invent an executor. It converts unresolved executor authority into the explicit client-binding dependency permitted by the frozen V1 standard."
+    }
   }
 }
