@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "atlas-p6-1-v1-reconstruction-input-manifest-v1",
+  "status": "INPUTS_PINNED_GENERATION_AUTHORIZED",
+  "reconstructionLabel": "RECONSTRUCTED_P6_1_V1",
+  "historicalCertifiedBaseCommit": "ba9d47f07b59ecf79ff6cde9145c0185cc18d39d",
+  "target": {
+    "moduleId": "road-ltl",
+    "moduleVersion": "1.5",
+    "taskId": "LTL-03",
+    "taskTitle": "Create and validate shipment, consignment and transport-document identity",
+    "intendedExecutorClassLens": "HYBRID_HITL_REFERENCE"
+  },
+  "governingAssets": {
+    "executabilityStandard": "governance/standards/EXECUTABILITY_AND_RECURSIVE_DECOMPOSITION_STANDARD_V1_FROZEN.md",
+    "workDecompositionContract": "governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_FROZEN.md",
+    "schema": "schemas/canonical-work-decomposition-contract-v1.schema.json",
+    "compilerSpec": "governance/standards/CANONICAL_WORK_DECOMPOSITION_COMPILER_SPEC_V1_FROZEN.md"
+  },
+  "sourceInputs": [
+    {
+      "path": "data/modules/road-ltl-v1.5.json",
+      "declaredFrozenSha256": "22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f",
+      "role": "exact Road LTL 1.5 Daughter task override and Operational Knowledge v2 embedding for LTL-03"
+    },
+    {
+      "path": "data/operational-knowledge/road-ltl-v1.5-operational.json",
+      "declaredFrozenSha256": "6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9",
+      "role": "frozen operational knowledge and workDecompositionSeed for LTL-03"
+    },
+    {
+      "path": "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+      "role": "field/object information-resolution baseline, unresolved semantics and explicit client/source-context gaps"
+    },
+    {
+      "path": "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+      "role": "source-backed operational claims, applicability boundaries and canonical object-resolution evidence"
+    }
+  ],
+  "historicalV1Semantics": {
+    "executorClassAffectsExecutabilityLens": true,
+    "ar0_2BusinessSemanticOnlyStopRuleApplied": false,
+    "failClosedOnMissingKnowledge": true,
+    "clientRuntimeValuesRemainBindings": true,
+    "historicalAggregateCountsAreAcceptanceTargets": false
+  },
+  "protection": {
+    "fullDecompositionDetail": "EXECUTION_PROTECTED",
+    "commitFullDetailToGitHub": false,
+    "protectedProductionPersistenceAuthorized": false,
+    "mainMergeAuthorized": false,
+    "productionPromotionAuthorized": false
+  }
+}
