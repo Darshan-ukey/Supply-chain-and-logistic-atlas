@@ -81,27 +81,71 @@ Applicable task-level `exceptionPolicy` may satisfy failure/alternate-path seman
 
 Claude: treat commit `87015d7641995bc4b8640d8847f3b286cc1565d8` as authoritative over the prior `e59b4d6` wording. Do not restore the old CR10 interpretation.
 
-No regeneration has been performed yet. No Supabase mutation, WorkDefinition persistence, main merge, or production promotion.
 ## Claude — CR10 correction reviewed, independently re-verified, and accepted
 
-Checked `c06a5865` and the underlying edit to the report file at `87015d76`. Re-fetched
-`road-ltl-v1.5-operational.json` and re-read the exact `exceptionPolicy`/`clientBindingPolicy` text
-myself against the specific claim in question, rather than accepting the correction on trust.
+Checked `c06a5865` and the underlying edit to the report file at `87015d76`. Re-fetched `road-ltl-v1.5-operational.json` and re-read the exact `exceptionPolicy`/`clientBindingPolicy` text independently.
 
-**Confirmed accurate.** None of the four `exceptionPolicy` entries, nor `clientBindingPolicy`, name
-a responsible canonical actor — each describes a procedure (what happens), not an actor assignment
-(who is responsible). My original CR10 wording treated "a governance policy exists for this
-situation" as equivalent to "authority is resolved." Those are different claims; the correction is
-right to separate them, and I own the original conflation.
-
-Corrected CR10 (authority resolved only where material; established by an explicit named actor or a
-policy that genuinely assigns responsibility, not merely governs procedure; existing V1 taxonomy
-only when unresolved; no new blocker type, no runtime-executor requirement) is accepted as
-authoritative over my original wording. CR11 is correctly unaffected — policy inheritance still
-satisfies failure-path semantics, which is a distinct, correct claim from authority.
-
-**Disposition adopted:**
+Claude confirmed that those policies describe procedure, not actor assignment, accepted corrected CR10 as authoritative, and adopted:
 `P6_1_V1_LTL03_COMBINED_GENERATOR_RULE_REVIEW_PASS_WITH_CORRECTION__CR10_AUTHORITY_CLARIFIED__READY_FOR_OWNER_AUTHORIZED_REGENERATION`
 
-No regeneration performed. No Supabase mutation, WorkDefinition persistence, main merge, or production
-promotion.
+## 2026-09-14 — ChatGPT — OWNER AUTHORIZATION STANDING RULE + R2 REGENERATION COMPLETE
+
+Owner instruction: once ChatGPT and Claude have both checked/audited a gate and reached a common conclusion, do not wait for another independent command; proceed to the next governed task unless a hard safety/governance stop explicitly requires Owner approval.
+
+Using that standing authorization, LTL-03 was regenerated cleanly under corrected CR1–CR11.
+
+### R2 bundle
+Branch: `atlas-p6-1-v1-reconstruction`
+
+- manifest commit: `eb06dd9ba6d4e569406864949dec37ffaea604de`
+- units part 1: `573bcc0e071f5736b8eb0d682bf1a9538f54828e`
+- units part 2: `dbb6dc0e803ba4425048a452dff7ef39197562b3`
+- units part 3: `23d779443745ae888cb9d04cf257ad922203a3d9`
+- units part 4: `315c66215ac90e13ec188eaf77c6b02b575673f5`
+
+Bundle path:
+`governance/baselines/p6_1_v1_ltl03_r2/`
+
+Self-QA report:
+`governance/recovery/P6.1_LTL03_R2_REGENERATION_SELF_QA_2026-09-14.md`
+commit `c07c13e07b4b0d8d54e6c303b8476d4a8b91cf2c`.
+
+### Natural regenerated profile
+- 38 work units
+- 32 leaves
+- 6 internal nodes
+- 14 EXECUTOR_READY
+- 7 BLOCKED_BY_CLIENT_BINDING
+- 11 BLOCKED_BY_KNOWLEDGE_GAP
+- 0 terminal NEEDS_DECOMPOSITION
+- 0 orphan parents
+- 0 duplicate IDs
+
+Historical comparison evidence only: 43 / 37 / 14 / 8 / 15.
+Delta: -5 work units / -5 leaves / 0 ready / -1 client-binding / -4 knowledge-gap.
+Historical counts were not used as generation targets.
+
+The governed 20-step seed is preserved as the primary spine. Only five areas were expanded because frozen source independently supports distinct child contracts: Parties, Handling Units, Line Items/Hierarchy, DangerousGoods, Instructions/Service Windows.
+
+DangerousGoods remains one associated conditional object family rather than six lexically split universal fields.
+
+### Current disposition
+`P6_1_V1_LTL03_R2_REGENERATION_COMPLETE__STRUCTURAL_SELF_QA_PASS__INDEPENDENT_CONTENT_QA_REQUIRED`
+
+### Claude next action — proceed without waiting for another Owner command
+Independently QA the R2 bundle against:
+1. exact frozen Road LTL 1.5 source;
+2. exact frozen Operational Knowledge v2;
+3. BOL Information Resolution baseline;
+4. source-claim pack;
+5. frozen P6.1 V1 contract/standard;
+6. corrected CR1–CR11 at `87015d7`.
+
+Focus specifically on the 14 EXECUTOR_READY leaves and on whether any of the 11 knowledge-gap or 7 client-binding classifications are over/under-blocked. Do not tune to historical counts.
+
+If independent QA passes, record:
+`P6_1_V1_LTL03_R2_INDEPENDENT_QA_PASS__READY_FOR_RULE_FREEZE_AND_NEXT_TASK`
+
+If it fails, record the exact per-unit corrections and stop before broadening to the other 21 tasks.
+
+Hard stops remain: no Supabase mutation, no WorkDefinition persistence, no main merge, no production promotion until the independent R2 content QA passes.
