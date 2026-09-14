@@ -57,74 +57,1551 @@
       "unitType": "ACTION_GROUP",
       "name": "Acquire governed transport-document or API evidence",
       "purpose": "Acquire governed transport-document or API evidence",
-      "sourceRefs": ["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],
-      "executorReadiness": {"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
     },
     {
-      "workUnitId": "WD-LTL03-02","parentWorkUnitId":"WD-LTL03-ROOT","sequence":2,"unitType":"ACTION_GROUP","name":"Validate input/document integrity","purpose":"Validate input/document integrity","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}
+      "workUnitId": "WD-LTL03-02",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 2,
+      "unitType": "ACTION_GROUP",
+      "name": "Validate input/document integrity",
+      "purpose": "Validate input/document integrity",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
     },
-    {"workUnitId":"WD-LTL03-03","parentWorkUnitId":"WD-LTL03-ROOT","sequence":3,"unitType":"ACTION_GROUP","name":"Resolve applicable document and regime context","purpose":"Resolve applicable document and regime context","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-04","parentWorkUnitId":"WD-LTL03-ROOT","sequence":4,"unitType":"ACTION_GROUP","name":"Instantiate canonical document and consignment objects","purpose":"Instantiate canonical document and consignment objects","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-05","parentWorkUnitId":"WD-LTL03-ROOT","sequence":5,"unitType":"INFORMATION_RESOLUTION","name":"Resolve party object instances","purpose":"Resolve party object instances","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-06","parentWorkUnitId":"WD-LTL03-ROOT","sequence":6,"unitType":"INFORMATION_RESOLUTION","name":"Resolve typed Reference objects","purpose":"Resolve typed Reference objects","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-07","parentWorkUnitId":"WD-LTL03-ROOT","sequence":7,"unitType":"INFORMATION_RESOLUTION","name":"Resolve handling-unit object instances","purpose":"Resolve handling-unit object instances","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-08","parentWorkUnitId":"WD-LTL03-ROOT","sequence":8,"unitType":"INFORMATION_RESOLUTION","name":"Resolve line-item instances and hierarchy","purpose":"Resolve line-item instances and hierarchy","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-09","parentWorkUnitId":"WD-LTL03-ROOT","sequence":9,"unitType":"ACTION_GROUP","name":"Resolve conditional DangerousGoods objects","purpose":"Resolve conditional DangerousGoods objects","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-10","parentWorkUnitId":"WD-LTL03-ROOT","sequence":10,"unitType":"INFORMATION_RESOLUTION","name":"Resolve instructions and service/event windows","purpose":"Resolve instructions and service/event windows","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-11","parentWorkUnitId":"WD-LTL03-ROOT","sequence":11,"unitType":"ACTION_EXECUTION","name":"Extract or acquire candidate values","purpose":"Extract or acquire candidate values","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"atomicActions":["Acquire candidate values from permitted evidence sources for identified canonical object instances; retain source evidence."]},
-    {"workUnitId":"WD-LTL03-12","parentWorkUnitId":"WD-LTL03-ROOT","sequence":12,"unitType":"ACTION_EXECUTION","name":"Associate candidate values to canonical object instances","purpose":"Associate candidate values to canonical object instances","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"atomicActions":["Attach each candidate to the correct canonical object before validation or runtime mapping."]},
-    {"workUnitId":"WD-LTL03-13","parentWorkUnitId":"WD-LTL03-ROOT","sequence":13,"unitType":"ACTION_EXECUTION","name":"Normalize canonical values","purpose":"Normalize canonical values","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"atomicActions":["Normalize resolved values into governed canonical domains/units while retaining original evidence."]},
-    {"workUnitId":"WD-LTL03-14","parentWorkUnitId":"WD-LTL03-ROOT","sequence":14,"unitType":"DECISION_EVALUATION","name":"Evaluate conditional applicability","purpose":"Evaluate conditional applicability","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"decisionGates":["Evaluate requiredWhen/prohibitedWhen plus jurisdiction/condition applicability; activate only applicable rules."]},
-    {"workUnitId":"WD-LTL03-15","parentWorkUnitId":"WD-LTL03-ROOT","sequence":15,"unitType":"ACTION_GROUP","name":"Run field and object validations","purpose":"Run field and object validations","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-16","parentWorkUnitId":"WD-LTL03-ROOT","sequence":16,"unitType":"ACTION_GROUP","name":"Resolve source conflicts using authority policy","purpose":"Resolve source conflicts using authority policy","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-17","parentWorkUnitId":"WD-LTL03-ROOT","sequence":17,"unitType":"ACTION_GROUP","name":"Determine confidence and human-review requirement","purpose":"Determine confidence and human-review requirement","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-18","parentWorkUnitId":"WD-LTL03-ROOT","sequence":18,"unitType":"ACTION_GROUP","name":"Emit governed canonical outputs and binding requirements","purpose":"Emit governed canonical outputs and binding requirements","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-19","parentWorkUnitId":"WD-LTL03-ROOT","sequence":19,"unitType":"ACTION_GROUP","name":"Project canonical information to client or Malkom schema","purpose":"Project canonical information to client or Malkom schema","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"NEEDS_DECOMPOSITION","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-20","parentWorkUnitId":"WD-LTL03-ROOT","sequence":20,"unitType":"EVIDENCE_AND_STATE","name":"Persist execution evidence and governed runtime-feedback linkage","purpose":"Persist execution evidence and governed runtime-feedback linkage","sourceRefs":["data/modules/road-ltl-v1.5.json","data/operational-knowledge/road-ltl-v1.5-operational.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"evidenceRequirements":["Field/object resolution evidence","Source claims","Validation results","Exception/HITL record","Runtime-feedback linkage"]},
-
-    {"workUnitId":"WD-LTL03-01A","parentWorkUnitId":"WD-LTL03-01","sequence":1,"unitType":"ATOMIC_ACTION","name":"Acquire document/API payload","purpose":"Obtain the permitted BOL/eBOL/consignment-note or equivalent API payload for the active transaction.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"atomicActions":["Obtain permitted document or API payload"],"evidenceRequirements":["Input evidence identity/provenance"]},
-    {"workUnitId":"WD-LTL03-01B","parentWorkUnitId":"WD-LTL03-01","sequence":2,"unitType":"EVIDENCE_CAPTURE","name":"Capture input provenance","purpose":"Retain source/evidence identity for later authority, conflict and trace resolution.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"evidenceRequirements":["Source/evidence identity retained"]},
-    {"workUnitId":"WD-LTL03-02A","parentWorkUnitId":"WD-LTL03-02","sequence":1,"unitType":"DECISION_GATE","name":"Input integrity sufficient?","purpose":"Input integrity sufficient?","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"decisionGates":["Sufficient → continue; insufficient → governed exception/HITL"]},
-    {"workUnitId":"WD-LTL03-02B","parentWorkUnitId":"WD-LTL03-02","sequence":2,"unitType":"ATOMIC_ACTION","name":"Route missing or unusable information","purpose":"Do not fabricate; apply missing-value policy and route to binding/HITL/exception as required.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"atomicActions":["Apply missing-value policy and route exception"]},
-    {"workUnitId":"WD-LTL03-03A","parentWorkUnitId":"WD-LTL03-03","sequence":1,"unitType":"DECISION_EVALUATION","name":"Determine Road LTL/document context","purpose":"Determine Road LTL/document context","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"decisionGates":["Establish active transport-document context before object/field semantics"]},
-    {"workUnitId":"WD-LTL03-03B","parentWorkUnitId":"WD-LTL03-03","sequence":2,"unitType":"DECISION_GATE","name":"U.S. hazardous-material regulation applicable?","purpose":"U.S. hazardous-material regulation applicable?","sourceRefs":["data/source-claims/road-ltl-v1.5-bol-resolution-claims.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"decisionGates":["Applicable → activate relevant 49 CFR claims; not applicable → do not universalize U.S. rules"]},
-    {"workUnitId":"WD-LTL03-03C","parentWorkUnitId":"WD-LTL03-03","sequence":3,"unitType":"DECISION_GATE","name":"Resolve source-context semantics for Code, SHC and Related Value","purpose":"Resolve source-context semantics for Code, SHC and Related Value","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"BLOCKED_BY_KNOWLEDGE_GAP","blockingReasons":["Frozen baseline explicitly leaves Code, SHC and Related Value as SOURCE_CONTEXT_PENDING; canonical semantics must not be inferred."],"requiredClientBindings":[],"requiredKnowledgeGaps":["KG-LTL03-CODE-SEMANTICS","KG-LTL03-SHC-SEMANTICS","KG-LTL03-RELATED-VALUE-SEMANTICS"],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-03D","parentWorkUnitId":"WD-LTL03-03","sequence":4,"unitType":"DECISION_GATE","name":"Resolve BOL Type semantics","purpose":"Resolve BOL Type semantics","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"BLOCKED_BY_CLIENT_BINDING","blockingReasons":["Frozen baseline classifies BOL Type as CLIENT_BINDING_REQUIRED."],"requiredClientBindings":["CB-LTL03-BOL-TYPE"],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-04A","parentWorkUnitId":"WD-LTL03-04","sequence":1,"unitType":"ATOMIC_ACTION","name":"Instantiate canonical TransportDocument","purpose":"Instantiate canonical TransportDocument","sourceRefs":["data/modules/road-ltl-v1.5.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"atomicActions":["Instantiate canonical TransportDocument"]},
-    {"workUnitId":"WD-LTL03-04B","parentWorkUnitId":"WD-LTL03-04","sequence":2,"unitType":"ATOMIC_ACTION","name":"Instantiate canonical Consignment and associate it to TransportDocument","purpose":"Instantiate canonical Consignment and associate it to TransportDocument","sourceRefs":["data/modules/road-ltl-v1.5.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"atomicActions":["Instantiate Consignment","Associate Consignment to TransportDocument"]},
-    {"workUnitId":"WD-LTL03-05A","parentWorkUnitId":"WD-LTL03-05","sequence":1,"unitType":"ATOMIC_ACTION","name":"Resolve Shipper/Consignor, Consignee and BillTo party roles/instances","purpose":"Resolve Shipper/Consignor, Consignee and BillTo party roles/instances","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-05B","parentWorkUnitId":"WD-LTL03-05","sequence":2,"unitType":"ATOMIC_ACTION","name":"Resolve canonical address semantics","purpose":"Resolve canonical address semantics; Address 1/2/3 remain layout bindings over canonical address-line/locality semantics.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-05C","parentWorkUnitId":"WD-LTL03-05","sequence":3,"unitType":"DECISION_GATE","name":"Resolve client-specific party codes/account semantics","purpose":"Resolve client-specific party codes/account semantics","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"BLOCKED_BY_CLIENT_BINDING","blockingReasons":["Exact client/governing schema semantics are not established by canonical source."],"requiredClientBindings":["CB-LTL03-SHIPPER-CODE","CB-LTL03-BILLTO-ACCOUNT-SEMANTICS","CB-LTL03-CONSIGNEE-ACCOUNT-SEMANTICS"],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-06A","parentWorkUnitId":"WD-LTL03-06","sequence":1,"unitType":"ATOMIC_ACTION","name":"Instantiate typed Reference objects","purpose":"Instantiate Reference objects with value, type/type-scheme, issuer/role and related object.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-06B","parentWorkUnitId":"WD-LTL03-06","sequence":2,"unitType":"DECISION_GATE","name":"Resolve Reference Number Type Full Name vocabulary","purpose":"Resolve Reference Number Type Full Name vocabulary","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"BLOCKED_BY_CLIENT_BINDING","blockingReasons":["Client/governing vocabulary is unresolved."],"requiredClientBindings":["CB-LTL03-REFERENCE-TYPE-FULL-NAME"],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-07A","parentWorkUnitId":"WD-LTL03-07","sequence":1,"unitType":"ATOMIC_ACTION","name":"Identify canonical HandlingUnit structure","purpose":"Identify canonical HandlingUnit structure","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-07B","parentWorkUnitId":"WD-LTL03-07","sequence":2,"unitType":"ATOMIC_ACTION","name":"Validate handling-unit count/type association","purpose":"Validate handling-unit count/type association independently of line-item piece count.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-07C","parentWorkUnitId":"WD-LTL03-07","sequence":3,"unitType":"DECISION_GATE","name":"Resolve Handling Unit Line No semantics","purpose":"Resolve Handling Unit Line No semantics","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"BLOCKED_BY_KNOWLEDGE_GAP","blockingReasons":["Source context remains pending."],"requiredClientBindings":[],"requiredKnowledgeGaps":["KG-LTL03-HANDLING-UNIT-LINE-NO"],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-08A","parentWorkUnitId":"WD-LTL03-08","sequence":1,"unitType":"ATOMIC_ACTION","name":"Instantiate canonical LineItem objects","purpose":"Instantiate canonical LineItem objects","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-08B","parentWorkUnitId":"WD-LTL03-08","sequence":2,"unitType":"ATOMIC_ACTION","name":"Associate LineItem instances to hierarchy","purpose":"Associate LineItem instances to the correct HandlingUnit/Consignment hierarchy.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-08C","parentWorkUnitId":"WD-LTL03-08","sequence":3,"unitType":"ATOMIC_ACTION","name":"Validate Line Item Piece Count independently from Handling Unit Count","purpose":"Validate Line Item Piece Count independently from Handling Unit Count","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-09A","parentWorkUnitId":"WD-LTL03-09","sequence":1,"unitType":"DECISION_EVALUATION","name":"Classify dangerous-goods applicability","purpose":"Classify dangerous-goods applicability from associated evidence and active regulatory context.","sourceRefs":["data/source-claims/road-ltl-v1.5-bol-resolution-claims.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-09B","parentWorkUnitId":"WD-LTL03-09","sequence":2,"unitType":"ATOMIC_ACTION","name":"Instantiate DangerousGoods object and associate to LineItem","purpose":"Instantiate DangerousGoods object and associate to LineItem","sourceRefs":["data/source-claims/road-ltl-v1.5-bol-resolution-claims.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-09C","parentWorkUnitId":"WD-LTL03-09","sequence":3,"unitType":"ATOMIC_ACTION","name":"Resolve linked hazardous-material basic description","purpose":"Resolve identification number, proper shipping name, hazard class/division and packing group when applicable.","sourceRefs":["data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-09D","parentWorkUnitId":"WD-LTL03-09","sequence":4,"unitType":"DECISION_GATE","name":"Apply conditional technical-name requirement","purpose":"Apply conditional technical-name requirement","sourceRefs":["data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-09E","parentWorkUnitId":"WD-LTL03-09","sequence":5,"unitType":"DECISION_GATE","name":"Apply conditional inhalation-hazard zone requirement","purpose":"Apply conditional inhalation-hazard zone requirement","sourceRefs":["data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-09F","parentWorkUnitId":"WD-LTL03-09","sequence":6,"unitType":"ATOMIC_ACTION","name":"Resolve emergency-response contact identity evidence","purpose":"Resolve emergency-response contact identity evidence","sourceRefs":["data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-10A","parentWorkUnitId":"WD-LTL03-10","sequence":1,"unitType":"ATOMIC_ACTION","name":"Instantiate canonical Instruction objects","purpose":"Instantiate canonical Instruction objects","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-10B","parentWorkUnitId":"WD-LTL03-10","sequence":2,"unitType":"DECISION_GATE","name":"Resolve exact Instruction Type value set","purpose":"Resolve exact Instruction Type value set","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"BLOCKED_BY_CLIENT_BINDING","blockingReasons":["Exact Instruction Type values require client/governing schema."],"requiredClientBindings":["CB-LTL03-INSTRUCTION-TYPE-VALUE-SET"],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-10C","parentWorkUnitId":"WD-LTL03-10","sequence":3,"unitType":"ATOMIC_ACTION","name":"Instantiate ServiceEventWindow objects","purpose":"Instantiate ServiceEventWindow objects for applicable appointment/time-critical information.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-10D","parentWorkUnitId":"WD-LTL03-10","sequence":4,"unitType":"DECISION_GATE","name":"Resolve exact Time Critical Details coding","purpose":"Resolve exact Time Critical Details coding","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"BLOCKED_BY_CLIENT_BINDING","blockingReasons":["Exact Time Critical Details coding requires client/governing schema."],"requiredClientBindings":["CB-LTL03-TIME-CRITICAL-CODING"],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-15A","parentWorkUnitId":"WD-LTL03-15","sequence":1,"unitType":"ATOMIC_ACTION","name":"Run applicable field-level validations","purpose":"Run applicable field-level validations","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-15B","parentWorkUnitId":"WD-LTL03-15","sequence":2,"unitType":"ATOMIC_ACTION","name":"Run cross-field validations","purpose":"Run cross-field validations, including linked DangerousGoods fields.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-15C","parentWorkUnitId":"WD-LTL03-15","sequence":3,"unitType":"ATOMIC_ACTION","name":"Run cross-object validations","purpose":"Run cross-object validation across document, consignment, parties, handling units, line items and conditional dangerous goods.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-16A","parentWorkUnitId":"WD-LTL03-16","sequence":1,"unitType":"DECISION_GATE","name":"Governed authority/source-of-truth policy available?","purpose":"Governed authority/source-of-truth policy available?","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"},"decisionGates":["Available → resolve under declared authority; absent → block/escalate"]},
-    {"workUnitId":"WD-LTL03-16B","parentWorkUnitId":"WD-LTL03-16","sequence":2,"unitType":"ATOMIC_ACTION","name":"Resolve conflict under declared authority","purpose":"Resolve conflict under declared authority and retain original evidence/conflict trace.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-16C","parentWorkUnitId":"WD-LTL03-16","sequence":3,"unitType":"DECISION_GATE","name":"Block unresolved authority ambiguity","purpose":"Block unresolved authority ambiguity","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"BLOCKED_BY_KNOWLEDGE_GAP","blockingReasons":["Material conflicts without a governed precedence rule cannot be resolved canonically."],"requiredClientBindings":[],"requiredKnowledgeGaps":["KG-LTL03-SOURCE-AUTHORITY-PRECEDENCE"],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-17A","parentWorkUnitId":"WD-LTL03-17","sequence":1,"unitType":"DECISION_GATE","name":"Critical confidence/validation sufficient for straight-through processing?","purpose":"Critical confidence/validation sufficient for straight-through processing?","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"BLOCKED_BY_CLIENT_BINDING","blockingReasons":["Frozen source requires a governed threshold but does not establish the active client/runtime value."],"requiredClientBindings":["CB-LTL03-CRITICAL-CONFIDENCE-THRESHOLD"],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-17B","parentWorkUnitId":"WD-LTL03-17","sequence":2,"unitType":"ACTION_EXECUTION","name":"Route critical low-confidence/failed-validation cases to governed HITL review","purpose":"Route critical low-confidence/failed-validation cases to governed HITL review","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-operational.json","data/modules/road-ltl-v1.5.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-18A","parentWorkUnitId":"WD-LTL03-18","sequence":1,"unitType":"ATOMIC_ACTION","name":"Emit versioned canonical object graph and validation state","purpose":"Emit versioned canonical TransportDocument/Consignment object graph, validation state and identifier crosswalk.","sourceRefs":["data/modules/road-ltl-v1.5.json","data/operational-knowledge/road-ltl-v1.5-operational.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-18B","parentWorkUnitId":"WD-LTL03-18","sequence":2,"unitType":"EVIDENCE_CAPTURE","name":"Emit explicit unresolved binding/source-context register","purpose":"Emit explicit unresolved binding/source-context register rather than silently mapping labels.","sourceRefs":["data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json","data/operational-knowledge/road-ltl-v1.5-operational.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-19A","parentWorkUnitId":"WD-LTL03-19","sequence":1,"unitType":"DECISION_GATE","name":"Target client/runtime mapping available?","purpose":"Target client/runtime mapping available?","sourceRefs":["data/modules/road-ltl-v1.5.json","data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"],"executorReadiness":{"status":"BLOCKED_BY_CLIENT_BINDING","blockingReasons":["Governing Malkom/client schema is required for unresolved labels and target-field mappings."],"requiredClientBindings":["CB-LTL03-TARGET-SCHEMA-MAPPING"],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}},
-    {"workUnitId":"WD-LTL03-19B","parentWorkUnitId":"WD-LTL03-19","sequence":2,"unitType":"ACTION_EXECUTION","name":"Apply approved target projection after canonical resolution","purpose":"Apply approved target projection after canonical resolution without changing canonical meaning.","sourceRefs":["data/modules/road-ltl-v1.5.json","data/operational-knowledge/road-ltl-v1.5-operational.json"],"executorReadiness":{"status":"EXECUTOR_READY","blockingReasons":[],"requiredClientBindings":[],"requiredKnowledgeGaps":[],"downstreamCompilationTarget":"CANONICAL_WORKDEFINITION"}}
+    {
+      "workUnitId": "WD-LTL03-03",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 3,
+      "unitType": "ACTION_GROUP",
+      "name": "Resolve applicable document and regime context",
+      "purpose": "Resolve applicable document and regime context",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-04",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 4,
+      "unitType": "ACTION_GROUP",
+      "name": "Instantiate canonical document and consignment objects",
+      "purpose": "Instantiate canonical document and consignment objects",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-05",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 5,
+      "unitType": "INFORMATION_RESOLUTION",
+      "name": "Resolve party object instances",
+      "purpose": "Resolve party object instances",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-06",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 6,
+      "unitType": "INFORMATION_RESOLUTION",
+      "name": "Resolve typed Reference objects",
+      "purpose": "Resolve typed Reference objects",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-07",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 7,
+      "unitType": "INFORMATION_RESOLUTION",
+      "name": "Resolve handling-unit object instances",
+      "purpose": "Resolve handling-unit object instances",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-08",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 8,
+      "unitType": "INFORMATION_RESOLUTION",
+      "name": "Resolve line-item instances and hierarchy",
+      "purpose": "Resolve line-item instances and hierarchy",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-09",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 9,
+      "unitType": "ACTION_GROUP",
+      "name": "Resolve conditional DangerousGoods objects",
+      "purpose": "Resolve conditional DangerousGoods objects",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-10",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 10,
+      "unitType": "INFORMATION_RESOLUTION",
+      "name": "Resolve instructions and service/event windows",
+      "purpose": "Resolve instructions and service/event windows",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-11",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 11,
+      "unitType": "ACTION_EXECUTION",
+      "name": "Extract or acquire candidate values",
+      "purpose": "Extract or acquire candidate values",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "atomicActions": [
+        "Acquire candidate values from permitted evidence sources for identified canonical object instances; retain source evidence."
+      ],
+      "trigger": "Canonical object instances have been identified and candidate values are available from permitted evidence sources.",
+      "outputState": "Candidate values acquired from permitted evidence sources and retained with source evidence, pending object association (WD-LTL03-12).",
+      "evidenceRequirements": [
+        "Retained source evidence for each acquired candidate value."
+      ]
+    },
+    {
+      "workUnitId": "WD-LTL03-12",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 12,
+      "unitType": "ACTION_EXECUTION",
+      "name": "Associate candidate values to canonical object instances",
+      "purpose": "Associate candidate values to canonical object instances",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "atomicActions": [
+        "Attach each candidate to the correct canonical object before validation or runtime mapping."
+      ],
+      "trigger": "Candidate values have been acquired (WD-LTL03-11) and require association to the correct canonical object instance.",
+      "outputState": "Candidate values attached to their correct canonical object instances, pending normalization (WD-LTL03-13).",
+      "evidenceRequirements": [
+        "Association mapping from each candidate value to its canonical object instance."
+      ]
+    },
+    {
+      "workUnitId": "WD-LTL03-13",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 13,
+      "unitType": "ACTION_EXECUTION",
+      "name": "Normalize canonical values",
+      "purpose": "Normalize canonical values",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "atomicActions": [
+        "Normalize resolved values into governed canonical domains/units while retaining original evidence."
+      ],
+      "trigger": "Candidate values are associated to canonical object instances (WD-LTL03-12).",
+      "outputState": "Resolved values normalized into governed canonical domains/units with original evidence retained; conditional applicability evaluation follows (WD-LTL03-14).",
+      "evidenceRequirements": [
+        "Original pre-normalization value retained alongside the normalized canonical value."
+      ]
+    },
+    {
+      "workUnitId": "WD-LTL03-14",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 14,
+      "unitType": "DECISION_EVALUATION",
+      "name": "Evaluate conditional applicability",
+      "purpose": "Evaluate conditional applicability",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "decisionGates": [
+        "Evaluate requiredWhen/prohibitedWhen plus jurisdiction/condition applicability; activate only applicable rules."
+      ],
+      "trigger": "Canonical values are normalized (WD-LTL03-13) and one or more requiredWhen/prohibitedWhen or jurisdiction-conditional rules apply to the resolved context.",
+      "outputState": "Applicable rules activated for the current context; non-applicable rules explicitly not universalized. Field/cross-field/cross-object validation follows (WD-LTL03-15).",
+      "evidenceRequirements": [
+        "Jurisdiction/condition context evaluated against each requiredWhen/prohibitedWhen rule."
+      ]
+    },
+    {
+      "workUnitId": "WD-LTL03-15",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 15,
+      "unitType": "ACTION_GROUP",
+      "name": "Run field and object validations",
+      "purpose": "Run field and object validations",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-16",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 16,
+      "unitType": "ACTION_GROUP",
+      "name": "Resolve source conflicts using authority policy",
+      "purpose": "Resolve source conflicts using authority policy",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-17",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 17,
+      "unitType": "ACTION_GROUP",
+      "name": "Determine confidence and human-review requirement",
+      "purpose": "Determine confidence and human-review requirement",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-18",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 18,
+      "unitType": "ACTION_GROUP",
+      "name": "Emit governed canonical outputs and binding requirements",
+      "purpose": "Emit governed canonical outputs and binding requirements",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-19",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 19,
+      "unitType": "ACTION_GROUP",
+      "name": "Project canonical information to client or Malkom schema",
+      "purpose": "Project canonical information to client or Malkom schema",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "NEEDS_DECOMPOSITION",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-20",
+      "parentWorkUnitId": "WD-LTL03-ROOT",
+      "sequence": 20,
+      "unitType": "EVIDENCE_AND_STATE",
+      "name": "Persist execution evidence and governed runtime-feedback linkage",
+      "purpose": "Persist execution evidence and governed runtime-feedback linkage",
+      "sourceRefs": [
+        "data/modules/road-ltl-v1.5.json",
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "evidenceRequirements": [
+        "Field/object resolution evidence",
+        "Source claims",
+        "Validation results",
+        "Exception/HITL record",
+        "Runtime-feedback linkage"
+      ],
+      "trigger": "Canonical resolution, validation and output emission are complete for the applicable scope (WD-LTL03-15 through WD-LTL03-19).",
+      "atomicActions": [
+        "Persist the versioned transport document and canonical object graph, field/object resolution evidence, source claims, validation results, exception/HITL record and identifier crosswalk as governed execution evidence with runtime-feedback linkage."
+      ],
+      "outputState": "Execution evidence persisted and runtime-feedback linkage captured; canonical execution identity for LTL-03 reaches its declared after-state (VALIDATED, explicit CLIENT_BINDING_REQUIRED/SOURCE_CONTEXT_PENDING, or BLOCKED with governed exception ownership)."
+    },
+    {
+      "workUnitId": "WD-LTL03-01A",
+      "parentWorkUnitId": "WD-LTL03-01",
+      "sequence": 1,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Acquire document/API payload",
+      "purpose": "Obtain the permitted BOL/eBOL/consignment-note or equivalent API payload for the active transaction.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "atomicActions": [
+        "Obtain permitted document or API payload"
+      ],
+      "evidenceRequirements": [
+        "Input evidence identity/provenance"
+      ],
+      "trigger": "A commercial offer/service request is accepted, or a governed transport-document/BOL instance requires creation, ingestion, amendment or validation for execution, per the task's declared trigger.",
+      "outputState": "Document/API payload acquired and available for provenance capture (WD-LTL03-01B)."
+    },
+    {
+      "workUnitId": "WD-LTL03-01B",
+      "parentWorkUnitId": "WD-LTL03-01",
+      "sequence": 2,
+      "unitType": "EVIDENCE_CAPTURE",
+      "name": "Capture input provenance",
+      "purpose": "Retain source/evidence identity for later authority, conflict and trace resolution.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "evidenceRequirements": [
+        "Source/evidence identity retained"
+      ],
+      "trigger": "A document/API payload has been acquired (WD-LTL03-01A).",
+      "atomicActions": [
+        "Capture and retain the source/evidence identity of the acquired payload before further processing."
+      ],
+      "outputState": "Input provenance captured and retained; input-integrity evaluation follows (WD-LTL03-02A)."
+    },
+    {
+      "workUnitId": "WD-LTL03-02A",
+      "parentWorkUnitId": "WD-LTL03-02",
+      "sequence": 1,
+      "unitType": "DECISION_GATE",
+      "name": "Input integrity sufficient?",
+      "purpose": "Input integrity sufficient?",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "decisionGates": [
+        "Sufficient \u2192 continue; insufficient \u2192 governed exception/HITL"
+      ],
+      "trigger": "Input provenance has been captured (WD-LTL03-01B) and the acquired payload requires an integrity determination before further canonical processing.",
+      "outputState": "Input determined sufficient (continue to context determination, WD-LTL03-03) or insufficient (route to WD-LTL03-02B).",
+      "evidenceRequirements": [
+        "Integrity determination evidence for the acquired input."
+      ]
+    },
+    {
+      "workUnitId": "WD-LTL03-02B",
+      "parentWorkUnitId": "WD-LTL03-02",
+      "sequence": 2,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Route missing or unusable information",
+      "purpose": "Do not fabricate; apply missing-value policy and route to binding/HITL/exception as required.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "atomicActions": [
+        "Apply missing-value policy and route exception"
+      ],
+      "trigger": "Input integrity was determined insufficient (WD-LTL03-02A).",
+      "outputState": "Missing-value policy applied and the case routed as a governed exception.",
+      "evidenceRequirements": [
+        "Missing/unusable information identified and the exception routing record."
+      ]
+    },
+    {
+      "workUnitId": "WD-LTL03-03A",
+      "parentWorkUnitId": "WD-LTL03-03",
+      "sequence": 1,
+      "unitType": "DECISION_EVALUATION",
+      "name": "Determine Road LTL/document context",
+      "purpose": "Determine Road LTL/document context",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "decisionGates": [
+        "Establish active transport-document context before object/field semantics"
+      ],
+      "trigger": "Input integrity is sufficient (WD-LTL03-02A) and the applicable transport-document context has not yet been established.",
+      "outputState": "Active transport-document context established, required before canonical object/field semantics are applied (WD-LTL03-04 onward).",
+      "evidenceRequirements": [
+        "Source evidence establishing the active Road LTL/document context."
+      ]
+    },
+    {
+      "workUnitId": "WD-LTL03-03B",
+      "parentWorkUnitId": "WD-LTL03-03",
+      "sequence": 2,
+      "unitType": "DECISION_GATE",
+      "name": "U.S. hazardous-material regulation applicable?",
+      "purpose": "U.S. hazardous-material regulation applicable?",
+      "sourceRefs": [
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "decisionGates": [
+        "Applicable \u2192 activate relevant 49 CFR claims; not applicable \u2192 do not universalize U.S. rules"
+      ],
+      "trigger": "Transport-document context is established (WD-LTL03-03A) and the shipment may be subject to U.S. hazardous-material regulation.",
+      "outputState": "Applicable (relevant 49 CFR claims activated for downstream DangerousGoods resolution, WD-LTL03-09) or not applicable (U.S.-specific rules explicitly not universalized to this context).",
+      "evidenceRequirements": [
+        "Jurisdiction/context evidence evaluated against U.S. hazardous-material applicability."
+      ]
+    },
+    {
+      "workUnitId": "WD-LTL03-03C",
+      "parentWorkUnitId": "WD-LTL03-03",
+      "sequence": 3,
+      "unitType": "DECISION_GATE",
+      "name": "Resolve source-context semantics for Code, SHC and Related Value",
+      "purpose": "Resolve source-context semantics for Code, SHC and Related Value",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "BLOCKED_BY_KNOWLEDGE_GAP",
+        "blockingReasons": [
+          "Frozen baseline explicitly leaves Code, SHC and Related Value as SOURCE_CONTEXT_PENDING; canonical semantics must not be inferred."
+        ],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [
+          "KG-LTL03-CODE-SEMANTICS",
+          "KG-LTL03-SHC-SEMANTICS",
+          "KG-LTL03-RELATED-VALUE-SEMANTICS"
+        ],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-03D",
+      "parentWorkUnitId": "WD-LTL03-03",
+      "sequence": 4,
+      "unitType": "DECISION_GATE",
+      "name": "Resolve BOL Type semantics",
+      "purpose": "Resolve BOL Type semantics",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen baseline classifies BOL Type as CLIENT_BINDING_REQUIRED."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-BOL-TYPE"
+        ],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-04A",
+      "parentWorkUnitId": "WD-LTL03-04",
+      "sequence": 1,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Instantiate canonical TransportDocument",
+      "purpose": "Instantiate canonical TransportDocument",
+      "sourceRefs": [
+        "data/modules/road-ltl-v1.5.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "atomicActions": [
+        "Instantiate canonical TransportDocument"
+      ],
+      "trigger": "Transport-document context is established (WD-LTL03-03A) and no canonical TransportDocument instance yet exists for this execution.",
+      "outputState": "Canonical TransportDocument instance instantiated, pending Consignment instantiation and association (WD-LTL03-04B).",
+      "evidenceRequirements": [
+        "Source evidence establishing the TransportDocument instance."
+      ]
+    },
+    {
+      "workUnitId": "WD-LTL03-04B",
+      "parentWorkUnitId": "WD-LTL03-04",
+      "sequence": 2,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Instantiate canonical Consignment and associate it to TransportDocument",
+      "purpose": "Instantiate canonical Consignment and associate it to TransportDocument",
+      "sourceRefs": [
+        "data/modules/road-ltl-v1.5.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "atomicActions": [
+        "Instantiate Consignment",
+        "Associate Consignment to TransportDocument"
+      ],
+      "trigger": "A canonical TransportDocument instance exists (WD-LTL03-04A).",
+      "outputState": "Consignment instance instantiated and associated to TransportDocument; party, reference, handling-unit, line-item, dangerous-goods, instruction and service-window resolution follow (WD-LTL03-05 onward).",
+      "evidenceRequirements": [
+        "Source evidence establishing the Consignment instance and its association to TransportDocument."
+      ]
+    },
+    {
+      "workUnitId": "WD-LTL03-05A",
+      "parentWorkUnitId": "WD-LTL03-05",
+      "sequence": 1,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Resolve Shipper/Consignor, Consignee and BillTo party roles/instances",
+      "purpose": "Resolve Shipper/Consignor, Consignee and BillTo party roles/instances",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "Canonical TransportDocument and Consignment instances exist and party-role information is present in the acquired input.",
+      "atomicActions": [
+        "Identify the party-role block (Shipper/Consignor, Consignee, BillTo) from acquired input.",
+        "Instantiate one canonical Party instance per resolved role and associate each to the Consignment."
+      ],
+      "evidenceRequirements": [
+        "Source evidence identifying the resolved party role and its associated input values."
+      ],
+      "outputState": "Party:ShipperOrConsignor, Party:Consignee and Party:BillTo instances resolved and associated to Consignment; canonical address-line resolution pending (WD-LTL03-05B)."
+    },
+    {
+      "workUnitId": "WD-LTL03-05B",
+      "parentWorkUnitId": "WD-LTL03-05",
+      "sequence": 2,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Resolve canonical address semantics",
+      "purpose": "Resolve canonical address semantics; Address 1/2/3 remain layout bindings over canonical address-line/locality semantics.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "A Party instance has been resolved (WD-LTL03-05A) and carries one or more layout-specific address fields requiring canonical resolution.",
+      "atomicActions": [
+        "Map layout-specific address fields (e.g. Address 1/2/3) to canonical addressLines[] and locality semantics on the resolved Party instance, per the PartiesAndAddresses resolution rule."
+      ],
+      "evidenceRequirements": [
+        "Source values for each layout-specific address field mapped."
+      ],
+      "outputState": "Resolved Party instance carries canonical addressLines[]/locality values rather than layout-specific address labels."
+    },
+    {
+      "workUnitId": "WD-LTL03-05C",
+      "parentWorkUnitId": "WD-LTL03-05",
+      "sequence": 3,
+      "unitType": "DECISION_GATE",
+      "name": "Resolve client-specific party codes/account semantics",
+      "purpose": "Resolve client-specific party codes/account semantics",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Exact client/governing schema semantics are not established by canonical source."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-SHIPPER-CODE",
+          "CB-LTL03-BILLTO-ACCOUNT-SEMANTICS",
+          "CB-LTL03-CONSIGNEE-ACCOUNT-SEMANTICS"
+        ],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-06A",
+      "parentWorkUnitId": "WD-LTL03-06",
+      "sequence": 1,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Instantiate typed Reference objects",
+      "purpose": "Instantiate Reference objects with value, type/type-scheme, issuer/role and related object.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "One or more identifier/reference values are present in the acquired input and have not yet been resolved into canonical Reference objects.",
+      "atomicActions": [
+        "For each identifier value, instantiate a typed Reference object carrying value, type/type scheme, issuer/role and the related canonical object, per the References resolution rule."
+      ],
+      "evidenceRequirements": [
+        "Source value and context for each instantiated Reference."
+      ],
+      "outputState": "Reference[] populated with typed instances associated to their related canonical object; identifiers not yet classifiable by exact type/type-scheme remain pending client-binding resolution."
+    },
+    {
+      "workUnitId": "WD-LTL03-06B",
+      "parentWorkUnitId": "WD-LTL03-06",
+      "sequence": 2,
+      "unitType": "DECISION_GATE",
+      "name": "Resolve Reference Number Type Full Name vocabulary",
+      "purpose": "Resolve Reference Number Type Full Name vocabulary",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Client/governing vocabulary is unresolved."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-REFERENCE-TYPE-FULL-NAME"
+        ],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-07A",
+      "parentWorkUnitId": "WD-LTL03-07",
+      "sequence": 1,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Identify canonical HandlingUnit structure",
+      "purpose": "Identify canonical HandlingUnit structure",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "Handling-unit information is present in the acquired input and canonical HandlingUnit hierarchy has not yet been established.",
+      "atomicActions": [
+        "Identify the handling-unit hierarchy/association structure from source evidence before accepting any handling-unit count, per the HandlingUnitAndPieceHierarchy resolution rule.",
+        "Instantiate one canonical HandlingUnit instance per resolved unit."
+      ],
+      "evidenceRequirements": [
+        "Source structure/evidence establishing handling-unit hierarchy prior to count acceptance."
+      ],
+      "outputState": "HandlingUnit[] instantiated and associated to Consignment; count/type not yet validated against the resolved hierarchy (WD-LTL03-07B)."
+    },
+    {
+      "workUnitId": "WD-LTL03-07B",
+      "parentWorkUnitId": "WD-LTL03-07",
+      "sequence": 2,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Validate handling-unit count/type association",
+      "purpose": "Validate handling-unit count/type association independently of line-item piece count.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "Canonical HandlingUnit instances exist (WD-LTL03-07A) and a declared count/type value is present in source evidence.",
+      "atomicActions": [
+        "Validate the declared handling-unit count/type against the resolved HandlingUnit hierarchy, rejecting or flagging any substitution of a piece-level value for a handling-unit-level value."
+      ],
+      "evidenceRequirements": [
+        "Declared count/type source value and the resolved hierarchy it is validated against."
+      ],
+      "outputState": "HandlingUnit count/type validated as hierarchy-consistent, or flagged as a hierarchy conflict for conflict resolution (WD-LTL03-16)."
+    },
+    {
+      "workUnitId": "WD-LTL03-07C",
+      "parentWorkUnitId": "WD-LTL03-07",
+      "sequence": 3,
+      "unitType": "DECISION_GATE",
+      "name": "Resolve Handling Unit Line No semantics",
+      "purpose": "Resolve Handling Unit Line No semantics",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "BLOCKED_BY_KNOWLEDGE_GAP",
+        "blockingReasons": [
+          "Source context remains pending."
+        ],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [
+          "KG-LTL03-HANDLING-UNIT-LINE-NO"
+        ],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-08A",
+      "parentWorkUnitId": "WD-LTL03-08",
+      "sequence": 1,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Instantiate canonical LineItem objects",
+      "purpose": "Instantiate canonical LineItem objects",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "Line-item information is present in the acquired input, associated to a resolved HandlingUnit or Consignment context.",
+      "atomicActions": [
+        "Instantiate one canonical LineItem instance per resolved line-item entry and associate it to its containing HandlingUnit or Consignment, per the canonical object model."
+      ],
+      "evidenceRequirements": [
+        "Source value(s) identifying each instantiated LineItem."
+      ],
+      "outputState": "LineItem[] instantiated, pending hierarchy association (WD-LTL03-08B) and piece-count validation (WD-LTL03-08C)."
+    },
+    {
+      "workUnitId": "WD-LTL03-08B",
+      "parentWorkUnitId": "WD-LTL03-08",
+      "sequence": 2,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Associate LineItem instances to hierarchy",
+      "purpose": "Associate LineItem instances to the correct HandlingUnit/Consignment hierarchy.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "LineItem instances exist (WD-LTL03-08A) and their containing HandlingUnit association is not yet established.",
+      "atomicActions": [
+        "Associate each LineItem instance to its containing HandlingUnit (or Consignment where no handling-unit-level grouping applies), per the resolved canonical object hierarchy."
+      ],
+      "evidenceRequirements": [
+        "Source structure evidence supporting the LineItem-to-HandlingUnit association."
+      ],
+      "outputState": "LineItem[] associated within the canonical HandlingUnit/Consignment hierarchy."
+    },
+    {
+      "workUnitId": "WD-LTL03-08C",
+      "parentWorkUnitId": "WD-LTL03-08",
+      "sequence": 3,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Validate Line Item Piece Count independently from Handling Unit Count",
+      "purpose": "Validate Line Item Piece Count independently from Handling Unit Count",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "A declared Line Item Piece Count value is present in source evidence for a resolved LineItem.",
+      "atomicActions": [
+        "Validate the declared Line Item Piece Count against the LineItem instance independently of any Handling Unit Count value, per the HandlingUnitAndPieceHierarchy resolution rule."
+      ],
+      "evidenceRequirements": [
+        "Declared piece-count source value, validated independently of handling-unit count."
+      ],
+      "outputState": "LineItem Piece Count validated as hierarchy-consistent and distinct from Handling Unit Count, or flagged as a conflict."
+    },
+    {
+      "workUnitId": "WD-LTL03-09A",
+      "parentWorkUnitId": "WD-LTL03-09",
+      "sequence": 1,
+      "unitType": "DECISION_EVALUATION",
+      "name": "Classify dangerous-goods applicability",
+      "purpose": "Classify dangerous-goods applicability from associated evidence and active regulatory context.",
+      "sourceRefs": [
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "A LineItem instance exists and source evidence contains a hazardous-indicator value or equivalent requiring applicability classification.",
+      "decisionGates": [
+        "Does source evidence establish a hazardous indicator for this LineItem, per the DangerousGoods conditional-object-family rule?"
+      ],
+      "evidenceRequirements": [
+        "Source hazardous-indicator value or equivalent evaluated for this decision."
+      ],
+      "outputState": "DangerousGoods applicability determined TRUE (route to WD-LTL03-09B) or FALSE (LineItem carries no DangerousGoods object)."
+    },
+    {
+      "workUnitId": "WD-LTL03-09B",
+      "parentWorkUnitId": "WD-LTL03-09",
+      "sequence": 2,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Instantiate DangerousGoods object and associate to LineItem",
+      "purpose": "Instantiate DangerousGoods object and associate to LineItem",
+      "sourceRefs": [
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "DangerousGoods applicability was determined TRUE (WD-LTL03-09A).",
+      "atomicActions": [
+        "Instantiate one canonical DangerousGoods object per the conditional object family (hazardous indicator, UN/NA identification number, proper shipping name, hazard class/division, packing group where applicable) and associate it to the triggering LineItem, per the DangerousGoods resolution rule."
+      ],
+      "evidenceRequirements": [
+        "Source values for each field in the associated conditional object family."
+      ],
+      "outputState": "DangerousGoods object instantiated and associated to LineItem; basic description not yet resolved (WD-LTL03-09C)."
+    },
+    {
+      "workUnitId": "WD-LTL03-09C",
+      "parentWorkUnitId": "WD-LTL03-09",
+      "sequence": 3,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Resolve linked hazardous-material basic description",
+      "purpose": "Resolve identification number, proper shipping name, hazard class/division and packing group when applicable.",
+      "sourceRefs": [
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "A DangerousGoods object exists (WD-LTL03-09B) and its basic-description fields are not yet resolved.",
+      "atomicActions": [
+        "Resolve the linked hazardous-material basic-description fields (proper shipping name, hazard class/division, packing group where applicable) as one associated object, per source claim hazmat-basic-description-object."
+      ],
+      "evidenceRequirements": [
+        "Source values for proper shipping name, hazard class/division and packing group."
+      ],
+      "outputState": "DangerousGoods basic description resolved; conditional technical-name and inhalation-zone requirements evaluated next (WD-LTL03-09D, WD-LTL03-09E)."
+    },
+    {
+      "workUnitId": "WD-LTL03-09D",
+      "parentWorkUnitId": "WD-LTL03-09",
+      "sequence": 4,
+      "unitType": "DECISION_GATE",
+      "name": "Apply conditional technical-name requirement",
+      "purpose": "Apply conditional technical-name requirement",
+      "sourceRefs": [
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "DangerousGoods basic description is resolved (WD-LTL03-09C).",
+      "decisionGates": [
+        "Does the resolved hazard classification conditionally require a technical name, per source claim hazmat-technical-name-conditional?"
+      ],
+      "evidenceRequirements": [
+        "Resolved hazard classification evaluated against the technical-name conditional-requirement rule."
+      ],
+      "outputState": "Technical-name requirement determined applicable (value required and resolved or flagged pending) or not applicable to this DangerousGoods object."
+    },
+    {
+      "workUnitId": "WD-LTL03-09E",
+      "parentWorkUnitId": "WD-LTL03-09",
+      "sequence": 5,
+      "unitType": "DECISION_GATE",
+      "name": "Apply conditional inhalation-hazard zone requirement",
+      "purpose": "Apply conditional inhalation-hazard zone requirement",
+      "sourceRefs": [
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "DangerousGoods basic description is resolved (WD-LTL03-09C).",
+      "decisionGates": [
+        "Does the resolved hazard classification conditionally require an inhalation-hazard zone value, per source claim hazmat-zone-conditional?"
+      ],
+      "evidenceRequirements": [
+        "Resolved hazard classification evaluated against the inhalation-zone conditional-requirement rule."
+      ],
+      "outputState": "Inhalation-hazard zone requirement determined applicable (value required and resolved or flagged pending) or not applicable to this DangerousGoods object."
+    },
+    {
+      "workUnitId": "WD-LTL03-09F",
+      "parentWorkUnitId": "WD-LTL03-09",
+      "sequence": 6,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Resolve emergency-response contact identity evidence",
+      "purpose": "Resolve emergency-response contact identity evidence",
+      "sourceRefs": [
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "DangerousGoods object requires emergency-response information per the conditional object family rule (WD-LTL03-09B).",
+      "atomicActions": [
+        "Resolve emergency-response contact identity evidence as part of the DangerousGoods conditional object family, per source claim hazmat-emergency-provider-identity."
+      ],
+      "evidenceRequirements": [
+        "Source evidence identifying the emergency-response contact/provider."
+      ],
+      "outputState": "DangerousGoods object carries resolved emergency-response contact identity evidence, completing the conditional object family for this LineItem."
+    },
+    {
+      "workUnitId": "WD-LTL03-10A",
+      "parentWorkUnitId": "WD-LTL03-10",
+      "sequence": 1,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Instantiate canonical Instruction objects",
+      "purpose": "Instantiate canonical Instruction objects",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "Instruction information is present in the acquired input associated to the Consignment.",
+      "atomicActions": [
+        "Instantiate one canonical Instruction object per resolved instruction entry and associate it to the Consignment."
+      ],
+      "evidenceRequirements": [
+        "Source value(s) identifying each instantiated Instruction."
+      ],
+      "outputState": "Instruction[] instantiated and associated to Consignment; instruction-type classification pending client-binding resolution."
+    },
+    {
+      "workUnitId": "WD-LTL03-10B",
+      "parentWorkUnitId": "WD-LTL03-10",
+      "sequence": 2,
+      "unitType": "DECISION_GATE",
+      "name": "Resolve exact Instruction Type value set",
+      "purpose": "Resolve exact Instruction Type value set",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Exact Instruction Type values require client/governing schema."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-INSTRUCTION-TYPE-VALUE-SET"
+        ],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-10C",
+      "parentWorkUnitId": "WD-LTL03-10",
+      "sequence": 3,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Instantiate ServiceEventWindow objects",
+      "purpose": "Instantiate ServiceEventWindow objects for applicable appointment/time-critical information.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "Service/event timing information (e.g. pickup or cut-off window) is present in the acquired input.",
+      "atomicActions": [
+        "Instantiate one canonical ServiceEventWindow object per resolved timing entry and associate it to the Consignment, relative to the applicable pickup-acceptance or document/regulatory/client-system cut-off."
+      ],
+      "evidenceRequirements": [
+        "Source value(s) identifying each instantiated ServiceEventWindow and its applicable cut-off."
+      ],
+      "outputState": "ServiceEventWindow[] instantiated and associated to Consignment."
+    },
+    {
+      "workUnitId": "WD-LTL03-10D",
+      "parentWorkUnitId": "WD-LTL03-10",
+      "sequence": 4,
+      "unitType": "DECISION_GATE",
+      "name": "Resolve exact Time Critical Details coding",
+      "purpose": "Resolve exact Time Critical Details coding",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Exact Time Critical Details coding requires client/governing schema."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-TIME-CRITICAL-CODING"
+        ],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-15A",
+      "parentWorkUnitId": "WD-LTL03-15",
+      "sequence": 1,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Run applicable field-level validations",
+      "purpose": "Run applicable field-level validations",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "One or more canonical object fields have been normalized and are ready for validation.",
+      "atomicActions": [
+        "Run field-level validation against each normalized canonical field, per the task's declared field validation control."
+      ],
+      "evidenceRequirements": [
+        "Validation result per evaluated field."
+      ],
+      "outputState": "Each evaluated field carries a field-level validation result; cross-field validation follows (WD-LTL03-15B)."
+    },
+    {
+      "workUnitId": "WD-LTL03-15B",
+      "parentWorkUnitId": "WD-LTL03-15",
+      "sequence": 2,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Run cross-field validations",
+      "purpose": "Run cross-field validations, including linked DangerousGoods fields.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "Field-level validation is complete for the relevant canonical object (WD-LTL03-15A).",
+      "atomicActions": [
+        "Run cross-field validation across related fields on the same canonical object instance, per the task's declared cross-field validation control."
+      ],
+      "evidenceRequirements": [
+        "Cross-field validation result per evaluated field pair/group."
+      ],
+      "outputState": "Cross-field validation result recorded for the evaluated object instance; cross-object validation follows (WD-LTL03-15C)."
+    },
+    {
+      "workUnitId": "WD-LTL03-15C",
+      "parentWorkUnitId": "WD-LTL03-15",
+      "sequence": 3,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Run cross-object validations",
+      "purpose": "Run cross-object validation across document, consignment, parties, handling units, line items and conditional dangerous goods.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "Cross-field validation is complete for the relevant canonical object instances (WD-LTL03-15B).",
+      "atomicActions": [
+        "Run cross-object validation across related canonical object instances (e.g. LineItem-to-HandlingUnit, DangerousGoods-to-LineItem), per the task's declared cross-object validation control."
+      ],
+      "evidenceRequirements": [
+        "Cross-object validation result per evaluated object relationship."
+      ],
+      "outputState": "Cross-object validation result recorded; any resulting conflict routes to conflict resolution (WD-LTL03-16)."
+    },
+    {
+      "workUnitId": "WD-LTL03-16A",
+      "parentWorkUnitId": "WD-LTL03-16",
+      "sequence": 1,
+      "unitType": "DECISION_GATE",
+      "name": "Governed authority/source-of-truth policy available?",
+      "purpose": "Governed authority/source-of-truth policy available?",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "decisionGates": [
+        "Available \u2192 resolve under declared authority; absent \u2192 block/escalate"
+      ],
+      "trigger": "A validation or object-association conflict has been flagged requiring authority-policy determination.",
+      "outputState": "Authority/source-of-truth policy determined available (resolve under declared authority, WD-LTL03-16B) or absent (block/escalate).",
+      "evidenceRequirements": [
+        "Conflict requiring resolution and the authority-policy availability determination."
+      ]
+    },
+    {
+      "workUnitId": "WD-LTL03-16B",
+      "parentWorkUnitId": "WD-LTL03-16",
+      "sequence": 2,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Resolve conflict under declared authority",
+      "purpose": "Resolve conflict under declared authority and retain original evidence/conflict trace.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "A validation or object-association conflict was flagged and requires resolution under an authority/source-of-truth policy.",
+      "atomicActions": [
+        "Apply the declared source-authority policy to resolve the flagged conflict where the policy's precedence is known and unambiguous; where the precedence itself is unresolved, route to the source-authority-precedence knowledge gap rather than resolving arbitrarily."
+      ],
+      "evidenceRequirements": [
+        "Flagged conflict, the authority policy applied where resolvable, and the resolution outcome."
+      ],
+      "outputState": "Conflict resolved under declared authority, or explicitly routed to the source-authority-precedence knowledge gap where precedence is unresolved."
+    },
+    {
+      "workUnitId": "WD-LTL03-16C",
+      "parentWorkUnitId": "WD-LTL03-16",
+      "sequence": 3,
+      "unitType": "DECISION_GATE",
+      "name": "Block unresolved authority ambiguity",
+      "purpose": "Block unresolved authority ambiguity",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "BLOCKED_BY_KNOWLEDGE_GAP",
+        "blockingReasons": [
+          "Material conflicts without a governed precedence rule cannot be resolved canonically."
+        ],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [
+          "KG-LTL03-SOURCE-AUTHORITY-PRECEDENCE"
+        ],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-17A",
+      "parentWorkUnitId": "WD-LTL03-17",
+      "sequence": 1,
+      "unitType": "DECISION_GATE",
+      "name": "Critical confidence/validation sufficient for straight-through processing?",
+      "purpose": "Critical confidence/validation sufficient for straight-through processing?",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Frozen source requires a governed threshold but does not establish the active client/runtime value."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-CRITICAL-CONFIDENCE-THRESHOLD"
+        ],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-17B",
+      "parentWorkUnitId": "WD-LTL03-17",
+      "sequence": 2,
+      "unitType": "ACTION_EXECUTION",
+      "name": "Route critical low-confidence/failed-validation cases to governed HITL review",
+      "purpose": "Route critical low-confidence/failed-validation cases to governed HITL review",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "data/modules/road-ltl-v1.5.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "A confidence/human-review determination classifies the case as critical-low-confidence or failed-validation.",
+      "atomicActions": [
+        "Route the case to governed human-in-the-loop review, recording an Exception/HITL record, when confidence is determined critical-low or validation has failed."
+      ],
+      "evidenceRequirements": [
+        "Exception/HITL record for the routed case."
+      ],
+      "outputState": "Case routed to governed HITL review with an Exception/HITL record; execution BLOCKED pending governed exception ownership per the task's declared after-state."
+    },
+    {
+      "workUnitId": "WD-LTL03-18A",
+      "parentWorkUnitId": "WD-LTL03-18",
+      "sequence": 1,
+      "unitType": "ATOMIC_ACTION",
+      "name": "Emit versioned canonical object graph and validation state",
+      "purpose": "Emit versioned canonical TransportDocument/Consignment object graph, validation state and identifier crosswalk.",
+      "sourceRefs": [
+        "data/modules/road-ltl-v1.5.json",
+        "data/operational-knowledge/road-ltl-v1.5-operational.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "Canonical object resolution and validation are complete for the applicable scope.",
+      "atomicActions": [
+        "Emit a versioned canonical TransportDocument/Consignment object graph together with its recorded validation state, per the task's declared evidence requirements."
+      ],
+      "evidenceRequirements": [
+        "Versioned canonical object graph; recorded validation results."
+      ],
+      "outputState": "Versioned canonical object graph and validation state emitted; unresolved binding/source-context register emission follows (WD-LTL03-18B)."
+    },
+    {
+      "workUnitId": "WD-LTL03-18B",
+      "parentWorkUnitId": "WD-LTL03-18",
+      "sequence": 2,
+      "unitType": "EVIDENCE_CAPTURE",
+      "name": "Emit explicit unresolved binding/source-context register",
+      "purpose": "Emit explicit unresolved binding/source-context register rather than silently mapping labels.",
+      "sourceRefs": [
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "data/operational-knowledge/road-ltl-v1.5-operational.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "Canonical object graph has been emitted (WD-LTL03-18A) and one or more fields remain explicitly unresolved as client-binding or source-context gaps.",
+      "atomicActions": [
+        "Emit an explicit register of every unresolved binding (CLIENT_BINDING_REQUIRED) and source-context gap (SOURCE_CONTEXT_PENDING) rather than silently mapping or inferring canonical semantics for those labels."
+      ],
+      "evidenceRequirements": [
+        "Complete list of unresolved binding/source-context items and their status."
+      ],
+      "outputState": "Explicit unresolved binding/source-context register emitted alongside the canonical object graph."
+    },
+    {
+      "workUnitId": "WD-LTL03-19A",
+      "parentWorkUnitId": "WD-LTL03-19",
+      "sequence": 1,
+      "unitType": "DECISION_GATE",
+      "name": "Target client/runtime mapping available?",
+      "purpose": "Target client/runtime mapping available?",
+      "sourceRefs": [
+        "data/modules/road-ltl-v1.5.json",
+        "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+      ],
+      "executorReadiness": {
+        "status": "BLOCKED_BY_CLIENT_BINDING",
+        "blockingReasons": [
+          "Governing Malkom/client schema is required for unresolved labels and target-field mappings."
+        ],
+        "requiredClientBindings": [
+          "CB-LTL03-TARGET-SCHEMA-MAPPING"
+        ],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      }
+    },
+    {
+      "workUnitId": "WD-LTL03-19B",
+      "parentWorkUnitId": "WD-LTL03-19",
+      "sequence": 2,
+      "unitType": "ACTION_EXECUTION",
+      "name": "Apply approved target projection after canonical resolution",
+      "purpose": "Apply approved target projection after canonical resolution without changing canonical meaning.",
+      "sourceRefs": [
+        "data/modules/road-ltl-v1.5.json",
+        "data/operational-knowledge/road-ltl-v1.5-operational.json"
+      ],
+      "executorReadiness": {
+        "status": "EXECUTOR_READY",
+        "blockingReasons": [],
+        "requiredClientBindings": [],
+        "requiredKnowledgeGaps": [],
+        "downstreamCompilationTarget": "CANONICAL_WORKDEFINITION"
+      },
+      "trigger": "Target client/runtime mapping is available (WD-LTL03-19A) and canonical resolution is complete.",
+      "atomicActions": [
+        "Apply the approved target client/runtime schema projection to the resolved canonical object graph, without changing canonical meaning, per the task's declared mapping rule."
+      ],
+      "evidenceRequirements": [
+        "Approved target schema mapping applied and the resulting projected output."
+      ],
+      "outputState": "Canonical information projected to the approved target client/runtime schema; canonical object graph itself remains unchanged."
+    }
   ],
   "summary": {
     "workUnitCount": 64,
