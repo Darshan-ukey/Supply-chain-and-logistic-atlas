@@ -91,17 +91,32 @@ function internalDemoDecompositionView(taskId,summary){
   if(!summary)return `${internalDemoBadge()}<div class="udr-empty">Internal demo decomposition summary is unavailable.</div>`;
   const t=summary.tasks?.find(x=>x.taskId===taskId)||null;
   const tot=summary.totals||{};
+  const shapeRows=t?[
+    {label:'Task root',count:1,note:'The A5 task itself, as the single root work unit.'},
+    {label:'Action groups \u2192 atomic actions',count:Math.max(0,t.workUnitCount-t.leafCount-1),note:'Intermediate decomposition levels between the task root and its terminal leaves.'},
+    {label:'Terminal leaves',count:t.leafCount,note:'The executable bottom of the tree \u2014 each one individually classified below.'}
+  ]:[];
   return `${internalDemoBadge()}<div class="udr-eyebrow">P6.1 RECURSIVE WORK DECOMPOSITION \u00B7 PUBLIC-SAFE SUMMARY</div><h2>Work Decomposition</h2><p>${esc(summary.status||'')} \u00B7 governed Road LTL ${esc(summary.moduleVersion||'')}. ${esc(summary.securityNote||'')}</p>`+
     section('Overall (22 tasks)',kv([['Work units',tot.workUnitCount],['Terminal leaves',tot.leafCount],['Executor-ready',tot.executorReadyLeafCount],['Blocked \u00B7 client binding',tot.blockedByClientBindingLeafCount],['Blocked \u00B7 knowledge gap',tot.blockedByKnowledgeGapLeafCount]]))+
-    (t?section(`This task \u00B7 ${esc(taskId)}`,kv([['Work units',t.workUnitCount],['Terminal leaves',t.leafCount],['Executor-ready',t.executorReadyLeafCount],['Blocked \u00B7 client binding',t.blockedByClientBindingLeafCount],['Blocked \u00B7 knowledge gap',t.blockedByKnowledgeGapLeafCount],['Independent executor proof',t.executorProof]])):'<div class="udr-empty">No per-task row for this task in the public summary.</div>');
+    (t?section(`This task \u00B7 ${esc(taskId)}`,kv([['Work units',t.workUnitCount],['Terminal leaves',t.leafCount],['Executor-ready',t.executorReadyLeafCount],['Blocked \u00B7 client binding',t.blockedByClientBindingLeafCount],['Blocked \u00B7 knowledge gap',t.blockedByKnowledgeGapLeafCount],['Independent executor proof',t.executorProof]]))
+      +`<div class="udr-eyebrow" style="margin-top:14px">SHAPE OF THIS TASK'S TREE</div>`
+      +`<table class="udr-shape-table"><tbody>${shapeRows.map(r=>`<tr><td>${esc(r.label)}</td><td><b>${esc(r.count)}</b></td><td>${esc(r.note)}</td></tr>`).join('')}</tbody></table>`
+      +`<div class="udr-protected-facts">Individually-named work units, their triggers and their exact parent/child edges are held in the protected decomposition store, not in this public-safe summary. This demo shows the real, verified counts and readiness classification for every leaf in ${esc(taskId)} \u2014 the shape above is genuine, not illustrative \u2014 but not each leaf's own name and content.</div>`
+      :'<div class="udr-empty">No per-task row for this task in the public summary.</div>');
 }
 function internalDemoWorkDefinitionView(taskId,summary){
   if(!summary)return `${internalDemoBadge()}<div class="udr-empty">Internal demo compiler-status summary is unavailable.</div>`;
+  const fields=summary.compiledFieldSchema||[];
   return `${internalDemoBadge()}<div class="udr-eyebrow">P6.2 CANONICAL WORKDEFINITION \u00B7 COMPILER STATUS, NOT PERSISTED OUTPUT</div><h2>WorkDefinition</h2><p>${esc(summary.lineageNote||'')}</p>`+
     section('Compiler certification',kv([['Status',summary.compilerCertification?.status],['Verified by',summary.compilerCertification?.verifiedBy]]))+
     section('Persisted canonical WorkDefinitions',kv([['Count',summary.persistedCanonicalWorkDefinitions?.count],['Store',summary.persistedCanonicalWorkDefinitions?.store]]))+
     `<div class="udr-protected-facts">${esc(summary.persistedCanonicalWorkDefinitions?.note||'')}</div>`+
-    section('If a governed compile were persisted',kv([['Expected WorkDefinitions',summary.dryRunExpectation?.expectedWorkDefinitionsIfPersisted],['From leaves',summary.dryRunExpectation?.expectedSourceLeafCount]]));
+    section('If a governed compile were persisted',kv([['Expected WorkDefinitions',summary.dryRunExpectation?.expectedWorkDefinitionsIfPersisted],['From leaves',summary.dryRunExpectation?.expectedSourceLeafCount]]))+
+    `<div class="udr-eyebrow" style="margin-top:14px">WHAT A COMPILED WORKDEFINITION CONTAINS</div>`
+    +`<p style="font-size:12px;color:#6f838d">This is the real, governed field structure the compiler produces for every executor-ready leaf \u2014 read directly from the frozen compiler contract, not written for this demo.</p>`
+    +`<table class="udr-shape-table"><tbody>${fields.map(f=>`<tr><td><b>${esc(f.group)}</b></td><td>${esc(f.fields)}</td></tr>`).join('')}</tbody></table>`
+    +`<div class="udr-eyebrow" style="margin-top:14px">RUNTIME CONSUMPTION / PROJECTION</div>`
+    +`<div class="udr-protected-facts" style="border-color:#0d8da7;background:#eef8fa">Canonical WorkDefinition is the runtime-neutral specification. Malkom is one adapter/consumer pattern; the proven reference projection shown elsewhere remains the separate v1.2 \u2192 Domain Warehouse v2.3 lineage.</div>`;
 }
 function protectedView(p,type){
   const isWd=type==='work-definition';

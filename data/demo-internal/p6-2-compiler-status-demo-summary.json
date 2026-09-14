@@ -26,5 +26,47 @@
     "expectedSourceLeafCount": 444,
     "note": "A governed dry run has been rehearsed and is pinned to the certified P6.1 decomposition. It has no --persist path by design. These are the counts a real persisted compile is expected to produce, not counts that exist today."
   },
-  "lineageNote": "This is the governed target lineage (Road LTL 1.5 -> Operational Knowledge -> P6.1 decomposition -> P6.2 compiler). It is separate from, and was not used to produce, the proven reference Malkom projection shown elsewhere in this demo, which is generated from Road LTL V1.2 via Domain Warehouse v2.3."
+  "lineageNote": "This is the governed target lineage (Road LTL 1.5 -> Operational Knowledge -> P6.1 decomposition -> P6.2 compiler). It is separate from, and was not used to produce, the proven reference Malkom projection shown elsewhere in this demo, which is generated from Road LTL V1.2 via Domain Warehouse v2.3.",
+  "compiledFieldSchema": [
+    {
+      "group": "Identity",
+      "fields": "schemaVersion, workDefinitionId, contractVersion, version, status, title, purpose"
+    },
+    {
+      "group": "Lineage",
+      "fields": "daughterModule/Version, semanticSourceVersion, sourceTaskId/Title, decompositionId, sourceWorkUnitId, workUnitPath, unitType, parentWorkUnitId, sequence"
+    },
+    {
+      "group": "Provenance",
+      "fields": "compiledFrom, compilerVersion, governedInputContentHash, sourceRefs"
+    },
+    {
+      "group": "Applicability",
+      "fields": "requiredWhen, prohibitedWhen, entryConditions"
+    },
+    {
+      "group": "Trigger",
+      "fields": "trigger (single field)"
+    },
+    {
+      "group": "Populated by Work Decomposition V1",
+      "fields": "inputs, decisions, actions, transitions, clocks, evidence, dependencies"
+    },
+    {
+      "group": "Recognised by the contract, not yet populated by V1",
+      "fields": "actors, systems, rules, validations, controls, outcomes, exceptions \u2014 carried as explicit empty sets; the compiler does not synthesise them"
+    },
+    {
+      "group": "Executability",
+      "fields": "status, executorClass, independentExecutorProofStatus, requiredClientBindings, requiredKnowledgeGaps"
+    },
+    {
+      "group": "Execution characteristics",
+      "fields": "executorClassBound, clientBindingRequired, knowledgeGapPresent, outputState, fallbackIfBlocked"
+    },
+    {
+      "group": "Client binding requirements",
+      "fields": "clientBindingRequirements (list)"
+    }
+  ]
 }
