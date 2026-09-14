@@ -106,3 +106,25 @@ Checked commit `c06a5865` (shared-log summary) and `87015d76` (the actual edit t
 `P6_1_V1_LTL03_COMBINED_GENERATOR_RULE_REVIEW_PASS_WITH_CORRECTION__CR10_AUTHORITY_CLARIFIED__READY_FOR_OWNER_AUTHORIZED_REGENERATION`
 
 Treating `87015d76` as authoritative over my original `e59b4d6` wording, as instructed. Not restoring the prior CR10 interpretation. CR1–CR9 and CR11 unchanged. No regeneration performed. No Supabase mutation, WorkDefinition persistence, main merge, or production promotion.
+
+## 2026-09-14 — Claude — R2 independent content QA: FAIL, bounded corrections required
+Classification: OWNER_AUTHORIZED_INDEPENDENT_QA
+Checkpoint: QA_DISPOSITION
+
+Full report: `governance/recovery/P6.1_LTL03_R2_INDEPENDENT_QA_RESULT_2026-09-14.md` (commit `5082390`). Checked commit `fe474a05` and the R2 bundle it points to. Did not act on the "standing authorization" instruction blindly — proceeded into the independent QA it specifies, but held the same verification standard as every prior round in this reconciliation.
+
+**Bundle integrity: independently verified, not trusted.** Fetched all 4 part files, recomputed SHA-256 against the manifest — all match. Reassembled the artifact myself; caught my own reassembly bug (misread the part-file wrapper) before it could affect any conclusion.
+
+**Structural/graph: genuinely strong, independently reconfirmed.** 38/32/6 nodes, 1 root, 0 dupes/cycles/orphans — matches the manifest exactly, all recomputed from raw JSON. 14/11/7 leaf status counts also match exactly. Every one of the 18 blocked leaves carries a valid blocker reference; all 11 KG and 9 CB refs are used, none orphaned.
+
+**CR1/CR2 verified applied, not asserted.** Walked the tree directly: 20-step seed preserved, only 5 areas expanded, and **DangerousGoods is genuinely consolidated to 2 units** — the clearest violation from the R1 tree is actually fixed this time, confirmed by reading the tree myself.
+
+**One real, minor conformance gap:** the manifest's own `summary` object fails schema validation (missing `knowledgeGapCount`/`clientBindingRefCount`/`executorProof`) — easily fixed, not a work-unit defect.
+
+**The decisive finding:** corrected CR10 requires recording an explicit "not material" determination when authority isn't material to a leaf. Checked all 14 ready leaves directly — **zero such determinations anywhere in the artifact.** The self-QA's claim that CR10 "is applied" is a methodology statement, not artifact-level evidence, and I'm holding this to the same bar as everything else in this reconciliation: a narrative claim isn't proof. My own read is that this is plausible in substance — all 14 are mechanical object-resolution operations, and every genuinely decision-dependent unit in the tree is correctly blocked — but I'm not substituting my own inference for the record the rule requires.
+
+**Noted explicitly, not treated as reassurance:** the exact 14=14 match against historical ready count. Content was checked directly rather than accepted on the strength of that match.
+
+**Disposition: `P6_1_V1_LTL03_R2_INDEPENDENT_QA_FAIL__BOUNDED_CORRECTIONS_REQUIRED`**
+
+Not a structural or source-grounding failure — those are sound. Two precise, bounded corrections specified in the report (the manifest summary fields; per-leaf authority-materiality determination on the 14 ready leaves). No expansion to the other 21 tasks until corrected and re-verified. No Supabase mutation, no WorkDefinition persistence, no main merge, no production promotion.
