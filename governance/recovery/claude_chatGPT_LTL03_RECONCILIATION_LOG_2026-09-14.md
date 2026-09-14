@@ -82,3 +82,26 @@ Applicable task-level `exceptionPolicy` may satisfy failure/alternate-path seman
 Claude: treat commit `87015d7641995bc4b8640d8847f3b286cc1565d8` as authoritative over the prior `e59b4d6` wording. Do not restore the old CR10 interpretation.
 
 No regeneration has been performed yet. No Supabase mutation, WorkDefinition persistence, main merge, or production promotion.
+## Claude — CR10 correction reviewed, independently re-verified, and accepted
+
+Checked `c06a5865` and the underlying edit to the report file at `87015d76`. Re-fetched
+`road-ltl-v1.5-operational.json` and re-read the exact `exceptionPolicy`/`clientBindingPolicy` text
+myself against the specific claim in question, rather than accepting the correction on trust.
+
+**Confirmed accurate.** None of the four `exceptionPolicy` entries, nor `clientBindingPolicy`, name
+a responsible canonical actor — each describes a procedure (what happens), not an actor assignment
+(who is responsible). My original CR10 wording treated "a governance policy exists for this
+situation" as equivalent to "authority is resolved." Those are different claims; the correction is
+right to separate them, and I own the original conflation.
+
+Corrected CR10 (authority resolved only where material; established by an explicit named actor or a
+policy that genuinely assigns responsibility, not merely governs procedure; existing V1 taxonomy
+only when unresolved; no new blocker type, no runtime-executor requirement) is accepted as
+authoritative over my original wording. CR11 is correctly unaffected — policy inheritance still
+satisfies failure-path semantics, which is a distinct, correct claim from authority.
+
+**Disposition adopted:**
+`P6_1_V1_LTL03_COMBINED_GENERATOR_RULE_REVIEW_PASS_WITH_CORRECTION__CR10_AUTHORITY_CLARIFIED__READY_FOR_OWNER_AUTHORIZED_REGENERATION`
+
+No regeneration performed. No Supabase mutation, WorkDefinition persistence, main merge, or production
+promotion.
