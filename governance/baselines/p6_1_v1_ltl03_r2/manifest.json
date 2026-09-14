@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "atlas-canonical-work-decomposition-v1-bundle-manifest",
+  "decompositionId": "road-ltl-1.5__LTL-03__P6.1-V1__RECONSTRUCTED-R2-2026-09-14",
+  "contractVersion": "1.0.0",
+  "status": "RECONSTRUCTED_P6_1_V1_CANDIDATE_AWAITING_INDEPENDENT_QA",
+  "daughterModule": "road-ltl",
+  "daughterVersion": "1.5",
+  "sourceTaskId": "LTL-03",
+  "sourceTaskTitle": "Create and validate shipment, consignment and transport-document identity",
+  "sourceAliases": {
+    "M": "data/modules/road-ltl-v1.5.json",
+    "O": "data/operational-knowledge/road-ltl-v1.5-operational.json",
+    "B": "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+    "C": "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+    "K": "governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_FROZEN.md",
+    "E": "governance/standards/EXECUTABILITY_AND_RECURSIVE_DECOMPOSITION_STANDARD_V1_FROZEN.md"
+  },
+  "semanticLineage": {
+    "historicalCertifiedImplementation": "ba9d47f07b59ecf79ff6cde9145c0185cc18d39d",
+    "historicalCertifiedContentHash": "4563feae1776761c1cb542ffaf737c852b1162238fc6bad61071dae16f420555",
+    "correctedRuleAuthorityCommit": "87015d7641995bc4b8640d8847f3b286cc1565d8",
+    "basis": "P6.1 V1 + corrected CR1-CR11; AR0.2/VNext excluded"
+  },
+  "parentLink": {
+    "parentLevel": "A5",
+    "parentTaskId": "LTL-03"
+  },
+  "stopCriterion": "20-step governed seed is primary spine; split only on independently source-supported child contracts; fail closed on unresolved canonical knowledge or client binding.",
+  "parts": [
+    {
+      "part": 1,
+      "count": 10,
+      "sha256": "e7314101197b2934498b8317fe3c0a2fc14358c44e771564e68f57bc003b2b52",
+      "path": "governance/baselines/p6_1_v1_ltl03_r2/units-part-1.json"
+    },
+    {
+      "part": 2,
+      "count": 10,
+      "sha256": "ce92fbc7674ddd06c63b0cc7a4568daa9c193c4be83266a149ea7c47cbb90799",
+      "path": "governance/baselines/p6_1_v1_ltl03_r2/units-part-2.json"
+    },
+    {
+      "part": 3,
+      "count": 10,
+      "sha256": "810321f2a8c78d815bf7eac1e3dbea3b93ead61c3407c12a9993dfba6523b54d",
+      "path": "governance/baselines/p6_1_v1_ltl03_r2/units-part-3.json"
+    },
+    {
+      "part": 4,
+      "count": 8,
+      "sha256": "98bbfec9343aa1194fae82d1c381de54b548aa1b9383253f3dcdebc285bdd559",
+      "path": "governance/baselines/p6_1_v1_ltl03_r2/units-part-4.json"
+    }
+  ],
+  "summary": {
+    "workUnitCount": 38,
+    "leafCount": 32,
+    "internalNodeCount": 6,
+    "leafStatusCounts": {
+      "EXECUTOR_READY": 14,
+      "BLOCKED_BY_KNOWLEDGE_GAP": 11,
+      "BLOCKED_BY_CLIENT_BINDING": 7
+    },
+    "requiredKnowledgeGaps": [
+      "KG-LTL03-CODE-SEMANTICS",
+      "KG-LTL03-DOCUMENT-REGIME-CLASSIFICATION",
+      "KG-LTL03-GENERAL-APPLICABILITY-CRITERIA",
+      "KG-LTL03-HANDLING-UNIT-LINE-NO",
+      "KG-LTL03-INPUT-INTEGRITY-CRITERIA",
+      "KG-LTL03-NORMALIZATION-RULES",
+      "KG-LTL03-PERMITTED-EVIDENCE-SOURCE-RULE",
+      "KG-LTL03-RELATED-VALUE-SEMANTICS",
+      "KG-LTL03-SHC-SEMANTICS",
+      "KG-LTL03-SOURCE-AUTHORITY-PRECEDENCE",
+      "KG-LTL03-VALIDATION-RULE-SPECIFICITY"
+    ],
+    "requiredClientBindings": [
+      "CB-LTL03-BILLTO-ACCOUNT-SEMANTICS",
+      "CB-LTL03-BOL-TYPE",
+      "CB-LTL03-CONSIGNEE-ACCOUNT-SEMANTICS",
+      "CB-LTL03-CRITICAL-CONFIDENCE-THRESHOLD",
+      "CB-LTL03-INSTRUCTION-TYPE-VALUE-SET",
+      "CB-LTL03-REFERENCE-TYPE-FULL-NAME",
+      "CB-LTL03-SHIPPER-CODE",
+      "CB-LTL03-TARGET-SCHEMA-MAPPING",
+      "CB-LTL03-TIME-CRITICAL-CODING"
+    ],
+    "historicalComparisonEvidenceOnly": {
+      "workUnitCount": 43,
+      "leafCount": 37,
+      "EXECUTOR_READY": 14,
+      "BLOCKED_BY_CLIENT_BINDING": 8,
+      "BLOCKED_BY_KNOWLEDGE_GAP": 15
+    },
+    "workDefinitionCompilationStatus": "NOT_STARTED__NOT_AUTHORIZED"
+  },
+  "guardrails": [
+    "Historical counts were not used as generation targets.",
+    "No Supabase mutation.",
+    "No WorkDefinition persistence.",
+    "No main merge.",
+    "No production promotion."
+  ],
+  "canonicalReassembly": "Concatenate workUnits from units-part-1..4 in part order under this manifest; part boundaries are custody/transport only and have no semantic meaning."
+}
