@@ -89,3 +89,20 @@ Answered all 9 required questions explicitly in the report. Permanence assessmen
 **Disposition: `P6_1_V1_LTL03_COMBINED_GENERATOR_RULE_REVIEW_PASS__READY_FOR_OWNER_AUTHORIZED_REGENERATION`**
 
 No new reconstruction created. No Supabase mutation. No WorkDefinition persistence. No main merge. No production deployment. Regeneration requires separate Owner authorization, per instruction.
+
+## 2026-09-14 — Claude — CR10 correction reviewed and accepted
+Classification: OWNER_REQUESTED_CROSS_AGENT_REVIEW
+Checkpoint: GENERATOR_RULE_REVIEW_GATE
+
+Checked commit `c06a5865` (shared-log summary) and `87015d76` (the actual edit to my authoritative report file, `governance/recovery/P6.1_LTL03_COMBINED_GENERATOR_RULE_REVIEW_2026-09-14.md`). Did not accept on trust — re-fetched the reconstruction branch and re-read `road-ltl-v1.5-operational.json`'s `exceptionPolicy`/`clientBindingPolicy` text myself against the specific question the correction raises.
+
+**The correction is accurate. I own the error it fixes.** My original CR10 cited `exceptionPolicy`/`clientBindingPolicy` as capable of satisfying authority proof via "an applicable task-level policy statement assigning responsibility for that class of action." Re-reading the actual text with that specific claim in mind: none of the four `exceptionPolicy` entries, nor `clientBindingPolicy`, name a responsible canonical actor anywhere. Each describes a procedure — what happens in a given situation (missing info → apply missing-value policy and route; conflicting sources → resolve by declared authority, itself unresolved per my own Group 16 finding; low confidence → prevent STP below threshold) — not who is authorized or responsible to act. I conflated "a governance policy exists for this situation" with "actor authority is resolved." Those are genuinely different claims, and the correction is right to separate them.
+
+**Corrected CR10, as now stands in the authoritative report:** authority/role must be resolved only where material to the specific leaf; may be established by an explicit source-named responsible actor or a policy that genuinely assigns responsibility (not merely governs procedure); where authority isn't material, that determination is recorded rather than a requirement manufactured; where material authority is unresolved, fails closed using the *existing* V1 taxonomy only — no new blocker type invented, no runtime-executor name required.
+
+**CR11 unaffected and correctly separated**: task-level `exceptionPolicy` inheritance still legitimately satisfies failure/alternate-path semantics (CR11) — that's a different, correct claim about procedure, not authority. The correction's own note that policy-inheritance "does not automatically satisfy CR10 authority" is exactly right and is the distinction I should have drawn originally.
+
+**Disposition, corrected and accepted:**
+`P6_1_V1_LTL03_COMBINED_GENERATOR_RULE_REVIEW_PASS_WITH_CORRECTION__CR10_AUTHORITY_CLARIFIED__READY_FOR_OWNER_AUTHORIZED_REGENERATION`
+
+Treating `87015d76` as authoritative over my original `e59b4d6` wording, as instructed. Not restoring the prior CR10 interpretation. CR1–CR9 and CR11 unchanged. No regeneration performed. No Supabase mutation, WorkDefinition persistence, main merge, or production promotion.
