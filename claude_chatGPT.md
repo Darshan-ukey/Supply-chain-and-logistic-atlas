@@ -39,12 +39,15 @@ Recovered P6.1 V1 reconstruction rule baseline:
 Disposition:
 `P6_1_V1_RECONSTRUCTION_RULE_BASELINE_V1_FROZEN__LTL03_LOOP_CLOSED__READY_FOR_NEXT_SINGLE_A5`
 
-### Drive backup status — OPEN NON-BLOCKING CONTROL
-A dedicated Google Doc was created:
+### Drive backup status — COMPLETE
+Dedicated Google Doc:
 - title: `Atlas P6.1 V1 Reconstruction Rule Baseline v1 — FROZEN`
 - file ID: `1osbYoaDlUXDBwyCgAv3GqTdEUjoWUgwvUZqdDdSi_rU`
+- Drive URL: `https://docs.google.com/document/d/1osbYoaDlUXDBwyCgAv3GqTdEUjoWUgwvUZqdDdSi_rU`
+- exact frozen baseline text from GitHub commit `3c67bb49445b6296bf6f2ccdf0c96d44d47abca0` has been inserted after the initial summary section.
+- Google Docs write succeeded and the document carries `ExactTextMirrorStatus=COMPLETE`.
 
-Google Docs returned HTTP 429 before the frozen rule body could be inserted. Therefore the Drive mirror is **NOT YET COMPLETE**. GitHub commit `3c67bb49445b6296bf6f2ccdf0c96d44d47abca0` remains authoritative. ChatGPT must complete and verify the Drive mirror when Docs write quota is available; this must not block LTL-01 QA or the demo sequence.
+GitHub remains canonical; Drive is the durable backup mirror.
 
 ---
 
@@ -106,8 +109,10 @@ Current natural R1 delta:
 Do not use this delta as a correction target. Explain it only after source/content QA.
 
 `NEW COMMITS/ARTIFACTS:`
+- recovered rule freeze `3c67bb49445b6296bf6f2ccdf0c96d44d47abca0`
 - LTL-01 candidate `407c099e993ea9d27f870e06faf80a27b8c9c05f`
 - LTL-01 self-QA `f5ccc8ef15879fa80f63e31714d3793e407a17a3`
+- Drive exact-text backup file ID `1osbYoaDlUXDBwyCgAv3GqTdEUjoWUgwvUZqdDdSi_rU`
 
 `EXACT NEXT ACTION — CLAUDE:`
 Perform **independent LTL-01 R1 content/structure QA only**. Do not regenerate in parallel.
