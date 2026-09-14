@@ -565,3 +565,27 @@ Full detail in `governance/recovery/P6.1_LTL03_INDEPENDENT_QA_RESULT_2026-09-14.
 **Stated plainly, not glossed over:** I wrote this correction, and I'm the same agent that issued the FAIL. The structural re-check is legitimately self-verifiable — it's arithmetic. The executability *content* has not had a separate reviewer. I'm not declaring this independently certified. **Recommend a fresh, separate look at specifically the 38 leaves' new content** before this is treated as fully passed — not a full re-run, just a check on what's new.
 
 No protected-store mutation, no persistence, no main merge, no production promotion.
+
+## 2026-09-14 — Claude — P6.1 V1 LTL-03 forensic tree delta analysis complete
+Classification: OWNER_AUTHORIZED_RECONCILIATION
+Checkpoint: ANALYSIS_COMPLETE
+
+Full report: `governance/recovery/P6.1_LTL03_TREE_DELTA_ANALYSIS_2026-09-14.md` (commit `d22dc72`). Read both handoffs first (`c2cf8d5`, `0b3e4f3`), independently reverified the historical certification (43/37/14/8/15, content hash `4563feae...` confirmed exact match against `P6_1_RECURSIVE_WORK_DECOMPOSITION_CERTIFICATION.json @ ba9d47f`), analyzed `dae0a319` (not `2291905...`, per instruction — preserved untouched as audit evidence only).
+
+**Decisive mechanism, verified directly against the artifact, not inferred:** every children-bearing parent group cites **identical file-level sourceRefs to its own children** — no additional per-child specificity was ever actually discovered by splitting. This is precisely the failure Contract §8 (the atomic-action rule: *"lexical splitting alone cannot establish executor readiness"*) exists to prevent.
+
+**Root cause, two parts:**
+1. **Structural over-decomposition** — clearest case is DangerousGoods (6 units), directly contradicting the source's own explicit *"one associated conditional object family, not independent universal fields"* language. Net **-5** units from pure shape analysis alone — not enough to explain -21.
+2. **The larger driver:** 33 children across 11 parent groups were split even though only the *parent-level* concept was source-specified. Most of the 38 ready leaves' readiness rests on trigger/outputState content **I synthesized during my own 2026-09-14 correction** from sequence-position inference, not from per-unit source statements. Collapsing these to parent-level leaves (33→11) accounts for nearly the full -21 delta arithmetically — offered as best-fitting explanation, explicitly not claimed as proven exact.
+
+**Full per-unit delta table (48 leaves), exact columns as specified:** 13 `KEEP_READY` (explicit per-unit source grounding — e.g. `WD-LTL03-09D`/`09E` tied to named, independently-verified sourceClaimIds), 10 `KEEP_BLOCKED` (already correct), 20 `RECLASSIFY_CANDIDATE__BLOCKED_BY_KNOWLEDGE_GAP` (ready only via my sequence-inferred synthesis), 5 `MERGE` (Contract §8 violation, mostly DangerousGoods).
+
+**Five proposed deterministic compiler rules** — four fully generic (source-specificity gate on any split; no sequence-inferred triggers — a leaf without an explicit per-unit source statement fails closed to knowledge-gap, not ready; enrichment-content-before-status ordering, since my correction did this backwards; workflow-step-lists license shape but not per-step detail) directly enforcing already-frozen contract language rather than proposing new policy. One (explicit "grouped family" language veto) generic in mechanism but recommended as a manual-review checkpoint rather than fully automatable.
+
+**Did not force 43/37/14/8/15 anywhere.** Neither that nor the 603/444/185/163/96 aggregate was used as a generation or QA target. Expected impact stated as a directional neighborhood, not an exact claim.
+
+**Disposition: `P6_1_V1_LTL03_TREE_DELTA_ANALYSIS_COMPLETE__READY_FOR_REGENERATION`**
+
+No Supabase mutation. No WorkDefinition persistence. No main merge. No production deployment. No new reconstruction artifact created this round — analysis only, per instruction to report back first.
+
+**Requesting your independent review of the 5 proposed rules before any regeneration proceeds**, per the Owner's instruction.
