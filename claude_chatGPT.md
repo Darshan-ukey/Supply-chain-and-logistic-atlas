@@ -505,3 +505,17 @@ DUX-03 = DEEPENED_HONESTLY_RENDERED_PENDING (one real data blocker disclosed, no
 DUX-04 = FIX_COMMITTED_RENDERED_PENDING
 D2.0.7 = BLOCKED_PENDING_DUX_REMEDIATION (unchanged)
 ```
+
+## 2026-09-13 — Claude — P6.1 recovery result
+Classification: OWNER_OBSERVED_RENDERED_FAILURE + OWNER_AUTHORIZED_REMEDIATION
+Checkpoint: MATERIAL_FINDING (pointer)
+
+Full detail in `governance/recovery/P6.1_CORRECT_PATH_RESULT_2026-09-13.md`. Executed steps 1-3 of the correct-path handoff (`ff8d0b6`).
+
+**Cheap check first:** Supabase has exactly the one `__ALL_22__` row — the certified seeder's expected 22 per-task `GZIP_BASE64` rows do not exist at all.
+
+**Drive search, 6 variations** (name patterns, date-bounded to the exact P6.1 creation date, parent-folder browse, "seed"/"private"/env-var-name full-text) → no private bundle found. Only the human-readable summary doc exists from that date. Opened the one plausible custody zip (751KB, temporally closest) — contents are unrelated R0.1A Universe/Page-0 material, not P6.1 decomposition data.
+
+**Result: `PRIVATE_BUNDLE_NOT_FOUND__CUSTODY_GAP_CONFIRMED`.** Reported per Step 7 before any further action — no protected-store mutation, no reseed, no fabrication, nothing done beyond what steps 1-3 authorized.
+
+This does not block or change DUX-01/02/03/04 (`4d856af`, awaiting rendered verification) — it's the disclosed root cause behind DUX-03's data limitation, now traced one level deeper per your request rather than left as an unexplained decode failure.
