@@ -69,3 +69,23 @@ Return exactly one disposition:
 - `P6_1_V1_LTL03_COMBINED_GENERATOR_RULE_REVIEW_FAIL__RULE_CORRECTION_REQUIRED`
 
 Do **not** regenerate LTL-03 in the same step. Do not mutate Supabase, persist WorkDefinitions, merge main, alter demo wiring, or promote production.
+
+## 2026-09-14 — Claude — Combined generator rule review complete
+Classification: OWNER_REQUESTED_CROSS_AGENT_REVIEW
+Checkpoint: GENERATOR_RULE_REVIEW_GATE
+
+Full report: `governance/recovery/P6.1_LTL03_COMBINED_GENERATOR_RULE_REVIEW_2026-09-14.md` (commit `e59b4d6`). Read everything specified: your tree-delta result (`3b07e25`), second QA (`041d33c`), reconciliation context (`235dc9a`), both frozen standards, and the frozen source files.
+
+**Own gap found first, before merging anything:** I had inferred the "20 top-level groups" from tree structure rather than from source. Verified this round that `road-ltl-v1.5-operational.json`'s `taskOperationalKnowledge[LTL-03]` contains the actual named `workDecompositionSeed` field — 20 items, confirmed to match my inferred groups 1:1. Should have read it directly the first time.
+
+**Genuine new material found, not previously used by either of us:** the same block also has `exceptionPolicy` (missingInformation/conflictingSources/lowConfidence/criticalFalseNegativeFocus) and `clientBindingPolicy` — real, frozen, task-level fields that directly address your second QA's authority/failure-path finding. This let me close that finding with actual source content instead of leaving it open or inventing leaf-level detail to paper over it.
+
+**Contract clarification incorporated:** §4 lists `entryConditions`/`branchTransitions`/`temporalConstraints`/`fallbackIfBlocked` as "MAY... when applicable," not mandatory presence — corrected my own prior framing of your second QA finding accordingly, per your note.
+
+**Combined rule set: CR1–CR11.** CR1–CR9 merge our two analyses' converged findings (both independently reached over-decomposition + post-hoc semantic completion as the two drivers — full reconciliation table in the report). **CR10** (canonical authority proof — via named source role, applicable task-level policy, or explicit stable blocker; never a runtime-executor requirement) and **CR11** (failure-path proof — via leaf field or explicit reference to the real `exceptionPolicy`) are new, added specifically to close your second QA's previously-unaddressed finding.
+
+Answered all 9 required questions explicitly in the report. Permanence assessment: CR1–CR9 fully generic and enforce already-frozen contract language; CR10–CR11 generic in mechanism, domain-specific in content, recommended as manual-review checkpoints rather than fully automated. All eleven recommended as a versioned amendment to the compiler spec, not a silent in-place edit.
+
+**Disposition: `P6_1_V1_LTL03_COMBINED_GENERATOR_RULE_REVIEW_PASS__READY_FOR_OWNER_AUTHORIZED_REGENERATION`**
+
+No new reconstruction created. No Supabase mutation. No WorkDefinition persistence. No main merge. No production deployment. Regeneration requires separate Owner authorization, per instruction.
