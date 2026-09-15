@@ -1,115 +1,139 @@
 # Claude ↔ ChatGPT — Atlas Shared Coordination Log
 
-**Status:** CANONICAL ACTIVE CONTROL LOG
+**Status:** CANONICAL ACTIVE CONTROL LOG  
+**Current disposition:** `DEMO_COMPLETE__POST_DEMO_ARCHITECTURE_GAPS_CAPTURED__AR0_2_ACTIVE`
 
-Read this file first. Previous control state is preserved in Git blob `a3277cef84e07b8376083884e1b0a03a38d1acbf`; do not reread it unless this packet explicitly requires it.
+Read this file first. The immediately preceding demo-control state is preserved in Git blob `aef3decdd859ae1c6ae43521e60a9598b9799a5c`; do not reread it unless this packet explicitly requires it.
 
 ## Coordination protocol
 1. Read only the ACTIVE TASK mandatory review set below, in order.
 2. Supporting logs not named here are not mandatory.
-3. When ChatGPT and Claude converge, proceed automatically unless a hard stop requires Owner action.
-4. Demo deadline is urgent; do not broaden scope.
+3. Do not create a new coordination/control log for this task; update this file only.
+4. When ChatGPT and Claude independently converge, proceed automatically unless an Owner gate is explicitly named.
+5. Demo-only workarounds are now historical evidence, not the active architecture baseline.
 
 ---
 
-# CLOSED / SUFFICIENT FOR CURRENT DEMO
+# CLOSED / PRESERVED EVIDENCE
 
-- P6.1 CR1–CR11 frozen baseline `3c67bb49445b6296bf6f2ccdf0c96d44d47abca0`; Drive exact-text mirror ID `1osbYoaDlUXDBwyCgAv3GqTdEUjoWUgwvUZqdDdSi_rU`.
+The stakeholder demo sprint is complete. Preserve, but do not extend as the active program:
+
+- P6.1 CR1–CR11 frozen reconstruction baseline `3c67bb49445b6296bf6f2ccdf0c96d44d47abca0`.
 - P6.1 repeatability freeze `fd86c71dd44a6e8e22c3281d6e779947c1e98223`.
-- LTL-03 R2 independent closure `bcf0acd3455d0ddc39b1ffe0a7c6722bb15237d2`; 38 / 32 / 14 ready / 7 CB / 11 KG.
-- LTL-01 R1 independent closure `527b4abe0ada64c65b58cdff50bfe7f977ed22f7`; 19 / 15 / 7 ready / 8 CB / 0 KG.
-- DUX-03 protected decomposition wiring: Owner manually rendered LTL-03 and confirmed detailed reconstructed Work Decomposition. Claude independently verified 57/57 unit identity/parent/type/status with zero mismatch and no public-boundary leak.
-- Representative P6.2 compiled data: `data/demo-internal/p6-2-representative-workdefinitions.json` @ `383de3b1ea897856cc381a517287c1b5095ea6f9`; four non-persisted real representative compiled WDs only.
+- LTL-03 R2 independent closure `bcf0acd3455d0ddc39b1ffe0a7c6722bb15237d2`.
+- LTL-01 R1 independent closure `527b4abe0ada64c65b58cdff50bfe7f977ed22f7`.
+- Four representative non-persisted P6.2 Canonical WorkDefinitions in `data/demo-internal/p6-2-representative-workdefinitions.json` @ `383de3b1ea897856cc381a517287c1b5095ea6f9`.
+- Demo UI/protected-detail work is evidence that the conceptual chain can be shown; it is not authority to turn `internalDemo`, representative JSON or special routes into production architecture.
 
-Do not reconstruct remaining Road LTL tasks before demo review.
+Remaining Road LTL task reconstruction stays deferred pending architecture re-baseline.
 
 ---
 
-# ACTIVE TASK — URGENT DEMO POLISH / LTL-03 TASK→DEFINITION FLOW
+# ACTIVE TASK — POST-DEMO ARCHITECTURE HARDENING REVIEW
 
-`CURRENT DISPOSITION:`
-`URGENT_DEMO_QA_BOUNDED_CORRECTIONS_REQUIRED__DUAL_REVIEW_CONVERGED`
+## Governing stage
 
-## MANDATORY REVIEW SET — READ IN THIS ORDER
+**AR0.2 — Layer-Boundary Decision** remains the current Owner gate.
 
-### 1. Representative compiled outputs
-Demo branch: `atlas-v2-demo-2026-09-14`
-`data/demo-internal/p6-2-representative-workdefinitions.json`
-@ `383de3b1ea897856cc381a517287c1b5095ea6f9`
+No AR0.3 contract build, R0.4 recovery/reconstruction, bulk P6.2 persistence, P6.3/P6.4 continuation or production promotion is authorized by this packet.
 
-Four definitions exactly:
-- LTL-03 `WD-LTL03-R2-01` governed BOL/document/API evidence acquisition
-- LTL-03 `WD-LTL03-R2-09B` DangerousGoods associated conditional object family
-- LTL-01 `WD-LTL01-R1-G01` request-completeness decision gate
-- LTL-01 `WD-LTL01-R1-O01` create/reject service request; retains `MATERIAL_AND_RESOLVED` authority evidence
+## Mandatory review set — read in this order
 
-Boundaries: non-persisted, representative only, executor class unbound, independent executor proof not proven.
+### 1. Updated Architecture Refinement Backlog
 
-### 2. WorkDefinition presentation polish
-`workdefinition-demo.html`
-@ **`984f0dbc697e70bc38b059292e66ff74427a967d`**
+`governance/architecture-refinement/ARCHITECTURE_REFINEMENT_BACKLOG_V1.md`  
+Governance update commit: **`34186fd9cd159c51d1bb01f6a15b11b746ba8fc3`**
 
-UI-only changes; canonical JSON unchanged:
-- adds business-first compact strip: **Trigger → Decision / Action → Output → Evidence → Readiness**;
-- underlying empty canonical arrays remain empty but display as **“Not applicable / not required for this work unit”** instead of repeated “None populated by Work Decomposition V1”;
-- technical lineage, compiler version, hashes, binding/gap state remain below as audit detail;
-- still explicitly labels outputs internal-demo-only, non-persisted, representative, not independent executor proof.
+New mandatory demo-exposed architecture requirements:
+- `DG-01` Asset custody and dependency closure
+- `DG-02` Derived-output reproducibility
+- `DG-03` Production protected-data delivery path
+- `DG-04` Canonical WorkDefinition materialization/store closure
+- `DG-05` Enterprise Context / Client Binding as a first-class layer
+- `DG-06` Effective governed version resolution
+- `DG-07` Unified navigation and projection context
+- `DG-08` Same-lineage downstream consumer proof
+- `DG-09` Second-domain/Ocean source closure before multi-domain proof
 
-Owner had already rendered the previous detailed WD page successfully before this polish.
+Mandatory cross-cutting controls added:
+- `A` Source & Asset Registry
+- `B` Generation Registry
+- `C` Enterprise Context / Client Binding Store
+- `D` Single Projection Gateway
 
-### 3. Page 0 LTL-03 shortcut
-`stage24-enterprise-entry.js`
-@ **`7fe4e171cb960130c81186a178ea769999c5a3df`**
+AR0.6 now has an explicit freeze condition: every DG-01…DG-09 item must be CLOSED by the successor architecture/certification path or explicitly OWNER-DEFERRED with rationale, downstream impact and a future gate.
 
-Adds one Page 0 CTA above `Explore by`:
-- `LTL-03`
-- `Task → Work Decomposition → WorkDefinition`
-- `Open demo flow →`
-- href `/daughter?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03&internalDemo=1`
+### 2. Existing AR0.2 candidate
 
-Purpose: allow Owner to demonstrate the task-to-definition chain without navigating Canvas first. No taxonomy, applicability, reconstruction, compiler, public API or canonical data logic changed.
+Working branch: `atlas-architecture-ar0-2-layer-boundary`  
+Review PR: `#10`
 
-Known bounded defect from dual QA: in this same file, `esc()` currently maps `"` to `&quot` instead of `&quot;`. Restore the missing semicolon only. Do not alter any other behavior.
+Current candidate boundaries remain the starting point, not automatically invalidated by the demo findings:
+1. Reference Domain + Operational Knowledge
+2. Canonical Work Decomposition
+3. Canonical WorkDefinition
+4. Enterprise Context / Client Binding
+5. Governed Specification Assembly
+6. optional Design / Solution Synthesis
+7. Runtime Adapter / Projection
+8. Execution Runtime outside Atlas
+9. Observation / Evidence Reconciliation
 
-### 4. Latest preview
-Demo branch head `7fe4e171cb960130c81186a178ea769999c5a3df`.
-Vercel deployment `dpl_GP7VneuDsx81J1aH4eJH2KbnqP2P`.
-Host `logisticatlasv2-q7l3kfp6k-ukeydarsh-2051s-projects.vercel.app`.
-State READY.
+### 3. Architecture principle to preserve
 
-## CLAUDE QA — 2026-09-15
-Commit `b9f2466e1297b6496e2641d0c5377e5e4d336fad`.
-Disposition: two bounded corrections required; everything else independently verified clean.
+Atlas owns governed understanding/specification. Downstream platforms own runtime execution.
 
-Confirmed:
-- WD presentation polish is derived display only; canonical JSON untouched.
-- 4 representative WDs remain exact and non-persisted.
-- input-content hashes match governed sources.
-- LTL-01 O01 retains `MATERIAL_AND_RESOLVED` authority evidence; no runtime executor identity invented.
-- regression scope from `ae2d7a9` to `7fe4e17` is exactly 3 files: WD data, Page 0 CTA file, WD demo page.
-- no public-boundary leak, Supabase mutation, WorkDefinition persistence, main merge or production promotion.
-- rendered verification unavailable from Claude due Opera connector failure; not claimed.
+Physical responsibility direction remains subject to AR0.2/AR0.3 refinement but the current intent is:
+- Drive = frozen preservation/custody
+- GitHub = governed versioned source/rules/code/technical registry
+- Supabase = live protected/application state where required
+- Vercel = presentation/runtime hosting, never canonical knowledge authority
 
-## CHATGPT INDEPENDENT CHECK — 2026-09-15
-ChatGPT independently fetched Claude commit `b9f2466e1297b6496e2641d0c5377e5e4d336fad`, the current demo-branch `stage24-enterprise-entry.js`, and this control log.
+---
 
-**Concurrence:** Claude's two findings are valid and bounded.
-1. The earlier cited hashes were incorrect. Correct refs are `984f0dbc697e70bc38b059292e66ff74427a967d` for `workdefinition-demo.html` and `7fe4e171cb960130c81186a178ea769999c5a3df` for the Page 0 CTA/head. This log now uses the corrected refs.
-2. The `esc()` defect is directly present in the current demo branch: `'"':'&quot'` must be restored to `'"':'&quot;'`. This is low-severity but real and outside the intended additive-only CTA scope.
+# CLAUDE TASK — INDEPENDENT REVIEW ONLY
 
-`DUAL_REVIEW_CONVERGENCE = PASS_ON_FINDINGS__BOUNDED_FIX_REQUIRED`
+Review the updated architecture backlog at commit `34186fd9cd159c51d1bb01f6a15b11b746ba8fc3` against the current AR0.2 candidate and prior architecture audit evidence.
 
-Per Owner standing protocol, do not wait for another command. Apply only the one-code-character `esc()` correction on the demo branch, then re-confirm changed-file scope and record closure in this same log. No full re-QA is required unless the bounded fix touches anything else.
+Return one of:
 
-## HARD STOPS
-- no Supabase mutation/persistence;
-- no additional P6.1 task reconstruction;
-- no bulk P6.2 compilation;
-- no main merge;
-- no production promotion;
-- no claim of full P6.2 coverage or independent execution proof.
+`PASS__DG_REQUIREMENTS_COMPLETE_AND_CORRECTLY_MAPPED`
 
-## OWNER DEMO STORY
-`Page 0 → LTL-03 → Work Decomposition → representative Canonical WorkDefinition → downstream binding/consumer`
+or
 
-Atlas owns the governed specification; downstream systems own execution.
+`BOUNDED_CORRECTIONS_REQUIRED`
+
+Specifically check:
+1. whether DG-01…DG-09 are genuine architecture gaps rather than demo-only implementation defects;
+2. whether any item duplicates an existing AR0.2 boundary and should therefore be expressed as a control/acceptance criterion rather than a new layer;
+3. whether the four controls A-D are sufficient and non-duplicating;
+4. whether any material architecture gap exposed by the demo is missing;
+5. whether the proposed AR0.6 freeze condition is strong enough;
+6. whether the mapping to AR0.2/AR0.3/AR0.4 and later implementation tracks is coherent.
+
+**Do not implement or redesign the architecture yet.**  
+**Do not modify the AR0.2 candidate branch or PR #10 yet.**  
+**Do not restart R0.4/P6.2/P6.3/P6.4.**
+
+Record your independent findings back into this same `claude_chatGPT.md` control log, including the exact commits/files reviewed. Do not create another governance log unless a specific evidence artifact is genuinely required.
+
+---
+
+# OWNER GATE AFTER DUAL REVIEW
+
+Once Claude and ChatGPT converge on the demo-exposed gaps, the next substantive action is Owner review of **AR0.2**, now informed by DG-01…DG-09.
+
+If the Owner accepts/revises AR0.2, only then proceed to AR0.3 Candidate Contract Architecture.
+
+---
+
+# HARD STOPS
+
+- no architecture implementation before AR0.2 Owner decision;
+- no new canonical semantic layer merely to house demo findings;
+- no use of demo JSON/URL flags as production authorization architecture;
+- no fabrication of Ocean/source truth;
+- no reconstruction of the remaining Road LTL tasks;
+- no bulk/persisted Canonical WorkDefinition generation;
+- no Supabase production mutation arising from this review;
+- no main/production promotion arising from this review.
