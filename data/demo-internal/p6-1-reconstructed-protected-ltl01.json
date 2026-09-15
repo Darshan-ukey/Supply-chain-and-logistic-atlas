@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "atlas-p6-1-reconstructed-protected-demo-task-v1",
+  "classification": "INTERNAL_DEMO_PROTECTED_RECONSTRUCTION",
+  "taskId": "LTL-01",
+  "title": "Resolve service demand and execution eligibility",
+  "moduleId": "road-ltl",
+  "semanticSourceVersion": "1.4",
+  "effectiveModuleVersion": "1.5",
+  "reconstructionId": "road-ltl-1.4__LTL-01__P6.1-V1__RECONSTRUCTED-R1-2026-09-14",
+  "reconstructionArtifact": "governance/baselines/P6_1_V1_LTL01_RECONSTRUCTED_R1.json",
+  "ruleBaselineCommit": "3c67bb49445b6296bf6f2ccdf0c96d44d47abca0",
+  "independentQaCommit": "527b4abe0ada64c65b58cdff50bfe7f977ed22f7",
+  "repeatabilityEvidenceCommit": "fd86c71dd44a6e8e22c3281d6e779947c1e98223",
+  "status": "QA_PASSED_RECONSTRUCTED_HISTORICAL_FIDELITY_DETAIL",
+  "originalPayloadStatus": "LOST_OR_UNRECOVERABLE_PROTECTED_BYTES__NOT_BYTE_IDENTICAL_RECONSTRUCTION",
+  "detailLevel": "COMPLETE_UNIT_REGISTER_PLUS_SELECTED_SEMANTICS",
+  "summary": {
+    "workUnitCount": 19,
+    "leafCount": 15,
+    "internalNodeCount": 4,
+    "executorReadyLeafCount": 7,
+    "blockedByClientBindingLeafCount": 8,
+    "blockedByKnowledgeGapLeafCount": 0,
+    "clientBindingRefCount": 6,
+    "knowledgeGapCount": 0,
+    "workDefinitionCompilationStatus": "NOT_STARTED__NOT_AUTHORIZED"
+  },
+  "historicalComparisonEvidenceOnly": {
+    "workUnitCount": 23,
+    "leafCount": 16,
+    "executorReadyLeafCount": 7,
+    "blockedByClientBindingLeafCount": 9,
+    "blockedByKnowledgeGapLeafCount": 0
+  },
+  "unitRegister": [
+    {"id":"WD-LTL01-R1-ROOT","parent":null,"type":"TASK_ROOT","name":"Resolve service demand and execution eligibility","status":"NEEDS_DECOMPOSITION"},
+    {"id":"WD-LTL01-R1-INFO","parent":"WD-LTL01-R1-ROOT","type":"ACTION_GROUP","name":"Resolve required request information","status":"NEEDS_DECOMPOSITION"},
+    {"id":"WD-LTL01-R1-GATES","parent":"WD-LTL01-R1-ROOT","type":"ACTION_GROUP","name":"Evaluate eligibility gates","status":"NEEDS_DECOMPOSITION"},
+    {"id":"WD-LTL01-R1-OUTCOME","parent":"WD-LTL01-R1-ROOT","type":"ACTION_GROUP","name":"Commit eligibility outcome and evidence","status":"NEEDS_DECOMPOSITION"},
+    {"id":"WD-LTL01-R1-I01","parent":"WD-LTL01-R1-INFO","type":"INFORMATION_RESOLUTION","name":"Resolve transport service request","status":"EXECUTOR_READY"},
+    {"id":"WD-LTL01-R1-I02","parent":"WD-LTL01-R1-INFO","type":"INFORMATION_RESOLUTION","name":"Resolve shipper and consignee parties","status":"EXECUTOR_READY"},
+    {"id":"WD-LTL01-R1-I03","parent":"WD-LTL01-R1-INFO","type":"INFORMATION_RESOLUTION","name":"Resolve origin and destination locations","status":"EXECUTOR_READY"},
+    {"id":"WD-LTL01-R1-I04","parent":"WD-LTL01-R1-INFO","type":"INFORMATION_RESOLUTION","name":"Resolve cargo profile","status":"EXECUTOR_READY"},
+    {"id":"WD-LTL01-R1-I05","parent":"WD-LTL01-R1-INFO","type":"INFORMATION_RESOLUTION","name":"Resolve commodity/freight classification context","status":"BLOCKED_BY_CLIENT_BINDING","blockers":["LTL-01::REQ::05"]},
+    {"id":"WD-LTL01-R1-I06","parent":"WD-LTL01-R1-INFO","type":"INFORMATION_RESOLUTION","name":"Resolve allowed service and lane serviceability context","status":"BLOCKED_BY_CLIENT_BINDING","blockers":["CB::LTL-01::01"]},
+    {"id":"WD-LTL01-R1-I07","parent":"WD-LTL01-R1-INFO","type":"INFORMATION_RESOLUTION","name":"Resolve booking/pickup cut-off policy","status":"BLOCKED_BY_CLIENT_BINDING","blockers":["CB::LTL-01::02"]},
+    {"id":"WD-LTL01-R1-I08","parent":"WD-LTL01-R1-INFO","type":"INFORMATION_RESOLUTION","name":"Resolve commercial contract/service entitlement context","status":"BLOCKED_BY_CLIENT_BINDING","blockers":["CB::LTL-01::05"]},
+    {"id":"WD-LTL01-R1-G01","parent":"WD-LTL01-R1-GATES","type":"DECISION_GATE","name":"Evaluate request completeness","status":"EXECUTOR_READY"},
+    {"id":"WD-LTL01-R1-G02","parent":"WD-LTL01-R1-GATES","type":"DECISION_GATE","name":"Evaluate lane/service serviceability","status":"BLOCKED_BY_CLIENT_BINDING","blockers":["CB::LTL-01::01"]},
+    {"id":"WD-LTL01-R1-G03","parent":"WD-LTL01-R1-GATES","type":"DECISION_GATE","name":"Evaluate prohibited/special-condition eligibility","status":"BLOCKED_BY_CLIENT_BINDING","blockers":["CB::LTL-01::03","CB::LTL-01::05","LTL-01::REQ::05"]},
+    {"id":"WD-LTL01-R1-G04","parent":"WD-LTL01-R1-GATES","type":"TEMPORAL_GATE","name":"Evaluate requested date against validity/cut-off","status":"BLOCKED_BY_CLIENT_BINDING","blockers":["CB::LTL-01::02"]},
+    {"id":"WD-LTL01-R1-AUTH","parent":"WD-LTL01-R1-ROOT","type":"DECISION_GATE","name":"Resolve controlled override authority","status":"BLOCKED_BY_CLIENT_BINDING","blockers":["CB::LTL-01::04"]},
+    {"id":"WD-LTL01-R1-O01","parent":"WD-LTL01-R1-OUTCOME","type":"ACTION_EXECUTION","name":"Create or reject transport service request with reason","status":"EXECUTOR_READY"},
+    {"id":"WD-LTL01-R1-O02","parent":"WD-LTL01-R1-OUTCOME","type":"EVIDENCE_CAPTURE","name":"Capture eligibility execution evidence","status":"EXECUTOR_READY"}
+  ],
+  "selectedSemantics": [
+    {"id":"WD-LTL01-R1-I01","status":"EXECUTOR_READY","trigger":"Transport demand is raised.","operation":"Resolve the transport service request as the governed object on which eligibility is decided; verify unique identity, current version and requester authentication.","evidence":"Resolved service-request identity/version/authentication evidence.","output":"Governed transport service request is resolved for eligibility evaluation.","authority":"NOT_MATERIAL — deterministic information resolution; does not exercise service eligibility or override authority."},
+    {"id":"WD-LTL01-R1-G03","status":"BLOCKED_BY_CLIENT_BINDING","purpose":"Determine whether prohibited/restricted commodity and special-condition prerequisites are satisfied under active policy/contract context.","blocker":"Canonical condition gate is explicit, but active prohibited/restricted policy, contract entitlement and where applicable classification scheme/context require client binding."},
+    {"id":"WD-LTL01-R1-AUTH","status":"BLOCKED_BY_CLIENT_BINDING","purpose":"Resolve the client role/team and delegated limits permitted to override governed eligibility controls when override is invoked.","blocker":"Canonical authority basis is known, but actual client role/team/delegated limits remain unresolved."},
+    {"id":"WD-LTL01-R1-O01","status":"EXECUTOR_READY","trigger":"Applicable decision gate permits the state-changing action.","operation":"Create or reject the transport service request with reason in the canonical authority system role.","evidence":"Eligibility result, rule/policy version, request timestamp and rejection/override record as applicable.","output":"SERVICE_REQUEST_ELIGIBLE / SERVICE_REQUEST_CONDITIONAL / SERVICE_REQUEST_REJECTED.","authority":"MATERIAL_AND_RESOLVED — source names performer role, contracted service owner/controlled override authority, authority object and authority system; runtime executor identity is not required."}
+  ],
+  "securityNote": "This internal demo file exposes reconstructed protected-detail identifiers and selected semantics for LTL-01 only. It is a QA-passed historical-fidelity reconstruction inherited from frozen v1.4 semantics into effective v1.5, not the original lost protected payload and not evidence of byte-identical recovery."
+}
