@@ -26,6 +26,17 @@ function injectStyles(){
  @media(max-width:760px){.reference-head117{height:auto;min-height:58px;flex-wrap:wrap;padding:8px}.reference-brand117{min-width:0;flex:1}.reference-switch117{order:3;width:100%;flex-basis:100%}.reference-frame117{height:calc(100vh - 103px)}.reference-actions117 .open-new117{display:none}}
  `;document.head.appendChild(s);
 }
+function installDemoShortcut(){
+ if(current!=='page0'&&current!=='ltl')return;
+ const f=$('referenceFrame117');let d;try{d=f?.contentDocument}catch{return}if(!d?.body)return;
+ const old=d.getElementById('atlasLtl03DemoShortcut');if(old)old.remove();
+ const bar=d.createElement('div');bar.id='atlasLtl03DemoShortcut';
+ bar.style.cssText='margin:10px 16px;padding:11px 13px;border:1px solid #69b9c4;border-radius:10px;background:#eaf9fb;color:#103b48;display:flex;gap:12px;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(5,51,65,.08);font-family:system-ui,-apple-system,Segoe UI,sans-serif;position:relative;z-index:9999';
+ bar.innerHTML='<div><b style="font-size:13px">LTL-03 · Task → Work Decomposition → WorkDefinition</b><div style="font-size:11px;color:#55727a;margin-top:2px">Representative governed execution-depth path for the stakeholder demo.</div></div><button type="button" style="border:0;border-radius:7px;background:#087b8c;color:white;padding:9px 12px;font-weight:750;white-space:nowrap;cursor:pointer">Open LTL-03 depth →</button>';
+ bar.querySelector('button').onclick=()=>{window.location.href=abs('ltl03-demo-flow.html')};
+ const anchor=d.querySelector('main')||d.querySelector('[role="main"]')||d.body;
+ anchor.insertBefore(bar,anchor.firstChild);
+}
 function inject(){
  if($('referenceAtlas117'))return;
  injectStyles();
@@ -38,6 +49,7 @@ function inject(){
  shell.querySelectorAll('[data-reference-page117]').forEach(b=>b.addEventListener('click',()=>setPage(b.dataset.referencePage117)));
  $('referenceOpenNew117')?.addEventListener('click',()=>window.open(abs(PAGES[current].path),'_blank','noopener'));
  $('referenceClose117')?.addEventListener('click',closeReference);
+ $('referenceFrame117')?.addEventListener('load',()=>setTimeout(installDemoShortcut,30));
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&shell.classList.contains('open')){e.preventDefault();closeReference()}},true);
  document.addEventListener('click',e=>{const b=e.target.closest?.('[data-module11],[data-module]');const id=b?.dataset?.module11||b?.dataset?.module;if(id==='ecosystem-page-0'){e.preventDefault();e.stopImmediatePropagation();openReference('page0')}},true);
  patchRouting();
@@ -45,7 +57,7 @@ function inject(){
 }
 function setPage(key){
  if(!PAGES[key])key='page0';current=key;
- const f=$('referenceFrame117');if(f){const target=abs(PAGES[key].path);if(f.src!==target)f.src=target;}
+ const f=$('referenceFrame117');if(f){const target=abs(PAGES[key].path);if(f.src!==target)f.src=target;else setTimeout(installDemoShortcut,30);}
  document.querySelectorAll('[data-reference-page117]').forEach(b=>b.classList.toggle('active',b.dataset.referencePage117===key));
 }
 function openReference(key='page0'){
@@ -58,7 +70,6 @@ function closeReference(){
  const el=$('referenceAtlas117');if(!el)return;el.classList.remove('open');el.setAttribute('aria-hidden','true');$('navReference117')?.classList.remove('active');
  if(priorFocus&&typeof priorFocus.focus==='function')priorFocus.focus({preventScroll:true});
 }
-
 function patchPage0Button(){
  const b=document.querySelector('[data-module11="ecosystem-page-0"],[data-module="ecosystem-page-0"]');
  if(!b||b.dataset.referencePatched117==='1')return;
