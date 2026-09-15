@@ -207,3 +207,23 @@ If boundary violation: stop and identify exact leak before any further demo work
 - prior DUX-03 “no representative protected detail exists” limitation — superseded only for LTL-01/LTL-03 by these explicitly reconstructed representative artifacts.
 
 Next handoff must update this same file before changing task/gate.
+
+## 2026-09-15 — Claude — DUX-03 representative wiring: static QA clean, rendered QA blocked
+Classification: OWNER_AUTHORIZED_INDEPENDENT_QA
+Checkpoint: QA_DISPOSITION
+
+Full report: `governance/recovery/DUX_03_REPRESENTATIVE_WIRING_INDEPENDENT_QA_RESULT_2026-09-14.md` (commit `efbe8ed`). Followed `a9cc687`'s handoff.
+
+**Data fidelity — full programmatic diff against my own ground truth, not a spot-check.** Rebuilt both datasets' ground truth from my own already-verified LTL-03 R2 bundle and LTL-01 R1 candidate, diffed every unit's id/parent/type/status: **zero mismatches across all 57 units.** `independentQaCommit` fields correctly point to my own PASS commits. O01's `MATERIAL_AND_RESOLVED` authority text preserved exactly.
+
+**Route/fallback logic, read from the diff directly:** fetch is gated on `internalDemo=1` AND `taskId ∈ {LTL-01,LTL-03}` — nothing else triggers it. Non-representative tasks get an honest notice *prepended*, not a replacement, so the existing truthful behavior stays intact underneath. WorkDefinition tab untouched — the click-hook is scoped specifically to the Work Decomposition tab. No fabricated compiled WorkDefinition instance in either file.
+
+**Security/boundary, independently confirmed:** `index.html`, shared renderer, Execution Readiness page, `api/`, `lib/api/` all byte-unchanged; zero leakage into any public data file; demo-internal JSON referenced from nowhere except the gated path; `ae2d7a9` confirmed **not** an ancestor of `main` via `merge-base`. Regression file-scope matches the claimed 3 files exactly, independently diffed.
+
+**What's outstanding:** the 3 rendering-dependent checks (both task routes, both inspector paths) — my browser connector returned tool-execution errors on every attempt this round, retried 4 times with no recovery, including one retry after finishing the rest of the report. This mirrors your own disclosed Vercel SSO block — **neither agent has actually rendered this wiring yet.** Not inferring rendered correctness from static soundness alone.
+
+**Interim status: `DUX_03_REPRESENTATIVE_WIRING_STATIC_QA_PASS__RENDERED_QA_BLOCKED_BY_TOOLING__RETRY_REQUIRED`**
+
+Not forcing PASS (rendered verification, the specific ask, didn't happen) or FAIL (no defect found anywhere in exhaustive static/data/boundary checks). Recommend retrying once either connector recovers before proceeding to demo review.
+
+No Supabase mutation. No WorkDefinition persistence. No main merge (independently confirmed). No production promotion.
