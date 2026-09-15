@@ -135,3 +135,94 @@ Indicative measures remain:
 ## 7. Immediate next action
 
 Owner reviews AR0.2 candidate PR #10. AR0.3 and R0.4 remain blocked until the AR0.2 boundary decision is accepted or revised.
+
+## 8. Demo-exposed architecture hardening requirements — mandatory successor inputs
+
+The September 2026 demo-readiness sprint proved the conceptual chain but exposed architecture hardening requirements that must now be treated as governed successor inputs rather than UI/demo defects.
+
+### DG-01 — Asset custody and dependency closure
+**Problem exposed:** governed artifacts can exist across GitHub, Drive, Supabase, Vercel or historical release packages without one authoritative machine-readable record of location, version, parentage, hash, status and dependencies.
+
+**Required architecture outcome:** one governed Source & Asset Registry that can answer, for every authoritative or derived asset: what it is, where it lives, which version is current, what it depends on, what depends on it, its immutable identity/hash and its lifecycle state.
+
+**Primary mapping:** AR0.2 boundary decision → AR0.3 contracts → source/governance implementation track.
+
+### DG-02 — Derived-output reproducibility
+**Problem exposed:** historical outputs can remain available after the exact generator/rules/toolchain that created them becomes unclear or unavailable.
+
+**Required architecture outcome:** every governed derived artifact must retain a reproducibility record linking exact governed inputs, generation rules/code/template/compiler version, parameters, output identity/hash and verification evidence.
+
+**Primary mapping:** AR0.3 contract architecture → decomposition/WorkDefinition/materialization tracks.
+
+### DG-03 — Production protected-data delivery path
+**Problem exposed:** demo-only representative JSON and `internalDemo` routing proved the protected experience but are not a production protected-data architecture.
+
+**Required architecture outcome:** protected store → authorization decision → protected service/API → authorized UI/consumer projection. Public projections must be generated from the same governed state but expose only approved public-safe content. Demo flags/files must never become production authorization controls.
+
+**Primary mapping:** AR0.3 contracts → security/public-vs-protected certification track.
+
+### DG-04 — Canonical WorkDefinition materialization and store closure
+**Problem exposed:** the compiler contract and four representative WorkDefinitions proved the mechanism, but there is not yet a complete governed Canonical WorkDefinition population and lifecycle path.
+
+**Required architecture outcome:** trusted decomposition input → deterministic Canonical WorkDefinition compile → verification → governed persistence/versioning → retrieval by downstream binding/projection. Representative demo compilation is evidence only, not production completion.
+
+**Primary mapping:** AR0.3 grammar → WorkDefinition materialization track.
+
+### DG-05 — Enterprise Context / Client Binding as a first-class layer
+**Problem exposed:** Atlas can classify `client binding required`, but client-specific values, system ownership, overrides, authority, thresholds, mappings and unresolved client decisions do not yet operate as one mature governed layer.
+
+**Required architecture outcome:** a first-class Enterprise Context / Client Binding store and contract that overlays reusable domain truth without copying or mutating it and can explicitly represent unresolved, conflicting and not-applicable client facts.
+
+**Primary mapping:** AR0.2 layer boundary → AR0.3 Enterprise Context contract → client-binding implementation track.
+
+### DG-06 — Effective governed version resolution
+**Problem exposed:** legacy and current UI/projection surfaces can expose Road LTL 1.2, inherited 1.4 semantics and 1.5 overlays without one resolver presenting the effective governed state.
+
+**Required architecture outcome:** deterministic effective-version resolution that closes inheritance/overlay dependencies and gives every consumer one version-closed effective view while retaining full lineage to inherited components.
+
+**Primary mapping:** Governed Specification Assembly / Version-Closed Specification Manifest.
+
+### DG-07 — Unified navigation and projection context
+**Problem exposed:** Canvas, Reference Atlas, Page 0, Daughter/Execution Depth and WorkDefinition views evolved as partially independent surfaces, allowing correct governed data to be reached through stale or inconsistent routes.
+
+**Required architecture outcome:** one shared navigation/context state and one projection contract so all authorized UI surfaces resolve the same selected domain/task/version/context and differ only in presentation and authorization scope.
+
+**Primary mapping:** projection/UI architecture + security boundary; canonical business data remains independent of presentation.
+
+### DG-08 — Same-lineage downstream consumer proof
+**Problem exposed:** the older Malkom proof and the newer P6.1/P6.2 decomposition/WorkDefinition proof do not yet form one end-to-end lineage.
+
+**Required architecture outcome:** demonstrate one version-closed chain from current Canonical WorkDefinition → Enterprise/Client Binding → Runtime Adapter/Projection → materially different downstream consumer, without changing underlying business semantics.
+
+**Primary mapping:** AR0.4 adversarial validation + runtime projection/consumer certification track.
+
+### DG-09 — Second-domain source closure before multi-domain proof
+**Problem exposed:** Ocean public-safe projections exist, but the authoritative Ocean 0.6 source/dependency closure must be proven before Ocean can serve as the second-domain architecture proof.
+
+**Required architecture outcome:** verify canonical source custody, dependency closure and reproducibility for the selected second domain before using it in AR0.4/P6.4-style multi-domain validation. Public-safe projections are not acceptable substitutes for canonical source truth.
+
+**Primary mapping:** source-governance hardening + AR0.4 multi-pattern validation.
+
+## 9. Mandatory cross-cutting controls arising from the demo
+
+The successor architecture must explicitly provide or govern the following controls. These are not new product layers by default; AR0.2/AR0.3 must place them at the minimum non-duplicating boundary.
+
+### A. Source & Asset Registry
+One authoritative record of asset identity, location, version, parentage, dependency graph, hash, lifecycle/classification and custody state.
+
+### B. Generation Registry
+One authoritative reproducibility record for every governed derived artifact: exact inputs + generation logic/version + parameters + output identity/hash + verification status.
+
+### C. Enterprise Context / Client Binding Store
+A governed store for client-specific values, systems, mappings, policies, thresholds, authorities, exceptions and unresolved decisions, with explicit links back to reusable reference semantics.
+
+### D. Single Projection Gateway
+A common governed projection path from authoritative state to public UI, protected UI and downstream consumers, with authorization and projection policy determining exposure rather than separate copies of business truth.
+
+### AR0.6 freeze condition
+
+The Owner must not freeze the successor architecture at AR0.6 unless every `DG-01` through `DG-09` requirement is either:
+1. **CLOSED by the successor architecture and its planned certification path**, or
+2. **explicitly OWNER-DEFERRED** with rationale, known downstream impact and a named future gate.
+
+Demo-only shortcuts, representative JSON, special URL flags, stale version fallbacks or manual custody knowledge must not silently become production architecture.
