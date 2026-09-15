@@ -103,3 +103,27 @@ If a defect exists, record exact element/file only and bounded correction requir
 `Page 0 → LTL-03 → Work Decomposition → representative Canonical WorkDefinition → downstream binding/consumer`
 
 Atlas owns the governed specification; downstream systems own execution.
+## 2026-09-15 — Claude — Urgent demo QA: bounded corrections required
+Classification: OWNER_AUTHORIZED_INDEPENDENT_QA
+Checkpoint: QA_DISPOSITION
+
+Followed `e11301f`'s handoff (superseding `15a73c7`). Two real findings, both bounded, plus a thorough clean bill on everything else independently checked.
+
+**Finding 1 — two commit hashes cited in the shared log do not exist.** `6750ac0adf9fad6470411993e016cb6f7b5b23a1` and `feedf613dc5aa20d6b3c41288765cd2f51b311cf` both returned `not our ref` from GitHub on direct fetch, retried explicitly to rule out a transient issue. The actual demo branch head is `7fe4e171cb960130c81186a178ea769999c5a3df`, and walking its real history found the genuinely-existing commits with matching messages and file scope: `984f0dbc697e70bc38b059292e66ff74427a967d` ("Demo polish: business-first WorkDefinition summary and clearer empty states", `workdefinition-demo.html` only) and `7fe4e171cb960130c81186a178ea769999c5a3df` itself ("Demo shortcut: add LTL-03 task-to-definitions CTA on Page 0", `stage24-enterprise-entry.js` only). The described *content* is real and verified against these correct hashes below — the citation itself was simply wrong, most likely a transcription error, not evidence of fabricated work.
+
+**Finding 2 — an unrelated, unintended regression inside the "additive-only" CTA commit.** Reading the `stage24-enterprise-entry.js` diff in full: alongside the genuinely additive CTA (a new anchor correctly prepended to the existing entry bar, all prior content unchanged), the shared `esc()` HTML-escaping helper was silently changed from `'"':'&quot;'` to `'"':'&quot'` — the terminating semicolon on the entity reference was dropped. Confirmed via full file history this is a one-off regression at this exact commit, not a pre-existing or intentional pattern. `esc()` is used 3 times in this file (lens/family name escaping in the enterprise analytical dropdown). My assessment of severity: **low** — the escaped output no longer contains a literal unescaped `"` character either way, so this does not reintroduce an attribute-breakout/XSS path in mainstream browsers — but it is a genuine, confirmed defect, unrelated to the stated CTA scope, and should be corrected (`&quot` → `&quot;`) regardless of severity rather than left in under an "additive-only" claim.
+
+**Everything else independently verified, clean:**
+- `984f0db` (WD presentation polish): read the full diff — purely a new derived-display layer (`.business-flow` strip, `one()` helper) computed from the *same* existing fields (`w.decisions`/`w.actions`/`c.outputState`/`w.evidence`/`w.status`/`x.independentExecutorProofStatus`); the empty-state label change (`"None populated by Work Decomposition V1"` → `"Not applicable / not required for this work unit"`) is cosmetic only; the truthfulness banner and `.proof` disclosure are both present, unchanged, in the after-state; canonical JSON fetch/parsing untouched.
+- `data/demo-internal/p6-2-representative-workdefinitions.json` (`383de3b`): 4 definitions exactly, matching the 4 named source leaves; `schemaVersion`/`status`/`executorClass`/`independentExecutorProofStatus` all correct; `persistence: {persisted:false, rowCountCreated:0, store:"atlas_work_definitions"}`; `verification.result:"PASS"`; input-content hashes independently confirmed exact matches for both LTL-03 (`693a9ef0...`, shared correctly across both LTL-03 units since both compile from the same R2 bundle) and LTL-01 (`7b7879f2...`); O01's action text retains "in the canonical authority system role" — consistent with `MATERIAL_AND_RESOLVED`, no runtime executor identity invented.
+- Full regression file-scope diff from the DUX-03 baseline (`ae2d7a9`) through the real current head (`7fe4e17`): exactly 3 files changed (the WD data file, `stage24-enterprise-entry.js`, `workdefinition-demo.html`) — nothing else, no `index.html`, no `daughter.html`, no public data/module file touched.
+
+**Rendered verification: still blocked on my end.** Retried the Opera connector twice more this round (`list-tabs`, `go-to-page`) — same tool-execution error as the last round, no recovery. Not claiming rendered confirmation.
+
+**Result: bounded corrections required, naming the exact elements:**
+1. `stage24-enterprise-entry.js` — restore `'"':'&quot;'` in the `esc()` function (currently `'"':'&quot'`).
+2. Correct the two cited commit hashes in this shared log's "Latest preview"/file references to the real ones (`984f0db...`, `7fe4e17...`) so future readers don't hit the same `not our ref` dead end I did.
+
+Neither correction touches canonical data, the compiler, public API, or taxonomy. Both are small, precisely bounded, outside the demo-critical path (the CTA and WD polish both function correctly regardless of the `esc()` typo, which only affects entity-reference strictness in a rarely-visited dropdown). Do not treat this as a reason to delay the demo — recommend fixing both in the next small commit and re-confirming file-scope only, not a full re-QA.
+
+No Supabase mutation. No WorkDefinition persistence (independently confirmed `rowCountCreated:0`). No main merge. No production promotion.
