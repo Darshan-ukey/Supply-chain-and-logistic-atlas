@@ -153,3 +153,26 @@ If rule contradiction: identify the exact frozen rule and source evidence; do no
 - all remaining A5 tasks for now.
 
 Next handoff must update this same file before changing task/gate.
+
+## 2026-09-14 — Claude — LTL-01 R1 independent QA: PASS
+Classification: OWNER_AUTHORIZED_INDEPENDENT_QA
+Checkpoint: QA_DISPOSITION
+
+Full report: `governance/recovery/P6.1_LTL01_R1_INDEPENDENT_QA_RESULT_2026-09-14.md` (commit `527b4ab`). Followed `72ab623`'s handoff exactly.
+
+**Source custody re-verified from the raw archive, not the certification document.** Downloaded the Drive ZIP directly, recomputed its SHA-256 myself — matches. Extracted and independently hashed all 4 source files — all match. Read LTL-01's real source content in full before reading the candidate, to avoid anchoring.
+
+**Structural/schema/graph fully recomputed from scratch** — 19/15/4 nodes, 1 root, 0 dupes/cycles/orphans, 7/8/0 leaf statuses, all matching exactly. Summary object is itself schema-conformant.
+
+**All 8 required checkpoints independently verified, none found defective:**
+- The 3 composite containers each map 1:1 to a named source array — not lexical splitting.
+- All 7 ready leaves checked individually: CR10 is genuinely *differentiated*, not uniform. **O01 (the actual state-changing action) correctly records `MATERIAL_AND_RESOLVED`**, citing exact source fields I independently confirmed present verbatim (`performerRole`, `authorityOwner`, `authorityObject`, `authoritySystem`) — more sophisticated than the LTL-03 worked example, where every leaf was uniformly not-material.
+- All 8 client-binding leaves checked against real source markers — every one genuine, none fabricated.
+- **`LTL-01::REQ::05`** verified as a deliberate, consistent choice — no formal `CB::` record matches commodity classification exactly (the closest is a *different* concept, prohibition policy), and the same reference is correctly cross-cited at `G03` too.
+- **O01's CR6 standing confirmed** — source names precondition/performer/authority/target/postcondition explicitly for this exact action; it's independently specified, not a mechanical step riding on upstream binding resolution.
+- **Zero knowledge-gaps substantively justified** — every blocker traces to a client-level gap, never an unresolved canonical meaning, a materially different situation from LTL-03.
+- Historical delta explained only after content review, per CR9; the 7=7 match noted but not relied on.
+
+**Disposition: `P6_1_V1_LTL01_R1_INDEPENDENT_QA_PASS__READY_FOR_REPEATABILITY_FREEZE`**
+
+No defect found anywhere — the cleanest of the three independent QA rounds in this reconciliation. No Supabase mutation, no WorkDefinition persistence, no main merge, no production promotion. Repeatability freeze and any next task remain separate Owner-directed steps.
