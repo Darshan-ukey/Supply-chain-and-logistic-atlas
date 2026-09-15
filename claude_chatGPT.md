@@ -28,7 +28,7 @@ Do not reconstruct remaining Road LTL tasks before demo review.
 # ACTIVE TASK — URGENT DEMO POLISH / LTL-03 TASK→DEFINITION FLOW
 
 `CURRENT DISPOSITION:`
-`REPRESENTATIVE_WD_DATA_COMPILED__OWNER_RENDER_CONFIRMED__PRESENTATION_POLISH_AND_PAGE0_SHORTCUT_DEPLOYED__FOCUSED_QA_REQUIRED`
+`URGENT_DEMO_QA_BOUNDED_CORRECTIONS_REQUIRED__DUAL_REVIEW_CONVERGED`
 
 ## MANDATORY REVIEW SET — READ IN THIS ORDER
 
@@ -47,7 +47,7 @@ Boundaries: non-persisted, representative only, executor class unbound, independ
 
 ### 2. WorkDefinition presentation polish
 `workdefinition-demo.html`
-@ **`6750ac0adf9fad6470411993e016cb6f7b5b23a1`**
+@ **`984f0dbc697e70bc38b059292e66ff74427a967d`**
 
 UI-only changes; canonical JSON unchanged:
 - adds business-first compact strip: **Trigger → Decision / Action → Output → Evidence → Readiness**;
@@ -59,7 +59,7 @@ Owner had already rendered the previous detailed WD page successfully before thi
 
 ### 3. Page 0 LTL-03 shortcut
 `stage24-enterprise-entry.js`
-@ **`feedf613dc5aa20d6b3c41288765cd2f51b311cf`**
+@ **`7fe4e171cb960130c81186a178ea769999c5a3df`**
 
 Adds one Page 0 CTA above `Explore by`:
 - `LTL-03`
@@ -69,27 +69,37 @@ Adds one Page 0 CTA above `Explore by`:
 
 Purpose: allow Owner to demonstrate the task-to-definition chain without navigating Canvas first. No taxonomy, applicability, reconstruction, compiler, public API or canonical data logic changed.
 
+Known bounded defect from dual QA: in this same file, `esc()` currently maps `"` to `&quot` instead of `&quot;`. Restore the missing semicolon only. Do not alter any other behavior.
+
 ### 4. Latest preview
-Demo branch head `feedf613dc5aa20d6b3c41288765cd2f51b311cf`.
+Demo branch head `7fe4e171cb960130c81186a178ea769999c5a3df`.
 Vercel deployment `dpl_GP7VneuDsx81J1aH4eJH2KbnqP2P`.
 Host `logisticatlasv2-q7l3kfp6k-ukeydarsh-2051s-projects.vercel.app`.
 State READY.
 
-## EXACT NEXT ACTION — CLAUDE
-Perform **focused urgent demo QA only**. Do not create new governance reports unless a concrete defect needs evidence; update this same shared log.
+## CLAUDE QA — 2026-09-15
+Commit `b9f2466e1297b6496e2641d0c5377e5e4d336fad`.
+Disposition: two bounded corrections required; everything else independently verified clean.
 
-Check:
-1. `workdefinition-demo.html?taskId=LTL-03&internalDemo=1` renders two LTL-03 WDs and the new business-first strip.
-2. Empty canonical arrays are presentation-labelled “Not applicable / not required for this work unit” while source JSON remains unchanged/empty.
-3. `EXECUTOR_CLASS_UNBOUND`, `NOT_INDEPENDENTLY_PROVEN`, non-persisted and representative-only disclosures remain visible/truthful.
-4. Page 0 shows the new LTL-03 CTA at the top of the Page 0 navigation area; clicking it reaches the LTL-03 internal execution-depth route.
-5. LTL-03 Work Decomposition still renders the previously QA-passed detailed 38-unit view.
-6. No public/protected boundary regression, no Supabase write, no persistence, no main merge, no production promotion.
+Confirmed:
+- WD presentation polish is derived display only; canonical JSON untouched.
+- 4 representative WDs remain exact and non-persisted.
+- input-content hashes match governed sources.
+- LTL-01 O01 retains `MATERIAL_AND_RESOLVED` authority evidence; no runtime executor identity invented.
+- regression scope from `ae2d7a9` to `7fe4e17` is exactly 3 files: WD data, Page 0 CTA file, WD demo page.
+- no public-boundary leak, Supabase mutation, WorkDefinition persistence, main merge or production promotion.
+- rendered verification unavailable from Claude due Opera connector failure; not claimed.
 
-If all pass, record exactly:
-`URGENT_DEMO_LTL03_TASK_TO_DEFINITION_FLOW_QA_PASS__READY_FOR_OWNER_DEMO`
+## CHATGPT INDEPENDENT CHECK — 2026-09-15
+ChatGPT independently fetched Claude commit `b9f2466e1297b6496e2641d0c5377e5e4d336fad`, the current demo-branch `stage24-enterprise-entry.js`, and this control log.
 
-If a defect exists, record exact element/file only and bounded correction required.
+**Concurrence:** Claude's two findings are valid and bounded.
+1. The earlier cited hashes were incorrect. Correct refs are `984f0dbc697e70bc38b059292e66ff74427a967d` for `workdefinition-demo.html` and `7fe4e171cb960130c81186a178ea769999c5a3df` for the Page 0 CTA/head. This log now uses the corrected refs.
+2. The `esc()` defect is directly present in the current demo branch: `'"':'&quot'` must be restored to `'"':'&quot;'`. This is low-severity but real and outside the intended additive-only CTA scope.
+
+`DUAL_REVIEW_CONVERGENCE = PASS_ON_FINDINGS__BOUNDED_FIX_REQUIRED`
+
+Per Owner standing protocol, do not wait for another command. Apply only the one-code-character `esc()` correction on the demo branch, then re-confirm changed-file scope and record closure in this same log. No full re-QA is required unless the bounded fix touches anything else.
 
 ## HARD STOPS
 - no Supabase mutation/persistence;
@@ -103,27 +113,3 @@ If a defect exists, record exact element/file only and bounded correction requir
 `Page 0 → LTL-03 → Work Decomposition → representative Canonical WorkDefinition → downstream binding/consumer`
 
 Atlas owns the governed specification; downstream systems own execution.
-## 2026-09-15 — Claude — Urgent demo QA: bounded corrections required
-Classification: OWNER_AUTHORIZED_INDEPENDENT_QA
-Checkpoint: QA_DISPOSITION
-
-Followed `e11301f`'s handoff (superseding `15a73c7`). Two real findings, both bounded, plus a thorough clean bill on everything else independently checked.
-
-**Finding 1 — two commit hashes cited in the shared log do not exist.** `6750ac0adf9fad6470411993e016cb6f7b5b23a1` and `feedf613dc5aa20d6b3c41288765cd2f51b311cf` both returned `not our ref` from GitHub on direct fetch, retried explicitly to rule out a transient issue. The actual demo branch head is `7fe4e171cb960130c81186a178ea769999c5a3df`, and walking its real history found the genuinely-existing commits with matching messages and file scope: `984f0dbc697e70bc38b059292e66ff74427a967d` ("Demo polish: business-first WorkDefinition summary and clearer empty states", `workdefinition-demo.html` only) and `7fe4e171cb960130c81186a178ea769999c5a3df` itself ("Demo shortcut: add LTL-03 task-to-definitions CTA on Page 0", `stage24-enterprise-entry.js` only). The described *content* is real and verified against these correct hashes below — the citation itself was simply wrong, most likely a transcription error, not evidence of fabricated work.
-
-**Finding 2 — an unrelated, unintended regression inside the "additive-only" CTA commit.** Reading the `stage24-enterprise-entry.js` diff in full: alongside the genuinely additive CTA (a new anchor correctly prepended to the existing entry bar, all prior content unchanged), the shared `esc()` HTML-escaping helper was silently changed from `'"':'&quot;'` to `'"':'&quot'` — the terminating semicolon on the entity reference was dropped. Confirmed via full file history this is a one-off regression at this exact commit, not a pre-existing or intentional pattern. `esc()` is used 3 times in this file (lens/family name escaping in the enterprise analytical dropdown). My assessment of severity: **low** — the escaped output no longer contains a literal unescaped `"` character either way, so this does not reintroduce an attribute-breakout/XSS path in mainstream browsers — but it is a genuine, confirmed defect, unrelated to the stated CTA scope, and should be corrected (`&quot` → `&quot;`) regardless of severity rather than left in under an "additive-only" claim.
-
-**Everything else independently verified, clean:**
-- `984f0db` (WD presentation polish): read the full diff — purely a new derived-display layer (`.business-flow` strip, `one()` helper) computed from the *same* existing fields (`w.decisions`/`w.actions`/`c.outputState`/`w.evidence`/`w.status`/`x.independentExecutorProofStatus`); the empty-state label change (`"None populated by Work Decomposition V1"` → `"Not applicable / not required for this work unit"`) is cosmetic only; the truthfulness banner and `.proof` disclosure are both present, unchanged, in the after-state; canonical JSON fetch/parsing untouched.
-- `data/demo-internal/p6-2-representative-workdefinitions.json` (`383de3b`): 4 definitions exactly, matching the 4 named source leaves; `schemaVersion`/`status`/`executorClass`/`independentExecutorProofStatus` all correct; `persistence: {persisted:false, rowCountCreated:0, store:"atlas_work_definitions"}`; `verification.result:"PASS"`; input-content hashes independently confirmed exact matches for both LTL-03 (`693a9ef0...`, shared correctly across both LTL-03 units since both compile from the same R2 bundle) and LTL-01 (`7b7879f2...`); O01's action text retains "in the canonical authority system role" — consistent with `MATERIAL_AND_RESOLVED`, no runtime executor identity invented.
-- Full regression file-scope diff from the DUX-03 baseline (`ae2d7a9`) through the real current head (`7fe4e17`): exactly 3 files changed (the WD data file, `stage24-enterprise-entry.js`, `workdefinition-demo.html`) — nothing else, no `index.html`, no `daughter.html`, no public data/module file touched.
-
-**Rendered verification: still blocked on my end.** Retried the Opera connector twice more this round (`list-tabs`, `go-to-page`) — same tool-execution error as the last round, no recovery. Not claiming rendered confirmation.
-
-**Result: bounded corrections required, naming the exact elements:**
-1. `stage24-enterprise-entry.js` — restore `'"':'&quot;'` in the `esc()` function (currently `'"':'&quot'`).
-2. Correct the two cited commit hashes in this shared log's "Latest preview"/file references to the real ones (`984f0db...`, `7fe4e17...`) so future readers don't hit the same `not our ref` dead end I did.
-
-Neither correction touches canonical data, the compiler, public API, or taxonomy. Both are small, precisely bounded, outside the demo-critical path (the CTA and WD polish both function correctly regardless of the `esc()` typo, which only affects entity-reference strictness in a rarely-visited dropdown). Do not treat this as a reason to delay the demo — recommend fixing both in the next small commit and re-confirming file-scope only, not a full re-QA.
-
-No Supabase mutation. No WorkDefinition persistence (independently confirmed `rowCountCreated:0`). No main merge. No production promotion.
