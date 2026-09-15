@@ -4,175 +4,160 @@
 
 This is the first and mandatory file both ChatGPT and Claude must read before starting or resuming Atlas work.
 
-Previous active-control state is preserved in Git blob `9c5985dda2bf0e5bb2f048bfae84bcb3d3e18fd5`; earlier long-form history is preserved in blob `82eb6b9bedec5e6bad88394cf2329708224f12c6`. Do not reread either unless this file explicitly points back to them.
+Previous active-control state is preserved in Git blob `162e42037f2fb08d8f9cc382443d0b10709b5e5f`. Earlier history remains in repository history. Do not reread older material unless this file explicitly points to it.
 
 ## Coordination protocol
 1. Read this file first.
 2. Read only the ACTIVE TASK `MANDATORY REVIEW SET`, in order.
 3. Detailed QA/recovery files are subordinate evidence. If not listed here, they are not mandatory reading.
-4. Do not guess which older logs/commits matter. Add any newly required evidence here first with the reason.
-5. Every handoff must update: `Task | Current disposition | Mandatory review set | New commits/artifacts | Exact next action | Hard stops | Superseded/skippable material`.
+4. Do not guess older dependencies. Add any newly required evidence here first with the reason.
+5. Every handoff must record: `Task | Current disposition | Mandatory review set | New commits/artifacts | Exact next action | Hard stops | Superseded/skippable material`.
 6. When ChatGPT and Claude independently audit a gate and converge, proceed without waiting for another Owner command unless a hard governance/safety stop explicitly requires Owner action.
-7. Historical counts are post-generation comparison evidence only, never generation targets.
+7. Historical counts remain post-generation forensic evidence only, never generation targets.
 
 ---
 
-# PROGRAM SEQUENCE — OWNER CONFIRMED
+# CLOSED GATE — P6.1 V1 reconstruction repeatability
 
-`LTL-01 → independent QA → freeze repeatability evidence → resume Demo DUX/protected-detail wiring`
-
-Do **not** turn this into a 21-task reconstruction program before returning to the demo. LTL-01 is the cross-task generalization check for the recovered P6.1 V1 rules.
-
----
-
-# CLOSED GATE — LTL-03 reconciliation + recovered rule freeze
-
-Final LTL-03 disposition:
+## LTL-03
+Final disposition:
 `P6_1_V1_LTL03_R2_FOCUSED_RE_QA_PASS__READY_FOR_RULE_FREEZE_AND_NEXT_TASK`
 
-Claude closure:
-`governance/recovery/P6.1_LTL03_R2_FOCUSED_RE_QA_RESULT_2026-09-14.md` @ `bcf0acd3455d0ddc39b1ffe0a7c6722bb15237d2`
+Passing independent closure:
+`governance/recovery/P6.1_LTL03_R2_FOCUSED_RE_QA_RESULT_2026-09-14.md`
+@ `bcf0acd3455d0ddc39b1ffe0a7c6722bb15237d2`
 
-Recovered P6.1 V1 reconstruction rule baseline:
-`governance/standards/P6_1_V1_RECONSTRUCTION_RULE_BASELINE_V1_FROZEN.md` @ `3c67bb49445b6296bf6f2ccdf0c96d44d47abca0`
+Corrected protected reconstruction:
+`governance/baselines/p6_1_v1_ltl03_r2/`
+- manifest `30e9001b81569bb306371e02c82f7c0c307672bd`
+- parts `497d760d37148e5936b0119074b3dd409d481b53`, `070ace1bd5aca05c32e438c3314cd91f3cab1c33`, `17950d3746fda7fd8742bb32664a25b45faa5e2c`, `9afd03d8a0e6fbe6fee28913528d50029fb68242`
 
-Disposition:
-`P6_1_V1_RECONSTRUCTION_RULE_BASELINE_V1_FROZEN__LTL03_LOOP_CLOSED__READY_FOR_NEXT_SINGLE_A5`
-
-### Drive backup status — COMPLETE
-Dedicated Google Doc:
-- title: `Atlas P6.1 V1 Reconstruction Rule Baseline v1 — FROZEN`
-- file ID: `1osbYoaDlUXDBwyCgAv3GqTdEUjoWUgwvUZqdDdSi_rU`
-- Drive URL: `https://docs.google.com/document/d/1osbYoaDlUXDBwyCgAv3GqTdEUjoWUgwvUZqdDdSi_rU`
-- exact frozen baseline text from GitHub commit `3c67bb49445b6296bf6f2ccdf0c96d44d47abca0` has been inserted after the initial summary section.
-- Google Docs write succeeded and the document carries `ExactTextMirrorStatus=COMPLETE`.
-
-GitHub remains canonical; Drive is the durable backup mirror.
-
----
-
-# ACTIVE TASK — P6.1 V1 LTL-01 independent QA
-
-`TASK:` LTL-01 — Resolve service demand and execution eligibility
-
-`CURRENT DISPOSITION:`
-`P6_1_V1_LTL01_R1_RECONSTRUCTION_COMPLETE__SELF_QA_PASS__INDEPENDENT_CLAUDE_QA_REQUIRED`
-
-## MANDATORY REVIEW SET — READ IN THIS ORDER
-
-### 1. Frozen recovered rules
+## Frozen recovered CR1–CR11 baseline
 `governance/standards/P6_1_V1_RECONSTRUCTION_RULE_BASELINE_V1_FROZEN.md`
 @ `3c67bb49445b6296bf6f2ccdf0c96d44d47abca0`
 
-### 2. Certified v1.4 source custody
-`governance/baselines/P6_0_ROAD_LTL_1_5_SOURCE_MATERIALIZATION_CERTIFICATION.json`
-@ historical certified implementation `ba9d47f07b59ecf79ff6cde9145c0185cc18d39d`
+Drive durable mirror:
+- Google Doc ID `1osbYoaDlUXDBwyCgAv3GqTdEUjoWUgwvUZqdDdSi_rU`
+- exact frozen baseline text mirrored successfully
+- GitHub remains canonical.
 
-Certified Drive source:
-- file ID `1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI`
-- `atlas-daughter-release-ltl-v1.4-ocean-v0.6-FROZEN.zip`
-- recomputed ZIP SHA-256 `b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289` — exact certification match.
+## LTL-01 generalization check
+Candidate:
+`governance/baselines/P6_1_V1_LTL01_RECONSTRUCTED_R1.json`
+@ `407c099e993ea9d27f870e06faf80a27b8c9c05f`
 
-Exact extracted inputs used:
-- `data/modules/road-ltl-v1.4.json` SHA-256 `c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4`
-- `data/operational-knowledge/road-ltl-v1.4-operational.json` SHA-256 `6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e`
-- `data/source-claims/road-ltl-v1.4-claims.json` SHA-256 `379e48422906732cc6e01a1e324108ca23a2f1ff05faab8cb53c3ba342000ac0`
-- `data/client-binding-requirements/road-ltl-v1.4-bindings.json` SHA-256 `d461990914038a90277a06299faa5663221b6c6b371493758893a19cd71a384c`
+Independent QA PASS:
+`governance/recovery/P6.1_LTL01_R1_INDEPENDENT_QA_RESULT_2026-09-14.md`
+@ `527b4abe0ada64c65b58cdff50bfe7f977ed22f7`
 
-### 3. LTL-01 reconstructed R1 candidate
-Branch: `atlas-p6-1-v1-reconstruction`
-File: `governance/baselines/P6_1_V1_LTL01_RECONSTRUCTED_R1.json`
-Commit: `407c099e993ea9d27f870e06faf80a27b8c9c05f`
+Disposition:
+`P6_1_V1_LTL01_R1_INDEPENDENT_QA_PASS__READY_FOR_REPEATABILITY_FREEZE`
 
-Natural generated profile:
-- 19 work units
-- 15 leaves
-- 7 `EXECUTOR_READY`
-- 8 `BLOCKED_BY_CLIENT_BINDING`
-- 0 `BLOCKED_BY_KNOWLEDGE_GAP`
-- 6 unique client-binding refs
-- 0 terminal `NEEDS_DECOMPOSITION`
+## Repeatability evidence — FROZEN
+`governance/standards/P6_1_V1_RECONSTRUCTION_REPEATABILITY_EVIDENCE_V1_FROZEN.md`
+@ `fd86c71dd44a6e8e22c3281d6e779947c1e98223`
 
-Important source-shape rule: LTL-01 has no `workDecompositionSeed`. The R1 tree is built from explicit v1.4 `requiredInformation`, `decisionGates`, `atomicAction`, branch transitions, temporal constraint, evidence contracts and binding records. Do not judge it against the LTL-03 20-step spine pattern.
+Disposition:
+`P6_1_V1_RECONSTRUCTION_REPEATABILITY_EVIDENCE_V1_FROZEN__TWO_DISTINCT_SOURCE_SHAPES_PASS__RETURN_TO_DEMO`
 
-### 4. ChatGPT self-QA
-`governance/recovery/P6.1_LTL01_R1_RECONSTRUCTION_SELF_QA_2026-09-14.md`
-Commit: `f5ccc8ef15879fa80f63e31714d3793e407a17a3`
+Conclusion now frozen:
+- CR1–CR11 generalize across two materially different source shapes;
+- LTL-03 demonstrates seed-driven enriched OK with both KG and CB blockers;
+- LTL-01 demonstrates non-seed v1.4 contract-driven structure with CB-only blockers and a materially-resolved CR10 authority case;
+- sufficient evidence exists for the demo purpose;
+- do **not** reconstruct the remaining 20 Road LTL tasks before returning to demo.
 
-### 5. Historical comparison — AFTER content review only
-Historical certified LTL-01 evidence:
-`23 work units / 16 leaves / 7 EXECUTOR_READY / 9 BLOCKED_BY_CLIENT_BINDING / 0 BLOCKED_BY_KNOWLEDGE_GAP`
+---
 
-Current natural R1 delta:
-`-4 units / -1 leaf / 0 ready / -1 CB / 0 KG`
+# ACTIVE TASK — Resume Demo DUX / protected-detail wiring
 
-Do not use this delta as a correction target. Explain it only after source/content QA.
+`TASK:` DUX-03 successor — replace the prior “protected detail unavailable” demo limitation with real reconstructed protected detail for the two independently validated representative tasks only: LTL-03 and LTL-01.
 
-`NEW COMMITS/ARTIFACTS:`
-- recovered rule freeze `3c67bb49445b6296bf6f2ccdf0c96d44d47abca0`
-- LTL-01 candidate `407c099e993ea9d27f870e06faf80a27b8c9c05f`
-- LTL-01 self-QA `f5ccc8ef15879fa80f63e31714d3793e407a17a3`
-- Drive exact-text backup file ID `1osbYoaDlUXDBwyCgAv3GqTdEUjoWUgwvUZqdDdSi_rU`
+`CURRENT DISPOSITION:`
+`DEMO_PROTECTED_DETAIL_RECOVERY_NOW_SUPPORTED_FOR_LTL03_AND_LTL01__WIRING_REQUIRED`
 
-`EXACT NEXT ACTION — CLAUDE:`
-Perform **independent LTL-01 R1 content/structure QA only**. Do not regenerate in parallel.
+## MANDATORY REVIEW SET — READ IN THIS ORDER
 
-Verify from the exact frozen source:
-1. schema/graph/count integrity;
-2. whether the 3 composite containers are source-disciplined rather than artificial over-decomposition;
-3. all 7 ready leaves against CR1–CR11, especially CR6, CR10 and CR11;
-4. all 8 client-binding leaves against the actual v1.4 `requiredInformation` and binding records;
-5. whether use of source-native `LTL-01::REQ::05` as the commodity-classification binding ref is valid or should be represented differently;
-6. whether `WD-LTL01-R1-O01` may remain ready under CR6 because `LTL-01::ACT::01` is explicitly source-supported with precondition/performer/authority/target/postcondition;
-7. whether zero knowledge gaps is substantively justified;
-8. only after those checks, explain the structural delta versus historical `23/16/7/9/0`.
+### 1. Current demo implementation baseline
+Branch:
+`atlas-v2-demo-2026-09-14`
 
-Return exactly one disposition:
-- `P6_1_V1_LTL01_R1_INDEPENDENT_QA_PASS__READY_FOR_REPEATABILITY_FREEZE`
-- `P6_1_V1_LTL01_R1_INDEPENDENT_QA_FAIL__BOUNDED_CORRECTIONS_REQUIRED`
-- `P6_1_V1_LTL01_R1_INDEPENDENT_QA_FAIL__RULE_BASELINE_CONTRADICTION_FOUND`
+Current head:
+`4d856af6c6b89200b1fd7bcd167e0256afb7f26a`
 
-If PASS: update this shared log and stop. ChatGPT will freeze repeatability evidence, then return to Demo DUX/protected-detail wiring.
-If bounded FAIL: list exact per-unit corrections only; do not rebuild the whole tree.
-If rule contradiction: identify the exact frozen rule and source evidence; do not silently alter the frozen baseline.
+Purpose:
+- DUX-01 fixed inspector/playback route;
+- DUX-02 defensive registry/catalog cache control;
+- DUX-03 currently discloses protected-store decode blocker and uses only public-safe summary/schema instead of fabricated protected detail;
+- DUX-04 adds discoverable Execution Readiness navigation.
+
+### 2. Demo objective / boundary
+Preserve the existing D2 objective:
+`PROVE_REPRESENTATIVE_DOMAIN_TO_MALKOM_EXECUTION_PATH_WITHOUT_CLAIMING_FULL_NEW_PIPELINE_COMPLETENESS`
+
+Atlas boundary remains:
+- Atlas owns governed understanding/specification;
+- downstream tools own execution;
+- demo must not claim full Road LTL protected recovery, full WorkDefinition compilation, or production readiness.
+
+### 3. Real protected representative artifacts now available
+LTL-03 corrected protected reconstruction:
+`governance/baselines/p6_1_v1_ltl03_r2/`
+with manifest/part commits listed above.
+
+LTL-01 protected reconstruction:
+`governance/baselines/P6_1_V1_LTL01_RECONSTRUCTED_R1.json`
+@ `407c099e993ea9d27f870e06faf80a27b8c9c05f`
+
+Both are independently QA-passed reconstruction artifacts under frozen CR1–CR11.
+
+### 4. Repeatability authority
+`governance/standards/P6_1_V1_RECONSTRUCTION_REPEATABILITY_EVIDENCE_V1_FROZEN.md`
+@ `fd86c71dd44a6e8e22c3281d6e779947c1e98223`
+
+Purpose:
+- proves representative repeatability across LTL-03 and LTL-01;
+- explicitly does not authorize bulk reconstruction of remaining tasks.
+
+## EXACT NEXT ACTION — CHATGPT
+
+1. Inspect demo branch `4d856af...` and identify the exact DUX-03 protected-detail rendering/data path.
+2. Add protected demo data for **LTL-03 and LTL-01 only**, sourced from the independently QA-passed reconstructed artifacts.
+3. Clearly label the detailed views as **reconstructed protected P6.1 V1 detail** / recovered historical-fidelity reconstruction, not the original lost protected payload.
+4. Preserve the existing public/protected boundary. Public/default path must continue to hide protected decomposition detail.
+5. For tasks other than LTL-03/LTL-01, retain the existing truthful public-safe/protected-unavailable behavior. Do not fabricate trees for the remaining 20 tasks.
+6. Do not fabricate Canonical WorkDefinition instances. Historical P6.1 had WorkDefinition compilation `NOT_STARTED`; WorkDefinition schema/projection explanation may remain, but no fake compiled instance.
+7. Keep original protected-store decode/custody finding as historical recovery context where relevant, but update the UI so it no longer implies that no representative protected detail exists anywhere.
+8. Validate both inspector paths (normal/base and playback) and Execution Readiness navigation after wiring.
+9. Run demo regression checks and compare against `4d856af...` baseline.
+10. Update this shared log with exact commits and hand to Claude for **independent demo wiring QA only**.
+
+## EXACT NEXT ACTION — CLAUDE AFTER CHATGPT WIRING
+Do not modify the demo in parallel. After ChatGPT commits the wiring and updates this log, independently verify:
+- only LTL-03 and LTL-01 expose real reconstructed protected detail;
+- labels distinguish reconstruction from original historical protected payload;
+- public path leaks no protected detail;
+- no fabricated WorkDefinition instance appears;
+- other 20 tasks remain truthful/non-fabricated;
+- both inspector/playback routes and Execution Readiness navigation reach the intended protected demo surface;
+- regression result does not introduce a new failure relative to `4d856af...`.
+
+Return PASS / bounded-fix disposition in this same shared log.
 
 `HARD STOPS:`
-- no LTL-02 or remaining-task reconstruction;
-- no Supabase protected-store mutation/reseed;
+- no remaining-20-task reconstruction before demo review;
+- no Supabase mutation/reseed;
 - no WorkDefinition persistence;
 - no main merge;
 - no production promotion;
-- no demo protected-detail wiring until LTL-01 independent QA closes and repeatability evidence is frozen;
-- no modification of the frozen rule baseline without a separately evidenced contradiction and versioned successor.
+- no claim that reconstructed LTL-03/LTL-01 are byte-identical to the lost original protected payload;
+- no claim of full P6.1 protected coverage;
+- no fabricated WorkDefinition or runtime execution proof.
 
 `SUPERSEDED / SAFE TO SKIP:`
-- all LTL-03 intermediate forensic/reconciliation logs unless a new contradiction appears;
-- earlier CR10 wording `e59b4d6...`;
-- v1.3 source as substitute for certified v1.4;
-- v1.5 LTL-03 OK/IR/claim enrichment for LTL-01;
-- all remaining A5 tasks for now.
+- all LTL-03 forensic intermediate logs unless a new contradiction appears;
+- LTL-01 self-QA unless tracing a specific independent-QA finding;
+- reconstruction of LTL-02 and remaining tasks;
+- renewed attempts to decode the damaged Supabase protected payload unless materially new custody evidence appears.
 
 Next handoff must update this same file before changing task/gate.
-
-## 2026-09-14 — Claude — LTL-01 R1 independent QA: PASS
-Classification: OWNER_AUTHORIZED_INDEPENDENT_QA
-Checkpoint: QA_DISPOSITION
-
-Full report: `governance/recovery/P6.1_LTL01_R1_INDEPENDENT_QA_RESULT_2026-09-14.md` (commit `527b4ab`). Followed `72ab623`'s handoff exactly.
-
-**Source custody re-verified from the raw archive, not the certification document.** Downloaded the Drive ZIP directly, recomputed its SHA-256 myself — matches. Extracted and independently hashed all 4 source files — all match. Read LTL-01's real source content in full before reading the candidate, to avoid anchoring.
-
-**Structural/schema/graph fully recomputed from scratch** — 19/15/4 nodes, 1 root, 0 dupes/cycles/orphans, 7/8/0 leaf statuses, all matching exactly. Summary object is itself schema-conformant.
-
-**All 8 required checkpoints independently verified, none found defective:**
-- The 3 composite containers each map 1:1 to a named source array — not lexical splitting.
-- All 7 ready leaves checked individually: CR10 is genuinely *differentiated*, not uniform. **O01 (the actual state-changing action) correctly records `MATERIAL_AND_RESOLVED`**, citing exact source fields I independently confirmed present verbatim (`performerRole`, `authorityOwner`, `authorityObject`, `authoritySystem`) — more sophisticated than the LTL-03 worked example, where every leaf was uniformly not-material.
-- All 8 client-binding leaves checked against real source markers — every one genuine, none fabricated.
-- **`LTL-01::REQ::05`** verified as a deliberate, consistent choice — no formal `CB::` record matches commodity classification exactly (the closest is a *different* concept, prohibition policy), and the same reference is correctly cross-cited at `G03` too.
-- **O01's CR6 standing confirmed** — source names precondition/performer/authority/target/postcondition explicitly for this exact action; it's independently specified, not a mechanical step riding on upstream binding resolution.
-- **Zero knowledge-gaps substantively justified** — every blocker traces to a client-level gap, never an unresolved canonical meaning, a materially different situation from LTL-03.
-- Historical delta explained only after content review, per CR9; the 7=7 match noted but not relied on.
-
-**Disposition: `P6_1_V1_LTL01_R1_INDEPENDENT_QA_PASS__READY_FOR_REPEATABILITY_FREEZE`**
-
-No defect found anywhere — the cleanest of the three independent QA rounds in this reconciliation. No Supabase mutation, no WorkDefinition persistence, no main merge, no production promotion. Repeatability freeze and any next task remain separate Owner-directed steps.
