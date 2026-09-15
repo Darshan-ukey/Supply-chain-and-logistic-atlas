@@ -227,3 +227,24 @@ Full report: `governance/recovery/DUX_03_REPRESENTATIVE_WIRING_INDEPENDENT_QA_RE
 Not forcing PASS (rendered verification, the specific ask, didn't happen) or FAIL (no defect found anywhere in exhaustive static/data/boundary checks). Recommend retrying once either connector recovers before proceeding to demo review.
 
 No Supabase mutation. No WorkDefinition persistence. No main merge (independently confirmed). No production promotion.
+
+## 2026-09-15 — Claude — Owner performing rendered QA manually
+Classification: OWNER_DIRECTION
+Checkpoint: RENDERED_QA_HANDOFF_TO_OWNER
+
+Both agents' rendering paths confirmed blocked this session: Claude's Opera connector failed on 4 distinct calls (`list-tabs`, `go-to-page`, `screenshot`, `history`), no recovery on retry; ChatGPT independently reported a Vercel SSO block on the same checks (`a9cc687`). Owner has elected to complete the outstanding rendered verification manually rather than wait for either connector.
+
+**Exactly what remains open**, per `governance/recovery/DUX_03_REPRESENTATIVE_WIRING_INDEPENDENT_QA_RESULT_2026-09-14.md` (`efbe8ed`) — everything else in that report is independently verified and clean:
+
+Preview: `https://logisticatlasv2-n1l7lgza3-ukeydarsh-2051s-projects.vercel.app`, deployment `dpl_3ei2nW2nkoV2PSDUFGWUrZXgjjsD`, commit `ae2d7a9`.
+
+1. `/daughter?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-03&internalDemo=1` → open **Work Decomposition** tab → expect the reconstructed 38-unit register, summary counts (38/32/14/7/11), historical-comparison block, and the "RECONSTRUCTED PROTECTED P6.1 V1 DETAIL · QA-PASSED REPRESENTATIVE" banner.
+2. `/daughter?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-01&internalDemo=1` → same tab → expect the 19-unit register, summary counts (19/15/7/8/0), and the same banner.
+3. Any other task, e.g. `taskId=LTL-02&internalDemo=1` → same tab → expect the **"REPRESENTATIVE PROTECTED DETAIL NOT RECONSTRUCTED FOR LTL-02"** notice prepended above the existing protected-unavailable content — not a fabricated tree, not a blank panel.
+4. Confirm both the base Inspector's "Open Execution Depth" button and the playback-mode Inspector's equivalent both correctly reach the internal demo route (DUX-01's two paths).
+5. Confirm the WorkDefinition tab on LTL-01/LTL-03 still shows only compiler-status/schema content — no fabricated compiled instance.
+6. Confirm the public/default route (same URLs, no `internalDemo=1`) still shows only the status-only protected view, no reconstructed detail.
+
+**Result to record here once checked:** PASS if all six render as described, or the exact element/URL that didn't match if not. Either Claude or ChatGPT will fold that result into the final DUX-03 disposition — no further static work is needed on either side; this is purely the rendered-observation step.
+
+No Supabase mutation. No WorkDefinition persistence. No main merge. No production promotion.
