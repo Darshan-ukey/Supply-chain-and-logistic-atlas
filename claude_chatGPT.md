@@ -9,8 +9,9 @@ Read this file first. The immediately preceding demo-control state is preserved 
 1. Read only the ACTIVE TASK mandatory review set below, in order.
 2. Supporting logs not named here are not mandatory.
 3. Do not create a new coordination/control log for this task; update this file only.
-4. When ChatGPT and Claude independently converge, proceed automatically unless an Owner gate is explicitly named.
+4. When ChatGPT and Claude/Prod independently converge, proceed automatically unless an Owner gate is explicitly named.
 5. Demo-only workarounds are now historical evidence, not the active architecture baseline.
+6. **All agents advancing Atlas phases must obey `governance/standards/CONTROLLED_PHASE_EXECUTION_AND_RECOVERY_GATE_V1.md`. A successful working session is not sufficient authority to advance a phase.**
 
 ---
 
@@ -39,7 +40,28 @@ No AR0.3 contract build, R0.4 recovery/reconstruction, bulk P6.2 persistence, P6
 
 ## Mandatory review set — read in this order
 
-### 1. Updated Architecture Refinement Backlog
+### 1. Controlled Phase Execution & Recovery Gate V1 — GLOBAL
+
+`governance/standards/CONTROLLED_PHASE_EXECUTION_AND_RECOVERY_GATE_V1.md`  
+Governance commit: **`986fbb917b2d84b0c332d090804ae2ae7226c399`**
+
+This standard applies to ChatGPT, Prod/production execution agents, Claude when authorized, and future Atlas execution agents/humans.
+
+Mandatory phase sequence:
+`BUILD → QA → FREEZE → CUSTODY/BACKUP → RECOVERY/REBUILD PROOF → DEPENDENCY CLOSURE → ROLLBACK POINT → NEXT-PHASE AUTHORIZATION`
+
+A phase is not CLOSED merely because the output works. Each closure must separately prove:
+- control-system protection;
+- working-system protection;
+- recovery/rebuild capability;
+- exact authoritative baseline identity;
+- dependency closure;
+- rollback point where applicable;
+- explicit next-phase entry decision.
+
+No downstream phase may consume a floating label such as “latest P6.1”; it must reference an exact closed governed baseline.
+
+### 2. Updated Architecture Refinement Backlog
 
 `governance/architecture-refinement/ARCHITECTURE_REFINEMENT_BACKLOG_V1.md`  
 Latest governance update commit: **`f645b8b3db5e1d01c32c744bd5cba9868d51c4d2`**
@@ -87,7 +109,7 @@ Mandatory cross-cutting controls now comprise:
 
 AR0.6 freeze condition is updated: every DG-01…DG-11 item must be CLOSED by the successor architecture/certification path or explicitly OWNER-DEFERRED with rationale, downstream impact and a future gate.
 
-### 2. Existing AR0.2 candidate
+### 3. Existing AR0.2 candidate
 
 Working branch: `atlas-architecture-ar0-2-layer-boundary`  
 Review PR: `#10`
@@ -103,7 +125,7 @@ Current candidate boundaries remain the starting point, not automatically invali
 8. Execution Runtime outside Atlas
 9. Observation / Evidence Reconciliation
 
-### 3. Existing production-boundary evidence relevant to DG-10/DG-11
+### 4. Existing production-boundary evidence relevant to DG-10/DG-11
 
 Current production documentation separates canonical Atlas assets from authenticated client persistence:
 - Browser/Canvas consumes canonical Atlas assets read-only;
@@ -113,7 +135,7 @@ Current production documentation separates canonical Atlas assets from authentic
 
 This evidence means DG-10/DG-11 are not authorization to simply move everything into Supabase. AR0.2/AR0.3 must explicitly determine the minimum clean persistence/projection architecture.
 
-### 4. Architecture principle to preserve
+### 5. Architecture principle to preserve
 
 Atlas owns governed understanding/specification. Downstream platforms own runtime execution.
 
@@ -125,13 +147,13 @@ Physical responsibility direction remains subject to AR0.2/AR0.3 refinement but 
 
 ---
 
-# CLAUDE TASK — INDEPENDENT REVIEW ONLY
+# CLAUDE / PROD TASK — INDEPENDENT REVIEW ONLY
 
-Review the updated architecture backlog at commit `f645b8b3db5e1d01c32c744bd5cba9868d51c4d2` against the current AR0.2 candidate and prior architecture/production-boundary evidence.
+Before any architecture implementation, review the updated architecture backlog and the global Controlled Phase Execution & Recovery Gate against the current AR0.2 candidate and prior architecture/production-boundary evidence.
 
 Return one of:
 
-`PASS__DG_REQUIREMENTS_COMPLETE_AND_CORRECTLY_MAPPED`
+`PASS__DG_REQUIREMENTS_AND_PHASE_CONTROL_COMPLETE`
 
 or
 
@@ -145,27 +167,30 @@ Specifically check:
 5. whether controls A-E are sufficient and non-duplicating;
 6. whether any material architecture gap exposed by the demo remains missing;
 7. whether the proposed AR0.6 freeze condition is strong enough;
-8. whether the mapping to AR0.2/AR0.3/AR0.4 and later implementation tracks is coherent.
+8. whether the Controlled Phase Execution & Recovery Gate is sufficient to prevent advancement from an unbacked, unrecoverable or floating baseline;
+9. whether the mapping to AR0.2/AR0.3/AR0.4 and later implementation tracks is coherent.
 
 **Do not implement or redesign the architecture yet.**  
 **Do not modify the AR0.2 candidate branch or PR #10 yet.**  
 **Do not restart R0.4/P6.2/P6.3/P6.4.**
 
-Record your independent findings back into this same `claude_chatGPT.md` control log, including the exact commits/files reviewed. Do not create another governance log unless a specific evidence artifact is genuinely required.
+Record independent findings back into this same `claude_chatGPT.md` control log, including the exact commits/files reviewed. Do not create another governance log unless a specific evidence artifact is genuinely required.
 
 ---
 
 # OWNER GATE AFTER DUAL REVIEW
 
-Once Claude and ChatGPT converge on the demo-exposed gaps, the next substantive action is Owner review of **AR0.2**, now informed by DG-01…DG-11.
+Once ChatGPT and Claude/Prod converge on the demo-exposed gaps and controlled phase-execution standard, the next substantive action is Owner review of **AR0.2**, now informed by DG-01…DG-11.
 
-If the Owner accepts/revises AR0.2, only then proceed to AR0.3 Candidate Contract Architecture.
+If the Owner accepts/revises AR0.2, only then proceed to AR0.3 Candidate Contract Architecture, and AR0.3 itself must later satisfy the Controlled Phase Execution & Recovery Gate before AR0.4 begins.
 
 ---
 
 # HARD STOPS
 
 - no architecture implementation before AR0.2 Owner decision;
+- no phase advancement without satisfying the Controlled Phase Execution & Recovery Gate;
+- no use of a floating or unverified prior-phase baseline as input to the next phase;
 - no new canonical semantic layer merely to house demo findings;
 - no assumption that Supabase must own all canonical knowledge until AR0.2/AR0.3 resolves the physical responsibility model;
 - no authoritative business/domain knowledge stored only in HTML/Canvas;
