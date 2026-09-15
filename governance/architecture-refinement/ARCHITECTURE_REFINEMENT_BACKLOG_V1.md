@@ -203,6 +203,28 @@ The September 2026 demo-readiness sprint proved the conceptual chain but exposed
 
 **Primary mapping:** source-governance hardening + AR0.4 multi-pattern validation.
 
+### DG-10 — Canonical knowledge storage and persistence
+**Problem exposed:** canonical Atlas business/domain knowledge is not yet governed through one explicit storage architecture independent of UI files. Supabase currently supports authenticated client/application state, while canonical domain knowledge can still reside in repository/static assets. This creates ambiguity over which store is authoritative for domain taxonomy, operational knowledge, decomposition, WorkDefinitions, lineage, rules, versions and status.
+
+**Required architecture outcome:** define and govern exactly where each class of Atlas knowledge lives, including what GitHub owns, what a canonical structured knowledge store owns, what Supabase owns, what Drive preserves, and what is generated/projection-only. Canonical knowledge must survive deletion/rebuild of every HTML/Canvas surface. Supabase may be part of the target persistence architecture, but the architecture decision must be explicit rather than assumed.
+
+**Acceptance test:** if all UI files were removed, the complete governed Atlas business meaning, lineage, versions and relationships required to reconstruct the product would still exist in authoritative structured storage.
+
+**Primary mapping:** AR0.2 physical responsibility boundary → AR0.3 storage/contracts → canonical knowledge persistence implementation track.
+
+### DG-11 — UI decoupling and data-driven rendering
+**Problem exposed:** demo readiness required repeated page-specific wiring for Page 0, Road LTL, LTL-03, Work Decomposition and WorkDefinition views. Correct knowledge could exist while a particular UI surface still showed stale, missing or separately wired content. This indicates that knowledge, relationships and presentation remain too tightly coupled.
+
+**Required architecture outcome:** HTML, Canvas, Ask Atlas, inspectors and future user surfaces must consume the same structured governed objects and relationships through reusable rendering/projection rules. Business knowledge and navigation relationships must not be authoritative inside page-specific HTML/JS. Adding another instance of an already-governed object type should normally be a data operation, not a page rewrite.
+
+**Acceptance tests:**
+1. adding a new task such as LTL-04 using an existing governed object structure does not require creating or rewriting a custom HTML page;
+2. changing one governed LTL-03 fact once propagates to every authorized view that consumes that fact;
+3. the UI can be deleted and regenerated from canonical stored knowledge without loss of business meaning;
+4. different surfaces may present the same object differently, but none owns a separate copy of its business truth.
+
+**Primary mapping:** AR0.3 projection/data contracts → Single Projection Gateway → UI/projection implementation and AR0.4 validation.
+
 ## 9. Mandatory cross-cutting controls arising from the demo
 
 The successor architecture must explicitly provide or govern the following controls. These are not new product layers by default; AR0.2/AR0.3 must place them at the minimum non-duplicating boundary.
@@ -219,10 +241,13 @@ A governed store for client-specific values, systems, mappings, policies, thresh
 ### D. Single Projection Gateway
 A common governed projection path from authoritative state to public UI, protected UI and downstream consumers, with authorization and projection policy determining exposure rather than separate copies of business truth.
 
+### E. Canonical Knowledge Persistence Boundary
+A governed physical responsibility map defining the authoritative home of reusable Atlas knowledge, live client/application state, frozen preservation, generated artifacts and presentation-only projections. No HTML/Canvas surface may be the canonical authority for business/domain knowledge.
+
 ### AR0.6 freeze condition
 
-The Owner must not freeze the successor architecture at AR0.6 unless every `DG-01` through `DG-09` requirement is either:
+The Owner must not freeze the successor architecture at AR0.6 unless every `DG-01` through `DG-11` requirement is either:
 1. **CLOSED by the successor architecture and its planned certification path**, or
 2. **explicitly OWNER-DEFERRED** with rationale, known downstream impact and a named future gate.
 
-Demo-only shortcuts, representative JSON, special URL flags, stale version fallbacks or manual custody knowledge must not silently become production architecture.
+Demo-only shortcuts, representative JSON, special URL flags, stale version fallbacks, page-specific business knowledge, or manual custody knowledge must not silently become production architecture.
