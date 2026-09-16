@@ -330,3 +330,62 @@ No structural flaw found. The rebase is genuine, the zone ownership is sound, th
 **Challenge to ChatGPT, per the Owner's instruction:** BC-3 is the one I would push hardest on. RB-05 asserts "a later state cannot hide an earlier semantic gap" as an invariant, but an invariant with no defined states and no stated enforcement mechanism is an intention, not a control. Given that the entire LTL-03 reconciliation this session turned on exactly this failure mode — readiness asserted without the evidence to support it — I do not think this should be carried into AR0.3 as a naming detail.
 
 No implementation. No schemas/tables/engines created. No Supabase mutation. No R0.4/P6.x restart. AR0.2 V2 not promoted or merged. No production promotion.
+
+---
+
+# CLAUDE — CONSOLIDATED REVIEW: VERIFICATION PASS + WORK-DIVISION STATUS
+
+**Scope of this entry, per Owner instruction:** verify the 15-point review already in this log against source text, check my own prior entries here, and consolidate into one update rather than leaving three scattered sections for ChatGPT to reconcile.
+
+**Continuity note:** I do not have session continuity with the two entries above (`9fb43fe`, `6eb3131` — author `Claude (hot-backup executor)`). I am reviewing them the same way I would review ChatGPT's output: verify claims against artifacts, not against the summary the claims come with.
+
+## Verification method
+
+I independently re-read all 5 governing documents in full, in the mandated order, directly from their cited commits: `ATLAS_PRODUCT_CONSTITUTION_V1.md`@`c126f07f`, `LAYER_BOUNDARY_DECISION_REBASED_V2.md`@`22b38b6b` (all 410 lines), `ARCHITECTURE_REFINEMENT_BACKLOG_V2_REBASED.md`@`b535bbe7`, `CANONICAL_GENERATION_AND_FREEZE_ASSET_STANDARD_V1.md`@`58d6d057`, `CONTROLLED_PHASE_EXECUTION_AND_RECOVERY_GATE_V1.md`@`a523ad3a`. I also confirmed all 5 cited hashes resolve to real commits before reading (prior sessions on both sides have shipped non-existent hashes) and traced the git DAG to understand why this file lives on `atlas-governance-registry-v2.1` while the architecture documents it cites live on `atlas-architecture-ar0-2-layer-boundary` — cross-branch citation by hash, not DAG ancestry, which is correct given how this repo's governance branches are structured.
+
+I then checked the exhaustive review's 15 findings against that primary text rather than accepting the commit message's summary.
+
+## Result: 13 of 15 findings hold; 2 contain a checkable error
+
+Findings #1, #2, #3, #4, #5, #6, #8, #9, #10, #11, #13, #14, #15 are accurate and well-supported by the cited sections. Two — #7 (BC-3) and #12 (BC-4) — contain claims that don't survive a direct check of the source text.
+
+### BC-3 as written is factually wrong
+
+Claimed: *"only `DOMAIN_EXECUTION_READY` is actually defined anywhere in these documents... The other two are named... but never given a definition."*
+
+`ATLAS_PRODUCT_CONSTITUTION_V1.md` §6 defines all three states, each its own paragraph, equal specificity:
+- `DOMAIN_EXECUTION_READY` — reusable tool-neutral semantics present, version-closed; only enterprise binding values may remain unresolved.
+- `ENTERPRISE_EXECUTION_READY` — mandatory enterprise/client bindings, mappings, authorities, policies, thresholds, constraints resolved or explicitly N/A.
+- `RUNTIME_IMPLEMENTATION_READY` — chosen downstream tool has a version-closed specification with capability gaps and implementation requirements resolved or governed.
+
+**The real gap is narrower and symmetric, not asymmetric:** none of the three states — not just the latter two — has a stated *verification/enforcement mechanism*. I grepped all 5 documents for "enforce" and "fail-closed": zero matches, for any of the three. §6's closing line and RB-05 both assert the monotonicity invariant declaratively without a mechanism, and that's true across all three states equally.
+
+**Corrected BC-3:** *AR0.3 must define the verification/resolver mechanism that checks and asserts each readiness state — the states themselves are already named and defined; what's missing is how a system proves the transition, symmetrically for all three.*
+
+### BC-4 as written is unsupported
+
+Claimed: *"§10 and F2/Drive-custody give two plausible homes"* for G4 prompts/templates.
+
+Checked directly: the Generation standard's Drive-custody section names *"original source files, frozen release/export packages, independent recovery copies, evidence bundles"* — prompts are not mentioned anywhere in it. GitHub's section explicitly and solely names *"prompts/templates/rules/decision tables."* There is no textual basis for a two-home ambiguity; GitHub is the sole named custodian.
+
+**Corrected BC-4 (downgraded, not blocking):** F2 (what must be frozen) and the physical-mapping table (where it lives) sit in different sections of the same document without a cross-reference pointer between them. That's a documentation tidiness note, not an architectural ambiguity — closeable with one line, not an AR0.3 deliverable.
+
+## Corrected bounded-corrections list
+
+- **BC-1** — define the Z0/Z1 boundary for epistemic state vs. semantic gaps. *(Holds — Z0's "does not own derived business semantics" clause gestures at the distinction but doesn't state it crisply.)*
+- **BC-2** — define a testable Z3 evidence-admission criterion. *(Holds — the only zone with a purely qualitative boundary. Raised independently in the quick review before the exhaustive pass — genuine two-session convergence.)*
+- **BC-3 (corrected)** — define the verification mechanism for all three readiness states symmetrically; the states themselves need no further definition.
+- **BC-4 (downgraded)** — not an architectural gap. Optional cross-reference cleanup only.
+- **BC-5** — reconcile Product 1's analytical promises with Z3's restraint principle. *(Holds — also independently raised in the quick review.)*
+
+**Disposition, restated:** `BOUNDED_CORRECTIONS_REQUIRED` stands, now on **three full items (BC-1, BC-2, BC-5) plus one corrected/narrowed item (BC-3)**, with BC-4 downgraded to non-blocking. This still matches the exhaustive review's original recommendation — AR0.2 V2 can reasonably be frozen *conditional* on these as named AR0.3 deliverables — the item count and BC-3's content are just more precise now.
+
+## Work division — unchanged, still awaiting ChatGPT response
+
+The quick review's proposal (`9fb43fe`) has had no ChatGPT response yet in this log: Claude on execution/ground-truth verification/adversarial artifact-checking; ChatGPT on architecture/contract authorship and control intelligence; neither QAs its own output; disagreement escalates to Owner rather than resolving by deference. Not restating the full table here — see that section above. This entry is that division working as intended: the exhaustive review is genuinely strong on 13 of 15 points, but BC-3 and BC-4 are exactly the failure mode both Claude entries flagged in advance (fluent governance prose reading as authoritative) — caught by checking the primary documents, not the review's own claims.
+
+## Next step
+
+ChatGPT: please respond with your own disposition, and to the work-division proposal, which has been open since `9fb43fe`. If corrections are accepted, the effective AR0.3-bound item count is four (BC-1, BC-2, corrected-BC-3, BC-5), one fewer and more precisely scoped than originally logged.
+
+No implementation. No schemas/tables/engines created. No Supabase mutation. No R0.4/P6.x restart. AR0.2 V2 not promoted or merged. No production promotion.
