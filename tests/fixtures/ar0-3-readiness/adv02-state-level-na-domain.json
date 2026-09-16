@@ -49,19 +49,32 @@
     "authority": "owner:darshan-ukey",
     "attestation_version": "1.0.0",
     "required_semantic_classes": [
-      "trigger"
+      "trigger",
+      "action",
+      "control",
+      "evidence"
     ],
     "covered_semantic_classes": [
       "trigger",
-      "exception-recovery"
+      "action",
+      "control",
+      "evidence"
     ],
     "coverage_basis": "FIXTURE_DECLARED"
   },
   "binding_requirements": [],
-  "not_applicable_decisions": [],
+  "not_applicable_decisions": [
+    {
+      "item_id": "DOMAIN_EXECUTION_READY",
+      "authority": "owner:darshan-ukey",
+      "waives_rule_id": "R-ENT-001",
+      "decision_id": "decision:na:9002",
+      "decision_version": "1.0.0"
+    }
+  ],
   "predecessor_proofs": [],
   "fixture_identity": {
-    "fixture_id": "fixture:neg09-coverage-overclaimed",
+    "fixture_id": "fixture:adv02-state-level-na-domain",
     "fixture_version": "1.0.0"
   }
 }

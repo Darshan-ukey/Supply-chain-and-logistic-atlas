@@ -70,5 +70,9 @@
     }
   ],
   "not_applicable_decisions": [],
-  "predecessor_proofs": []
+  "predecessor_proofs": [],
+  "fixture_identity": {
+    "fixture_id": "fixture:tv05-enterprise-binding-missing",
+    "fixture_version": "1.0.0"
+  }
 }

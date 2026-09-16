@@ -2,7 +2,7 @@
   "scope_id": "scope:ar0-3-fixture",
   "scope_version": "1.0.0",
   "scope_class": "SYNTHETIC_FIXTURE",
-  "target_readiness_state": "DOMAIN_EXECUTION_READY",
+  "target_readiness_state": "TOTALLY_READY",
   "objects": [
     {
       "object_id": "task-a",
@@ -49,11 +49,16 @@
     "authority": "owner:darshan-ukey",
     "attestation_version": "1.0.0",
     "required_semantic_classes": [
-      "trigger"
+      "trigger",
+      "action",
+      "control",
+      "evidence"
     ],
     "covered_semantic_classes": [
       "trigger",
-      "exception-recovery"
+      "action",
+      "control",
+      "evidence"
     ],
     "coverage_basis": "FIXTURE_DECLARED"
   },
@@ -61,7 +66,7 @@
   "not_applicable_decisions": [],
   "predecessor_proofs": [],
   "fixture_identity": {
-    "fixture_id": "fixture:neg09-coverage-overclaimed",
+    "fixture_id": "fixture:guard01-unknown-target",
     "fixture_version": "1.0.0"
   }
 }

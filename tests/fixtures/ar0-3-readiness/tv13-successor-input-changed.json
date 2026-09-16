@@ -64,5 +64,9 @@
   },
   "binding_requirements": [],
   "not_applicable_decisions": [],
-  "predecessor_proofs": []
+  "predecessor_proofs": [],
+  "fixture_identity": {
+    "fixture_id": "fixture:tv13-successor-input-changed",
+    "fixture_version": "1.0.0"
+  }
 }

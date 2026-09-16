@@ -77,5 +77,9 @@
     "capability_profile_ref": "cap:malkom:2.1.0",
     "specification_ref": "spec:scope:1.0.0",
     "gaps": []
+  },
+  "fixture_identity": {
+    "fixture_id": "fixture:neg12-runtime-inventories-absent",
+    "fixture_version": "1.0.0"
   }
 }

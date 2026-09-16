@@ -84,5 +84,9 @@
       }
     ],
     "runtime_requirements": []
+  },
+  "fixture_identity": {
+    "fixture_id": "fixture:tv09-runtime-gap",
+    "fixture_version": "1.0.0"
   }
 }

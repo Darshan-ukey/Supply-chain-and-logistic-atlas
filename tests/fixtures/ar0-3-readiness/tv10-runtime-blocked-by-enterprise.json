@@ -78,5 +78,9 @@
     "specification_ref": "spec:scope:1.0.0",
     "gaps": [],
     "runtime_requirements": []
+  },
+  "fixture_identity": {
+    "fixture_id": "fixture:tv10-runtime-blocked-by-enterprise",
+    "fixture_version": "1.0.0"
   }
 }

@@ -71,5 +71,9 @@
   },
   "binding_requirements": [],
   "not_applicable_decisions": [],
-  "predecessor_proofs": []
+  "predecessor_proofs": [],
+  "fixture_identity": {
+    "fixture_id": "fixture:tv02-domain-semantic-gap",
+    "fixture_version": "1.0.0"
+  }
 }

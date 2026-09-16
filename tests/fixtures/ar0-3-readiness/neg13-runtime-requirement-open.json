@@ -84,5 +84,9 @@
         "description": "auth integration unspecified"
       }
     ]
+  },
+  "fixture_identity": {
+    "fixture_id": "fixture:neg13-runtime-requirement-open",
+    "fixture_version": "1.0.0"
   }
 }

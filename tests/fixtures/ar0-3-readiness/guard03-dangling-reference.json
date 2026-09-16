@@ -17,7 +17,7 @@
       ],
       "semantic_gaps": [],
       "references": [
-        "task-b"
+        "nope"
       ]
     },
     {
@@ -49,11 +49,16 @@
     "authority": "owner:darshan-ukey",
     "attestation_version": "1.0.0",
     "required_semantic_classes": [
-      "trigger"
+      "trigger",
+      "action",
+      "control",
+      "evidence"
     ],
     "covered_semantic_classes": [
       "trigger",
-      "exception-recovery"
+      "action",
+      "control",
+      "evidence"
     ],
     "coverage_basis": "FIXTURE_DECLARED"
   },
@@ -61,7 +66,7 @@
   "not_applicable_decisions": [],
   "predecessor_proofs": [],
   "fixture_identity": {
-    "fixture_id": "fixture:neg09-coverage-overclaimed",
+    "fixture_id": "fixture:guard03-dangling-reference",
     "fixture_version": "1.0.0"
   }
 }

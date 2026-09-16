@@ -41,5 +41,9 @@
     "specification_ref": "spec:scope:1.0.0",
     "gaps": [],
     "runtime_requirements": []
+  },
+  "fixture_identity": {
+    "fixture_id": "fixture:neg01-empty-scope",
+    "fixture_version": "1.0.0"
   }
 }

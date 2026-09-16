@@ -48,20 +48,15 @@
     "attestation_id": "att:fixture:0001",
     "authority": "owner:darshan-ukey",
     "attestation_version": "1.0.0",
-    "required_semantic_classes": [
-      "trigger"
-    ],
-    "covered_semantic_classes": [
-      "trigger",
-      "exception-recovery"
-    ],
+    "required_semantic_classes": [],
+    "covered_semantic_classes": [],
     "coverage_basis": "FIXTURE_DECLARED"
   },
   "binding_requirements": [],
   "not_applicable_decisions": [],
   "predecessor_proofs": [],
   "fixture_identity": {
-    "fixture_id": "fixture:neg09-coverage-overclaimed",
+    "fixture_id": "fixture:guard07-attestation-empty-required",
     "fixture_version": "1.0.0"
   }
 }

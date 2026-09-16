@@ -63,5 +63,9 @@
     "coverage_basis": "FIXTURE_DECLARED"
   },
   "not_applicable_decisions": [],
-  "predecessor_proofs": []
+  "predecessor_proofs": [],
+  "fixture_identity": {
+    "fixture_id": "fixture:neg03-inventory-bindings-absent",
+    "fixture_version": "1.0.0"
+  }
 }

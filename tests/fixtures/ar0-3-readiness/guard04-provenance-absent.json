@@ -10,7 +10,6 @@
       "object_hash": "sha256:task-a",
       "authoritative_location_ref": "github://scope/task-a@abc123",
       "zone": "Z1",
-      "provenance_ref": "src:reg:task-a",
       "semantic_classes": [
         "trigger",
         "action"
@@ -49,11 +48,16 @@
     "authority": "owner:darshan-ukey",
     "attestation_version": "1.0.0",
     "required_semantic_classes": [
-      "trigger"
+      "trigger",
+      "action",
+      "control",
+      "evidence"
     ],
     "covered_semantic_classes": [
       "trigger",
-      "exception-recovery"
+      "action",
+      "control",
+      "evidence"
     ],
     "coverage_basis": "FIXTURE_DECLARED"
   },
@@ -61,7 +65,7 @@
   "not_applicable_decisions": [],
   "predecessor_proofs": [],
   "fixture_identity": {
-    "fixture_id": "fixture:neg09-coverage-overclaimed",
+    "fixture_id": "fixture:guard04-provenance-absent",
     "fixture_version": "1.0.0"
   }
 }

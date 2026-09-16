@@ -2,7 +2,7 @@
   "scope_id": "scope:ar0-3-fixture",
   "scope_version": "1.0.0",
   "scope_class": "SYNTHETIC_FIXTURE",
-  "target_readiness_state": "DOMAIN_EXECUTION_READY",
+  "target_readiness_state": "ENTERPRISE_EXECUTION_READY",
   "objects": [
     {
       "object_id": "task-a",
@@ -49,19 +49,38 @@
     "authority": "owner:darshan-ukey",
     "attestation_version": "1.0.0",
     "required_semantic_classes": [
-      "trigger"
+      "trigger",
+      "action",
+      "control",
+      "evidence"
     ],
     "covered_semantic_classes": [
       "trigger",
-      "exception-recovery"
+      "action",
+      "control",
+      "evidence"
     ],
     "coverage_basis": "FIXTURE_DECLARED"
   },
-  "binding_requirements": [],
-  "not_applicable_decisions": [],
+  "binding_requirements": [
+    {
+      "requirement_id": "bind:tms-endpoint",
+      "declared_by": "task-a",
+      "resolved_value_ref": null
+    }
+  ],
+  "not_applicable_decisions": [
+    {
+      "item_id": "ENTERPRISE_EXECUTION_READY",
+      "authority": "owner:darshan-ukey",
+      "waives_rule_id": "R-ENT-001",
+      "decision_id": "decision:na:9001",
+      "decision_version": "1.0.0"
+    }
+  ],
   "predecessor_proofs": [],
   "fixture_identity": {
-    "fixture_id": "fixture:neg09-coverage-overclaimed",
+    "fixture_id": "fixture:adv01-state-level-na",
     "fixture_version": "1.0.0"
   }
 }

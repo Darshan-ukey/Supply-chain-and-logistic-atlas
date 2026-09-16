@@ -186,21 +186,17 @@ console.log('\n--- canonicalization: ordered vs unordered collections ---');
   check('PERM-1 permuted objects (unordered set) hash identically',
     run(a).semantic_result_hash === run(b).semantic_result_hash);
 
-  const c = load('tv01-domain-ready.json');
-  c.dependencies = [...c.dependencies, { dependency_id: 'contract-second', dependency_version: '1.0.0',
-    dependency_hash: 'sha256:second', status: 'PRESENT_VERIFIED', authoritative_location_ref: 'github://dep/second@abc' }];
-  const d = JSON.parse(JSON.stringify(c)); d.dependencies.reverse();
+  const c = load('perm02-two-dependencies.json');
+  const d = load('perm02-two-dependencies.json'); d.dependencies.reverse();
   check('PERM-2 permuted dependencies hash identically', run(c).semantic_result_hash === run(d).semantic_result_hash);
+  check('PERM-2 permutation does not break fixture registry binding', run(c).result === 'READY', `got ${run(c).result}`);
 
   const e = load('tv01-domain-ready.json');
   e.objects[0].semantic_classes = ['action', 'trigger']; // reversed order, same set
   check('PERM-3 permuted semantic_classes hash identically', run(e).semantic_result_hash === run(a).semantic_result_hash);
 
-  const f = load('tv02-domain-semantic-gap.json');
-  const g = JSON.parse(JSON.stringify(f));
-  g.objects[0].semantic_gaps.push({ gap_id: 'gap:second', mandatory: true, status: 'OPEN', description: 'second gap' });
-  f.objects[0].semantic_gaps.push({ gap_id: 'gap:second', mandatory: true, status: 'OPEN', description: 'second gap' });
-  g.objects[0].semantic_gaps.reverse();
+  const f = load('perm04-two-gaps.json');
+  const g = load('perm04-two-gaps.json'); g.objects[0].semantic_gaps.reverse();
   check('PERM-4 permuted gaps produce identical blockers hash',
     run(f).semantic_result_hash === run(g).semantic_result_hash);
 
@@ -211,7 +207,7 @@ console.log('\n--- canonicalization: ordered vs unordered collections ---');
 
 console.log('\n--- configuration and fail-closed guards ---');
 check('GUARD null manifest blocks', run(null).result === 'BLOCKED');
-check('GUARD unknown target blocks', run({ ...load('tv01-domain-ready.json'), target_readiness_state: 'TOTALLY_READY' }).result === 'BLOCKED');
+check('GUARD unknown target blocks', run(load('guard01-unknown-target.json')).result === 'BLOCKED');
 check('GUARD unknown ruleset blocks', run(load('tv01-domain-ready.json'), { ...CONFIG, ruleset_version: 'made-up' }).result === 'BLOCKED');
 check('GUARD unknown canonicalization profile blocks',
   run(load('tv01-domain-ready.json'), { ...CONFIG, canonicalization_profile: 'made-up-profile' }).result === 'BLOCKED');
@@ -219,18 +215,64 @@ check('GUARD absent resolver identity blocks',
   run(load('tv01-domain-ready.json'), { ...CONFIG, resolver_commit: null }).result === 'BLOCKED');
 check('GUARD floating resolver identity blocks',
   run(load('tv01-domain-ready.json'), { ...CONFIG, resolver_commit: 'latest' }).result === 'BLOCKED');
-check('GUARD absent scope_class blocks',
-  run((() => { const m = load('tv01-domain-ready.json'); delete m.scope_class; return m; })()).result === 'BLOCKED');
-check('GUARD dangling reference blocks',
-  run((() => { const m = load('tv01-domain-ready.json'); m.objects[0].references = ['nope']; return m; })()).result === 'BLOCKED');
-check('GUARD missing provenance prevents READY',
-  run((() => { const m = load('tv01-domain-ready.json'); delete m.objects[0].provenance_ref; return m; })()).result === 'NOT_READY');
-check('GUARD undeclared semantic_gaps inventory blocks',
-  run((() => { const m = load('tv01-domain-ready.json'); delete m.objects[0].semantic_gaps; return m; })()).result === 'BLOCKED');
-check('GUARD undeclared semantic_classes blocks',
-  run((() => { const m = load('tv01-domain-ready.json'); delete m.objects[0].semantic_classes; return m; })()).result === 'BLOCKED');
-check('GUARD attestation with empty required classes blocks',
-  run((() => { const m = load('tv01-domain-ready.json'); m.semantic_coverage_attestation.required_semantic_classes = []; return m; })()).result === 'BLOCKED');
+check('GUARD absent scope_class blocks', run(load('guard02-scope-class-absent.json')).result === 'BLOCKED');
+check('GUARD dangling reference blocks', run(load('guard03-dangling-reference.json')).result === 'BLOCKED');
+check('GUARD missing provenance prevents READY', run(load('guard04-provenance-absent.json')).result === 'NOT_READY');
+check('GUARD undeclared semantic_gaps inventory blocks', run(load('guard05-semantic-gaps-undeclared.json')).result === 'BLOCKED');
+check('GUARD undeclared semantic_classes blocks', run(load('guard06-semantic-classes-undeclared.json')).result === 'BLOCKED');
+check('GUARD attestation with empty required classes blocks', run(load('guard07-attestation-empty-required.json')).result === 'BLOCKED');
+
+console.log('\n--- adversarial: fixture status is not self-assertable ---');
+{
+  // 1. A real/unregistered scope cannot grant itself fixture privileges.
+  const unregistered = { ...load('neg11-governed-scope-upstream-unfrozen.json'), scope_class: 'SYNTHETIC_FIXTURE',
+    fixture_identity: { fixture_id: 'fixture:i-made-this-up', fixture_version: '1.0.0' } };
+  const rU = run(unregistered);
+  check('ADV-1 unregistered scope claiming SYNTHETIC_FIXTURE blocks', rU.result === 'BLOCKED', `got ${rU.result}`);
+  check('ADV-1 identified as unregistered fixture', hasType(rU, 'FIXTURE_NOT_REGISTERED'));
+
+  // Same scope with the identity omitted entirely.
+  const noIdentity = { ...load('neg11-governed-scope-upstream-unfrozen.json'), scope_class: 'SYNTHETIC_FIXTURE' };
+  delete noIdentity.fixture_identity;
+  check('ADV-1b claiming fixture status with no identity blocks', run(noIdentity).result === 'BLOCKED');
+
+  // The exact escape demonstrated in QA: relabel a governed scope and walk out with READY.
+  const relabelled = load('neg11-governed-scope-upstream-unfrozen.json');
+  relabelled.scope_class = 'SYNTHETIC_FIXTURE';
+  check('ADV-1c QA escape closed: relabelled governed scope no longer READY',
+    run(relabelled).result === 'BLOCKED', `got ${run(relabelled).result}`);
+
+  // 2. A registered fixture with exact frozen identity remains evaluable.
+  check('ADV-2 registered fixture with exact identity is evaluable', run(load('tv01-domain-ready.json')).result === 'READY');
+
+  // 3. Tampering with registered content is detected.
+  const tampered = load('tv01-domain-ready.json');
+  tampered.objects[0].semantic_classes = [...tampered.objects[0].semantic_classes, 'smuggled-class'];
+  const rT = run(tampered);
+  check('ADV-3 tampered registered fixture blocks', rT.result === 'BLOCKED', `got ${rT.result}`);
+  check('ADV-3 identified as content tamper', hasType(rT, 'FIXTURE_CONTENT_TAMPERED'));
+
+  const wrongVersion = load('tv01-domain-ready.json');
+  wrongVersion.fixture_identity.fixture_version = '9.9.9';
+  check('ADV-3b fixture version mismatch blocks', run(wrongVersion).result === 'BLOCKED');
+}
+
+console.log('\n--- adversarial: readiness states cannot be waived wholesale ---');
+{
+  // 4. item_id = a readiness state, using a genuinely waivable item-level rule.
+  const rS = run(load('adv01-state-level-na.json'));
+  check('ADV-4 whole-state N/A via R-ENT-001 blocks', rS.result === 'BLOCKED', `got ${rS.result}`);
+  check('ADV-4 identified as unauthorized state-level applicability', hasType(rS, 'STATE_LEVEL_NA_NOT_AUTHORIZED'));
+  check('ADV-4 no NOT_APPLICABLE result is reachable for a state', rS.result !== 'NOT_APPLICABLE');
+
+  const rD = run(load('adv02-state-level-na-domain.json'));
+  check('ADV-4b whole-state N/A against DOMAIN also blocks', rD.result === 'BLOCKED', `got ${rD.result}`);
+
+  // 5. Item-level authorized waivers must still work.
+  const rI = run(load('tv08-na-governed.json'));
+  check('ADV-5 item-level authorized waiver remains valid', rI.result === 'READY', `got ${rI.result}`);
+  check('ADV-5 item waiver suppresses only its own rule', !hasType(rI, 'BINDING_UNRESOLVED'));
+}
 
 console.log(`\n${passed} passed, ${failed} failed\n`);
 if (failed > 0) { console.log('Failures:'); for (const f of failures) console.log(`  - ${f}`); process.exit(1); }

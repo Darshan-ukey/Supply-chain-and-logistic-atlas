@@ -63,5 +63,9 @@
   },
   "binding_requirements": [],
   "not_applicable_decisions": [],
-  "predecessor_proofs": []
+  "predecessor_proofs": [],
+  "fixture_identity": {
+    "fixture_id": "fixture:neg14-object-location-absent",
+    "fixture_version": "1.0.0"
+  }
 }

@@ -42,6 +42,13 @@
       "dependency_hash": "sha256:contract-workdef",
       "status": "PRESENT_VERIFIED",
       "authoritative_location_ref": "github://dep/contract-workdef@abc123"
+    },
+    {
+      "dependency_id": "contract-second",
+      "dependency_version": "1.0.0",
+      "dependency_hash": "sha256:contract-second",
+      "status": "PRESENT_VERIFIED",
+      "authoritative_location_ref": "github://dep/contract-second@abc123"
     }
   ],
   "semantic_coverage_attestation": {
@@ -49,11 +56,16 @@
     "authority": "owner:darshan-ukey",
     "attestation_version": "1.0.0",
     "required_semantic_classes": [
-      "trigger"
+      "trigger",
+      "action",
+      "control",
+      "evidence"
     ],
     "covered_semantic_classes": [
       "trigger",
-      "exception-recovery"
+      "action",
+      "control",
+      "evidence"
     ],
     "coverage_basis": "FIXTURE_DECLARED"
   },
@@ -61,7 +73,7 @@
   "not_applicable_decisions": [],
   "predecessor_proofs": [],
   "fixture_identity": {
-    "fixture_id": "fixture:neg09-coverage-overclaimed",
+    "fixture_id": "fixture:perm02-two-dependencies",
     "fixture_version": "1.0.0"
   }
 }

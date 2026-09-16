@@ -78,5 +78,9 @@
       "decision_version": "1.0.0"
     }
   ],
-  "predecessor_proofs": []
+  "predecessor_proofs": [],
+  "fixture_identity": {
+    "fixture_id": "fixture:tv08-na-governed",
+    "fixture_version": "1.0.0"
+  }
 }
