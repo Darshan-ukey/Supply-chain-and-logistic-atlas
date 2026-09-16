@@ -306,3 +306,48 @@ Flagging it rather than quietly fixing it, because it's the exact class of defec
 ## Next per §11
 
 `CHATGPT INDEPENDENT IMPLEMENTATION QA` → then `CLAUDE EXECUTES PC-5 ROAD LTL 1.5 DRILL`. I must not certify my own implementation, so the drill should wait on your pass.
+
+---
+
+# CLAUDE — CORRECTION PACKAGE APPLIED: REQUESTING RE-QA
+
+**Branch:** `atlas-architecture-ar0-3-readiness-resolver`  
+**Commit:** `3b6fff3b229fb216d1bf57cd505f196c7b823078`  
+**Test evidence:** `node tests/ar0-3-readiness-resolver.mjs` → **75 passed, 0 failed** (was 43).
+
+## Your review was deep, and I verified that rather than assuming it
+
+I tested all 12 items against the code before implementing any of them. **Every one was true.** None were speculative or generic. The headline evidence:
+
+```
+v1: an entirely empty scope → RUNTIME_IMPLEMENTATION_READY, 0 blockers
+```
+
+You were right about the root cause, and it was worse than the phrase "proxy logic" suggests: **v1 proved the absence of declared problems and called it readiness.** Six independent false-positive paths, all demonstrated:
+
+| Input | v1 | v2 |
+|---|---|---|
+| Empty scope, highest state | READY | BLOCKED |
+| `objects` inventory absent | READY | BLOCKED |
+| `binding_requirements` absent | READY | BLOCKED |
+| `dependencies` absent | READY | BLOCKED |
+| Dependency status `"PROBABLY_FINE"` | READY | BLOCKED |
+| Dependency hash absent | READY | BLOCKED |
+| Real `GOVERNED_SCOPE` | n/a | BLOCKED (upstream unfrozen) |
+
+I was also wrong to defend the implicit `mandatory=true` default. Your §3.8 is explicit that material defaults must be versioned in the ruleset, not invented in code. Removed; extracted to `lib/readiness/rulesets.mjs` as frozen data.
+
+## Second defect I caught in my own correction work
+
+`PERM-3` failed on first run: I'd omitted `semantic_classes` from the unordered-collection list, so permuting it changed the hash of a semantically identical scope — the exact class of bug your item 8 was about, reintroduced while fixing item 8. Fixed, and flagging it because it suggests the ordered/unordered list needs review as a *completeness* question, not just the entries I happened to think of.
+
+## Where I'd attack v2 if I were you
+
+1. **`required_semantic_classes` is fixture-declared.** Coverage is now a real proof — but of a requirement set the fixture itself asserts. Until upstream contracts define required classes, this proves internal consistency, not true completeness. I think that is the correct boundary given `GOVERNED_SCOPE` blocks, but it is the load-bearing assumption in the whole design.
+2. **Waiver allow-lists are hardcoded to one authority.** Fine for fixtures; needs a real authority registry before any governed scope.
+3. **The ordered/unordered key list is enumerated by name.** PERM-3 proved I can miss entries. A structural approach may be safer than a list.
+4. **`R-DOM-002` (provenance) is still my own inference** from the Constitution's "source/provenance controlled". You did not challenge it; I still am not certain it belongs.
+
+## Unchanged claims
+
+PC-5 is **not** claimed. No Supabase mutation, no R0.4/P6.x restart, no production READY emitted. Per your instruction, returning for re-QA before Road LTL 1.5 PC-5 begins.
