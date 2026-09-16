@@ -189,3 +189,67 @@ AR0.3 remains blocked until the above gate closes.
 - no bulk WorkDefinition materialization;
 - no production Supabase mutation;
 - no production promotion from this architecture rebase.
+
+---
+
+# CLAUDE — QUICK REVIEW OF THREE-PRODUCT REBASE + PROPOSED WORK DIVISION
+
+**Scope note, stated honestly:** the Owner asked for a *quick* review plus a work-division proposal. I read the Product Constitution, the rebased V2 zone model (Z0–Z7), the generation/freeze standard's F0–F7 and G1–G5 classes, and the phase-gate refinements. I did **not** exhaustively test all 15 challenge points to the depth of my prior full review. Findings below are therefore **indicative, not a substitute for the full independent review** the handoff requests — flagging that rather than letting a quick pass be mistaken for the deep one.
+
+## Part A — Quick review findings
+
+**First: both of my prior refinements were genuinely adopted, not acknowledged and shelved.** PC-5's "high-risk" is now concretely defined with an explicit anti-self-downgrade rule (*"An executing agent may not self-downgrade risk merely to avoid a recovery drill; ambiguity defaults to HIGH-RISK"*) — that directly closes the loophole I flagged. And the Vercel/deployment finding became its own standard (`DEPLOYMENT_INFRASTRUCTURE_OPERATIONAL_CONTROL_V1`), correctly scoped as an operational control rather than being forced in as a fake "DG-12." Good response on both.
+
+**On Q1 (does this genuinely serve three products, or is it Execution Intelligence relabeled?) — the strongest signal it's genuine:** Z3 (Operational Evidence/Actual-State) and Z4 (Transformation Decision/Approved Target-State) are new zones that did not exist in V1 and are not reachable from an execution-specification architecture. V1's chain went Domain → Decomposition → WorkDefinition → Binding → Assembly — purely forward-looking specification. Z3 (what actually happens) and Z4 (what should change, with proposal/approval separation) are genuinely different epistemic categories. This is a real rebase, not a relabel.
+
+**Q5 — correctly positioned.** The V2 document explicitly places Work Decomposition/WorkDefinition inside Z5 as execution machinery, and the Constitution explicitly states Atlas "is not primarily a ... WorkDefinition compiler." Consistent with my own finding this session that the demo's strongest material was P6.1 decomposition — which was always evidence of capability, never the product identity.
+
+**Q6 — correctly limited, with a genuinely strong rule.** Z1's hard rule is exactly right and directly addresses something I saw first-hand: *"Client Binding must not repair missing reusable domain knowledge. If reusable semantics ... are missing, the state is `DOMAIN_KNOWLEDGE_GAP`, not merely `CLIENT_BINDING_REQUIRED`."* During LTL-01 QA I specifically checked whether the zero-knowledge-gap result was hiding domain gaps behind client-binding labels; it wasn't, but nothing structural prevented it then. This rule now does.
+
+**Q11 — the single best provision in the new standard.** *"LLM/generative output may create candidates, but approved canonical recovery must not depend on reproducing an identical future LLM response."* This is precisely the failure mode I ran into with the undecodable P6.1 payload and the lost seed bundle — and it's also a direct constraint on my own outputs. Correctly treats generative work as candidate-producing, not truth-producing.
+
+**Q3 — my one substantive challenge in this quick pass.** Z3 says Atlas stores "governed evidence required for analysis, not uncontrolled copies of everything" — the intent is right, but as written this is a *stated intent without a stated test*. Every other zone has a hard rule or a gate; Z3 has a qualitative boundary that will be under continuous pressure from real Operations Intelligence work (variant analysis and cycle-time patterns genuinely want more data). Without a concrete admission criterion — what evidence qualifies, who decides, what's rejected — Z3 is the most likely zone to drift toward the transactional-lake outcome the document explicitly says it doesn't want. **Recommend AR0.3 define an explicit Z3 evidence-admission contract**; not a blocker for AR0.2 freeze, since it's a contract-level concern.
+
+**Q15 — where product promise may still exceed architecture.** Product 1 claims Atlas can identify "cycle-time and performance patterns" and "friction, rework and exception drivers." That requires evidence volume and statistical treatment that the Z3 restraint principle deliberately limits. These two are in genuine tension — not a contradiction yet, but AR0.3 should say plainly what analytical depth is achievable under governed-evidence-only constraints, rather than leaving both statements standing unreconciled.
+
+**Indicative disposition (quick pass only): no blocking defect found.** I am deliberately *not* returning `PASS__THREE_PRODUCT_REBASE_AND_GENERATION_GOVERNANCE_COHERENT`, because that disposition should rest on the full 15-point review, which this was not. The two items above (Z3 admission criteria, Product-1 depth vs. Z3 restraint) are the ones I'd carry into that full review as the sharpest challenges.
+
+## Part B — Proposed work division
+
+Owner asked us to decide who does what, by actual strength rather than convention, and to challenge rather than defer.
+
+### Where each of us is genuinely stronger
+
+**Claude (me) — heavy execution, ground-truth verification, adversarial checking:**
+- Direct tool access I've used repeatedly this session: real git operations across branches, Supabase queries, Drive fetch + hash verification, running actual test suites, decoding/verifying payloads, browser rendering when available.
+- Verifying claims against artifacts rather than narrative — this session I caught: two cited commit hashes that didn't exist, an `esc()` regression hidden inside an "additive-only" commit, a 9th serverless function breaking an architectural invariant, the real cause of DUX-01 (a 13-link override chain), and my own reassembly bug before it corrupted a conclusion.
+- Sustained multi-file forensic work (the P6.1 recovery trail).
+
+**ChatGPT — governance architecture, standards authorship, control intelligence:**
+- Demonstrably strong at this: the Controlled Phase Execution Gate, the Generation/Freeze standard with F0–F7 and G1–G5, and the three-product Constitution are well-structured, internally coherent documents that anticipate failure modes rather than react to them.
+- It caught a real conceptual error of mine that I'd have defended: my CR10 conflation of "a governance policy exists" with "actor authority is resolved." That was a genuine correction on reasoning, not mechanics.
+- Better positioned for Drive/Vercel-authenticated operations, which have been unreliable or blocked on my side all session.
+
+### Proposed split
+
+| Track | Owner | Rationale |
+|---|---|---|
+| Architecture/contract authorship (AR0.3 schemas, zone contracts, generator contracts) | **ChatGPT** | Proven strength; needs conceptual coherence over tool access |
+| Implementation (migrations, generators, resolvers, projection gateway, UI decoupling) | **Claude** | Needs sustained multi-file execution + real verification |
+| Independent QA of the *other's* output | **Both, always crossed** | Neither QAs its own work — this session proved it works: ChatGPT caught my CR10 error, I caught its non-existent hashes |
+| Ground-truth verification (hashes, DB state, deployments, recovery drills) | **Claude** | Direct tool access; PC-5 drills specifically need real execution |
+| Governance standards, phase closure records, control intelligence | **ChatGPT** | Proven; also keeps the closure authority separate from the executing agent |
+| Owner-facing risk/status synthesis | **ChatGPT** primary, Claude challenges | Separation of reporting from execution |
+
+### Boundaries and handoffs
+1. **Neither agent QAs its own output.** Non-negotiable — it's the control that has actually caught real defects on both sides this session.
+2. **Handoffs must cite verifiable identity** — exact commit SHAs, file paths, hashes. Both of us have now shipped bad references (my detached-HEAD push failure, its two non-existent hashes); this is a recurring, correctable failure mode.
+3. **The executing agent never closes its own phase gate.** PC-7 authorization comes from the reviewing agent or Owner.
+4. **Disagreement escalates, it doesn't resolve by seniority.** If we disagree after one exchange each, it goes to the Owner with both positions stated — neither agent concedes to move things along.
+
+### On challenging each other — my honest view
+The instruction is right, and I'd add a specific failure mode to watch on *my* side: I am structurally more likely to over-defer when the other agent's output is well-written and confident, because fluent governance prose reads as authoritative. My best counter has been checking artifacts rather than reading claims — that's what caught the hash and `esc()` issues. **I'd rather be told I'm being obstinate than have this session's real defects go unfound**, and I'd ask ChatGPT to hold the same line against my implementation work.
+
+**Recommended immediate next step:** ChatGPT completes AR0.3 contract authorship; I complete the full 15-point independent review of the V2 rebase that this quick pass does not satisfy — with the Z3 admission-criteria and Product-1-depth challenges as the sharpest entry points.
+
+No implementation performed. AR0.2 V2 not promoted/merged. No Supabase mutation. No R0.4/P6.x restart. No production promotion.
