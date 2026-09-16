@@ -2,7 +2,7 @@
   "scope_id": "scope:ar0-3-fixture",
   "scope_version": "1.0.0",
   "scope_class": "SYNTHETIC_FIXTURE",
-  "target_readiness_state": "ENTERPRISE_EXECUTION_READY",
+  "target_readiness_state": "RUNTIME_IMPLEMENTATION_READY",
   "objects": [
     {
       "object_id": "task-a",
@@ -66,9 +66,23 @@
     {
       "requirement_id": "bind:tms-endpoint",
       "declared_by": "task-a",
-      "resolved_value_ref": null
+      "resolved_value_ref": "client:sefl:tms:prod"
     }
   ],
   "not_applicable_decisions": [],
-  "predecessor_proofs": []
+  "predecessor_proofs": [],
+  "runtime_target": {
+    "tool_id": "malkom",
+    "tool_version": "2.1.0",
+    "capability_profile_ref": "cap:malkom:2.1.0",
+    "specification_ref": "spec:scope:1.0.0",
+    "gaps": [],
+    "runtime_requirements": [
+      {
+        "requirement_id": "req:auth-integration",
+        "status": "OPEN",
+        "description": "auth integration unspecified"
+      }
+    ]
+  }
 }

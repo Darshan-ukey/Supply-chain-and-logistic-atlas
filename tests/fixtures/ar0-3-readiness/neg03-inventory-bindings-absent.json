@@ -62,13 +62,6 @@
     ],
     "coverage_basis": "FIXTURE_DECLARED"
   },
-  "binding_requirements": [
-    {
-      "requirement_id": "bind:tms-endpoint",
-      "declared_by": "task-a",
-      "resolved_value_ref": null
-    }
-  ],
   "not_applicable_decisions": [],
   "predecessor_proofs": []
 }

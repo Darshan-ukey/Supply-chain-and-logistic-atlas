@@ -1,27 +1,88 @@
 {
-  "scope_id": "scope:ar0-3-fixture:runtime-gap",
+  "scope_id": "scope:ar0-3-fixture",
   "scope_version": "1.0.0",
+  "scope_class": "SYNTHETIC_FIXTURE",
   "target_readiness_state": "RUNTIME_IMPLEMENTATION_READY",
   "objects": [
-    { "object_id": "obj:task:A", "object_version": "1.0.0", "object_hash": "sha256:aaa1", "zone": "Z1",
-      "provenance_ref": "src:reg:001", "semantic_gaps": [], "references": [] }
+    {
+      "object_id": "task-a",
+      "object_version": "1.0.0",
+      "object_hash": "sha256:task-a",
+      "authoritative_location_ref": "github://scope/task-a@abc123",
+      "zone": "Z1",
+      "provenance_ref": "src:reg:task-a",
+      "semantic_classes": [
+        "trigger",
+        "action"
+      ],
+      "semantic_gaps": [],
+      "references": [
+        "task-b"
+      ]
+    },
+    {
+      "object_id": "task-b",
+      "object_version": "1.0.0",
+      "object_hash": "sha256:task-b",
+      "authoritative_location_ref": "github://scope/task-b@abc123",
+      "zone": "Z1",
+      "provenance_ref": "src:reg:task-b",
+      "semantic_classes": [
+        "control",
+        "evidence"
+      ],
+      "semantic_gaps": [],
+      "references": []
+    }
   ],
   "dependencies": [
-    { "dependency_id": "dep:contract:workdef", "dependency_version": "1.0.0", "dependency_hash": "sha256:ccc1",
-      "status": "PRESENT", "authoritative_location_ref": "github://governance/standards/X.md@abc123" }
+    {
+      "dependency_id": "contract-workdef",
+      "dependency_version": "1.0.0",
+      "dependency_hash": "sha256:contract-workdef",
+      "status": "PRESENT_VERIFIED",
+      "authoritative_location_ref": "github://dep/contract-workdef@abc123"
+    }
   ],
+  "semantic_coverage_attestation": {
+    "attestation_id": "att:fixture:0001",
+    "authority": "owner:darshan-ukey",
+    "attestation_version": "1.0.0",
+    "required_semantic_classes": [
+      "trigger",
+      "action",
+      "control",
+      "evidence"
+    ],
+    "covered_semantic_classes": [
+      "trigger",
+      "action",
+      "control",
+      "evidence"
+    ],
+    "coverage_basis": "FIXTURE_DECLARED"
+  },
   "binding_requirements": [
-    { "requirement_id": "bind:tms-endpoint", "declared_by": "obj:task:A", "resolved_value_ref": "client:sefl:tms:prod" }
+    {
+      "requirement_id": "bind:tms-endpoint",
+      "declared_by": "task-a",
+      "resolved_value_ref": "client:sefl:tms:prod"
+    }
   ],
   "not_applicable_decisions": [],
+  "predecessor_proofs": [],
   "runtime_target": {
-    "tool_id": "malkom", "tool_version": "2.1.0",
+    "tool_id": "malkom",
+    "tool_version": "2.1.0",
     "capability_profile_ref": "cap:malkom:2.1.0",
     "specification_ref": "spec:scope:1.0.0",
     "gaps": [
-      { "gap_id": "gap:no-parallel-join", "status": "OPEN",
-        "description": "target runtime cannot express AND-join semantics required by the specification" }
-    ]
-  },
-  "predecessor_proofs": []
+      {
+        "gap_id": "gap:no-parallel-join",
+        "status": "OPEN",
+        "description": "target cannot express AND-join semantics required by the specification"
+      }
+    ],
+    "runtime_requirements": []
+  }
 }

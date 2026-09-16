@@ -1,17 +1,67 @@
 {
-  "scope_id": "scope:ar0-3-fixture:domain-positive",
+  "scope_id": "scope:ar0-3-fixture",
   "scope_version": "1.0.0",
+  "scope_class": "SYNTHETIC_FIXTURE",
   "target_readiness_state": "DOMAIN_EXECUTION_READY",
   "objects": [
-    { "object_id": "obj:task:A", "object_version": "1.0.0", "object_hash": "sha256:aaa1", "zone": "Z1",
-      "provenance_ref": "src:reg:001", "semantic_gaps": [], "references": ["obj:task:B"] },
-    { "object_id": "obj:task:B", "object_version": "1.0.0", "object_hash": "sha256:bbb1", "zone": "Z1",
-      "provenance_ref": "src:reg:002", "semantic_gaps": [], "references": [] }
+    {
+      "object_id": "task-a",
+      "object_version": "1.0.0",
+      "object_hash": "sha256:task-a",
+      "authoritative_location_ref": "github://scope/task-a@abc123",
+      "zone": "Z1",
+      "provenance_ref": "src:reg:task-a",
+      "semantic_classes": [
+        "trigger",
+        "action"
+      ],
+      "semantic_gaps": [],
+      "references": [
+        "task-b"
+      ]
+    },
+    {
+      "object_id": "task-b",
+      "object_version": "1.0.0",
+      "object_hash": "sha256:task-b",
+      "authoritative_location_ref": "github://scope/task-b@abc123",
+      "zone": "Z1",
+      "provenance_ref": "src:reg:task-b",
+      "semantic_classes": [
+        "control",
+        "evidence"
+      ],
+      "semantic_gaps": [],
+      "references": []
+    }
   ],
   "dependencies": [
-    { "dependency_id": "dep:contract:workdef", "dependency_version": "1.0.0", "dependency_hash": "sha256:ccc1",
-      "status": "PRESENT", "authoritative_location_ref": "github://governance/standards/X.md@abc123" }
+    {
+      "dependency_id": "contract-workdef",
+      "dependency_version": "1.0.0",
+      "dependency_hash": "sha256:contract-workdef",
+      "status": "PRESENT_VERIFIED",
+      "authoritative_location_ref": "github://dep/contract-workdef@abc123"
+    }
   ],
+  "semantic_coverage_attestation": {
+    "attestation_id": "att:fixture:0001",
+    "authority": "owner:darshan-ukey",
+    "attestation_version": "1.0.0",
+    "required_semantic_classes": [
+      "trigger",
+      "action",
+      "control",
+      "evidence"
+    ],
+    "covered_semantic_classes": [
+      "trigger",
+      "action",
+      "control",
+      "evidence"
+    ],
+    "coverage_basis": "FIXTURE_DECLARED"
+  },
   "binding_requirements": [],
   "not_applicable_decisions": [],
   "predecessor_proofs": []
