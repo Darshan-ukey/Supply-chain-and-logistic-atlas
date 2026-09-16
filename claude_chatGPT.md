@@ -253,3 +253,80 @@ The instruction is right, and I'd add a specific failure mode to watch on *my* s
 **Recommended immediate next step:** ChatGPT completes AR0.3 contract authorship; I complete the full 15-point independent review of the V2 rebase that this quick pass does not satisfy — with the Z3 admission-criteria and Product-1-depth challenges as the sharpest entry points.
 
 No implementation performed. AR0.2 V2 not promoted/merged. No Supabase mutation. No R0.4/P6.x restart. No production promotion.
+
+---
+
+# CLAUDE — EXHAUSTIVE INDEPENDENT REVIEW OF THREE-PRODUCT REBASE
+
+**Reviewer:** Claude. **Supersedes** my prior quick pass, which explicitly declined to return a disposition pending this review.
+
+**Read in full, in the mandated order:** `ATLAS_PRODUCT_CONSTITUTION_V1.md` @ `c126f07f`; `LAYER_BOUNDARY_DECISION_REBASED_V2.md` @ `22b38b6b` (all 410 lines, Z0–Z7, P1–P3, §6–§15); `ARCHITECTURE_REFINEMENT_BACKLOG_V2_REBASED.md` @ `b535bbe7` (RB-01…RB-07, DG rebase mapping, AR0.3 sequencing); `CANONICAL_GENERATION_AND_FREEZE_ASSET_STANDARD_V1.md` @ `58d6d057` (G1–G5, F0–F7); `CONTROLLED_PHASE_EXECUTION_AND_RECOVERY_GATE_V1.md` @ `a523ad3a`. DG-01…DG-11 evidence consulted where coverage needed testing.
+
+## Findings against all 15 challenge points
+
+**1. Genuine three-product architecture, or Execution Intelligence relabeled? — GENUINE.**
+Decisive test: are the new zones *reachable* from the old architecture? They are not. V1's chain (Domain → Decomposition → WorkDefinition → Binding → Assembly) is entirely forward-looking specification. Z3 (what actually happens, observed) and Z4 (what should change, with proposal/approval lineage) are different epistemic categories — Z3 is descriptive-empirical, Z4 is deliberative, Z5 is prescriptive. You cannot derive either from an execution-specification chain. §2's self-diagnosis is honest and §12's mapping table shows each prior boundary's disposition explicitly rather than quietly reshuffling.
+
+**2. Z0–Z7 ownership clean and non-duplicating? — YES, with one genuine boundary tension.**
+Each zone has a distinct owns/does-not-own and most carry a hard rule. The tension: **Z0 owns "epistemic state such as KNOWN/UNKNOWN/CONFLICTING/INFERRED" while Z1 owns "explicit semantic gaps and conflicts."** These are not obviously the same thing (Z0 = confidence in a *source*; Z1 = a gap in *derived semantics*) but the documents never state the distinction, and a `CONFLICTING` source versus a `DOMAIN_KNOWLEDGE_GAP` will be genuinely confusable in implementation. Not a structural flaw — both concepts are needed — but AR0.3 must define which zone answers "why don't we know this?" or the two will drift into overlapping stores. **Recorded as bounded correction BC-1.**
+
+**3. Z3 sufficient without becoming a process-mining/transactional-lake clone? — STRUCTURALLY YES, OPERATIONALLY UNDERSPECIFIED.**
+Z3's ownership list is genuinely adequate for Operations Intelligence. The restraint principle is correctly stated ("governed evidence required for analysis, not uncontrolled copies of everything") and G2 adds real rigour (snapshot/query identity, extraction window, and the sharp observation that *"re-running against a changed live source is not considered reproduction of the earlier baseline"* — that is a genuinely well-understood distinction, not boilerplate).
+**But Z3 is the only zone whose boundary is purely qualitative.** Z1, Z2, Z4, Z5, Z6, Z7 each have a hard rule that is *testable*; Z3's restraint is an adjective ("uncontrolled"). Under real Operations Intelligence pressure — variant analysis and cycle-time work genuinely want more rows — there is no stated test to refuse an evidence class. **Recorded as BC-2: AR0.3 must define an evidence-admission criterion (what qualifies, who decides, what is refused, and the retention/scope limit).** I raised this in my quick pass and it survives full review unchanged.
+
+**4. Z4 cleanly separates proposals from approved target-state? — YES, strongest hard rule in the document.**
+*"Candidate future-state outputs are non-canonical proposals. Only an explicitly approved target-state version becomes governed input to Execution Intelligence. Approval must preserve lineage to the evidence and decision that justified the change."* Three separable things (proposal, decision/approval state, approved semantic delta), reinforced by RB-02 and by P3 consuming only *approved* Z4. Clean.
+
+**5. Z5 correctly positioned as machinery, not identity? — YES.**
+Stated three independent ways: Constitution §1 ("not primarily a ... WorkDefinition compiler"), Z5's boundary rule ("one execution-semantics continuum, **not separate Atlas products**"), and RB-03. The implementation-completeness test is a genuinely good addition — *"if the downstream implementation team must rediscover a governed business rule from Operations because the Canonical WorkDefinition is semantically incomplete, the relevant execution scope is not ready"* — it makes Z5's sufficiency testable from the consumer's side rather than by self-assessment.
+
+**6. Client Binding limited to declared slot resolution? — YES, and this closes a gap I personally verified this session.**
+Z2's hard rule plus Z1's `DOMAIN_KNOWLEDGE_GAP` rule plus RB-04 form a three-way lock: slots must be *declared* by Z1/Z4/Z5 before Z2 resolves them. During LTL-01 QA I specifically checked whether a zero-knowledge-gap result was concealing domain gaps behind client-binding labels — it wasn't, but nothing structural prevented it. This now does.
+
+**7. Three readiness states coherent and fail closed? — YES on ordering, GAP ON ENFORCEMENT.**
+`DOMAIN_EXECUTION_READY` → `ENTERPRISE_EXECUTION_READY` → `RUNTIME_IMPLEMENTATION_READY` is a genuine dependency chain, and RB-05's *"a later state cannot hide an earlier semantic gap"* is the correct invariant.
+**However: only `DOMAIN_EXECUTION_READY` is actually defined anywhere in these documents.** The other two are named in Z6's ownership list and in RB-05 but never given a definition or a fail-closed condition. RB-05 asserts the invariant without specifying the mechanism that enforces it. Compare Z1, which defines its state precisely. **Recorded as BC-3: AR0.3 must define `ENTERPRISE_EXECUTION_READY` and `RUNTIME_IMPLEMENTATION_READY` with explicit fail-closed conditions and the monotonicity rule that prevents a later state asserting readiness over an unresolved earlier one.**
+
+**8. Asset/engine/projection/runtime separation strong enough? — YES, the architecture's strongest single provision.**
+§2's *"An engine is not automatically a source of truth, and a UI/projection is never canonical merely because it displays the result"* is stated as mandatory, then reinforced independently at G5 ("the rendered artifact is not business truth unless separately declared as a frozen release artifact"), §6 (adapters don't own canonical truth; "tool-specific warehouses/configurations are derived projections"), §9 ("a UI file is not a required canonical freeze asset if it can be regenerated"), §10 (Vercel "never canonical knowledge or generator authority"), and §14's hard stop against treating demo JSON as canonical. Five mutually reinforcing statements. Directly addresses DG-11 and the demo-internal JSON pattern I built and flagged myself.
+
+**9. Engine families cover required points without unnecessary engines? — YES.**
+15 named families, each mapping to a real zone transition or generation point. Checked for redundancy: none found — the closest pair (Domain semantic materializer vs. effective-version/overlay resolver) are genuinely distinct operations (produce semantics vs. resolve which version applies, the latter being exactly DG-06). §5's *"Not every engine must be AI-driven. Prefer deterministic rules/compilers where the business transformation can be expressed deterministically"* is the right default and directly constrains my own likely contributions.
+
+**10. F0–F7 sufficient to recover after crash/session loss? — YES, and I tested this against real failures.**
+F0 architecture/product baseline, F1 schemas, F2 generator package (contract + code + prompts + rules + dependencies + parameters + validator + **golden fixtures**), F3 input baselines with hashes, F4 canonical outputs, F5 decision-significant derived outputs, F6 physical recovery (DB schema/migrations, deployment/rollback), F7 proof/custody.
+Tested against the two real losses I investigated this session: **the lost P6.1 private seed bundle** would have been F3 (authoritative input baseline) — mandatory, hashed, custodied. **The undecodable `__ALL_22__` Brotli payload** would have been caught by F7 + PC-5's recovery proof, because a recovery drill would have attempted the decode and failed *at freeze time* rather than six days later during forensics. F2's inclusion of golden fixtures is what makes G1 determinism actually verifiable rather than asserted. This set would have prevented both incidents.
+
+**11. G1–G5 correctly handle deterministic vs. LLM generation? — YES, notably well.**
+G1 requires reproducibility with a realistic fallback (byte equality where serialization is deterministic, *"otherwise normalized semantic equality plus hashable canonical serialization"* — that is a practitioner's distinction). G4's rule is the best provision in the standard: *"an approved canonical asset must never rely on future re-generation to recover its exact content... A future regeneration creates a new candidate/version, not a silent replacement."* This correctly treats non-determinism as a property to contain rather than a defect to deny, and it is a direct constraint on my own output — I should not be able to claim an artifact is recoverable because I could regenerate something similar.
+
+**12. Physical authority mapping viable, any ambiguous class? — VIABLE, ONE AMBIGUITY.**
+GitHub/Knowledge Store/Drive/Vercel mapping is sound and correctly framed as replaceable through governed migration. The ambiguity: **generator *prompts/templates* are assigned to GitHub in §10, while F2 defines the generator package (including prompts/templates) as a freeze asset requiring custody.** For deterministic code this is fine — git *is* the custody. For G4 prompt/model configurations that produced an approved canonical output, §10 and F2/Drive-custody give two plausible homes, and the recovery path differs. Minor but real, and it bites precisely where G4 recovery matters most. **Recorded as BC-4.**
+
+**13. RB-01…RB-07 + DG-01…DG-11 cover material risks? — YES, no gap found in this pass.**
+The DG rebase mapping table reassigns all 11 to zones/controls without dropping any, and I verified each mapping is substantively correct rather than nominal (e.g. DG-06 → Z0/Z1 + Z6 version-closed manifest is the right home for effective-version resolution; DG-11 → renderer/projection boundary with "no page-owned business truth" is exactly the failure I hit). RB-01…RB-07 add only what the three-product rebase actually requires. My prior review's one out-of-scope finding (Vercel deployment/storage) was correctly given its own operational standard rather than forced in as a DG item.
+
+**14. AR0.3 sequencing coherent? — YES.**
+The 11-step order is genuinely dependency-correct: common identity envelope first (everything references it), Z1 before Z2 (slots must exist before resolution — enforcing RB-04 structurally), Z3/Z4 before Z5 (evidence and approved target-state before execution semantics), Z6 after Z1–Z5 (manifests reference them), generator contract at 9 (after what it generates is defined), physical mapping last and explicitly *"without changing these semantic ownership boundaries"* — correctly preventing storage convenience from redefining semantics.
+
+**15. Where does product promise still exceed architecture? — ONE REAL TENSION, ONE HONEST LIMIT.**
+**(a) Product 1 vs. Z3 restraint.** Constitution Product 1 promises "cycle-time and performance patterns" and "friction, rework and exception drivers." Both require evidence volume and statistical treatment; Z3 deliberately constrains evidence admission. These are in genuine tension — not contradiction, but AR0.3 must state what analytical depth is achievable under governed-evidence-only constraints rather than leaving both claims standing unreconciled. **BC-5.**
+**(b) An honest limit worth naming, not a defect:** the §11 kill test requires proving all three products on one foundation for a representative scope. Atlas currently has *one* domain with genuine depth (Road LTL) and, as DG-09 records, Ocean's source closure is unproven. The kill test is correctly specified; the material to run it does not yet exist. That is a sequencing reality for AR0.4, and the architecture is right not to pretend otherwise — flagging so it isn't discovered late.
+
+## Disposition
+
+**`BOUNDED_CORRECTIONS_REQUIRED`**
+
+No structural flaw found. The rebase is genuine, the zone ownership is sound, the asset/engine/projection separation is strong, and the freeze/generation governance would have prevented both real data-loss incidents I investigated this session. I am not returning PASS because five items are genuinely underspecified in ways that will cause implementation drift if carried into AR0.3 unresolved — all are contract-level corrections, none require rework of the zone model:
+
+- **BC-1** — define the Z0/Z1 boundary for epistemic state vs. semantic gaps (which zone answers "why don't we know this?").
+- **BC-2** — define a testable Z3 evidence-admission criterion; it is the only zone with a purely qualitative boundary.
+- **BC-3** — define `ENTERPRISE_EXECUTION_READY` and `RUNTIME_IMPLEMENTATION_READY` with fail-closed conditions and an explicit monotonicity rule; only the first of three states is currently defined.
+- **BC-4** — resolve generator prompt/template custody between GitHub (§10) and F2 freeze-asset custody, specifically for G4 approved outputs.
+- **BC-5** — reconcile Product 1's analytical promises with Z3's restraint principle; state achievable depth explicitly.
+
+**Recommended path:** these are AR0.3 contract-definition items, not AR0.2 structural defects. The Owner could reasonably freeze AR0.2 V2 *conditional* on BC-1…BC-5 being closed as named AR0.3 deliverables, rather than blocking the freeze — my BOUNDED_CORRECTIONS_REQUIRED reflects that they must not be lost, not that the zone model needs rework.
+
+**Challenge to ChatGPT, per the Owner's instruction:** BC-3 is the one I would push hardest on. RB-05 asserts "a later state cannot hide an earlier semantic gap" as an invariant, but an invariant with no defined states and no stated enforcement mechanism is an intention, not a control. Given that the entire LTL-03 reconciliation this session turned on exactly this failure mode — readiness asserted without the evidence to support it — I do not think this should be carried into AR0.3 as a naming detail.
+
+No implementation. No schemas/tables/engines created. No Supabase mutation. No R0.4/P6.x restart. AR0.2 V2 not promoted or merged. No production promotion.
