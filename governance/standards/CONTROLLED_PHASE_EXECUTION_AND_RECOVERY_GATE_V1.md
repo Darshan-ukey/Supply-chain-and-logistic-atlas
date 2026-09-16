@@ -2,6 +2,7 @@
 
 Status: OWNER-AUTHORIZED GLOBAL EXECUTION GOVERNANCE  
 Effective: 15 September 2026  
+Refined: 16 September 2026  
 Applies to: ChatGPT, Prod/production execution agents, Claude when authorized, and any future Atlas execution agent or human operator advancing governed phases.
 
 ## 1. Purpose
@@ -65,9 +66,27 @@ The known-good operational state is preserved where applicable, including:
 ### PC-5 — Recovery / rebuild proof
 A backup existing is not sufficient.
 
-For every major milestone, and for any high-risk phase identified by the governing agent, perform an appropriate recovery/rebuild proof from the preserved artifacts. The proof must establish that the important output or working state can be restored/reproduced without relying on the original working session.
+For every major milestone and every **HIGH-RISK** phase/sub-phase, perform an actual recovery or deterministic rebuild proof from the preserved artifacts. The proof must establish that the important output or working state can be restored/reproduced without relying on the original working session.
 
-For lower-risk sub-phases, a documented deterministic reconstruction path may satisfy this check if a full recovery drill would be disproportionate; the reason must be recorded.
+A phase/sub-phase is **HIGH-RISK by default** if any one of the following is true:
+1. it creates, mutates, migrates or deletes canonical knowledge, governed database state, protected/client data, authentication/security state, production configuration or production deployment state;
+2. it creates a new frozen/canonical baseline that a later phase will consume;
+3. it introduces or changes generation/compiler/transformation logic, schemas/contracts, version-resolution logic, lineage/dependency logic or authorization boundaries;
+4. failure or loss would require manual reconstruction from chat history, temporary files, browser state, memory or unavailable external state;
+5. rollback is not trivially reversible from an already-proven immutable baseline;
+6. it changes more than one governed layer/system boundary or creates a cross-system dependency;
+7. it is a production/release gate, data migration, security change, destructive operation, bulk materialization, domain-wide regeneration or major phase transition.
+
+A phase may be treated as **LOWER-RISK** only when all of the following are true and recorded:
+- no canonical/protected/production state is mutated;
+- no new downstream-consumed baseline is created;
+- the change is fully reversible from an existing proven baseline;
+- all inputs and generation logic already have stable governed identity;
+- deterministic reconstruction can be demonstrated without the original session.
+
+For such lower-risk work, a documented deterministic reconstruction proof may satisfy PC-5 instead of a full environment recovery drill. The record must state why the work qualifies as lower-risk and identify the exact reconstruction path.
+
+**No executing agent may self-downgrade a phase from HIGH-RISK merely to avoid a recovery drill.** If classification is ambiguous, treat it as HIGH-RISK or escalate to `OWNER_DECISION_REQUIRED`.
 
 ### PC-6 — Dependency and immutability closure
 Before the next phase consumes the result:
@@ -126,6 +145,7 @@ Each closed phase must leave a compact closure record containing at minimum:
 - QA result/evidence;
 - control-system backup/custody state;
 - working-system backup/custody state;
+- risk classification (`HIGH-RISK` or `LOWER-RISK`) and rationale;
 - recovery/rebuild proof result;
 - dependency closure result;
 - rollback point;
@@ -142,6 +162,7 @@ Use these minimum failure states consistently:
 - `BLOCKED_CONTROL_CUSTODY_INCOMPLETE`
 - `BLOCKED_WORKING_SYSTEM_BACKUP_INCOMPLETE`
 - `BLOCKED_RECOVERY_NOT_PROVEN`
+- `BLOCKED_RISK_CLASSIFICATION_UNRESOLVED`
 - `BLOCKED_DEPENDENCY_CLOSURE_INCOMPLETE`
 - `BLOCKED_ROLLBACK_POINT_MISSING`
 - `OWNER_DECISION_REQUIRED`
@@ -152,8 +173,12 @@ A blocked closure state prevents automatic phase advancement.
 
 This standard applies most strictly at major phase/milestone boundaries such as P0→P1, R0.x transitions, P6.1→P6.2 and later production gates.
 
-For small low-risk tasks, the same principles apply but the evidence may be lighter. The governing agent must not use proportionality as a reason to omit stable identity, authoritative location, dependency closure or explicit next-step authorization.
+For small lower-risk tasks, the same principles apply but the evidence may be lighter only when the PC-5 lower-risk criteria are explicitly satisfied. Proportionality may never be used to omit stable identity, authoritative location, dependency closure, rollback logic where applicable, or explicit next-step authorization.
 
-## 10. Governing principle
+## 10. Deferred-item discipline
+
+Any phase-closure exception or deferred control must point to a **real, trackable future governance gate/stage** with an owner or decision authority and a defined closure condition. “Later,” “future phase,” or an unnamed backlog item is not a valid deferral target.
+
+## 11. Governing principle
 
 > Atlas advances only from a recoverable governed checkpoint, never merely from a successful working session.
