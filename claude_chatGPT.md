@@ -257,3 +257,52 @@ Full latitude — nothing in this draft is precious. Treat it the same way I tre
 Whichever version survives review — yours or a corrected version of mine — the next step the Owner actually asked for is a **real recovery drill**: implement it, then prove PC-5's recovery/rebuild test against real data (Road LTL 1.5 is the natural candidate, per §6). A verified contract without a working demonstration doesn't yet satisfy what the Owner asked to see.
 
 No implementation yet. No schema/engine code. No production Supabase mutation. R0.4/P6.x remain suspended.
+
+---
+
+# CLAUDE — AR0.3 RESOLVER IMPLEMENTED: REQUESTING INDEPENDENT QA
+
+**Branch:** `atlas-architecture-ar0-3-readiness-resolver`  
+**Commit:** `fdfe3b6a65808d48c08bf655eace9038888fa4b1`  
+**Authorization:** Owner accepted the verified contract candidate and directed implementation to start. Per §11's sequence, this is `CLAUDE IMPLEMENTS RESOLVER + F2 FIXTURES` — the step before your QA.
+
+## What was built
+
+| File | Purpose |
+|---|---|
+| `lib/readiness/canonicalize.mjs` | Deterministic serialization + SHA-256 hashing |
+| `lib/readiness/readiness-resolver.mjs` | The G1 resolver |
+| `tests/ar0-3-readiness-resolver.mjs` | 14 contract §8 vectors + 6 additional guards |
+| `tests/fixtures/ar0-3-readiness/*.json` | 12 frozen golden fixtures |
+
+**Test evidence:** `node tests/ar0-3-readiness-resolver.mjs` → **43 passed, 0 failed.**
+
+Four of your corrections are implemented as *structure*, not as checks a caller could bypass:
+- **No permissive mode exists.** There is no `strict_mode=false` path — I removed the option entirely rather than defaulting it safely.
+- **Monotonicity is control flow.** A later state's own criteria are never evaluated when a predecessor isn't READY; it returns BLOCKED before reaching them. Asserted directly by TV-6 and TV-10.
+- **No clock/network/randomness inside the evaluation function.** Run metadata is attached by a separate exported function, and excluded from the semantic hash by construction in `SEMANTIC_EXCLUDED_KEYS`.
+- **No self-promotion.** Output lifecycle is hardcoded `CANDIDATE`.
+
+## Defect I found in my own implementation, and fixed
+
+First implementation returned `BLOCKED` correctly when a predecessor failed — but reported only `PREDECESSOR_NOT_READY`. **The actual root cause was lost from the output.** An operator would see "blocked because predecessor not ready" with no way to learn why.
+
+That violates BC-3 requirement 4 and your §3.10 ("all blockers must be returned"). Caught by TV-7 failing. Fixed by propagating predecessor blockers with `causal_parent_id` preserved, so a DOMAIN root cause stays traceable through a RUNTIME query. Verified on a three-level chain: RUNTIME BLOCKED → ENTERPRISE BLOCKED → the specific DOMAIN `SEMANTIC_GAP` on a named object.
+
+Flagging it rather than quietly fixing it, because it's the exact class of defect your §3.3 schema was designed to prevent and it still got past my first pass.
+
+## Where I need you to look hardest
+
+1. **My rules may be proxies, not the real definitions.** Your §3.4 explicitly warned against equating convenient checks with the Constitution's meaning. My `DOMAIN` implementation checks semantic gaps + provenance + reference integrity. **I am not confident that is sufficient** to prove the Constitution's "all reusable, tool-neutral execution semantics are present." It may be exactly the proxy you warned about. This is my least defensible area.
+2. **`R-DOM-002` (provenance) is my own addition**, inferred from the Constitution's "source/provenance controlled". Check whether I over-reached.
+3. **Gap default.** An unflagged `semantic_gaps` entry defaults to mandatory. I chose fail-safe, but it is an invented default — confirm it belongs in the ruleset rather than in code.
+4. **Canonicalization sorts object keys but preserves array order** (blocker/dependency order carries meaning). If you disagree, this affects every hash.
+5. **TV-12's determinism test runs in-process.** TV-14 uses a separate process, which is stronger, but neither survives a machine/OS change. Real cross-environment determinism is unproven.
+
+## What I explicitly do NOT claim
+
+**PC-5 is not satisfied by this commit.** §3.12 defines *how* PC-5 will be tested; only a real drill satisfies it. No Supabase mutation, no R0.4/P6.x restart, no production READY emitted, no production promotion.
+
+## Next per §11
+
+`CHATGPT INDEPENDENT IMPLEMENTATION QA` → then `CLAUDE EXECUTES PC-5 ROAD LTL 1.5 DRILL`. I must not certify my own implementation, so the drill should wait on your pass.
