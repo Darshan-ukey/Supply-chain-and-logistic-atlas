@@ -1,0 +1,16 @@
+{
+  "scope_id": "scope:ar0-3-fixture:dep-missing",
+  "scope_version": "1.0.0",
+  "target_readiness_state": "DOMAIN_EXECUTION_READY",
+  "objects": [
+    { "object_id": "obj:task:A", "object_version": "1.0.0", "object_hash": "sha256:aaa1", "zone": "Z1",
+      "provenance_ref": "src:reg:001", "semantic_gaps": [], "references": [] }
+  ],
+  "dependencies": [
+    { "dependency_id": "dep:contract:missing", "dependency_version": "1.0.0", "dependency_hash": "sha256:ddd1",
+      "status": "MISSING", "authoritative_location_ref": "drive://vault/lost-bundle" }
+  ],
+  "binding_requirements": [],
+  "not_applicable_decisions": [],
+  "predecessor_proofs": []
+}

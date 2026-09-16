@@ -1,0 +1,27 @@
+{
+  "scope_id": "scope:ar0-3-fixture:runtime-gap",
+  "scope_version": "1.0.0",
+  "target_readiness_state": "RUNTIME_IMPLEMENTATION_READY",
+  "objects": [
+    { "object_id": "obj:task:A", "object_version": "1.0.0", "object_hash": "sha256:aaa1", "zone": "Z1",
+      "provenance_ref": "src:reg:001", "semantic_gaps": [], "references": [] }
+  ],
+  "dependencies": [
+    { "dependency_id": "dep:contract:workdef", "dependency_version": "1.0.0", "dependency_hash": "sha256:ccc1",
+      "status": "PRESENT", "authoritative_location_ref": "github://governance/standards/X.md@abc123" }
+  ],
+  "binding_requirements": [
+    { "requirement_id": "bind:tms-endpoint", "declared_by": "obj:task:A", "resolved_value_ref": "client:sefl:tms:prod" }
+  ],
+  "not_applicable_decisions": [],
+  "runtime_target": {
+    "tool_id": "malkom", "tool_version": "2.1.0",
+    "capability_profile_ref": "cap:malkom:2.1.0",
+    "specification_ref": "spec:scope:1.0.0",
+    "gaps": [
+      { "gap_id": "gap:no-parallel-join", "status": "OPEN",
+        "description": "target runtime cannot express AND-join semantics required by the specification" }
+    ]
+  },
+  "predecessor_proofs": []
+}

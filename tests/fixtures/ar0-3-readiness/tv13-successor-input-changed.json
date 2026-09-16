@@ -1,0 +1,18 @@
+{
+  "scope_id": "scope:ar0-3-fixture:domain-positive",
+  "scope_version": "1.0.1",
+  "target_readiness_state": "DOMAIN_EXECUTION_READY",
+  "objects": [
+    { "object_id": "obj:task:A", "object_version": "1.0.1", "object_hash": "sha256:aaa2", "zone": "Z1",
+      "provenance_ref": "src:reg:001", "semantic_gaps": [], "references": ["obj:task:B"] },
+    { "object_id": "obj:task:B", "object_version": "1.0.0", "object_hash": "sha256:bbb1", "zone": "Z1",
+      "provenance_ref": "src:reg:002", "semantic_gaps": [], "references": [] }
+  ],
+  "dependencies": [
+    { "dependency_id": "dep:contract:workdef", "dependency_version": "1.0.0", "dependency_hash": "sha256:ccc1",
+      "status": "PRESENT", "authoritative_location_ref": "github://governance/standards/X.md@abc123" }
+  ],
+  "binding_requirements": [],
+  "not_applicable_decisions": [],
+  "predecessor_proofs": []
+}
