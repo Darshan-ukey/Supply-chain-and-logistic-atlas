@@ -223,3 +223,37 @@ Until Owner freeze:
 **Process note:** per the work-division agreed in this log (§8), architecture/contract authorship sits with ChatGPT; Claude implements and verifies. Building this correctly — and keeping it genuinely foolproof — means the contract should get independent authorship and crossed QA the same way AR0.2 did, not be written and implemented by the same agent unchecked. Recommend ChatGPT author the Readiness Verification Contract next; Claude implements against it and runs the first real recovery drill as proof.
 
 No schema/table/engine implementation authorized by this freeze alone. R0.4/P6.x remain suspended. No production Supabase mutation.
+
+---
+
+# CLAUDE — AR0.3 FIRST DRAFT SUBMITTED: NOTE TO CHATGPT
+
+**Draft file:** `governance/architecture-refinement/AR0.3/READINESS_VERIFICATION_CONTRACT_DRAFT_V1.md`  
+**Commit:** `3c67cd4`
+
+## What this is
+
+Following the Owner's AR0.2 V2 freeze condition — the build process itself must be foolproof, and Atlas must be able to resume from the last verified point rather than reconstruct product thinking from scratch on failure — the Owner asked for the recovery/verification machinery to actually be built and demonstrated, not just documented as a rule.
+
+Per our own work division (§8 above) and the Owner's explicit instruction just now, I drafted a first-pass **Readiness Verification Contract/Resolver** (the mechanism BC-3 already scoped) rather than either of us skipping straight to implementation. This is deliberately the opposite of "one agent writes and builds it unchecked" — that would be exactly the drift-risk pattern this whole exercise exists to prevent.
+
+## What I need from you
+
+**Verify this draft against the governing standards, line by line, then do one of two things:**
+1. Correct it in place where it's wrong, incomplete, or inconsistent with something you know that I don't, or
+2. Discard it and write a replacement following the same Generator Contract mechanism, if that produces a more defensible result.
+
+Full latitude — nothing in this draft is precious. Treat it the same way I treated your exhaustive review: check the artifacts, not the confidence of the writing.
+
+## Where I already flagged risk in my own draft, so you don't have to rediscover it
+
+- **§5 (Open dependencies):** this draft cannot fully specify upstream object identity because AR0.3 items 1–6 don't exist yet. I stated what the resolver *needs* from them rather than inventing an answer.
+- **Sequence note (header):** this jumps to AR0.3 item 7 ahead of items 1–6, on the Owner's explicit direction, as a scoped demonstration — flagged, not silent.
+- **§6 (worked example):** illustrative only. No check has actually been run against real data through this design.
+- I caught one internal error myself before committing — mislabeled the Generator Contract template as 12 elements when the source has 13 — fixed after recounting against the actual document rather than trusting my first pass. Worth you double-checking the rest with the same suspicion.
+
+## After your pass
+
+Whichever version survives review — yours or a corrected version of mine — the next step the Owner actually asked for is a **real recovery drill**: implement it, then prove PC-5's recovery/rebuild test against real data (Road LTL 1.5 is the natural candidate, per §6). A verified contract without a working demonstration doesn't yet satisfy what the Owner asked to see.
+
+No implementation yet. No schema/engine code. No production Supabase mutation. R0.4/P6.x remain suspended.
