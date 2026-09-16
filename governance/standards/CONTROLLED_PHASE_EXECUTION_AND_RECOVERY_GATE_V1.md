@@ -25,6 +25,8 @@ Every major phase and any sub-phase that creates a new governed baseline must fo
 
 No agent may skip directly from BUILD/QA to the next phase.
 
+Where a phase creates or consumes generated/derived governed assets, it must also comply with `governance/standards/CANONICAL_GENERATION_AND_FREEZE_ASSET_STANDARD_V1.md`.
+
 ## 3. Phase Closure Gate
 
 Before a phase may be marked COMPLETE/CLOSED, all seven checks below are mandatory.
@@ -46,12 +48,16 @@ The control mechanism required to understand and reproduce the phase is preserve
 - architecture rules and decisions;
 - schemas/contracts;
 - generation/compiler/transformation logic;
+- Generator Contract and Generation Registry entry for governed generated assets;
+- prompts/templates/model identifiers and post-processing/validator versions when generative assistance is used;
 - configuration and parameters;
 - source/version/dependency registries;
 - approval/freeze state;
 - QA and verification evidence.
 
 Preserving output bytes without the control mechanism is insufficient where those outputs are derived.
+
+For generated/derived governed assets, PC-3 is not satisfied unless the applicable F0–F7 freeze-asset requirements in the Canonical Generation & Freeze-Asset Standard are closed or explicitly declared not applicable with rationale.
 
 ### PC-4 — Working-system protection
 The known-good operational state is preserved where applicable, including:
@@ -67,6 +73,8 @@ The known-good operational state is preserved where applicable, including:
 A backup existing is not sufficient.
 
 For every major milestone and every **HIGH-RISK** phase/sub-phase, perform an actual recovery or deterministic rebuild proof from the preserved artifacts. The proof must establish that the important output or working state can be restored/reproduced without relying on the original working session.
+
+For generated assets, the proof must use the recorded frozen inputs, Generator Contract/implementation version, parameters, validation path and Generation Registry identity. If the generator is non-deterministic/generative, the proof may restore the exact approved canonical output rather than claim impossible byte-identical future generation; any new generation is a new candidate/version.
 
 A phase/sub-phase is **HIGH-RISK by default** if any one of the following is true:
 1. it creates, mutates, migrates or deletes canonical knowledge, governed database state, protected/client data, authentication/security state, production configuration or production deployment state;
@@ -123,6 +131,8 @@ No phase may consume a prior-phase output unless that prior output has:
 - recovery/rebuild method;
 - rollback point where applicable.
 
+If the prior output is generated/derived, the consuming phase must also be able to identify its Generator Contract/implementation and Generation Registry record.
+
 Example: P6.2 may not consume “the P6.1 output” generically. It must consume an exact P6.1 governed baseline with explicit identity and closure evidence.
 
 ## 6. Change-after-freeze rule
@@ -146,6 +156,8 @@ Each closed phase must leave a compact closure record containing at minimum:
 - control-system backup/custody state;
 - working-system backup/custody state;
 - risk classification (`HIGH-RISK` or `LOWER-RISK`) and rationale;
+- Generator Contract/Generation Registry identities for generated outputs, where applicable;
+- freeze-asset coverage or applicable F0–F7 references for generated/high-risk baselines;
 - recovery/rebuild proof result;
 - dependency closure result;
 - rollback point;
@@ -160,6 +172,9 @@ Use these minimum failure states consistently:
 - `BLOCKED_OUTPUT_QA_OPEN`
 - `BLOCKED_SOURCE_OF_TRUTH_UNFROZEN`
 - `BLOCKED_CONTROL_CUSTODY_INCOMPLETE`
+- `BLOCKED_GENERATOR_CONTRACT_INCOMPLETE`
+- `BLOCKED_GENERATION_REGISTRY_INCOMPLETE`
+- `BLOCKED_FREEZE_ASSET_SET_INCOMPLETE`
 - `BLOCKED_WORKING_SYSTEM_BACKUP_INCOMPLETE`
 - `BLOCKED_RECOVERY_NOT_PROVEN`
 - `BLOCKED_RISK_CLASSIFICATION_UNRESOLVED`
