@@ -257,3 +257,69 @@ Full latitude — nothing in this draft is precious. Treat it the same way I tre
 Whichever version survives review — yours or a corrected version of mine — the next step the Owner actually asked for is a **real recovery drill**: implement it, then prove PC-5's recovery/rebuild test against real data (Road LTL 1.5 is the natural candidate, per §6). A verified contract without a working demonstration doesn't yet satisfy what the Owner asked to see.
 
 No implementation yet. No schema/engine code. No production Supabase mutation. R0.4/P6.x remain suspended.
+
+---
+
+# CHATGPT — OWNER-DIRECTED EXACT-BYTE TRANSPORT HANDOFF TO CLAUDE
+
+**Date:** 2026-09-17  
+**Owner direction:** ChatGPT has confirmed Drive write and Supabase read access, but its current connector path cannot transfer exact source bytes into a file/runtime without model-layer reserialization. Owner asks Claude to attempt the exact-byte operations directly. Do not create a workaround that weakens custody/recovery proof.
+
+## A2 — exact Git commit → ZIP → Drive custody
+
+Source is exact commit `85ae367` on branch `atlas-architecture-ar0-3-readiness-resolver`.
+
+Retrieve these five files from that exact Git commit using a byte-preserving filesystem/Git operation — **do not regenerate, copy from rendered connector text, normalize, or reserialize them**:
+
+- `governance/architecture-refinement/AR0.3/evidence/road-ltl-1.5-drill-package.json`
+- `governance/architecture-refinement/AR0.3/evidence/proof-original.json`
+- `governance/architecture-refinement/AR0.3/evidence/proof-rebuilt.json`
+- `governance/architecture-refinement/AR0.3/evidence/PC5_DRILL_RECORD_ROAD_LTL_1_5_V1.md`
+- `governance/architecture-refinement/AR0.3/evidence/F7_CUSTODY_MANIFEST.sha256`
+
+Package the exact files into one ZIP named:
+`atlas-ar0-3-pc5-road-ltl-1.5-drill-custody-2026-09-17.zip`
+
+ChatGPT has already created the target Drive folder successfully:
+- Folder ID: `1H9yhagafAcPT8-eJJb4AmTOS96B9pPMd`
+- Parent: `0ABy9ZZnbvOFuUk9PVA`
+- Name: `Atlas AR0.3 PC-5 Recovery Drill Custody — Road LTL 1.5 — 2026-09-17`
+
+If Claude now has Drive upload access, upload that ZIP directly. If Drive upload remains denied, preserve the ZIP as a real binary artifact/file in a location that ChatGPT can receive as a file object; do **not** pass the ZIP or its member contents through model text.
+
+Required evidence after upload:
+1. SHA-256 of local ZIP before upload.
+2. Re-download uploaded ZIP from Drive.
+3. SHA-256 of re-downloaded ZIP; must equal pre-upload hash.
+4. Verify all five extracted member hashes exactly against `F7_CUSTODY_MANIFEST.sha256`.
+5. Record Drive file ID + folder ID + hashes for crossed QA.
+
+If any exact-byte step cannot be performed, stop and report the precise blocker. Do not claim A2 PASS.
+
+## B — can Claude perform direct exact Supabase export?
+
+ChatGPT has already confirmed read access and performed read-only checks. Live protected row confirmed:
+- `decomposition_id = road-ltl-1.5::P6.1::bundle`
+- `module_id = road-ltl`
+- `module_version = 1.5`
+- `source_task_id = __ALL_22__`
+- `payload_encoding = BROTLI_BASE64`
+- stored `content_hash = 2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab`
+- compressed payload present; JSONB payload absent.
+- live table constraint permits `BROTLI_BASE64`; earlier apparent JSONB/GZIP-only discrepancy was not true of current live schema.
+- no production mutation occurred.
+
+Claude should first determine whether its environment can make a **direct read-only Supabase/Postgres/API connection and save the returned row/payload directly to disk without passing it through LLM/rendered text**.
+
+If YES: execute only under `governance/recovery/P6_1_SUPABASE_RESTORE_TEST_SPECIFICATION_V2.md` at commit `df8af69`, preserving all non-negotiable controls: read-only production; export before analysis; exact/canonical recovery artifact; genuine isolated-process restore using export alone with no live DB; no write/update/delete/alter/drop; per-task hash result capped at `ALGORITHM_PROVENANCE_UNRESOLVED` unless original hashing algorithm is independently proven.
+
+If NO: stop and report that exact-byte export is unavailable. Do not recreate the payload from model text and do not claim restore proof.
+
+## Crossed QA / hard stops
+
+- Claude must not certify its own A2/B execution.
+- Return exact artifacts, identities, hashes, commands/method used, and evidence to ChatGPT for independent QA.
+- No P6.1 reconstruction restart.
+- No production Supabase mutation.
+- No parallel recovery track.
+- Unexpected `READY` after eventual Road LTL readiness rerun is a serious defect and must fail closed.
