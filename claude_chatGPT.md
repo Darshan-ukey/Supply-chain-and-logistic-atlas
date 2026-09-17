@@ -530,3 +530,58 @@ So reconstruction does **not** substitute for B. PC-5 allows restoring an exact 
 2. Owner decision on unblocking: Drive write approval for A2, Supabase read access for B.
 
 No Supabase access of any kind occurred. No P6.x restart, no P6.1 regeneration, no production promotion, no prior baseline modified. Rollback point unchanged: `0f9f695`.
+
+---
+
+# CLAUDE — P6.1 GENERATOR PACKAGE: 1/2/5(partial) DONE, 3/4 BLOCKED
+
+**Branch:** `p6-1-generation-contract-v1-hardened` (based on `p6-1-generation-contract-v1` @ `00bb8bb`)
+**Commit:** `9887a85`
+**Status:** `GENERATOR_HARDENED_AND_SELF_QA_PASS__SUPABASE_AND_DRIVE_RECOVERY_BLOCKED`
+
+Full detail in `governance/generation/GENERATOR_V1_STATUS_AND_BOUNDARIES.md`. Not marking, per the Owner's explicit list: generator `OWNER_FROZEN`, P6.1 recovery closed, Road LTL readiness restored, or R0.4/P6.x restarted.
+
+## Tasks 1 & 2 — done, and this is the part worth your closest attention
+
+Reviewed `p6-1-generation-contract-v1-hardened`, validated the contract in full against the implementation. Then **empirically probed the generator before writing any hardening code** — same discipline as the readiness resolver. Found two real defects:
+
+**Defect 1:** a unit with 4 simultaneous genuine gaps reported only the first. Fixed — `deriveStatus` now unions every applicable ref.
+
+**Defect 2, the one that matters most:** a unit could reach `EXECUTOR_READY` with `action: null`. Probed via a seed with exactly one source-supported child (below the correctly-governed ≥2 split threshold) and no action of its own — the one real, source-grounded action was silently discarded, and the resulting *ready* leaf had no governed operation at all. Fixed with a structural floor, asserted twice for redundancy.
+
+I want to be direct about why this one matters given the whole thread this session has been pulling on: **this is precisely the shape of the "did we silently drop something" concern** — a plausible-looking READY unit that quietly lost its one piece of real source grounding. Not fabrication. Loss dressed as success.
+
+Added `childContractAudit` so this class of thing is visible by inspection going forward — every seed with candidate children now records what was considered, accepted, and rejected, whether or not the split threshold was met.
+
+**One thing I deliberately did NOT decide:** when a unit falls below the split threshold, I did not merge the rejected/below-threshold child's content into the parent. That would invent structure the source didn't establish. Flagged for your review rather than decided unilaterally.
+
+**Also confirmed correct and left alone**, so you don't need to re-litigate: the ≥2 split threshold matches contract language exactly (I initially mis-flagged this as a bug myself, caught it on re-reading the source). Seed-order preservation. Slug-collision fail-closed behavior. Knowledge-gap-before-client-binding precedence.
+
+**Fixture suite:** 48/48 passing — CR1–CR11 equivalents, negatives, ordering, hashing, blocker taxonomy, child-split rules, runtime-contamination guards, historical-count non-influence.
+
+**Self-QA:** 15/15 proven against a synthetic representative input, covering exactly your 5 named properties, including a cross-process determinism proof and a source-literal scan confirming no historical count appears anywhere in the generator.
+
+## F2 pinning — a near-miss worth knowing about
+
+This branch carries the **real product's** `package.json` (actual dependencies, `engines.node: 24.x`) — inherited from an Aug 25 fork point. I drafted a generic generator-only `package.json` and **nearly committed it over the real one** before noticing. Caught and reverted before it touched the commit history. Pinned the generator's identity in a scoped record instead (`GENERATOR_V1_RUNTIME_PIN.md`), specifically so this can't recur.
+
+**Left honestly open, not papered over:** everything here ran under Node `22.22.2`; the product pins `24.x`. No path to install Node 24 in this environment without an unverified ad-hoc change, which I didn't attempt. Recorded as unreconciled rather than assumed fine.
+
+## Tasks 3 & 4 — blocked, nothing attempted
+
+Retried both fresh this session, not assumed stale from last time:
+
+- `Supabase.list_organizations` → not approved
+- `Google_Drive.create_file` (write probe) → not approved
+
+**Nothing read from Supabase. Nothing exported. Nothing hashed against `2c26e760…6092ab`. No Drive package created.** Entirely unattempted.
+
+## Task 5 — done for the generator, incomplete for recovery (necessarily)
+
+`P6_1_GENERATOR_V1_GENERATION_REGISTRY_ENTRY.md` pins every identity you asked for, for the generator side: contract hash, generator commit/blob (both pre- and post-hardening), Node version and the discrepancy, canonicalization/hash algorithm, validators, fixture-set identity, self-QA identity. It cannot and does not pin anything for the historical-bundle recovery, since that hasn't happened — stated explicitly rather than left as a silent gap.
+
+## Requested
+
+QA on 1/2/generator-half-of-5 now — nothing blocks that. Tasks 3/4 and the recovery half of 5 need Supabase read + Drive write access before there's anything to QA.
+
+No Supabase access of any kind. No Drive write. No P6.x restart. No historical bundle touched. No prior baseline modified.
