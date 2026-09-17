@@ -1,0 +1,475 @@
+{
+  "scope_id": "scope:road-ltl:1.5",
+  "scope_version": "1.5+p6.1@ba9d47f07b59",
+  "scope_class": "GOVERNED_SCOPE",
+  "state_evaluated": "DOMAIN_EXECUTION_READY",
+  "result": "BLOCKED",
+  "blockers": [
+    {
+      "blocker_id": "BLK-SCOPE-CLASS-UPSTREAM-UNFROZEN",
+      "blocker_type": "UPSTREAM_CONTRACTS_UNFROZEN",
+      "zone": null,
+      "object_id": null,
+      "dependency_id": null,
+      "rule_id": "R-VAL-018",
+      "reason": "Scope class 'GOVERNED_SCOPE' requires upstream AR0.3 semantic contracts that are not yet frozen. No production READY may be emitted until they exist. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-INVENTORY-ABSENT-SEMANTIC_COVERAGE_ATTESTATION",
+      "blocker_type": "INVENTORY_NOT_DECLARED",
+      "zone": null,
+      "object_id": null,
+      "dependency_id": null,
+      "rule_id": "R-INV-001",
+      "reason": "Required inventory 'semantic_coverage_attestation' is not declared for DOMAIN_EXECUTION_READY. An undeclared inventory is not an empty one: absence of a declaration proves nothing and must never read as \"no items\". Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-01",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-01",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-01' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-02",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-02",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-02' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-03",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-03",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-03' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-04",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-04",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-04' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-20",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-20",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-20' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-05",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-05",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-05' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-06",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-06",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-06' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-07",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-07",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-07' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-08",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-08",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-08' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-09",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-09",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-09' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-10",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-10",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-10' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-11",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-11",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-11' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-12",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-12",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-12' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-13",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-13",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-13' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-14",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-14",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-14' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-15",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-15",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-15' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-16",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-16",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-16' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-17",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-17",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-17' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-18",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-18",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-18' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-19",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-19",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-19' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-21",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-21",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-21' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-OBJECT-NOCLASSES-road-ltl:task:LTL-22",
+      "blocker_type": "COVERAGE_NOT_DECLARED",
+      "zone": "Z1",
+      "object_id": "road-ltl:task:LTL-22",
+      "dependency_id": null,
+      "rule_id": "R-VAL-021",
+      "reason": "Object 'road-ltl:task:LTL-22' does not declare which semantic classes it provides; coverage cannot be proven. Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    },
+    {
+      "blocker_id": "BLK-DEP-STATE-road-ltl:decomposition:p6-1-protected-bundle",
+      "blocker_type": "DEPENDENCY_CLOSURE_INCOMPLETE",
+      "zone": null,
+      "object_id": null,
+      "dependency_id": "road-ltl:decomposition:p6-1-protected-bundle",
+      "rule_id": "R-VAL-013",
+      "reason": "Dependency 'road-ltl:decomposition:p6-1-protected-bundle' has status 'NOT_RETRIEVABLE_FROM_GOVERNED_ARTIFACTS', which is not an allow-listed closure-satisfying state (PRESENT_VERIFIED). Failed closed.",
+      "severity": "BLOCKING",
+      "causal_parent_id": null
+    }
+  ],
+  "dependency_chain": [
+    {
+      "dependency_id": "road-ltl:module:v1.5-overlay",
+      "dependency_version": "1.5",
+      "dependency_hash": "sha256:22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f",
+      "status": "PRESENT_VERIFIED",
+      "authoritative_location_ref": "github://Darshan-ukey/Supply-chain-and-logistic-atlas/data/modules/road-ltl-v1.5.json@07208535f9aebede6daae5c8905688c3d40063a8"
+    },
+    {
+      "dependency_id": "road-ltl:operational-knowledge:v1.5-overlay",
+      "dependency_version": "1.5",
+      "dependency_hash": "sha256:6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9",
+      "status": "PRESENT_VERIFIED",
+      "authoritative_location_ref": "github://Darshan-ukey/Supply-chain-and-logistic-atlas/data/operational-knowledge/road-ltl-v1.5-operational.json@07208535f9aebede6daae5c8905688c3d40063a8"
+    },
+    {
+      "dependency_id": "road-ltl:module:v1.4-semantic-base",
+      "dependency_version": "1.4",
+      "dependency_hash": "sha256:c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+      "status": "PRESENT_VERIFIED",
+      "authoritative_location_ref": "github://Darshan-ukey/Supply-chain-and-logistic-atlas/data/modules/road-ltl-v1.4.json@5041441a811b739ea7d59c6a207ad1e47b9ecb6b"
+    },
+    {
+      "dependency_id": "road-ltl:decomposition:p6-1-protected-bundle",
+      "dependency_version": "1.5",
+      "dependency_hash": "sha256:6a8ff9d11e8ee93da668452e9a083eef7f2a1ac07ac7f5815d6baf18a000cf8a",
+      "status": "NOT_RETRIEVABLE_FROM_GOVERNED_ARTIFACTS",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__"
+    }
+  ],
+  "dependency_chain_status": "NOT_EVALUATED_INPUT_INVALID",
+  "input_object_identities": [
+    {
+      "object_id": "road-ltl:task:LTL-01",
+      "object_version": "1.5",
+      "object_hash": "sha256:b5a17d0bba2f1443b7f4ec686f33433fb731dfc7e5bee70cb8d03b8d24bc1469",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-01"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-02",
+      "object_version": "1.5",
+      "object_hash": "sha256:24a66f9af88e6e0de815d6ff7261c677b547085b70dafcfbabb22a4f91b12cb0",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-02"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-03",
+      "object_version": "1.5",
+      "object_hash": "sha256:4563feae1776761c1cb542ffaf737c852b1162238fc6bad61071dae16f420555",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-03"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-04",
+      "object_version": "1.5",
+      "object_hash": "sha256:ab22ee83a1b79416e72b2c65f5aacfbb57c941f425ee3a0f2b169d4938ed0ead",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-04"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-20",
+      "object_version": "1.5",
+      "object_hash": "sha256:a2fa5eda4914f16234007a4963087995a44239e44d4c0b9c59c286059f2c3c5c",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-20"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-05",
+      "object_version": "1.5",
+      "object_hash": "sha256:bc9a079e143e9acd340c2ec5e1d575283871a6f4509ff493e536dcc173207c5a",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-05"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-06",
+      "object_version": "1.5",
+      "object_hash": "sha256:0b0b6b5b8f6c699221c99804c3a954680000950195b359dbd3db6e9445809799",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-06"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-07",
+      "object_version": "1.5",
+      "object_hash": "sha256:803baf44cc83bd5d0096f9dfd301f5609f90574c8235e1b5d9976d8f929820e8",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-07"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-08",
+      "object_version": "1.5",
+      "object_hash": "sha256:12a1a09be386cd0afd321c703fb5ca9847c23ed766074621ce7d8f47af1f785c",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-08"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-09",
+      "object_version": "1.5",
+      "object_hash": "sha256:b6b75de62f4b7a90f91d198918c29f52e701c2748147dc80d1a2d3948f642ea6",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-09"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-10",
+      "object_version": "1.5",
+      "object_hash": "sha256:65f7de9ceb4f34d34093c04f8151ca72e931a5c840f458968960a1823e2cd025",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-10"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-11",
+      "object_version": "1.5",
+      "object_hash": "sha256:dd9557246483ee92e3c56ba2e0cb29974bf04061865526aa8d6c4df5a93fea2a",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-11"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-12",
+      "object_version": "1.5",
+      "object_hash": "sha256:b2d0b5b6439a1a6372e3db0fcb808d6edb6ed06976edbf7b98b2c6408a0715c1",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-12"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-13",
+      "object_version": "1.5",
+      "object_hash": "sha256:81ce69c8b6ecc8928035fa5514a3c23a98ae7f6bddd1365004fb804e0fb734f9",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-13"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-14",
+      "object_version": "1.5",
+      "object_hash": "sha256:7f14aaad077cffa5280f64713906eee6cc872b15255a23fe1e06ab606f429c7c",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-14"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-15",
+      "object_version": "1.5",
+      "object_hash": "sha256:ee3ebb795facaef6bb666a1079132ee5646c680f93d32d98275bc84b72a4e4df",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-15"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-16",
+      "object_version": "1.5",
+      "object_hash": "sha256:52b2051748c618221e77796645b7028bc56df750b89c919e7bc7d0624b1fafec",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-16"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-17",
+      "object_version": "1.5",
+      "object_hash": "sha256:73ad82a55f7bde3b46e28f44eac3a4f19a14712c4d5c0b0e91484f8aea60de7a",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-17"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-18",
+      "object_version": "1.5",
+      "object_hash": "sha256:1c6a798598d7906ce647edd432b3ae5ab97cab310135892f85f4a4b4de5fed5a",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-18"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-19",
+      "object_version": "1.5",
+      "object_hash": "sha256:d2341a3e4471d872f0662f6a6d81174088b111dc9ceaf456fcc1acdcb7aa1c99",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-19"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-21",
+      "object_version": "1.5",
+      "object_hash": "sha256:fac7ce02a05a982d574baff7dd2ede811f0cf1ec87f886ad7dfd84069740a47a",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-21"
+    },
+    {
+      "object_id": "road-ltl:task:LTL-22",
+      "object_version": "1.5",
+      "object_hash": "sha256:5c43d1b7e6e7ee6407d87c4b0187d06c8186d92e5f517ee981f79ee181eb9568",
+      "authoritative_location_ref": "supabase://SUPABASE_PROTECTED_EXECUTION_STORE/__ALL_22__#LTL-22"
+    }
+  ],
+  "predecessor_proofs": [],
+  "rule_evaluations": [],
+  "monotonicity_check": {
+    "passed": true,
+    "predecessor_states_checked": []
+  },
+  "identity": {
+    "generator_contract_version": "readiness-verification-contract-v1",
+    "resolver_implementation_version": "2.0.0",
+    "resolver_commit": "0f9f695dce0e3f0fcb3667c82784694a179601e0",
+    "ruleset_version": "readiness-ruleset-v1",
+    "canonicalization_profile": "canonical-json-sha256-v1",
+    "configuration_hash": "987bc9021659da97420835a552aed22bd7832d4e035f04ab4a406445ce081fdc",
+    "input_manifest_hash": "0cc8bea8f1ea4f1ec8684215eb33cfb14d7e0f3981ab7e54ea06588ac485b935"
+  },
+  "lifecycle": "CANDIDATE",
+  "proof_id": "proof:DOMAIN_EXECUTION_READY:cd8df21a57c41b80",
+  "semantic_result_hash": "66b136cdfbb17aa7716a164df432c395c657315e74b012343e5b533e03a37bea",
+  "run_metadata": {
+    "evaluation_run_id": "pc5-drill:road-ltl-1.5:001:original",
+    "evaluation_timestamp": "2026-09-17T00:23:30.466Z"
+  },
+  "environment": {
+    "runtime": "node v22.22.2",
+    "platform": "linux-x64"
+  }
+}
