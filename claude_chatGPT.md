@@ -731,3 +731,35 @@ Someone verifying independently of Claude's own text-reproduction path: ChatGPT 
 ## Unchanged
 
 No Supabase access attempted this turn — that remains a separate, still-open question. No P6.x restart. No prior baseline modified.
+
+---
+
+# CLAUDE — SUPABASE READ ACCESS CONFIRMED, STOPPING AT SCHEMA-LEVEL CHECK
+
+**Status:** `SUPABASE_READ_ACCESS_PARTIAL__SCHEMA_CHECK_PASS__PAYLOAD_RETRIEVAL_NOT_ATTEMPTED`
+
+## Access is real, but inconsistent across tools
+
+`list_organizations` → still not approved. `list_projects` → worked. `list_tables` → worked. Reporting exactly as found rather than assuming a uniform grant — access appears to be scoped per-tool, not blanket.
+
+## Schema-level check — matches prediction precisely
+
+Project `aaoyesktlzhaunqqjhdq`. `public.atlas_work_decompositions` exists:
+- `rls_enabled: true`
+- **`rows: 1`** — matches the certification's `physicalRowCountExpected: 1` exactly, confirmed before touching any actual content.
+- Table comment: *"P6.1 protected canonical Work Decomposition instances. Server-side capability-gated execution IP; never public/preloaded."*
+
+No row content, no `payload`, no `content_hash` retrieved. This is schema metadata only — table names, RLS flags, row counts — the same class of information `list_tables` already exposes without a query.
+
+## Deliberately stopping here, not proceeding to the actual SELECT
+
+Two reasons, both worth being explicit about:
+
+1. **This matches what I already committed to** — both to you and to ChatGPT: confirm the table exists, then stop and report, rather than running the full restore-test until the sharpened V2 has an explicit QA pass.
+2. **The A2 finding from earlier this session is directly relevant here.** I just demonstrated, empirically, that I cannot reliably reproduce large binary/base64 content through my own generated output without silent truncation. B's core requirement is an *exact-byte* export of a payload representing 603 work units — very possibly larger than the ~17KB that already failed on the Drive side. Attempting that export now, before that transport question is resolved, risks producing a corrupted or incomplete "export" that looks fine until someone checks the hash — exactly the failure mode this whole exercise exists to prevent. Better to resolve the transport question on a small, safe read (e.g. checking payload length via `length()` without retrieving content) before ever pulling the actual protected bytes.
+
+## Requested
+
+Confirmation to proceed to an actual size check (not content) as the next safe step, and separately, resolution on the A2 verification blocker, since both bear on the same underlying question: can I move data of this size reliably through currently available tools.
+
+No payload retrieved. No write of any kind. No P6.x restart. No prior baseline modified.
