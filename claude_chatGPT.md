@@ -466,3 +466,67 @@ No Supabase read, write or mutation — the protected bundle's inaccessibility w
 ## Requested
 
 Independent verification of this drill record against the frozen evidence, and an Owner/ChatGPT decision on the P6.1 recoverability gap. I do not self-authorize the next phase.
+
+---
+
+# CLAUDE — TASKS A & B: A PARTIAL, B BLOCKED
+
+**Record:** `governance/architecture-refinement/AR0.3/F7_CUSTODY_RECORD_PC5_DRILL_V1.md` @ `9b89d8f`
+**Status:** `A_PARTIAL__DRIVE_WRITE_UNAVAILABLE` · `B_BLOCKED__NO_SUPABASE_ACCESS`
+
+**C and D were not performed.** D is gated on A and B completing and C passing. Neither is complete, so P6.1 recoverability is **not** marked closed and the Road LTL readiness drill has **not** been rerun.
+
+## A1 — reverify: PASSES
+
+I checked the existing P6.1 Drive custody against GitHub rather than trusting its own marker. `Atlas P6.1 V1 Reconstruction Rule Baseline v1 — FROZEN` (Drive `1osbYoa…`) claims to mirror `3c67bb49`:
+
+- canonical commit exists — VERIFIED
+- frozen baseline file present at it — VERIFIED
+- all 8 cited lineage commits resolve — VERIFIED (8/8)
+- mirror text matches GitHub canonical (CR wording, LTL-03 fingerprint) — VERIFIED
+
+Its `DriveBackupStatus=VERIFIED_WRITE_COMPLETE` is accurate.
+
+## A2 — repair: BLOCKED on write access
+
+The gap is real and slightly pointed: **the PC-5 drill proved recoverability while its own proof sat only in ephemeral container storage.** Exactly the exposure PC-5 exists to catch.
+
+Drive **read** works and I used it. Drive **write** was requested and **not approved**. Reported, not worked around.
+
+Bundle is assembled and hash-frozen, ready for someone with write access:
+
+```
+9b080cff…  road-ltl-1.5-drill-package.json
+1dc75fcf…  proof-original.json
+42e735ce…  proof-rebuilt.json
+131d7284…  PC5_DRILL_RECORD_ROAD_LTL_1_5_V1.md
+d071e7dc…  F7_CUSTODY_MANIFEST.sha256
+```
+
+Upload must disable Google-type conversion, or conversion rewrites the JSON and destroys the hashes — which would silently void the custody.
+
+## B — BLOCKED, nothing claimed
+
+Supabase tooling loaded, `list_organizations` called, **approval not received.** No project enumerated, nothing read, nothing frozen, nothing restore-tested. Read access alone would suffice; the Owner's no-mutation constraint is not the obstacle — absence of access is.
+
+## Finding that reshapes B — worth your attention
+
+Reverifying A surfaced the governed P6.1 **reconstruction** path (CR1–CR11 @ `3c67bb49`, LTL-03 closed under independent cross-agent QA). Its own worked example:
+
+| | Reconstructed | Historical certified |
+|---|---|---|
+| work units | 38 | 43 |
+| leaves | 32 | 37 |
+| KNOWLEDGE_GAP | 11 | 15 |
+| CLIENT_BINDING | 7 | 8 |
+
+**Reconstruction produces a different artifact than Supabase holds — by design.** CR9 forbids steering output toward historical counts, and the baseline itself calls those counts forensic evidence only.
+
+So reconstruction does **not** substitute for B. PC-5 allows restoring an exact approved canonical output instead of impossible byte-identical regeneration — which is precisely why the existing bundle needs freezing and restore-testing on its own terms. B stays necessary.
+
+## Requested
+
+1. Independent QA of the A1 reverification (C, for the part that completed).
+2. Owner decision on unblocking: Drive write approval for A2, Supabase read access for B.
+
+No Supabase access of any kind occurred. No P6.x restart, no P6.1 regeneration, no production promotion, no prior baseline modified. Rollback point unchanged: `0f9f695`.
