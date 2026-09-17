@@ -629,3 +629,34 @@ Cited directly: the compiler spec's own words — "make the previously implicit 
 ## Requested
 
 QA on all four documents. B still needs Supabase read access before execution; A2 still needs Drive write before upload.
+
+---
+
+# CLAUDE — CORRECTIONS APPLIED: B SPEC V2, PROVENANCE, CLOSURE (CONVERGED WITH CHATGPT'S PARALLEL QA)
+
+**Commits:** `531ac53` (initial V2 + corrections) merged with ChatGPT's `44031ec` (independent QA of `823f5d9`), sharpened at `df8af69`. All on `atlas-architecture-ar0-3-readiness-resolver`.
+
+**Worth noting up front:** ChatGPT's own independent QA of my prior handoff landed in parallel with these exact corrections, and reached nearly the same four required fixes for B by separate review (its B-1 through B-4). Two independent passes converging on the same gaps is a real signal, not a coincidence — I merged it in and used it to sharpen my own draft rather than treating the two as redundant.
+
+## B specification — V2 supersedes V1, all four issues fixed
+
+- **Independent restore added (was missing entirely):** V1 only verified a live row inside the same session holding the DB connection — retrieval, not restoration. V2 adds a real Phase 2: an isolated subprocess with **verified-absent** Supabase credentials, fed only the frozen export, independently reproducing every hash and count. Same method already proven on the PC-5 readiness-resolver drill. Short of an exact match, the result is `RETRIEVAL_VERIFIED_RESTORE_NOT_PROVEN` — a distinct, weaker outcome, not rounded up to PASS.
+- **Hash domain fixed:** defined three explicit domains (stored bytes / decompressed bytes / canonically re-serialized) and a 3×2 matrix against both certification hash fields — plus, per ChatGPT's catch, a **Step 0** checking the table's own already-stored `content_hash` column first, before any recomputation at all.
+- **Exact-export fixed:** export now happens immediately after row-count confirmation, before analysis — and states plainly, rather than assuming otherwise, that the available query tool returns already-parsed results, so a true wire-level byte capture isn't achievable with current tooling. That limitation travels with the export's own metadata.
+- **Per-task hashing fixed, then sharpened further:** two candidate methods computed and compared per-task — then, per ChatGPT's stricter read, a match under either method is treated as diagnostic, not certifying, since no committed artifact establishes which algorithm the certification actually used. Capped at `ALGORITHM_PROVENANCE_UNRESOLVED` unless that provenance is found or you explicitly accept a method despite it.
+
+## Provenance wording — corrected, and aligned to your exact phrasing
+
+Both instances of "unrecoverable" replaced. Since ChatGPT's QA flagged the identical line independently and proposed near-identical replacement text, I adopted its exact wording rather than leaving two slightly different corrections on record: *"The historical generator procedure is not currently reproducible from the governed evidence recovered so far. Historical output, including unit-level detail, may still be recoverable from the protected P6.1 bundle and other forensic evidence."*
+
+## Reconciliation closure — clarified, plus an escape valve
+
+`UNRESOLVED_COMPARISON` now explicitly blocks closure — any open record means `RECONCILIATION_OPEN`, never `RECONCILIATION_COMPLETE`, regardless of count. Added ChatGPT's override path: closure despite an open record requires your explicit, named, dated acceptance of the residual uncertainty — never a default, never a timeout.
+
+## A2 / execution of B — unchanged, both still blocked
+
+Re-checked fresh this turn: Drive write and Supabase access both still not approved. A2 upload and B execution remain correctly withheld — B will not run even once access exists until this V2 passes QA, per your explicit sequencing.
+
+## Requested
+
+Final QA on the sharpened V2/amendment/schema, and the access grants A2 and B execution both depend on.
