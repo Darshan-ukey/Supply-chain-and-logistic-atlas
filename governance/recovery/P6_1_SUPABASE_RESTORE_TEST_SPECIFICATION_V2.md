@@ -2,7 +2,9 @@
 
 **Status:** SPECIFICATION ONLY — not executed. Supersedes V1 in force. V1 remains in git history unmodified.
 
-**What changed from V1, and why:** V1 only retrieved and verified a row against production — that is retrieval-plus-verification, not a restore-test. It also left the hash domain ambiguous (verify against "the decoded payload" without specifying whether that means raw stored bytes, decompressed bytes, or a re-serialized canonical form — three different byte strings that can each hash differently for identical semantic content), assumed the export would be clean without addressing what the query tool itself might already have transformed, and assumed a single canonicalization for per-task hashing without establishing what canonicalization the certification actually used. V2 fixes all four by making them explicit, testable steps rather than assumptions.
+**What changed from V1, and why:** V1 only retrieved and verified a row against production — that is retrieval-plus-verification, not a restore-test. It also left the hash domain ambiguous, assumed the export would be clean without addressing what the query tool itself might already have transformed, and assumed a single canonicalization for per-task hashing without establishing what canonicalization the certification actually used. V2 fixes all four by making them explicit, testable steps rather than assumptions.
+
+**Provenance note:** this V2 was drafted independently in direct response to the same four issues, and landed in parallel with ChatGPT's own independent QA of V1 (`CHATGPT_INDEPENDENT_QA_823f5d9.md`), which identified the same four gaps (its B-1 through B-4) by separate review. That convergence — two independent passes reaching the same required corrections — is itself worth noting. Two of ChatGPT's specific points sharpened what this V2 initially had: comparing the table's own stored `content_hash` column directly before any recomputation (§5, Step 0), and a stricter rule that a per-task hash match under an unproven method is diagnostic, not certifying (§7). Both are incorporated below.
 
 ---
 
@@ -14,7 +16,11 @@ Carried forward without modification: table `public.atlas_work_decompositions`, 
 
 ## 5. Hash-domain matrix — replaces V1's single ambiguous "decoded payload" hash
 
-**The core problem V1 didn't resolve:** `protectedStoreContentHash` and `compileBundleSha256` are each a hash of *some specific byte string*, and there are at least three plausible candidates for what that string is, each of which hashes differently even for identical underlying content:
+**Step 0, added per ChatGPT's independent QA of this spec's V1 predecessor — check before computing anything.** The table itself carries a `content_hash` column (`migrations/p6-1-protected-work-decompositions.sql`), populated at write time by whatever process inserted the row. Compare that stored value directly against `protectedStoreContentHash` and `compileBundleSha256` **first, with zero computation** — a same-table, already-computed value is the strongest, cheapest evidence available, and if it already matches one of the certification fields, that resolves which field the "content hash" concept in this table means before any decode/recompute work is needed.
+
+**Also established from `lib/compile/p6-1-certification-gate.js`:** the actual downstream compilation gate checks a value it calls `governedInputContentHash` against `certifiedContentHash` (sourced from `protectedStoreContentHash`) — confirming `protectedStoreContentHash` is the field that matters for input verification in the governed pipeline. This narrows which certification field is primary; it does not by itself reveal the exact byte-domain, which is still resolved empirically below.
+
+**The core problem V1 didn't resolve, for cases §0 doesn't already settle:** `protectedStoreContentHash` and `compileBundleSha256` are each a hash of *some specific byte string*, and there are at least three plausible candidates for what that string is, each of which hashes differently even for identical underlying content:
 
 | Domain | Definition |
 |---|---|
@@ -44,6 +50,8 @@ V1 assumed recomputing `contentHashSha256` "from the decoded per-task payload" w
 - **Method B — canonical re-serialization:** the task's parsed sub-object, re-serialized under `atlas-stable-json-v1` (same canonicalization as H3).
 
 Report per-task, per-method: match / no-match. A task matching under Method A but not B (or vice versa) is informative — it would indicate the certification's original hash was computed over raw bytes rather than a canonical form, or vice versa — and must be reported as that specific finding, not averaged away into a single pass/fail per task.
+
+**Sharpened per ChatGPT's independent QA — this is diagnostic, not certifying, unless provenance is independently established.** Methods A and B are two well-motivated candidates, not a search for whichever happens to match. A match under one method is *suggestive* of which algorithm the certification originally used; it is not *proof*, because neither method has been confirmed as the one actually used at certification time — no such algorithm citation exists anywhere in GitHub, checked directly. Unless a specific commit or script is found that documents the original hashing method (none is currently known to exist), the per-task result caps at `ALGORITHM_PROVENANCE_UNRESOLVED` even when one method matches all 22 — full PASS on this section requires either that provenance being found, or the Owner explicitly accepting a specific matching method as sufficient despite unconfirmed provenance. This is a stricter bar than treating a match as self-certifying.
 
 ---
 
@@ -76,8 +84,9 @@ A throwaway Supabase branch was considered for isolation and is not the right me
 - Exactly 1 row (unchanged from V1).
 - Encoding resolved to a known, decodable value (unchanged from V1's decision rule).
 - Phase 1 export captured before analysis, with its capture-limitation metadata recorded (§6).
+- Step 0 direct `content_hash`-column comparison performed first (§5), before any recomputation.
 - The H1/H2/H3 × {protectedStoreContentHash, compileBundleSha256} matrix computed in full — 6 results, not a single pass/fail (§5).
-- All 22 tasks' per-task hashes computed under both Method A and Method B, each compared (§7).
+- All 22 tasks' per-task hashes computed under both Method A and Method B, each compared, with the result capped at `ALGORITHM_PROVENANCE_UNRESOLVED` unless the original algorithm is independently confirmed or the Owner explicitly accepts a specific method (§7).
 - **Phase 2 independent restore (§8) completes and every value matches Phase 1 exactly.** Without this, the result is `RETRIEVAL_VERIFIED_RESTORE_NOT_PROVEN` — a distinct, weaker outcome from PASS, not a rounding-up.
 - Zero write operations at any point in either phase, confirmed by reviewing the executed query log.
 

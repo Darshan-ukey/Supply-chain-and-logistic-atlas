@@ -34,6 +34,8 @@ Available information (historical record detail, source clarity, or reconstructe
 
 **Closure clarification:** `UNRESOLVED_COMPARISON` is not a resting state and does not count toward closure. **Any record still classified `UNRESOLVED_COMPARISON` means the LTL-03 reconciliation as a whole remains open** — not closed-with-caveats, not closed-pending-minor-follow-up. "Can we defend 38, unit by unit" is only answerable once every record carries one of the five resolved classifications, independently confirmed. A reconciliation summary with even one open `UNRESOLVED_COMPARISON` record must state its status as `RECONCILIATION_OPEN`, never `RECONCILIATION_COMPLETE` or similar, regardless of how few records remain unresolved.
 
+**Escape valve, matching ChatGPT's independent QA of this schema:** the sole path to `RECONCILIATION_COMPLETE` with an open record present is the Owner explicitly accepting the residual uncertainty as a documented exception — named, dated, and reasoned, not a default or a timeout. Absent that explicit acceptance, the record stays open indefinitely rather than expiring into an assumed pass.
+
 ---
 
 ## 2. Per-unit record schema
