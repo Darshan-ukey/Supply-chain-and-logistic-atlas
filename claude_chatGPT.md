@@ -585,3 +585,47 @@ Retried both fresh this session, not assumed stale from last time:
 QA on 1/2/generator-half-of-5 now — nothing blocks that. Tasks 3/4 and the recovery half of 5 need Supabase read + Drive write access before there's anything to QA.
 
 No Supabase access of any kind. No Drive write. No P6.x restart. No historical bundle touched. No prior baseline modified.
+
+---
+
+# CLAUDE — A2 RECHECK, B SPEC, RECONCILIATION SCHEMA, PROVENANCE AMENDMENT
+
+**Commit:** `823f5d9` on `atlas-architecture-ar0-3-readiness-resolver`. All four items are specification/verification only — no Supabase access, no Drive write, no upload, no prior baseline edited, no comparison executed.
+
+## A2 — custody files reconfirmed, one sharper finding
+
+All 4 drill files + manifest: byte-identical, `sha256sum -c` 5/5 OK.
+
+Worth being precise about: **these files were never actually in git.** Only the record citing their hashes was committed. They've survived this whole time purely because the container hasn't recycled — not because anything governs their persistence. That's the exact gap A2 exists to close, and it's still open.
+
+**Folder:** `Atlas AR0.3 PC-5 Recovery Drill Custody — Road LTL 1.5 — 2026-09-17`, at Drive root, matching existing naming convention.
+
+**Recommend one zip, not five separate uploads** — a zip isn't subject to Drive's Google-type conversion, which is the specific hazard already flagged. One upload removes the risk structurally instead of relying on setting a flag correctly five times. Matches existing `r0-1c`/`r0-2` custody-bundle precedent. Nothing uploaded.
+
+## B specification — grounded in the real schema, not assumed
+
+Pulled `public.atlas_work_decompositions`'s actual migration files rather than guessing at structure. Found a real discrepancy before anyone runs anything: the certification says `payloadEncoding: BROTLI_BASE64`; the table's own check constraint only permits `JSONB` or `GZIP_BASE64`. Built as the procedure's mandatory first read-only step, not glossed over.
+
+Explicit PASS/FAIL, including a distinct `HASH_MISMATCH_STRUCTURE_MATCHES` state (counts right, content wrong — a more specific and more useful failure than a bare FAIL), and per-task reporting for all 22 hash checks rather than one aggregate pass/fail, so a future reconciliation is actually possible from the output.
+
+## Reconciliation schema — six categories, each with an actual test
+
+Not "found" vs "missing." Six classifications, each with a defensible criterion against frozen source: exact equivalent, merged/collapsed, historical structural/lexical expansion, historical unsupported inference, genuinely absent, unresolved. Applied to both units and specifically to the 15-vs-11 knowledge-gap blockers.
+
+**Flagged explicitly:** the blocker-level `GENUINELY_ABSENT_FROM_RECONSTRUCTION` cell deserves the closest look once this is populated. A missing ready-unit is a completeness gap. A missing blocker is a soundness problem — it means something currently called safe might not be. Framework only, zero comparisons performed, cannot be populated until B succeeds.
+
+## Mechanism-provenance amendment — specific, not a disclaimer
+
+Found the actual wording in `7ab38c3` and listed it precisely rather than issuing a general correction: "accounted for," "delta vs historical," the "two independent derivations corroborating" line, the "post-regeneration" section header, "compound." Each with its specific replacement.
+
+`7ab38c3` itself is **not edited** — stays in git history exactly as written, consistent with not silently overwriting a prior baseline. This amendment supersedes it in force instead. States plainly what still holds from the original (the control inventory, the GitHub-has-no-per-unit-detail finding, the scope caveat) versus what's retracted (the three-bucket disposition, replaced by the six-category schema).
+
+Cited directly: the compiler spec's own words — "make the previously implicit P6.1 generation procedure reproducible" — is the spec conceding, in its own text, that the original procedure was never actually documented. That's textual support for the frozen distinction, not just an assertion.
+
+## Frozen, going forward
+
+**43** = forensic output from an undocumented, crashed, unrecoverable-as-procedure mechanism. **38** = output from the governed, QA'd CR1–CR11 mechanism. **Historical counts are forensic evidence only — never a correctness target**, for the generator's behavior (already CR9) and now for how this project talks about the numbers afterward.
+
+## Requested
+
+QA on all four documents. B still needs Supabase read access before execution; A2 still needs Drive write before upload.
