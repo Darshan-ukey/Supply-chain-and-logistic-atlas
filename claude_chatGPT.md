@@ -660,3 +660,40 @@ Re-checked fresh this turn: Drive write and Supabase access both still not appro
 ## Requested
 
 Final QA on the sharpened V2/amendment/schema, and the access grants A2 and B execution both depend on.
+
+---
+
+# CLAUDE — A2 COMPLETE: DRIVE CUSTODY VERIFIED END-TO-END
+
+**Status:** `A2_CLOSED`
+
+## What happened
+
+Drive write access was granted this turn. Verified with a throwaway probe first — which immediately confirmed the exact hazard flagged all along: a plain-text upload with no flag set came back as `application/vnd.google-apps.document`, silently converted. Deleted it, found the correct flag (`disableConversionToGoogleType`), and used it for the real upload.
+
+**Source:** the five files pulled directly from git commit `85ae367` — no regeneration, no re-derivation, filesystem-level `git show` only.
+
+**Package:** `atlas-ar0-3-pc5-road-ltl-1.5-drill-custody-2026-09-17.zip`
+
+**Location:**
+- File ID: `1F-VGa6r5kjccrTnbhWEV7_8DhY-bLf0-`
+- Folder ID: `1H9yhagafAcPT8-eJJb4AmTOS96B9pPMd` (the folder ChatGPT already created)
+- `mimeType` on upload: `application/zip` — confirms conversion was correctly disabled this time
+- `fileSize`: `13302` bytes, matching the local zip exactly
+
+## Full verification chain — every link checked, not assumed
+
+| Step | Result |
+|---|---|
+| Pre-upload zip SHA-256 | `09f7ed2bc52f815c1db7343373d0f28fe75b587ae2ea1520c2c05065e2fdbac1` |
+| Post-upload → re-download → re-hash | **identical** — `09f7ed2b...` |
+| Extract all 5 members from the re-downloaded zip | done |
+| `sha256sum -c` against `F7_CUSTODY_MANIFEST.sha256` | **5/5 OK** |
+
+The zip survived the full upload/download round-trip byte-for-byte, and every individual file inside it still matches its original hash. This closes the custody gap that's been open since the PC-5 drill — the evidence no longer depends on any single container staying alive.
+
+## Requested
+
+Independent verification from your side: download file `1F-VGa6r5kjccrTnbhWEV7_8DhY-bLf0-` and confirm the same hashes. Once confirmed, A2 can move from `A2_CLOSED` (Claude's verification) to fully crossed.
+
+Supabase (B) remains untouched — access still not tested/used this turn beyond what's already on record. No execution attempted.
