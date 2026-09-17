@@ -404,3 +404,65 @@ ADV-1c (relabelling a registered governed scope) blocks as `FIXTURE_CONTENT_TAMP
 ## Unchanged
 
 PC-5 **not** claimed. No Supabase mutation, no R0.4/P6.x restart, no production READY. Awaiting your narrow re-QA of these two controls before the Road LTL 1.5 drill. Noted and agreed that Road LTL is expected to remain BLOCKED there, and that a genuine, reproducible BLOCKED still proves the recovery mechanism.
+
+---
+
+# CLAUDE — PC-5 DRILL EXECUTED: ROAD LTL 1.5
+
+**Record:** `governance/architecture-refinement/AR0.3/PC5_DRILL_RECORD_ROAD_LTL_1_5_V1.md`
+**Commit:** `9a9f01f` (branch `atlas-architecture-ar0-3-readiness-resolver`)
+**Drill tooling:** `aaf74f3`
+
+## Two findings, deliberately not conflated
+
+| | |
+|---|---|
+| **PC-5 recovery mechanism** | **PASS** |
+| **Road LTL 1.5 readiness** | **BLOCKED** — correct and expected |
+
+The mechanism is proven *by* correctly and reproducibly demonstrating that Road LTL is not ready. I am not presenting the second as progress on the first.
+
+## The destroy step was real
+
+I deleted the working clone and all working evidence, leaving only a custody manifest. Then re-cloned from GitHub and rebuilt.
+
+- Rebuilt package: **byte-identical**
+- Semantic result hash, both runs: `66b136cdfbb17aa7716a164df432c395c657315e74b012343e5b533e03a37bea`
+- Both proofs independently revalidated as self-consistent
+- Run IDs and timestamps **differed** — confirming genuinely separate executions, not a copied file, while the semantic payload stayed identical
+
+## 25 blockers, none synthetic
+
+22 × `COVERAGE_NOT_DECLARED`, 1 × `INVENTORY_NOT_DECLARED`, 1 × `DEPENDENCY_CLOSURE_INCOMPLETE`, 1 × `UPSTREAM_CONTRACTS_UNFROZEN`.
+
+The package builder **omitted** semantic classes and the coverage attestation rather than supplying plausible values. Fabricating either would have produced a false READY from real data — the precise failure this whole control chain exists to prevent.
+
+## Material finding for you and the Owner
+
+The P6.1 certification records its own decomposition output as:
+
+```
+committedToGitHub: false
+store:             SUPABASE_PROTECTED_EXECUTION_STORE
+workUnitCount:     603
+```
+
+**The 603 work units / 444 leaves that P6.2 and every later phase consume are not recoverable from GitHub.** Measured against PC-5's governing question, recovery of that artifact currently depends entirely on the Supabase protected store remaining intact.
+
+The certification states this openly — it is not a discrepancy in the record. But it is a live PC-5 exposure in a baseline later phases already depend on. **Recorded, not actioned.** This is an Owner/ChatGPT decision, not one an execution agent should take.
+
+## Secondary finding, and a correction I caught on myself
+
+The v1.4 semantic base cited by the P6.1 certification **is not on the P6.1 branch**. My first read suggested it was missing entirely. Exhaustive cross-branch content-hash search disproved that before I recorded anything — it exists on later branches with an exact match.
+
+Correct finding: closure is intact but **not branch-local**. Checking out the P6.1 branch alone does not give you the full dependency chain. Flagging the near-miss because a false "missing artifact" finding on a certified baseline would have been a serious error.
+
+All three P6.1 lineage claims independently verified.
+
+## Boundaries held
+
+No Supabase read, write or mutation — the protected bundle's inaccessibility was established from the certification record, not by attempting access. No R0.4/P6.x restart. No production promotion. No prior baseline modified. Rollback point: `0f9f695`.
+
+## Requested
+
+Independent verification of this drill record against the frozen evidence, and an Owner/ChatGPT decision on the P6.1 recoverability gap. I do not self-authorize the next phase.
