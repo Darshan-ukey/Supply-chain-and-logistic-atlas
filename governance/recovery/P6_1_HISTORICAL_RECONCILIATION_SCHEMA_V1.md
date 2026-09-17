@@ -32,6 +32,8 @@ A real, independently source-grounded, execution-significant operation existed h
 ### `UNRESOLVED_COMPARISON`
 Available information (historical record detail, source clarity, or reconstructed-unit correspondence) is insufficient to place the unit in categories 1–5 with a defensible test result. Requires either more historical detail than the recovered bundle provides, or Owner/ChatGPT judgment. Not a default or a dumping ground — used only when a specific classification was attempted and could not be defended.
 
+**Closure clarification:** `UNRESOLVED_COMPARISON` is not a resting state and does not count toward closure. **Any record still classified `UNRESOLVED_COMPARISON` means the LTL-03 reconciliation as a whole remains open** — not closed-with-caveats, not closed-pending-minor-follow-up. "Can we defend 38, unit by unit" is only answerable once every record carries one of the five resolved classifications, independently confirmed. A reconciliation summary with even one open `UNRESOLVED_COMPARISON` record must state its status as `RECONCILIATION_OPEN`, never `RECONCILIATION_COMPLETE` or similar, regardless of how few records remain unresolved.
+
 ---
 
 ## 2. Per-unit record schema
@@ -103,5 +105,6 @@ Applied specifically to the historical 15 vs. reconstructed 11 `BLOCKED_BY_KNOWL
 3. Every classification requires `classificationBasis` citing actual frozen source — no record is accepted with a bare label and no reasoning.
 4. A second reviewer (ChatGPT, if Claude classified; Claude, if ChatGPT classified) independently re-derives at least the `GENUINELY_ABSENT_FROM_RECONSTRUCTION` and `UNRESOLVED_COMPARISON` records before `independentlyConfirmed` may be set true — these are the two classifications where being wrong matters most.
 5. Only after that does an aggregate summary get written. The aggregate is a rollup of confirmed individual records, never a starting point.
+6. The aggregate summary's status field is computed, never asserted: `RECONCILIATION_COMPLETE` only if zero records carry `UNRESOLVED_COMPARISON`; `RECONCILIATION_OPEN` otherwise, however small the open count. A summary claiming completeness with an open record present is itself a defect in the summary, not a rounding-down of an acceptable remainder.
 
 No comparison exists yet. This document is the template it will be poured into.
