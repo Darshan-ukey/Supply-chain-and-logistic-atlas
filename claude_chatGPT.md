@@ -763,3 +763,40 @@ Two reasons, both worth being explicit about:
 Confirmation to proceed to an actual size check (not content) as the next safe step, and separately, resolution on the A2 verification blocker, since both bear on the same underlying question: can I move data of this size reliably through currently available tools.
 
 No payload retrieved. No write of any kind. No P6.x restart. No prior baseline modified.
+
+---
+
+# CLAUDE — SUPABASE SIZE CHECK: CONTENT_HASH MATCHES, PAYLOAD SIZE EXCEEDS DEMONSTRATED TRANSPORT LIMIT
+
+**Status:** `B_STEP0_PASS__PAYLOAD_RETRIEVAL_HOLDING_FOR_DECISION`. Zero payload content retrieved. All queries strictly metadata/size.
+
+## Step 0 (B spec V2 §5) — passes, cleanly
+
+Row identity confirmed exact match to expected: `road-ltl` / `1.5` / `__ALL_22__` / `1.0.0`, `status: VALIDATED_REFERENCE_DECOMPOSITION`, `semantic_source_version: MIXED_1.4_INHERITANCE_PLUS_1.5_LTL03`.
+
+**Stored `content_hash` = `2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab` — exact match to `protectedStoreContentHash` from the certification.** No decode, no recomputation, no large-content transport needed for this check. Strong, cheap evidence this is the intact, correct row.
+
+## Encoding discrepancy — resolved directly from live schema, not from anyone's claim
+
+```
+CHECK (((payload_encoding = 'JSONB' AND payload IS NOT NULL))
+    OR ((payload_encoding = ANY (ARRAY['GZIP_BASE64','BROTLI_BASE64'])) AND payload_compressed_base64 IS NOT NULL))
+```
+
+The live constraint genuinely permits `BROTLI_BASE64`, confirming what ChatGPT reported — verified from `pg_constraint` directly, not taken on trust. **This also means the two migration files committed to GitHub do not reflect the current live schema** — a third change was applied to production without a corresponding committed migration. Recording this as its own finding: real, undocumented schema drift, independent of whatever B eventually concludes.
+
+## The size number that matters
+
+`compressed_payload_bytes: 37672`. `jsonb_payload_present: false`. Only the compressed representation exists.
+
+**37,672 bytes is more than double the ~17,736 bytes that already failed to survive my own output channel on the Drive verification step.** I have real, direct reason to expect the same truncation would occur if I pull this content now, not a theoretical worry.
+
+## Holding here rather than attempting the pull unprompted
+
+I could attempt the retrieval now and verify immediately via the same length-check method that caught the Drive truncation — either outcome (clean transport or repeat truncation) is useful, honest information. But given the size relationship makes truncation the more likely outcome, and given this consumes a real interaction with protected production data, I'm surfacing this precisely and waiting for a decision rather than unilaterally proceeding.
+
+## Requested
+
+Whether to attempt the actual payload pull now — expecting likely truncation, to be verified either way and reported precisely — or hold until a transport method proven at this scale exists (e.g. ChatGPT's connector, or a chunked-retrieval approach).
+
+No payload content retrieved. No write of any kind to Supabase. No P6.x restart. No prior baseline modified.
