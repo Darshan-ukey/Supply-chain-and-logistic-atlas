@@ -800,3 +800,54 @@ I could attempt the retrieval now and verify immediately via the same length-che
 Whether to attempt the actual payload pull now — expecting likely truncation, to be verified either way and reported precisely — or hold until a transport method proven at this scale exists (e.g. ChatGPT's connector, or a chunked-retrieval approach).
 
 No payload content retrieved. No write of any kind to Supabase. No P6.x restart. No prior baseline modified.
+
+
+
+---
+
+# CLAUDE — SUPABASE B RESTORE-TEST: PAYLOAD RETRIEVED, TRANSPORT PROVEN CLEAN, DECOMPRESSION FAILS
+
+**Status:** `RETRIEVAL_VERIFIED_RESTORE_NOT_PROVEN` (V2 §8/§10). This is a positive fail on the decompression step, not an unfinished check. No repair attempted, no Supabase write, per standing instruction.
+
+## How the transport-risk decision got resolved
+
+Following "hold rather than attempt the pull unprompted" above, the Owner declined to have me attempt the large-payload pull myself and instead ran it manually: `SELECT payload_compressed_base64 FROM public.atlas_work_decompositions WHERE module_id = 'road-ltl' AND module_version = '1.5' AND source_task_id = '__ALL_22__' AND contract_version = '1.0.0';` in the Supabase SQL Editor, downloaded the result as CSV, and uploaded the CSV directly for me to read via file tools. This sidesteps the ~17,736-byte reproduction limit entirely — the content never passes through anything I generate.
+
+## Step 1 — transport integrity, proven, not assumed
+
+I did not trust the CSV at face value. I ran a **read-only** query against the live row computing `md5(payload_compressed_base64)` and `md5(decode(payload_compressed_base64, 'base64'))` directly in Postgres, and compared both against the same hashes computed locally from the uploaded CSV:
+
+- `md5` of the base64 text: **exact match** (`0cc82b2d3d0833d9502e555ac1357a6b`)
+- `md5` of the base64-decoded bytes: **exact match** (`5b967ef854d3be04e8d0862975a91304`)
+- Char length of the base64 text: **37,672**, matching the previously-recorded size exactly (`text_char_length = text_byte_length = 37672`, pure ASCII)
+
+This closes the transport-risk question definitively for this payload: zero corruption between the live row and what I processed. The earlier truncation failure was specific to my own output channel, not to CSV/file-upload transport — confirmed empirically rather than assumed.
+
+## Step 2 — decompression fails, confirmed two independent ways
+
+Base64-decode is clean: 37,672 chars → 28,254 raw bytes, exact multiple of 4, no padding, standard alphabet only.
+
+Attempting to decompress those 28,254 bytes as Brotli (the row's declared `payload_encoding`):
+
+- **Node.js `zlib.brotliDecompressSync`**: fails immediately — 0 output bytes, `ERR__ERROR_FORMAT_DICTIONARY`
+- **Python's independent `brotli` library**: fails identically (`error('brotli: decoder failed')`)
+
+Streaming decode confirms the failure is at the very start of the stream, not partway through a mostly-valid one (0 bytes produced before the error in both cases).
+
+Ruled out as alternates (magic-byte check and/or decode attempt, all negative): gzip, zlib/deflate, zstd, lz4. First 4 bytes of the decoded blob: `5bda1c37` — matches none of the standard container magic numbers.
+
+## Step 3 — no fallback copy exists
+
+`payload` (jsonb) for this row is `NULL`. `payload_compressed_base64` is the row's only stored copy of the data. `created_at = updated_at = 2026-09-07 02:34:28.90628+00` — written once, never modified since. This is not a later-corruption scenario; whatever is wrong was already true at write time.
+
+## What this changes about the earlier Step 0 finding
+
+The earlier `content_hash` == `protectedStoreContentHash` match (previous log entry) was a match between two **declared** values — proof of self-consistency, not proof the underlying bytes are valid or restorable. This turn's decompression attempt is the actual empirical restore test the spec calls for, and it fails. Per V2 §10 PASS/FAIL criteria, this is a genuine `RETRIEVAL_VERIFIED_RESTORE_NOT_PROVEN` result on the B closure — B does not currently pass.
+
+## Boundaries held
+
+Read-only Supabase access only (all queries above are `SELECT`s). No write, no DDL, no branch operation. No Supabase repair attempted. No P6.x restart. No re-generation. No prior baseline modified. Full working script and raw query outputs available on request; not pasted here to avoid re-introducing the same large-content reproduction risk into this log.
+
+## Requested
+
+This needs ChatGPT's independent crossed QA (per Owner's standing instruction C) before any interpretation of root cause is treated as settled. Candidate explanations I have **not** ruled in or out (flagging, not concluding): the writer process that populated this row may have written invalid/incomplete Brotli bytes at generation time; `payload_encoding` may be mislabeled for this specific row; or an encoding this session hasn't tried. No further diagnostic action taken pending direction, consistent with "Do not modify production Supabase."
