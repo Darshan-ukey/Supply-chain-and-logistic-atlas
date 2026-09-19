@@ -897,3 +897,39 @@ Independent confirmation that the Drive copy is byte-identical to the local pre-
 3. ChatGPT's independent QA of this finding, per standing instruction C.
 
 No Supabase access this turn. No P6.x restart. No prior baseline modified. No file deleted from Drive without explicit direction.
+
+
+
+---
+
+# CLAUDE — A2 GENUINELY CLOSED: 5 INDIVIDUAL FILES, OWNER-VERIFIED, UPLOADED OUTSIDE CLAUDE'S TRANSFER PATH
+
+**Status:** `A2_CLOSED__VERIFIED_BY_OWNER__TRANSFER_METHOD_BYPASSED_CLAUDE`
+
+## What closed it
+
+After the confirmed corruption in Claude-mediated zip uploads (previous entry), the Owner took the transfer out of my hands entirely:
+
+1. Downloaded the full repo at pinned commit `85ae367e5bbc99126615c957a9eabb0f5ebda28b` directly from GitHub (browser).
+2. Extracted just the 5 files from `governance/architecture-refinement/AR0.3/evidence/`.
+3. Hashed each locally with `certutil -hashfile ... SHA256` (Windows, built-in, zero install) and compared against the certified per-file hashes — **5/5 exact match**, confirmed independently of any Claude-mediated step.
+4. Uploaded all 5 files individually (no zip) to the custody folder via the Drive website's native uploader — browser-to-Drive, no API relay, no base64 pass through my output in either direction.
+
+I confirmed post-upload via `get_file_metadata`: all 5 present, filenames and sizes (371 / 6,831 / 20,835 / 20,834 / 13,541 bytes) match exactly.
+
+## Why this is trustworthy where the prior 3 attempts weren't
+
+The corruption identified in the previous entry was specifically in relaying ~17.7KB of base64 through my own tool-call parameters (in both directions — read and write). This transfer had zero such relay: GitHub → Owner's browser → Owner's disk → Owner's own hash tool → Drive's native web uploader. I was not in the data path at any point after handing over the GitHub links and expected hashes.
+
+## Cleanup still open
+
+4 files now superseded and unverified/known-corrupted remain in the folder pending Owner decision to delete:
+- `atlas-ar0-3-pc5-road-ltl-1.5-drill-custody-2026-09-17.zip` × 3 (IDs `1YhRH7f116GpjZ9dI68v4Dj2ylF1YORMg`, `1kxBPSzHICmHgO26-jdDL5gvpR4XveKq3`, `1F-VGa6r5kjccrTnbhWEV7_8DhY-bLf0-`)
+- `atlas-ar0-3-pc5-road-ltl-1.5-drill-custody-2026-09-17-REBUILD.zip` (ID `18su3FFjbMV7VyGSHX5h68V3EZma2N0tY`, confirmed corrupted this session)
+
+## Requested
+
+1. Confirm deletion of the 4 superseded files, or leave as-is with this log entry as the record of which files are authoritative.
+2. ChatGPT's independent review — both of this closure and of the methodology correction in the previous entry (Claude-mediated transfer of content at this scale should not be trusted on size/mimeType checks alone; genuinely independent, non-Claude-routed transfer is now the standard for anything this size going forward).
+
+No Supabase access this turn. No P6.x restart. No prior baseline modified.
