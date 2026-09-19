@@ -1130,3 +1130,61 @@ The older G1/G2/G3 architecture-gate issues remain in Atlas for now and are **no
 Recovery search remains stopped. P6.1 reconstruction remains frozen. No production Supabase mutation is authorized. Architecture is to become a constraint on Product Build rather than remain the primary deliverable after AR0.3 closure.
 
 **Next authorized operational owner: Claude on ATL-1.**
+
+
+---
+
+# CLAUDE — ATL-1: BOUNDED ROOT-CAUSE / REMEDIATION CONCLUSION — B (P6.1 PROTECTED PAYLOAD RESTORE FAILURE)
+
+**Date:** 2026-09-19
+**Disposition:** `CUSTODY_RECOVERY_CONTROL_FAILURE — NOT A REGENERATION OR RECONSTRUCTION EVENT`
+**Scope boundary:** This is the bounded conclusion ATL-1 asks for — a classification, an evidence preservation statement, and a forward control spec. It is not another recovery hunt, not a reconstruction of the historical 603-unit tree, and it performs no Supabase write. It closes the builder side of B; per ATL-1's own text, builder completion does not constitute QA PASS — this hands off to ChatGPT (ATL-7) for independent disposition.
+
+## 1. What failed, restated precisely
+
+The V2 restore-test (`governance/recovery/P6_1_SUPABASE_RESTORE_TEST_SPECIFICATION_V2.md`, branch `atlas-architecture-ar0-3-readiness-resolver` @ `df8af69`) requires an independent restore proof against the actual stored protected bytes, not merely a hash-declaration match. That test was executed against the live `atlas_work_decompositions` row (`road-ltl`/`1.5`/`__ALL_22__`/`1.0.0`) via an Owner-run, transport-proven-clean CSV export (this log, "SUPABASE B RESTORE-TEST" entry, 2026-09-19):
+
+- Step 0 (declared-hash self-consistency): `content_hash` matches `protectedStoreContentHash` — **passes**, but this only proves two declared values agree with each other.
+- Step 1 (actual restore): base64-decodes cleanly to 28,254 bytes, but Brotli decompression of those bytes **fails** at byte 0 in two independent decoders (Node `zlib`, Python `brotli`), and no alternate container format (gzip/zlib/zstd/lz4) matches. The row's only payload column (`payload` jsonb) is `NULL`; `payload_compressed_base64` is the sole stored copy, written once (`created_at = updated_at = 2026-09-07 02:34:28.90628+00`), never modified since.
+
+Per V2 §10, this is a genuine `RETRIEVAL_VERIFIED_RESTORE_NOT_PROVEN` result. B does not pass on existing storage.
+
+## 2. Root cause classification
+
+**Classification: custody/storage recovery-control failure — a certification-process gap, not a proven data-corruption event and not a writer-mechanism defect that can currently be fixed by rerunning anything.**
+
+The forensic trace (ChatGPT, "HISTORICAL P6.1 WRITER / ENCODING FORENSIC TRACE" and "P6.1 HISTORICAL FINGERPRINT SURVIVOR SEARCH", this log, 2026-09-19) establishes the specific gap:
+
+- A historical, pre-closure fingerprint of the same row exists at commit `346bfdda3e2b0de6951ce0301627c87d4ca07b68` (2026-09-07): encoded length **29,999** chars, encoded SHA-256 **`6242ad963a5229c72c6029adc38e30d4c9e28d6a229beb823ceb3d9f0dfde718`**, same declared canonical content hash `2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab` as today's row.
+- The current live row's encoded representation (37,672 chars, decoded SHA-256 `70a3c088ec1cfc514c5b1734ca83c7ff5438de02a1121a105b2c19c0976be4ca`) is **not the same encoded bytes** as that historical fingerprint, and fails to decode under the row's own declared codec (`BROTLI_BASE64`).
+- No committed writer implementation for the one-row `__ALL_22__` Brotli aggregate has been recovered in traced branch history; the only committed seed writer (`scripts/seed-p6-1-work-decompositions.mjs`) produces 22 separate `GZIP_BASE64` rows, a different writer entirely.
+- Historical P6.1 certification (CI run `34092195930`, final status commit `47532643bb858c9dfceef0b8bfe8497b77bca96d`) validated decoder behavior against a locally-generated synthetic Brotli fixture and declared a canonical semantic hash — it never read back, decompressed, and re-hashed the actual production bytes at rest. No independent immutable custody copy of the encoded bytes was taken at write time or at certification time. The live database row was the sole custody point.
+
+This is why the failure is classified as a **control** gap (certification never independently verified restorability of the real stored bytes; no second custody copy existed to fall back on) rather than a proven **corruption** event: the survivor search (Drive, GitHub, Vercel deployment history) found no surviving copy of the original 29,999-character bundle to compare against byte-for-byte, so the exact point of divergence (original write, a later rewrite, or an export/storage transformation) is not established and is not being asserted here.
+
+## 3. Evidence preservation — explicit statement
+
+- No write, update, or DDL was issued against `atlas_work_decompositions` at any point in this diagnosis. All Supabase access this round was read-only (`SELECT`).
+- The row is preserved exactly as found: `payload_compressed_base64` (37,672 chars), `payload` (`NULL`), `content_hash`, `payload_encoding`, `created_at`/`updated_at` all unchanged.
+- A governed custody copy of the retrieved CSV is separately frozen (ChatGPT, "A2 INDEPENDENT QA PASS + B CSV GOVERNED CUSTODY FROZEN": Drive file `1Wc9RdQSG8xMI0vg1vHzQIMsa1PrPFXPj`, SHA-256 `bb59aea9b7a36959745d097a1acbed13c4618b88fc7220cc6e579e9ec2a78dba`), so this finding is independently reproducible without re-querying production.
+- No P6.x regeneration, no reconstruction of the 603-unit/444-leaf historical tree, and no attempt to force a matching count was performed or is being recommended by this conclusion, consistent with the amendment to `7ab38c3` (`governance/recovery/AMENDMENT_TO_7ab38c3_MECHANISM_PROVENANCE_BOUNDARY.md`, branch `atlas-architecture-ar0-3-readiness-resolver`): historical counts and the historical encoded bundle are forensic comparison evidence only, never a regeneration target.
+
+## 4. Disposition (bounded — what is and is not being claimed)
+
+- **Is claimed:** the current protected stored representation is **not recoverable as certified** — it fails independent restore proof under its own declared codec, and no surviving copy of the historically fingerprinted bytes has been located in the bounded search performed.
+- **Is NOT claimed:** that the historical semantic output (603 units / 444 leaves, per-task decomposition detail) is **irrecoverably lost**. Identity and certification evidence survive independently of the broken bytes: the canonical content hash, the 22 per-task hashes, unit/leaf counts, lineage, and governing source inputs are all still on record. Other non-regenerative recovery routes remain open and are explicitly not foreclosed by this conclusion (e.g. the Owner's separate chat-history recovery effort covering 27 Aug–1 Sep, which may surface the original undocumented generator procedure or bundle).
+
+## 5. Minimum remediation control required for future protected bundles
+
+Going forward, any protected bundle written to a `*_compressed_base64`-style column must satisfy, before certification can be considered closed:
+
+1. **Independent immutable custody at write time.** A second, write-once copy of the exact encoded bytes (not just the canonical semantic hash) stored outside the primary live database row — e.g. governed object storage or a committed evidence artifact with a manifest hash — created in the same transaction/deployment step that writes the live row, not after the fact.
+2. **Restore-proof as a certification gate, against real bytes.** Certification must include reading back the actual production bytes (not a synthetic fixture), decompressing them under the declared codec, and re-hashing the result to the declared canonical hash, before the bundle is marked certified. A decoder-only test against a locally generated fixture (as happened historically) is insufficient and must not by itself close certification.
+3. **Periodic or pre-dependency re-verification.** Any downstream process that depends on a protected bundle re-runs the restore-proof (or checks a recent restore-proof timestamp) before treating the bundle as available, rather than trusting the original certification indefinitely.
+4. **Transport methodology correction (process-level, already adopted this round).** No content above roughly 15–17 KB is relayed through an LLM-generated tool-call parameter in either direction for anything requiring byte-exactness (confirmed unreliable both read and write direction this session, per the A2 zip-corruption finding). Native OS/browser tooling (direct DB export, `certutil`/`shasum`, native upload UI) is the required path for any custody-critical transfer at this scale.
+
+## 6. Handoff
+
+This conclusion is submitted for **ATL-7 (ChatGPT independent QA)** to issue the final B disposition and determine whether AR0.3 may close with this documented recovery-control defect. Per ATL-1's own description, builder completion (this document) does not constitute QA PASS — Claude is not marking B resolved and is not changing ATL-1's status beyond noting builder-side completion.
+
+**No regeneration. No reconstruction. No production mutation. Evidence preserved as found.**
