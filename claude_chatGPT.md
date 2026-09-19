@@ -1085,3 +1085,48 @@ Following the independent survivor search, the recovery track is now bounded. Do
 ## Product transition principle
 
 After AR0.3 closure, architecture becomes a constraint on development rather than the primary deliverable. Recovery work stops unless a genuine product-blocking defect is discovered. The next planning question is: **what is the smallest end-to-end Atlas product slice that can be made genuinely usable?** Road LTL remains the intended first governed slice.
+
+
+---
+
+# CHATGPT — POST-MIGRATION LINEAR / SHARED-LOG SYNCHRONIZATION
+
+**Date:** 2026-09-19  
+**Status:** `ATLAS_TEAM_MIGRATION_RECONCILED__CURRENT_CLOSURE_CHAIN_CANONICAL`
+
+The Atlas Linear project has been migrated from the SEFL Transformation team namespace to the dedicated **Atlas** team (`ATL`). This entry supersedes obsolete `SEF-*` issue references in prior shared-log entries; prior entries remain preserved as historical evidence and must not be rewritten.
+
+## Canonical current closure chain
+
+1. **ATL-1 — Claude — In Progress:** Diagnose historical P6.1 protected-payload restore failure and produce the bounded root-cause/remediation conclusion. Current protected representation is not recoverable as certified. Preserve evidence; classify the custody/storage recovery-control failure; define minimum future immutable-custody + independent-restore-proof controls. No regeneration and no production mutation.
+2. **ATL-7 — ChatGPT — Todo:** Independently QA ATL-1, issue the final B disposition, and determine whether AR0.3 may close with the documented recovery-control defect.
+3. **ATL-6 — Claude — Todo:** After ATL-7 disposition, create one AR0.3 closure checkpoint and rerun Road LTL 1.5 readiness as `GOVERNED_SCOPE` under the frozen resolver. Do not force READY. Do not restart P6.x reconstruction.
+4. **ATL-5 — ChatGPT — Todo:** Independently QA the complete AR0.3 closure checkpoint (A1/A2/B/C/D), Road LTL rerun/blockers, non-mutation and governance consistency. Issue explicit PASS/FAIL.
+5. **ATL-4 — Owner (Darshan) — Todo:** If ATL-5 passes, explicitly authorize transition from recovery/architecture work to Product Build.
+
+This chain replaces the prior Linear references `SEF-97 → SEF-98 → SEF-99 → SEF-100 → SEF-101`.
+
+## Post-migration cleanup
+
+The following historical/recovery tasks are no longer active closure dependencies:
+
+- **ATL-30** (formerly SEF-81) — Canceled/superseded after governed recovery.
+- **ATL-31** (formerly SEF-82) — Canceled/superseded after governed recovery.
+- **ATL-12** — Canceled. Historical unit-level 43-vs-38 reconciliation cannot execute as designed because the certified protected representation is not restorable and no exact original encoded bundle was found in the bounded survivor search.
+- **ATL-11** — Canceled. No historical unit-level reconciliation artifact exists for this QA gate to certify.
+- **ATL-10** — Canceled. P6.1 reconstruction/generator track remains frozen; generator QA is not required for current AR0.3 closure.
+- **ATL-9** — Canceled. Further live-schema provenance archaeology is not required to establish current B disposition; preserve the observed discrepancy as evidence.
+- **ATL-8** — Canceled because its underlying schema-drift reconciliation task is outside the bounded closure path.
+- **ATL-2** — Done. The V2 restore-test/reconciliation protocol materially governed the actual recovery execution; its safeguards were applied in practice. Resulting failure disposition/remediation is now governed by ATL-1 → ATL-7.
+
+Older shared-log wording that says historical reconciliation tasks remain active is therefore superseded by this entry.
+
+## Gates that remain preserved
+
+The older G1/G2/G3 architecture-gate issues remain in Atlas for now and are **not** canceled by this synchronization. Their final disposition must be resolved through the AR0.3 closure checkpoint rather than by silently deleting architectural governance.
+
+## Operating constraint
+
+Recovery search remains stopped. P6.1 reconstruction remains frozen. No production Supabase mutation is authorized. Architecture is to become a constraint on Product Build rather than remain the primary deliverable after AR0.3 closure.
+
+**Next authorized operational owner: Claude on ATL-1.**
