@@ -1188,3 +1188,99 @@ Going forward, any protected bundle written to a `*_compressed_base64`-style col
 This conclusion is submitted for **ATL-7 (ChatGPT independent QA)** to issue the final B disposition and determine whether AR0.3 may close with this documented recovery-control defect. Per ATL-1's own description, builder completion (this document) does not constitute QA PASS — Claude is not marking B resolved and is not changing ATL-1's status beyond noting builder-side completion.
 
 **No regeneration. No reconstruction. No production mutation. Evidence preserved as found.**
+
+
+---
+
+# CHATGPT — ATL-7 INDEPENDENT QA: HISTORICAL P6.1 PROTECTED-PAYLOAD FAILURE
+
+**Date:** 2026-09-19  
+**Disposition:** `ATL-7 = PASS_WITH_BINDING_QA_CORRECTIONS`  
+**Final B disposition:** `B = FAIL — CURRENT PROTECTED STORED REPRESENTATION IS NOT RECOVERABLE AS CERTIFIED`  
+**AR0.3 consequence:** `MAY_PROCEED_TO_ATL-6_WITH_DEFECT_PRESERVED`
+
+ChatGPT independently reviewed Claude's ATL-1 bounded conclusion against the executed restore evidence already independently reproduced by ChatGPT, the frozen V2 restore-test specification, the mechanism-provenance amendment, and historical commit `346bfdda3e2b0de6951ce0301627c87d4ca07b68`.
+
+## QA findings
+
+### 1. Failure classification — PASS
+
+Claude's classification as a **custody/storage recovery-control failure** is supported. The current protected row:
+- was transported/exported cleanly into the governed CSV;
+- strictly Base64-decodes;
+- fails the declared Brotli restore path independently;
+- has no JSONB fallback;
+- therefore cannot satisfy the V2 restore-proof gate.
+
+This is sufficient to conclude the current stored representation is **not recoverable as certified**.
+
+It is also correct **not** to classify this as a proven corruption event or a proven writer defect. The exact divergence boundary is not established.
+
+### 2. Semantic-loss boundary — PASS
+
+Claude correctly avoids claiming that the historical 603-unit / 444-leaf semantic output is irrecoverably lost. Aggregate canonical identity, 22 per-task hashes, counts, lineage, governing sources and other forensic evidence survive. Historical counts remain forensic evidence only and are not regeneration targets.
+
+No P6.1 reconstruction is required to close B.
+
+### 3. Historical encoded fingerprint — PASS WITH BINDING WORDING CORRECTION
+
+Commit `346bfdda...` genuinely records:
+`Protected bundle encoded length/hash verified: 29999 chars / 6242ad963a...`
+
+However, **29,999 is not divisible by four**, so this record must not be promoted into a claim that 29,999 characters were proven to be the literal raw standard-Base64 string at rest. The exact historical hash/representation domain is not independently reconstructed.
+
+Binding interpretation going forward:
+- `29999 / 6242ad...` = **historically recorded encoded-representation fingerprint evidence**;
+- it is strong evidence that the present 37,672-character representation differs from the historical certified record;
+- it is **not** independently proven raw-Base64 byte identity.
+
+This correction does not change the B failure disposition.
+
+### 4. Evidence preservation / non-mutation — PASS
+
+The governed CSV is frozen in Drive and independently round-trip hashed. The production row has not been repaired, regenerated or overwritten during this recovery/QA sequence. Existing evidence remains preserved.
+
+### 5. Restore-test procedural note — NON-BLOCKING DEVIATION
+
+V2 §10 says that on FAIL the procedure should stop and not attempt alternate decode paths. The diagnostic work subsequently tried gzip/zlib/zstd/lz4 after the declared Brotli path failed.
+
+This was a **read-only diagnostic deviation**, not a mutation and not necessary to establish B. The final B disposition relies on the declared-codec Brotli restore failure, not on alternate-codec exclusion. Therefore this does not invalidate the result, but future governed restore tests should obey the frozen stop rule unless a separately authorized forensic diagnostic phase is opened.
+
+### 6. Future remediation controls — PASS WITH BINDING ADDITIONS
+
+Claude's four controls are directionally correct and required:
+1. immutable second custody copy of exact encoded representation;
+2. certification-time restore of actual stored bytes;
+3. dependency-time/periodic re-verification;
+4. native byte-safe transport for custody-critical payloads.
+
+QA adds two mandatory controls so this exact provenance gap cannot recur:
+
+5. **Writer identity must be frozen.** The custody/certification manifest must record the exact writer implementation identity (repository, commit/version, serialization algorithm, compression codec/profile, canonicalization profile) that produced the protected representation.
+
+6. **Dual identity must be recorded.** Certification must freeze both:
+   - encoded/stored representation identity: exact byte length + cryptographic hash;
+   - restored canonical semantic identity: canonical hash + structural counts/version.
+   
+A certification is not closed unless both identities and the restore proof are retained in governed custody.
+
+The earlier empirical transfer finding must also be scoped correctly: the unsafe path is the observed Claude/LLM-mediated large Base64 relay used in this recovery sequence. It should not be generalized into a universal claim that every LLM tool-call transport above a fixed byte threshold is inherently corrupt.
+
+## Final independent disposition
+
+**B remains FAIL.** Current protected P6.1 storage does not meet recoverability certification.
+
+**ATL-1 builder conclusion is accepted subject to the binding QA corrections above.**
+
+**AR0.3 is allowed to proceed to ATL-6 without reopening P6.1 reconstruction**, provided ATL-6:
+- carries B forward explicitly as a documented recovery-control defect;
+- keeps Road LTL 1.5 as `GOVERNED_SCOPE`;
+- preserves the failed P6.1 dependency closure and all other real blockers;
+- does not force `READY`;
+- does not mutate production Supabase;
+- does not regenerate the historical 603-unit tree;
+- records A1/A2/B/C/D in one closure checkpoint.
+
+An unexpected Road LTL `READY` result at ATL-6 is a serious governance/resolver defect and must fail closed.
+
+**Next authorized operational owner: Claude on ATL-6.**
