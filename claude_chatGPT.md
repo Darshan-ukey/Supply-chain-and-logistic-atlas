@@ -976,3 +976,42 @@ ChatGPT then re-downloaded the Drive copy and SHA-256 hashed the actual returned
 ## B current gate
 
 B remains `RETRIEVAL_VERIFIED_RESTORE_NOT_PROVEN`. The frozen CSV is now the immutable diagnostic input. Next authorized activity is read-only historical writer/encoding-path diagnosis: trace the code/migration/tooling that wrote the protected row and determine the actual serialization/compression/hash procedure before attempting any further decode. No production Supabase mutation. No P6.x restart. No regeneration.
+
+
+---
+
+# CHATGPT — HISTORICAL P6.1 WRITER / ENCODING FORENSIC TRACE
+
+**Date:** 2026-09-19  
+**Disposition:** `HISTORICAL_ENCODED_IDENTITY_RECOVERED__ORIGINAL_AGGREGATE_WRITER_NOT_GOVERNED`
+
+Using the frozen CSV as immutable input, ChatGPT traced the historical P6.1 writer/decoder evidence without mutating Supabase or regenerating P6.1.
+
+## Recovered historical encoded identity
+
+Commit `346bfdda3e2b0de6951ce0301627c87d4ca07b68` dated 2026-09-07 records, before P6.1 closure:
+
+- canonical protected bundle materialized as `BROTLI_BASE64`
+- canonical content SHA-256: `2c26e760ff6a5b3d4a0500d22f79b531a92fb8380d5b31d2a60b8b49506092ab`
+- encoded length: `29999` characters
+- encoded SHA-256: `6242ad963a5229c72c6029adc38e30d4c9e28d6a229beb823ceb3d9f0dfde718`
+
+The frozen 2026-09-19 Supabase CSV instead contains 37,672 base64 characters and decodes to 28,254 bytes with SHA-256 `70a3c088ec1cfc514c5b1734ca83c7ff5438de02a1121a105b2c19c0976be4ca`; Brotli decompression fails. It therefore does not match the historical encoded representation fingerprint.
+
+## Writer / decoder provenance
+
+The committed seed script `scripts/seed-p6-1-work-decompositions.mjs` was introduced as a row-per-task writer and uses `GZIP_BASE64`: `JSON.stringify(d) -> gzipSync(level 9) -> base64`. It writes 22 rows and is not the writer for the later single `__ALL_22__` Brotli aggregate.
+
+The later protected API/test path establishes the intended aggregate codec as real Brotli, not a mislabeled codec: the test fixture uses `brotliCompressSync`, and the protected API uses the inverse `base64 -> brotliDecompressSync -> UTF-8 -> JSON.parse` path.
+
+No governed GitHub implementation of the writer that produced the one-row `__ALL_22__` Brotli aggregate has been recovered in the traced branch history. There are no GitHub Actions artifacts attached to successful P6.1 certification run `34092195930`; that run certifies repository tests at `ba9d47f...`, not the live Supabase payload bytes.
+
+## Certification gap
+
+At final status commit `47532643bb858c9dfceef0b8bfe8497b77bca96d`, the explicit encoded length/hash evidence was removed from the authoritative status wording and only the protected-store canonical content hash remained. The successful CI test generated its own valid Brotli fixture locally; it did not read back, decompress and canonical-hash the production Supabase aggregate row. Therefore historical P6.1 closure proved decoder behavior and declared canonical identity, but did not independently prove the bytes retained in protected storage.
+
+## Current inference and gate
+
+Strongest evidence-based inference: the frozen current Supabase representation is not byte-identical to the historically verified encoded representation. This does not yet prove whether divergence occurred during the original write, a later rewrite, transport/export, or another storage transformation. Do not call the current row corrupt until that boundary is proven.
+
+Next forensic target is the exact historical fingerprint `29999 / 6242ad963a5229c72c6029adc38e30d4c9e28d6a229beb823ceb3d9f0dfde718` across surviving governance/Drive/build/deployment evidence. No regeneration. No production mutation.
