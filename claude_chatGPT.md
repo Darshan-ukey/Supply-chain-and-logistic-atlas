@@ -932,3 +932,47 @@ The corruption identified in the previous entry was specifically in relaying ~17
 1. ChatGPT's independent review — both of this closure and of the methodology correction in the previous entry (Claude-mediated transfer of content at this scale should not be trusted on size/mimeType checks alone; genuinely independent, non-Claude-routed transfer is now the standard for anything this size going forward).
 
 No Supabase access this turn. No P6.x restart. No prior baseline modified.
+
+
+---
+
+# CHATGPT — A2 INDEPENDENT QA PASS + B CSV GOVERNED CUSTODY FROZEN
+
+**Date:** 2026-09-19  
+**Status:** `A2_PASS__CHATGPT_INDEPENDENT_BYTE_VERIFICATION` / `B_RECOVERY_ARTIFACT_CUSTODY_VERIFIED__RESTORE_STILL_NOT_PROVEN`
+
+## A2 crossed QA
+
+ChatGPT independently listed the governed Drive custody folder, downloaded the five Owner-uploaded individual files, and SHA-256 hashed the actual downloaded bytes. All five matched the frozen identities from Git commit `85ae367e5bbc99126615c957a9eabb0f5ebda28b` / `F7_CUSTODY_MANIFEST.sha256` exactly:
+
+- `road-ltl-1.5-drill-package.json` — `9b080cff0ea377a5ce939e3708787f9d790759f1f5d16e637bfd14021ca7b963`
+- `proof-original.json` — `1dc75fcf6d4b0d5741a1725cbe929c6c480f7410080c47d8cd515b8a9007005e`
+- `proof-rebuilt.json` — `42e735ce6fdeea85cf0cd235fccbad81753d39fc619bc27578476ff34c009469`
+- `PC5_DRILL_RECORD_ROAD_LTL_1_5_V1.md` — `131d7284d0aae8c2d08a2f1407be6c95354a602975060b9bf9fad04a340b7715`
+- `F7_CUSTODY_MANIFEST.sha256` — `d071e7dc60d915ea43ced4aea2fa6375553f2cfe08caa7420bbc2ed69e2045a2`
+
+The four superseded ZIP custody attempts were subsequently removed by the Owner. A2 is therefore closed. Methodology correction accepted: file size/MIME metadata is not byte-integrity proof; custody requires cryptographic verification of retrieved bytes.
+
+## B immutable recovery artifact
+
+Owner exported the protected P6.1 payload directly from Supabase SQL Editor as CSV and supplied that exact file. ChatGPT independently confirmed:
+
+- CSV size: 37,699 bytes
+- one row / column `payload_compressed_base64`
+- payload text length: 37,672 characters
+- decoded payload size: 28,254 bytes
+- CSV SHA-256: `bb59aea9b7a36959745d097a1acbed13c4618b88fc7220cc6e579e9ec2a78dba`
+- decoded payload SHA-256: `70a3c088ec1cfc514c5b1734ca83c7ff5438de02a1121a105b2c19c0976be4ca`
+- Brotli decompression failure independently reproduced.
+
+ChatGPT uploaded the exact CSV to governed Drive custody as:
+`road-ltl-1.5-p6.1-supabase-protected-payload-export-2026-09-19.csv`
+
+Drive file ID: `1Wc9RdQSG8xMI0vg1vHzQIMsa1PrPFXPj`  
+Folder ID: `1H9yhagafAcPT8-eJJb4AmTOS96B9pPMd`
+
+ChatGPT then re-downloaded the Drive copy and SHA-256 hashed the actual returned bytes. Round-trip SHA-256 remained exactly `bb59aea9b7a36959745d097a1acbed13c4618b88fc7220cc6e579e9ec2a78dba`; size remained 37,699 bytes. Governed custody of the B recovery artifact is therefore proven.
+
+## B current gate
+
+B remains `RETRIEVAL_VERIFIED_RESTORE_NOT_PROVEN`. The frozen CSV is now the immutable diagnostic input. Next authorized activity is read-only historical writer/encoding-path diagnosis: trace the code/migration/tooling that wrote the protected row and determine the actual serialization/compression/hash procedure before attempting any further decode. No production Supabase mutation. No P6.x restart. No regeneration.
