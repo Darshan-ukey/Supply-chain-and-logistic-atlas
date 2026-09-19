@@ -1015,3 +1015,37 @@ At final status commit `47532643bb858c9dfceef0b8bfe8497b77bca96d`, the explicit 
 Strongest evidence-based inference: the frozen current Supabase representation is not byte-identical to the historically verified encoded representation. This does not yet prove whether divergence occurred during the original write, a later rewrite, transport/export, or another storage transformation. Do not call the current row corrupt until that boundary is proven.
 
 Next forensic target is the exact historical fingerprint `29999 / 6242ad963a5229c72c6029adc38e30d4c9e28d6a229beb823ceb3d9f0dfde718` across surviving governance/Drive/build/deployment evidence. No regeneration. No production mutation.
+
+
+---
+
+# CHATGPT — P6.1 HISTORICAL FINGERPRINT SURVIVOR SEARCH
+
+**Date:** 2026-09-19  
+**Disposition:** `NO_SURVIVING_ORIGINAL_BUNDLE_FOUND_IN_SEARCHED_CUSTODY__FORENSIC_IDENTITY_PRESERVED`
+
+ChatGPT continued the bounded search for the historical P6.1 encoded identity `29999 chars / 6242ad963a5229c72c6029adc38e30d4c9e28d6a229beb823ceb3d9f0dfde718` without regeneration or production mutation.
+
+## Drive
+
+Exact searches for the historical SHA-256 and encoded length returned no matching Drive object. Broader P6.1 / Road LTL / protected-bundle searches returned governance and later recovery/reconstruction material, but no surviving original 29,999-character encoded bundle was identified.
+
+## GitHub
+
+Repository code search on the current/default searchable branch did not surface the historical fingerprint. Commit-history inspection does preserve the fingerprint in commit `346bfdda3e2b0de6951ce0301627c87d4ca07b68` as governance evidence, but the protected bundle itself was explicitly not committed to GitHub.
+
+The earlier certification at `db4b87b00bc0351781cfbf350253ae778cfc5d3b` proves that a 22-task / 603-unit / 444-leaf protected compile existed before backend closure and records per-task content hashes. The committed writer at `4e4c27b837aab1c919e411a7974078c3a9b742b1` is only the older row-per-task `GZIP_BASE64` seed path. The later aggregate decoder at `3a024f213f129982cdf08660108716928e13edab` confirms the one-row aggregate was expected to be true `BROTLI_BASE64`.
+
+Successful P6.1 GitHub Actions run `34092195930` has `artifacts.total_count = 0`; therefore there is no retained Actions artifact containing the original protected bundle.
+
+## Vercel
+
+Connected Vercel deployment history currently exposed for project `prj_zoyyLeFrvLKHFU8Unzq3Cr8zWDc0` does not reach the 2026-09-07 P6.1 build window. The oldest deployment currently returned is from 2026-08-24/25 on `main`; therefore no historical P6.1 deployment/build artifact could be inspected through the available deployment list. This is a search limitation, not proof that no such deployment ever existed.
+
+## Forensic conclusion
+
+The historical bundle's **identity and semantic certification evidence survive**, but the exact original encoded bytes have not been found in the searched governed custody surfaces. Current Supabase bytes are demonstrably a different encoded representation from the recorded historical fingerprint and fail the declared Brotli decode path.
+
+This is sufficient to reject `B = PASS` on existing storage. It is not sufficient to declare the 603-unit historical semantic output irrecoverably lost because per-task content hashes, aggregate canonical hash, counts, lineage and source inputs survive and other forensic/reconstruction routes remain possible.
+
+No regeneration and no production mutation were performed.
