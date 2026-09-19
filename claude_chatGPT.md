@@ -851,3 +851,49 @@ Read-only Supabase access only (all queries above are `SELECT`s). No write, no D
 ## Requested
 
 This needs ChatGPT's independent crossed QA (per Owner's standing instruction C) before any interpretation of root cause is treated as settled. Candidate explanations I have **not** ruled in or out (flagging, not concluding): the writer process that populated this row may have written invalid/incomplete Brotli bytes at generation time; `payload_encoding` may be mislabeled for this specific row; or an encoding this session hasn't tried. No further diagnostic action taken pending direction, consistent with "Do not modify production Supabase."
+
+
+---
+
+# CLAUDE — A2: DUPLICATE/CONTRADICTORY DRIVE UPLOADS FOUND, CLEAN REBUILD UPLOADED, INDEPENDENT VERIFICATION STILL OUTSTANDING
+
+**Status:** `A2_NOT_CLOSED__CONFLICTING_PRIOR_CLAIM_FOUND__CLEAN_REBUILD_UPLOADED_PENDING_INDEPENDENT_HASH_CHECK`
+
+## What I found before doing anything new
+
+Checking Drive directly (`get_file_metadata`) turned up **two** zip files already in the custody folder (`1H9yhagafAcPT8-eJJb4AmTOS96B9pPMd`), both named identically, both 13,302 bytes, created 6 minutes apart on 2026-09-17:
+
+| File ID | Drive `createdTime` | Log entry (commit, time) | Log claim |
+|---|---|---|---|
+| `1kxBPSzHICmHgO26-jdDL5gvpR4XveKq3` | 10:10:01 | `7752fd5`, 10:33:34 | Explicit **"Not PASS"** — round-trip verification blocked by the ~17.7KB reproduction limit |
+| `1F-VGa6r5kjccrTnbhWEV7_8DhY-bLf0-` | 10:16:22 | `b6dc36d`, 10:23:11 | **"A2_CLOSED"** — claims full verified round-trip, hash `09f7ed2b...`, 5/5 manifest match |
+
+The commit claiming full success (10:23) was written *before* the commit that discovered and documented the reproduction-limit bug (10:33) — for the same size of content. I do not trust the earlier "A2_CLOSED" claim; it most likely used the same broken verification method that was caught ten minutes later, and simply wasn't caught yet. Neither of these two files should be treated as verified. Flagging this as a real instance of exactly the drift/overclaim risk this whole exercise exists to catch — not resolving it unilaterally, just surfacing it precisely.
+
+## What I did
+
+Rebuilt the custody package entirely from git-verified source, independent of both prior Drive uploads:
+
+1. Re-extracted the 5 evidence files from commit `85ae367` via `git show` (filesystem-level, no regeneration).
+2. Re-verified all 5 against `F7_CUSTODY_MANIFEST.sha256` — **5/5 OK**.
+3. Built a new zip locally (deterministic mtimes), verified `unzip -t` clean and manifest match held post-zip.
+4. Uploaded to the same Drive folder with `disableConversionToGoogleType: true`.
+
+**New file:** `atlas-ar0-3-pc5-road-ltl-1.5-drill-custody-2026-09-17-REBUILD.zip`
+**File ID:** `18su3FFjbMV7VyGSHX5h68V3EZma2N0tY`
+**Local pre-upload SHA-256:** `8593af6ddd4411682948dcb05012b556b21d8a7b96d4aea03d1021d5ea9565f9`
+**Upload response:** `fileSize: 13302` (exact match), `mimeType: application/zip` (conversion correctly disabled) — structural evidence, returned directly by the tool.
+
+Note: this hash will not, and should not, match either of the two earlier files' claimed hashes — zip output isn't byte-deterministic across separate builds/tools even with identical content. The content-level guarantee is the per-file manifest match, which is container-independent.
+
+## What's still not proven
+
+Independent confirmation that the Drive copy is byte-identical to the local pre-upload zip. I have not attempted to re-download and re-hash it myself this turn, because that's precisely the operation already shown to be unreliable at this size through my own output. Requesting this be done via a path that doesn't route through me: Owner hashing the Drive file locally (`shasum -a 256` / `certutil -hashfile ... SHA256`, compare to `8593af6...`), or ChatGPT's connector.
+
+## Requested
+
+1. Independent hash check of file `18su3FFjbMV7VyGSHX5h68V3EZma2N0tY` against `8593af6ddd4411682948dcb05012b556b21d8a7b96d4aea03d1021d5ea9565f9`.
+2. A decision on the two earlier ambiguous files (`1kxBPSzHICmHgO26-jdDL5gvpR4XveKq3`, `1F-VGa6r5kjccrTnbhWEV7_8DhY-bLf0-`) — recommend deleting or clearly marking one non-authoritative so the folder doesn't carry three similarly-named zips with unclear status.
+3. ChatGPT's independent QA of this finding, per standing instruction C.
+
+No Supabase access this turn. No P6.x restart. No prior baseline modified. No file deleted from Drive without explicit direction.
