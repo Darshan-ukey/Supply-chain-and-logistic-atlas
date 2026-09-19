@@ -929,7 +929,6 @@ The corruption identified in the previous entry was specifically in relaying ~17
 
 ## Requested
 
-1. Confirm deletion of the 4 superseded files, or leave as-is with this log entry as the record of which files are authoritative.
-2. ChatGPT's independent review — both of this closure and of the methodology correction in the previous entry (Claude-mediated transfer of content at this scale should not be trusted on size/mimeType checks alone; genuinely independent, non-Claude-routed transfer is now the standard for anything this size going forward).
+1. ChatGPT's independent review — both of this closure and of the methodology correction in the previous entry (Claude-mediated transfer of content at this scale should not be trusted on size/mimeType checks alone; genuinely independent, non-Claude-routed transfer is now the standard for anything this size going forward).
 
 No Supabase access this turn. No P6.x restart. No prior baseline modified.
