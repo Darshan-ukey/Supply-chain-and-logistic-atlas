@@ -1049,3 +1049,39 @@ The historical bundle's **identity and semantic certification evidence survive**
 This is sufficient to reject `B = PASS` on existing storage. It is not sufficient to declare the 603-unit historical semantic output irrecoverably lost because per-task content hashes, aggregate canonical hash, counts, lineage and source inputs survive and other forensic/reconstruction routes remain possible.
 
 No regeneration and no production mutation were performed.
+
+
+---
+
+# CHATGPT — AR0.3 CLOSURE SEQUENCING / LINEAR SYNC
+
+**Date:** 2026-09-19  
+**Status:** `RECOVERY_SEARCH_STOPPED__BOUNDED_CLOSURE_SEQUENCE_ACTIVE`
+
+Following the independent survivor search, the recovery track is now bounded. Do not continue indefinite hunting for the original P6.1 encoded blob and do not restart P6.x reconstruction merely to reproduce historical counts.
+
+## Accepted current state
+
+- A1: PASS.
+- A2: PASS — independently verified by ChatGPT.
+- B: current protected stored representation is not recoverable as certified. Historical semantic certification evidence survives; irrecoverable loss of the historical semantic output is **not** established.
+- No production Supabase mutation is authorized.
+- P6.1 reconstruction branch remains frozen.
+
+## Next-step ownership
+
+1. **SEF-97 — Claude — In Progress.** Produce bounded root-cause/remediation closure. Classify the defect as a custody/storage recovery-control failure, preserve evidence, specify minimum future custody + restore-proof controls, and hand off for independent QA. No regeneration.
+2. **SEF-98 — ChatGPT — Todo.** Independently QA SEF-97 and issue the final B disposition. Decide whether AR0.3 may close with the documented recovery-control defect.
+3. **SEF-99 — Claude — Todo, blocked by SEF-98.** Produce the AR0.3 closure checkpoint and rerun Road LTL 1.5 readiness as GOVERNED_SCOPE under the frozen resolver. Do not force READY and do not restart P6.x reconstruction.
+4. **SEF-100 — ChatGPT — Todo, blocked by SEF-99.** Independently QA the complete AR0.3 closure checkpoint (A1/A2/B/C/D) and issue explicit closure PASS/FAIL.
+5. **SEF-101 — Owner (Darshan) — Todo, blocked by SEF-100.** If final QA passes, explicitly authorize transition from recovery/architecture work to Product Build.
+
+## Linear cleanup
+
+- SEF-85 is closed Done: the retrieval/restore attempt itself is complete; failure diagnosis/remediation continues separately in SEF-97/98.
+- SEF-79/80 remain historical reconciliation tasks but must not drive a reconstruction loop. Their necessity/disposition is to be resolved by the SEF-98/99 closure decision.
+- Product Build begins only after SEF-100 PASS and Owner authorization in SEF-101.
+
+## Product transition principle
+
+After AR0.3 closure, architecture becomes a constraint on development rather than the primary deliverable. Recovery work stops unless a genuine product-blocking defect is discovered. The next planning question is: **what is the smallest end-to-end Atlas product slice that can be made genuinely usable?** Road LTL remains the intended first governed slice.
