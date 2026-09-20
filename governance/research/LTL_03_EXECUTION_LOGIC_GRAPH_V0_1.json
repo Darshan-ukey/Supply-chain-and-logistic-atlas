@@ -10009,7 +10009,7 @@
     {
       "from": "GI-080",
       "relation": "INSTANTIATES",
-      "to": "SP-PACKAGE-HANDLING-UNIT"
+      "to": "SP-PACKAGE"
     },
     {
       "from": "GI-080",
@@ -10074,7 +10074,7 @@
     {
       "from": "GI-081",
       "relation": "INSTANTIATES",
-      "to": "SP-COMMODITY-CONSIGNMENT-ITEM"
+      "to": "SP-COMMODITY-ITEM"
     },
     {
       "from": "GI-081",
@@ -10149,7 +10149,7 @@
     {
       "from": "GI-082",
       "relation": "INSTANTIATES",
-      "to": "SP-COMMODITY-CONSIGNMENT-ITEM"
+      "to": "SP-COMMODITY-ITEM"
     },
     {
       "from": "GI-082",
@@ -10289,7 +10289,7 @@
   "validation": {
     "nodeCount": 301,
     "edgeCount": 1433,
-    "badEdgeCount": 3,
+    "badEdgeCount": 0,
     "generatedInstanceCount": 83,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
