@@ -1,0 +1,2067 @@
+{
+  "schemaVersion": "0.1",
+  "status": "RECONCILIATION_CANDIDATE_NOT_FROZEN",
+  "taskId": "LTL-03",
+  "governance": {
+    "mechanismFrozen": true,
+    "catalogueEvolvable": true,
+    "bidirectionalTraceRequired": true,
+    "researchPausedForReconciliation": true
+  },
+  "nodes": [
+    {
+      "id": "EV-49CFR-373-101",
+      "type": "EVIDENCE",
+      "label": "49 CFR 373.101"
+    },
+    {
+      "id": "EV-49CFR-172-202",
+      "type": "EVIDENCE",
+      "label": "49 CFR 172.202"
+    },
+    {
+      "id": "EV-49CFR-172-203",
+      "type": "EVIDENCE",
+      "label": "49 CFR 172.203"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-2.1-LIFECYCLE",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL 2.1 lifecycle"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-2.1-PRO",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL 2.1 PRO semantics"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-2.1-ERROR",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL 2.1 error semantics"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-2.1-LOCATIONID",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL 2.1 LocationID semantics"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-2.1-PARTNER-SPECIALIZATION",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL partner specialization"
+    },
+    {
+      "id": "EV-UNECE-D23B-CONSIGNMENT-ID",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B consignment identifiers"
+    },
+    {
+      "id": "EV-UNECE-D23B-CONSIGNMENT-MEASURE",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B consignment measures"
+    },
+    {
+      "id": "EV-UNECE-D23B-ITEM-MEASURE",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B item measures"
+    },
+    {
+      "id": "EV-UNECE-D23B-PACKAGE",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B package semantics"
+    },
+    {
+      "id": "EV-UNECE-D23B-LOCATION-ROLE",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B location roles"
+    },
+    {
+      "id": "EV-UNECE-D23B-ASSOCIATED-DOCUMENT",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B associated documents"
+    },
+    {
+      "id": "EV-UNECE-D23B-MONETARY",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B monetary/service charges"
+    },
+    {
+      "id": "EV-UNECE-D23B-INDICATOR",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B indicator semantics"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-2.1-YAML-TARGET",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL 2.1 issuer YAML target"
+    },
+    {
+      "id": "DF-REGULATORY-BOL-MINIMUM",
+      "type": "DOMAIN_FACT",
+      "label": "Federal BOL/receipt minimum content"
+    },
+    {
+      "id": "DF-HAZMAT-CONDITIONAL-CONTRACT",
+      "type": "DOMAIN_FACT",
+      "label": "Hazmat activates expanded content/representation contract"
+    },
+    {
+      "id": "DF-PRO-LIFECYCLE-IDENTIFIER",
+      "type": "DOMAIN_FACT",
+      "label": "PRO resolves eBOL update/delete target"
+    },
+    {
+      "id": "DF-LOCATIONID-SCOPE",
+      "type": "DOMAIN_FACT",
+      "label": "LocationID scoped to assigning organization"
+    },
+    {
+      "id": "DF-IDENTIFIER-ROLE-DISTINCTION",
+      "type": "DOMAIN_FACT",
+      "label": "Identifier roles are semantically distinct"
+    },
+    {
+      "id": "DF-MEASURE-VALUE-UNIT",
+      "type": "DOMAIN_FACT",
+      "label": "Measure is value plus unit in applicable contexts"
+    },
+    {
+      "id": "DF-PACKAGE-REPEATING-HIERARCHY",
+      "type": "DOMAIN_FACT",
+      "label": "Packages repeat and may form hierarchy"
+    },
+    {
+      "id": "DF-LOCATION-ROLE-SEPARATION",
+      "type": "DOMAIN_FACT",
+      "label": "Location role distinct from physical identity"
+    },
+    {
+      "id": "DF-ASSOCIATED-DOCUMENT-OBJECT",
+      "type": "DOMAIN_FACT",
+      "label": "Associated documents are repeating objects"
+    },
+    {
+      "id": "DF-MONETARY-DISTINCT-FROM-MEASURE",
+      "type": "DOMAIN_FACT",
+      "label": "Monetary amount semantics differ from physical measure"
+    },
+    {
+      "id": "SP-IDENTIFIER",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Identifier"
+    },
+    {
+      "id": "SP-REFERENCE",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Reference"
+    },
+    {
+      "id": "SP-DOCUMENT",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Document"
+    },
+    {
+      "id": "SP-PARTY",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Party"
+    },
+    {
+      "id": "SP-LOCATION",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Location"
+    },
+    {
+      "id": "SP-MEASURE",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Measure"
+    },
+    {
+      "id": "SP-PACKAGE",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Package / Handling Unit"
+    },
+    {
+      "id": "SP-COMMODITY-ITEM",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Commodity / Consignment Item"
+    },
+    {
+      "id": "SP-RELATIONSHIP",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Relationship"
+    },
+    {
+      "id": "SP-STATE",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "State"
+    },
+    {
+      "id": "SP-EVENT",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Event"
+    },
+    {
+      "id": "SP-CONTROLLED-VOCABULARY",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Controlled Vocabulary"
+    },
+    {
+      "id": "SP-MASTER-REFERENCE",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Master Reference"
+    },
+    {
+      "id": "SP-COLLECTION-CARDINALITY",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Collection / Cardinality"
+    },
+    {
+      "id": "SP-INSTRUCTION-NOTE",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Instruction / Note"
+    },
+    {
+      "id": "SP-EVIDENCE-PROVENANCE",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Evidence / Provenance"
+    },
+    {
+      "id": "SP-MONETARY-AMOUNT",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Monetary Amount"
+    },
+    {
+      "id": "SP-INDICATOR",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Indicator"
+    },
+    {
+      "id": "SP-TEMPORAL-VALUE",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Temporal Value"
+    },
+    {
+      "id": "RF1",
+      "type": "RULE_FAMILY",
+      "label": "Identity & Reference Resolution",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF2",
+      "type": "RULE_FAMILY",
+      "label": "Relationship Integrity",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF3",
+      "type": "RULE_FAMILY",
+      "label": "Lifecycle & State Transition",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF4",
+      "type": "RULE_FAMILY",
+      "label": "Requiredness & Cardinality",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF5",
+      "type": "RULE_FAMILY",
+      "label": "Controlled-Value Validation",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF6",
+      "type": "RULE_FAMILY",
+      "label": "Master/Reference Reconciliation",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF7",
+      "type": "RULE_FAMILY",
+      "label": "Conditional Activation",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF8",
+      "type": "RULE_FAMILY",
+      "label": "Error & Exception Semantics",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF9",
+      "type": "RULE_FAMILY",
+      "label": "Source Authority & Precedence",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF10",
+      "type": "RULE_FAMILY",
+      "label": "Representation Constraint",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF11",
+      "type": "RULE_FAMILY",
+      "label": "Client Specialization",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF12",
+      "type": "RULE_FAMILY",
+      "label": "Aggregate Reconciliation",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF13",
+      "type": "RULE_FAMILY",
+      "label": "Measure Semantics",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF14",
+      "type": "RULE_FAMILY",
+      "label": "Hierarchy",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF15",
+      "type": "RULE_FAMILY",
+      "label": "Candidate Parsing & Semantic Assignment",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF16",
+      "type": "RULE_FAMILY",
+      "label": "Instruction/Note Ownership",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RF17",
+      "type": "RULE_FAMILY",
+      "label": "Monetary Amount / Charge Semantics",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "GI-001",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve consignor role and required presence",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-002",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve consignee role and required presence",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-003",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve origin role and location identity",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-004",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve destination role and location identity",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-005",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate package count presence",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-006",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Reconcile package count to child packages where applicable",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-007",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve freight description source text",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-008",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Parse freight description into structured candidates",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-009",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve rating-relevant measure semantic owner",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-010",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate rating-relevant measure unit",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-011",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve carrier-assigned consignment identifier",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-012",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve consignor-assigned consignment identifier",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-013",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve identifier scheme agency",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-014",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Determine PRO assignment path",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-015",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Bind PRO to BOL/consignment",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-016",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve BOL update target by PRO",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-017",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve BOL delete target by PRO",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-018",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve LocationID within assigning organization",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-019",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Apply client-mandatory LocationID override",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-020",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate consignment gross weight value/unit",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-021",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate consignment gross volume value/unit",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-022",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate item gross weight value/unit",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-023",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Instantiate repeating transport-package collection",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-024",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate package hierarchy level",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-025",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve pickup/acceptance location role",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-026",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve consignee-receipt location role",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-027",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Activate hazmat description contract",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-028",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate hazmat identification number",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-029",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate proper shipping name",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-030",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate primary/subsidiary hazard class",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-031",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate packing group when applicable",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-032",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate hazmat total quantity and unit",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-033",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate hazmat number/type of packages",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-034",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate hazmat basic-description sequence",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-035",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate special-permit notation association",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-036",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate Limited Quantity / RQ conditional notation",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-037",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Bind associated document to consignment",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "GI-038",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate monetary service charge",
+      "taskId": "LTL-03"
+    },
+    {
+      "id": "EX-BOL-IDENTITY-NOT-FOUND",
+      "type": "EXCEPTION",
+      "label": "BOL identity not found"
+    },
+    {
+      "id": "EX-PARTY-IDENTITY-AMBIGUOUS",
+      "type": "EXCEPTION",
+      "label": "Party identity ambiguous"
+    },
+    {
+      "id": "EX-AGGREGATE-CHILD-MISMATCH",
+      "type": "EXCEPTION",
+      "label": "Aggregate/child mismatch"
+    },
+    {
+      "id": "EX-MEASURE-UNIT-MISSING",
+      "type": "EXCEPTION",
+      "label": "Measure unit missing"
+    },
+    {
+      "id": "EX-HAZMAT-SEQUENCE-INVALID",
+      "type": "EXCEPTION",
+      "label": "Hazmat sequence invalid"
+    },
+    {
+      "id": "EX-LOCATION-MASTER-NO-MATCH",
+      "type": "EXCEPTION",
+      "label": "Location master no match"
+    },
+    {
+      "id": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "type": "KNOWLEDGE_GAP",
+      "label": "Exact NMFTA BOL_Request properties unresolved"
+    }
+  ],
+  "edges": [
+    {
+      "from": "DF-REGULATORY-BOL-MINIMUM",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-373-101"
+    },
+    {
+      "from": "DF-HAZMAT-CONDITIONAL-CONTRACT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-202"
+    },
+    {
+      "from": "DF-HAZMAT-CONDITIONAL-CONTRACT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-203"
+    },
+    {
+      "from": "DF-PRO-LIFECYCLE-IDENTIFIER",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-PRO"
+    },
+    {
+      "from": "DF-PRO-LIFECYCLE-IDENTIFIER",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-LIFECYCLE"
+    },
+    {
+      "from": "DF-LOCATIONID-SCOPE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-LOCATIONID"
+    },
+    {
+      "from": "DF-IDENTIFIER-ROLE-DISTINCTION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-CONSIGNMENT-ID"
+    },
+    {
+      "from": "DF-MEASURE-VALUE-UNIT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-ITEM-MEASURE"
+    },
+    {
+      "from": "DF-PACKAGE-REPEATING-HIERARCHY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-PACKAGE"
+    },
+    {
+      "from": "DF-LOCATION-ROLE-SEPARATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-LOCATION-ROLE"
+    },
+    {
+      "from": "DF-ASSOCIATED-DOCUMENT-OBJECT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-ASSOCIATED-DOCUMENT"
+    },
+    {
+      "from": "DF-MONETARY-DISTINCT-FROM-MEASURE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-MONETARY"
+    },
+    {
+      "from": "GI-001",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-373-101"
+    },
+    {
+      "from": "GI-001",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-001",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-001",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "GI-001",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-001",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-001",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "GI-002",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-373-101"
+    },
+    {
+      "from": "GI-002",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-LOCATION-ROLE"
+    },
+    {
+      "from": "GI-002",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-002",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-002",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "GI-002",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-002",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-002",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "GI-003",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-373-101"
+    },
+    {
+      "from": "GI-003",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-LOCATION-ROLE"
+    },
+    {
+      "from": "GI-003",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "GI-003",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-003",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "GI-003",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-003",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-003",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "GI-004",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-373-101"
+    },
+    {
+      "from": "GI-004",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-LOCATION-ROLE"
+    },
+    {
+      "from": "GI-004",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "GI-004",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-004",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "GI-004",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-004",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-004",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "GI-005",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-373-101"
+    },
+    {
+      "from": "GI-005",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-005",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-005",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-006",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-373-101"
+    },
+    {
+      "from": "GI-006",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-PACKAGE"
+    },
+    {
+      "from": "GI-006",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-006",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-006",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-006",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "GI-006",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-006",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-007",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-373-101"
+    },
+    {
+      "from": "GI-007",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-007",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-007",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-007",
+      "relation": "COMPOSES_WITH",
+      "to": "RF15"
+    },
+    {
+      "from": "GI-008",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-373-101"
+    },
+    {
+      "from": "GI-008",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-008",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-008",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-008",
+      "relation": "COMPOSES_WITH",
+      "to": "RF15"
+    },
+    {
+      "from": "GI-009",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-373-101"
+    },
+    {
+      "from": "GI-009",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-CONSIGNMENT-MEASURE"
+    },
+    {
+      "from": "GI-009",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-ITEM-MEASURE"
+    },
+    {
+      "from": "GI-009",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-009",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-009",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-009",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-009",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-010",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-373-101"
+    },
+    {
+      "from": "GI-010",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-ITEM-MEASURE"
+    },
+    {
+      "from": "GI-010",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-010",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-011",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-CONSIGNMENT-ID"
+    },
+    {
+      "from": "GI-011",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-011",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-011",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-011",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-012",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-CONSIGNMENT-ID"
+    },
+    {
+      "from": "GI-012",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-012",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-012",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-012",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-013",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-CONSIGNMENT-ID"
+    },
+    {
+      "from": "GI-013",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-013",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-013",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-014",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-PRO"
+    },
+    {
+      "from": "GI-014",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-014",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-014",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-014",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-014",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-015",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-PRO"
+    },
+    {
+      "from": "GI-015",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-015",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-015",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-015",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-015",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-016",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-PRO"
+    },
+    {
+      "from": "GI-016",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-LIFECYCLE"
+    },
+    {
+      "from": "GI-016",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-ERROR"
+    },
+    {
+      "from": "GI-016",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-016",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-016",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-016",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-016",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-016",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-016",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-017",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-PRO"
+    },
+    {
+      "from": "GI-017",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-LIFECYCLE"
+    },
+    {
+      "from": "GI-017",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-ERROR"
+    },
+    {
+      "from": "GI-017",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-017",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-017",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-017",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-017",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-017",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-017",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-018",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-LOCATIONID"
+    },
+    {
+      "from": "GI-018",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-018",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "GI-018",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "GI-018",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-018",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "GI-019",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-LOCATIONID"
+    },
+    {
+      "from": "GI-019",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-PARTNER-SPECIALIZATION"
+    },
+    {
+      "from": "GI-019",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-019",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "GI-019",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-019",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-020",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-CONSIGNMENT-MEASURE"
+    },
+    {
+      "from": "GI-020",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-020",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-020",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-021",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-CONSIGNMENT-MEASURE"
+    },
+    {
+      "from": "GI-021",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-021",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-022",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-ITEM-MEASURE"
+    },
+    {
+      "from": "GI-022",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-022",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-022",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-022",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-023",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-PACKAGE"
+    },
+    {
+      "from": "GI-023",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-023",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-023",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-023",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-023",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-024",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-PACKAGE"
+    },
+    {
+      "from": "GI-024",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-024",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-024",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-024",
+      "relation": "COMPOSES_WITH",
+      "to": "RF14"
+    },
+    {
+      "from": "GI-025",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-LOCATION-ROLE"
+    },
+    {
+      "from": "GI-025",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "GI-025",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-025",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "GI-025",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-025",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-025",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "GI-026",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-LOCATION-ROLE"
+    },
+    {
+      "from": "GI-026",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "GI-026",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-026",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "GI-026",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-026",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-026",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "GI-027",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-202"
+    },
+    {
+      "from": "GI-027",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-203"
+    },
+    {
+      "from": "GI-027",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-027",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-027",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-028",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-202"
+    },
+    {
+      "from": "GI-028",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-028",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-028",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-028",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-028",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-029",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-202"
+    },
+    {
+      "from": "GI-029",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-029",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-029",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-029",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-030",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-202"
+    },
+    {
+      "from": "GI-030",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-030",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-030",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-031",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-202"
+    },
+    {
+      "from": "GI-031",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-031",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-031",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-032",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-202"
+    },
+    {
+      "from": "GI-032",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-032",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-032",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-033",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-202"
+    },
+    {
+      "from": "GI-033",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-033",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-033",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-033",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-033",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-033",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-034",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-202"
+    },
+    {
+      "from": "GI-034",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-034",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-034",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-035",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-203"
+    },
+    {
+      "from": "GI-035",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-035",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-035",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-035",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-035",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-035",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-036",
+      "relation": "DERIVES_FROM",
+      "to": "EV-49CFR-172-203"
+    },
+    {
+      "from": "GI-036",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-036",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-036",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-036",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-036",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-037",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-ASSOCIATED-DOCUMENT"
+    },
+    {
+      "from": "GI-037",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-037",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-037",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "GI-037",
+      "relation": "INSTANTIATES",
+      "to": "SP-INSTRUCTION-NOTE"
+    },
+    {
+      "from": "GI-037",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-037",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-037",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-037",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-037",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-037",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-037",
+      "relation": "COMPOSES_WITH",
+      "to": "RF16"
+    },
+    {
+      "from": "GI-038",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-MONETARY"
+    },
+    {
+      "from": "GI-038",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-038",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-038",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-038",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-038",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-038",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-038",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-038",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-038",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-014",
+      "relation": "PRECEDES",
+      "to": "GI-015",
+      "scope": "PRO must be assigned/resolved before binding"
+    },
+    {
+      "from": "GI-015",
+      "relation": "PRECEDES",
+      "to": "GI-016"
+    },
+    {
+      "from": "GI-015",
+      "relation": "PRECEDES",
+      "to": "GI-017"
+    },
+    {
+      "from": "GI-016",
+      "relation": "DEPENDS_ON",
+      "to": "GI-015"
+    },
+    {
+      "from": "GI-017",
+      "relation": "DEPENDS_ON",
+      "to": "GI-015"
+    },
+    {
+      "from": "GI-016",
+      "relation": "ROUTES_TO",
+      "to": "EX-BOL-IDENTITY-NOT-FOUND",
+      "condition": "PRO target not found"
+    },
+    {
+      "from": "GI-017",
+      "relation": "ROUTES_TO",
+      "to": "EX-BOL-IDENTITY-NOT-FOUND",
+      "condition": "PRO target not found"
+    },
+    {
+      "from": "GI-002",
+      "relation": "ROUTES_TO",
+      "to": "EX-PARTY-IDENTITY-AMBIGUOUS",
+      "condition": "multiple valid consignee candidates remain"
+    },
+    {
+      "from": "GI-005",
+      "relation": "PRECEDES",
+      "to": "GI-006"
+    },
+    {
+      "from": "GI-006",
+      "relation": "DEPENDS_ON",
+      "to": "GI-023"
+    },
+    {
+      "from": "GI-006",
+      "relation": "ROUTES_TO",
+      "to": "EX-AGGREGATE-CHILD-MISMATCH",
+      "condition": "aggregate conflicts with governed child interpretation"
+    },
+    {
+      "from": "GI-023",
+      "relation": "PRECEDES",
+      "to": "GI-024"
+    },
+    {
+      "from": "GI-009",
+      "relation": "PRECEDES",
+      "to": "GI-010"
+    },
+    {
+      "from": "GI-022",
+      "relation": "ROUTES_TO",
+      "to": "EX-MEASURE-UNIT-MISSING",
+      "condition": "measure present without required unit"
+    },
+    {
+      "from": "GI-027",
+      "relation": "ACTIVATES",
+      "to": "GI-028"
+    },
+    {
+      "from": "GI-027",
+      "relation": "ACTIVATES",
+      "to": "GI-029"
+    },
+    {
+      "from": "GI-027",
+      "relation": "ACTIVATES",
+      "to": "GI-030"
+    },
+    {
+      "from": "GI-027",
+      "relation": "ACTIVATES",
+      "to": "GI-031"
+    },
+    {
+      "from": "GI-027",
+      "relation": "ACTIVATES",
+      "to": "GI-032"
+    },
+    {
+      "from": "GI-027",
+      "relation": "ACTIVATES",
+      "to": "GI-033"
+    },
+    {
+      "from": "GI-027",
+      "relation": "ACTIVATES",
+      "to": "GI-034"
+    },
+    {
+      "from": "GI-034",
+      "relation": "ROUTES_TO",
+      "to": "EX-HAZMAT-SEQUENCE-INVALID",
+      "condition": "basic description sequence invalid"
+    },
+    {
+      "from": "GI-018",
+      "relation": "ROUTES_TO",
+      "to": "EX-LOCATION-MASTER-NO-MATCH",
+      "condition": "no valid match in assigning-organization master"
+    },
+    {
+      "from": "GI-019",
+      "relation": "OVERRIDES_WITHIN_SCOPE",
+      "to": "GI-018",
+      "scope": "client/carrier binding may strengthen requiredness, not uniqueness semantics"
+    },
+    {
+      "from": "GI-037",
+      "relation": "DEPENDS_ON",
+      "to": "DF-ASSOCIATED-DOCUMENT-OBJECT"
+    },
+    {
+      "from": "GI-038",
+      "relation": "DEPENDS_ON",
+      "to": "DF-MONETARY-DISTINCT-FROM-MEASURE"
+    },
+    {
+      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "RF2",
+      "relation": "PRECEDES",
+      "to": "RF6",
+      "scope": "role/relationship resolution before master canonicalization"
+    },
+    {
+      "from": "RF1",
+      "relation": "PRECEDES",
+      "to": "RF3",
+      "scope": "identity resolution before lifecycle mutation"
+    },
+    {
+      "from": "RF7",
+      "relation": "ACTIVATES",
+      "to": "RF4",
+      "scope": "conditional requiredness"
+    },
+    {
+      "from": "RF7",
+      "relation": "ACTIVATES",
+      "to": "RF5",
+      "scope": "conditional controlled-value validation"
+    },
+    {
+      "from": "RF7",
+      "relation": "ACTIVATES",
+      "to": "RF10",
+      "scope": "conditional representation"
+    },
+    {
+      "from": "RF2",
+      "relation": "PRECEDES",
+      "to": "RF13",
+      "scope": "semantic owner before measure validation where owner ambiguous"
+    },
+    {
+      "from": "RF14",
+      "relation": "CONSTRAINS",
+      "to": "RF13",
+      "scope": "package hierarchy context constrains package-level measure"
+    },
+    {
+      "from": "RF9",
+      "relation": "CONSTRAINS",
+      "to": "RF6",
+      "scope": "source authority constrains canonicalization"
+    },
+    {
+      "from": "RF11",
+      "relation": "OVERRIDES_WITHIN_SCOPE",
+      "to": "RF4",
+      "scope": "client requiredness specialization only"
+    },
+    {
+      "from": "RF17",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "RF17",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "RF17",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "RF17",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    }
+  ],
+  "validation": {
+    "nodeCount": 108,
+    "edgeCount": 286,
+    "badEdgeCount": 0,
+    "generatedInstanceCount": 38,
+    "instancesMissingEvidence": [],
+    "instancesMissingFamily": [],
+    "instancesMissingPrimitive": []
+  }
+}
