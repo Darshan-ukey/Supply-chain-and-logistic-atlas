@@ -3342,6 +3342,114 @@
         "GI-113"
       ],
       "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "EV-DSDC-ITV-DELIVERY-PLANNING",
+      "type": "EVIDENCE",
+      "label": "DSDC In-Transit Visibility delivery planning, exception and completion semantics",
+      "sourceAuthority": "NMFTA/DSDC",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "current issuer standard as researched 2026-09-20",
+      "provenanceRef": "DSDC In-Transit Visibility API Standard issuer page"
+    },
+    {
+      "id": "DF-ITV-DELIVERY-PLANNING-VALUES",
+      "type": "DOMAIN_FACT",
+      "label": "Updated ETA estimated days in transit and remaining-stop count are planning/visibility values and do not establish delivery completion",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-DELIVERY-EXCEPTION-VOCAB",
+      "type": "DOMAIN_FACT",
+      "label": "Delivery exceptions use normalized event/reason vocabulary while carrier internal codes may map underneath with provenance",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-APPOINTMENT-NONMOVEMENT",
+      "type": "DOMAIN_FACT",
+      "label": "Appointment scheduled missed or rescheduled is non-movement operational information distinct from physical shipment milestone",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-DELIVERY-POD-SEPARATION",
+      "type": "DOMAIN_FACT",
+      "label": "Delivery completion receiver acknowledgement and proof-of-delivery availability are related but distinct semantics",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-115",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve updated delivery estimate days-in-transit and remaining-stop count as planning values without inferring delivered state",
+      "taskId": "LTL-03",
+      "scope": "IN_TRANSIT_VISIBILITY",
+      "lifecycleStage": "DELIVERY_PLANNING",
+      "semanticOwner": "SP-TEMPORAL-VALUE|SP-MEASURE|SP-STATE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "MAP_PLANNING_VALUES_NO_DELIVERY_INFERENCE"
+    },
+    {
+      "id": "GI-116",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Normalize delivery exception and reason/responsibility code while retaining carrier internal-code provenance and avoiding liability inference",
+      "taskId": "LTL-03",
+      "scope": "IN_TRANSIT_VISIBILITY",
+      "lifecycleStage": "DELIVERY_EXCEPTION",
+      "semanticOwner": "SP-EVENT|SP-CONTROLLED-VOCABULARY|SP-PARTY|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "NORMALIZE_RETAIN_SOURCE_NO_LIABILITY_INFERENCE"
+    },
+    {
+      "id": "GI-117",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Represent appointment scheduled missed or rescheduled as non-movement lifecycle change separate from shipment movement milestone",
+      "taskId": "LTL-03",
+      "scope": "IN_TRANSIT_VISIBILITY",
+      "lifecycleStage": "DELIVERY_APPOINTMENT",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-TEMPORAL-VALUE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PRESERVE_APPOINTMENT_LIFECYCLE_SEPARATELY"
+    },
+    {
+      "id": "GI-118",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Represent delivered state receiver acknowledgement and proof-of-delivery availability separately while preserving lifecycle relationships",
+      "taskId": "LTL-03",
+      "scope": "IN_TRANSIT_VISIBILITY",
+      "lifecycleStage": "DELIVERY_COMPLETION",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-PARTY|SP-DOCUMENT|SP-INDICATOR|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PRESERVE_COMPLETION_ACKNOWLEDGEMENT_POD_SEPARATION"
+    },
+    {
+      "id": "CBREQ-ITV-ETA-POLICY",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve carrier/client ETA calculation confidence and consumption policy before client-specific delivery-planning automation",
+      "clientScope": "CLIENT_OR_CARRIER_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-115"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "CBREQ-ITV-EXCEPTION-ACTION",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve carrier/client exception escalation thresholds and actions before client-specific exception automation",
+      "clientScope": "CLIENT_OR_CARRIER_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-116",
+        "GI-117"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "CBREQ-ITV-POD-POLICY",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve client/carrier POD retrieval retention and validation policy beyond industry availability semantics",
+      "clientScope": "CLIENT_OR_CARRIER_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-118"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
     }
   ],
   "edges": [
@@ -13747,13 +13855,432 @@
       "from": "GI-113",
       "relation": "REQUIRES_CLIENT_BINDING",
       "to": "CBREQ-PURV-DELAY-POLICY"
+    },
+    {
+      "from": "DF-ITV-DELIVERY-PLANNING-VALUES",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DELIVERY-PLANNING"
+    },
+    {
+      "from": "DF-ITV-DELIVERY-EXCEPTION-VOCAB",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DELIVERY-PLANNING"
+    },
+    {
+      "from": "DF-ITV-APPOINTMENT-NONMOVEMENT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DELIVERY-PLANNING"
+    },
+    {
+      "from": "DF-ITV-DELIVERY-POD-SEPARATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DELIVERY-PLANNING"
+    },
+    {
+      "from": "GI-115",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DELIVERY-PLANNING"
+    },
+    {
+      "from": "GI-116",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DELIVERY-PLANNING"
+    },
+    {
+      "from": "GI-117",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DELIVERY-PLANNING"
+    },
+    {
+      "from": "GI-118",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DELIVERY-PLANNING"
+    },
+    {
+      "from": "GI-115",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "GI-115",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-115",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-115",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-115",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-115",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-115",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-115",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-115",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-115",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-115",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-115",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-115",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-115",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-115",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-116",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-116",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-116",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-116",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-116",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-116",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-116",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-116",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-116",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-116",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-116",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-116",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CHANGE-EVENT"
+    },
+    {
+      "from": "GI-116",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-116",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-116",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-116",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-116",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-117",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-117",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-117",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "GI-117",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-117",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-117",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-117",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-117",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-117",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-117",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-117",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CHANGE-EVENT"
+    },
+    {
+      "from": "GI-117",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-117",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-117",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-117",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-117",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-118",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-118",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-118",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-118",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-118",
+      "relation": "INSTANTIATES",
+      "to": "SP-INDICATOR"
+    },
+    {
+      "from": "GI-118",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-118",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-118",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-118",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-118",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-118",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-118",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-118",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-118",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CUSTODY-HANDOFF"
+    },
+    {
+      "from": "GI-118",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-118",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-118",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-118",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-118",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "DF-ITV-DELIVERY-PLANNING-VALUES",
+      "relation": "CONSTRAINS",
+      "to": "GI-115",
+      "scope": "planning values do not establish delivery completion"
+    },
+    {
+      "from": "DF-ITV-DELIVERY-EXCEPTION-VOCAB",
+      "relation": "CONSTRAINS",
+      "to": "GI-116",
+      "scope": "normalize while retaining internal-code provenance and without liability inference"
+    },
+    {
+      "from": "DF-ITV-APPOINTMENT-NONMOVEMENT",
+      "relation": "CONSTRAINS",
+      "to": "GI-117",
+      "scope": "appointment lifecycle is non-movement information"
+    },
+    {
+      "from": "DF-ITV-DELIVERY-POD-SEPARATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-118",
+      "scope": "delivered state acknowledgement and POD availability remain separate"
+    },
+    {
+      "from": "GI-115",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-ETA-POLICY"
+    },
+    {
+      "from": "GI-116",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-EXCEPTION-ACTION"
+    },
+    {
+      "from": "GI-117",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-EXCEPTION-ACTION"
+    },
+    {
+      "from": "GI-118",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-POD-POLICY"
     }
   ],
   "validation": {
-    "nodeCount": 387,
-    "edgeCount": 1973,
+    "nodeCount": 399,
+    "edgeCount": 2056,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 114,
+    "generatedInstanceCount": 118,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
@@ -13765,9 +14292,9 @@
     "patternsMissingFamily": [],
     "patternsWithoutTaskInstances": [],
     "lastValidatedAt": "2026-09-20",
-    "generatedRuleInstanceCount": 114,
+    "generatedRuleInstanceCount": 118,
     "brokenEdgeCount": 0,
     "generatedInstancesMissingEvidencePrimitiveOrFamily": [],
-    "latestCheckpoint": "PFC_PURV_TRACK_B_CLIENT_BINDING_RECONCILIATION"
+    "latestCheckpoint": "ITV_DELIVERY_PLANNING_EXCEPTIONS_TWO_TRACK"
   }
 }
