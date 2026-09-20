@@ -1,7 +1,7 @@
 {
   "schemaVersion": "atlas-v2-agent-execution-queue-v19",
   "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v18",
-  "updatedAt": "2026-09-12T19:52:00+05:30",
+  "updatedAt": "2026-09-20T08:30:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
   "demoIntegrationTargetBranch": "main",
@@ -578,10 +578,50 @@
     }
   ],
   "demoSprintOpenItems": [
-    "BROWSER_VISUAL_VERIFICATION_NEVER_PERFORMED \u2014 still the single functional gap; no browser or headless driver available to either executor.",
+    "BROWSER_VISUAL_VERIFICATION_NEVER_PERFORMED — still the single functional gap; no browser or headless driver available to either executor.",
     "D2.0.0 CREATE_PRE_CHANGE_FULL_STATE_FREEZE never performed; cannot be recreated retroactively (D2.0.6 freeze is post-build only).",
     "D2.0.3-D2.0.5 are now CROSS_AGENT_AUDITED by ChatGPT (PASS). D2.0.6 remains executor self-reported and is open to the same independent audit.",
     "D2.0.7 auto-deploy conflict unresolved (see D2.0.7.recordedBlocker).",
     "DRIVE CUSTODY GAP: no D2.0.x demo-sprint artifact has been mirrored to Drive. Newest Drive content is AR0.1/AR0.2 dated 2026-09-11. Drive writes are returning \"No approval received\" to the connector."
+  ],
+  "forwardProductBuildBacklog": [
+    {
+      "stageId": "ATL-35",
+      "id": "ATL-35",
+      "name": "Research authoritative decomposition rules for LTL E5 tasks",
+      "status": "BLOCKED_PENDING_ATL_4_OWNER_AUTHORIZATION",
+      "owner": "CHATGPT",
+      "linearIssue": "ATL-35",
+      "relatedTo": [
+        "ATL-32"
+      ],
+      "objective": "Determine how far Atlas can generate Work Decomposition and WorkDefinitions deterministically from authoritative domain sources rather than using an LLM to invent the decomposition.",
+      "scope": [
+        "START_FROM_GOVERNED_LTL_E5_22_TASK_INVENTORY",
+        "IDENTIFY_AUTHORITATIVE_SOURCES_FOR_PROCESSES_SUBPROCESSES_ACTIVITIES_INFORMATION_DECISIONS_CONTROLS_HANDOFFS_AND_LIFECYCLE_EVENTS",
+        "DISTINGUISH_INDUSTRY_STANDARD_WORK_FROM_CARRIER_CLIENT_BPO_SPECIFIC_OPERATING_MODEL_WORK",
+        "BUILD_SOURCE_BACKED_DECOMPOSITION_MAP_BEGINNING_WITH_DOCUMENTATION_BOL",
+        "DERIVE_DETERMINISTIC_GENERATION_RULE_CANDIDATES_FROM_GOVERNED_DOMAIN_PRIMITIVES",
+        "IDENTIFY_RESIDUAL_GAPS_REQUIRING_CLIENT_SOP_OR_SME_EVIDENCE"
+      ],
+      "deliverables": [
+        "AUTHORITATIVE_SOURCE_HIERARCHY",
+        "22_TASK_EVIDENCE_AND_DECOMPOSITION_COVERAGE_MATRIX",
+        "DETAILED_BOL_DOCUMENTATION_WORKED_DECOMPOSITION",
+        "DETERMINISTIC_GENERATION_RULE_CANDIDATES",
+        "CLIENT_SOP_SME_KNOWLEDGE_GAPS",
+        "P6_1_REPLACEMENT_DESIGN_RECOMMENDATION"
+      ],
+      "guardrails": [
+        "LLM_MAY_RESEARCH_EXTRACT_NORMALIZE_AND_MAP_EVIDENCE_BUT_LLM_GENERATED_DECOMPOSITION_IS_NOT_AUTHORITATIVE_EVIDENCE",
+        "GOVERNED_DECOMPOSITION_MUST_BE_TRACEABLE_TO_AUTHORITATIVE_SOURCES_AND_RULES",
+        "DO_NOT_RECONSTRUCT_HISTORICAL_P6_1_GENERATOR",
+        "DO_NOT_TARGET_OR_MANUFACTURE_HISTORICAL_COUNTS",
+        "FORWARD_PRODUCT_BUILD_WORK_NOT_RECOVERY_REOPENING"
+      ],
+      "blockedBy": [
+        "ATL-4"
+      ]
+    }
   ]
 }
