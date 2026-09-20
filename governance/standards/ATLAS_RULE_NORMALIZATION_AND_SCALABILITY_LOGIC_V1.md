@@ -134,6 +134,52 @@ LTL-03 must prove both:
 1. one task can become execution-ready from authoritative evidence; and
 2. Atlas can discover a small reusable execution grammar that generates a much larger rule-instance universe.
 
+## Freeze boundary
+
+Atlas freezes the **mechanism**, not the rule-family catalogue.
+
+### Frozen mechanism
+The following are governing invariants unless explicitly changed by Owner governance:
+- every discovery begins from authoritative evidence / governed domain fact;
+- every discovery is mapped first to semantic primitives;
+- the existing rule-family catalogue must be searched before adding a new family;
+- existing families should be parameterized or composed where semantics genuinely fit;
+- a new family is created only when existing primitives/families are materially insufficient;
+- every specialization preserves authoritative provenance;
+- client/carrier/system variation is classified as Client Binding unless it changes canonical domain semantics;
+- runtime/tool-specific implementation remains in Tool Projection and must not leak into the Domain Execution Contract;
+- generated rule instances remain distinguishable from canonical reusable families;
+- unlike semantics must not be forcibly merged merely to reduce rule count;
+- scalability metrics and architectural-failure signals are continuously tracked.
+
+### Evolvable catalogue
+The set of:
+- semantic primitives;
+- reusable rule families;
+- parameters;
+- domain specializations;
+- generated instances;
+
+is expected to evolve as new authoritative evidence is discovered.
+
+Therefore RF1-RF16 are a **current candidate catalogue**, not a frozen ontology.
+
+A future evidence-backed RF17, RF18, or a revised primitive is valid when:
+1. the existing catalogue has been searched;
+2. composition/parameterization has been tested;
+3. the semantic distinction is material;
+4. evidence supports the distinction;
+5. the change is classified correctly as canonical domain logic rather than client binding or runtime projection.
+
+### Stability objective
+Atlas seeks convergence toward a reusable grammar, not a permanently fixed finite number of rules.
+
+Success means:
+- new evidence increasingly maps to existing primitives/families;
+- genuinely new semantics can still extend the catalogue;
+- generated instances grow much faster than canonical-family count;
+- catalogue growth remains evidence-driven and reviewable.
+
 ## Governance rule
 
 A research artifact may introduce a candidate new rule family only if it includes:
