@@ -3844,6 +3844,92 @@
       "label": "Jurisdiction broker and client-specific customs clearance decision rules require separate authoritative regulatory or client evidence",
       "scope": "CONDITIONAL_CROSS_BORDER",
       "status": "OPEN_SEPARATE_AUTHORITY_REQUIRED"
+    },
+    {
+      "id": "EV-DSDC-ITV-DAMAGE-SHORTAGE-LOSS",
+      "type": "EVIDENCE",
+      "label": "DSDC In-Transit Visibility damage shortage and loss exception semantics",
+      "sourceAuthority": "NMFTA/DSDC",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "issuer material current as researched 2026-09-20",
+      "provenanceRef": "DSDC In-Transit Visibility API Standard issuer material"
+    },
+    {
+      "id": "DF-ITV-DAMAGE-TYPED-EXCEPTION",
+      "type": "DOMAIN_FACT",
+      "label": "Damage is a typed shipment-lifecycle exception and does not by itself establish claim outcome or liability",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-SHORTAGE-LOSS-TYPED-EXCEPTION",
+      "type": "DOMAIN_FACT",
+      "label": "Shortage/loss is a typed shipment-lifecycle exception distinct from damage and final loss determination",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-EXCEPTION-ATTRIBUTION-LIABILITY-SEPARATION",
+      "type": "DOMAIN_FACT",
+      "label": "Operational reason/responsible-party attribution is distinct from legal or financial liability",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-135",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Represent damage as typed exception event linked to shipment lifecycle without inferring claim acceptance liability or financial outcome",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_EXCEPTION",
+      "lifecycleStage": "DAMAGE_EXCEPTION",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-PACKAGE|SP-PARTY|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PRESERVE_EXCEPTION_NO_CLAIM_OR_LIABILITY_INFERENCE"
+    },
+    {
+      "id": "GI-136",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Represent shortage/loss as typed exception and preserve only evidenced affected measure or package relationships without inferring final loss",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_EXCEPTION",
+      "lifecycleStage": "SHORTAGE_LOSS_EXCEPTION",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-MEASURE|SP-PACKAGE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PRESERVE_EVIDENCED_IMPACT_NO_FINAL_LOSS_INFERENCE"
+    },
+    {
+      "id": "GI-137",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Keep normalized operational reason/responsible-party attribution separate from legal and financial responsibility",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_EXCEPTION",
+      "lifecycleStage": "EXCEPTION_ATTRIBUTION",
+      "semanticOwner": "SP-CONTROLLED-VOCABULARY|SP-PARTY|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "NORMALIZE_ATTRIBUTION_NO_LIABILITY_INFERENCE"
+    },
+    {
+      "id": "GI-138",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Route damage or shortage/loss response only after carrier/client policy binding rather than deriving action from exception label",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_EXCEPTION",
+      "lifecycleStage": "EXCEPTION_RESPONSE",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD_WITH_CLIENT_SPECIALIZATION",
+      "dispositionPolicy": "BIND_RESPONSE_POLICY_BEFORE_ACTION"
+    },
+    {
+      "id": "CBREQ-ITV-DAMAGE-SHORTAGE-RESPONSE",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve carrier/client damage shortage/loss escalation inspection hold claims-handoff notification and local-code mapping policy",
+      "clientScope": "CLIENT_OR_CARRIER_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-135",
+        "GI-136",
+        "GI-137",
+        "GI-138",
+        "GI-102",
+        "GI-116"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
     }
   ],
   "edges": [
@@ -15958,13 +16044,396 @@
       "from": "GI-134",
       "relation": "DEPENDS_ON",
       "to": "KG-CUSTOMS-JURISDICTION-RULES"
+    },
+    {
+      "from": "DF-ITV-DAMAGE-TYPED-EXCEPTION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DAMAGE-SHORTAGE-LOSS"
+    },
+    {
+      "from": "DF-ITV-SHORTAGE-LOSS-TYPED-EXCEPTION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DAMAGE-SHORTAGE-LOSS"
+    },
+    {
+      "from": "DF-ITV-EXCEPTION-ATTRIBUTION-LIABILITY-SEPARATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DAMAGE-SHORTAGE-LOSS"
+    },
+    {
+      "from": "GI-135",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DAMAGE-SHORTAGE-LOSS"
+    },
+    {
+      "from": "GI-136",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DAMAGE-SHORTAGE-LOSS"
+    },
+    {
+      "from": "GI-137",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DAMAGE-SHORTAGE-LOSS"
+    },
+    {
+      "from": "GI-138",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-DAMAGE-SHORTAGE-LOSS"
+    },
+    {
+      "from": "GI-135",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-135",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-135",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-135",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-135",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-135",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-135",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-135",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-135",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-135",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-135",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CHANGE-EVENT"
+    },
+    {
+      "from": "GI-135",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-135",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-135",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-135",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-135",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-136",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-136",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-136",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-136",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-136",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-136",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-136",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-136",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-136",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-136",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-136",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-136",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-136",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-136",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-136",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-136",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-136",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-137",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-137",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-137",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-137",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-137",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-137",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-137",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-137",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-137",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-137",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-137",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-137",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-137",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-138",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-138",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-138",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-138",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-138",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-138",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-138",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-138",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-138",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-138",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-138",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-138",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-138",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-138",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "DF-ITV-DAMAGE-TYPED-EXCEPTION",
+      "relation": "CONSTRAINS",
+      "to": "GI-135",
+      "scope": "damage exception does not establish claim or liability"
+    },
+    {
+      "from": "DF-ITV-SHORTAGE-LOSS-TYPED-EXCEPTION",
+      "relation": "CONSTRAINS",
+      "to": "GI-136",
+      "scope": "shortage/loss distinct from damage and final loss"
+    },
+    {
+      "from": "DF-ITV-EXCEPTION-ATTRIBUTION-LIABILITY-SEPARATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-137",
+      "scope": "operational attribution does not establish legal liability"
+    },
+    {
+      "from": "GI-135",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-DAMAGE-SHORTAGE-RESPONSE"
+    },
+    {
+      "from": "GI-136",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-DAMAGE-SHORTAGE-RESPONSE"
+    },
+    {
+      "from": "GI-137",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-DAMAGE-SHORTAGE-RESPONSE"
+    },
+    {
+      "from": "GI-138",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-DAMAGE-SHORTAGE-RESPONSE"
+    },
+    {
+      "from": "GI-102",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-DAMAGE-SHORTAGE-RESPONSE"
+    },
+    {
+      "from": "GI-116",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-DAMAGE-SHORTAGE-RESPONSE"
     }
   ],
   "validation": {
-    "nodeCount": 443,
-    "edgeCount": 2311,
+    "nodeCount": 452,
+    "edgeCount": 2387,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 134,
+    "generatedInstanceCount": 138,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
@@ -15976,9 +16445,9 @@
     "patternsMissingFamily": [],
     "patternsWithoutTaskInstances": [],
     "lastValidatedAt": "2026-09-20",
-    "generatedRuleInstanceCount": 134,
+    "generatedRuleInstanceCount": 138,
     "brokenEdgeCount": 0,
     "generatedInstancesMissingEvidencePrimitiveOrFamily": [],
-    "latestCheckpoint": "ITV_CROSS_BORDER_CUSTOMS_TWO_TRACK"
+    "latestCheckpoint": "ITV_DAMAGE_SHORTAGE_LOSS_TWO_TRACK"
   }
 }
