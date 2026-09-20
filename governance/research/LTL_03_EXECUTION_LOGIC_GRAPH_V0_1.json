@@ -3754,6 +3754,96 @@
       "label": "Current formal publication/release state of DSDC LTL standards where first-party pages conflict",
       "scope": "LTL_REUSABLE",
       "status": "OPEN_SOURCE_RECONCILIATION_REQUIRED"
+    },
+    {
+      "id": "EV-DSDC-ITV-CROSSBORDER-CUSTOMS",
+      "type": "EVIDENCE",
+      "label": "DSDC In-Transit Visibility cross-border customs status and information-update semantics",
+      "sourceAuthority": "NMFTA/DSDC",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "issuer material current as researched 2026-09-20",
+      "provenanceRef": "DSDC In-Transit Visibility API Standard + API Standards catalogue"
+    },
+    {
+      "id": "DF-ITV-CUSTOMS-CONDITIONAL",
+      "type": "DOMAIN_FACT",
+      "label": "Cross-border customs-state contract is conditional and activates only where shipment/source evidence establishes applicability",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-CUSTOMS-STATE-SEPARATION",
+      "type": "DOMAIN_FACT",
+      "label": "In Bond Hold and Cleared Customs are customs-state values distinct from physical shipment movement milestone",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-CUSTOMS-INFO-NONMOVEMENT",
+      "type": "DOMAIN_FACT",
+      "label": "Customs Information Updated is non-movement operational information linked to customs-state lifecycle",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-131",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Activate cross-border customs contract only when authoritative shipment/source evidence establishes applicability",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_CROSS_BORDER",
+      "lifecycleStage": "CONDITIONAL_ACTIVATION",
+      "semanticOwner": "SP-INDICATOR|SP-STATE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACTIVATE_ONLY_IF_EVIDENCED"
+    },
+    {
+      "id": "GI-132",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Represent In Bond Hold or Cleared Customs as source-governed customs state separately from physical movement milestone",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_CROSS_BORDER",
+      "lifecycleStage": "CUSTOMS_STATE",
+      "semanticOwner": "SP-STATE|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PRESERVE_CUSTOMS_STATE_NO_MOVEMENT_INFERENCE"
+    },
+    {
+      "id": "GI-133",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Route Customs Information Updated as non-movement information event linked to customs-state lifecycle",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_CROSS_BORDER",
+      "lifecycleStage": "CUSTOMS_INFORMATION",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ROUTE_INFORMATION_EVENT_SEPARATELY"
+    },
+    {
+      "id": "GI-134",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Prevent legal financial duty brokerage or delivery-authorization inference from customs status label without separate authoritative evidence",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_CROSS_BORDER",
+      "lifecycleStage": "CUSTOMS_DECISION_BOUNDARY",
+      "semanticOwner": "SP-STATE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "NO_UNSOURCED_REGULATORY_INFERENCE"
+    },
+    {
+      "id": "CBREQ-ITV-CUSTOMS-SOURCE-MAPPING",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve client/carrier customs-state source fields mappings and temporal evidence before client-specific cross-border visibility automation",
+      "clientScope": "CLIENT_CARRIER_IMPLEMENTATION_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-131",
+        "GI-132",
+        "GI-133"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "KG-CUSTOMS-JURISDICTION-RULES",
+      "type": "KNOWLEDGE_GAP",
+      "label": "Jurisdiction broker and client-specific customs clearance decision rules require separate authoritative regulatory or client evidence",
+      "scope": "CONDITIONAL_CROSS_BORDER",
+      "status": "OPEN_SEPARATE_AUTHORITY_REQUIRED"
     }
   ],
   "edges": [
@@ -15560,13 +15650,321 @@
       "from": "GI-130",
       "relation": "DEPENDS_ON",
       "to": "KG-DSDC-PUBLICATION-STATE-RECONCILIATION"
+    },
+    {
+      "from": "DF-ITV-CUSTOMS-CONDITIONAL",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CROSSBORDER-CUSTOMS"
+    },
+    {
+      "from": "DF-ITV-CUSTOMS-STATE-SEPARATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CROSSBORDER-CUSTOMS"
+    },
+    {
+      "from": "DF-ITV-CUSTOMS-INFO-NONMOVEMENT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CROSSBORDER-CUSTOMS"
+    },
+    {
+      "from": "GI-131",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CROSSBORDER-CUSTOMS"
+    },
+    {
+      "from": "GI-132",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CROSSBORDER-CUSTOMS"
+    },
+    {
+      "from": "GI-133",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CROSSBORDER-CUSTOMS"
+    },
+    {
+      "from": "GI-134",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CROSSBORDER-CUSTOMS"
+    },
+    {
+      "from": "GI-131",
+      "relation": "INSTANTIATES",
+      "to": "SP-INDICATOR"
+    },
+    {
+      "from": "GI-131",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-131",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-131",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-131",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-131",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-131",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-131",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-131",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-131",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-131",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-132",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-132",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-132",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-132",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-132",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-132",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-132",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-132",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-132",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-132",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-132",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-132",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-133",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-133",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-133",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-133",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-133",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-133",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-133",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-133",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-133",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CHANGE-EVENT"
+    },
+    {
+      "from": "GI-133",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-133",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-133",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-133",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-134",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-134",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-134",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-134",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-134",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-134",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-134",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-134",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-134",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-134",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-134",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "DF-ITV-CUSTOMS-CONDITIONAL",
+      "relation": "CONSTRAINS",
+      "to": "GI-131",
+      "scope": "customs contract conditional on evidence"
+    },
+    {
+      "from": "DF-ITV-CUSTOMS-STATE-SEPARATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-132",
+      "scope": "customs state distinct from physical movement"
+    },
+    {
+      "from": "DF-ITV-CUSTOMS-INFO-NONMOVEMENT",
+      "relation": "CONSTRAINS",
+      "to": "GI-133",
+      "scope": "customs information update is non-movement event"
+    },
+    {
+      "from": "GI-131",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-CUSTOMS-SOURCE-MAPPING"
+    },
+    {
+      "from": "GI-132",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-CUSTOMS-SOURCE-MAPPING"
+    },
+    {
+      "from": "GI-133",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-CUSTOMS-SOURCE-MAPPING"
+    },
+    {
+      "from": "GI-134",
+      "relation": "DEPENDS_ON",
+      "to": "KG-CUSTOMS-JURISDICTION-RULES"
     }
   ],
   "validation": {
-    "nodeCount": 433,
-    "edgeCount": 2250,
+    "nodeCount": 443,
+    "edgeCount": 2311,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 130,
+    "generatedInstanceCount": 134,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
@@ -15578,9 +15976,9 @@
     "patternsMissingFamily": [],
     "patternsWithoutTaskInstances": [],
     "lastValidatedAt": "2026-09-20",
-    "generatedRuleInstanceCount": 130,
+    "generatedRuleInstanceCount": 134,
     "brokenEdgeCount": 0,
     "generatedInstancesMissingEvidencePrimitiveOrFamily": [],
-    "latestCheckpoint": "DSDC_PUBLICATION_STATE_CONFLICT_TWO_TRACK"
+    "latestCheckpoint": "ITV_CROSS_BORDER_CUSTOMS_TWO_TRACK"
   }
 }
