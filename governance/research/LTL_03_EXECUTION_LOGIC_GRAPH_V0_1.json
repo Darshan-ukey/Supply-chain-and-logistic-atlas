@@ -889,6 +889,196 @@
       "semanticOwner": "SP-INDICATOR",
       "sourceAuthorityClass": "SEMANTIC_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EX-REFERENCE-ASSIGNMENT-REQUIRED",
+      "type": "EXCEPTION",
+      "label": "REFERENCE_ASSIGNMENT_REQUIRED",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-PRO-NOT-ASSIGNED",
+      "type": "EXCEPTION",
+      "label": "PRO_NOT_ASSIGNED",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-PRO-DUPLICATE",
+      "type": "EXCEPTION",
+      "label": "PRO_DUPLICATE",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-PRO-TO-BOL-LINK-MISSING",
+      "type": "EXCEPTION",
+      "label": "PRO_TO_BOL_LINK_MISSING",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-REFERENCE-SOURCE-AUTHORITY-CONFLICT",
+      "type": "EXCEPTION",
+      "label": "REFERENCE_SOURCE_AUTHORITY_CONFLICT",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-PARTY-ROLE-AMBIGUOUS",
+      "type": "EXCEPTION",
+      "label": "PARTY_ROLE_AMBIGUOUS",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-LOCATION-ROLE-AMBIGUOUS",
+      "type": "EXCEPTION",
+      "label": "LOCATION_ROLE_AMBIGUOUS",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-LOCATION-MASTER-MULTIPLE-MATCH",
+      "type": "EXCEPTION",
+      "label": "LOCATION_MASTER_MULTIPLE_MATCH",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-ROLE-RELATIONSHIP-CONFLICT",
+      "type": "EXCEPTION",
+      "label": "ROLE_RELATIONSHIP_CONFLICT",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-CLIENT-ROLE-BINDING-MISSING",
+      "type": "EXCEPTION",
+      "label": "CLIENT_ROLE_BINDING_MISSING",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-SEMANTIC-LEVEL-AMBIGUOUS",
+      "type": "EXCEPTION",
+      "label": "SEMANTIC_LEVEL_AMBIGUOUS",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-QUANTITY-TYPE-AMBIGUOUS",
+      "type": "EXCEPTION",
+      "label": "QUANTITY_TYPE_AMBIGUOUS",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-MEASURE-UNIT-INVALID",
+      "type": "EXCEPTION",
+      "label": "MEASURE_UNIT_INVALID",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-PACKAGE-PARENT-MISSING",
+      "type": "EXCEPTION",
+      "label": "PACKAGE_PARENT_MISSING",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-PACKAGE-HIERARCHY-CONFLICT",
+      "type": "EXCEPTION",
+      "label": "PACKAGE_HIERARCHY_CONFLICT",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-ITEM-PACKAGE-RELATIONSHIP-AMBIGUOUS",
+      "type": "EXCEPTION",
+      "label": "ITEM_PACKAGE_RELATIONSHIP_AMBIGUOUS",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-INSTRUCTION-OWNER-AMBIGUOUS",
+      "type": "EXCEPTION",
+      "label": "INSTRUCTION_OWNER_AMBIGUOUS",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-BOL-CREATE-VALIDATION",
+      "type": "EXCEPTION",
+      "label": "BOL_CREATE_VALIDATION",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-BOL-UPDATE-VALIDATION",
+      "type": "EXCEPTION",
+      "label": "BOL_UPDATE_VALIDATION",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-BOL-DELETE-VALIDATION",
+      "type": "EXCEPTION",
+      "label": "BOL_DELETE_VALIDATION",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-BOL-DATA-VALIDATION",
+      "type": "EXCEPTION",
+      "label": "BOL_DATA_VALIDATION_EXCEPTION",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-HAZMAT-REQUIRED-DATA-MISSING",
+      "type": "EXCEPTION",
+      "label": "HAZMAT_REQUIRED_DATA_MISSING",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-HAZMAT-BASIC-DESCRIPTION-INVALID",
+      "type": "EXCEPTION",
+      "label": "HAZMAT_BASIC_DESCRIPTION_INVALID",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-HAZMAT-PACKAGE-QUANTITY-MISMATCH",
+      "type": "EXCEPTION",
+      "label": "HAZMAT_PACKAGE_QUANTITY_MISMATCH",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EX-HAZMAT-REFERENCE-DATA-MISMATCH",
+      "type": "EXCEPTION",
+      "label": "HAZMAT_REFERENCE_DATA_MISMATCH",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "CB-LOCATIONID-REQUIRED",
+      "type": "CLIENT_BINDING",
+      "label": "Client/carrier makes LocationID mandatory",
+      "clientScope": "CLIENT_OR_CARRIER_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-018",
+        "RF4"
+      ]
+    },
+    {
+      "id": "RP-MALKOM-IDP",
+      "type": "RUNTIME_PROJECTION",
+      "label": "Malkom / IDP projection",
+      "status": "PROJECTION_TARGET"
+    },
+    {
+      "id": "RP-RPA",
+      "type": "RUNTIME_PROJECTION",
+      "label": "RPA projection",
+      "status": "PROJECTION_TARGET"
+    },
+    {
+      "id": "RP-AI-AGENT",
+      "type": "RUNTIME_PROJECTION",
+      "label": "AI agent projection",
+      "status": "PROJECTION_TARGET"
+    },
+    {
+      "id": "RP-API",
+      "type": "RUNTIME_PROJECTION",
+      "label": "API / integration projection",
+      "status": "PROJECTION_TARGET"
+    },
+    {
+      "id": "RP-BPM",
+      "type": "RUNTIME_PROJECTION",
+      "label": "BPM / workflow projection",
+      "status": "PROJECTION_TARGET"
     }
   ],
   "edges": [
@@ -2369,17 +2559,1325 @@
       "from": "GI-039",
       "relation": "COMPOSES_WITH",
       "to": "RF11"
+    },
+    {
+      "from": "GI-014",
+      "relation": "ROUTES_TO",
+      "to": "EX-PRO-NOT-ASSIGNED",
+      "condition": "PRO required by applicable path but neither preassigned nor assigned"
+    },
+    {
+      "from": "GI-014",
+      "relation": "ROUTES_TO",
+      "to": "EX-PRO-DUPLICATE",
+      "condition": "duplicate/conflicting PRO detected"
+    },
+    {
+      "from": "GI-015",
+      "relation": "ROUTES_TO",
+      "to": "EX-PRO-TO-BOL-LINK-MISSING",
+      "condition": "PRO cannot be bound to BOL/consignment"
+    },
+    {
+      "from": "GI-011",
+      "relation": "ROUTES_TO",
+      "to": "EX-REFERENCE-SOURCE-AUTHORITY-CONFLICT",
+      "condition": "competing authoritative reference values unresolved"
+    },
+    {
+      "from": "GI-012",
+      "relation": "ROUTES_TO",
+      "to": "EX-REFERENCE-SOURCE-AUTHORITY-CONFLICT",
+      "condition": "competing authoritative reference values unresolved"
+    },
+    {
+      "from": "GI-001",
+      "relation": "ROUTES_TO",
+      "to": "EX-PARTY-ROLE-AMBIGUOUS",
+      "condition": "party role unresolved"
+    },
+    {
+      "from": "GI-002",
+      "relation": "ROUTES_TO",
+      "to": "EX-PARTY-ROLE-AMBIGUOUS",
+      "condition": "party role unresolved"
+    },
+    {
+      "from": "GI-003",
+      "relation": "ROUTES_TO",
+      "to": "EX-LOCATION-ROLE-AMBIGUOUS",
+      "condition": "origin/location role unresolved"
+    },
+    {
+      "from": "GI-004",
+      "relation": "ROUTES_TO",
+      "to": "EX-LOCATION-ROLE-AMBIGUOUS",
+      "condition": "destination/location role unresolved"
+    },
+    {
+      "from": "GI-018",
+      "relation": "ROUTES_TO",
+      "to": "EX-LOCATION-MASTER-MULTIPLE-MATCH",
+      "condition": "multiple valid scoped master matches"
+    },
+    {
+      "from": "GI-002",
+      "relation": "ROUTES_TO",
+      "to": "EX-ROLE-RELATIONSHIP-CONFLICT",
+      "condition": "resolved identity conflicts with consignee relationship"
+    },
+    {
+      "from": "GI-019",
+      "relation": "ROUTES_TO",
+      "to": "EX-CLIENT-ROLE-BINDING-MISSING",
+      "condition": "client-required binding absent"
+    },
+    {
+      "from": "GI-008",
+      "relation": "ROUTES_TO",
+      "to": "EX-SEMANTIC-LEVEL-AMBIGUOUS",
+      "condition": "parsed candidate owner unresolved"
+    },
+    {
+      "from": "GI-005",
+      "relation": "ROUTES_TO",
+      "to": "EX-QUANTITY-TYPE-AMBIGUOUS",
+      "condition": "quantity semantic unresolved"
+    },
+    {
+      "from": "GI-010",
+      "relation": "ROUTES_TO",
+      "to": "EX-MEASURE-UNIT-INVALID",
+      "condition": "unit supplied but invalid"
+    },
+    {
+      "from": "GI-024",
+      "relation": "ROUTES_TO",
+      "to": "EX-PACKAGE-PARENT-MISSING",
+      "condition": "hierarchy requires parent but parent unresolved"
+    },
+    {
+      "from": "GI-024",
+      "relation": "ROUTES_TO",
+      "to": "EX-PACKAGE-HIERARCHY-CONFLICT",
+      "condition": "invalid/cyclic/conflicting hierarchy"
+    },
+    {
+      "from": "GI-023",
+      "relation": "ROUTES_TO",
+      "to": "EX-ITEM-PACKAGE-RELATIONSHIP-AMBIGUOUS",
+      "condition": "package owner relationship unresolved"
+    },
+    {
+      "from": "GI-037",
+      "relation": "ROUTES_TO",
+      "to": "EX-INSTRUCTION-OWNER-AMBIGUOUS",
+      "condition": "document remark/instruction ownership unresolved"
+    },
+    {
+      "from": "RF3",
+      "relation": "ROUTES_TO",
+      "to": "EX-BOL-CREATE-VALIDATION",
+      "scope": "create transition validation"
+    },
+    {
+      "from": "RF3",
+      "relation": "ROUTES_TO",
+      "to": "EX-BOL-UPDATE-VALIDATION",
+      "scope": "update transition validation"
+    },
+    {
+      "from": "RF3",
+      "relation": "ROUTES_TO",
+      "to": "EX-BOL-DELETE-VALIDATION",
+      "scope": "delete/cancel transition validation"
+    },
+    {
+      "from": "RF8",
+      "relation": "ROUTES_TO",
+      "to": "EX-BOL-DATA-VALIDATION",
+      "scope": "generic data validation failure"
+    },
+    {
+      "from": "GI-027",
+      "relation": "ROUTES_TO",
+      "to": "EX-HAZMAT-REQUIRED-DATA-MISSING",
+      "condition": "activated hazmat contract missing required data"
+    },
+    {
+      "from": "GI-034",
+      "relation": "ROUTES_TO",
+      "to": "EX-HAZMAT-BASIC-DESCRIPTION-INVALID",
+      "condition": "basic description invalid beyond sequence"
+    },
+    {
+      "from": "GI-033",
+      "relation": "ROUTES_TO",
+      "to": "EX-HAZMAT-PACKAGE-QUANTITY-MISMATCH",
+      "condition": "package quantity/type inconsistent"
+    },
+    {
+      "from": "GI-028",
+      "relation": "ROUTES_TO",
+      "to": "EX-HAZMAT-REFERENCE-DATA-MISMATCH",
+      "condition": "regulatory identifier/reference mismatch"
+    },
+    {
+      "from": "GI-029",
+      "relation": "ROUTES_TO",
+      "to": "EX-HAZMAT-REFERENCE-DATA-MISMATCH",
+      "condition": "proper shipping name/reference mismatch"
+    },
+    {
+      "from": "GI-030",
+      "relation": "ROUTES_TO",
+      "to": "EX-HAZMAT-REFERENCE-DATA-MISMATCH",
+      "condition": "hazard class/reference mismatch"
+    },
+    {
+      "from": "CB-LOCATIONID-REQUIRED",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-PARTNER-SPECIALIZATION"
+    },
+    {
+      "from": "CB-LOCATIONID-REQUIRED",
+      "relation": "OVERRIDES_WITHIN_SCOPE",
+      "to": "GI-018",
+      "scope": "declared client/carrier"
+    },
+    {
+      "from": "GI-019",
+      "relation": "DEPENDS_ON",
+      "to": "CB-LOCATIONID-REQUIRED"
+    },
+    {
+      "from": "GI-001",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-001",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-001",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-001",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-001",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-002",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-002",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-002",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-002",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-002",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-003",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-003",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-003",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-003",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-003",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-004",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-004",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-004",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-004",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-004",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-005",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-005",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-005",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-005",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-005",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-006",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-006",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-006",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-006",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-006",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-007",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-007",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-007",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-007",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-007",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-008",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-008",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-008",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-008",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-008",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-009",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-009",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-009",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-009",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-009",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-010",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-010",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-010",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-010",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-010",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-011",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-011",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-011",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-011",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-011",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-012",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-012",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-012",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-012",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-012",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-013",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-013",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-013",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-013",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-013",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-014",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-014",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-014",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-014",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-014",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-015",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-015",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-015",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-015",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-015",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-016",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-016",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-016",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-016",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-016",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-017",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-017",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-017",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-017",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-017",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-018",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-018",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-018",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-018",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-018",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-019",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-019",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-019",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-019",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-019",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-020",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-020",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-020",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-020",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-020",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-021",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-021",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-021",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-021",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-021",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-022",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-022",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-022",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-022",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-022",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-023",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-023",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-023",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-023",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-023",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-024",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-024",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-024",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-024",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-024",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-025",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-025",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-025",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-025",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-025",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-026",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-026",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-026",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-026",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-026",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-027",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-027",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-027",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-027",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-027",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-028",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-028",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-028",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-028",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-028",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-029",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-029",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-029",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-029",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-029",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-030",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-030",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-030",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-030",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-030",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-031",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-031",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-031",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-031",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-031",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-032",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-032",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-032",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-032",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-032",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-033",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-033",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-033",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-033",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-033",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-034",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-034",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-034",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-034",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-034",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-035",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-035",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-035",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-035",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-035",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-036",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-036",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-036",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-036",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-036",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-037",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-037",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-037",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-037",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-037",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability is executor-specific; canonical semantics unchanged"
     }
   ],
   "validation": {
-    "nodeCount": 110,
-    "edgeCount": 292,
+    "nodeCount": 141,
+    "edgeCount": 509,
     "badEdgeCount": 0,
     "generatedInstanceCount": 39,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
     "instancesMissingRequiredFields": [],
-    "strandedEvidence": []
+    "strandedEvidence": [],
+    "exceptionCount": 31,
+    "unlinkedExceptions": [
+      "EX-REFERENCE-ASSIGNMENT-REQUIRED"
+    ],
+    "clientBindingCount": 1,
+    "unlinkedClientBindings": [],
+    "runtimeProjectionCount": 5,
+    "coreInstancesMissingProjectionLinks": []
   }
 }
