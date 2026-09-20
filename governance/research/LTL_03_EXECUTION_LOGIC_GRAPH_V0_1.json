@@ -2610,6 +2610,116 @@
       "semanticOwner": "SP-TEMPORAL-VALUE|SP-EVIDENCE-PROVENANCE|SP-CONTROLLED-VOCABULARY",
       "sourceAuthorityClass": "INDUSTRY_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-NMFTA-HANDLING-UNIT-DEFINITION",
+      "type": "EVIDENCE",
+      "label": "NMFTA Handling Unit definition and hierarchy",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "updated 2026-03-16",
+      "provenanceRef": "NMFTA NMFC Classification Glossary"
+    },
+    {
+      "id": "EV-NMFTA-MIXED-HU-DENSITY",
+      "type": "EVIDENCE",
+      "label": "NMFTA multiple handling-unit density ownership rule",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "updated 2026-03-16",
+      "provenanceRef": "NMFTA mixed-freight package/skid/crate guidance"
+    },
+    {
+      "id": "EV-NMFTA-PACKAGING-CLASSIFICATION",
+      "type": "EVIDENCE",
+      "label": "NMFTA packaging/form-of-shipment classification relevance",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "2026",
+      "provenanceRef": "NMFTA packaging/classification and interpretation guidance"
+    },
+    {
+      "id": "EV-NMFTA-BOL-COUNT-DISTINCTION",
+      "type": "EVIDENCE",
+      "label": "NMFTA BOL piece count versus handling-unit count distinction",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "current public guidance",
+      "provenanceRef": "NMFTA BOL common errors guidance"
+    },
+    {
+      "id": "DF-HANDLING-UNIT-SEMANTIC",
+      "type": "DOMAIN_FACT",
+      "label": "Handling Unit is a tendered handling object distinct from individual pieces/packages",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-UNITIZED-PACKAGE-HIERARCHY",
+      "type": "DOMAIN_FACT",
+      "label": "Unitized packages/articles remain children of the complete tendered handling unit",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-DENSITY-PER-HANDLING-UNIT",
+      "type": "DOMAIN_FACT",
+      "label": "Multiple handling units normally retain individual density ownership unless governed aggregate treatment applies",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-PACKAGING-CLASSIFICATION-RELEVANCE",
+      "type": "DOMAIN_FACT",
+      "label": "Packaging type/form of shipment can affect classification context",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-PIECE-HANDLING-COUNT-DISTINCTION",
+      "type": "DOMAIN_FACT",
+      "label": "Piece count and handling-unit count are distinct quantity semantics",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-084",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Instantiate handling unit separately from contained packages/articles",
+      "taskId": "LTL-03",
+      "scope": "CORE_AND_BROADER_BOL",
+      "lifecycleStage": "DOCUMENT_CONTEXTUALIZATION",
+      "semanticOwner": "SP-PACKAGE|SP-COMMODITY-ITEM|SP-RELATIONSHIP|SP-COLLECTION-CARDINALITY",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-085",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve density ownership per handling unit unless governed aggregate treatment applies",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "CLASSIFICATION",
+      "semanticOwner": "SP-PACKAGE|SP-MEASURE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-086",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve piece count separately from handling-unit count",
+      "taskId": "LTL-03",
+      "scope": "CORE_AND_BROADER_BOL",
+      "lifecycleStage": "DOCUMENT_CONTEXTUALIZATION",
+      "semanticOwner": "SP-PACKAGE|SP-COLLECTION-CARDINALITY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-087",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Bind packaging type/form of shipment to commodity and handling-unit classification context",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "CLASSIFICATION",
+      "semanticOwner": "SP-PACKAGE|SP-COMMODITY-ITEM|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -10284,13 +10394,347 @@
       "relation": "CONSTRAINS",
       "to": "GI-081",
       "scope": "class mapping must use applicable effective/version context"
+    },
+    {
+      "from": "DF-HANDLING-UNIT-SEMANTIC",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-HANDLING-UNIT-DEFINITION"
+    },
+    {
+      "from": "DF-UNITIZED-PACKAGE-HIERARCHY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-HANDLING-UNIT-DEFINITION"
+    },
+    {
+      "from": "DF-DENSITY-PER-HANDLING-UNIT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-MIXED-HU-DENSITY"
+    },
+    {
+      "from": "DF-PACKAGING-CLASSIFICATION-RELEVANCE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-PACKAGING-CLASSIFICATION"
+    },
+    {
+      "from": "DF-PIECE-HANDLING-COUNT-DISTINCTION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-BOL-COUNT-DISTINCTION"
+    },
+    {
+      "from": "GI-084",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-HANDLING-UNIT-DEFINITION"
+    },
+    {
+      "from": "GI-084",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-084",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-084",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-084",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-084",
+      "relation": "COMPOSES_WITH",
+      "to": "RF14"
+    },
+    {
+      "from": "GI-084",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-084",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-084",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REPEATING-CHILD-OBJECT"
+    },
+    {
+      "from": "GI-084",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-084",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-084",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-084",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-084",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-085",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-MIXED-HU-DENSITY"
+    },
+    {
+      "from": "GI-085",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-085",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-085",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-085",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-085",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "GI-085",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-085",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-085",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-085",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-085",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-085",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-085",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-085",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-086",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-BOL-COUNT-DISTINCTION"
+    },
+    {
+      "from": "GI-086",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-086",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-086",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-086",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-086",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "GI-086",
+      "relation": "COMPOSES_WITH",
+      "to": "RF14"
+    },
+    {
+      "from": "GI-086",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-086",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REPEATING-CHILD-OBJECT"
+    },
+    {
+      "from": "GI-086",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-086",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-086",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-086",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-086",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-087",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-PACKAGING-CLASSIFICATION"
+    },
+    {
+      "from": "GI-087",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-087",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-087",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-087",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-087",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-087",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-087",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-087",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-087",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-087",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-087",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-087",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-087",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-087",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-084",
+      "relation": "PRECEDES",
+      "to": "GI-085",
+      "scope": "handling-unit hierarchy must resolve before density ownership"
+    },
+    {
+      "from": "GI-084",
+      "relation": "PRECEDES",
+      "to": "GI-086",
+      "scope": "handling-unit versus child-piece structure before count reconciliation"
+    },
+    {
+      "from": "GI-087",
+      "relation": "COMPOSES_WITH",
+      "to": "GI-081",
+      "scope": "packaging/form-of-shipment participates in classification context"
+    },
+    {
+      "from": "DF-DENSITY-PER-HANDLING-UNIT",
+      "relation": "CONSTRAINS",
+      "to": "GI-080",
+      "scope": "density ownership is normally handling-unit level"
     }
   ],
   "validation": {
-    "nodeCount": 301,
-    "edgeCount": 1433,
+    "nodeCount": 314,
+    "edgeCount": 1499,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 83,
+    "generatedInstanceCount": 87,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
