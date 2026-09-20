@@ -1,7 +1,7 @@
 {
   "schemaVersion": "atlas-v2-agent-execution-queue-v19",
   "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v18",
-  "updatedAt": "2026-09-20T08:35:00+05:30",
+  "updatedAt": "2026-09-20T08:45:00+05:30",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
   "demoIntegrationTargetBranch": "main",
@@ -626,7 +626,9 @@
       ],
       "blockedBy": [
         "ATL-4"
-      ]
+      ],
+      "methodologyStandardPath": "governance/standards/ATLAS_EXECUTION_READINESS_DERIVATION_METHOD_V1.md",
+      "methodologyDriveUrl": "https://docs.google.com/document/d/12SRbTomHs-_sEZusn7JY2msMwEZ7zMCqOPhJE7q2vDs/edit?usp=drivesdk"
     }
   ]
 }
