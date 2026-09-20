@@ -3549,6 +3549,61 @@
         "GI-121"
       ],
       "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-FAQ-AUTH",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL FAQ partner-agreed authentication and runtime security boundary",
+      "sourceAuthority": "NMFTA/DSDC",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "eBOL Version 2.1 issuer FAQ current as researched 2026-09-20",
+      "provenanceRef": "DSDC eBOL API Standard issuer FAQ"
+    },
+    {
+      "id": "DF-EBOL-AUTH-PARTNER-SCOPED",
+      "type": "DOMAIN_FACT",
+      "label": "eBOL authentication method is partner/implementation scoped rather than prescribed reusable LTL business semantics",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-EBOL-SECURITY-DOMAIN-SEPARATION",
+      "type": "DOMAIN_FACT",
+      "label": "Authentication success and BOL business-content validity are independent conditions",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-123",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Require explicit partner authentication binding before activating client-specific eBOL API exchange without inventing the mechanism",
+      "taskId": "LTL-03",
+      "scope": "EBOL_API_SECURITY",
+      "lifecycleStage": "API_ACTIVATION",
+      "semanticOwner": "SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD_WITH_PARTNER_SPECIALIZATION",
+      "dispositionPolicy": "BLOCK_API_ACTIVATION_UNTIL_AUTH_BINDING"
+    },
+    {
+      "id": "GI-124",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Keep authentication credential and endpoint configuration outside canonical BOL facts while preserving deployment dependency and provenance",
+      "taskId": "LTL-03",
+      "scope": "EBOL_API_SECURITY",
+      "lifecycleStage": "RUNTIME_PROJECTION",
+      "semanticOwner": "SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "PARTNER_IMPLEMENTATION",
+      "dispositionPolicy": "BIND_AT_RUNTIME_NO_DOMAIN_PROMOTION"
+    },
+    {
+      "id": "CBREQ-EBOL-AUTH-SECURITY",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve partner authentication method credential/token mechanism endpoint security configuration and operational ownership before eBOL API activation",
+      "clientScope": "CLIENT_PARTNER_IMPLEMENTATION_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-123",
+        "GI-124",
+        "GI-096"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
     }
   ],
   "edges": [
@@ -14732,13 +14787,150 @@
       "from": "GI-121",
       "relation": "REQUIRES_CLIENT_BINDING",
       "to": "CBREQ-EBOL-NULLABILITY-CONTRACT"
+    },
+    {
+      "from": "DF-EBOL-AUTH-PARTNER-SCOPED",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-AUTH"
+    },
+    {
+      "from": "DF-EBOL-SECURITY-DOMAIN-SEPARATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-AUTH"
+    },
+    {
+      "from": "GI-123",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-AUTH"
+    },
+    {
+      "from": "GI-124",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-AUTH"
+    },
+    {
+      "from": "GI-123",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-123",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-123",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-123",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-123",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-123",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-123",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-123",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-123",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-124",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-124",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-124",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-124",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-124",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-124",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION"
+    },
+    {
+      "from": "GI-124",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-124",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-124",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "DF-EBOL-AUTH-PARTNER-SCOPED",
+      "relation": "CONSTRAINS",
+      "to": "GI-123",
+      "scope": "do not invent or canonicalize partner authentication mechanism"
+    },
+    {
+      "from": "DF-EBOL-SECURITY-DOMAIN-SEPARATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-124",
+      "scope": "security state does not establish BOL business validity and vice versa"
+    },
+    {
+      "from": "GI-123",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-EBOL-AUTH-SECURITY"
+    },
+    {
+      "from": "GI-124",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-EBOL-AUTH-SECURITY"
+    },
+    {
+      "from": "GI-096",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-EBOL-AUTH-SECURITY"
     }
   ],
   "validation": {
-    "nodeCount": 410,
-    "edgeCount": 2127,
+    "nodeCount": 416,
+    "edgeCount": 2154,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 122,
+    "generatedInstanceCount": 124,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
@@ -14750,9 +14942,9 @@
     "patternsMissingFamily": [],
     "patternsWithoutTaskInstances": [],
     "lastValidatedAt": "2026-09-20",
-    "generatedRuleInstanceCount": 122,
+    "generatedRuleInstanceCount": 124,
     "brokenEdgeCount": 0,
     "generatedInstancesMissingEvidencePrimitiveOrFamily": [],
-    "latestCheckpoint": "EBOL_ERROR_NULLABILITY_TWO_TRACK"
+    "latestCheckpoint": "EBOL_AUTH_SECURITY_BOUNDARY_TWO_TRACK"
   }
 }
