@@ -1907,6 +1907,293 @@
       "semanticOwner": "SP-EVENT|SP-STATE|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP",
       "sourceAuthorityClass": "INDUSTRY_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "RPAT-LTL-IDENTITY-BEFORE-MUTATION",
+      "type": "REUSABLE_EXECUTION_PATTERN",
+      "label": "Identity before lifecycle mutation",
+      "scope": "LTL_REUSABLE",
+      "primitiveIds": [
+        "SP-IDENTIFIER",
+        "SP-REFERENCE",
+        "SP-RELATIONSHIP",
+        "SP-STATE"
+      ],
+      "familyIds": [
+        "RF1",
+        "RF2",
+        "RF3",
+        "RF9"
+      ],
+      "allowedParameters": [
+        "objectType",
+        "identifierType",
+        "lifecycleAction",
+        "uniquenessScope"
+      ],
+      "prohibitedAssumptions": [
+        "Do not mutate before identity resolution",
+        "Do not assume global uniqueness"
+      ],
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RPAT-LTL-ROLE-BEFORE-MASTER",
+      "type": "REUSABLE_EXECUTION_PATTERN",
+      "label": "Role before master reconciliation",
+      "scope": "LTL_REUSABLE",
+      "primitiveIds": [
+        "SP-PARTY",
+        "SP-LOCATION",
+        "SP-RELATIONSHIP",
+        "SP-MASTER-REFERENCE"
+      ],
+      "familyIds": [
+        "RF2",
+        "RF6",
+        "RF9",
+        "RF8"
+      ],
+      "allowedParameters": [
+        "roleType",
+        "masterType",
+        "sourceAuthority"
+      ],
+      "prohibitedAssumptions": [
+        "Do not master-match before role resolution"
+      ],
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RPAT-LTL-CONDITIONAL-CONTRACT",
+      "type": "REUSABLE_EXECUTION_PATTERN",
+      "label": "Conditional contract activation",
+      "scope": "LTL_REUSABLE",
+      "primitiveIds": [
+        "SP-STATE",
+        "SP-CONTROLLED-VOCABULARY",
+        "SP-RELATIONSHIP"
+      ],
+      "familyIds": [
+        "RF7",
+        "RF4",
+        "RF5",
+        "RF10",
+        "RF8"
+      ],
+      "allowedParameters": [
+        "condition",
+        "requiredFields",
+        "controlledValues",
+        "representation"
+      ],
+      "prohibitedAssumptions": [
+        "Do not activate without governed trigger"
+      ],
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RPAT-LTL-MEASURE-WITH-OWNER",
+      "type": "REUSABLE_EXECUTION_PATTERN",
+      "label": "Measure with semantic owner",
+      "scope": "LTL_REUSABLE",
+      "primitiveIds": [
+        "SP-MEASURE",
+        "SP-RELATIONSHIP",
+        "SP-EVIDENCE-PROVENANCE"
+      ],
+      "familyIds": [
+        "RF2",
+        "RF13",
+        "RF9",
+        "RF12"
+      ],
+      "allowedParameters": [
+        "measureType",
+        "semanticOwner",
+        "unit",
+        "sourceAuthority"
+      ],
+      "prohibitedAssumptions": [
+        "Do not collapse distinct measure semantics",
+        "Do not overwrite source measure"
+      ],
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RPAT-LTL-EVENT-LIFECYCLE",
+      "type": "REUSABLE_EXECUTION_PATTERN",
+      "label": "Operational event lifecycle",
+      "scope": "LTL_REUSABLE",
+      "primitiveIds": [
+        "SP-EVENT",
+        "SP-STATE",
+        "SP-TEMPORAL-VALUE",
+        "SP-RELATIONSHIP"
+      ],
+      "familyIds": [
+        "RF3",
+        "RF18",
+        "RF2",
+        "RF5",
+        "RF8",
+        "RF9"
+      ],
+      "allowedParameters": [
+        "eventType",
+        "state",
+        "temporalRole",
+        "locationRole"
+      ],
+      "prohibitedAssumptions": [
+        "Do not collapse scheduled/estimated/actual",
+        "Do not replace lifecycle state with exception notification"
+      ],
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RPAT-LTL-CHANGE-EVENT",
+      "type": "REUSABLE_EXECUTION_PATTERN",
+      "label": "Semantic change event with optional charge",
+      "scope": "LTL_REUSABLE",
+      "primitiveIds": [
+        "SP-EVENT",
+        "SP-TEMPORAL-VALUE",
+        "SP-EVIDENCE-PROVENANCE",
+        "SP-MONETARY-AMOUNT"
+      ],
+      "familyIds": [
+        "RF3",
+        "RF18",
+        "RF13",
+        "RF5",
+        "RF17",
+        "RF2",
+        "RF9",
+        "RF12",
+        "RF11"
+      ],
+      "allowedParameters": [
+        "changedSemantic",
+        "oldValue",
+        "newValue",
+        "reason",
+        "chargeImpact"
+      ],
+      "prohibitedAssumptions": [
+        "Do not model change as silent overwrite"
+      ],
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RPAT-LTL-REPEATING-CHILD-OBJECT",
+      "type": "REUSABLE_EXECUTION_PATTERN",
+      "label": "Repeating child object",
+      "scope": "LTL_REUSABLE",
+      "primitiveIds": [
+        "SP-COLLECTION-CARDINALITY",
+        "SP-RELATIONSHIP",
+        "SP-IDENTIFIER"
+      ],
+      "familyIds": [
+        "RF4",
+        "RF2",
+        "RF1",
+        "RF5",
+        "RF12",
+        "RF14"
+      ],
+      "allowedParameters": [
+        "childType",
+        "ownerType",
+        "cardinality",
+        "hierarchy"
+      ],
+      "prohibitedAssumptions": [
+        "Do not flatten repeating children"
+      ],
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION",
+      "type": "REUSABLE_EXECUTION_PATTERN",
+      "label": "Scoped client requiredness specialization",
+      "scope": "LTL_REUSABLE",
+      "primitiveIds": [
+        "SP-EVIDENCE-PROVENANCE"
+      ],
+      "familyIds": [
+        "RF11",
+        "RF4",
+        "RF9"
+      ],
+      "allowedParameters": [
+        "clientScope",
+        "baseRequiredness",
+        "localRequiredness"
+      ],
+      "prohibitedAssumptions": [
+        "Do not rewrite canonical industry truth"
+      ],
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RPAT-LTL-MONETARY-CHARGE",
+      "type": "REUSABLE_EXECUTION_PATTERN",
+      "label": "Monetary amount and charge semantics",
+      "scope": "LTL_REUSABLE",
+      "primitiveIds": [
+        "SP-MONETARY-AMOUNT",
+        "SP-PARTY",
+        "SP-RELATIONSHIP",
+        "SP-CONTROLLED-VOCABULARY"
+      ],
+      "familyIds": [
+        "RF17",
+        "RF5",
+        "RF2",
+        "RF9",
+        "RF11",
+        "RF12"
+      ],
+      "allowedParameters": [
+        "amountType",
+        "currency",
+        "payerRole",
+        "chargeCategory"
+      ],
+      "prohibitedAssumptions": [
+        "Do not model currency as physical unit"
+      ],
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "RPAT-LTL-REFERENCE-GROUPING",
+      "type": "REUSABLE_EXECUTION_PATTERN",
+      "label": "Reference-linked grouping",
+      "scope": "LTL_REUSABLE",
+      "primitiveIds": [
+        "SP-IDENTIFIER",
+        "SP-REFERENCE",
+        "SP-RELATIONSHIP",
+        "SP-COLLECTION-CARDINALITY"
+      ],
+      "familyIds": [
+        "RF1",
+        "RF2",
+        "RF4",
+        "RF14",
+        "RF9"
+      ],
+      "allowedParameters": [
+        "referenceType",
+        "groupingObject",
+        "cardinality"
+      ],
+      "prohibitedAssumptions": [
+        "Do not treat grouping reference as unrelated string"
+      ],
+      "status": "CANDIDATE_EVOLVABLE"
     }
   ],
   "edges": [
@@ -7495,11 +7782,731 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-014",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-IDENTITY-BEFORE-MUTATION"
+    },
+    {
+      "from": "GI-015",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-IDENTITY-BEFORE-MUTATION"
+    },
+    {
+      "from": "GI-016",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-IDENTITY-BEFORE-MUTATION"
+    },
+    {
+      "from": "GI-017",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-IDENTITY-BEFORE-MUTATION"
+    },
+    {
+      "from": "GI-060",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-IDENTITY-BEFORE-MUTATION"
+    },
+    {
+      "from": "GI-061",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-IDENTITY-BEFORE-MUTATION"
+    },
+    {
+      "from": "GI-001",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-002",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-003",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-004",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-018",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-025",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-026",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-055",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-027",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-028",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-029",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-030",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-031",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-032",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-033",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-034",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-035",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-036",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-058",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-009",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-010",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-020",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-021",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-022",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-032",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-063",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-064",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-065",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-066",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-043",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-044",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-067",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-068",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-069",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-070",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-062",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CHANGE-EVENT"
+    },
+    {
+      "from": "GI-023",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REPEATING-CHILD-OBJECT"
+    },
+    {
+      "from": "GI-037",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REPEATING-CHILD-OBJECT"
+    },
+    {
+      "from": "GI-041",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REPEATING-CHILD-OBJECT"
+    },
+    {
+      "from": "GI-045",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REPEATING-CHILD-OBJECT"
+    },
+    {
+      "from": "GI-049",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REPEATING-CHILD-OBJECT"
+    },
+    {
+      "from": "GI-053",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REPEATING-CHILD-OBJECT"
+    },
+    {
+      "from": "GI-019",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION"
+    },
+    {
+      "from": "GI-038",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MONETARY-CHARGE"
+    },
+    {
+      "from": "GI-040",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MONETARY-CHARGE"
+    },
+    {
+      "from": "GI-042",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MONETARY-CHARGE"
+    },
+    {
+      "from": "GI-047",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MONETARY-CHARGE"
+    },
+    {
+      "from": "GI-058",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MONETARY-CHARGE"
+    },
+    {
+      "from": "GI-062",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MONETARY-CHARGE"
+    },
+    {
+      "from": "GI-015",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REFERENCE-GROUPING"
+    },
+    {
+      "from": "GI-060",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REFERENCE-GROUPING"
+    },
+    {
+      "from": "GI-061",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REFERENCE-GROUPING"
+    },
+    {
+      "from": "RPAT-LTL-IDENTITY-BEFORE-MUTATION",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "RPAT-LTL-IDENTITY-BEFORE-MUTATION",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "RPAT-LTL-IDENTITY-BEFORE-MUTATION",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "RPAT-LTL-IDENTITY-BEFORE-MUTATION",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "RPAT-LTL-IDENTITY-BEFORE-MUTATION",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "RPAT-LTL-IDENTITY-BEFORE-MUTATION",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "RPAT-LTL-IDENTITY-BEFORE-MUTATION",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "RPAT-LTL-IDENTITY-BEFORE-MUTATION",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "RPAT-LTL-ROLE-BEFORE-MASTER",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "RPAT-LTL-ROLE-BEFORE-MASTER",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "RPAT-LTL-ROLE-BEFORE-MASTER",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "RPAT-LTL-ROLE-BEFORE-MASTER",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "RPAT-LTL-ROLE-BEFORE-MASTER",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "RPAT-LTL-ROLE-BEFORE-MASTER",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "RPAT-LTL-ROLE-BEFORE-MASTER",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "RPAT-LTL-ROLE-BEFORE-MASTER",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "RPAT-LTL-CONDITIONAL-CONTRACT",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "RPAT-LTL-CONDITIONAL-CONTRACT",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "RPAT-LTL-CONDITIONAL-CONTRACT",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "RPAT-LTL-CONDITIONAL-CONTRACT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "RPAT-LTL-CONDITIONAL-CONTRACT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "RPAT-LTL-CONDITIONAL-CONTRACT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "RPAT-LTL-CONDITIONAL-CONTRACT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "RPAT-LTL-CONDITIONAL-CONTRACT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "RPAT-LTL-MEASURE-WITH-OWNER",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "RPAT-LTL-MEASURE-WITH-OWNER",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "RPAT-LTL-MEASURE-WITH-OWNER",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "RPAT-LTL-MEASURE-WITH-OWNER",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "RPAT-LTL-MEASURE-WITH-OWNER",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "RPAT-LTL-MEASURE-WITH-OWNER",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "RPAT-LTL-MEASURE-WITH-OWNER",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "RPAT-LTL-EVENT-LIFECYCLE",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "RPAT-LTL-EVENT-LIFECYCLE",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "RPAT-LTL-EVENT-LIFECYCLE",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "RPAT-LTL-EVENT-LIFECYCLE",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "RPAT-LTL-EVENT-LIFECYCLE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "RPAT-LTL-EVENT-LIFECYCLE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "RPAT-LTL-EVENT-LIFECYCLE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "RPAT-LTL-EVENT-LIFECYCLE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "RPAT-LTL-EVENT-LIFECYCLE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "RPAT-LTL-EVENT-LIFECYCLE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "RPAT-LTL-CHANGE-EVENT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "RPAT-LTL-REPEATING-CHILD-OBJECT",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "RPAT-LTL-REPEATING-CHILD-OBJECT",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "RPAT-LTL-REPEATING-CHILD-OBJECT",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "RPAT-LTL-REPEATING-CHILD-OBJECT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "RPAT-LTL-REPEATING-CHILD-OBJECT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "RPAT-LTL-REPEATING-CHILD-OBJECT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "RPAT-LTL-REPEATING-CHILD-OBJECT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "RPAT-LTL-REPEATING-CHILD-OBJECT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "RPAT-LTL-REPEATING-CHILD-OBJECT",
+      "relation": "COMPOSES_WITH",
+      "to": "RF14"
+    },
+    {
+      "from": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "RPAT-LTL-MONETARY-CHARGE",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "RPAT-LTL-MONETARY-CHARGE",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "RPAT-LTL-MONETARY-CHARGE",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "RPAT-LTL-MONETARY-CHARGE",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "RPAT-LTL-MONETARY-CHARGE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "RPAT-LTL-MONETARY-CHARGE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "RPAT-LTL-MONETARY-CHARGE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "RPAT-LTL-MONETARY-CHARGE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "RPAT-LTL-MONETARY-CHARGE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "RPAT-LTL-MONETARY-CHARGE",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "RPAT-LTL-REFERENCE-GROUPING",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "RPAT-LTL-REFERENCE-GROUPING",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "RPAT-LTL-REFERENCE-GROUPING",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "RPAT-LTL-REFERENCE-GROUPING",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "RPAT-LTL-REFERENCE-GROUPING",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "RPAT-LTL-REFERENCE-GROUPING",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "RPAT-LTL-REFERENCE-GROUPING",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "RPAT-LTL-REFERENCE-GROUPING",
+      "relation": "COMPOSES_WITH",
+      "to": "RF14"
+    },
+    {
+      "from": "RPAT-LTL-REFERENCE-GROUPING",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
     }
   ],
   "validation": {
-    "nodeCount": 244,
-    "edgeCount": 1029,
+    "nodeCount": 254,
+    "edgeCount": 1173,
     "badEdgeCount": 0,
     "generatedInstanceCount": 70,
     "instancesMissingEvidence": [],
@@ -7507,6 +8514,10 @@
     "instancesMissingFamily": [],
     "strandedEvidence": [],
     "unusedFamilies": [],
-    "unusedPrimitives": []
+    "unusedPrimitives": [],
+    "reusablePatternCount": 10,
+    "patternsMissingPrimitive": [],
+    "patternsMissingFamily": [],
+    "patternsWithoutTaskInstances": []
   }
 }
