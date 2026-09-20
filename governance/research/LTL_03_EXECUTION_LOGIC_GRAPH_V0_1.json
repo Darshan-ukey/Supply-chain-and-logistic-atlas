@@ -1212,6 +1212,80 @@
       "semanticOwner": "SP-DOCUMENT|SP-TEMPORAL-VALUE|SP-IDENTIFIER|SP-RELATIONSHIP|SP-STATE",
       "sourceAuthorityClass": "SEMANTIC_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-UNECE-D23B-TRANSPORT-SERVICE",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B Transport Service semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B Supply Chain Consignment Transport Service"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-2.1-CODE-FAMILIES",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL 2.1 controlled schema families",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "B",
+      "versionOrEffectiveDate": "eBOL 2.1.0",
+      "provenanceRef": "NMFTA Digital LTL Standards Site schema list"
+    },
+    {
+      "id": "DF-TRANSPORT-SERVICE-REPEATS",
+      "type": "DOMAIN_FACT",
+      "label": "Consignment may contain 0..n Transport Service objects",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-TRANSPORT-SERVICE-COMPOSITE",
+      "type": "DOMAIN_FACT",
+      "label": "Transport Service is a composite object with controlled attributes and optional charge",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-NMFTA-CONTROLLED-FAMILIES",
+      "type": "DOMAIN_FACT",
+      "label": "NMFTA eBOL publishes controlled schema families without currently verified BOL_Request property placement",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "SP-TRANSPORT-SERVICE",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Transport Service"
+    },
+    {
+      "id": "GI-045",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Instantiate and bind repeating Transport Service objects",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-TRANSPORT-SERVICE|SP-RELATIONSHIP|SP-COLLECTION-CARDINALITY",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-046",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate Transport Service controlled attributes",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-TRANSPORT-SERVICE|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-047",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate optional Transport Service charge",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-TRANSPORT-SERVICE|SP-MONETARY-AMOUNT",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -4406,13 +4480,236 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "DF-TRANSPORT-SERVICE-REPEATS",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "DF-TRANSPORT-SERVICE-COMPOSITE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "DF-NMFTA-CONTROLLED-FAMILIES",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-CODE-FAMILIES"
+    },
+    {
+      "from": "GI-045",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "GI-045",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "GI-045",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-045",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-045",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-045",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-046",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "GI-046",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "GI-046",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-046",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-046",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-046",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-047",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "GI-047",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "GI-047",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-047",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-047",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-047",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-047",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-045",
+      "relation": "PRECEDES",
+      "to": "GI-046",
+      "scope": "service object binding before controlled-attribute validation"
+    },
+    {
+      "from": "GI-045",
+      "relation": "PRECEDES",
+      "to": "GI-047",
+      "scope": "service object binding before charge validation"
+    },
+    {
+      "from": "DF-NMFTA-CONTROLLED-FAMILIES",
+      "relation": "CORROBORATES",
+      "to": "RF5",
+      "scope": "confirms issuer controlled vocabulary families; exact BOL_Request placement unresolved"
+    },
+    {
+      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "relation": "BLOCKED_BY",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "GI-045",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-045",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-045",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-045",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-045",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-046",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-046",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-046",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-046",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-046",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-047",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-047",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-047",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-047",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-047",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
     }
   ],
   "validation": {
-    "nodeCount": 157,
-    "edgeCount": 586,
+    "nodeCount": 166,
+    "edgeCount": 627,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 44,
+    "generatedInstanceCount": 47,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
