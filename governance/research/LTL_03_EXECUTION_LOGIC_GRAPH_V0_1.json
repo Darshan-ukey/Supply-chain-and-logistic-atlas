@@ -1079,6 +1079,139 @@
       "type": "RUNTIME_PROJECTION",
       "label": "BPM / workflow projection",
       "status": "PROJECTION_TARGET"
+    },
+    {
+      "id": "EV-UNECE-D23B-SERVICE-CHARGE",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B consignment service charge semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B Consignment Applicable Service Charge / Logistics Service Charge"
+    },
+    {
+      "id": "EV-UNECE-D23B-AMOUNT",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B Amount value/currency semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B Amount type"
+    },
+    {
+      "id": "EV-UNECE-D23B-DOCUMENT-TEMPORAL",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B document issue/revision temporal semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B Document / Exchanged Document temporal attributes"
+    },
+    {
+      "id": "EV-UNECE-D23B-DOCUMENT-LINEAGE",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B document version/revision lineage semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B Exchanged Document version/revision identifiers"
+    },
+    {
+      "id": "DF-MONETARY-AMOUNT-CURRENCY",
+      "type": "DOMAIN_FACT",
+      "label": "Monetary amount has value content and optional currency identifier",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-SERVICE-CHARGE-REPEATS",
+      "type": "DOMAIN_FACT",
+      "label": "Service charges repeat at consignment and item level",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-SERVICE-CHARGE-ROLE",
+      "type": "DOMAIN_FACT",
+      "label": "Service charge includes category/payment/paying-party semantics",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-DOCUMENT-TEMPORAL-ROLES",
+      "type": "DOMAIN_FACT",
+      "label": "Document issue/first-version/revision/cancellation times are distinct roles",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-DOCUMENT-VERSION-LINEAGE",
+      "type": "DOMAIN_FACT",
+      "label": "Document version and revision identifiers establish lineage",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-DOCUMENT-TEMPORAL-ORDER",
+      "type": "DOMAIN_FACT",
+      "label": "Document lineage creates temporal ordering/dependency",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "RF18",
+      "type": "RULE_FAMILY",
+      "label": "Temporal & Version Semantics",
+      "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "GI-040",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate service-charge amount and currency",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-MONETARY-AMOUNT",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-041",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Instantiate and bind repeating service charges",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-MONETARY-AMOUNT|SP-RELATIONSHIP|SP-COLLECTION-CARDINALITY",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-042",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate service-charge category, payment arrangement and paying-party role",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-MONETARY-AMOUNT|SP-PARTY|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-043",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve document temporal role and normalize time representation",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-DOCUMENT|SP-TEMPORAL-VALUE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-044",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate document version/revision lineage and temporal ordering",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-DOCUMENT|SP-TEMPORAL-VALUE|SP-IDENTIFIER|SP-RELATIONSHIP|SP-STATE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -3865,20 +3998,426 @@
       "relation": "ROUTES_TO",
       "to": "EX-REFERENCE-ASSIGNMENT-REQUIRED",
       "condition": "required reference assignment path exists but no valid identifier is available"
+    },
+    {
+      "from": "DF-MONETARY-AMOUNT-CURRENCY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-AMOUNT"
+    },
+    {
+      "from": "DF-SERVICE-CHARGE-REPEATS",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-SERVICE-CHARGE"
+    },
+    {
+      "from": "DF-SERVICE-CHARGE-ROLE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-SERVICE-CHARGE"
+    },
+    {
+      "from": "DF-DOCUMENT-TEMPORAL-ROLES",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-DOCUMENT-TEMPORAL"
+    },
+    {
+      "from": "DF-DOCUMENT-VERSION-LINEAGE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-DOCUMENT-LINEAGE"
+    },
+    {
+      "from": "DF-DOCUMENT-TEMPORAL-ORDER",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-DOCUMENT-TEMPORAL"
+    },
+    {
+      "from": "DF-DOCUMENT-TEMPORAL-ORDER",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-DOCUMENT-LINEAGE"
+    },
+    {
+      "from": "GI-040",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-AMOUNT"
+    },
+    {
+      "from": "GI-040",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-SERVICE-CHARGE"
+    },
+    {
+      "from": "GI-040",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-040",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-040",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-041",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-SERVICE-CHARGE"
+    },
+    {
+      "from": "GI-041",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-041",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-041",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-041",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-041",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-041",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-042",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-SERVICE-CHARGE"
+    },
+    {
+      "from": "GI-042",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-042",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-042",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-042",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-042",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-042",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-042",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-043",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-DOCUMENT-TEMPORAL"
+    },
+    {
+      "from": "GI-043",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-043",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "GI-043",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-043",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-044",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-DOCUMENT-TEMPORAL"
+    },
+    {
+      "from": "GI-044",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-DOCUMENT-LINEAGE"
+    },
+    {
+      "from": "GI-044",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-044",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "GI-044",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-044",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-044",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-044",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-044",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-044",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-044",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-044",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-041",
+      "relation": "PRECEDES",
+      "to": "GI-040",
+      "scope": "service-charge collection/owner before amount validation"
+    },
+    {
+      "from": "GI-041",
+      "relation": "PRECEDES",
+      "to": "GI-042",
+      "scope": "service-charge object binding before category/payer validation"
+    },
+    {
+      "from": "GI-044",
+      "relation": "DEPENDS_ON",
+      "to": "GI-043",
+      "scope": "temporal role normalization before lineage ordering validation"
+    },
+    {
+      "from": "RF18",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "RF18",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "RF18",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "RF18",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-040",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-040",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-040",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-040",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-040",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-041",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-041",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-041",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-041",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-041",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-042",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-042",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-042",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-042",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-042",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-043",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-043",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-043",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-043",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-043",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-044",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-044",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-044",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-044",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-044",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
     }
   ],
   "validation": {
-    "nodeCount": 141,
-    "edgeCount": 510,
+    "nodeCount": 157,
+    "edgeCount": 586,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 39,
+    "generatedInstanceCount": 44,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
     "strandedEvidence": [],
-    "unlinkedExceptions": [],
     "unusedFamilies": [],
-    "unusedPrimitives": [],
-    "coreInstancesMissingProjectionLinks": []
+    "unusedPrimitives": []
   }
 }
