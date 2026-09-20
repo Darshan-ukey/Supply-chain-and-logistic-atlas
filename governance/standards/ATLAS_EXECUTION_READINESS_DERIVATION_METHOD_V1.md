@@ -143,3 +143,86 @@ For each completed research work package, preserve a recovery-ready custody pack
 - resulting WorkDefinition/execution-readiness artifacts.
 
 The objective is that Atlas can be reconstructed from governed evidence and deterministic rules without relying on conversational memory or regenerating historical counts.
+
+
+## Three-Layer Execution-Readiness Architecture — Owner Alignment 2026-09-20
+
+Atlas execution readiness is governed through three explicit layers:
+
+### Layer 1 — Work Decomposition
+Purpose: determine what business work exists and how it decomposes into executable units.
+
+It answers:
+- what task/process/subprocess/activity exists;
+- why it exists;
+- what triggers it;
+- what information/decision/action/control/evidence is involved;
+- what dependencies or blockers exist;
+- when decomposition has reached an executor-ready atomic unit.
+
+Example for BOL work:
+create/validate transport document -> establish identity -> establish parties -> establish locations -> capture references -> capture handling units -> capture commodity/line-item information -> validate relationships -> resolve exceptions -> establish canonical representation.
+
+### Layer 2 — Domain Execution Contract
+Purpose: determine what an executor must know to perform each work unit correctly and contextually.
+
+This is the contextualization layer and contains, as applicable:
+- canonical information objects and fields;
+- identity/reference relationships;
+- master-data dependencies;
+- field/object source authority and precedence;
+- decision and business rules;
+- regulatory and client-conditional requirements;
+- validation and reconciliation logic;
+- lifecycle/state-transition rules;
+- confidence/ambiguity handling;
+- exception classes and queues;
+- authority/permissions;
+- evidence/audit requirements;
+- retry/idempotency and recovery rules.
+
+This layer is technology-neutral. It is the canonical business execution contract.
+
+### Layer 3 — Tool Projection
+Purpose: translate the same governed Domain Execution Contract into the configuration/instructions required by a specific execution technology.
+
+Examples:
+- Malkom / IDP: extraction schema, normalization, contextualization, master lookups, validation, correction/enrichment, confidence thresholds, exception routing.
+- RPA: screens/fields, deterministic branching, lookups, update steps, retries and error routing.
+- AI agent: approved tools, accessible context, permissions, rule boundaries, confidence thresholds, escalation policy and evidence requirements.
+- API / integration: endpoint, payload, response mapping, idempotency, correlation, status/error handling.
+- BPM/workflow engine: state transitions, queues, timers, routing and approvals.
+
+The business knowledge must remain stable across projections; only the execution mechanism changes.
+
+### Canonical chain
+Authoritative sources + governed client knowledge -> Work Decomposition -> Domain Execution Contract -> Tool Projection -> External executor.
+
+Atlas does not execute.
+
+## BOL Contextualization Proof Hypothesis
+
+For LTL-03, the primary proof is not whether Atlas improves OCR/extraction itself. The proof is whether governed operational knowledge can improve post-extraction contextual accuracy and therefore increase touchless processing.
+
+Test hypothesis:
+Extraction quality may already be adequate for many fields; the larger gap is semantic/contextual resolution.
+
+Compare:
+1. extraction-only output;
+2. extraction + Atlas contextualization rules.
+
+Measure separately:
+- raw extraction accuracy;
+- post-contextualization accuracy;
+- automatic correction/enrichment rate;
+- ambiguity-resolution rate;
+- human-exception rate;
+- touchless/billable completion rate.
+
+Every unresolved field/decision should be classifiable as one of:
+- resolvable from authoritative industry/domain knowledge;
+- resolvable from client/carrier-specific knowledge;
+- resolvable from governed master/reference data;
+- genuinely ambiguous and requiring human judgment.
+
+This classification is a required output of the Domain Execution Contract for the LTL-03 proof.
