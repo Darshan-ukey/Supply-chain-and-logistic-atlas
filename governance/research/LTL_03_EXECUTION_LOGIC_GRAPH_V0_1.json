@@ -3859,25 +3859,26 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability is executor-specific; canonical semantics unchanged"
+    },
+    {
+      "from": "GI-014",
+      "relation": "ROUTES_TO",
+      "to": "EX-REFERENCE-ASSIGNMENT-REQUIRED",
+      "condition": "required reference assignment path exists but no valid identifier is available"
     }
   ],
   "validation": {
     "nodeCount": 141,
-    "edgeCount": 509,
+    "edgeCount": 510,
     "badEdgeCount": 0,
     "generatedInstanceCount": 39,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
-    "instancesMissingRequiredFields": [],
     "strandedEvidence": [],
-    "exceptionCount": 31,
-    "unlinkedExceptions": [
-      "EX-REFERENCE-ASSIGNMENT-REQUIRED"
-    ],
-    "clientBindingCount": 1,
-    "unlinkedClientBindings": [],
-    "runtimeProjectionCount": 5,
+    "unlinkedExceptions": [],
+    "unusedFamilies": [],
+    "unusedPrimitives": [],
     "coreInstancesMissingProjectionLinks": []
   }
 }
