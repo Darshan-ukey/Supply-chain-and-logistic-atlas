@@ -1499,6 +1499,70 @@
       "type": "DOMAIN_FACT",
       "label": "NMFTA Requestor_Roles and UN/CEFACT Requestor role corroborate role-family semantics",
       "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "EV-UNECE-D23B-CONSIGNMENT-ITEM-TYPE",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B Consignment Item type/type-extension semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B Consignment Item Type Code / Type Extension Code"
+    },
+    {
+      "id": "EV-UNECE-TRANSPORT-SERVICE-PRIORITY",
+      "type": "EVIDENCE",
+      "label": "UNECE transport service priority semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "CURRENT_SEMANTIC_STANDARD_AS_RESEARCHED_2026-09-20",
+      "provenanceRef": "UNECE UN/EDIFACT 4219 / TSR Transport Service Requirements"
+    },
+    {
+      "id": "DF-ITEM-TYPE-CLASSIFICATION",
+      "type": "DOMAIN_FACT",
+      "label": "Consignment Item Type and Type Extension are item-owned classification semantics",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-CLASSIFICATION-NOT-YET-NMFC",
+      "type": "DOMAIN_FACT",
+      "label": "Current evidence does not establish equivalence between item type/NMFTA Classification_Codes and NMFC or freight class",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-TRANSPORT-PRIORITY-SERVICE-SEMANTIC",
+      "type": "DOMAIN_FACT",
+      "label": "Transport priority is a controlled TransportService semantic",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-TIME-CRITICAL-NOT-TIMESTAMP",
+      "type": "DOMAIN_FACT",
+      "label": "Time-critical/service-priority code is not inherently a TemporalValue",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "GI-056",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate Consignment Item Type and Type Extension with item ownership preserved",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-COMMODITY-ITEM|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-057",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate transport-service priority as controlled service attribute",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-TRANSPORT-SERVICE|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -5621,13 +5685,197 @@
       "relation": "CORROBORATES",
       "to": "GI-055",
       "scope": "requestor role-family semantics; exact NMFTA property placement unresolved"
+    },
+    {
+      "from": "DF-ITEM-TYPE-CLASSIFICATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-CONSIGNMENT-ITEM-TYPE"
+    },
+    {
+      "from": "DF-CLASSIFICATION-NOT-YET-NMFC",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-CONSIGNMENT-ITEM-TYPE"
+    },
+    {
+      "from": "DF-CLASSIFICATION-NOT-YET-NMFC",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-CODE-FAMILIES"
+    },
+    {
+      "from": "DF-TRANSPORT-PRIORITY-SERVICE-SEMANTIC",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-TRANSPORT-SERVICE-PRIORITY"
+    },
+    {
+      "from": "DF-TIME-CRITICAL-NOT-TIMESTAMP",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-TRANSPORT-SERVICE-PRIORITY"
+    },
+    {
+      "from": "DF-TIME-CRITICAL-NOT-TIMESTAMP",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-CODE-FAMILIES"
+    },
+    {
+      "from": "GI-056",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-CONSIGNMENT-ITEM-TYPE"
+    },
+    {
+      "from": "GI-056",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-056",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-056",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-056",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-056",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-056",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-057",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-TRANSPORT-SERVICE-PRIORITY"
+    },
+    {
+      "from": "GI-057",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "GI-057",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-057",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-057",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-057",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-057",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-045",
+      "relation": "PRECEDES",
+      "to": "GI-057",
+      "scope": "TransportService ownership before priority validation"
+    },
+    {
+      "from": "DF-NMFTA-CLASSIFICATION-FAMILY",
+      "relation": "CONFLICTS_WITH",
+      "to": "DF-ITEM-TYPE-CLASSIFICATION",
+      "scope": "Not a semantic contradiction; equivalence is unresolved and must not be assumed"
+    },
+    {
+      "from": "DF-NMFTA-TIME-CRITICAL-FAMILY",
+      "relation": "CORROBORATES",
+      "to": "DF-TRANSPORT-PRIORITY-SERVICE-SEMANTIC",
+      "scope": "possible service-level relation only; exact NMFTA equivalence unresolved"
+    },
+    {
+      "from": "DF-NMFTA-TIME-CRITICAL-FAMILY",
+      "relation": "CONSTRAINS",
+      "to": "DF-TIME-CRITICAL-NOT-TIMESTAMP",
+      "scope": "do not map code family to TemporalValue without property-level evidence"
+    },
+    {
+      "from": "GI-056",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-056",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-056",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-056",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-056",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-057",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-057",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-057",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-057",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-057",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
     }
   ],
   "validation": {
-    "nodeCount": 193,
-    "edgeCount": 757,
+    "nodeCount": 201,
+    "edgeCount": 791,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 55,
+    "generatedInstanceCount": 57,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
