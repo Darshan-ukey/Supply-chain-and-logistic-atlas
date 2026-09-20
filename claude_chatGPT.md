@@ -1313,3 +1313,143 @@ The earlier empirical transfer finding must also be scoped correctly: the unsafe
 An unexpected Road LTL `READY` result at ATL-6 is a serious governance/resolver defect and must fail closed.
 
 **Next authorized operational owner: Claude on ATL-6.**
+
+
+---
+
+# CHATGPT → CLAUDE HANDOFF — ATL-37 LTL-03 FREEZE-CANDIDATE INDEPENDENT QA
+
+**Date:** 2026-09-20 20:30 IST  
+**Owner direction:** Claude to pick up the next governed stage from this shared log.  
+**Prior stage:** ATL-35 research / continuous normalization  
+**Current disposition:** `LTL-03 = FREEZE_CANDIDATE_AWAITING_INDEPENDENT_QA`  
+**Next stage:** `ATL-37 — Independent QA — P6.1 successor generator against LTL-03 BOL evidence`
+
+## 1. What changed since the prior shared-log work
+
+ATL-35 was completed as a bounded research-side freeze candidate rather than an open-ended LTL research program.
+
+Broad exploratory research is now closed. Research may reopen only for a specific QA/closure defect; unresolved client/SOP/regulatory knowledge remains explicit rather than being inferred.
+
+The authoritative NMFTA/DSDC eBOL 2.1 YAML was recovered and normalized, closing the prior exact `BOL_Request` property/nesting/cardinality retrieval gap.
+
+The required Road LTL 22-task coverage matrix was also materialized, establishing where the LTL-03 machinery transfers and where future task-specific authoritative depth is required.
+
+## 2. Immutable handoff references
+
+**Freeze-candidate manifest**  
+Path: `governance/research/ATL_35_LTL_03_FREEZE_CANDIDATE_MANIFEST_V0_1.md`  
+Commit: `7779b9ee26fad6969ee8ce421445dbaec7c8399f`
+
+**Frozen candidate graph**  
+Path: `governance/research/LTL_03_EXECUTION_LOGIC_GRAPH_V0_1.json`  
+Frozen blob SHA: `fdc4cb3ee5bdd5a1abcd7416357727bf73f9bb8e`
+
+**Authoritative eBOL 2.1 schema closure**  
+Artifact: `governance/research/LTL_03_NMFTA_EBOL21_BOL_REQUEST_SCHEMA_CLOSURE_V0_1.md`  
+Research commit: `1b835974298b7121c203dd6afd7f602616c85c5d`  
+Graph materialization commit: `2cddde4513842c6da4f7bd27f603fb6374cae78f`  
+Source filename: `ebol-apiv2.1.0.yaml`  
+Exact uploaded-source SHA-256: `39715755793a2f39ee290e17f3997cb1bd7cadf001e5531f4a61093df1094e8c`
+
+**Research coverage ledger**  
+Path: `governance/research/LTL_03_RESEARCH_COVERAGE_LEDGER_V0_1.md`  
+Commit: `7a9bcd2fe801a73e71f4c48739ebf44a4690f4ab`
+
+**22-task coverage matrix**  
+Path: `governance/research/ATL_35_ROAD_LTL_22_TASK_COVERAGE_MATRIX_V0_1.md`  
+Commit: `5bb20a1caf40c22e97575da89746be743485d945`
+
+**Coverage/closure audit**  
+Commit: `ec224bda1fd8a61efaad2559e54ecc5e37cf41b3`
+
+## 3. Frozen candidate state to independently verify
+
+Expected graph state:
+- 471 nodes
+- 2,538 typed edges
+- 69 evidence nodes
+- 149 domain facts
+- 21 semantic primitives
+- 18 rule families
+- 148 generated rule instances
+- 31 explicit exceptions
+- 11 reusable execution patterns
+- 15 explicit Client Binding requirements
+- 3 explicit Knowledge Gaps
+- 5 runtime projection types
+
+Research-side validation reports:
+- 0 broken edges
+- 0 stranded evidence
+- 0 unused primitives
+- 0 unused rule families
+- 0 generated instances missing evidence
+- 0 generated instances missing primitive linkage
+- 0 generated instances missing rule-family linkage
+- 0 reusable patterns missing primitive/family/task-instance linkage
+
+These are **claims to verify independently**, not QA evidence to accept on trust.
+
+## 4. Three intentionally unresolved Knowledge Gaps
+
+1. `KG-LTL-CHARGEABLE-WEIGHT-RATING-FORMULA` — no universal authoritative LTL DIM/chargeable-weight formula established.
+2. `KG-DSDC-PUBLICATION-STATE-RECONCILIATION` — conflicting first-party DSDC publication/release-state metadata; conflict/provenance must remain explicit.
+3. `KG-CUSTOMS-JURISDICTION-RULES` — jurisdiction/broker/client-specific customs decisions require separate regulatory/client authority.
+
+Do not close these by model inference.
+
+## 5. Client Binding boundary
+
+There are 15 explicit Client Binding requirement nodes. They cover charge liability/payer/dispute treatment; pickup readiness/equipment/delay; ETA policy; exception action; POD policy; eBOL custom errors/nullability/auth/security; visibility subscription/exposure; customs source mapping; damage/shortage/loss response; and reconsignment/missed-delivery/accessorial policy.
+
+Independent QA must confirm these remain unresolved until client/carrier/partner evidence is supplied and that local specialization cannot rewrite canonical industry truth.
+
+## 6. 22-task transfer boundary
+
+Coverage matrix result:
+- A — reuse/materialize: 8 tasks
+- B — reuse + targeted evidence: 8 tasks
+- C — task-specific authoritative research required: 6 tasks
+- D — whole-task primarily Client Binding: 0
+
+16/22 tasks can substantially reuse the current semantic/generative foundation. This is a **reuse/readiness classification**, not a claim that 73% of all detailed LTL knowledge is complete or that the other 21 tasks are execution-ready.
+
+Do not open six new deep research streams during ATL-37. The six C tasks are future depth/validation requirements unless QA identifies a direct defect in the LTL-03 freeze candidate.
+
+## 7. Required independent QA — minimum contract
+
+Claude should independently inspect the immutable candidate and report PASS / FAIL / PASS-WITH-BINDING-CORRECTIONS for:
+
+1. **Artifact integrity** — referenced files/commits exist; graph parses; source fingerprints and immutable references are coherent.
+2. **Graph integrity** — expected counts; zero broken references; generated-instance evidence/primitive/family linkage; reusable-pattern linkage.
+3. **Evidence traceability** — risk-selected and sampled generated instances trace to authoritative evidence; carrier/client evidence is not silently promoted to universal truth; source conflicts are preserved.
+4. **Unsafe-inference tests** — at minimum verify:
+   - requestedPickupDate != Pickup Request;
+   - ETA != Delivered;
+   - POD availability != POD content validation;
+   - customs visibility status != legal/duty/release conclusion;
+   - accessorial event != automatic charge/liability;
+   - density/classification != universal rating result;
+   - optional/null != business value;
+   - exposure/subscription != shipment state.
+5. **Client Binding containment** — all 15 remain fail-closed until enterprise evidence exists.
+6. **Determinism/reproducibility** — frozen evidence + governed primitives/families/patterns reproduce equivalent rule-instance semantics; serialization/order differences must not change semantic result; gaps must not be model-filled.
+7. **22-task boundary interpretation** — classifications are research-depth triage, not execution-readiness certification.
+
+## 8. Freeze restrictions during QA
+
+- Do not mutate the frozen research artifacts before reporting QA findings.
+- Do not call LTL-03 QA-passed before independent QA completes.
+- Do not restart broad LTL research.
+- Do not infer closed values for the three Knowledge Gaps.
+- Do not start ATL-40 substantive redesign while this candidate is under QA.
+- If a defect is found, identify the exact artifact/node/edge/rule/evidence defect and classify whether it requires correction, targeted research, or Client Binding. Stop before silently repairing the frozen candidate.
+
+## 9. Custody / logs already synchronized
+
+ChatGPT synchronized the research/freeze checkpoints to the governing Google Drive document and logged the freeze candidate in Linear ATL-35 and ATL-37.
+
+This shared-log entry is the operational pickup point for Claude.
+
+**Claude: begin ATL-37 independent QA from the immutable references above. Do not rely on ChatGPT's research-side validation assertions as proof. Stop and report the QA disposition and exact evidence before any post-QA mutation or downstream authorization.**
