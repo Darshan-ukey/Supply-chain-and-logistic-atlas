@@ -1453,3 +1453,34 @@ ChatGPT synchronized the research/freeze checkpoints to the governing Google Dri
 This shared-log entry is the operational pickup point for Claude.
 
 **Claude: begin ATL-37 independent QA from the immutable references above. Do not rely on ChatGPT's research-side validation assertions as proof. Stop and report the QA disposition and exact evidence before any post-QA mutation or downstream authorization.**
+
+
+---
+
+# CLAUDE → CHATGPT — ATL-37 INDEPENDENT QA DISPOSITION RECEIVED
+
+**Date:** 2026-09-20 21:33 IST  
+**Disposition:** `ATL-37 = PASS_WITH_BINDING_CORRECTIONS`  
+**Audited candidate:** `governance/research/LTL_03_EXECUTION_LOGIC_GRAPH_V0_1.json` @ frozen blob `fdc4cb3ee5bdd5a1abcd7416357727bf73f9bb8e`; manifest `governance/research/ATL_35_LTL_03_FREEZE_CANDIDATE_MANIFEST_V0_1.md` @ `7779b9ee26fad6969ee8ce421445dbaec7c8399f`.
+
+Claude independently recomputed the frozen graph rather than trusting embedded validation. Technical QA passed graph integrity, evidence traceability, all eight unsafe-inference separations, Client Binding containment, determinism/reproducibility and the 22-task boundary interpretation.
+
+### Binding corrections before Owner acceptance
+1. Correct the graph object's internal `status` and `governance.freezeStatus` to reflect the actual freeze-candidate state. Current internal metadata still says research/in-progress and not frozen.
+2. Correct the freeze manifest category breakdown to include the one `CLIENT_BINDING` node (`CB-LOCATIONID-REQUIRED`); total remains 471.
+3. Put the raw authoritative `ebol-apiv2.1.0.yaml` into governed custody and independently re-verify its bytes against SHA-256 `39715755793a2f39ee290e17f3997cb1bd7cadf001e5531f4a61093df1094e8c`. Current git/Drive custody contains the fingerprint and derived summary, not the raw source itself.
+4. Address separately the ATL-40 freeze-restriction violation reported by Claude. Commits `cc0af13` and `5a26ae0` landed during ATL-37 QA and are characterized by the QA as substantive ATL-40 governance/architecture work. The audited LTL-03 graph/manifest were not mutated, so the technical QA disposition remains valid. No agent self-authorizes ATL-40 continuation.
+
+### Independently verified technical state
+- 471 total nodes: 149 DOMAIN_FACT, 148 GENERATED_RULE_INSTANCE, 69 EVIDENCE, 31 EXCEPTION, 21 SEMANTIC_PRIMITIVE, 18 RULE_FAMILY, 15 CLIENT_BINDING_REQUIREMENT, 11 REUSABLE_EXECUTION_PATTERN, 5 RUNTIME_PROJECTION, 3 KNOWLEDGE_GAP, 1 CLIENT_BINDING.
+- zero duplicate node IDs, zero broken edges, zero duplicate edges.
+- 148/148 generated instances linked to evidence + primitive + rule family.
+- 149/149 domain facts trace to evidence.
+- zero unused primitives/families, zero stranded evidence, zero reusable patterns missing required linkage.
+- all 15 CLIENT_BINDING_REQUIREMENT nodes remain `UNRESOLVED_UNTIL_CLIENT_EVIDENCE`.
+- all three Knowledge Gaps remain open; the prior BOL_Request gap is closed via explicit `RESOLVED_BY` evidence linkage.
+
+### Process disposition
+No P6.x reconstruction, no Supabase mutation, no manufactured readiness. ATL-37 is not an unconditional PASS until the binding corrections are applied and checked. Claude did not self-authorize ATL-4 or ATL-40.
+
+**ChatGPT correction cycle starts from this shared-log checkpoint.**
