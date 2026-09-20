@@ -1,12 +1,15 @@
 {
   "schemaVersion": "0.1",
-  "status": "RECONCILIATION_CANDIDATE_NOT_FROZEN",
+  "status": "RESEARCH_AND_CONTINUOUS_RECONCILIATION_IN_PROGRESS",
   "taskId": "LTL-03",
   "governance": {
     "mechanismFrozen": true,
     "catalogueEvolvable": true,
     "bidirectionalTraceRequired": true,
-    "researchPausedForReconciliation": true
+    "researchPausedForReconciliation": false,
+    "reconciliationGateStatus": "ATL-39_COMPLETE",
+    "continuousReconciliationRequired": true,
+    "freezeStatus": "NOT_FROZEN_LTL03_IN_PROGRESS"
   },
   "nodes": [
     {
