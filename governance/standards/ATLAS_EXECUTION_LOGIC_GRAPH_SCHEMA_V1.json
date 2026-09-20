@@ -7,6 +7,7 @@
     "DOMAIN_FACT",
     "SEMANTIC_PRIMITIVE",
     "RULE_FAMILY",
+    "REUSABLE_EXECUTION_PATTERN",
     "GENERATED_RULE_INSTANCE",
     "CLIENT_BINDING",
     "EXCEPTION",
@@ -29,7 +30,9 @@
     "COEXISTS_AS_DISTINCT_SEMANTIC": "Different values/objects are valid because they represent different semantics.",
     "ROUTES_TO": "Failure/condition routes source outcome to target exception/queue.",
     "PROJECTS_TO": "Canonical execution logic translates to target runtime projection.",
-    "BLOCKED_BY": "Source cannot be completed because target gap/dependency is unresolved."
+    "BLOCKED_BY": "Source cannot be completed because target gap/dependency is unresolved.",
+    "INSTANTIATES_PATTERN": "Task-specific generated rule instance instantiates a reusable execution pattern.",
+    "PROMOTES_TO_PATTERN": "Governed evidence/fact/instance composition supports promotion to a reusable execution pattern."
   },
   "requiredNodeFields": {
     "common": [
@@ -63,6 +66,13 @@
     ],
     "KNOWLEDGE_GAP": [
       "impact"
+    ],
+    "REUSABLE_EXECUTION_PATTERN": [
+      "scope",
+      "primitiveIds",
+      "familyIds",
+      "allowedParameters",
+      "prohibitedAssumptions"
     ]
   },
   "requiredEdgeFields": [
@@ -87,7 +97,9 @@
     "Runtime projections may PROJECT_FROM canonical logic but must not introduce canonical domain semantics.",
     "Conflicting evidence must remain traceable until resolved by explicit source-authority/lifecycle logic.",
     "Evidence is referenced through stable IDs and is not cloned per family.",
-    "Bidirectional traversal must be possible from evidence to downstream generated logic and from generated logic back to evidence."
+    "Bidirectional traversal must be possible from evidence to downstream generated logic and from generated logic back to evidence.",
+    "Every reusable execution pattern must preserve evidence traceability through its supporting facts/instances.",
+    "Task-specific instances should INSTANTIATE_PATTERN when an existing reusable pattern fits; otherwise pattern candidacy must be evaluated."
   ],
   "scopeValues": [
     "LTL03_CORE",
