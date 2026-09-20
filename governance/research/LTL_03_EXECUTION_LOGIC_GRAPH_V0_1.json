@@ -3704,6 +3704,56 @@
         "GI-128"
       ],
       "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "EV-DSDC-PUBLICATION-STATE-CONFLICT",
+      "type": "EVIDENCE",
+      "label": "DSDC first-party pages expose conflicting publication-state metadata for LTL standards",
+      "sourceAuthority": "NMFTA/DSDC",
+      "evidenceClass": "A_CONFLICTING_FIRST_PARTY",
+      "versionOrEffectiveDate": "retrieved 2026-09-20",
+      "provenanceRef": "DSDC API Standards catalogue + DSDC home + Digital LTL Council pages"
+    },
+    {
+      "id": "DF-SOURCE-STATE-VS-SEMANTICS",
+      "type": "DOMAIN_FACT",
+      "label": "Source publication/release state is provenance metadata distinct from semantic facts extracted from issuer content",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-EQUAL-AUTHORITY-STATUS-CONFLICT",
+      "type": "DOMAIN_FACT",
+      "label": "Conflicting publication-state assertions from equally authoritative issuer pages cannot be resolved by authority rank alone",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-129",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Detect and preserve conflicting publication/release-state metadata across equally authoritative issuer sources with retrieval provenance",
+      "taskId": "LTL-03",
+      "scope": "SOURCE_GOVERNANCE",
+      "lifecycleStage": "EVIDENCE_INGESTION",
+      "semanticOwner": "SP-STATE|SP-TEMPORAL-VALUE|SP-EVIDENCE-PROVENANCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "CONFLICTING_FIRST_PARTY",
+      "dispositionPolicy": "RETAIN_CONFLICT_NO_SILENT_PRECEDENCE"
+    },
+    {
+      "id": "GI-130",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Keep source-state uncertainty separate from supported semantic facts and block availability-dependent readiness until reconciled",
+      "taskId": "LTL-03",
+      "scope": "SOURCE_GOVERNANCE",
+      "lifecycleStage": "READINESS_EVALUATION",
+      "semanticOwner": "SP-STATE|SP-INDICATOR|SP-EVIDENCE-PROVENANCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "CONFLICTING_FIRST_PARTY",
+      "dispositionPolicy": "ALLOW_SUPPORTED_SEMANTICS_BLOCK_STATUS_DEPENDENT_READINESS"
+    },
+    {
+      "id": "KG-DSDC-PUBLICATION-STATE-RECONCILIATION",
+      "type": "KNOWLEDGE_GAP",
+      "label": "Current formal publication/release state of DSDC LTL standards where first-party pages conflict",
+      "scope": "LTL_REUSABLE",
+      "status": "OPEN_SOURCE_RECONCILIATION_REQUIRED"
     }
   ],
   "edges": [
@@ -15368,13 +15418,155 @@
       "from": "GI-128",
       "relation": "REQUIRES_CLIENT_BINDING",
       "to": "CBREQ-ITV-EXPOSURE-MATRIX"
+    },
+    {
+      "from": "DF-SOURCE-STATE-VS-SEMANTICS",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PUBLICATION-STATE-CONFLICT"
+    },
+    {
+      "from": "DF-EQUAL-AUTHORITY-STATUS-CONFLICT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PUBLICATION-STATE-CONFLICT"
+    },
+    {
+      "from": "GI-129",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PUBLICATION-STATE-CONFLICT"
+    },
+    {
+      "from": "GI-130",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PUBLICATION-STATE-CONFLICT"
+    },
+    {
+      "from": "GI-129",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-129",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "GI-129",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-129",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-129",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-129",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-129",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-129",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-129",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-130",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-130",
+      "relation": "INSTANTIATES",
+      "to": "SP-INDICATOR"
+    },
+    {
+      "from": "GI-130",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-130",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-130",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-130",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-130",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-130",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-130",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-130",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-130",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "DF-SOURCE-STATE-VS-SEMANTICS",
+      "relation": "CONSTRAINS",
+      "to": "GI-130",
+      "scope": "publication state uncertainty does not erase independently supported semantics"
+    },
+    {
+      "from": "DF-EQUAL-AUTHORITY-STATUS-CONFLICT",
+      "relation": "CONSTRAINS",
+      "to": "GI-129",
+      "scope": "authority rank cannot resolve equal-authority conflict"
+    },
+    {
+      "from": "GI-129",
+      "relation": "EXPOSES_GAP",
+      "to": "KG-DSDC-PUBLICATION-STATE-RECONCILIATION"
+    },
+    {
+      "from": "GI-130",
+      "relation": "DEPENDS_ON",
+      "to": "KG-DSDC-PUBLICATION-STATE-RECONCILIATION"
     }
   ],
   "validation": {
-    "nodeCount": 427,
-    "edgeCount": 2222,
+    "nodeCount": 433,
+    "edgeCount": 2250,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 128,
+    "generatedInstanceCount": 130,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
@@ -15386,9 +15578,9 @@
     "patternsMissingFamily": [],
     "patternsWithoutTaskInstances": [],
     "lastValidatedAt": "2026-09-20",
-    "generatedRuleInstanceCount": 128,
+    "generatedRuleInstanceCount": 130,
     "brokenEdgeCount": 0,
     "generatedInstancesMissingEvidencePrimitiveOrFamily": [],
-    "latestCheckpoint": "ITV_CHANNEL_EXPOSURE_TWO_TRACK"
+    "latestCheckpoint": "DSDC_PUBLICATION_STATE_CONFLICT_TWO_TRACK"
   }
 }
