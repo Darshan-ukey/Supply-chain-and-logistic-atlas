@@ -121,3 +121,33 @@ Use LTL-03 as the worked proof:
 ## Recovery rule
 
 Preserve the architecture, source inventory, primitives, decomposition rules, contracts and projections so the generator can be rebuilt after implementation loss without reconstructing historical P6.1 bytes or counts.
+
+
+## Independent Audit Gate — Claude Crossed QA
+
+The successor generator must not be considered validated solely from ChatGPT research/build evidence.
+
+Before final acceptance, Claude must independently audit:
+1. the successor-generator mechanism and rule families;
+2. whether authoritative evidence actually supports the governed domain primitives and deterministic generation rules;
+3. whether recursive P6.1 decomposition is applied consistently and without unsupported synthesis;
+4. whether the resulting Domain Execution Contract is technology-neutral and sufficiently complete;
+5. whether tool projections preserve the governed business logic;
+6. whether the generator reproduces the independently derived BOL information/field universe with correct provenance, cardinality, lifecycle, validation, relationship, exception and queue logic;
+7. false positives, unsupported fields/rules, missing authoritative fields, and client-specific assumptions incorrectly promoted to canonical truth.
+
+### Audit evidence package
+The audit package must include at minimum:
+- governing architecture and methodology;
+- authoritative source inventory and versions;
+- field/provenance matrix;
+- deterministic generator rules;
+- generated LTL-03 Work Decomposition;
+- generated Domain Execution Contract;
+- independently derived BOL field universe;
+- generator output crosswalk against that universe;
+- unresolved gaps/client-binding dependencies;
+- test results and any false-correction / unsafe-inference evidence.
+
+### Crossed-QA rule
+ChatGPT may research/build the successor generator, but may not independently close its own final validation gate. Claude performs the independent audit; Owner/Governor retains acceptance authority.
