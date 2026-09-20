@@ -1676,6 +1676,50 @@
       "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE|SP-RELATIONSHIP|SP-COLLECTION-CARDINALITY",
       "sourceAuthorityClass": "INDUSTRY_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-NMFTA-2024-PRELIMINARY-CHARGES",
+      "type": "EVIDENCE",
+      "label": "NMFTA 2024 preliminary freight charge change-event semantics",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "2024-01-22",
+      "provenanceRef": "NMFTA Digital LTL Council meeting deck — Preliminary Freight Charges"
+    },
+    {
+      "id": "DF-CHANGE-EVENT-DATED",
+      "type": "DOMAIN_FACT",
+      "label": "Operational/rating changes are represented as dated events",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-CHANGE-EVENT-MAY-HAVE-CHARGE",
+      "type": "DOMAIN_FACT",
+      "label": "A change event may or may not carry monetary impact",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-CHANGE-EVENT-CROSS-SEMANTIC",
+      "type": "DOMAIN_FACT",
+      "label": "Common event pattern covers weight, class, dimensions, accessorial and related changes",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-RATED-CHARGE-RECONCILES-INVOICE",
+      "type": "DOMAIN_FACT",
+      "label": "Latest rated charge state is expected to reconcile with invoice",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "GI-062",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Record dated change event with semantic delta, optional charge and invoice reconciliation",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "RATING_BILLING_ADJACENT",
+      "semanticOwner": "SP-EVENT|SP-TEMPORAL-VALUE|SP-MONETARY-AMOUNT|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -6382,13 +6426,212 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "DF-CHANGE-EVENT-DATED",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-PRELIMINARY-CHARGES"
+    },
+    {
+      "from": "DF-CHANGE-EVENT-MAY-HAVE-CHARGE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-PRELIMINARY-CHARGES"
+    },
+    {
+      "from": "DF-CHANGE-EVENT-CROSS-SEMANTIC",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-PRELIMINARY-CHARGES"
+    },
+    {
+      "from": "DF-RATED-CHARGE-RECONCILES-INVOICE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-PRELIMINARY-CHARGES"
+    },
+    {
+      "from": "GI-062",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-PRELIMINARY-CHARGES"
+    },
+    {
+      "from": "GI-062",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-062",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "GI-062",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-062",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-062",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "GI-062",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-062",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-062",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-062",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "DF-CHANGE-EVENT-DATED",
+      "relation": "CONSTRAINS",
+      "to": "GI-062",
+      "scope": "event date/time must remain attached to semantic change"
+    },
+    {
+      "from": "DF-CHANGE-EVENT-MAY-HAVE-CHARGE",
+      "relation": "CONSTRAINS",
+      "to": "GI-062",
+      "scope": "monetary impact is optional by event"
+    },
+    {
+      "from": "DF-CHANGE-EVENT-CROSS-SEMANTIC",
+      "relation": "SPECIALIZES",
+      "to": "GI-062",
+      "scope": "same event pattern applies to reweigh/reclass/DIM/accessorial changes"
+    },
+    {
+      "from": "DF-RATED-CHARGE-RECONCILES-INVOICE",
+      "relation": "CONSTRAINS",
+      "to": "GI-062",
+      "scope": "latest rated-charge state reconciles to invoice"
+    },
+    {
+      "from": "GI-062",
+      "relation": "DEPENDS_ON",
+      "to": "RF18",
+      "scope": "temporal ordering/version semantics"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "GI-020",
+      "scope": "reweigh example reuses measure semantics"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "GI-056",
+      "scope": "reclass example reuses item classification semantics"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "GI-045",
+      "scope": "accessorial change reuses TransportService semantics"
+    },
+    {
+      "from": "GI-062",
+      "relation": "COMPOSES_WITH",
+      "to": "GI-040",
+      "scope": "charge change reuses MonetaryAmount semantics"
+    },
+    {
+      "from": "GI-062",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "rating/billing-adjacent projection applicability depends on downstream use case"
+    },
+    {
+      "from": "GI-062",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "rating/billing-adjacent projection applicability depends on downstream use case"
+    },
+    {
+      "from": "GI-062",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "rating/billing-adjacent projection applicability depends on downstream use case"
+    },
+    {
+      "from": "GI-062",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "rating/billing-adjacent projection applicability depends on downstream use case"
+    },
+    {
+      "from": "GI-062",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "rating/billing-adjacent projection applicability depends on downstream use case"
     }
   ],
   "validation": {
-    "nodeCount": 215,
-    "edgeCount": 865,
+    "nodeCount": 221,
+    "edgeCount": 902,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 61,
+    "generatedInstanceCount": 62,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
