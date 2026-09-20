@@ -1,6 +1,6 @@
 # ATL-35 / LTL-03 Freeze-Candidate Manifest v0.1
 
-Status: FREEZE_CANDIDATE — RESEARCH PACKAGE ASSEMBLED; NOT ATL-37 QA PASS
+Status: FREEZE_CANDIDATE — ATL-37 PASS_WITH_BINDING_CORRECTIONS; CORRECTION CYCLE IN PROGRESS
 Date: 2026-09-20
 Purpose: immutable research-side handoff manifest for independent crossed-QA.
 
@@ -31,6 +31,7 @@ Validated state:
 - 31 explicit exceptions
 - 11 reusable execution patterns
 - 15 explicit client-binding requirements
+- 1 CLIENT_BINDING node (`CB-LOCATIONID-REQUIRED`)
 - 3 explicit knowledge gaps
 - 5 runtime projection types
 - 0 broken edges
@@ -238,3 +239,16 @@ Next governed stage:
 **ATL-37 — Independent QA of the frozen LTL-03 evidence / generator package.**
 
 ATL-35 may be treated as research work complete only after the repository/Linear governance state records this freeze-candidate handoff. Final QA acceptance remains outside ATL-35.
+
+
+## 15. ATL-37 correction-cycle addendum — 2026-09-20
+
+Independent QA disposition: `PASS_WITH_BINDING_CORRECTIONS`.
+
+Binding correction #1 applied: graph internal status/freezeStatus corrected in commit `da8e7ea3ced2c25a36739abed20beef86b40af7b`. Because correcting object-level freeze metadata changes the graph blob, the original audited blob `fdc4cb3ee5bdd5a1abcd7416357727bf73f9bb8e` remains the immutable ATL-37 audit input; the corrected graph is a post-QA revision and must be rechecked before final acceptance.
+
+Binding correction #2 applied in this manifest revision: the category list now explicitly includes the one `CLIENT_BINDING` node `CB-LOCATIONID-REQUIRED`. Total node count remains 471.
+
+Binding correction #3 remains pending until the exact raw `ebol-apiv2.1.0.yaml` bytes are placed into governed custody and independently hash-verified against `39715755793a2f39ee290e17f3997cb1bd7cadf001e5531f4a61093df1094e8c`.
+
+Binding correction #4 is a separate governance/process disposition: ATL-40 substantive continuation remains unauthorized pending Owner/ChatGPT resolution of the freeze-window sequencing violation. It does not invalidate ATL-37's technical findings because the audited graph/manifest were unmutated during QA.
