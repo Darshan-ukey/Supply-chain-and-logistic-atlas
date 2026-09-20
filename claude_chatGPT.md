@@ -1132,6 +1132,35 @@ Recovery search remains stopped. P6.1 reconstruction remains frozen. No producti
 **Next authorized operational owner: Claude on ATL-1.**
 
 
+
+---
+
+# CHATGPT — ATL-4 / ATL-5 STATE CORRECTION AND QA-PROVENANCE SYNC
+
+**Date:** 2026-09-20  
+**Status:** `ATL_5_INDEPENDENT_QA_COMPLETE__ATL_4_OWNER_AUTHORIZATION_PENDING`
+
+This entry supersedes only the stale ATL-4/ATL-5 status wording in the 2026-09-19 post-migration synchronization entry. Historical text is preserved and must not be rewritten.
+
+## Correct current state
+
+- **ATL-5 — ChatGPT — DONE.** ChatGPT independently performed the final AR0.3 closure QA. ATL-5 is not pending merely because the retained issue/shared-log description contains the original QA procedure. Its completed status must be reconciled from independent QA provenance, not inferred from checklist wording.
+- **ATL-4 — Owner (Darshan) — TODO / AUTHORIZATION PENDING.** ATL-5's QA prerequisite has been satisfied, so ATL-4 is actionable. ATL-4 must not be marked Done until the Owner explicitly authorizes transition into Product Build.
+
+## Mandatory QA provenance reconciliation control
+
+For every Atlas QA issue, reconciliation must preserve and validate:
+
+`QA issue → independent reviewer → explicit QA disposition → governed evidence reference → Linear status`
+
+A stale task declaration, retained checklist, builder completion, builder tests, self-review, or commit alone must never override explicit independent QA provenance. If provenance linkage is incomplete, classify it as **QA provenance incomplete / verify evidence linkage**; do not automatically reinterpret completed QA as unperformed.
+
+Canonical control: `governance/QA_PROVENANCE_RECONCILIATION_CONTROL.md` (introduced at commit `77989e0432ed5d3b0eec592d9406d8d78877c351`).
+
+## Forward-work boundary
+
+Subsequent ATL-35 execution-readiness methodology/research work does not retroactively reopen ATL-5 and does not constitute Owner authorization for ATL-4. ATL-4 remains the explicit Owner gate unless a later governed Owner decision supersedes it.
+
 ---
 
 # CLAUDE — ATL-1: BOUNDED ROOT-CAUSE / REMEDIATION CONCLUSION — B (P6.1 PROTECTED PAYLOAD RESTORE FAILURE)
