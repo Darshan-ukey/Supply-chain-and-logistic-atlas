@@ -2471,6 +2471,38 @@
       "semanticOwner": "SP-DOCUMENT|SP-INDICATOR|SP-EVENT|SP-RELATIONSHIP",
       "sourceAuthorityClass": "INDUSTRY_STANDARD",
       "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-NMFTA-SPLC",
+      "type": "EVIDENCE",
+      "label": "NMFTA SPLC location identifier semantics",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "current as researched 2026-09-20",
+      "provenanceRef": "NMFTA SPLC official product/help material"
+    },
+    {
+      "id": "DF-SPLC-LOCATION-ID",
+      "type": "DOMAIN_FACT",
+      "label": "SPLC is an NMFTA-governed identifier for transportation locations",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-SPLC-NOT-LOCATION-ROLE",
+      "type": "DOMAIN_FACT",
+      "label": "SPLC identifies a physical transportation location but does not replace semantic location role",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-079",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve terminal/transportation location identity using SPLC where available while preserving location role",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "PICKUP_INTRANSIT_DELIVERY",
+      "semanticOwner": "SP-LOCATION|SP-IDENTIFIER|SP-MASTER-REFERENCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -9718,13 +9750,121 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "DF-SPLC-LOCATION-ID",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-SPLC"
+    },
+    {
+      "from": "DF-SPLC-NOT-LOCATION-ROLE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-SPLC"
+    },
+    {
+      "from": "GI-079",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-SPLC"
+    },
+    {
+      "from": "GI-079",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "GI-079",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-079",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "GI-079",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-079",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-079",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-079",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "GI-079",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-079",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "DF-SPLC-NOT-LOCATION-ROLE",
+      "relation": "CONSTRAINS",
+      "to": "GI-079",
+      "scope": "resolve semantic role separately from physical location identity"
+    },
+    {
+      "from": "GI-079",
+      "relation": "COMPOSES_WITH",
+      "to": "GI-072",
+      "scope": "terminal milestone may resolve terminal identity through SPLC"
+    },
+    {
+      "from": "GI-079",
+      "relation": "COMPOSES_WITH",
+      "to": "GI-073",
+      "scope": "handoff location may resolve transportation location identity through SPLC"
+    },
+    {
+      "from": "GI-079",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-079",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-079",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-079",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-079",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream LTL task"
     }
   ],
   "validation": {
-    "nodeCount": 284,
-    "edgeCount": 1350,
+    "nodeCount": 288,
+    "edgeCount": 1370,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 78,
+    "generatedInstanceCount": 79,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
