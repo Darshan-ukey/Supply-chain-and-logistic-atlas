@@ -3299,6 +3299,49 @@
       "semanticOwner": "SP-EVENT|SP-STATE|SP-PARTY|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
       "sourceAuthorityClass": "INDUSTRY_STANDARD",
       "dispositionPolicy": "HANDOFF_ON_EVIDENCED_POSSESSION"
+    },
+    {
+      "id": "CBREQ-PFC-CHARGE-LIABILITY",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve client/carrier charge-liability, payer and dispute-treatment policy before client-specific PFC automation",
+      "clientScope": "CLIENT_OR_CARRIER_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-106",
+        "GI-107",
+        "GI-108",
+        "GI-109"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "CBREQ-PURV-READINESS-POLICY",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve client/carrier definitions and requiredness for dock readiness and shipment readiness before client-specific pickup automation",
+      "clientScope": "CLIENT_OR_CARRIER_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-111"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "CBREQ-PURV-EQUIPMENT-POLICY",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve client/carrier pickup-equipment vocabulary, requiredness and assignment/provision interpretation before client-specific projection",
+      "clientScope": "CLIENT_OR_CARRIER_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-112"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "CBREQ-PURV-DELAY-POLICY",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve client/carrier delay-reason vocabulary and revised-arrival handling policy before client-specific pickup exception automation",
+      "clientScope": "CLIENT_OR_CARRIER_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-113"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
     }
   ],
   "edges": [
@@ -13669,13 +13712,48 @@
       "relation": "CONSTRAINS",
       "to": "GI-113",
       "scope": "delay reason revised estimate and lifecycle state remain separate"
+    },
+    {
+      "from": "GI-106",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-PFC-CHARGE-LIABILITY"
+    },
+    {
+      "from": "GI-107",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-PFC-CHARGE-LIABILITY"
+    },
+    {
+      "from": "GI-108",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-PFC-CHARGE-LIABILITY"
+    },
+    {
+      "from": "GI-109",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-PFC-CHARGE-LIABILITY"
+    },
+    {
+      "from": "GI-111",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-PURV-READINESS-POLICY"
+    },
+    {
+      "from": "GI-112",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-PURV-EQUIPMENT-POLICY"
+    },
+    {
+      "from": "GI-113",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-PURV-DELAY-POLICY"
     }
   ],
   "validation": {
-    "nodeCount": 383,
-    "edgeCount": 1966,
+    "nodeCount": 387,
+    "edgeCount": 1973,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 104,
+    "generatedInstanceCount": 114,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
@@ -13690,6 +13768,6 @@
     "generatedRuleInstanceCount": 114,
     "brokenEdgeCount": 0,
     "generatedInstancesMissingEvidencePrimitiveOrFamily": [],
-    "latestCheckpoint": "PICKUP_REQUEST_VISIBILITY_V1_0_0_SEMANTICS"
+    "latestCheckpoint": "PFC_PURV_TRACK_B_CLIENT_BINDING_RECONCILIATION"
   }
 }
