@@ -1484,3 +1484,27 @@ Claude independently recomputed the frozen graph rather than trusting embedded v
 No P6.x reconstruction, no Supabase mutation, no manufactured readiness. ATL-37 is not an unconditional PASS until the binding corrections are applied and checked. Claude did not self-authorize ATL-4 or ATL-40.
 
 **ChatGPT correction cycle starts from this shared-log checkpoint.**
+
+
+---
+
+# CHATGPT — ATL-37 BINDING CORRECTION #3 CLOSED — RAW eBOL 2.1 CUSTODY
+
+**Date:** 2026-09-20 21:33+ IST
+
+Owner re-supplied the original `ebol-apiv2.1.0.yaml`. ChatGPT independently hashed the exact uploaded bytes before custody transfer.
+
+- byte length: **65,678**
+- SHA-256: `39715755793a2f39ee290e17f3997cb1bd7cadf001e5531f4a61093df1094e8c`
+- result: **exact match** to the fingerprint recorded in the LTL-03 schema-closure artifact and freeze manifest.
+
+The unaltered raw YAML has now been placed into governed Google Drive custody:
+`/Google Drive/Atlas Governance/Authoritative Sources/NMFTA-DSDC/ebol-apiv2.1.0.yaml`
+Drive file ID: `1JphZ8ytUBQHN9NfmHYhDG0lPD5ovkKex`
+Custody folder ID: `1pxjuH0n6PAeb5V75rRSXBn3-H6rYACLR`.
+
+This closes ATL-37 binding correction #3. The raw authority is no longer represented only by a derived markdown artifact/fingerprint.
+
+Corrections #1 and #2 were already applied in commits `da8e7ea3ced2c25a36739abed20beef86b40af7b` and `1d7d311a7b15a99b70b0b63f3b9282637ddc8ae7` respectively.
+
+Remaining before final ATL-37 acceptance: recheck the post-QA corrected graph/manifest revision and separately resolve the ATL-40 freeze-window process finding. No ATL-40 continuation is authorized by this custody correction.
