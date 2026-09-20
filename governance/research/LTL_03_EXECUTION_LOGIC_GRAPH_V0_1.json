@@ -3930,6 +3930,92 @@
         "GI-116"
       ],
       "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "EV-DSDC-ITV-RECONSIGN-MISSED-ACCESSORIAL",
+      "type": "EVIDENCE",
+      "label": "DSDC In-Transit Visibility reconsignment missed-delivery and accessorial-added semantics",
+      "sourceAuthority": "NMFTA/DSDC",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "issuer material current as researched 2026-09-20",
+      "provenanceRef": "DSDC In-Transit Visibility API Standard issuer material"
+    },
+    {
+      "id": "DF-ITV-RECONSIGNMENT-CONTEXT-CHANGE",
+      "type": "DOMAIN_FACT",
+      "label": "Reconsignment is a typed shipment-context change event and does not identify changed party location or reference without source evidence",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-MISSED-DELIVERY-SEPARATION",
+      "type": "DOMAIN_FACT",
+      "label": "Missed delivery is an exception distinct from delivered appointment-missed redelivery and redelivery-fee state",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-ACCESSORIAL-OPERATIONAL-MONETARY-SEPARATION",
+      "type": "DOMAIN_FACT",
+      "label": "Accessorial Added is an operational service-change event whose monetary consequence requires separate evidence",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-139",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Represent reconsignment as typed context-change event and mutate only source-evidenced party location or reference roles",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_DELIVERY_INFORMATION",
+      "lifecycleStage": "RECONSIGNMENT",
+      "semanticOwner": "SP-EVENT|SP-PARTY|SP-LOCATION|SP-REFERENCE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "MUTATE_ONLY_EVIDENCED_CONTEXT"
+    },
+    {
+      "id": "GI-140",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Represent missed delivery as typed exception separately from delivered appointment-missed redelivery and monetary charge",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_DELIVERY_EXCEPTION",
+      "lifecycleStage": "MISSED_DELIVERY",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PRESERVE_EXCEPTION_NO_REDELIVERY_OR_CHARGE_INFERENCE"
+    },
+    {
+      "id": "GI-141",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Represent Accessorial Added as operational service-change event and link monetary impact only when separately evidenced",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_DELIVERY_INFORMATION",
+      "lifecycleStage": "ACCESSORIAL_CHANGE",
+      "semanticOwner": "SP-EVENT|SP-CONTROLLED-VOCABULARY|SP-MONETARY-AMOUNT|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PRESERVE_SERVICE_CHANGE_LINK_CHARGE_IF_EVIDENCED"
+    },
+    {
+      "id": "GI-142",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Route missed-delivery reconsignment or accessorial response only after carrier/client policy binding",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_DELIVERY_INFORMATION",
+      "lifecycleStage": "DELIVERY_RESPONSE",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD_WITH_CLIENT_SPECIALIZATION",
+      "dispositionPolicy": "BIND_RESPONSE_POLICY_BEFORE_ACTION"
+    },
+    {
+      "id": "CBREQ-ITV-RECONSIGN-MISSED-ACCESSORIAL-POLICY",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve carrier/client reconsignment approval routing missed-delivery response redelivery decision and accessorial charge/action policy",
+      "clientScope": "CLIENT_OR_CARRIER_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-139",
+        "GI-140",
+        "GI-141",
+        "GI-142",
+        "GI-107",
+        "GI-117"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
     }
   ],
   "edges": [
@@ -16427,13 +16513,391 @@
       "from": "GI-116",
       "relation": "REQUIRES_CLIENT_BINDING",
       "to": "CBREQ-ITV-DAMAGE-SHORTAGE-RESPONSE"
+    },
+    {
+      "from": "DF-ITV-RECONSIGNMENT-CONTEXT-CHANGE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-RECONSIGN-MISSED-ACCESSORIAL"
+    },
+    {
+      "from": "DF-ITV-MISSED-DELIVERY-SEPARATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-RECONSIGN-MISSED-ACCESSORIAL"
+    },
+    {
+      "from": "DF-ITV-ACCESSORIAL-OPERATIONAL-MONETARY-SEPARATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-RECONSIGN-MISSED-ACCESSORIAL"
+    },
+    {
+      "from": "GI-139",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-RECONSIGN-MISSED-ACCESSORIAL"
+    },
+    {
+      "from": "GI-140",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-RECONSIGN-MISSED-ACCESSORIAL"
+    },
+    {
+      "from": "GI-141",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-RECONSIGN-MISSED-ACCESSORIAL"
+    },
+    {
+      "from": "GI-142",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-RECONSIGN-MISSED-ACCESSORIAL"
+    },
+    {
+      "from": "GI-139",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-139",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-139",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "GI-139",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-139",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-139",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-139",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-139",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-139",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-139",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-139",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CHANGE-EVENT"
+    },
+    {
+      "from": "GI-139",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-139",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-139",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-139",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-139",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-140",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-140",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-140",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-140",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-140",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-140",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-140",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-140",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-140",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-140",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-140",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-140",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-140",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-141",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-141",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-141",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-141",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-141",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-141",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-141",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-141",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-141",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-141",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CHANGE-EVENT"
+    },
+    {
+      "from": "GI-141",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MONETARY-CHARGE"
+    },
+    {
+      "from": "GI-141",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-141",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-141",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-141",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-141",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-142",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-142",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-142",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-142",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-142",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-142",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-142",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-142",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-142",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-142",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-142",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-142",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-142",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-142",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "DF-ITV-RECONSIGNMENT-CONTEXT-CHANGE",
+      "relation": "CONSTRAINS",
+      "to": "GI-139",
+      "scope": "mutate only evidenced context"
+    },
+    {
+      "from": "DF-ITV-MISSED-DELIVERY-SEPARATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-140",
+      "scope": "missed delivery distinct from delivery appointment redelivery and fee states"
+    },
+    {
+      "from": "DF-ITV-ACCESSORIAL-OPERATIONAL-MONETARY-SEPARATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-141",
+      "scope": "operational accessorial change distinct from monetary consequence"
+    },
+    {
+      "from": "GI-139",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-RECONSIGN-MISSED-ACCESSORIAL-POLICY"
+    },
+    {
+      "from": "GI-140",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-RECONSIGN-MISSED-ACCESSORIAL-POLICY"
+    },
+    {
+      "from": "GI-141",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-RECONSIGN-MISSED-ACCESSORIAL-POLICY"
+    },
+    {
+      "from": "GI-142",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-RECONSIGN-MISSED-ACCESSORIAL-POLICY"
+    },
+    {
+      "from": "GI-107",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-RECONSIGN-MISSED-ACCESSORIAL-POLICY"
+    },
+    {
+      "from": "GI-117",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-RECONSIGN-MISSED-ACCESSORIAL-POLICY"
     }
   ],
   "validation": {
-    "nodeCount": 452,
-    "edgeCount": 2387,
+    "nodeCount": 461,
+    "edgeCount": 2462,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 138,
+    "generatedInstanceCount": 142,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
@@ -16445,9 +16909,9 @@
     "patternsMissingFamily": [],
     "patternsWithoutTaskInstances": [],
     "lastValidatedAt": "2026-09-20",
-    "generatedRuleInstanceCount": 138,
+    "generatedRuleInstanceCount": 142,
     "brokenEdgeCount": 0,
     "generatedInstancesMissingEvidencePrimitiveOrFamily": [],
-    "latestCheckpoint": "ITV_DAMAGE_SHORTAGE_LOSS_TWO_TRACK"
+    "latestCheckpoint": "ITV_RECONSIGN_MISSED_ACCESSORIAL_TWO_TRACK"
   }
 }
