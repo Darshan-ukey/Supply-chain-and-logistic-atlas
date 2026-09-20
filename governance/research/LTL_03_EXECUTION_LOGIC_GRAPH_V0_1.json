@@ -1720,6 +1720,193 @@
       "semanticOwner": "SP-EVENT|SP-TEMPORAL-VALUE|SP-MONETARY-AMOUNT|SP-EVIDENCE-PROVENANCE",
       "sourceAuthorityClass": "INDUSTRY_STANDARD",
       "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-UNECE-DIMENSION-VOCAB",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT linear dimension / gross volume / loading length / chargeable weight semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B/current vocabulary",
+      "provenanceRef": "UN/CEFACT vocabulary and D23B transport/supply-chain models"
+    },
+    {
+      "id": "EV-NMFTA-PICKUP-VISIBILITY",
+      "type": "EVIDENCE",
+      "label": "NMFTA Pickup Request & Visibility milestone semantics",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "1.0.0/current standard as researched 2026-09-20",
+      "provenanceRef": "NMFTA/DSDC Pickup Request & Visibility standard and council deck"
+    },
+    {
+      "id": "EV-NMFTA-INTRANSIT-VISIBILITY",
+      "type": "EVIDENCE",
+      "label": "NMFTA In-Transit Visibility milestone and exception semantics",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "current standard page as researched 2026-09-20",
+      "provenanceRef": "NMFTA/DSDC In-Transit Visibility standard"
+    },
+    {
+      "id": "DF-DIMENSION-AXIS-SEMANTICS",
+      "type": "DOMAIN_FACT",
+      "label": "Linear dimensions are object-owned axis measures",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-VOLUME-DISTINCT-FROM-DIMENSION",
+      "type": "DOMAIN_FACT",
+      "label": "Gross volume is distinct from L/W/H dimensions",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-LOADING-LENGTH-DISTINCT",
+      "type": "DOMAIN_FACT",
+      "label": "Loading length is distinct from ordinary object length",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-CHARGEABLE-WEIGHT-DISTINCT",
+      "type": "DOMAIN_FACT",
+      "label": "Chargeable weight is distinct from gross physical weight",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-PICKUP-EVENT-MODEL",
+      "type": "DOMAIN_FACT",
+      "label": "Pickup visibility is an event/state sequence",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-PICKUP-ID-TRACKING",
+      "type": "DOMAIN_FACT",
+      "label": "Pickup Number is primary pickup-visibility identifier; PRO may participate",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-PICKUP-EXCEPTION-PATH",
+      "type": "DOMAIN_FACT",
+      "label": "Pickup reject/reschedule/cancel are explicit exception paths with reasons",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-PICKUP-TEMPORAL",
+      "type": "DOMAIN_FACT",
+      "label": "Pickup events may carry ETA/timing semantics",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-INTRANSIT-MILESTONE-VOCAB",
+      "type": "DOMAIN_FACT",
+      "label": "In-transit visibility uses governed milestone vocabulary",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-MOVEMENT-VS-INFORMATION-EVENT",
+      "type": "DOMAIN_FACT",
+      "label": "Movement events and information/exception notifications are distinct categories",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-INTRANSIT-EXCEPTION-RELATION",
+      "type": "DOMAIN_FACT",
+      "label": "Exception notifications attach to shipment lifecycle without replacing milestone state",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-EVENT-ESTIMATED-VS-ACTUAL",
+      "type": "DOMAIN_FACT",
+      "label": "Transport events distinguish estimated/scheduled/actual occurrence",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "GI-063",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve dimension semantic owner before validation",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-MEASURE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-064",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate dimension axis value/unit while preserving axis role",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-MEASURE|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-065",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Reconcile gross volume with dimensions only when governed",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-MEASURE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-066",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve chargeable weight separately from physical weight",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "RATING_ADJACENT",
+      "semanticOwner": "SP-MEASURE|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-067",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Track pickup lifecycle from accepted through departed",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "PICKUP",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-TEMPORAL-VALUE|SP-IDENTIFIER",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-068",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Route pickup reject/reschedule/cancel reasons",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "PICKUP",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "WARN_REJECT_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-069",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Track in-transit milestone progression",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "IN_TRANSIT",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-TEMPORAL-VALUE|SP-LOCATION",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-070",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Attach in-transit exception/information notifications to shipment lifecycle",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "IN_TRANSIT",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -6625,13 +6812,696 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "rating/billing-adjacent projection applicability depends on downstream use case"
+    },
+    {
+      "from": "DF-DIMENSION-AXIS-SEMANTICS",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-DIMENSION-VOCAB"
+    },
+    {
+      "from": "DF-VOLUME-DISTINCT-FROM-DIMENSION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-DIMENSION-VOCAB"
+    },
+    {
+      "from": "DF-LOADING-LENGTH-DISTINCT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-DIMENSION-VOCAB"
+    },
+    {
+      "from": "DF-CHARGEABLE-WEIGHT-DISTINCT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-DIMENSION-VOCAB"
+    },
+    {
+      "from": "DF-PICKUP-EVENT-MODEL",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-PICKUP-VISIBILITY"
+    },
+    {
+      "from": "DF-PICKUP-ID-TRACKING",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-PICKUP-VISIBILITY"
+    },
+    {
+      "from": "DF-PICKUP-EXCEPTION-PATH",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-PICKUP-VISIBILITY"
+    },
+    {
+      "from": "DF-PICKUP-TEMPORAL",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-PICKUP-VISIBILITY"
+    },
+    {
+      "from": "DF-INTRANSIT-MILESTONE-VOCAB",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-INTRANSIT-VISIBILITY"
+    },
+    {
+      "from": "DF-MOVEMENT-VS-INFORMATION-EVENT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-INTRANSIT-VISIBILITY"
+    },
+    {
+      "from": "DF-INTRANSIT-EXCEPTION-RELATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-INTRANSIT-VISIBILITY"
+    },
+    {
+      "from": "DF-EVENT-ESTIMATED-VS-ACTUAL",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-DIMENSION-VOCAB"
+    },
+    {
+      "from": "GI-063",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-DIMENSION-VOCAB"
+    },
+    {
+      "from": "GI-063",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-063",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-063",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-063",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-063",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-064",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-DIMENSION-VOCAB"
+    },
+    {
+      "from": "GI-064",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-064",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-064",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-064",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-064",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-065",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-DIMENSION-VOCAB"
+    },
+    {
+      "from": "GI-065",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-065",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-065",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-065",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "GI-065",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-065",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-065",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-066",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-DIMENSION-VOCAB"
+    },
+    {
+      "from": "GI-066",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-066",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-066",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-066",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-066",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-067",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-PICKUP-VISIBILITY"
+    },
+    {
+      "from": "GI-067",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-067",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-067",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "GI-067",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-067",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-067",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-067",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-067",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-067",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-067",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-067",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-068",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-PICKUP-VISIBILITY"
+    },
+    {
+      "from": "GI-068",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-068",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-068",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-068",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-068",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-068",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-068",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-068",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-069",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-INTRANSIT-VISIBILITY"
+    },
+    {
+      "from": "GI-069",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-069",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-069",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "GI-069",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "GI-069",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-069",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-069",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-069",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-069",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-070",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-INTRANSIT-VISIBILITY"
+    },
+    {
+      "from": "GI-070",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-070",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-070",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-070",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-070",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-070",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-070",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-070",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-070",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-063",
+      "relation": "PRECEDES",
+      "to": "GI-064",
+      "scope": "semantic owner before axis validation"
+    },
+    {
+      "from": "GI-064",
+      "relation": "PRECEDES",
+      "to": "GI-065",
+      "scope": "validated axis measures before governed volume reconciliation"
+    },
+    {
+      "from": "DF-CHARGEABLE-WEIGHT-DISTINCT",
+      "relation": "CONSTRAINS",
+      "to": "GI-066",
+      "scope": "must not overwrite gross/declared/verified weight"
+    },
+    {
+      "from": "GI-067",
+      "relation": "ROUTES_TO",
+      "to": "GI-068",
+      "condition": "pickup path rejects/reschedules/cancels"
+    },
+    {
+      "from": "GI-067",
+      "relation": "PRECEDES",
+      "to": "GI-069",
+      "scope": "pickup/possession transition before in-transit lifecycle"
+    },
+    {
+      "from": "GI-069",
+      "relation": "COMPOSES_WITH",
+      "to": "GI-070",
+      "scope": "exception/information notifications attach to milestone lifecycle"
+    },
+    {
+      "from": "GI-070",
+      "relation": "COMPOSES_WITH",
+      "to": "GI-062",
+      "scope": "reweigh/accessorial/reconsignment events may participate in charge/change-event logic"
+    },
+    {
+      "from": "DF-EVENT-ESTIMATED-VS-ACTUAL",
+      "relation": "CONSTRAINS",
+      "to": "RF18",
+      "scope": "temporal role must preserve scheduled/estimated/actual distinction"
+    },
+    {
+      "from": "GI-063",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-063",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-063",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-063",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-063",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-064",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-064",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-064",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-064",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-064",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-065",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-065",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-065",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-065",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-065",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-066",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-066",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-066",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-066",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-066",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-067",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-067",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-067",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-067",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-067",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-068",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-068",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-068",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-068",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-068",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-069",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-069",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-069",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-069",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-069",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-070",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-070",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-070",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-070",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
+    },
+    {
+      "from": "GI-070",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains broader-domain"
     }
   ],
   "validation": {
-    "nodeCount": 221,
-    "edgeCount": 902,
+    "nodeCount": 244,
+    "edgeCount": 1029,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 62,
+    "generatedInstanceCount": 70,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
