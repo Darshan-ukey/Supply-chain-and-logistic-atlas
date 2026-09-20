@@ -3005,6 +3005,100 @@
       "semanticOwner": "SP-DOCUMENT|SP-INSTRUCTION-NOTE|SP-PARTY|SP-EVIDENCE-PROVENANCE",
       "sourceAuthorityClass": "INDUSTRY_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-DSDC-INTRANSIT-CURRENT",
+      "type": "EVIDENCE",
+      "label": "DSDC current In-Transit Visibility access, lookup, exception and notification semantics",
+      "sourceAuthority": "NMFTA/DSDC",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "current as researched 2026-09-20",
+      "provenanceRef": "DSDC In-Transit Visibility API Standard public page"
+    },
+    {
+      "id": "DF-INTRANSIT-ACCESS-SCOPE",
+      "type": "DOMAIN_FACT",
+      "label": "In-transit exposure distinguishes Verified and Public access contexts; access scope is not shipment state",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-INTRANSIT-MULTI-REFERENCE-LOOKUP",
+      "type": "DOMAIN_FACT",
+      "label": "Latest status may be retrieved by PRO, BOL, PO, or account number with reference type preserved",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-EXCEPTION-RESPONSIBILITY",
+      "type": "DOMAIN_FACT",
+      "label": "Normalized exception/reason semantics may include responsible-party attribution while retaining carrier internal-code mapping",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-NOTIFICATION-TYPE-SEPARATION",
+      "type": "DOMAIN_FACT",
+      "label": "Delivery Update notifications represent physical movement/milestones; Delivery Information notifications represent related non-movement operational information",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-CROSSBORDER-STATUS",
+      "type": "DOMAIN_FACT",
+      "label": "Cross-border statuses such as In Bond, Hold, and Cleared Customs are conditional visibility state semantics",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-100",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve Verified versus Public access scope before projecting in-transit shipment detail",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_VISIBILITY",
+      "lifecycleStage": "VISIBILITY_ACCESS",
+      "semanticOwner": "SP-PARTY|SP-RELATIONSHIP|SP-INDICATOR|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PROJECT_BY_AUTHORIZED_SCOPE"
+    },
+    {
+      "id": "GI-101",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve lookup reference type across PRO BOL PO or account number before status retrieval",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_VISIBILITY",
+      "lifecycleStage": "STATUS_LOOKUP",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-102",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Map normalized exception reason and responsible party while retaining carrier-code provenance",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_VISIBILITY",
+      "lifecycleStage": "EXCEPTION_HANDLING",
+      "semanticOwner": "SP-CONTROLLED-VOCABULARY|SP-PARTY|SP-EVIDENCE-PROVENANCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "MAP_RETAIN_SOURCE_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-103",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Classify Delivery Update versus Delivery Information notification before routing",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_VISIBILITY",
+      "lifecycleStage": "NOTIFICATION_ROUTING",
+      "semanticOwner": "SP-EVENT|SP-STATE|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ROUTE_BY_NOTIFICATION_SEMANTIC"
+    },
+    {
+      "id": "GI-104",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Activate cross-border visibility status only when governed applicability condition is met",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_VISIBILITY",
+      "lifecycleStage": "CROSS_BORDER_VISIBILITY",
+      "semanticOwner": "SP-STATE|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACTIVATE_CONDITIONALLY"
     }
   ],
   "edges": [
@@ -11969,13 +12063,423 @@
       "relation": "DERIVES_FROM",
       "to": "EV-DSDC-EBOL21-CURRENT-PAGE",
       "scope": "issuer names schema family/asset but raw property tree not recovered"
+    },
+    {
+      "from": "DF-INTRANSIT-ACCESS-SCOPE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-INTRANSIT-CURRENT"
+    },
+    {
+      "from": "DF-INTRANSIT-MULTI-REFERENCE-LOOKUP",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-INTRANSIT-CURRENT"
+    },
+    {
+      "from": "DF-EXCEPTION-RESPONSIBILITY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-INTRANSIT-CURRENT"
+    },
+    {
+      "from": "DF-NOTIFICATION-TYPE-SEPARATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-INTRANSIT-CURRENT"
+    },
+    {
+      "from": "DF-CROSSBORDER-STATUS",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-INTRANSIT-CURRENT"
+    },
+    {
+      "from": "GI-100",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-INTRANSIT-CURRENT"
+    },
+    {
+      "from": "GI-100",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-100",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-100",
+      "relation": "INSTANTIATES",
+      "to": "SP-INDICATOR"
+    },
+    {
+      "from": "GI-100",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-100",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-100",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-100",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-100",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-100",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-100",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-100",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-100",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-100",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-101",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-INTRANSIT-CURRENT"
+    },
+    {
+      "from": "GI-101",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-101",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-101",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-101",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-101",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-101",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-101",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-IDENTITY-BEFORE-MUTATION"
+    },
+    {
+      "from": "GI-101",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-101",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-101",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-101",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-101",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-102",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-INTRANSIT-CURRENT"
+    },
+    {
+      "from": "GI-102",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-102",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-102",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-102",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-102",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-102",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-102",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-102",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-102",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-102",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-102",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-102",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-102",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-102",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-103",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-INTRANSIT-CURRENT"
+    },
+    {
+      "from": "GI-103",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-103",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-103",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-103",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-103",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-103",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-103",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-103",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-103",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-103",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-103",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-103",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-103",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-103",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-104",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-INTRANSIT-CURRENT"
+    },
+    {
+      "from": "GI-104",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-104",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-104",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-104",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-104",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-104",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-104",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-104",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-104",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-104",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-104",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-104",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-104",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "DF-INTRANSIT-ACCESS-SCOPE",
+      "relation": "CONSTRAINS",
+      "to": "GI-100",
+      "scope": "access scope cannot be interpreted as shipment lifecycle state"
+    },
+    {
+      "from": "GI-101",
+      "relation": "COMPOSES_WITH",
+      "to": "GI-077",
+      "scope": "PRO/BOL/PO/account lookup remains typed reference resolution"
+    },
+    {
+      "from": "DF-EXCEPTION-RESPONSIBILITY",
+      "relation": "CONSTRAINS",
+      "to": "GI-102",
+      "scope": "retain carrier internal code provenance beneath normalized mapping"
+    },
+    {
+      "from": "DF-NOTIFICATION-TYPE-SEPARATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-103",
+      "scope": "movement versus non-movement notification semantics remain distinct"
+    },
+    {
+      "from": "DF-CROSSBORDER-STATUS",
+      "relation": "CONSTRAINS",
+      "to": "GI-104",
+      "scope": "activate only when cross-border applicability exists"
     }
   ],
   "validation": {
-    "nodeCount": 348,
-    "edgeCount": 1688,
+    "nodeCount": 359,
+    "edgeCount": 1769,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 99,
+    "generatedInstanceCount": 104,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
