@@ -63,6 +63,99 @@ Before accepting any new rule family:
 
 Do not force unlike semantics into one family merely to reduce rule count. Normalization must preserve operational meaning.
 
+## Cross-family evidence relationship governance
+
+Normalization must preserve relationships among evidence, primitives, rule families, generated instances and client bindings.
+
+A single authoritative fact may legitimately:
+- instantiate more than one semantic primitive;
+- activate or parameterize more than one reusable rule family;
+- constrain the order in which families execute;
+- establish a dependency between generated rule instances;
+- act as source authority for one semantic attribute while serving as corroborating context for another.
+
+Do not duplicate the same evidence into unrelated standalone rules merely because multiple families consume it.
+
+### Evidence relationship graph
+
+For each material evidence item, preserve a graph with at least:
+
+Evidence
+-> Domain Fact(s)
+-> Semantic Primitive(s)
+-> Reusable Rule Family/Families
+-> Generated Rule Instance(s)
+-> Cross-instance dependency/ordering
+-> Client Binding(s), where applicable
+-> Runtime Projection(s), where applicable
+
+### Required relationship types
+
+Capture, where applicable:
+- DERIVES_FROM — primitive/rule instance derives from evidence/domain fact;
+- SPECIALIZES — domain/client evidence specializes a broader family;
+- COMPOSES_WITH — two or more families jointly generate one execution behavior;
+- DEPENDS_ON — one generated instance requires another result;
+- ACTIVATES — a condition activates another requirement/rule instance;
+- CONSTRAINS — evidence/rule restricts valid values, relationships, sequence or cardinality;
+- RESOLVES_WITH — semantic resolution requires a master/reference/related object;
+- OVERRIDES_WITHIN_SCOPE — client binding legitimately strengthens/overrides canonical optional behavior within defined scope;
+- PRECEDES — execution order is semantically required;
+- CORROBORATES — evidence supports but does not independently establish canonical truth;
+- CONFLICTS_WITH — evidence sources disagree and require source-authority handling.
+
+### Cross-family composition rule
+
+When an execution behavior requires multiple families, preserve the composition explicitly rather than manufacturing a synthetic all-in-one family.
+
+Example:
+Hazmat package quantity:
+RF7 Conditional Activation
+ACTIVATES
+RF4 Requiredness/Cardinality
+COMPOSES_WITH
+RF5 Controlled-Value Validation.
+
+Example:
+PRO update:
+RF1 Identity/Reference Resolution
+PRECEDES / DEPENDS_ON
+RF3 Lifecycle & State Transition.
+
+Example:
+Consignee canonicalization:
+RF2 Relationship Integrity
+PRECEDES
+RF6 Master/Reference Reconciliation;
+RF9 Source Authority may CONSTRAIN the selected canonical value.
+
+Example:
+Package gross weight:
+RF2 Relationship Integrity identifies semantic owner;
+RF14 Hierarchy constrains package position;
+RF13 Measure Semantics validates value/unit.
+
+### Evidence deduplication
+
+Evidence is stored/referenced once with stable provenance and may have multiple governed edges.
+
+Do not clone the evidence record separately into each family. This prevents provenance drift and contradictory interpretations of the same source.
+
+### Conflict handling across families
+
+If two families derive incompatible generated outcomes from the same or different evidence:
+1. preserve both derivations;
+2. apply source-authority/lifecycle rules;
+3. identify whether the conflict is semantic, temporal, client-specific or evidentiary;
+4. resolve only when governed evidence supports resolution;
+5. otherwise emit a conflict/knowledge-gap state rather than forcing consistency.
+
+### Audit requirement
+
+ATL-37 evidence must allow Claude to trace in both directions:
+- Evidence -> all primitives/families/instances it supports;
+- Generated rule instance -> all evidence, primitives and family compositions used to create it.
+
 ## Scalability measurement
 
 Track by task:
