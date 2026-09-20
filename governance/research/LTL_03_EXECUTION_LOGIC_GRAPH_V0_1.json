@@ -159,11 +159,11 @@
     {
       "id": "EV-NMFTA-EBOL-2.1-YAML-TARGET",
       "type": "EVIDENCE",
-      "label": "NMFTA eBOL 2.1 issuer YAML target",
+      "label": "NMFTA eBOL 2.1 authoritative issuer YAML recovered",
       "sourceAuthority": "NMFTA",
-      "evidenceClass": "B",
+      "evidenceClass": "A",
       "versionOrEffectiveDate": "eBOL 2.1.0",
-      "provenanceRef": "assets/ebol-apiv2.1.0.yaml"
+      "provenanceRef": "ebol-apiv2.1.0.yaml | SHA256 39715755793a2f39ee290e17f3997cb1bd7cadf001e5531f4a61093df1094e8c"
     },
     {
       "id": "DF-REGULATORY-BOL-MINIMUM",
@@ -869,12 +869,6 @@
       "id": "EX-LOCATION-MASTER-NO-MATCH",
       "type": "EXCEPTION",
       "label": "Location master no match"
-    },
-    {
-      "id": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "type": "KNOWLEDGE_GAP",
-      "label": "Exact NMFTA BOL_Request properties unresolved",
-      "impact": "Blocks exact NMFTA BOL_Request property names/nesting/cardinality; does not block lifecycle/schema-family evidence."
     },
     {
       "id": "DF-TRANSSHIPMENT-PERMISSION-INDICATOR",
@@ -2968,10 +2962,10 @@
       "scope": "BROADER_BOL_UNIVERSE"
     },
     {
-      "id": "DF-RAW-BOL-REQUEST-SCHEMA-GAP",
+      "id": "DF-RAW-BOL-REQUEST-SCHEMA-RECOVERED",
       "type": "DOMAIN_FACT",
-      "label": "Issuer identifies authoritative BOL_Request schema asset/family but exact complete property tree remains unrecovered",
-      "scope": "BROADER_BOL_UNIVERSE"
+      "label": "Issuer BOL_Request schema recovered with exact property tree nesting and schema-requiredness",
+      "scope": "LTL03_CORE"
     },
     {
       "id": "GI-097",
@@ -4016,6 +4010,102 @@
         "GI-117"
       ],
       "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "DF-NMFTA-BOL-REQUEST-HIERARCHY",
+      "type": "DOMAIN_FACT",
+      "label": "eBOL 2.1 BOL_Request has issuer-defined nested object hierarchy and schema-required top-level members",
+      "scope": "LTL03_CORE"
+    },
+    {
+      "id": "DF-NMFTA-BOL-REQUIREDNESS-HIERARCHICAL",
+      "type": "DOMAIN_FACT",
+      "label": "eBOL requiredness is hierarchical and must preserve required parent/nested-member context",
+      "scope": "LTL03_CORE"
+    },
+    {
+      "id": "DF-NMFTA-LINEITEM-LAYOUT-RELATIONSHIP",
+      "type": "DOMAIN_FACT",
+      "label": "lineItemLayout distinguishes known Nested handling-unit/line-item association from unknown Stacked association",
+      "scope": "LTL03_CORE"
+    },
+    {
+      "id": "DF-NMFTA-PICKUP-DATE-NOT-REQUEST",
+      "type": "DOMAIN_FACT",
+      "label": "requestedPickupDate is intended ship date and does not serve as Pickup Request",
+      "scope": "LTL03_CORE"
+    },
+    {
+      "id": "DF-NMFTA-REFERENCE-NUMBER-HIERARCHY",
+      "type": "DOMAIN_FACT",
+      "label": "referenceNumbers contains distinct PRO quote shipment master-BOL trailer manifest BOL PO and additional-reference structures",
+      "scope": "LTL03_CORE"
+    },
+    {
+      "id": "GI-143",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate issuer-required BOL_Request top-level objects before create submission",
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-DOCUMENT|SP-COLLECTION-CARDINALITY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "REJECT_OR_ROUTE_MISSING_SCHEMA_REQUIRED_OBJECT"
+    },
+    {
+      "id": "GI-144",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve hierarchical requiredness for required parent objects and nested members",
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-DOCUMENT|SP-COLLECTION-CARDINALITY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "VALIDATE_REQUIREDNESS_IN_OBJECT_CONTEXT"
+    },
+    {
+      "id": "GI-145",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Use lineItemLayout to govern handling-unit to line-item association semantics",
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-PACKAGE|SP-COMMODITY-ITEM|SP-RELATIONSHIP|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PRESERVE_NESTED_VS_STACKED_ASSOCIATION"
+    },
+    {
+      "id": "GI-146",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Do not treat requestedPickupDate as evidence of pickup-request creation",
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-TEMPORAL-VALUE|SP-EVENT|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "SEPARATE_SHIP_DATE_FROM_PICKUP_REQUEST"
+    },
+    {
+      "id": "GI-147",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve eBOL referenceNumbers by explicit reference role and nested relationship",
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PRESERVE_REFERENCE_ROLE_AND_ASSOCIATION"
+    },
+    {
+      "id": "GI-148",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate issuer-described controlled values without misrepresenting description lists as OpenAPI enum constraints",
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-CONTROLLED-VOCABULARY|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "VALIDATE_SOURCE_VOCABULARY_PRESERVE_REPRESENTATION"
     }
   ],
   "edges": [
@@ -5387,11 +5477,6 @@
       "from": "GI-038",
       "relation": "DEPENDS_ON",
       "to": "DF-MONETARY-DISTINCT-FROM-MEASURE"
-    },
-    {
-      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "relation": "DERIVES_FROM",
-      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
     },
     {
       "from": "RF2",
@@ -7340,11 +7425,6 @@
       "scope": "confirms issuer controlled vocabulary families; exact BOL_Request placement unresolved"
     },
     {
-      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "relation": "BLOCKED_BY",
-      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
-    },
-    {
       "from": "GI-045",
       "relation": "PROJECTS_TO",
       "to": "RP-MALKOM-IDP",
@@ -8081,36 +8161,6 @@
     },
     {
       "from": "DF-NMFTA-CLASSIFICATION-FAMILY",
-      "relation": "BLOCKED_BY",
-      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "scope": "field ownership/cardinality/requiredness/nesting unresolved"
-    },
-    {
-      "from": "DF-NMFTA-LIMITED-ACCESS-FAMILY",
-      "relation": "BLOCKED_BY",
-      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "scope": "field ownership/cardinality/requiredness/nesting unresolved"
-    },
-    {
-      "from": "DF-NMFTA-TIME-CRITICAL-FAMILY",
-      "relation": "BLOCKED_BY",
-      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "scope": "field ownership/cardinality/requiredness/nesting unresolved"
-    },
-    {
-      "from": "DF-NMFTA-HANDLING-UNIT-FAMILY",
-      "relation": "BLOCKED_BY",
-      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "scope": "field ownership/cardinality/requiredness/nesting unresolved"
-    },
-    {
-      "from": "DF-REQUESTOR-CROSS-SOURCE",
-      "relation": "BLOCKED_BY",
-      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "scope": "field ownership/cardinality/requiredness/nesting unresolved"
-    },
-    {
-      "from": "DF-NMFTA-CLASSIFICATION-FAMILY",
       "relation": "CORROBORATES",
       "to": "RF5",
       "scope": "controlled vocabulary family only"
@@ -8584,24 +8634,6 @@
       "relation": "CONSTRAINS",
       "to": "GI-061",
       "scope": "manifest can group multiple shipments and potentially trailers"
-    },
-    {
-      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "relation": "CORROBORATES",
-      "to": "EV-NMFTA-2024-LIMITED-ACCESS-CHANGE",
-      "scope": "partial property evidence reduces but does not close full schema gap"
-    },
-    {
-      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "relation": "CORROBORATES",
-      "to": "EV-NMFTA-2024-WEIGHT-UNIT-CHANGE",
-      "scope": "partial property evidence reduces but does not close full schema gap"
-    },
-    {
-      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "relation": "CORROBORATES",
-      "to": "EV-NMFTA-2024-REFERENCE-NUMBER-CHANGE",
-      "scope": "partial property evidence reduces but does not close full schema gap"
     },
     {
       "from": "GI-058",
@@ -12749,7 +12781,7 @@
       "to": "EV-NMFTA-EBOL21-RELEASE-DETAILS"
     },
     {
-      "from": "DF-RAW-BOL-REQUEST-SCHEMA-GAP",
+      "from": "DF-RAW-BOL-REQUEST-SCHEMA-RECOVERED",
       "relation": "DERIVES_FROM",
       "to": "EV-DSDC-EBOL21-CURRENT-PAGE"
     },
@@ -12968,18 +13000,6 @@
       "relation": "COMPOSES_WITH",
       "to": "GI-077",
       "scope": "response SCAC uses existing carrier identity semantics"
-    },
-    {
-      "from": "DF-RAW-BOL-REQUEST-SCHEMA-GAP",
-      "relation": "BLOCKED_BY",
-      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "scope": "exact complete issuer property tree remains unresolved"
-    },
-    {
-      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
-      "relation": "DERIVES_FROM",
-      "to": "EV-DSDC-EBOL21-CURRENT-PAGE",
-      "scope": "issuer names schema family/asset but raw property tree not recovered"
     },
     {
       "from": "DF-INTRANSIT-ACCESS-SCOPE",
@@ -16891,13 +16911,453 @@
       "from": "GI-117",
       "relation": "REQUIRES_CLIENT_BINDING",
       "to": "CBREQ-ITV-RECONSIGN-MISSED-ACCESSORIAL-POLICY"
+    },
+    {
+      "from": "DF-NMFTA-BOL-REQUEST-HIERARCHY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "DF-NMFTA-BOL-REQUIREDNESS-HIERARCHICAL",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "DF-NMFTA-LINEITEM-LAYOUT-RELATIONSHIP",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "DF-NMFTA-PICKUP-DATE-NOT-REQUEST",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "DF-NMFTA-REFERENCE-NUMBER-HIERARCHY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "DF-RAW-BOL-REQUEST-SCHEMA-RECOVERED",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "DF-NMFTA-CLASSIFICATION-FAMILY",
+      "relation": "RESOLVED_BY",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "DF-NMFTA-LIMITED-ACCESS-FAMILY",
+      "relation": "RESOLVED_BY",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "DF-NMFTA-TIME-CRITICAL-FAMILY",
+      "relation": "RESOLVED_BY",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "DF-NMFTA-HANDLING-UNIT-FAMILY",
+      "relation": "RESOLVED_BY",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "DF-REQUESTOR-CROSS-SOURCE",
+      "relation": "RESOLVED_BY",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "GI-143",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "GI-143",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-143",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-143",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-143",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-143",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-143",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-143",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-143",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-143",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-143",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-143",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-143",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-143",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-144",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "GI-144",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-144",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-144",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-144",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-144",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-144",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REPEATING-CHILD-OBJECT"
+    },
+    {
+      "from": "GI-144",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-144",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-144",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-144",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-144",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-145",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "GI-145",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-145",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-ITEM"
+    },
+    {
+      "from": "GI-145",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-145",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-145",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-145",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-145",
+      "relation": "COMPOSES_WITH",
+      "to": "RF14"
+    },
+    {
+      "from": "GI-145",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REPEATING-CHILD-OBJECT"
+    },
+    {
+      "from": "GI-145",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-145",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-145",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-145",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-145",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-146",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "GI-146",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "GI-146",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-146",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-146",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-146",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-146",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-146",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-146",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-146",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-146",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-146",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-146",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-147",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "GI-147",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-147",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-147",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-147",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-147",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-147",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REFERENCE-GROUPING"
+    },
+    {
+      "from": "GI-147",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-147",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-147",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-147",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-147",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-148",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-YAML-TARGET"
+    },
+    {
+      "from": "GI-148",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-148",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-148",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-148",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-148",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-148",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-148",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-148",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-148",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-148",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-148",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
     }
   ],
   "validation": {
-    "nodeCount": 461,
-    "edgeCount": 2462,
+    "nodeCount": 471,
+    "edgeCount": 2538,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 142,
+    "generatedInstanceCount": 148,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
@@ -16909,9 +17369,9 @@
     "patternsMissingFamily": [],
     "patternsWithoutTaskInstances": [],
     "lastValidatedAt": "2026-09-20",
-    "generatedRuleInstanceCount": 142,
+    "generatedRuleInstanceCount": 148,
     "brokenEdgeCount": 0,
     "generatedInstancesMissingEvidencePrimitiveOrFamily": [],
-    "latestCheckpoint": "ITV_RECONSIGN_MISSED_ACCESSORIAL_TWO_TRACK"
+    "latestCheckpoint": "NMFTA_EBOL21_BOL_REQUEST_SCHEMA_CLOSURE"
   }
 }
