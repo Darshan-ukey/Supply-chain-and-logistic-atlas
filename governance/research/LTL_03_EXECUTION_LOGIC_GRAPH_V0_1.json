@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1",
-  "status": "RESEARCH_AND_CONTINUOUS_RECONCILIATION_IN_PROGRESS",
+  "status": "FREEZE_CANDIDATE_AWAITING_INDEPENDENT_QA_CORRECTIONS",
   "taskId": "LTL-03",
   "governance": {
     "mechanismFrozen": true,
@@ -9,7 +9,11 @@
     "researchPausedForReconciliation": false,
     "reconciliationGateStatus": "ATL-39_COMPLETE",
     "continuousReconciliationRequired": true,
-    "freezeStatus": "NOT_FROZEN_LTL03_IN_PROGRESS"
+    "freezeStatus": "FREEZE_CANDIDATE_ATL37_PASS_WITH_BINDING_CORRECTIONS",
+    "researchClosed": true,
+    "broadResearchReopenPolicy": "ONLY_FOR_SPECIFIC_QA_OR_CLOSURE_DEFECT",
+    "atl37Disposition": "PASS_WITH_BINDING_CORRECTIONS",
+    "atl37CorrectionCycle": "IN_PROGRESS"
   },
   "nodes": [
     {
