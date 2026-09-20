@@ -2720,6 +2720,107 @@
       "semanticOwner": "SP-PACKAGE|SP-COMMODITY-ITEM|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP",
       "sourceAuthorityClass": "INDUSTRY_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-CONTROLLED-FAMILIES",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL 2.1 controlled schema families",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "2.1",
+      "provenanceRef": "Digital LTL eBOL 2.1 API documentation"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-FAQ-RESULT-TCS",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL FAQ time-critical and result/error semantics",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "current issuer FAQ",
+      "provenanceRef": "Digital LTL Standards FAQ"
+    },
+    {
+      "id": "EV-NMFTA-EBOL21-RESULT-LABEL",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL 2.1 result-status and shipping-label representation changes",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "2.1",
+      "provenanceRef": "NMFTA eBOL 2.1 release material"
+    },
+    {
+      "id": "DF-TIME-CRITICAL-SERVICE-SEMANTIC",
+      "type": "DOMAIN_FACT",
+      "label": "Time Critical Service is a service-level semantic distinct from guaranteed service and timestamp/deadline",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-RESULT-STATUS-LOGICAL-OUTCOME",
+      "type": "DOMAIN_FACT",
+      "label": "eBOL result-status code describes logical transaction outcome distinct from HTTP status",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-FAILURE-BEFORE-WARNING",
+      "type": "DOMAIN_FACT",
+      "label": "Failure results precede warning/informational non-critical results",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-SHIPPING-LABEL-REPRESENTATION",
+      "type": "DOMAIN_FACT",
+      "label": "Shipping-label format/image is representation/output rather than canonical shipment identity",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-BARCODE-PRO-CHECK-DIGIT",
+      "type": "DOMAIN_FACT",
+      "label": "Applicable PRO/check-digit semantics constrain BOL/shipping-label barcode representation",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-088",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve time-critical type as service-level context without inventing guarantee or deadline",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "SERVICE_CONTEXT",
+      "semanticOwner": "SP-TRANSPORT-SERVICE|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-089",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve HTTP status separately from logical result-status code",
+      "taskId": "LTL-03",
+      "scope": "EBOL_API_RESULT",
+      "lifecycleStage": "API_RESPONSE",
+      "semanticOwner": "SP-STATE|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-090",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Process failure result before warning/informational outcomes",
+      "taskId": "LTL-03",
+      "scope": "EBOL_API_RESULT",
+      "lifecycleStage": "API_RESPONSE",
+      "semanticOwner": "SP-STATE|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ROUTE_BY_SEVERITY"
+    },
+    {
+      "id": "GI-091",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Bind shipping-label representation to underlying PRO/reference and applicable check digit",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_OUTPUT",
+      "semanticOwner": "SP-DOCUMENT|SP-IDENTIFIER|SP-REFERENCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -10728,13 +10829,347 @@
       "relation": "CONSTRAINS",
       "to": "GI-080",
       "scope": "density ownership is normally handling-unit level"
+    },
+    {
+      "from": "DF-TIME-CRITICAL-SERVICE-SEMANTIC",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-RESULT-TCS"
+    },
+    {
+      "from": "DF-RESULT-STATUS-LOGICAL-OUTCOME",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL21-RESULT-LABEL"
+    },
+    {
+      "from": "DF-FAILURE-BEFORE-WARNING",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-RESULT-TCS"
+    },
+    {
+      "from": "DF-SHIPPING-LABEL-REPRESENTATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-CONTROLLED-FAMILIES"
+    },
+    {
+      "from": "DF-BARCODE-PRO-CHECK-DIGIT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL21-RESULT-LABEL"
+    },
+    {
+      "from": "GI-088",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-CONTROLLED-FAMILIES"
+    },
+    {
+      "from": "GI-088",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-RESULT-TCS"
+    },
+    {
+      "from": "GI-088",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "GI-088",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-088",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-088",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-088",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-088",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-088",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-088",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-088",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-088",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-088",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-088",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-088",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-089",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL21-RESULT-LABEL"
+    },
+    {
+      "from": "GI-089",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-RESULT-TCS"
+    },
+    {
+      "from": "GI-089",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-089",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-089",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-089",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-089",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-089",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-089",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-089",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-089",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-089",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-089",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-089",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-089",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-090",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-RESULT-TCS"
+    },
+    {
+      "from": "GI-090",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-090",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-090",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-090",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-090",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-090",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-090",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-090",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-090",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-090",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-091",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL21-RESULT-LABEL"
+    },
+    {
+      "from": "GI-091",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-CONTROLLED-FAMILIES"
+    },
+    {
+      "from": "GI-091",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-091",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-091",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-091",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-091",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-091",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-091",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-091",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-091",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-IDENTITY-BEFORE-MUTATION"
+    },
+    {
+      "from": "GI-091",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-091",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-091",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-091",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-091",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "DF-TIME-CRITICAL-SERVICE-SEMANTIC",
+      "relation": "CONSTRAINS",
+      "to": "GI-088",
+      "scope": "do not infer guaranteed service or deadline"
+    },
+    {
+      "from": "GI-089",
+      "relation": "PRECEDES",
+      "to": "GI-090",
+      "scope": "resolve transport vs logical status before severity routing"
+    },
+    {
+      "from": "DF-FAILURE-BEFORE-WARNING",
+      "relation": "CONSTRAINS",
+      "to": "GI-090",
+      "scope": "failure precedes warning/information"
+    },
+    {
+      "from": "DF-SHIPPING-LABEL-REPRESENTATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-091",
+      "scope": "representation cannot replace canonical PRO/reference identity"
     }
   ],
   "validation": {
-    "nodeCount": 314,
-    "edgeCount": 1499,
+    "nodeCount": 326,
+    "edgeCount": 1565,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 87,
+    "generatedInstanceCount": 91,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
