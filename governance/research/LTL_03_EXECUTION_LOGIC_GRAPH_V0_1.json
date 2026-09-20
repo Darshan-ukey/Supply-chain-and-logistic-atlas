@@ -3450,6 +3450,105 @@
         "GI-118"
       ],
       "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-FAQ-ERROR-NULLABILITY",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL FAQ bad-data error not-found and nullable-field semantics",
+      "sourceAuthority": "NMFTA/DSDC",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "eBOL Version 2.1 issuer FAQ current as researched 2026-09-20",
+      "provenanceRef": "DSDC eBOL API Standard issuer FAQ"
+    },
+    {
+      "id": "DF-EBOL-BAD-DATA-HTTP400",
+      "type": "DOMAIN_FACT",
+      "label": "Bad BOL data may be represented with recommended HTTP 400 while canonical validation exception remains distinct from protocol status",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-EBOL-NOTFOUND-HTTP404",
+      "type": "DOMAIN_FACT",
+      "label": "BOL not found during UPDATE or DELETE is recommended as HTTP 404 rather than generic HTTP 400",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-EBOL-OPTIONAL-NULLABLE-SEPARATION",
+      "type": "DOMAIN_FACT",
+      "label": "Non-required eBOL fields may be nullable under OpenAPI 2.0; optionality nullability and domain value remain distinct semantics",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-EBOL-CUSTOM-ERROR-SCOPING",
+      "type": "DOMAIN_FACT",
+      "label": "Custom error vocabulary and stack-specific error serialization are implementation scoped rather than canonical LTL truth",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-119",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve bad BOL data as canonical validation exception and project recommended HTTP 400 separately",
+      "taskId": "LTL-03",
+      "scope": "EBOL_ERROR_HANDLING",
+      "lifecycleStage": "BOL_VALIDATION",
+      "semanticOwner": "SP-STATE|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "RESOLVE_EXCEPTION_THEN_PROJECT_HTTP400"
+    },
+    {
+      "id": "GI-120",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve UPDATE or DELETE BOL identity-not-found as canonical not-found exception and project recommended HTTP 404 separately",
+      "taskId": "LTL-03",
+      "scope": "EBOL_ERROR_HANDLING",
+      "lifecycleStage": "BOL_MUTATION",
+      "semanticOwner": "SP-IDENTIFIER|SP-STATE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "RESOLVE_NOT_FOUND_THEN_PROJECT_HTTP404"
+    },
+    {
+      "id": "GI-121",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve eBOL field optionality and nullability separately and do not infer null as a domain value",
+      "taskId": "LTL-03",
+      "scope": "EBOL_REPRESENTATION",
+      "lifecycleStage": "BOL_VALIDATION",
+      "semanticOwner": "SP-COLLECTION-CARDINALITY|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PRESERVE_OPTIONALITY_NULLABILITY_SEPARATION"
+    },
+    {
+      "id": "GI-122",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Keep custom error vocabulary and stack-specific error serialization scoped to implementation binding",
+      "taskId": "LTL-03",
+      "scope": "EBOL_ERROR_HANDLING",
+      "lifecycleStage": "ERROR_PROJECTION",
+      "semanticOwner": "SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD_WITH_IMPLEMENTATION_SPECIALIZATION",
+      "dispositionPolicy": "BIND_LOCALLY_NO_CANONICAL_PROMOTION"
+    },
+    {
+      "id": "CBREQ-EBOL-CUSTOM-ERROR-CONTRACT",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve implementation-specific custom error catalogue payload structure and serialization before client-specific eBOL error projection",
+      "clientScope": "CLIENT_OR_IMPLEMENTATION_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-119",
+        "GI-120",
+        "GI-122"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "CBREQ-EBOL-NULLABILITY-CONTRACT",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve local nullable and serialization behavior where implementation contract specializes eBOL optionality",
+      "clientScope": "CLIENT_OR_IMPLEMENTATION_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-121"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
     }
   ],
   "edges": [
@@ -14274,13 +14373,372 @@
       "from": "GI-118",
       "relation": "REQUIRES_CLIENT_BINDING",
       "to": "CBREQ-ITV-POD-POLICY"
+    },
+    {
+      "from": "DF-EBOL-BAD-DATA-HTTP400",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-ERROR-NULLABILITY"
+    },
+    {
+      "from": "DF-EBOL-NOTFOUND-HTTP404",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-ERROR-NULLABILITY"
+    },
+    {
+      "from": "DF-EBOL-OPTIONAL-NULLABLE-SEPARATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-ERROR-NULLABILITY"
+    },
+    {
+      "from": "DF-EBOL-CUSTOM-ERROR-SCOPING",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-ERROR-NULLABILITY"
+    },
+    {
+      "from": "GI-119",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-ERROR-NULLABILITY"
+    },
+    {
+      "from": "GI-120",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-ERROR-NULLABILITY"
+    },
+    {
+      "from": "GI-121",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-ERROR-NULLABILITY"
+    },
+    {
+      "from": "GI-122",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-ERROR-NULLABILITY"
+    },
+    {
+      "from": "GI-119",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-119",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-119",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-119",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-119",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-119",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-119",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-119",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-119",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-119",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-119",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-119",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-119",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-120",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-120",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-120",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-120",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-120",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-120",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-120",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-120",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-120",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-120",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-IDENTITY-BEFORE-MUTATION"
+    },
+    {
+      "from": "GI-120",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-120",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-120",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-120",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-120",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-121",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-121",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-121",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-121",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-121",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-121",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-121",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-121",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION"
+    },
+    {
+      "from": "GI-121",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-121",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-121",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-121",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-121",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-122",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-122",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-122",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-122",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-122",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-122",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-122",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-122",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-122",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION"
+    },
+    {
+      "from": "GI-122",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-122",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-122",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-122",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-122",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "DF-EBOL-BAD-DATA-HTTP400",
+      "relation": "CONSTRAINS",
+      "to": "GI-119",
+      "scope": "protocol status does not replace canonical validation exception"
+    },
+    {
+      "from": "DF-EBOL-NOTFOUND-HTTP404",
+      "relation": "CONSTRAINS",
+      "to": "GI-120",
+      "scope": "operation-context not-found remains distinct from bad-data validation"
+    },
+    {
+      "from": "DF-EBOL-OPTIONAL-NULLABLE-SEPARATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-121",
+      "scope": "optional nullable and domain value remain separate"
+    },
+    {
+      "from": "DF-EBOL-CUSTOM-ERROR-SCOPING",
+      "relation": "CONSTRAINS",
+      "to": "GI-122",
+      "scope": "implementation errors must not be promoted to canonical LTL truth"
+    },
+    {
+      "from": "GI-119",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-EBOL-CUSTOM-ERROR-CONTRACT"
+    },
+    {
+      "from": "GI-120",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-EBOL-CUSTOM-ERROR-CONTRACT"
+    },
+    {
+      "from": "GI-122",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-EBOL-CUSTOM-ERROR-CONTRACT"
+    },
+    {
+      "from": "GI-121",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-EBOL-NULLABILITY-CONTRACT"
     }
   ],
   "validation": {
-    "nodeCount": 399,
-    "edgeCount": 2056,
+    "nodeCount": 410,
+    "edgeCount": 2127,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 118,
+    "generatedInstanceCount": 122,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
@@ -14292,9 +14750,9 @@
     "patternsMissingFamily": [],
     "patternsWithoutTaskInstances": [],
     "lastValidatedAt": "2026-09-20",
-    "generatedRuleInstanceCount": 118,
+    "generatedRuleInstanceCount": 122,
     "brokenEdgeCount": 0,
     "generatedInstancesMissingEvidencePrimitiveOrFamily": [],
-    "latestCheckpoint": "ITV_DELIVERY_PLANNING_EXCEPTIONS_TWO_TRACK"
+    "latestCheckpoint": "EBOL_ERROR_NULLABILITY_TWO_TRACK"
   }
 }
