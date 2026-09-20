@@ -2410,6 +2410,64 @@
       "semanticOwner": "SP-MEASURE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
       "sourceAuthorityClass": "SEMANTIC_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-NMFTA-SCAC",
+      "type": "EVIDENCE",
+      "label": "NMFTA SCAC carrier identifier semantics",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "current as researched 2026-09-20",
+      "provenanceRef": "NMFTA SCAC official/help center"
+    },
+    {
+      "id": "EV-NMFTA-INTRANSIT-POD",
+      "type": "EVIDENCE",
+      "label": "NMFTA in-transit proof-of-delivery availability semantics",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "current as researched 2026-09-20",
+      "provenanceRef": "NMFTA/DSDC In-Transit Visibility API Standard"
+    },
+    {
+      "id": "DF-SCAC-CARRIER-ID",
+      "type": "DOMAIN_FACT",
+      "label": "SCAC is a unique 2–4 letter transportation-company/carrier identifier governed by NMFTA",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-SCAC-MASTER-AUTHORITY",
+      "type": "DOMAIN_FACT",
+      "label": "NMFTA is authoritative issuing/governing source for SCAC identity",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-POD-AVAILABILITY",
+      "type": "DOMAIN_FACT",
+      "label": "In-transit visibility may expose proof-of-delivery availability after delivery",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-077",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve carrier/interline partner identity using SCAC where available",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "IN_TRANSIT",
+      "semanticOwner": "SP-PARTY|SP-IDENTIFIER|SP-MASTER-REFERENCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-078",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Associate proof-of-delivery availability with delivery lifecycle",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DELIVERY",
+      "semanticOwner": "SP-DOCUMENT|SP-INDICATOR|SP-EVENT|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -9443,13 +9501,227 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability depends on downstream rating use case"
+    },
+    {
+      "from": "DF-SCAC-CARRIER-ID",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-SCAC"
+    },
+    {
+      "from": "DF-SCAC-MASTER-AUTHORITY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-SCAC"
+    },
+    {
+      "from": "DF-POD-AVAILABILITY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-INTRANSIT-POD"
+    },
+    {
+      "from": "GI-077",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-SCAC"
+    },
+    {
+      "from": "GI-077",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-INTRANSIT-CUSTODY-INTERLINE"
+    },
+    {
+      "from": "GI-077",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-077",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-077",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "GI-077",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-077",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-077",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-077",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "GI-077",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-078",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-INTRANSIT-POD"
+    },
+    {
+      "from": "GI-078",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-DELIVERY-EVENT"
+    },
+    {
+      "from": "GI-078",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-078",
+      "relation": "INSTANTIATES",
+      "to": "SP-INDICATOR"
+    },
+    {
+      "from": "GI-078",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-078",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-078",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-078",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-078",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-078",
+      "relation": "COMPOSES_WITH",
+      "to": "RF16"
+    },
+    {
+      "from": "GI-077",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-077",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CUSTODY-HANDOFF"
+    },
+    {
+      "from": "GI-078",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REPEATING-CHILD-OBJECT"
+    },
+    {
+      "from": "GI-077",
+      "relation": "PRECEDES",
+      "to": "GI-073",
+      "scope": "resolve interline carrier identity before handoff completion where SCAC available"
+    },
+    {
+      "from": "DF-SCAC-MASTER-AUTHORITY",
+      "relation": "RESOLVES_WITH",
+      "to": "GI-077",
+      "scope": "NMFTA SCAC data is carrier identity authority"
+    },
+    {
+      "from": "GI-074",
+      "relation": "PRECEDES",
+      "to": "GI-078",
+      "scope": "delivery event before POD availability association"
+    },
+    {
+      "from": "DF-POD-AVAILABILITY",
+      "relation": "CONSTRAINS",
+      "to": "GI-078",
+      "scope": "availability indicator does not imply POD content has been retrieved/validated"
+    },
+    {
+      "from": "GI-077",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-077",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-077",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-077",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-077",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-078",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-078",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-078",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-078",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "GI-078",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream LTL task"
     }
   ],
   "validation": {
-    "nodeCount": 277,
-    "edgeCount": 1310,
+    "nodeCount": 284,
+    "edgeCount": 1350,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 76,
+    "generatedInstanceCount": 78,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
