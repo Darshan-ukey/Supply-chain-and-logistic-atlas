@@ -1383,6 +1383,92 @@
       "semanticOwner": "SP-TRANSPORT-EQUIPMENT|SP-PACKAGE|SP-COLLECTION-CARDINALITY|SP-RELATIONSHIP",
       "sourceAuthorityClass": "SEMANTIC_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-UNECE-D23B-PACKAGE-DETAIL",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B Logistics Package detail semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B Logistics Package"
+    },
+    {
+      "id": "EV-UNECE-D23B-REQUESTOR-ROLE",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT party role Requestor",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B Party Role Code HI=Requestor"
+    },
+    {
+      "id": "DF-PACKAGE-TYPE-DISTINCT-FROM-HIERARCHY",
+      "type": "DOMAIN_FACT",
+      "label": "Package type is distinct from packaging hierarchy level",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-PACKAGE-IDENTITY-STRUCTURE",
+      "type": "DOMAIN_FACT",
+      "label": "Package may carry local/global/parent identifiers and sequence",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-PACKAGE-UNIT-COUNT",
+      "type": "DOMAIN_FACT",
+      "label": "Units per package is distinct from package quantity",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-REQUESTOR-ROLE",
+      "type": "DOMAIN_FACT",
+      "label": "Requestor is a governed party role",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "GI-052",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate package type separately from packaging level",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-PACKAGE|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-053",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve package local/global/parent identifiers and sequence",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-PACKAGE|SP-IDENTIFIER|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-054",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Distinguish units per package from package quantity",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-PACKAGE|SP-COLLECTION-CARDINALITY",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-055",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve requestor role before requestor identity",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-PARTY|SP-RELATIONSHIP|SP-MASTER-REFERENCE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -5118,13 +5204,310 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "DF-PACKAGE-TYPE-DISTINCT-FROM-HIERARCHY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-PACKAGE-DETAIL"
+    },
+    {
+      "from": "DF-PACKAGE-IDENTITY-STRUCTURE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-PACKAGE-DETAIL"
+    },
+    {
+      "from": "DF-PACKAGE-UNIT-COUNT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-PACKAGE-DETAIL"
+    },
+    {
+      "from": "DF-REQUESTOR-ROLE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-REQUESTOR-ROLE"
+    },
+    {
+      "from": "GI-052",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-PACKAGE-DETAIL"
+    },
+    {
+      "from": "GI-052",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-052",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-052",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-052",
+      "relation": "COMPOSES_WITH",
+      "to": "RF14"
+    },
+    {
+      "from": "GI-053",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-PACKAGE-DETAIL"
+    },
+    {
+      "from": "GI-053",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-053",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-053",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-053",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-053",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-053",
+      "relation": "COMPOSES_WITH",
+      "to": "RF14"
+    },
+    {
+      "from": "GI-054",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-PACKAGE-DETAIL"
+    },
+    {
+      "from": "GI-054",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-054",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-054",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-054",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "GI-054",
+      "relation": "COMPOSES_WITH",
+      "to": "RF14"
+    },
+    {
+      "from": "GI-055",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-REQUESTOR-ROLE"
+    },
+    {
+      "from": "GI-055",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-CODE-FAMILIES"
+    },
+    {
+      "from": "GI-055",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-055",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-055",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "GI-055",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-055",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-055",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-055",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "GI-055",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-053",
+      "relation": "PRECEDES",
+      "to": "GI-052",
+      "scope": "package identity/hierarchy context before package type validation where required"
+    },
+    {
+      "from": "GI-053",
+      "relation": "PRECEDES",
+      "to": "GI-054",
+      "scope": "package ownership/hierarchy before units-per-package reconciliation"
+    },
+    {
+      "from": "GI-055",
+      "relation": "DEPENDS_ON",
+      "to": "DF-REQUESTOR-ROLE"
+    },
+    {
+      "from": "GI-052",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-052",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-052",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-052",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-052",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-053",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-053",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-053",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-053",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-053",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-054",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-054",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-054",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-054",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-054",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-055",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-055",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-055",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-055",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-055",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
     }
   ],
   "validation": {
-    "nodeCount": 178,
-    "edgeCount": 686,
+    "nodeCount": 188,
+    "edgeCount": 741,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 51,
+    "generatedInstanceCount": 55,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
