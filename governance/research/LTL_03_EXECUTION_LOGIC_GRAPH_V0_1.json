@@ -1469,6 +1469,36 @@
       "semanticOwner": "SP-PARTY|SP-RELATIONSHIP|SP-MASTER-REFERENCE",
       "sourceAuthorityClass": "SEMANTIC_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "DF-NMFTA-CLASSIFICATION-FAMILY",
+      "type": "DOMAIN_FACT",
+      "label": "NMFTA exposes Classification_Codes family; exact semantic ownership unresolved",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-NMFTA-LIMITED-ACCESS-FAMILY",
+      "type": "DOMAIN_FACT",
+      "label": "NMFTA exposes Limited_Access_Types family; exact owner/activation unresolved",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-NMFTA-TIME-CRITICAL-FAMILY",
+      "type": "DOMAIN_FACT",
+      "label": "NMFTA exposes Time_Critical_Types family; exact temporal/service linkage unresolved",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-NMFTA-HANDLING-UNIT-FAMILY",
+      "type": "DOMAIN_FACT",
+      "label": "NMFTA exposes Handling_Unit_Types family; equivalence to package type unresolved",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-REQUESTOR-CROSS-SOURCE",
+      "type": "DOMAIN_FACT",
+      "label": "NMFTA Requestor_Roles and UN/CEFACT Requestor role corroborate role-family semantics",
+      "scope": "BROADER_BOL_UNIVERSE"
     }
   ],
   "edges": [
@@ -5501,11 +5531,101 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "DF-NMFTA-CLASSIFICATION-FAMILY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-CODE-FAMILIES"
+    },
+    {
+      "from": "DF-NMFTA-LIMITED-ACCESS-FAMILY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-CODE-FAMILIES"
+    },
+    {
+      "from": "DF-NMFTA-TIME-CRITICAL-FAMILY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-CODE-FAMILIES"
+    },
+    {
+      "from": "DF-NMFTA-HANDLING-UNIT-FAMILY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-CODE-FAMILIES"
+    },
+    {
+      "from": "DF-REQUESTOR-CROSS-SOURCE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-2.1-CODE-FAMILIES"
+    },
+    {
+      "from": "DF-REQUESTOR-CROSS-SOURCE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-REQUESTOR-ROLE"
+    },
+    {
+      "from": "DF-NMFTA-CLASSIFICATION-FAMILY",
+      "relation": "BLOCKED_BY",
+      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "scope": "field ownership/cardinality/requiredness/nesting unresolved"
+    },
+    {
+      "from": "DF-NMFTA-LIMITED-ACCESS-FAMILY",
+      "relation": "BLOCKED_BY",
+      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "scope": "field ownership/cardinality/requiredness/nesting unresolved"
+    },
+    {
+      "from": "DF-NMFTA-TIME-CRITICAL-FAMILY",
+      "relation": "BLOCKED_BY",
+      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "scope": "field ownership/cardinality/requiredness/nesting unresolved"
+    },
+    {
+      "from": "DF-NMFTA-HANDLING-UNIT-FAMILY",
+      "relation": "BLOCKED_BY",
+      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "scope": "field ownership/cardinality/requiredness/nesting unresolved"
+    },
+    {
+      "from": "DF-REQUESTOR-CROSS-SOURCE",
+      "relation": "BLOCKED_BY",
+      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "scope": "field ownership/cardinality/requiredness/nesting unresolved"
+    },
+    {
+      "from": "DF-NMFTA-CLASSIFICATION-FAMILY",
+      "relation": "CORROBORATES",
+      "to": "RF5",
+      "scope": "controlled vocabulary family only"
+    },
+    {
+      "from": "DF-NMFTA-LIMITED-ACCESS-FAMILY",
+      "relation": "CORROBORATES",
+      "to": "RF5",
+      "scope": "controlled vocabulary family only"
+    },
+    {
+      "from": "DF-NMFTA-TIME-CRITICAL-FAMILY",
+      "relation": "CORROBORATES",
+      "to": "RF5",
+      "scope": "controlled vocabulary family only"
+    },
+    {
+      "from": "DF-NMFTA-HANDLING-UNIT-FAMILY",
+      "relation": "CORROBORATES",
+      "to": "RF5",
+      "scope": "controlled vocabulary family only"
+    },
+    {
+      "from": "DF-REQUESTOR-CROSS-SOURCE",
+      "relation": "CORROBORATES",
+      "to": "GI-055",
+      "scope": "requestor role-family semantics; exact NMFTA property placement unresolved"
     }
   ],
   "validation": {
-    "nodeCount": 188,
-    "edgeCount": 741,
+    "nodeCount": 193,
+    "edgeCount": 757,
     "badEdgeCount": 0,
     "generatedInstanceCount": 55,
     "instancesMissingEvidence": [],
