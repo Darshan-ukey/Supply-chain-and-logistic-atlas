@@ -221,3 +221,26 @@ This supplements, not replaces, Rule Reuse Ratio.
 
 The pattern catalogue evolves.
 The promotion/search/trace mechanism is governed.
+
+
+### RPAT-LTL-CUSTODY-HANDOFF
+Pattern:
+current custodian / lifecycle state
+-> handoff event
+-> handoff time
+-> handoff location
+-> receiving party/carrier identity
+-> responsibility/possession transition
+-> resulting lifecycle state
+-> acknowledgement/evidence.
+
+Families:
+RF3 + RF18 + RF2 + RF1 + RF6 + RF9 + RF8.
+
+Reusable across:
+shipper-to-carrier pickup possession, terminal/interline transfer, carrier-to-receiver delivery.
+
+Guardrails:
+- do not infer custody transfer from location alone;
+- preserve transfer-of-responsibility location separately from ordinary terminal/location semantics;
+- do not mark delivery complete when applicable receipt/acknowledgement evidence is unresolved.
