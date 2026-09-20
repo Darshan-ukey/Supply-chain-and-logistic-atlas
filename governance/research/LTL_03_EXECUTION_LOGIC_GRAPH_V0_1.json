@@ -1563,6 +1563,119 @@
       "semanticOwner": "SP-TRANSPORT-SERVICE|SP-CONTROLLED-VOCABULARY",
       "sourceAuthorityClass": "SEMANTIC_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-NMFTA-2024-LIMITED-ACCESS-CHANGE",
+      "type": "EVIDENCE",
+      "label": "NMFTA 2024 eBOL limited-access request change",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "2024-01-22",
+      "provenanceRef": "NMFTA Digital LTL Council meeting deck — eBOL API Request Changes"
+    },
+    {
+      "id": "EV-NMFTA-2024-WEIGHT-UNIT-CHANGE",
+      "type": "EVIDENCE",
+      "label": "NMFTA 2024 eBOL weightUnit request change",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "2024-01-22",
+      "provenanceRef": "NMFTA Digital LTL Council meeting deck — eBOL API Request Changes"
+    },
+    {
+      "id": "EV-NMFTA-2024-REFERENCE-NUMBER-CHANGE",
+      "type": "EVIDENCE",
+      "label": "NMFTA 2024 trailerId/manifestId referenceNumbers change",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "2024-01-22",
+      "provenanceRef": "NMFTA Digital LTL Council meeting deck — eBOL API Request Changes"
+    },
+    {
+      "id": "DF-LIMITED-ACCESS-ACCESSORIAL",
+      "type": "DOMAIN_FACT",
+      "label": "Limited-access type is associated with limited-access accessorial semantics",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-LIMITED-ACCESS-DIRECTION",
+      "type": "DOMAIN_FACT",
+      "label": "Limited-access context distinguishes origin and destination",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-LIMITED-ACCESS-TARIFF-RELATION",
+      "type": "DOMAIN_FACT",
+      "label": "Limited-access type may relate to a carrier tariff charge",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-NMFTA-WEIGHT-UNIT-OPTIONAL",
+      "type": "DOMAIN_FACT",
+      "label": "NMFTA request objects may carry optional weightUnit",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-NMFTA-WEIGHT-UNIT-DEFAULT",
+      "type": "DOMAIN_FACT",
+      "label": "Documented NMFTA request-change behavior defaults Imperial UOM if weightUnit omitted",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-TRAILER-REFERENCE",
+      "type": "DOMAIN_FACT",
+      "label": "trailerId associates shipment to a specific spotted trailer",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-MANIFEST-REFERENCE",
+      "type": "DOMAIN_FACT",
+      "label": "manifestId associates shipment to a manifest that may include multiple shipments/trailers",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "GI-058",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve limited-access type with origin/destination context and tariff-charge relationship",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-TRANSPORT-SERVICE|SP-LOCATION|SP-CONTROLLED-VOCABULARY|SP-MONETARY-AMOUNT",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-059",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate/default NMFTA weight unit with provenance",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-MEASURE|SP-CONTROLLED-VOCABULARY|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-060",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve trailerId and bind shipment to spotted trailer",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE|SP-TRANSPORT-EQUIPMENT|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-061",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve manifestId and bind shipment to manifest grouping",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE|SP-RELATIONSHIP|SP-COLLECTION-CARDINALITY",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -5869,13 +5982,413 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "DF-LIMITED-ACCESS-ACCESSORIAL",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-LIMITED-ACCESS-CHANGE"
+    },
+    {
+      "from": "DF-LIMITED-ACCESS-DIRECTION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-LIMITED-ACCESS-CHANGE"
+    },
+    {
+      "from": "DF-LIMITED-ACCESS-TARIFF-RELATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-LIMITED-ACCESS-CHANGE"
+    },
+    {
+      "from": "DF-NMFTA-WEIGHT-UNIT-OPTIONAL",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-WEIGHT-UNIT-CHANGE"
+    },
+    {
+      "from": "DF-NMFTA-WEIGHT-UNIT-DEFAULT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-WEIGHT-UNIT-CHANGE"
+    },
+    {
+      "from": "DF-TRAILER-REFERENCE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-REFERENCE-NUMBER-CHANGE"
+    },
+    {
+      "from": "DF-MANIFEST-REFERENCE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-REFERENCE-NUMBER-CHANGE"
+    },
+    {
+      "from": "GI-058",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-LIMITED-ACCESS-CHANGE"
+    },
+    {
+      "from": "GI-058",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "GI-058",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "GI-058",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-058",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-058",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-058",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-058",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-058",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-058",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-058",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-059",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-WEIGHT-UNIT-CHANGE"
+    },
+    {
+      "from": "GI-059",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-059",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-059",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-059",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-059",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-059",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-059",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-060",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-REFERENCE-NUMBER-CHANGE"
+    },
+    {
+      "from": "GI-060",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-060",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-060",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-EQUIPMENT"
+    },
+    {
+      "from": "GI-060",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-060",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-060",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-060",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-061",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-2024-REFERENCE-NUMBER-CHANGE"
+    },
+    {
+      "from": "GI-061",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-061",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-061",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-061",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-061",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-061",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-061",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-061",
+      "relation": "COMPOSES_WITH",
+      "to": "RF14"
+    },
+    {
+      "from": "GI-061",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "DF-NMFTA-LIMITED-ACCESS-FAMILY",
+      "relation": "SPECIALIZES",
+      "to": "DF-LIMITED-ACCESS-ACCESSORIAL",
+      "scope": "issuer request-change evidence gives accessorial ownership/context"
+    },
+    {
+      "from": "DF-LIMITED-ACCESS-DIRECTION",
+      "relation": "CONSTRAINS",
+      "to": "GI-058",
+      "scope": "origin and destination must remain distinguishable"
+    },
+    {
+      "from": "DF-LIMITED-ACCESS-TARIFF-RELATION",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17",
+      "scope": "limited-access type may map to tariff charge"
+    },
+    {
+      "from": "GI-045",
+      "relation": "PRECEDES",
+      "to": "GI-058",
+      "scope": "TransportService/accessorial object resolution before limited-access specialization"
+    },
+    {
+      "from": "GI-059",
+      "relation": "DEPENDS_ON",
+      "to": "DF-NMFTA-WEIGHT-UNIT-DEFAULT",
+      "scope": "default only when source unit absent"
+    },
+    {
+      "from": "GI-060",
+      "relation": "DEPENDS_ON",
+      "to": "GI-049",
+      "scope": "trailer reference relationship composes with TransportEquipment identity"
+    },
+    {
+      "from": "DF-MANIFEST-REFERENCE",
+      "relation": "CONSTRAINS",
+      "to": "GI-061",
+      "scope": "manifest can group multiple shipments and potentially trailers"
+    },
+    {
+      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "relation": "CORROBORATES",
+      "to": "EV-NMFTA-2024-LIMITED-ACCESS-CHANGE",
+      "scope": "partial property evidence reduces but does not close full schema gap"
+    },
+    {
+      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "relation": "CORROBORATES",
+      "to": "EV-NMFTA-2024-WEIGHT-UNIT-CHANGE",
+      "scope": "partial property evidence reduces but does not close full schema gap"
+    },
+    {
+      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "relation": "CORROBORATES",
+      "to": "EV-NMFTA-2024-REFERENCE-NUMBER-CHANGE",
+      "scope": "partial property evidence reduces but does not close full schema gap"
+    },
+    {
+      "from": "GI-058",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-058",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-058",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-058",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-058",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-059",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-059",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-059",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-059",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-059",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-060",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-060",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-060",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-060",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-060",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-061",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-061",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-061",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-061",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-061",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
     }
   ],
   "validation": {
-    "nodeCount": 201,
-    "edgeCount": 791,
+    "nodeCount": 215,
+    "edgeCount": 865,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 57,
+    "generatedInstanceCount": 61,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
