@@ -2503,6 +2503,113 @@
       "semanticOwner": "SP-LOCATION|SP-IDENTIFIER|SP-MASTER-REFERENCE|SP-RELATIONSHIP",
       "sourceAuthorityClass": "INDUSTRY_STANDARD",
       "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-NMFTA-NMFC-CLASSIFICATION-FAQ",
+      "type": "EVIDENCE",
+      "label": "NMFTA current NMFC classification semantics",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "updated 2026-04-07",
+      "provenanceRef": "NMFTA Classification FAQs"
+    },
+    {
+      "id": "EV-NMFTA-HANDLING-UNIT-DENSITY",
+      "type": "EVIDENCE",
+      "label": "NMFTA handling-unit density calculation",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "updated 2026-03-16",
+      "provenanceRef": "NMFTA How is density of a handling unit calculated?"
+    },
+    {
+      "id": "EV-NMFTA-NMFC-VERSIONING",
+      "type": "EVIDENCE",
+      "label": "NMFTA FCDC docket/versioned density-class provisions",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "2026-1/current public docket context",
+      "provenanceRef": "NMFTA FCDC public docket and density guidance"
+    },
+    {
+      "id": "DF-NMFC-CLASS-SEMANTIC",
+      "type": "DOMAIN_FACT",
+      "label": "Freight class is distinct from commodity/item identity, NMFC item number and density",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-NMFC-FOUR-CHARACTERISTICS",
+      "type": "DOMAIN_FACT",
+      "label": "NMFC classification considers density, handling, stowability and liability",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-HANDLING-UNIT-DENSITY",
+      "type": "DOMAIN_FACT",
+      "label": "Handling-unit density uses weight divided by cubage from greatest tendered dimensions including projections",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-CLASSIFICATION-NOT-PURE-DENSITY",
+      "type": "DOMAIN_FACT",
+      "label": "Density alone does not universally determine freight class",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-NMFC-TARIFF-PRECEDENCE-BOUNDARY",
+      "type": "DOMAIN_FACT",
+      "label": "Applicable carrier tariff may govern classification within scope; NMFC is voluntary standard",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-NMFC-VERSIONED-CLASS-MAPPING",
+      "type": "DOMAIN_FACT",
+      "label": "NMFC density/class mappings are version/effective-context governed",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-080",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Compute handling-unit density from governed tendered dimensions and weight",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "CLASSIFICATION_RATING_ADJACENT",
+      "semanticOwner": "SP-MEASURE|SP-PACKAGE-HANDLING-UNIT|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-081",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve freight class separately from density and commodity/item identity",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "CLASSIFICATION",
+      "semanticOwner": "SP-COMMODITY-CONSIGNMENT-ITEM|SP-CONTROLLED-VOCABULARY|SP-MEASURE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-082",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve NMFC versus scoped carrier-tariff classification authority before correction",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "CLASSIFICATION",
+      "semanticOwner": "SP-EVIDENCE-PROVENANCE|SP-COMMODITY-CONSIGNMENT-ITEM",
+      "sourceAuthorityClass": "MIXED",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-083",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Bind density/class mapping to applicable version/effective context",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "CLASSIFICATION",
+      "semanticOwner": "SP-TEMPORAL-VALUE|SP-EVIDENCE-PROVENANCE|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -9858,13 +9965,332 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability depends on downstream LTL task"
+    },
+    {
+      "from": "DF-NMFC-CLASS-SEMANTIC",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-NMFC-CLASSIFICATION-FAQ"
+    },
+    {
+      "from": "DF-NMFC-FOUR-CHARACTERISTICS",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-NMFC-CLASSIFICATION-FAQ"
+    },
+    {
+      "from": "DF-HANDLING-UNIT-DENSITY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-HANDLING-UNIT-DENSITY"
+    },
+    {
+      "from": "DF-CLASSIFICATION-NOT-PURE-DENSITY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-NMFC-CLASSIFICATION-FAQ"
+    },
+    {
+      "from": "DF-NMFC-TARIFF-PRECEDENCE-BOUNDARY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-NMFC-CLASSIFICATION-FAQ"
+    },
+    {
+      "from": "DF-NMFC-VERSIONED-CLASS-MAPPING",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-NMFC-VERSIONING"
+    },
+    {
+      "from": "GI-080",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-HANDLING-UNIT-DENSITY"
+    },
+    {
+      "from": "GI-080",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-080",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE-HANDLING-UNIT"
+    },
+    {
+      "from": "GI-080",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-080",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-080",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-080",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "GI-080",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-080",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-080",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-080",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-080",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-080",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-080",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-081",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-NMFC-CLASSIFICATION-FAQ"
+    },
+    {
+      "from": "GI-081",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-CONSIGNMENT-ITEM"
+    },
+    {
+      "from": "GI-081",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-081",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-081",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-081",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-081",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-081",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-081",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-081",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-081",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-081",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-081",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-081",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-082",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-NMFC-CLASSIFICATION-FAQ"
+    },
+    {
+      "from": "GI-082",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-082",
+      "relation": "INSTANTIATES",
+      "to": "SP-COMMODITY-CONSIGNMENT-ITEM"
+    },
+    {
+      "from": "GI-082",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-082",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-082",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-082",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION"
+    },
+    {
+      "from": "GI-082",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-082",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-082",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-082",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-082",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-083",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-NMFC-VERSIONING"
+    },
+    {
+      "from": "GI-083",
+      "relation": "INSTANTIATES",
+      "to": "SP-TEMPORAL-VALUE"
+    },
+    {
+      "from": "GI-083",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-083",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-083",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-083",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-083",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-083",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-083",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-083",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-083",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-083",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-083",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-080",
+      "relation": "PRECEDES",
+      "to": "GI-081",
+      "scope": "density may inform classification but does not itself equal freight class"
+    },
+    {
+      "from": "DF-CLASSIFICATION-NOT-PURE-DENSITY",
+      "relation": "CONSTRAINS",
+      "to": "GI-081",
+      "scope": "handling/stowability/liability may prevent density-only classification"
+    },
+    {
+      "from": "GI-082",
+      "relation": "PRECEDES",
+      "to": "GI-081",
+      "scope": "classification authority must be resolved before automatic class correction"
+    },
+    {
+      "from": "GI-083",
+      "relation": "CONSTRAINS",
+      "to": "GI-081",
+      "scope": "class mapping must use applicable effective/version context"
     }
   ],
   "validation": {
-    "nodeCount": 288,
-    "edgeCount": 1370,
-    "badEdgeCount": 0,
-    "generatedInstanceCount": 79,
+    "nodeCount": 301,
+    "edgeCount": 1433,
+    "badEdgeCount": 3,
+    "generatedInstanceCount": 83,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
