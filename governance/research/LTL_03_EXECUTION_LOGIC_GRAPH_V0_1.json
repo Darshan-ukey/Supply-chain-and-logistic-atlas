@@ -3099,6 +3099,106 @@
       "semanticOwner": "SP-STATE|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP",
       "sourceAuthorityClass": "INDUSTRY_STANDARD",
       "dispositionPolicy": "ACTIVATE_CONDITIONALLY"
+    },
+    {
+      "id": "EV-DSDC-PFC10-CURRENT",
+      "type": "EVIDENCE",
+      "label": "DSDC Preliminary Freight Charges Version 1.0.0 lifecycle and charge-change semantics",
+      "sourceAuthority": "NMFTA/DSDC",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "Version 1.0.0 / current as researched 2026-09-20",
+      "provenanceRef": "DSDC API Standards catalogue + Preliminary Freight Charges API Standard issuer page"
+    },
+    {
+      "id": "DF-PFC-LIFECYCLE-ACTIVATION",
+      "type": "DOMAIN_FACT",
+      "label": "Preliminary freight-charge visibility begins after carrier possession and rating; it is lifecycle-scoped before final invoicing",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-PFC-REWEIGH-RECLASS-CHANGE",
+      "type": "DOMAIN_FACT",
+      "label": "Reweigh and reclassification are charge-relevant change events whose operational semantic remains distinct from monetary consequence",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-PFC-ACCESSORIAL-DIRECTION",
+      "type": "DOMAIN_FACT",
+      "label": "Accessorial additions and removals are directional charge-change events and must preserve add/remove semantics",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-PFC-PARTY-TERMS-CHANGE",
+      "type": "DOMAIN_FACT",
+      "label": "Changes in shipper consignee bill-to or terms may be preliminary-charge relevant while remaining distinct party/terms semantics",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-PFC-FEE-CATEGORIES",
+      "type": "DOMAIN_FACT",
+      "label": "Storage detention redelivery and other fees are controlled preliminary-charge categories",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-PFC-EVENT-CODES",
+      "type": "DOMAIN_FACT",
+      "label": "PFC event codes such as RWE RCL LFTP and APTD are controlled representations of charge-relevant events, not replacements for canonical semantics",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-105",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Activate preliminary-freight-charge processing only after governed possession and rating prerequisites are satisfied",
+      "taskId": "LTL-03",
+      "scope": "PRELIMINARY_FREIGHT_CHARGES",
+      "lifecycleStage": "PFC_ACTIVATION",
+      "semanticOwner": "SP-STATE|SP-EVENT|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACTIVATE_CONDITIONALLY"
+    },
+    {
+      "id": "GI-106",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Represent reweigh or reclassification as a semantic change event and link any monetary consequence without collapsing the two",
+      "taskId": "LTL-03",
+      "scope": "PRELIMINARY_FREIGHT_CHARGES",
+      "lifecycleStage": "CHARGE_CHANGE",
+      "semanticOwner": "SP-EVENT|SP-MEASURE|SP-CONTROLLED-VOCABULARY|SP-MONETARY-AMOUNT|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PRESERVE_CHANGE_AND_CHARGE_SEPARATELY"
+    },
+    {
+      "id": "GI-107",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve accessorial add or remove direction and map monetary impact only when source evidence supplies it",
+      "taskId": "LTL-03",
+      "scope": "PRELIMINARY_FREIGHT_CHARGES",
+      "lifecycleStage": "ACCESSORIAL_CHANGE",
+      "semanticOwner": "SP-EVENT|SP-CONTROLLED-VOCABULARY|SP-MONETARY-AMOUNT|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "MAP_CHANGE_RETAIN_DIRECTION_NO_CHARGE_INFERENCE"
+    },
+    {
+      "id": "GI-108",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve shipper consignee bill-to or terms change in its own semantic role before linking preliminary charge impact",
+      "taskId": "LTL-03",
+      "scope": "PRELIMINARY_FREIGHT_CHARGES",
+      "lifecycleStage": "BILLING_CONTEXT_CHANGE",
+      "semanticOwner": "SP-PARTY|SP-RELATIONSHIP|SP-CONTROLLED-VOCABULARY|SP-MONETARY-AMOUNT|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "RESOLVE_ROLE_THEN_LINK_CHARGE_IMPACT"
+    },
+    {
+      "id": "GI-109",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Map controlled PFC event and fee category to canonical change/charge semantics while retaining issuer code provenance",
+      "taskId": "LTL-03",
+      "scope": "PRELIMINARY_FREIGHT_CHARGES",
+      "lifecycleStage": "PFC_NOTIFICATION",
+      "semanticOwner": "SP-CONTROLLED-VOCABULARY|SP-EVENT|SP-MONETARY-AMOUNT|SP-EVIDENCE-PROVENANCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "MAP_RETAIN_SOURCE_NO_FINAL_INVOICE_INFERENCE"
     }
   ],
   "edges": [
@@ -12473,11 +12573,532 @@
       "relation": "CONSTRAINS",
       "to": "GI-104",
       "scope": "activate only when cross-border applicability exists"
+    },
+    {
+      "from": "DF-PFC-LIFECYCLE-ACTIVATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PFC10-CURRENT"
+    },
+    {
+      "from": "DF-PFC-REWEIGH-RECLASS-CHANGE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PFC10-CURRENT"
+    },
+    {
+      "from": "DF-PFC-ACCESSORIAL-DIRECTION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PFC10-CURRENT"
+    },
+    {
+      "from": "DF-PFC-PARTY-TERMS-CHANGE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PFC10-CURRENT"
+    },
+    {
+      "from": "DF-PFC-FEE-CATEGORIES",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PFC10-CURRENT"
+    },
+    {
+      "from": "DF-PFC-EVENT-CODES",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PFC10-CURRENT"
+    },
+    {
+      "from": "GI-105",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PFC10-CURRENT"
+    },
+    {
+      "from": "GI-106",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PFC10-CURRENT"
+    },
+    {
+      "from": "GI-107",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PFC10-CURRENT"
+    },
+    {
+      "from": "GI-108",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PFC10-CURRENT"
+    },
+    {
+      "from": "GI-109",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-PFC10-CURRENT"
+    },
+    {
+      "from": "GI-105",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-105",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-105",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-105",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-105",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-105",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-105",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-105",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-105",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-105",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-105",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-105",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-105",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-105",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-106",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-106",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-106",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-106",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-106",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-106",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-106",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-106",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-106",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-106",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-106",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-106",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-106",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-106",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CHANGE-EVENT"
+    },
+    {
+      "from": "GI-106",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MONETARY-CHARGE"
+    },
+    {
+      "from": "GI-106",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-106",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-106",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-106",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-106",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-107",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-107",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-107",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-107",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-107",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-107",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-107",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-107",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-107",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-107",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-107",
+      "relation": "COMPOSES_WITH",
+      "to": "RF18"
+    },
+    {
+      "from": "GI-107",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CHANGE-EVENT"
+    },
+    {
+      "from": "GI-107",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MONETARY-CHARGE"
+    },
+    {
+      "from": "GI-107",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-107",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-107",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-107",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-107",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-108",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-108",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-108",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-108",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-108",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-108",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-108",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-108",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-108",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-108",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-108",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-108",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MONETARY-CHARGE"
+    },
+    {
+      "from": "GI-108",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-108",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-108",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-108",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-108",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-109",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-109",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-109",
+      "relation": "INSTANTIATES",
+      "to": "SP-MONETARY-AMOUNT"
+    },
+    {
+      "from": "GI-109",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-109",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-109",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-109",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-109",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-109",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-109",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-109",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CHANGE-EVENT"
+    },
+    {
+      "from": "GI-109",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MONETARY-CHARGE"
+    },
+    {
+      "from": "GI-109",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-109",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-109",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-109",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-109",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "DF-PFC-LIFECYCLE-ACTIVATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-105",
+      "scope": "PFC processing requires governed lifecycle activation and must not be treated as final invoicing"
+    },
+    {
+      "from": "DF-PFC-REWEIGH-RECLASS-CHANGE",
+      "relation": "CONSTRAINS",
+      "to": "GI-106",
+      "scope": "operational/classification change remains distinct from monetary consequence"
+    },
+    {
+      "from": "DF-PFC-ACCESSORIAL-DIRECTION",
+      "relation": "CONSTRAINS",
+      "to": "GI-107",
+      "scope": "preserve addition/removal direction and do not infer non-zero charge"
+    },
+    {
+      "from": "DF-PFC-PARTY-TERMS-CHANGE",
+      "relation": "CONSTRAINS",
+      "to": "GI-108",
+      "scope": "resolve party/terms semantic before monetary linkage"
+    },
+    {
+      "from": "DF-PFC-FEE-CATEGORIES",
+      "relation": "CONSTRAINS",
+      "to": "GI-109",
+      "scope": "fee category remains controlled charge semantic"
+    },
+    {
+      "from": "DF-PFC-EVENT-CODES",
+      "relation": "CONSTRAINS",
+      "to": "GI-109",
+      "scope": "issuer event code maps to but does not replace canonical semantics"
     }
   ],
   "validation": {
-    "nodeCount": 359,
-    "edgeCount": 1769,
+    "nodeCount": 371,
+    "edgeCount": 1872,
     "badEdgeCount": 0,
     "generatedInstanceCount": 104,
     "instancesMissingEvidence": [],
@@ -12489,6 +13110,11 @@
     "reusablePatternCount": 11,
     "patternsMissingPrimitive": [],
     "patternsMissingFamily": [],
-    "patternsWithoutTaskInstances": []
+    "patternsWithoutTaskInstances": [],
+    "lastValidatedAt": "2026-09-20",
+    "generatedRuleInstanceCount": 109,
+    "brokenEdgeCount": 0,
+    "generatedInstancesMissingEvidencePrimitiveOrFamily": [],
+    "latestCheckpoint": "PFC_VERSION_1_0_0_SEMANTICS"
   }
 }
