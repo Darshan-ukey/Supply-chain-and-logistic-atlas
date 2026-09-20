@@ -3604,6 +3604,106 @@
         "GI-096"
       ],
       "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "EV-DSDC-ITV-CHANNEL-EXPOSURE",
+      "type": "EVIDENCE",
+      "label": "DSDC In-Transit Visibility push pull subscription lookup and exposure semantics",
+      "sourceAuthority": "NMFTA/DSDC",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "Version 1.0.0 issuer page current as researched 2026-09-20",
+      "provenanceRef": "DSDC In-Transit Visibility API Standard issuer page"
+    },
+    {
+      "id": "DF-ITV-PUSH-PULL-SEPARATION",
+      "type": "DOMAIN_FACT",
+      "label": "Push notification and on-demand retrieval are delivery-channel semantics and do not alter underlying shipment-state meaning",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-SUBSCRIPTION-RELATIONSHIP",
+      "type": "DOMAIN_FACT",
+      "label": "Subscription/authorization is a stakeholder delivery relationship and is not evidence that a shipment event occurred",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-TYPED-LOOKUP",
+      "type": "DOMAIN_FACT",
+      "label": "PRO BOL PO and account number are distinct typed lookup references for latest-status retrieval",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ITV-EXPOSURE-IMPLEMENTATION",
+      "type": "DOMAIN_FACT",
+      "label": "Verified/Public exposure scope is independent of delivery channel and carrier-supported data remains implementation scoped",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-125",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve push notification versus on-demand retrieval as projection channel without duplicating canonical shipment state",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_VISIBILITY",
+      "lifecycleStage": "VISIBILITY_DELIVERY",
+      "semanticOwner": "SP-RELATIONSHIP|SP-EVENT|SP-STATE|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "PROJECT_CHANNEL_WITHOUT_STATE_DUPLICATION"
+    },
+    {
+      "id": "GI-126",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Require stakeholder subscription/authorization relationship before push projection without treating subscription as shipment-event evidence",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_VISIBILITY",
+      "lifecycleStage": "NOTIFICATION_DELIVERY",
+      "semanticOwner": "SP-PARTY|SP-RELATIONSHIP|SP-INDICATOR|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD_WITH_IMPLEMENTATION_SPECIALIZATION",
+      "dispositionPolicy": "BIND_SUBSCRIPTION_BEFORE_PUSH"
+    },
+    {
+      "id": "GI-127",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve PRO BOL PO or account-number semantic type before latest-status lookup and preserve reference provenance",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_VISIBILITY",
+      "lifecycleStage": "STATUS_LOOKUP",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "RESOLVE_TYPED_REFERENCE_THEN_LOOKUP"
+    },
+    {
+      "id": "GI-128",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Combine Verified/Public exposure scope with push/pull delivery channel independently and leave unsupported carrier data unresolved",
+      "taskId": "LTL-03",
+      "scope": "INTRANSIT_VISIBILITY",
+      "lifecycleStage": "VISIBILITY_PROJECTION",
+      "semanticOwner": "SP-PARTY|SP-RELATIONSHIP|SP-INDICATOR|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD_WITH_IMPLEMENTATION_SPECIALIZATION",
+      "dispositionPolicy": "PROJECT_BY_SCOPE_AND_CHANNEL_NO_SYNTHESIS"
+    },
+    {
+      "id": "CBREQ-ITV-SUBSCRIPTION-CHANNEL",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve partner subscription lifecycle notification destination and push/pull configuration before client-specific visibility delivery",
+      "clientScope": "CLIENT_PARTNER_IMPLEMENTATION_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-125",
+        "GI-126"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
+    },
+    {
+      "id": "CBREQ-ITV-EXPOSURE-MATRIX",
+      "type": "CLIENT_BINDING_REQUIREMENT",
+      "label": "Resolve carrier/client supported Verified/Public exposure matrix and locally supported lookup behavior before visibility projection",
+      "clientScope": "CLIENT_CARRIER_IMPLEMENTATION_DEFINED",
+      "baseCanonicalNodeIds": [
+        "GI-100",
+        "GI-127",
+        "GI-128"
+      ],
+      "status": "UNRESOLVED_UNTIL_CLIENT_EVIDENCE"
     }
   ],
   "edges": [
@@ -14924,13 +15024,357 @@
       "from": "GI-096",
       "relation": "REQUIRES_CLIENT_BINDING",
       "to": "CBREQ-EBOL-AUTH-SECURITY"
+    },
+    {
+      "from": "DF-ITV-PUSH-PULL-SEPARATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CHANNEL-EXPOSURE"
+    },
+    {
+      "from": "DF-ITV-SUBSCRIPTION-RELATIONSHIP",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CHANNEL-EXPOSURE"
+    },
+    {
+      "from": "DF-ITV-TYPED-LOOKUP",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CHANNEL-EXPOSURE"
+    },
+    {
+      "from": "DF-ITV-EXPOSURE-IMPLEMENTATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CHANNEL-EXPOSURE"
+    },
+    {
+      "from": "GI-125",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CHANNEL-EXPOSURE"
+    },
+    {
+      "from": "GI-126",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CHANNEL-EXPOSURE"
+    },
+    {
+      "from": "GI-127",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CHANNEL-EXPOSURE"
+    },
+    {
+      "from": "GI-128",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-ITV-CHANNEL-EXPOSURE"
+    },
+    {
+      "from": "GI-125",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-125",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVENT"
+    },
+    {
+      "from": "GI-125",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-125",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-125",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-125",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-125",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-125",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-EVENT-LIFECYCLE"
+    },
+    {
+      "from": "GI-125",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-125",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-125",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-125",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-126",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-126",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-126",
+      "relation": "INSTANTIATES",
+      "to": "SP-INDICATOR"
+    },
+    {
+      "from": "GI-126",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-126",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-126",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-126",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-126",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-126",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-126",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-126",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-126",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-126",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-127",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-127",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-127",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-127",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-127",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-127",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-127",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-127",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-REFERENCE-GROUPING"
+    },
+    {
+      "from": "GI-127",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-127",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-127",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-127",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-128",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-128",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-128",
+      "relation": "INSTANTIATES",
+      "to": "SP-INDICATOR"
+    },
+    {
+      "from": "GI-128",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-128",
+      "relation": "COMPOSES_WITH",
+      "to": "RF7"
+    },
+    {
+      "from": "GI-128",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-128",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-128",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-128",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-128",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION"
+    },
+    {
+      "from": "GI-128",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-128",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-128",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-128",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "DF-ITV-PUSH-PULL-SEPARATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-125",
+      "scope": "delivery channel does not alter shipment-state truth"
+    },
+    {
+      "from": "DF-ITV-SUBSCRIPTION-RELATIONSHIP",
+      "relation": "CONSTRAINS",
+      "to": "GI-126",
+      "scope": "subscription is not event evidence"
+    },
+    {
+      "from": "DF-ITV-TYPED-LOOKUP",
+      "relation": "CONSTRAINS",
+      "to": "GI-127",
+      "scope": "preserve lookup reference type"
+    },
+    {
+      "from": "DF-ITV-EXPOSURE-IMPLEMENTATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-128",
+      "scope": "access scope and delivery channel independent; unsupported data unresolved"
+    },
+    {
+      "from": "GI-125",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-SUBSCRIPTION-CHANNEL"
+    },
+    {
+      "from": "GI-126",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-SUBSCRIPTION-CHANNEL"
+    },
+    {
+      "from": "GI-100",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-EXPOSURE-MATRIX"
+    },
+    {
+      "from": "GI-127",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-EXPOSURE-MATRIX"
+    },
+    {
+      "from": "GI-128",
+      "relation": "REQUIRES_CLIENT_BINDING",
+      "to": "CBREQ-ITV-EXPOSURE-MATRIX"
     }
   ],
   "validation": {
-    "nodeCount": 416,
-    "edgeCount": 2154,
+    "nodeCount": 427,
+    "edgeCount": 2222,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 124,
+    "generatedInstanceCount": 128,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
@@ -14942,9 +15386,9 @@
     "patternsMissingFamily": [],
     "patternsWithoutTaskInstances": [],
     "lastValidatedAt": "2026-09-20",
-    "generatedRuleInstanceCount": 124,
+    "generatedRuleInstanceCount": 128,
     "brokenEdgeCount": 0,
     "generatedInstancesMissingEvidencePrimitiveOrFamily": [],
-    "latestCheckpoint": "EBOL_AUTH_SECURITY_BOUNDARY_TWO_TRACK"
+    "latestCheckpoint": "ITV_CHANNEL_EXPOSURE_TWO_TRACK"
   }
 }
