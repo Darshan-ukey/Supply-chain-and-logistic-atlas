@@ -1286,6 +1286,103 @@
       "semanticOwner": "SP-TRANSPORT-SERVICE|SP-MONETARY-AMOUNT",
       "sourceAuthorityClass": "SEMANTIC_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-UNECE-UNCL-4237",
+      "type": "EVIDENCE",
+      "label": "UNCL 4237 Payment Arrangement Code",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "CURRENT_AS_RESEARCHED_2026-09-20",
+      "provenanceRef": "UN/EDIFACT Data Element 4237"
+    },
+    {
+      "id": "EV-UNECE-D23B-TRANSPORT-EQUIPMENT",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT D23B Logistics Transport Equipment",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B Logistics Transport Equipment"
+    },
+    {
+      "id": "DF-PAYMENT-ARRANGEMENT-CONTROLLED",
+      "type": "DOMAIN_FACT",
+      "label": "Payment arrangement is controlled code semantics",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-PAYMENT-ARRANGEMENT-ROLE",
+      "type": "DOMAIN_FACT",
+      "label": "Payment arrangement code expresses operational freight-payment arrangement",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-TRANSPORT-EQUIPMENT-OBJECT",
+      "type": "DOMAIN_FACT",
+      "label": "Transport Equipment is distinct from Package/Handling Unit",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-TRANSPORT-EQUIPMENT-PACKAGE-RELATION",
+      "type": "DOMAIN_FACT",
+      "label": "Transport Equipment can relate to loaded-package quantity",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-TRANSPORT-EQUIPMENT-INDICATORS",
+      "type": "DOMAIN_FACT",
+      "label": "Transport Equipment owns sealed/returnable indicators",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "SP-TRANSPORT-EQUIPMENT",
+      "type": "SEMANTIC_PRIMITIVE",
+      "label": "Transport Equipment"
+    },
+    {
+      "id": "GI-048",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate payment arrangement code",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-CONTROLLED-VOCABULARY|SP-TRANSPORT-SERVICE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-049",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve and bind transport equipment identity",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-TRANSPORT-EQUIPMENT|SP-IDENTIFIER|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-050",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Validate transport equipment category, characteristics and indicators",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-TRANSPORT-EQUIPMENT|SP-CONTROLLED-VOCABULARY|SP-INDICATOR",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-051",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Reconcile equipment loaded-package quantity",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-TRANSPORT-EQUIPMENT|SP-PACKAGE|SP-COLLECTION-CARDINALITY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -4703,13 +4800,331 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "DF-PAYMENT-ARRANGEMENT-CONTROLLED",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-UNCL-4237"
+    },
+    {
+      "from": "DF-PAYMENT-ARRANGEMENT-ROLE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-UNCL-4237"
+    },
+    {
+      "from": "DF-TRANSPORT-EQUIPMENT-OBJECT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-TRANSPORT-EQUIPMENT"
+    },
+    {
+      "from": "DF-TRANSPORT-EQUIPMENT-PACKAGE-RELATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-TRANSPORT-EQUIPMENT"
+    },
+    {
+      "from": "DF-TRANSPORT-EQUIPMENT-INDICATORS",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-TRANSPORT-EQUIPMENT"
+    },
+    {
+      "from": "GI-048",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-UNCL-4237"
+    },
+    {
+      "from": "GI-048",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-048",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-SERVICE"
+    },
+    {
+      "from": "GI-048",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-048",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-048",
+      "relation": "COMPOSES_WITH",
+      "to": "RF17"
+    },
+    {
+      "from": "GI-048",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-049",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-TRANSPORT-EQUIPMENT"
+    },
+    {
+      "from": "GI-049",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-EQUIPMENT"
+    },
+    {
+      "from": "GI-049",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-049",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-049",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-049",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-049",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-050",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-TRANSPORT-EQUIPMENT"
+    },
+    {
+      "from": "GI-050",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-EQUIPMENT"
+    },
+    {
+      "from": "GI-050",
+      "relation": "INSTANTIATES",
+      "to": "SP-CONTROLLED-VOCABULARY"
+    },
+    {
+      "from": "GI-050",
+      "relation": "INSTANTIATES",
+      "to": "SP-INDICATOR"
+    },
+    {
+      "from": "GI-050",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-050",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-050",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-051",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-TRANSPORT-EQUIPMENT"
+    },
+    {
+      "from": "GI-051",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-PACKAGE"
+    },
+    {
+      "from": "GI-051",
+      "relation": "INSTANTIATES",
+      "to": "SP-TRANSPORT-EQUIPMENT"
+    },
+    {
+      "from": "GI-051",
+      "relation": "INSTANTIATES",
+      "to": "SP-PACKAGE"
+    },
+    {
+      "from": "GI-051",
+      "relation": "INSTANTIATES",
+      "to": "SP-COLLECTION-CARDINALITY"
+    },
+    {
+      "from": "GI-051",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-051",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "GI-051",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-051",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-051",
+      "relation": "COMPOSES_WITH",
+      "to": "RF14"
+    },
+    {
+      "from": "GI-049",
+      "relation": "PRECEDES",
+      "to": "GI-050",
+      "scope": "equipment identity/ownership before attribute validation"
+    },
+    {
+      "from": "GI-049",
+      "relation": "PRECEDES",
+      "to": "GI-051",
+      "scope": "equipment identity/ownership before package reconciliation"
+    },
+    {
+      "from": "GI-051",
+      "relation": "DEPENDS_ON",
+      "to": "GI-023",
+      "scope": "package collection semantics required for reconciliation"
+    },
+    {
+      "from": "GI-048",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-048",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-048",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-048",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-048",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-049",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-049",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-049",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-049",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-049",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-050",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-050",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-050",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-050",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-050",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-051",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-051",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-051",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-051",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
+    },
+    {
+      "from": "GI-051",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream use case; scope remains BROADER_BOL_UNIVERSE"
     }
   ],
   "validation": {
-    "nodeCount": 166,
-    "edgeCount": 627,
+    "nodeCount": 178,
+    "edgeCount": 686,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 47,
+    "generatedInstanceCount": 51,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
