@@ -2821,6 +2821,115 @@
       "semanticOwner": "SP-DOCUMENT|SP-IDENTIFIER|SP-REFERENCE|SP-RELATIONSHIP",
       "sourceAuthorityClass": "INDUSTRY_STANDARD",
       "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-PRO-LIFECYCLE",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL 2.1 PRO lifecycle key and create/update/delete operations",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "2.1",
+      "provenanceRef": "Digital LTL eBOL 2.1 API documentation"
+    },
+    {
+      "id": "EV-NMFTA-EBOL-FAQ-PRO-CLIENT",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL FAQ PRO assignment, optionality, endpoint and backend constraints",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "current issuer FAQ",
+      "provenanceRef": "Digital LTL Standards FAQ"
+    },
+    {
+      "id": "DF-PRO-ASSIGNMENT-AUTHORITY",
+      "type": "DOMAIN_FACT",
+      "label": "PRO may be shipper pre-assigned or carrier-assigned; assignment authority/provenance must be retained",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-PRO-LIFECYCLE-KEY",
+      "type": "DOMAIN_FACT",
+      "label": "PRO is the key reference for eBOL update/delete lifecycle operations",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-REST-INTENT",
+      "type": "DOMAIN_FACT",
+      "label": "Create/update/delete operation intent is distinct from the BOL business object",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-CLIENT-MANDATORY-SPECIALIZATION",
+      "type": "DOMAIN_FACT",
+      "label": "Carrier/client may strengthen standard optionality within scoped implementation",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-CLIENT-REPRESENTATION-CONSTRAINT",
+      "type": "DOMAIN_FACT",
+      "label": "Carrier backend min/max/format constraints are scoped representation constraints",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-ENDPOINT-RUNTIME-SCOPE",
+      "type": "DOMAIN_FACT",
+      "label": "Carrier/shipper/3PL endpoint is runtime configuration rather than canonical domain knowledge",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "GI-092",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve PRO assigning authority and provenance across pre-assigned or carrier-assigned paths",
+      "taskId": "LTL-03",
+      "scope": "CORE_LTL03",
+      "lifecycleStage": "IDENTITY_ASSIGNMENT",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-093",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve target PRO before eBOL update/delete mutation",
+      "taskId": "LTL-03",
+      "scope": "CORE_LTL03",
+      "lifecycleStage": "DOCUMENT_MUTATION",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE|SP-DOCUMENT|SP-STATE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-094",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Layer carrier/client mandatory specialization over standard optionality without rewriting canonical rule",
+      "taskId": "LTL-03",
+      "scope": "CLIENT_BINDING",
+      "lifecycleStage": "VALIDATION",
+      "semanticOwner": "SP-EVIDENCE-PROVENANCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "CLIENT_CARRIER",
+      "dispositionPolicy": "BIND_WITHIN_SCOPE"
+    },
+    {
+      "id": "GI-095",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Apply carrier/client representation constraints with explicit warning/error/truncation evidence",
+      "taskId": "LTL-03",
+      "scope": "CLIENT_BINDING",
+      "lifecycleStage": "VALIDATION_RUNTIME",
+      "semanticOwner": "SP-EVIDENCE-PROVENANCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "CLIENT_CARRIER",
+      "dispositionPolicy": "BIND_WITHIN_SCOPE"
+    },
+    {
+      "id": "GI-096",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Resolve partner endpoint at runtime/client binding rather than canonical domain layer",
+      "taskId": "LTL-03",
+      "scope": "RUNTIME_PROJECTION",
+      "lifecycleStage": "API_PROJECTION",
+      "semanticOwner": "SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "CLIENT_CARRIER",
+      "dispositionPolicy": "PROJECT_AT_RUNTIME"
     }
   ],
   "edges": [
@@ -11163,13 +11272,387 @@
       "relation": "CONSTRAINS",
       "to": "GI-091",
       "scope": "representation cannot replace canonical PRO/reference identity"
+    },
+    {
+      "from": "DF-PRO-ASSIGNMENT-AUTHORITY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-PRO-CLIENT"
+    },
+    {
+      "from": "DF-PRO-LIFECYCLE-KEY",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-PRO-LIFECYCLE"
+    },
+    {
+      "from": "DF-REST-INTENT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-PRO-LIFECYCLE"
+    },
+    {
+      "from": "DF-CLIENT-MANDATORY-SPECIALIZATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-PRO-CLIENT"
+    },
+    {
+      "from": "DF-CLIENT-REPRESENTATION-CONSTRAINT",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-PRO-CLIENT"
+    },
+    {
+      "from": "DF-ENDPOINT-RUNTIME-SCOPE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-PRO-CLIENT"
+    },
+    {
+      "from": "GI-092",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-PRO-CLIENT"
+    },
+    {
+      "from": "GI-092",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-092",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-092",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-092",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-092",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-092",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-IDENTITY-BEFORE-MUTATION"
+    },
+    {
+      "from": "GI-092",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-092",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-092",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-092",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-092",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-093",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-PRO-LIFECYCLE"
+    },
+    {
+      "from": "GI-093",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-PRO-CLIENT"
+    },
+    {
+      "from": "GI-093",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-093",
+      "relation": "INSTANTIATES",
+      "to": "SP-REFERENCE"
+    },
+    {
+      "from": "GI-093",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-093",
+      "relation": "INSTANTIATES",
+      "to": "SP-STATE"
+    },
+    {
+      "from": "GI-093",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-093",
+      "relation": "COMPOSES_WITH",
+      "to": "RF3"
+    },
+    {
+      "from": "GI-093",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-093",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-093",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-IDENTITY-BEFORE-MUTATION"
+    },
+    {
+      "from": "GI-093",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-093",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-093",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-093",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-093",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-094",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-PRO-CLIENT"
+    },
+    {
+      "from": "GI-094",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-094",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-094",
+      "relation": "COMPOSES_WITH",
+      "to": "RF4"
+    },
+    {
+      "from": "GI-094",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-094",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-094",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION"
+    },
+    {
+      "from": "GI-094",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-094",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-094",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-094",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-094",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-095",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-PRO-CLIENT"
+    },
+    {
+      "from": "GI-095",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-095",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-095",
+      "relation": "COMPOSES_WITH",
+      "to": "RF8"
+    },
+    {
+      "from": "GI-095",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-095",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-095",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-095",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION"
+    },
+    {
+      "from": "GI-095",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-095",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-095",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-095",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-095",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-096",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL-FAQ-PRO-CLIENT"
+    },
+    {
+      "from": "GI-096",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-096",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-096",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-096",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-096",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CLIENT-OPTIONALITY-SPECIALIZATION"
+    },
+    {
+      "from": "GI-096",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-096",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-096",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-096",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-096",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-092",
+      "relation": "PRECEDES",
+      "to": "GI-093",
+      "scope": "target identity resolved before mutation"
+    },
+    {
+      "from": "DF-CLIENT-MANDATORY-SPECIALIZATION",
+      "relation": "CONSTRAINS",
+      "to": "GI-094",
+      "scope": "scoped specialization cannot rewrite canonical optionality"
+    },
+    {
+      "from": "DF-CLIENT-REPRESENTATION-CONSTRAINT",
+      "relation": "CONSTRAINS",
+      "to": "GI-095",
+      "scope": "backend constraints remain scoped"
+    },
+    {
+      "from": "DF-ENDPOINT-RUNTIME-SCOPE",
+      "relation": "CONSTRAINS",
+      "to": "GI-096",
+      "scope": "endpoint remains runtime/client configuration"
     }
   ],
   "validation": {
-    "nodeCount": 326,
-    "edgeCount": 1565,
+    "nodeCount": 339,
+    "edgeCount": 1639,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 91,
+    "generatedInstanceCount": 96,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
