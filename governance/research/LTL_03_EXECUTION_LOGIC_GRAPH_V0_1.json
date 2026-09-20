@@ -12,137 +12,215 @@
     {
       "id": "EV-49CFR-373-101",
       "type": "EVIDENCE",
-      "label": "49 CFR 373.101"
+      "label": "49 CFR 373.101",
+      "sourceAuthority": "US_FEDERAL_REGULATION",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "CURRENT_AS_RESEARCHED_2026-09-20",
+      "provenanceRef": "49 CFR 373.101"
     },
     {
       "id": "EV-49CFR-172-202",
       "type": "EVIDENCE",
-      "label": "49 CFR 172.202"
+      "label": "49 CFR 172.202",
+      "sourceAuthority": "US_FEDERAL_REGULATION",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "CURRENT_AS_RESEARCHED_2026-09-20",
+      "provenanceRef": "49 CFR 172.202"
     },
     {
       "id": "EV-49CFR-172-203",
       "type": "EVIDENCE",
-      "label": "49 CFR 172.203"
+      "label": "49 CFR 172.203",
+      "sourceAuthority": "US_FEDERAL_REGULATION",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "CURRENT_AS_RESEARCHED_2026-09-20",
+      "provenanceRef": "49 CFR 172.203"
     },
     {
       "id": "EV-NMFTA-EBOL-2.1-LIFECYCLE",
       "type": "EVIDENCE",
-      "label": "NMFTA eBOL 2.1 lifecycle"
+      "label": "NMFTA eBOL 2.1 lifecycle",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "eBOL 2.1.0",
+      "provenanceRef": "NMFTA Digital LTL eBOL 2.1.0"
     },
     {
       "id": "EV-NMFTA-EBOL-2.1-PRO",
       "type": "EVIDENCE",
-      "label": "NMFTA eBOL 2.1 PRO semantics"
+      "label": "NMFTA eBOL 2.1 PRO semantics",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "eBOL 2.1.0",
+      "provenanceRef": "NMFTA Digital LTL eBOL 2.1.0 / FAQ"
     },
     {
       "id": "EV-NMFTA-EBOL-2.1-ERROR",
       "type": "EVIDENCE",
-      "label": "NMFTA eBOL 2.1 error semantics"
+      "label": "NMFTA eBOL 2.1 error semantics",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "eBOL 2.1.0",
+      "provenanceRef": "NMFTA Digital LTL FAQ"
     },
     {
       "id": "EV-NMFTA-EBOL-2.1-LOCATIONID",
       "type": "EVIDENCE",
-      "label": "NMFTA eBOL 2.1 LocationID semantics"
+      "label": "NMFTA eBOL 2.1 LocationID semantics",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "eBOL 2.1.0",
+      "provenanceRef": "NMFTA Digital LTL FAQ"
     },
     {
       "id": "EV-NMFTA-EBOL-2.1-PARTNER-SPECIALIZATION",
       "type": "EVIDENCE",
-      "label": "NMFTA eBOL partner specialization"
+      "label": "NMFTA eBOL partner specialization",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "eBOL 2.1.0",
+      "provenanceRef": "NMFTA Digital LTL FAQ"
     },
     {
       "id": "EV-UNECE-D23B-CONSIGNMENT-ID",
       "type": "EVIDENCE",
-      "label": "UN/CEFACT D23B consignment identifiers"
+      "label": "UN/CEFACT D23B consignment identifiers",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B transport logistics model"
     },
     {
       "id": "EV-UNECE-D23B-CONSIGNMENT-MEASURE",
       "type": "EVIDENCE",
-      "label": "UN/CEFACT D23B consignment measures"
+      "label": "UN/CEFACT D23B consignment measures",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B consignment measure"
     },
     {
       "id": "EV-UNECE-D23B-ITEM-MEASURE",
       "type": "EVIDENCE",
-      "label": "UN/CEFACT D23B item measures"
+      "label": "UN/CEFACT D23B item measures",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B consignment item measure"
     },
     {
       "id": "EV-UNECE-D23B-PACKAGE",
       "type": "EVIDENCE",
-      "label": "UN/CEFACT D23B package semantics"
+      "label": "UN/CEFACT D23B package semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B package semantics"
     },
     {
       "id": "EV-UNECE-D23B-LOCATION-ROLE",
       "type": "EVIDENCE",
-      "label": "UN/CEFACT D23B location roles"
+      "label": "UN/CEFACT D23B location roles",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B location role semantics"
     },
     {
       "id": "EV-UNECE-D23B-ASSOCIATED-DOCUMENT",
       "type": "EVIDENCE",
-      "label": "UN/CEFACT D23B associated documents"
+      "label": "UN/CEFACT D23B associated documents",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B associated document semantics"
     },
     {
       "id": "EV-UNECE-D23B-MONETARY",
       "type": "EVIDENCE",
-      "label": "UN/CEFACT D23B monetary/service charges"
+      "label": "UN/CEFACT D23B monetary/service charges",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B monetary/service charge semantics"
     },
     {
       "id": "EV-UNECE-D23B-INDICATOR",
       "type": "EVIDENCE",
-      "label": "UN/CEFACT D23B indicator semantics"
+      "label": "UN/CEFACT D23B indicator semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B indicator semantics"
     },
     {
       "id": "EV-NMFTA-EBOL-2.1-YAML-TARGET",
       "type": "EVIDENCE",
-      "label": "NMFTA eBOL 2.1 issuer YAML target"
+      "label": "NMFTA eBOL 2.1 issuer YAML target",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "B",
+      "versionOrEffectiveDate": "eBOL 2.1.0",
+      "provenanceRef": "assets/ebol-apiv2.1.0.yaml"
     },
     {
       "id": "DF-REGULATORY-BOL-MINIMUM",
       "type": "DOMAIN_FACT",
-      "label": "Federal BOL/receipt minimum content"
+      "label": "Federal BOL/receipt minimum content",
+      "scope": "LTL03_CORE"
     },
     {
       "id": "DF-HAZMAT-CONDITIONAL-CONTRACT",
       "type": "DOMAIN_FACT",
-      "label": "Hazmat activates expanded content/representation contract"
+      "label": "Hazmat activates expanded content/representation contract",
+      "scope": "LTL03_CONDITIONAL"
     },
     {
       "id": "DF-PRO-LIFECYCLE-IDENTIFIER",
       "type": "DOMAIN_FACT",
-      "label": "PRO resolves eBOL update/delete target"
+      "label": "PRO resolves eBOL update/delete target",
+      "scope": "LTL03_CORE"
     },
     {
       "id": "DF-LOCATIONID-SCOPE",
       "type": "DOMAIN_FACT",
-      "label": "LocationID scoped to assigning organization"
+      "label": "LocationID scoped to assigning organization",
+      "scope": "LTL03_CORE"
     },
     {
       "id": "DF-IDENTIFIER-ROLE-DISTINCTION",
       "type": "DOMAIN_FACT",
-      "label": "Identifier roles are semantically distinct"
+      "label": "Identifier roles are semantically distinct",
+      "scope": "LTL03_CORE"
     },
     {
       "id": "DF-MEASURE-VALUE-UNIT",
       "type": "DOMAIN_FACT",
-      "label": "Measure is value plus unit in applicable contexts"
+      "label": "Measure is value plus unit in applicable contexts",
+      "scope": "LTL03_CORE"
     },
     {
       "id": "DF-PACKAGE-REPEATING-HIERARCHY",
       "type": "DOMAIN_FACT",
-      "label": "Packages repeat and may form hierarchy"
+      "label": "Packages repeat and may form hierarchy",
+      "scope": "LTL03_CORE"
     },
     {
       "id": "DF-LOCATION-ROLE-SEPARATION",
       "type": "DOMAIN_FACT",
-      "label": "Location role distinct from physical identity"
+      "label": "Location role distinct from physical identity",
+      "scope": "LTL03_CORE"
     },
     {
       "id": "DF-ASSOCIATED-DOCUMENT-OBJECT",
       "type": "DOMAIN_FACT",
-      "label": "Associated documents are repeating objects"
+      "label": "Associated documents are repeating objects",
+      "scope": "LTL03_CORE"
     },
     {
       "id": "DF-MONETARY-DISTINCT-FROM-MEASURE",
       "type": "DOMAIN_FACT",
-      "label": "Monetary amount semantics differ from physical measure"
+      "label": "Monetary amount semantics differ from physical measure",
+      "scope": "BROADER_BOL_UNIVERSE"
     },
     {
       "id": "SP-IDENTIFIER",
@@ -345,229 +423,419 @@
       "id": "GI-001",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve consignor role and required presence",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-PARTY|SP-RELATIONSHIP|SP-MASTER-REFERENCE",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-002",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve consignee role and required presence",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-PARTY|SP-RELATIONSHIP|SP-MASTER-REFERENCE",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-003",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve origin role and location identity",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-LOCATION|SP-RELATIONSHIP|SP-MASTER-REFERENCE",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-004",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve destination role and location identity",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-LOCATION|SP-RELATIONSHIP|SP-MASTER-REFERENCE",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-005",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate package count presence",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-COLLECTION-CARDINALITY|SP-PACKAGE",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-006",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Reconcile package count to child packages where applicable",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-COLLECTION-CARDINALITY|SP-PACKAGE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-007",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Preserve freight description source text",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-COMMODITY-ITEM|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-008",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Parse freight description into structured candidates",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_VALIDATE",
+      "semanticOwner": "SP-COMMODITY-ITEM|SP-PACKAGE|SP-MEASURE",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-009",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve rating-relevant measure semantic owner",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_RATING",
+      "semanticOwner": "SP-MEASURE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-010",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate rating-relevant measure unit",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_CREATE_RATING",
+      "semanticOwner": "SP-MEASURE",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-011",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve carrier-assigned consignment identifier",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "PRECREATE_CREATE",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-012",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve consignor-assigned consignment identifier",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "PRECREATE_CREATE",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-013",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Preserve identifier scheme agency",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "PRECREATE_CREATE",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-014",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Determine PRO assignment path",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "PRECREATE_CREATE",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE|SP-DOCUMENT",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-015",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Bind PRO to BOL/consignment",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "CREATE",
+      "semanticOwner": "SP-IDENTIFIER|SP-DOCUMENT|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-016",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve BOL update target by PRO",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "UPDATE",
+      "semanticOwner": "SP-IDENTIFIER|SP-DOCUMENT|SP-STATE|SP-EVENT",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-017",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve BOL delete target by PRO",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "DELETE_CANCEL",
+      "semanticOwner": "SP-IDENTIFIER|SP-DOCUMENT|SP-STATE|SP-EVENT",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-018",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve LocationID within assigning organization",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "CREATE_VALIDATE",
+      "semanticOwner": "SP-IDENTIFIER|SP-LOCATION|SP-MASTER-REFERENCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-019",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Apply client-mandatory LocationID override",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "CREATE_VALIDATE",
+      "semanticOwner": "SP-IDENTIFIER|SP-LOCATION",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-020",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate consignment gross weight value/unit",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "CREATE_VALIDATE",
+      "semanticOwner": "SP-MEASURE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-021",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate consignment gross volume value/unit",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "CREATE_VALIDATE",
+      "semanticOwner": "SP-MEASURE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-022",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate item gross weight value/unit",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "CREATE_VALIDATE",
+      "semanticOwner": "SP-MEASURE|SP-COMMODITY-ITEM",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-023",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Instantiate repeating transport-package collection",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "CREATE_VALIDATE",
+      "semanticOwner": "SP-PACKAGE|SP-COLLECTION-CARDINALITY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-024",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate package hierarchy level",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "CREATE_VALIDATE",
+      "semanticOwner": "SP-PACKAGE|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-025",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve pickup/acceptance location role",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOOKING_PICKUP_BOL",
+      "semanticOwner": "SP-LOCATION|SP-RELATIONSHIP|SP-MASTER-REFERENCE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-026",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Resolve consignee-receipt location role",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "BOL_DELIVERY",
+      "semanticOwner": "SP-LOCATION|SP-RELATIONSHIP|SP-MASTER-REFERENCE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-027",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Activate hazmat description contract",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CONDITIONAL",
+      "lifecycleStage": "CONDITIONAL_SHIPPING_PAPER",
+      "semanticOwner": "SP-COMMODITY-ITEM|SP-STATE",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-028",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate hazmat identification number",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CONDITIONAL",
+      "lifecycleStage": "CONDITIONAL_SHIPPING_PAPER",
+      "semanticOwner": "SP-IDENTIFIER|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-029",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate proper shipping name",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CONDITIONAL",
+      "lifecycleStage": "CONDITIONAL_SHIPPING_PAPER",
+      "semanticOwner": "SP-COMMODITY-ITEM|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-030",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate primary/subsidiary hazard class",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CONDITIONAL",
+      "lifecycleStage": "CONDITIONAL_SHIPPING_PAPER",
+      "semanticOwner": "SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-031",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate packing group when applicable",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CONDITIONAL",
+      "lifecycleStage": "CONDITIONAL_SHIPPING_PAPER",
+      "semanticOwner": "SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-032",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate hazmat total quantity and unit",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CONDITIONAL",
+      "lifecycleStage": "CONDITIONAL_SHIPPING_PAPER",
+      "semanticOwner": "SP-MEASURE",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-033",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate hazmat number/type of packages",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CONDITIONAL",
+      "lifecycleStage": "CONDITIONAL_SHIPPING_PAPER",
+      "semanticOwner": "SP-PACKAGE|SP-COLLECTION-CARDINALITY|SP-CONTROLLED-VOCABULARY",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-034",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate hazmat basic-description sequence",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CONDITIONAL",
+      "lifecycleStage": "CONDITIONAL_SHIPPING_PAPER",
+      "semanticOwner": "SP-COMMODITY-ITEM",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-035",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate special-permit notation association",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CONDITIONAL",
+      "lifecycleStage": "CONDITIONAL_SHIPPING_PAPER",
+      "semanticOwner": "SP-IDENTIFIER|SP-REFERENCE|SP-COMMODITY-ITEM",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-036",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate Limited Quantity / RQ conditional notation",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CONDITIONAL",
+      "lifecycleStage": "CONDITIONAL_SHIPPING_PAPER",
+      "semanticOwner": "SP-CONTROLLED-VOCABULARY|SP-COMMODITY-ITEM",
+      "sourceAuthorityClass": "REGULATORY",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-037",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Bind associated document to consignment",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "LTL03_CORE",
+      "lifecycleStage": "CREATE_VALIDATE",
+      "semanticOwner": "SP-DOCUMENT|SP-IDENTIFIER|SP-TEMPORAL-VALUE|SP-INSTRUCTION-NOTE|SP-RELATIONSHIP|SP-COLLECTION-CARDINALITY",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "GI-038",
       "type": "GENERATED_RULE_INSTANCE",
       "label": "Validate monetary service charge",
-      "taskId": "LTL-03"
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-MONETARY-AMOUNT|SP-PARTY|SP-CONTROLLED-VOCABULARY|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_ENRICH_WARN_REJECT_ESCALATE_PER_DEC"
     },
     {
       "id": "EX-BOL-IDENTITY-NOT-FOUND",
@@ -602,7 +870,25 @@
     {
       "id": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
       "type": "KNOWLEDGE_GAP",
-      "label": "Exact NMFTA BOL_Request properties unresolved"
+      "label": "Exact NMFTA BOL_Request properties unresolved",
+      "impact": "Blocks exact NMFTA BOL_Request property names/nesting/cardinality; does not block lifecycle/schema-family evidence."
+    },
+    {
+      "id": "DF-TRANSSHIPMENT-PERMISSION-INDICATOR",
+      "type": "DOMAIN_FACT",
+      "label": "Transshipment permission is modeled as an indicator",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "GI-039",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Capture and validate transshipment permission indicator",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_DOMAIN",
+      "semanticOwner": "SP-INDICATOR",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -2053,15 +2339,47 @@
       "from": "RF17",
       "relation": "COMPOSES_WITH",
       "to": "RF11"
+    },
+    {
+      "from": "DF-TRANSSHIPMENT-PERMISSION-INDICATOR",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-INDICATOR"
+    },
+    {
+      "from": "GI-039",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-D23B-INDICATOR"
+    },
+    {
+      "from": "GI-039",
+      "relation": "INSTANTIATES",
+      "to": "SP-INDICATOR"
+    },
+    {
+      "from": "GI-039",
+      "relation": "COMPOSES_WITH",
+      "to": "RF5"
+    },
+    {
+      "from": "GI-039",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-039",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
     }
   ],
   "validation": {
-    "nodeCount": 108,
-    "edgeCount": 286,
+    "nodeCount": 110,
+    "edgeCount": 292,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 38,
+    "generatedInstanceCount": 39,
     "instancesMissingEvidence": [],
+    "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
-    "instancesMissingPrimitive": []
+    "instancesMissingRequiredFields": [],
+    "strandedEvidence": []
   }
 }
