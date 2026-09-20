@@ -2349,6 +2349,67 @@
         "Do not infer completed delivery from milestone text when receipt/acknowledgement evidence is required"
       ],
       "status": "CANDIDATE_EVOLVABLE"
+    },
+    {
+      "id": "EV-UNECE-CHARGEABLE-WEIGHT",
+      "type": "EVIDENCE",
+      "label": "UN/CEFACT chargeable weight / loading length / gross volume semantics",
+      "sourceAuthority": "UN_CEFACT",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "D23B",
+      "provenanceRef": "UN/CEFACT D23B Consignment Details"
+    },
+    {
+      "id": "DF-CHARGEABLE-WEIGHT-SEPARATE",
+      "type": "DOMAIN_FACT",
+      "label": "Chargeable Weight is a distinct consignment measure",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-GROSS-VOLUME-DERIVABLE",
+      "type": "DOMAIN_FACT",
+      "label": "Gross Volume may be derived from governed dimensions but remains separate semantic",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-LOADING-LENGTH-SEPARATE",
+      "type": "DOMAIN_FACT",
+      "label": "Loading Length is distinct from ordinary length and gross volume",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "DF-RATING-FORMULA-UNRESOLVED",
+      "type": "DOMAIN_FACT",
+      "label": "Universal LTL dimensional-weight/chargeable-weight formula remains unresolved",
+      "scope": "LTL_REUSABLE"
+    },
+    {
+      "id": "KG-LTL-CHARGEABLE-WEIGHT-RATING-FORMULA",
+      "type": "KNOWLEDGE_GAP",
+      "label": "Authoritative universal LTL chargeable-weight/DIM formula unresolved",
+      "impact": "Blocks universal DIM divisor/formula and automatic chargeable-weight derivation."
+    },
+    {
+      "id": "GI-075",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve Chargeable Weight as distinct measure with provenance",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "RATING_ADJACENT",
+      "semanticOwner": "SP-MEASURE|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-076",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Derive/reconcile Gross Volume from dimensions only when governed",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "RATING_ADJACENT",
+      "semanticOwner": "SP-MEASURE|SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "SEMANTIC_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -9188,13 +9249,207 @@
       "relation": "PROJECTS_TO",
       "to": "RP-BPM",
       "note": "projection applicability depends on downstream task/use case"
+    },
+    {
+      "from": "DF-CHARGEABLE-WEIGHT-SEPARATE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-CHARGEABLE-WEIGHT"
+    },
+    {
+      "from": "DF-GROSS-VOLUME-DERIVABLE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-CHARGEABLE-WEIGHT"
+    },
+    {
+      "from": "DF-LOADING-LENGTH-SEPARATE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-CHARGEABLE-WEIGHT"
+    },
+    {
+      "from": "DF-RATING-FORMULA-UNRESOLVED",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-CHARGEABLE-WEIGHT"
+    },
+    {
+      "from": "KG-LTL-CHARGEABLE-WEIGHT-RATING-FORMULA",
+      "relation": "DERIVES_FROM",
+      "to": "DF-RATING-FORMULA-UNRESOLVED"
+    },
+    {
+      "from": "GI-075",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-CHARGEABLE-WEIGHT"
+    },
+    {
+      "from": "GI-075",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-075",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-075",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-075",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-075",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-075",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "GI-076",
+      "relation": "DERIVES_FROM",
+      "to": "EV-UNECE-CHARGEABLE-WEIGHT"
+    },
+    {
+      "from": "GI-076",
+      "relation": "INSTANTIATES",
+      "to": "SP-MEASURE"
+    },
+    {
+      "from": "GI-076",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-076",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-076",
+      "relation": "COMPOSES_WITH",
+      "to": "RF13"
+    },
+    {
+      "from": "GI-076",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-076",
+      "relation": "COMPOSES_WITH",
+      "to": "RF12"
+    },
+    {
+      "from": "GI-076",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-076",
+      "relation": "COMPOSES_WITH",
+      "to": "RF11"
+    },
+    {
+      "from": "GI-076",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-MEASURE-WITH-OWNER"
+    },
+    {
+      "from": "DF-CHARGEABLE-WEIGHT-SEPARATE",
+      "relation": "CONSTRAINS",
+      "to": "GI-075",
+      "scope": "must remain distinct from gross/declared/verified/billing weight"
+    },
+    {
+      "from": "DF-GROSS-VOLUME-DERIVABLE",
+      "relation": "CONSTRAINS",
+      "to": "GI-076",
+      "scope": "derive only when governed dimension inputs/rule exist"
+    },
+    {
+      "from": "GI-075",
+      "relation": "BLOCKED_BY",
+      "to": "KG-LTL-CHARGEABLE-WEIGHT-RATING-FORMULA",
+      "scope": "automatic universal derivation prohibited"
+    },
+    {
+      "from": "GI-076",
+      "relation": "BLOCKED_BY",
+      "to": "KG-LTL-CHARGEABLE-WEIGHT-RATING-FORMULA",
+      "scope": "no universal DIM formula/divisor"
+    },
+    {
+      "from": "GI-075",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream rating use case"
+    },
+    {
+      "from": "GI-075",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream rating use case"
+    },
+    {
+      "from": "GI-075",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream rating use case"
+    },
+    {
+      "from": "GI-075",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream rating use case"
+    },
+    {
+      "from": "GI-075",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream rating use case"
+    },
+    {
+      "from": "GI-076",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP",
+      "note": "projection applicability depends on downstream rating use case"
+    },
+    {
+      "from": "GI-076",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA",
+      "note": "projection applicability depends on downstream rating use case"
+    },
+    {
+      "from": "GI-076",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT",
+      "note": "projection applicability depends on downstream rating use case"
+    },
+    {
+      "from": "GI-076",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API",
+      "note": "projection applicability depends on downstream rating use case"
+    },
+    {
+      "from": "GI-076",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM",
+      "note": "projection applicability depends on downstream rating use case"
     }
   ],
   "validation": {
-    "nodeCount": 269,
-    "edgeCount": 1274,
+    "nodeCount": 277,
+    "edgeCount": 1310,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 74,
+    "generatedInstanceCount": 76,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
