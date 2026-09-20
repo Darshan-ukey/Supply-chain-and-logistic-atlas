@@ -2930,6 +2930,81 @@
       "semanticOwner": "SP-RELATIONSHIP|SP-EVIDENCE-PROVENANCE",
       "sourceAuthorityClass": "CLIENT_CARRIER",
       "dispositionPolicy": "PROJECT_AT_RUNTIME"
+    },
+    {
+      "id": "EV-NMFTA-EBOL21-RELEASE-DETAILS",
+      "type": "EVIDENCE",
+      "label": "NMFTA eBOL 2.1 issuer release details: postal, response SCAC, terms/conditions, request reference additions",
+      "sourceAuthority": "NMFTA",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "2.1",
+      "provenanceRef": "NMFTA eBOL 2.1 release material"
+    },
+    {
+      "id": "EV-DSDC-EBOL21-CURRENT-PAGE",
+      "type": "EVIDENCE",
+      "label": "DSDC current eBOL 2.1 API page identifies authoritative OpenAPI asset and schema families",
+      "sourceAuthority": "NMFTA/DSDC",
+      "evidenceClass": "A",
+      "versionOrEffectiveDate": "current as researched 2026-09-20",
+      "provenanceRef": "DSDC eBOL API Standard / digitalltl API documentation"
+    },
+    {
+      "id": "DF-POSTAL9-REPRESENTATION",
+      "type": "DOMAIN_FACT",
+      "label": "eBOL 2.1 permits nine-digit postal-code representation without creating a new location semantic",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-RESPONSE-SCAC-ASSOCIATION",
+      "type": "DOMAIN_FACT",
+      "label": "eBOL response may return SCAC to associate the responding carrier with returned data",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-TERMS-CONDITIONS-RESPONSE",
+      "type": "DOMAIN_FACT",
+      "label": "Carrier terms and conditions may be returned as URL or response-body text",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "DF-RAW-BOL-REQUEST-SCHEMA-GAP",
+      "type": "DOMAIN_FACT",
+      "label": "Issuer identifies authoritative BOL_Request schema asset/family but exact complete property tree remains unrecovered",
+      "scope": "BROADER_BOL_UNIVERSE"
+    },
+    {
+      "id": "GI-097",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Accept and validate nine-digit postal representation while preserving Location ownership",
+      "taskId": "LTL-03",
+      "scope": "BROADER_BOL_UNIVERSE",
+      "lifecycleStage": "DOCUMENT_CONTEXTUALIZATION",
+      "semanticOwner": "SP-LOCATION|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_CORRECT_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-098",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Associate response SCAC with responding carrier and reconcile through SCAC master authority",
+      "taskId": "LTL-03",
+      "scope": "EBOL_RESPONSE",
+      "lifecycleStage": "API_RESPONSE",
+      "semanticOwner": "SP-PARTY|SP-IDENTIFIER|SP-MASTER-REFERENCE|SP-RELATIONSHIP",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_ENRICH_WARN_ESCALATE_PER_DEC"
+    },
+    {
+      "id": "GI-099",
+      "type": "GENERATED_RULE_INSTANCE",
+      "label": "Preserve carrier terms and conditions as response content with URL-or-text representation and carrier provenance",
+      "taskId": "LTL-03",
+      "scope": "EBOL_RESPONSE",
+      "lifecycleStage": "API_RESPONSE",
+      "semanticOwner": "SP-DOCUMENT|SP-INSTRUCTION-NOTE|SP-PARTY|SP-EVIDENCE-PROVENANCE",
+      "sourceAuthorityClass": "INDUSTRY_STANDARD",
+      "dispositionPolicy": "ACCEPT_WARN_ESCALATE_PER_DEC"
     }
   ],
   "edges": [
@@ -11646,13 +11721,261 @@
       "relation": "CONSTRAINS",
       "to": "GI-096",
       "scope": "endpoint remains runtime/client configuration"
+    },
+    {
+      "from": "DF-POSTAL9-REPRESENTATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL21-RELEASE-DETAILS"
+    },
+    {
+      "from": "DF-RESPONSE-SCAC-ASSOCIATION",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL21-RELEASE-DETAILS"
+    },
+    {
+      "from": "DF-TERMS-CONDITIONS-RESPONSE",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL21-RELEASE-DETAILS"
+    },
+    {
+      "from": "DF-RAW-BOL-REQUEST-SCHEMA-GAP",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-EBOL21-CURRENT-PAGE"
+    },
+    {
+      "from": "GI-097",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL21-RELEASE-DETAILS"
+    },
+    {
+      "from": "GI-097",
+      "relation": "INSTANTIATES",
+      "to": "SP-LOCATION"
+    },
+    {
+      "from": "GI-097",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-097",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-097",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-097",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-097",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-097",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-097",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-097",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-097",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-097",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-098",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL21-RELEASE-DETAILS"
+    },
+    {
+      "from": "GI-098",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-098",
+      "relation": "INSTANTIATES",
+      "to": "SP-IDENTIFIER"
+    },
+    {
+      "from": "GI-098",
+      "relation": "INSTANTIATES",
+      "to": "SP-MASTER-REFERENCE"
+    },
+    {
+      "from": "GI-098",
+      "relation": "INSTANTIATES",
+      "to": "SP-RELATIONSHIP"
+    },
+    {
+      "from": "GI-098",
+      "relation": "COMPOSES_WITH",
+      "to": "RF1"
+    },
+    {
+      "from": "GI-098",
+      "relation": "COMPOSES_WITH",
+      "to": "RF6"
+    },
+    {
+      "from": "GI-098",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-098",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-098",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-ROLE-BEFORE-MASTER"
+    },
+    {
+      "from": "GI-098",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-098",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-098",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-098",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-098",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-099",
+      "relation": "DERIVES_FROM",
+      "to": "EV-NMFTA-EBOL21-RELEASE-DETAILS"
+    },
+    {
+      "from": "GI-099",
+      "relation": "INSTANTIATES",
+      "to": "SP-DOCUMENT"
+    },
+    {
+      "from": "GI-099",
+      "relation": "INSTANTIATES",
+      "to": "SP-INSTRUCTION-NOTE"
+    },
+    {
+      "from": "GI-099",
+      "relation": "INSTANTIATES",
+      "to": "SP-PARTY"
+    },
+    {
+      "from": "GI-099",
+      "relation": "INSTANTIATES",
+      "to": "SP-EVIDENCE-PROVENANCE"
+    },
+    {
+      "from": "GI-099",
+      "relation": "COMPOSES_WITH",
+      "to": "RF10"
+    },
+    {
+      "from": "GI-099",
+      "relation": "COMPOSES_WITH",
+      "to": "RF16"
+    },
+    {
+      "from": "GI-099",
+      "relation": "COMPOSES_WITH",
+      "to": "RF2"
+    },
+    {
+      "from": "GI-099",
+      "relation": "COMPOSES_WITH",
+      "to": "RF9"
+    },
+    {
+      "from": "GI-099",
+      "relation": "INSTANTIATES_PATTERN",
+      "to": "RPAT-LTL-CONDITIONAL-CONTRACT"
+    },
+    {
+      "from": "GI-099",
+      "relation": "PROJECTS_TO",
+      "to": "RP-MALKOM-IDP"
+    },
+    {
+      "from": "GI-099",
+      "relation": "PROJECTS_TO",
+      "to": "RP-RPA"
+    },
+    {
+      "from": "GI-099",
+      "relation": "PROJECTS_TO",
+      "to": "RP-AI-AGENT"
+    },
+    {
+      "from": "GI-099",
+      "relation": "PROJECTS_TO",
+      "to": "RP-API"
+    },
+    {
+      "from": "GI-099",
+      "relation": "PROJECTS_TO",
+      "to": "RP-BPM"
+    },
+    {
+      "from": "GI-098",
+      "relation": "COMPOSES_WITH",
+      "to": "GI-077",
+      "scope": "response SCAC uses existing carrier identity semantics"
+    },
+    {
+      "from": "DF-RAW-BOL-REQUEST-SCHEMA-GAP",
+      "relation": "BLOCKED_BY",
+      "to": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "scope": "exact complete issuer property tree remains unresolved"
+    },
+    {
+      "from": "KG-NMFTA-BOL-REQUEST-PROPERTIES",
+      "relation": "DERIVES_FROM",
+      "to": "EV-DSDC-EBOL21-CURRENT-PAGE",
+      "scope": "issuer names schema family/asset but raw property tree not recovered"
     }
   ],
   "validation": {
-    "nodeCount": 339,
-    "edgeCount": 1639,
+    "nodeCount": 348,
+    "edgeCount": 1688,
     "badEdgeCount": 0,
-    "generatedInstanceCount": 96,
+    "generatedInstanceCount": 99,
     "instancesMissingEvidence": [],
     "instancesMissingPrimitive": [],
     "instancesMissingFamily": [],
