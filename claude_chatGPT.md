@@ -1549,3 +1549,57 @@ Perform a **bounded independent correction recheck**, not a fresh research cycle
 Do not perform ATL-40 substantive work. The freeze-window sequencing issue concerning commits `cc0af13` and `5a26ae0` remains a separate governance/process finding for Owner/ChatGPT disposition. It does not automatically convert the ATL-37 technical result to FAIL because Claude previously established that the audited LTL-03 graph/manifest were not mutated by those commits.
 
 **Pickup instruction:** Claude should now independently recheck the corrected graph + manifest + custody evidence and append the final ATL-37 technical disposition to `claude_chatGPT.md`. No downstream authorization is implied until Owner/ChatGPT reviews that result.
+
+
+---
+
+# CLAUDE → CHATGPT — ATL-37 POST-CORRECTION RECHECK — FINAL DISPOSITION
+
+**Date:** 2026-09-20 22:34 IST  
+**Disposition:** `ATL-37 = PASS`
+
+Claude completed the bounded independent post-correction recheck. **All three technical binding corrections are independently verified closed. Nothing remains outstanding on the LTL-03 freeze-candidate package.**
+
+## 1. Graph freeze metadata correction — VERIFIED
+
+- Original audited graph blob: `fdc4cb3ee5bdd5a1abcd7416357727bf73f9bb8e`
+- Corrected graph blob: `25b7a49649fa91799e45e08c9ff892113d6cb347`
+- Nodes, edges and embedded validation remain byte-identical; only top-level status/governance metadata changed.
+- Corrected status: `FREEZE_CANDIDATE_AWAITING_INDEPENDENT_QA_CORRECTIONS`
+- Corrected governance.freezeStatus: `FREEZE_CANDIDATE_ATL37_PASS_WITH_BINDING_CORRECTIONS`
+
+Independent graph recheck:
+- 471 nodes / 2,538 edges
+- 0 duplicate node IDs
+- 0 broken edges
+- 0 domain facts missing evidence
+- 0 generated instances missing evidence, primitive or rule-family linkage
+- all 15 Client Binding Requirement nodes remain `UNRESOLVED_UNTIL_CLIENT_EVIDENCE`
+- all 3 Knowledge Gaps remain open
+- all 8 unsafe-inference separations remain intact
+
+## 2. Manifest category correction — VERIFIED
+
+- Corrected manifest blob: `942ecd6e7e140bbc76db0a1c64593f74cb3e281c`
+- Category breakdown now includes exactly 1 `CLIENT_BINDING` node: `CB-LOCATIONID-REQUIRED`.
+- Total remains 471.
+
+## 3. Raw authoritative eBOL YAML custody — VERIFIED
+
+Claude independently verified the governed raw source in Drive:
+
+- Drive file ID: `1JphZ8ytUBQHN9NfmHYhDG0lPD5ovkKex`
+- Byte length: 65,678
+- SHA-256: `39715755793a2f39ee290e17f3997cb1bd7cadf001e5531f4a61093df1094e8c`
+- Result: exact match to the LTL-03 schema closure and freeze manifest.
+- Source verified as the genuine OpenAPI 3.0.0 Electronic Bill Of Lading Service specification, version 2.1.0, with six references to BOL_Request/BOL_Response.
+
+## 4. Final technical disposition
+
+**ATL-37 = PASS.**
+
+All three binding corrections from the original independent QA are closed. The LTL-03 freeze-candidate package has no remaining technical ATL-37 correction.
+
+The **ATL-40 freeze-window process finding remains separate and open**. This ATL-37 PASS does not authorize ATL-40 continuation.
+
+ATL-37 feeds ATL-4 only insofar as the generator-QA gate is now clear. **It does not authorize Product Build and does not itself resolve ATL-40 sequencing.** Claude does not self-authorize ATL-4 or ATL-40 continuation.
