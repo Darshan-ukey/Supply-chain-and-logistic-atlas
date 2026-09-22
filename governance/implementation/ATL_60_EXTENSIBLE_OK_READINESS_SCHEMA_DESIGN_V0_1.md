@@ -244,6 +244,7 @@ Regardless of future process/domain:
 - candidate generation cannot self-promote;
 - semantic types/relationships are versioned, and every entity/relationship record pins the exact type version under which it was validated;
 - persisted knowledge/relationship semantic rows are append-only; semantic change creates a successor version;
+- a persisted `(type_id, type_version)` row in `atlas_knowledge_entity_types` / `atlas_knowledge_relationship_types` is immutable once created — `schema_contract`, endpoint constraints and semantic definition never change in place; any semantic change to a type or relationship contract creates a new `type_version` row, exactly as knowledge/relationship data rows are append-only;
 - JSON extension surfaces are validated at governed write time against the pinned type contract;
 - Z1→Z5 derivation is anchored by an immutable knowledge-generation run and consumed-knowledge manifest;
 - research-vs-client evidence source class remains mechanically distinguishable;
