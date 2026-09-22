@@ -1741,3 +1741,44 @@ This is deliberately deferred. **Do not interrupt ATL-60 or treat ATL-78 as auth
 When activated, ATL-78 must define the governed research package/manifest, claim↔evidence traceability, source authority/precedence, raw-vs-derived separation, conflicting/unresolved findings, checkpoint/freeze/supersession semantics, targeted re-research lifecycle, custody, QA/promotion and the interface from research output into structured Operational Knowledge and downstream generation.
 
 ATL-78 must itself comply with the Agent-Independent Task Continuity Standard when activated; bootstrap its Task Execution Manifest before substantive execution.
+
+
+---
+
+## 2026-09-22 — ATL-60 execution checkpoint: Supabase mapping complete; extensibility requirement added
+
+**Operator:** ChatGPT  
+**Task:** ATL-60 / logical ATL-49A  
+**Status:** IN PROGRESS — NON-PROMOTIONAL DESIGN AUTHORIZED
+
+Read-only Supabase schema inspection/mapping is complete. Durable mapping:
+- `governance/implementation/ATL_60_SUPABASE_SCHEMA_MAPPING_V0_1.md`
+- commit `7f74d4efb328844f019e4a3977c1c3e0801a8243`
+
+Transformer Contract §7/§8 were bound from observed implementation facts:
+- `governance/generation/RESEARCH_TO_EXECUTION_READINESS_TRANSFORMER_CONTRACT_V0_1.md`
+- commit `4e8265d38f541fd43eeda9e3879787fb0a8e6b98`
+
+Observed architecture conclusion:
+1. Existing Z0 evidence/document/chunk/candidate-fact substrate can be reused.
+2. Existing `atlas_client_states` remains the Z2 enterprise/client-context store.
+3. Existing gap/review/proposal/audit controls can be reused.
+4. Existing protected `atlas_work_decompositions` and `atlas_work_definitions` remain Z5 stores.
+5. A dedicated canonical/versioned Z1 Operational Knowledge structure is absent.
+6. A dedicated Z6 readiness-proof/run structure is absent.
+7. No Supabase mutation occurred; last observed migration remains `20260908015858`; Work Decomposition rows = 1; WorkDefinition rows = 0.
+
+### Owner-added design requirement — extensibility
+
+The ATL-60 structured-knowledge design must **not hard-code the LTL-03/BOL research shape as the universal Atlas ontology**. It must be extensible enough that future research on another process/domain can introduce a previously unknown material knowledge structure without requiring destructive redesign of the existing knowledge model.
+
+Design implication:
+- preserve a small stable governed semantic kernel;
+- represent knowledge through typed/versioned entities and relationships;
+- allow governed extension of entity/relationship/attribute types;
+- retain explicit ownership zone, provenance, version, applicability and support state on all material additions;
+- new research structures enter as governed candidates and cannot bypass QA/promotion simply because the schema can represent them;
+- extensions must not collapse Z1 reusable domain semantics, Z2 client binding, Z5 execution semantics or Z6 readiness proof into one generic JSON blob;
+- schema flexibility must preserve queryability, validation, lineage and executor-neutral semantics.
+
+**Exact next action:** design and persist the candidate extensible Z1 Operational Knowledge + Z6 readiness-proof schema/migration without applying it. Independent QA remains required before any canonical database mutation.
