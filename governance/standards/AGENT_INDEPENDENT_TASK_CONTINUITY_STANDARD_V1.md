@@ -320,3 +320,67 @@ Accordingly, Atlas development itself must demonstrate the same discipline expec
 **governed instruction → deterministic/bounded build → resulting-state verification → durable proof → controlled state transition.**
 
 Governance artifacts are controls, not substitutes for empirical execution. Architecture refinement must terminate when its governed acceptance criteria are satisfied and move to the next empirical proof. For the current LTL-03 path, real domain facts must be dry-run through the candidate knowledge/readiness model before physical DDL is frozen, and the workstream must continue toward the predetermined ATL-70 benchmark/ground-truth gate and ATL-71 execution experiment rather than accumulating unbounded schema refinement.
+
+
+## 11. Linear-first task creation and discovered-prerequisite rule
+
+### 11.1 Every substantive new task must exist in Linear before execution
+
+Every newly identified substantive unit of Atlas work MUST be created as its own Linear task **before substantive execution begins**.
+
+This applies whether the task is identified:
+- during planning;
+- during BUILD, VERIFY, PROVE or independent QA;
+- by ChatGPT, Claude, another AI agent, automation, developer tooling or a human;
+- as a prerequisite, defect correction, experiment, dry-run, research action, migration, validator, recovery action or newly discovered dependency.
+
+A material task may not exist only in chat, a shared log, a local to-do list, a GitHub note or an agent's internal plan.
+
+Tiny administrative actions that create no independent material output remain covered by §7 and need not become separate issues.
+
+### 11.2 Every new Linear task must carry the execution mechanism
+
+At creation, every substantive Linear task must state or inherit, in a mechanically discoverable way:
+
+1. **Purpose / decision being enabled** — why the task exists.
+2. **Scope** — exact work authorized and explicit exclusions.
+3. **Inputs / governing references** — authoritative standards, contracts, prior outputs, evidence and upstream task identities.
+4. **Execution owner and decision authority.**
+5. **Dependencies / blockers** — including the task it blocks or is blocked by.
+6. **Required output(s)** — exact durable artifact/evidence expected and target governed store.
+7. **Predetermined acceptance / exit criteria** — what must be true before the task can pass.
+8. **Verification / proof requirement** — how resulting state will be checked and what durable evidence must be recorded.
+9. **Independent QA / Owner gate** where required.
+10. **Explicit execution protocol:** `LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE`, then `BUILD → VERIFY → PROVE → ADVANCE`.
+11. **Blocked actions / non-authorizations** relevant to the task.
+12. **Task Execution Manifest pointer/status.**
+
+If these are not defined sufficiently to execute deterministically, the task is not execution-ready and substantive BUILD must not begin.
+
+### 11.3 Discovered prerequisite / emergent-task gate
+
+If, while executing a current task, an operator discovers that another substantive task must be completed before the current task can be correctly verified, proven, executed or advanced:
+
+1. **STOP advancement of the current task at the exact discovered dependency.**
+2. **Create the prerequisite as a separate Linear task before doing its substantive work.**
+3. Give the new task the full §11.2 execution contract and bootstrap its Task Execution Manifest.
+4. Add explicit Linear dependency relations:
+   - prerequisite **blocks** the current task where it is a true gate;
+   - current task is **blocked by** the prerequisite.
+5. Update the current task's manifest with:
+   - discovery;
+   - new prerequisite Linear ID;
+   - reason it is required;
+   - exact blocked action;
+   - release condition.
+6. Synchronize the current Linear task and, when TC-6 applies, the canonical shared log.
+7. Execute the prerequisite through the same `LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE` and `BUILD → VERIFY → PROVE → ADVANCE` gates.
+8. Resume the original task only after the prerequisite's required proof/QA/authorization has cleared its release condition.
+
+A discovered prerequisite may not be executed informally inside the parent task merely because it is small or convenient if it produces a material output or changes the proof basis.
+
+### 11.4 No hidden work decomposition
+
+Agents may decompose work internally for trivial steps, but any newly discovered step that has its own material output, acceptance decision, dependency effect, independent QA need, or resumable checkpoint becomes a governed Linear task.
+
+This rule prevents the governed execution path from diverging from the actual work path.
