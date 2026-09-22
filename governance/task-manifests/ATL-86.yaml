@@ -55,5 +55,14 @@ blocked_actions:
   - "deletion of historical prototype evidence"
   - "promotion of Malkom reference projection to canonical truth"
 
-current_checkpoint: "Discovered prerequisite created in Linear. ATL-83 must be checkpointed BLOCKED_BY_ATL_86 and canonical shared log synchronized before substantive reconciliation."
-next_action: "Synchronize ATL-83/ATL-82/ATL-60 task state and canonical shared log, create Drive custody checkpoint, then inspect exact cross-branch artifacts and live Supabase read-only."
+current_checkpoint: "Linear ATL-86, manifest, ATL-83/82/60 holds, canonical shared-log checkpoint, Drive custody, and live Supabase read-only state are synchronized. Live verification: migration 20260908015858; atlas_work_decompositions=1; atlas_work_definitions=0; no mutation."
+next_action: "Inspect exact Sep-1/Sep-2/Sep-7/Sep-12 artifacts and current ATL-82 structures; produce table-by-table and contract-by-contract reconciliation proof before any ATL-82 correction decision."
+
+custody:
+  drive_document_id: 17iA5LflmjebSIONZCNWRJ9qFGycQL8CItwTbrqqU4JI
+  title: "ATL-86 — P6.2 / ATL-82 Architecture Reconciliation — Pre-Reconciliation Custody — 2026-09-22"
+  read_only_supabase_verified: true
+  supabase_latest_migration: "20260908015858 p6_2_canonical_work_definitions"
+  atlas_work_decompositions_rows: 1
+  atlas_work_definitions_rows: 0
+  supabase_mutation: false
