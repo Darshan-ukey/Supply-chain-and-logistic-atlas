@@ -23,8 +23,8 @@ governing_inputs:
   - type: linear_parent
     id: ATL-79
 
-current_checkpoint: "ATL-80 BUILD persisted candidate minimum seed registry contract pack at commit 66217aa9. Post-write artifact existence/sanity check passed, but acceptance verification/proof has not yet been completed; state remains IMPLEMENTED_UNVERIFIED."
-next_action: "VERIFY the persisted ATL-80 candidate pack against every frozen acceptance criterion, including machine-validatable contract shape, exact type/version pinning, F1 endpoint constraints, successor-version non-reinterpretation, scope minimality and ATL-79 criterion #3 sufficiency. Persist verification/proof. Do not self-promote; independent QA remains required."
+current_checkpoint: "ATL-80 first-party VERIFY completed against all seven frozen acceptance criteria. All seven PASS; proof persisted. State is VERIFIED_FIRST_PARTY / PROOF_RECORDED, but independent QA is still required before ATL-79 may consume the candidate registry."
+next_action: "Obtain independent QA of ATL-80 candidate pack at BUILD commit 66217aa95280d468d159467d409a5424c197e9bc and verification proof commit 02653d8826c44bf03b40974176184293f9bcd56d. Do not close ATL-80 or unblock ATL-79 until independent QA passes and required governance disposition is recorded."
 
 authorized_actions:
   - "Define minimum logical seed type/relationship contracts justified by ATL-79."
@@ -57,9 +57,16 @@ working_outputs:
   - path: governance/implementation/ATL_80_SEED_KNOWLEDGE_TYPE_REGISTRY_CONTRACT_PACK_V0_1.md
     commit: 66217aa95280d468d159467d409a5424c197e9bc
     blob_sha: fab7c323c13b310aa9b123bf1fcb7cf7751e7c8b
-    state: IMPLEMENTED_UNVERIFIED
-current_outputs: []
-qa_and_decisions: []
+    state: VERIFIED_FIRST_PARTY
+current_outputs:
+  - path: governance/implementation/ATL_80_VERIFICATION_PROOF_V0_1.md
+    commit: 02653d8826c44bf03b40974176184293f9bcd56d
+    blob_sha: 7811b0c556b35197ad8abdeaf3285884d40f20a1
+    state: PROOF_RECORDED_FIRST_PARTY
+qa_and_decisions:
+  - disposition: VERIFIED_FIRST_PARTY
+    proof_commit: 02653d8826c44bf03b40974176184293f9bcd56d
+    independent_qa: REQUIRED
 
 handoff:
   pickup_sequence:
@@ -74,4 +81,4 @@ last_execution_record:
   operator: ChatGPT
   stopped_at: "2026-09-22"
   durable_state_written: true
-  note: "ATL-80 pickup completed under mandatory protocol. Actual governing schema and ATL-79 failure artifacts were inspected. Task moved to In Progress; BUILD is next."
+  note: "ATL-80 BUILD and first-party VERIFY complete. All frozen acceptance criteria passed. Verification proof persisted; independent QA remains mandatory and ATL-79 stays blocked."
