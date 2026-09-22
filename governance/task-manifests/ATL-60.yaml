@@ -10,7 +10,7 @@ last_updated: "2026-09-22"
 governing_inputs:
   - type: github_standard
     path: governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md
-    commit: 29c724374c1a7d40fb2a115032267fcc8014b3ea
+    commit: e8a7afc6e191948551c91d4b4264efb7589d2423
     status: OWNER_AUTHORIZED_WITH_UNIVERSAL_EXECUTION_INTEGRITY_PROTOCOL
   - type: github_standard
     path: governance/standards/ATLAS_PRODUCT_CONSTITUTION_V1.md
@@ -150,7 +150,7 @@ qa_and_decisions:
     commit: 0b45481b1a40030daa3d1661460d6d24c1fcb59e
 
 current_checkpoint: "Claude bounded recheck found F1-F6 substantively closed; ChatGPT repaired the two execution-quality defects at 79c3cfed and verified resulting state. Owner has now mandated universal LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE and BUILD → VERIFY → PROVE → ADVANCE for every operator/session/tool. Standard updated at 29c72437 and post-write verified. No DDL generated and no Supabase mutation occurred."
-next_action: "Under the universal execution-integrity protocol, perform and persist a bounded manual dry-run using 3–4 materially different real LTL-03 facts through source evidence → Z1 knowledge entity/relationship → evidence link → atlas_knowledge_generation_runs → Z5/readiness references. Predetermine acceptance checks, VERIFY resulting mappings, record PROOF, and ADVANCE only if the dry-run passes. No physical DDL or Supabase mutation in this step."
+next_action: "ATL-60 is blocked from physical DDL design by discovered prerequisite ATL-79 (logical ATL-60A). Do not execute the dry-run inline. Resume ATL-60 physical-design work only after ATL-79 reaches governed PASS and any material schema defects are resolved/re-verified."
 
 open_items:
   - "Design required schema extension/migration without applying it."
@@ -167,6 +167,9 @@ authorized_actions:
   - "Candidate migration design without execution."
 
 blocked_actions:
+  - action: "ATL-60 physical DDL/migration design."
+    blocker: "Discovered prerequisite ATL-79 / logical ATL-60A — LTL-03 Real-Fact Schema Dry-Run."
+    release_condition: "ATL-79 governed PASS with material schema defects resolved/re-verified."
   - action: "Canonical Supabase mutation or promotion."
     blocker: "Transformer contract implementation bindings, QA/freeze, Generation Registry and applicable F0-F7 / PC-1-PC-7 closure incomplete."
     release_condition: "Completed implementation-specific contract + independent QA + Owner authorization/freeze + required generation/recovery controls."
@@ -192,4 +195,4 @@ last_execution_record:
   operator: ChatGPT
   stopped_at: "2026-09-22T08:46+05:30 onward"
   durable_state_written: true
-  note: "Universal execution-integrity governance is now mandatory. Standard 29c72437 was re-fetched and verified after write. ATL-60 next action is the 3–4 real-fact dry-run executed through BUILD → VERIFY → PROVE → ADVANCE; no DDL or Supabase mutation."
+  note: "Universal execution-integrity governance now also requires every substantive new/discovered prerequisite to be created in Linear before execution. ATL-79 was created as the dry-run prerequisite with its own manifest at commit 7208b606; ATL-60 physical DDL design is blocked until ATL-79 governed PASS."
