@@ -99,7 +99,7 @@ working_outputs:
     path: governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
     commit: 9d6598276757fa870d048ba772f5584b529a96d3
     status: CANDIDATE_LOGICAL_DESIGN_QA_REQUIRED
-    description: "Stable semantic kernel plus governed extensibility registries; Claude QA PASS_WITH_BINDING_CORRECTIONS; F1-F6 applied at fcc3a676; no DDL."
+    description: "Stable semantic kernel plus governed extensibility registries; Claude bounded recheck found F1-F6 substantively closed; markdown literal-backslash-n corruption and omitted §10 migration-sequence update repaired at 79c3cfed; no DDL."
 
   - id: ATL60-GENERATION-REGISTRY-STUB
     type: github
@@ -145,8 +145,8 @@ qa_and_decisions:
     branch: atlas-governance-registry-v2.1
     commit: 0b45481b1a40030daa3d1661460d6d24c1fcb59e
 
-current_checkpoint: "Claude independently QA’d the extensible Z1/Z6 logical schema with PASS_WITH_BINDING_CORRECTIONS. F1-F6 have been applied to the design at fcc3a676: pinned type versions, explicit Z1→Z5 generation-run lineage, gap/proposal/review wiring, write-time JSON validation layer, research-vs-client evidence distinction, and append-only semantic versioning. No DDL generated and no Supabase mutation occurred."
-next_action: "Perform bounded independent correction recheck of commit fcc3a676 against Claude findings F1-F6. If all six are verified closed, authorize physical DDL/migration DESIGN ONLY; do not apply any Supabase mutation."
+current_checkpoint: "Claude bounded recheck found F1-F6 substantively closed, but identified literal-backslash-n markdown corruption and an omitted §10 migration-sequence update in fcc3a676. Both defects were repaired and render-checked at 79c3cfed. No DDL generated and no Supabase mutation occurred."
+next_action: "Before physical DDL design, perform a bounded manual dry-run using 3–4 real LTL-03 facts through knowledge entity → evidence link → knowledge generation run → Z5/readiness references. Persist the dry-run and resolve only material schema defects it exposes. Then proceed to physical DDL/migration DESIGN ONLY; no Supabase mutation."
 
 open_items:
   - "Design required schema extension/migration without applying it."
@@ -188,4 +188,4 @@ last_execution_record:
   operator: ChatGPT
   stopped_at: "2026-09-22T08:46+05:30 onward"
   durable_state_written: true
-  note: "Claude schema QA recorded at 7e63f09e; F1-F6 logical-design corrections applied at fcc3a676. No DDL generated or database mutation. Next action is bounded correction recheck before physical DDL design."
+  note: "Claude bounded recheck found F1-F6 substantively closed and caught two implementation-quality defects in fcc3a676. ChatGPT repaired literal-backslash-n corruption and §10 migration sequence at 79c3cfed and verified zero literal-backslash-n sequences remain. Next action is a manual 3–4 real-fact dry-run before physical DDL design."
