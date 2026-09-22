@@ -2114,3 +2114,34 @@ ATL-79 manifest checkpoint:
 ATL-79 remains In Progress but blocked. ATL-60 physical DDL remains blocked.
 
 **Next governed pickup:** ATL-80. After ATL-80 governed PASS + required independent QA, resume ATL-79 and rerun criterion #3 plus the complete frozen verification matrix.
+
+
+---
+
+# CLAUDE QA + CHATGPT CORRECTION — ATL-80
+
+**Date:** 2026-09-22
+
+Claude independently reviewed ATL-80 BUILD 66217aa95280d468d159467d409a5424c197e9bc and first-party VERIFY 02653d8826c44bf03b40974176184293f9bcd56d.
+
+Disposition: **PASS_WITH_BINDING_CORRECTIONS**.
+
+Durable QA artifact:
+governance/implementation/ATL_80_INDEPENDENT_QA_V0_1.md @ 775b3122fb9391192907b910360e5ff494f4150c.
+
+Binding corrections:
+- F1: ET-BUSINESS-OBJECT@1.0.0 lacked baseline required fields; object_kind is now required and distinction_rules is conditionally mandatory at governed write time when source evidence establishes a material distinction.
+- F2: persisted type-registry rows lacked an explicit immutability invariant; ATL-60 §9 and ATL-80 §6 now prohibit in-place semantic/type-contract edits and require successor type versions.
+
+Correction commits:
+- ATL-80 pack: 0eb273d0dd4d479e4fe86a1988726a19f3716d59
+- ATL-60 schema invariant: 47441185a32dc696a619dfe7f89c8c769a95fd07
+- first-party correction verification: governance/implementation/ATL_80_BINDING_CORRECTIONS_VERIFICATION_V0_1.md @ b0db3b4ac9762076c66c1b1be479cde0c38157b3
+
+Post-write verification: both fixes present; zero literal backslash-n corruption in both corrected artifacts.
+
+Non-blocking QA notes retained:
+- REQUIRES_CLIENT_BINDING / HAS_KNOWLEDGE_GAP governed relationship types are near-term work when a materialized relationship is required.
+- RT-ASSOCIATED-WITH association_role remains free text; revisit only when recurring roles justify governance.
+
+**Current gate:** ATL-80 remains IN_PROGRESS / blocked pending bounded independent recheck of F1/F2. ATL-79 remains blocked. No DDL or Supabase mutation.
