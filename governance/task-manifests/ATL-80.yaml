@@ -23,8 +23,8 @@ governing_inputs:
   - type: linear_parent
     id: ATL-79
 
-current_checkpoint: "ATL-80 first-party VERIFY completed against all seven frozen acceptance criteria. All seven PASS; proof persisted. State is VERIFIED_FIRST_PARTY / PROOF_RECORDED, but independent QA is still required before ATL-79 may consume the candidate registry."
-next_action: "Obtain independent QA of ATL-80 candidate pack at BUILD commit 66217aa95280d468d159467d409a5424c197e9bc and verification proof commit 02653d8826c44bf03b40974176184293f9bcd56d. Do not close ATL-80 or unblock ATL-79 until independent QA passes and required governance disposition is recorded."
+current_checkpoint: "Claude independent QA recorded PASS_WITH_BINDING_CORRECTIONS. F1/F2 corrections were applied and first-party post-write verification passed with zero literal backslash-n corruption. ATL-80 remains blocked pending bounded independent recheck of F1/F2."
+next_action: "Obtain bounded independent recheck of corrected F1/F2 only, against ATL-80 pack commit 0eb273d0dd4d479e4fe86a1988726a19f3716d59, ATL-60 schema commit 47441185a32dc696a619dfe7f89c8c769a95fd07, and correction verification commit b0db3b4ac9762076c66c1b1be479cde0c38157b3. Do not unblock ATL-79 until recheck PASS."
 
 authorized_actions:
   - "Define minimum logical seed type/relationship contracts justified by ATL-79."
@@ -64,6 +64,14 @@ current_outputs:
     blob_sha: 7811b0c556b35197ad8abdeaf3285884d40f20a1
     state: PROOF_RECORDED_FIRST_PARTY
 qa_and_decisions:
+  - disposition: PASS_WITH_BINDING_CORRECTIONS
+    qa_artifact: governance/implementation/ATL_80_INDEPENDENT_QA_V0_1.md
+    qa_commit: 775b3122fb9391192907b910360e5ff494f4150c
+    corrections:
+      - 0eb273d0dd4d479e4fe86a1988726a19f3716d59
+      - 47441185a32dc696a619dfe7f89c8c769a95fd07
+    correction_verification: b0db3b4ac9762076c66c1b1be479cde0c38157b3
+    bounded_independent_recheck: REQUIRED
   - disposition: VERIFIED_FIRST_PARTY
     proof_commit: 02653d8826c44bf03b40974176184293f9bcd56d
     independent_qa: REQUIRED
