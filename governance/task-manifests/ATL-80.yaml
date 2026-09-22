@@ -1,0 +1,67 @@
+task_id: ATL-80
+logical_task_name: "ATL-79A — Governed Seed Knowledge-Type Registry Contract"
+task_status: TODO
+execution_owner: ChatGPT
+decision_authority: "Darshan / Atlas Owner-Governor"
+linear_url: "https://linear.app/sefl-transformation/issue/ATL-80/atl-79a-governed-seed-knowledge-type-registry-contract"
+manifest_status: ACTIVE
+last_updated: "2026-09-22"
+
+governing_inputs:
+  - type: github_standard
+    path: governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md
+    commit: e8a7afc6e191948551c91d4b4264efb7589d2423
+  - type: github_schema_design
+    path: governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
+    commit: 79c3cfed65129263d92ff77ffbb56f25a700c0f1
+  - type: github_dryrun
+    path: governance/implementation/ATL_79_LTL03_REAL_FACT_SCHEMA_DRY_RUN_V0_1.md
+    commit: 13f528868029c63338404d06638ebeb89ceaa09d
+  - type: github_verification
+    path: governance/implementation/ATL_79_VERIFICATION_PROOF_V0_1.md
+    commit: 2e02f8214c89c36d93baa81066fbaa67b8bfb087
+  - type: linear_parent
+    id: ATL-79
+
+current_checkpoint: "Task created from ATL-79 verification failure FR-01. No seed registry design has started."
+next_action: "Read ATL-80 → this manifest → governing inputs → actual current type-registry design state; then BUILD only the minimum governed seed entity/relationship type contract pack required to rerun ATL-79 criterion #3."
+
+authorized_actions:
+  - "Define minimum logical seed type/relationship contracts justified by ATL-79."
+  - "Persist candidate contract pack in GitHub."
+  - "Verify exact IDs/versions, schemas, endpoint constraints and successor-version semantics."
+  - "Request/record independent QA before ATL-79 consumes the pack."
+
+blocked_actions:
+  - action: "ATL-79 verification closure."
+    blocker: "ATL-80 not yet governed PASS."
+    release_condition: "ATL-80 independently QA'd/pass; ATL-79 criterion #3 rerun against actual governed type/version identities."
+  - action: "Physical DDL or Supabase mutation."
+    blocker: "Not authorized by ATL-80."
+    release_condition: "Separate downstream governance."
+
+acceptance_criteria:
+  - "Every type used by ATL-79 has stable type ID and explicit version."
+  - "Semantic meaning and required extension attributes are machine-validatable."
+  - "Every ATL-79 relationship has stable type ID/version and endpoint constraints."
+  - "Later semantic change requires successor type version."
+  - "No LTL/BOL-specific type is falsely universalized."
+  - "Pack is sufficient for ATL-79 criterion #3 without invented versions."
+  - "No physical DDL/Supabase mutation required."
+
+verification_and_proof:
+  protocol: "BUILD → VERIFY → PROVE → ADVANCE"
+  independent_qa: REQUIRED
+
+working_outputs: []
+current_outputs: []
+qa_and_decisions: []
+
+handoff:
+  pickup_sequence:
+    - "Open Linear ATL-80."
+    - "Read this manifest."
+    - "Read governing inputs."
+    - "Verify actual current registry/type state."
+    - "Execute only next_action."
+  chat_history_required: false
