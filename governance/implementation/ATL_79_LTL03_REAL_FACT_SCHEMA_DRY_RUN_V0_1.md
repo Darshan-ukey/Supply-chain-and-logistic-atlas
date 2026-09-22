@@ -58,7 +58,7 @@ A material failure blocks ATL-60 physical DDL design until corrected and re-veri
 - knowledge_version: `1`
 - ownership_zone: `Z1`
 - entity_type: `BUSINESS_OBJECT`
-- entity_type_version: **UNRESOLVED — no governed seed type-registry version exists yet**
+- entity_type_version: `1.0.0` — governed by `ET-BUSINESS-OBJECT@1.0.0`
 - canonical_name: `Typed Reference`
 - definition: reference identity carrying value, type/type-scheme, issuer/role and related-object association.
 - support_state: `SUPPORTED`
@@ -67,7 +67,8 @@ A material failure blocks ATL-60 physical DDL design until corrected and re-veri
 
 **Candidate relationship semantics**
 - `REFERENCE_ASSOCIATED_TO_OBJECT`
-- relationship_type_version: **UNRESOLVED — no governed seed relationship-type version exists yet**
+- relationship_type: `RT-ASSOCIATED-WITH`
+- relationship_type_version: `1.0.0`
 - PRO distinction retained as governed semantic, not flattened into generic reference text.
 
 **Z5 reference**
@@ -82,7 +83,7 @@ A material failure blocks ATL-60 physical DDL design until corrected and re-veri
 - knowledge_version: `1`
 - ownership_zone: `Z1`
 - entity_type: `RULE`
-- entity_type_version: **UNRESOLVED — no governed seed type-registry version exists yet**
+- entity_type_version: `1.0.0` — governed by `ET-RULE@1.0.0`
 - canonical_name: `Dangerous Goods Technical Name Conditional Applicability`
 - applicability: jurisdiction/regulatory-condition gated; not universal.
 - semantic_payload requirement: preserve the E4 condition that the technical name is required for specified n.o.s./generic hazardous descriptions and related cases under 49 CFR 172.203(k), gated to applicable U.S. jurisdiction/regulatory context; do not universalize it.
@@ -102,7 +103,7 @@ A material failure blocks ATL-60 physical DDL design until corrected and re-veri
 - knowledge_version: `1`
 - ownership_zone: `Z1`
 - entity_type: `EXCEPTION`
-- entity_type_version: **UNRESOLVED — no governed seed type-registry version exists yet**
+- entity_type_version: `1.0.0` — governed by `ET-EXCEPTION@1.0.0`
 - canonical_name: `Critical Confidence / Failed Validation HITL Route`
 - support_state: `SUPPORTED`
 - evidence: E2 / Exception policy
@@ -124,7 +125,7 @@ A material failure blocks ATL-60 physical DDL design until corrected and re-veri
 - knowledge_version: `1`
 - ownership_zone: `Z1`
 - entity_type: `DEPENDENCY`
-- entity_type_version: **UNRESOLVED — no governed seed type-registry version exists yet**
+- entity_type_version: `1.0.0` — governed by `ET-DEPENDENCY@1.0.0`
 - canonical_name: `Instruction Type Value-Set Binding Requirement`
 - definition: reusable knowledge that an Instruction Type concept exists but its exact active value set cannot be promoted as universal domain truth from current evidence.
 - support_state: `CLIENT_BINDING_REQUIRED`
@@ -183,3 +184,17 @@ Consequently, the four real facts can be mapped to candidate type names, but ATL
 **Required decision after VERIFY:** either (a) treat a governed seed type-contract pack as a required pre-DDL schema artifact and create it as a separate Linear prerequisite under the new task-creation rule, or (b) demonstrate an already-governed type-version source that this dry-run has not yet located.
 
 No correction is made inside this BUILD artifact before VERIFY.
+
+
+## 7. ATL-80 governed prerequisite resolution — 2026-09-22
+
+FR-01 is resolved by governed ATL-80 seed registry pack:
+- `ET-BUSINESS-OBJECT@1.0.0`
+- `ET-RULE@1.0.0`
+- `ET-EXCEPTION@1.0.0`
+- `ET-DEPENDENCY@1.0.0`
+- `RT-ASSOCIATED-WITH@1.0.0`
+
+ATL-80 bounded independent recheck disposition: PASS — F1/F2 CLOSED.
+
+FR-02 and FR-03 remain logged non-blocking findings and do not alter this dry-run's frozen acceptance matrix.
