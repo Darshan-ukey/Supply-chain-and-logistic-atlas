@@ -94,6 +94,13 @@ working_outputs:
     status: READ_ONLY_MAPPING_COMPLETE
     description: "Observed Supabase schema mapped to Z0/Z1/Z2/Z5/Z6 needs; reuse and extension boundaries identified; no mutation."
 
+  - id: ATL60-EXTENSIBLE-OK-READINESS-SCHEMA-V0.1
+    type: github
+    path: governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
+    commit: 9d6598276757fa870d048ba772f5584b529a96d3
+    status: CANDIDATE_LOGICAL_DESIGN_QA_REQUIRED
+    description: "Stable semantic kernel plus governed extensibility registries for future process/domain knowledge structures; Z6 readiness proof included; no DDL."
+
   - id: ATL60-GENERATION-REGISTRY-STUB
     type: github
     path: governance/generation/ATL_60_RESEARCH_TO_EXECUTION_GENERATION_REGISTRY_ENTRY.md
@@ -119,6 +126,7 @@ current_outputs:
   - ATL60-GOV-DECISION-CORRECTED
   - ATL60-TRANSFORMER-CONTRACT-V0.1
   - ATL60-SUPABASE-SCHEMA-MAPPING-V0.1
+  - ATL60-EXTENSIBLE-OK-READINESS-SCHEMA-V0.1
   - ATL60-GENERATION-REGISTRY-STUB
   - ATL60-QA-CLOSURE
 
@@ -137,8 +145,8 @@ qa_and_decisions:
     branch: atlas-governance-registry-v2.1
     commit: 0b45481b1a40030daa3d1661460d6d24c1fcb59e
 
-current_checkpoint: "Read-only Supabase schema mapping complete and persisted at commit 7f74d4e. Existing evidence/client/gap/Z5 tables mapped; dedicated canonical Z1 Operational Knowledge and Z6 readiness-proof storage identified as structural gaps. Transformer Contract §7/§8 bound from observed implementation facts at commit 4e8265d. No Supabase mutation occurred."
-next_action: "Design the candidate ATL-60 schema extension/migration without applying it: Z1 Operational Knowledge envelope/entities + typed relationships/provenance + Z6 readiness proof/run lineage, reusing existing Z0/Z2/Z5/governance tables. Persist design for independent QA before any database mutation."
+current_checkpoint: "Read-only schema mapping complete. Owner extensibility requirement recorded in canonical shared log at af520a9d. Candidate extensible Z1 Operational Knowledge + Z6 readiness logical schema persisted at 9d65982 using stable semantic kernel + governed type/relationship extension model. No DDL generated and no Supabase mutation occurred."
+next_action: "Obtain independent QA of ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md together with the implementation-bound Transformer Contract. Resolve binding corrections before generating physical DDL/migration."
 
 open_items:
   - "Design required schema extension/migration without applying it."
