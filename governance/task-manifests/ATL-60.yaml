@@ -9,6 +9,10 @@ last_updated: "2026-09-22"
 
 governing_inputs:
   - type: github_standard
+    path: governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md
+    commit: 29c724374c1a7d40fb2a115032267fcc8014b3ea
+    status: OWNER_AUTHORIZED_WITH_UNIVERSAL_EXECUTION_INTEGRITY_PROTOCOL
+  - type: github_standard
     path: governance/standards/ATLAS_PRODUCT_CONSTITUTION_V1.md
     status: FROZEN
   - type: github_standard
@@ -97,8 +101,8 @@ working_outputs:
   - id: ATL60-EXTENSIBLE-OK-READINESS-SCHEMA-V0.1
     type: github
     path: governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
-    commit: 9d6598276757fa870d048ba772f5584b529a96d3
-    status: CANDIDATE_LOGICAL_DESIGN_QA_REQUIRED
+    commit: 79c3cfed65129263d92ff77ffbb56f25a700c0f1
+    status: VERIFIED_FIRST_PARTY_CLAUDE_F1_F6_SUBSTANCE_PASSED
     description: "Stable semantic kernel plus governed extensibility registries; Claude bounded recheck found F1-F6 substantively closed; markdown literal-backslash-n corruption and omitted §10 migration-sequence update repaired at 79c3cfed; no DDL."
 
   - id: ATL60-GENERATION-REGISTRY-STUB
@@ -145,8 +149,8 @@ qa_and_decisions:
     branch: atlas-governance-registry-v2.1
     commit: 0b45481b1a40030daa3d1661460d6d24c1fcb59e
 
-current_checkpoint: "Claude bounded recheck found F1-F6 substantively closed, but identified literal-backslash-n markdown corruption and an omitted §10 migration-sequence update in fcc3a676. Both defects were repaired and render-checked at 79c3cfed. No DDL generated and no Supabase mutation occurred."
-next_action: "Before physical DDL design, perform a bounded manual dry-run using 3–4 real LTL-03 facts through knowledge entity → evidence link → knowledge generation run → Z5/readiness references. Persist the dry-run and resolve only material schema defects it exposes. Then proceed to physical DDL/migration DESIGN ONLY; no Supabase mutation."
+current_checkpoint: "Claude bounded recheck found F1-F6 substantively closed; ChatGPT repaired the two execution-quality defects at 79c3cfed and verified resulting state. Owner has now mandated universal LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE and BUILD → VERIFY → PROVE → ADVANCE for every operator/session/tool. Standard updated at 29c72437 and post-write verified. No DDL generated and no Supabase mutation occurred."
+next_action: "Under the universal execution-integrity protocol, perform and persist a bounded manual dry-run using 3–4 materially different real LTL-03 facts through source evidence → Z1 knowledge entity/relationship → evidence link → atlas_knowledge_generation_runs → Z5/readiness references. Predetermine acceptance checks, VERIFY resulting mappings, record PROOF, and ADVANCE only if the dry-run passes. No physical DDL or Supabase mutation in this step."
 
 open_items:
   - "Design required schema extension/migration without applying it."
@@ -175,17 +179,17 @@ blocked_actions:
 
 handoff:
   pickup_sequence:
-    - "Open Linear ATL-60 and verify status/dependencies."
-    - "Read this manifest."
-    - "Read the listed governing inputs, especially the Agent-Independent Task Continuity Standard and Transformer Contract."
+    - "Open Linear ATL-60 first and verify task identity, status, dependencies, acceptance criteria and current gate."
+    - "Read this manifest and use its exact checkpoint, authorized/blocked actions, expected output and next_action."
+    - "Read the listed governing inputs, especially the Agent-Independent Task Continuity Standard including BUILD → VERIFY → PROVE → ADVANCE, and the Transformer Contract."
     - "Verify the canonical shared log on atlas-governance-registry-v2.1 through the latest ATL-60 schema QA/correction closure entry."
     - "Verify required Drive evidence is accessible."
     - "For the immediate correction recheck, compare Claude F1-F6 against logical-design commit fcc3a676. Supabase remains read-only; no mutation is authorized."
-    - "Perform only the next_action and persist every material output before pausing."
+    - "Verify actual starting artifact state, then perform only the next_action. Treat writes as IMPLEMENTED_UNVERIFIED until resulting-state verification and durable proof pass; persist every material output before pausing."
   chat_history_required: false
 
 last_execution_record:
   operator: ChatGPT
   stopped_at: "2026-09-22T08:46+05:30 onward"
   durable_state_written: true
-  note: "Claude bounded recheck found F1-F6 substantively closed and caught two implementation-quality defects in fcc3a676. ChatGPT repaired literal-backslash-n corruption and §10 migration sequence at 79c3cfed and verified zero literal-backslash-n sequences remain. Next action is a manual 3–4 real-fact dry-run before physical DDL design."
+  note: "Universal execution-integrity governance is now mandatory. Standard 29c72437 was re-fetched and verified after write. ATL-60 next action is the 3–4 real-fact dry-run executed through BUILD → VERIFY → PROVE → ADVANCE; no DDL or Supabase mutation."
