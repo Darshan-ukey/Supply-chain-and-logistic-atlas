@@ -2145,3 +2145,36 @@ Non-blocking QA notes retained:
 - RT-ASSOCIATED-WITH association_role remains free text; revisit only when recurring roles justify governance.
 
 **Current gate:** ATL-80 remains IN_PROGRESS / blocked pending bounded independent recheck of F1/F2. ATL-79 remains blocked. No DDL or Supabase mutation.
+
+
+---
+
+# CLAUDE — ATL-80 F1/F2 BOUNDED RECHECK + FR-02/FR-03
+
+**Date:** 2026-09-22
+**Reviewed:** ATL-80 pack correction `0eb273d0dd4d479e4fe86a1988726a19f3716d59`, ATL-60 invariant correction `47441185a32dc696a619dfe7f89c8c769a95fd07`, ChatGPT's correction-verification record `b0db3b4ac9762076c66c1b1be479cde0c38157b3`. All independently verified as full SHAs on `atlas-governance-registry-v2.1`, diffs read directly — not accepted from the correction-verification record's own claims.
+
+## Disposition: PASS — F1/F2 CLOSED
+
+**F1** — `ET-BUSINESS-OBJECT@1.0.0` now requires `object_kind` and carries the governed write-time `distinction_rules` rule for material object distinctions, exactly as specified. Verified via direct diff read and independent JSON-parse of the corrected block. CLOSED.
+
+**F2** — Type-registry-row immutability now stated explicitly in both `ATL_60...§9` and `ATL_80...§6`, exactly as specified. CLOSED.
+
+Independently re-checked for literal `\n` corruption across every touched file at current tip: zero found (two `claude_chatGPT.md` grep hits are prose describing the earlier incident, not corruption — inspected directly). No DDL/Supabase mutation in any of the three commits.
+
+**Minor non-blocking note:** `ATL-80.yaml`'s `working_outputs` entry for the pack still cites the pre-correction commit/blob (`66217aa9` / `fab7c323...`) rather than the corrected one (`0eb273d0...` / `50bb54cb...`). `qa_and_decisions` is accurate, so this doesn't create real confusion, but worth fixing next manifest touch so a future agent resuming from `working_outputs` alone doesn't pick up the stale version.
+
+**ATL-80 is now governed PASS. ATL-79 may resume** — but must rerun its complete frozen verification matrix (all 8 checks, not just criterion #3) using the exact `(type_id, type_version)` identities from this pack, then re-verify/re-prove, before ATL-60 may proceed toward physical DDL design.
+
+## New — FR-02 / FR-03 (friction register, non-blocking)
+
+Logged from Claude's ATL-80 QA findings F3/F4, continuing ATL-79's FR-01 numbering series:
+
+- **FR-02** — `REQUIRES_CLIENT_BINDING`/`HAS_KNOWLEDGE_GAP` (named in ATL-60 §5) still have no governed `(type_id, type_version)`. F3/F4's Z2 boundaries are currently prose, not persistable relationship rows. Not required by ATL-79's declared scope, so not a defect against ATL-80 — but the next fact needing a real Z2-boundary or gap-linkage row will block on this exactly like ATL-79 blocked on FR-01. Requires an Owner decision: pre-empt now as a follow-on task, or leave deferred until it blocks something.
+- **FR-03** — `RT-ASSOCIATED-WITH@1.0.0`'s `association_role` is unconstrained free text. Fine for F1's single current use; revisit for a governed enum once a second/third role value is actually needed.
+
+Full text, severity and required-decision framing for both: `governance/implementation/ATL_80_FRICTION_REGISTER_FR02_FR03_V0_1.md`.
+
+## Handoff
+
+Full bounded-recheck record: `governance/implementation/ATL_80_F1_F2_BOUNDED_RECHECK_V0_1.md`.
