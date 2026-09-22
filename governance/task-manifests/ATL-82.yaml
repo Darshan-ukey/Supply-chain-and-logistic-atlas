@@ -34,8 +34,8 @@ artifact_state:
   current_schema_reinspected: true
   no_mutation_performed: true
 
-current_checkpoint: "ATL-82 created under Linear-first rule. Governing artifacts and current live Supabase schema/migrations re-read. Physical DDL design is authorized; application/mutation is not."
-next_action: "BUILD candidate SQL migration artifact and physical-design rationale against the validated logical model and current live schema. Do not apply."
+current_checkpoint: "Candidate physical DDL and rationale built, re-fetched, mechanically verified and first-party proof recorded. No Supabase mutation. Independent QA is required before any application/promotion."
+next_action: "Independent QA of ATL-82 candidate SQL/rationale/proof against the predetermined 10 acceptance criteria and the six explicit physical-design questions. Do not apply DDL."
 
 acceptance_criteria:
   - "Faithfully implements validated logical model without semantic loss or LTL/BOL-specific universalization."
@@ -64,3 +64,21 @@ blocked_actions:
 verification_and_proof:
   protocol: "BUILD → VERIFY → PROVE → ADVANCE"
   independent_qa_required_before_mutation: true
+
+working_outputs:
+  - path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql
+    commit: 5fe4c631bdff3484d136d7d747b4251798ffe8b6
+    blob_sha: b16a4bd9b16763287a76574e7231695b2c271f2e
+    state: VERIFIED_FIRST_PARTY
+  - path: governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_1.md
+    commit: ad49132a67b23f5d61c80792845e35cfd5c8fc5c
+    blob_sha: 66e073011cd87cce9366fb3aae7c756f9afce545
+    state: VERIFIED_FIRST_PARTY
+  - path: governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_1.md
+    commit: 58f9a86aced1af2621c502fbf2e2395a9c3e30e3
+    state: PROOF_RECORDED
+
+qa_and_decisions:
+  - disposition: VERIFIED_FIRST_PARTY
+    next_gate: INDEPENDENT_QA_REQUIRED
+
