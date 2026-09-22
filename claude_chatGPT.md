@@ -1603,3 +1603,94 @@ All three binding corrections from the original independent QA are closed. The L
 The **ATL-40 freeze-window process finding remains separate and open**. This ATL-37 PASS does not authorize ATL-40 continuation.
 
 ATL-37 feeds ATL-4 only insofar as the generator-QA gate is now clear. **It does not authorize Product Build and does not itself resolve ATL-40 sequencing.** Claude does not self-authorize ATL-4 or ATL-40 continuation.
+
+
+---
+
+# OWNER / CHATGPT — ATL-60 GOVERNANCE CORRECTION & CLAUDE HANDOFF
+
+**Date:** 2026-09-22  
+**Owner direction:** correct the governance defects identified by Claude and preserve the method so either agent can continue without chat history.  
+**ATL-60 status:** IN PROGRESS — bounded non-promotional work authorized.  
+**Canonical Supabase promotion:** BLOCKED pending contract QA/freeze and generation controls.
+
+## 1. Two mechanisms are now explicitly separated
+
+### Mechanism 1 — In-Depth Knowledge Research
+Question: **Do we know enough?**
+
+Scope the operational universe → research authoritative sources → capture evidence/provenance → derive operational/domain facts and semantics → identify rules/exceptions/lifecycle/dependencies → classify reusable vs client-specific knowledge → expose gaps → targeted mini-research → freeze evidence-backed knowledge candidate.
+
+### Mechanism 2 — Research-to-Execution-Readiness Transformation
+Question: **Can what we know be transformed into implementation-ready specification without rediscovering material domain semantics?**
+
+Frozen/reconciled research → structured Z0/Z1 knowledge → canonical operational/work hierarchy → Z5 Work Decomposition → Canonical WorkDefinitions → Z2 binding requirements/resolution → Z6 readiness proof → executor projection.
+
+A material gap discovered by Mechanism 2 is routed back to Mechanism 1 as a bounded research request. It must not be silently inferred by the transformation engine.
+
+## 2. Claude validation findings — disposition
+
+**Accepted/corrected:** readiness-vocabulary drift. The frozen Product Constitution remains authoritative:
+- DOMAIN_EXECUTION_READY
+- ENTERPRISE_EXECUTION_READY
+- RUNTIME_IMPLEMENTATION_READY
+
+BINDING_REQUIRED / CLIENT_BINDING_REQUIRED / MASTER_DATA_REQUIRED / SOURCE_CONTEXT_PENDING / KNOWLEDGE_GAP / BLOCKED are blocker/dependency/knowledge-state classifications, not replacement readiness states. No Constitution supersession is created.
+
+**Accepted/corrected:** the common structured-knowledge envelope must include mandatory Z0–Z7 ownership-zone classification. Z1 reusable semantics, Z2 Client Binding and Z5 execution semantics must remain mechanically distinguishable.
+
+**Accepted/corrected:** Mechanism 2 requires its own governed Generator Contract and Generation Registry control before canonical materialization.
+
+**Qualified:** lack of current Supabase changes is not itself a defect. Schema inspection must precede migration. No production/canonical Supabase mutation has been authorized.
+
+**Qualified:** ATL-60 itself is not stopped. Evidence recovery/reconciliation, operational-universe analysis, gap analysis, read-only schema inspection and candidate structuring may continue. Promotion of generated OK/Work Decomposition/WorkDefinitions into canonical Supabase state is blocked.
+
+## 3. New governed control artifacts
+
+Decision/governance correction:
+- governance/decisions/EXECUTION_READINESS_AND_ON_DEMAND_DEPTH_2026-09-21.md
+- correction commit: 756c07ebaeb22c400308a0384996f38a6e0b6d4b
+
+Candidate Generator Contract:
+- governance/generation/RESEARCH_TO_EXECUTION_READINESS_TRANSFORMER_CONTRACT_V0_1.md
+- creation commit: 8a89a4d6ee304722177d43b3cc981760835f1096
+- status: CANDIDATE — independent QA + Owner freeze required before canonical materialization.
+
+Pending Generation Registry control:
+- governance/generation/ATL_60_RESEARCH_TO_EXECUTION_GENERATION_REGISTRY_ENTRY.md
+- creation commit: 86dd480e6c318beaadf602880a617416caa747f9
+- status: PENDING_RUN / incomplete by design; canonical promotion remains blocked.
+
+## 4. Supabase / HTML rule
+
+Research/evidence is input. The Canonical Structured Knowledge Store is the governed structured-state authority; Supabase/Postgres is the current target implementation subject to schema/security design. HTML is G5 renderer/projection only.
+
+Before any schema change:
+1. inspect current Atlas Supabase schema read-only;
+2. map existing structures to Z0–Z7 and the candidate transformation contract;
+3. propose reuse/extension rather than creating a parallel LTL-03 model;
+4. independently QA/freeze the transformation contract and applicable schema/migration;
+5. only then authorize materialization.
+
+## 5. ATL-40 freeze-window finding
+
+The earlier ATL-40 sequencing violation remains recorded and is **not erased or retroactively self-authorized**. It did not mutate the ATL-37 frozen LTL-03 graph/manifest. The Owner's current instruction authorizes the bounded governance-correction path and ATL-60 non-promotional work from this checkpoint forward. Subsequent promotion still requires the applicable QA/Owner gate.
+
+## 6. Claude pickup / independent QA request
+
+Claude should independently review the three artifacts above against:
+- Atlas Product Constitution V1;
+- AR0.2 Layer Boundary Decision Rebased V2;
+- Canonical Generation & Freeze-Asset Standard V1;
+- Controlled Phase Execution & Recovery Gate V1.
+
+Minimum QA:
+1. confirm canonical readiness vocabulary is restored and blocker states are not treated as readiness states;
+2. confirm Z0–Z7 ownership tagging is sufficient to enforce domain/client/execution separation;
+3. inspect all 13 mandatory Generator Contract elements and identify omissions;
+4. confirm the pending Generation Registry record does not falsely imply a run or promotion;
+5. confirm Mechanism 1 and Mechanism 2 are distinct with a governed gap-return path;
+6. confirm ATL-60's allowed-vs-blocked boundary permits research/candidate structuring but blocks canonical Supabase promotion;
+7. report PASS / PASS_WITH_BINDING_CORRECTIONS / FAIL. Do not mutate the candidate during QA.
+
+**No canonical Supabase write, no self-promotion, and no downstream authorization is implied by this correction package.**
