@@ -1,0 +1,177 @@
+task_id: ATL-60
+task_title: "ATL-49A — LTL-03 Research Evidence Recovery & Reconciliation"
+task_status: IN_PROGRESS
+execution_owner: ChatGPT
+decision_authority: Darshan Ukey
+linear_url: "https://linear.app/sefl-transformation/issue/ATL-60/atl-49a-ltl-03-research-evidence-recovery-and-reconciliation"
+manifest_status: ACTIVE
+last_updated: "2026-09-22"
+
+governing_inputs:
+  - type: github_standard
+    path: governance/standards/ATLAS_PRODUCT_CONSTITUTION_V1.md
+    status: FROZEN
+  - type: github_standard
+    path: governance/standards/CANONICAL_GENERATION_AND_FREEZE_ASSET_STANDARD_V1.md
+    status: OWNER_AUTHORIZED
+  - type: github_standard
+    path: governance/standards/CONTROLLED_PHASE_EXECUTION_AND_RECOVERY_GATE_V1.md
+    status: OWNER_AUTHORIZED
+  - type: github_standard
+    path: governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md
+    commit: 485ef41cb323d35e5c1641e0410dfead36dfb167
+    status: OWNER_AUTHORIZED
+  - type: github_decision
+    path: governance/decisions/EXECUTION_READINESS_AND_ON_DEMAND_DEPTH_2026-09-21.md
+    commit: a34bb89ee20bda23584450de0d40fdc23ffd2a43
+    status: GOVERNANCE_CANDIDATE_WITH_QA_DISPOSITION
+  - type: generator_contract
+    path: governance/generation/RESEARCH_TO_EXECUTION_READINESS_TRANSFORMER_CONTRACT_V0_1.md
+    commit: 8a89a4d6ee304722177d43b3cc981760835f1096
+    status: CANDIDATE_QA_REVIEWED_NOT_FROZEN
+  - type: generation_registry
+    path: governance/generation/ATL_60_RESEARCH_TO_EXECUTION_GENERATION_REGISTRY_ENTRY.md
+    commit: 86dd480e6c318beaadf602880a617416caa747f9
+    status: PENDING_RUN_NOT_AUTHORIZED
+  - type: canonical_control_log
+    path: claude_chatGPT.md
+    branch: atlas-governance-registry-v2.1
+    qa_commit: c9f48ec3cac4d7a098b6df8b65c20feaec9fc5ca
+    closure_commit: 0b45481b1a40030daa3d1661460d6d24c1fcb59e
+
+consumed_inputs:
+  - type: drive
+    name: "Phase 2 - LTL Work, Information & Value - Working Evidence"
+    file_id: 1BvcVg60x0tYp1AF-0sAW4i1X9UnuBCTLsSXBTY7CheI
+    status: RETAINED_EVIDENCE_INPUT
+  - type: drive
+    name: "FINAL BACKUP 2026-09-18 - Phase 2 Working Evidence - Research Closed"
+    file_id: 125v9S7nFCadZcvlbxDu5CsIFj-KQwaUwU4fBk25OXik
+    status: RETAINED_RESEARCH_CLOSED_INPUT
+  - type: drive
+    name: "Phase 2 - Source Register & Validation Ledger"
+    file_id: 1zbokPP84mZ-9HSX1BSjJdu3sQP0YUlw38ZPfIPOjC50
+    status: RETAINED_PROVENANCE_INPUT
+  - type: drive
+    name: "FINAL BACKUP 2026-09-18 - Phase 2 Source Register - Research Closed"
+    file_id: 1uwjZImjrI9tjYFzttYR3DxCxrfyGg8oucvOciyXxMzU
+    status: RETAINED_PROVENANCE_CLOSED_INPUT
+  - type: drive
+    name: "Phase 0 - Evidence Baseline and Gap Register"
+    file_id: 1N11bxvTF9gyxfFkjNUj5t3m0fw21ubVyLHexdBu_nLs
+    status: RETAINED_EVIDENCE_INPUT
+  - type: drive
+    name: "Atlas Execution-Readiness Derivation Method v1 — 2026-09-20"
+    file_id: 12SRbTomHs-_sEZusn7JY2msMwEZ7zMCqOPhJE7q2vDs
+    status: GOVERNED_METHOD_INPUT
+  - type: drive
+    name: "P6.1 V1 — LTL-03 Reconstructed Protected Decomposition — 2026-09-14"
+    file_id: 1cEYN7ZxJsIpaDukEvZMOs1ihT1hBL268jXfYwbp9cv8
+    status: DERIVED_INPUT_TO_TEST_NOT_ANSWER
+  - type: drive
+    name: "raw authoritative eBOL YAML"
+    file_id: 1JphZ8ytUBQHN9NfmHYhDG0lPD5ovkKex
+    sha256: 39715755793a2f39ee290e17f3997cb1bd7cadf001e5531f4a61093df1094e8c
+    status: VERIFIED_CUSTODY_INPUT
+
+working_outputs:
+  - id: ATL60-GOV-DECISION-CORRECTED
+    type: github
+    path: governance/decisions/EXECUTION_READINESS_AND_ON_DEMAND_DEPTH_2026-09-21.md
+    commit: a34bb89ee20bda23584450de0d40fdc23ffd2a43
+    status: CURRENT_CANDIDATE
+    description: "Two-mechanism separation, corrected readiness vocabulary, Z0-Z7 envelope and promotion gate."
+  - id: ATL60-TRANSFORMER-CONTRACT-V0.1
+    type: github
+    path: governance/generation/RESEARCH_TO_EXECUTION_READINESS_TRANSFORMER_CONTRACT_V0_1.md
+    commit: 8a89a4d6ee304722177d43b3cc981760835f1096
+    status: CURRENT_CANDIDATE_QA_REVIEWED_NOT_FROZEN
+    description: "Mechanism-2 Generator Contract; sections 7 and 8 intentionally pending implementation mapping."
+  - id: ATL60-GENERATION-REGISTRY-STUB
+    type: github
+    path: governance/generation/ATL_60_RESEARCH_TO_EXECUTION_GENERATION_REGISTRY_ENTRY.md
+    commit: 86dd480e6c318beaadf602880a617416caa747f9
+    status: PENDING_RUN
+    description: "Honest pre-run registry control; not evidence of generation or promotion."
+  - id: ATL60-CLAUDE-QA
+    type: github
+    path: claude_chatGPT.md
+    branch: atlas-governance-registry-v2.1
+    commit: c9f48ec3cac4d7a098b6df8b65c20feaec9fc5ca
+    status: PASS_WITH_BINDING_CORRECTIONS
+    description: "Owner-supplied Claude independent QA disposition recorded in canonical shared log."
+  - id: ATL60-QA-CLOSURE
+    type: github
+    path: claude_chatGPT.md
+    branch: atlas-governance-registry-v2.1
+    commit: 0b45481b1a40030daa3d1661460d6d24c1fcb59e
+    status: CURRENT_CONTROL_CHECKPOINT
+    description: "Immediate QA binding corrections closed; implementation bindings remain open."
+
+current_outputs:
+  - ATL60-GOV-DECISION-CORRECTED
+  - ATL60-TRANSFORMER-CONTRACT-V0.1
+  - ATL60-GENERATION-REGISTRY-STUB
+  - ATL60-QA-CLOSURE
+
+superseded_outputs:
+  - old: "claude_chatGPT.md on atlas-governance-execution-readiness-contract-v1"
+    successor: "claude_chatGPT.md on atlas-governance-registry-v2.1"
+    reason: "Canonical shared-log authority; execution-readiness branch copy diverged and is non-authoritative for pickup."
+
+qa_and_decisions:
+  - disposition: PASS_WITH_BINDING_CORRECTIONS
+    source: claude_chatGPT.md
+    branch: atlas-governance-registry-v2.1
+    commit: c9f48ec3cac4d7a098b6df8b65c20feaec9fc5ca
+  - disposition: IMMEDIATE_BINDING_CORRECTIONS_CLOSED
+    source: claude_chatGPT.md
+    branch: atlas-governance-registry-v2.1
+    commit: 0b45481b1a40030daa3d1661460d6d24c1fcb59e
+
+current_checkpoint: "ATL-60 governance correction complete. No canonical Supabase mutation occurred. Read-only Supabase schema mapping has not yet been executed under the corrected contract."
+next_action: "Inspect the existing Atlas Supabase schema read-only; map reusable existing tables/contracts to Z0-Z7 and the Research-to-Execution-Readiness Transformer; identify required reuse/extensions; then populate Generator Contract §7 external dependencies and §8 parameters/configuration with actual implementation facts."
+
+open_items:
+  - "Complete read-only Supabase schema mapping."
+  - "Populate Generator Contract §7 from actual dependencies/versions."
+  - "Populate Generator Contract §8 from actual parameters/configuration/defaults."
+  - "Design any required schema extension/migration without applying it."
+  - "Independent QA/freeze of completed contract and schema/migration before canonical write."
+  - "Continue LTL-03 retained-evidence reconciliation and candidate structuring within authorized boundary."
+
+authorized_actions:
+  - "Evidence recovery and reconciliation."
+  - "Full LTL-03 operational-universe analysis."
+  - "Gap analysis."
+  - "Read-only Supabase schema inspection and mapping."
+  - "Candidate structured-model design."
+  - "Candidate migration design without execution."
+
+blocked_actions:
+  - action: "Canonical Supabase mutation or promotion."
+    blocker: "Transformer contract implementation bindings, QA/freeze, Generation Registry and applicable F0-F7 / PC-1-PC-7 closure incomplete."
+    release_condition: "Completed implementation-specific contract + independent QA + Owner authorization/freeze + required generation/recovery controls."
+  - action: "Treat Generator Contract V0.1 as frozen."
+    blocker: "Sections 7/8 intentionally unbound and final promotion gate not cleared."
+    release_condition: "Schema mapping + implementation binding + QA + Owner freeze."
+  - action: "AWS BOL staging build ATL-71."
+    blocker: "ATL-70 benchmark/ground-truth/metrics contract remains upstream gate."
+    release_condition: "ATL-70 frozen/authorized according to its acceptance criteria."
+
+handoff:
+  pickup_sequence:
+    - "Open Linear ATL-60 and verify status/dependencies."
+    - "Read this manifest."
+    - "Read the listed governing inputs, especially the Agent-Independent Task Continuity Standard and Transformer Contract."
+    - "Verify the canonical shared log on atlas-governance-registry-v2.1 through commit 0b45481b1a40030daa3d1661460d6d24c1fcb59e."
+    - "Verify required Drive evidence is accessible."
+    - "Obtain Supabase read-only access for the next action; if unavailable, set BLOCKED_REQUIRED_STORE_ACCESS and do not fabricate schema facts."
+    - "Perform only the next_action and persist every material output before pausing."
+  chat_history_required: false
+
+last_execution_record:
+  operator: ChatGPT
+  stopped_at: "2026-09-22"
+  durable_state_written: true
+  note: "Continuity governance created and ATL-60 bootstrapped before further substantive ATL-60 execution."
