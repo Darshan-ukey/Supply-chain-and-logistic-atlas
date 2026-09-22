@@ -1,10 +1,10 @@
 task_id: ATL-80
 logical_task_name: "ATL-79A — Governed Seed Knowledge-Type Registry Contract"
-task_status: IN_PROGRESS
+task_status: GOVERNED_COMPLETE
 execution_owner: ChatGPT
 decision_authority: "Darshan / Atlas Owner-Governor"
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-80/atl-79a-governed-seed-knowledge-type-registry-contract"
-manifest_status: ACTIVE
+manifest_status: COMPLETE
 last_updated: "2026-09-22"
 
 governing_inputs:
@@ -23,8 +23,8 @@ governing_inputs:
   - type: linear_parent
     id: ATL-79
 
-current_checkpoint: "Claude independent QA recorded PASS_WITH_BINDING_CORRECTIONS. F1/F2 corrections were applied and first-party post-write verification passed with zero literal backslash-n corruption. ATL-80 remains blocked pending bounded independent recheck of F1/F2."
-next_action: "Obtain bounded independent recheck of corrected F1/F2 only, against ATL-80 pack commit 0eb273d0dd4d479e4fe86a1988726a19f3716d59, ATL-60 schema commit 47441185a32dc696a619dfe7f89c8c769a95fd07, and correction verification commit b0db3b4ac9762076c66c1b1be479cde0c38157b3. Do not unblock ATL-79 until recheck PASS."
+current_checkpoint: "Claude bounded independent recheck PASS. F1/F2 CLOSED. ATL-80 is governed complete; FR-02/FR-03 remain logged non-blocking. ATL-79 is released to rerun its complete frozen 8-criterion verification matrix with exact type/version identities."
+next_action: "Resume ATL-79 under its existing frozen acceptance criteria and rerun the complete 8-criterion verification matrix using exact governed type/version identities. Re-verify and re-prove before ATL-60 may proceed toward physical DDL design."
 
 authorized_actions:
   - "Define minimum logical seed type/relationship contracts justified by ATL-79."
@@ -55,9 +55,9 @@ verification_and_proof:
 
 working_outputs:
   - path: governance/implementation/ATL_80_SEED_KNOWLEDGE_TYPE_REGISTRY_CONTRACT_PACK_V0_1.md
-    commit: 66217aa95280d468d159467d409a5424c197e9bc
-    blob_sha: fab7c323c13b310aa9b123bf1fcb7cf7751e7c8b
-    state: VERIFIED_FIRST_PARTY
+    commit: 0eb273d0dd4d479e4fe86a1988726a19f3716d59
+    blob_sha: 50bb54cb00f6d93102cf98d27bc5aa2d74cdc33e
+    state: INDEPENDENT_QA_PASSED
 current_outputs:
   - path: governance/implementation/ATL_80_VERIFICATION_PROOF_V0_1.md
     commit: 02653d8826c44bf03b40974176184293f9bcd56d
@@ -71,7 +71,7 @@ qa_and_decisions:
       - 0eb273d0dd4d479e4fe86a1988726a19f3716d59
       - 47441185a32dc696a619dfe7f89c8c769a95fd07
     correction_verification: b0db3b4ac9762076c66c1b1be479cde0c38157b3
-    bounded_independent_recheck: REQUIRED
+    bounded_independent_recheck: PASSED
   - disposition: VERIFIED_FIRST_PARTY
     proof_commit: 02653d8826c44bf03b40974176184293f9bcd56d
     independent_qa: REQUIRED
@@ -89,4 +89,4 @@ last_execution_record:
   operator: ChatGPT
   stopped_at: "2026-09-22"
   durable_state_written: true
-  note: "ATL-80 BUILD and first-party VERIFY complete. All frozen acceptance criteria passed. Verification proof persisted; independent QA remains mandatory and ATL-79 stays blocked."
+  note: "ATL-80 independent QA is complete. Initial PASS_WITH_BINDING_CORRECTIONS was corrected; bounded F1/F2 recheck passed. ATL-80 governed complete. FR-02/FR-03 are logged non-blocking findings."
