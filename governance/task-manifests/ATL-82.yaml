@@ -1,0 +1,66 @@
+task_id: ATL-82
+logical_task_name: "ATL-60B — Physical DDL/Migration Design"
+task_status: IN_PROGRESS
+execution_owner: ChatGPT
+decision_authority: "Darshan / Atlas Owner-Governor"
+linear_url: "https://linear.app/sefl-transformation/issue/ATL-82/atl-60b-physical-ddlmigration-design"
+manifest_status: ACTIVE
+last_updated: "2026-09-22"
+
+parent_task: ATL-60
+released_by:
+  - task: ATL-79
+    status: GOVERNED_COMPLETE
+    proof_commit: 81885a5905e69afd43393aff775f6d55f30158fc
+
+governing_inputs:
+  - path: governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
+    blob_sha: eba2a5104052d21f1301a5574e360bd34ef6aafe
+  - path: governance/implementation/ATL_60_SUPABASE_SCHEMA_MAPPING_V0_1.md
+    blob_sha: 00d5c154416dec6109624d5d8182e279e9715f35
+  - path: governance/generation/RESEARCH_TO_EXECUTION_READINESS_TRANSFORMER_CONTRACT_V0_1.md
+    branch: atlas-governance-execution-readiness-contract-v1
+    blob_sha: 7e1669455ffe064539e7e68ede51482b58252f35
+  - path: governance/implementation/ATL_79_FULL_VERIFICATION_PROOF_V0_2.md
+    commit: 81885a5905e69afd43393aff775f6d55f30158fc
+  - path: governance/implementation/ATL_80_SEED_KNOWLEDGE_TYPE_REGISTRY_CONTRACT_PACK_V0_1.md
+    blob_sha: 50bb54cb00f6d93102cf98d27bc5aa2d74cdc33e
+
+artifact_state:
+  supabase_project: aaoyesktlzhaunqqjhdq
+  target_schema: public
+  inspection_mode: READ_ONLY
+  canonical_write_authorized: false
+  current_schema_reinspected: true
+  no_mutation_performed: true
+
+current_checkpoint: "ATL-82 created under Linear-first rule. Governing artifacts and current live Supabase schema/migrations re-read. Physical DDL design is authorized; application/mutation is not."
+next_action: "BUILD candidate SQL migration artifact and physical-design rationale against the validated logical model and current live schema. Do not apply."
+
+acceptance_criteria:
+  - "Faithfully implements validated logical model without semantic loss or LTL/BOL-specific universalization."
+  - "Preserves exact composite type/version and knowledge/version identity."
+  - "Mechanically preserves Z0/Z1/Z2/Z5/Z6 boundaries and research-vs-client evidence classification."
+  - "Enforces referential integrity and controlled lifecycle/readiness/support vocabularies."
+  - "Preserves append-only/versioned semantic history."
+  - "Provides explicit Z1→Z5 and Z6 lineage."
+  - "Defines RLS/access controls appropriate for protected execution IP."
+  - "Has rollback/rebuild path and can be verified without mutation."
+  - "Compatible with observed existing Atlas schema and protected P6.1/P6.2 tables."
+  - "Contains no canonical data materialization or Supabase mutation."
+
+authorized_actions:
+  - "Read-only Supabase inspection."
+  - "Candidate physical DDL/migration design."
+  - "Candidate RLS/index/constraint design."
+  - "Persist design, verification and proof in GitHub."
+blocked_actions:
+  - "apply_migration"
+  - "execute_sql DDL"
+  - "canonical Supabase data writes"
+  - "seed promotion to ACTIVE"
+  - "ATL-60 completion based solely on ATL-82"
+
+verification_and_proof:
+  protocol: "BUILD → VERIFY → PROVE → ADVANCE"
+  independent_qa_required_before_mutation: true
