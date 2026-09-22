@@ -64,10 +64,29 @@ The overall transformation may be **hybrid**:
 Any G4 step must freeze prompt/instruction version, model/tool identity, retrieval/input set, parameters, post-processing/validator version and exact candidate output. Approved canonical recovery must preserve exact approved output; future regeneration is a new candidate.
 
 ## 7. External dependencies
-No dependency is authorized by name/version until implementation design is frozen. Supabase/Postgres is the current target structured-store implementation, but the semantic contract is storage-portable. HTML is a G5 renderer.
+Read-only ATL-60 schema mapping on 2026-09-22 established the following implementation facts:
+- target structured store: Supabase project `aaoyesktlzhaunqqjhdq`;
+- observed database: PostgreSQL 17.6.1.155 / engine 17;
+- current canonical schema target: `public`;
+- existing Z5 protected stores: `atlas_work_decompositions` and `atlas_work_definitions`;
+- existing evidence/client/gap/governance substrate is mapped in `governance/implementation/ATL_60_SUPABASE_SCHEMA_MAPPING_V0_1.md` at commit `7f74d4efb328844f019e4a3977c1c3e0801a8243`.
+
+The semantic contract remains storage-portable. No Supabase SDK/application package is a Generator Contract dependency unless implementation code actually imports/depends on it; such package versions must be bound at implementation freeze. HTML remains a G5 renderer and never a source of canonical meaning.
 
 ## 8. Parameters/configuration/defaults
-No silent defaults may convert UNKNOWN/PARTIAL/GAP/BINDING states to supported semantics. Material parameters must be versioned and hashed in each Generation Registry run.
+Bound implementation constraints for the ATL-60 candidate design:
+- `target_store_project = aaoyesktlzhaunqqjhdq`;
+- `target_schema = public`;
+- `materialization_mode = CANDIDATE_ONLY` until the promotion gate clears;
+- `ownership_zone_required = true`;
+- `provenance_required_for_material_assertions = true`;
+- `client_binding_cannot_fill_domain_gap = true`;
+- `unknown_gap_conflict_must_remain_explicit = true`;
+- `html_is_projection_only = true`;
+- `canonical_write_authorized = false`;
+- readiness vocabulary is limited to `DOMAIN_EXECUTION_READY`, `ENTERPRISE_EXECUTION_READY`, `RUNTIME_IMPLEMENTATION_READY`.
+
+No confidence threshold, universal source-precedence threshold, auto-promotion rule or semantic-fill default is authorized. No silent default may convert UNKNOWN/PARTIAL/GAP/BINDING states to supported semantics. Any additional material parameter introduced by implementation must be versioned and recorded/hashed in the applicable Generation Registry run.
 
 ## 9. Provenance/lineage emitted
 Every material output must carry or resolve to:
