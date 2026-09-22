@@ -2278,3 +2278,14 @@ ATL-86 will verify exact branch/artifact/schema identities, map P6.2↔ATL-82 ov
 Hard stops remain: no Supabase mutation, no migration application, no destructive branch merge, no promotion of the Sep-12 Malkom reference projection to canonical truth.
 
 This entry is the **pre-reconciliation coordination checkpoint**. Substantive ATL-86 execution follows only after task/manifest/store state is synchronized.
+
+
+## ATL-86 pre-reconciliation custody and live-state verification complete
+
+Store synchronization is complete before substantive reconciliation:
+- Linear ATL-86 In Progress; ATL-83 returned to Todo and explicitly `BLOCKED_BY_ATL_86`; ATL-82 and ATL-60 carry the reconciliation hold.
+- ATL-86 manifest checkpoint updated at `4a7a8c586b983dddd5ed178dd0f4d2dc8ff4e934`.
+- Drive custody created: `ATL-86 — P6.2 / ATL-82 Architecture Reconciliation — Pre-Reconciliation Custody — 2026-09-22`, Drive ID `17iA5LflmjebSIONZCNWRJ9qFGycQL8CItwTbrqqU4JI`.
+- Live Supabase was rechecked read-only: latest migration `20260908015858 p6_2_canonical_work_definitions`; `atlas_work_decompositions` = 1 row; `atlas_work_definitions` = 0 rows; P6.2 WorkDefinition table is RLS-enabled and executor-neutral/protected. No mutation occurred.
+
+**Exact next action:** inspect the exact Sep-1/Sep-2/Sep-7/Sep-12 artifacts and current ATL-82 structures and produce the governed table-by-table / contract-by-contract reconciliation proof. ATL-83 remains held until ATL-86 issues an explicit release.
