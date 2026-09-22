@@ -1993,3 +1993,42 @@ Before physical DDL design, execute a bounded real-data dry-run using 3–4 mate
 Acceptance checks must be predetermined; resulting mappings must be verified; proof must be persisted before ADVANCE.
 
 No physical DDL or canonical Supabase mutation is authorized by this governance update.
+
+
+---
+
+# OWNER / CHATGPT — LINEAR-FIRST TASK CREATION + DISCOVERED PREREQUISITE GOVERNANCE
+
+**Date:** 2026-09-22
+
+Owner clarified that governed execution must also govern **task creation itself**.
+
+The global continuity/execution standard was extended at:
+`governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md`
+commit `e8a7afc6e191948551c91d4b4264efb7589d2423`.
+
+## Binding rule
+
+Every substantive new Atlas task must be created in Linear before substantive execution and must carry/inherit the full execution contract: purpose, scope, governing inputs, owner/authority, dependencies, durable outputs, predetermined acceptance criteria, verification/proof method, QA/Owner gate, blocked actions, manifest pointer, and the mandatory execution mechanism.
+
+If execution discovers a new substantive prerequisite, the current task stops at that dependency. The prerequisite becomes its own Linear task, gets its own Task Execution Manifest and dependency relation, and is executed through the same:
+**LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE**
+and
+**BUILD → VERIFY → PROVE → ADVANCE**
+mechanisms.
+
+No material prerequisite may be executed informally inside a parent task.
+
+## First application
+
+The LTL-03 real-fact schema dry-run previously described as ATL-60's next sub-step has been converted into a separate governed prerequisite:
+
+- actual Linear ID: **ATL-79**
+- logical name: **ATL-60A — LTL-03 Real-Fact Schema Dry-Run**
+- parent: ATL-60
+- relation: ATL-79 blocks ATL-60 physical DDL/migration design
+- manifest: `governance/task-manifests/ATL-79.yaml`
+- manifest bootstrap commit: `7208b6063e9ff28d8274f4b508422d09807c4ee6`
+- ATL-60 manifest dependency checkpoint commit: `b4bd07a731e068282f6567324c41dacb0345daa6`
+
+ATL-79 contains predetermined acceptance criteria and explicit no-DDL/no-Supabase-mutation boundaries. ATL-60 must not perform this dry-run inline and cannot resume physical DDL design until ATL-79 reaches governed PASS with any material defects resolved/re-verified.
