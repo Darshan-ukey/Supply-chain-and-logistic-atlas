@@ -1,10 +1,10 @@
 task_id: ATL-79
 logical_task_name: "ATL-60A — LTL-03 Real-Fact Schema Dry-Run"
-task_status: IN_PROGRESS
+task_status: GOVERNED_COMPLETE
 execution_owner: ChatGPT
 decision_authority: "Darshan / Atlas Owner-Governor"
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-79/atl-60a-ltl-03-real-fact-schema-dry-run"
-manifest_status: ACTIVE
+manifest_status: COMPLETE
 last_updated: "2026-09-22"
 
 governing_inputs:
@@ -28,21 +28,33 @@ working_outputs:
   - path: governance/implementation/ATL_79_VERIFICATION_PROOF_V0_1.md
     commit: 2e02f8214c89c36d93baa81066fbaa67b8bfb087
     status: PROOF_RECORDED_VERIFICATION_FAILED
-current_outputs: []
+current_outputs:
+  - path: governance/implementation/ATL_79_LTL03_REAL_FACT_SCHEMA_DRY_RUN_V0_1.md
+    commit: 04215f4555e9b6d9a684e6fe69b41995c4f57577
+    blob_sha: 3255af71db59c446b0f16d9ce570956e6aa3f16b
+    status: GOVERNED_PASS
+  - path: governance/implementation/ATL_79_FULL_VERIFICATION_PROOF_V0_2.md
+    commit: 81885a5905e69afd43393aff775f6d55f30158fc
+    blob_sha: ea9b895b526fe3bed7876810e5d32a0c8351cb0f
+    status: PROOF_RECORDED_GOVERNED_PASS
 superseded_outputs: []
 qa_and_decisions:
+  - disposition: GOVERNED_PASS
+    proof: governance/implementation/ATL_79_FULL_VERIFICATION_PROOF_V0_2.md
+    proof_commit: 81885a5905e69afd43393aff775f6d55f30158fc
+    prerequisite_ATL_80: GOVERNED_COMPLETE
+    full_matrix_rerun: PASS
   - disposition: VERIFICATION_FAILED
     reason: "Predetermined criterion #3 failed: exact governed entity/relationship type versions do not exist."
     prerequisite: ATL-80
     prerequisite_manifest_commit: 9f6b003f7c518611b0ffe4598b10fd3852ab20ed
 
-current_checkpoint: "ATL-79 BUILD completed and resulting-state VERIFY executed. Criteria 1,2,4,5,6,7,8 passed for all four facts; criterion 3 failed for all four because no governed seed entity/relationship type versions exist. Verification disposition: VERIFICATION_FAILED / blocked by ATL-80."
-next_action: "Do not repair FR-01 inline. ATL-80 / logical ATL-79A must establish and independently QA the minimum governed seed knowledge-type registry contract. After ATL-80 passes, resume ATL-79 and rerun criterion #3 plus the complete verification matrix."
+current_checkpoint: "ATL-80 governed prerequisite passed. ATL-79 artifact rebound to exact governed type/version identities and the complete frozen 8-criterion matrix was rerun for all four facts. All 32 fact/criterion checks PASS. Proof recorded; ATL-79 governed complete."
+next_action: "Return control to ATL-60. ATL-60 may proceed toward physical DDL design under its own manifest/governance; no Supabase mutation or DDL application is authorized by ATL-79 closure."
 
 open_items:
-  - "ATL-80 must establish governed seed type/version contracts and pass independent QA."
-  - "Rerun ATL-79 criterion #3 and full verification matrix after ATL-80 release."
-  - "Advance ATL-79 only if all predetermined criteria pass."
+  - "FR-02 remains logged non-blocking until a real Z2-boundary/gap relationship row is required."
+  - "FR-03 remains logged non-blocking until recurring association_role values justify governance."
 
 authorized_actions:
   - "Read governed LTL-03 evidence."
@@ -86,4 +98,4 @@ last_execution_record:
   operator: ChatGPT
   stopped_at: "2026-09-22"
   durable_state_written: true
-  note: "BUILD and VERIFY completed. Verification failed criterion #3 without weakening acceptance criteria. Discovered prerequisite ATL-80 created in Linear with manifest 9f6b003f; ATL-79 is blocked pending ATL-80 governed PASS."
+  note: "ATL-79 complete. Exact governed type/version identities applied after ATL-80 PASS; full frozen verification matrix rerun and all criteria passed for all four facts. No Supabase mutation or physical DDL performed."
