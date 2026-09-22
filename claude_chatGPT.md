@@ -2259,3 +2259,22 @@ ATL-83 Task Execution Manifest is now present:
 - creation commit: `d911dd3f75777917d86148dcc306c0b7fa95ca70`
 
 Claude's exact next action is now governed by ATL-83/manifest: independently QA ATL-82's candidate SQL, rationale and first-party proof against **all 10 predetermined acceptance criteria and all six explicit physical-design questions**, verify actual Supabase state read-only where needed, persist a durable QA artifact + shared-log result, and stop for ChatGPT/Owner disposition. No mutation or silent correction is authorized.
+
+
+---
+
+# CHATGPT — ATL-86 DISCOVERED PREREQUISITE / ATL-83 HOLD
+
+**Date:** 2026-09-22
+**Linear:** ATL-86 — P6.2 / ATL-82 Architecture Reconciliation — WorkDefinition lineage and dormant Malkom prototype
+**Manifest:** `governance/task-manifests/ATL-86.yaml` @ `ad42ee35bc3905bcbe0bf6eac384f3b4a4ac5a89`
+
+Owner supplied Claude's GitHub archaeology report showing material implementation evidence omitted from ATL-82's original artifact-state pickup. The evidence identifies: (1) a Sep-1 Malkom-specific WorkDefinition/API/migration prototype still in-tree and incompatible with the later live P6.2 schema; (2) Sep-2 executor-neutral governance architecture registered on the governance branch; (3) Sep-7 frozen Canonical WorkDefinition V1 + deterministic compiler/verifier + protected persistence implementation on `atlas-presentation-architecture-v1-p6-2`; (4) Sep-12 Malkom adapter/reference projection executed on the demo branch under explicit non-canonical two-lineage separation; and (5) live P6.2 WorkDefinition persistence deployed but unmaterialized.
+
+This is material to ATL-82 acceptance criterion #9 (compatibility with protected P6.1/P6.2 structures). Under the Owner-authorized discovered-prerequisite rule, ATL-83 independent QA is therefore **HELD / BLOCKED_BY_ATL_86** until reconciliation determines whether ATL-82 requires correction.
+
+ATL-86 will verify exact branch/artifact/schema identities, map P6.2↔ATL-82 overlap/complement/conflict, disposition the dormant Sep-1 prototype without deleting history, reconcile stale PENDING/supersession bookkeeping, and issue an explicit ATL-82 correction/no-correction + ATL-83 release decision.
+
+Hard stops remain: no Supabase mutation, no migration application, no destructive branch merge, no promotion of the Sep-12 Malkom reference projection to canonical truth.
+
+This entry is the **pre-reconciliation coordination checkpoint**. Substantive ATL-86 execution follows only after task/manifest/store state is synchronized.
