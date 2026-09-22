@@ -313,6 +313,6 @@ HTML remains G5 projection only and may not become canonical business truth.
 
 ## 13. Governance correction disposition — 22 Sep 2026
 
-The Owner directed the bounded corrections in this record after independent validation. The earlier readiness-vocabulary divergence is corrected without superseding the frozen Product Constitution. The missing Z0–Z7 ownership tag is corrected. The two mechanisms are explicitly separated. ATL-60 may continue non-promotional research/candidate structuring; canonical Supabase writes remain gated.
+The Owner directed the bounded corrections in this record in response to independent-validation findings; the final independent QA disposition was recorded afterward. The earlier readiness-vocabulary divergence is corrected without superseding the frozen Product Constitution. The missing Z0–Z7 ownership tag is corrected. The two mechanisms are explicitly separated. ATL-60 may continue non-promotional research/candidate structuring; canonical Supabase writes remain gated.
 
 The earlier ATL-40 freeze-window sequencing finding is acknowledged as a process violation rather than erased. It did not mutate the independently frozen LTL-03 ATL-37 graph/manifest. Subsequent ATL-40/ATL-60 governance work is treated as candidate governance until it passes the applicable QA/Owner gate; ancestry alone does not promote or invalidate it.
