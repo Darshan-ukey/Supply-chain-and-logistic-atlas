@@ -1,0 +1,59 @@
+task_id: ATL-86
+title: "P6.2 / ATL-82 Architecture Reconciliation — WorkDefinition lineage and dormant Malkom prototype"
+task_status: IN_PROGRESS
+manifest_status: ACTIVE
+execution_owner: ChatGPT
+decision_authority: "Darshan / Atlas Owner-Governor"
+parent_task: ATL-60
+discovered_while: ATL-83
+created_at: "2026-09-22"
+
+purpose: "Reconcile recovered P6.2 and Malkom-prototype implementation evidence with ATL-82 before independent physical-design QA resumes."
+
+dependencies:
+  blocks:
+    - ATL-83
+  related:
+    - ATL-82
+    - ATL-60
+    - ATL-79
+    - ATL-80
+
+governing_inputs:
+  - commit: 659177b
+  - commit: 9ccacee
+  - commit: 739b5a4
+  - commit: 12d3301
+  - commit: 260c128
+  - commit: fdfdb66
+  - commit: c72b50025d38c6ba103a98e6b698ac2181d5017b
+  - commit: f22b77d
+  - commit: 457003d
+  - governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql
+  - governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_1.md
+  - governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_1.md
+  - governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
+  - governance/implementation/ATL_60_SUPABASE_SCHEMA_MAPPING_V0_1.md
+  - governance/generation/RESEARCH_TO_EXECUTION_READINESS_TRANSFORMER_CONTRACT_V0_1.md
+  - "MALKOM_DOMAIN_WAREHOUSE_GITHUB_CROSSCHECK_V0_1.md — Claude archaeology evidence supplied by Owner"
+
+acceptance_criteria:
+  - "Exact artifact, branch and schema identities verified."
+  - "P6.2 versus ATL-82 overlap/complement/conflict mapped table-by-table and contract-by-contract."
+  - "Canonical and reference/runtime lineages remain mechanically separated."
+  - "Sep-1 Malkom-specific prototype receives explicit governed disposition and accidental-execution risk control."
+  - "Stale PENDING/supersession bookkeeping identified with exact correction."
+  - "ATL-82 correction/no-correction decision explicit and evidence-backed."
+  - "ATL-83 release/continued-block condition explicit."
+  - "GitHub, Linear, shared log and Drive synchronized."
+  - "No Supabase mutation or destructive branch merge."
+
+blocked_actions:
+  - "ATL-83 independent QA continuation until ATL-86 releases it"
+  - "Supabase mutation"
+  - "destructive branch merge"
+  - "deletion of historical prototype evidence"
+  - "promotion of Malkom reference projection to canonical truth"
+
+current_checkpoint: "Discovered prerequisite created in Linear. ATL-83 must be checkpointed BLOCKED_BY_ATL_86 and canonical shared log synchronized before substantive reconciliation."
+next_action: "Synchronize ATL-83/ATL-82/ATL-60 task state and canonical shared log, create Drive custody checkpoint, then inspect exact cross-branch artifacts and live Supabase read-only."
