@@ -1782,3 +1782,38 @@ Design implication:
 - schema flexibility must preserve queryability, validation, lineage and executor-neutral semantics.
 
 **Exact next action:** design and persist the candidate extensible Z1 Operational Knowledge + Z6 readiness-proof schema/migration without applying it. Independent QA remains required before any canonical database mutation.
+
+
+---
+
+# CLAUDE → CHATGPT — ATL-60 EXTENSIBLE SCHEMA — INDEPENDENT QA DISPOSITION
+
+**Date:** 2026-09-22  
+**Reviewer:** Claude (independent architecture/governance QA, adversarial mode)  
+**Recorded by:** ChatGPT from the Owner-supplied complete Claude QA handoff.  
+**Disposition:** `PASS_WITH_BINDING_CORRECTIONS`  
+**GitHub write status during Claude review:** none.  
+**Supabase status during Claude review:** read-only inspection only; no mutation performed or authorized.
+
+Claude independently verified the cited repository artifacts/commits and live Supabase schema rather than accepting prior summaries. Continuity governance passed: Linear → ATL-60 Task Execution Manifest → cited artifacts is sufficient for a new operator to resume without chat history.
+
+## Findings
+
+- **F1 — BLOCKING_BEFORE_DDL:** type-registry references are unversioned on individual knowledge/relationship records. Add `entity_type_version` and `relationship_type_version`; pin references to `(type_id, type_version)`. Persisted version pins are immutable.
+- **F2 — BINDING_CORRECTION_BEFORE_DDL:** Z1→Z5 generation lineage has no concrete storage location. Logical design must explicitly name the governed generation-run record/table carrying decomposition identity, consumed-knowledge manifest hash, Generator Contract identity/version and run identity.
+- **F3 — BINDING_CORRECTION_BEFORE_DDL:** previously self-flagged reuse requirements are not closed. Define exact gap→knowledge linkage and wire candidate type-extension workflow to `atlas_foundation_change_proposals` and independent QA to `atlas_review_requests`.
+- **F4 — BINDING_CORRECTION_BEFORE_DDL:** JSON validation enforcement layer is unstated. Logical design must name the enforcement layer now; concrete Postgres mechanism may remain a physical-design decision. Live schema inspection found no existing JSONB validation precedent.
+- **F5 — BINDING_CORRECTION_BEFORE_DDL:** reuse of `atlas_client_documents`/`atlas_document_chunks` blurs Z0 authoritative research evidence with Z2 client evidence. Add explicit source-class distinction or define a separate Mechanism-1 authoritative-evidence ingestion path.
+- **F6 — BINDING_CORRECTION_BEFORE_DDL:** append-only/immutability rule for knowledge and relationship rows is not explicit. Semantic change must create a new `(id, version)` row; no in-place semantic mutation.
+
+## Non-blocking / physical-design items
+
+Ownership-zone constraint, type-registry status vocabulary, readiness-requirement vocabulary, module-id assumption and promotion-time generator-run enforcement are non-blocking/deferred physical-design items and do not require redesign of the stable-kernel + governed-extension-registry pattern.
+
+## Gate
+
+The architecture pattern passes and should not be redesigned. **Physical DDL generation is blocked until F1–F6 are closed in the logical design. Canonical Supabase mutation remains separately blocked under the existing promotion/freeze controls even after F1–F6 close.**
+
+Transformer Contract §7/§8 bindings remain valid; no correction is required to those existing implementation facts. When physical DDL is eventually generated, §7 is to be extended with real new table identities only after they actually exist.
+
+Claude's full handoff states that no GitHub write and no Supabase mutation occurred during its review.
