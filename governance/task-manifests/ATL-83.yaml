@@ -1,0 +1,43 @@
+task_id: ATL-83
+title: "ATL-82B — Independent QA: Physical DDL/Migration Design"
+task_status: IN_PROGRESS
+manifest_status: ACTIVE
+execution_owner: Claude
+decision_authority: "Darshan / Atlas Owner-Governor"
+parent_task: ATL-60
+build_task: ATL-82
+created_at: "2026-09-22"
+
+release_conditions:
+  atl_85_freeze_window_disposition: PROCESS_VIOLATION_NO_SEMANTIC_CONTAMINATION
+  atl_84_shared_log_sync: DONE
+  released: true
+
+governing_inputs:
+  - governance/task-manifests/ATL-82.yaml
+  - governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql
+  - governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_1.md
+  - governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_1.md
+  - governance/decisions/ATL_85_ATL40_FREEZE_WINDOW_DISPOSITION_2026_09_22.md
+  - governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
+  - governance/implementation/ATL_60_SUPABASE_SCHEMA_MAPPING_V0_1.md
+  - governance/generation/RESEARCH_TO_EXECUTION_READINESS_TRANSFORMER_CONTRACT_V0_1.md
+
+acceptance_scope:
+  - "Independently test all 10 predetermined ATL-82 acceptance criteria."
+  - "Answer all six explicit physical-design QA questions."
+  - "Verify candidate against actual current Supabase schema read-only; do not mutate."
+  - "Inspect exact candidate SQL, rationale and proof rather than relying on summaries."
+  - "Return PASS, PASS_WITH_BINDING_CORRECTIONS, or FAIL with exact evidence."
+  - "If corrections are required, identify exact artifact/section/SQL changes; do not silently edit builder artifacts."
+  - "Persist independent QA artifact and append canonical shared log."
+
+hard_stops:
+  - "No apply_migration."
+  - "No execute_sql DDL."
+  - "No canonical Supabase write."
+  - "No ATL-60 promotion."
+  - "Builder first-party proof is not independent QA."
+
+current_checkpoint: "ATL-85 resolved and ATL-84 synchronized. ATL-83 released to Claude for independent QA."
+next_action: "Claude performs independent QA of ATL-82 candidate physical design against all 10 criteria and six physical-design questions, persists evidence, updates shared log, and stops for ChatGPT/Owner disposition."
