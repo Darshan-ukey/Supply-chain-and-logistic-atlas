@@ -181,3 +181,142 @@ A substantive task cannot be marked governed-complete until its manifest identif
 - closure checkpoint.
 
 This standard complements, and does not replace, the Canonical Generation & Freeze-Asset Standard V1 and Controlled Phase Execution & Recovery Gate V1.
+
+
+## 9. Universal governed execution protocol — BUILD → VERIFY → PROVE → ADVANCE
+
+**Owner-authorized hard rule:** the same execution mechanism applies regardless of operator, interface, session, or tool. ChatGPT, Claude, another AI agent, automation, developer tool, and human operators are all subject to the same gates. No operator may substitute memory, chat context, claimed intent, or self-reported completion for governed task state and verification evidence.
+
+### 9.1 Mandatory entry sequence — LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE
+
+Before performing any substantive Atlas work, every operator MUST execute this sequence in order:
+
+1. **LINEAR — determine what must be done.**
+   - Open the exact Linear task.
+   - Confirm task identity, status, priority, parent/dependencies/blockers, execution owner, acceptance/exit criteria and current gate.
+   - Do not infer the next task from chat history.
+
+2. **MANIFEST — determine where execution actually stopped.**
+   - Open the authoritative Task Execution Manifest referenced by the task.
+   - Confirm current checkpoint, current/superseded outputs, exact next action, authorized actions, blocked actions, required inputs and expected outputs.
+   - If Linear and the manifest disagree materially, stop with `BLOCKED_LINEAR_MANIFEST_DRIFT` and reconcile before substantive execution.
+
+3. **GOVERNANCE — determine how the work must be performed.**
+   - Read the exact standards, contracts, Owner decisions and QA dispositions referenced by the manifest for the next action.
+   - Acceptance criteria MUST be known before execution. They may not be rewritten after seeing the result merely to obtain a pass.
+
+4. **ARTIFACT STATE — verify the starting state.**
+   - Read/query the actual governed artifacts and stores that the task says are current.
+   - Verify cited identities/commits/versions/hashes where material.
+   - Never treat a prior operator's summary, chat statement, correction log or intended edit as proof of actual state.
+
+5. **EXECUTE — perform only the authorized next action.**
+   - Stay within the task's scope and blocked-action boundary.
+   - If execution exposes a material new dependency or architecture decision, persist it and return to the applicable governance gate rather than silently expanding scope.
+
+This sequence is mandatory on a fresh session, resumed session, cross-agent handoff, manual intervention and tool-driven execution.
+
+### 9.2 BUILD
+
+BUILD creates or changes the authorized work product.
+
+A BUILD result is only `IMPLEMENTED_UNVERIFIED` until VERIFY completes. The operator MUST NOT describe it as complete, closed, frozen, promoted, canonical or passed merely because a write/tool call succeeded.
+
+Material BUILD outputs must be persisted with stable identity before VERIFY.
+
+### 9.3 VERIFY
+
+VERIFY inspects the **resulting state after the write**, not the intended change or the command used to create it.
+
+The verification method must fit the artifact:
+
+- code: tests, lint/build/type checks and direct inspection where material;
+- governance/Markdown/YAML/JSON: re-fetch/read the committed object, parse/structural checks where available, and sanity checks for malformed escapes, broken syntax, missing sections/claims and unintended changes;
+- database/schema: read/query the resulting schema/data/constraints/migrations and compare with the authorized design;
+- generated knowledge: validate IDs, versions, ownership zones, provenance, evidence links, lineage, contracts, hashes, unresolved gaps and required relationships;
+- generated artifacts: compare exact output against predetermined acceptance criteria and consumed-input identities.
+
+The same operator MAY perform first-party VERIFY, but verification evidence must be derived from the resulting artifact/state. Intention is not evidence.
+
+If VERIFY fails, status remains unadvanced. Repair returns to BUILD and then repeats VERIFY.
+
+### 9.4 PROVE
+
+PROVE records sufficient durable evidence that VERIFY actually passed.
+
+At minimum the proof record must identify:
+- exact artifact/output identity;
+- exact verification method/checks;
+- result of each material acceptance check;
+- test/query/validator evidence or governed inspection result;
+- unresolved limitations;
+- operator;
+- time/run/commit identity where applicable.
+
+Where independent QA is required by the governing task/contract, first-party verification is necessary but not sufficient. Independent QA must inspect the actual resulting state and its evidence before the applicable promotion/advance gate.
+
+A statement such as “done”, “fixed”, “verified” or “tests passed” without retrievable proof does not satisfy PROVE.
+
+### 9.5 ADVANCE
+
+Only after required BUILD + VERIFY + PROVE gates pass may the operator:
+- update the task checkpoint as completed-through;
+- change a candidate's QA/promotion state;
+- change Linear status/gate;
+- authorize the next dependent action;
+- describe the governed step as complete.
+
+ADVANCE must synchronize:
+1. Task Execution Manifest;
+2. Linear, when checkpoint/gate/status materially changes;
+3. canonical shared log when TC-6 threshold is met;
+4. any generation/promotion registry required by the governing contract.
+
+**No evidence → no completion.  
+No post-write verification → no proof.  
+No predetermined acceptance criteria → no pass decision.  
+No required independent QA → no promotion.  
+No silent correction → preserve correction/supersession history.**
+
+### 9.6 Mandatory execution-state vocabulary
+
+Use these states when material:
+- `AUTHORIZED_NOT_STARTED`
+- `IMPLEMENTED_UNVERIFIED`
+- `VERIFICATION_FAILED`
+- `VERIFIED_FIRST_PARTY`
+- `PROOF_RECORDED`
+- `INDEPENDENT_QA_REQUIRED`
+- `INDEPENDENT_QA_PASSED`
+- `OWNER_AUTHORIZATION_REQUIRED`
+- `GOVERNED_COMPLETE`
+
+A tool/API success response alone can move work only to `IMPLEMENTED_UNVERIFIED`.
+
+### 9.7 Additional failure states
+
+In addition to §6:
+- `BLOCKED_ACCEPTANCE_CRITERIA_UNDEFINED`
+- `BLOCKED_POST_WRITE_VERIFICATION_MISSING`
+- `BLOCKED_VERIFICATION_EVIDENCE_MISSING`
+- `BLOCKED_INDEPENDENT_QA_REQUIRED`
+- `BLOCKED_EXECUTION_SCOPE_DRIFT`
+- `BLOCKED_RESULT_STATE_MISMATCH`
+
+These cannot be self-waived by the executing operator.
+
+### 9.8 Manual work and external tools
+
+Manual edits, local scripts, IDE changes, database consoles, browser actions, CI/CD, agent tools and third-party execution systems are not exceptions. The operator performing or directing the change must ensure the resulting governed state passes the same BUILD → VERIFY → PROVE → ADVANCE sequence and is reflected in the authoritative task records.
+
+If a tool cannot produce durable verification evidence, its output cannot by itself satisfy PROVE.
+
+## 10. Atlas execution-integrity objective
+
+Atlas's product thesis depends on reliable transformation of governed domain knowledge into execution-ready specifications and projections/adapters consumable by downstream executors.
+
+Accordingly, Atlas development itself must demonstrate the same discipline expected from Atlas-generated execution:
+
+**governed instruction → deterministic/bounded build → resulting-state verification → durable proof → controlled state transition.**
+
+Governance artifacts are controls, not substitutes for empirical execution. Architecture refinement must terminate when its governed acceptance criteria are satisfied and move to the next empirical proof. For the current LTL-03 path, real domain facts must be dry-run through the candidate knowledge/readiness model before physical DDL is frozen, and the workstream must continue toward the predetermined ATL-70 benchmark/ground-truth gate and ATL-71 execution experiment rather than accumulating unbounded schema refinement.
