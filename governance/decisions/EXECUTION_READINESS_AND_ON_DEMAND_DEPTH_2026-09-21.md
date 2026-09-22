@@ -45,14 +45,17 @@ Governing relation:
 
 Readiness is multidimensional. High information depth cannot compensate for unresolved material decision, exception, authority or lifecycle semantics.
 
-### Governed states
+### Canonical readiness states — corrected to frozen Product Constitution
 
-- **DOMAIN_EXECUTION_READY** — reusable domain intelligence is sufficient; no material business-semantic rediscovery is required.
-- **BINDING_REQUIRED** — domain knowledge is sufficient but explicit client/runtime facts are required.
-- **BOUND_EXECUTION_READY** — domain model + Client Binding + executor-specific projection are sufficient for implementation.
-- **KNOWLEDGE_GAP / BLOCKED** — material domain semantics remain unresolved.
+This record does **not** create a successor readiness vocabulary. The frozen readiness ladder remains:
 
-Client Binding must not be treated automatically as an Atlas knowledge deficiency. Conversely, a material domain knowledge gap must not be reclassified as Client Binding merely to obtain a readiness pass.
+- **DOMAIN_EXECUTION_READY** — all reusable, tool-neutral execution semantics required for the governed scope are present, version-closed, internally consistent and source/provenance controlled; only declared enterprise-specific binding values may remain unresolved.
+- **ENTERPRISE_EXECUTION_READY** — all mandatory enterprise/client bindings, mappings, authorities, policies, thresholds and operating constraints required for the scope are resolved or explicitly governed as not applicable.
+- **RUNTIME_IMPLEMENTATION_READY** — the chosen downstream runtime has a version-closed specification/projection with capability gaps and implementation/configuration/integration requirements explicitly resolved or governed.
+
+BINDING_REQUIRED, CLIENT_BINDING_REQUIRED, MASTER_DATA_REQUIRED, SOURCE_CONTEXT_PENDING, KNOWLEDGE_GAP and BLOCKED are **blocker / dependency / knowledge-state classifications**, not replacement readiness states. They explain why promotion to a canonical readiness state is permitted or blocked.
+
+Client Binding must not be treated automatically as an Atlas knowledge deficiency. Conversely, a material reusable-domain knowledge gap must not be reclassified as Client Binding merely to obtain a readiness pass.
 
 ## 4. Executor Capability Contract v1
 
@@ -85,7 +88,7 @@ Two concepts must remain separate:
 
 Conceptually:
 
-**Domain Execution Model + Client Binding + Executor Projection → implementation-ready specification**
+**Domain Execution Model + Client Binding → ENTERPRISE_EXECUTION_READY; + version-closed Executor Projection → RUNTIME_IMPLEMENTATION_READY**
 
 ## 6. LTL-03 proof sequence
 
@@ -188,6 +191,7 @@ Retained evidence must be transformed into linked governed entities, including a
 
 Each material knowledge element must carry sufficient metadata to make it traceable and governable. At minimum, where applicable:
 - stable knowledge ID;
+- **ownership zone (Z0–Z7)** and governing layer/contract;
 - task/work-node applicability;
 - knowledge type;
 - canonical name and definition;
@@ -273,3 +277,42 @@ An agent must:
 5. preserve explicit gaps/bindings rather than hallucinating closure;
 6. use Supabase as the structured persistence layer and HTML only as a projection;
 7. stop at the applicable QA/Owner gate and never self-authorize architectural exceptions.
+
+
+## 11. Correction — two distinct mechanisms
+
+Atlas must keep two mechanisms separate.
+
+### Mechanism 1 — In-Depth Knowledge Research
+Purpose: acquire sufficient authoritative operational/domain knowledge for a selected scope.
+
+**scope operational universe → identify knowledge dimensions → research authoritative sources → capture evidence/provenance → derive domain facts → resolve semantics → identify rules/exceptions/lifecycle/dependencies → classify reusable vs client-specific knowledge → identify gaps → targeted mini-research → freeze evidence-backed knowledge candidate**
+
+Output: evidence-backed Operational Knowledge candidate and explicit gaps. This mechanism answers **“Do we know enough?”**
+
+### Mechanism 2 — Research-to-Execution-Readiness Transformation
+Purpose: transform sufficiently deep researched knowledge into governed implementation-ready specifications without rediscovering material domain semantics.
+
+**frozen/reconciled research → structured Z0/Z1 knowledge → canonical operational/work hierarchy → Z5 Work Decomposition → Canonical WorkDefinitions → Z2 binding requirements/resolution → Z6 readiness proof → executor projection**
+
+Output: governed execution semantics, readiness proof and executor-specific projection. This mechanism answers **“Can what we know be transformed into an implementation-ready specification?”**
+
+A gap discovered by Mechanism 2 is returned to Mechanism 1 as a bounded research request. It is not silently inferred by the transformation engine.
+
+## 12. Promotion gate for ATL-60
+
+ATL-60 research recovery, reconciliation, evidence analysis, operational-universe mapping and **candidate** structuring are authorized to continue.
+
+Canonical Supabase mutation/promotion of newly generated OK, Work Decomposition or WorkDefinitions is **blocked** until:
+1. the existing Atlas Supabase schema is inspected and mapped to Z0–Z7;
+2. the Research-to-Execution-Readiness Transformation Generator Contract is independently QA'd and Owner-authorized/frozen for use;
+3. the applicable Generation Registry run record can be populated from frozen inputs and actual implementation identity;
+4. validator/QA and rollback/recovery controls required by the global generation/freeze standard are available.
+
+HTML remains G5 projection only and may not become canonical business truth.
+
+## 13. Governance correction disposition — 22 Sep 2026
+
+The Owner directed the bounded corrections in this record after independent validation. The earlier readiness-vocabulary divergence is corrected without superseding the frozen Product Constitution. The missing Z0–Z7 ownership tag is corrected. The two mechanisms are explicitly separated. ATL-60 may continue non-promotional research/candidate structuring; canonical Supabase writes remain gated.
+
+The earlier ATL-40 freeze-window sequencing finding is acknowledged as a process violation rather than erased. It did not mutate the independently frozen LTL-03 ATL-37 graph/manifest. Subsequent ATL-40/ATL-60 governance work is treated as candidate governance until it passes the applicable QA/Owner gate; ancestry alone does not promote or invalidate it.
