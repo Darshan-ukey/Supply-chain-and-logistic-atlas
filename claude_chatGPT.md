@@ -2178,3 +2178,33 @@ Full text, severity and required-decision framing for both: `governance/implemen
 ## Handoff
 
 Full bounded-recheck record: `governance/implementation/ATL_80_F1_F2_BOUNDED_RECHECK_V0_1.md`.
+
+
+---
+
+# CHATGPT — ATL-79 FULL MATRIX RERUN / GOVERNED PASS
+
+**Date:** 2026-09-22
+
+ATL-80 governed prerequisite is closed. ATL-79 resumed under its original frozen eight-criterion acceptance matrix.
+
+ATL-79 dry-run artifact was updated only to replace FR-01 unresolved type/version markers with exact governed identities:
+- F1 → ET-BUSINESS-OBJECT@1.0.0 + RT-ASSOCIATED-WITH@1.0.0
+- F2 → ET-RULE@1.0.0
+- F3 → ET-EXCEPTION@1.0.0
+- F4 → ET-DEPENDENCY@1.0.0
+
+Corrected dry-run commit: `04215f4555e9b6d9a684e6fe69b41995c4f57577`.
+Post-write re-fetch: zero unresolved governed-seed markers; zero literal backslash-n corruption.
+
+Complete verification matrix rerun: **PASS — all 8 frozen criteria for all 4 facts (32/32 checks).**
+
+Durable proof:
+`governance/implementation/ATL_79_FULL_VERIFICATION_PROOF_V0_2.md` @ `81885a5905e69afd43393aff775f6d55f30158fc`.
+
+FR-01 CLOSED.
+FR-02 and FR-03 remain OPEN / NON-BLOCKING and are preserved in `ATL_80_FRICTION_REGISTER_FR02_FR03_V0_1.md`.
+
+ATL-79 disposition: **GOVERNED_PASS / GOVERNED_COMPLETE**.
+
+Release: ATL-60 is no longer blocked by ATL-79 for proceeding toward physical DDL design. ATL-79 closure does not authorize Supabase mutation or DDL application; ATL-60's own governed gates remain controlling.
