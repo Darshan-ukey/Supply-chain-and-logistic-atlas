@@ -2245,3 +2245,17 @@ Resolution:
 ATL-82 remains `VERIFIED_FIRST_PARTY`, not independently passed. No Supabase mutation/promotion is authorized.
 
 **Release:** with this canonical log synchronization, ATL-84's blocker condition is satisfied. Claude may now execute ATL-83 independent QA against ATL-82's predetermined 10 criteria and six physical-design questions. Builder verification must not be treated as independent QA.
+
+
+## ATL-85 Drive custody + ATL-83 executable handoff
+
+ATL-85 disposition has been mirrored to governed Drive custody:
+- Title: `ATL-85 — ATL-40 Freeze-Window Sequencing Finding — Governed Disposition — 2026-09-22`
+- Drive ID: `1Lkz2SqBprvv9AuLnEemfTpLFf8lcrD-IQ7evpa6rSiE`
+- Readback verified: disposition and ATL-83 release text present.
+
+ATL-83 Task Execution Manifest is now present:
+- `governance/task-manifests/ATL-83.yaml`
+- creation commit: `d911dd3f75777917d86148dcc306c0b7fa95ca70`
+
+Claude's exact next action is now governed by ATL-83/manifest: independently QA ATL-82's candidate SQL, rationale and first-party proof against **all 10 predetermined acceptance criteria and all six explicit physical-design questions**, verify actual Supabase state read-only where needed, persist a durable QA artifact + shared-log result, and stop for ChatGPT/Owner disposition. No mutation or silent correction is authorized.
