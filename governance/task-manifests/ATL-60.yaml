@@ -99,7 +99,7 @@ working_outputs:
     path: governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
     commit: 9d6598276757fa870d048ba772f5584b529a96d3
     status: CANDIDATE_LOGICAL_DESIGN_QA_REQUIRED
-    description: "Stable semantic kernel plus governed extensibility registries for future process/domain knowledge structures; Z6 readiness proof included; no DDL."
+    description: "Stable semantic kernel plus governed extensibility registries; Claude QA PASS_WITH_BINDING_CORRECTIONS; F1-F6 applied at fcc3a676; no DDL."
 
   - id: ATL60-GENERATION-REGISTRY-STUB
     type: github
@@ -145,8 +145,8 @@ qa_and_decisions:
     branch: atlas-governance-registry-v2.1
     commit: 0b45481b1a40030daa3d1661460d6d24c1fcb59e
 
-current_checkpoint: "Read-only schema mapping complete. Owner extensibility requirement recorded in canonical shared log at af520a9d. Candidate extensible Z1 Operational Knowledge + Z6 readiness logical schema persisted at 9d65982 using stable semantic kernel + governed type/relationship extension model. No DDL generated and no Supabase mutation occurred."
-next_action: "Obtain independent QA of ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md together with the implementation-bound Transformer Contract. Resolve binding corrections before generating physical DDL/migration."
+current_checkpoint: "Claude independently QA’d the extensible Z1/Z6 logical schema with PASS_WITH_BINDING_CORRECTIONS. F1-F6 have been applied to the design at fcc3a676: pinned type versions, explicit Z1→Z5 generation-run lineage, gap/proposal/review wiring, write-time JSON validation layer, research-vs-client evidence distinction, and append-only semantic versioning. No DDL generated and no Supabase mutation occurred."
+next_action: "Perform bounded independent correction recheck of commit fcc3a676 against Claude findings F1-F6. If all six are verified closed, authorize physical DDL/migration DESIGN ONLY; do not apply any Supabase mutation."
 
 open_items:
   - "Design required schema extension/migration without applying it."
@@ -178,9 +178,9 @@ handoff:
     - "Open Linear ATL-60 and verify status/dependencies."
     - "Read this manifest."
     - "Read the listed governing inputs, especially the Agent-Independent Task Continuity Standard and Transformer Contract."
-    - "Verify the canonical shared log on atlas-governance-registry-v2.1 through commit 0b45481b1a40030daa3d1661460d6d24c1fcb59e."
+    - "Verify the canonical shared log on atlas-governance-registry-v2.1 through the latest ATL-60 schema QA/correction closure entry."
     - "Verify required Drive evidence is accessible."
-    - "Obtain Supabase read-only access for the next action; if unavailable, set BLOCKED_REQUIRED_STORE_ACCESS and do not fabricate schema facts."
+    - "For the immediate correction recheck, compare Claude F1-F6 against logical-design commit fcc3a676. Supabase remains read-only; no mutation is authorized."
     - "Perform only the next_action and persist every material output before pausing."
   chat_history_required: false
 
@@ -188,4 +188,4 @@ last_execution_record:
   operator: ChatGPT
   stopped_at: "2026-09-22T08:46+05:30 onward"
   durable_state_written: true
-  note: "ATL-60 resumed under continuity governance. Read-only Supabase mapping completed and persisted; Transformer Contract §7/§8 bound. No database mutation. Next action is candidate schema/migration design."
+  note: "Claude schema QA recorded at 7e63f09e; F1-F6 logical-design corrections applied at fcc3a676. No DDL generated or database mutation. Next action is bounded correction recheck before physical DDL design."
