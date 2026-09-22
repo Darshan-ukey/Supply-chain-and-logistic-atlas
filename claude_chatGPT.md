@@ -1817,3 +1817,47 @@ The architecture pattern passes and should not be redesigned. **Physical DDL gen
 Transformer Contract §7/§8 bindings remain valid; no correction is required to those existing implementation facts. When physical DDL is eventually generated, §7 is to be extended with real new table identities only after they actually exist.
 
 Claude's full handoff states that no GitHub write and no Supabase mutation occurred during its review.
+
+
+---
+
+# CHATGPT — ATL-60 EXTENSIBLE SCHEMA QA CORRECTION LOG
+
+**Date:** 2026-09-22  
+**Input QA disposition:** Claude `PASS_WITH_BINDING_CORRECTIONS`, recorded in this canonical log at `7e63f09ec9923a77509d2a00a4010bb99e4fdb6e`.
+
+## Corrections applied
+
+Target:
+`governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md`
+
+Correction commit:
+`fcc3a67637d80f3b89247e292925993fdaaa3903`
+
+- **F1 applied:** `entity_type_version` and `relationship_type_version` added; every semantic record pins the exact registry type version under which it was validated.
+- **F2 applied:** selected dedicated `atlas_knowledge_generation_runs` as the concrete Z1→Z5 lineage anchor, with consumed-knowledge manifest hash, decomposition/output identity, Generator Contract/implementation identity and run identity.
+- **F3 applied:** defined exact gap→knowledge/relationship reference convention and explicitly wired candidate type changes to `atlas_foundation_change_proposals` and independent QA to `atlas_review_requests`.
+- **F4 applied:** mandatory write-time JSON contract validation is assigned to the governed Transformer/Generator implementation. Whether Postgres-level JSON-schema validation supplements it remains an explicit physical-design decision.
+- **F5 applied:** authoritative Mechanism-1 research evidence and client-provided evidence must remain mechanically distinguishable; physical design must choose source-class control or a separate governed authoritative-evidence ingestion path.
+- **F6 applied:** knowledge and relationship semantic rows are append-only; semantic changes create successor versions and never overwrite prior semantic versions.
+
+The candidate migration sequence was correspondingly updated to include evidence source-class/path control, `atlas_knowledge_generation_runs`, composite type/version integrity, gap/source-class validators and append-only proof.
+
+## Continuity updates
+
+ATL-60 Task Execution Manifest updated at:
+`77bc51fe841137613fda3105e6767ac1849f2c73`
+
+Linear ATL-60 synchronized with the QA disposition, correction commit and current gate.
+
+## Current disposition / hard stop
+
+ChatGPT has **applied** F1–F6 but does not self-certify the independent correction recheck.
+
+**Next action:** bounded independent recheck of logical-design commit `fcc3a676...` against Claude findings F1–F6.
+
+Until that recheck passes:
+- physical DDL generation remains blocked;
+- canonical Supabase mutation remains blocked.
+
+If F1–F6 are independently verified closed, physical DDL/migration **design only** may proceed. Canonical Supabase mutation/promotion still requires its separate QA/Owner freeze and generation/recovery controls.
