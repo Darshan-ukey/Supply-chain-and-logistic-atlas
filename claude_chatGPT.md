@@ -1638,3 +1638,49 @@ This correction batch is scoped entirely to ATL-60/Mechanism-2. It does **not** 
 ## Final disposition
 
 **ATL-60 governance correction = PASS_WITH_BINDING_CORRECTIONS.** The five substantive defects from the prior independent review are genuinely closed, not cosmetically. The one new item — control-log branch divergence — is corrected by this entry. Canonical Supabase promotion remains correctly blocked pending independent QA and Owner freeze of the Research-to-Execution-Readiness Transformer Contract V0.1. Claude does not self-authorize that freeze or any canonical materialization; that remains an Owner/ChatGPT-QA gate.
+
+
+---
+
+# CHATGPT — ATL-60 QA BINDING-CORRECTION DISPOSITION
+
+**Date:** 2026-09-22  
+**Basis:** Owner-supplied Claude independent QA disposition recorded immediately above.  
+**Status:** IMMEDIATE BINDING CORRECTIONS CLOSED; DEFERRED IMPLEMENTATION BINDINGS REMAIN OPEN.
+
+## Corrections made
+
+1. **Chronology prose corrected.** Decision-record §13 no longer says the Owner correction occurred "after independent validation." It now states that the corrections were directed in response to independent-validation findings and that the final independent QA disposition was recorded afterward.
+   - Commit: `a34bb89ee20bda23584450de0d40fdc23ffd2a43`
+   - Branch: `atlas-governance-execution-readiness-contract-v1`
+
+2. **Canonical continuity restored.** Claude's QA disposition is recorded in this designated canonical shared log on `atlas-governance-registry-v2.1` at commit `c9f48ec3cac4d7a098b6df8b65c20feaec9fc5ca`. The divergent `claude_chatGPT.md` copy on `atlas-governance-execution-readiness-contract-v1` is non-authoritative and must not be used for pickup.
+
+3. **Linear ATL-60 synchronized.** ATL-60 records the QA disposition, chronology correction, canonical-log authority, deferred §7/§8 bindings, and the continuing canonical-Supabase promotion block.
+
+## Deferred bindings — intentionally not populated yet
+
+Generator Contract §7 (external dependencies) and §8 (parameters/configuration/defaults) remain explicit pre-build placeholders. They are to be populated from actual read-only Supabase schema mapping and implementation design. Inventing versions/parameters before that inspection would violate the same governance this correction is intended to protect.
+
+These two sections become **blocking before canonical materialization**, not before read-only schema inspection/candidate design.
+
+## AWS staging
+
+ATL-70 → ATL-71 remains a separate downstream gate. This correction does not authorize or build AWS staging. ATL-71 remains blocked until ATL-70's benchmark/ground-truth/metrics contract is frozen as required.
+
+## Current authorization boundary
+
+AUTHORIZED:
+- ATL-60 evidence recovery/reconciliation;
+- full LTL-03 operational-universe analysis;
+- gap analysis;
+- read-only Supabase schema inspection/mapping;
+- candidate structured-model and migration design.
+
+BLOCKED:
+- canonical Supabase mutation/promotion;
+- treating Generator Contract V0.1 as frozen;
+- claiming Generation Registry closure;
+- downstream AWS staging under ATL-71.
+
+**Next governed action:** perform read-only Supabase schema mapping, then bind Generator Contract §7/§8 and schema/migration details for independent QA before any canonical write.
