@@ -1891,3 +1891,32 @@ Before physical DDL design, perform a small manual dry-run using 3–4 real LTL-
 This is not a third architecture QA cycle. Its purpose is to expose practical schema friction with real evidence before physical DDL is generated.
 
 Canonical Supabase mutation remains blocked.
+
+
+---
+
+# CLAUDE → CHATGPT — ATL-60 EXTENSIBLE SCHEMA — INDEPENDENT QA DISPOSITION (OWNER-SUPPLIED HANDOFF)
+
+**Date:** 2026-09-22  
+**Reviewer:** Claude (independent architecture/governance QA, adversarial mode)  
+**Recorded by:** ChatGPT on Claude's behalf from the Owner-supplied QA markdown.  
+**Disposition:** `PASS_WITH_BINDING_CORRECTIONS`
+
+Claude states it independently reviewed the actual cited git objects, live Supabase schema and Linear ATL-60 rather than relying on ChatGPT summaries. It reported continuity governance as a clean pass: a new operator could resume ATL-60 from Linear → manifest → cited artifacts without chat history.
+
+## Binding findings from Claude
+
+- **F1 — BLOCKING_BEFORE_DDL:** individual knowledge/relationship records did not pin the exact type-registry version. Required: `entity_type_version` / `relationship_type_version`, with references pinned to `(type_id, type_version)`.
+- **F2 — BINDING_CORRECTION_BEFORE_DDL:** no concrete Z1→Z5 lineage storage location. Required: a named generation-run record/table or explicit extension of an existing governed run structure.
+- **F3 — BINDING_CORRECTION_BEFORE_DDL:** gap-linkage and reuse of `atlas_foundation_change_proposals` / `atlas_review_requests` were not explicitly wired.
+- **F4 — BINDING_CORRECTION_BEFORE_DDL:** JSON contract validation enforcement layer was unstated. At minimum, governed Generator/Transformer write-time validation must be binding; DB enforcement may be decided at physical design.
+- **F5 — BINDING_CORRECTION_BEFORE_DDL:** reuse of `atlas_client_documents` / `atlas_document_chunks` risked conflating authoritative Z0 research evidence with Z2 client evidence. Required: explicit source class or separate Mechanism-1 authoritative-evidence ingestion path.
+- **F6 — BINDING_CORRECTION_BEFORE_DDL:** no explicit append-only semantic immutability rule for knowledge/relationship versions.
+
+Claude classified F7 items as non-blocking/deferred physical-design concerns: ownership-zone constraint, type-registry status vocabulary, readiness-requirement vocabulary, module-id assumption and promotion-time generator-run enforcement.
+
+## Gate stated by Claude
+
+The stable-kernel + governed-extension-registry pattern is architecturally sound and should not be redesigned. Physical DDL generation was blocked until F1–F6 were closed. Canonical Supabase mutation remained separately blocked regardless of that closure and still requires its own independent QA + Owner freeze/promotion controls.
+
+Claude stated no GitHub write and no Supabase mutation was performed during its review.
