@@ -21,19 +21,28 @@ consumed_inputs:
   - status: PENDING_SELECTION
     description: "3–4 materially different real LTL-03 facts and exact governed retained-evidence identities must be selected during execution; no invented semantics."
 
-working_outputs: []
+working_outputs:
+  - path: governance/implementation/ATL_79_LTL03_REAL_FACT_SCHEMA_DRY_RUN_V0_1.md
+    commit: 13f528868029c63338404d06638ebeb89ceaa09d
+    status: IMPLEMENTED_VERIFICATION_FAILED
+  - path: governance/implementation/ATL_79_VERIFICATION_PROOF_V0_1.md
+    commit: 2e02f8214c89c36d93baa81066fbaa67b8bfb087
+    status: PROOF_RECORDED_VERIFICATION_FAILED
 current_outputs: []
 superseded_outputs: []
-qa_and_decisions: []
+qa_and_decisions:
+  - disposition: VERIFICATION_FAILED
+    reason: "Predetermined criterion #3 failed: exact governed entity/relationship type versions do not exist."
+    prerequisite: ATL-80
+    prerequisite_manifest_commit: 9f6b003f7c518611b0ffe4598b10fd3852ab20ed
 
-current_checkpoint: "ATL-79 pickup completed from Linear → manifest → governance → actual schema state. Task is IN_PROGRESS. Predetermined acceptance criteria remain frozen. Evidence selection/build has not yet been claimed complete."
-next_action: "Read ATL-79 in Linear, this manifest, governing inputs and actual ATL-60/LTL-03 evidence state; predetermine the per-fact verification matrix; then select 3–4 real facts and BUILD the governed dry-run artifact."
+current_checkpoint: "ATL-79 BUILD completed and resulting-state VERIFY executed. Criteria 1,2,4,5,6,7,8 passed for all four facts; criterion 3 failed for all four because no governed seed entity/relationship type versions exist. Verification disposition: VERIFICATION_FAILED / blocked by ATL-80."
+next_action: "Do not repair FR-01 inline. ATL-80 / logical ATL-79A must establish and independently QA the minimum governed seed knowledge-type registry contract. After ATL-80 passes, resume ATL-79 and rerun criterion #3 plus the complete verification matrix."
 
 open_items:
-  - "Select exact governed evidence identities and 3–4 materially different facts."
-  - "Persist dry-run artifact and verification matrix."
-  - "Resolve/re-verify any material schema defect exposed."
-  - "Independent QA if a material schema correction is required."
+  - "ATL-80 must establish governed seed type/version contracts and pass independent QA."
+  - "Rerun ATL-79 criterion #3 and full verification matrix after ATL-80 release."
+  - "Advance ATL-79 only if all predetermined criteria pass."
 
 authorized_actions:
   - "Read governed LTL-03 evidence."
@@ -77,4 +86,4 @@ last_execution_record:
   operator: ChatGPT
   stopped_at: "2026-09-22"
   durable_state_written: true
-  note: "Governed pickup completed; Linear moved to In Progress. Next: establish verification matrix, inspect actual retained evidence, select 3–4 facts, then BUILD."
+  note: "BUILD and VERIFY completed. Verification failed criterion #3 without weakening acceptance criteria. Discovered prerequisite ATL-80 created in Linear with manifest 9f6b003f; ATL-79 is blocked pending ATL-80 governed PASS."
