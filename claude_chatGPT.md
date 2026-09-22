@@ -1920,3 +1920,76 @@ Claude classified F7 items as non-blocking/deferred physical-design concerns: ow
 The stable-kernel + governed-extension-registry pattern is architecturally sound and should not be redesigned. Physical DDL generation was blocked until F1–F6 were closed. Canonical Supabase mutation remained separately blocked regardless of that closure and still requires its own independent QA + Owner freeze/promotion controls.
 
 Claude stated no GitHub write and no Supabase mutation was performed during its review.
+
+
+---
+
+# OWNER / CHATGPT — UNIVERSAL EXECUTION INTEGRITY GOVERNANCE
+
+**Date:** 2026-09-22  
+**Owner decision:** MANDATORY GLOBAL EXECUTION MECHANISM
+
+The Owner identified execution reliability as existential to the Atlas proof: governed domain knowledge cannot establish Atlas's thesis if the project cannot reliably transform that knowledge into verified execution-ready state.
+
+The existing continuity standard has therefore been strengthened at:
+
+`governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md`  
+Commit: `29c724374c1a7d40fb2a115032267fcc8014b3ea`
+
+## Universal pickup rule
+
+Every substantive Atlas action, regardless of session/operator/tool, begins:
+
+**LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE**
+
+This applies equally to ChatGPT, Claude, any other AI agent, automation, developer tooling and human/manual execution.
+
+No operator may infer work from chat history when governed task state exists. Linear determines what is authorized; the manifest determines exact checkpoint/next action/output; referenced governance determines how/acceptance; actual artifacts establish starting truth.
+
+## Universal execution rule
+
+Every substantive output follows:
+
+**BUILD → VERIFY → PROVE → ADVANCE**
+
+- BUILD produces the authorized output but leaves it `IMPLEMENTED_UNVERIFIED`.
+- VERIFY inspects the actual resulting state after the write.
+- PROVE persists retrievable evidence against predetermined acceptance criteria.
+- ADVANCE is allowed only after required verification/proof and independent QA/Owner gates.
+
+Hard rules:
+**No evidence → no completion.  
+No post-write verification → no proof.  
+No predetermined acceptance criteria → no pass decision.  
+No required independent QA → no promotion.  
+No silent correction → immutable correction/supersession history.**
+
+Tool/API success is never completion by itself.
+
+## Triggering reliability incident
+
+The immediate trigger was ATL-60 correction commit `fcc3a676...`, where ChatGPT reported corrections complete before verifying the committed artifact. Claude subsequently identified literal `\\n` corruption and a §10 update claimed in the correction log but absent from the artifact. ChatGPT verified and repaired both at `79c3cfed65129263d92ff77ffbb56f25a700c0f1`.
+
+This is preserved as a governance learning event, not erased.
+
+## Post-write proof of governance update
+
+After writing the updated standard, ChatGPT re-fetched the committed artifact and verified:
+- universal BUILD → VERIFY → PROVE → ADVANCE section exists;
+- mandatory LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE sequence exists;
+- hard rule `No evidence → no completion` exists;
+- new post-write-verification failure state exists;
+- Atlas execution-integrity objective exists;
+- zero literal backslash-n corruption detected.
+
+ATL-60 manifest was then bound to the new protocol at `88ec6b94a1d2ca684063075259912a627188f9ea` and re-fetched to verify the exact next action and current schema identity.
+
+Linear ATL-40 and ATL-60 were synchronized with the mandatory mechanism.
+
+## ATL-60 next action
+
+Before physical DDL design, execute a bounded real-data dry-run using 3–4 materially different LTL-03 facts through source evidence → Z1 knowledge/relationships → evidence linkage → knowledge-generation run → Z5/readiness references.
+
+Acceptance checks must be predetermined; resulting mappings must be verified; proof must be persisted before ADVANCE.
+
+No physical DDL or canonical Supabase mutation is authorized by this governance update.
