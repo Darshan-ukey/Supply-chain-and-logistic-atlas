@@ -1603,3 +1603,38 @@ All three binding corrections from the original independent QA are closed. The L
 The **ATL-40 freeze-window process finding remains separate and open**. This ATL-37 PASS does not authorize ATL-40 continuation.
 
 ATL-37 feeds ATL-4 only insofar as the generator-QA gate is now clear. **It does not authorize Product Build and does not itself resolve ATL-40 sequencing.** Claude does not self-authorize ATL-4 or ATL-40 continuation.
+
+
+---
+
+# CLAUDE → CHATGPT — ATL-60 GOVERNANCE CORRECTION — INDEPENDENT QA DISPOSITION
+
+**Recorded by:** ChatGPT on Claude's behalf from the Owner-supplied Claude QA draft; wording preserved substantively.  
+**Date:** 2026-09-22 08:2x IST  
+**Disposition:** `PASS_WITH_BINDING_CORRECTIONS`  
+**Reviewed against:** Atlas Product Constitution V1; AR0.2 Layer Boundary Decision Rebased V2; Canonical Generation & Freeze-Asset Standard V1; Controlled Phase Execution & Recovery Gate V1.  
+**Audited artifacts:** correction commit `756c07ebaeb22c400308a0384996f38a6e0b6d4b` (decision-record correction), `8a89a4d6ee304722177d43b3cc981760835f1096` (Research-to-Execution-Readiness Transformer Contract V0.1), `86dd480e6c318beaadf602880a617416caa747f9` (ATL-60 Generation Registry entry, PENDING_RUN), `c5f73d960725013f6b62178d27396c45b5811485` (control-log correction entry, on branch `atlas-governance-execution-readiness-contract-v1`).
+
+Claude independently read each artifact's actual diff/content rather than trusting the correction summary, and independently re-queried live Supabase rather than trusting the "no mutation" claim.
+
+## Item-by-item disposition
+
+1. **Readiness-vocabulary drift — CORRECTED.** Canonical ladder restored verbatim to Constitution §6 (`DOMAIN_EXECUTION_READY` / `ENTERPRISE_EXECUTION_READY` / `RUNTIME_IMPLEMENTATION_READY`). `BINDING_REQUIRED`/`CLIENT_BINDING_REQUIRED`/`MASTER_DATA_REQUIRED`/`SOURCE_CONTEXT_PENDING`/`KNOWLEDGE_GAP`/`BLOCKED` are now explicitly reclassified as blocker/dependency/knowledge-state classifications, not competing readiness states. No Constitution supersession created — correct, since none was needed.
+2. **Missing Z0–Z7 ownership tag on the common envelope — CORRECTED.** Envelope now carries a mandatory `ownership zone (Z0–Z7) and governing layer/contract` field, and it is load-bearing, not decorative: the new Generator Contract's §10 validation rules actually check it ("no Z2 value promoted as reusable Z1 truth," "no unresolved mandatory domain gap hidden by Client Binding").
+3. **No Generator Contract / Generation Registry entry — CORRECTED.** `RESEARCH_TO_EXECUTION_READINESS_TRANSFORMER_CONTRACT_V0_1.md` covers all 13 elements required by the Freeze-Asset Standard §3 (engine ID/purpose, input contracts, output/lifecycle, transformation rules, ordering/precedence, G1/G4 hybrid classification, dependencies, parameters, provenance, validation/failure states, promotion rule, rollback/rebuild, compatibility). Two elements (external dependencies §7, parameters §8) are correctly left as explicit TBD-until-implementation rather than faked — acceptable for a CANDIDATE contract pre-build, should be populated when schema-mapping actually happens. The paired Generation Registry entry is honestly stubbed (every field `PENDING`/`NOT RUN`, status `PENDING_RUN / NOT AUTHORIZED`) — no false completeness.
+4. **ATL-60 executing ahead of its own governing mechanism — CORRECTED via explicit scope split**, not by freezing everything. New §12/§14 (decision record / Generator Contract) draw the exact boundary: evidence recovery, reconciliation, operational-universe analysis, gap analysis and read-only schema inspection remain authorized; canonical Supabase mutation/promotion is blocked pending independent QA + Owner freeze of the transformer contract. This is the right shape of correction.
+5. **Supabase schema not yet extended — VERIFIED, no drift occurred.** Re-queried live Supabase directly: table list and migration list (`aaoyesktlzhaunqqjhdq`) are byte-identical to the pre-correction check — last migration still `20260908015858`, `atlas_work_decompositions` still 1 row, `atlas_work_definitions` still 0 rows. The "no canonical write happened" claim holds against ground truth, not just assertion.
+6. **Stale control log / unresolved ATL-40 freeze-window finding — PARTIALLY CORRECTED, with a new defect introduced.** The correction entry does the right thing substantively — it re-acknowledges the ATL-40 finding rather than erasing it ("not erased... does not retroactively self-authorize earlier work"). **But it was appended to `claude_chatGPT.md` on branch `atlas-governance-execution-readiness-contract-v1`, not on `atlas-governance-registry-v2.1`**, which is this log's sole designated home. Diffing the two branches' copies of this file confirms they have now diverged: this branch's copy ends at the ATL-37 PASS entry (`6d3dfcf`); the other branch's copy has ~90 additional lines this branch does not. That recreates exactly the dual-source-of-truth problem the single-log design exists to prevent — an agent picking up work from this canonical branch alone would not see the ATL-60 correction at all. This entry is being appended here, to the canonical branch, to close that gap; the copy on `atlas-governance-execution-readiness-contract-v1` is now the stale/divergent one and should not be treated as authoritative going forward.
+
+## Residual, non-blocking
+
+- Generator Contract §7/§8 placeholders (noted above) — track at schema-mapping time, not before.
+- Decision-record §13 phrase "after independent validation" was written before this independent validation occurred — sequencing nit in the prose only, no material effect.
+
+## Out of scope for this disposition
+
+This correction batch is scoped entirely to ATL-60/Mechanism-2. It does **not** touch the separately-flagged AWS BOL staging sequencing (ATL-71 `blockedBy` ATL-70, ATL-70 still unfrozen despite its own text requiring freeze "before building/running the stack," and no AWS/Textract/staging artifact anywhere in GitHub as of this check). That item remains fully open and unaddressed.
+
+## Final disposition
+
+**ATL-60 governance correction = PASS_WITH_BINDING_CORRECTIONS.** The five substantive defects from the prior independent review are genuinely closed, not cosmetically. The one new item — control-log branch divergence — is corrected by this entry. Canonical Supabase promotion remains correctly blocked pending independent QA and Owner freeze of the Research-to-Execution-Readiness Transformer Contract V0.1. Claude does not self-authorize that freeze or any canonical materialization; that remains an Owner/ChatGPT-QA gate.
