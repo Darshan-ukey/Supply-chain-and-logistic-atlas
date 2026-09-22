@@ -2057,3 +2057,60 @@ Execution must begin from ATL-79 itself and follow:
 **LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE**
 then
 **BUILD → VERIFY → PROVE → ADVANCE**.
+
+
+---
+
+# CHATGPT — ATL-79 START / BUILD / VERIFY CHECKPOINT
+
+**Date:** 2026-09-22
+
+ATL-79 was started under the universal execution mechanism from authoritative Linear + manifest + governance + artifact state.
+
+## BUILD
+
+Real evidence inspected directly:
+- BOL Information Resolution Baseline v0.1 — Drive `1oxEYH8mHZEZ4Y2D7mgLj2wlSl1d7bcmlBhT3lWV7J7Q`.
+- Road LTL v1.5 Operational Knowledge — Drive `16hSl8TMH_8rsKNd6XHINTLGUcJhA-QwKsdc2639vIw0`.
+- source-claim pack `data/source-claims/road-ltl-v1.5-bol-resolution-claims.json`, observed blob `13420c76dd8113c72b42bdc9bab29b34cd529e52`.
+- P6.1 V1 reconstructed LTL-03 decomposition on `atlas-p6-1-v1-reconstruction`, observed blob `b2e468723611230ff53e0615ec9a347b848692e3`.
+
+Dry-run BUILD:
+`governance/implementation/ATL_79_LTL03_REAL_FACT_SCHEMA_DRY_RUN_V0_1.md`
+commit `13f528868029c63338404d06638ebeb89ceaa09d`.
+
+Four materially different facts were mapped:
+1. typed Reference object / PRO distinction;
+2. hazardous-material Technical Name conditional applicability;
+3. critical low-confidence/failed-validation HITL routing with threshold kept as Z2 binding;
+4. Instruction Type value-set kept as client/source-context binding rather than invented Z1 truth.
+
+## VERIFY / PROOF
+
+Verification proof:
+`governance/implementation/ATL_79_VERIFICATION_PROOF_V0_1.md`
+commit `2e02f8214c89c36d93baa81066fbaa67b8bfb087`.
+
+Disposition: **VERIFICATION_FAILED**.
+
+Predetermined criteria 1, 2, 4, 5, 6, 7 and 8 passed for all four facts. Criterion 3 failed for all four because the logical schema requires exact governed `(type_id, type_version)` pins but the current design contains only seed candidate type names, not a governed/versioned initial type/relationship contract pack. Creating type versions ad hoc would violate the acceptance criterion and F1's anti-reinterpretation control.
+
+## Discovered prerequisite — created before execution
+
+Per the Linear-first prerequisite rule, the defect is not repaired inline.
+
+Created:
+**ATL-80 / logical ATL-79A — Governed Seed Knowledge-Type Registry Contract**.
+
+ATL-80 blocks ATL-79 verification closure and has its own full Linear execution contract.
+
+Manifest:
+`governance/task-manifests/ATL-80.yaml`
+bootstrap commit `9f6b003f7c518611b0ffe4598b10fd3852ab20ed`.
+
+ATL-79 manifest checkpoint:
+`4338bd4f72faacc54ade922df7f25eeb6ca5f5ec`.
+
+ATL-79 remains In Progress but blocked. ATL-60 physical DDL remains blocked.
+
+**Next governed pickup:** ATL-80. After ATL-80 governed PASS + required independent QA, resume ATL-79 and rerun criterion #3 plus the complete frozen verification matrix.
