@@ -1,0 +1,80 @@
+task_id: ATL-79
+logical_task_name: "ATL-60A — LTL-03 Real-Fact Schema Dry-Run"
+task_status: TODO
+execution_owner: ChatGPT
+decision_authority: "Darshan / Atlas Owner-Governor"
+linear_url: "https://linear.app/sefl-transformation/issue/ATL-79/atl-60a-ltl-03-real-fact-schema-dry-run"
+manifest_status: ACTIVE
+last_updated: "2026-09-22"
+
+governing_inputs:
+  - type: github_standard
+    path: governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md
+    commit: e8a7afc6e191948551c91d4b4264efb7589d2423
+  - type: github_schema_design
+    path: governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
+    commit: 79c3cfed65129263d92ff77ffbb56f25a700c0f1
+  - type: linear_parent
+    id: ATL-60
+
+consumed_inputs:
+  - status: PENDING_SELECTION
+    description: "3–4 materially different real LTL-03 facts and exact governed retained-evidence identities must be selected during execution; no invented semantics."
+
+working_outputs: []
+current_outputs: []
+superseded_outputs: []
+qa_and_decisions: []
+
+current_checkpoint: "Task created as a discovered prerequisite of ATL-60 before substantive dry-run execution. No dry-run has started."
+next_action: "Read ATL-79 in Linear, this manifest, governing inputs and actual ATL-60/LTL-03 evidence state; predetermine the per-fact verification matrix; then select 3–4 real facts and BUILD the governed dry-run artifact."
+
+open_items:
+  - "Select exact governed evidence identities and 3–4 materially different facts."
+  - "Persist dry-run artifact and verification matrix."
+  - "Resolve/re-verify any material schema defect exposed."
+  - "Independent QA if a material schema correction is required."
+
+authorized_actions:
+  - "Read governed LTL-03 evidence."
+  - "Create candidate dry-run mappings without database mutation."
+  - "Persist dry-run and proof artifacts in GitHub."
+  - "Update manifest/Linear according to BUILD → VERIFY → PROVE → ADVANCE."
+
+blocked_actions:
+  - action: "ATL-60 physical DDL/migration design."
+    blocker: "ATL-79 governed dry-run prerequisite not yet passed."
+    release_condition: "ATL-79 PROOF_RECORDED / governed PASS, with material schema defects resolved and re-verified."
+  - action: "Canonical Supabase mutation."
+    blocker: "Not authorized by ATL-79; separate ATL-60 promotion controls remain."
+    release_condition: "Separate independent QA + Owner authorization/freeze + applicable generation/promotion controls."
+
+acceptance_criteria:
+  - "No loss or invention of material domain semantics."
+  - "No loss of source/provenance/authority."
+  - "Exact type/version identity preserved."
+  - "Applicability/condition/exception semantics preserved where applicable."
+  - "Reusable domain truth remains distinct from client binding."
+  - "Z1→Z5 lineage remains complete."
+  - "Exact consumed knowledge versions are identifiable from generated Z5 output."
+  - "No undocumented free-form field carries a material governed semantic."
+
+verification_and_proof:
+  protocol: "BUILD → VERIFY → PROVE → ADVANCE"
+  verification: "Re-read persisted dry-run artifact and record PASS/FAIL for every selected fact against every applicable predetermined acceptance criterion."
+  proof: "Persist exact artifact commit/identity, evidence identities, verification matrix, defects and disposition."
+
+handoff:
+  pickup_sequence:
+    - "Open Linear ATL-79 first."
+    - "Read this manifest."
+    - "Read governing inputs."
+    - "Verify actual current ATL-60 schema/evidence state."
+    - "Execute only next_action."
+  chat_history_required: false
+
+last_execution_record:
+  operator: ChatGPT
+  stopped_at: "2026-09-22"
+  durable_state_written: true
+  note: "Prerequisite task and manifest bootstrapped before substantive dry-run execution."
