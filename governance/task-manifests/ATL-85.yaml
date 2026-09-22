@@ -1,0 +1,34 @@
+task_id: ATL-85
+title: "ATL-40 freeze-window sequencing finding — governed disposition"
+task_status: IN_PROGRESS
+manifest_status: ACTIVE
+execution_owner: ChatGPT
+decision_authority: "Darshan / Atlas Owner-Governor"
+parent_task: ATL-40
+created_at: "2026-09-22"
+
+purpose: "Resolve the historical freeze-window sequencing finding for cc0af13 and 5a26ae0, separating process breach from technical contamination."
+
+governing_inputs:
+  - claude_chatGPT.md
+  - commit: cc0af139fc05e705fb7c0011096469109cf3e4f5
+  - commit: 5a26ae0aaed8009cd705a125bc8cec2e659405c7
+  - "ATL-37 final independent post-correction PASS evidence"
+  - "ATL-40 sequencing rules"
+  - "ATL-82/ATL-83/ATL-84 current state"
+
+acceptance_criteria:
+  - "Historical breach is preserved if confirmed."
+  - "Exact changed paths/semantics of cc0af13 and 5a26ae0 are inspected."
+  - "Process sequencing and technical contamination are separately dispositioned."
+  - "Rollback/rework requirement is explicit."
+  - "Downstream release/hold effect is explicit."
+  - "Disposition persisted in GitHub, Linear, shared log and Drive."
+  - "No Supabase mutation."
+
+current_checkpoint: "Pre-resolution shared-log checkpoint committed at e6d8557d30b95dc18125363b88df18d1c6e0be27. ATL-83 held."
+next_action: "Inspect exact two commits and ATL-37 final recheck evidence; issue evidence-backed disposition."
+blocked_actions:
+  - "ATL-83 QA start before disposition + ATL-84 sync"
+  - "Supabase mutation"
+  - "retroactive erasure of historical finding"
