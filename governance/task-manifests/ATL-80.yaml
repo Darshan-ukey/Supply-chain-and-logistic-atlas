@@ -23,8 +23,8 @@ governing_inputs:
   - type: linear_parent
     id: ATL-79
 
-current_checkpoint: "Governed ATL-80 pickup completed from Linear → manifest → governing inputs → actual ATL-60 schema and ATL-79 BUILD/VERIFY artifacts. Linear moved to IN_PROGRESS. No seed registry BUILD has yet been claimed complete."
-next_action: "BUILD only the minimum governed seed entity/relationship type contract pack required by ATL-79 F1–F4 and their relationships. Use the frozen ATL-80 acceptance criteria; persist candidate pack, then VERIFY exact IDs/versions, machine-validatable contracts, endpoint constraints, successor-version semantics and sufficiency for ATL-79 criterion #3. No DDL/Supabase mutation."
+current_checkpoint: "ATL-80 BUILD persisted candidate minimum seed registry contract pack at commit 66217aa9. Post-write artifact existence/sanity check passed, but acceptance verification/proof has not yet been completed; state remains IMPLEMENTED_UNVERIFIED."
+next_action: "VERIFY the persisted ATL-80 candidate pack against every frozen acceptance criterion, including machine-validatable contract shape, exact type/version pinning, F1 endpoint constraints, successor-version non-reinterpretation, scope minimality and ATL-79 criterion #3 sufficiency. Persist verification/proof. Do not self-promote; independent QA remains required."
 
 authorized_actions:
   - "Define minimum logical seed type/relationship contracts justified by ATL-79."
@@ -53,7 +53,11 @@ verification_and_proof:
   protocol: "BUILD → VERIFY → PROVE → ADVANCE"
   independent_qa: REQUIRED
 
-working_outputs: []
+working_outputs:
+  - path: governance/implementation/ATL_80_SEED_KNOWLEDGE_TYPE_REGISTRY_CONTRACT_PACK_V0_1.md
+    commit: 66217aa95280d468d159467d409a5424c197e9bc
+    blob_sha: fab7c323c13b310aa9b123bf1fcb7cf7751e7c8b
+    state: IMPLEMENTED_UNVERIFIED
 current_outputs: []
 qa_and_decisions: []
 
