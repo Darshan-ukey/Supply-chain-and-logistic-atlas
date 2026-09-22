@@ -1684,3 +1684,43 @@ BLOCKED:
 - downstream AWS staging under ATL-71.
 
 **Next governed action:** perform read-only Supabase schema mapping, then bind Generator Contract §7/§8 and schema/migration details for independent QA before any canonical write.
+
+
+---
+
+# OWNER / CHATGPT — AGENT-INDEPENDENT TASK CONTINUITY — GLOBAL GOVERNANCE
+
+**Date:** 2026-09-22  
+**Status:** OWNER-AUTHORIZED / MANDATORY
+
+Owner directed that Atlas must preserve not only governance and task instructions, but also all material work-in-progress so any authorized operator can pick up an active task without relying on ChatGPT, Claude, chat history or memory.
+
+Global standard created:
+- `governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md`
+- creation commit: `485ef41cb323d35e5c1641e0410dfead36dfb167`
+
+Manifest template created:
+- `governance/task-manifests/TASK_EXECUTION_MANIFEST_TEMPLATE.yaml`
+- creation commit: `d7d9dec6867376c07f45a8fd1394c2055f4da938`
+
+ATL-60 bootstrap manifest created:
+- `governance/task-manifests/ATL-60.yaml`
+- creation commit: `521dc470a52bbc7bc37d6592022c64767c300049`
+
+Linear ATL-40 and ATL-60 have been synchronized with the mandatory pickup/checkpoint rules and manifest pointer.
+
+## Mandatory operating rule
+
+Every substantive active Atlas task must have one authoritative Task Execution Manifest before the next substantive execution step. The manifest records exact governing inputs, consumed inputs, working/current/superseded outputs, QA/decisions, checkpoint, next action, open items, authorized/blocked actions and handoff state.
+
+Material work that exists only in chat/session state is **not governed-complete work**.
+
+Before pickup: Linear → Task Manifest → governing inputs → verify artifacts/stores → execute exact next action.
+
+Before pause/handoff: persist material outputs → update manifest identities/checkpoint/next action/blockers/supersession → synchronize material state changes to Linear.
+
+Failure states include `BLOCKED_TASK_MANIFEST_MISSING`, `BLOCKED_WORK_OUTPUT_NOT_PERSISTED`, `BLOCKED_CHECKPOINT_STALE`, `BLOCKED_OUTPUT_IDENTITY_AMBIGUOUS`, `BLOCKED_SUPERSESSION_UNRECORDED`, `BLOCKED_REQUIRED_STORE_ACCESS`, and `BLOCKED_LINEAR_MANIFEST_DRIFT`.
+
+No agent may self-waive the standard. Closed historical tasks require bootstrap only if reopened or consumed as an active dependency.
+
+**ATL-60 current resumable checkpoint:** governance correction complete; canonical Supabase untouched; next action is read-only Supabase schema mapping, then implementation-specific binding of Transformer Contract §7/§8. Chat history is not required for pickup.
