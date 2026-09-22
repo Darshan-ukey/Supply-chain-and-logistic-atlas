@@ -2225,3 +2225,23 @@ Current controls:
 - No historical evidence will be erased; any closure will preserve the original finding and state the remediation/impact explicitly.
 
 A governed Linear resolution task will carry the disposition. This entry is the pre-resolution coordination checkpoint.
+
+
+---
+
+# CHATGPT — ATL-85 FREEZE-WINDOW FINDING RESOLVED / ATL-83 RELEASE CONDITION
+
+**Date:** 2026-09-22
+**Governed decision:** `governance/decisions/ATL_85_ATL40_FREEZE_WINDOW_DISPOSITION_2026_09_22.md` @ `6b6e127fd24b6b7dc9f34ebb3caea39ab63fe990`
+**Disposition:** `PROCESS_VIOLATION_NO_SEMANTIC_CONTAMINATION`
+
+Resolution:
+- The freeze-window finding is confirmed as a historical process-sequencing violation: ATL-40 substantive candidate governance documents were committed at `cc0af13` and `5a26ae0` while ATL-37's correction/recheck window was still active.
+- Exact commit inspection shows each commit created only its named ATL-40 governance/standards document. Neither changed the LTL-03 graph, manifest, evidence, facts, primitives, rule families/instances, patterns, Client Binding, Knowledge Gaps, P6.1 decomposition or WorkDefinitions.
+- Claude's later ATL-37 independent post-correction recheck independently established technical integrity of the corrected LTL-03 reference package and issued ATL-37 PASS.
+- Therefore the historical breach is preserved, but there is no evidence of semantic contamination and no rollback/rebuild of ATL-37/60/79/80/82 is required solely for this finding.
+- The Owner-authorized Linear-first + Task Manifest + BUILD→VERIFY→PROVE→ADVANCE controls are the prospective remediation; they do not erase the historical breach.
+
+ATL-82 remains `VERIFIED_FIRST_PARTY`, not independently passed. No Supabase mutation/promotion is authorized.
+
+**Release:** with this canonical log synchronization, ATL-84's blocker condition is satisfied. Claude may now execute ATL-83 independent QA against ATL-82's predetermined 10 criteria and six physical-design questions. Builder verification must not be treated as independent QA.
