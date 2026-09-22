@@ -40,6 +40,14 @@ A material failure blocks ATL-60 physical DDL design until corrected and re-veri
 - decompositionId: `road-ltl-1.5__LTL-03__P6.1-V1__RECONSTRUCTED-2026-09-14`
 - Current observed summary: 64 work units; 48 leaves; 0 EXECUTOR_READY; 45 BLOCKED_BY_CLIENT_BINDING; 3 BLOCKED_BY_KNOWLEDGE_GAP.
 
+### E4 — Road LTL v1.5 BOL source-claim pack
+- GitHub branch: `atlas-governance-registry-v2.1`
+- Path: `data/source-claims/road-ltl-v1.5-bol-resolution-claims.json`
+- Blob SHA observed during ATL-79 BUILD/VERIFY: `13420c76dd8113c72b42bdc9bab29b34cd529e52`
+- Status: `RESEARCHED_NOT_PROMOTED`
+- Relevant claim: `hazmat-technical-name-conditional` — under 49 CFR 172.203(k), technical name is conditionally required for specified n.o.s./generic hazardous descriptions and related cases rather than universally required.
+- Explicit boundary: U.S. 49 CFR claims activate only when U.S. jurisdiction/regulatory applicability is satisfied; they are not globally universalized.
+
 ## 3. Selected real facts
 
 ### F1 — Typed Reference object; PRO remains distinct
@@ -77,9 +85,9 @@ A material failure blocks ATL-60 physical DDL design until corrected and re-veri
 - entity_type_version: **UNRESOLVED — no governed seed type-registry version exists yet**
 - canonical_name: `Dangerous Goods Technical Name Conditional Applicability`
 - applicability: jurisdiction/regulatory-condition gated; not universal.
-- semantic_payload requirement: preserve explicit `requiredWhen` / `prohibitedWhen` logic once the exact governing rule expression is carried from the source-claim layer.
+- semantic_payload requirement: preserve the E4 condition that the technical name is required for specified n.o.s./generic hazardous descriptions and related cases under 49 CFR 172.203(k), gated to applicable U.S. jurisdiction/regulatory context; do not universalize it.
 - support_state: `SUPPORTED`
-- evidence: E1 / Source-backed findings
+- evidence: E1 / Source-backed findings + E4 / `hazmat-technical-name-conditional`
 - source_class: `AUTHORITATIVE_RESEARCH`
 
 **Z5 references**
@@ -158,7 +166,7 @@ This dry-run does not load the evidence through `atlas_client_documents` / `atla
   - `KN-LTL03-HITL-CRITICAL-VALIDATION@1`
   - `KN-LTL03-INSTRUCTION-TYPE-BINDING@1`
   - Z2 binding refs: `CB-LTL03-CRITICAL-CONFIDENCE-THRESHOLD`, `CB-LTL03-INSTRUCTION-TYPE-VALUE-SET`
-  - evidence refs: E1, E2
+  - evidence refs: E1, E2, E4
   - Z5 basis: E3
 - consumed_knowledge_manifest_hash: `82e41004b6956a40367d22a65b1205cf0e391a33a87c4ed8ec8edc4fb9296c59`
 - output identity: this ATL-79 dry-run artifact commit (to be bound after write/VERIFY).
