@@ -27,8 +27,8 @@ governing_inputs:
     status: GOVERNANCE_CANDIDATE_WITH_QA_DISPOSITION
   - type: generator_contract
     path: governance/generation/RESEARCH_TO_EXECUTION_READINESS_TRANSFORMER_CONTRACT_V0_1.md
-    commit: 8a89a4d6ee304722177d43b3cc981760835f1096
-    status: CANDIDATE_QA_REVIEWED_NOT_FROZEN
+    commit: 4e8265d38f541fd43eeda9e3879787fb0a8e6b98
+    status: CANDIDATE_IMPLEMENTATION_BOUND_QA_REQUIRED
   - type: generation_registry
     path: governance/generation/ATL_60_RESEARCH_TO_EXECUTION_GENERATION_REGISTRY_ENTRY.md
     commit: 86dd480e6c318beaadf602880a617416caa747f9
@@ -87,6 +87,13 @@ working_outputs:
     commit: 8a89a4d6ee304722177d43b3cc981760835f1096
     status: CURRENT_CANDIDATE_QA_REVIEWED_NOT_FROZEN
     description: "Mechanism-2 Generator Contract; sections 7 and 8 intentionally pending implementation mapping."
+  - id: ATL60-SUPABASE-SCHEMA-MAPPING-V0.1
+    type: github
+    path: governance/implementation/ATL_60_SUPABASE_SCHEMA_MAPPING_V0_1.md
+    commit: 7f74d4efb328844f019e4a3977c1c3e0801a8243
+    status: READ_ONLY_MAPPING_COMPLETE
+    description: "Observed Supabase schema mapped to Z0/Z1/Z2/Z5/Z6 needs; reuse and extension boundaries identified; no mutation."
+
   - id: ATL60-GENERATION-REGISTRY-STUB
     type: github
     path: governance/generation/ATL_60_RESEARCH_TO_EXECUTION_GENERATION_REGISTRY_ENTRY.md
@@ -111,6 +118,7 @@ working_outputs:
 current_outputs:
   - ATL60-GOV-DECISION-CORRECTED
   - ATL60-TRANSFORMER-CONTRACT-V0.1
+  - ATL60-SUPABASE-SCHEMA-MAPPING-V0.1
   - ATL60-GENERATION-REGISTRY-STUB
   - ATL60-QA-CLOSURE
 
@@ -129,14 +137,12 @@ qa_and_decisions:
     branch: atlas-governance-registry-v2.1
     commit: 0b45481b1a40030daa3d1661460d6d24c1fcb59e
 
-current_checkpoint: "ATL-60 governance correction complete. No canonical Supabase mutation occurred. Read-only Supabase schema mapping has not yet been executed under the corrected contract."
-next_action: "Inspect the existing Atlas Supabase schema read-only; map reusable existing tables/contracts to Z0-Z7 and the Research-to-Execution-Readiness Transformer; identify required reuse/extensions; then populate Generator Contract §7 external dependencies and §8 parameters/configuration with actual implementation facts."
+current_checkpoint: "Read-only Supabase schema mapping complete and persisted at commit 7f74d4e. Existing evidence/client/gap/Z5 tables mapped; dedicated canonical Z1 Operational Knowledge and Z6 readiness-proof storage identified as structural gaps. Transformer Contract §7/§8 bound from observed implementation facts at commit 4e8265d. No Supabase mutation occurred."
+next_action: "Design the candidate ATL-60 schema extension/migration without applying it: Z1 Operational Knowledge envelope/entities + typed relationships/provenance + Z6 readiness proof/run lineage, reusing existing Z0/Z2/Z5/governance tables. Persist design for independent QA before any database mutation."
 
 open_items:
-  - "Complete read-only Supabase schema mapping."
-  - "Populate Generator Contract §7 from actual dependencies/versions."
-  - "Populate Generator Contract §8 from actual parameters/configuration/defaults."
-  - "Design any required schema extension/migration without applying it."
+  - "Design required schema extension/migration without applying it."
+  - "Independently QA schema mapping, implementation-bound Transformer Contract, and candidate migration design."
   - "Independent QA/freeze of completed contract and schema/migration before canonical write."
   - "Continue LTL-03 retained-evidence reconciliation and candidate structuring within authorized boundary."
 
@@ -172,6 +178,6 @@ handoff:
 
 last_execution_record:
   operator: ChatGPT
-  stopped_at: "2026-09-22"
+  stopped_at: "2026-09-22T08:46+05:30 onward"
   durable_state_written: true
-  note: "Continuity governance created and ATL-60 bootstrapped before further substantive ATL-60 execution."
+  note: "ATL-60 resumed under continuity governance. Read-only Supabase mapping completed and persisted; Transformer Contract §7/§8 bound. No database mutation. Next action is candidate schema/migration design."
