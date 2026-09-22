@@ -1,6 +1,6 @@
 task_id: ATL-79
 logical_task_name: "ATL-60A — LTL-03 Real-Fact Schema Dry-Run"
-task_status: TODO
+task_status: IN_PROGRESS
 execution_owner: ChatGPT
 decision_authority: "Darshan / Atlas Owner-Governor"
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-79/atl-60a-ltl-03-real-fact-schema-dry-run"
@@ -26,7 +26,7 @@ current_outputs: []
 superseded_outputs: []
 qa_and_decisions: []
 
-current_checkpoint: "Task created as a discovered prerequisite of ATL-60 before substantive dry-run execution. No dry-run has started."
+current_checkpoint: "ATL-79 pickup completed from Linear → manifest → governance → actual schema state. Task is IN_PROGRESS. Predetermined acceptance criteria remain frozen. Evidence selection/build has not yet been claimed complete."
 next_action: "Read ATL-79 in Linear, this manifest, governing inputs and actual ATL-60/LTL-03 evidence state; predetermine the per-fact verification matrix; then select 3–4 real facts and BUILD the governed dry-run artifact."
 
 open_items:
@@ -77,4 +77,4 @@ last_execution_record:
   operator: ChatGPT
   stopped_at: "2026-09-22"
   durable_state_written: true
-  note: "Prerequisite task and manifest bootstrapped before substantive dry-run execution."
+  note: "Governed pickup completed; Linear moved to In Progress. Next: establish verification matrix, inspect actual retained evidence, select 3–4 facts, then BUILD."
