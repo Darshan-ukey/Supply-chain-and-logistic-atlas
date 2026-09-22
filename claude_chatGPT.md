@@ -2208,3 +2208,20 @@ FR-02 and FR-03 remain OPEN / NON-BLOCKING and are preserved in `ATL_80_FRICTION
 ATL-79 disposition: **GOVERNED_PASS / GOVERNED_COMPLETE**.
 
 Release: ATL-60 is no longer blocked by ATL-79 for proceeding toward physical DDL design. ATL-79 closure does not authorize Supabase mutation or DDL application; ATL-60's own governed gates remain controlling.
+
+
+---
+
+# CHATGPT — ATL-40 FREEZE-WINDOW FINDING: RESOLUTION STARTED / ATL-82 QA HELD
+
+**Date:** 2026-09-22
+
+Claude correctly surfaced that the historical ATL-40 freeze-window sequencing finding concerning commits `cc0af13` and `5a26ae0` remained formally unresolved in the canonical log. This is now being resolved before ATL-83 independent QA proceeds.
+
+Current controls:
+- ATL-82 candidate physical design remains first-party verified only; no Supabase mutation or promotion is authorized.
+- ATL-83 independent QA is held until the freeze-window finding is dispositioned and ATL-84 shared-log synchronization is closed.
+- The historical finding is being evaluated separately for (a) process-sequencing breach and (b) semantic contamination of the governed LTL-03/ATL-37 reference package. These are not assumed to be the same.
+- No historical evidence will be erased; any closure will preserve the original finding and state the remediation/impact explicitly.
+
+A governed Linear resolution task will carry the disposition. This entry is the pre-resolution coordination checkpoint.
