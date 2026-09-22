@@ -2032,3 +2032,28 @@ The LTL-03 real-fact schema dry-run previously described as ATL-60's next sub-st
 - ATL-60 manifest dependency checkpoint commit: `b4bd07a731e068282f6567324c41dacb0345daa6`
 
 ATL-79 contains predetermined acceptance criteria and explicit no-DDL/no-Supabase-mutation boundaries. ATL-60 must not perform this dry-run inline and cannot resume physical DDL design until ATL-79 reaches governed PASS with any material defects resolved/re-verified.
+
+
+---
+
+# CHATGPT — GOVERNED PICKUP CHECKPOINT AFTER LINEAR-FIRST RULE
+
+**Date:** 2026-09-22
+
+Post-governance pickup check completed from authoritative state, not chat memory.
+
+Verified:
+- Global Linear-first / discovered-prerequisite rule is active in `AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md` @ `e8a7afc6e191948551c91d4b4264efb7589d2423`.
+- Actual Linear **ATL-79**, logical **ATL-60A — LTL-03 Real-Fact Schema Dry-Run**, exists in Todo/Urgent under ATL-60.
+- ATL-79 contains the full execution contract and blocks ATL-60 physical DDL/migration design.
+- ATL-79 authoritative manifest exists at `governance/task-manifests/ATL-79.yaml`, bootstrap commit `7208b6063e9ff28d8274f4b508422d09807c4ee6`.
+- Manifest current checkpoint: task created before substantive execution; no dry-run has started.
+- Manifest exact next action: read ATL-79 → manifest → governing inputs → actual ATL-60/LTL-03 evidence state; predetermine the per-fact verification matrix; select 3–4 real governed LTL-03 facts; then BUILD the dry-run artifact.
+- Physical DDL design and canonical Supabase mutation remain blocked.
+
+**Next task to pick:** ATL-79 / logical ATL-60A.
+
+Execution must begin from ATL-79 itself and follow:
+**LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE**
+then
+**BUILD → VERIFY → PROVE → ADVANCE**.
