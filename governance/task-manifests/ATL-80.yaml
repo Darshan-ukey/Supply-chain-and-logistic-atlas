@@ -1,6 +1,6 @@
 task_id: ATL-80
 logical_task_name: "ATL-79A — Governed Seed Knowledge-Type Registry Contract"
-task_status: TODO
+task_status: IN_PROGRESS
 execution_owner: ChatGPT
 decision_authority: "Darshan / Atlas Owner-Governor"
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-80/atl-79a-governed-seed-knowledge-type-registry-contract"
@@ -23,8 +23,8 @@ governing_inputs:
   - type: linear_parent
     id: ATL-79
 
-current_checkpoint: "Task created from ATL-79 verification failure FR-01. No seed registry design has started."
-next_action: "Read ATL-80 → this manifest → governing inputs → actual current type-registry design state; then BUILD only the minimum governed seed entity/relationship type contract pack required to rerun ATL-79 criterion #3."
+current_checkpoint: "Governed ATL-80 pickup completed from Linear → manifest → governing inputs → actual ATL-60 schema and ATL-79 BUILD/VERIFY artifacts. Linear moved to IN_PROGRESS. No seed registry BUILD has yet been claimed complete."
+next_action: "BUILD only the minimum governed seed entity/relationship type contract pack required by ATL-79 F1–F4 and their relationships. Use the frozen ATL-80 acceptance criteria; persist candidate pack, then VERIFY exact IDs/versions, machine-validatable contracts, endpoint constraints, successor-version semantics and sufficiency for ATL-79 criterion #3. No DDL/Supabase mutation."
 
 authorized_actions:
   - "Define minimum logical seed type/relationship contracts justified by ATL-79."
@@ -65,3 +65,9 @@ handoff:
     - "Verify actual current registry/type state."
     - "Execute only next_action."
   chat_history_required: false
+
+last_execution_record:
+  operator: ChatGPT
+  stopped_at: "2026-09-22"
+  durable_state_written: true
+  note: "ATL-80 pickup completed under mandatory protocol. Actual governing schema and ATL-79 failure artifacts were inspected. Task moved to In Progress; BUILD is next."
