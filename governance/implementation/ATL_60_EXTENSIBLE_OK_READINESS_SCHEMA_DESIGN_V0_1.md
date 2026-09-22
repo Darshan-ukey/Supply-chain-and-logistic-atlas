@@ -29,7 +29,8 @@ Core columns:
 - `module_id text`;
 - `module_version text`;
 - `ownership_zone text` — required Z0–Z7;
-- `entity_type text` — governed type identity;\n- `entity_type_version text` — immutable pin to the exact governed type-contract version used when this record was written; the registry reference is `(entity_type, entity_type_version)`, never `entity_type` alone;
+- `entity_type text` — governed type identity;
+- `entity_type_version text` — immutable pin to the exact governed type-contract version used when this record was written; the registry reference is `(entity_type, entity_type_version)`, never `entity_type` alone;
 - `canonical_name text`;
 - `definition text`;
 - `operational_purpose text null`;
@@ -46,7 +47,10 @@ Core columns:
 
 Primary key candidate: `(knowledge_id, knowledge_version)`.
 
-**Rules:**\n- `semantic_payload` is an extension surface, not a substitute for the stable kernel. Material semantics that become cross-domain/common should graduate into the governed type/relationship model rather than remain opaque ad hoc JSON.\n- A persisted `(knowledge_id, knowledge_version)` row is append-only for semantic content. A semantic change creates a new version row; it never mutates the prior semantic record in place. `updated_at` may record non-semantic operational bookkeeping only.\n- At write time, `applicability` and `semantic_payload` MUST be validated by the governed Transformer/Generator implementation against the exact `(entity_type, entity_type_version)` `schema_contract` before insert. Postgres-level JSON-schema enforcement is an explicit physical-design decision; application/generator write-time validation is the minimum mandatory enforcement layer and cannot be omitted.
+**Rules:**
+- `semantic_payload` is an extension surface, not a substitute for the stable kernel. Material semantics that become cross-domain/common should graduate into the governed type/relationship model rather than remain opaque ad hoc JSON.
+- A persisted `(knowledge_id, knowledge_version)` row is append-only for semantic content. A semantic change creates a new version row; it never mutates the prior semantic record in place. `updated_at` may record non-semantic operational bookkeeping only.
+- At write time, `applicability` and `semantic_payload` MUST be validated by the governed Transformer/Generator implementation against the exact `(entity_type, entity_type_version)` `schema_contract` before insert. Postgres-level JSON-schema enforcement is an explicit physical-design decision; application/generator write-time validation is the minimum mandatory enforcement layer and cannot be omitted.
 
 ### 2.2 Candidate table: `atlas_knowledge_relationships`
 
@@ -57,7 +61,8 @@ Core columns:
 - `relationship_version text`;
 - `module_id text`;
 - `ownership_zone text`;
-- `relationship_type text` — governed relationship-type identity;\n- `relationship_type_version text` — immutable pin to the exact governed relationship-type contract used when this record was written; the registry reference is `(relationship_type, relationship_type_version)`, never `relationship_type` alone;
+- `relationship_type text` — governed relationship-type identity;
+- `relationship_type_version text` — immutable pin to the exact governed relationship-type contract used when this record was written; the registry reference is `(relationship_type, relationship_type_version)`, never `relationship_type` alone;
 - `from_knowledge_id text`;
 - `from_knowledge_version text`;
 - `to_knowledge_id text`;
@@ -71,7 +76,9 @@ Core columns:
 - `content_hash text`;
 - timestamps.
 
-**Relationship immutability and validation:** a persisted `(relationship_id, relationship_version)` row is append-only for semantic content; semantic change creates a successor version. `applicability` and `semantic_payload` MUST be validated at write time by the governed Transformer/Generator implementation against the exact `(relationship_type, relationship_type_version)` contract.\n\nThis supports current ATL-60 traces such as:
+**Relationship immutability and validation:** a persisted `(relationship_id, relationship_version)` row is append-only for semantic content; semantic change creates a successor version. `applicability` and `semantic_payload` MUST be validated at write time by the governed Transformer/Generator implementation against the exact `(relationship_type, relationship_type_version)` contract.
+
+This supports current ATL-60 traces such as:
 `work node → object/information → rule/decision → condition → exception → output/state`
 without asserting that this is the only future relationship pattern.
 
@@ -149,7 +156,9 @@ Do not duplicate Z2 values into Z1.
 - unresolved semantics remain explicit and can create/reference `atlas_knowledge_gaps`;
 - a Z1 record may declare a binding requirement but may not contain the enterprise-specific value as reusable truth.
 
-Candidate cross-reference fields can be carried through typed relationships such as `REQUIRES_CLIENT_BINDING`, `REQUIRES_MASTER_DATA`, `HAS_KNOWLEDGE_GAP`.\n\n**Gap linkage convention:** a Mechanism-1 return request in existing `atlas_knowledge_gaps` MUST identify the governed semantic target it concerns. The logical convention is `context.knowledge_ref = { knowledge_id, knowledge_version }` for entity gaps or `context.relationship_ref = { relationship_id, relationship_version }` for relationship gaps. Physical design must validate this documented shape (or replace it with an FK-bearing junction before DDL is frozen); an unlinked free-text gap is not sufficient to block/promote a governed knowledge record.
+Candidate cross-reference fields can be carried through typed relationships such as `REQUIRES_CLIENT_BINDING`, `REQUIRES_MASTER_DATA`, `HAS_KNOWLEDGE_GAP`.
+
+**Gap linkage convention:** a Mechanism-1 return request in existing `atlas_knowledge_gaps` MUST identify the governed semantic target it concerns. The logical convention is `context.knowledge_ref = { knowledge_id, knowledge_version }` for entity gaps or `context.relationship_ref = { relationship_id, relationship_version }` for relationship gaps. Physical design must validate this documented shape (or replace it with an FK-bearing junction before DDL is frozen); an unlinked free-text gap is not sufficient to block/promote a governed knowledge record.
 
 ## 6. Z6 readiness proof
 
@@ -233,7 +242,11 @@ Regardless of future process/domain:
 - runtime evidence cannot silently overwrite canonical truth;
 - HTML/UI is projection only;
 - candidate generation cannot self-promote;
-- semantic types/relationships are versioned, and every entity/relationship record pins the exact type version under which it was validated;\n- persisted knowledge/relationship semantic rows are append-only; semantic change creates a successor version;\n- JSON extension surfaces are validated at governed write time against the pinned type contract;\n- Z1→Z5 derivation is anchored by an immutable knowledge-generation run and consumed-knowledge manifest;\n- research-vs-client evidence source class remains mechanically distinguishable;
+- semantic types/relationships are versioned, and every entity/relationship record pins the exact type version under which it was validated;
+- persisted knowledge/relationship semantic rows are append-only; semantic change creates a successor version;
+- JSON extension surfaces are validated at governed write time against the pinned type contract;
+- Z1→Z5 derivation is anchored by an immutable knowledge-generation run and consumed-knowledge manifest;
+- research-vs-client evidence source class remains mechanically distinguishable;
 - readiness vocabulary remains Constitution-controlled.
 
 ## 10. Candidate migration sequence — NOT AUTHORIZED TO APPLY
@@ -242,14 +255,15 @@ A future migration should, after QA/freeze:
 1. create type registries;
 2. create knowledge entity kernel;
 3. create relationship kernel;
-4. create evidence-link table;
-5. create readiness run/evidence tables;
-6. add indexes and integrity constraints;
-7. add RLS policies/capability gates;
-8. add validators for ownership zone, type contract, endpoint constraints and readiness vocabulary;
-9. prove rollback/rebuild;
-10. seed only frozen/approved base type contracts;
-11. materialize ATL-60 candidate knowledge only through the governed Generator/Generation Registry.
+4. create evidence-link table and the selected evidence source-class control/path;
+5. create `atlas_knowledge_generation_runs` for Z1→Z5 lineage;
+6. create readiness run/evidence tables;
+7. add indexes and integrity constraints, including composite type/version references;
+8. add RLS policies/capability gates;
+9. add validators for ownership zone, pinned type contract, endpoint constraints, gap-reference shape, source class and readiness vocabulary; decide and document whether Postgres-level JSON validation supplements the mandatory generator write-time validation;
+10. prove append-only/version immutability and rollback/rebuild;
+11. seed only frozen/approved base type contracts;
+12. materialize ATL-60 candidate knowledge only through the governed Generator/Generation Registry.
 
 ## 11. Candidate physical migration sketch
 
