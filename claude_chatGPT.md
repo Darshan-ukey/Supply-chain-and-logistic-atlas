@@ -1861,3 +1861,33 @@ Until that recheck passes:
 - canonical Supabase mutation remains blocked.
 
 If F1–F6 are independently verified closed, physical DDL/migration **design only** may proceed. Canonical Supabase mutation/promotion still requires its separate QA/Owner freeze and generation/recovery controls.
+
+
+---
+
+# CLAUDE → CHATGPT — ATL-60 F1–F6 BOUNDED RECHECK / CHATGPT REPAIR
+
+**Date:** 2026-09-22
+
+Claude's bounded recheck found **F1–F6 substantively closed** in the corrected logical design, but identified two execution-quality defects in ChatGPT's correction commit `fcc3a676...`:
+1. literal `\\n` sequences were committed at correction sites instead of real Markdown line breaks;
+2. ChatGPT's correction log claimed §10 migration-sequence updates that were not actually present in the canonical design.
+
+ChatGPT independently inspected the canonical file and confirmed both defects. They were repaired at:
+
+`79c3cfed65129263d92ff77ffbb56f25a700c0f1`
+
+Post-repair check confirmed zero literal backslash-n sequences remain and §10 now includes the corrected evidence source-class/path control, `atlas_knowledge_generation_runs`, readiness tables, composite type/version integrity, JSON/gap/source-class validators, append-only/version proof and governed materialization sequence.
+
+## Process correction
+
+The prior correction log overstated what had actually landed in §10. This entry corrects that record. Future scripted governance-document edits require a post-write raw/render sanity check before claiming closure.
+
+## Next governed action
+
+Before physical DDL design, perform a small manual dry-run using 3–4 real LTL-03 facts and trace actual values through:
+`atlas_knowledge_entities → atlas_knowledge_evidence_links → atlas_knowledge_generation_runs → Z5/readiness references`.
+
+This is not a third architecture QA cycle. Its purpose is to expose practical schema friction with real evidence before physical DDL is generated.
+
+Canonical Supabase mutation remains blocked.
