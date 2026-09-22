@@ -42,9 +42,12 @@ Common kernel fields such as `knowledge_id`, `knowledge_version`, `ownership_zon
     "identity_components": {"type": "array", "items": {"type": "string"}},
     "distinction_rules": {"type": "array", "items": {"type": "string"}}
   },
+  "required": ["object_kind"],
   "additionalProperties": false
 }
 ```
+When source evidence establishes that an instance of this type must be distinguished from a similar object under the governing standard (as with the Reference/PRO distinction in ATL-79 F1), `distinction_rules` is also required at write time; the governed Transformer/Generator implementation must enforce this in addition to the type's baseline JSON-Schema `required` array.
+
 ATL-79 consumer: F1 `KN-LTL03-REFERENCE-OBJECT@1`. The Typed Reference/PRO distinction remains instance semantics; this type is not LTL-specific.
 
 ### ET-RULE @ 1.0.0
@@ -179,6 +182,8 @@ Example:
 - Revalidation against a successor version requires creation/promotion of a successor knowledge version, not silent reinterpretation.
 
 The same rule applies to relationship contracts.
+
+**Type-registry immutability.** Each of the five contracts in this pack (`ET-BUSINESS-OBJECT@1.0.0`, `ET-RULE@1.0.0`, `ET-EXCEPTION@1.0.0`, `ET-DEPENDENCY@1.0.0`, `RT-ASSOCIATED-WITH@1.0.0`), once persisted, is immutable — its `schema_contract`/endpoint constraints must never be edited in place. A semantic correction or extension creates a new `type_version` (e.g. `ET-RULE@1.0.1` or `@1.1.0` per governed compatibility policy established at physical design) rather than modifying the `@1.0.0` row this pack defines.
 
 ## 7. Candidate status and promotion boundary
 
