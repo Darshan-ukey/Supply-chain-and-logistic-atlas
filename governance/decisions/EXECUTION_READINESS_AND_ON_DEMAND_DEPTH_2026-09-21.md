@@ -137,3 +137,139 @@ This prevents both under-research and unbounded research.
 - LTL-03 must be proven execution-ready before its observed depth is generalized into the on-demand-depth architecture.
 - Generator design must follow the empirical proof; it must not define the target by assumption.
 - Atlas remains execution-platform-neutral at the canonical knowledge layer.
+
+
+## 10. Governed Data Transformation Mechanism — Operational Knowledge & Work Decomposition
+
+This section governs how Atlas transforms retained research/evidence into reusable Operational Knowledge (OK), Work Decomposition and later executor-specific projections. It is intended to be agent-reproducible; implementation must not depend on chat history.
+
+### 10.1 Architectural source-of-truth rule
+
+**Research/evidence is the input. Supabase is the governed structured knowledge store. HTML is a UI/projection only.**
+
+The HTML experience must not become the canonical store for Operational Knowledge, Work Decomposition, fields, rules, provenance, gaps or binding requirements. It reads/project structured Atlas knowledge.
+
+Before changing the database, inspect the existing Atlas Supabase schema and extend/reuse canonical structures where appropriate. Do not create a parallel LTL-03 schema merely for convenience.
+
+### 10.2 Universe-before-use-case rule
+
+For any selected Atlas task/node, first establish the full operational universe at the required baseline depth before narrowing to a proof use case.
+
+For LTL-03 specifically:
+- LTL-03 is the operational/documentation/identity universe under study.
+- BOL is one document/object family within that universe.
+- BOL digitisation is one execution use case/projection involving that family.
+- The research must first determine the actual documentation work, document/object families, lifecycle activities, handoffs, purpose and dependencies. Examples such as creation/amendment/cancellation/digitisation are hypotheses until supported by evidence.
+
+BOL digitisation must not redefine the canonical scope of LTL-03.
+
+### 10.3 Evidence-to-knowledge normalization
+
+Retained evidence must be transformed into linked governed entities, including as applicable:
+- work nodes / operational activities;
+- business and document objects and relationships;
+- lifecycle events, states and transitions;
+- actors, roles and authority;
+- systems and interfaces;
+- inputs, outputs and dependencies;
+- information concepts, fields, sections, cardinality, aliases and representations;
+- business rules, decisions and validation logic;
+- conditional applicability and jurisdiction;
+- exceptions, recovery and HITL requirements;
+- handoffs and exchanges;
+- controls and evidence requirements;
+- source authority / precedence and conflict handling;
+- normalization / transformation semantics;
+- client-binding and master-data requirements;
+- explicit knowledge gaps and uncertainty;
+- WorkDefinition / Domain Execution Contract relationships.
+
+### 10.4 Common governance/evidence envelope
+
+Each material knowledge element must carry sufficient metadata to make it traceable and governable. At minimum, where applicable:
+- stable knowledge ID;
+- task/work-node applicability;
+- knowledge type;
+- canonical name and definition;
+- operational purpose;
+- applicability / conditions;
+- required inputs;
+- logic / semantics;
+- expected output or state;
+- exception behavior;
+- related objects;
+- actor/system;
+- source/evidence reference;
+- authority level;
+- support/confidence status;
+- client-binding requirement;
+- master-data requirement;
+- executor relevance;
+- knowledge-gap state;
+- version / governance identity.
+
+Entity-specific schemas may add specialist attributes; the common envelope is not intended to flatten all knowledge into one table.
+
+### 10.5 Operational Knowledge to Work Decomposition
+
+Work Decomposition is derived from the structured Operational Knowledge, not directly from prose, research notes or HTML.
+
+Required traceability pattern:
+
+**work node → required information/object → rule/decision → condition → evidence/authority → exception → output/state → binding/gap**
+
+A decomposition leaf is not execution-ready merely because it has an action label. The relevant readiness dimensions in the Execution Readiness Contract must be resolvable or explicitly blocked/bound.
+
+### 10.6 Gap states and targeted mini-research
+
+Missing information is first-class governed data. Do not infer values merely to fill a UI or achieve apparent completeness.
+
+Permitted states include:
+- SUPPORTED
+- PARTIALLY_SUPPORTED
+- KNOWLEDGE_GAP
+- SOURCE_CONTEXT_PENDING
+- CLIENT_BINDING_REQUIRED
+- MASTER_DATA_REQUIRED
+
+After the first structuring pass, query the structured model for missing material semantics and generate a targeted mini-research backlog. Prefer the same authoritative source universe already used for the task. Research only unresolved material gaps, attach the resulting evidence, then enrich the affected knowledge records.
+
+This cycle is:
+
+**research → structured ingestion → gap detection → targeted mini-research → evidence → enrichment → readiness reassessment**
+
+This is also the candidate reusable transformation mechanism supporting Atlas on-demand knowledge depth.
+
+### 10.7 Executor projection
+
+Executor-specific implementation artifacts are generated only after canonical OK and Work Decomposition are established.
+
+For the current proof:
+1. establish wider LTL-03 operational/documentation knowledge;
+2. freeze the independent BOL universe;
+3. identify the BOL-digitisation subset;
+4. project only the applicable canonical knowledge, plus explicit Client Binding/master requirements, into the experimental executor.
+
+The executor projection must not mutate canonical domain meaning.
+
+### 10.8 Supabase and HTML roles
+
+**Supabase:** governed structured knowledge persistence and relationships.
+
+**HTML:** interactive human projection of the Supabase-backed model, expected to expose:
+LTL-03 universe → Work Decomposition → documents/objects → lifecycle → information requirements → rules/decisions → exceptions → handoffs/dependencies → evidence/provenance → gaps/bindings → executor projection.
+
+A UI representation is replaceable. The governed structured knowledge is not.
+
+### 10.9 Agent continuity / failure recovery
+
+This mechanism is deliberately recorded in GitHub and Linear so another authorized implementation agent, including Claude, can continue the work if the current agent fails or the conversation context is lost.
+
+An agent must:
+1. read this governance record and the active Linear gate;
+2. consume governed evidence rather than chat recollection;
+3. preserve source-to-knowledge traceability;
+4. materialize structured OK before deriving Work Decomposition;
+5. preserve explicit gaps/bindings rather than hallucinating closure;
+6. use Supabase as the structured persistence layer and HTML only as a projection;
+7. stop at the applicable QA/Owner gate and never self-authorize architectural exceptions.
