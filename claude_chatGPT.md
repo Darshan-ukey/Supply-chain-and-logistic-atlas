@@ -1724,3 +1724,20 @@ Failure states include `BLOCKED_TASK_MANIFEST_MISSING`, `BLOCKED_WORK_OUTPUT_NOT
 No agent may self-waive the standard. Closed historical tasks require bootstrap only if reopened or consumed as an active dependency.
 
 **ATL-60 current resumable checkpoint:** governance correction complete; canonical Supabase untouched; next action is read-only Supabase schema mapping, then implementation-specific binding of Transformer Contract §7/§8. Chat history is not required for pickup.
+
+
+---
+
+# OWNER — RESEARCH OUTPUT GOVERNANCE BACKLOG
+
+**Date:** 2026-09-22  
+**Linear:** ATL-78 — Research Output Governance — evidence-to-research continuity standard  
+**Status:** BACKLOG — NOT CURRENT EXECUTION
+
+Owner identified a further governance requirement: research outputs require a dedicated continuity/governance model analogous to task-output continuity. Research evidence, findings, provenance, uncertainty, checkpoints, supersession and research-closed state must be independently recoverable and consumable without reliance on chat history or the originating research agent.
+
+This is deliberately deferred. **Do not interrupt ATL-60 or treat ATL-78 as authorization to redesign the current research/transformation mechanism.**
+
+When activated, ATL-78 must define the governed research package/manifest, claim↔evidence traceability, source authority/precedence, raw-vs-derived separation, conflicting/unresolved findings, checkpoint/freeze/supersession semantics, targeted re-research lifecycle, custody, QA/promotion and the interface from research output into structured Operational Knowledge and downstream generation.
+
+ATL-78 must itself comply with the Agent-Independent Task Continuity Standard when activated; bootstrap its Task Execution Manifest before substantive execution.
