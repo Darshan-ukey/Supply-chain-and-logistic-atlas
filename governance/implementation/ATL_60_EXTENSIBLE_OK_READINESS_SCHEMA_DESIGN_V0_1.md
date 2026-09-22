@@ -29,7 +29,7 @@ Core columns:
 - `module_id text`;
 - `module_version text`;
 - `ownership_zone text` — required Z0–Z7;
-- `entity_type text` — references governed type registry;
+- `entity_type text` — governed type identity;\n- `entity_type_version text` — immutable pin to the exact governed type-contract version used when this record was written; the registry reference is `(entity_type, entity_type_version)`, never `entity_type` alone;
 - `canonical_name text`;
 - `definition text`;
 - `operational_purpose text null`;
@@ -46,7 +46,7 @@ Core columns:
 
 Primary key candidate: `(knowledge_id, knowledge_version)`.
 
-**Rule:** `semantic_payload` is an extension surface, not a substitute for the stable kernel. Material semantics that become cross-domain/common should graduate into the governed type/relationship model rather than remain opaque ad hoc JSON.
+**Rules:**\n- `semantic_payload` is an extension surface, not a substitute for the stable kernel. Material semantics that become cross-domain/common should graduate into the governed type/relationship model rather than remain opaque ad hoc JSON.\n- A persisted `(knowledge_id, knowledge_version)` row is append-only for semantic content. A semantic change creates a new version row; it never mutates the prior semantic record in place. `updated_at` may record non-semantic operational bookkeeping only.\n- At write time, `applicability` and `semantic_payload` MUST be validated by the governed Transformer/Generator implementation against the exact `(entity_type, entity_type_version)` `schema_contract` before insert. Postgres-level JSON-schema enforcement is an explicit physical-design decision; application/generator write-time validation is the minimum mandatory enforcement layer and cannot be omitted.
 
 ### 2.2 Candidate table: `atlas_knowledge_relationships`
 
@@ -57,7 +57,7 @@ Core columns:
 - `relationship_version text`;
 - `module_id text`;
 - `ownership_zone text`;
-- `relationship_type text` — references governed relationship-type registry;
+- `relationship_type text` — governed relationship-type identity;\n- `relationship_type_version text` — immutable pin to the exact governed relationship-type contract used when this record was written; the registry reference is `(relationship_type, relationship_type_version)`, never `relationship_type` alone;
 - `from_knowledge_id text`;
 - `from_knowledge_version text`;
 - `to_knowledge_id text`;
@@ -71,7 +71,7 @@ Core columns:
 - `content_hash text`;
 - timestamps.
 
-This supports current ATL-60 traces such as:
+**Relationship immutability and validation:** a persisted `(relationship_id, relationship_version)` row is append-only for semantic content; semantic change creates a successor version. `applicability` and `semantic_payload` MUST be validated at write time by the governed Transformer/Generator implementation against the exact `(relationship_type, relationship_type_version)` contract.\n\nThis supports current ATL-60 traces such as:
 `work node → object/information → rule/decision → condition → exception → output/state`
 without asserting that this is the only future relationship pattern.
 
@@ -136,7 +136,7 @@ Fields:
 - `claim_scope jsonb`;
 - `created_at timestamptz`.
 
-The link references existing Z0 evidence/document/chunk/candidate-fact assets where applicable. It does not duplicate source files.
+The link references governed evidence assets where applicable. It does not duplicate source files. Evidence reuse MUST preserve source class. `AUTHORITATIVE_RESEARCH` / Mechanism-1 evidence is Z0 provenance and MUST NOT be represented as client evidence merely because an existing client-document pipeline is convenient; `CLIENT_PROVIDED` evidence remains client-context evidence. Physical design must either (a) add a mechanically queryable `source_class` to the evidence/document substrate consumed by this table, including at least `AUTHORITATIVE_RESEARCH` and `CLIENT_PROVIDED`, or (b) provide a separate governed Mechanism-1 authoritative-source ingestion path. Until one is selected and QA'd, authoritative research evidence must not be loaded through `atlas_client_documents`/`atlas_document_chunks` as though those tables were neutral Z0 substrate.
 
 **Constraint:** each link targets either a knowledge entity or relationship. Material ACTIVE/APPROVED Z1 assertions require governed evidence linkage unless the governing contract explicitly allows a different provenance mechanism.
 
@@ -149,7 +149,7 @@ Do not duplicate Z2 values into Z1.
 - unresolved semantics remain explicit and can create/reference `atlas_knowledge_gaps`;
 - a Z1 record may declare a binding requirement but may not contain the enterprise-specific value as reusable truth.
 
-Candidate cross-reference fields can be carried through typed relationships such as `REQUIRES_CLIENT_BINDING`, `REQUIRES_MASTER_DATA`, `HAS_KNOWLEDGE_GAP`.
+Candidate cross-reference fields can be carried through typed relationships such as `REQUIRES_CLIENT_BINDING`, `REQUIRES_MASTER_DATA`, `HAS_KNOWLEDGE_GAP`.\n\n**Gap linkage convention:** a Mechanism-1 return request in existing `atlas_knowledge_gaps` MUST identify the governed semantic target it concerns. The logical convention is `context.knowledge_ref = { knowledge_id, knowledge_version }` for entity gaps or `context.relationship_ref = { relationship_id, relationship_version }` for relationship gaps. Physical design must validate this documented shape (or replace it with an FK-bearing junction before DDL is frozen); an unlinked free-text gap is not sufficient to block/promote a governed knowledge record.
 
 ## 6. Z6 readiness proof
 
@@ -203,7 +203,7 @@ Z5 artifacts remain in the existing protected stores.
 
 The transformer must produce an immutable input manifest identifying the exact Z1 knowledge versions, relationships, Z2 bindings where applicable, governing contracts and source/evidence state consumed to create a Work Decomposition.
 
-Candidate extension to Z5 should be minimal. Prefer storing the manifest/hash in a dedicated generation/readiness record and retaining the existing `semantic_source_version`, `content_hash` and `governed_input_content_hash` controls rather than duplicating the Z1 model inside Z5.
+Candidate extension to Z5 should be minimal. **This design selects a dedicated `atlas_knowledge_generation_runs` record rather than overloading readiness assessment.** Its minimum logical identity is: `generation_run_id`, `decomposition_id` (and version/hash where applicable), `consumed_knowledge_manifest_hash`, `generator_contract_id`, `generator_contract_version`, `generator_implementation_identity`, `run_status`, `created_at`, and immutable output identity/hash. The consumed manifest enumerates exact Z1 entity/relationship versions plus applicable Z2 bindings and evidence state. This is the concrete Z1→Z5 lineage anchor. Retain the existing `semantic_source_version`, `content_hash` and `governed_input_content_hash` controls in Z5 rather than duplicating the Z1 model there.
 
 No existing P6.1/P6.2 row is changed by this design.
 
@@ -212,9 +212,9 @@ No existing P6.1/P6.2 row is changed by this design.
 When research discovers a genuinely new structure:
 
 1. Determine whether it is merely a new instance of an existing type/relationship.
-2. If not, create a **candidate type extension** with definition, ownership zone, validation schema, relationship constraints and evidence.
+2. If not, create a **candidate type extension** with definition, ownership zone, validation schema, relationship constraints and evidence through the existing `atlas_foundation_change_proposals` governance path.
 3. Test whether the extension preserves existing invariants and queryability.
-4. Run independent semantic/schema QA.
+4. Run independent semantic/schema QA through the existing `atlas_review_requests` governance path; the review must reference the exact candidate type/version and proposal identity.
 5. Owner/governance promotion activates the new type/version.
 6. Existing knowledge remains valid against its original type version; no destructive rewrite is required.
 7. If the discovery changes the stable kernel itself, create a successor schema/contract version and perform dependency-impact analysis rather than silently adding columns.
@@ -233,7 +233,7 @@ Regardless of future process/domain:
 - runtime evidence cannot silently overwrite canonical truth;
 - HTML/UI is projection only;
 - candidate generation cannot self-promote;
-- semantic types/relationships are versioned;
+- semantic types/relationships are versioned, and every entity/relationship record pins the exact type version under which it was validated;\n- persisted knowledge/relationship semantic rows are append-only; semantic change creates a successor version;\n- JSON extension surfaces are validated at governed write time against the pinned type contract;\n- Z1→Z5 derivation is anchored by an immutable knowledge-generation run and consumed-knowledge manifest;\n- research-vs-client evidence source class remains mechanically distinguishable;
 - readiness vocabulary remains Constitution-controlled.
 
 ## 10. Candidate migration sequence — NOT AUTHORIZED TO APPLY
@@ -271,4 +271,4 @@ Independent QA must specifically challenge:
 
 ## 13. Current disposition
 
-**DESIGN CANDIDATE.** No DDL generated or applied. No Supabase mutation. Next gate is independent QA of this logical design together with the implementation-bound Transformer Contract.
+**CANDIDATE LOGICAL DESIGN — QA PASSED WITH BINDING CORRECTIONS APPLIED.** Claude independent QA disposition was `PASS_WITH_BINDING_CORRECTIONS`. F1–F6 have been applied to this logical design: pinned type versions; concrete `atlas_knowledge_generation_runs` Z1→Z5 lineage; explicit gap linkage and reuse of `atlas_foundation_change_proposals` / `atlas_review_requests`; mandatory generator write-time JSON validation with database enforcement decided at physical design; research-vs-client evidence source-class separation; and append-only semantic versioning. No DDL has been generated or applied and no Supabase mutation is authorized by this correction. The next gate is physical DDL/migration **design only**, including the non-blocking physical-design constraints identified by QA, followed by independent QA/Owner authorization before any canonical mutation.
