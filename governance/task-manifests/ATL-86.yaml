@@ -55,8 +55,8 @@ blocked_actions:
   - "deletion of historical prototype evidence"
   - "promotion of Malkom reference projection to canonical truth"
 
-current_checkpoint: "Linear ATL-86, manifest, ATL-83/82/60 holds, canonical shared-log checkpoint, Drive custody, and live Supabase read-only state are synchronized. Live verification: migration 20260908015858; atlas_work_decompositions=1; atlas_work_definitions=0; no mutation."
-next_action: "Inspect exact Sep-1/Sep-2/Sep-7/Sep-12 artifacts and current ATL-82 structures; produce table-by-table and contract-by-contract reconciliation proof before any ATL-82 correction decision."
+current_checkpoint: "ATL-86 substantive reconciliation started. Exact Sep-1/Sep-2/Sep-7/Sep-12 identities inspected. Working reconciliation persisted at commit 61392171718644437f4a73951b8b836a730d4555 and re-fetched/verified (blob ed02b977206c87b918fc0facf9083922e433cd65). Finding: ATL-82 SQL is additive/complementary to P6.2; no SQL redesign identified yet, but ATL-82 proof criterion #9 and stale governance registry basis require correction. ATL-83 remains blocked."
+next_action: "Correct ATL-82 rationale/proof basis and reconcile stale asset-register/supersession bookkeeping without rewriting historical frozen artifacts; then post-write verify and update ATL-86 proof."
 
 custody:
   drive_document_id: 17iA5LflmjebSIONZCNWRJ9qFGycQL8CItwTbrqqU4JI
@@ -66,3 +66,21 @@ custody:
   atlas_work_decompositions_rows: 1
   atlas_work_definitions_rows: 0
   supabase_mutation: false
+
+working_outputs:
+  - path: governance/implementation/ATL_86_P6_2_ATL_82_ARCHITECTURE_RECONCILIATION_V0_1.md
+    commit: 61392171718644437f4a73951b8b836a730d4555
+    blob_sha: ed02b977206c87b918fc0facf9083922e433cd65
+    status: VERIFIED_FIRST_PARTY_WORKING
+    description: "Cross-branch P6.2/ATL-82 reconciliation with prototype and Malkom-reference dispositions."
+open_items:
+  - "Correct ATL-82 rationale/proof acceptance criterion #9 basis."
+  - "Reconcile stale ASSET_REGISTER current/pending execution-contract bookkeeping with later P6.1/P6.2 frozen lineage."
+  - "Record explicit historical/non-runnable guard for Sep-1 prototype and Sep-2 warehouse candidate."
+  - "Run post-write verification and complete ATL-86 acceptance proof."
+  - "Independent Claude recheck if governance corrections materially alter ATL-82/P6.2 basis."
+last_execution_record:
+  operator: ChatGPT
+  date: "2026-09-23"
+  state: VERIFIED_FIRST_PARTY_WORKING
+  note: "No Supabase mutation; ATL-83 remains blocked."
