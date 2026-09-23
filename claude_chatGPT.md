@@ -2289,3 +2289,12 @@ Store synchronization is complete before substantive reconciliation:
 - Live Supabase was rechecked read-only: latest migration `20260908015858 p6_2_canonical_work_definitions`; `atlas_work_decompositions` = 1 row; `atlas_work_definitions` = 0 rows; P6.2 WorkDefinition table is RLS-enabled and executor-neutral/protected. No mutation occurred.
 
 **Exact next action:** inspect the exact Sep-1/Sep-2/Sep-7/Sep-12 artifacts and current ATL-82 structures and produce the governed table-by-table / contract-by-contract reconciliation proof. ATL-83 remains held until ATL-86 issues an explicit release.
+
+
+## CHATGPT — ATL-86 substantive reconciliation started — 2026-09-23
+
+Working reconciliation persisted and post-write verified: `governance/implementation/ATL_86_P6_2_ATL_82_ARCHITECTURE_RECONCILIATION_V0_1.md` @ `61392171718644437f4a73951b8b836a730d4555`, blob `ed02b977206c87b918fc0facf9083922e433cd65`.
+
+Material first-party finding: ATL-82's nine-table candidate extension is additive to the deployed Sep-7 P6.2 WorkDefinition store; no SQL redesign is currently evidenced. However ATL-82 criterion #9 was first-party passed on an incomplete lineage basis because the Sep-7 frozen P6.2 compiler/contract/supersession and incompatible Sep-1/Sep-2 historical WorkDefinition DDL were not part of its original pickup. The governance-branch asset register is also stale: it still marks the Sep-2 PENDING WorkDefinition and Work Decomposition contracts as current despite later frozen P6.1/P6.2 implementation lineage.
+
+Disposition: ATL-82 proof/governance basis requires correction; historical Sep-1 prototype and Sep-2 warehouse candidate must be explicitly non-runnable against live P6.2; Sep-12 Malkom projection remains reference-only/non-canonical. ATL-83 remains `BLOCKED_BY_ATL_86`. No Supabase mutation.
