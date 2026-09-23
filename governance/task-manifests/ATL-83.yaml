@@ -1,6 +1,6 @@
 task_id: ATL-83
 title: "ATL-82B — Independent QA: Physical DDL/Migration Design"
-task_status: BLOCKED_PENDING_ATL90_RECHECK
+task_status: AUTHORIZED_NOT_STARTED
 manifest_status: ACTIVE
 execution_owner: Claude
 decision_authority: "Darshan / Atlas Owner-Governor"
@@ -12,9 +12,9 @@ release_conditions:
   atl_85_freeze_window_disposition: PROCESS_VIOLATION_NO_SEMANTIC_CONTAMINATION
   atl_84_shared_log_sync: DONE
   released: true
-  atl_86_hold: ACTIVE_PENDING_ATL90_M1_M3_RECHECK
+  atl_86_hold: RELEASED_AFTER_ATL90_BOUNDED_RECHECK_PASS
   atl_90_result: PASS_WITH_BINDING_CORRECTIONS
-  resume_condition: "M1-M3 corrected and independently rechecked PASS; ATL-86 final synchronization complete."
+  resume_condition: "MET — ATL-90 bounded recheck PASS at 6ef29276f0bf0a358810646f80259f6db84a2bf3; ATL-86 GOVERNED_COMPLETE."
 
 governing_inputs:
   - governance/task-manifests/ATL-82.yaml
@@ -48,5 +48,5 @@ hard_stops:
   - "No ATL-60 promotion."
   - "Builder first-party proof is not independent QA."
 
-current_checkpoint: "Historical ATL-85/ATL-84 release is preserved, but ATL-83 is currently held by ATL-86/ATL-90. ATL-90 returned PASS_WITH_BINDING_CORRECTIONS; M1 manifest rebase is implemented and awaits Claude bounded M1-M3 recheck before ATL-83 resumes."
-next_action: "Do not resume ATL-82 physical-design QA yet. Claude first performs bounded ATL-90 recheck of M1-M3 closure. After PASS and ATL-86 final synchronization, resume ATL-83 against V0.2/ATL-86/ATL-90 inputs and seven physical-design checks."
+current_checkpoint: "ATL-86 is GOVERNED_COMPLETE after ATL-90 bounded M1-M3 recheck PASS. ATL-83 is released for Claude independent QA against the rebased V0.2/ATL-86/ATL-90 inputs and seven-check scope."
+next_action: "Claude performs ATL-83 independent QA of unchanged ATL-82 candidate SQL against all 10 predetermined acceptance criteria and seven physical-design checks. Persist evidence and stop for ChatGPT/Owner disposition. No DDL application."
