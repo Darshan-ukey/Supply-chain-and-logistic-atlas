@@ -2307,3 +2307,35 @@ ATL-86 corrections completed first-party without changing ATL-82 SQL or mutating
 ATL-86 proof: `governance/implementation/ATL_86_RECONCILIATION_PROOF_V0_1.md` @ `57e107bc93cde2f59612ef12f524ef5196419ebe`. Acceptance criterion #8 remains pending final Drive custody/final synchronization; all other criteria are first-party PASS, with the P6.1 standalone SHA-256 absence explicitly disclosed rather than invented.
 
 Because the registry/proof corrections are material, independent QA is now a separate governed prerequisite: Linear `ATL-90` / logical `ATL-86B`, manifest `governance/task-manifests/ATL-90.yaml` @ `f9e6e9a509fb50050ee766e9f55dce33799ea966`. ATL-90 blocks ATL-86; ATL-83 is blocked by both ATL-86 and ATL-90. No Supabase mutation. Next authorized action is independent ATL-90 QA.
+
+---
+
+# CLAUDE — ATL-90 INDEPENDENT QA: PASS_WITH_BINDING_CORRECTIONS / ATL-83 CONDITIONAL RELEASE
+
+**Date:** 2026-09-23
+**Linear:** ATL-90 / logical ATL-86B — Independent QA — P6.2 / ATL-82 Architecture Reconciliation
+**Reviewer:** Claude (independent of ATL-86 builder)
+**QA artifact:** `governance/implementation/ATL_90_INDEPENDENT_QA_P6_2_ATL_82_RECONCILIATION_V0_1.md` @ `781d93a7994a4e489e86da48f222fa150cfe1519`, blob `2b0aaed79564d9df374321aaea0c0fe8ce022a74` (landed by ChatGPT from Claude's Drive custody; blob must match exactly)
+
+Claude re-verified all nine ATL-90 criteria against fresh git objects (`atlas-governance-registry-v2.1` @ `feaf8d8`, `atlas-presentation-architecture-v1-p6-2`, `atlas-v2-demo-2026-09-14`) and live read-only Supabase. It did not rely on ATL-86's narrative. Criteria 1–8 **PASS** with zero discrepancies:
+- ATL-82's nine tables are additive and reference neither protected P6.1/P6.2 store.
+- The frozen P6.2 contract and migration each have exactly one commit (`c72b500`).
+- The `608598d` Asset Register diff matches the claimed PENDING→FROZEN correction line by line.
+- The Sep-1 and Sep-2 non-runnable guards are present, and Sep-1's incompatible shape and 22-definition/V1.2 seed were confirmed first-hand.
+- The Malkom projection is still `DEMO_REFERENCE_PROJECTION_NOT_CANONICAL_TRUTH` (one commit).
+- The corrected criterion-#9 basis holds.
+- The P6.1 SHA-256 absence is disclosed, not invented.
+- No Supabase mutation: latest migration is still `20260908015858`, rows 1/0, and no ATL-82 tables are live.
+
+**Binding corrections: manifest synchronization only, no SQL or reconciliation change.** They fall within ATL-86's still-pending criterion #8:
+- **M1:** `ATL-83.yaml` is untouched since `d911dd3` (before ATL-86). It still says `IN_PROGRESS` / `released: true`. Its governing inputs are V0.1 only, and it lacks ATL-82 V0.2 proof's 7th QA check. Status: `BLOCKED_LINEAR_MANIFEST_DRIFT` / `BLOCKED_CHECKPOINT_STALE`.
+- **M2:** `ATL-82.yaml` doesn't record the V0.1→V0.2 rationale/proof supersession. Status: `BLOCKED_SUPERSESSION_UNRECORDED` (TC-3).
+- **M3:** `ATL-60.yaml` still says it is blocked by ATL-79, which is `GOVERNED_COMPLETE`, and references nothing after ATL-79. Status: `BLOCKED_CHECKPOINT_STALE`.
+
+**ATL-83:** RELEASE recommended, **conditional** on M1–M3 closure in ATL-86 final sync. Resuming on the current ATL-83 manifest would point the QA at the superseded V0.1 basis. The release decision remains with ChatGPT/Owner, and Claude will run a bounded recheck of the M1–M3 closure.
+
+**Correction of Claude's own earlier text:** Linear comment `23609742-66b2-4535-a597-8d0b45acdb05` on ATL-90 said "PASS — no binding corrections / no manifest drift". The landed artifact supersedes it. A manifest-level check done during handoff found M1–M3.
+
+**Mechanism gap (Owner decision):** M1–M3 share one root cause. Continuity Standard §11 does not require the *blocked* task's and *parent* task's manifests to be checkpointed when a discovered prerequisite is created or released. Proposed amendment: that checkpoint becomes mandatory in the same change set.
+
+No Supabase mutation, DDL, branch merge or contract rewrite by Claude. Claude has read-only GitHub access, so this entry was delivered through Drive for ChatGPT to append.
