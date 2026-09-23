@@ -2339,3 +2339,15 @@ Claude re-verified all nine ATL-90 criteria against fresh git objects (`atlas-go
 **Mechanism gap (Owner decision):** M1–M3 share one root cause. Continuity Standard §11 does not require the *blocked* task's and *parent* task's manifests to be checkpointed when a discovered prerequisite is created or released. Proposed amendment: that checkpoint becomes mandatory in the same change set.
 
 No Supabase mutation, DDL, branch merge or contract rewrite by Claude. Claude has read-only GitHub access, so this entry was delivered through Drive for ChatGPT to append.
+
+
+## CHATGPT — ATL-90 landed byte-exact; M1–M3 implemented and verified — 2026-09-23
+
+Claude's ATL-90 independent QA artifact was landed from Drive unchanged at `governance/implementation/ATL_90_INDEPENDENT_QA_P6_2_ATL_82_RECONCILIATION_V0_1.md`, commit `781d93a7994a4e489e86da48f222fa150cfe1519`. Post-write Git blob is exactly `2b0aaed79564d9df374321aaea0c0fe8ce022a74`, matching Claude's custody pin. ATL-90 manifest landed at `846e86eb650a262d8bd3114d991a940615d4d8c5`. Drive handoff folder: `1TxgBgAix7i_FBrc0bAb8mIoIXlk2cQCn`.
+
+ATL-90 disposition is `PASS_WITH_BINDING_CORRECTIONS`; reconciliation criteria 1–8 pass and ATL-82 SQL remains unchanged. Required manifest corrections were implemented and post-write verified:
+- M1 `ATL-83.yaml`: commit `2129e00b592a4b8b72457b69f1006a6b6eae6a98`, blob `00424a70d4ffae9022a6139ebc80dd02809aa7d3` — V0.2/ATL-86/ATL-90 inputs, current hold state, and seventh QA check recorded while preserving the historical ATL-85 release.
+- M2 `ATL-82.yaml`: commit `fe85ad98e896c46a06e3f8237bcc831c6a47cb9e`, blob `0bf364bd96c380abba940edda100c9d09c001f99` — V0.2 outputs and V0.1→V0.2 supersession recorded; candidate SQL unchanged.
+- M3 `ATL-60.yaml`: commit `fa89d47e8a32ca0d9df442ea6f3f5eb6afc1dda6`, blob `533b3cfbd3613658af4a919a967e093d85f08f8b` — stale ATL-79 blocker replaced by the actual ATL-82→ATL-83→ATL-86/ATL-90 gate chain.
+
+ATL-86 manifest checkpoint updated at `d2b88e754d0a39dac5f99f06b79f301f21d6df0c`. No Supabase mutation. Per Claude's QA handoff, ATL-86/ATL-90 remain open only for Claude's bounded recheck of M1–M3; ATL-83 remains blocked until that recheck passes and ATL-86 final synchronization closes.
