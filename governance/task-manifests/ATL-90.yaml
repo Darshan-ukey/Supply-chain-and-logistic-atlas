@@ -2,7 +2,8 @@ task_id: ATL-90
 logical_task: ATL-86B
 title: "Independent QA — P6.2 / ATL-82 Architecture Reconciliation"
 parent_task: ATL-86
-task_status: AUTHORIZED_NOT_STARTED
+task_status: PROOF_RECORDED
+qa_disposition: PASS_WITH_BINDING_CORRECTIONS
 manifest_status: ACTIVE
 execution_owner: "Claude / independent reviewer"
 decision_authority: "Darshan / Atlas Owner-Governor"
@@ -39,5 +40,52 @@ blocked_actions:
 protocol:
   pickup: "LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE"
   execution: "VERIFY → PROVE → ADVANCE"
-current_checkpoint: "Task created as the independent-QA prerequisite discovered/required by ATL-86 material governance correction."
-next_action: "Independent reviewer picks up ATL-90 and evaluates the nine frozen criteria."
+
+current_outputs:
+  - path: governance/implementation/ATL_90_INDEPENDENT_QA_P6_2_ATL_82_RECONCILIATION_V0_1.md
+    commit: "781d93a7994a4e489e86da48f222fa150cfe1519"
+    blob_sha: 2b0aaed79564d9df374321aaea0c0fe8ce022a74
+    sha256: 540e0c2000383e7bab58c1d17c8e2ec56f8cffcb9ae8ab2925d94c9966aa6f5c
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1hZ0Iq4Jrh4vIoQlfUhVKpDHNFuPOfbbK"
+    description: "Independent QA of ATL-86: criteria 1–8 PASS; binding manifest-sync corrections M1–M3; ATL-83 release conditional on M1–M3 closure."
+
+qa_result:
+  criteria_1_to_8: PASS
+  criterion_9_atl83: "RELEASE — CONDITIONAL on M1–M3 closure in ATL-86 final synchronization"
+  binding_corrections:
+    - id: M1
+      target: governance/task-manifests/ATL-83.yaml
+      failure_state: "BLOCKED_LINEAR_MANIFEST_DRIFT / BLOCKED_CHECKPOINT_STALE"
+      correction: "Keep the ATL-85 release record. Add ATL-86/ATL-90 hold/result to release_conditions. Update task_status and checkpoint. Add ATL-82 V0.2 rationale/proof, ATL-86 reconciliation/proof and this ATL-90 artifact to governing_inputs. Add the V0.2 proof's 7th QA check to acceptance_scope."
+      status: OPEN
+    - id: M2
+      target: governance/task-manifests/ATL-82.yaml
+      failure_state: BLOCKED_SUPERSESSION_UNRECORDED
+      correction: "Add V0.2 rationale (493d5207…, blob 033d5819…) and V0.2 proof (da1da847…, blob 745dcee3…) to working_outputs. Add superseded_outputs for V0.1 rationale/proof as SUPERSEDED_FOR_LINEAGE_INTERPRETATION_ONLY (V0.1 retained as immutable evidence). Update the checkpoint to reference ATL-86/ATL-90."
+      status: OPEN
+    - id: M3
+      target: governance/task-manifests/ATL-60.yaml
+      failure_state: BLOCKED_CHECKPOINT_STALE
+      correction: "Update current_checkpoint/next_action/blocker to the actual chain ATL-79 GOVERNED_COMPLETE → ATL-80 → ATL-82 built → ATL-83 held by ATL-86/ATL-90 → release per ATL-90."
+      status: OPEN
+  non_blocking_observations:
+    - "ATL-82 V0.1 proof described source_class loosely; the SQL defines 4 values (AUTHORITATIVE_RESEARCH, CLIENT_PROVIDED, RUNTIME_OBSERVATION, GOVERNED_INTERNAL)."
+  owner_decision_requested:
+    - "Amend Continuity Standard §11: creating/releasing a discovered prerequisite MUST checkpoint the blocked task's and parent task's manifests in the same change set (root cause of M1–M3)."
+
+superseded_outputs:
+  - identity: "Linear comment 23609742-66b2-4535-a597-8d0b45acdb05 on ATL-90"
+    superseded_by: governance/implementation/ATL_90_INDEPENDENT_QA_P6_2_ATL_82_RECONCILIATION_V0_1.md
+    reason: "Earlier disposition text said PASS — no binding corrections / no manifest drift; manifest-level check found M1–M3 before GitHub landing."
+
+current_checkpoint: "Independent QA executed by Claude against fresh git/Supabase state. Criteria 1–8 PASS. Disposition PASS_WITH_BINDING_CORRECTIONS: the corrections are manifest synchronization only (M1–M3), with no SQL or reconciliation change. The QA artifact was landed from Claude's Drive custody with a blob-exact match. No Supabase mutation."
+next_action: "ChatGPT closes M1–M3 as part of ATL-86 final synchronization (Drive custody + manifests + Linear). Claude then performs a bounded recheck of M1–M3 closure only. On recheck PASS: ATL-90 → GOVERNED_COMPLETE, ATL-86 may close, and ATL-83 resumes against its rebased manifest."
+
+last_execution_record:
+  operator: Claude
+  date: "2026-09-23"
+  state: PROOF_RECORDED
+  note: "Read-only GitHub (403 on write); artifact and this manifest delivered through Drive for ChatGPT landing. No Supabase mutation."
