@@ -2394,3 +2394,10 @@ Claude bounded recheck artifact landed byte-exact at `6ef29276f0bf0a358810646f80
 ATL-83 is released after ATL-86 closure. Its manifest was updated at `7770fa36d05b1af166962c68a0a1588311c0f50b` to `AUTHORIZED_NOT_STARTED`, the ATL-86 hold is recorded released, and the next action is Claude independent QA against all 10 ATL-82 acceptance criteria plus seven physical-design checks. Linear ATL-83 Gate text is synchronized to seven checks and remains Todo for Claude pickup. No Supabase mutation or ATL-82 SQL application occurred.
 
 Claude's five non-blocking observations O1–O5 remain recorded in the ATL-90 bounded recheck artifact. O5 was closed during ATL-83 release. O1/O4 remain non-blocking cleanup items; O2 becomes historical after release. O3 and the proposed Continuity Standard §11 amendment remain Owner decisions and were not silently adopted.
+
+
+## OWNER DECISION / CHATGPT — ATL-91 continuity amendment approved and implemented — 2026-09-23
+
+Owner approved both governance decisions carried from ATL-90: (1) blocking-prerequisite creation **and release** must synchronize the prerequisite manifest, blocked/current task manifest, applicable parent manifest, and Linear dependency/state in the same governed change set; and (2) `task_status` must use the canonical Continuity Standard vocabulary, with contextual detail in a separate `status_detail` field rather than invented compound states.
+
+Linear ATL-91 governed the amendment. `governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md` was amended at `49e700ef508ccfa56483f584e153e953a5bec396`, verified blob `75488b0c1f7c2215e07907ff05e492c32933f8ab`. Post-write verification confirmed all nine predetermined controls. Proof: `governance/implementation/ATL_91_CONTINUITY_STANDARD_AMENDMENT_VERIFICATION_PROOF_V0_1.md` @ `c9c89bc0ec6ac5ccb9661b39e219ac5ddd28e820`. ATL-91 manifest closed at `8937814d096c0c7e3cd7335f4d810da54ce2a0a4`. Historical records are not silently rewritten solely for vocabulary normalization; active/touched state must comply prospectively. No Supabase mutation or ATL-82 SQL application.
