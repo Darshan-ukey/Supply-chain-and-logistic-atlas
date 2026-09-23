@@ -5,7 +5,7 @@ execution_owner: ChatGPT
 decision_authority: "Darshan / Atlas Owner-Governor"
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-82/atl-60b-physical-ddlmigration-design"
 manifest_status: ACTIVE
-last_updated: "2026-09-22"
+last_updated: "2026-09-23"
 
 parent_task: ATL-60
 released_by:
@@ -34,8 +34,8 @@ artifact_state:
   current_schema_reinspected: true
   no_mutation_performed: true
 
-current_checkpoint: "Candidate SQL remains unchanged. ATL-86 corrected the architecture-lineage/proof basis through ATL-82 rationale/proof V0.2; ATL-90 independently passed the reconciliation with binding manifest corrections M1-M3. ATL-82 remains blocked from application/promotion pending ATL-90 bounded recheck and ATL-83 independent QA. No Supabase mutation."
-next_action: "Await ATL-90 bounded M1-M3 recheck and ATL-86 final synchronization; then ATL-83 independently QAs unchanged candidate SQL against V0.2 rationale/proof and the rebased seven-check scope. Do not apply DDL."
+current_checkpoint: "ATL-83 independent QA returned FAIL_AS_WRITTEN_CORRECTABLE. Owner chose D1=A: Z6 readiness persistence split to ATL-92; D2 authorized separately as ATL-93. Corrected candidate V0.2 incorporates C1-C4/C7/C8 and removes ATL-82 readiness tables. No Supabase mutation."
+next_action: "Run executable first-party verification of ATL-82 candidate V0.2 on disposable PostgreSQL, persist proof, then return V0.2 to Claude/ATL-83 for bounded correction re-QA. Do not apply DDL."
 
 acceptance_criteria:
   - "Faithfully implements validated logical model without semantic loss or LTL/BOL-specific universalization."
@@ -66,6 +66,11 @@ verification_and_proof:
   independent_qa_required_before_mutation: true
 
 working_outputs:
+  - path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2.sql
+    commit: a8c405448a0e016ad9adac7c03a9439ba719c911
+    blob_sha: 344d0d4fed7fd5ae7d271764ba1f10e0d7552d63
+    state: IMPLEMENTED_UNVERIFIED
+    notes: "C1-C4/C7/C8 incorporated; Z6 readiness tables removed to ATL-92."
   - path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql
     commit: 5fe4c631bdff3484d136d7d747b4251798ffe8b6
     blob_sha: b16a4bd9b16763287a76574e7231695b2c271f2e
@@ -97,6 +102,10 @@ superseded_outputs:
     preservation: "V0.1 retained as immutable evidence."
 
 qa_and_decisions:
-  - disposition: VERIFIED_FIRST_PARTY
-    next_gate: INDEPENDENT_QA_REQUIRED
+  - disposition: ATL_83_FAIL_AS_WRITTEN_CORRECTABLE
+    qa_artifact: governance/implementation/ATL_83_INDEPENDENT_QA_ATL_82_PHYSICAL_DESIGN_V0_1.md
+    binding_corrections: [C1, C2, C3, C4, C7, C8]
+    owner_decision_D1: "A — split Z6 readiness persistence to ATL-92"
+    owner_decision_D2: "YES — protected P6.1/P6.2 hardening tracked in ATL-93"
+    next_gate: EXECUTABLE_FIRST_PARTY_V0_2_THEN_BOUNDED_INDEPENDENT_REQA
 
