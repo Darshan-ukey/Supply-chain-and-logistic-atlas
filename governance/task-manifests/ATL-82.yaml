@@ -34,8 +34,8 @@ artifact_state:
   current_schema_reinspected: true
   no_mutation_performed: true
 
-current_checkpoint: "Candidate physical DDL and rationale built, re-fetched, mechanically verified and first-party proof recorded. No Supabase mutation. Independent QA is required before any application/promotion."
-next_action: "Independent QA of ATL-82 candidate SQL/rationale/proof against the predetermined 10 acceptance criteria and the six explicit physical-design questions. Do not apply DDL."
+current_checkpoint: "Candidate SQL remains unchanged. ATL-86 corrected the architecture-lineage/proof basis through ATL-82 rationale/proof V0.2; ATL-90 independently passed the reconciliation with binding manifest corrections M1-M3. ATL-82 remains blocked from application/promotion pending ATL-90 bounded recheck and ATL-83 independent QA. No Supabase mutation."
+next_action: "Await ATL-90 bounded M1-M3 recheck and ATL-86 final synchronization; then ATL-83 independently QAs unchanged candidate SQL against V0.2 rationale/proof and the rebased seven-check scope. Do not apply DDL."
 
 acceptance_criteria:
   - "Faithfully implements validated logical model without semantic loss or LTL/BOL-specific universalization."
@@ -76,7 +76,25 @@ working_outputs:
     state: VERIFIED_FIRST_PARTY
   - path: governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_1.md
     commit: 58f9a86aced1af2621c502fbf2e2395a9c3e30e3
-    state: PROOF_RECORDED
+    state: SUPERSEDED_FOR_LINEAGE_INTERPRETATION_ONLY
+  - path: governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_2.md
+    commit: 493d5207fd1bd06f185fb8835f49c0f78a43cae4
+    blob_sha: 033d5819f43a970365e8e152ff48a6275bf4ac80
+    state: VERIFIED_FIRST_PARTY_CURRENT_RATIONALE
+  - path: governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_2.md
+    commit: da1da84750977adf09333d387119931c7c7d0ce5
+    blob_sha: 745dcee35cb27cb1deb40b67ce85edf012ad020d
+    state: PROOF_RECORDED_CURRENT_BASIS
+
+superseded_outputs:
+  - old: governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_1.md
+    successor: governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_2.md
+    disposition: SUPERSEDED_FOR_LINEAGE_INTERPRETATION_ONLY
+    preservation: "V0.1 retained as immutable evidence."
+  - old: governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_1.md
+    successor: governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_2.md
+    disposition: SUPERSEDED_FOR_LINEAGE_INTERPRETATION_ONLY
+    preservation: "V0.1 retained as immutable evidence."
 
 qa_and_decisions:
   - disposition: VERIFIED_FIRST_PARTY
