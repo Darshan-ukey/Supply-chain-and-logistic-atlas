@@ -2298,3 +2298,12 @@ Working reconciliation persisted and post-write verified: `governance/implementa
 Material first-party finding: ATL-82's nine-table candidate extension is additive to the deployed Sep-7 P6.2 WorkDefinition store; no SQL redesign is currently evidenced. However ATL-82 criterion #9 was first-party passed on an incomplete lineage basis because the Sep-7 frozen P6.2 compiler/contract/supersession and incompatible Sep-1/Sep-2 historical WorkDefinition DDL were not part of its original pickup. The governance-branch asset register is also stale: it still marks the Sep-2 PENDING WorkDefinition and Work Decomposition contracts as current despite later frozen P6.1/P6.2 implementation lineage.
 
 Disposition: ATL-82 proof/governance basis requires correction; historical Sep-1 prototype and Sep-2 warehouse candidate must be explicitly non-runnable against live P6.2; Sep-12 Malkom projection remains reference-only/non-canonical. ATL-83 remains `BLOCKED_BY_ATL_86`. No Supabase mutation.
+
+
+## CHATGPT — ATL-86 first-party reconciliation proof recorded; ATL-90 independent QA created — 2026-09-23
+
+ATL-86 corrections completed first-party without changing ATL-82 SQL or mutating Supabase. ATL-82 rationale/proof V0.2 now use the recovered Sep-7 P6.2 lineage and explicitly classify Sep-1/Sep-2 same-name WorkDefinition DDL as historical/non-runnable. Asset Register correction commit `608598d001115fceb34d11df455dd83a2ac0938c` sets old PENDING P6.1/P6.2 contracts non-current, registers frozen successors current, marks the Sep-2 warehouse candidate non-current, and adds active non-runnable guards for Sep-1/Sep-2 DDL. Post-write readback passed.
+
+ATL-86 proof: `governance/implementation/ATL_86_RECONCILIATION_PROOF_V0_1.md` @ `57e107bc93cde2f59612ef12f524ef5196419ebe`. Acceptance criterion #8 remains pending final Drive custody/final synchronization; all other criteria are first-party PASS, with the P6.1 standalone SHA-256 absence explicitly disclosed rather than invented.
+
+Because the registry/proof corrections are material, independent QA is now a separate governed prerequisite: Linear `ATL-90` / logical `ATL-86B`, manifest `governance/task-manifests/ATL-90.yaml` @ `f9e6e9a509fb50050ee766e9f55dce33799ea966`. ATL-90 blocks ATL-86; ATL-83 is blocked by both ATL-86 and ATL-90. No Supabase mutation. Next authorized action is independent ATL-90 QA.
