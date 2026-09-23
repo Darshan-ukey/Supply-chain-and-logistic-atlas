@@ -87,6 +87,7 @@ Default path:
 The manifest must contain at minimum:
 
 - `task_id`, `task_title`, `task_status`, `execution_owner`, `decision_authority`;
+- `status_detail` when contextual state detail is needed beyond the canonical `task_status`; `status_detail` is descriptive only and MUST NOT change gate semantics;
 - `linear_url`;
 - `manifest_status` and `last_updated`;
 - `governing_inputs[]`: exact standard/contract/decision identities;
@@ -293,6 +294,8 @@ Use these states when material:
 
 A tool/API success response alone can move work only to `IMPLEMENTED_UNVERIFIED`.
 
+`task_status` MUST use the canonical base-state vocabulary in this section or a failure state explicitly defined in §6/§9.7. Operators MUST NOT invent compound/ad hoc `task_status` values. When additional context is required, preserve the canonical base state and record the context in the separate free-text `status_detail` field. Historical manifests/proof records are not silently rewritten solely to normalize old vocabulary; normalize them when they next become active governed state or are otherwise touched by an authorized task.
+
 ### 9.7 Additional failure states
 
 In addition to §6:
@@ -376,6 +379,7 @@ If, while executing a current task, an operator discovers that another substanti
 6. Synchronize the current Linear task and, when TC-6 applies, the canonical shared log.
 7. Execute the prerequisite through the same `LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE` and `BUILD → VERIFY → PROVE → ADVANCE` gates.
 8. Resume the original task only after the prerequisite's required proof/QA/authorization has cleared its release condition.
+9. **Same-change dependent-manifest synchronization is mandatory at both prerequisite creation and prerequisite release.** In the same governed change set that creates a blocking prerequisite, checkpoint: (a) the prerequisite manifest, (b) the blocked/current task manifest, and (c) the applicable parent task manifest when the parent checkpoint, blocker chain, or next action is materially affected. Synchronize the corresponding Linear dependency/state in that same change set. When the prerequisite is later released/closed, perform the same affected-manifest + Linear synchronization before the blocked task resumes. If any required affected manifest cannot be synchronized, stop with `BLOCKED_CHECKPOINT_STALE` or `BLOCKED_LINEAR_MANIFEST_DRIFT` as applicable; do not resume the dependent task.
 
 A discovered prerequisite may not be executed informally inside the parent task merely because it is small or convenient if it produces a material output or changes the proof basis.
 
