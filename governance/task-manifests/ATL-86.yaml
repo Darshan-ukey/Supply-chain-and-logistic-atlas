@@ -55,8 +55,8 @@ blocked_actions:
   - "deletion of historical prototype evidence"
   - "promotion of Malkom reference projection to canonical truth"
 
-current_checkpoint: "ATL-86 substantive reconciliation started. Exact Sep-1/Sep-2/Sep-7/Sep-12 identities inspected. Working reconciliation persisted at commit 61392171718644437f4a73951b8b836a730d4555 and re-fetched/verified (blob ed02b977206c87b918fc0facf9083922e433cd65). Finding: ATL-82 SQL is additive/complementary to P6.2; no SQL redesign identified yet, but ATL-82 proof criterion #9 and stale governance registry basis require correction. ATL-83 remains blocked."
-next_action: "Correct ATL-82 rationale/proof basis and reconcile stale asset-register/supersession bookkeeping without rewriting historical frozen artifacts; then post-write verify and update ATL-86 proof."
+current_checkpoint: "First-party reconciliation and corrections are built, post-write verified, and proof-recorded. ATL-82 rationale/proof V0.2 and Asset Register corrections landed. Independent QA prerequisite created as ATL-90 with manifest f9e6e9a509fb50050ee766e9f55dce33799ea966. ATL-86 is now blocked on ATL-90."
+next_action: "ATL-90 independent reviewer performs bounded QA. Do not release ATL-83 or close ATL-86 until ATL-90 passes and final Drive/Linear/shared-log synchronization completes."
 
 custody:
   drive_document_id: 17iA5LflmjebSIONZCNWRJ9qFGycQL8CItwTbrqqU4JI
@@ -84,3 +84,13 @@ last_execution_record:
   date: "2026-09-23"
   state: VERIFIED_FIRST_PARTY_WORKING
   note: "No Supabase mutation; ATL-83 remains blocked."
+
+independent_qa:
+  task_id: ATL-90
+  status: REQUIRED_NOT_STARTED
+  manifest_commit: f9e6e9a509fb50050ee766e9f55dce33799ea966
+  release_condition: "ATL-90 PASS (or verified closure of binding corrections), followed by ATL-86 final synchronization."
+first_party_proof:
+  path: governance/implementation/ATL_86_RECONCILIATION_PROOF_V0_1.md
+  commit: 57e107bc93cde2f59612ef12f524ef5196419ebe
+  state: PROOF_RECORDED_INDEPENDENT_QA_REQUIRED
