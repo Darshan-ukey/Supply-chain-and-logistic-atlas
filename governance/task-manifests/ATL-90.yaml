@@ -1,0 +1,43 @@
+task_id: ATL-90
+logical_task: ATL-86B
+title: "Independent QA — P6.2 / ATL-82 Architecture Reconciliation"
+parent_task: ATL-86
+task_status: AUTHORIZED_NOT_STARTED
+manifest_status: ACTIVE
+execution_owner: "Claude / independent reviewer"
+decision_authority: "Darshan / Atlas Owner-Governor"
+dependency_effect:
+  blocks:
+    - ATL-86
+    - "ATL-83 release through ATL-86 gate"
+purpose: "Independently verify ATL-86 material governance/proof corrections before ATL-86 closure or ATL-83 resumption."
+governing_inputs:
+  - governance/implementation/ATL_86_P6_2_ATL_82_ARCHITECTURE_RECONCILIATION_V0_1.md
+  - governance/implementation/ATL_86_RECONCILIATION_PROOF_V0_1.md
+  - governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_2.md
+  - governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_2.md
+  - governance/frozen-assets/ASSET_REGISTER.json
+  - governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md
+acceptance_criteria:
+  - "Verify ATL-82 additive/complementary disposition or identify exact conflict."
+  - "Verify no frozen P6.2 contract was silently rewritten."
+  - "Verify PENDING-to-FROZEN current/supersession bookkeeping."
+  - "Verify Sep-1/Sep-2 incompatible DDL non-runnable guards."
+  - "Verify Malkom reference lineage remains non-canonical."
+  - "Verify corrected ATL-82 criterion #9 basis."
+  - "Verify P6.1 identity is not overstated; missing standalone SHA-256 remains disclosed."
+  - "Verify no Supabase mutation/destructive merge."
+  - "Give explicit ATL-83 release recommendation."
+required_outputs:
+  - "governance/implementation/ATL_90_INDEPENDENT_QA_P6_2_ATL_82_RECONCILIATION_V0_1.md"
+blocked_actions:
+  - "Supabase mutation"
+  - "ATL-82 SQL application"
+  - "destructive branch merge"
+  - "rewrite frozen historical contracts"
+  - "ATL-83 continuation before QA pass and ATL-86 final sync"
+protocol:
+  pickup: "LINEAR → MANIFEST → GOVERNANCE → ARTIFACT STATE → EXECUTE"
+  execution: "VERIFY → PROVE → ADVANCE"
+current_checkpoint: "Task created as the independent-QA prerequisite discovered/required by ATL-86 material governance correction."
+next_action: "Independent reviewer picks up ATL-90 and evaluates the nine frozen criteria."
