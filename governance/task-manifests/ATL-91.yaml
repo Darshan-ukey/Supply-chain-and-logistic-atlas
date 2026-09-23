@@ -1,0 +1,37 @@
+task_id: ATL-91
+task_title: "Continuity Standard amendment — dependent-manifest synchronization and canonical status_detail"
+task_status: IMPLEMENTED_UNVERIFIED
+status_detail: "Owner-approved amendment task; manifest bootstrapped before standard edit."
+execution_owner: ChatGPT
+decision_authority: "Darshan / Atlas Owner-Governor"
+linear_url: "https://linear.app/sefl-transformation/issue/ATL-91/continuity-standard-amendment-dependent-manifest-synchronization-and"
+manifest_status: ACTIVE
+governing_inputs:
+  - governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md
+  - governance/implementation/ATL_90_INDEPENDENT_QA_P6_2_ATL_82_RECONCILIATION_V0_1.md
+  - governance/implementation/ATL_90_M1_M3_BOUNDED_RECHECK_V0_1.md
+consumed_inputs:
+  - "Owner approval — 2026-09-23 current Atlas governance session"
+working_outputs: []
+current_outputs: []
+superseded_outputs: []
+qa_and_decisions:
+  - "Owner approved dependent-manifest same-change synchronization."
+  - "Owner approved canonical task_status + free-text status_detail."
+current_checkpoint: "ATL-91 created in Linear and manifest bootstrapped; standard amendment is next authorized BUILD."
+next_action: "Amend §§4, 9.6 and 11.3 of the Continuity Standard, then re-fetch and verify all nine acceptance criteria."
+open_items: []
+blocked_actions:
+  - action: "Supabase mutation / ATL-82 SQL application"
+    blocker: "Not authorized by ATL-91"
+    release_condition: "NOT_APPLICABLE"
+authorized_actions:
+  - "Edit Continuity Standard for the two Owner-approved rules."
+  - "Post-write verify and record proof."
+  - "Synchronize shared log and Linear."
+handoff: "Read ATL-91 Linear task, this manifest, then the Continuity Standard and ATL-90 QA/recheck."
+last_execution_record:
+  operator: ChatGPT
+  date: "2026-09-23"
+  state: IMPLEMENTED_UNVERIFIED
+  note: "Task and manifest created; standard not yet edited."
