@@ -55,8 +55,8 @@ blocked_actions:
   - "deletion of historical prototype evidence"
   - "promotion of Malkom reference projection to canonical truth"
 
-current_checkpoint: "First-party reconciliation and corrections are built, post-write verified, and proof-recorded. ATL-82 rationale/proof V0.2 and Asset Register corrections landed. Independent QA prerequisite created as ATL-90 with manifest f9e6e9a509fb50050ee766e9f55dce33799ea966. ATL-86 is now blocked on ATL-90."
-next_action: "ATL-90 independent reviewer performs bounded QA. Do not release ATL-83 or close ATL-86 until ATL-90 passes and final Drive/Linear/shared-log synchronization completes."
+current_checkpoint: "ATL-90 independent QA landed byte-exact and returned PASS_WITH_BINDING_CORRECTIONS. M1 ATL-83 manifest rebase, M2 ATL-82 supersession recording, and M3 ATL-60 checkpoint repair are implemented and post-write verified. ATL-86 remains open only for Claude bounded M1-M3 recheck and final closure synchronization. No Supabase mutation."
+next_action: "Claude performs bounded recheck of M1-M3 closure only. On PASS: set ATL-90 GOVERNED_COMPLETE, finalize ATL-86 criterion #8 synchronization, close ATL-86, then release ATL-83 against the rebased manifest."
 
 custody:
   drive_document_id: 17iA5LflmjebSIONZCNWRJ9qFGycQL8CItwTbrqqU4JI
@@ -87,10 +87,30 @@ last_execution_record:
 
 independent_qa:
   task_id: ATL-90
-  status: REQUIRED_NOT_STARTED
-  manifest_commit: f9e6e9a509fb50050ee766e9f55dce33799ea966
+  status: PASS_WITH_BINDING_CORRECTIONS_M1_M3_IMPLEMENTED_RECHECK_REQUIRED
+  manifest_commit: 846e86eb650a262d8bd3114d991a940615d4d8c5
+  qa_artifact_commit: 781d93a7994a4e489e86da48f222fa150cfe1519
+  qa_artifact_blob: 2b0aaed79564d9df374321aaea0c0fe8ce022a74
+  drive_handoff_folder_id: 1TxgBgAix7i_FBrc0bAb8mIoIXlk2cQCn
   release_condition: "ATL-90 PASS (or verified closure of binding corrections), followed by ATL-86 final synchronization."
 first_party_proof:
   path: governance/implementation/ATL_86_RECONCILIATION_PROOF_V0_1.md
   commit: 57e107bc93cde2f59612ef12f524ef5196419ebe
   state: PROOF_RECORDED_INDEPENDENT_QA_REQUIRED
+
+binding_corrections:
+  M1:
+    target: governance/task-manifests/ATL-83.yaml
+    commit: 2129e00b592a4b8b72457b69f1006a6b6eae6a98
+    post_write_blob: 00424a70d4ffae9022a6139ebc80dd02809aa7d3
+    state: IMPLEMENTED_VERIFIED_PENDING_INDEPENDENT_RECHECK
+  M2:
+    target: governance/task-manifests/ATL-82.yaml
+    commit: fe85ad98e896c46a06e3f8237bcc831c6a47cb9e
+    post_write_blob: 0bf364bd96c380abba940edda100c9d09c001f99
+    state: IMPLEMENTED_VERIFIED_PENDING_INDEPENDENT_RECHECK
+  M3:
+    target: governance/task-manifests/ATL-60.yaml
+    commit: fa89d47e8a32ca0d9df442ea6f3f5eb6afc1dda6
+    post_write_blob: 533b3cfbd3613658af4a919a967e093d85f08f8b
+    state: IMPLEMENTED_VERIFIED_PENDING_INDEPENDENT_RECHECK
