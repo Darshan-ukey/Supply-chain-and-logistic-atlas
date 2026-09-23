@@ -2351,3 +2351,37 @@ ATL-90 disposition is `PASS_WITH_BINDING_CORRECTIONS`; reconciliation criteria 1
 - M3 `ATL-60.yaml`: commit `fa89d47e8a32ca0d9df442ea6f3f5eb6afc1dda6`, blob `533b3cfbd3613658af4a919a967e093d85f08f8b` — stale ATL-79 blocker replaced by the actual ATL-82→ATL-83→ATL-86/ATL-90 gate chain.
 
 ATL-86 manifest checkpoint updated at `d2b88e754d0a39dac5f99f06b79f301f21d6df0c`. No Supabase mutation. Per Claude's QA handoff, ATL-86/ATL-90 remain open only for Claude's bounded recheck of M1–M3; ATL-83 remains blocked until that recheck passes and ATL-86 final synchronization closes.
+
+---
+
+# CLAUDE — ATL-90 BOUNDED RECHECK: M1–M3 CLOSED / ATL-90 GOVERNED_COMPLETE / ATL-83 RELEASE CONDITION MET
+
+**Date:** 2026-09-23
+**Linear:** ATL-90 / logical ATL-86B
+**Recheck artifact:** `governance/implementation/ATL_90_M1_M3_BOUNDED_RECHECK_V0_1.md` @ `6ef29276f0bf0a358810646f80259f6db84a2bf3`, blob `101fdbc1b3a95448ab6198eaca48dba4b32006a6` (landed by ChatGPT from Claude's Drive custody; blob must match exactly)
+
+Claude rechecked M1–M3 only, against `atlas-governance-registry-v2.1` @ `384b3ee` (fresh fetch) and live read-only Supabase. **Disposition: PASS.**
+- **Landing integrity:** the ATL-90 QA artifact is byte-exact (blob `2b0aaed7…`). The landed `ATL-90.yaml` and shared-log entry differ from Claude's delivered text only by the filled commit placeholder.
+- **M1 CLOSED** (`2129e00`). ATL-83.yaml keeps the ATL-85 release record, adds the ATL-86 hold, the ATL-90 result and a resume condition, rebases its governing inputs to V0.2 + ATL-86 + ATL-90, and adds the seventh QA check.
+- **M2 CLOSED** (`fe85ad9`). ATL-82.yaml adds the V0.2 rationale/proof with verified identities and `superseded_outputs` for V0.1, which is retained unchanged. The candidate SQL blob is unchanged (`b16a4bd9…`).
+- **M3 CLOSED** (`fa89d47`). ATL-60.yaml's checkpoint, next action and blocker now follow the actual ATL-79→80→82→83/86/90 chain.
+- **Scope:** exactly seven files changed since `feaf8d8`. No SQL, frozen-asset, registry or standard change. The §11 amendment was not treated as approved.
+- **Supabase:** latest migration is still `20260908015858`, with decompositions = 1, definitions = 0 and no ATL-82 tables live. No mutation.
+
+**Non-blocking observations:**
+- **O1:** ATL-82 V0.1 rationale `state` was not aligned with its superseded status.
+- **O2:** ATL-83 `released: true` sits beside the active hold. This follows Claude's own M1 wording.
+- **O3:** ad hoc state names are outside the §9.6/§9.7 vocabulary.
+- **O4:** the first ATL-60 `open_items` entry is stale.
+- **O5:** the Linear ATL-83 gate text still says six physical-design questions, not seven checks.
+
+**Result:**
+- **ATL-90:** `GOVERNED_COMPLETE` on landing of this artifact and the updated manifest.
+- **ATL-86:** its ATL-90 release condition is met. ChatGPT completes criterion #8 final sync and closes it.
+- **ATL-83:** the ATL-90 release condition is met. It resumes after ATL-86 closes. At release, record the hold as released in ATL-83.yaml and sync the Linear gate text (O5).
+
+**Owner decisions pending:**
+1. The Continuity Standard §11 amendment.
+2. State vocabulary: enforce it strictly, or use a base state plus `status_detail`.
+
+No Supabase mutation, DDL, branch merge or contract rewrite by Claude. Delivered through Drive because Claude has read-only GitHub access.
