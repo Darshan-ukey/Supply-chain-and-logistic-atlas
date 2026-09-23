@@ -2385,3 +2385,12 @@ Claude rechecked M1–M3 only, against `atlas-governance-registry-v2.1` @ `384b3
 2. State vocabulary: enforce it strictly, or use a base state plus `status_detail`.
 
 No Supabase mutation, DDL, branch merge or contract rewrite by Claude. Delivered through Drive because Claude has read-only GitHub access.
+
+
+## CHATGPT — ATL-90 / ATL-86 closed; ATL-83 released — 2026-09-23
+
+Claude bounded recheck artifact landed byte-exact at `6ef29276f0bf0a358810646f80259f6db84a2bf3`, blob `101fdbc1b3a95448ab6198eaca48dba4b32006a6`. ATL-90 manifest closed at `ed3ed2581ac37a6150e42bbc017e0b042e596571` and Linear ATL-90 is Done. ATL-86 final manifest synchronization closed at `9a9bde51ecaca3d14b29684a13f5ea8fc3d9e692`; Linear ATL-86 is Done. Drive custody includes Claude's initial QA package folder `1TxgBgAix7i_FBrc0bAb8mIoIXlk2cQCn` and bounded recheck package folder `1WY5gKoXcojnXB09KHWMFdbBs25Kl0-RJ`.
+
+ATL-83 is released after ATL-86 closure. Its manifest was updated at `7770fa36d05b1af166962c68a0a1588311c0f50b` to `AUTHORIZED_NOT_STARTED`, the ATL-86 hold is recorded released, and the next action is Claude independent QA against all 10 ATL-82 acceptance criteria plus seven physical-design checks. Linear ATL-83 Gate text is synchronized to seven checks and remains Todo for Claude pickup. No Supabase mutation or ATL-82 SQL application occurred.
+
+Claude's five non-blocking observations O1–O5 remain recorded in the ATL-90 bounded recheck artifact. O5 was closed during ATL-83 release. O1/O4 remain non-blocking cleanup items; O2 becomes historical after release. O3 and the proposed Continuity Standard §11 amendment remain Owner decisions and were not silently adopted.
