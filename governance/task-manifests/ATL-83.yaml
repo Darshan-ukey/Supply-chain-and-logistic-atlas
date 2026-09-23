@@ -1,6 +1,6 @@
 task_id: ATL-83
 title: "ATL-82B — Independent QA: Physical DDL/Migration Design"
-task_status: IN_PROGRESS
+task_status: BLOCKED_PENDING_ATL90_RECHECK
 manifest_status: ACTIVE
 execution_owner: Claude
 decision_authority: "Darshan / Atlas Owner-Governor"
@@ -12,12 +12,20 @@ release_conditions:
   atl_85_freeze_window_disposition: PROCESS_VIOLATION_NO_SEMANTIC_CONTAMINATION
   atl_84_shared_log_sync: DONE
   released: true
+  atl_86_hold: ACTIVE_PENDING_ATL90_M1_M3_RECHECK
+  atl_90_result: PASS_WITH_BINDING_CORRECTIONS
+  resume_condition: "M1-M3 corrected and independently rechecked PASS; ATL-86 final synchronization complete."
 
 governing_inputs:
   - governance/task-manifests/ATL-82.yaml
   - governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql
   - governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_1.md
+  - governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_2.md
   - governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_1.md
+  - governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_2.md
+  - governance/implementation/ATL_86_P6_2_ATL_82_ARCHITECTURE_RECONCILIATION_V0_1.md
+  - governance/implementation/ATL_86_RECONCILIATION_PROOF_V0_1.md
+  - governance/implementation/ATL_90_INDEPENDENT_QA_P6_2_ATL_82_RECONCILIATION_V0_1.md
   - governance/decisions/ATL_85_ATL40_FREEZE_WINDOW_DISPOSITION_2026_09_22.md
   - governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
   - governance/implementation/ATL_60_SUPABASE_SCHEMA_MAPPING_V0_1.md
@@ -31,6 +39,7 @@ acceptance_scope:
   - "Return PASS, PASS_WITH_BINDING_CORRECTIONS, or FAIL with exact evidence."
   - "If corrections are required, identify exact artifact/section/SQL changes; do not silently edit builder artifacts."
   - "Persist independent QA artifact and append canonical shared log."
+  - "Verify governance registry/supersession bookkeeping now points operators away from Sep-1/Sep-2 historical DDL and toward the frozen P6.1/P6.2 lineage."
 
 hard_stops:
   - "No apply_migration."
@@ -39,5 +48,5 @@ hard_stops:
   - "No ATL-60 promotion."
   - "Builder first-party proof is not independent QA."
 
-current_checkpoint: "ATL-85 resolved and ATL-84 synchronized. ATL-83 released to Claude for independent QA."
-next_action: "Claude performs independent QA of ATL-82 candidate physical design against all 10 criteria and six physical-design questions, persists evidence, updates shared log, and stops for ChatGPT/Owner disposition."
+current_checkpoint: "Historical ATL-85/ATL-84 release is preserved, but ATL-83 is currently held by ATL-86/ATL-90. ATL-90 returned PASS_WITH_BINDING_CORRECTIONS; M1 manifest rebase is implemented and awaits Claude bounded M1-M3 recheck before ATL-83 resumes."
+next_action: "Do not resume ATL-82 physical-design QA yet. Claude first performs bounded ATL-90 recheck of M1-M3 closure. After PASS and ATL-86 final synchronization, resume ATL-83 against V0.2/ATL-86/ATL-90 inputs and seven physical-design checks."
