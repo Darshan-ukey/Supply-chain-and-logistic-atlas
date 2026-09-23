@@ -1,6 +1,6 @@
 {
   "schemaVersion": "atlas-frozen-asset-register-v1",
-  "updatedAt": "2026-09-10T08:00:00+05:30",
+  "updatedAt": "2026-09-23T12:30:00+05:30",
   "repository": "Darshan-ukey/Supply-chain-and-logistic-atlas",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "latestIntegrationLock": {
@@ -321,7 +321,7 @@
     {
       "assetId": "bol-information-resolution-baseline-0.1",
       "family": "information-resolution-reference-baseline",
-      "name": "BOL Information Resolution Baseline \u2014 Road LTL / Malkom",
+      "name": "BOL Information Resolution Baseline — Road LTL / Malkom",
       "version": "0.1",
       "status": "FROZEN_REFERENCE_BASELINE",
       "category": "reference-baseline",
@@ -373,10 +373,28 @@
       "version": "1",
       "status": "IMPLEMENTATION_PENDING",
       "category": "execution-contract",
-      "current": true,
+      "current": false,
       "source": "repository",
       "repositoryPath": "governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_PENDING.md",
-      "sha256": "3fd0884f5481abe03a9246e5794f86cb3ad28c57deb9eec8dca942a29dbcdf6b"
+      "sha256": "3fd0884f5481abe03a9246e5794f86cb3ad28c57deb9eec8dca942a29dbcdf6b",
+      "notes": "Historical Sep-2 IMPLEMENTATION_PENDING commitment. Superseded operationally by the frozen P6.1 contract used by P6.2; retained unchanged at its historical path/hash."
+    },
+    {
+      "assetId": "canonicalWorkDecompositionContractV1Frozen",
+      "family": "canonicalWorkDecompositionContract",
+      "name": "Canonical Work Decomposition Contract",
+      "version": "1.0.0",
+      "status": "FROZEN",
+      "category": "execution-contract",
+      "current": true,
+      "source": "cross-branch-governed-implementation",
+      "repositoryPath": "governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_FROZEN.md",
+      "sourceBranch": "atlas-presentation-architecture-v1-p6-2",
+      "sourceCommit": "c72b50025d38c6ba103a98e6b698ac2181d5017b",
+      "gitBlobSha": "046885c71dc9fb24532b398cacd47ffc522f3a1b",
+      "supersedes": "canonicalWorkDecompositionContract",
+      "sha256Status": "NOT_RECORDED_IN_RECOVERED_P6_1_REGISTRY; Git blob identity verified by ATL-86",
+      "notes": "Frozen P6.1 upstream contract consumed by the frozen P6.2 WorkDefinition contract. Historical pending file remains immutable."
     },
     {
       "assetId": "canonicalWorkDefinitionContract",
@@ -385,10 +403,29 @@
       "version": "VNext",
       "status": "IMPLEMENTATION_COMPILATION_PENDING",
       "category": "execution-contract",
-      "current": true,
+      "current": false,
       "source": "repository",
       "repositoryPath": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_VNEXT_PENDING.md",
-      "sha256": "0f91a03e837dceadb57fdb83099a5882c46a286dc7f52b37924ab117a1978550"
+      "sha256": "0f91a03e837dceadb57fdb83099a5882c46a286dc7f52b37924ab117a1978550",
+      "notes": "Historical Sep-2 VNext pending commitment. Explicitly superseded by Canonical WorkDefinition Contract V1 per CANONICAL_WORKDEFINITION_CONTRACT_SUPERSESSION_V1.json; retained unchanged."
+    },
+    {
+      "assetId": "canonicalWorkDefinitionContractV1",
+      "family": "canonicalWorkDefinitionContract",
+      "name": "Canonical WorkDefinition Contract",
+      "version": "1.0.0",
+      "status": "FROZEN",
+      "category": "execution-contract",
+      "current": true,
+      "source": "cross-branch-governed-implementation",
+      "repositoryPath": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md",
+      "sourceBranch": "atlas-presentation-architecture-v1-p6-2",
+      "sourceCommit": "c72b50025d38c6ba103a98e6b698ac2181d5017b",
+      "gitBlobSha": "c074489f2cf7edacde962f7e0260e2b240d24b87",
+      "sha256": "f51dfdb0719ba4b005f287e8293634a7b031cb87d5ad23ede29658d0dfa816f4",
+      "supersedes": "canonicalWorkDefinitionContract",
+      "supersessionRecord": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_SUPERSESSION_V1.json",
+      "notes": "Frozen P6.2 executor-neutral WorkDefinition contract. Current governed contract; runtime-specific projections remain downstream."
     },
     {
       "assetId": "knowledge-execution-warehouse-schema-1",
@@ -397,10 +434,11 @@
       "version": "1",
       "status": "FROZEN_SCHEMA_CANDIDATE_NOT_APPLIED",
       "category": "backend",
-      "current": true,
+      "current": false,
       "source": "repository",
       "repositoryPath": "backend/supabase/001_knowledge_execution_warehouse.sql",
-      "sha256": "89bf4faad892117655653dc835582b8894959304ae3bc440f31020376003ca30"
+      "sha256": "89bf4faad892117655653dc835582b8894959304ae3bc440f31020376003ca30",
+      "notes": "Historical Sep-2 NOT_APPLIED warehouse candidate. Its atlas_work_definitions shape is incompatible with deployed P6.2 and MUST NOT be executed against the current live schema. ATL-60/ATL-82 is the governed successor physical-design path."
     },
     {
       "assetId": "canvas-2.0.0",
@@ -481,9 +519,9 @@
         }
       },
       "verification": {
-        "existingSuite": "tests/p4-canvas-daughter-integration.mjs \u2014 37/37 PASS, independently re-run 2026-09-12",
+        "existingSuite": "tests/p4-canvas-daughter-integration.mjs — 37/37 PASS, independently re-run 2026-09-12",
         "syntaxCheck": "node --check PASS on all 3 JS/mjs files (real parse, not pattern-match)",
-        "localStructuralServe": "PASS \u2014 daughter.html, renderer script, and the resolved road-ltl/1.5/LTL-03 tuple URL all served 200 from a local static server; no Vercel contact",
+        "localStructuralServe": "PASS — daughter.html, renderer script, and the resolved road-ltl/1.5/LTL-03 tuple URL all served 200 from a local static server; no Vercel contact",
         "notTested": "Live DOM rendering and any live-backend data path. Requires a browser against a real deployment; Vercel action is prohibited under the current demo release policy. This is the one open gap behind the CANDIDATE (not PRODUCTION_BASELINE) status below."
       },
       "supersedes": null,
@@ -544,6 +582,29 @@
       "fullStateTreeHash": "f79f8c2700633dfb",
       "notARetroactivePreChangeFreeze": true,
       "notes": "Post-build freeze of the certified demo state. Does NOT close D2.0.0's missing CREATE_PRE_CHANGE_FULL_STATE_FREEZE, which cannot be recreated retroactively and remains open."
+    }
+  ],
+  "executionGuards": [
+    {
+      "guardId": "ATL86-SEP1-WORKDEFINITION-PROTOTYPE-NONRUNNABLE",
+      "status": "ACTIVE",
+      "paths": [
+        "migrations/v2-admin-workdefinitions.sql",
+        "scripts/seed-v2-workdefinitions.mjs"
+      ],
+      "sourceCommit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+      "disposition": "HISTORICAL_PROTOTYPE_DO_NOT_APPLY",
+      "reason": "Targets public.atlas_work_definitions with a pre-P6.2 incompatible schema and Road LTL/V1.2-oriented seed."
+    },
+    {
+      "guardId": "ATL86-SEP2-WAREHOUSE-CANDIDATE-NONRUNNABLE",
+      "status": "ACTIVE",
+      "paths": [
+        "backend/supabase/001_knowledge_execution_warehouse.sql"
+      ],
+      "sourceCommit": "fdfdb666d3360b1e9e4589dc0f2b49e5db32fb44",
+      "disposition": "HISTORICAL_CANDIDATE_DO_NOT_APPLY",
+      "reason": "Contains an atlas_work_definitions physical shape incompatible with deployed P6.2; retained as architecture history only."
     }
   ]
 }
