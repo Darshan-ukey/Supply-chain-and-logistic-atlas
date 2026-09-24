@@ -6,7 +6,7 @@ execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-103/atlas-v2-product-end-state-contract-and-coverage-reconciliation"
 manifest_status: ACTIVE
-last_updated: "2026-09-24T17:16:00Z"
+last_updated: "2026-09-24T17:20:00Z"
 
 governing_inputs:
   - path: governance/standards/ATLAS_PRODUCT_CONSTITUTION_V1.md
@@ -46,9 +46,9 @@ working_outputs:
     status: CURRENT_ACTIVE_CANDIDATE
   - system: GitHub
     path: governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json
-    commit: 1a48f7be93a6421e12833ef5f2e230c0921230f6
-    blob_sha: 9a7bccd496fc7d198c9745c5418bb6fb1f25b43e
-    status: CURRENT_CANDIDATE_MATRIX
+    commit: a4dfebc0c0b083652f5dba2d2ba03206e4aa140b
+    blob_sha: a3acce98384ef2bb545b634cd3cb2f7bdade1260
+    status: FIRST_PASS_RECONCILED_CANDIDATE_MATRIX
   - system: GitHub
     path: governance/product/ATLAS_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
     status: SUPERSEDED_AS_ACTIVE_CANDIDATE
@@ -63,7 +63,7 @@ current_outputs:
     identity: "blob:d618dfbfff0a348afa02837090b9827a7edf6204"
     status: VERIFIED_FIRST_PARTY
   - path: governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json
-    identity: "blob:9a7bccd496fc7d198c9745c5418bb6fb1f25b43e"
+    identity: "blob:a3acce98384ef2bb545b634cd3cb2f7bdade1260"
     status: VERIFIED_FIRST_PARTY
 
 superseded_outputs:
@@ -89,7 +89,7 @@ qa_and_decisions:
     status: REQUIRED
     linear_task: ATL-110
 
-current_checkpoint: "Atlas v2 Product Live is now represented as a complete product milestone in Linear and as a comprehensive active candidate contract + coverage matrix in GitHub. Product-level missing workstreams ATL-111–ATL-117 added and blocked by ATL-110."
+current_checkpoint: "Atlas v2 Product Live is represented in Linear/GitHub; expanded workstreams/manifests exist; first-pass coverage dispositions now distinguish preserve/extend vs real gaps. Exact artifact-level mapping remains before ATL-110."
 
 next_action: "Complete full evidence-level coverage reconciliation: map existing GitHub/Drive/UI/backend/release assets and all relevant existing Linear issues to each Atlas v2 capability, identify stale/duplicate/superseded work and real gaps, then hand final candidate to ATL-110 for independent QA/custody/Owner freeze."
 
