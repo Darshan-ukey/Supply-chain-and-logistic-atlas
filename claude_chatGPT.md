@@ -2510,3 +2510,54 @@ No Supabase mutation, no DDL outside disposable databases, and no GitHub write b
 - Published proof: `atlas-ci-proofs:ATL-94/by-commit/23998d2624293f6775b7f086eaf4c64dcbffa6e0.md`, proof commit `e25e938ad65e0077e73851573e0e13ffe8eba46c`.
 - Verdict: **PASS (canary only: no candidate beyond historical V0.1/V0.2 exists yet)**; three canaries OK; V0.1/V0.2 SKIPPED; reviewed workflow/runner/publisher/gate blobs match governed pins.
 - No Supabase mutation.
+
+
+---
+
+## 2026-09-24 — Atlas v2 temporary release-controller preflight: material governance corrections
+
+**Context:** Owner authorized construction and execution of a temporary deterministic Atlas v2 release controller, with an explicit requirement that migration from manual to automated control must preserve dependencies, Owner gates, handoffs, logging/custody, executable QA and product-level acceptance.
+
+**Material preflight findings and corrections:**
+
+1. **Freeze dependency cycle corrected.**
+   - ATL-118 and ATL-119 had been blocked by ATL-103 while ATL-103 required their reconciliation before safe product-contract freeze.
+   - Corrected so ATL-118/ATL-119 can execute first; they block ATL-103/ATL-110 as appropriate.
+   - ATL-110 remains the independent product-contract freeze gate.
+
+2. **Final product gate strengthened.**
+   - ATL-109 was previously blocked only by ATL-110, which could have allowed final product acceptance before the complete Atlas v2 capability chain existed.
+   - ATL-109 now depends on the material Atlas v2 product capability chain, including ATL-95, ATL-104–108, ATL-111–117 and ATL-110.
+   - ATL-117 value/kill-test is also downstream of the actual product capability work.
+
+3. **Missing durable ATL-95 handoff corrected.**
+   - Live controller preflight detected that ATL-95 lacked a task manifest.
+   - `governance/task-manifests/ATL-95.yaml` was created with current product-freeze blocker, frozen-asset preservation rules, executable verification, independent QA and current-lineage runtime-projection requirements.
+
+4. **Product completion guard made explicit and executable.**
+   - Task completion alone cannot make Atlas v2 Product Live.
+   - Product Live requires:
+     - executable proof for component tasks;
+     - all product-coherence suites PASS;
+     - ATL-109 deployed end-to-end acceptance PASS;
+     - explicit Owner production authorization.
+   - Product-coherence suites include Source→Operational Knowledge, OK→Runtime Projection, interaction layer, three-product loop, public/protected boundary, provenance/version/impact, upgrade/recovery/security, value/kill-test and deployed final acceptance.
+
+5. **Logging/custody policy preserved under automation.**
+   - Routine controller progress → task manifests + GitHub Actions evidence.
+   - Shared log only → independent QA disposition, Owner decisions, governance exceptions, material stage/freeze gates, serious product/architecture/recovery defects.
+   - Drive only → frozen/decision-significant/final QA-release/hard-to-recover/recovery custody.
+   - Frozen assets remain immutable; successors are created rather than in-place edits.
+
+**Temporary controller evidence:**
+- Linear: ATL-120 — Temporary Atlas v2 Release Controller.
+- Branch: `atlas-v2-temp-release-controller`.
+- GitHub Actions run 36041778771: overall PASS for controller preflight/stable baseline.
+- Controller outcome: `SAFE_STOP_PRE_FREEZE`.
+- Controller stage: `PRE_FREEZE`.
+- Current eligible governance tasks: ATL-118, ATL-119.
+- Atlas v2 productReady: FALSE by design.
+- Browser probe remains explicitly required for later UI/deployed acceptance; a pre-freeze runner-specific CDP failure is not converted to product PASS.
+
+**Authority boundary:** no Atlas v2 build lane may advance past the product freeze until ATL-118 + ATL-119 + ATL-103 reconciliation is complete, ATL-110 independent QA passes, and the Owner explicitly freezes the Atlas v2 Product End-State Contract.
+
