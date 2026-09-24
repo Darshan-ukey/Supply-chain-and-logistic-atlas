@@ -1,12 +1,12 @@
 task_id: ATL-103
-task_title: "Atlas Live v1.0 — Product End-State Contract & Coverage Reconciliation"
+task_title: "Atlas v2 — Product End-State Contract & Coverage Reconciliation"
 task_status: VERIFIED_FIRST_PARTY
-status_detail: "Owner-directed candidate end-state contract and initial coverage matrix created in canonical GitHub and post-write re-read verified; independent product QA/reconciliation/freeze remains required under ATL-110."
+status_detail: "Owner aligned Atlas v2 complete product end-state; expanded candidate contract and coverage matrix written/readback verified; full repository coverage reconciliation and ATL-110 independent QA/freeze remain required."
 execution_owner: ChatGPT
 decision_authority: Darshan Ukey
-linear_url: "https://linear.app/sefl-transformation/issue/ATL-103/atlas-live-v10-product-end-state-contract-and-coverage-reconciliation"
+linear_url: "https://linear.app/sefl-transformation/issue/ATL-103/atlas-v2-product-end-state-contract-and-coverage-reconciliation"
 manifest_status: ACTIVE
-last_updated: "2026-09-24T16:57:05Z"
+last_updated: "2026-09-24T17:16:00Z"
 
 governing_inputs:
   - path: governance/standards/ATLAS_PRODUCT_CONSTITUTION_V1.md
@@ -15,96 +15,121 @@ governing_inputs:
   - path: governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md
     ref: atlas-governance-registry-v2.1
     purpose: Task continuity and execution-integrity governance.
+  - path: governance/architecture-refinement/AR0.2/LAYER_BOUNDARY_DECISION_REBASED_V2.md
+    ref: atlas-governance-registry-v2.1
+    purpose: Current three-product/common-foundation architecture candidate and Z0-Z7 ownership boundaries.
   - path: governance/standards/CANONICAL_GENERATION_AND_FREEZE_ASSET_STANDARD_V1.md
     ref: atlas-governance-registry-v2.1
     purpose: Generation/freeze/custody/recovery requirements.
 
 consumed_inputs:
   - system: Linear
-    identity: Atlas project plus ATL-40, ATL-95 and current product/governance backlog
-    status: INSPECTED
-  - system: GitHub
-    path: governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md
-    ref: atlas-governance-registry-v2.1
-    status: INSPECTED
+    identity: Atlas project, Atlas v2 Product Live milestone, ATL-40, ATL-95, ATL-103 through ATL-117
+    status: INSPECTED_AND_RECONCILED_AT_PRODUCT_WORKSTREAM_LEVEL
   - system: GitHub
     path: governance/standards/ATLAS_PRODUCT_CONSTITUTION_V1.md
     ref: atlas-governance-registry-v2.1
     status: INSPECTED
+  - system: GitHub
+    path: governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md
+    ref: atlas-governance-registry-v2.1
+    status: INSPECTED
+  - system: Project files
+    identity: recovered Atlas decisions / authorization handover
+    status: INSPECTED_FOR_PRESERVED_AND_SUPERSEDED_CONCEPTS
 
 working_outputs:
   - system: GitHub
+    path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
+    commit: 8ff04ed92d3f3f5270f04594049b27ce98a9e0a0
+    blob_sha: d618dfbfff0a348afa02837090b9827a7edf6204
+    status: CURRENT_ACTIVE_CANDIDATE
+  - system: GitHub
+    path: governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json
+    commit: 1a48f7be93a6421e12833ef5f2e230c0921230f6
+    blob_sha: 9a7bccd496fc7d198c9745c5418bb6fb1f25b43e
+    status: CURRENT_CANDIDATE_MATRIX
+  - system: GitHub
     path: governance/product/ATLAS_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
-    commit: 32cdf3d41ca790a5df746e2c679503fe3753d185
-    blob_sha: e838080e7aee9b2ea74024a02bd2b136f5567cd0
-    status: CURRENT_CANDIDATE
-    description: Owner-directed candidate definition of observable Atlas Live v1.0.
+    status: SUPERSEDED_AS_ACTIVE_CANDIDATE
+    superseded_by: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
   - system: GitHub
     path: governance/product/ATLAS_PRODUCT_LIVE_COVERAGE_MATRIX_V1_CANDIDATE.json
-    commit: 979a257df21065732e167f4a89d6175f7e9e6beb
-    blob_sha: b5b764afb5614fe152a1d999a0ff7e57f154cb53
-    status: INITIAL_SCAFFOLD
-    description: Machine-readable initial product-capability-to-Linear mapping; full repository coverage reconciliation still required.
+    status: SUPERSEDED_AS_ACTIVE_CANDIDATE
+    superseded_by: governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json
 
 current_outputs:
-  - path: governance/product/ATLAS_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
-    identity: "blob:e838080e7aee9b2ea74024a02bd2b136f5567cd0"
+  - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
+    identity: "blob:d618dfbfff0a348afa02837090b9827a7edf6204"
     status: VERIFIED_FIRST_PARTY
-  - path: governance/product/ATLAS_PRODUCT_LIVE_COVERAGE_MATRIX_V1_CANDIDATE.json
-    identity: "blob:b5b764afb5614fe152a1d999a0ff7e57f154cb53"
+  - path: governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json
+    identity: "blob:9a7bccd496fc7d198c9745c5418bb6fb1f25b43e"
     status: VERIFIED_FIRST_PARTY
 
-superseded_outputs: []
+superseded_outputs:
+  - path: governance/product/ATLAS_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
+    reason: "Initial Atlas Live v1 naming/capability scaffold superseded by Owner-aligned Atlas v2 complete product candidate."
+  - path: governance/product/ATLAS_PRODUCT_LIVE_COVERAGE_MATRIX_V1_CANDIDATE.json
+    reason: "Initial matrix superseded by expanded Atlas v2 product coverage candidate."
 
 qa_and_decisions:
   - type: OWNER_DIRECTION
     date: "2026-09-24"
-    decision: "Linear and GitHub must explicitly represent the complete Atlas end-state so backlog completion means Atlas is live, including generated daughter pages, on-demand depth and implementation-ready projections/business logic for downstream consumers."
-    evidence: ATL-103
+    decision: "Current live product is Atlas v1. The reconstructed complete end-to-end product is Atlas v2; Linear and GitHub must make Atlas v2 Product Live mean the full agreed product."
+    evidence: ATL-103 / Atlas v2 milestone
+  - type: OWNER_ALIGNMENT
+    date: "2026-09-24"
+    decision: "Preserve Universal Ask Atlas, Canvas, Inspector, Trace, Compare, enterprise discovery, knowledge-state/promotion, consumption-first UX, solution-pattern intelligence and value/kill-test concepts; do not restore Atlas as execution engine, autonomous solution architect, Malkom replacement, governance portal primary identity, HTML truth store or LLM-direct canonical writer."
+    evidence: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
   - type: FIRST_PARTY_POST_WRITE_VERIFY
     date: "2026-09-24"
     result: PASS
-    evidence: "GitHub re-fetch of both candidate outputs on atlas-governance-registry-v2.1"
+    evidence: "GitHub re-fetch of Atlas v2 contract + coverage matrix; blobs recorded above."
   - type: INDEPENDENT_QA
     status: REQUIRED
     linear_task: ATL-110
 
-current_checkpoint: "Candidate end-state contract + initial coverage matrix written to canonical governance branch; product milestone and Linear workstreams ATL-103 through ATL-110 established; candidate files post-write verified."
-next_action: "Perform full repository/Linear product coverage reconciliation under ATL-103, then hand candidate and completed coverage matrix to ATL-110 for independent adversarial QA, custody synchronization and Owner freeze."
+current_checkpoint: "Atlas v2 Product Live is now represented as a complete product milestone in Linear and as a comprehensive active candidate contract + coverage matrix in GitHub. Product-level missing workstreams ATL-111–ATL-117 added and blocked by ATL-110."
+
+next_action: "Complete full evidence-level coverage reconciliation: map existing GitHub/Drive/UI/backend/release assets and all relevant existing Linear issues to each Atlas v2 capability, identify stale/duplicate/superseded work and real gaps, then hand final candidate to ATL-110 for independent QA/custody/Owner freeze."
 
 open_items:
-  - "Inventory current UI/product/release artifacts and map them into the coverage matrix."
-  - "Inventory backend/API/schema/upgrade/release assets and map them into the coverage matrix."
-  - "Map existing Linear issues beyond ATL-40/ATL-95 to product capabilities; identify stale, duplicate or superseded work."
-  - "Identify any missing product dimensions before freeze."
-  - "Complete independent QA, Drive custody and shared-log synchronization under ATL-110."
-  - "Obtain explicit Owner freeze before ATL-104–ATL-109 implementation begins."
+  - "Map current repository implementation evidence to each v2 capability."
+  - "Map all existing Linear issues to v2 capability coverage, not only product-level parents."
+  - "Identify current Atlas v1 assets that can be preserved/reused in v2."
+  - "Identify stale demo/recovery tasks and explicit supersession/disposition."
+  - "Complete missing implementation/QA task decomposition only after evidence-level gap assessment."
+  - "Complete ATL-110 independent QA, shared-log/Drive custody sync and Owner freeze."
 
 authorized_actions:
-  - "Read and reconcile GitHub/Linear/Drive product state."
-  - "Populate product coverage matrix using actual governed evidence."
-  - "Create missing Linear implementation/QA tasks when real coverage gaps are found."
-  - "Prepare candidate corrections for independent QA."
+  - "Read/reconcile GitHub, Drive and Linear product state."
+  - "Populate/expand the product coverage matrix using actual evidence."
+  - "Create missing tasks only for verified product gaps."
+  - "Prepare candidate corrections and independent-QA package."
 
 blocked_actions:
-  - action: "Start new ATL-104–ATL-109 product implementation."
-    blocker: "Atlas Product End-State Contract V1 is not independently QA'd/frozen."
-    release_condition: "ATL-110 independent QA + custody sync + explicit Owner freeze PASS."
-  - action: "Describe Atlas Live v1.0 contract as frozen/canonical final."
+  - action: "Start new Atlas v2 product implementation workstreams ATL-104–ATL-117."
+    blocker: "Atlas v2 Product End-State Contract V1 is not independently QA'd/frozen."
+    release_condition: "ATL-110 PASS + custody sync + explicit Owner freeze."
+  - action: "Describe Atlas v2 Product End-State Contract as frozen."
     blocker: "Candidate state only."
-    release_condition: "ATL-110 PASS and Owner freeze."
+    release_condition: "ATL-110 PASS and explicit Owner freeze."
+  - action: "Implement autonomous controller/orchestration."
+    blocker: "Product end-state must be frozen before orchestration is designed/implemented."
+    release_condition: "Atlas v2 product contract freeze plus later controller architecture gate."
 
 handoff:
   pickup_sequence:
     - "Read ATL-103 and ATL-110 in Linear."
     - "Read this manifest."
-    - "Read frozen ATLAS_PRODUCT_CONSTITUTION_V1.md."
-    - "Read both current_outputs and verify blob identities."
-    - "Inspect actual GitHub/Linear/Drive product state; do not rely on chat memory."
+    - "Read ATLAS_PRODUCT_CONSTITUTION_V1.md."
+    - "Read ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md and coverage matrix."
+    - "Verify current output blob identities."
+    - "Inspect actual GitHub/Drive/Linear product state; do not infer completeness from chat."
     - "Execute only the coverage reconciliation next_action."
   chat_history_required: false
 
 last_execution_record:
   operator: ChatGPT
-  stopped_at: "2026-09-24T16:57:05Z"
+  stopped_at: "2026-09-24T17:16:00Z"
   durable_state_written: true
