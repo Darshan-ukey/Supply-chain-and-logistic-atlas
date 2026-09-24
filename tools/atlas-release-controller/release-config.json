@@ -1,0 +1,227 @@
+{
+  "schemaVersion": "0.1",
+  "releaseId": "atlas-v2",
+  "milestone": "Atlas v2 — Product Live",
+  "productContract": {
+    "path": "governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md",
+    "expectedBlobSha": "1cb7324049a0f818f3130141740751ae2838a93c",
+    "requiredStatusBeforeBuild": "FROZEN"
+  },
+  "coverageMatrix": {
+    "path": "governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json",
+    "expectedBlobSha": "0637aee9f253724dbb55a2b63ea18f7828bfcde9"
+  },
+  "frozenRegister": "governance/frozen-assets/ASSET_REGISTER.json",
+  "taskManifestDir": "governance/task-manifests",
+  "controllerTask": "ATL-120",
+  "phases": {
+    "prefreeze": [
+      "ATL-118",
+      "ATL-119",
+      "ATL-103",
+      "ATL-110"
+    ],
+    "build": [
+      "ATL-111",
+      "ATL-112",
+      "ATL-113",
+      "ATL-114",
+      "ATL-116",
+      "ATL-95",
+      "ATL-106",
+      "ATL-104",
+      "ATL-115",
+      "ATL-105",
+      "ATL-108",
+      "ATL-107"
+    ],
+    "value": [
+      "ATL-117"
+    ],
+    "release": [
+      "ATL-109"
+    ]
+  },
+  "dependencies": {
+    "ATL-118": [],
+    "ATL-119": [],
+    "ATL-103": [
+      "ATL-118",
+      "ATL-119"
+    ],
+    "ATL-110": [
+      "ATL-103",
+      "ATL-118",
+      "ATL-119"
+    ],
+    "ATL-111": [
+      "ATL-110"
+    ],
+    "ATL-112": [
+      "ATL-110",
+      "ATL-111"
+    ],
+    "ATL-113": [
+      "ATL-110",
+      "ATL-111",
+      "ATL-112"
+    ],
+    "ATL-114": [
+      "ATL-110"
+    ],
+    "ATL-116": [
+      "ATL-110"
+    ],
+    "ATL-95": [
+      "ATL-110"
+    ],
+    "ATL-106": [
+      "ATL-110"
+    ],
+    "ATL-104": [
+      "ATL-110",
+      "ATL-111",
+      "ATL-112"
+    ],
+    "ATL-115": [
+      "ATL-110",
+      "ATL-104"
+    ],
+    "ATL-105": [
+      "ATL-110",
+      "ATL-104",
+      "ATL-106",
+      "ATL-115"
+    ],
+    "ATL-108": [
+      "ATL-110",
+      "ATL-111",
+      "ATL-112",
+      "ATL-116"
+    ],
+    "ATL-107": [
+      "ATL-110",
+      "ATL-95",
+      "ATL-119"
+    ],
+    "ATL-117": [
+      "ATL-110",
+      "ATL-95",
+      "ATL-104",
+      "ATL-105",
+      "ATL-106",
+      "ATL-107",
+      "ATL-108",
+      "ATL-111",
+      "ATL-112",
+      "ATL-113",
+      "ATL-114",
+      "ATL-115",
+      "ATL-116"
+    ],
+    "ATL-109": [
+      "ATL-110",
+      "ATL-95",
+      "ATL-104",
+      "ATL-105",
+      "ATL-106",
+      "ATL-107",
+      "ATL-108",
+      "ATL-111",
+      "ATL-112",
+      "ATL-113",
+      "ATL-114",
+      "ATL-115",
+      "ATL-116",
+      "ATL-117"
+    ]
+  },
+  "ownerGates": {
+    "PRODUCT_CONTRACT_FREEZE": {
+      "task": "ATL-110",
+      "explicitOwnerAuthorizationRequired": true
+    },
+    "MATERIAL_PRODUCT_SCOPE_EXCEPTION": {
+      "trigger": "UNRESOLVED_MATERIAL_PRODUCT_OR_ARCHITECTURE_DECISION",
+      "explicitOwnerAuthorizationRequired": true
+    },
+    "PRODUCTION_GO_LIVE": {
+      "task": "ATL-109",
+      "explicitOwnerAuthorizationRequired": true
+    }
+  },
+  "qaPolicy": {
+    "builderMaySelfApprove": false,
+    "executableVerificationRequired": true,
+    "independentQaRequiredFor": [
+      "CANONICAL",
+      "SCHEMA",
+      "SECURITY",
+      "GENERATOR",
+      "READINESS",
+      "PROJECTION",
+      "PRODUCT_CONTRACT",
+      "RELEASE"
+    ],
+    "unknownState": "FAIL_CLOSED"
+  },
+  "loggingPolicy": {
+    "routine": [
+      "TASK_MANIFEST",
+      "GITHUB_ACTIONS_REPORT"
+    ],
+    "sharedLogOnly": [
+      "INDEPENDENT_QA_DISPOSITION",
+      "OWNER_DECISION",
+      "GOVERNANCE_EXCEPTION",
+      "MATERIAL_STAGE_OR_FREEZE_GATE",
+      "SERIOUS_PRODUCT_ARCHITECTURE_RECOVERY_DEFECT"
+    ],
+    "driveOnly": [
+      "FROZEN_OR_DECISION_SIGNIFICANT_SOURCE",
+      "FINAL_MATERIAL_QA_FREEZE_RELEASE_CUSTODY",
+      "HARD_TO_RECOVER_EVIDENCE",
+      "RECOVERY_PACKAGE"
+    ]
+  },
+  "protectedPathPrefixes": [
+    "governance/frozen-assets/",
+    "release/frozen/",
+    "frozen/"
+  ],
+  "productCoherence": {
+    "requiredSuites": [
+      "SOURCE_TO_OPERATIONAL_KNOWLEDGE",
+      "OK_TO_RUNTIME_PROJECTION",
+      "INTERACTION_LAYER",
+      "THREE_PRODUCT_LOOP",
+      "PUBLIC_PROTECTED_BOUNDARY",
+      "PROVENANCE_VERSION_IMPACT",
+      "UPGRADE_RECOVERY_SECURITY",
+      "VALUE_KILL_TEST",
+      "DEPLOYED_ATL109_ACCEPTANCE"
+    ],
+    "requireAllTaskProof": true,
+    "requireAllSuitesPass": true,
+    "requireProductionOwnerGate": true,
+    "taskCompletionAloneIsInsufficient": true
+  },
+  "validators": {
+    "repositoryBaseline": [
+      "npm test",
+      "npm run v2.1:check"
+    ],
+    "UI": [
+      "npm run browser:certify"
+    ],
+    "EXECUTION": [
+      "npm run execution:test"
+    ],
+    "SQL": [
+      "ATL-94 disposable PostgreSQL CI gate"
+    ],
+    "RELEASE": [
+      "ATL-109 deployed acceptance"
+    ]
+  }
+}
