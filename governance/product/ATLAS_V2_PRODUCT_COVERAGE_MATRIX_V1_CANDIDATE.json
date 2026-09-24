@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0-candidate",
+  "product_release": "Atlas v2",
+  "contract_version": "V1",
+  "status": "CANDIDATE",
+  "owner": "Darshan Ukey",
+  "linear_parent": "ATL-103",
+  "milestone": "Atlas v2 — Product Live",
+  "contract_path": "governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md",
+  "capabilities": [
+    {
+      "id": "SOURCE_FOUNDATION_UNIVERSE",
+      "linear": [
+        "ATL-111"
+      ],
+      "status": "GAP_ASSESSMENT_REQUIRED"
+    },
+    {
+      "id": "DAUGHTER_BASELINE_GENERATION",
+      "linear": [
+        "ATL-112",
+        "ATL-104"
+      ],
+      "status": "GAP_ASSESSMENT_REQUIRED"
+    },
+    {
+      "id": "ON_DEMAND_DEPTH",
+      "linear": [
+        "ATL-40"
+      ],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": "KNOWLEDGE_STATE_PROMOTION",
+      "linear": [
+        "ATL-116"
+      ],
+      "status": "GAP_ASSESSMENT_REQUIRED"
+    },
+    {
+      "id": "EXECUTION_SEMANTICS_BINDING_READINESS",
+      "linear": [
+        "ATL-95"
+      ],
+      "status": "GAP_CLOSURE_PLANNED"
+    },
+    {
+      "id": "ENTERPRISE_DISCOVERY_BINDING",
+      "linear": [
+        "ATL-114",
+        "ATL-95"
+      ],
+      "status": "GAP_ASSESSMENT_REQUIRED"
+    },
+    {
+      "id": "MULTI_CONSUMER_PROJECTIONS",
+      "linear": [
+        "ATL-95",
+        "ATL-107"
+      ],
+      "status": "GAP_ASSESSMENT_REQUIRED"
+    },
+    {
+      "id": "OPERATIONS_TRANSFORMATION_INTELLIGENCE",
+      "linear": [
+        "ATL-108"
+      ],
+      "status": "GAP_ASSESSMENT_REQUIRED"
+    },
+    {
+      "id": "INTERACTION_ASK_CANVAS_INSPECT_TRACE_COMPARE",
+      "linear": [
+        "ATL-105",
+        "ATL-115"
+      ],
+      "status": "GAP_ASSESSMENT_REQUIRED"
+    },
+    {
+      "id": "CROSS_LAYER_IMPACT_GRAPH",
+      "linear": [
+        "ATL-113"
+      ],
+      "status": "GAP_ASSESSMENT_REQUIRED"
+    },
+    {
+      "id": "BACKEND_API_UPGRADE_RELEASE",
+      "linear": [
+        "ATL-106"
+      ],
+      "status": "GAP_ASSESSMENT_REQUIRED"
+    },
+    {
+      "id": "VALUE_KILL_TEST",
+      "linear": [
+        "ATL-117"
+      ],
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "PRODUCT_ACCEPTANCE_GO_LIVE",
+      "linear": [
+        "ATL-109"
+      ],
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "PRODUCT_CONTRACT_RECONCILIATION",
+      "linear": [
+        "ATL-103",
+        "ATL-110"
+      ],
+      "status": "IN_PROGRESS"
+    }
+  ],
+  "preserved_concepts": [
+    "Canvas",
+    "Daughter V2 renderer/generation",
+    "Universal Ask Atlas",
+    "Inspector",
+    "Trace",
+    "Compare",
+    "public-safe vs protected/admin projection",
+    "Operational Knowledge Contract direction",
+    "Canonical Information Resolution",
+    "runtime-neutral adapters",
+    "Client Binding",
+    "on-demand depth",
+    "knowledge reuse/promotion",
+    "source/provenance/version governance"
+  ],
+  "explicitly_not_product_identity": [
+    "autonomous solution architect",
+    "operational workflow/execution engine",
+    "Malkom replacement",
+    "governance portal as primary identity",
+    "HTML-centric truth store",
+    "LLM-direct canonical writer"
+  ],
+  "next_reconciliation_requirement": "Map each capability to current GitHub/Drive implementation evidence, all existing Linear issues, validation method, acceptance evidence and unresolved gaps before ATL-110 freeze."
+}
