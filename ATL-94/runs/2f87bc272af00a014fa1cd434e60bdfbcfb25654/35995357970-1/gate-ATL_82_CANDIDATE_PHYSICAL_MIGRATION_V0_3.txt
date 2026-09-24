@@ -1,0 +1,10 @@
+== GATE-0 identity and static checks
+candidate blob verified: 2b3f3c2262ecc4fc8907661536c3d5cb65cd2d61
+reference pack b9cdbbe2 and reference output f79e97e8 verified; suite extracted from the pack
+lines ending in a lone dollar quote (expect 0): 2
+tg_argv uses:
+221:    if not (col = any (coalesce(tg_argv, '{}'::text[]))) and (o -> col) is distinct from (n -> col) then
+tg_argv array tests without a NULL guard (expect 0): 0
+readiness tables created (expect 0): 0
+candidate ends in: rollback; (rollback lines: 1, expect 1)
+STATIC CHECK FAILED
