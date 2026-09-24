@@ -110,6 +110,18 @@
       "next_gap": "Prove same canonical WD to Malkom + agentic-AI + RPA/BPM/workflow with explicit semantic-loss disposition."
     },
     {
+      "id": "BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION",
+      "linear": [
+        "ATL-119",
+        "ATL-60",
+        "ATL-95",
+        "ATL-107"
+      ],
+      "disposition": "ARCHITECTURE_DEFINED_BUILD_REQUIRED",
+      "current_evidence": "Business rules/decisions/validations already exist across Operational Knowledge, WorkDefinition and execution-readiness tasks. Atlas v2 now has an explicit extensible rule ontology + evaluation-mode + distribution-mode + hybrid runtime-consumption candidate contract. Seed taxonomy is not closed and must expand from governed Operational Knowledge when new domains reveal genuinely new rule semantics.",
+      "next_gap": "Reconcile candidate rule contract against OKv2, frozen Work Decomposition/WorkDefinition contracts and ATL-60/95; validate LTL-03/BOL classification plus taxonomy extension on a structurally different process/domain; prove EMBED/SNAPSHOT/DYNAMIC_LOOKUP and fail-closed dynamic dependency."
+    },
+    {
       "id": "OPERATIONS_TRANSFORMATION_INTELLIGENCE",
       "linear": [
         "ATL-108"
@@ -205,6 +217,6 @@
     "Process playback/simulation as a later visualization capability unless separately promoted into v2 acceptance.",
     "Expansion beyond logistics; architecture should remain extensible but v2 delivery is not required to cover other enterprise domains."
   ],
-  "reconciliation_status": "FIRST_PASS_PRODUCT_AND_LINEAR_MECHANISM_RECONCILIATION_COMPLETE__ARTIFACT_AND_DRIVE_MAPPING_PENDING",
-  "next_reconciliation_requirement": "Map exact GitHub/Drive artifact identities (including all 35 frozen-register records) and existing Linear issue IDs into each capability; classify each frozen/current asset for Atlas v2 as REUSE_AS_IS, REUSE_WITH_SUCCESSOR, HISTORICAL_REFERENCE_ONLY, DO_NOT_APPLY, or RETIRE_FROM_CURRENT_POINTER; then complete Drive custody mirror before ATL-110 freeze."
+  "reconciliation_status": "PRODUCT_LINEAR_RULE_RUNTIME_AND_FROZEN_ASSET_RECONCILIATION_IN_PROGRESS",
+  "next_reconciliation_requirement": "Complete ATL-118 frozen-asset/Drive pointer reconciliation and ATL-119 rule ontology/runtime-consumption reconciliation, then independently challenge the combined Atlas v2 product contract under ATL-110."
 }
