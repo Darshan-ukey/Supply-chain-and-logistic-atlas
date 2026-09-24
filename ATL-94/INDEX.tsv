@@ -2,3 +2,4 @@
 2026-09-24T11:47:46Z	e6806564c2ec415c9f81972c36abb610592a98b2	35995068605	1	push	atlas-governance-registry-v2.1	PASS	PASS (canary only: no candidate beyond the historical V0.1/V0.2 exists yet)
 2026-09-24T11:49:51Z	19606388dbc74287cf29aa66cc9faf3f3e55bb83	35995273841	1	push	atlas-governance-registry-v2.1	FAIL	FAIL
 2026-09-24T11:50:41Z	2f87bc272af00a014fa1cd434e60bdfbcfb25654	35995357970	1	push	atlas-governance-registry-v2.1	FAIL	FAIL
+2026-09-24T12:29:53Z	45faea650657213265da925a65a79e510a358f77	35999380156	1	push	atlas-governance-registry-v2.1	FAIL	FAIL
