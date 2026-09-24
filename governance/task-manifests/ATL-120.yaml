@@ -1,0 +1,42 @@
+task_id: ATL-120
+task_title: "Temporary Atlas v2 Release Controller — deterministic 48-hour build, QA and product-coherence orchestration"
+task_status: IMPLEMENTED_UNVERIFIED
+status_detail: "Controller core/config/snapshot/tests/GitHub Actions preflight created on isolated branch. First workflow run must prove actual repository baseline + controller preflight before promotion."
+execution_owner: ChatGPT
+decision_authority: Darshan Ukey
+manifest_status: ACTIVE
+last_updated: "2026-09-24T18:30:00Z"
+
+governing_inputs:
+  - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
+    blob_sha: 1cb7324049a0f818f3130141740751ae2838a93c
+  - path: governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json
+    blob_sha: 0637aee9f253724dbb55a2b63ea18f7828bfcde9
+  - path: governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md
+  - path: governance/standards/CANONICAL_GENERATION_AND_FREEZE_ASSET_STANDARD_V1.md
+  - linear_issue: ATL-120
+
+current_checkpoint: "Temporary release-controller core implemented on branch atlas-v2-temp-release-controller. Linear preflight dependency defects corrected before implementation."
+next_action: "Run GitHub Actions preflight; inspect actual job results and controller report. If PASS, record executable verification. The current expected stage is PRE_FREEZE with only ATL-118 and ATL-119 actionable."
+
+qa_and_decisions:
+  - type: PREFLIGHT_FINDING
+    decision: "Removed circular ATL-103↔ATL-118/119 freeze dependency and strengthened downstream/final product dependencies before automation."
+  - type: PRODUCT_GUARD
+    decision: "Task completion alone can never produce PRODUCT_LIVE; product coherence suites + ATL-109 proof + explicit Owner production authorization are mandatory."
+
+blocked_actions:
+  - action: "Dispatch Atlas v2 build tasks."
+    blocker: "ATL-110 Product Contract Freeze not complete/Owner-authorized."
+    release_condition: "ATL-118 + ATL-119 + ATL-103 complete, ATL-110 independent QA PASS, explicit Owner freeze."
+  - action: "Promote Atlas v2 production."
+    blocker: "ATL-109 + product coherence + Owner go-live."
+    release_condition: "All component proof, all coherence suites, ATL-109 PASS, explicit Owner production authorization."
+
+logging_policy:
+  routine: "task manifest + GitHub Actions report"
+  shared_log: "material QA/Owner/governance/freeze/serious defects only"
+  drive: "frozen/decision-significant/final QA-release/recovery custody only"
+
+handoff:
+  chat_history_required: false
