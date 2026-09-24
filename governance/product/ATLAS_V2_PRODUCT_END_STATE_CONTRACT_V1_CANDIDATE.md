@@ -197,6 +197,84 @@ Canonical WorkDefinition must carry, where material:
 
 If the implementation team must rediscover governed business logic, the scope is not execution-ready.
 
+## 9A. Detailed Execution-Readiness Mechanism — inherited, not replaced
+
+Atlas v2 MUST preserve the more detailed governed mechanism already defined through the Linear/AR/P6 execution-readiness work. The product-level architecture in this contract is an umbrella; it does not simplify or supersede those lower-level semantics.
+
+### Mechanism 1 — In-Depth Knowledge Research
+
+Purpose: determine whether Atlas knows enough.
+
+Required behavior:
+- establish the operational universe before selecting a narrow execution use case;
+- research authoritative sources/evidence;
+- normalize findings into governed knowledge entities;
+- attach provenance/evidence, applicability, authority, confidence/support and explicit gap state;
+- identify contradictions and missing semantics;
+- perform bounded targeted re-research;
+- freeze/reconcile an evidence-backed knowledge candidate.
+
+### Mechanism 2 — Research-to-Execution-Readiness Transformation
+
+Purpose: determine whether researched knowledge can be transformed into implementation-ready specifications without rediscovering material business semantics.
+
+Required behavior:
+- consume frozen/reconciled research rather than prose/HTML as authority;
+- preserve Z0–Z7 ownership and governing layer on material structured knowledge;
+- derive Canonical Work Decomposition from structured Operational Knowledge;
+- derive Canonical WorkDefinition from the governed decomposition/knowledge substrate;
+- expose enterprise/client binding requirements separately from reusable domain knowledge;
+- produce Z6 readiness proof and version-closed specification;
+- only then produce runtime-specific projections.
+
+A material semantic gap discovered during transformation returns to Mechanism 1 as a bounded research request. It is never silently inferred merely to complete a WorkDefinition or projection.
+
+### Common evidence/governance envelope
+
+Material knowledge elements should retain, where applicable:
+- stable identity and version;
+- work-node/scope applicability;
+- knowledge type;
+- canonical name/definition and operational purpose;
+- conditions/applicability;
+- required inputs;
+- rule/decision/validation logic;
+- expected output/state;
+- exception behavior;
+- related objects/relationships;
+- actor/system;
+- source/evidence reference and authority;
+- confidence/support/epistemic status;
+- client-binding/master-data requirement;
+- executor relevance;
+- knowledge-gap state;
+- Z0–Z7 ownership.
+
+### Execution-semantic depth that must survive compilation
+
+The detailed Linear work remains binding for material scopes, including:
+- lifecycle/state-transition semantics;
+- identity and relationship/cardinality model;
+- information contract per transition;
+- decisions and rule catalogue;
+- validation and control model;
+- exception taxonomy;
+- authority/action rights;
+- evidence/audit contract;
+- retry/idempotency/recovery;
+- source precedence at the semantic/field level where required;
+- temporal/effective-date logic;
+- confidence/gap handling;
+- downstream-tool projection.
+
+Queues/work states must be derived from governed lifecycle states, unmet prerequisites, rules, exceptions or evidence requirements; they must not be manually invented as canonical process truth.
+
+The canonical execution chain therefore remains:
+
+`authoritative evidence → governed knowledge → recursive Work Decomposition → Canonical WorkDefinition → binding requirements → enterprise binding → readiness → runtime projection`.
+
+ATL-60/87/95 and their governed successor contracts/evidence are implementation-detail sources for this mechanism and must be reconciled into the v2 coverage matrix rather than replaced by new generic tasks.
+
 ## 10. Layer G — Enterprise Discovery and Client Binding
 
 Atlas v2 needs a practical mechanism to ingest enterprise/client reality, not merely a schema for Client Binding.
