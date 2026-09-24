@@ -37,35 +37,61 @@
     {
       "id": "ON_DEMAND_DEPTH",
       "linear": [
-        "ATL-40"
+        "ATL-40",
+        "ATL-59",
+        "ATL-60",
+        "ATL-67",
+        "ATL-70",
+        "ATL-71",
+        "ATL-79",
+        "ATL-80",
+        "ATL-81"
       ],
       "disposition": "PARTIAL_GAP_CLOSURE",
-      "current_evidence": "Governed ATL-40–48 workstream already defines depth model, trigger, acquisition/generation, verification, persistence/promotion/reuse and end-to-end proof sequence.",
+      "current_evidence": "Governed ATL-40–48 workstream already defines depth model, trigger, acquisition/generation, verification, persistence/promotion/reuse and end-to-end proof sequence. Detailed Linear mechanics are preserved through ATL-59/60/67/70/71/79/80/81, including evidence recovery, independent field-universe freeze, benchmark/ground-truth gates, real-fact schema dry-run and typed knowledge registry.",
       "next_gap": "Complete remaining workstream stages and final structurally-different-node proof."
     },
     {
       "id": "KNOWLEDGE_STATE_PROMOTION",
       "linear": [
         "ATL-116",
-        "ATL-40"
+        "ATL-40",
+        "ATL-60",
+        "ATL-80",
+        "ATL-87",
+        "ATL-88",
+        "ATL-89"
       ],
       "disposition": "PARTIAL_GAP_CLOSURE",
-      "current_evidence": "Knowledge gaps, provenance states and depth promotion/reuse concepts exist, but the complete user-visible epistemic taxonomy and cross-engagement promotion proof are not yet v2-certified.",
+      "current_evidence": "Knowledge gaps, provenance states and depth promotion/reuse concepts exist, but the complete user-visible epistemic taxonomy and cross-engagement promotion proof are not yet v2-certified. ATL-87/88/89 additionally define client-observed knowledge acquisition, independent QA and promotion-control chronology.",
       "next_gap": "Reconcile existing schemas/states; formalize taxonomy only where not already canonical; prove promotion vs client-specific non-promotion."
     },
     {
       "id": "EXECUTION_SEMANTICS_BINDING_READINESS",
       "linear": [
-        "ATL-95"
+        "ATL-60",
+        "ATL-82",
+        "ATL-83",
+        "ATL-86",
+        "ATL-92",
+        "ATL-93",
+        "ATL-94",
+        "ATL-95",
+        "ATL-96",
+        "ATL-97"
       ],
       "disposition": "PARTIAL_GAP_CLOSURE",
-      "current_evidence": "Operational Knowledge, P6.1 decomposition evidence, Canonical WorkDefinition compiler/verifier, Client Binding contract and deterministic readiness resolver exist in material form; current governed lineage still requires connected end-to-end proof and gap closure.",
+      "current_evidence": "Operational Knowledge, P6.1 decomposition evidence, Canonical WorkDefinition compiler/verifier, Client Binding contract and deterministic readiness resolver exist in material form; current governed lineage still requires connected end-to-end proof and gap closure. The lower-level chain includes physical DDL/migration design, WorkDefinition lineage reconciliation, Z6 readiness persistence, protected mutation hardening, executable PostgreSQL CI proof, independent QA and shared-log/governed landing gates.",
       "next_gap": "Complete ATL-95 against current governed lineage with real-scope readiness and provenance."
     },
     {
       "id": "ENTERPRISE_DISCOVERY_BINDING",
       "linear": [
         "ATL-114",
+        "ATL-60",
+        "ATL-87",
+        "ATL-88",
+        "ATL-89",
         "ATL-95"
       ],
       "disposition": "ARCHITECTURE_DEFINED_BUILD_REQUIRED",
@@ -75,6 +101,7 @@
     {
       "id": "MULTI_CONSUMER_PROJECTIONS",
       "linear": [
+        "ATL-60",
         "ATL-95",
         "ATL-107"
       ],
@@ -178,6 +205,6 @@
     "Process playback/simulation as a later visualization capability unless separately promoted into v2 acceptance.",
     "Expansion beyond logistics; architecture should remain extensible but v2 delivery is not required to cover other enterprise domains."
   ],
-  "reconciliation_status": "FIRST_PASS_PRODUCT_DISPOSITION_COMPLETE__ARTIFACT_LEVEL_MAPPING_PENDING",
-  "next_reconciliation_requirement": "Map exact GitHub/Drive artifact identities and all existing Linear issue IDs into each capability; classify preserve/extend/supersede/build and define validation evidence before ATL-110 freeze."
+  "reconciliation_status": "FIRST_PASS_PRODUCT_AND_LINEAR_MECHANISM_RECONCILIATION_COMPLETE__ARTIFACT_AND_DRIVE_MAPPING_PENDING",
+  "next_reconciliation_requirement": "Map exact GitHub/Drive artifact identities (including all 35 frozen-register records) and existing Linear issue IDs into each capability; classify each frozen/current asset for Atlas v2 as REUSE_AS_IS, REUSE_WITH_SUCCESSOR, HISTORICAL_REFERENCE_ONLY, DO_NOT_APPLY, or RETIRE_FROM_CURRENT_POINTER; then complete Drive custody mirror before ATL-110 freeze."
 }
