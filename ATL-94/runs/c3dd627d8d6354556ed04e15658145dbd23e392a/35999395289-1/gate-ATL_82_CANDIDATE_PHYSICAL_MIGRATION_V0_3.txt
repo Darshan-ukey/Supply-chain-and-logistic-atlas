@@ -1,0 +1,226 @@
+== GATE-0 identity and static checks
+candidate blob verified: 31e9f4ca8c3877519dda71f84b82502d7476ff86
+reference pack b9cdbbe2 and reference output f79e97e8 verified; suite extracted from the pack
+lines ending in a lone dollar quote (expect 0): 0
+tg_argv uses:
+221:    if not (col = any (coalesce(tg_argv, '{}'::text[]))) and (o -> col) is distinct from (n -> col) then
+tg_argv array tests without a NULL guard (expect 0): 0
+readiness tables created (expect 0): 0
+candidate ends in: rollback; (rollback lines: 1, expect 1)
+== GATE-1 candidate exactly as written (single transaction, ON_ERROR_STOP=1, ends in ROLLBACK)
+as-written psql exit code (expect 0): 0
+tables remaining after ROLLBACK (expect 0): 0
+== GATE-2 candidate committed (only the final ROLLBACK changed to COMMIT): TG_ARGV probe and closure suite
+commit-copy diff (expect one changed line):
+249c249
+committed psql exit code: 0
+== B2-MECHANISM value of TG_ARGV inside a PL/pgSQL trigger (zero-argument vs one-argument trigger)
+                    v                    
+-----------------------------------------
+ 0 args; tg_argv is NULL
+ 1 args; tg_argv is array [0:0]={status}
+
+              fixtures               
+-------------------------------------
+ fixtures loaded: entities=2 links=2
+
+== C1a grants to anon/authenticated on the 9 V0.2 tables (expect no rows)
+ table_name | grantee | privs 
+------------+---------+-------
+
+== C1b service_role privileges per table (expect DELETE,INSERT,SELECT,UPDATE on each of the 9; no TRUNCATE/REFERENCES/TRIGGER)
+             table_name             |     service_role_privs      
+------------------------------------+-----------------------------
+ atlas_evidence_sources             | DELETE,INSERT,SELECT,UPDATE
+ atlas_generation_z5_outputs        | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_entities           | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_entity_types       | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_evidence_links     | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_gap_links          | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_generation_runs    | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_relationship_types | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_relationships      | DELETE,INSERT,SELECT,UPDATE
+
+== C1c authenticated: SELECT and TRUNCATE (expect 2x permission denied)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:23: ERROR:  permission denied for table atlas_knowledge_entities
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:24: ERROR:  permission denied for table atlas_knowledge_evidence_links
+== C1d anon: SELECT (expect permission denied)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:28: ERROR:  permission denied for table atlas_evidence_sources
+== C1e service_role: SELECT allowed (expect 2), TRUNCATE (expect permission denied)
+ service_role_visible_entities 
+-------------------------------
+                             2
+
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:33: ERROR:  permission denied for table atlas_knowledge_evidence_links
+== C1f guard function EXECUTE for anon/authenticated (expect f,f) and RLS on all 9 tables (expect 9)
+ anon_exec | authenticated_exec | rls_tables 
+-----------+--------------------+------------
+ f         | f                  |          9
+
+== C2a legitimate lifecycle/status promotion on entity, type and relationship (expect success, 3 rows)
+        ?column?        
+------------------------
+ entity VALIDATED
+ type VALIDATED
+ relationship VALIDATED
+
+== C2b pinned type contract edited in place (expect ERROR append-only)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:44: ERROR:  append-only: atlas_knowledge_entity_types.schema_contract is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2n relationship-type contract edited in place (expect ERROR append-only); relationship-type status promotion (expect success)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:46: ERROR:  append-only: atlas_knowledge_relationship_types.schema_contract is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+ type_id |  status   |  schema_contract   
+---------+-----------+--------------------
+ RT-TEST | VALIDATED | {"type": "object"}
+
+== C2p DELETE of a relationship-type row (expect ERROR append-only)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:50: ERROR:  append-only: DELETE on atlas_knowledge_relationship_types is not permitted; supersede with a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 5 at RAISE
+== C2c knowledge definition rewritten in place (expect ERROR append-only)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:52: ERROR:  append-only: atlas_knowledge_entities.definition is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2d relationship semantic payload rewritten in place (expect ERROR append-only)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:54: ERROR:  append-only: atlas_knowledge_relationships.semantic_payload is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2e evidence source reclassified in place (expect ERROR append-only)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:56: ERROR:  append-only: atlas_evidence_sources.source_class is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2j evidence link support role flipped in place (expect ERROR append-only)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:58: ERROR:  append-only: atlas_knowledge_evidence_links.support_role is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2f DELETE semantic row (expect ERROR append-only)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:60: ERROR:  append-only: DELETE on atlas_knowledge_relationships is not permitted; supersede with a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 5 at RAISE
+== C2g TRUNCATE as table owner (expect ERROR append-only)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:62: ERROR:  append-only: TRUNCATE on atlas_knowledge_evidence_links is not permitted
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 4 at RAISE
+== C2h generation run manifest rewritten (expect ERROR); run_status transition (expect success)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:64: ERROR:  append-only: atlas_knowledge_generation_runs.consumed_knowledge_manifest is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+ run_id | run_status 
+--------+------------
+ G1     | VALIDATED
+
+== C2i guard triggers present (expect 18: 9 row-level + 9 TRUNCATE)
+ guard_triggers 
+----------------
+             18
+
+== C3a relationship lifecycle column exists and defaults to CANDIDATE (expect 1 and CANDIDATE for a fresh row)
+ lifecycle_column | lifecycle_status 
+------------------+------------------
+                1 | CANDIDATE
+
+== C3b invalid relationship lifecycle value (expect ERROR check)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:74: ERROR:  new row for relation "atlas_knowledge_relationships" violates check constraint "atlas_knowledge_relationships_lifecycle_chk"
+DETAIL:  Failing row contains (R3, 1, M, Z1, RT-TEST, 1.0.0, K2, 1, K1, 1, {}, {}, LIVE, SUPPORTED, C1, 1, null, hr3, 2026-09-24 12:29:49.798288+00).
+== C4a same source registered twice under a different class (expect ERROR unique)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:77: ERROR:  duplicate key value violates unique constraint "atlas_evidence_sources_evidence_source_kind_evidence_ref_key"
+DETAIL:  Key (evidence_source_kind, evidence_ref)=(regulation, 49 CFR 172.202) already exists.
+== C4b client evidence without workspace (expect ERROR client_scope)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:79: ERROR:  new row for relation "atlas_evidence_sources" violates check constraint "atlas_evidence_sources_client_scope_chk"
+DETAIL:  Failing row contains (S-X, CLIENT_PROVIDED, client_document, doc-uuid-9, null, null, null, 2026-09-24 12:29:49.79862+00).
+== C4c authoritative research scoped to a client workspace (expect ERROR research_scope)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:81: ERROR:  new row for relation "atlas_evidence_sources" violates check constraint "atlas_evidence_sources_research_scope_chk"
+DETAIL:  Failing row contains (S-Y, AUTHORITATIVE_RESEARCH, regulation, 49 CFR 373.101, 00000000-0000-0000-0000-00000000000a, null, null, 2026-09-24 12:29:49.798751+00).
+== C4d link class derived from its source (expect K1 AUTHORITATIVE_RESEARCH, K2 CLIENT_PROVIDED)
+ knowledge_id |      source_class      
+--------------+------------------------
+ K1           | AUTHORITATIVE_RESEARCH
+ K2           | CLIENT_PROVIDED
+
+== C4e source-level columns absent from the link table (expect 0)
+ source_level_columns_on_link 
+------------------------------
+                            0
+
+== C4f link without a source (expect ERROR not-null)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:87: ERROR:  null value in column "source_id" of relation "atlas_knowledge_evidence_links" violates not-null constraint
+DETAIL:  Failing row contains (L9, K1, 1, null, null, null, null, SUPPORTS, {}, 2026-09-24 12:29:49.800493+00).
+== C7a valid gap link to entity (expect success), then half-key, nonexistent gap and duplicate (expect 3 ERRORs)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:91: ERROR:  new row for relation "atlas_knowledge_gap_links" violates check constraint "atlas_knowledge_gap_links_target_chk"
+DETAIL:  Failing row contains (00000000-0000-0000-0000-0000000000b1, K2, null, null, null, 2026-09-24 12:29:49.80125+00).
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:92: ERROR:  insert or update on table "atlas_knowledge_gap_links" violates foreign key constraint "atlas_knowledge_gap_links_gap_id_fkey"
+DETAIL:  Key (gap_id)=(00000000-0000-0000-0000-0000000000ff) is not present in table "atlas_knowledge_gaps".
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:93: ERROR:  duplicate key value violates unique constraint "atlas_knowledge_gap_links_gap_id_knowledge_id_knowledge_ver_key"
+DETAIL:  Key (gap_id, knowledge_id, knowledge_version, relationship_id, relationship_version)=(00000000-0000-0000-0000-0000000000b1, K2, 1, null, null) already exists.
+ gap_links 
+-----------
+         1
+
+== C2k gap link retargeted in place (expect ERROR append-only)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:96: ERROR:  append-only: atlas_knowledge_gap_links.knowledge_id is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C8a Z5 output with NULL hash (expect ERROR not-null)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:99: ERROR:  null value in column "output_hash" of relation "atlas_generation_z5_outputs" violates not-null constraint
+DETAIL:  Failing row contains (G1, WORK_DEFINITION, WD-1, 1, null, 2026-09-24 12:29:49.802269+00).
+== C8b valid Z5 output with hash (expect success)
+== C2m Z5 lineage hash overwritten in place (expect ERROR append-only)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:103: ERROR:  append-only: atlas_generation_z5_outputs.output_hash is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2-READBACK values after the in-place attempts (expect originals: AUTHORITATIVE_RESEARCH / SUPPORTS / K2 / hwd)
+      s_cfr_class       | l1_role  | gap_target | wd1_hash 
+------------------------+----------+------------+----------
+ AUTHORITATIVE_RESEARCH | SUPPORTS | K2         | hwd
+
+== R1-INFO (non-binding, not adopted in V0.2): output naming a nonexistent WorkDefinition is still accepted
+     output_id     | target_rows 
+-------------------+-------------
+ WD-1              |           1
+ WD-DOES-NOT-EXIST |           0
+
+== D1A Z6 readiness tables absent from V0.2 (expect 0)
+ readiness_tables 
+------------------
+                0
+
+== REGRESSION (controls that passed on V0.1; expect 5 ERRORs then the pinned-type delete blocked)
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:114: ERROR:  insert or update on table "atlas_knowledge_entities" violates foreign key constraint "atlas_knowledge_entities_entity_type_entity_type_version_fkey"
+DETAIL:  Key (entity_type, entity_type_version)=(ET-TEST, 9.9.9) is not present in table "atlas_knowledge_entity_types".
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:115: ERROR:  new row for relation "atlas_knowledge_evidence_links" violates check constraint "atlas_knowledge_evidence_links_target_chk"
+DETAIL:  Failing row contains (L3, K1, 1, R1, 1, S-CFR, null, SUPPORTS, {}, 2026-09-24 12:29:49.8048+00).
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:116: ERROR:  new row for relation "atlas_knowledge_evidence_links" violates check constraint "atlas_knowledge_evidence_links_target_chk"
+DETAIL:  Failing row contains (L4, K1, null, null, null, S-CFR, null, SUPPORTS, {}, 2026-09-24 12:29:49.804946+00).
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:117: ERROR:  new row for relation "atlas_knowledge_entities" violates check constraint "atlas_knowledge_entities_zone_chk"
+DETAIL:  Failing row contains (K8, 1, M, null, Z9, ET-TEST, 1.0.0, X, d, null, CANDIDATE, SUPPORTED, {}, {}, C1, 1, null, h, 2026-09-24 12:29:49.805085+00, 2026-09-24 12:29:49.805085+00).
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:118: ERROR:  new row for relation "atlas_knowledge_entities" violates check constraint "atlas_knowledge_entities_support_chk"
+DETAIL:  Failing row contains (K7, 1, M, null, Z1, ET-TEST, 1.0.0, X, d, null, CANDIDATE, PROBABLY_TRUE, {}, {}, C1, 1, null, h, 2026-09-24 12:29:49.805252+00, 2026-09-24 12:29:49.805252+00).
+psql:/tmp/tmp.vNKJv2KW2r/closure.sql:119: ERROR:  append-only: DELETE on atlas_knowledge_entity_types is not permitted; supersede with a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 5 at RAISE
+ pinned_type_rows_after_delete_attempt 
+---------------------------------------
+                                     1
+
+golden match: closure (DIAGNOSTIC-B results reproduced exactly)
+== GATE-3 drop and rebuild
+== DOWN drop V0.2 structures (reverse dependency order, one statement per table)
+ v02_structures_remaining 
+--------------------------
+                        0
+(1 row)
+
+ protected_stub_row_intact | gap_row_intact 
+---------------------------+----------------
+                         1 |              1
+(1 row)
+
+== REBUILD verification (after re-applying the repaired V0.2 diagnostic copy)
+ rebuilt_structures 
+--------------------
+                  9
+(1 row)
+
+ guard_triggers 
+----------------
+             18
+(1 row)
+
+ protected_stub_row_still_intact | gap_row_still_intact 
+---------------------------------+----------------------
+                               1 |                    1
+(1 row)
+
+golden match: down (DIAGNOSTIC-B results reproduced exactly)
+golden match: rebuild (DIAGNOSTIC-B results reproduced exactly)
+== GATE RESULT: PASS (candidate 31e9f4ca8c3877519dda71f84b82502d7476ff86 runs clean as written; its committed copy reproduces every DIAGNOSTIC-B result)
