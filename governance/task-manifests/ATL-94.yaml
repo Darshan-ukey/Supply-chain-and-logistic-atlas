@@ -1,8 +1,8 @@
 task_id: ATL-94
 title: "CI executable gate — GitHub runs ATL-82 candidate SQL on every commit (no agent needs to execute SQL)"
-task_status: PROOF_RECORDED
-status_detail: "Built and verified locally by Claude: the gate job's own run steps extracted from the workflow and executed as a non-root user against PostgreSQL 16, 22 runner scenarios and 12 publisher cases, actionlint and shellcheck clean. Two independent review rounds by a separate agent; all findings fixed. Acceptance pending: the first GitHub Actions run after landing (criterion 6), then ChatGPT independent QA of the landed files and that run's proof."
-manifest_status: ACTIVE
+task_status: GOVERNED_COMPLETE
+status_detail: "ATL-94 acceptance criteria satisfied. Byte-exact reviewed workflow/runner/publisher/gate pins verified after landing. First GitHub Actions canary run 35994787044 completed success and published PASS proof at commit e25e938ad65e0077e73851573e0e13ffe8eba46c. Actions and atlas-ci-proofs branch publication are operational. No Supabase mutation."
+manifest_status: CLOSED
 execution_owner: "Claude (build and local verification); ChatGPT (GitHub landing); Owner (workflow-file push fallback and repository settings)"
 decision_authority: "Darshan / Atlas Owner-Governor"
 parent_task: ATL-60
@@ -106,7 +106,7 @@ open_risks:
 builder_protocol_for_atl82_candidates: "Replaces 'run the gate locally' in the ATL-83 re-QA handoff. Land the candidate as governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V<n>_<m>.sql; CI gates it and its proof shows the gate result and the file's blob, but FAIL until pinned. Pin that blob in ATL-82.yaml working_outputs (path + blob_sha); the proof for the pin commit must read 'PASS (1 of 1 candidate(s) passed the gate)' with the reviewed CI code blobs. That proof, cited by path, run URL and source commit, is the builder's executable first-party proof."
 
 current_checkpoint: "ATL-94 landed byte-exact. First GitHub Actions run 35994787044 on source commit 23998d2624293f6775b7f086eaf4c64dcbffa6e0 completed success; atlas-ci-proofs verdict PASS (canary only), proof commit e25e938ad65e0077e73851573e0e13ffe8eba46c. Reviewed CI code blobs match governed pins. No Supabase mutation."
-next_action: "Synchronize dependent ATL-82/ATL-60 manifests to the ATL-94 CI proof protocol, then produce ATL-82 V0.3. V0.3 must obtain the two-step CI proof: initial expected FAIL until pinned, then PASS (1 of 1 candidate(s) passed the gate) after its blob is recorded in ATL-82.yaml."
+next_action: "Downstream consumer ATL-82 now uses ATL-94 for V0.3 executable first-party proof. ATL-94 reopens only for a governed CI/gate change or a failed proof requiring investigation."
 
 last_execution_record:
   operator: Claude
