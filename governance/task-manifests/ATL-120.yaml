@@ -1,11 +1,11 @@
 task_id: ATL-120
 task_title: "Temporary Atlas v2 Release Controller — deterministic 48-hour build, QA and product-coherence orchestration"
-task_status: IMPLEMENTED_UNVERIFIED
-status_detail: "Controller core/config/snapshot/tests/GitHub Actions preflight created on isolated branch. First workflow run must prove actual repository baseline + controller preflight before promotion."
+task_status: VERIFIED_FIRST_PARTY
+status_detail: "Controller safety/orchestration core is built and has passed live GitHub Actions preflight. Current product stage is PRE_FREEZE and controller correctly stops with only ATL-118/ATL-119 eligible. Full downstream build dispatch remains intentionally blocked until ATL-110 + Owner freeze."
 execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 manifest_status: ACTIVE
-last_updated: "2026-09-24T18:30:00Z"
+last_updated: "2026-09-24T18:33:00Z"
 
 governing_inputs:
   - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
@@ -16,27 +16,86 @@ governing_inputs:
   - path: governance/standards/CANONICAL_GENERATION_AND_FREEZE_ASSET_STANDARD_V1.md
   - linear_issue: ATL-120
 
-current_checkpoint: "Temporary release-controller core implemented on branch atlas-v2-temp-release-controller. Linear preflight dependency defects corrected before implementation."
-next_action: "Run GitHub Actions preflight; inspect actual job results and controller report. If PASS, record executable verification. The current expected stage is PRE_FREEZE with only ATL-118 and ATL-119 actionable."
+implementation:
+  branch: atlas-v2-temp-release-controller
+  controller: tools/atlas-release-controller/controller.mjs
+  config: tools/atlas-release-controller/release-config.json
+  state_snapshot: tools/atlas-release-controller/release-state.snapshot.json
+  tests: tools/atlas-release-controller/tests/controller.test.mjs
+  workflow: .github/workflows/atlas-v2-temp-release-controller.yml
 
-qa_and_decisions:
-  - type: PREFLIGHT_FINDING
-    decision: "Removed circular ATL-103↔ATL-118/119 freeze dependency and strengthened downstream/final product dependencies before automation."
-  - type: PRODUCT_GUARD
-    decision: "Task completion alone can never produce PRODUCT_LIVE; product coherence suites + ATL-109 proof + explicit Owner production authorization are mandatory."
+preflight_corrections:
+  - "Removed circular ATL-103 ↔ ATL-118/119 freeze dependency."
+  - "Strengthened ATL-109 so final product acceptance is blocked by the complete product capability chain."
+  - "Added real dependency ordering for source→daughter→surface→interaction/UI and execution/value gates."
+  - "Placed ATL-95 behind ATL-110 product freeze."
+  - "Created missing ATL-95 durable task manifest."
+  - "Separated pre-freeze stable repository health from mandatory deployed/browser product acceptance without converting browser failure to PASS."
+
+executable_evidence:
+  - run_id: 36041402559
+    result: FAIL
+    finding: "npm ci invalid because repository has no package-lock; workflow corrected."
+  - run_id: 36041497819
+    result: FAIL_CLOSED_AS_DESIGNED
+    finding: "Missing ATL-95 task manifest detected; durable manifest added."
+  - run_id: 36041598704
+    result: PARTIAL_PASS
+    finding: "Controller preflight PASS; full legacy npm test failed only at Chromium CDP startup after canonical/Ask/public-IP/admin/API checks passed."
+  - run_id: 36041778771
+    result: PASS
+    evidence: "Controller tests PASS; preflight PASS; stable repository baseline PASS; browser probe executed and preserved separately; evidence artifact uploaded."
+    controller_outcome: SAFE_STOP_PRE_FREEZE
+    controller_stage: PRE_FREEZE
+    eligible_now:
+      - ATL-118
+      - ATL-119
+
+verified_guards:
+  dependency_graph_acyclic: true
+  product_contract_identity: true
+  coverage_matrix_identity: true
+  all_release_task_manifests_present: true
+  builder_self_approval_forbidden: true
+  executable_verification_required: true
+  owner_gates_explicit: true
+  shared_log_routine_progress_forbidden: true
+  final_product_gate_requires_full_chain: true
+  task_completion_alone_can_mark_product_live: false
+
+product_ready_rule: "PRODUCT_LIVE requires component executable proof + all product-coherence suites PASS + ATL-109 deployed acceptance PASS + explicit Owner production authorization."
+
+product_coherence_suites:
+  - SOURCE_TO_OPERATIONAL_KNOWLEDGE
+  - OK_TO_RUNTIME_PROJECTION
+  - INTERACTION_LAYER
+  - THREE_PRODUCT_LOOP
+  - PUBLIC_PROTECTED_BOUNDARY
+  - PROVENANCE_VERSION_IMPACT
+  - UPGRADE_RECOVERY_SECURITY
+  - VALUE_KILL_TEST
+  - DEPLOYED_ATL109_ACCEPTANCE
+
+current_checkpoint: "Temporary controller is executable and fail-closed. It is actively stopping at PRE_FREEZE because Atlas v2 product contract is not yet frozen."
+next_action: "Finish ATL-118 + ATL-119, close ATL-103 reconciliation, execute ATL-110 independent QA and obtain explicit Owner freeze. Only then switch controller from PRE_FREEZE to build/QA execution lanes."
 
 blocked_actions:
-  - action: "Dispatch Atlas v2 build tasks."
-    blocker: "ATL-110 Product Contract Freeze not complete/Owner-authorized."
-    release_condition: "ATL-118 + ATL-119 + ATL-103 complete, ATL-110 independent QA PASS, explicit Owner freeze."
-  - action: "Promote Atlas v2 production."
-    blocker: "ATL-109 + product coherence + Owner go-live."
-    release_condition: "All component proof, all coherence suites, ATL-109 PASS, explicit Owner production authorization."
+  - action: "Dispatch Atlas v2 build tasks ATL-95/104–117."
+    blocker: "ATL-110 + explicit Owner product-contract freeze."
+    release_condition: "ATL-118/119/103 complete, ATL-110 PASS, Owner freeze."
+  - action: "Mark Atlas v2 Product Live."
+    blocker: "Product coherence / ATL-109 / Owner production authorization."
+    release_condition: "All component proof + all coherence suites + ATL-109 PASS + explicit Owner go-live."
 
 logging_policy:
-  routine: "task manifest + GitHub Actions report"
-  shared_log: "material QA/Owner/governance/freeze/serious defects only"
-  drive: "frozen/decision-significant/final QA-release/recovery custody only"
+  routine: "task manifest + GitHub Actions report/artifact"
+  shared_log: "cross-agent independent QA, Owner decision, governance exception, material freeze/gate, serious product/architecture/recovery defect only"
+  drive: "frozen/decision-significant/final QA-release/hard-to-recover/recovery-package custody only"
 
 handoff:
+  pickup_sequence:
+    - "Read ATL-120 and this manifest."
+    - "Read release-config.json and latest GitHub Actions run evidence."
+    - "Reconcile live Linear state before execution; the checked-in snapshot is preflight evidence, not permanent authority."
+    - "Do not dispatch downstream build while ATL-110/Owner freeze is unresolved."
   chat_history_required: false
