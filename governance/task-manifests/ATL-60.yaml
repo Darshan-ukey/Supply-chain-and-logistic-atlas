@@ -1,11 +1,12 @@
 task_id: ATL-60
 task_title: "ATL-49A — LTL-03 Research Evidence Recovery & Reconciliation"
-task_status: IN_PROGRESS
+task_status: PROOF_RECORDED
 execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-60/atl-49a-ltl-03-research-evidence-recovery-and-reconciliation"
 manifest_status: ACTIVE
-last_updated: "2026-09-22"
+last_updated: "2026-09-24"
+status_detail: "ATL-60 physical-design chain remains open. ATL-90/ATL-86 closed; ATL-83 V0.1 and V0.2 QA failed; ATL-82 V0.3 correction is next and executable proof is enforced by ATL-94 CI. Z6 readiness persistence is split to ATL-92; P6.1/P6.2 hardening to ATL-93. No canonical mutation authorized."
 
 governing_inputs:
   - type: github_standard
@@ -149,11 +150,11 @@ qa_and_decisions:
     branch: atlas-governance-registry-v2.1
     commit: 0b45481b1a40030daa3d1661460d6d24c1fcb59e
 
-current_checkpoint: "ATL-79 is GOVERNED_COMPLETE; ATL-80 prerequisite is complete; ATL-82 candidate physical design is built with unchanged SQL and corrected V0.2 rationale/proof; ATL-83 independent QA is held by ATL-86/ATL-90. ATL-90 returned PASS_WITH_BINDING_CORRECTIONS limited to manifest synchronization M1-M3. M3 is implemented here and awaits Claude bounded recheck with M1/M2. No Supabase mutation."
-next_action: "Await Claude bounded ATL-90 recheck of M1-M3 closure. On PASS, complete ATL-86 final synchronization and release ATL-83 to independently QA ATL-82 against the corrected V0.2 basis. ATL-60 remains blocked from canonical Supabase mutation/promotion."
+current_checkpoint: "ATL-90 PASS and ATL-86 closed. ATL-83 pass 1 failed ATL-82 V0.1 as written. Owner D1=A split Z6 readiness persistence to ATL-92; D2 created ATL-93 for protected P6.1/P6.2 hardening. ATL-82 V0.2 bounded re-QA failed B1/B2. ATL-94 executable CI gate is installed and first canary proof PASS. Next physical-design gate is ATL-82 V0.3 with ATL-94 CI PASS, then ATL-83 bounded re-QA. No Supabase mutation."
+next_action: "ATL-82 produces V0.3 with exactly the proven three-line correction, obtains ATL-94 CI executable proof, then returns to ATL-83 bounded independent re-QA. ATL-60 remains blocked from canonical Supabase mutation/promotion. ATL-92 separately governs Z6 readiness persistence; ATL-93 separately governs protected P6.1/P6.2 hardening."
 
 open_items:
-  - "Design required schema extension/migration without applying it."
+  - "Logical-design erratum C3: relationship lifecycle/status must be represented consistently in the logical contract and physical design before final freeze."
   - "Independently QA schema mapping, implementation-bound Transformer Contract, and candidate migration design."
   - "Independent QA/freeze of completed contract and schema/migration before canonical write."
   - "Continue LTL-03 retained-evidence reconciliation and candidate structuring within authorized boundary."
@@ -168,8 +169,8 @@ authorized_actions:
 
 blocked_actions:
   - action: "ATL-60 physical DDL/migration application/promotion."
-    blocker: "ATL-82 design exists but ATL-83 independent QA is held pending ATL-90 bounded M1-M3 recheck and ATL-86 closure."
-    release_condition: "ATL-90 M1-M3 recheck PASS + ATL-86 final synchronization + ATL-83 independent QA PASS + any required Owner authorization."
+    blocker: "ATL-82 V0.2 failed ATL-83 bounded re-QA (B1/B2); V0.3 requires ATL-94 CI PASS and subsequent ATL-83 bounded re-QA PASS."
+    release_condition: "ATL-82 V0.3 ATL-94 CI PASS + ATL-83 bounded re-QA PASS + any required Owner authorization."
   - action: "Canonical Supabase mutation or promotion."
     blocker: "Transformer contract implementation bindings, QA/freeze, Generation Registry and applicable F0-F7 / PC-1-PC-7 closure incomplete."
     release_condition: "Completed implementation-specific contract + independent QA + Owner authorization/freeze + required generation/recovery controls."
