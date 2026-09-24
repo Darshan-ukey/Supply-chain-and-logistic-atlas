@@ -2,7 +2,7 @@
 # ATL-83 — Corrected-candidate gate for ATL-82 physical migration candidates (gate V0.1)
 # Author: Claude (independent QA), 2026-09-23. Companion to
 # governance/implementation/ATL_83_BOUNDED_REQA_ATL_82_V0_2_V0_1.md (section 4).
-
+#
 # PURPOSE: run a corrected ATL-82 candidate (V0.3 or later) exactly as written (it must compile, and its
 # ROLLBACK must leave none of the 9 tables), then run a copy with only the final ROLLBACK changed to COMMIT
 # through the same TG_ARGV probe, closure/regression suite and drop/rebuild as
@@ -10,10 +10,10 @@
 # DIAGNOSTIC-B results recorded in ATL_83_TEST_PACK_OUTPUT_V0_2.txt. Exit 0 only on an exact match.
 # Usable as the builder's first-party executable proof and as a CI step.
 # The V0.2 pack cannot do this: its diagnostic phases are V0.2-specific and exit 4 on a corrected candidate.
-
+#
 # The suite SQL is extracted from the V0.2 pack and the golden results from the V0.2 output; both must sit
 # next to this script, and both are blob-verified before use, so the suite is identical by construction.
-
+#
 # SAFETY: runs ONLY against a disposable local PostgreSQL (>=15). It refuses Supabase/pooler targets, any
 # non-local PGHOST, and PGSERVICE/PGSERVICEFILE/PGHOSTADDR (which can route a connection past the PGHOST check).
 #   Required: ATL83_DISPOSABLE=1, PGHOST is a local socket dir or localhost/127.0.0.1, superuser PGUSER.
@@ -49,6 +49,7 @@ PSQL="psql -X -q"
 extract() { sed -n "/^cat > \"\\\$W\/$1\" <<'SQL'\$/,/^SQL\$/p" "$PACK" | sed '1d;$d' > "$W/$1"; [ -s "$W/$1" ] || { echo "could not extract $1 from the reference pack" >&2; exit 3; }; }
 for f in harness.sql argv.sql closure.sql down.sql rebuild.sql; do extract "$f"; done
 norm() { sed -E -e 's#psql:[^ ]*/(closure|down|rebuild)\.sql:#psql:\1.sql:#' -e 's/[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]+)?([+-][0-9]{2}(:[0-9]{2})?)?/<TS>/g' -e 's/[[:space:]]+$//'; }
+# Golden = DIAGNOSTIC-B sections of the recorded V0.2 output: closure 220-391, down 393-403, rebuild 404-419
 sed -n '220,391p' "$OUT" | norm > "$W/gold_closure.txt"
 sed -n '393,403p' "$OUT" | norm > "$W/gold_down.txt"
 sed -n '404,419p' "$OUT" | norm > "$W/gold_rebuild.txt"
