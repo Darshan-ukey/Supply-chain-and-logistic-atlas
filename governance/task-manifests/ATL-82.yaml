@@ -35,8 +35,8 @@ artifact_state:
   current_schema_reinspected: true
   no_mutation_performed: true
 
-current_checkpoint: "ATL-82 V0.3 landed as a new immutable candidate at commit 19606388dbc74287cf29aa66cc9faf3f3e55bb83, blob 2b3f3c2262ecc4fc8907661536c3d5cb65cd2d61, containing exactly the three proven DIAGNOSTIC-B corrections. ATL-94 initial unpinned run 35995273841 correctly failed the gate job; V0.3 blob is now pinned in working_outputs to trigger the required second CI run. No Supabase mutation."
-next_action: "Require ATL-94 proof for this manifest-pin commit to read PASS (1 of 1 candidate(s) passed the gate) with governed CI blobs. Then persist ATL-82 V0.3 first-party proof and return V0.3 to ATL-83 for bounded independent re-QA. Do not apply DDL."
+current_checkpoint: "ATL-94 pinned V0.3 run 35995357970 failed static gate because the first V0.3 build contained literal single-$ delimiters at lines 214/226. Root cause corrected in place before any PASS/QA claim: V0.3 now exactly equals the independently proven DIAGNOSTIC-B stand-in, commit 45faea650657213265da925a65a79e510a358f77, blob 31e9f4ca8c3877519dda71f84b82502d7476ff86. Manifest pin updated; awaiting fresh ATL-94 CI proof. No Supabase mutation."
+next_action: "Require fresh ATL-94 proof for this manifest-pin commit to read PASS (1 of 1 candidate(s) passed the gate), with V0.3 blob 31e9f4ca8c3877519dda71f84b82502d7476ff86. Then persist first-party proof and return V0.3 to ATL-83 for bounded independent re-QA. Do not apply DDL."
 
 acceptance_criteria:
   - "Faithfully implements validated logical model without semantic loss or LTL/BOL-specific universalization."
@@ -68,8 +68,8 @@ verification_and_proof:
 
 working_outputs:
   - path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql
-    commit: 19606388dbc74287cf29aa66cc9faf3f3e55bb83
-    blob_sha: 2b3f3c2262ecc4fc8907661536c3d5cb65cd2d61
+    commit: 45faea650657213265da925a65a79e510a358f77
+    blob_sha: 31e9f4ca8c3877519dda71f84b82502d7476ff86
     state: IMPLEMENTED_UNVERIFIED
     notes: "Exactly three DIAGNOSTIC-B corrections from V0.2: $ dollar quotes at former lines 214/226 and NULL-safe coalesce(tg_argv, '{}'::text[]) at former line 221. Awaiting ATL-94 pinned-candidate CI PASS."
   - path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2.sql
