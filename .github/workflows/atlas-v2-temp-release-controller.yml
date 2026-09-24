@@ -1,0 +1,54 @@
+name: Atlas v2 Temporary Release Controller
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - atlas-v2-temp-release-controller
+    paths:
+      - "tools/atlas-release-controller/**"
+      - "governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md"
+      - "governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json"
+      - "governance/task-manifests/**"
+      - ".github/workflows/atlas-v2-temp-release-controller.yml"
+
+concurrency:
+  group: atlas-v2-temp-release-controller
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Controller unit tests
+        run: node tools/atlas-release-controller/tests/controller.test.mjs
+
+      - name: Install repository dependencies
+        run: npm ci
+
+      - name: Repository baseline tests
+        run: npm test
+
+      - name: Release controller preflight
+        run: node tools/atlas-release-controller/controller.mjs --mode=preflight
+
+      - name: Upload controller evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-v2-release-controller-report
+          path: artifacts/atlas-v2-release-controller/
+          if-no-files-found: warn
