@@ -211,7 +211,7 @@ grant select, insert, update, delete on public.atlas_knowledge_entity_types,
   public.atlas_knowledge_gap_links, public.atlas_generation_z5_outputs to service_role;
 
 create or replace function public.atlas_guard_append_only() returns trigger
-language plpgsql set search_path = pg_catalog, public as $
+language plpgsql set search_path = pg_catalog, public as $$
 declare col text; o jsonb; n jsonb;
 begin
   if tg_op = 'TRUNCATE' then raise exception 'append-only: TRUNCATE on % is not permitted', tg_table_name using errcode='P0001'; end if;
@@ -223,7 +223,7 @@ begin
     end if;
   end loop;
   return new;
-end $;
+end $$;
 revoke all on function public.atlas_guard_append_only() from public, anon, authenticated;
 
 create trigger atlas_entity_types_append_only before update or delete on public.atlas_knowledge_entity_types for each row execute function public.atlas_guard_append_only('status');
