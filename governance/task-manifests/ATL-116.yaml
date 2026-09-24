@@ -1,0 +1,50 @@
+task_id: ATL-116
+task_title: "Knowledge-State, Promotion & Compounding — explicit epistemic states and reusable learning loop"
+task_status: BLOCKED_INDEPENDENT_QA_REQUIRED
+status_detail: "Atlas v2 product workstream is deliberately blocked until ATL-110 independently QA's/custody-syncs the Product End-State Contract and Owner freezes it."
+execution_owner: PENDING_ROUTING
+decision_authority: Darshan Ukey
+linear_url: "https://linear.app/sefl-transformation/issue/atl-116"
+manifest_status: ACTIVE
+last_updated: "2026-09-24T17:19:00Z"
+
+governing_inputs:
+  - path: governance/standards/ATLAS_PRODUCT_CONSTITUTION_V1.md
+  - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
+    status: CANDIDATE_PENDING_ATL_110_FREEZE
+  - path: governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json
+
+consumed_inputs: []
+working_outputs: []
+current_outputs: []
+superseded_outputs: []
+
+qa_and_decisions:
+  - type: OWNER_DIRECTION
+    date: "2026-09-24"
+    decision: "Atlas v2 Product Live is the target end-state; this workstream cannot redefine product scope."
+
+current_checkpoint: "Task registered and blocked by ATL-110."
+next_action: "Do not execute until ATL-110 PASS + explicit Owner freeze. Then re-read task/manifest/frozen product contract and reconcile actual artifact state before build."
+open_items:
+  - "ATL-110 product-contract independent QA/freeze."
+authorized_actions:
+  - "Read/reconcile evidence only."
+blocked_actions:
+  - action: "Substantive implementation or promotion."
+    blocker: "ATL-110"
+    release_condition: "ATL-110 PASS + custody sync + explicit Owner freeze."
+
+handoff:
+  pickup_sequence:
+    - "Read Linear issue/dependencies."
+    - "Read this manifest."
+    - "Read frozen Product Constitution and frozen Atlas v2 end-state contract."
+    - "Verify ATL-110 release condition."
+    - "Reconcile actual artifact state before execution."
+  chat_history_required: false
+
+last_execution_record:
+  operator: ChatGPT
+  stopped_at: "2026-09-24T17:19:00Z"
+  durable_state_written: true
