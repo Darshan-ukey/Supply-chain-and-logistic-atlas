@@ -1,19 +1,28 @@
 {
-  "schema_version": "1.0-candidate",
+  "schema_version": "1.1-candidate",
   "product_release": "Atlas v2",
   "contract_version": "V1",
-  "status": "CANDIDATE",
+  "status": "CANDIDATE_RECONCILIATION_IN_PROGRESS",
   "owner": "Darshan Ukey",
   "linear_parent": "ATL-103",
   "milestone": "Atlas v2 — Product Live",
   "contract_path": "governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md",
+  "disposition_legend": {
+    "PRESERVE_EXTEND": "Existing architecture/implementation evidence is materially reusable; reconcile and extend, do not restart.",
+    "PARTIAL_GAP_CLOSURE": "Material components exist but end-to-end Atlas v2 product acceptance is not yet proven.",
+    "ARCHITECTURE_DEFINED_BUILD_REQUIRED": "Direction/contract exists; production-capable product implementation still requires proof/build.",
+    "BUILD_REQUIRED": "No sufficient current evidence of the complete capability.",
+    "FINAL_GATE": "Final acceptance/release gate."
+  },
   "capabilities": [
     {
       "id": "SOURCE_FOUNDATION_UNIVERSE",
       "linear": [
         "ATL-111"
       ],
-      "status": "GAP_ASSESSMENT_REQUIRED"
+      "disposition": "PRESERVE_EXTEND",
+      "current_evidence": "R0.1A-R/R0.1B/R0.1C certified Universe semantic materialization, release identity and reference ownership exist; Atlas v2 still requires a productionized authoritative-source refresh/change-delta contract and structured live-store reconciliation.",
+      "next_gap": "Map exact current Universe/source-registry artifacts and implement/verify periodic refresh + selective semantic-delta propagation."
     },
     {
       "id": "DAUGHTER_BASELINE_GENERATION",
@@ -21,28 +30,37 @@
         "ATL-112",
         "ATL-104"
       ],
-      "status": "GAP_ASSESSMENT_REQUIRED"
+      "disposition": "PRESERVE_EXTEND",
+      "current_evidence": "Daughter V2 renderer/presentation architecture and historical daughter/domain assets were previously retained as safe; v2 must separate structured Daughter knowledge from rendered page and prove inside-out + outside-in generation/reconciliation.",
+      "next_gap": "Inventory current daughter generator/data assets and prove two-way research generation on real scopes."
     },
     {
       "id": "ON_DEMAND_DEPTH",
       "linear": [
         "ATL-40"
       ],
-      "status": "IN_PROGRESS"
+      "disposition": "PARTIAL_GAP_CLOSURE",
+      "current_evidence": "Governed ATL-40–48 workstream already defines depth model, trigger, acquisition/generation, verification, persistence/promotion/reuse and end-to-end proof sequence.",
+      "next_gap": "Complete remaining workstream stages and final structurally-different-node proof."
     },
     {
       "id": "KNOWLEDGE_STATE_PROMOTION",
       "linear": [
-        "ATL-116"
+        "ATL-116",
+        "ATL-40"
       ],
-      "status": "GAP_ASSESSMENT_REQUIRED"
+      "disposition": "PARTIAL_GAP_CLOSURE",
+      "current_evidence": "Knowledge gaps, provenance states and depth promotion/reuse concepts exist, but the complete user-visible epistemic taxonomy and cross-engagement promotion proof are not yet v2-certified.",
+      "next_gap": "Reconcile existing schemas/states; formalize taxonomy only where not already canonical; prove promotion vs client-specific non-promotion."
     },
     {
       "id": "EXECUTION_SEMANTICS_BINDING_READINESS",
       "linear": [
         "ATL-95"
       ],
-      "status": "GAP_CLOSURE_PLANNED"
+      "disposition": "PARTIAL_GAP_CLOSURE",
+      "current_evidence": "Operational Knowledge, P6.1 decomposition evidence, Canonical WorkDefinition compiler/verifier, Client Binding contract and deterministic readiness resolver exist in material form; current governed lineage still requires connected end-to-end proof and gap closure.",
+      "next_gap": "Complete ATL-95 against current governed lineage with real-scope readiness and provenance."
     },
     {
       "id": "ENTERPRISE_DISCOVERY_BINDING",
@@ -50,7 +68,9 @@
         "ATL-114",
         "ATL-95"
       ],
-      "status": "GAP_ASSESSMENT_REQUIRED"
+      "disposition": "ARCHITECTURE_DEFINED_BUILD_REQUIRED",
+      "current_evidence": "Client Binding requirements/model exist; a complete product workflow for ingesting messy SOPs/client evidence into governed enterprise context is not yet proven.",
+      "next_gap": "Define/implement candidate extraction, mapping, validation, confirmation and custody/privacy workflow."
     },
     {
       "id": "MULTI_CONSUMER_PROJECTIONS",
@@ -58,14 +78,18 @@
         "ATL-95",
         "ATL-107"
       ],
-      "status": "GAP_ASSESSMENT_REQUIRED"
+      "disposition": "PRESERVE_EXTEND",
+      "current_evidence": "Runtime-neutral adapter direction, registry and Malkom reference projection exist; current lineage → Malkom and materially different non-Malkom consumers are not yet fully proven.",
+      "next_gap": "Prove same canonical WD to Malkom + agentic-AI + RPA/BPM/workflow with explicit semantic-loss disposition."
     },
     {
       "id": "OPERATIONS_TRANSFORMATION_INTELLIGENCE",
       "linear": [
         "ATL-108"
       ],
-      "status": "GAP_ASSESSMENT_REQUIRED"
+      "disposition": "ARCHITECTURE_DEFINED_BUILD_REQUIRED",
+      "current_evidence": "Frozen Product Constitution and rebased architecture define Operations and Transformation Intelligence, Z3 operational evidence and Z4 approved target-state separation; complete product engines/journeys are not yet proven.",
+      "next_gap": "Inventory any surviving analytical/prototype assets, then implement/prove UNDERSTAND → DECIDE → DEFINE on one governed scope."
     },
     {
       "id": "INTERACTION_ASK_CANVAS_INSPECT_TRACE_COMPARE",
@@ -73,35 +97,45 @@
         "ATL-105",
         "ATL-115"
       ],
-      "status": "GAP_ASSESSMENT_REQUIRED"
+      "disposition": "PRESERVE_EXTEND",
+      "current_evidence": "Canvas V2, Daughter V2 renderer and Ask/Trace governance/presentation directions were explicitly retained as safe during recovery; v2 must reconcile them with live structured data, Universal Ask context, Inspector, Compare, dependency trace and current authorization model.",
+      "next_gap": "Artifact-level inventory + browser regression/integration proof; determine current Compare/Inspector completeness before building replacements."
     },
     {
       "id": "CROSS_LAYER_IMPACT_GRAPH",
       "linear": [
         "ATL-113"
       ],
-      "status": "GAP_ASSESSMENT_REQUIRED"
+      "disposition": "ARCHITECTURE_DEFINED_BUILD_REQUIRED",
+      "current_evidence": "Versioning/provenance/lineage and dependency closure exist across governance, but a unified product dependency graph with selective staleness/revalidation/regeneration has not yet been v2-proven.",
+      "next_gap": "Reconcile existing lineage registries and add only missing dependency/impact graph mechanics."
     },
     {
       "id": "BACKEND_API_UPGRADE_RELEASE",
       "linear": [
         "ATL-106"
       ],
-      "status": "GAP_ASSESSMENT_REQUIRED"
+      "disposition": "PARTIAL_GAP_CLOSURE",
+      "current_evidence": "Supabase/Postgres schemas, migration work, Vercel runtime, release packages and recovery controls exist in pieces; unified product API/version compatibility/upgrade/rollback architecture remains incomplete.",
+      "next_gap": "Inventory current physical schema/API/release contracts and prove controlled upgrade + rollback on governed data."
     },
     {
       "id": "VALUE_KILL_TEST",
       "linear": [
         "ATL-117"
       ],
-      "status": "NOT_STARTED"
+      "disposition": "BUILD_REQUIRED",
+      "current_evidence": "Execution Readiness Leverage and component measures were previously agreed conceptually; no complete instrumented v2 product/economic proof is recorded.",
+      "next_gap": "Define baselines/instrumentation and run representative Atlas vs normal-discovery comparison."
     },
     {
       "id": "PRODUCT_ACCEPTANCE_GO_LIVE",
       "linear": [
         "ATL-109"
       ],
-      "status": "NOT_STARTED"
+      "disposition": "FINAL_GATE",
+      "current_evidence": "No final Atlas v2 end-to-end Product Live proof exists yet.",
+      "next_gap": "Execute ATL-109 only after all required capability gates and Owner go-live authorization."
     },
     {
       "id": "PRODUCT_CONTRACT_RECONCILIATION",
@@ -109,15 +143,18 @@
         "ATL-103",
         "ATL-110"
       ],
-      "status": "IN_PROGRESS"
+      "disposition": "PARTIAL_GAP_CLOSURE",
+      "current_evidence": "Atlas v2 milestone, complete active candidate contract, expanded workstreams and manifests now exist in Linear/GitHub.",
+      "next_gap": "Finish artifact-level GitHub/Drive/Linear mapping, identify stale/duplicate work, independent QA/custody sync and explicit Owner freeze."
     }
   ],
   "preserved_concepts": [
-    "Canvas",
-    "Daughter V2 renderer/generation",
+    "Canvas V2",
+    "Daughter V2 renderer/generation direction",
     "Universal Ask Atlas",
     "Inspector",
-    "Trace",
+    "Operational Trace",
+    "Dependency Trace",
     "Compare",
     "public-safe vs protected/admin projection",
     "Operational Knowledge Contract direction",
@@ -126,7 +163,8 @@
     "Client Binding",
     "on-demand depth",
     "knowledge reuse/promotion",
-    "source/provenance/version governance"
+    "source/provenance/version governance",
+    "queue/flow views only as projections of external execution design"
   ],
   "explicitly_not_product_identity": [
     "autonomous solution architect",
@@ -136,5 +174,10 @@
     "HTML-centric truth store",
     "LLM-direct canonical writer"
   ],
-  "next_reconciliation_requirement": "Map each capability to current GitHub/Drive implementation evidence, all existing Linear issues, validation method, acceptance evidence and unresolved gaps before ATL-110 freeze."
+  "deferred_optional": [
+    "Process playback/simulation as a later visualization capability unless separately promoted into v2 acceptance.",
+    "Expansion beyond logistics; architecture should remain extensible but v2 delivery is not required to cover other enterprise domains."
+  ],
+  "reconciliation_status": "FIRST_PASS_PRODUCT_DISPOSITION_COMPLETE__ARTIFACT_LEVEL_MAPPING_PENDING",
+  "next_reconciliation_requirement": "Map exact GitHub/Drive artifact identities and all existing Linear issue IDs into each capability; classify preserve/extend/supersede/build and define validation evidence before ATL-110 freeze."
 }
