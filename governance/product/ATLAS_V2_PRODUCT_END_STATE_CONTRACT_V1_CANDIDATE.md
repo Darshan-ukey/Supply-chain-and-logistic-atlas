@@ -275,6 +275,89 @@ The canonical execution chain therefore remains:
 
 ATL-60/87/95 and their governed successor contracts/evidence are implementation-detail sources for this mechanism and must be reconciled into the v2 coverage matrix rather than replaced by new generic tasks.
 
+## 9B. Business Logic & Rule Ontology — extensible, runtime-neutral
+
+Atlas v2 must treat business logic/rules as first-class governed structured semantics rather than burying them in prose, prompts, spreadsheets or runtime-specific code.
+
+The governing candidate contract is:
+`governance/product/ATLAS_V2_BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION_CONTRACT_V0_1_CANDIDATE.md` (ATL-119).
+
+### Three independent classification dimensions
+
+Each material rule may be classified by:
+
+1. **rule family/type** — the business purpose of the rule;
+2. **evaluation mode** — how the rule is enforced;
+3. **distribution mode** — how the downstream executor receives/accesses it.
+
+These dimensions must remain separate.
+
+### Extensible taxonomy principle
+
+The current rule-family taxonomy is a **seed taxonomy, not a closed/exhaustive universal ontology**.
+
+As Atlas gains Operational Knowledge from new domains/processes, new rule families/subtypes may be discovered. Atlas must not force novel semantics into an inaccurate existing category merely to preserve the current vocabulary.
+
+Governed extension follows:
+
+`new Operational Knowledge → candidate semantic pattern → differentiation review → taxonomy extension/version → selective mapping of prior rules where valid`.
+
+Historical frozen rule identities are not rewritten solely to fit a later taxonomy.
+
+### Seed rule-family scope
+
+The initial taxonomy covers, at minimum:
+- applicability / eligibility / prerequisites;
+- mandatory / conditional information;
+- format / datatype / allowed-value / reference/master-data;
+- classification / derivation / calculation / transformation / normalization;
+- relationship / cardinality / consistency / duplicate detection / reconciliation;
+- source authority / precedence / conflict / override;
+- decision / routing / sequencing / state transition / completion;
+- timing / SLA / cutoff / effective-date / temporal precedence;
+- jurisdiction / policy / compliance / regulatory / contractual;
+- role / authority / approval / segregation-of-duty / controls / automation permission / security / privacy / retention;
+- evidence / audit / traceability;
+- exception / retry / escalation / fallback / recovery / idempotency;
+- confidence / ambiguity / human-in-loop;
+- client binding / client override / system-of-record / client master;
+- mapping / integration / runtime capability / projection / unsupported semantic;
+- observation/reconciliation / knowledge promotion.
+
+This list may grow when governed evidence justifies additional categories.
+
+### Evaluation modes
+
+Seed evaluation modes include deterministic expressions, decision tables, reference/master-data lookups, retrieve-and-reason, bounded LLM classification/extraction-with-validation, external APIs, client binding, human decision and composite mechanisms.
+
+Where deterministic evaluation is sufficient, an LLM is not required merely because the consuming runtime is agentic.
+
+### Distribution modes and runtime dependency
+
+Seed distribution modes include:
+- EMBED;
+- SNAPSHOT;
+- DYNAMIC_LOOKUP;
+- EXTERNAL_AUTHORITY;
+- CLIENT_SYSTEM_LOOKUP;
+- HUMAN_RESOLUTION.
+
+Atlas is the design-time/governance authority for execution semantics. It is **not required to be an always-on runtime dependency for every transaction**.
+
+Preferred default is HYBRID:
+- stable/critical rules are embedded or snapshotted into a version-closed runtime package;
+- dynamic Atlas/reference/client-system retrieval is used only where declared by the rule/runtime contract.
+
+A runtime projection must therefore specify the applicable rule/rule-set, version, evaluation mode, distribution mode, required service/tool, binding need, failure behavior, evidence capture and refresh/revalidation policy.
+
+### BOL example principle
+
+For BOL digitization, dozens of authoritative/universal field rules should not be copied blindly into one large agent prompt.
+
+The WorkDefinition identifies the semantic obligations and applicable rule sets; the runtime projection tells the agent/workflow which rules are embedded, deterministic, dynamically looked up, resolved through client binding or escalated to human review.
+
+The same canonical rule may project differently to Malkom, agentic AI, RPA/BPM/workflow or a human operating model without changing its business meaning.
+
 ## 10. Layer G — Enterprise Discovery and Client Binding
 
 Atlas v2 needs a practical mechanism to ingest enterprise/client reality, not merely a schema for Client Binding.
