@@ -1,0 +1,96 @@
+{
+  "generatedAt": "2026-09-24T18:25:00Z",
+  "source": "LINEAR_CONNECTOR_PREFLIGHT_SNAPSHOT",
+  "ownerAuthorizations": {
+    "PRODUCT_CONTRACT_FREEZE": false,
+    "PRODUCTION_GO_LIVE": false
+  },
+  "productContractStatus": "CANDIDATE",
+  "tasks": {
+    "ATL-118": {
+      "status": "Todo",
+      "statusType": "unstarted"
+    },
+    "ATL-119": {
+      "status": "Todo",
+      "statusType": "unstarted"
+    },
+    "ATL-103": {
+      "status": "In Progress",
+      "statusType": "started"
+    },
+    "ATL-110": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-111": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-112": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-113": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-114": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-116": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-95": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-106": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-104": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-115": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-105": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-108": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-107": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-117": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    },
+    "ATL-109": {
+      "status": "Backlog",
+      "statusType": "backlog"
+    }
+  },
+  "proof": {},
+  "independentQA": {},
+  "productCoherence": {
+    "SOURCE_TO_OPERATIONAL_KNOWLEDGE": "NOT_RUN",
+    "OK_TO_RUNTIME_PROJECTION": "NOT_RUN",
+    "INTERACTION_LAYER": "NOT_RUN",
+    "THREE_PRODUCT_LOOP": "NOT_RUN",
+    "PUBLIC_PROTECTED_BOUNDARY": "NOT_RUN",
+    "PROVENANCE_VERSION_IMPACT": "NOT_RUN",
+    "UPGRADE_RECOVERY_SECURITY": "NOT_RUN",
+    "VALUE_KILL_TEST": "NOT_RUN",
+    "DEPLOYED_ATL109_ACCEPTANCE": "NOT_RUN"
+  }
+}
