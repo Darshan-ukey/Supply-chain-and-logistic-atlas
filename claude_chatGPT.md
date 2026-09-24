@@ -2401,3 +2401,112 @@ Claude's five non-blocking observations O1–O5 remain recorded in the ATL-90 bo
 Owner approved both governance decisions carried from ATL-90: (1) blocking-prerequisite creation **and release** must synchronize the prerequisite manifest, blocked/current task manifest, applicable parent manifest, and Linear dependency/state in the same governed change set; and (2) `task_status` must use the canonical Continuity Standard vocabulary, with contextual detail in a separate `status_detail` field rather than invented compound states.
 
 Linear ATL-91 governed the amendment. `governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md` was amended at `49e700ef508ccfa56483f584e153e953a5bec396`, verified blob `75488b0c1f7c2215e07907ff05e492c32933f8ab`. Post-write verification confirmed all nine predetermined controls. Proof: `governance/implementation/ATL_91_CONTINUITY_STANDARD_AMENDMENT_VERIFICATION_PROOF_V0_1.md` @ `c9c89bc0ec6ac5ccb9661b39e219ac5ddd28e820`. ATL-91 manifest closed at `8937814d096c0c7e3cd7335f4d810da54ce2a0a4`. Historical records are not silently rewritten solely for vocabulary normalization; active/touched state must comply prospectively. No Supabase mutation or ATL-82 SQL application.
+
+
+
+---
+
+# CLAUDE — ATL-83 BOUNDED RE-QA OF ATL-82 V0.2: FAIL (NOT EXECUTABLE; C2 NOT CLOSED) / THREE-LINE FIX PROVEN
+
+**Date:** 2026-09-23
+**Linear:** ATL-83 / logical ATL-82B — Independent QA: Physical DDL/Migration Design
+**Re-QA artifact:** `governance/implementation/ATL_83_BOUNDED_REQA_ATL_82_V0_2_V0_1.md` @ `a9de283f80757b77da757ef8cad21e506f352cfd`, blob `e4b047f3874d11a508ffc2c7a79fc72681bf1e54`
+**Executable evidence:**
+- `ATL_83_EXECUTABLE_TEST_PACK_V0_2.sh`, blob `b9cdbbe2d5071066f5f333e8229b65d2bb095cc1`, mode `100755`;
+- `ATL_83_TEST_PACK_OUTPUT_V0_2.txt`, blob `f79e97e887552dc3b6e792049552cff261b7fe04`;
+- `ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh`, blob `9af8eef15dbd3e6750dc643583ad0cf6ae1e2c6b`, mode `100755` (the gate for V0.3);
+- `ATL_83_CORRECTED_CANDIDATE_GATE_VALIDATION_V0_1.txt`, blob `99ffe6139b9305218f4e82de20aef4144ef119ae`.
+
+Landed by ChatGPT from Claude's Drive custody (folder `1dtniFqHzkYOHRetM4bm1kmyCXCI2pY9-`); each blob must match exactly.
+
+**Record catch-up (G1).** The pass-1 result was never entered in this log. ATL-83 independent QA of the unchanged ATL-82 candidate V0.1 (blob `b16a4bd9…`) returned **FAIL as written, architecture sound, correctable**. The report, pack and output landed byte-exact at `cb2d662`, `189eea8` and `4d9ca9c`. Binding corrections were C1–C4, C7 and C8, with C5/C6 pending Owner decision D1 and the adjacent D2.
+
+**Owner decisions (recorded in `ATL-82.yaml` @ `6410d93`, confirmed in the Owner's re-QA instruction):**
+- **D1 = A.** Z6 readiness persistence (C5/C6) is split out of ATL-82 to **ATL-92**, governed by the AR0.3 `ReadinessResult` contract and resolver identity. C5/C6 are transferred, not open ATL-82 defects.
+- **D2 = YES.** Protected P6.1/P6.2 service-role hardening is tracked separately as **ATL-93**.
+
+**Pass 2 — bounded re-QA of candidate V0.2** (commit `a8c40544…`, blob `344d0d4f…`), checked against GitHub @ `6410d93`, live Supabase read-only, and a disposable local PostgreSQL 16.13.
+
+**Disposition: FAIL. V0.2 is not executable, and C2 is not closed.** Both are fixable in three lines.
+- **B1 (V0.2 builder defect).** Lines 214 and 226 use a single `$` where the guard function body needs `$$`. As written, psql exits 3 at line 215, the transaction aborts and 0 of 9 tables remain. V0.2 as written therefore delivers none of the corrections, and it regresses criterion 8, which passed on V0.1.
+- **B2 (originated in Claude's ATL-83 reference DDL; V0.2 copied it faithfully).** PL/pgSQL `TG_ARGV` is NULL for a zero-argument trigger, so the guard's `not (col = any (tg_argv))` evaluates to NULL and never fires. With only B1 repaired, in-place UPDATE succeeded on evidence sources, evidence links, gap links and Z5 outputs; the read-back shows `GOVERNED_INTERNAL / CONFLICTS / K1 / hash-forged`. Claude's pass-1 claim that C2 was proven on all guarded tables was overstated: that suite tested UPDATE on 3 of 9 tables. The claim is superseded by the re-QA report §3.
+
+**Fix proven (DIAGNOSTIC-B, diff asserted by the pack):** lines 214 and 226 `$` → `$$`; line 221 `tg_argv` → `coalesce(tg_argv, '{}'::text[])`. Under it, every correction closes, every V0.1 regression control holds, and drop/rebuild keeps protected rows intact (9 structures, 18 triggers).
+
+**Correction status:**
+- **C1, C3:** closed in content, undelivered because of B1.
+- **C2:** NOT CLOSED (B2).
+- **C4, C7, C8:** structure closed; immutability depends on the B2 fix.
+- **C5, C6:** transferred to ATL-92 (D1=A). V0.2 creates no readiness table.
+
+**Required for V0.3 (builder-owned):**
+- exactly the three DIAGNOSTIC-B lines; any other change listed and justified;
+- optionally, drop the redundant `atlas_evidence_sources_ref_idx`;
+- a first-party proof that runs `ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh` clean (exit 0) against V0.3 as written, recording V0.3's blob, before QA. No first-party executable proof existed for V0.2; `ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_2.md` covers the V0.1 SQL.
+
+**Why a gate, not the V0.2 pack.** The V0.2 pack is V0.2-specific: with only its pin changed, it exits 4 on a corrected candidate. The gate runs the candidate as written, then its committed copy through the same suite, which it extracts from the pack and blob-verifies. It requires an exact normalized match with the DIAGNOSTIC-B results. Validated on a stand-in (V0.2 + exactly the three lines):
+- stand-in: PASS;
+- B1-only mutant: rejected, exit 6;
+- nullable `output_hash` mutant: rejected, exit 5;
+- all safety refusals fire.
+
+The V0.3 re-QA will be bounded to the V0.2→V0.3 diff, a gate run (must PASS) and a live read-only check.
+
+**Governance findings (non-binding on the verdict):**
+- **G1:** pass-1 landing incomplete; this entry, the updated `ATL-83.yaml` and the ATL-60 sync close it.
+- **G2:** `ATL-82.yaml` `task_status: IN_PROGRESS` is non-canonical after ATL-91; given this evidence the canonical state is `VERIFICATION_FAILED` (ChatGPT/Owner call).
+- **G3:** the V0.1 pack landed as `100644`, not `100755`.
+- **G4:** ATL-92 and ATL-93 need manifests when they become active.
+- **R8 (mechanism):** a CI workflow that runs these checks on any change to `governance/implementation/*.sql` would have rejected V0.2 at commit time, and would make executable first-party proof a gate that cannot be skipped. The gate script is designed to be usable as that step; it has not yet been run in CI.
+
+Two separate agents re-verified the re-QA report against the raw evidence before delivery: one covered the findings, the other re-ran every gate case. Their corrections are applied.
+
+ATL-83 stays In Progress; ATL-82 is not verified. No Supabase mutation, DDL, branch operation or GitHub write by Claude. All DDL ran only in a disposable local PostgreSQL. Delivered through Drive because Claude has read-only GitHub.
+
+
+
+---
+
+# CLAUDE — ATL-94 CI EXECUTABLE GATE: GITHUB RUNS ATL-82 CANDIDATE SQL; NO AGENT NEEDS TO EXECUTE SQL
+
+**Date:** 2026-09-24
+**Linear:** ATL-94 (parent ATL-60; related ATL-82, ATL-83)
+**Manifest:** `governance/task-manifests/ATL-94.yaml` @ `a9de283f80757b77da757ef8cad21e506f352cfd`
+
+**Why.** ChatGPT, the ATL-82 builder, cannot run SQL. The "executable first-party proof" step therefore never happened for V0.2, and V0.2 reached QA without having compiled. Owner request: make SQL execution independent of any agent.
+
+**What.** A GitHub Actions workflow, `.github/workflows/atl94-candidate-sql-gate.yml` (blob `b4e179a9…`). On every relevant push it starts a disposable PostgreSQL 16 on the runner: Unix socket only, no secrets, never Supabase. It then:
+- runs a canary proving the environment reproduces the recorded ATL-83 gate results;
+- runs the ATL-83 corrected-candidate gate on every ATL-82 candidate except the failed historical V0.1/V0.2;
+- enforces the candidate naming convention and the blob pins in `ATL-82.yaml` `working_outputs`.
+
+The result is published as plain files on branch `atlas-ci-proofs`, at `ATL-94/by-commit/<commit>.md`, so ChatGPT, Claude and the Owner can all read it without Actions access. Supporting files:
+- runner `governance/implementation/ATL_94_CI_CANDIDATE_GATE_RUNNER_V0_1.sh` (blob `ab833c26…`);
+- publisher `governance/implementation/ATL_94_CI_PROOF_PUBLISHER_V0_1.sh` (blob `792e6155…`);
+- local verification record `ATL_94_CI_GATE_LOCAL_VERIFICATION_V0_1.txt` (blob `a1a03209…`).
+
+**Evidence.** The gate job's own run steps were extracted from the workflow and executed as a non-root user on PostgreSQL 16:
+- 22 of 22 runner scenarios behaved as expected. A correctly pinned V0.3 stand-in PASSes. V0.2's defects landed as a new candidate FAIL (static check, exit 6). A regression of C8 FAILs. So do every misnamed, mis-pinned, unpinned, symlinked, byte-copied or smuggled variant.
+- All 12 publisher cases behaved as expected: failed, cancelled or crashed gates and forged verdicts are recorded as FAIL; the governance branch is never touched.
+- A separate agent reviewed two rounds; all findings are fixed.
+- Not yet verified: a real GitHub run. The first run after landing is ATL-94's acceptance evidence, expected "PASS (canary only …)".
+
+**New builder protocol for ATL-82 candidates.** This replaces "run the gate locally" in the ATL-83 re-QA handoff.
+1. Land V0.3 as `governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql`. CI gates it; the proof shows the gate result and the file's blob, but FAIL until pinned.
+2. Pin that blob in `ATL-82.yaml` `working_outputs`. The proof for the pin commit must read "PASS (1 of 1 candidate(s) passed the gate)", with the reviewed CI code blobs.
+3. That proof is the builder's executable first-party proof. ATL-83 re-QA follows.
+
+**Open risks** (Owner or ChatGPT):
+- the credential that pushes `.github/workflows/` needs workflow permission; the fallback is the Owner adding the file through the GitHub web UI;
+- a ruleset covering all branches would block the proof branch;
+- CI's PostgreSQL 16.15 differs from the recorded 16.13, but the canary makes any drift a visible FAIL.
+
+No Supabase mutation, no DDL outside disposable databases, and no GitHub write by Claude. Delivered through Drive (folder `1hnWX-ylKZNxLH6YlbM2ZNtQUTeTNzopP`).
+
+
+### ChatGPT landing/verification update — 2026-09-24
+- Workflow landed at commit `23998d2624293f6775b7f086eaf4c64dcbffa6e0`, blob `b4e179a99be1416a0b240b507a6584371b1ccbf4`.
+- First GitHub Actions run `35994787044` completed SUCCESS.
+- Published proof: `atlas-ci-proofs:ATL-94/by-commit/23998d2624293f6775b7f086eaf4c64dcbffa6e0.md`, proof commit `e25e938ad65e0077e73851573e0e13ffe8eba46c`.
+- Verdict: **PASS (canary only: no candidate beyond historical V0.1/V0.2 exists yet)**; three canaries OK; V0.1/V0.2 SKIPPED; reviewed workflow/runner/publisher/gate blobs match governed pins.
+- No Supabase mutation.
