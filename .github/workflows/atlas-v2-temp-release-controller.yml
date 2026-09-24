@@ -23,7 +23,7 @@ permissions:
 jobs:
   preflight:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,14 +36,14 @@ jobs:
       - name: Controller unit tests
         run: node tools/atlas-release-controller/tests/controller.test.mjs
 
+      - name: Release controller preflight
+        run: node tools/atlas-release-controller/controller.mjs --mode=preflight
+
       - name: Install repository dependencies
-        run: npm ci
+        run: npm install --ignore-scripts --no-audit --no-fund
 
       - name: Repository baseline tests
         run: npm test
-
-      - name: Release controller preflight
-        run: node tools/atlas-release-controller/controller.mjs --mode=preflight
 
       - name: Upload controller evidence
         if: always()
@@ -51,4 +51,4 @@ jobs:
         with:
           name: atlas-v2-release-controller-report
           path: artifacts/atlas-v2-release-controller/
-          if-no-files-found: warn
+          if-no-files-found: error
