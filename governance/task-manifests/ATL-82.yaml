@@ -1,11 +1,12 @@
 task_id: ATL-82
 logical_task_name: "ATL-60B — Physical DDL/Migration Design"
-task_status: IN_PROGRESS
+task_status: VERIFICATION_FAILED
 execution_owner: ChatGPT
 decision_authority: "Darshan / Atlas Owner-Governor"
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-82/atl-60b-physical-ddlmigration-design"
 manifest_status: ACTIVE
-last_updated: "2026-09-23"
+last_updated: "2026-09-24"
+status_detail: "ATL-83 bounded re-QA of V0.2 FAIL: B1 V0.2 does not compile; B2 zero-argument guard leaves UPDATE unguarded on four tables. Three-line V0.3 correction required. ATL-94 CI is now the executable first-party proof gate; first canary PASS."
 
 parent_task: ATL-60
 released_by:
@@ -34,8 +35,8 @@ artifact_state:
   current_schema_reinspected: true
   no_mutation_performed: true
 
-current_checkpoint: "ATL-83 independent QA returned FAIL_AS_WRITTEN_CORRECTABLE. Owner chose D1=A: Z6 readiness persistence split to ATL-92; D2 authorized separately as ATL-93. Corrected candidate V0.2 incorporates C1-C4/C7/C8 and removes ATL-82 readiness tables. No Supabase mutation."
-next_action: "Run executable first-party verification of ATL-82 candidate V0.2 on disposable PostgreSQL, persist proof, then return V0.2 to Claude/ATL-83 for bounded correction re-QA. Do not apply DDL."
+current_checkpoint: "ATL-83 bounded re-QA of V0.2 FAIL is recorded. V0.2 is not authorized. ATL-94 CI gate is installed and its first canary proof PASS on source commit 23998d2624293f6775b7f086eaf4c64dcbffa6e0. Z6 readiness remains split to ATL-92; protected P6 hardening remains ATL-93. No Supabase mutation."
+next_action: "Create ATL-82 V0.3 as a new file with exactly the proven DIAGNOSTIC-B changes at former V0.2 lines 214, 221 and 226. ATL-94 CI first gates the unpinned candidate; then record its blob in this manifest and require CI PASS (1 of 1 candidate(s) passed the gate). Persist first-party proof and return V0.3 to ATL-83 for bounded independent re-QA. Do not apply DDL."
 
 acceptance_criteria:
   - "Faithfully implements validated logical model without semantic loss or LTL/BOL-specific universalization."
@@ -69,8 +70,8 @@ working_outputs:
   - path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2.sql
     commit: a8c405448a0e016ad9adac7c03a9439ba719c911
     blob_sha: 344d0d4fed7fd5ae7d271764ba1f10e0d7552d63
-    state: IMPLEMENTED_UNVERIFIED
-    notes: "C1-C4/C7/C8 incorporated; Z6 readiness tables removed to ATL-92."
+    state: VERIFICATION_FAILED
+    notes: "ATL-83 bounded re-QA FAIL: B1 compile failure and B2 zero-argument append-only guard defect. Retained unchanged as evidence; superseded by forthcoming V0.3."
   - path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql
     commit: 5fe4c631bdff3484d136d7d747b4251798ffe8b6
     blob_sha: b16a4bd9b16763287a76574e7231695b2c271f2e
@@ -101,6 +102,11 @@ superseded_outputs:
     disposition: SUPERSEDED_FOR_LINEAGE_INTERPRETATION_ONLY
     preservation: "V0.1 retained as immutable evidence."
 
+prerequisites:
+  - task: ATL-94
+    for: "V0.3 executable first-party proof"
+    manifest: governance/task-manifests/ATL-94.yaml
+
 qa_and_decisions:
   - disposition: ATL_83_FAIL_AS_WRITTEN_CORRECTABLE
     qa_artifact: governance/implementation/ATL_83_INDEPENDENT_QA_ATL_82_PHYSICAL_DESIGN_V0_1.md
@@ -109,3 +115,10 @@ qa_and_decisions:
     owner_decision_D2: "YES — protected P6.1/P6.2 hardening tracked in ATL-93"
     next_gate: EXECUTABLE_FIRST_PARTY_V0_2_THEN_BOUNDED_INDEPENDENT_REQA
 
+
+  - disposition: ATL_83_REQA_V0_2_FAIL
+    qa_artifact: governance/implementation/ATL_83_BOUNDED_REQA_ATL_82_V0_2_V0_1.md
+    evidence_completion_commit: a9de283f80757b77da757ef8cad21e506f352cfd
+    blocking_defects: [B1, B2]
+    required_changes: "Exactly the three proven DIAGNOSTIC-B changes: dollar-quote fixes at former lines 214/226 and coalesce(tg_argv, '{}'::text[]) at former line 221."
+    next_gate: V0_3_ATL94_CI_PASS_THEN_BOUNDED_INDEPENDENT_REQA
