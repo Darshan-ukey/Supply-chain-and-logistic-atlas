@@ -1,0 +1,1 @@
+ATL-120 PR-path canary. This temporary change exists only to verify protected-branch merge enforcement.
