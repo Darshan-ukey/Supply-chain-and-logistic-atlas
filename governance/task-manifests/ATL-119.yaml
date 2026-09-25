@@ -1,12 +1,12 @@
 task_id: ATL-119
 task_title: "Business Logic & Rule Ontology — extensible taxonomy, evaluation and runtime consumption contract"
-task_status: VERIFIED_FIRST_PARTY
-status_detail: "Owner-aligned candidate contract created in GitHub, linked into Atlas v2 product contract/coverage and Linear, mirrored to Drive custody, and post-write reconciliation performed. Independent QA/freeze remains under ATL-110."
+task_status: QA_CORRECTION_LANDED_PENDING_INDEPENDENT_QA
+status_detail: "Rule-ontology candidate and Claude QA-driven single-valued rule_family clarification are landed on PR #16. Claude independently verified the substantive content; manifest audit-trail correction is now applied. Runtime adversarial proofs and final ATL-110 freeze remain open."
 execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-119/business-logic-and-rule-ontology-extensible-taxonomy-evaluation-and"
 manifest_status: ACTIVE
-last_updated: "2026-09-24T18:03:00Z"
+last_updated: "2026-09-25T16:30:00Z"
 
 governing_inputs:
   - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
@@ -24,8 +24,8 @@ governing_inputs:
 
 current_outputs:
   - path: governance/product/ATLAS_V2_BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION_CONTRACT_V0_1_CANDIDATE.md
-    identity: "blob:a7d3f8c4762e722764e19fd9e470e864cdf38ace"
-    status: VERIFIED_FIRST_PARTY
+    identity: "PR16_CURRENT_BLOB_28a551f_FROM_VERIFIED_CLAUDE_FIX"
+    status: QA_FIX_LANDED_PR16_CLAUDE_SUBSTANTIVE_CONTENT_VERIFIED
   - system: Google Drive
     title: "Atlas v2 Business Logic Rule Ontology Runtime Consumption Contract V0.1 Candidate"
     file_id: "1OE0AYLX0k81xhIes_Xbr87cNLdR2hNXF3zrQrdjCOsQ"
@@ -51,8 +51,8 @@ qa_and_decisions:
     result: PASS_WITH_INDEPENDENT_QA_PENDING
     evidence: "GitHub + Linear + Drive post-write readback"
 
-current_checkpoint: "Rule ontology/runtime-consumption candidate is represented consistently across GitHub, Linear and Drive. Taxonomy/evaluation/distribution lists are explicitly seed/extensible. Parent product and runtime-projection tasks inherit the hybrid consumption rule."
-next_action: "ATL-119 must be independently reconciled against OKv2, frozen Work Decomposition/WorkDefinition and a structurally different domain/process before ATL-110 product freeze."
+current_checkpoint: "Rule ontology candidate plus single-valued rule_family clarification is landed on PR #16 and independently verified by Claude at the substantive-content level. Manifest bookkeeping is corrected; runtime/storage implementation and adversarial proofs remain intentionally open."
+next_action: "Claude independently re-read the corrected ATL-119 manifest on PR #16 and issue final PASS/FAIL. Runtime/storage implementation and the 10 adversarial proofs remain future governed work before final ATL-110 freeze."
 
 open_items:
   - "Independent QA/reconciliation of seed taxonomy against LTL-03/BOL and at least one structurally different domain/process."
@@ -87,3 +87,15 @@ chatgpt_repair_handoff_2026_09_25:
     - "Related rules/applicability remain the mechanism for cross-cutting semantics."
   qa_required: "Claude independent QA of landed PR/branch before closure or merge disposition."
   closure_state: "NOT_CLOSED_PENDING_CLAUDE_QA"
+
+claude_independent_qa_2026_09_25:
+  disposition: "PASS_WITH_BINDING_CORRECTIONS"
+  substantive_content: "PASS — rule-ontology substantive file independently verified byte-for-byte against Claude's verified fix commit."
+  verified_clarification: "rule_family is single-valued per rule instance; cross-cutting semantics use related_rules/dependencies or applicability conditions."
+  binding_defect: "PR #16 carried an earlier ATL-119 manifest snapshot and therefore omitted Claude's QA/fix-pass audit trail."
+  correction_this_commit: "Manifest now records the independent QA result, the landed clarification, and the still-open runtime/adversarial-proof work."
+  explicitly_not_closed_by_this_pass:
+    - "Final clean Claude QA after this manifest correction."
+    - "PR #16 merge."
+    - "ATL-119 runtime/storage implementation and 10 adversarial proofs."
+    - "ATL-110 final product freeze."
