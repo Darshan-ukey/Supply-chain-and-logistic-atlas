@@ -1,12 +1,12 @@
 task_id: ATL-118
 task_title: "Atlas v2 Frozen Asset & Drive Custody Reconciliation"
-task_status: IN_PROGRESS
-status_detail: "Drive pointer/custody repaired on 24 Sep: current pointer updated to Atlas v2 state and new v2 candidate custody mirror created/read back successfully. GitHub CURRENT/LATEST and exact all-asset custody verification remain."
+task_status: VERIFIED_FIRST_PARTY
+status_detail: "GitHub CURRENT/LATEST reconciled to the 35-record ASSET_REGISTER; current repository-backed assets were read back, and cross-branch P6.1/P6.2 execution-contract blob identities were verified on their governed source branch. Drive candidate custody was already repaired/read back. Independent QA/final ATL-110 frozen custody remain."
 execution_owner: PENDING_ROUTING
 decision_authority: Darshan Ukey
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-118/atlas-v2-frozen-asset-and-drive-custody-reconciliation"
 manifest_status: ACTIVE
-last_updated: "2026-09-24T17:41:00Z"
+last_updated: "2026-09-25T03:30:00Z"
 
 governing_inputs:
   - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
@@ -61,12 +61,12 @@ qa_and_decisions:
     date: "2026-09-24"
     decision: "Validate frozen assets for Atlas v2 usability/update need and ensure Linear/GitHub/Drive do not miss product decisions."
 
-current_checkpoint: "First-pass 35-asset classification complete. Drive current frozen pointer repaired to 24 Sep Atlas v2 state; v2 candidate custody mirror created and readback verified. No frozen historical payload mutated."
-next_action: "Reconcile GitHub CURRENT.json/LATEST.md to ASSET_REGISTER, verify exact v2-dependent asset identities/custody and coverage dependencies, then at ATL-110 mirror the final frozen product-contract identity in Drive and release the freeze gate."
+current_checkpoint: "ATL-118 first-party reconciliation complete enough for independent review: mutable GitHub pointers repaired; Drive current pointer/candidate custody already repaired; 18 current repository-path/hash-declared assets were read back where addressable on governance branch, with Canonical WorkDefinition correctly resolved as a cross-branch governed asset and its recorded blob identity verified on atlas-presentation-architecture-v1-p6-2."
+next_action: "Independent QA should challenge the 35-asset dispositions and v2 dependency mapping. At ATL-110, mirror/read back the exact final frozen product-contract identity in Drive. Do not mutate frozen payloads or promote candidates."
 
 open_items:
-  - "Exact identity/readback verification for v2-dependent current assets."
-  - "GitHub CURRENT.json/LATEST.md reconciliation."
+  - "Independent QA of v2-dependent asset dispositions/identity mapping; first-party readback complete for current repository-addressable assets and cross-branch P6.1/P6.2 blob identities."
+  - "GitHub CURRENT.json/LATEST.md reconciliation. CLOSED 2026-09-25 via commits 3b995cd0d4f94009e55fd78dd6ea62afa24c95e4 and 796513ba88b8acae9059262d2963e85f24fbaa13."
   - "Final ATL-110 frozen contract custody mirror/readback after candidate changes close."
   - "Coverage matrix exact frozen-asset dependency mapping."
 
