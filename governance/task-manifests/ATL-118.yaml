@@ -1,12 +1,12 @@
 task_id: ATL-118
 task_title: "Atlas v2 Frozen Asset & Drive Custody Reconciliation"
-task_status: IN_PROGRESS
-status_detail: "Drive pointer/custody repaired on 24 Sep: current pointer updated to Atlas v2 state and new v2 candidate custody mirror created/read back successfully. GitHub CURRENT/LATEST and exact all-asset custody verification remain."
-execution_owner: PENDING_ROUTING
+task_status: QA_CORRECTION_LANDED_PENDING_INDEPENDENT_QA
+status_detail: "Claude QA-driven fix content is landed on PR #16. CURRENT.json/LATEST.md reconciliation is complete in the PR; substantive files were independently verified by Claude. Manifest bookkeeping corrections are now applied; final clean Claude QA and merge remain."
+execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-118/atlas-v2-frozen-asset-and-drive-custody-reconciliation"
 manifest_status: ACTIVE
-last_updated: "2026-09-24T17:41:00Z"
+last_updated: "2026-09-25T16:30:00Z"
 
 governing_inputs:
   - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
@@ -53,6 +53,14 @@ working_outputs:
 current_outputs:
   - path: governance/product/ATLAS_V2_FROZEN_ASSET_RECONCILIATION_2026-09-24.md
     status: VERIFIED_BY_CREATION_PENDING_FULL_ARTIFACT_RECHECK
+  - path: governance/frozen-assets/ASSET_REGISTER.json
+    status: QA_FIX_LANDED_PR16_CLAUDE_SUBSTANTIVE_CONTENT_VERIFIED
+  - path: governance/frozen-assets/CURRENT.json
+    status: RECONCILED_PR16_CLAUDE_SUBSTANTIVE_CONTENT_VERIFIED
+  - path: governance/frozen-assets/LATEST.md
+    status: RECONCILED_PR16_CLAUDE_SUBSTANTIVE_CONTENT_VERIFIED
+  - path: governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md
+    status: RESTORED_FROM_AUTHORITATIVE_C72B500_AND_CLAUDE_VERIFIED
 
 superseded_outputs: []
 
@@ -61,14 +69,14 @@ qa_and_decisions:
     date: "2026-09-24"
     decision: "Validate frozen assets for Atlas v2 usability/update need and ensure Linear/GitHub/Drive do not miss product decisions."
 
-current_checkpoint: "First-pass 35-asset classification complete. Drive current frozen pointer repaired to 24 Sep Atlas v2 state; v2 candidate custody mirror created and readback verified. No frozen historical payload mutated."
-next_action: "Reconcile GitHub CURRENT.json/LATEST.md to ASSET_REGISTER, verify exact v2-dependent asset identities/custody and coverage dependencies, then at ATL-110 mirror the final frozen product-contract identity in Drive and release the freeze gate."
+current_checkpoint: "ATL-118 substantive QA fix is landed on PR #16 and independently verified by Claude. Manifest bookkeeping has been corrected to match the landed state. Final clean Claude QA and merge/closure disposition remain."
+next_action: "Claude independently re-read the corrected ATL-118 manifest on PR #16 and issue final PASS/FAIL. If PASS, merge per governance; retain ATL-110 final frozen product-contract custody/freeze work as a separate downstream gate."
 
 open_items:
-  - "Exact identity/readback verification for v2-dependent current assets."
-  - "GitHub CURRENT.json/LATEST.md reconciliation."
+  - "Final clean independent Claude QA of corrected manifest bookkeeping on PR #16."
+  - "Merge PR #16 after clean QA disposition."
   - "Final ATL-110 frozen contract custody mirror/readback after candidate changes close."
-  - "Coverage matrix exact frozen-asset dependency mapping."
+  - "Coverage matrix exact frozen-asset dependency mapping remains downstream unless ATL-110 resolves it."
 
 authorized_actions:
   - "Read/verify frozen registry assets and Drive custody."
@@ -110,3 +118,13 @@ chatgpt_repair_handoff_2026_09_25:
     - "ATL-119 rule-family clarification applied."
   qa_required: "Claude independent QA of landed PR/branch before closure or merge disposition."
   closure_state: "NOT_CLOSED_PENDING_CLAUDE_QA"
+
+claude_independent_qa_2026_09_25:
+  disposition: "PASS_WITH_BINDING_CORRECTIONS"
+  substantive_content: "PASS — five substantive content files independently verified byte-for-byte; WorkDefinition provenance/hash chain independently re-derived from authoritative source commit c72b50025d38c6ba103a98e6b698ac2181d5017b."
+  binding_defect: "Pre-QA ATL-118 manifest snapshot contradicted landed reality by leaving CURRENT.json/LATEST.md reconciliation open and omitted the QA/fix-pass audit trail."
+  correction_this_commit: "Manifest reconciled to actual PR #16 state; stale open item removed; current outputs and explicit QA/fix audit trail restored."
+  explicitly_not_closed_by_this_pass:
+    - "Final clean Claude QA after this manifest correction."
+    - "PR #16 merge."
+    - "ATL-110 downstream freeze/custody gate."
