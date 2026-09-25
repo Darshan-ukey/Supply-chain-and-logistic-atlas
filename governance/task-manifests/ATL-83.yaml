@@ -1,9 +1,9 @@
 task_id: ATL-83
 title: "ATL-82B — Independent QA: Physical DDL/Migration Design"
 task_status: PROOF_RECORDED
-status_detail: "Two QA passes recorded. Pass 1 (2026-09-23, candidate V0.1): FAIL as written, architecture sound, correctable. Pass 2 (2026-09-23, bounded re-QA of candidate V0.2): FAIL. V0.2 does not compile (B1: single-$ dollar quotes, lines 214/226) and C2 is not closed (B2: zero-argument triggers leave UPDATE unguarded on 4 tables; defect originated in Claude's ATL-83 reference DDL). Three-line fix proven by DIAGNOSTIC-B. C5/C6 transferred to ATL-92 (D1=A); P6.1/P6.2 hardening owned by ATL-93 (D2). Awaiting builder V0.3, then bounded re-QA."
-qa_disposition: FAIL
-last_updated: "2026-09-23"
+status_detail: "Three QA passes recorded. Pass 1 (2026-09-23, candidate V0.1): FAIL as written, correctable. Pass 2 (2026-09-23, candidate V0.2): FAIL on B1 (does not compile) and B2 (UPDATE unguarded on 4 tables). Pass 3 (2026-09-24, bounded re-QA of candidate V0.3, blob 31e9f4ca): PASS. V0.3 is V0.2 plus exactly the three DIAGNOSTIC-B lines; B1 and B2 closed; C1-C4, C7 and C8 closed; regression controls and drop/rebuild hold; gate PASS reproduced on PostgreSQL 16.13 and on 17.6 (the live version and collation) with output identical to ATL-94 CI run 35999395289; all 94 immutable columns blocked; live state unchanged. Scope as amended by D1=A (Z6 readiness in ATL-92). The PASS authorizes no migration. Closure: ChatGPT sets GOVERNED_COMPLETE after landing and reading back this evidence and the ATL-82/ATL-60/shared-log synchronization."
+qa_disposition: PASS
+last_updated: "2026-09-24"
 manifest_status: ACTIVE
 execution_owner: Claude
 decision_authority: "Darshan / Atlas Owner-Governor"
@@ -23,6 +23,9 @@ governing_inputs:
   - governance/task-manifests/ATL-82.yaml
   - governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql
   - governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2.sql
+  - governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql
+  - governance/task-manifests/ATL-94.yaml
+  - "atlas-ci-proofs:ATL-94/by-commit/c3dd627d8d6354556ed04e15658145dbd23e392a.md"
   - governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_1.md
   - governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_2.md
   - governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_1.md
@@ -123,6 +126,33 @@ current_outputs:
     landed_by: ChatGPT
     custody_source: "Google Drive — 1Vu8a9yM-wNt20k_FFd7pUTDhB8ht3tVl"
     note: "Stand-in (V0.2 + exactly the DIAGNOSTIC-B lines) PASS exit 0; B1-only mutant exit 6; nullable output_hash mutant exit 5; all refusals fire."
+  # Pass 3: bounded re-QA of ATL-82 candidate V0.3
+  - path: governance/implementation/ATL_83_BOUNDED_REQA_ATL_82_V0_3_V0_1.md
+    commit: "f6960e87b7ab5a59b82994a6d42b6deefb04e12b"
+    blob_sha: 79954d4f32ac2f5d324cad940da82f60a6e3314b
+    sha256: c20d76bef76b332e39b2e259a9caabc059d5a1434c5c035ff41d1a0e05296f51
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1dsU_NIeRB5DD06PbMJsF5r2oJQrNIIOw"
+  - path: governance/implementation/ATL_83_REQA_V0_3_EXECUTION_OUTPUT_V0_1.txt
+    commit: "f6960e87b7ab5a59b82994a6d42b6deefb04e12b"
+    blob_sha: 53745b0b1bf7bde31a356b48e9ea994bb9ff03f8
+    sha256: 81b1ec370b8c302a2e98d4a8f0f7a3376048fa1e090957ca26224969a770be40
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 10fkJJQAGqgS-WNlIoR80OrMPPg_PpahK"
+    note: "Raw output: identity and diff (A); gate on PostgreSQL 16.13 (B); gate on 17.6 C.UTF-8 and en_US.UTF-8 with the normalized comparison against CI (C); ATL-94 runner re-run (D); X-series probe on 16.13 and 17.6 (E, F); live read-only queries (G1-G4) and a local function-privilege check on 17.6 (G5)."
+  - path: governance/implementation/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql
+    commit: "f6960e87b7ab5a59b82994a6d42b6deefb04e12b"
+    blob_sha: a94027ab53330c62f73480e84008db1dc531f0f9
+    sha256: a8f24a8ade2181a75cd4d6ec4a248af5a7bac12a3cd7b8a1112582d61aadd8e3
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1Cefyyubp7jloq8HKwQsLJm0pUkSsk6Sv"
+    note: "Disposable local database only; refuses to run when Supabase schemas are present. Changes every column of all 9 tables in place, deletes and truncates each, checks nothing changed, and checks the guard under service_role. Not a CI step."
 
 qa_result:
   pass_1_candidate_v0_1:
@@ -188,6 +218,47 @@ qa_result:
       - "First-party proof including a clean run (exit 0) of ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh against V0.3 as written, recording V0.3's blob, before handing V0.3 to QA. The V0.2 pack cannot test V0.3 (exits 4 with only its pin changed)."
     next_reqa_scope: ["V0.2 -> V0.3 diff", "gate run against V0.3 as written must PASS (exact match with DIAGNOSTIC-B)", "live read-only state check"]
     independent_verification_of_report: "Separate agent re-checked every factual claim against the raw evidence; one wrong claim (relationship types not UPDATE-tested) found and fixed by adding C2n/C2p. A second fresh agent re-ran every gate case: no false statement; four overstatements corrected; one safety gap (PGSERVICE/PGHOSTADDR) closed in the gate."
+  pass_3_bounded_reqa_candidate_v0_3:
+    date: "2026-09-24"
+    artifact_under_qa: {path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql, introduced_commit: 45faea650657213265da925a65a79e510a358f77, pin_commit: c3dd627d8d6354556ed04e15658145dbd23e392a, blob_sha: 31e9f4ca8c3877519dda71f84b82502d7476ff86}
+    state_checked: {github_head: c3dd627d8d6354556ed04e15658145dbd23e392a, ci_proofs_head: c940f5340364bcc5763549fcf71efac43222b3e1, supabase: "aaoyesktlzhaunqqjhdq read-only (SELECT only)", test_dbs: "disposable local PostgreSQL 16.13 C.UTF-8; 17.6 C.UTF-8; 17.6 en_US.UTF-8"}
+    disposition: PASS
+    disposition_detail: "V0.3 closes B1 and B2; every binding correction in ATL-82's scope (C1-C4, C7, C8) is closed; regression controls and drop/rebuild hold. Scope as amended by Owner decision D1=A: Z6 readiness persistence (C5/C6) is governed by ATL-92 and not assessed. Authorizes no migration."
+    diff_v0_2_to_v0_3: "Lines 214, 221 and 226 only; V0.3 is byte-identical to the ATL-94 canary stand-in (same blob)."
+    gate:
+      script: {path: governance/implementation/ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh, blob_sha: 9af8eef15dbd3e6750dc643583ad0cf6ae1e2c6b}
+      runs: "Exit 0 (PASS) on PostgreSQL 16.13 C.UTF-8, 17.6 C.UTF-8 and 17.6 en_US.UTF-8. After the gate's own normalization, the three local outputs, the CI V0.3 output and the CI canary stand-in output are byte-identical (SHA-256 48a004296e3428d49f608b9245f4d05002d458bed313f0ce171b713e6ad5d45e)."
+    blocking_defects_from_pass_2:
+      B1: {status: CLOSED, evidence: "GATE-0 finds no lone dollar quote; V0.3 as written compiles under ON_ERROR_STOP (psql exit 0) and ROLLBACK leaves 0 tables, on 16.13, 16.15 (CI) and 17.6"}
+      B2: {status: CLOSED, evidence: "The only tg_argv test is null-guarded; C2e, C2j, C2k and C2m reject in-place UPDATE; read-back AUTHORITATIVE_RESEARCH / SUPPORTS / K2 / hwd; X2 blocks all 94 immutable columns"}
+    corrections:
+      C1: {status: CLOSED, evidence: "C1a-C1f; X8"}
+      C2: {status: CLOSED, evidence: "C2a-C2p, C2-READBACK, C2i = 18; X1, X2, X4-X7, X9"}
+      C3: {status: CLOSED, evidence: "C3a, C3b"}
+      C4: {status: CLOSED, evidence: "C4a-C4f; C2e, C2j; X2"}
+      C5: {status: TRANSFERRED_TO_ATL-92, basis: "Owner decision D1=A"}
+      C6: {status: TRANSFERRED_TO_ATL-92, basis: "Owner decision D1=A"}
+      C7: {status: CLOSED, evidence: "C7a; C2k; X2"}
+      C8: {status: CLOSED, evidence: "C8a, C8b, C2m; X2"}
+    regression_of_v0_1_passing_controls: "All hold (golden-matched REGRESSION section): type-version pin FK, link two-target and half-key checks, zone and support vocabularies, pinned-type delete blocked."
+    rollback_rebuild: "GATE-3 golden match: drop leaves 0 of 9 structures with protected stub and gap rows intact; rebuild restores 9 structures and 18 guard triggers; rows still intact."
+    beyond_the_gate_x_series: "100 columns probed across 9 tables: all 94 immutable columns blocked, none of the 6 allowlisted columns blocked by the guard; DELETE 9/9 and TRUNCATE CASCADE 9/9 blocked; all 9 tables unchanged afterwards; as service_role, promotion of R2 from CANDIDATE to VALIDATED allowed, immutable edits and DELETE blocked; service_role cannot enter replica mode, disable or drop a guard trigger. Identical on 16.13 and 17.6 en_US.UTF-8."
+    ci_proof_cross_check: "atlas-ci-proofs:ATL-94/by-commit/c3dd627d8d6354556ed04e15658145dbd23e392a.md, proof commit c940f5340364bcc5763549fcf71efac43222b3e1, run 35999395289 attempt 1: PASS (1 of 1 candidate(s) passed the gate) with the reviewed CI code blobs and gate, canary OK x3, V0.1/V0.2 SKIPPED. ATL-94 runner re-run locally on c3dd627: same verdict. Valid as the builder's first-party executable proof; this verdict rests on Claude's own runs."
+    live_state: "17 migrations, latest 20260908015858; 20 public tables; 0 of 9 V0.3 tables; no guard function; no readiness tables; 0 of 25 relation-name collisions; FK targets atlas_workspaces(id uuid) and atlas_knowledge_gaps(id uuid); work decompositions 1, work definitions 0; server 17.6, collation en_US.UTF-8; table and sequence default privileges as mirrored by the harness, and V0.3 revokes the default function EXECUTE from anon, authenticated and PUBLIC (checked locally with the live function default added); service_role not superuser, cannot SET session_replication_role."
+    criteria_rollup:
+      "1_logical_fidelity": PASS_AMENDED_SCOPE_D1_A
+      "2_composite_identity": PASS
+      "3_zone_and_source_class_boundaries": PASS_AMENDED_SCOPE_D1_A
+      "4_referential_integrity_and_vocabularies": PASS_AMENDED_SCOPE_D1_A
+      "5_append_only": PASS
+      "6_z1_z5_and_z6_lineage": "PASS for Z1-Z5 (binding correction C8; a dangling WorkDefinition target is still accepted, R1 not adopted, O1); Z6 in ATL-92 (D1=A)"
+      "7_rls_access_for_protected_ip": PASS
+      "8_rollback_rebuild": "PASS_DESIGN_LEVEL (QA drop/rebuild executed against V0.3 in GATE-3; builder-owned down-migration open, F5)"
+      "9_existing_schema_compatibility": PASS
+      "10_no_materialization_or_mutation": PASS
+    physical_design_checks: "Pass-1 answers Q1-Q7 stand; binding parts delivered (Q1 by C2, Q2 by C1, Q3 by C4, Q4 by C8; R1 not adopted)."
+    does_not_authorize: "Any migration. Applying needs the conditions F5, which include Owner authorization and a separately governed apply task."
+    independent_verification_of_report: "Before delivery, a separate agent that had not seen the QA reasoning checked every claim against git, the CI proof branch, the raw output and SELECT-only live queries, and re-ran the gate (16.13 and 17.6) and the X-series probe. It confirmed the verdict and all major claims; it found 3 wrong statements, 4 overstatements, 3 inconsistencies and 9 minor items, all corrected (X7 re-run with a real promotion; function-privilege check added)."
 
 owner_decisions:
   - id: D1
@@ -208,12 +279,37 @@ governance_findings_non_binding:
     finding: "ATL-92 and ATL-93 have no manifests; required when each becomes active (TC-0)."
   - id: R8
     finding: "Mechanism recommendation: a CI workflow that runs the ATL-83 checks in a PostgreSQL service container on changes to governance/implementation/*.sql would have rejected V0.2 at commit time. ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh is designed to be usable as that step (not yet run in CI; the workflow must supply each candidate's expected blob from a pinned source)."
+    disposition: "Implemented as ATL-94 (GOVERNED_COMPLETE). CI failed the defective first V0.3 twice, and the corrected content once on a stale pin, before the PASS at c3dd627."
+  - id: F1
+    pass: 3
+    finding: "The builder's write path altered content four times, and each instance was caught before it counted: V0.2 (doubled dollar quotes collapsed to single, B1; caught by pass-2 QA execution, before ATL-94 existed); the first V0.3 blob 2b3f3c22 (only line 221 applied, B1 recurred; caught by ATL-94 CI twice); the gate's first landing at 86d36f8 (blob af842ced: bare-# lines emptied, one line dropped, mode 100755 to 100644; caught by the blob pin, restored at f7cbde5); ATL-82.yaml prose (caught by this QA, F3). Three instances fit a step that collapses doubled dollar signs; the gate alteration is a different pattern; causes inferred, not verified."
+    recommendations: ["R9: treat builder-written SQL as untrusted until ATL-94 CI PASS; extend the executable CI gate to ATL-92/ATL-93 SQL, with their own reference suites, before they produce DDL.", "R11: land Claude-authored files by raw byte copy and check each written blob and mode (GitHub returns content.sha)."]
+  - id: F2
+    pass: 3
+    finding: "V0.3 was handed to QA before its governance records were synchronized (the pin itself was synchronized at c3dd627): ATL-82.yaml current_checkpoint still reads 'awaiting fresh ATL-94 CI proof' and next_action still asks for that proof and a persisted first-party proof; no first-party proof citation for V0.3 in the repository; no shared-log entry; no ATL-82 Linear comment. The Owner's instruction supplied the citation; Claude verified the proof directly. Closed by the pass-3 synchronization."
+  - id: F3
+    pass: 3
+    finding: "Stale ATL-82.yaml fields: V0.1 SQL state VERIFIED_FIRST_PARTY (V0.1 failed pass 1); the V0.3 note shows a single dollar sign where the fix is the doubled dollar quote; superseded first V0.3 blob 2b3f3c22 not recorded in superseded_outputs."
+  - id: F4
+    pass: 3
+    finding: "ATL-94 CI runs PostgreSQL 16 (16.15); live Supabase runs 17.6 with en_US.UTF-8. Closed for V0.3 by local 17.6 runs with identical output."
+    recommendations: ["R10: move ATL-94 CI to PostgreSQL 17 through a governed workflow change before any apply task; the canary re-proves the golden output on the new version."]
+  - id: F5
+    pass: 3
+    finding: "Conditions for any future apply task (not ATL-83 conditions; the same list is in ATL-82.yaml, ATL-60.yaml, the shared log and the handoff): (1) Owner authorization and a separately governed apply task; (2) V0.3 must not be applied as-is: the apply artifact is byte-derived from V0.3 by a stated transformation of its begin/rollback wrapper, blob-pinned and ATL-94 gated; (3) the applying tool's handling of transaction statements established in that task; (4) a builder-owned executable down-migration (open since pass 1); (5) a rebuild proof from frozen Generation Registry inputs (open since pass 1); (6) pre- and post-apply live read-only checks."
+  - id: O1-O5
+    pass: 3
+    finding: "Non-binding observations carried forward: O1 R1 not adopted (Z5 output may name a nonexistent WorkDefinition); O2 redundant atlas_evidence_sources_ref_idx kept; O3 atlas_knowledge_gap_links has no primary key (identity is the NULLS NOT DISTINCT unique key); O4 status columns accept any in-vocabulary transition, unaudited (pass-1 R3); O5 table owner or superuser can bypass any trigger guard, service_role cannot."
 
-current_checkpoint: "ATL-83 V0.2 bounded re-QA FAIL is fully landed. B1/B2 require the proven three-line V0.3 correction. ATL-94 CI gate is now installed and first canary proof PASS; V0.3 first-party executable proof is therefore produced by ATL-94 CI rather than a local builder run. No Supabase mutation."
-next_action: "Builder produces ATL-82 V0.3 with exactly the DIAGNOSTIC-B changes. ATL-94 CI must first gate the unpinned candidate, then after ATL-82.yaml records its blob produce PASS (1 of 1 candidate(s) passed the gate). Claude then performs bounded V0.3 re-QA: V0.2→V0.3 diff, independent gate run, and live read-only state check. No DDL application."
+owner_decisions_requested:
+  - id: D3
+    question: "ATL-82 after this PASS: close ATL-82 as GOVERNED_COMPLETE (design-only scope delivered) and govern any apply as a new task (recommended), or hold ATL-82 open at OWNER_AUTHORIZATION_REQUIRED."
+
+current_checkpoint: "ATL-83 pass 3 (bounded re-QA of ATL-82 V0.3, blob 31e9f4ca) = PASS. Evidence delivered through Drive for ChatGPT landing. ATL-82 moves to INDEPENDENT_QA_PASSED. The PASS authorizes no migration. No Supabase mutation."
+next_action: "ChatGPT lands the pass-3 evidence byte-exact and verifies the pins, then lands this manifest with the evidence commit filled in, the ATL-82/ATL-60 synchronization and the shared-log entry in one change set, and reads them back. Then set task_status GOVERNED_COMPLETE with the closure commit and mark Linear ATL-83 Done. Owner decides D3 and whether to authorize a governed apply task (conditions F5)."
 
 last_execution_record:
   operator: Claude
-  date: "2026-09-23"
+  date: "2026-09-24"
   state: PROOF_RECORDED
-  note: "Read-only GitHub; re-QA report, test pack V0.2, output V0.2, corrected-candidate gate, gate validation and this manifest delivered through Drive (folder 1dtniFqHzkYOHRetM4bm1kmyCXCI2pY9-) for ChatGPT landing. No Supabase mutation; all DDL ran only in a disposable local PostgreSQL."
+  note: "Read-only GitHub; pass-3 report, raw output, extended probe and this manifest delivered through Drive (folder 1jKMXk2hTgvK2uNOZ6vc5C9RI1PwmuO3q) for ChatGPT landing. Supabase read with SELECT only; all DDL ran only in disposable local PostgreSQL 16.13 and 17.6 clusters, deleted afterwards."

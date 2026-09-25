@@ -2561,3 +2561,51 @@ No Supabase mutation, no DDL outside disposable databases, and no GitHub write b
 
 **Authority boundary:** no Atlas v2 build lane may advance past the product freeze until ATL-118 + ATL-119 + ATL-103 reconciliation is complete, ATL-110 independent QA passes, and the Owner explicitly freezes the Atlas v2 Product End-State Contract.
 
+
+
+---
+
+# CLAUDE — ATL-83 PASS 3: BOUNDED RE-QA OF ATL-82 V0.3 = PASS (B1/B2 CLOSED; C1–C4, C7, C8 CLOSED; NO MIGRATION AUTHORIZED)
+
+**Date:** 2026-09-24
+**Linear:** ATL-83 (build task ATL-82; parent ATL-60; related ATL-94, ATL-92, ATL-93)
+**Report:** `governance/implementation/ATL_83_BOUNDED_REQA_ATL_82_V0_3_V0_1.md` @ `f6960e87b7ab5a59b82994a6d42b6deefb04e12b` (pass-3 evidence commit)
+**Manifest:** `governance/task-manifests/ATL-83.yaml`, updated in the same change set as this entry
+
+**Under QA:** `governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql`, blob `31e9f4ca8c3877519dda71f84b82502d7476ff86`. The content was introduced at `45faea6` and pinned in `ATL-82.yaml` at `c3dd627`.
+
+**Disposition: PASS.**
+- **Diff:** V0.2→V0.3 changes lines 214, 221 and 226 only. V0.3 is byte-identical to the ATL-94 canary stand-in.
+- **B1 closed:** V0.3 as written compiles under `ON_ERROR_STOP`, and its ROLLBACK leaves 0 tables.
+- **B2 closed:** the `tg_argv` test is null-guarded, and in-place UPDATE is rejected on the four tables that were unguarded in V0.2.
+- **Corrections:** C1, C2, C3, C4, C7 and C8 are closed. The V0.1 regression controls and drop/rebuild hold.
+- **Gate, independently run:** `ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh` exits 0 on PostgreSQL 16.13 and on 17.6 with en_US.UTF-8, the live version and collation. After normalization, the output is identical to ATL-94 CI run 35999395289.
+- **Beyond the gate:** all 94 immutable columns across the 9 tables are blocked in place. DELETE and TRUNCATE CASCADE are blocked on all 9. `service_role` cannot switch the guard off.
+- **CI proof valid:** `atlas-ci-proofs:ATL-94/by-commit/c3dd627d8d6354556ed04e15658145dbd23e392a.md`, proof commit `c940f53`, reads PASS (1 of 1), with the reviewed CI code blobs. A local re-run of the runner gives the same verdict.
+- **Live read-only state:** unchanged. Latest migration `20260908015858`; 0 of the 9 V0.3 tables; 0 of 25 relation-name collisions.
+
+**Scope:** ATL-82 as amended by D1=A. C5/C6 (Z6 readiness) are governed by ATL-92; P6.1/P6.2 hardening by ATL-93.
+
+**This PASS authorizes no migration.** Applying must meet condition F5:
+1. Owner authorization and a separately governed apply task.
+2. The apply artifact: V0.3 must not be applied as-is. The artifact is byte-derived from V0.3 by a stated transformation of its begin/rollback wrapper, blob-pinned and ATL-94 gated.
+3. The applying tool's handling of transaction statements is established in that task.
+4. A builder-owned executable down-migration.
+5. A rebuild proof from frozen Generation Registry inputs.
+6. Pre- and post-apply live read-only checks.
+
+**Findings (non-binding; details in report §10):**
+- **F1:** the builder's write path altered content four times. Each instance was caught by pass-2 QA, CI, a blob pin or this QA. Recommended: R9 (executable CI gate for ATL-92/ATL-93 SQL) and R11 (byte-copy landing with a blob check).
+- **F2:** V0.3 was handed to QA before its checkpoint, shared-log and Linear records were synchronized; the pin itself was synchronized.
+- **F3:** stale fields in `ATL-82.yaml`.
+- **F4:** CI runs PostgreSQL 16 while live runs 17.6. This is closed for V0.3 by local 17.6 runs. Recommended: R10 (move CI to PostgreSQL 17 before any apply).
+- **O1–O5:** non-binding observations, carried forward.
+
+**Owner decision requested, D3:** close ATL-82 as GOVERNED_COMPLETE, with any apply in a new governed task (recommended), or hold ATL-82 at OWNER_AUTHORIZATION_REQUIRED.
+
+**Synchronization in this change set:**
+- `ATL-82.yaml` → INDEPENDENT_QA_PASSED; CI proof recorded; F3 fixed;
+- `ATL-60.yaml` → checkpoint and blocker;
+- `ATL-83.yaml` → pass 3, then GOVERNED_COMPLETE at closure.
+
+No Supabase mutation. No DDL outside disposable local clusters, which were deleted afterwards. No GitHub write by Claude. Delivered through Drive (folder `1jKMXk2hTgvK2uNOZ6vc5C9RI1PwmuO3q`).

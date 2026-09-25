@@ -1,12 +1,12 @@
 task_id: ATL-82
 logical_task_name: "ATL-60B — Physical DDL/Migration Design"
-task_status: VERIFICATION_FAILED
+task_status: INDEPENDENT_QA_PASSED
 execution_owner: ChatGPT
 decision_authority: "Darshan / Atlas Owner-Governor"
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-82/atl-60b-physical-ddlmigration-design"
 manifest_status: ACTIVE
 last_updated: "2026-09-24"
-status_detail: "ATL-83 bounded re-QA of V0.2 FAIL: B1 V0.2 does not compile; B2 zero-argument guard leaves UPDATE unguarded on four tables. Three-line V0.3 correction required. ATL-94 CI is now the executable first-party proof gate; first canary PASS."
+status_detail: "V0.3 (blob 31e9f4ca) passed ATL-83 bounded independent re-QA on 2026-09-24 (pass 3): B1 and B2 closed; C1-C4, C7 and C8 closed; scope as amended by Owner decision D1=A (C5/C6 in ATL-92). First-party executable proof: ATL-94 CI run 35999395289, PASS (1 of 1 candidate(s) passed the gate). ATL-82 is design-only; this authorizes no migration. Owner decision D3 pending: close as GOVERNED_COMPLETE with any apply in a new governed task, or hold at OWNER_AUTHORIZATION_REQUIRED."
 
 parent_task: ATL-60
 released_by:
@@ -35,8 +35,8 @@ artifact_state:
   current_schema_reinspected: true
   no_mutation_performed: true
 
-current_checkpoint: "ATL-94 pinned V0.3 run 35995357970 failed static gate because the first V0.3 build contained literal single-$ delimiters at lines 214/226. Root cause corrected in place before any PASS/QA claim: V0.3 now exactly equals the independently proven DIAGNOSTIC-B stand-in, commit 45faea650657213265da925a65a79e510a358f77, blob 31e9f4ca8c3877519dda71f84b82502d7476ff86. Manifest pin updated; awaiting fresh ATL-94 CI proof. No Supabase mutation."
-next_action: "Require fresh ATL-94 proof for this manifest-pin commit to read PASS (1 of 1 candidate(s) passed the gate), with V0.3 blob 31e9f4ca8c3877519dda71f84b82502d7476ff86. Then persist first-party proof and return V0.3 to ATL-83 for bounded independent re-QA. Do not apply DDL."
+current_checkpoint: "ATL-82 V0.3 (blob 31e9f4ca8c3877519dda71f84b82502d7476ff86, introduced at 45faea650657213265da925a65a79e510a358f77, pinned at c3dd627d8d6354556ed04e15658145dbd23e392a) has its first-party executable proof (ATL-94 CI run 35999395289, proof commit c940f5340364bcc5763549fcf71efac43222b3e1: PASS (1 of 1 candidate(s) passed the gate)) and ATL-83 bounded independent re-QA PASS (evidence commit f6960e87b7ab5a59b82994a6d42b6deefb04e12b). Design deliverables complete. No DDL applied; no Supabase mutation."
+next_action: "Owner decides D3. No apply_migration under ATL-82. Any application must meet ATL-83 pass-3 condition F5: (1) Owner authorization and a separately governed apply task; (2) V0.3 must not be applied as-is: the apply artifact is byte-derived from V0.3 by a stated transformation of its begin/rollback wrapper, blob-pinned and ATL-94 gated; (3) the applying tool's handling of transaction statements established in that task; (4) a builder-owned executable down-migration; (5) a rebuild proof from frozen Generation Registry inputs; (6) pre- and post-apply live read-only checks."
 
 acceptance_criteria:
   - "Faithfully implements validated logical model without semantic loss or LTL/BOL-specific universalization."
@@ -69,18 +69,28 @@ verification_and_proof:
 working_outputs:
   - path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql
     commit: 45faea650657213265da925a65a79e510a358f77
+    pin_commit: c3dd627d8d6354556ed04e15658145dbd23e392a
     blob_sha: 31e9f4ca8c3877519dda71f84b82502d7476ff86
-    state: IMPLEMENTED_UNVERIFIED
-    notes: "Exactly three DIAGNOSTIC-B corrections from V0.2: $ dollar quotes at former lines 214/226 and NULL-safe coalesce(tg_argv, '{}'::text[]) at former line 221. Awaiting ATL-94 pinned-candidate CI PASS."
+    state: INDEPENDENT_QA_PASSED
+    notes: "Exactly the three DIAGNOSTIC-B corrections from V0.2: doubled dollar-quote delimiters at lines 214 and 226, and NULL-safe coalesce(tg_argv, '{}'::text[]) at line 221. Byte-identical to the ATL-94 canary stand-in. First-party executable proof: ATL-94 CI run 35999395289 PASS. ATL-83 pass-3 independent re-QA PASS. Earlier content of this path, blob 2b3f3c2262ecc4fc8907661536c3d5cb65cd2d61 (commit 1960638, only line 221 applied), failed ATL-94 CI and was corrected in place at 45faea6 before any QA claim."
+  - id: ATL82-V0_3-FIRST-PARTY-EXECUTABLE-PROOF
+    path: "atlas-ci-proofs:ATL-94/by-commit/c3dd627d8d6354556ed04e15658145dbd23e392a.md"
+    proof_commit: c940f5340364bcc5763549fcf71efac43222b3e1
+    source_commit: c3dd627d8d6354556ed04e15658145dbd23e392a
+    run_url: "https://github.com/Darshan-ukey/Supply-chain-and-logistic-atlas/actions/runs/35999395289"
+    verdict: "PASS (1 of 1 candidate(s) passed the gate)"
+    state: PROOF_RECORDED
+    notes: "First-party executable proof under ATL-94.yaml builder_protocol_for_atl82_candidates. CI code blobs equal the reviewed blobs in ATL-94.yaml; canary OK x3; V0.1/V0.2 SKIPPED; V0.3 pinned and PASS. Independently cross-checked by ATL-83 pass 3. No blob pin here on purpose: the ATL-94 runner reads only entries with a blob pin."
   - path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2.sql
     commit: a8c405448a0e016ad9adac7c03a9439ba719c911
     blob_sha: 344d0d4fed7fd5ae7d271764ba1f10e0d7552d63
     state: VERIFICATION_FAILED
-    notes: "ATL-83 bounded re-QA FAIL: B1 compile failure and B2 zero-argument append-only guard defect. Retained unchanged as evidence; superseded by forthcoming V0.3."
+    notes: "ATL-83 bounded re-QA FAIL: B1 compile failure and B2 zero-argument append-only guard defect. Retained unchanged as evidence; superseded by V0.3."
   - path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql
     commit: 5fe4c631bdff3484d136d7d747b4251798ffe8b6
     blob_sha: b16a4bd9b16763287a76574e7231695b2c271f2e
-    state: VERIFIED_FIRST_PARTY
+    state: VERIFICATION_FAILED
+    notes: "ATL-83 pass 1 (2026-09-23): FAIL as written, correctable. Retained unchanged as evidence; superseded by V0.2."
   - path: governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_1.md
     commit: ad49132a67b23f5d61c80792845e35cfd5c8fc5c
     blob_sha: 66e073011cd87cce9366fb3aae7c756f9afce545
@@ -98,6 +108,18 @@ working_outputs:
     state: PROOF_RECORDED_CURRENT_BASIS
 
 superseded_outputs:
+  - old: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql
+    successor: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2.sql
+    disposition: SUPERSEDED_AFTER_QA_FAIL
+    preservation: "V0.1 retained unchanged as evidence."
+  - old: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2.sql
+    successor: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql
+    disposition: SUPERSEDED_AFTER_QA_FAIL
+    preservation: "V0.2 retained unchanged as evidence."
+  - old: "governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql @ blob 2b3f3c2262ecc4fc8907661536c3d5cb65cd2d61 (commit 1960638)"
+    successor: "governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql @ blob 31e9f4ca8c3877519dda71f84b82502d7476ff86 (commit 45faea6)"
+    disposition: CORRECTED_IN_PLACE_BEFORE_QA
+    preservation: "The first blob remains in git history at 1960638 and in the ATL-94 CI proof record (runs 35995273841 and 35995357970, both FAIL, gate exit 6). No QA or PASS claim was made on it."
   - old: governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_1.md
     successor: governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_2.md
     disposition: SUPERSEDED_FOR_LINEAGE_INTERPRETATION_ONLY
@@ -111,6 +133,7 @@ prerequisites:
   - task: ATL-94
     for: "V0.3 executable first-party proof"
     manifest: governance/task-manifests/ATL-94.yaml
+    status: GOVERNED_COMPLETE
 
 qa_and_decisions:
   - disposition: ATL_83_FAIL_AS_WRITTEN_CORRECTABLE
@@ -127,3 +150,12 @@ qa_and_decisions:
     blocking_defects: [B1, B2]
     required_changes: "Exactly the three proven DIAGNOSTIC-B changes: dollar-quote fixes at former lines 214/226 and coalesce(tg_argv, '{}'::text[]) at former line 221."
     next_gate: V0_3_ATL94_CI_PASS_THEN_BOUNDED_INDEPENDENT_REQA
+
+  - disposition: ATL_83_REQA_V0_3_PASS
+    qa_artifact: governance/implementation/ATL_83_BOUNDED_REQA_ATL_82_V0_3_V0_1.md
+    evidence_commit: "f6960e87b7ab5a59b82994a6d42b6deefb04e12b"
+    candidate: "governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql @ 31e9f4ca8c3877519dda71f84b82502d7476ff86"
+    closed: [B1, B2, C1, C2, C3, C4, C7, C8]
+    scope: "As amended by Owner decision D1=A: C5/C6 (Z6 readiness persistence) governed by ATL-92."
+    does_not_authorize: "Any migration."
+    next_gate: OWNER_DECISION_D3_THEN_SEPARATE_GOVERNED_APPLY_TASK_IF_AUTHORIZED
