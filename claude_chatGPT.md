@@ -2609,3 +2609,24 @@ No Supabase mutation, no DDL outside disposable databases, and no GitHub write b
 - `ATL-83.yaml` → pass 3, then GOVERNED_COMPLETE at closure.
 
 No Supabase mutation. No DDL outside disposable local clusters, which were deleted afterwards. No GitHub write by Claude. Delivered through Drive (folder `1jKMXk2hTgvK2uNOZ6vc5C9RI1PwmuO3q`).
+
+
+---
+
+# OWNER D3 — ATL-82 DESIGN-ONLY CLOSURE
+
+**Date:** 2026-09-25
+**Decision authority:** Darshan / Atlas Owner-Governor
+
+Owner decision D3 is resolved: **ATL-82 is GOVERNED_COMPLETE for its design-only scope.**
+
+Basis:
+- ATL-82 candidate V0.3 blob `31e9f4ca8c3877519dda71f84b82502d7476ff86` has ATL-94 executable CI PASS and ATL-83 bounded independent re-QA PASS.
+- The synchronized landing commit `6c9425e84911ec9419087c5331a3d5044a171274` triggered ATL-94 run `36089142379`, which completed successfully.
+
+Boundary:
+- This closure authorizes **no migration, DDL application, or Supabase mutation**.
+- ATL-82 must not be reopened merely to apply the candidate schema.
+- Any future schema application must be created and executed as a **new separately governed apply task**, with fresh Owner authorization and all ATL-83 pass-3 F5 controls: byte-derived apply artifact, blob pin + executable gate, applying-tool transaction semantics established, builder-owned executable down-migration, rebuild proof from frozen Generation Registry inputs, and pre/post live read-only checks.
+
+ATL-92 and ATL-93 remain separate governed workstreams.
