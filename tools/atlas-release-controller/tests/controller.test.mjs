@@ -35,3 +35,8 @@ const fakeOwner=false;
 const fakeProductReady=fakeAllDone && fakeCoherence && fakeOwner;
 assert.equal(fakeProductReady,false,"task completion alone must never imply product ready");
 console.log("TEMP_RELEASE_CONTROLLER_TESTS_PASS");
+
+// Owner freeze is a distinct gate from ATL-110 completion.
+assert.equal(config.ownerGates.PRODUCT_CONTRACT_FREEZE.explicitOwnerAuthorizationRequired,true);
+for(const id of config.phases.build) assert.ok(config.dependencies[id].includes("ATL-110"),`post-freeze task ${id} must depend on ATL-110`);
+console.log("OWNER_FREEZE_GUARD_TESTS_PASS");
