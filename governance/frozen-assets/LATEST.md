@@ -1,8 +1,8 @@
 # Atlas — Latest Frozen Assets (READ THIS FIRST)
 
-Updated: **2026-09-02**  
-Canonical frozen registry: `governance/frozen-assets/ASSET_REGISTER.json`  
-Machine latest pointer: `governance/frozen-assets/CURRENT.json`  
+Updated: **2026-09-25** (reconciled to the current 35-record registry — see reconciliation note at the bottom; previous update was 2026-09-02 and had drifted out of sync with the registry)
+Canonical frozen registry: `governance/frozen-assets/ASSET_REGISTER.json`
+Machine latest pointer: `governance/frozen-assets/CURRENT.json`
 Integration lock: `governance/frozen-assets/history/frozen-stack-lock-v2.2.json`
 
 ## Production baseline — unchanged
@@ -36,6 +36,16 @@ Integration lock: `governance/frozen-assets/history/frozen-stack-lock-v2.2.json`
 - Ocean LCL **0.6** — `FROZEN_EXECUTION_REFERENCE_CANDIDATE`
 
 These are immutable reference candidates. **They do not replace production baselines** until separate promotion gates pass.
+
+## Frozen governance contracts (P6.1 / P6.2) — corrected in this update
+- Canonical Work Decomposition Contract **V1** — `FROZEN`
+  - Asset register: `canonicalWorkDecompositionContractV1Frozen`.
+- Canonical WorkDefinition Contract **V1** — `FROZEN`
+  - Asset register: `canonicalWorkDefinitionContractV1`.
+  - SHA-256 (corrected 2026-09-25; see reconciliation note): `eee39c840249f9b8e9081d79c07d73f5b0217591194a3d9a3b69485fbdfba91b`
+  - Source: commit `c72b50025d38c6ba103a98e6b698ac2181d5017b`, "P6.2: freeze Canonical WorkDefinition Contract V1, compiler and verifier".
+
+Both are compiled/proven contracts, not yet persisted into live execution binding — that remains separate, not-yet-authorized work tracked under ATL-103/ATL-110. **This is a correction**: the previous version of this file (2026-09-02) listed these as future "production-promotion work" under the names of their now-superseded PENDING predecessor files. Those predecessors (`canonicalWorkDecompositionContract`, `canonicalWorkDefinitionContract`) are retained in the registry only as historical/reference-only — do not use them as the current contract.
 
 ## Newly frozen reference assets
 - Road LTL 1.5 Operational Knowledge — `FROZEN_OPERATIONAL_REFERENCE`
@@ -78,8 +88,14 @@ Freeze type: **immutable reference-candidate freeze, not production promotion**.
 ## Remaining production-promotion work
 1. Resolve the source-reported Malkom Accuracy metric numerator/denominator/counting method for the 11 values above 100%.
 2. Obtain governing Malkom/client schemas for unresolved client/runtime labels.
-3. Implement Recursive Work Decomposition and WorkDefinition VNext compilation.
+3. Bind the now-frozen Canonical Work Decomposition V1 and WorkDefinition V1 contracts into live execution (persistence + client binding + runtime projection) — the contracts themselves are frozen/proven; this binding step is what remains, not the contracts.
 4. Complete downstream runtime regression and measured **Validated STP Yield** proof before production promotion.
+
+## Atlas v2 product-definition process (added 2026-09-25)
+Atlas v2 Product End-State Contract V1 is an **OWNER-ALIGNED CANDIDATE, not yet frozen** — see `governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md` and coverage matrix `governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json`. Reconciliation of this frozen-asset registry against that candidate is tracked under Linear ATL-118 (this task) and ATL-103/ATL-110 (product contract & freeze gates).
 
 ## How to use this registry
 Never determine the latest asset from filenames in chat history. Start with this file or `CURRENT.json`. Historical frozen versions remain immutable under `governance/frozen-assets/history/`.
+
+## Reconciliation note — 2026-09-25
+This file and `CURRENT.json` were dated 2026-09-02 and had not been reconciled to the 35-record `ASSET_REGISTER.json` (updated 2026-09-23) — the exact gap ATL-118 exists to close, identified during Claude's independent QA challenge on ATL-118 (Linear comment, 2026-09-25) and fixed in this same pass. The `ASSET_REGISTER.json` `changeLog` entry for 2026-09-25 has the full list of corrections, including a corrected SHA-256 for `canonicalWorkDefinitionContractV1` (the file was entirely absent from this branch and its previously-registered hash matched no content found anywhere in repository history; it has been materialized from its sole verified source and the hash corrected to match). GitHub `CURRENT.json`/`LATEST.md` reconciliation remains **not yet independently QA'd by ChatGPT** — this fix pass is a builder correction, not a QA sign-off.
