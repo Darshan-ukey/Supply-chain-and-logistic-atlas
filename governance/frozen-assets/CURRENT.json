@@ -1,6 +1,12 @@
 {
   "schemaVersion": "atlas-current-assets-pointer-v1",
-  "updatedAt": "2026-09-02T21:42:00+05:30",
+  "updatedAt": "2026-09-25T20:45:00+05:30",
+  "reconciledBy": "Claude Sonnet 5 (ATL-118 independent-QA-driven fix pass, 2026-09-25)",
+  "assetRegistryRef": {
+    "path": "governance/frozen-assets/ASSET_REGISTER.json",
+    "updatedAt": "2026-09-25T20:45:00+05:30",
+    "recordCount": 35
+  },
   "integrationLock": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json",
   "productionBaseline": {
     "universe": "universe-7.3",
@@ -24,6 +30,11 @@
     "informationResolutionContract": "information-resolution-contract-1",
     "bolInformationResolutionBaseline": "bol-information-resolution-baseline-0.1"
   },
+  "frozenGovernanceContracts": {
+    "canonicalWorkDecomposition": "canonicalWorkDecompositionContractV1Frozen",
+    "canonicalWorkDefinition": "canonicalWorkDefinitionContractV1",
+    "note": "Both are now FROZEN (P6.1/P6.2). They were incorrectly listed under nextImplementation below as of the 2026-09-02 snapshot this file replaces; that referred to their now-superseded PENDING predecessors (canonicalWorkDecompositionContract / canonicalWorkDefinitionContract), which remain in the registry only as HISTORICAL_REFERENCE_ONLY."
+  },
   "activeEnrichmentCandidates": null,
   "governingStandards": [
     "insideOutOutsideInOperationalResearch",
@@ -32,10 +43,25 @@
     "knowledgeToExecutionArchitecture",
     "clientBindingResolutionPrinciple"
   ],
-  "nextImplementation": [
-    "canonicalWorkDecompositionContract",
-    "canonicalWorkDefinitionContract"
+  "nextImplementation": {
+    "note": "Do not hardcode a fixed asset-ID list here again — that is exactly what went stale (see integrityCorrections below). Current build status and next-eligible work is tracked live in governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json and Linear (ATL-103, ATL-110, ATL-118, ATL-119).",
+    "seeCoverageMatrix": "governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json"
+  },
+  "atlasV2Process": {
+    "productContractCandidate": "governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md",
+    "coverageMatrixCandidate": "governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json",
+    "frozenAssetReconciliation": "governance/product/ATLAS_V2_FROZEN_ASSET_RECONCILIATION_2026-09-24.md",
+    "linearTasks": ["ATL-103", "ATL-110", "ATL-118", "ATL-119"],
+    "status": "Atlas v2 Product End-State Contract V1 is an OWNER-ALIGNED CANDIDATE, not yet frozen. This pointer file being reconciled to the current registry does not itself authorize or freeze anything."
+  },
+  "integrityCorrections": [
+    {
+      "date": "2026-09-25T20:45:00+05:30",
+      "actor": "Claude Sonnet 5",
+      "finding": "This file and LATEST.md were dated 2026-09-02 and did not reference the 35-record ASSET_REGISTER.json (updated 2026-09-23), and this file's own embedded governance rule instructs agents to read this file first — so the stale snapshot was actively misdirecting, not just outdated. Identified during independent QA challenge on ATL-118 (Linear comment, 2026-09-25).",
+      "resolution": "Reconciled to current ASSET_REGISTER state. See ASSET_REGISTER.json changeLog for the full set of corrections made in the same pass, including a corrected sha256 for canonicalWorkDefinitionContractV1."
+    }
   ],
   "readHumanSummary": "governance/frozen-assets/LATEST.md",
-  "statusNote": "Road LTL 1.5, Operational Knowledge Contract v2 and BOL Information Resolution Baseline v0.1 are frozen reference assets. Production Road LTL remains 1.3 until separate promotion gates pass. Universe remains 7.3."
+  "statusNote": "Road LTL 1.5, Operational Knowledge Contract v2 and BOL Information Resolution Baseline v0.1 are frozen reference assets. Production Road LTL remains 1.3 until separate promotion gates pass. Universe remains 7.3. Canonical WorkDecomposition V1 and WorkDefinition V1 are FROZEN governance contracts (P6.1/P6.2); persistence/binding into live execution is separate, not-yet-authorized work tracked under ATL-103/ATL-110."
 }
