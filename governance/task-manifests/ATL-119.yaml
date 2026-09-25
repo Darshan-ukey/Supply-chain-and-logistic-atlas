@@ -76,3 +76,14 @@ handoff:
     - "Verify current GitHub blob identities and Drive custody IDs."
     - "Reconcile against actual OKv2/WD/rule evidence; do not rely on chat."
   chat_history_required: false
+
+
+chatgpt_repair_handoff_2026_09_25:
+  role: "Repair implementer; final independent QA handed to Claude."
+  source_precondition: "atlas-v2-temp-release-controller@7d1bb409904ccb51e1fd46996c397704f8211214"
+  repair_method: "Direct semantic reconstruction from Claude Drive handoff after Drive patch transport SHA mismatch; protected base branch requires PR."
+  repaired_scope:
+    - "Business-rule ontology candidate updated with the bounded single-valued rule_family clarification from Claude's fix pass."
+    - "Related rules/applicability remain the mechanism for cross-cutting semantics."
+  qa_required: "Claude independent QA of landed PR/branch before closure or merge disposition."
+  closure_state: "NOT_CLOSED_PENDING_CLAUDE_QA"
