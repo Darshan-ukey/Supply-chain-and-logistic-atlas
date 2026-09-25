@@ -1,9 +1,0 @@
--- Stage 17 schema contract (documentation copy; live migrations already applied through Supabase)
--- Client work is isolated from canonical Atlas content.
--- Required public tables:
--- atlas_workspaces, atlas_workspace_members, atlas_client_states, atlas_saved_views,
--- atlas_evidence_files, atlas_findings, atlas_opportunities, atlas_future_states,
--- atlas_knowledge_gaps, atlas_audit_events.
--- All tables have RLS enabled.
--- Private storage bucket: atlas-client-evidence.
--- Membership predicates live in atlas_private schema and are not exposed as public RPCs.

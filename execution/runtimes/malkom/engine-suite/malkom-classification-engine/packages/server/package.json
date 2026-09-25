@@ -1,8 +1,0 @@
-{
-  "name": "@malkom/classify-server",
-  "version": "0.1.0",
-  "type": "module",
-  "bin": { "malkom-classify-server": "./dist/bin.js" },
-  "engines": { "node": ">=22.5" },
-  "dependencies": { "@malkom/classify-core": "0.1.0" }
-}

@@ -9,3 +9,4 @@ node_modules/
 road-ltl-workdefinition-registry-v2.json
 *PRIVATE_WORKDEFINITION_SEED*.json
 private-seed/
+artifacts/

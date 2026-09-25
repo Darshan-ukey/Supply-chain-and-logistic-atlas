@@ -1,9 +1,0 @@
-{
-  "id": "P23-DOC-004",
-  "title": "Ambiguous proprietary system names",
-  "documentType": "Workshop Notes",
-  "expectedDisposition": ["ACCEPTED", "REVIEW_REQUIRED"],
-  "expectedProcessIds": ["LTL-03", "LTL-21"],
-  "forbiddenCanonicalAssertions": ["System X is the canonical TMS", "System Y is the global system of authority"],
-  "text": "Shipment identity is opened in an internal tool called BlueDesk and then copied to another application called TrackCore. Teams use different aliases for customer, location and handling-unit identifiers. The workshop did not establish which application is the formal system of authority. Identity mismatches are manually reconciled before execution continues."
-}

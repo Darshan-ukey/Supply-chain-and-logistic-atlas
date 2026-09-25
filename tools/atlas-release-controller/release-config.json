@@ -150,6 +150,15 @@
       "explicitOwnerAuthorizationRequired": true
     }
   },
+  "authorityEnforcement": {
+    "requireDecisionRecord": true,
+    "decisionRecordFields": ["grantedBy", "decisionRef", "grantedAt"],
+    "note": "A bare ownerAuthorizations boolean is not sufficient. Each true flag must carry a matching record in ownerDecisionRecords naming who granted it and a durable reference (Linear comment URL or governance commit SHA) to the actual Owner decision. The controller fails closed if the record is missing or malformed, even when the boolean is true."
+  },
+  "staleness": {
+    "maxStateAgeMs": 86400000,
+    "note": "release-state.snapshot.json.generatedAt older than this makes the controller fail closed rather than compute eligibility from a possibly-stale read of Linear/GitHub state."
+  },
   "qaPolicy": {
     "builderMaySelfApprove": false,
     "executableVerificationRequired": true,

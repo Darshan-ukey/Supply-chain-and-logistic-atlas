@@ -1,11 +1,11 @@
 task_id: ATL-120
 task_title: "Temporary Atlas v2 Release Controller — deterministic 48-hour build, QA and product-coherence orchestration"
 task_status: VERIFIED_FIRST_PARTY
-status_detail: "Controller safety/orchestration core is built and has passed live GitHub Actions preflight. Current product stage is PRE_FREEZE and controller correctly stops with only ATL-118/ATL-119 eligible. Full downstream build dispatch remains intentionally blocked until ATL-110 + Owner freeze."
+status_detail: "Controller safety/orchestration core is built and has passed live GitHub Actions preflight. Current product stage is PRE_FREEZE and controller correctly stops with only ATL-118/ATL-119 eligible. Claude bounded builder pass (2026-09-25) hardened the gaps found by Claude's own independent challenge comment on this issue: added a staleness guard on the state snapshot, required decision records behind owner-authorization booleans, added adversarial unit tests that construct and reject forged state, and added a synthetic control-flow canary proving eligible->build->verify->rework->QA->land->sync->next-eligible with real refusals at each guarded step. Still NOT independent QA PASS — that determination is reserved for ChatGPT per Owner instruction. Full downstream build dispatch remains intentionally blocked until ATL-110 + Owner freeze, and no live dispatch against real infrastructure has been attempted by either builder."
 execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 manifest_status: ACTIVE
-last_updated: "2026-09-24T18:33:00Z"
+last_updated: "2026-09-25T03:30:00Z"
 
 governing_inputs:
   - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
@@ -91,6 +91,35 @@ logging_policy:
   routine: "task manifest + GitHub Actions report/artifact"
   shared_log: "cross-agent independent QA, Owner decision, governance exception, material freeze/gate, serious product/architecture/recovery defect only"
   drive: "frozen/decision-significant/final QA-release/hard-to-recover/recovery-package custody only"
+
+claude_builder_pass_2026_09_25:
+  trigger: "Claude's own independent-challenge comment on ATL-120 (posted 2026-09-25T03:23:49Z), which found the prior VERIFIED_FIRST_PARTY disposition builder-self-reported and unproven on 4 of 6 challenged dimensions."
+  role: "Builder for this pass, not QA. Owner has directed ChatGPT to independently QA this hardening separately; this section is a disclosure of what changed and why, not a PASS claim."
+  changes:
+    - file: tools/atlas-release-controller/release-config.json
+      change: "Added authorityEnforcement (requireDecisionRecord + required fields) and staleness (maxStateAgeMs=24h) policy blocks."
+    - file: tools/atlas-release-controller/release-state.snapshot.json
+      change: "Added ownerDecisionRecords scaffold (empty; no gate is actually granted). Refreshed generatedAt."
+    - file: tools/atlas-release-controller/controller.mjs
+      change: "Added STATE_SNAPSHOT_FRESH check (fails closed on stale snapshot). Added hasValidDecisionRecord/gateGranted: an ownerAuthorizations boolean alone no longer grants a gate — a matching ownerDecisionRecords entry with grantedBy/decisionRef/grantedAt is required, checked, and surfaced as an explicit FAIL if the boolean is true but the record is missing/malformed. ownerFreezeGranted() and prodAuth now route through gateGranted()."
+    - file: tools/atlas-release-controller/tests/controller.test.mjs
+      change: "Added adversarial tests that construct a boolean-only forged grant and an incomplete-record forged grant and assert both are rejected, plus a staleness-policy sanity test. These construct bad state and check the decision function refuses it, not just assert a config value is correct."
+    - file: tools/atlas-release-controller/canary.mjs
+      change: "New. A self-contained synthetic control-flow canary (task graph CANARY-BUILD/CANARY-GATED, touches no real ATL-* task or external system) that drives eligible->build->verify(inject failure)->rework->verify(pass)->independent QA(reject same-actor, accept distinct-actor)->land(reject pre-QA, accept post-QA)->status-sync->next-eligible(still blocked)->forged-grant(rejected)->real-grant(unblocks). Every refusal is a real thrown/asserted rejection against constructed bad input, not an assertion on a config flag. Writes artifacts/atlas-v2-release-controller/canary-report.{json,md}."
+    - file: .github/workflows/atlas-v2-temp-release-controller.yml
+      change: "Added a 'Release controller control-flow canary' step after preflight, uploaded with the existing evidence artifact."
+  verified_locally_before_commit:
+    - "node tools/atlas-release-controller/tests/controller.test.mjs -> all PASS including new adversarial/staleness tests."
+    - "node tools/atlas-release-controller/controller.mjs --mode=preflight -> unchanged SAFE_STOP_PRE_FREEZE, now with STATE_SNAPSHOT_FRESH check passing."
+    - "node tools/atlas-release-controller/canary.mjs -> CANARY_PASS, full transcript in report."
+    - "Negative-control run with generatedAt forced to 2020 -> FAIL_CLOSED_PREFLIGHT (STATE_SNAPSHOT_FRESH)."
+    - "Negative-control run with ownerAuthorizations.PRODUCT_CONTRACT_FREEZE=true and no matching ownerDecisionRecords entry -> FAIL_CLOSED_PREFLIGHT (OWNER_GATE_DECISION_RECORD_PRODUCT_CONTRACT_FREEZE)."
+    - "Both negative-control fixtures deleted after verification; not committed."
+  explicitly_not_closed_by_this_pass:
+    - "Authority enforcement is still honor-system at the git-write layer: nothing here stops a committer from writing a well-formed but fabricated decision record. Real enforcement needs a GitHub branch-protection/required-reviewer rule on release-state.snapshot.json's owner-authorization fields, which is a repository-settings action, not a code change, and is not something a builder pass can grant itself."
+    - "The canary is a control-flow proof against synthetic data. It does not prove the controller can safely dispatch, verify and land a REAL task against real Claude/ChatGPT/CI infrastructure. That live-dispatch proof should be run once, deliberately, with the Owner watching, before ATL-120 is trusted with real task dispatch — not added to unattended CI."
+    - "Durable continuation after interrupt (kill mid-run, resume from GitHub/Linear state) is architecturally plausible (state lives in git, not session memory) but still has no explicit interrupt/resume test."
+  next_action_for_independent_qa: "ChatGPT: re-run the two negative controls independently (forged boolean, stale snapshot) against this commit, confirm both fail closed; review canary.mjs for any path where a rejection is asserted rather than actually enforced by the calling code; decide whether the honor-system gap on decision records needs a branch-protection rule before Owner freeze is granted."
 
 handoff:
   pickup_sequence:

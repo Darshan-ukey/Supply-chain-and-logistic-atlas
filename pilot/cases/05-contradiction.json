@@ -1,9 +1,0 @@
-{
-  "id": "P23-DOC-005",
-  "title": "Contradictory ownership statements",
-  "documentType": "Combined notes",
-  "expectedDisposition": ["ACCEPTED", "REVIEW_REQUIRED"],
-  "expectedProcessIds": ["LTL-12", "LTL-13"],
-  "expectedAmbiguity": true,
-  "text": "Document A states that destination operations confirm delivery readiness and dispatch the final delivery. A later workshop note says the customer-service team owns final dispatch and destination operations only receives the status. Both statements are unverified. Delivery acceptance is captured at the consignee and custody is closed after the attempt."
-}

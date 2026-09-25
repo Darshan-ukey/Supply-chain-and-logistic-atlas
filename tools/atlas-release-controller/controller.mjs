@@ -39,8 +39,24 @@ function detectCycle(graph){
   return null;
 }
 function manifestPath(id){ return path.join(root,config.taskManifestDir,`${id}.yaml`); }
+
+// A bare boolean is not authority. Each granted gate must carry a decision
+// record naming who granted it and a durable reference to the real Owner
+// decision (Linear comment URL or governance commit). Missing/malformed
+// record fails closed even when the boolean itself is true.
+function hasValidDecisionRecord(gateName){
+  if(config.authorityEnforcement?.requireDecisionRecord!==true) return true;
+  const rec=(state.ownerDecisionRecords||{})[gateName];
+  if(!rec || typeof rec!=="object") return false;
+  return (config.authorityEnforcement.decisionRecordFields||[]).every(
+    f=>typeof rec[f]==="string" && rec[f].trim().length>0
+  );
+}
+function gateGranted(gateName){
+  return state.ownerAuthorizations[gateName]===true && hasValidDecisionRecord(gateName);
+}
 function ownerFreezeGranted(){
-  return state.ownerAuthorizations.PRODUCT_CONTRACT_FREEZE===true;
+  return gateGranted("PRODUCT_CONTRACT_FREEZE");
 }
 function eligible(id){
   if(!state.tasks[id]) return false;
@@ -53,6 +69,20 @@ function phaseFor(id){ return Object.entries(config.phases).find(([,v])=>v.inclu
 const checks=[];
 const fail=(id,details)=>checks.push({id,result:"FAIL",details});
 const pass=(id,details)=>checks.push({id,result:"PASS",details});
+
+const stateAgeMs=Date.now()-new Date(state.generatedAt).getTime();
+const maxAgeMs=config.staleness?.maxStateAgeMs;
+(Number.isFinite(maxAgeMs) && stateAgeMs<=maxAgeMs)
+  ? pass("STATE_SNAPSHOT_FRESH",{ageMs:stateAgeMs,maxAgeMs})
+  : fail("STATE_SNAPSHOT_FRESH",{ageMs:stateAgeMs,maxAgeMs,generatedAt:state.generatedAt});
+
+for(const gateName of Object.keys(config.ownerGates||{})){
+  const claimed=state.ownerAuthorizations?.[gateName]===true;
+  if(!claimed) continue; // gate not claimed granted; nothing to validate
+  hasValidDecisionRecord(gateName)
+    ? pass("OWNER_GATE_DECISION_RECORD_"+gateName,state.ownerDecisionRecords[gateName])
+    : fail("OWNER_GATE_DECISION_RECORD_"+gateName,"ownerAuthorizations claims granted but ownerDecisionRecords is missing or malformed — treated as NOT granted");
+}
 
 const cycle=detectCycle(config.dependencies);
 cycle?fail("DEPENDENCY_GRAPH_ACYCLIC",cycle):pass("DEPENDENCY_GRAPH_ACYCLIC","no cycle");
@@ -108,7 +138,7 @@ const allComponentTasks=config.phases.build.concat(config.phases.value);
 const allTaskProof=allComponentTasks.every(id=>isComplete(id) && state.proof[id]==="PASS");
 const allCoherence=config.productCoherence.requiredSuites.every(s=>state.productCoherence[s]==="PASS");
 const finalTask=isComplete("ATL-109") && state.proof["ATL-109"]==="PASS";
-const prodAuth=state.ownerAuthorizations.PRODUCTION_GO_LIVE===true;
+const prodAuth=gateGranted("PRODUCTION_GO_LIVE");
 const productReady=allTaskProof && allCoherence && finalTask && prodAuth;
 
 if(productReady) pass("PRODUCT_READY","all component proof + coherence + ATL-109 + Owner go-live");

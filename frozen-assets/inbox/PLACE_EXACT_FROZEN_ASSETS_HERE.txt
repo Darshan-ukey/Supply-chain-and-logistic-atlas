@@ -1,2 +1,0 @@
-Place the exact frozen Atlas Production Foundation V1 assets and Canvas V2.0 frozen ZIP here.
-The final materializer will reject missing or hash-mismatched assets.

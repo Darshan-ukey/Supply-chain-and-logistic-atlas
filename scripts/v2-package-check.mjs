@@ -1,5 +1,0 @@
-import fs from 'node:fs';import path from 'node:path';let failures=0;const check=(ok,l)=>{console.log(`${ok?'PASS':'FAIL'} · ${l}`);if(!ok)failures++};const r=process.cwd();
-for(const f of ['index.html','admin.html','api/auth.js','api/atlas.js','lib/api/auth-admin-login.js','lib/api/auth-admin-session.js','lib/api/admin-workdefinitions.js','migrations/v2-admin-workdefinitions.sql','ADMIN_AUTH_SETUP.md','V2_GITHUB_RELEASE_AUDIT.md','UNIVERSAL_ASK_ATLAS_INTEGRATION.md','runtime/universal-ask-atlas.js','reference/reference-with-ask.html','governance/ask-atlas-surface-contract-v1.json','tests/v2-universal-ask-smoke.mjs'])check(fs.existsSync(path.join(r,f)),`required V2 file · ${f}`);
-check(!fs.existsSync(path.join(r,'road-ltl-workdefinition-registry-v2.json')),'private WorkDefinition seed not committed');
-const api=fs.readdirSync(path.join(r,'api')).filter(x=>x.endsWith('.js'));check(api.length===8,`Vercel serverless functions remain 8 / <=12 · ${api.length}`);
-console.log(failures?`FAIL · ${failures} V2 package check(s) failed`:'PASS · V2 repository package check');if(failures)process.exit(1);

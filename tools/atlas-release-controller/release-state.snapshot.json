@@ -1,10 +1,11 @@
 {
-  "generatedAt": "2026-09-24T18:25:00Z",
+  "generatedAt": "2026-09-25T03:25:00Z",
   "source": "LINEAR_CONNECTOR_PREFLIGHT_SNAPSHOT",
   "ownerAuthorizations": {
     "PRODUCT_CONTRACT_FREEZE": false,
     "PRODUCTION_GO_LIVE": false
   },
+  "ownerDecisionRecords": {},
   "productContractStatus": "CANDIDATE",
   "tasks": {
     "ATL-118": {

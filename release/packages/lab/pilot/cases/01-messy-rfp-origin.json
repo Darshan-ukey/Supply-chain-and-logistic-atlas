@@ -1,9 +1,0 @@
-{
-  "id": "P23-DOC-001",
-  "title": "Messy RFP narrative — pickup to origin receipt",
-  "documentType": "RFP / RFI",
-  "expectedDisposition": ["ACCEPTED", "REVIEW_REQUIRED"],
-  "expectedProcessIds": ["LTL-04", "LTL-05", "LTL-06"],
-  "forbiddenProcessIds": ["LTL-17", "LTL-18"],
-  "text": "Operational notes - current flow, not a formal SOP. Customer submits pickup request by portal/email. Ops checks whether freight is ready and whether pickup details are complete. Dispatcher allocates a driver and the freight is collected; custody passes to the carrier after acceptance. At the origin service centre the team scans the handling units, checks count and visible condition, and records exceptions before sorting. Some fields are repeated in emails and the terminology is inconsistent between teams."
-}

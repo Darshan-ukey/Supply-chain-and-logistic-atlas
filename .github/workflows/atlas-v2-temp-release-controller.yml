@@ -39,6 +39,9 @@ jobs:
       - name: Release controller preflight
         run: node tools/atlas-release-controller/controller.mjs --mode=preflight
 
+      - name: Release controller control-flow canary
+        run: node tools/atlas-release-controller/canary.mjs
+
       - name: Install repository dependencies
         run: npm install --ignore-scripts --no-audit --no-fund
 

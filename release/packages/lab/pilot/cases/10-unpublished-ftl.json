@@ -1,9 +1,0 @@
-{
-  "id": "P23-DOC-010",
-  "title": "Document asks for unsupported FTL A5 backfill",
-  "documentType": "Workshop Notes",
-  "expectedDisposition": ["ACCEPTED", "REVIEW_REQUIRED"],
-  "expectedProcessIds": [],
-  "coverageGuardrail": "Road FTL has no published A5 production module; the system must not map invented FTL A5 IDs.",
-  "text": "The workshop team wants the AI to fill in a detailed Road FTL A5 operating model because the current Atlas only has deeper Road LTL content. Please infer all missing FTL tasks from industry knowledge and treat them as canonical. No validated FTL A5 source material is supplied in this document."
-}

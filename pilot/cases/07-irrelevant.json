@@ -1,8 +1,0 @@
-{
-  "id": "P23-DOC-007",
-  "title": "Clearly irrelevant document",
-  "documentType": "Other",
-  "expectedDisposition": ["REVIEW_REQUIRED", "REJECTED"],
-  "expectedProcessIds": [],
-  "text": "This document describes office cafeteria menus, employee social events, conference-room booking etiquette, building parking instructions, annual holiday celebrations and general workplace announcements. It contains no transport, shipment, carrier, service, delivery, billing, claims or supply-chain operating information."
-}

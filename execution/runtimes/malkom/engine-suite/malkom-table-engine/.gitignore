@@ -1,6 +1,0 @@
-node_modules/
-dist/
-*.tsbuildinfo
-coverage/
-.consumer-check/
-.DS_Store

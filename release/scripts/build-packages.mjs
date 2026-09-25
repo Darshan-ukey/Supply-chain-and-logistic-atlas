@@ -1,7 +1,0 @@
-import fs from 'node:fs';import path from 'node:path';import {root,copyTree} from './common.mjs';
-const base=path.join(root,'release/packages');fs.rmSync(base,{recursive:true,force:true});fs.mkdirSync(base,{recursive:true});
-const commonFiles=['index.html','stage17-client.js','stage18-client.js','stage19-client.js','stage20-client.js','stage21-client.js','package.json','vercel.json','.env.example'];
-const dirs=['api','engine','data','governance'];
-function build(channel){const dst=path.join(base,channel);fs.mkdirSync(dst,{recursive:true});for(const f of commonFiles)fs.copyFileSync(path.join(root,f),path.join(dst,f));for(const d of dirs)copyTree(path.join(root,d),path.join(dst,d));fs.mkdirSync(path.join(dst,'release/baselines'),{recursive:true});fs.copyFileSync(path.join(root,'release/release-meta.js'),path.join(dst,'release/release-meta.js'));fs.copyFileSync(path.join(root,'release/baselines/core-hashes-stage21.json'),path.join(dst,'release/baselines/core-hashes-stage21.json'));fs.writeFileSync(path.join(dst,'RELEASE_CHANNEL'),channel+'\n');if(channel==='lab'){fs.copyFileSync(path.join(root,'accounts-payable-fixture-standalone.html'),path.join(dst,'accounts-payable-fixture-standalone.html'));copyTree(path.join(root,'pilot'),path.join(dst,'pilot'))}return dst}
-for(const c of ['stable','lab'])build(c);
-console.log(JSON.stringify({ok:true,stable:path.join(base,'stable'),lab:path.join(base,'lab')},null,2));

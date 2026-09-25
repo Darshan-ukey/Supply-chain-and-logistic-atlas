@@ -1,7 +1,0 @@
-# The LangGraph adapter's Python side. The sandbox clerk needs only the first
-# two; a real provider adds one of the last two, chosen per org.
-langgraph>=0.2
-langchain-core>=0.3
-# Optional, only when the org's provider is configured:
-# langchain-anthropic>=0.3
-# langchain-openai>=0.3
