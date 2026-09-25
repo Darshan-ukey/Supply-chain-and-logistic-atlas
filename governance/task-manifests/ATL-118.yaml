@@ -97,3 +97,16 @@ last_execution_record:
   operator: ChatGPT
   stopped_at: "2026-09-24T17:30:00Z"
   durable_state_written: true
+
+
+chatgpt_repair_handoff_2026_09_25:
+  role: "Repair implementer; final independent QA handed to Claude."
+  source_precondition: "atlas-v2-temp-release-controller@7d1bb409904ccb51e1fd46996c397704f8211214"
+  repair_method: "Direct semantic reconstruction from Claude Drive handoff after Drive patch transport SHA mismatch; protected base branch requires PR."
+  repaired_scope:
+    - "ASSET_REGISTER dispositions and WorkDefinition hash provenance correction."
+    - "CURRENT.json and LATEST.md reconciliation."
+    - "Canonical WorkDefinition V1 frozen contract materialized byte-for-byte from c72b50025d38c6ba103a98e6b698ac2181d5017b."
+    - "ATL-119 rule-family clarification applied."
+  qa_required: "Claude independent QA of landed PR/branch before closure or merge disposition."
+  closure_state: "NOT_CLOSED_PENDING_CLAUDE_QA"
