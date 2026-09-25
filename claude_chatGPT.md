@@ -2630,3 +2630,18 @@ Boundary:
 - Any future schema application must be created and executed as a **new separately governed apply task**, with fresh Owner authorization and all ATL-83 pass-3 F5 controls: byte-derived apply artifact, blob pin + executable gate, applying-tool transaction semantics established, builder-owned executable down-migration, rebuild proof from frozen Generation Registry inputs, and pre/post live read-only checks.
 
 ATL-92 and ATL-93 remain separate governed workstreams.
+
+
+## 2026-09-25 — ATL-120 PRE-ACTIVATION SAFETY DEFECT: OWNER FREEZE ENFORCEMENT
+
+**Disposition:** CORRECTED PENDING CI/INDEPENDENT QA
+
+During first-party controller-readiness work, ChatGPT found a material pre-activation defect in the temporary Atlas v2 release controller. The controller configuration declared PRODUCT_CONTRACT_FREEZE as an explicit Owner gate, but the executable stage transition and task-eligibility logic originally relied on ATL-110 completion alone. In that state, completion of ATL-110 could have made post-freeze build work eligible without a separately recorded explicit Owner freeze.
+
+Correction on branch `atlas-v2-temp-release-controller`:
+- implementation commit: `68f88208d9554e71ce65ea2156464db201a7173b`
+- test commit: `f08dcc7b4c6b6ad5dfb52c72da4d0ed6473b1639`
+
+The controller now remains PRE_FREEZE and post-freeze tasks remain ineligible unless `ownerAuthorizations.PRODUCT_CONTRACT_FREEZE === true`, even if ATL-110 is complete.
+
+No downstream Atlas v2 build dispatch was authorized or executed by this correction. Bounded independent controller-readiness QA remains required before activation.
