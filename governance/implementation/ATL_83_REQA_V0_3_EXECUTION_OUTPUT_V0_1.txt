@@ -1,0 +1,698 @@
+ATL-83 — Bounded independent re-QA of ATL-82 candidate V0.3: raw execution output (V0.1)
+Author: Claude (independent QA). Recorded 2026-09-24 (IST). Companion to governance/implementation/ATL_83_BOUNDED_REQA_ATL_82_V0_3_V0_1.md.
+All DDL ran only in disposable local PostgreSQL clusters (Unix socket only, listen_addresses=''), started as a non-root user.
+Supabase project aaoyesktlzhaunqqjhdq was read with SELECT statements only (sections G1-G4; G5 is a local check on E3). No GitHub write by Claude.
+
+Environments:
+  E1  PostgreSQL 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1), initdb --locale=C.UTF-8 --encoding=UTF8 (same settings as ATL-94 CI)
+  E2  PostgreSQL 17.6 (npm @embedded-postgres/linux-x64@17.6.0-beta.15, tarball sha256 8d14394e1092b8bc659943966a5d1cd19b1bcc34ab02e135ed7c51fe60ba9d12), --locale=C.UTF-8
+  E3  PostgreSQL 17.6 (same binaries), --locale=en_US.UTF-8: live Supabase's server version and database collation (section G)
+  psql client 16.13 in all three. CI reference: PostgreSQL 16.15 (pgdg), C.UTF-8, run 35999395289.
+Formatting: trailing whitespace is removed from every line of this file (psql pads table headers), as in the recorded
+V0.2 output; the raw-output SHA-256 values quoted below are of the unmodified local files.
+
+==============================================================================
+A. IDENTITY: files copied from canonical tip c3dd627d8d6354556ed04e15658145dbd23e392a
+==============================================================================
+Branch atlas-governance-registry-v2.1 tip: c3dd627d8d6354556ed04e15658145dbd23e392a ; branch atlas-ci-proofs tip: c940f5340364bcc5763549fcf71efac43222b3e1
+ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql     tree: 100644 31e9f4ca8c3877519dda71f84b82502d7476ff86  copy: blob 31e9f4ca8c3877519dda71f84b82502d7476ff86  15595 bytes
+ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2.sql     tree: 100644 344d0d4fed7fd5ae7d271764ba1f10e0d7552d63  copy: blob 344d0d4fed7fd5ae7d271764ba1f10e0d7552d63  15569 bytes
+ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh          tree: 100755 9af8eef15dbd3e6750dc643583ad0cf6ae1e2c6b  copy: blob 9af8eef15dbd3e6750dc643583ad0cf6ae1e2c6b  8675 bytes
+ATL_83_EXECUTABLE_TEST_PACK_V0_2.sh              tree: 100755 b9cdbbe2d5071066f5f333e8229b65d2bb095cc1  copy: blob b9cdbbe2d5071066f5f333e8229b65d2bb095cc1  26028 bytes
+ATL_83_TEST_PACK_OUTPUT_V0_2.txt                 tree: 100644 f79e97e887552dc3b6e792049552cff261b7fe04  copy: blob f79e97e887552dc3b6e792049552cff261b7fe04  27955 bytes
+History of the V0.3 path: 45faea6 ATL-82: correct V0.3 dollar quoting to exact DIAGNOSTIC-B fix;1960638 ATL-82: add V0.3 three-line executable correction;
+First V0.3 blob (commit 1960638, superseded in place by 45faea6): 2b3f3c2262ecc4fc8907661536c3d5cb65cd2d61
+
+$ diff ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2.sql ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql
+214c214
+< language plpgsql set search_path = pg_catalog, public as $
+---
+> language plpgsql set search_path = pg_catalog, public as $$
+221c221
+<     if not (col = any (tg_argv)) and (o -> col) is distinct from (n -> col) then
+---
+>     if not (col = any (coalesce(tg_argv, '{}'::text[]))) and (o -> col) is distinct from (n -> col) then
+226c226
+< end $;
+---
+> end $$;
+(diff exit 1; three changed lines, no added or removed lines; both files 249 lines)
+
+V0.3 blob 31e9f4ca8c3877519dda71f84b82502d7476ff86 equals the ATL-94 canary stand-in blob (V0.2 + exactly the three DIAGNOSTIC-B lines, rebuilt by the runner with fixed sed edits and blob-asserted).
+
+==============================================================================
+B. GATE on E1 (PostgreSQL 16.13, C.UTF-8)
+==============================================================================
+$ ATL83_DISPOSABLE=1 PGHOST=<socket dir> PGPORT=55491 PGUSER=postgres ./ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql 31e9f4ca8c3877519dda71f84b82502d7476ff86
+exit code: 0    output: 226 lines, sha256 3d878630ed04e6b114303dc3219478fe1e3858609e158414d3b29d72d9d7f59a
+------------------------------------------------------------------------------
+== GATE-0 identity and static checks
+candidate blob verified: 31e9f4ca8c3877519dda71f84b82502d7476ff86
+reference pack b9cdbbe2 and reference output f79e97e8 verified; suite extracted from the pack
+lines ending in a lone dollar quote (expect 0): 0
+tg_argv uses:
+221:    if not (col = any (coalesce(tg_argv, '{}'::text[]))) and (o -> col) is distinct from (n -> col) then
+tg_argv array tests without a NULL guard (expect 0): 0
+readiness tables created (expect 0): 0
+candidate ends in: rollback; (rollback lines: 1, expect 1)
+== GATE-1 candidate exactly as written (single transaction, ON_ERROR_STOP=1, ends in ROLLBACK)
+as-written psql exit code (expect 0): 0
+tables remaining after ROLLBACK (expect 0): 0
+== GATE-2 candidate committed (only the final ROLLBACK changed to COMMIT): TG_ARGV probe and closure suite
+commit-copy diff (expect one changed line):
+249c249
+committed psql exit code: 0
+== B2-MECHANISM value of TG_ARGV inside a PL/pgSQL trigger (zero-argument vs one-argument trigger)
+                    v
+-----------------------------------------
+ 0 args; tg_argv is NULL
+ 1 args; tg_argv is array [0:0]={status}
+
+              fixtures
+-------------------------------------
+ fixtures loaded: entities=2 links=2
+
+== C1a grants to anon/authenticated on the 9 V0.2 tables (expect no rows)
+ table_name | grantee | privs
+------------+---------+-------
+
+== C1b service_role privileges per table (expect DELETE,INSERT,SELECT,UPDATE on each of the 9; no TRUNCATE/REFERENCES/TRIGGER)
+             table_name             |     service_role_privs
+------------------------------------+-----------------------------
+ atlas_evidence_sources             | DELETE,INSERT,SELECT,UPDATE
+ atlas_generation_z5_outputs        | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_entities           | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_entity_types       | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_evidence_links     | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_gap_links          | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_generation_runs    | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_relationship_types | DELETE,INSERT,SELECT,UPDATE
+ atlas_knowledge_relationships      | DELETE,INSERT,SELECT,UPDATE
+
+== C1c authenticated: SELECT and TRUNCATE (expect 2x permission denied)
+psql:/tmp/tmp.BlH3samhef/closure.sql:23: ERROR:  permission denied for table atlas_knowledge_entities
+psql:/tmp/tmp.BlH3samhef/closure.sql:24: ERROR:  permission denied for table atlas_knowledge_evidence_links
+== C1d anon: SELECT (expect permission denied)
+psql:/tmp/tmp.BlH3samhef/closure.sql:28: ERROR:  permission denied for table atlas_evidence_sources
+== C1e service_role: SELECT allowed (expect 2), TRUNCATE (expect permission denied)
+ service_role_visible_entities
+-------------------------------
+                             2
+
+psql:/tmp/tmp.BlH3samhef/closure.sql:33: ERROR:  permission denied for table atlas_knowledge_evidence_links
+== C1f guard function EXECUTE for anon/authenticated (expect f,f) and RLS on all 9 tables (expect 9)
+ anon_exec | authenticated_exec | rls_tables
+-----------+--------------------+------------
+ f         | f                  |          9
+
+== C2a legitimate lifecycle/status promotion on entity, type and relationship (expect success, 3 rows)
+        ?column?
+------------------------
+ entity VALIDATED
+ type VALIDATED
+ relationship VALIDATED
+
+== C2b pinned type contract edited in place (expect ERROR append-only)
+psql:/tmp/tmp.BlH3samhef/closure.sql:44: ERROR:  append-only: atlas_knowledge_entity_types.schema_contract is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2n relationship-type contract edited in place (expect ERROR append-only); relationship-type status promotion (expect success)
+psql:/tmp/tmp.BlH3samhef/closure.sql:46: ERROR:  append-only: atlas_knowledge_relationship_types.schema_contract is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+ type_id |  status   |  schema_contract
+---------+-----------+--------------------
+ RT-TEST | VALIDATED | {"type": "object"}
+
+== C2p DELETE of a relationship-type row (expect ERROR append-only)
+psql:/tmp/tmp.BlH3samhef/closure.sql:50: ERROR:  append-only: DELETE on atlas_knowledge_relationship_types is not permitted; supersede with a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 5 at RAISE
+== C2c knowledge definition rewritten in place (expect ERROR append-only)
+psql:/tmp/tmp.BlH3samhef/closure.sql:52: ERROR:  append-only: atlas_knowledge_entities.definition is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2d relationship semantic payload rewritten in place (expect ERROR append-only)
+psql:/tmp/tmp.BlH3samhef/closure.sql:54: ERROR:  append-only: atlas_knowledge_relationships.semantic_payload is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2e evidence source reclassified in place (expect ERROR append-only)
+psql:/tmp/tmp.BlH3samhef/closure.sql:56: ERROR:  append-only: atlas_evidence_sources.source_class is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2j evidence link support role flipped in place (expect ERROR append-only)
+psql:/tmp/tmp.BlH3samhef/closure.sql:58: ERROR:  append-only: atlas_knowledge_evidence_links.support_role is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2f DELETE semantic row (expect ERROR append-only)
+psql:/tmp/tmp.BlH3samhef/closure.sql:60: ERROR:  append-only: DELETE on atlas_knowledge_relationships is not permitted; supersede with a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 5 at RAISE
+== C2g TRUNCATE as table owner (expect ERROR append-only)
+psql:/tmp/tmp.BlH3samhef/closure.sql:62: ERROR:  append-only: TRUNCATE on atlas_knowledge_evidence_links is not permitted
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 4 at RAISE
+== C2h generation run manifest rewritten (expect ERROR); run_status transition (expect success)
+psql:/tmp/tmp.BlH3samhef/closure.sql:64: ERROR:  append-only: atlas_knowledge_generation_runs.consumed_knowledge_manifest is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+ run_id | run_status
+--------+------------
+ G1     | VALIDATED
+
+== C2i guard triggers present (expect 18: 9 row-level + 9 TRUNCATE)
+ guard_triggers
+----------------
+             18
+
+== C3a relationship lifecycle column exists and defaults to CANDIDATE (expect 1 and CANDIDATE for a fresh row)
+ lifecycle_column | lifecycle_status
+------------------+------------------
+                1 | CANDIDATE
+
+== C3b invalid relationship lifecycle value (expect ERROR check)
+psql:/tmp/tmp.BlH3samhef/closure.sql:74: ERROR:  new row for relation "atlas_knowledge_relationships" violates check constraint "atlas_knowledge_relationships_lifecycle_chk"
+DETAIL:  Failing row contains (R3, 1, M, Z1, RT-TEST, 1.0.0, K2, 1, K1, 1, {}, {}, LIVE, SUPPORTED, C1, 1, null, hr3, 2026-09-24 18:06:44.819224+05:30).
+== C4a same source registered twice under a different class (expect ERROR unique)
+psql:/tmp/tmp.BlH3samhef/closure.sql:77: ERROR:  duplicate key value violates unique constraint "atlas_evidence_sources_evidence_source_kind_evidence_ref_key"
+DETAIL:  Key (evidence_source_kind, evidence_ref)=(regulation, 49 CFR 172.202) already exists.
+== C4b client evidence without workspace (expect ERROR client_scope)
+psql:/tmp/tmp.BlH3samhef/closure.sql:79: ERROR:  new row for relation "atlas_evidence_sources" violates check constraint "atlas_evidence_sources_client_scope_chk"
+DETAIL:  Failing row contains (S-X, CLIENT_PROVIDED, client_document, doc-uuid-9, null, null, null, 2026-09-24 18:06:44.819754+05:30).
+== C4c authoritative research scoped to a client workspace (expect ERROR research_scope)
+psql:/tmp/tmp.BlH3samhef/closure.sql:81: ERROR:  new row for relation "atlas_evidence_sources" violates check constraint "atlas_evidence_sources_research_scope_chk"
+DETAIL:  Failing row contains (S-Y, AUTHORITATIVE_RESEARCH, regulation, 49 CFR 373.101, 00000000-0000-0000-0000-00000000000a, null, null, 2026-09-24 18:06:44.819923+05:30).
+== C4d link class derived from its source (expect K1 AUTHORITATIVE_RESEARCH, K2 CLIENT_PROVIDED)
+ knowledge_id |      source_class
+--------------+------------------------
+ K1           | AUTHORITATIVE_RESEARCH
+ K2           | CLIENT_PROVIDED
+
+== C4e source-level columns absent from the link table (expect 0)
+ source_level_columns_on_link
+------------------------------
+                            0
+
+== C4f link without a source (expect ERROR not-null)
+psql:/tmp/tmp.BlH3samhef/closure.sql:87: ERROR:  null value in column "source_id" of relation "atlas_knowledge_evidence_links" violates not-null constraint
+DETAIL:  Failing row contains (L9, K1, 1, null, null, null, null, SUPPORTS, {}, 2026-09-24 18:06:44.823123+05:30).
+== C7a valid gap link to entity (expect success), then half-key, nonexistent gap and duplicate (expect 3 ERRORs)
+psql:/tmp/tmp.BlH3samhef/closure.sql:91: ERROR:  new row for relation "atlas_knowledge_gap_links" violates check constraint "atlas_knowledge_gap_links_target_chk"
+DETAIL:  Failing row contains (00000000-0000-0000-0000-0000000000b1, K2, null, null, null, 2026-09-24 18:06:44.824642+05:30).
+psql:/tmp/tmp.BlH3samhef/closure.sql:92: ERROR:  insert or update on table "atlas_knowledge_gap_links" violates foreign key constraint "atlas_knowledge_gap_links_gap_id_fkey"
+DETAIL:  Key (gap_id)=(00000000-0000-0000-0000-0000000000ff) is not present in table "atlas_knowledge_gaps".
+psql:/tmp/tmp.BlH3samhef/closure.sql:93: ERROR:  duplicate key value violates unique constraint "atlas_knowledge_gap_links_gap_id_knowledge_id_knowledge_ver_key"
+DETAIL:  Key (gap_id, knowledge_id, knowledge_version, relationship_id, relationship_version)=(00000000-0000-0000-0000-0000000000b1, K2, 1, null, null) already exists.
+ gap_links
+-----------
+         1
+
+== C2k gap link retargeted in place (expect ERROR append-only)
+psql:/tmp/tmp.BlH3samhef/closure.sql:96: ERROR:  append-only: atlas_knowledge_gap_links.knowledge_id is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C8a Z5 output with NULL hash (expect ERROR not-null)
+psql:/tmp/tmp.BlH3samhef/closure.sql:99: ERROR:  null value in column "output_hash" of relation "atlas_generation_z5_outputs" violates not-null constraint
+DETAIL:  Failing row contains (G1, WORK_DEFINITION, WD-1, 1, null, 2026-09-24 18:06:44.825926+05:30).
+== C8b valid Z5 output with hash (expect success)
+== C2m Z5 lineage hash overwritten in place (expect ERROR append-only)
+psql:/tmp/tmp.BlH3samhef/closure.sql:103: ERROR:  append-only: atlas_generation_z5_outputs.output_hash is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+== C2-READBACK values after the in-place attempts (expect originals: AUTHORITATIVE_RESEARCH / SUPPORTS / K2 / hwd)
+      s_cfr_class       | l1_role  | gap_target | wd1_hash
+------------------------+----------+------------+----------
+ AUTHORITATIVE_RESEARCH | SUPPORTS | K2         | hwd
+
+== R1-INFO (non-binding, not adopted in V0.2): output naming a nonexistent WorkDefinition is still accepted
+     output_id     | target_rows
+-------------------+-------------
+ WD-1              |           1
+ WD-DOES-NOT-EXIST |           0
+
+== D1A Z6 readiness tables absent from V0.2 (expect 0)
+ readiness_tables
+------------------
+                0
+
+== REGRESSION (controls that passed on V0.1; expect 5 ERRORs then the pinned-type delete blocked)
+psql:/tmp/tmp.BlH3samhef/closure.sql:114: ERROR:  insert or update on table "atlas_knowledge_entities" violates foreign key constraint "atlas_knowledge_entities_entity_type_entity_type_version_fkey"
+DETAIL:  Key (entity_type, entity_type_version)=(ET-TEST, 9.9.9) is not present in table "atlas_knowledge_entity_types".
+psql:/tmp/tmp.BlH3samhef/closure.sql:115: ERROR:  new row for relation "atlas_knowledge_evidence_links" violates check constraint "atlas_knowledge_evidence_links_target_chk"
+DETAIL:  Failing row contains (L3, K1, 1, R1, 1, S-CFR, null, SUPPORTS, {}, 2026-09-24 18:06:44.829707+05:30).
+psql:/tmp/tmp.BlH3samhef/closure.sql:116: ERROR:  new row for relation "atlas_knowledge_evidence_links" violates check constraint "atlas_knowledge_evidence_links_target_chk"
+DETAIL:  Failing row contains (L4, K1, null, null, null, S-CFR, null, SUPPORTS, {}, 2026-09-24 18:06:44.829849+05:30).
+psql:/tmp/tmp.BlH3samhef/closure.sql:117: ERROR:  new row for relation "atlas_knowledge_entities" violates check constraint "atlas_knowledge_entities_zone_chk"
+DETAIL:  Failing row contains (K8, 1, M, null, Z9, ET-TEST, 1.0.0, X, d, null, CANDIDATE, SUPPORTED, {}, {}, C1, 1, null, h, 2026-09-24 18:06:44.829982+05:30, 2026-09-24 18:06:44.829982+05:30).
+psql:/tmp/tmp.BlH3samhef/closure.sql:118: ERROR:  new row for relation "atlas_knowledge_entities" violates check constraint "atlas_knowledge_entities_support_chk"
+DETAIL:  Failing row contains (K7, 1, M, null, Z1, ET-TEST, 1.0.0, X, d, null, CANDIDATE, PROBABLY_TRUE, {}, {}, C1, 1, null, h, 2026-09-24 18:06:44.830151+05:30, 2026-09-24 18:06:44.830151+05:30).
+psql:/tmp/tmp.BlH3samhef/closure.sql:119: ERROR:  append-only: DELETE on atlas_knowledge_entity_types is not permitted; supersede with a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 5 at RAISE
+ pinned_type_rows_after_delete_attempt
+---------------------------------------
+                                     1
+
+golden match: closure (DIAGNOSTIC-B results reproduced exactly)
+== GATE-3 drop and rebuild
+== DOWN drop V0.2 structures (reverse dependency order, one statement per table)
+ v02_structures_remaining
+--------------------------
+                        0
+(1 row)
+
+ protected_stub_row_intact | gap_row_intact
+---------------------------+----------------
+                         1 |              1
+(1 row)
+
+== REBUILD verification (after re-applying the repaired V0.2 diagnostic copy)
+ rebuilt_structures
+--------------------
+                  9
+(1 row)
+
+ guard_triggers
+----------------
+             18
+(1 row)
+
+ protected_stub_row_still_intact | gap_row_still_intact
+---------------------------------+----------------------
+                               1 |                    1
+(1 row)
+
+golden match: down (DIAGNOSTIC-B results reproduced exactly)
+golden match: rebuild (DIAGNOSTIC-B results reproduced exactly)
+== GATE RESULT: PASS (candidate 31e9f4ca8c3877519dda71f84b82502d7476ff86 runs clean as written; its committed copy reproduces every DIAGNOSTIC-B result)
+
+==============================================================================
+C. GATE on E2 and E3 (PostgreSQL 17.6), and comparison with CI
+==============================================================================
+E2 (17.6, C.UTF-8):      exit 0; sha256 0ad12262768f7b4ce80fc3e88d112daad3d6f6981c9d024a5cb210f39dceb19e; last line: == GATE RESULT: PASS (candidate 31e9f4ca8c3877519dda71f84b82502d7476ff86 runs clean as written; its committed copy reproduces every DIAGNOSTIC-B result)
+E3 (17.6, en_US.UTF-8):  exit 0; sha256 6b36f31bd95a99d94b155eface040ebe1a7af80528cc9731254ab0da8c4a2aab; last line: == GATE RESULT: PASS (candidate 31e9f4ca8c3877519dda71f84b82502d7476ff86 runs clean as written; its committed copy reproduces every DIAGNOSTIC-B result)
+
+Normalization used for the comparison (same rules as the gate's norm()): temp-dir paths -> psql:<file>.sql:, timestamps -> <TS>, trailing whitespace removed.
+sha256 of each normalized 226-line output:
+  local_v03          48a004296e3428d49f608b9245f4d05002d458bed313f0ce171b713e6ad5d45e
+  local_v03_pg17     48a004296e3428d49f608b9245f4d05002d458bed313f0ce171b713e6ad5d45e
+  local_v03_pg17e    48a004296e3428d49f608b9245f4d05002d458bed313f0ce171b713e6ad5d45e
+  ci_v03             48a004296e3428d49f608b9245f4d05002d458bed313f0ce171b713e6ad5d45e
+  ci_standin         48a004296e3428d49f608b9245f4d05002d458bed313f0ce171b713e6ad5d45e
+  (local_v03 = E1; local_v03_pg17 = E2; local_v03_pg17e = E3; ci_v03 = CI gate-ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.txt raw sha256 83b5a265e07b26b2060f08a18f68202f81d50273eecf916647c95ccfab497079; ci_standin = CI gate-canary-standin.txt raw sha256 db00dc0bc1db1eaa0674500c5dae6156c3a1bbaa2909cc17db7b00da8c73be19)
+Result: all five normalized outputs are byte-identical, so the full E2 and E3 outputs are not repeated here; section B is
+the full E1 output, and the CI output is on atlas-ci-proofs at ATL-94/runs/c3dd627d8d6354556ed04e15658145dbd23e392a/35999395289-1/.
+
+==============================================================================
+D. ATL-94 RUNNER re-run locally on a clean checkout of c3dd627d8d6354556ed04e15658145dbd23e392a (E1)
+==============================================================================
+$ ATL83_DISPOSABLE=1 PGHOST=<socket dir> PGPORT=55491 PGUSER=postgres ATL94_OUT_DIR=<dir> bash governance/implementation/ATL_94_CI_CANDIDATE_GATE_RUNNER_V0_1.sh
+runner blob in checkout: ab833c26fb605d620a978da8f680b42413520c2a; exit 0
+------------------------------------------------------------------------------
+# ATL-94 CI gate result: **PASS (1 of 1 candidate(s) passed the gate)**
+
+| Field | Value |
+|---|---|
+| Repository | local |
+| Ref | HEAD |
+| Commit | c3dd627d8d6354556ed04e15658145dbd23e392a |
+| Event | local |
+| Run | local run |
+| Runner | local   |
+| PostgreSQL server / client | 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1) / psql (PostgreSQL) 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1) |
+| Cluster collation | C.UTF-8 |
+| Reference files | ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh:9af8eef15dbd3e6750dc643583ad0cf6ae1e2c6b ATL_83_EXECUTABLE_TEST_PACK_V0_2.sh:b9cdbbe2d5071066f5f333e8229b65d2bb095cc1 ATL_83_TEST_PACK_OUTPUT_V0_2.txt:f79e97e887552dc3b6e792049552cff261b7fe04 |
+| CI code (raw blobs) | workflow b4e179a99be1416a0b240b507a6584371b1ccbf4, runner ab833c26fb605d620a978da8f680b42413520c2a, publisher 792e6155236e0b661f539ed02100d5a1fcccd201 |
+| Candidates checked / passed | 1 / 1 |
+| UTC time | 2026-09-24T12:39:22Z |
+
+| Kind | Name | Blob | Pin / expectation | Exit | Verdict |
+|---|---|---|---|---|---|
+| canary | standin | `31e9f4ca8c3877519dda71f84b82502d7476ff86` | expect exit 0 | 0 | OK |
+| canary | b1_only | `0ee97349aa165870083a87939c1c354f9a43be36` | expect exit 6 | 6 | OK |
+| canary | hash_nullable | `4f14071c55c73e5778470cc36ca3185c40600c0e` | expect exit 5 | 5 | OK |
+| candidate | ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1 | `b16a4bd9b16763287a76574e7231695b2c271f2e` | - | - | SKIPPED (V0.1-failed-ATL-83-QA) |
+| candidate | ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2 | `344d0d4fed7fd5ae7d271764ba1f10e0d7552d63` | - | - | SKIPPED (V0.2-failed-ATL-83-re-QA) |
+| candidate | ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3 | `31e9f4ca8c3877519dda71f84b82502d7476ff86` | 31e9f4ca8c3877519dda71f84b82502d7476ff86 | 0 | PASS |
+
+Gate output SHA-256:
+- gate-ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.txt: `fe5034c58cf359f590ea4c14593298d5a4ee2bf8a325e38413fca1da1f353eec`
+- gate-canary-b1_only.txt: `8a29396d5113f76145569e8966a17999921ab26310b22a2042ab4410be3e290d`
+- gate-canary-hash_nullable.txt: `172ab84295fd6452a1e8d0e0a9613c2f451e67ac68c4e11c45d8491335033be6`
+- gate-canary-standin.txt: `323d1c0adc894dceaf98067b5487e764f9bc49495eabd4eb8dfc46dc488fee5e`
+
+==============================================================================
+E. EXTENDED PROBE (X-series) on E1 — ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql blob a94027ab53330c62f73480e84008db1dc531f0f9
+==============================================================================
+Driver (fresh database; harness and closure extracted from the V0.2 pack exactly as the gate does):
+  | #!/usr/bin/env bash
+  | set -u
+  | export PGHOST=/var/tmp/atl83v03/sock PGPORT=55491 PGUSER=postgres
+  | W=/var/tmp/atl83v03; S=$W/suite; PSQL="psql -X -q"
+  | sed 's/^rollback;$/commit;/' $W/work/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql > $W/v03_commit.sql
+  | echo "commit-copy diff:"; diff $W/work/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql $W/v03_commit.sql
+  | $PSQL -d postgres -c "drop database if exists atl83x" -c "create database atl83x" 2>&1 | grep -v skipping
+  | $PSQL -v ON_ERROR_STOP=1 -d atl83x -f $S/harness.sql; echo "harness rc=$?"
+  | $PSQL -v ON_ERROR_STOP=1 -d atl83x -f $W/v03_commit.sql; echo "V0.3 committed copy rc=$?"
+  | $PSQL -d atl83x -f $S/closure.sql > $W/x_closure.txt 2>&1; echo "closure rc=$? (fixtures + golden suite, output kept separately)"
+  | $PSQL -d atl83x -f $S/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql 2>&1
+  | $PSQL -d postgres -c "drop database atl83x"
+output sha256 3ed0706fdf33bffea7f46df696ba4beea1bfaadc2e5da7d45be5a7b0fec61c0a
+Refusal test (a fresh database with an auth schema added; the probe must refuse before doing anything):
+  | psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:18: ERROR:  refusing: Supabase schemas present; run this probe only in a disposable local database
+  | CONTEXT:  PL/pgSQL function inline_code_block line 3 at RAISE
+  | psql exit code: 3
+------------------------------------------------------------------------------
+commit-copy diff:
+249c249
+< rollback;
+---
+> commit;
+harness rc=0
+V0.3 committed copy rc=0
+closure rc=0 (fixtures + golden suite, output kept separately)
+== X0 rows present in each of the 9 tables (every table needs >=1 row for the probes)
+             table_name             | rows
+------------------------------------+------
+ atlas_evidence_sources             |    2
+ atlas_generation_z5_outputs        |    2
+ atlas_knowledge_entities           |    2
+ atlas_knowledge_entity_types       |    1
+ atlas_knowledge_evidence_links     |    2
+ atlas_knowledge_gap_links          |    1
+ atlas_knowledge_generation_runs    |    1
+ atlas_knowledge_relationship_types |    1
+ atlas_knowledge_relationships      |    2
+
+== X1 guard triggers on the 9 tables, as PostgreSQL reports them (pg_get_triggerdef; expect 9 row triggers BEFORE UPDATE OR DELETE with the allowlist as arguments, 9 BEFORE TRUNCATE statement triggers, all enabled)
+             table_name             | enabled |                                                                     definition
+------------------------------------+---------+----------------------------------------------------------------------------------------------------------------------------------------------------
+ atlas_evidence_sources             | O       | BEFORE DELETE OR UPDATE ON public.atlas_evidence_sources FOR EACH ROW EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_evidence_sources             | O       | BEFORE TRUNCATE ON public.atlas_evidence_sources FOR EACH STATEMENT EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_generation_z5_outputs        | O       | BEFORE DELETE OR UPDATE ON public.atlas_generation_z5_outputs FOR EACH ROW EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_generation_z5_outputs        | O       | BEFORE TRUNCATE ON public.atlas_generation_z5_outputs FOR EACH STATEMENT EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_knowledge_entities           | O       | BEFORE DELETE OR UPDATE ON public.atlas_knowledge_entities FOR EACH ROW EXECUTE FUNCTION atlas_guard_append_only('lifecycle_status', 'updated_at')
+ atlas_knowledge_entities           | O       | BEFORE TRUNCATE ON public.atlas_knowledge_entities FOR EACH STATEMENT EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_knowledge_entity_types       | O       | BEFORE DELETE OR UPDATE ON public.atlas_knowledge_entity_types FOR EACH ROW EXECUTE FUNCTION atlas_guard_append_only('status')
+ atlas_knowledge_entity_types       | O       | BEFORE TRUNCATE ON public.atlas_knowledge_entity_types FOR EACH STATEMENT EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_knowledge_evidence_links     | O       | BEFORE DELETE OR UPDATE ON public.atlas_knowledge_evidence_links FOR EACH ROW EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_knowledge_evidence_links     | O       | BEFORE TRUNCATE ON public.atlas_knowledge_evidence_links FOR EACH STATEMENT EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_knowledge_gap_links          | O       | BEFORE DELETE OR UPDATE ON public.atlas_knowledge_gap_links FOR EACH ROW EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_knowledge_gap_links          | O       | BEFORE TRUNCATE ON public.atlas_knowledge_gap_links FOR EACH STATEMENT EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_knowledge_generation_runs    | O       | BEFORE DELETE OR UPDATE ON public.atlas_knowledge_generation_runs FOR EACH ROW EXECUTE FUNCTION atlas_guard_append_only('run_status')
+ atlas_knowledge_generation_runs    | O       | BEFORE TRUNCATE ON public.atlas_knowledge_generation_runs FOR EACH STATEMENT EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_knowledge_relationship_types | O       | BEFORE DELETE OR UPDATE ON public.atlas_knowledge_relationship_types FOR EACH ROW EXECUTE FUNCTION atlas_guard_append_only('status')
+ atlas_knowledge_relationship_types | O       | BEFORE TRUNCATE ON public.atlas_knowledge_relationship_types FOR EACH STATEMENT EXECUTE FUNCTION atlas_guard_append_only()
+ atlas_knowledge_relationships      | O       | BEFORE DELETE OR UPDATE ON public.atlas_knowledge_relationships FOR EACH ROW EXECUTE FUNCTION atlas_guard_append_only('lifecycle_status')
+ atlas_knowledge_relationships      | O       | BEFORE TRUNCATE ON public.atlas_knowledge_relationships FOR EACH STATEMENT EXECUTE FUNCTION atlas_guard_append_only()
+
+== X1b counts (expect 18 guard triggers, 9 row, 9 truncate, 0 disabled, 0 non-guard user triggers)
+ guard_triggers | row_triggers | truncate_triggers | disabled | other_user_triggers
+----------------+--------------+-------------------+----------+---------------------
+             18 |            9 |                 9 |        0 |                   0
+
+== X3 snapshot of all 9 tables before the X2, X4 and X5 attempts
+== X2 exhaustive column-level UPDATE matrix: every column of every table changed on one row (outcome per column)
+             table_name             |                col                | allowlisted |                                              outcome
+------------------------------------+-----------------------------------+-------------+---------------------------------------------------------------------------------------------------
+ atlas_evidence_sources             | authority_class                   | f           | BLOCKED append-only
+ atlas_evidence_sources             | content_hash                      | f           | BLOCKED append-only
+ atlas_evidence_sources             | created_at                        | f           | BLOCKED append-only
+ atlas_evidence_sources             | evidence_ref                      | f           | BLOCKED append-only
+ atlas_evidence_sources             | evidence_source_kind              | f           | BLOCKED append-only
+ atlas_evidence_sources             | source_class                      | f           | BLOCKED append-only
+ atlas_evidence_sources             | source_id                         | f           | BLOCKED append-only
+ atlas_evidence_sources             | workspace_id                      | f           | BLOCKED append-only
+ atlas_generation_z5_outputs        | created_at                        | f           | BLOCKED append-only
+ atlas_generation_z5_outputs        | output_hash                       | f           | BLOCKED append-only
+ atlas_generation_z5_outputs        | output_id                         | f           | BLOCKED append-only
+ atlas_generation_z5_outputs        | output_kind                       | f           | BLOCKED append-only
+ atlas_generation_z5_outputs        | output_version                    | f           | BLOCKED append-only
+ atlas_generation_z5_outputs        | run_id                            | f           | BLOCKED append-only
+ atlas_knowledge_entities           | lifecycle_status                  | t           | OTHER: new row for relation "atlas_knowledge_entities" violates check constraint "atlas_knowledge
+ atlas_knowledge_entities           | updated_at                        | t           | ALLOWED (rolled back)
+ atlas_knowledge_entities           | applicability                     | f           | BLOCKED append-only
+ atlas_knowledge_entities           | canonical_name                    | f           | BLOCKED append-only
+ atlas_knowledge_entities           | content_hash                      | f           | BLOCKED append-only
+ atlas_knowledge_entities           | created_at                        | f           | BLOCKED append-only
+ atlas_knowledge_entities           | definition                        | f           | BLOCKED append-only
+ atlas_knowledge_entities           | entity_type                       | f           | BLOCKED append-only
+ atlas_knowledge_entities           | entity_type_version               | f           | BLOCKED append-only
+ atlas_knowledge_entities           | generator_run_id                  | f           | BLOCKED append-only
+ atlas_knowledge_entities           | governing_contract_id             | f           | BLOCKED append-only
+ atlas_knowledge_entities           | governing_contract_version        | f           | BLOCKED append-only
+ atlas_knowledge_entities           | knowledge_id                      | f           | BLOCKED append-only
+ atlas_knowledge_entities           | knowledge_version                 | f           | BLOCKED append-only
+ atlas_knowledge_entities           | module_id                         | f           | BLOCKED append-only
+ atlas_knowledge_entities           | module_version                    | f           | BLOCKED append-only
+ atlas_knowledge_entities           | operational_purpose               | f           | BLOCKED append-only
+ atlas_knowledge_entities           | ownership_zone                    | f           | BLOCKED append-only
+ atlas_knowledge_entities           | semantic_payload                  | f           | BLOCKED append-only
+ atlas_knowledge_entities           | support_state                     | f           | BLOCKED append-only
+ atlas_knowledge_entity_types       | status                            | t           | OTHER: new row for relation "atlas_knowledge_entity_types" violates check constraint "atlas_knowl
+ atlas_knowledge_entity_types       | content_hash                      | f           | BLOCKED append-only
+ atlas_knowledge_entity_types       | created_at                        | f           | BLOCKED append-only
+ atlas_knowledge_entity_types       | default_ownership_zone            | f           | BLOCKED append-only
+ atlas_knowledge_entity_types       | description                       | f           | BLOCKED append-only
+ atlas_knowledge_entity_types       | governing_contract_id             | f           | BLOCKED append-only
+ atlas_knowledge_entity_types       | name                              | f           | BLOCKED append-only
+ atlas_knowledge_entity_types       | schema_contract                   | f           | BLOCKED append-only
+ atlas_knowledge_entity_types       | type_id                           | f           | BLOCKED append-only
+ atlas_knowledge_entity_types       | type_version                      | f           | BLOCKED append-only
+ atlas_knowledge_evidence_links     | claim_scope                       | f           | BLOCKED append-only
+ atlas_knowledge_evidence_links     | created_at                        | f           | BLOCKED append-only
+ atlas_knowledge_evidence_links     | evidence_locator                  | f           | BLOCKED append-only
+ atlas_knowledge_evidence_links     | knowledge_id                      | f           | BLOCKED append-only
+ atlas_knowledge_evidence_links     | knowledge_version                 | f           | BLOCKED append-only
+ atlas_knowledge_evidence_links     | link_id                           | f           | BLOCKED append-only
+ atlas_knowledge_evidence_links     | relationship_id                   | f           | BLOCKED append-only
+ atlas_knowledge_evidence_links     | relationship_version              | f           | BLOCKED append-only
+ atlas_knowledge_evidence_links     | source_id                         | f           | BLOCKED append-only
+ atlas_knowledge_evidence_links     | support_role                      | f           | BLOCKED append-only
+ atlas_knowledge_gap_links          | created_at                        | f           | BLOCKED append-only
+ atlas_knowledge_gap_links          | gap_id                            | f           | BLOCKED append-only
+ atlas_knowledge_gap_links          | knowledge_id                      | f           | BLOCKED append-only
+ atlas_knowledge_gap_links          | knowledge_version                 | f           | BLOCKED append-only
+ atlas_knowledge_gap_links          | relationship_id                   | f           | BLOCKED append-only
+ atlas_knowledge_gap_links          | relationship_version              | f           | BLOCKED append-only
+ atlas_knowledge_generation_runs    | run_status                        | t           | OTHER: new row for relation "atlas_knowledge_generation_runs" violates check constraint "atlas_kn
+ atlas_knowledge_generation_runs    | consumed_knowledge_manifest       | f           | BLOCKED append-only
+ atlas_knowledge_generation_runs    | consumed_knowledge_manifest_hash  | f           | BLOCKED append-only
+ atlas_knowledge_generation_runs    | created_at                        | f           | BLOCKED append-only
+ atlas_knowledge_generation_runs    | generator_contract_id             | f           | BLOCKED append-only
+ atlas_knowledge_generation_runs    | generator_contract_version        | f           | BLOCKED append-only
+ atlas_knowledge_generation_runs    | generator_implementation_identity | f           | BLOCKED append-only
+ atlas_knowledge_generation_runs    | output_manifest                   | f           | BLOCKED append-only
+ atlas_knowledge_generation_runs    | parameters_hash                   | f           | BLOCKED append-only
+ atlas_knowledge_generation_runs    | run_id                            | f           | BLOCKED append-only
+ atlas_knowledge_relationship_types | status                            | t           | OTHER: new row for relation "atlas_knowledge_relationship_types" violates check constraint "atlas
+ atlas_knowledge_relationship_types | content_hash                      | f           | BLOCKED append-only
+ atlas_knowledge_relationship_types | created_at                        | f           | BLOCKED append-only
+ atlas_knowledge_relationship_types | description                       | f           | BLOCKED append-only
+ atlas_knowledge_relationship_types | from_type_constraints             | f           | BLOCKED append-only
+ atlas_knowledge_relationship_types | governing_contract_id             | f           | BLOCKED append-only
+ atlas_knowledge_relationship_types | name                              | f           | BLOCKED append-only
+ atlas_knowledge_relationship_types | schema_contract                   | f           | BLOCKED append-only
+ atlas_knowledge_relationship_types | to_type_constraints               | f           | BLOCKED append-only
+ atlas_knowledge_relationship_types | type_id                           | f           | BLOCKED append-only
+ atlas_knowledge_relationship_types | type_version                      | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | lifecycle_status                  | t           | OTHER: new row for relation "atlas_knowledge_relationships" violates check constraint "atlas_know
+ atlas_knowledge_relationships      | applicability                     | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | content_hash                      | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | created_at                        | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | from_knowledge_id                 | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | from_knowledge_version            | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | generator_run_id                  | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | governing_contract_id             | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | governing_contract_version        | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | module_id                         | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | ownership_zone                    | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | relationship_id                   | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | relationship_type                 | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | relationship_type_version         | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | relationship_version              | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | semantic_payload                  | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | support_state                     | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | to_knowledge_id                   | f           | BLOCKED append-only
+ atlas_knowledge_relationships      | to_knowledge_version              | f           | BLOCKED append-only
+
+== X2 summary: non-allowlisted columns not blocked by the guard (expect 0 rows)
+ t | col | outcome
+---+-----+---------
+
+== X2 summary: allowlisted columns blocked by the guard (expect 0 rows)
+ t | col | outcome
+---+-----+---------
+
+== X2 totals
+ columns_probed | immutable_columns | immutable_blocked | allowlisted_columns | allowlisted_not_blocked | not_probed
+----------------+-------------------+-------------------+---------------------+-------------------------+------------
+            100 |                94 |                94 |                   6 |                       6 |          0
+
+== X4 DELETE of one row on each of the 9 tables (expect 9 x BLOCKED append-only)
+             table_name             |       outcome
+------------------------------------+---------------------
+ atlas_evidence_sources             | BLOCKED append-only
+ atlas_generation_z5_outputs        | BLOCKED append-only
+ atlas_knowledge_entities           | BLOCKED append-only
+ atlas_knowledge_entity_types       | BLOCKED append-only
+ atlas_knowledge_evidence_links     | BLOCKED append-only
+ atlas_knowledge_gap_links          | BLOCKED append-only
+ atlas_knowledge_generation_runs    | BLOCKED append-only
+ atlas_knowledge_relationship_types | BLOCKED append-only
+ atlas_knowledge_relationships      | BLOCKED append-only
+
+== X5 TRUNCATE ... CASCADE on each of the 9 tables as table owner (expect 9 x BLOCKED append-only)
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_entities"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_relationships"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_evidence_links"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_gap_links"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_relationships"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_evidence_links"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_gap_links"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_entities"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_relationships"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_generation_z5_outputs"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_evidence_links"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_gap_links"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_relationships"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_evidence_links"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_gap_links"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_evidence_links"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_gap_links"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:110: NOTICE:  truncate cascades to table "atlas_knowledge_evidence_links"
+             table_name             |       outcome
+------------------------------------+---------------------
+ atlas_evidence_sources             | BLOCKED append-only
+ atlas_generation_z5_outputs        | BLOCKED append-only
+ atlas_knowledge_entities           | BLOCKED append-only
+ atlas_knowledge_entity_types       | BLOCKED append-only
+ atlas_knowledge_evidence_links     | BLOCKED append-only
+ atlas_knowledge_gap_links          | BLOCKED append-only
+ atlas_knowledge_generation_runs    | BLOCKED append-only
+ atlas_knowledge_relationship_types | BLOCKED append-only
+ atlas_knowledge_relationships      | BLOCKED append-only
+
+== X6 all 9 tables unchanged by X2/X4/X5 (expect 9 rows, all unchanged)
+             table_name             |   state
+------------------------------------+-----------
+ atlas_evidence_sources             | unchanged
+ atlas_generation_z5_outputs        | unchanged
+ atlas_knowledge_entities           | unchanged
+ atlas_knowledge_entity_types       | unchanged
+ atlas_knowledge_evidence_links     | unchanged
+ atlas_knowledge_gap_links          | unchanged
+ atlas_knowledge_generation_runs    | unchanged
+ atlas_knowledge_relationship_types | unchanged
+ atlas_knowledge_relationships      | unchanged
+
+== X7 as service_role (the only writer role): allowed promotion R2 CANDIDATE -> VALIDATED succeeds, immutable edit and DELETE are blocked
+ relationship_id | before_x7
+-----------------+-----------
+ R2              | CANDIDATE
+
+ relationship_id | after_x7
+-----------------+-----------
+ R2              | VALIDATED
+
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:121: ERROR:  append-only: atlas_evidence_sources.evidence_ref is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:122: ERROR:  append-only: atlas_generation_z5_outputs.output_hash is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:123: ERROR:  append-only: DELETE on atlas_knowledge_gap_links is not permitted; supersede with a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 5 at RAISE
+ s_bol_ref  | wd1_hash | gap_links
+------------+----------+-----------
+ doc-uuid-1 | hwd      |         1
+
+== X8 guard function properties (expect security invoker, fixed search_path, no EXECUTE for PUBLIC/anon/authenticated)
+ security_definer |               config               | anon_exec | authenticated_exec | public_exec
+------------------+------------------------------------+-----------+--------------------+-------------
+ f                | {"search_path=pg_catalog, public"} | f         | f                  | f
+
+== X9 service_role cannot bypass the guard: replica mode, disabling a trigger, dropping a trigger (expect 3 x permission/ownership errors), then guard still blocks
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:138: ERROR:  permission denied to set parameter "session_replication_role"
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:139: ERROR:  must be owner of table atlas_evidence_sources
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:140: ERROR:  must be owner of relation atlas_evidence_sources
+psql:/var/tmp/atl83v03/suite/ATL_83_REQA_V0_3_EXTENDED_PROBE_V0_1.sql:141: ERROR:  append-only: atlas_evidence_sources.source_class is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 9 at RAISE
+      source_class
+------------------------
+ AUTHORITATIVE_RESEARCH
+
+
+==============================================================================
+F. EXTENDED PROBE on E3 (PostgreSQL 17.6, en_US.UTF-8)
+==============================================================================
+Same driver with PGHOST/PGPORT pointing at E3. Raw output: 257 lines, sha256 adf14709d3d6828776f5ed7da8351d8b77530f1afd07d0ae17be7ed286f42526.
+Comparison with E1 after removing NOTICE lines and sorting: identical line sets (sha256 of the sorted, NOTICE-free lines:
+  E1 2cd81a18fff3fa093016486f8126185c14f3aab8bbf34efeaafdb25465dd6083
+  E3 2cd81a18fff3fa093016486f8126185c14f3aab8bbf34efeaafdb25465dd6083 ).
+The only difference is row order in ORDER BY table-name results: en_US collation sorts atlas_knowledge_relationship_types
+after atlas_knowledge_relationships. X2 totals on E3: 100 | 94 | 94 | 6 | 6 | 0
+(columns_probed | immutable_columns | immutable_blocked | allowlisted_columns | allowlisted_not_blocked | not_probed).
+
+==============================================================================
+G. LIVE READ-ONLY STATE CHECK — Supabase project aaoyesktlzhaunqqjhdq (2026-09-24; G1-G4 live, SELECT only, via the Supabase connector; G5 local on E3)
+==============================================================================
+G1. list_migrations: 17 migrations; latest 20260908015858 p6_2_canonical_work_definitions (the latest version recorded in passes 1 and 2).
+
+G2. Query:
+select (select max(version) from supabase_migrations.schema_migrations) as latest_migration,
+  (select count(*) from supabase_migrations.schema_migrations) as migrations,
+  (select count(*) from pg_tables where schemaname='public') as public_tables,
+  (select count(*) from pg_tables where schemaname='public' and tablename in (<the 9 V0.3 tables>)) as v03_tables_present,
+  (select count(*) from pg_proc p join pg_namespace n on n.oid=p.pronamespace where p.proname='atlas_guard_append_only') as guard_fn_present,
+  (select count(*) from pg_tables where schemaname='public' and tablename like 'atlas_readiness%') as readiness_tables,
+  (select count(*) from public.atlas_work_decompositions) as decompositions,
+  (select count(*) from public.atlas_work_definitions) as definitions,
+  (select count(*) from public.atlas_knowledge_gaps) as knowledge_gaps,
+  (select count(*) from public.atlas_workspaces) as workspaces,
+  current_setting('server_version') as server_version,
+  (select datcollate from pg_database where datname=current_database()) as collation,
+  (select count(*) from pg_roles where rolname in ('anon','authenticated','service_role')) as supabase_roles,
+  (select rolbypassrls from pg_roles where rolname='service_role') as service_role_bypassrls,
+  pg_is_in_recovery() as in_recovery, current_setting('transaction_read_only') as txn_read_only
+Result:
+latest_migration=20260908015858  migrations=17  public_tables=20  v03_tables_present=0  guard_fn_present=0  readiness_tables=0
+decompositions=1  definitions=0  knowledge_gaps=0  workspaces=0  server_version=17.6  collation=en_US.UTF-8
+supabase_roles=3  service_role_bypassrls=true  in_recovery=false  txn_read_only=off
+
+G3. Query: name collisions for all 25 relations V0.3 creates (9 tables, 8 primary-key indexes, 2 unique-constraint
+indexes, 6 explicit indexes; list taken from pg_class in a local database after the committed V0.3 ran), PK shapes of the two referenced live tables,
+default ACL in schema public, and the public table list.
+Result:
+colliding_relation_names_of_25=0
+workspaces_pk=id:uuid   knowledge_gaps_pk=id:uuid   (V0.3 references atlas_workspaces(id) and atlas_knowledge_gaps(id), both uuid)
+public_default_acl (unchanged; tables and sequences match the test harness mirror recorded 2026-09-23):
+  postgres:f:postgres=X/postgres anon=X/postgres authenticated=X/postgres service_role=X/postgres
+  postgres:r:postgres=arwdDxtm/postgres anon=arwdDxtm/postgres authenticated=arwdDxtm/postgres service_role=arwdDxtm/postgres
+  postgres:S:postgres=rwU/postgres anon=rwU/postgres authenticated=rwU/postgres service_role=rwU/postgres
+  supabase_admin:f / r / S: the same grants, granted by supabase_admin
+public_table_list (20): atlas_audit_events, atlas_candidate_facts, atlas_client_documents, atlas_client_states,
+  atlas_collaboration_comments, atlas_document_chunks, atlas_evidence_files, atlas_findings,
+  atlas_foundation_change_proposals, atlas_future_states, atlas_knowledge_gaps, atlas_opportunities,
+  atlas_pilot_evaluations, atlas_review_requests, atlas_saved_views, atlas_usage_events, atlas_work_decompositions,
+  atlas_work_definitions, atlas_workspace_members, atlas_workspaces
+
+G4. Query: can service_role switch off a trigger-based guard in the live project?
+select has_parameter_privilege('service_role','session_replication_role','SET'), pg_has_role('service_role','postgres','MEMBER'),
+  (select rolsuper from pg_roles where rolname='service_role'), <service_role's role memberships>, current_user
+Result: svc_can_set_replication_role=false  svc_member_of_postgres=false  svc_superuser=false  svc_member_of=(none)
+  inspecting_user=postgres
+Meaning: the X9 local result (service_role cannot enter replica mode, disable or drop a guard trigger) matches the live
+role configuration. Table owners and superusers can still bypass any trigger; that residual is outside ATL-82 scope.
+
+G5. Local check on E3 of V0.3 under the live default FUNCTION privileges (the test harness mirrors only the table and
+sequence defaults). The live default grants EXECUTE on new functions to anon, authenticated and service_role (G3); this
+adds that default to a fresh harness database, applies the V0.3 commit copy, and reads the guard function's EXECUTE rights.
+Driver:
+  | #!/usr/bin/env bash
+  | export PGHOST=/var/tmp/atl83v03/sock17e PGPORT=55493 PGUSER=postgres
+  | W=/var/tmp/atl83v03; S=$W/suite; PSQL="psql -X -q"
+  | $PSQL -d postgres -c "drop database if exists atl83f" -c "create database atl83f" 2>&1 | grep -v skipping
+  | $PSQL -v ON_ERROR_STOP=1 -d atl83f -f $S/harness.sql
+  | $PSQL -v ON_ERROR_STOP=1 -d atl83f -c "alter default privileges in schema public grant execute on functions to anon, authenticated, service_role"
+  | $PSQL -v ON_ERROR_STOP=1 -d atl83f -f $W/v03_commit.sql; echo "V0.3 commit copy psql exit: $?"
+  | $PSQL -d atl83f -c "\pset footer off" -c "select has_function_privilege('anon','public.atlas_guard_append_only()','EXECUTE') as anon_exec, has_function_privilege('authenticated','public.atlas_guard_append_only()','EXECUTE') as authenticated_exec, has_function_privilege('service_role','public.atlas_guard_append_only()','EXECUTE') as service_role_exec, exists (select 1 from pg_proc p, aclexplode(coalesce(p.proacl, acldefault('f', p.proowner))) a where p.oid='public.atlas_guard_append_only()'::regprocedure and a.grantee = 0 and a.privilege_type = 'EXECUTE') as public_exec"
+  | $PSQL -d postgres -c "drop database atl83f"
+Output:
+V0.3 commit copy psql exit: 0
+ anon_exec | authenticated_exec | service_role_exec | public_exec
+-----------+--------------------+-------------------+-------------
+ f         | f                  | t                 | f
+
+Meaning: V0.3's explicit revoke (line 227) leaves anon, authenticated and PUBLIC without EXECUTE on the guard function;
+service_role keeps it from the default, which is harmless (a trigger function cannot be called directly).
+
+==============================================================================
+H. TEARDOWN
+==============================================================================
+All local clusters (E1, E2, E3) were stopped and their data directories deleted after the evidence was recorded.
