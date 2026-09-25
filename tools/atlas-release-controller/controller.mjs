@@ -39,9 +39,13 @@ function detectCycle(graph){
   return null;
 }
 function manifestPath(id){ return path.join(root,config.taskManifestDir,`${id}.yaml`); }
+function ownerFreezeGranted(){
+  return state.ownerAuthorizations.PRODUCT_CONTRACT_FREEZE===true;
+}
 function eligible(id){
   if(!state.tasks[id]) return false;
   if(isComplete(id)) return false;
+  if(phaseFor(id)!=="prefreeze" && !ownerFreezeGranted()) return false;
   return (config.dependencies[id]||[]).every(isComplete);
 }
 function phaseFor(id){ return Object.entries(config.phases).find(([,v])=>v.includes(id))?.[0]||"unknown"; }
@@ -111,8 +115,14 @@ if(productReady) pass("PRODUCT_READY","all component proof + coherence + ATL-109
 else pass("PRODUCT_READY_GUARD",{ready:false,allTaskProof,allCoherence,finalTask,prodAuth});
 
 const eligibleNow=allTasks.filter(eligible);
+if(isComplete("ATL-110") && !ownerFreezeGranted())
+  pass("PRODUCT_CONTRACT_OWNER_GATE_GUARD","ATL-110 completion cannot release build without explicit Owner freeze");
+else if(ownerFreezeGranted())
+  pass("PRODUCT_CONTRACT_OWNER_GATE_GUARD","explicit Owner freeze recorded");
+else
+  pass("PRODUCT_CONTRACT_OWNER_GATE_GUARD","pre-freeze; Owner authorization absent as expected");
 let stage;
-if(!isComplete("ATL-110")) stage="PRE_FREEZE";
+if(!isComplete("ATL-110") || !ownerFreezeGranted()) stage="PRE_FREEZE";
 else if(!allComponentTasks.every(isComplete)) stage="BUILD_AND_QA";
 else if(!isComplete("ATL-117")) stage="VALUE_GATE";
 else if(!isComplete("ATL-109")) stage="FINAL_ACCEPTANCE";
