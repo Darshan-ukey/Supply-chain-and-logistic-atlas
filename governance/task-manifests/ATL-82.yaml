@@ -1,12 +1,12 @@
 task_id: ATL-82
 logical_task_name: "ATL-60B — Physical DDL/Migration Design"
-task_status: INDEPENDENT_QA_PASSED
+task_status: GOVERNED_COMPLETE
 execution_owner: ChatGPT
 decision_authority: "Darshan / Atlas Owner-Governor"
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-82/atl-60b-physical-ddlmigration-design"
 manifest_status: ACTIVE
-last_updated: "2026-09-24"
-status_detail: "V0.3 (blob 31e9f4ca) passed ATL-83 bounded independent re-QA on 2026-09-24 (pass 3): B1 and B2 closed; C1-C4, C7 and C8 closed; scope as amended by Owner decision D1=A (C5/C6 in ATL-92). First-party executable proof: ATL-94 CI run 35999395289, PASS (1 of 1 candidate(s) passed the gate). ATL-82 is design-only; this authorizes no migration. Owner decision D3 pending: close as GOVERNED_COMPLETE with any apply in a new governed task, or hold at OWNER_AUTHORIZATION_REQUIRED."
+last_updated: "2026-09-25"
+status_detail: "GOVERNED_COMPLETE for design-only scope by Owner decision D3 on 2026-09-25. V0.3 (blob 31e9f4ca) passed ATL-83 bounded independent re-QA; B1/B2 and C1-C4/C7/C8 closed; ATL-94 executable CI proof passed. No DDL was applied and no Supabase mutation is authorized. Any future schema application requires a new separately governed apply task satisfying ATL-83 pass-3 condition F5."
 
 parent_task: ATL-60
 released_by:
@@ -36,7 +36,7 @@ artifact_state:
   no_mutation_performed: true
 
 current_checkpoint: "ATL-82 V0.3 (blob 31e9f4ca8c3877519dda71f84b82502d7476ff86, introduced at 45faea650657213265da925a65a79e510a358f77, pinned at c3dd627d8d6354556ed04e15658145dbd23e392a) has its first-party executable proof (ATL-94 CI run 35999395289, proof commit c940f5340364bcc5763549fcf71efac43222b3e1: PASS (1 of 1 candidate(s) passed the gate)) and ATL-83 bounded independent re-QA PASS (evidence commit f6960e87b7ab5a59b82994a6d42b6deefb04e12b). Design deliverables complete. No DDL applied; no Supabase mutation."
-next_action: "Owner decides D3. No apply_migration under ATL-82. Any application must meet ATL-83 pass-3 condition F5: (1) Owner authorization and a separately governed apply task; (2) V0.3 must not be applied as-is: the apply artifact is byte-derived from V0.3 by a stated transformation of its begin/rollback wrapper, blob-pinned and ATL-94 gated; (3) the applying tool's handling of transaction statements established in that task; (4) a builder-owned executable down-migration; (5) a rebuild proof from frozen Generation Registry inputs; (6) pre- and post-apply live read-only checks."
+next_action: "D3 resolved: ATL-82 closed GOVERNED_COMPLETE for design-only scope. No apply_migration under ATL-82. Any future application requires a new separately governed apply task and must meet ATL-83 pass-3 condition F5: (1) Owner authorization and a separately governed apply task; (2) V0.3 must not be applied as-is: the apply artifact is byte-derived from V0.3 by a stated transformation of its begin/rollback wrapper, blob-pinned and ATL-94 gated; (3) the applying tool's handling of transaction statements established in that task; (4) a builder-owned executable down-migration; (5) a rebuild proof from frozen Generation Registry inputs; (6) pre- and post-apply live read-only checks."
 
 acceptance_criteria:
   - "Faithfully implements validated logical model without semantic loss or LTL/BOL-specific universalization."
@@ -158,4 +158,6 @@ qa_and_decisions:
     closed: [B1, B2, C1, C2, C3, C4, C7, C8]
     scope: "As amended by Owner decision D1=A: C5/C6 (Z6 readiness persistence) governed by ATL-92."
     does_not_authorize: "Any migration."
-    next_gate: OWNER_DECISION_D3_THEN_SEPARATE_GOVERNED_APPLY_TASK_IF_AUTHORIZED
+    owner_decision_D3: "CLOSE ATL-82 AS GOVERNED_COMPLETE FOR DESIGN-ONLY SCOPE; ANY FUTURE SCHEMA APPLICATION MUST BE A NEW SEPARATELY GOVERNED TASK."
+    decision_date: "2026-09-25"
+    next_gate: SEPARATE_GOVERNED_APPLY_TASK_ONLY_IF_LATER_OWNER_AUTHORIZED
