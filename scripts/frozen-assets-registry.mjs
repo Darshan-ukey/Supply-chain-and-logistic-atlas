@@ -24,7 +24,11 @@ for(const a of reg.assets){
 const ids=[];
 for(const group of [cur.productionBaseline,cur.latestFrozenCandidates]) for(const v of Object.values(group||{})) ids.push(v);
 for(const v of cur.governingStandards||[]) ids.push(v);
-for(const v of cur.nextImplementation||[]) ids.push(v);
+if(Array.isArray(cur.nextImplementation)){
+  for(const v of cur.nextImplementation) ids.push(v);
+} else if(cur.nextImplementation!==null && cur.nextImplementation!==undefined && typeof cur.nextImplementation!=='object'){
+  fail.push('CURRENT nextImplementation must be an array, object, null, or omitted');
+}
 for(const id of ids) if(!byId.has(id)) fail.push(`CURRENT points to missing asset: ${id}`);
 
 if(cmd==='latest'){
