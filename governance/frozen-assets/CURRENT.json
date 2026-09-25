@@ -1,6 +1,8 @@
 {
   "schemaVersion": "atlas-current-assets-pointer-v1",
-  "updatedAt": "2026-09-02T21:42:00+05:30",
+  "updatedAt": "2026-09-25T08:00:00+05:30",
+  "authoritativeRegistry": "governance/frozen-assets/ASSET_REGISTER.json",
+  "registryUpdatedAt": "2026-09-23T12:30:00+05:30",
   "integrationLock": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json",
   "productionBaseline": {
     "universe": "universe-7.3",
@@ -22,20 +24,38 @@
     "roadLtlOperationalKnowledge": "road-ltl-1.5-operational",
     "operationalKnowledgeContract": "operational-knowledge-contract-2-candidate",
     "informationResolutionContract": "information-resolution-contract-1",
-    "bolInformationResolutionBaseline": "bol-information-resolution-baseline-0.1"
+    "bolInformationResolutionBaseline": "bol-information-resolution-baseline-0.1",
+    "processConceptCrosswalk": "process-concept-crosswalk-1",
+    "clientBindingContract": "client-binding-contract-1"
   },
-  "activeEnrichmentCandidates": null,
+  "currentExecutionContracts": {
+    "canonicalWorkDecomposition": {
+      "assetId": "canonicalWorkDecompositionContractV1Frozen",
+      "sourceBranch": "atlas-presentation-architecture-v1-p6-2",
+      "gitBlobSha": "046885c71dc9fb24532b398cacd47ffc522f3a1b"
+    },
+    "canonicalWorkDefinition": {
+      "assetId": "canonicalWorkDefinitionContractV1",
+      "sourceBranch": "atlas-presentation-architecture-v1-p6-2",
+      "gitBlobSha": "c074489f2cf7edacde962f7e0260e2b240d24b87"
+    }
+  },
+  "atlasV2Candidate": {
+    "productContract": "governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md",
+    "coverageMatrix": "governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json",
+    "ruleOntology": "governance/product/ATLAS_V2_BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION_CONTRACT_V0_1_CANDIDATE.md",
+    "status": "CANDIDATE_NOT_FROZEN"
+  },
+  "doNotApply": [
+    "knowledge-execution-warehouse-schema-1"
+  ],
   "governingStandards": [
     "insideOutOutsideInOperationalResearch",
     "executabilityRecursiveDecomposition",
     "evidenceEpistemicClassification",
-    "knowledgeToExecutionArchitecture",
-    "clientBindingResolutionPrinciple"
-  ],
-  "nextImplementation": [
-    "canonicalWorkDecompositionContract",
-    "canonicalWorkDefinitionContract"
+    "clientBindingResolutionPrinciple",
+    "daughter-production-standard-2"
   ],
   "readHumanSummary": "governance/frozen-assets/LATEST.md",
-  "statusNote": "Road LTL 1.5, Operational Knowledge Contract v2 and BOL Information Resolution Baseline v0.1 are frozen reference assets. Production Road LTL remains 1.3 until separate promotion gates pass. Universe remains 7.3."
+  "statusNote": "Reconciled to ASSET_REGISTER on 25 Sep 2026. Production baselines remain unchanged. Frozen P6.1/P6.2 execution contracts are current governed cross-branch assets. Atlas v2 product/rule contracts remain candidates pending ATL-110 independent QA and Owner freeze."
 }
