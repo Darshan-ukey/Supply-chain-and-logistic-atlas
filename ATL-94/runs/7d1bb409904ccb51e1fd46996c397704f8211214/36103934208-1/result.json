@@ -1,0 +1,63 @@
+{
+  "task": "ATL-94",
+  "overall": "PASS",
+  "verdict_detail": "PASS (1 of 1 candidate(s) passed the gate)",
+  "candidates_gated": 1,
+  "candidates_passed": 1,
+  "ci_code_blobs": "workflow b4e179a99be1416a0b240b507a6584371b1ccbf4, runner ab833c26fb605d620a978da8f680b42413520c2a, publisher 792e6155236e0b661f539ed02100d5a1fcccd201",
+  "commit": "7d1bb409904ccb51e1fd46996c397704f8211214",
+  "run_id": "36103934208",
+  "run_attempt": "1",
+  "ref": "atlas-v2-temp-release-controller",
+  "gate_blob": "9af8eef15dbd3e6750dc643583ad0cf6ae1e2c6b",
+  "results": [
+    {
+      "kind": "canary",
+      "name": "standin",
+      "blob": "31e9f4ca8c3877519dda71f84b82502d7476ff86",
+      "pin_or_expectation": "expect exit 0",
+      "exit": "0",
+      "verdict": "OK"
+    },
+    {
+      "kind": "canary",
+      "name": "b1_only",
+      "blob": "0ee97349aa165870083a87939c1c354f9a43be36",
+      "pin_or_expectation": "expect exit 6",
+      "exit": "6",
+      "verdict": "OK"
+    },
+    {
+      "kind": "canary",
+      "name": "hash_nullable",
+      "blob": "4f14071c55c73e5778470cc36ca3185c40600c0e",
+      "pin_or_expectation": "expect exit 5",
+      "exit": "5",
+      "verdict": "OK"
+    },
+    {
+      "kind": "candidate",
+      "name": "ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1",
+      "blob": "b16a4bd9b16763287a76574e7231695b2c271f2e",
+      "pin_or_expectation": "-",
+      "exit": "-",
+      "verdict": "SKIPPED (V0.1-failed-ATL-83-QA)"
+    },
+    {
+      "kind": "candidate",
+      "name": "ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2",
+      "blob": "344d0d4fed7fd5ae7d271764ba1f10e0d7552d63",
+      "pin_or_expectation": "-",
+      "exit": "-",
+      "verdict": "SKIPPED (V0.2-failed-ATL-83-re-QA)"
+    },
+    {
+      "kind": "candidate",
+      "name": "ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3",
+      "blob": "31e9f4ca8c3877519dda71f84b82502d7476ff86",
+      "pin_or_expectation": "31e9f4ca8c3877519dda71f84b82502d7476ff86",
+      "exit": "0",
+      "verdict": "PASS"
+    }
+  ]
+}
