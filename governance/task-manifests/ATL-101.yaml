@@ -1,0 +1,24 @@
+task_id: ATL-101
+task_title: "Atlas Verification Harness — executable proof before QA"
+task_status: IN_PROGRESS
+status_detail: "Reusable verification contract is now durable in GitHub and ATL-94 provides the first real build→executable-validation→rework→PASS→independent-QA pattern. Controller integration and additional validation-class executable examples remain."
+execution_owner: ChatGPT
+decision_authority: Darshan Ukey
+manifest_status: ACTIVE
+last_updated: "2026-09-25T03:40:00Z"
+
+current_outputs:
+  - path: governance/controller/ATLAS_VERIFICATION_HARNESS_V0_1.md
+    status: VERIFIED_FIRST_PARTY_PATTERN
+  - linear_issue: ATL-94
+    role: FIRST_REAL_SQL_EXECUTABLE_PATTERN
+
+acceptance_progress:
+  validation_contract_defined: true
+  task_proof_envelope_defined: true
+  static_vs_executable_vs_independent_qa_separated: true
+  real_sql_path_demonstrated: true
+  controller_routing_generalized: false
+  additional_validation_classes_proven: false
+
+next_action: "Integrate proof-envelope checks into controller dispatch and add executable examples as build lanes begin; do not weaken claims when a validator environment is unavailable."
