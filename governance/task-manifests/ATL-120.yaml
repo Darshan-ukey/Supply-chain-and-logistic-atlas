@@ -5,7 +5,7 @@ status_detail: "Controller safety/orchestration core is built and has passed liv
 execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 manifest_status: ACTIVE
-last_updated: "2026-09-24T18:33:00Z"
+last_updated: "2026-09-25T03:45:00Z"
 
 governing_inputs:
   - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
@@ -59,6 +59,7 @@ verified_guards:
   builder_self_approval_forbidden: true
   executable_verification_required: true
   owner_gates_explicit: true
+  owner_product_freeze_enforced_in_stage_and_eligibility: true
   shared_log_routine_progress_forbidden: true
   final_product_gate_requires_full_chain: true
   task_completion_alone_can_mark_product_live: false
@@ -76,8 +77,8 @@ product_coherence_suites:
   - VALUE_KILL_TEST
   - DEPLOYED_ATL109_ACCEPTANCE
 
-current_checkpoint: "Temporary controller is executable and fail-closed. It is actively stopping at PRE_FREEZE because Atlas v2 product contract is not yet frozen."
-next_action: "Finish ATL-118 + ATL-119, close ATL-103 reconciliation, execute ATL-110 independent QA and obtain explicit Owner freeze. Only then switch controller from PRE_FREEZE to build/QA execution lanes."
+current_checkpoint: "Temporary controller remains PRE_FREEZE. A 25 Sep safety review found that the original implementation checked Owner-gate configuration but did not enforce PRODUCT_CONTRACT_FREEZE authorization in stage transition/eligibility after ATL-110. The controller was corrected on atlas-v2-temp-release-controller (68f88208..., tests f08dcc7b...) so downstream build tasks remain ineligible until explicit Owner freeze."
+next_action: "Obtain CI/readback for the Owner-freeze guard correction, then send ATL-120 for bounded independent controller-readiness QA while ATL-118/119/103/110 product-freeze sequence proceeds."
 
 blocked_actions:
   - action: "Dispatch Atlas v2 build tasks ATL-95/104–117."
@@ -99,3 +100,11 @@ handoff:
     - "Reconcile live Linear state before execution; the checked-in snapshot is preflight evidence, not permanent authority."
     - "Do not dispatch downstream build while ATL-110/Owner freeze is unresolved."
   chat_history_required: false
+
+material_findings:
+  - date: "2026-09-25"
+    finding: "OWNER_FREEZE_GATE_NOT_ENFORCED_IN_STAGE_ELIGIBILITY"
+    severity: HIGH_PRE_ACTIVATION
+    disposition: CORRECTED_PENDING_CI_READBACK
+    implementation_commit: 68f88208d9554e71ce65ea2156464db201a7173b
+    test_commit: f08dcc7b4c6b6ad5dfb52c72da4d0ed6473b1639
