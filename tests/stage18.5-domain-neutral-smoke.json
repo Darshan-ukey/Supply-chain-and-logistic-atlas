@@ -1,0 +1,113 @@
+{
+  "stage": "18.5",
+  "coreVersion": "enterprise-ops-core-v1.0",
+  "tests": [
+    {
+      "name": "Core ontology exposes 15 requested domain-neutral concepts",
+      "status": "PASS"
+    },
+    {
+      "name": "Core engine source contains no SCM vocabulary or legacy Page-0 field assumption",
+      "status": "PASS"
+    },
+    {
+      "name": "Both Supply Chain and AP fixture domain packs satisfy the same extension contract shape",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing Road LTL content adapts without modifying canonical SCM module",
+      "status": "PASS",
+      "processes": 22,
+      "territories": 15
+    },
+    {
+      "name": "SCM-specific signals and applicability live in Supply Chain pack",
+      "status": "PASS"
+    },
+    {
+      "name": "AP fixture is registered through module catalog as TEST_ONLY / must-not-publish",
+      "status": "PASS"
+    },
+    {
+      "name": "AP fixture validates under enterprise module contract",
+      "status": "PASS"
+    },
+    {
+      "name": "Same generic rules registry composes AP relationships and applicability",
+      "status": "PASS",
+      "relationships": 6,
+      "dimensions": 3
+    },
+    {
+      "name": "Same generic canvas model + semantic zoom renders AP territories/A3/tasks",
+      "status": "PASS",
+      "territories": 7,
+      "a3": 7,
+      "tasks": 7
+    },
+    {
+      "name": "Same generic playback engine executes AP fixture",
+      "status": "PASS",
+      "sequence": [
+        "APF-01",
+        "APF-02",
+        "APF-03",
+        "APF-04",
+        "APF-05",
+        "APF-06",
+        "APF-07"
+      ]
+    },
+    {
+      "name": "Same generic inspector resolves AP task contract",
+      "status": "PASS"
+    },
+    {
+      "name": "Same generic trace engine follows Invoice across AP fixture",
+      "status": "PASS",
+      "touchpoints": 7
+    },
+    {
+      "name": "Same generic transformation engine uses AP-pack heuristics",
+      "status": "PASS",
+      "findings": 10,
+      "categories": [
+        "systems",
+        "reconciliation",
+        "control"
+      ]
+    },
+    {
+      "name": "Signal vocabulary is domain-registered: AP runs without a Physical signal",
+      "status": "PASS",
+      "signals": [
+        "document",
+        "data",
+        "financial",
+        "control"
+      ]
+    },
+    {
+      "name": "Applicability dimensions are domain-registered and evaluated generically",
+      "status": "PASS",
+      "state": "ACTIVE",
+      "dimensions": [
+        "entity",
+        "invoiceType",
+        "matchPolicy"
+      ]
+    }
+  ],
+  "acceptance": {
+    "moduleRegistry": "PASS",
+    "rules": "PASS",
+    "canvas": "PASS",
+    "semanticZoom": "PASS",
+    "playback": "PASS",
+    "inspector": "PASS",
+    "trace": "PASS",
+    "transformation": "PASS",
+    "engineChangesRequiredForAP": 0,
+    "fixtureWarning": "Architecture fixture only; no Finance taxonomy or best-practice claim."
+  }
+}

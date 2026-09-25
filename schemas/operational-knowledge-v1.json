@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas.local/schemas/operational-knowledge-v1.json",
+  "title": "Operational Knowledge Contract v1",
+  "type": "object",
+  "required": [
+    "taskId",
+    "requiredInformation",
+    "decisionGates",
+    "constraints",
+    "controls",
+    "atomicActions",
+    "branchTransitions",
+    "evidenceContracts",
+    "expectedOutcomes",
+    "provenanceClaims"
+  ]
+}

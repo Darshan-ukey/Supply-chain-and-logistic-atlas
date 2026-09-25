@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "contextParity": true,
+  "baseline": {
+    "version": "V1.2",
+    "validation": "passed",
+    "runtimeErrorCount": 0,
+    "overflow": 0
+  },
+  "candidateDesktop": {
+    "version": "V1.3",
+    "validation": "passed",
+    "runtimeErrorCount": 0,
+    "overflow": 0,
+    "title": "Road LTL / Groupage Execution Atlas V1.3 Enriched Child"
+  },
+  "candidateMobile": {
+    "version": "V1.3",
+    "validation": "passed",
+    "runtimeErrorCount": 0,
+    "overflow": 0,
+    "title": "Road LTL / Groupage Execution Atlas V1.3 Enriched Child"
+  },
+  "contextsCompared": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R"
+  ]
+}

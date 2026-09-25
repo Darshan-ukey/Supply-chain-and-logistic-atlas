@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "brisk-aitesting.golden-result-summary.v1",
+  "name": "serious-saas reference result summary",
+  "summary": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "blocked": 0,
+    "errors": 0,
+    "passRate": 100
+  },
+  "scenarioTypes": ["api", "contract", "ui"],
+  "negativeScenarios": 4,
+  "requiredArtifactSchemas": [
+    "brisk-aitesting.api-evidence.v1",
+    "brisk-aitesting.openapi-summary.v1",
+    "brisk-aitesting.playwright-evidence.v1",
+    "brisk-aitesting.ui-grounding.v1"
+  ]
+}

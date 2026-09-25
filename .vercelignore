@@ -1,0 +1,9 @@
+# Atlas Execution Fabric protected implementation source.
+# The browser receives only the generic flow UI asset; canonical/runtime data
+# continues to come through authenticated server APIs.
+execution/runtimes/
+execution/adapters/
+execution/core/
+execution/contracts/
+execution/manifest.json
+governance/ATLAS_EXECUTION_FABRIC_ARCHITECTURE_V1_FROZEN.md

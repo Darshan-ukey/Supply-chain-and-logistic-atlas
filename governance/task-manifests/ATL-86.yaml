@@ -1,0 +1,130 @@
+task_id: ATL-86
+title: "P6.2 / ATL-82 Architecture Reconciliation — WorkDefinition lineage and dormant Malkom prototype"
+task_status: GOVERNED_COMPLETE
+manifest_status: COMPLETE
+execution_owner: ChatGPT
+decision_authority: "Darshan / Atlas Owner-Governor"
+parent_task: ATL-60
+discovered_while: ATL-83
+created_at: "2026-09-22"
+
+purpose: "Reconcile recovered P6.2 and Malkom-prototype implementation evidence with ATL-82 before independent physical-design QA resumes."
+
+dependencies:
+  blocks:
+    - ATL-83
+  related:
+    - ATL-82
+    - ATL-60
+    - ATL-79
+    - ATL-80
+
+governing_inputs:
+  - commit: 659177b
+  - commit: 9ccacee
+  - commit: 739b5a4
+  - commit: 12d3301
+  - commit: 260c128
+  - commit: fdfdb66
+  - commit: c72b50025d38c6ba103a98e6b698ac2181d5017b
+  - commit: f22b77d
+  - commit: 457003d
+  - governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql
+  - governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_1.md
+  - governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_1.md
+  - governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
+  - governance/implementation/ATL_60_SUPABASE_SCHEMA_MAPPING_V0_1.md
+  - governance/generation/RESEARCH_TO_EXECUTION_READINESS_TRANSFORMER_CONTRACT_V0_1.md
+  - "MALKOM_DOMAIN_WAREHOUSE_GITHUB_CROSSCHECK_V0_1.md — Claude archaeology evidence supplied by Owner"
+
+acceptance_criteria:
+  - "Exact artifact, branch and schema identities verified."
+  - "P6.2 versus ATL-82 overlap/complement/conflict mapped table-by-table and contract-by-contract."
+  - "Canonical and reference/runtime lineages remain mechanically separated."
+  - "Sep-1 Malkom-specific prototype receives explicit governed disposition and accidental-execution risk control."
+  - "Stale PENDING/supersession bookkeeping identified with exact correction."
+  - "ATL-82 correction/no-correction decision explicit and evidence-backed."
+  - "ATL-83 release/continued-block condition explicit."
+  - "GitHub, Linear, shared log and Drive synchronized."
+  - "No Supabase mutation or destructive branch merge."
+
+blocked_actions:
+  - "ATL-83 independent QA continuation until ATL-86 releases it"
+  - "Supabase mutation"
+  - "destructive branch merge"
+  - "deletion of historical prototype evidence"
+  - "promotion of Malkom reference projection to canonical truth"
+
+current_checkpoint: "ATL-90 independent QA and bounded M1-M3 recheck PASS are landed byte-exact. M1-M3 are CLOSED. Drive custody is satisfied by Claude QA landing folders 1TxgBgAix7i_FBrc0bAb8mIoIXlk2cQCn and 1WY5gKoXcojnXB09KHWMFdbBs25Kl0-RJ plus existing ATL-86 custody. All ATL-86 acceptance criteria are satisfied; no Supabase mutation."
+next_action: "ATL-86 closed. Release ATL-83 against the rebased V0.2/ATL-86/ATL-90 manifest and seven-check scope; no Supabase mutation or ATL-82 SQL application is authorized by this closure."
+
+custody:
+  drive_document_id: 17iA5LflmjebSIONZCNWRJ9qFGycQL8CItwTbrqqU4JI
+  title: "ATL-86 — P6.2 / ATL-82 Architecture Reconciliation — Pre-Reconciliation Custody — 2026-09-22"
+  read_only_supabase_verified: true
+  supabase_latest_migration: "20260908015858 p6_2_canonical_work_definitions"
+  atlas_work_decompositions_rows: 1
+  atlas_work_definitions_rows: 0
+  supabase_mutation: false
+
+working_outputs:
+  - path: governance/implementation/ATL_86_P6_2_ATL_82_ARCHITECTURE_RECONCILIATION_V0_1.md
+    commit: 61392171718644437f4a73951b8b836a730d4555
+    blob_sha: ed02b977206c87b918fc0facf9083922e433cd65
+    status: VERIFIED_FIRST_PARTY_WORKING
+    description: "Cross-branch P6.2/ATL-82 reconciliation with prototype and Malkom-reference dispositions."
+open_items:
+  - "Correct ATL-82 rationale/proof acceptance criterion #9 basis."
+  - "Reconcile stale ASSET_REGISTER current/pending execution-contract bookkeeping with later P6.1/P6.2 frozen lineage."
+  - "Record explicit historical/non-runnable guard for Sep-1 prototype and Sep-2 warehouse candidate."
+  - "Run post-write verification and complete ATL-86 acceptance proof."
+  - "Independent Claude recheck if governance corrections materially alter ATL-82/P6.2 basis."
+last_execution_record:
+  operator: ChatGPT
+  date: "2026-09-23"
+  state: VERIFIED_FIRST_PARTY_WORKING
+  note: "No Supabase mutation; ATL-83 remains blocked."
+
+independent_qa:
+  task_id: ATL-90
+  status: INDEPENDENT_QA_PASSED
+  manifest_commit: 846e86eb650a262d8bd3114d991a940615d4d8c5
+  qa_artifact_commit: 781d93a7994a4e489e86da48f222fa150cfe1519
+  qa_artifact_blob: 2b0aaed79564d9df374321aaea0c0fe8ce022a74
+  drive_handoff_folder_id: 1TxgBgAix7i_FBrc0bAb8mIoIXlk2cQCn
+  release_condition: "ATL-90 PASS (or verified closure of binding corrections), followed by ATL-86 final synchronization."
+first_party_proof:
+  path: governance/implementation/ATL_86_RECONCILIATION_PROOF_V0_1.md
+  commit: 57e107bc93cde2f59612ef12f524ef5196419ebe
+  state: PROOF_RECORDED_INDEPENDENT_QA_REQUIRED
+
+binding_corrections:
+  M1:
+    target: governance/task-manifests/ATL-83.yaml
+    commit: 2129e00b592a4b8b72457b69f1006a6b6eae6a98
+    post_write_blob: 00424a70d4ffae9022a6139ebc80dd02809aa7d3
+    state: IMPLEMENTED_VERIFIED_PENDING_INDEPENDENT_RECHECK
+  M2:
+    target: governance/task-manifests/ATL-82.yaml
+    commit: fe85ad98e896c46a06e3f8237bcc831c6a47cb9e
+    post_write_blob: 0bf364bd96c380abba940edda100c9d09c001f99
+    state: IMPLEMENTED_VERIFIED_PENDING_INDEPENDENT_RECHECK
+  M3:
+    target: governance/task-manifests/ATL-60.yaml
+    commit: fa89d47e8a32ca0d9df442ea6f3f5eb6afc1dda6
+    post_write_blob: 533b3cfbd3613658af4a919a967e093d85f08f8b
+    state: IMPLEMENTED_VERIFIED_PENDING_INDEPENDENT_RECHECK
+
+closure:
+  qa_task: ATL-90
+  qa_status: GOVERNED_COMPLETE
+  initial_qa_artifact_commit: 781d93a7994a4e489e86da48f222fa150cfe1519
+  bounded_recheck_commit: 6ef29276f0bf0a358810646f80259f6db84a2bf3
+  bounded_recheck_blob: 101fdbc1b3a95448ab6198eaca48dba4b32006a6
+  atl90_manifest_commit: ed3ed2581ac37a6150e42bbc017e0b042e596571
+  drive_custody:
+    - folder_id: 1TxgBgAix7i_FBrc0bAb8mIoIXlk2cQCn
+      purpose: "ATL-90 initial independent QA landing package"
+    - folder_id: 1WY5gKoXcojnXB09KHWMFdbBs25Kl0-RJ
+      purpose: "ATL-90 bounded M1-M3 recheck landing package"
+  result: GOVERNED_COMPLETE

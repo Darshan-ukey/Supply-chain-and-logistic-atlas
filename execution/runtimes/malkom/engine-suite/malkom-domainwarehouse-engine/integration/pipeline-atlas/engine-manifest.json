@@ -1,0 +1,33 @@
+{
+  "id": "domain-warehouse",
+  "name": "Domain Warehouse",
+  "version": "0.2.4",
+  "kind": "definition-and-materialization",
+  "position": {
+    "before": [
+      "raw-materials",
+      "lifecycles"
+    ]
+  },
+  "inputs": [
+    "domain-pack",
+    "work-definition",
+    "client-binding",
+    "client-extension"
+  ],
+  "outputs": [
+    "queue-template-candidate",
+    "workflow-lifecycle",
+    "value-list-candidate",
+    "queue-flow-graph",
+    "knowledge-note",
+    "runtime-projection",
+    "materialization-blocker",
+    "coverage-result"
+  ],
+  "governance": {
+    "referenceImmutable": true,
+    "clientRealitySeparate": true,
+    "runtimeGapsBlockMaterialization": true
+  }
+}

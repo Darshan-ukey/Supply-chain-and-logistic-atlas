@@ -1,0 +1,39 @@
+{
+  "name": "supply-chain-operations-intelligence-v1.1.7",
+  "version": "1.1.7",
+  "private": true,
+  "type": "module",
+  "description": "Stage 23 spatial/full-feature frontend + restored V6.2.3/Road LTL legacy Reference Atlas navigation + Foundation Hardening v1.1 + 8-function Vercel architecture + v1.1.7 parity certification",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "check": "node tests/v1.1.7-canonical-integrity.mjs && node tests/v1.1.4-static-parity.mjs && node tests/v1.1.4-foundation-smoke.mjs && node tests/v1.1.7-api-router-smoke.mjs && node tests/v1.1.7-scale-smoke.mjs && node tests/stage22.2-pilot-security-smoke.mjs && node tests/stage22.1-ephemeral-llm-smoke.mjs && node tests/stage23-pilot-evaluation-smoke.mjs && node pilot/run-offline-eval.mjs",
+    "parity:static": "node tests/v1.1.4-static-parity.mjs",
+    "foundation:test": "node tests/v1.1.4-foundation-smoke.mjs",
+    "api:test": "node tests/v1.1.7-api-router-smoke.mjs",
+    "pilot:eval:offline": "node pilot/run-offline-eval.mjs",
+    "pilot:eval:live": "node pilot/run-live-document-eval.mjs",
+    "release:manifest": "node release/scripts/v1.1.7-build-manifest.mjs",
+    "release:packages": "node release/scripts/v1.1.7-build-packages.mjs",
+    "release:all": "npm run check && npm run browser:certify && npm run release:manifest && npm run release:packages && npm run release:packagecheck",
+    "release:packagecheck": "node release/scripts/v1.1.7-package-check.mjs",
+    "canonical:integrity": "node tests/v1.1.7-canonical-integrity.mjs",
+    "browser:live": "node tests/v1.1.7-live-browser-certificate.mjs",
+    "scale:test": "node tests/v1.1.7-scale-smoke.mjs",
+    "test": "node tests/v1.1.7-canonical-integrity.mjs && node tests/v1.1.4-static-parity.mjs && node tests/v1.1.4-foundation-smoke.mjs && node tests/v1.1.7-api-router-smoke.mjs && node tests/v1.1.7-scale-smoke.mjs && node tests/stage22.2-pilot-security-smoke.mjs && node tests/stage22.1-ephemeral-llm-smoke.mjs && node tests/stage23-pilot-evaluation-smoke.mjs && node pilot/run-offline-eval.mjs",
+    "browser:certify": "node tests/v1.1.7-live-browser-certificate.mjs && node tests/v1.1.7-reference-navigation-browser.mjs",
+    "browser:reference": "node tests/v1.1.7-reference-navigation-browser.mjs"
+  },
+  "dependencies": {
+    "jszip": "3.10.1",
+    "mammoth": "1.10.0",
+    "pdf-lib": "1.17.1",
+    "pdf-parse": "1.1.1",
+    "pptxgenjs": "3.12.0",
+    "xlsx": "0.18.5"
+  },
+  "devDependencies": {
+    "serve": "14.2.4"
+  }
+}

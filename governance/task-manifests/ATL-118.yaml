@@ -1,0 +1,99 @@
+task_id: ATL-118
+task_title: "Atlas v2 Frozen Asset & Drive Custody Reconciliation"
+task_status: IN_PROGRESS
+status_detail: "Drive pointer/custody repaired on 24 Sep: current pointer updated to Atlas v2 state and new v2 candidate custody mirror created/read back successfully. GitHub CURRENT/LATEST and exact all-asset custody verification remain."
+execution_owner: PENDING_ROUTING
+decision_authority: Darshan Ukey
+linear_url: "https://linear.app/sefl-transformation/issue/ATL-118/atlas-v2-frozen-asset-and-drive-custody-reconciliation"
+manifest_status: ACTIVE
+last_updated: "2026-09-24T17:41:00Z"
+
+governing_inputs:
+  - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
+    ref: atlas-governance-registry-v2.1
+  - path: governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json
+    ref: atlas-governance-registry-v2.1
+  - path: governance/product/ATLAS_V2_FROZEN_ASSET_RECONCILIATION_2026-09-24.md
+    ref: atlas-governance-registry-v2.1
+  - path: governance/frozen-assets/ASSET_REGISTER.json
+    ref: atlas-governance-registry-v2.1
+  - path: governance/frozen-assets/CURRENT.json
+    ref: atlas-governance-registry-v2.1
+  - path: governance/frozen-assets/LATEST.md
+    ref: atlas-governance-registry-v2.1
+
+consumed_inputs:
+  - system: GitHub
+    identity: governance/frozen-assets/ASSET_REGISTER.json
+    result: "35 records; 29 current=true; 31 explicit FROZEN* statuses; registry updated 23 Sep 2026."
+  - system: Google Drive
+    identity: "ATLAS — CURRENT FROZEN ASSET POINTER"
+    file_id: "1wAtXmGGR5H-sPHfGpaquH25qndpHNmAaHVAZSnkxI2Y"
+    result: "Pointer updated 14 Sep 2026; useful but predates Atlas v2 and later Linear/architecture changes."
+  - system: GitHub
+    identity: governance/frozen-assets/CURRENT.json
+    result: "Stale pointer updated 2 Sep 2026."
+  - system: GitHub
+    identity: governance/frozen-assets/LATEST.md
+    result: "Stale human pointer updated 2 Sep 2026."
+
+working_outputs:
+  - system: Google Drive
+    title: "ATLAS - CURRENT FROZEN ASSET POINTER"
+    file_id: "1wAtXmGGR5H-sPHfGpaquH25qndpHNmAaHVAZSnkxI2Y"
+    status: UPDATED_AND_READBACK_VERIFIED_2026_09_24
+  - system: Google Drive
+    title: "Atlas v2 Product End-State Contract V1 Candidate"
+    file_id: "1xDudUaf8wLMDpgdC939UszKqkVIN7_jDKBwxot0AVuo"
+    status: CANDIDATE_CUSTODY_MIRROR_CREATED_AND_READBACK_VERIFIED
+  - path: governance/product/ATLAS_V2_FROZEN_ASSET_RECONCILIATION_2026-09-24.md
+    commit: 942cd5403e509956a6c0495a2e0da4c147f02ffd
+    status: FIRST_PASS_RECONCILIATION
+
+current_outputs:
+  - path: governance/product/ATLAS_V2_FROZEN_ASSET_RECONCILIATION_2026-09-24.md
+    status: VERIFIED_BY_CREATION_PENDING_FULL_ARTIFACT_RECHECK
+
+superseded_outputs: []
+
+qa_and_decisions:
+  - type: OWNER_REQUIREMENT
+    date: "2026-09-24"
+    decision: "Validate frozen assets for Atlas v2 usability/update need and ensure Linear/GitHub/Drive do not miss product decisions."
+
+current_checkpoint: "First-pass 35-asset classification complete. Drive current frozen pointer repaired to 24 Sep Atlas v2 state; v2 candidate custody mirror created and readback verified. No frozen historical payload mutated."
+next_action: "Reconcile GitHub CURRENT.json/LATEST.md to ASSET_REGISTER, verify exact v2-dependent asset identities/custody and coverage dependencies, then at ATL-110 mirror the final frozen product-contract identity in Drive and release the freeze gate."
+
+open_items:
+  - "Exact identity/readback verification for v2-dependent current assets."
+  - "GitHub CURRENT.json/LATEST.md reconciliation."
+  - "Final ATL-110 frozen contract custody mirror/readback after candidate changes close."
+  - "Coverage matrix exact frozen-asset dependency mapping."
+
+authorized_actions:
+  - "Read/verify frozen registry assets and Drive custody."
+  - "Update mutable pointer files only after reconciliation."
+  - "Create successor Drive/GitHub custody/pointer records."
+  - "Update product coverage dependency references."
+
+blocked_actions:
+  - action: "Modify any frozen payload in place."
+    blocker: "Frozen immutability rule."
+    release_condition: "Never; create a successor version instead."
+  - action: "Promote a frozen candidate to production."
+    blocker: "Separate validation/promotion/Owner gate required."
+    release_condition: "Explicit governed product promotion task."
+
+handoff:
+  pickup_sequence:
+    - "Read ATL-118."
+    - "Read this manifest."
+    - "Read ASSET_REGISTER, CURRENT, LATEST and v2 frozen-asset audit."
+    - "Read Drive current frozen asset pointer by exact file ID."
+    - "Verify actual identities before pointer/custody changes."
+  chat_history_required: false
+
+last_execution_record:
+  operator: ChatGPT
+  stopped_at: "2026-09-24T17:30:00Z"
+  durable_state_written: true

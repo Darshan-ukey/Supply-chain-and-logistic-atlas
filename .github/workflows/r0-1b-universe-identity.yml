@@ -1,0 +1,115 @@
+name: R0.1B Universe Identity & Authority Reconciliation
+
+# Independently inspectable execution of the R0.1A certification test.
+# Runs on the recovery branch so QA can verify the result without relying on
+# the implementation agent's own report.
+
+on:
+  push:
+    branches:
+      - atlas-recovery-r0-1b-universe-identity
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Environment
+        run: |
+          echo "node: $(node --version)"
+          echo "commit: ${GITHUB_SHA}"
+
+      - name: Record retained source hashes
+        run: |
+          sha256sum \
+            reference/universe-v7.3.html \
+            "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html" \
+            "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html"
+
+      - name: R0.1A certification test (inherited, must still pass)
+        run: node tests/r0-1a-universe-materialization.mjs
+
+      - name: R0.1B determination certification
+        run: node tests/r0-1b-universe-identity-authority.mjs
+
+      - name: Reproduce construction-boundary evidence and assert byte equality
+        run: |
+          node tools/universe/analyze-construction-boundary.mjs \
+            reference/universe-v7.3.html data/universe/universe-semantic-payload.json \
+            --out /tmp/evidence.json
+          diff -q /tmp/evidence.json data/universe/universe-construction-boundary-evidence.json \
+            || { echo "construction-boundary evidence is not reproducible"; exit 1; }
+          echo "reproducible: data/universe/universe-construction-boundary-evidence.json"
+
+      - name: Assert R0.1B mutated no certified R0.1A artifact
+        run: |
+          git fetch origin atlas-recovery-r0-1a-universe-materialization --depth=1
+          for f in data/universe/universe-semantic-payload.json \
+                   data/universe/universe-extraction-report.json \
+                   data/universe/universe-copy-comparison.json \
+                   data/universe/universe-declaration-inventory.json \
+                   governance/recovery/R0.1A/POST_IMPLEMENTATION_PRE_QA.json ; do
+            if ! git diff --quiet origin/atlas-recovery-r0-1a-universe-materialization -- "$f"; then
+              echo "R0.1B must not modify certified R0.1A artifact: $f"; exit 1;
+            fi
+            echo "unchanged: $f"
+          done
+
+      - name: Assert stage stopped at AWAITING_INDEPENDENT_QA
+        run: |
+          node -e '
+            const fs=require("fs");
+            const b=JSON.parse(fs.readFileSync("governance/recovery/R0.1B/POST_IMPLEMENTATION_PRE_QA.json","utf8"));
+            if(b.nextAuthorization!=="AWAITING_INDEPENDENT_QA")throw new Error("stage must stop at AWAITING_INDEPENDENT_QA");
+            if(b.qaDisposition!==null)throw new Error("implementation agent must not set qaDisposition");
+            if(fs.existsSync("governance/recovery/R0.1B/POST_QA_GOVERNED_STATE.json"))throw new Error("Checkpoint C must not be written by the implementation agent");
+            console.log("stage correctly stopped at AWAITING_INDEPENDENT_QA");
+          '
+
+      - name: Assert no downstream governed asset was promoted
+        run: |
+          git fetch origin atlas-governance-registry-v2.1 --depth=1
+          for f in governance/frozen-assets/ASSET_REGISTER.json governance/frozen-assets/CURRENT.json governance/frozen-assets/LATEST.md; do
+            if ! git diff --quiet origin/atlas-governance-registry-v2.1 -- "$f"; then
+              echo "R0.1A must not modify $f"; exit 1;
+            fi
+            echo "unchanged: $f"
+          done
+
+      - name: Package exact R0.1A custody bundle
+        run: |
+          set -euo pipefail
+          d=custody/R0.1A
+          mkdir -p "$d"
+          cp reference/universe-v7.3.html "$d/SOURCE_COPY_1_universe-v7.3.html"
+          cp "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html" "$d/SOURCE_COPY_2_universe-v7.3.html"
+          cp "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html" "$d/SOURCE_COPY_3_universe-v7.3.html"
+          cp data/universe/universe-semantic-payload.json "$d/"
+          cp data/universe/universe-extraction-report.json "$d/"
+          cp data/universe/universe-copy-comparison.json "$d/"
+          cp data/universe/universe-declaration-inventory.json "$d/"
+          cp tools/universe/extract-universe-semantics.mjs "$d/"
+          cp tools/universe/compare-universe-copies.mjs "$d/"
+          cp tools/universe/inventory-module-declarations.mjs "$d/"
+          cp tests/r0-1a-universe-materialization.mjs "$d/"
+          cp governance/recovery/R0.1A/PRE_CHANGE_BASELINE.json "$d/"
+          cp governance/recovery/R0.1A/POST_IMPLEMENTATION_PRE_QA.json "$d/"
+          cp .github/workflows/r0-1a-universe-materialization.yml "$d/"
+          printf '%s\n' "gitCommit=${GITHUB_SHA}" "ciRun=${GITHUB_RUN_ID}" > "$d/CUSTODY_CONTEXT.txt"
+          (cd "$d" && sha256sum * > SHA256SUMS.txt)
+
+      - name: Upload R0.1A custody bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-r0-1a-custody-bundle-${{ github.sha }}
+          path: custody/R0.1A
+          if-no-files-found: error
+          retention-days: 90

@@ -1,0 +1,3039 @@
+{
+  "ok": true,
+  "errors": [],
+  "checks": [
+    {
+      "name": "core module runtime import",
+      "ok": true
+    },
+    {
+      "name": "verify 22 definitions",
+      "ok": true,
+      "detail": "[{\"severity\":\"WARNING\",\"code\":\"RUNTIME_CAPABILITY_GAP\",\"message\":\"ESCALATED: ESCALATE -> LTL-14\",\"workDefinitionId\":\"road-ltl:LTL-15\"},{\"severity\":\"WARNING\",\"code\":\"RUNTIME_CAPABILITY_GAP\",\"message\":\"ESCALATED: ESCALATE -> LTL-14\",\"workDefinitionId\":\"road-ltl:LTL-18\"},{\"severity\":\"WARNING\",\"code\":\"RUNTIME_CAPABILITY_GAP\",\"message\":\"ESCALATED: ESCALATE -> LTL-14\",\"workDefinitionId\":\"road-ltl:LTL-22\"}]"
+    },
+    {
+      "name": "compileMalkom 22 definitions",
+      "ok": true
+    },
+    {
+      "name": "workflow materialization split",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-01",
+      "ok": true,
+      "detail": "6 paths"
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__out__0__0__out-eligible__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__0__0__out-eligible__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__0__0__out-eligible__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__out__0__1__out-rejected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__0__1__out-rejected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__0__1__out-rejected__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__out__1__0__out-eligible__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__1__0__out-eligible__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__1__0__out-eligible__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__out__1__1__out-rejected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__1__1__out-rejected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__1__1__out-rejected__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__out__2__0__out-eligible__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__2__0__out-eligible__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__2__0__out-eligible__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__out__2__1__out-rejected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__2__1__out-rejected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-01:edge__dw-ltl-01__route__2__1__out-rejected__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-01",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-01",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-02",
+      "ok": true,
+      "detail": "15 paths"
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__out__0__0__out-committed__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__0__0__out-committed__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__0__0__out-committed__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__out__0__1__out-referred__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__0__1__out-referred__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__0__1__out-referred__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__out__0__2__out-rejected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__0__2__out-rejected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__0__2__out-rejected__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__out__1__0__out-committed__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__1__0__out-committed__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__1__0__out-committed__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__out__1__1__out-referred__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__1__1__out-referred__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__1__1__out-referred__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__out__1__2__out-rejected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__1__2__out-rejected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__1__2__out-rejected__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__out__2__0__out-committed__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__2__0__out-committed__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__2__0__out-committed__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__out__2__1__out-referred__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__2__1__out-referred__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__2__1__out-referred__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__out__2__2__out-rejected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__2__2__out-rejected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-02:edge__dw-ltl-02__route__2__2__out-rejected__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-02",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-02",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-03",
+      "ok": true,
+      "detail": "6 paths"
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__out__0__0__out-validated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__0__0__out-validated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__0__0__out-validated__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__out__0__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__0__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__0__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__out__1__0__out-validated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__1__0__out-validated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__1__0__out-validated__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__out__1__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__1__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__1__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__out__2__0__out-validated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__2__0__out-validated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__2__0__out-validated__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__out__2__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__2__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-03:edge__dw-ltl-03__route__2__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-03",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-03",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-04",
+      "ok": true,
+      "detail": "21 paths"
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__0__0__out-accepted__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__0__0__out-accepted__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__0__0__out-accepted__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__0__1__out-conditional__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__0__1__out-conditional__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__0__1__out-conditional__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__0__2__out-rejected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__0__2__out-rejected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__0__2__out-rejected__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__0__3__out-cancelled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__0__3__out-cancelled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__0__3__out-cancelled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__1__0__out-accepted__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__1__0__out-accepted__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__1__0__out-accepted__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__1__1__out-conditional__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__1__1__out-conditional__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__1__1__out-conditional__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__1__2__out-rejected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__1__2__out-rejected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__1__2__out-rejected__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__1__3__out-cancelled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__1__3__out-cancelled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__1__3__out-cancelled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__2__0__out-accepted__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__2__0__out-accepted__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__2__0__out-accepted__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__2__1__out-conditional__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__2__1__out-conditional__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__2__1__out-conditional__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__2__2__out-rejected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__2__2__out-rejected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__2__2__out-rejected__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__out__2__3__out-cancelled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__2__3__out-cancelled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-04:edge__dw-ltl-04__route__2__3__out-cancelled__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-04",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-04",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-05",
+      "ok": true,
+      "detail": "9 paths"
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__out__0__0__out-accepted__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__0__0__out-accepted__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__0__0__out-accepted__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__out__0__1__out-accepted-with-reservation__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__0__1__out-accepted-with-reservation__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__0__1__out-accepted-with-reservation__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__out__0__2__out-refused__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__0__2__out-refused__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__0__2__out-refused__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__out__1__0__out-accepted__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__1__0__out-accepted__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__1__0__out-accepted__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__out__1__1__out-accepted-with-reservation__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__1__1__out-accepted-with-reservation__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__1__1__out-accepted-with-reservation__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__out__1__2__out-refused__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__1__2__out-refused__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__1__2__out-refused__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__out__2__0__out-accepted__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__2__0__out-accepted__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__2__0__out-accepted__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__out__2__1__out-accepted-with-reservation__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__2__1__out-accepted-with-reservation__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__2__1__out-accepted-with-reservation__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__out__2__2__out-refused__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__2__2__out-refused__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-05:edge__dw-ltl-05__route__2__2__out-refused__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-05",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-05",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-06",
+      "ok": true,
+      "detail": "21 paths"
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__out__0__0__out-received__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__0__0__out-received__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__0__0__out-received__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__out__0__1__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__0__1__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__0__1__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__out__0__2__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__0__2__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__0__2__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__out__1__0__out-received__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__1__0__out-received__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__1__0__out-received__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__out__1__1__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__1__1__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__1__1__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__out__1__2__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__1__2__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__1__2__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__out__2__0__out-received__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__2__0__out-received__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__2__0__out-received__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__out__2__1__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__2__1__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__2__1__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__out__2__2__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__2__2__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-06:edge__dw-ltl-06__route__2__2__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-06",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-06",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-07",
+      "ok": true,
+      "detail": "6 paths"
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__out__0__0__out-built-and-authorized__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__0__0__out-built-and-authorized__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__0__0__out-built-and-authorized__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__out__0__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__0__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__0__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__out__1__0__out-built-and-authorized__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__1__0__out-built-and-authorized__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__1__0__out-built-and-authorized__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__out__1__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__1__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__1__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__out__2__0__out-built-and-authorized__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__2__0__out-built-and-authorized__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__2__0__out-built-and-authorized__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__out__2__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__2__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-07:edge__dw-ltl-07__route__2__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-07",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-07",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-08",
+      "ok": true,
+      "detail": "30 paths"
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__0__0__out-in-transit__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__0__0__out-in-transit__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__0__0__out-in-transit__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__0__1__out-arrived__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__0__1__out-arrived__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__0__1__out-arrived__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__0__2__out-stopped__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__0__2__out-stopped__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__0__2__out-stopped__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__0__3__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__0__3__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__0__3__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__1__0__out-in-transit__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__1__0__out-in-transit__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__1__0__out-in-transit__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__1__1__out-arrived__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__1__1__out-arrived__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__1__1__out-arrived__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__1__2__out-stopped__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__1__2__out-stopped__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__1__2__out-stopped__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__1__3__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__1__3__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__1__3__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__2__0__out-in-transit__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__2__0__out-in-transit__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__2__0__out-in-transit__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__2__1__out-arrived__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__2__1__out-arrived__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__2__1__out-arrived__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__2__2__out-stopped__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__2__2__out-stopped__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__2__2__out-stopped__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__out__2__3__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__2__3__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-08:edge__dw-ltl-08__route__2__3__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-08",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-08",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-09",
+      "ok": true,
+      "detail": "51 paths"
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__0__0__out-transferred__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__0__0__out-transferred__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__0__0__out-transferred__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__0__1__out-staged__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__0__1__out-staged__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__0__1__out-staged__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__0__2__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__0__2__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__0__2__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__0__3__out-missorted__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__0__3__out-missorted__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__0__3__out-missorted__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__0__4__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__0__4__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__0__4__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__1__0__out-transferred__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__1__0__out-transferred__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__1__0__out-transferred__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__1__1__out-staged__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__1__1__out-staged__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__1__1__out-staged__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__1__2__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__1__2__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__1__2__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__1__3__out-missorted__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__1__3__out-missorted__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__1__3__out-missorted__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__1__4__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__1__4__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__1__4__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__2__0__out-transferred__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__2__0__out-transferred__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__2__0__out-transferred__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__2__1__out-staged__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__2__1__out-staged__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__2__1__out-staged__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__2__2__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__2__2__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__2__2__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__2__3__out-missorted__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__2__3__out-missorted__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__2__3__out-missorted__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__out__2__4__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__2__4__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-09:edge__dw-ltl-09__route__2__4__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-09",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-09",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-10",
+      "ok": true,
+      "detail": "6 paths"
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__out__0__0__out-successor-leg-open__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__0__0__out-successor-leg-open__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__0__0__out-successor-leg-open__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__out__0__1__out-transfer-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__0__1__out-transfer-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__0__1__out-transfer-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__out__1__0__out-successor-leg-open__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__1__0__out-successor-leg-open__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__1__0__out-successor-leg-open__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__out__1__1__out-transfer-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__1__1__out-transfer-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__1__1__out-transfer-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__out__2__0__out-successor-leg-open__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__2__0__out-successor-leg-open__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__2__0__out-successor-leg-open__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__out__2__1__out-transfer-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__2__1__out-transfer-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-10:edge__dw-ltl-10__route__2__1__out-transfer-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-10",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-10",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-11",
+      "ok": true,
+      "detail": "21 paths"
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__out__0__0__out-ready__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__0__0__out-ready__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__0__0__out-ready__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__out__0__1__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__0__1__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__0__1__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__out__0__2__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__0__2__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__0__2__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__out__1__0__out-ready__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__1__0__out-ready__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__1__0__out-ready__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__out__1__1__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__1__1__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__1__1__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__out__1__2__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__1__2__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__1__2__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__out__2__0__out-ready__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__2__0__out-ready__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__2__0__out-ready__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__out__2__1__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__2__1__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__2__1__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__out__2__2__out-exception__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__2__2__out-exception__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-11:edge__dw-ltl-11__route__2__2__out-exception__stay",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-11",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-11",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-12",
+      "ok": true,
+      "detail": "21 paths"
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__out__0__0__out-dispatched__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__0__0__out-dispatched__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__0__0__out-dispatched__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__out__0__1__out-rescheduled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__0__1__out-rescheduled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__0__1__out-rescheduled__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__out__0__2__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__0__2__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__0__2__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__out__1__0__out-dispatched__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__1__0__out-dispatched__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__1__0__out-dispatched__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__out__1__1__out-rescheduled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__1__1__out-rescheduled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__1__1__out-rescheduled__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__out__1__2__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__1__2__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__1__2__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__out__2__0__out-dispatched__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__2__0__out-dispatched__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__2__0__out-dispatched__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__out__2__1__out-rescheduled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__2__1__out-rescheduled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__2__1__out-rescheduled__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__out__2__2__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__2__2__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-12:edge__dw-ltl-12__route__2__2__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-12",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-12",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-13",
+      "ok": true,
+      "detail": "12 paths"
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__0__0__out-delivered__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__0__0__out-delivered__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__0__0__out-delivered__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__0__1__out-delivered-with-reservation__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__0__1__out-delivered-with-reservation__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__0__1__out-delivered-with-reservation__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__0__2__out-failed__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__0__2__out-failed__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__0__2__out-failed__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__0__3__out-refused__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__0__3__out-refused__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__0__3__out-refused__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__1__0__out-delivered__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__1__0__out-delivered__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__1__0__out-delivered__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__1__1__out-delivered-with-reservation__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__1__1__out-delivered-with-reservation__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__1__1__out-delivered-with-reservation__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__1__2__out-failed__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__1__2__out-failed__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__1__2__out-failed__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__1__3__out-refused__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__1__3__out-refused__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__1__3__out-refused__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__2__0__out-delivered__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__2__0__out-delivered__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__2__0__out-delivered__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__2__1__out-delivered-with-reservation__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__2__1__out-delivered-with-reservation__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__2__1__out-delivered-with-reservation__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__2__2__out-failed__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__2__2__out-failed__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__2__2__out-failed__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__out__2__3__out-refused__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__2__3__out-refused__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-13:edge__dw-ltl-13__route__2__3__out-refused__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-13",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-13",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-14",
+      "ok": true,
+      "detail": "3 paths"
+    },
+    {
+      "name": "edge metadata LTL-14:edge__dw-ltl-14__out__0__0__out-detected-classified-owned__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-14:edge__dw-ltl-14__route__0__0__out-detected-classified-owned__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-14:edge__dw-ltl-14__route__0__0__out-detected-classified-owned__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-14:edge__dw-ltl-14__out__1__0__out-detected-classified-owned__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-14:edge__dw-ltl-14__route__1__0__out-detected-classified-owned__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-14:edge__dw-ltl-14__route__1__0__out-detected-classified-owned__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-14:edge__dw-ltl-14__out__2__0__out-detected-classified-owned__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-14:edge__dw-ltl-14__route__2__0__out-detected-classified-owned__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-14:edge__dw-ltl-14__route__2__0__out-detected-classified-owned__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-14",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-14",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-15",
+      "ok": true,
+      "detail": "9 paths"
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__out__0__0__out-recovered__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__0__0__out-recovered__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__0__0__out-recovered__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__out__0__1__out-escalated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__0__1__out-escalated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__0__1__out-escalated__escalate",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__out__0__2__out-closed-with-consequence__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__0__2__out-closed-with-consequence__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__0__2__out-closed-with-consequence__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__out__1__0__out-recovered__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__1__0__out-recovered__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__1__0__out-recovered__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__out__1__1__out-escalated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__1__1__out-escalated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__1__1__out-escalated__escalate",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__out__1__2__out-closed-with-consequence__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__1__2__out-closed-with-consequence__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__1__2__out-closed-with-consequence__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__out__2__0__out-recovered__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__2__0__out-recovered__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__2__0__out-recovered__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__out__2__1__out-escalated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__2__1__out-escalated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__2__1__out-escalated__escalate",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__out__2__2__out-closed-with-consequence__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__2__2__out-closed-with-consequence__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-15:edge__dw-ltl-15__route__2__2__out-closed-with-consequence__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-15",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-15",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-16",
+      "ok": true,
+      "detail": "21 paths"
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__0__0__out-preliminary__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__0__0__out-preliminary__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__0__0__out-preliminary__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__0__1__out-accrued__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__0__1__out-accrued__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__0__1__out-accrued__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__0__2__out-billable__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__0__2__out-billable__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__0__2__out-billable__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__0__3__out-in-dispute__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__0__3__out-in-dispute__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__0__3__out-in-dispute__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__1__0__out-preliminary__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__1__0__out-preliminary__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__1__0__out-preliminary__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__1__1__out-accrued__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__1__1__out-accrued__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__1__1__out-accrued__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__1__2__out-billable__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__1__2__out-billable__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__1__2__out-billable__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__1__3__out-in-dispute__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__1__3__out-in-dispute__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__1__3__out-in-dispute__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__2__0__out-preliminary__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__2__0__out-preliminary__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__2__0__out-preliminary__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__2__1__out-accrued__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__2__1__out-accrued__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__2__1__out-accrued__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__2__2__out-billable__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__2__2__out-billable__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__2__2__out-billable__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__out__2__3__out-in-dispute__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__2__3__out-in-dispute__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-16:edge__dw-ltl-16__route__2__3__out-in-dispute__stay",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-16",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-16",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-17",
+      "ok": true,
+      "detail": "36 paths"
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__0__0__out-invoiced__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__0__0__out-invoiced__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__0__0__out-invoiced__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__0__1__out-approved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__0__1__out-approved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__0__1__out-approved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__0__2__out-disputed__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__0__2__out-disputed__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__0__2__out-disputed__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__0__3__out-paid-or-collected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__0__3__out-paid-or-collected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__0__3__out-paid-or-collected__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__0__4__out-settled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__0__4__out-settled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__0__4__out-settled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__1__0__out-invoiced__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__1__0__out-invoiced__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__1__0__out-invoiced__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__1__1__out-approved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__1__1__out-approved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__1__1__out-approved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__1__2__out-disputed__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__1__2__out-disputed__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__1__2__out-disputed__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__1__3__out-paid-or-collected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__1__3__out-paid-or-collected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__1__3__out-paid-or-collected__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__1__4__out-settled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__1__4__out-settled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__1__4__out-settled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__2__0__out-invoiced__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__2__0__out-invoiced__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__2__0__out-invoiced__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__2__1__out-approved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__2__1__out-approved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__2__1__out-approved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__2__2__out-disputed__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__2__2__out-disputed__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__2__2__out-disputed__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__2__3__out-paid-or-collected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__2__3__out-paid-or-collected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__2__3__out-paid-or-collected__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__2__4__out-settled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__2__4__out-settled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__2__4__out-settled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__3__0__out-invoiced__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__3__0__out-invoiced__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__3__0__out-invoiced__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__3__1__out-approved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__3__1__out-approved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__3__1__out-approved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__3__2__out-disputed__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__3__2__out-disputed__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__3__2__out-disputed__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__3__3__out-paid-or-collected__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__3__3__out-paid-or-collected__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__3__3__out-paid-or-collected__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__out__3__4__out-settled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__3__4__out-settled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-17:edge__dw-ltl-17__route__3__4__out-settled__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-17",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-17",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-18",
+      "ok": true,
+      "detail": "16 paths"
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__0__0__out-settled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__0__0__out-settled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__0__0__out-settled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__0__1__out-declined__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__0__1__out-declined__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__0__1__out-declined__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__0__2__out-withdrawn__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__0__2__out-withdrawn__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__0__2__out-withdrawn__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__0__3__out-escalated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__0__3__out-escalated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__0__3__out-escalated__escalate",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__1__0__out-settled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__1__0__out-settled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__1__0__out-settled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__1__1__out-declined__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__1__1__out-declined__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__1__1__out-declined__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__1__2__out-withdrawn__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__1__2__out-withdrawn__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__1__2__out-withdrawn__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__1__3__out-escalated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__1__3__out-escalated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__1__3__out-escalated__escalate",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__2__0__out-settled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__2__0__out-settled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__2__0__out-settled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__2__1__out-declined__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__2__1__out-declined__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__2__1__out-declined__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__2__2__out-withdrawn__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__2__2__out-withdrawn__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__2__2__out-withdrawn__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__2__3__out-escalated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__2__3__out-escalated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__2__3__out-escalated__escalate",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__3__0__out-settled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__3__0__out-settled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__3__0__out-settled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__3__1__out-declined__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__3__1__out-declined__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__3__1__out-declined__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__3__2__out-withdrawn__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__3__2__out-withdrawn__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__3__2__out-withdrawn__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__out__3__3__out-escalated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__3__3__out-escalated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-18:edge__dw-ltl-18__route__3__3__out-escalated__escalate",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-18",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-18",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-19",
+      "ok": true,
+      "detail": "40 paths"
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__0__0__out-resolved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__0__0__out-resolved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__0__0__out-resolved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__0__1__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__0__1__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__0__1__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__0__2__out-released__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__0__2__out-released__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__0__2__out-released__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__0__3__out-research-required__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__0__3__out-research-required__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__0__3__out-research-required__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__1__0__out-resolved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__1__0__out-resolved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__1__0__out-resolved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__1__1__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__1__1__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__1__1__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__1__2__out-released__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__1__2__out-released__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__1__2__out-released__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__1__3__out-research-required__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__1__3__out-research-required__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__1__3__out-research-required__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__2__0__out-resolved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__2__0__out-resolved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__2__0__out-resolved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__2__1__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__2__1__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__2__1__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__2__2__out-released__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__2__2__out-released__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__2__2__out-released__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__2__3__out-research-required__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__2__3__out-research-required__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__2__3__out-research-required__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__3__0__out-resolved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__3__0__out-resolved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__3__0__out-resolved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__3__1__out-held__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__3__1__out-held__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__3__1__out-held__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__3__2__out-released__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__3__2__out-released__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__3__2__out-released__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__out__3__3__out-research-required__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__3__3__out-research-required__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-19:edge__dw-ltl-19__route__3__3__out-research-required__stay",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-19",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-19",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-20",
+      "ok": true,
+      "detail": "6 paths"
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__out__0__0__out-ready__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__0__0__out-ready__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__0__0__out-ready__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__out__0__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__0__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__0__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__out__1__0__out-ready__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__1__0__out-ready__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__1__0__out-ready__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__out__1__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__1__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__1__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__out__2__0__out-ready__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__2__0__out-ready__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__2__0__out-ready__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__out__2__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__2__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-20:edge__dw-ltl-20__route__2__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-20",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-20",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-21",
+      "ok": true,
+      "detail": "6 paths"
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__out__0__0__out-reconciled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__0__0__out-reconciled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__0__0__out-reconciled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__out__0__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__0__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__0__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__out__1__0__out-reconciled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__1__0__out-reconciled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__1__0__out-reconciled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__out__1__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__1__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__1__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__out__2__0__out-reconciled__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__2__0__out-reconciled__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__2__0__out-reconciled__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__out__2__1__out-blocked__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__2__1__out-blocked__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-21:edge__dw-ltl-21__route__2__1__out-blocked__end",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-21",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-21",
+      "ok": true
+    },
+    {
+      "name": "queue flow LTL-22",
+      "ok": true,
+      "detail": "40 paths"
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__0__0__out-resolved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__0__0__out-resolved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__0__0__out-resolved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__0__1__out-waiting__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__0__1__out-waiting__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__0__1__out-waiting__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__0__2__out-escalated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__0__2__out-escalated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__0__2__out-escalated__escalate",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__0__3__out-linked-to-recovery-or-claim__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__0__3__out-linked-to-recovery-or-claim__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__0__3__out-linked-to-recovery-or-claim__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__1__0__out-resolved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__1__0__out-resolved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__1__0__out-resolved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__1__1__out-waiting__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__1__1__out-waiting__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__1__1__out-waiting__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__1__2__out-escalated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__1__2__out-escalated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__1__2__out-escalated__escalate",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__1__3__out-linked-to-recovery-or-claim__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__1__3__out-linked-to-recovery-or-claim__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__1__3__out-linked-to-recovery-or-claim__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__2__0__out-resolved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__2__0__out-resolved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__2__0__out-resolved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__2__1__out-waiting__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__2__1__out-waiting__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__2__1__out-waiting__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__2__2__out-escalated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__2__2__out-escalated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__2__2__out-escalated__escalate",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__2__3__out-linked-to-recovery-or-claim__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__2__3__out-linked-to-recovery-or-claim__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__2__3__out-linked-to-recovery-or-claim__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__3__0__out-resolved__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__3__0__out-resolved__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__3__0__out-resolved__end",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__3__1__out-waiting__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__3__1__out-waiting__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__3__1__out-waiting__stay",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__3__2__out-escalated__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__3__2__out-escalated__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__3__2__out-escalated__escalate",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__out__3__3__out-linked-to-recovery-or-claim__outcome",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__3__3__out-linked-to-recovery-or-claim__route",
+      "ok": true
+    },
+    {
+      "name": "edge metadata LTL-22:edge__dw-ltl-22__route__3__3__out-linked-to-recovery-or-claim__stay",
+      "ok": true
+    },
+    {
+      "name": "BPMN export LTL-22",
+      "ok": true
+    },
+    {
+      "name": "SVG export LTL-22",
+      "ok": true
+    },
+    {
+      "name": "STAY return edge total",
+      "ok": true,
+      "detail": "actual=62"
+    },
+    {
+      "name": "canonical escalation branch edges",
+      "ok": true,
+      "detail": "actual=11"
+    },
+    {
+      "name": "finite path total",
+      "ok": true,
+      "detail": "actual=402"
+    },
+    {
+      "name": "loop guards exercised",
+      "ok": true,
+      "detail": "actual=120"
+    },
+    {
+      "name": "DomainWarehouse.snapshot binding/extension runtime",
+      "ok": true
+    },
+    {
+      "name": "knowledge note storage API",
+      "ok": true
+    },
+    {
+      "name": "score identical = 100",
+      "ok": true
+    },
+    {
+      "name": "combined repository TS/TSX syntax",
+      "ok": true,
+      "detail": "560 files; failures=0"
+    }
+  ],
+  "summary": {
+    "definitions": 22,
+    "tsTsxSyntaxFiles": 560
+  },
+  "timestamp": "2026-09-01T07:17:56.450Z"
+}

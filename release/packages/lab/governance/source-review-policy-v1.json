@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "routineCadenceMonths": 6,
+  "materialReleaseTrigger": "EARLY_REVIEW",
+  "requiredRegisters": [
+    "data/governance/source-registry-v1.json",
+    "data/governance/source-version-register-v1.json",
+    "data/governance/source-change-register-v1.json",
+    "data/governance/source-to-atlas-coverage-register-v1.json",
+    "data/governance/source-gap-register-v1.json"
+  ],
+  "cycle": [
+    "CHECK_ISSUER_VERSIONS",
+    "INGEST_DELTA_METADATA",
+    "COMPARE_PRIOR_SNAPSHOT",
+    "CLASSIFY_NEW_CHANGED_DEPRECATED",
+    "RUN_SOURCE_TO_ATLAS_COVERAGE",
+    "OPEN_GAPS",
+    "SME_GOVERNANCE_REVIEW",
+    "UPDATE_ATLAS_ONLY_IF_APPROVED",
+    "REGRESSION_TEST",
+    "PUBLISH_VERSIONED_SNAPSHOT"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "baseline": "V6.2.3 release donor",
+  "candidate": "Universe V7.2",
+  "baselineSemanticIdCount": 49,
+  "candidateSemanticIdCount": 49,
+  "removedIds": [],
+  "addedIds": [],
+  "changedLabels": [],
+  "commonIdCount": 49
+}

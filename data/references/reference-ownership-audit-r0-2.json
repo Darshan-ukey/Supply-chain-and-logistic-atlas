@@ -1,0 +1,1501 @@
+{
+  "schemaVersion": "atlas-reference-ownership-audit-v1",
+  "stageId": "R0.1C",
+  "auditVersion": "atlas-reference-ownership-audit-1.0.0",
+  "classification": "EVIDENCE_BASED_OWNERSHIP_AUDIT_NO_MUTATION",
+  "excludedEvidencePaths": [
+    "data/references",
+    "governance/recovery",
+    "governance/backlog",
+    "governance/registry"
+  ],
+  "layerLegend": {
+    "UNIVERSE_CANONICAL": "Identifier defined by the governed Universe semantic payload.",
+    "CROSS_LAYER_CONTRACT": "Identifier defined by a governed cross-module contract/crosswalk layer that sits between Universe and daughters.",
+    "DAUGHTER_LOCAL": "Identifier owned by a daughter module and deterministically derived from that module's own identity.",
+    "OPERATIONAL_KNOWLEDGE": "Identifier defined by governed Operational Knowledge.",
+    "CANONICAL_INFORMATION_OBJECT": "Identifier defined by the canonical information/object layer.",
+    "ORPHAN": "Referenced but not defined or derivable in any governed layer."
+  },
+  "universeSemanticStructuresConsulted": true,
+  "classes": [
+    {
+      "identifierClass": "a5",
+      "referencedCount": 82,
+      "definitionSites": [],
+      "byLayer": {
+        "DAUGHTER_LOCAL": 82
+      },
+      "derivability": {
+        "sampleSize": 82,
+        "derivableCount": 82,
+        "allDerivable": true,
+        "rule": "a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id",
+        "examples": [
+          {
+            "moduleId": "road-ltl",
+            "processId": "LTL-01",
+            "identifier": "a5-ltl-01",
+            "expected": "a5-ltl-01",
+            "derivable": true
+          },
+          {
+            "moduleId": "road-ltl",
+            "processId": "LTL-02",
+            "identifier": "a5-ltl-02",
+            "expected": "a5-ltl-02",
+            "derivable": true
+          },
+          {
+            "moduleId": "road-ltl",
+            "processId": "LTL-03",
+            "identifier": "a5-ltl-03",
+            "expected": "a5-ltl-03",
+            "derivable": true
+          }
+        ]
+      },
+      "identifiers": [
+        {
+          "identifier": "a5-fcl-01",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-02",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-03",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-04",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-05",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-06",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-07",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-08",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-09",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-10",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-11",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-12",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-13",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-14",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-15",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-16",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-17",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-18",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-19",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-20",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-21",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-22",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-23",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-24",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-25",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-26",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-27",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-28",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-29",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-fcl-30",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-fcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-01",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-02",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-03",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-04",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-05",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-06",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-07",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-08",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-09",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-10",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-11",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-12",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-13",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-14",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-15",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-16",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-17",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-18",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-19",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-20",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-21",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-22",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-23",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-24",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-25",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-26",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-27",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-28",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-29",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-lcl-30",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 2,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/ocean-lcl-v0.5.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-01",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-02",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-03",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/modules/road-ltl-v1.5.json::a5ContractId",
+            "data/operational-knowledge/road-ltl-v1.5-operational.json::canonicalTaskRef",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-04",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-05",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-06",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-07",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-08",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-09",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-10",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-11",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-12",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-13",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-14",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-15",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-16",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-17",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-18",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-19",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-20",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-21",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        },
+        {
+          "identifier": "a5-ltl-22",
+          "governingLayer": "DAUGHTER_LOCAL",
+          "basis": "Deterministically derivable from the daughter module and process identity (a5-{moduleSuffix}-{processSuffix} derived from the daughter module id and its own process id); no external definition site is required.",
+          "definedAt": [],
+          "presentInUniversePayload": false,
+          "referenceCount": 4,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::a5ContractId",
+            "data/modules/road-ltl-v1.3.json::a5ContractId",
+            "data/modules/road-ltl-v1.4.json::a5ContractId",
+            "data/road-ltl/effective-road-ltl-1.5-materialization.json::a5ContractId"
+          ]
+        }
+      ]
+    },
+    {
+      "identifierClass": "scp",
+      "referencedCount": 22,
+      "definitionSites": [
+        "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+      ],
+      "byLayer": {
+        "CROSS_LAYER_CONTRACT": 22
+      },
+      "derivability": null,
+      "identifiers": [
+        {
+          "identifier": "scp-claim-dispute-adjudication",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-consolidation-load-authorization",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-customer-resolution-communication",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-delivery-attempt-acceptance-custody-close",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-destination-deconsolidation-load-build",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-destination-readiness-delivery-dispatch",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-execution-variance-detection-assignment",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-freight-charge-calculation",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-identity-reconciliation",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-intermediate-node-sort-crossdock",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-main-carriage-leg-execution",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-network-leg-interchange",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-origin-node-receipt-verification",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-pickup-custody-acceptance",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-pickup-request-readiness",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-regulatory-scope-hold-release",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-resource-equipment-readiness",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-service-recovery",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-shipment-transport-identity",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 8,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-transport-invoice-settlement",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-transport-rate-offer-commitment",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        },
+        {
+          "identifier": "scp-transport-service-eligibility",
+          "governingLayer": "CROSS_LAYER_CONTRACT",
+          "basis": "Defined in the governed cross-module concept layer with definitionStatus ATLAS_CANONICAL_CROSS_MODULE_CONCEPT.",
+          "definedAt": [
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId"
+          ],
+          "presentInUniversePayload": false,
+          "referenceCount": 6,
+          "referencedBy": [
+            "data/atlas-warehouse-v1.json::canonicalProcessConceptId",
+            "data/atlas-warehouse-v1.json::specializesConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::canonicalProcessConceptId",
+            "data/crosswalks/process-concept-crosswalk-v1.json::conceptId",
+            "data/modules/road-ltl-v1.3.json::canonicalProcessConceptId",
+            "data/modules/road-ltl-v1.3.json::specializesConceptId"
+          ]
+        }
+      ]
+    }
+  ]
+}

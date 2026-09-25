@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "entries": [
+    {
+      "changeId": "SRC-CHG-0001",
+      "sourceFamily": "UN/EDIFACT",
+      "olderBaseline": "D.24A in original downloadable source manifest",
+      "currentAtlasBaseline": "D.25A in frozen Page0",
+      "classification": "BASELINE_DRIFT_RECONCILED",
+      "status": "CLOSED",
+      "action": "Treat frozen Page0 D.25A as current Atlas baseline; update future download/source-pack manifest during next source refresh."
+    }
+  ]
+}

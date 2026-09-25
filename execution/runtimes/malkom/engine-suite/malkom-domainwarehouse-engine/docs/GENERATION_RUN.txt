@@ -1,0 +1,22 @@
+{
+  "definitions": 22,
+  "queues": 22,
+  "subQueues": 70,
+  "workTypes": 70,
+  "fields": 228,
+  "outcomes": 69,
+  "sourceEdges": 39,
+  "executionTransitions": 22,
+  "entityNodes": 220,
+  "ontologyEdges": 176,
+  "sources": 29,
+  "canonicalEscalations": 3,
+  "workflowBlockers": 3,
+  "stayOutcomes": 19,
+  "queueFlowStayEdges": 62,
+  "queueFlowEscalationEdges": 11,
+  "queueFlowPaths": 402,
+  "knowledgeNotes": 66,
+  "runtimeProjections": 22
+}
+prototype generated

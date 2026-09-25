@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "atlas-v2-agent-execution-queue-v19-lineage-overlay-2026-09-12",
+  "appliesTo": "governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json",
+  "authority": "OWNER_DIRECTED_DEMO_GOVERNANCE_CORRECTION",
+  "doesNotAuthorizeStageAdvance": true,
+  "doesNotAuthorizeP6_2Persistence": true,
+  "doesNotAuthorizeVercel": true,
+  "canonicalDemoLineages": {
+    "newGovernedTarget": "Road LTL 1.5 -> Operational Knowledge -> Certified Recursive Decomposition (P6.1) -> Canonical WD compiler proven (P6.2), persistence pending -> Client Binding / Runtime Projection not yet complete",
+    "provenMalkomReference": "Road LTL 1.2 -> Domain Warehouse 2.3 -> Malkom 3.0 projection"
+  },
+  "verifiedTargetLineageMaturity": {
+    "p6_1": {
+      "status": "CERTIFIED_PROTECTED_PERSISTENCE",
+      "tasks": 22,
+      "workUnits": 603,
+      "terminalLeaves": 444,
+      "executorReady": 185,
+      "blockedByClientBinding": 163,
+      "blockedByKnowledgeGap": 96
+    },
+    "p6_2": {
+      "compilerStatus": "TECHNICALLY_PROVEN_AGAINST_FROZEN_CONTRACT",
+      "governedPersistence": "PENDING_NOT_AUTHORIZED_BY_DEMO",
+      "newLineageMalkomProjection": "NOT_PROVEN"
+    }
+  },
+  "stageInterpretationOverrides": {
+    "D2.0.0": "Also verify exact P6.1/P6.2 assets, hashes/status, persistence state and absence/presence of a new-lineage runtime projection.",
+    "D2.0.1": "Scope/future page may state P6.1 certified and P6.2 compiler proven/persistence pending; show old Malkom proof separately.",
+    "D2.0.2": "Road LTL may expose verified new-lineage depth; Ocean remains fail-closed where equivalent depth is absent.",
+    "D2.0.3": "Distinguish target-lineage Road LTL 1.5/OK/P6.1/P6.2 evidence from old V1.2/DW2.3 runtime-reference execution depth; no silent bridge.",
+    "D2.0.4": "Use old/reference Malkom projection unless a real governed new-lineage Client Binding plus adapter/projection is proven and validated.",
+    "D2.0.5": "May show real P6.1 blocker distribution; EXECUTOR_READY does not mean persisted canonical WD; no fake completeness.",
+    "D2.0.6": "Regression must detect false cross-lineage claims.",
+    "D2.0.7": "GitHub-only Owner-approved merge; no Vercel deployment."
+  },
+  "supersessionRule": "This overlay supersedes only stale v19 wording that understates P6.1/P6.2 target-lineage maturity. All authorization, stage status, branch, audit, no-Vercel and no-silent-bridge guardrails in v19 remain binding.",
+  "canonicalNarrativeRecord": "governance/demo-sprint/ATLAS_DEMO_LINEAGE_CORRECTION_2026-09-12.md"
+}

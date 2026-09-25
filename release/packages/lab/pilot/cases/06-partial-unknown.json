@@ -1,0 +1,9 @@
+{
+  "id": "P23-DOC-006",
+  "title": "Partial process knowledge with explicit unknowns",
+  "documentType": "RFP / RFI",
+  "expectedDisposition": ["ACCEPTED", "REVIEW_REQUIRED"],
+  "expectedProcessIds": ["LTL-13"],
+  "mustRemainUnknown": ["rating", "claims", "regulatory-hold"],
+  "text": "The supplied scope only covers final delivery. Driver attempts delivery, consignee records acceptance or reservation and the delivery team closes custody. The client provided no information on rating, billing, claims, regulatory holds or upstream terminal processing. Those areas are outside the supplied scope."
+}

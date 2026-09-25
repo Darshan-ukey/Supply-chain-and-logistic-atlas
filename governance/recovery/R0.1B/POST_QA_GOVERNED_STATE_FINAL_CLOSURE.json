@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "atlas-stage-post-qa-governed-state-v1",
+  "stageId": "R0.1B",
+  "checkpoint": "POST_QA_GOVERNED_STATE",
+  "closureType": "FINAL_AUTHORITY_CLOSURE",
+  "qaDisposition": "PASS",
+  "qaAuthority": "INDEPENDENT_QA",
+  "implementationBranch": "atlas-recovery-r0-1b-final-authority-closure",
+  "implementationBaselineSha": "aa64c81c2bc6b2a856061eae26ba44a30ae9e047",
+  "implementationEndingSha": "24e08339ab7708e1352f3457ce293902d2800105",
+  "qaCustodyPackagingSha": "cfaa26db961a29062b936c178c526afee6266396",
+  "governanceMergeSha": "f19acb62076f9ef4b300173b56dcce844db7e3ca",
+  "ci": {
+    "implementationRunId": 34213537417,
+    "qaCustodyRunId": 34229019715,
+    "qaCustodyArtifactId": 10056961268,
+    "qaCustodyArtifactSha256": "ac6e937cd480f12b828bc586ef0b514f472ab72c553ab00b7829e9d8ea5e7601",
+    "result": "PASS"
+  },
+  "certifiedAuthority": {
+    "semanticPayloadRepositoryPath": "data/universe/r0-1a-r/universe-semantic-payload.json",
+    "semanticStructuresSha256": "82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d",
+    "semanticPayloadFileSha256": "b0d25d9770eb71b012bf2ef56fa1eff9e64e5b4815c75f1899d19db076153b37",
+    "extractorVersion": "atlas-universe-semantic-extractor-1.1.0",
+    "releaseVersion": "7.3",
+    "semanticPayloadVersion": "7.2.0",
+    "releaseShellAuthoritySha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+    "retainedLaterRepackageSha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+    "supersededR0_1A_SemanticStructuresSha256": "2d6405c534b96f4054cb87ac2428a0a7a1bf4626334a86e5cc96ec342add4043"
+  },
+  "determinations": {
+    "D1": "CONFIRMED_UNCHANGED_PRESENTATION_NAVIGATION_BUILD_STATE",
+    "D2": "CONFIRMED_UNCHANGED_RELEASE_SHELL_PLUS_NORMALIZED_PAYLOAD_AUTHORITY",
+    "D3": "CONFIRMED_UNCHANGED_TWO_AXIS_VERSIONING",
+    "D4": "REMEDIATED_BY_R0_1A_R",
+    "D5": "REMEDIATED_BY_R0_1A_R",
+    "D6": "REMEDIATED_BY_R0_1A_R",
+    "contradictionsFound": 0
+  },
+  "driveEvidence": {
+    "status": "MIRRORED_AND_ROUNDTRIP_HASH_VERIFIED",
+    "folderId": "1mHSPSMxsrqjUhkM90qI2AOKghN0oaC_L",
+    "bundleFileId": "1XQ1nMgdy-58RNcpv6z_gbKQ-jYqOhziZ",
+    "bundleSha256": "ac6e937cd480f12b828bc586ef0b514f472ab72c553ab00b7829e9d8ea5e7601"
+  },
+  "testLifecycleFinding": {
+    "id": "R0.1B-FC-07",
+    "severity": "MEDIUM_NON_BLOCKING",
+    "disposition": "ACCEPTED_TECHNICAL_DEBT",
+    "statement": "The immutable R0.1A-R pre-QA test contains one stage-lifecycle assertion that is legitimately superseded after Checkpoint C creation. Historical test remains immutable; later-stage CI must not reuse lifecycle assertions whose preconditions have expired."
+  },
+  "promotion": {
+    "semanticAuthorityCertified": true,
+    "currentPointer": "UNCHANGED",
+    "latestPointer": "UNCHANGED",
+    "assetRegister": "UNCHANGED",
+    "productionUniverseFolderPromotion": "NOT_PERFORMED"
+  },
+  "referenceResolution": {
+    "status": "UNCLASSIFIED_PENDING_REFERENCE_OWNERSHIP_AUDIT",
+    "nextOwner": "R0.1C"
+  },
+  "nextAuthorization": "R0.1C",
+  "phase6Status": "SUSPENDED",
+  "notes": "R0.1B final authority closure is complete. R0.1C may audit reference ownership only; it may not invent identifiers, mutate canonical references, or promote production pointers without a separate governed decision."
+}

@@ -1,0 +1,26 @@
+{
+  "ocean-fcl": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "stats": {
+      "processes": 30,
+      "sources": 28,
+      "edges": 56,
+      "depth": "A5_VERIFIED",
+      "moduleId": "ocean-fcl"
+    }
+  },
+  "ocean-lcl": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "stats": {
+      "processes": 30,
+      "sources": 28,
+      "edges": 56,
+      "depth": "A5_VERIFIED",
+      "moduleId": "ocean-lcl"
+    }
+  }
+}

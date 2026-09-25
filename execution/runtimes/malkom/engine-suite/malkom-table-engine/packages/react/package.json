@@ -1,0 +1,41 @@
+{
+  "name": "@malkom/table-react",
+  "version": "0.1.0",
+  "description": "React bindings for the Malkom Table Engine — mounts a @malkom/table-core grid inside React's lifecycle.",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tusharparikofficial/malkom-engines.git",
+    "directory": "malkom-table-engine/packages/react"
+  },
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "src"],
+  "peerDependencies": {
+    "@malkom/table-core": "^0.1.0",
+    "react": ">=18",
+    "tabulator-tables": ">=5.5.0 <7"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -b"
+  }
+}

@@ -1,0 +1,18 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+.DS_Store
+
+# Seeded example database — regenerate with `node examples/seed.mjs`
+examples/*.duckdb
+examples/*.duckdb.wal
+examples/purchase-orders.csv
+
+# Third-party benchmark logs are not vendored — fetch with
+# `node examples/fetch-bpic2012.mjs`. They belong at their source.
+examples/data/
+
+# Output from `malkom-mining serve` when run detached
+serve.log
+serve.err

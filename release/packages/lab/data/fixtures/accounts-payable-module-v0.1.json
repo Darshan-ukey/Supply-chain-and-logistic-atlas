@@ -1,0 +1,665 @@
+{
+  "contractVersion": "enterprise-operations-module-v1.0",
+  "domainPackId": "accounts-payable-fixture",
+  "module": {
+    "id": "accounts-payable-fixture",
+    "name": "Accounts Payable Architectural Fixture",
+    "version": "0.1",
+    "status": "TEST_ONLY",
+    "depth": "A5_FIXTURE"
+  },
+  "a3Parents": [
+    {
+      "id": "apf-a3-01",
+      "label": "Invoice Receipt",
+      "territoryId": "ap-intake",
+      "childProcessIds": [
+        "APF-01"
+      ]
+    },
+    {
+      "id": "apf-a3-02",
+      "label": "Validate",
+      "territoryId": "ap-validation",
+      "childProcessIds": [
+        "APF-02"
+      ]
+    },
+    {
+      "id": "apf-a3-03",
+      "label": "Match",
+      "territoryId": "ap-match",
+      "childProcessIds": [
+        "APF-03"
+      ]
+    },
+    {
+      "id": "apf-a3-04",
+      "label": "Exception",
+      "territoryId": "ap-exception",
+      "childProcessIds": [
+        "APF-04"
+      ]
+    },
+    {
+      "id": "apf-a3-05",
+      "label": "Approval",
+      "territoryId": "ap-approval",
+      "childProcessIds": [
+        "APF-05"
+      ]
+    },
+    {
+      "id": "apf-a3-06",
+      "label": "Post",
+      "territoryId": "ap-posting",
+      "childProcessIds": [
+        "APF-06"
+      ]
+    },
+    {
+      "id": "apf-a3-07",
+      "label": "Payment",
+      "territoryId": "ap-payment",
+      "childProcessIds": [
+        "APF-07"
+      ]
+    }
+  ],
+  "processes": [
+    {
+      "id": "APF-01",
+      "label": "Invoice Receipt",
+      "a3ParentId": "apf-a3-01",
+      "a3ParentLabel": "Invoice Receipt",
+      "pathType": "STANDARD",
+      "phase": "fixture",
+      "trigger": "Invoice received",
+      "before": "Invoice not yet registered",
+      "event": "Invoice arrival recorded",
+      "decision": "Is the invoice readable and attributable to a supplier/account?",
+      "rule": "Architecture fixture rule only; not a researched finance policy.",
+      "control": "Record the decision/evidence before transition.",
+      "clock": "Not specified in fixture.",
+      "action": "Capture the invoice and create an intake record.",
+      "evidence": "Intake record with source reference",
+      "after": "Invoice registered for validation",
+      "outcome": "Invoice is available for controlled validation",
+      "performer": "AP operations fixture role",
+      "owner": "AP process fixture owner",
+      "decisionAuthority": "AP operations fixture role",
+      "custody": "No physical custody concept in this domain fixture.",
+      "inputs": [
+        "obj-ap-invoice"
+      ],
+      "outputs": [
+        "obj-ap-invoice",
+        "evt-ap-invoice-received"
+      ],
+      "producer": "sys-ap-intake",
+      "authoritySystem": "sys-ap-workflow",
+      "consumers": "sys-erp / sys-ap-workflow",
+      "authorityObject": "obj-ap-invoice",
+      "documentIds": [
+        "doc-ap-invoice"
+      ],
+      "financial": "No financial posting change asserted by fixture.",
+      "sourceIds": [
+        "src-ap-fixture"
+      ],
+      "participants": [
+        {
+          "actorId": "actor-ap-operations",
+          "responsibility": "Architecture fixture participant"
+        }
+      ],
+      "applicability": {
+        "entityApplicability": {
+          "applicable": [
+            "entity-default"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "invoiceTypeApplicability": {
+          "applicable": [
+            "invoice-standard"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "matchPolicyApplicability": {
+          "applicable": [
+            "match-fixture"
+          ],
+          "defaultState": "APPLICABLE"
+        }
+      }
+    },
+    {
+      "id": "APF-02",
+      "label": "Validate",
+      "a3ParentId": "apf-a3-02",
+      "a3ParentLabel": "Validate",
+      "pathType": "STANDARD",
+      "phase": "fixture",
+      "trigger": "Registered invoice",
+      "before": "Invoice awaiting basic validation",
+      "event": "Validation requested",
+      "decision": "Are required invoice attributes present and structurally valid?",
+      "rule": "Architecture fixture rule only; not a researched finance policy.",
+      "control": "Record the decision/evidence before transition.",
+      "clock": "Not specified in fixture.",
+      "action": "Validate required fields and basic policy constraints.",
+      "evidence": "Validation result",
+      "after": "Invoice VALID or held for correction",
+      "outcome": "Validated invoice can proceed to matching",
+      "performer": "AP operations fixture role",
+      "owner": "AP process fixture owner",
+      "decisionAuthority": "AP operations fixture role",
+      "custody": "No physical custody concept in this domain fixture.",
+      "inputs": [
+        "obj-ap-invoice"
+      ],
+      "outputs": [
+        "obj-ap-invoice",
+        "obj-ap-validation-result"
+      ],
+      "producer": "sys-ap-workflow",
+      "authoritySystem": "sys-ap-workflow",
+      "consumers": "sys-erp / sys-ap-workflow",
+      "authorityObject": "obj-ap-invoice",
+      "documentIds": [
+        "doc-ap-invoice"
+      ],
+      "financial": "No financial posting change asserted by fixture.",
+      "sourceIds": [
+        "src-ap-fixture"
+      ],
+      "participants": [
+        {
+          "actorId": "actor-ap-operations",
+          "responsibility": "Architecture fixture participant"
+        }
+      ],
+      "applicability": {
+        "entityApplicability": {
+          "applicable": [
+            "entity-default"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "invoiceTypeApplicability": {
+          "applicable": [
+            "invoice-standard"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "matchPolicyApplicability": {
+          "applicable": [
+            "match-fixture"
+          ],
+          "defaultState": "APPLICABLE"
+        }
+      }
+    },
+    {
+      "id": "APF-03",
+      "label": "Match",
+      "a3ParentId": "apf-a3-03",
+      "a3ParentLabel": "Match",
+      "pathType": "STANDARD",
+      "phase": "fixture",
+      "trigger": "Validated invoice",
+      "before": "Invoice ready for match",
+      "event": "Match requested",
+      "decision": "Do invoice references and amounts match the fixture reference records?",
+      "rule": "Architecture fixture rule only; not a researched finance policy.",
+      "control": "Record the decision/evidence before transition.",
+      "clock": "Not specified in fixture.",
+      "action": "Compare invoice against referenced order/receipt data.",
+      "evidence": "Match result",
+      "after": "MATCHED or EXCEPTION",
+      "outcome": "Matched invoice or documented exception route",
+      "performer": "AP operations fixture role",
+      "owner": "AP process fixture owner",
+      "decisionAuthority": "AP operations fixture role",
+      "custody": "No physical custody concept in this domain fixture.",
+      "inputs": [
+        "obj-ap-invoice",
+        "obj-ap-purchase-order",
+        "obj-ap-receipt-record"
+      ],
+      "outputs": [
+        "obj-ap-invoice",
+        "obj-ap-match-result"
+      ],
+      "producer": "sys-ap-workflow",
+      "authoritySystem": "sys-ap-match",
+      "consumers": "sys-erp / sys-ap-workflow",
+      "authorityObject": "obj-ap-invoice",
+      "documentIds": [
+        "doc-ap-invoice"
+      ],
+      "financial": "Invoice financial state changes through validation, posting, and payment.",
+      "sourceIds": [
+        "src-ap-fixture"
+      ],
+      "participants": [
+        {
+          "actorId": "actor-ap-operations",
+          "responsibility": "Architecture fixture participant"
+        }
+      ],
+      "applicability": {
+        "entityApplicability": {
+          "applicable": [
+            "entity-default"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "invoiceTypeApplicability": {
+          "applicable": [
+            "invoice-standard"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "matchPolicyApplicability": {
+          "applicable": [
+            "match-fixture"
+          ],
+          "defaultState": "APPLICABLE"
+        }
+      }
+    },
+    {
+      "id": "APF-04",
+      "label": "Exception",
+      "a3ParentId": "apf-a3-04",
+      "a3ParentLabel": "Exception",
+      "pathType": "STANDARD",
+      "phase": "fixture",
+      "trigger": "Match exception",
+      "before": "Exception detected",
+      "event": "Exception case opened",
+      "decision": "Can the variance be resolved with available evidence?",
+      "rule": "Architecture fixture rule only; not a researched finance policy.",
+      "control": "Record the decision/evidence before transition.",
+      "clock": "Not specified in fixture.",
+      "action": "Classify and resolve the match exception or route it onward.",
+      "evidence": "Exception record and resolution evidence",
+      "after": "RESOLVED or ESCALATED",
+      "outcome": "Exception state is explicit before approval",
+      "performer": "AP operations fixture role",
+      "owner": "AP process fixture owner",
+      "decisionAuthority": "AP operations fixture role",
+      "custody": "No physical custody concept in this domain fixture.",
+      "inputs": [
+        "obj-ap-invoice",
+        "obj-ap-match-result"
+      ],
+      "outputs": [
+        "obj-ap-invoice",
+        "obj-ap-exception-case"
+      ],
+      "producer": "sys-ap-match",
+      "authoritySystem": "sys-ap-workflow",
+      "consumers": "sys-erp / sys-ap-workflow",
+      "authorityObject": "obj-ap-invoice",
+      "documentIds": [],
+      "financial": "No financial posting change asserted by fixture.",
+      "sourceIds": [
+        "src-ap-fixture"
+      ],
+      "participants": [
+        {
+          "actorId": "actor-ap-operations",
+          "responsibility": "Architecture fixture participant"
+        }
+      ],
+      "applicability": {
+        "entityApplicability": {
+          "applicable": [
+            "entity-default"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "invoiceTypeApplicability": {
+          "applicable": [
+            "invoice-standard"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "matchPolicyApplicability": {
+          "applicable": [
+            "match-fixture"
+          ],
+          "defaultState": "APPLICABLE"
+        }
+      }
+    },
+    {
+      "id": "APF-05",
+      "label": "Approval",
+      "a3ParentId": "apf-a3-05",
+      "a3ParentLabel": "Approval",
+      "pathType": "STANDARD",
+      "phase": "fixture",
+      "trigger": "Resolved invoice package",
+      "before": "Invoice awaiting approval",
+      "event": "Approval requested",
+      "decision": "Is approval permitted under the fixture approval rule?",
+      "rule": "Architecture fixture rule only; not a researched finance policy.",
+      "control": "Record the decision/evidence before transition.",
+      "clock": "Not specified in fixture.",
+      "action": "Route for approval and record the decision.",
+      "evidence": "Approval decision",
+      "after": "APPROVED or REJECTED",
+      "outcome": "Approved invoice is eligible for posting",
+      "performer": "AP operations fixture role",
+      "owner": "AP process fixture owner",
+      "decisionAuthority": "AP approval fixture role",
+      "custody": "No physical custody concept in this domain fixture.",
+      "inputs": [
+        "obj-ap-invoice",
+        "obj-ap-exception-case"
+      ],
+      "outputs": [
+        "obj-ap-invoice",
+        "obj-ap-approval"
+      ],
+      "producer": "sys-ap-workflow",
+      "authoritySystem": "sys-ap-workflow",
+      "consumers": "sys-erp / sys-ap-workflow",
+      "authorityObject": "obj-ap-invoice",
+      "documentIds": [],
+      "financial": "No financial posting change asserted by fixture.",
+      "sourceIds": [
+        "src-ap-fixture"
+      ],
+      "participants": [
+        {
+          "actorId": "actor-ap-operations",
+          "responsibility": "Architecture fixture participant"
+        }
+      ],
+      "applicability": {
+        "entityApplicability": {
+          "applicable": [
+            "entity-default"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "invoiceTypeApplicability": {
+          "applicable": [
+            "invoice-standard"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "matchPolicyApplicability": {
+          "applicable": [
+            "match-fixture"
+          ],
+          "defaultState": "APPLICABLE"
+        }
+      }
+    },
+    {
+      "id": "APF-06",
+      "label": "Post",
+      "a3ParentId": "apf-a3-06",
+      "a3ParentLabel": "Post",
+      "pathType": "STANDARD",
+      "phase": "fixture",
+      "trigger": "Approved invoice",
+      "before": "Invoice approved but not posted",
+      "event": "Posting requested",
+      "decision": "Can the approved invoice be posted to the accounting system?",
+      "rule": "Architecture fixture rule only; not a researched finance policy.",
+      "control": "Record the decision/evidence before transition.",
+      "clock": "Not specified in fixture.",
+      "action": "Post approved invoice and capture posting reference.",
+      "evidence": "Posting reference",
+      "after": "POSTED",
+      "outcome": "Posted invoice becomes eligible for payment scheduling",
+      "performer": "AP operations fixture role",
+      "owner": "AP process fixture owner",
+      "decisionAuthority": "AP operations fixture role",
+      "custody": "No physical custody concept in this domain fixture.",
+      "inputs": [
+        "obj-ap-invoice",
+        "obj-ap-approval"
+      ],
+      "outputs": [
+        "obj-ap-invoice",
+        "obj-ap-posting"
+      ],
+      "producer": "sys-ap-workflow",
+      "authoritySystem": "sys-erp",
+      "consumers": "sys-payment / sys-reporting",
+      "authorityObject": "obj-ap-invoice",
+      "documentIds": [],
+      "financial": "Invoice financial state changes through validation, posting, and payment.",
+      "sourceIds": [
+        "src-ap-fixture"
+      ],
+      "participants": [
+        {
+          "actorId": "actor-ap-operations",
+          "responsibility": "Architecture fixture participant"
+        }
+      ],
+      "applicability": {
+        "entityApplicability": {
+          "applicable": [
+            "entity-default"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "invoiceTypeApplicability": {
+          "applicable": [
+            "invoice-standard"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "matchPolicyApplicability": {
+          "applicable": [
+            "match-fixture"
+          ],
+          "defaultState": "APPLICABLE"
+        }
+      }
+    },
+    {
+      "id": "APF-07",
+      "label": "Payment",
+      "a3ParentId": "apf-a3-07",
+      "a3ParentLabel": "Payment",
+      "pathType": "STANDARD",
+      "phase": "fixture",
+      "trigger": "Posted invoice",
+      "before": "Invoice posted and payable",
+      "event": "Payment execution requested",
+      "decision": "Is the invoice due and released for payment?",
+      "rule": "Architecture fixture rule only; not a researched finance policy.",
+      "control": "Record the decision/evidence before transition.",
+      "clock": "Not specified in fixture.",
+      "action": "Execute or schedule payment and capture payment evidence.",
+      "evidence": "Payment reference",
+      "after": "PAID or SCHEDULED",
+      "outcome": "Payment state is recorded against the invoice",
+      "performer": "AP operations fixture role",
+      "owner": "AP process fixture owner",
+      "decisionAuthority": "AP operations fixture role",
+      "custody": "No physical custody concept in this domain fixture.",
+      "inputs": [
+        "obj-ap-invoice",
+        "obj-ap-posting"
+      ],
+      "outputs": [
+        "obj-ap-invoice",
+        "obj-ap-payment"
+      ],
+      "producer": "sys-erp",
+      "authoritySystem": "sys-payment",
+      "consumers": "sys-payment / sys-reporting",
+      "authorityObject": "obj-ap-invoice",
+      "documentIds": [],
+      "financial": "Invoice financial state changes through validation, posting, and payment.",
+      "sourceIds": [
+        "src-ap-fixture"
+      ],
+      "participants": [
+        {
+          "actorId": "actor-ap-operations",
+          "responsibility": "Architecture fixture participant"
+        }
+      ],
+      "applicability": {
+        "entityApplicability": {
+          "applicable": [
+            "entity-default"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "invoiceTypeApplicability": {
+          "applicable": [
+            "invoice-standard"
+          ],
+          "defaultState": "APPLICABLE"
+        },
+        "matchPolicyApplicability": {
+          "applicable": [
+            "match-fixture"
+          ],
+          "defaultState": "APPLICABLE"
+        }
+      }
+    }
+  ],
+  "processFlowEdges": [
+    {
+      "id": "APF-E01",
+      "from": "APF-01",
+      "type": "PRECEDES",
+      "to": "APF-02"
+    },
+    {
+      "id": "APF-E02",
+      "from": "APF-02",
+      "type": "PRECEDES",
+      "to": "APF-03"
+    },
+    {
+      "id": "APF-E03",
+      "from": "APF-03",
+      "type": "PRECEDES",
+      "to": "APF-04"
+    },
+    {
+      "id": "APF-E04",
+      "from": "APF-04",
+      "type": "PRECEDES",
+      "to": "APF-05"
+    },
+    {
+      "id": "APF-E05",
+      "from": "APF-05",
+      "type": "PRECEDES",
+      "to": "APF-06"
+    },
+    {
+      "id": "APF-E06",
+      "from": "APF-06",
+      "type": "PRECEDES",
+      "to": "APF-07"
+    }
+  ],
+  "executionTransitions": [
+    {
+      "id": "APF-T01",
+      "processId": "APF-01"
+    },
+    {
+      "id": "APF-T02",
+      "processId": "APF-02"
+    },
+    {
+      "id": "APF-T03",
+      "processId": "APF-03"
+    },
+    {
+      "id": "APF-T04",
+      "processId": "APF-04"
+    },
+    {
+      "id": "APF-T05",
+      "processId": "APF-05"
+    },
+    {
+      "id": "APF-T06",
+      "processId": "APF-06"
+    },
+    {
+      "id": "APF-T07",
+      "processId": "APF-07"
+    }
+  ],
+  "ontologyNodes": [
+    {
+      "id": "obj-ap-invoice",
+      "type": "business-object",
+      "label": "Invoice"
+    },
+    {
+      "id": "obj-ap-purchase-order",
+      "type": "business-object",
+      "label": "Purchase Order"
+    },
+    {
+      "id": "obj-ap-receipt-record",
+      "type": "evidence",
+      "label": "Receipt Record"
+    },
+    {
+      "id": "obj-ap-payment",
+      "type": "business-object",
+      "label": "Payment"
+    }
+  ],
+  "ontologyEdges": [],
+  "sources": [
+    {
+      "id": "src-ap-fixture",
+      "issuer": "Architecture Test Fixture",
+      "title": "Stage 18.5 Accounts Payable neutrality fixture",
+      "confidence": "TEST_ONLY",
+      "supports": "Engine acceptance testing only",
+      "doesNotSupport": "No claim of Finance best practice, taxonomy completeness, legal/accounting correctness, or client applicability."
+    }
+  ],
+  "availableContext": {
+    "entities": [
+      {
+        "id": "entity-default",
+        "name": "Default legal entity fixture"
+      }
+    ],
+    "invoiceTypes": [
+      {
+        "id": "invoice-standard",
+        "name": "Standard invoice fixture"
+      }
+    ],
+    "matchPolicies": [
+      {
+        "id": "match-fixture",
+        "name": "Fixture match policy"
+      }
+    ]
+  },
+  "fixture": {
+    "testOnly": true,
+    "authoritative": false,
+    "purpose": "Prove that the same enterprise core engines can load a non-SCM module without code changes.",
+    "mustNotPublish": true
+  }
+}

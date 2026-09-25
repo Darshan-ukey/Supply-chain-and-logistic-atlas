@@ -1,0 +1,234 @@
+{
+  "baseline": "V6.2.3 live Reference Atlas lineage",
+  "candidate": "Universe V7.3 frozen foundation",
+  "baselineNav": [
+    "Overview",
+    "Planned navigator",
+    "Ecosystem atlas",
+    "Source-native models",
+    "Enterprise coverage",
+    "Operating roles",
+    "Execution overlays",
+    "Systems & exchanges",
+    "L3\u2013L5 contract",
+    "White-space discovery",
+    "Sources"
+  ],
+  "candidateNav": [
+    "Overview",
+    "Daughter modules",
+    "Ecosystem atlas",
+    "Enterprise coverage",
+    "Operating roles",
+    "Execution overlays",
+    "Systems & exchanges",
+    "L3\u2013L5 contract",
+    "White-space discovery",
+    "Source-native models",
+    "Governance & freshness",
+    "Sources"
+  ],
+  "baselineSections": [
+    "overview",
+    "navigator",
+    "atlas",
+    "reference",
+    "enterprise",
+    "operating",
+    "modes",
+    "systems",
+    "execution-contract",
+    "discovery",
+    "sources"
+  ],
+  "candidateSections": [
+    "overview",
+    "navigator",
+    "atlas",
+    "enterprise",
+    "operating",
+    "modes",
+    "systems",
+    "execution-contract",
+    "discovery",
+    "reference",
+    "governance",
+    "sources"
+  ],
+  "missingBaselineSections": [],
+  "missingBaselineInteractionIds": [],
+  "baselineInteractionIdCount": 14,
+  "candidateMatchingInteractionIdCount": 14,
+  "v72ToV73CanonicalIdParity": {
+    "v72": 344,
+    "v73": 344,
+    "added": [],
+    "removed": []
+  },
+  "counts": {
+    "coreDomainCount": {
+      "v623": 8,
+      "v73": 8,
+      "delta": 0
+    },
+    "conditionalDomainCount": {
+      "v623": 1,
+      "v73": 1,
+      "delta": 0
+    },
+    "crossEnterpriseRailCount": {
+      "v623": 6,
+      "v73": 6,
+      "delta": 0
+    },
+    "enterpriseCoverageLensCount": {
+      "v623": 27,
+      "v73": 27,
+      "delta": 0
+    },
+    "businessCycleViewCount": {
+      "v623": 9,
+      "v73": 9,
+      "delta": 0
+    },
+    "navigatorEntryCount": {
+      "v623": 71,
+      "v73": 71,
+      "delta": 0
+    },
+    "operatingRoleCount": {
+      "v623": 11,
+      "v73": 11,
+      "delta": 0
+    },
+    "modeOverlayCount": {
+      "v623": 13,
+      "v73": 13,
+      "delta": 0
+    },
+    "movementPatternCount": {
+      "v623": 12,
+      "v73": 12,
+      "delta": 0
+    },
+    "logisticsNodeCount": {
+      "v623": 15,
+      "v73": 15,
+      "delta": 0
+    },
+    "contextResolverRuleCount": {
+      "v623": 51,
+      "v73": 51,
+      "delta": 0
+    },
+    "compatibilityCombinationCount": {
+      "v623": 728,
+      "v73": 728,
+      "delta": 0
+    },
+    "authorityDomainCount": {
+      "v623": 17,
+      "v73": 17,
+      "delta": 0
+    },
+    "referencePlacementCount": {
+      "v623": 185,
+      "v73": 192,
+      "delta": 7
+    },
+    "governedSourceRecordCount": {
+      "v623": 51,
+      "v73": 67,
+      "delta": 16
+    },
+    "firstClassEntityCount": {
+      "v623": 237,
+      "v73": 265,
+      "delta": 28
+    },
+    "relationshipTypeCount": {
+      "v623": 20,
+      "v73": 30,
+      "delta": 10
+    },
+    "directionalExchangeCount": {
+      "v623": 30,
+      "v73": 36,
+      "delta": 6
+    }
+  },
+  "sectionWordCounts": {
+    "atlas": {
+      "v623": 189,
+      "v73": 189
+    },
+    "discovery": {
+      "v623": 213,
+      "v73": 213
+    },
+    "enterprise": {
+      "v623": 258,
+      "v73": 256
+    },
+    "execution-contract": {
+      "v623": 376,
+      "v73": 509
+    },
+    "governance": {
+      "v623": null,
+      "v73": 314
+    },
+    "modes": {
+      "v623": 166,
+      "v73": 165
+    },
+    "navigator": {
+      "v623": 80,
+      "v73": 95
+    },
+    "operating": {
+      "v623": 137,
+      "v73": 137
+    },
+    "overview": {
+      "v623": 256,
+      "v73": 253
+    },
+    "reference": {
+      "v623": 168,
+      "v73": 167
+    },
+    "sources": {
+      "v623": 177,
+      "v73": 203
+    },
+    "systems": {
+      "v623": 211,
+      "v73": 211
+    }
+  },
+  "consumptionFirst": {
+    "overviewFirst": true,
+    "methodologyLate": true,
+    "governanceLate": true,
+    "sourcesLast": true
+  },
+  "viewSwitcherPresent": true,
+  "liveDaughterRoutes": [
+    [
+      "Road LTL",
+      "daughters/road-ltl-v1.2.html",
+      "A5 VERIFIED"
+    ],
+    [
+      "Ocean FCL",
+      "daughters/ocean-fcl-v0.4.html",
+      "A5 VERIFIED"
+    ],
+    [
+      "Ocean LCL",
+      "daughters/ocean-lcl-v0.4.html",
+      "A5 VERIFIED"
+    ]
+  ]
+}

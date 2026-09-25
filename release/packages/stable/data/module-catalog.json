@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "atlas-module-catalog-v1.1.4",
+  "dataContractVersion": "atlas-data-contract-v1.1",
+  "page0ContractVersion": "atlas-page0-contract-v1.0",
+  "registryPath": "data/atlas-registry.json",
+  "baseModule": {
+    "id": "ecosystem-page-0",
+    "version": "6.2.2",
+    "url": "data/page0/page0-v6.2.2.json",
+    "sha256": "c8805c194f87cd795014e4a44f362d67c921f5e0e978b9a29014befafc0fbbd0",
+    "publicationState": "ACTIVE",
+    "domainPackId": "supply-chain"
+  },
+  "modules": [
+    {
+      "id": "road-ltl",
+      "registryId": "road-ltl",
+      "name": "Road LTL",
+      "version": "1.2",
+      "depth": "A5_VERIFIED",
+      "publicationState": "ACTIVE",
+      "url": "data/modules/road-ltl-v1.2.json",
+      "sha256": "2d5c78d4480bb693747bcb18a2c006b3fe0a63e6150c506e84ea3e4c5f3f6cfd",
+      "rawSha256": "f0a8c4fab6d13f111d1a07f5cf21c7c4770f4448470f57de39087303768076db",
+      "validationReport": "data/reports/road-ltl-v1.2.validation.json",
+      "approved": true,
+      "sourceArtifactStatus": "SOURCE_ARTIFACT_NOT_EXPOSED_IN_RUNTIME",
+      "domainPackId": "supply-chain"
+    }
+  ],
+  "publicationPolicy": {
+    "requiredGates": [
+      "SCHEMA",
+      "PAGE0_INHERITANCE",
+      "ONTOLOGY_REFERENCES",
+      "PROCESS_RELATIONSHIPS",
+      "SOURCE_REFERENCES",
+      "APPLICABILITY",
+      "REGRESSION",
+      "HUMAN_APPROVAL"
+    ],
+    "browserCandidateValidationPublishes": false,
+    "newModuleRequiresCanvasRebuild": false,
+    "domainPackRequired": true,
+    "testFixturesPublishable": false
+  },
+  "generatedAt": "2026-08-24T15:19:00+05:30",
+  "enterpriseCoreVersion": "enterprise-ops-core-v1.0",
+  "coreOntologyPath": "data/core/enterprise-core-ontology-v1.json",
+  "domainPackCatalogPath": "data/domain-pack-catalog.json",
+  "domainExtensionContractVersion": "enterprise-domain-extension-v1.0",
+  "testFixtures": [
+    {
+      "id": "accounts-payable-fixture",
+      "name": "Accounts Payable Architectural Fixture",
+      "version": "0.1",
+      "depth": "A5_FIXTURE",
+      "publicationState": "TEST_ONLY",
+      "approved": false,
+      "domainPackId": "accounts-payable-fixture",
+      "url": "data/fixtures/accounts-payable-module-v0.1.json",
+      "testOnly": true,
+      "mustNotPublish": true
+    }
+  ],
+  "version": "1.1.4",
+  "planned": [
+    {
+      "id": "road-ftl",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "ocean-fcl",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "ocean-lcl",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "air-cargo",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "rail-freight",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "inland-waterway",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "pipeline",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "parcel-cep",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "freight-forwarder",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "nvocc",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "warehousing",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "planning",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    },
+    {
+      "id": "procurement",
+      "status": "PLANNED",
+      "depth": "REFERENCE_ONLY"
+    }
+  ],
+  "coverageRegistry": "data/governance/destination-coverage-registry-v1.json"
+}

@@ -1,0 +1,83 @@
+name: brisk-aitesting-real-systems
+
+services:
+  directus:
+    profiles: [directus]
+    image: directus/directus:12.2.0
+    ports:
+      - "127.0.0.1:18055:8055"
+    volumes:
+      - directus_database:/directus/database
+      - directus_uploads:/directus/uploads
+      - directus_extensions:/directus/extensions
+    environment:
+      SECRET: "${BRISK_TEST_DIRECTUS_SECRET:?Set BRISK_TEST_DIRECTUS_SECRET for this disposable local lab}"
+      ADMIN_EMAIL: "${BRISK_TEST_DIRECTUS_ADMIN_EMAIL:?Set BRISK_TEST_DIRECTUS_ADMIN_EMAIL for this disposable local lab}"
+      ADMIN_PASSWORD: "${BRISK_TEST_DIRECTUS_ADMIN_PASSWORD:?Set BRISK_TEST_DIRECTUS_ADMIN_PASSWORD for this disposable local lab}"
+      DB_CLIENT: sqlite3
+      DB_FILENAME: /directus/database/data.db
+      WEBSOCKETS_ENABLED: "true"
+      TELEMETRY: "false"
+    restart: "no"
+    networks: [real_systems]
+
+  medusa-postgres:
+    profiles: [medusa]
+    image: postgres:16-alpine
+    ports:
+      - "127.0.0.1:15432:5432"
+    volumes:
+      - medusa_postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: brisk_aitesting_medusa
+      POSTGRES_USER: brisk_aitesting_medusa
+      POSTGRES_PASSWORD: "${BRISK_TEST_MEDUSA_DB_PASSWORD:?Set BRISK_TEST_MEDUSA_DB_PASSWORD for this disposable local lab}"
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U brisk_aitesting_medusa -d brisk_aitesting_medusa"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: "no"
+    networks: [real_systems]
+
+  n8n:
+    profiles: [n8n]
+    image: docker.n8n.io/n8nio/n8n:2.32.7
+    ports:
+      - "127.0.0.1:15678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    environment:
+      N8N_ENCRYPTION_KEY: "${BRISK_TEST_N8N_ENCRYPTION_KEY:?Set BRISK_TEST_N8N_ENCRYPTION_KEY for this disposable local lab}"
+      N8N_DIAGNOSTICS_ENABLED: "false"
+      N8N_VERSION_NOTIFICATIONS_ENABLED: "false"
+      N8N_TEMPLATES_ENABLED: "false"
+      N8N_PERSONALIZATION_ENABLED: "false"
+      N8N_DISABLED_MODULES: mcp-registry
+      N8N_PYTHON_ENABLED: "false"
+      N8N_UNVERIFIED_PACKAGES_ENABLED: "false"
+      N8N_RUNNERS_TASK_TIMEOUT: "60"
+      N8N_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES: "268435456"
+      N8N_COMPRESSION_NODE_MAX_ZIP_ENTRIES: "1000"
+      N8N_SECURE_COOKIE: "false"
+      N8N_HOST: 127.0.0.1
+      N8N_PORT: "5678"
+      N8N_PROTOCOL: http
+    healthcheck:
+      test: [CMD-SHELL, "wget --spider -q http://127.0.0.1:5678/healthz || exit 1"]
+      interval: 3s
+      timeout: 3s
+      retries: 40
+    restart: "no"
+    networks: [real_systems]
+
+volumes:
+  directus_database:
+  directus_uploads:
+  directus_extensions:
+  medusa_postgres:
+  n8n_data:
+
+networks:
+  real_systems:
+    driver: bridge

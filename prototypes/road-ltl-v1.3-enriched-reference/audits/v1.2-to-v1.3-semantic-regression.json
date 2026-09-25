@@ -1,0 +1,16 @@
+{
+  "baseline": "Road LTL V1.2",
+  "candidate": "Road LTL V1.3",
+  "processCountV12": 22,
+  "processCountV13": 22,
+  "processIdsIdentical": true,
+  "legacyProcessFieldDifferences": [],
+  "protectedTopLevelDifferences": [],
+  "processFlowEdgesIdentical": true,
+  "executionTransitionsIdentical": true,
+  "ontologyEdgesIdentical": true,
+  "a3ParentsIdentical": true,
+  "sourceRecordsIdentical": true,
+  "applicabilityIdentical": true,
+  "pass": true
+}

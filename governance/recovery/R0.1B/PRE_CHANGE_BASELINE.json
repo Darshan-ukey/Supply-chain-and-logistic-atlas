@@ -1,0 +1,177 @@
+{
+  "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
+  "stageId": "R0.1B",
+  "checkpoint": "PRE_CHANGE_BASELINE",
+  "timestamp": "2026-09-08T00:00:00Z",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "governanceBaselineCommit": "dae7a72",
+  "implementationBranch": "atlas-recovery-r0-1b-universe-identity",
+  "commitSha": "16009db161721769fb5898d4bb89073ce08dbfbd",
+  "qaDisposition": null,
+  "assets": [
+    {
+      "assetId": "r0-1a-post-qa-governed-state",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.1A/POST_QA_GOVERNED_STATE.json",
+      "driveLocation": "02_FROZEN_CANDIDATES/Universe (folderId 1rtHlurv1WCRC3KtoWjw0bzvUALymFgmY)",
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "GOVERNED_QA_PASS",
+      "sha256": "f6e6427308382d48b070546e770edb027a9976dbbbbf91729d5bd5945f300ec5",
+      "lineage": [
+        "R0.1A independent QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Authoritative input. R0.1B consumes R0.1A evidence and does not rerun it."
+    },
+    {
+      "assetId": "universe-semantic-payload",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-semantic-payload.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "GOVERNED_CERTIFIED_R0_1A_OUTPUT",
+      "sha256": "17b4973e18a4bb93fc81908d9fc605dfbe989d79ca0c6ac3e086f2feac5958b8",
+      "lineage": [
+        "R0.1A commit 4eb360a"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Certified R0.1A artifact consumed read-only."
+    },
+    {
+      "assetId": "universe-extraction-report",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-extraction-report.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "GOVERNED_CERTIFIED_R0_1A_OUTPUT",
+      "sha256": "97c89af18ef637864a2019b25c2d90b26fbbddf8eb03804531d0c7ad5f0c8a67",
+      "lineage": [
+        "R0.1A commit 4eb360a"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Certified R0.1A artifact consumed read-only."
+    },
+    {
+      "assetId": "universe-copy-comparison",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-copy-comparison.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "GOVERNED_CERTIFIED_R0_1A_OUTPUT",
+      "sha256": "48916f8488968dbfa50e33b60d1029c03030e5a5b6d657410957246962262928",
+      "lineage": [
+        "R0.1A commit 4eb360a"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Certified R0.1A artifact consumed read-only."
+    },
+    {
+      "assetId": "universe-declaration-inventory",
+      "assetType": "evidence",
+      "repositoryPath": "data/universe/universe-declaration-inventory.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "1",
+      "classification": "GOVERNED_CERTIFIED_R0_1A_OUTPUT",
+      "sha256": "ab099a6b154a155961f1bac1ffdc6b2dcc0e0b787f80a6233d6e3f8bce9b022f",
+      "lineage": [
+        "R0.1A commit 4eb360a"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Certified R0.1A artifact consumed read-only."
+    },
+    {
+      "assetId": "universe-source-html-1",
+      "assetType": "source",
+      "repositoryPath": "reference/universe-v7.3.html",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "release shell 7.3",
+      "classification": "RETAINED_SOURCE",
+      "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Read-only evidence for identity/authority reconciliation."
+    },
+    {
+      "assetId": "universe-source-html-2",
+      "assetType": "source",
+      "repositoryPath": "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "release shell 7.3",
+      "classification": "RETAINED_SOURCE",
+      "sha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Read-only evidence for identity/authority reconciliation."
+    },
+    {
+      "assetId": "universe-source-html-3",
+      "assetType": "source",
+      "repositoryPath": "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "release shell 7.3",
+      "classification": "RETAINED_SOURCE",
+      "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Read-only evidence for identity/authority reconciliation."
+    },
+    {
+      "assetId": "universe-v7-3-release-notes",
+      "assetType": "evidence",
+      "repositoryPath": "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/UNIVERSE_V7_3_RELEASE_NOTES.md",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "7.3",
+      "classification": "RETAINED_SOURCE",
+      "sha256": "b050b933509dd69006674b8466e22260e7ef20a13e3dc7f61b347deb395211f6",
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "GOVERNED",
+      "notes": "Primary documentary evidence for release shell 7.3 versus embedded semantic 7.2.0."
+    }
+  ],
+  "tools": [],
+  "liveState": [],
+  "driveEvidence": [],
+  "findings": [
+    {
+      "id": "R0.1B-PRE-01",
+      "severity": "MEDIUM",
+      "statement": "The governance branch carries R0.1A POST_QA_GOVERNED_STATE.json but not the four certified artifacts it lists as requiredInputs. R0.1B therefore branches from the R0.1A implementation branch and merges governance. Recommend the certified artifacts be carried onto the governance branch at Checkpoint C."
+    },
+    {
+      "id": "R0.1B-PRE-02",
+      "severity": "LOW",
+      "statement": "R0.1A POST_QA_GOVERNED_STATE.json records qaDisposition PASS and Drive mirroring, but its assets, tools and findings arrays are empty and commitSha is null, so the certified commit 4eb360a is not recorded in the governed state itself."
+    }
+  ],
+  "tests": [],
+  "supersedes": [],
+  "supersededBy": [],
+  "nextAuthorization": null
+}

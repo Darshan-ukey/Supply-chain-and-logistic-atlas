@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "brisk-aitesting.golden-plan.v1",
+  "name": "serious-saas reference plan",
+  "scenarioCount": 13,
+  "scenarios": [
+    { "id": "serious_ui_login", "type": "ui", "target": { "route": "/login" } },
+    { "id": "serious_ui_dashboard", "type": "ui", "target": { "route": "/dashboard" } },
+    { "id": "serious_ui_users", "type": "ui", "target": { "route": "/users" } },
+    { "id": "serious_api_health", "type": "api", "target": { "method": "GET", "path": "/api/health" }, "polarity": "positive" },
+    { "id": "serious_api_login_success", "type": "api", "target": { "method": "POST", "path": "/api/login" }, "polarity": "positive" },
+    { "id": "serious_api_login_invalid", "type": "api", "target": { "method": "POST", "path": "/api/login" }, "polarity": "negative" },
+    { "id": "serious_api_list_users", "type": "api", "target": { "method": "GET", "path": "/api/users" }, "polarity": "positive" },
+    { "id": "serious_api_create_user", "type": "api", "target": { "method": "POST", "path": "/api/users" }, "polarity": "positive" },
+    { "id": "serious_api_viewer_cannot_create_user", "type": "api", "target": { "method": "POST", "path": "/api/users" }, "polarity": "negative" },
+    { "id": "serious_api_missing_name", "type": "api", "target": { "method": "POST", "path": "/api/users" }, "polarity": "negative" },
+    { "id": "serious_api_unauthorized_users", "type": "api", "target": { "method": "GET", "path": "/api/users" }, "polarity": "negative" },
+    { "id": "serious_api_audit_events", "type": "api", "target": { "method": "GET", "path": "/api/audit-events" }, "polarity": "positive" },
+    { "id": "serious_contract_openapi", "type": "contract", "target": { "schema": "openapi.json" }, "polarity": "positive" }
+  ]
+}

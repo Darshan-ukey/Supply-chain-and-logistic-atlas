@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
+  "stageId": "R0.1B",
+  "checkpoint": "POST_IMPLEMENTATION_PRE_QA",
+  "implementationState": "FINAL_AUTHORITY_CLOSURE_AFTER_R0_1A_R_QA_PASS",
+  "timestamp": "2026-09-08T00:00:00Z",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "governanceBaselineCommit": "aa64c81c2bc6b2a856061eae26ba44a30ae9e047",
+  "implementationBranch": "atlas-recovery-r0-1b-final-authority-closure",
+  "commitSha": "f66ede964307f8025c1a18e0d19ab075ccbee596",
+  "qaDisposition": null,
+  "lineage": {
+    "originalDetermination": "governance/recovery/R0.1B/UNIVERSE_IDENTITY_AUTHORITY_DETERMINATION.json",
+    "originalDeterminationSha256": "cf1b70116d1899a32b439df02efefc5f3562224635301a20c018a5080a5f792d",
+    "originalDeterminationModified": false,
+    "remediationStage": "R0.1A-R",
+    "remediationQaDisposition": "PASS",
+    "checkpointACommit": "e1548a9"
+  },
+  "assets": [
+    {
+      "assetId": "UNIVERSE_FINAL_AUTHORITY_CLOSURE",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.1B/UNIVERSE_FINAL_AUTHORITY_CLOSURE.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.1B-final-closure",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "9799da0fbe9d913b3bc4525f73127dffb3eae19f3c70c6a41008bebcafeadafa",
+      "lineage": [
+        "R0.1B determination",
+        "R0.1A-R QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "PRE_CHANGE_BASELINE_FINAL_CLOSURE",
+      "assetType": "evidence",
+      "repositoryPath": "governance/recovery/R0.1B/PRE_CHANGE_BASELINE_FINAL_CLOSURE.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.1B-final-closure",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "bdda0246d1b36bdbe7a79edd41c1370889aaca7eac8a8d07c30304f0e18b8ca3",
+      "lineage": [
+        "R0.1B determination",
+        "R0.1A-R QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "r0-1b-final-authority-closure",
+      "assetType": "evidence",
+      "repositoryPath": "tests/r0-1b-final-authority-closure.mjs",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.1B-final-closure",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "a71a68192e4eefe11d3bbafcd5c889bee114a6fea4191b3b402865d995fb9006",
+      "lineage": [
+        "R0.1B determination",
+        "R0.1A-R QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    },
+    {
+      "assetId": "r0-1b-final-authority-closure",
+      "assetType": "evidence",
+      "repositoryPath": ".github/workflows/r0-1b-final-authority-closure.yml",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "R0.1B-final-closure",
+      "classification": "CANDIDATE_AWAITING_INDEPENDENT_QA",
+      "sha256": "411b1234b11a0a4dfd4a060052bfbd32c25b91b6584bb0fce64d884b14d4d2d4",
+      "lineage": [
+        "R0.1B determination",
+        "R0.1A-R QA PASS"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PASS",
+      "custodyState": "CANDIDATE",
+      "notes": null
+    }
+  ],
+  "tools": [],
+  "liveState": [],
+  "driveEvidence": [
+    {
+      "status": "NOT_MIRRORED",
+      "owner": "INDEPENDENT_QA",
+      "suggestedFolder": "02_FROZEN_CANDIDATES/Universe/R0.1B \u2014 Universe Final Authority Closure \u2014 AWAITING_QA",
+      "candidateFiles": [
+        {
+          "repositoryPath": "governance/recovery/R0.1B/UNIVERSE_FINAL_AUTHORITY_CLOSURE.json",
+          "sha256": "9799da0fbe9d913b3bc4525f73127dffb3eae19f3c70c6a41008bebcafeadafa"
+        },
+        {
+          "repositoryPath": "governance/recovery/R0.1B/PRE_CHANGE_BASELINE_FINAL_CLOSURE.json",
+          "sha256": "bdda0246d1b36bdbe7a79edd41c1370889aaca7eac8a8d07c30304f0e18b8ca3"
+        },
+        {
+          "repositoryPath": "tests/r0-1b-final-authority-closure.mjs",
+          "sha256": "a71a68192e4eefe11d3bbafcd5c889bee114a6fea4191b3b402865d995fb9006"
+        },
+        {
+          "repositoryPath": ".github/workflows/r0-1b-final-authority-closure.yml",
+          "sha256": "411b1234b11a0a4dfd4a060052bfbd32c25b91b6584bb0fce64d884b14d4d2d4"
+        }
+      ]
+    }
+  ],
+  "finalAuthoritySummary": {
+    "semanticPayloadAuthority": "data/universe/r0-1a-r/universe-semantic-payload.json",
+    "semanticStructuresSha256": "82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d",
+    "releaseVersion": "7.3",
+    "semanticPayloadVersion": "7.2.0",
+    "releaseShellAuthoritySha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+    "retainedLaterRepackageSha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+    "supersededR0_1A_SemanticSha256": "2d6405c534b96f4054cb87ac2428a0a7a1bf4626334a86e5cc96ec342add4043",
+    "contradictionsFound": 0
+  },
+  "findings": [
+    {
+      "id": "R0.1B-FC-01",
+      "severity": "RESOLVED",
+      "statement": "D1 confirmed unchanged. The corrected R0.1A-R materialization yields the same three differing structures across all three retained copies, 57 identical, 2 distinct source hashes. The correction introduced and removed no copy-level difference."
+    },
+    {
+      "id": "R0.1B-FC-02",
+      "severity": "RESOLVED",
+      "statement": "D2 confirmed unchanged. Both recorded authority hashes still resolve against the retained sources. Semantic authority is bound to the corrected normalized payload; the D2 precondition requiring D5 remediation is satisfied by R0.1A-R QA PASS."
+    },
+    {
+      "id": "R0.1B-FC-03",
+      "severity": "RESOLVED",
+      "statement": "D3 confirmed unchanged. Embedded semantic identity remains 7.2.0 across every retained copy under corrected extraction; release shell remains 7.3. Finalized as two distinct governed identities with relabeling prohibited."
+    },
+    {
+      "id": "R0.1B-FC-04",
+      "severity": "RESOLVED",
+      "statement": "D4, D5 and D6 recorded as remediated by the independently certified R0.1A-R stage. Remediation is demonstrable in the corrected artifacts and was not re-performed by this stage."
+    },
+    {
+      "id": "R0.1B-FC-05",
+      "severity": "INFO",
+      "statement": "Zero contradictions found between the corrected R0.1A-R evidence and the original R0.1B determinations, so no stop-and-report condition arose."
+    },
+    {
+      "id": "R0.1B-FC-06",
+      "severity": "INFO",
+      "statement": "The original R0.1B determination is preserved byte-identical and cited by hash. Closure is recorded in a separate artifact, UNIVERSE_FINAL_AUTHORITY_CLOSURE.json."
+    },
+    {
+      "id": "R0.1B-FC-07",
+      "severity": "MEDIUM",
+      "statement": "tests/r0-1a-r-universe-rematerialization.mjs is retained byte-identical but one assertion is now superseded: it asserts the R0.1A-R Checkpoint C does not exist, which independent QA has since legitimately created. Probe confirmed no other assertion fails. It is therefore not run in R0.1B closure CI; preservation is proved by byte-identity instead."
+    },
+    {
+      "id": "R0.1B-FC-08",
+      "severity": "LOW",
+      "statement": "R0.1A-R POST_QA_GOVERNED_STATE.json records a rich certified state including Drive round-trip hash verification, unlike the earlier R0.1A Checkpoint C. The R0.1B-06 metadata weakness pattern is not repeated."
+    },
+    {
+      "id": "R0.1B-FC-09",
+      "severity": "INFO",
+      "statement": "All seven R0.1B requiredInputs resolved directly from the governance branch, confirming the R0.1B-05 dependency-closure remediation is effective in practice."
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/r0-1b-final-authority-closure.mjs",
+      "result": "PASS",
+      "ci": ".github/workflows/r0-1b-final-authority-closure.yml",
+      "covers": [
+        "closure is a distinct record",
+        "original determination unmodified and hash-cited",
+        "governed inputs resolve and hash-match",
+        "R0.1A-R QA PASS precondition",
+        "D1 confirmed",
+        "D2 authority hashes resolve",
+        "no copy discarded",
+        "D3 two identities finalized",
+        "D4-D6 remediated by R0.1A-R",
+        "semantic authority binding",
+        "supersession with both generations retained",
+        "historical defect retained as evidence",
+        "no promotion",
+        "R0.1C blocked",
+        "stop condition"
+      ]
+    },
+    {
+      "path": "tests/r0-1b-universe-identity-authority.mjs",
+      "result": "PASS",
+      "note": "Original R0.1B determination regression still holds."
+    }
+  ],
+  "supersedes": [],
+  "supersededBy": [],
+  "nextAuthorization": "AWAITING_INDEPENDENT_QA"
+}

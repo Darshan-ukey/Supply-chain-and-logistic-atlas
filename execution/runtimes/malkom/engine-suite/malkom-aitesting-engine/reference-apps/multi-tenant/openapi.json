@@ -1,0 +1,28 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "Multi-tenant Reference API", "version": "1.0.0" },
+  "paths": {
+    "/api/tenants/{tenantId}/projects": {
+      "get": {
+        "operationId": "listTenantProjects",
+        "parameters": [{ "name": "tenantId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "200": { "description": "Projects", "content": { "application/json": { "schema": { "type": "object", "required": ["tenantId", "projects", "total"], "properties": { "tenantId": { "type": "string" }, "projects": { "type": "array", "items": { "type": "object" } }, "total": { "type": "number" } } } } } },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" }
+        }
+      },
+      "post": {
+        "operationId": "createTenantProject",
+        "parameters": [{ "name": "tenantId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" } } } } } },
+        "responses": {
+          "201": { "description": "Created", "content": { "application/json": { "schema": { "type": "object", "required": ["tenantId", "project"], "properties": { "tenantId": { "type": "string" }, "project": { "type": "object" } } } } } },
+          "400": { "description": "Invalid" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" }
+        }
+      }
+    }
+  }
+}

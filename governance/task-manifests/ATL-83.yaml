@@ -1,0 +1,219 @@
+task_id: ATL-83
+title: "ATL-82B — Independent QA: Physical DDL/Migration Design"
+task_status: PROOF_RECORDED
+status_detail: "Two QA passes recorded. Pass 1 (2026-09-23, candidate V0.1): FAIL as written, architecture sound, correctable. Pass 2 (2026-09-23, bounded re-QA of candidate V0.2): FAIL. V0.2 does not compile (B1: single-$ dollar quotes, lines 214/226) and C2 is not closed (B2: zero-argument triggers leave UPDATE unguarded on 4 tables; defect originated in Claude's ATL-83 reference DDL). Three-line fix proven by DIAGNOSTIC-B. C5/C6 transferred to ATL-92 (D1=A); P6.1/P6.2 hardening owned by ATL-93 (D2). Awaiting builder V0.3, then bounded re-QA."
+qa_disposition: FAIL
+last_updated: "2026-09-23"
+manifest_status: ACTIVE
+execution_owner: Claude
+decision_authority: "Darshan / Atlas Owner-Governor"
+parent_task: ATL-60
+build_task: ATL-82
+created_at: "2026-09-22"
+
+release_conditions:
+  atl_85_freeze_window_disposition: PROCESS_VIOLATION_NO_SEMANTIC_CONTAMINATION
+  atl_84_shared_log_sync: DONE
+  released: true
+  atl_86_hold: RELEASED_AFTER_ATL90_BOUNDED_RECHECK_PASS
+  atl_90_result: PASS_WITH_BINDING_CORRECTIONS
+  resume_condition: "MET — ATL-90 bounded recheck PASS at 6ef29276f0bf0a358810646f80259f6db84a2bf3; ATL-86 GOVERNED_COMPLETE."
+
+governing_inputs:
+  - governance/task-manifests/ATL-82.yaml
+  - governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql
+  - governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2.sql
+  - governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_1.md
+  - governance/implementation/ATL_82_PHYSICAL_DESIGN_RATIONALE_V0_2.md
+  - governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_1.md
+  - governance/implementation/ATL_82_FIRST_PARTY_VERIFICATION_PROOF_V0_2.md
+  - governance/implementation/ATL_86_P6_2_ATL_82_ARCHITECTURE_RECONCILIATION_V0_1.md
+  - governance/implementation/ATL_86_RECONCILIATION_PROOF_V0_1.md
+  - governance/implementation/ATL_90_INDEPENDENT_QA_P6_2_ATL_82_RECONCILIATION_V0_1.md
+  - governance/decisions/ATL_85_ATL40_FREEZE_WINDOW_DISPOSITION_2026_09_22.md
+  - governance/implementation/ATL_60_EXTENSIBLE_OK_READINESS_SCHEMA_DESIGN_V0_1.md
+  - governance/implementation/ATL_60_SUPABASE_SCHEMA_MAPPING_V0_1.md
+  - governance/generation/RESEARCH_TO_EXECUTION_READINESS_TRANSFORMER_CONTRACT_V0_1.md
+
+acceptance_scope:
+  - "Independently test all 10 predetermined ATL-82 acceptance criteria."
+  - "Answer all six explicit physical-design QA questions."
+  - "Verify candidate against actual current Supabase schema read-only; do not mutate."
+  - "Inspect exact candidate SQL, rationale and proof rather than relying on summaries."
+  - "Return PASS, PASS_WITH_BINDING_CORRECTIONS, or FAIL with exact evidence."
+  - "If corrections are required, identify exact artifact/section/SQL changes; do not silently edit builder artifacts."
+  - "Persist independent QA artifact and append canonical shared log."
+  - "Verify governance registry/supersession bookkeeping now points operators away from Sep-1/Sep-2 historical DDL and toward the frozen P6.1/P6.2 lineage."
+
+hard_stops:
+  - "No apply_migration."
+  - "No execute_sql DDL."
+  - "No canonical Supabase write."
+  - "No ATL-60 promotion."
+  - "Builder first-party proof is not independent QA."
+
+current_outputs:
+  # Pass 1: independent QA of ATL-82 candidate V0.1 (landed by ChatGPT, byte-exact)
+  - path: governance/implementation/ATL_83_INDEPENDENT_QA_ATL_82_PHYSICAL_DESIGN_V0_1.md
+    commit: cb2d662580f904efc6eaf4c6d70d81e2e0a96a8f
+    blob_sha: fcd03f591afa3db62d035e667d3d051817a8933f
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1L3NsrRaMDmxYtMkfOs4jhSK2Pf4PLkq4"
+    note: "Its claim that C2 was proven for all guarded tables is superseded by the bounded re-QA §3 (overstated for 4 of 9 tables). Artifact retained unchanged as evidence."
+  - path: governance/implementation/ATL_83_EXECUTABLE_TEST_PACK_V0_1.sh
+    commit: 189eea88c7aaf0ef20eb1b2a142e4add197ff941
+    blob_sha: 4ef23709a52483ec667f2bf8712e23d73a64bcc2
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1sDtR4M13HYI5vtMoaPA5wdNNmvDD7sjE"
+    note: "Landed as mode 100644; should be 100755 (G3). Pinned to candidate V0.1."
+  - path: governance/implementation/ATL_83_TEST_PACK_OUTPUT_V0_1.txt
+    commit: 4d9ca9cde29f7ea6a3a70bac0a9d3e50d79cf6ac
+    blob_sha: ab0d0be839efb3d746a33e923719b67a8e4db2a4
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1SIAie7PVPuWb-yEbjoP2esdURxO-gO91"
+  # Pass 2: bounded re-QA of ATL-82 candidate V0.2
+  - path: governance/implementation/ATL_83_BOUNDED_REQA_ATL_82_V0_2_V0_1.md
+    commit: "a9de283f80757b77da757ef8cad21e506f352cfd"
+    blob_sha: e4b047f3874d11a508ffc2c7a79fc72681bf1e54
+    sha256: e3de87c27f4feece0a7ae7805b7fa15a7824c18f84f12e35a2294f1f9bedb9a5
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1B0Gl4jdOtmJltH4d4JzDacGTCPmvaQ-n"
+  - path: governance/implementation/ATL_83_EXECUTABLE_TEST_PACK_V0_2.sh
+    commit: "a9de283f80757b77da757ef8cad21e506f352cfd"
+    blob_sha: b9cdbbe2d5071066f5f333e8229b65d2bb095cc1
+    sha256: 5e3bed104cfd3094438d70f4a2b99e7f485521cc1879f4eff8f649dab24dfb4a
+    mode: "100755"
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1eboIso1AA4s88G7fhkZ-1tdRcR7j0G3y"
+    note: "Runs only against a disposable local PostgreSQL; refuses Supabase hosts (exit 2) and any candidate other than V0.2 blob 344d0d4f (exit 3). V0.2-specific: with only EXPECT_BLOB changed it exits 4 on a corrected candidate. V0.3 is tested with ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh, which reads this pack's suite."
+  - path: governance/implementation/ATL_83_TEST_PACK_OUTPUT_V0_2.txt
+    commit: "a9de283f80757b77da757ef8cad21e506f352cfd"
+    blob_sha: f79e97e887552dc3b6e792049552cff261b7fe04
+    sha256: 46ed2520d96e12261171c731a0d96756944bb85de983b8b3745bfd86c168f465
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1cp4hE1PFQVSfq9kbMkKiqPpvQSN98aMq"
+  - path: governance/implementation/ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh
+    commit: "a9de283f80757b77da757ef8cad21e506f352cfd"
+    blob_sha: 9af8eef15dbd3e6750dc643583ad0cf6ae1e2c6b
+    sha256: aee06d83aaad41ab089927f3f449750aff2c412509389feb7ccfd2bb32afa465
+    mode: "100755"
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1zK2AC6dgRZVCSQIHDRR6S9lgYjnjKK8G"
+    note: "Gate for V0.3 and later: runs the candidate as written, then its committed copy through the V0.2 pack's suite (extracted, blob-verified) and requires an exact normalized match with the DIAGNOSTIC-B results in the V0.2 output. Takes the candidate's expected blob as an argument. Must sit next to the V0.2 pack and output. Refuses Supabase/non-local targets and PGSERVICE/PGSERVICEFILE/PGHOSTADDR (exit 2), V0.1/V0.2 (exit 3)."
+  - path: governance/implementation/ATL_83_CORRECTED_CANDIDATE_GATE_VALIDATION_V0_1.txt
+    commit: "a9de283f80757b77da757ef8cad21e506f352cfd"
+    blob_sha: 99ffe6139b9305218f4e82de20aef4144ef119ae
+    sha256: 4b181d34461cd6653b5609646b12f982eb368ebd551e4a9b8895c8c559c57da5
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1Vu8a9yM-wNt20k_FFd7pUTDhB8ht3tVl"
+    note: "Stand-in (V0.2 + exactly the DIAGNOSTIC-B lines) PASS exit 0; B1-only mutant exit 6; nullable output_hash mutant exit 5; all refusals fire."
+
+qa_result:
+  pass_1_candidate_v0_1:
+    date: "2026-09-23"
+    artifact_under_qa: {path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_1.sql, blob_sha: b16a4bd9b16763287a76574e7231695b2c271f2e}
+    disposition: FAIL
+    disposition_detail: "FAIL as written; architecture sound; correctable."
+    criteria:
+      "1_logical_fidelity": FAIL
+      "2_composite_identity": PASS
+      "3_zone_and_source_class_boundaries": FAIL
+      "4_referential_integrity_and_vocabularies": FAIL
+      "5_append_only": FAIL
+      "6_z1_z5_and_z6_lineage": FAIL
+      "7_rls_access_for_protected_ip": FAIL
+      "8_rollback_rebuild": PASS_DESIGN_LEVEL
+      "9_existing_schema_compatibility": PASS
+      "10_no_materialization_or_mutation": PASS
+    physical_design_checks:
+      Q1_append_only_db_enforced: "YES — binding C2"
+      Q2_capability_rls_pattern: "P6.1/P6.2 protected-IP pattern + revoke TRUNCATE from service_role — binding C1"
+      Q3_source_class_location: "Link-level insufficient — binding C4 (evidence source registry)"
+      Q4_z5_bridge_fks: "Feasible — recommended R1; output_hash NOT NULL binding C8"
+      Q5_db_json_validation: "Not required before first materialization — R2 structural checks"
+      Q6_fr02_timing: "HAS_KNOWLEDGE_GAP carried by C7 junction; binding-requirement entity + relationship contracts needed before first Z2-boundary row; FR-02 to be revised"
+      Q7_registry_supersession: PASS
+    binding_corrections: [C1, C2, C3, C4, C5, C6, C7, C8]
+    recommendations_non_binding: [R1, R2, R3, R4, R5, R6, R7]
+    owner_decisions_requested: [D1, D2]
+  pass_2_bounded_reqa_candidate_v0_2:
+    date: "2026-09-23"
+    artifact_under_qa: {path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_2.sql, commit: a8c405448a0e016ad9adac7c03a9439ba719c911, blob_sha: 344d0d4fed7fd5ae7d271764ba1f10e0d7552d63}
+    state_checked: {github_head: 6410d936a232995f5caa2557a08280c2ed42bfa1, supabase: "aaoyesktlzhaunqqjhdq read-only", test_db: "disposable local PostgreSQL 16.13"}
+    disposition: FAIL
+    disposition_detail: "V0.2 is not executable and C2 is not closed. Both fixable in three lines (214, 221, 226), proven by DIAGNOSTIC-B."
+    blocking_defects:
+      - id: B1
+        origin: "ATL-82 V0.2 builder"
+        defect: "Lines 214 and 226 use a single $ instead of $$; psql exits 3 at line 215 (syntax error); transaction aborts; 0 tables remain. V0.2 as written delivers no correction and regresses criterion 8 (compiles)."
+        fix: "Lines 214 and 226: $ -> $$"
+      - id: B2
+        origin: "Claude ATL-83 reference DDL, copied faithfully by V0.2"
+        defect: "TG_ARGV is NULL for zero-argument triggers, so not (col = any(tg_argv)) is NULL and the guard never fires. In-place UPDATE succeeds on atlas_evidence_sources, atlas_knowledge_evidence_links, atlas_knowledge_gap_links, atlas_generation_z5_outputs (read-back: GOVERNED_INTERNAL / CONFLICTS / K1 / hash-forged)."
+        fix: "Line 221: tg_argv -> coalesce(tg_argv, '{}'::text[])"
+    corrections:
+      C1: {status: CLOSED_IN_CONTENT_UNDELIVERED, blocked_by: B1}
+      C2: {status: NOT_CLOSED, blocked_by: [B1, B2]}
+      C3: {status: CLOSED_IN_CONTENT_UNDELIVERED, blocked_by: B1}
+      C4: {status: STRUCTURE_CLOSED_PROTECTION_DEPENDS_ON_B2_FIX, blocked_by: [B1, B2]}
+      C5: {status: TRANSFERRED_TO_ATL-92, basis: "Owner decision D1=A; not an open ATL-82 defect"}
+      C6: {status: TRANSFERRED_TO_ATL-92, basis: "Owner decision D1=A; not an open ATL-82 defect"}
+      C7: {status: STRUCTURE_CLOSED_IMMUTABILITY_DEPENDS_ON_B2_FIX, blocked_by: [B1, B2]}
+      C8: {status: NOT_NULL_CLOSED_IMMUTABILITY_DEPENDS_ON_B2_FIX, blocked_by: [B1, B2]}
+    regression_of_v0_1_passing_controls: "All hold under DIAGNOSTIC-A and DIAGNOSTIC-B (type-version pin FK, two-target and half-key links, zone and support-state vocabularies, pinned-type delete blocked). The one regression is B1 (V0.2 as written does not compile)."
+    rollback_rebuild: "DIAGNOSTIC-B: drop leaves 0 of 9 structures with protected stub and gap rows intact; rebuild restores 9 structures and 18 triggers; rows still intact."
+    owner_scoped_confirmations:
+      D1_A: "Confirmed. V0.2 creates no atlas_readiness_* table. ATL-92 exists in Linear with the AR0.3 ReadinessResult scope."
+      D2_ATL_93: "Confirmed. ATL-93 exists in Linear (Todo) with the service-role TRUNCATE/DELETE/UPDATE guard-and-audit scope."
+    self_correction: "Pass 1 overstated C2 as proven for all semantic, lineage and provenance tables; its suite tested UPDATE on 3 of 9 tables only. Superseded by the re-QA report §3."
+    required_for_v0_3:
+      - "Exactly the DIAGNOSTIC-B changes to lines 214, 221 and 226; any other change listed and justified."
+      - "Optional, non-binding: drop redundant atlas_evidence_sources_ref_idx."
+      - "First-party proof including a clean run (exit 0) of ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh against V0.3 as written, recording V0.3's blob, before handing V0.3 to QA. The V0.2 pack cannot test V0.3 (exits 4 with only its pin changed)."
+    next_reqa_scope: ["V0.2 -> V0.3 diff", "gate run against V0.3 as written must PASS (exact match with DIAGNOSTIC-B)", "live read-only state check"]
+    independent_verification_of_report: "Separate agent re-checked every factual claim against the raw evidence; one wrong claim (relationship types not UPDATE-tested) found and fixed by adding C2n/C2p. A second fresh agent re-ran every gate case: no false statement; four overstatements corrected; one safety gap (PGSERVICE/PGHOSTADDR) closed in the gate."
+
+owner_decisions:
+  - id: D1
+    decision: "A — Z6 readiness persistence (C5/C6) split out of ATL-82 to ATL-92, governed by the AR0.3 ReadinessResult contract and resolver identity."
+    recorded_in: "governance/task-manifests/ATL-82.yaml @ 6410d936a232995f5caa2557a08280c2ed42bfa1; confirmed in the Owner's ATL-83 re-QA instruction"
+  - id: D2
+    decision: "YES — protected P6.1/P6.2 service-role hardening tracked separately as ATL-93."
+    recorded_in: "governance/task-manifests/ATL-82.yaml @ 6410d936a232995f5caa2557a08280c2ed42bfa1; confirmed in the Owner's ATL-83 re-QA instruction"
+
+governance_findings_non_binding:
+  - id: G1
+    finding: "Pass-1 landing incomplete: ATL-83.yaml not updated, no shared-log entry for the ATL-83 result or D1/D2, ATL-60.yaml not synchronized (checkpoint stale). This manifest supersedes the unlanded pass-1 manifest."
+  - id: G2
+    finding: "ATL-82.yaml task_status IN_PROGRESS is non-canonical and was touched after ATL-91; given this evidence the canonical state is VERIFICATION_FAILED (ChatGPT/Owner call)."
+  - id: G3
+    finding: "ATL_83_EXECUTABLE_TEST_PACK_V0_1.sh landed as mode 100644, not 100755."
+  - id: G4
+    finding: "ATL-92 and ATL-93 have no manifests; required when each becomes active (TC-0)."
+  - id: R8
+    finding: "Mechanism recommendation: a CI workflow that runs the ATL-83 checks in a PostgreSQL service container on changes to governance/implementation/*.sql would have rejected V0.2 at commit time. ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh is designed to be usable as that step (not yet run in CI; the workflow must supply each candidate's expected blob from a pinned source)."
+
+current_checkpoint: "ATL-83 V0.2 bounded re-QA FAIL is fully landed. B1/B2 require the proven three-line V0.3 correction. ATL-94 CI gate is now installed and first canary proof PASS; V0.3 first-party executable proof is therefore produced by ATL-94 CI rather than a local builder run. No Supabase mutation."
+next_action: "Builder produces ATL-82 V0.3 with exactly the DIAGNOSTIC-B changes. ATL-94 CI must first gate the unpinned candidate, then after ATL-82.yaml records its blob produce PASS (1 of 1 candidate(s) passed the gate). Claude then performs bounded V0.3 re-QA: V0.2→V0.3 diff, independent gate run, and live read-only state check. No DDL application."
+
+last_execution_record:
+  operator: Claude
+  date: "2026-09-23"
+  state: PROOF_RECORDED
+  note: "Read-only GitHub; re-QA report, test pack V0.2, output V0.2, corrected-candidate gate, gate validation and this manifest delivered through Drive (folder 1dtniFqHzkYOHRetM4bm1kmyCXCI2pY9-) for ChatGPT landing. No Supabase mutation; all DDL ran only in a disposable local PostgreSQL."

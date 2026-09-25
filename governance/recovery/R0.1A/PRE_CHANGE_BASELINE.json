@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "atlas-stage-asset-custody-manifest-v1",
+  "stageId": "R0.1A",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "implementationBranch": "atlas-recovery-r0-1a-universe-materialization",
+  "checkpoint": "PRE_CHANGE_BASELINE",
+  "timestamp": "2026-09-08T04:47:09.105Z",
+  "commitSha": "28f7c30a6be065497c5fe36ebc3164eefdd4cf52",
+  "qaDisposition": null,
+  "assets": [
+    {
+      "assetId": "universe-source-html-1",
+      "assetType": "source",
+      "repositoryPath": "reference/universe-v7.3.html",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "release shell 7.3",
+      "classification": "RETAINED_SOURCE_UNREGISTERED",
+      "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "lineage": [
+        "universe-7.3 (registered source=metadata, no repositoryPath, no sha256)"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PARTIAL",
+      "custodyState": "GOVERNED",
+      "notes": "Present in repository but not registered with a repositoryPath/sha256 in ASSET_REGISTER.json."
+    },
+    {
+      "assetId": "universe-source-html-2",
+      "assetType": "source",
+      "repositoryPath": "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "release shell 7.3",
+      "classification": "RETAINED_SOURCE_UNREGISTERED",
+      "sha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+      "lineage": [
+        "universe-7.3 (registered source=metadata, no repositoryPath, no sha256)"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PARTIAL",
+      "custodyState": "GOVERNED",
+      "notes": "Present in repository but not registered with a repositoryPath/sha256 in ASSET_REGISTER.json."
+    },
+    {
+      "assetId": "universe-source-html-3",
+      "assetType": "source",
+      "repositoryPath": "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "release shell 7.3",
+      "classification": "RETAINED_SOURCE_UNREGISTERED",
+      "sha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "lineage": [
+        "universe-7.3 (registered source=metadata, no repositoryPath, no sha256)"
+      ],
+      "dependencies": [],
+      "dependencyClosure": "PARTIAL",
+      "custodyState": "GOVERNED",
+      "notes": "Present in repository but not registered with a repositoryPath/sha256 in ASSET_REGISTER.json."
+    },
+    {
+      "assetId": "universe-7.3",
+      "assetType": "registry",
+      "repositoryPath": "governance/frozen-assets/ASSET_REGISTER.json",
+      "driveLocation": null,
+      "liveStoreReference": null,
+      "version": "7.3",
+      "classification": "FROZEN_PRODUCTION_BASELINE",
+      "sha256": null,
+      "lineage": [],
+      "dependencies": [],
+      "dependencyClosure": "BLOCKED",
+      "custodyState": "GOVERNED",
+      "notes": "Registered with source=metadata only. No machine-readable payload and no hash existed prior to this stage."
+    }
+  ],
+  "tools": [],
+  "liveState": [],
+  "driveEvidence": [],
+  "findings": [
+    {
+      "id": "R0.1A-PRE-01",
+      "severity": "MEDIUM",
+      "statement": "Three Universe HTML copies are retained, not two as recorded in the recovery standard. Two are byte-identical (d674a8f7...), one differs (31503394...)."
+    },
+    {
+      "id": "R0.1A-PRE-02",
+      "severity": "MEDIUM",
+      "statement": "No Universe HTML copy is registered in ASSET_REGISTER.json with a repositoryPath or sha256; universe-7.3 is a metadata-only assertion."
+    },
+    {
+      "id": "R0.1A-PRE-03",
+      "severity": "MEDIUM",
+      "statement": "Universe HTML sources are absent from the default branch (main); they exist only on P6.x and governance branches."
+    },
+    {
+      "id": "R0.1A-PRE-04",
+      "severity": "PROCESS_NONCONFORMANCE",
+      "statement": "PRE_CHANGE_BASELINE was prepared before implementation but was not independently committed as a standalone checkpoint before the implementation commit. Baseline is nevertheless deterministically recoverable because the implementation commit is additive and its parent is 28f7c30a6be065497c5fe36ebc3164eefdd4cf52. No retained Universe source was overwritten.",
+      "remediation": "Future stages must commit Checkpoint A as its own commit before any implementation commit."
+    }
+  ],
+  "tests": [],
+  "supersedes": [],
+  "supersededBy": [],
+  "nextAuthorization": null,
+  "baselineResolution": {
+    "method": "PARENT_OF_IMPLEMENTATION_COMMIT",
+    "implementationCommit": "b444a431",
+    "baselineCommit": "28f7c30a6be065497c5fe36ebc3164eefdd4cf52",
+    "verified": "git rev-parse b444a43^ == 28f7c30a6be065497c5fe36ebc3164eefdd4cf52"
+  }
+}

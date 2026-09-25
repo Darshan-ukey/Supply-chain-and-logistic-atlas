@@ -1,0 +1,29 @@
+[
+  {
+    "workDefinitionId": "road-ltl:LTL-15",
+    "outcomeCode": "ESCALATED",
+    "nextStep": "ESCALATE",
+    "targetTaskId": "LTL-14",
+    "capability": "workflow.escalate",
+    "reason": "Current Malkom workflow lifecycle does not define required cross-queue/runtime semantics for ESCALATE.",
+    "disposition": "UNSUPPORTED_CURRENT_MALKOM"
+  },
+  {
+    "workDefinitionId": "road-ltl:LTL-18",
+    "outcomeCode": "ESCALATED",
+    "nextStep": "ESCALATE",
+    "targetTaskId": "LTL-14",
+    "capability": "workflow.escalate",
+    "reason": "Current Malkom workflow lifecycle does not define required cross-queue/runtime semantics for ESCALATE.",
+    "disposition": "UNSUPPORTED_CURRENT_MALKOM"
+  },
+  {
+    "workDefinitionId": "road-ltl:LTL-22",
+    "outcomeCode": "ESCALATED",
+    "nextStep": "ESCALATE",
+    "targetTaskId": "LTL-14",
+    "capability": "workflow.escalate",
+    "reason": "Current Malkom workflow lifecycle does not define required cross-queue/runtime semantics for ESCALATE.",
+    "disposition": "UNSUPPORTED_CURRENT_MALKOM"
+  }
+]

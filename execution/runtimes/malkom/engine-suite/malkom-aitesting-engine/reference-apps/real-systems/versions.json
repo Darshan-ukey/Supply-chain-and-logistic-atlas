@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "brisk-aitesting.real-system-versions.v1",
+  "recordedAt": "2026-08-03",
+  "applications": [
+    {
+      "id": "directus",
+      "officialRemote": "https://github.com/directus/directus.git",
+      "clonePath": "C:\\Users\\u306076\\Documents\\azure-pubsub\\directus",
+      "sourceBranch": "main",
+      "sourceCommit": "b1d7a45a77661fd13928a53448c06649f36b56f5",
+      "sourceCommitDate": "2026-07-31T12:02:37-04:00",
+      "sourceCloneIsShallow": true,
+      "firstRuntimeVersion": "12.2.0",
+      "runtimeImage": "directus/directus:12.2.0",
+      "license": "MSCL-1.0-GPL"
+    },
+    {
+      "id": "medusa",
+      "officialRemote": "https://github.com/medusajs/medusa.git",
+      "clonePath": "C:\\Users\\u306076\\Documents\\azure-pubsub\\medusa",
+      "sourceBranch": "develop",
+      "sourceCommit": "efab588e9ce621f998be4ec4431f5b15486aaac0",
+      "sourceCommitDate": "2026-08-03T10:42:28+03:00",
+      "sourceCloneIsShallow": true,
+      "applicationPath": "C:\\Users\\u306076\\Documents\\azure-pubsub\\medusa-reference\\apps\\backend",
+      "firstRuntimeVersion": "2.18.0",
+      "runtimeImage": null,
+      "license": "MIT"
+    },
+    {
+      "id": "n8n",
+      "officialRemote": "https://github.com/n8n-io/n8n.git",
+      "clonePath": "C:\\Users\\u306076\\Documents\\azure-pubsub\\n8n",
+      "sourceBranch": "master",
+      "sourceCommit": "0839326a9ba41ecb85a72b71ffc15fe42a15364b",
+      "sourceCommitDate": "2026-08-03T11:48:18+00:00",
+      "sourceCloneIsShallow": true,
+      "firstRuntimeVersion": "2.32.7",
+      "runtimeImage": "docker.n8n.io/n8nio/n8n:2.32.7",
+      "license": "Sustainable Use License with separately licensed enterprise files"
+    }
+  ]
+}

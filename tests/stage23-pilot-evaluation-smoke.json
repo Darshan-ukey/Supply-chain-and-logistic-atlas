@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "stage": "23",
+  "canonicalUnchanged": true,
+  "syntheticCases": 10,
+  "llmSemanticRelevance": true,
+  "promptInjectionBoundary": true,
+  "invalidCanonicalIdMapped": false,
+  "ephemeralPersistence": "NONE",
+  "evaluationRls": true,
+  "liveGeminiCertification": "PENDING_EXTERNAL_CONFIGURATION"
+}

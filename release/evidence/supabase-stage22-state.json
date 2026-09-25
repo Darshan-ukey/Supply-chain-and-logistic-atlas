@@ -1,0 +1,14 @@
+{
+  "stage": "22",
+  "projectId": "aaoyesktlzhaunqqjhdq",
+  "atlasTables": 16,
+  "atlasTablesWithRls": 16,
+  "storage": [
+    {"id":"atlas-client-documents","public":false,"fileSizeLimit":26214400},
+    {"id":"atlas-client-evidence","public":false,"fileSizeLimit":20971520}
+  ],
+  "securityAdvisorFindings": 0,
+  "performanceAdvisor": "INFO-only unused-index notices on low/no-traffic schema",
+  "transactionalRestoreRehearsal": "PASS",
+  "pitrRestoreRehearsal": "PENDING_ISOLATED_TARGET"
+}

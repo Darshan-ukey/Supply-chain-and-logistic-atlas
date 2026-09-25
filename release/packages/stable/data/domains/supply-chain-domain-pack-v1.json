@@ -1,0 +1,876 @@
+{
+  "contractVersion": "enterprise-domain-extension-v1.0",
+  "id": "supply-chain",
+  "name": "Supply Chain & Logistics",
+  "status": "ACTIVE",
+  "coreOntologyVersion": "enterprise-operations-core-ontology-v1.0",
+  "ontologyExtensions": [
+    {
+      "id": "shipment",
+      "name": "Shipment",
+      "extendsCore": "business-object"
+    },
+    {
+      "id": "consignment",
+      "name": "Consignment",
+      "extendsCore": "business-object"
+    },
+    {
+      "id": "handling-unit",
+      "name": "Handling Unit",
+      "extendsCore": "business-object"
+    },
+    {
+      "id": "transport-document",
+      "name": "Transport Document",
+      "extendsCore": "evidence"
+    },
+    {
+      "id": "bol",
+      "name": "Bill of Lading",
+      "extendsCore": "transport-document"
+    },
+    {
+      "id": "awb",
+      "name": "Air Waybill",
+      "extendsCore": "transport-document"
+    },
+    {
+      "id": "pod",
+      "name": "Proof of Delivery",
+      "extendsCore": "evidence"
+    },
+    {
+      "id": "carrier",
+      "name": "Carrier",
+      "extendsCore": "actor"
+    },
+    {
+      "id": "mode",
+      "name": "Transport Mode",
+      "extendsCore": "applicability"
+    },
+    {
+      "id": "service",
+      "name": "Transport Service",
+      "extendsCore": "applicability"
+    },
+    {
+      "id": "movement-pattern",
+      "name": "Movement Pattern",
+      "extendsCore": "applicability"
+    },
+    {
+      "id": "node",
+      "name": "Logistics Node",
+      "extendsCore": "applicability"
+    },
+    {
+      "id": "custody",
+      "name": "Custody",
+      "extendsCore": "state"
+    },
+    {
+      "id": "carriage-regime",
+      "name": "Carriage Regime",
+      "extendsCore": "applicability"
+    },
+    {
+      "id": "dangerous-goods",
+      "name": "Dangerous Goods Condition",
+      "extendsCore": "applicability"
+    },
+    {
+      "id": "jurisdiction",
+      "name": "Jurisdiction",
+      "extendsCore": "applicability"
+    }
+  ],
+  "territories": [
+    {
+      "id": "plan",
+      "title": "Plan supply chain & network",
+      "code": "CAN-01",
+      "accent": "#0a91ae",
+      "position": [
+        12,
+        13
+      ],
+      "group": "core",
+      "short": "Balance demand, supply, capacity, inventory and network policy.",
+      "scope": "Demand/supply/capacity planning, inventory and deployment policy, logistics network design, service policy and performance targets.",
+      "sub": [
+        "Demand and supply planning",
+        "Capacity and inventory policy",
+        "Deployment planning",
+        "Network design",
+        "Performance policy"
+      ],
+      "sources": [
+        "scor",
+        "apqc"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "commercial",
+      "title": "Customer, commercial & order",
+      "code": "CAN-02",
+      "accent": "#3569b8",
+      "position": [
+        36,
+        13
+      ],
+      "group": "core",
+      "short": "Shape the offer; quote, validate and manage the order commitment.",
+      "scope": "Customer enquiry, solution/rate design, quote and terms, order capture, validation, promise, amendment and cancellation. Quote and order remain separate underlying processes.",
+      "sub": [
+        "Enquiry and solution",
+        "Rate and pricing",
+        "Quote and terms",
+        "Order capture",
+        "Validate and promise",
+        "Amend or cancel"
+      ],
+      "sources": [
+        "scor",
+        "apqc",
+        "uncefact"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "source",
+      "title": "Source & procure",
+      "code": "CAN-03",
+      "accent": "#59763b",
+      "position": [
+        61,
+        13
+      ],
+      "group": "core",
+      "short": "Govern sourcing, select providers, and establish and manage supply commitments.",
+      "scope": "Sourcing governance, category planning, supplier/provider selection, contracts, requisition and purchase order, direct/indirect procurement, supplier management and source returns.",
+      "sub": [
+        "Sourcing governance",
+        "Category plan",
+        "Supplier/provider selection",
+        "Contract",
+        "Requisition and PO",
+        "Supplier management"
+      ],
+      "sources": [
+        "scor",
+        "apqc"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "transform",
+      "title": "Transform, manufacture & value-add",
+      "code": "CAN-04",
+      "accent": "#9b5c2b",
+      "position": [
+        85,
+        14
+      ],
+      "group": "core",
+      "short": "Convert material, asset or service inputs into the promised output.",
+      "scope": "Product manufacture, service transformation, maintenance/repair/overhaul and logistics value-added services, including scheduling, issue, execute, inspect/test, pack and release.",
+      "sub": [
+        "Production/service engineering",
+        "Schedule",
+        "Issue inputs",
+        "Execute/transform",
+        "Inspect and test",
+        "Pack and release",
+        "MRO / VAS"
+      ],
+      "sources": [
+        "scor",
+        "apqc"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "warehouse",
+      "title": "Inventory & warehousing",
+      "code": "CAN-05",
+      "accent": "#7a55a1",
+      "position": [
+        36,
+        35
+      ],
+      "group": "core",
+      "short": "Receive, store, control, pick, pack, stage and transfer inventory.",
+      "scope": "Inbound receiving/unloading/inspection, putaway, storage, slotting, replenishment, picking, packing, staging, loading, cross-dock, counting/adjustment, VAS and yard/dock work.",
+      "sub": [
+        "Receive and inspect",
+        "Putaway and storage",
+        "Inventory accuracy",
+        "Replenish",
+        "Pick-pack-stage-load",
+        "Cross-dock and transfer",
+        "Yard/dock",
+        "Returns and VAS"
+      ],
+      "sources": [
+        "apqc",
+        "scor",
+        "gs1"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "transport",
+      "title": "Transportation & distribution",
+      "code": "CAN-06",
+      "accent": "#008da0",
+      "position": [
+        62,
+        35
+      ],
+      "group": "core",
+      "short": "Plan, buy, tender/book, execute and monitor movement across nodes and legs.",
+      "scope": "Transport request, mode/service selection, rating, routing, consolidation, capacity procurement, tender/booking, appointment/equipment, pickup, origin handling, carriage, transshipment, visibility and freight-settlement handoffs. Transportation terminates at the handoff into destination/last-mile execution.",
+      "sub": [
+        "Transport request",
+        "Mode/service and route",
+        "Rate/provider selection",
+        "Consolidate/load build",
+        "Tender/booking",
+        "Appointment/equipment",
+        "Pickup and origin",
+        "Main carriage/transship",
+        "Destination/last-mile handoff",
+        "Visibility/exception"
+      ],
+      "sources": [
+        "scor",
+        "apqc",
+        "uncefact",
+        "dcsa",
+        "iata",
+        "fiata"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "trade",
+      "title": "Trade, customs & regulatory",
+      "code": "CAN-07",
+      "accent": "#b23f52",
+      "position": [
+        86,
+        35
+      ],
+      "group": "conditional",
+      "short": "Classify, screen, declare, assess, inspect and release cross-border movement.",
+      "scope": "Classification, origin, valuation, licensing, restricted-party/sanctions controls, security filings, export/import declarations, duties/taxes, broker management, inspection/hold/release and post-entry activity.",
+      "sub": [
+        "Classification",
+        "Origin",
+        "Valuation",
+        "Licensing",
+        "Sanctions/screening",
+        "Security filing",
+        "Export declaration",
+        "Import declaration",
+        "Duties/taxes",
+        "Hold/inspect/release",
+        "Post-entry"
+      ],
+      "sources": [
+        "wco",
+        "uncefact"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery & last mile",
+      "code": "CAN-08",
+      "accent": "#1d7a63",
+      "position": [
+        36,
+        58
+      ],
+      "group": "core",
+      "short": "Plan destination execution, deliver or install, and capture acceptance evidence.",
+      "scope": "Destination readiness, appointment, last-mile dispatch, delivery or installation, delivery attempt, POD/acceptance and failed-delivery handoff. Customer interaction is mapped separately under Customer Service & Operations.",
+      "sub": [
+        "Destination readiness",
+        "Appointment",
+        "Last-mile dispatch",
+        "Deliver/install",
+        "Delivery attempt",
+        "POD/acceptance",
+        "Failed-delivery handoff"
+      ],
+      "sources": [
+        "scor",
+        "apqc",
+        "gs1"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "returns",
+      "title": "Returns, reverse & recovery",
+      "code": "CAN-09",
+      "accent": "#6f5d49",
+      "position": [
+        15,
+        80
+      ],
+      "group": "core",
+      "short": "Authorize, collect, receive, diagnose, disposition and financially adjust returns.",
+      "scope": "Return initiation/authorization, reverse transport, receiving, diagnosis/test, repair/refurbish, disposition, storage, document update, replacement and financial/contract adjustment.",
+      "sub": [
+        "Initiate and authorize",
+        "Plan reverse movement",
+        "Receive and verify",
+        "Diagnose/test",
+        "Repair/refurbish",
+        "Disposition/recover",
+        "Replace/redistribute",
+        "Financial adjustment"
+      ],
+      "sources": [
+        "scor",
+        "apqc"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "finance",
+      "title": "Finance, billing & settlement",
+      "code": "CAN-10",
+      "accent": "#b27713",
+      "position": [
+        85,
+        58
+      ],
+      "group": "rail",
+      "short": "Run distinct revenue, payable and freight-settlement cycles.",
+      "scope": "Customer billing/AR/collections and adjustments; supplier/carrier invoice audit/AP/payment; freight accrual, rating, allocation and settlement; trade-finance touchpoints where applicable.",
+      "sub": [
+        "Revenue accounting",
+        "Customer invoice and AR",
+        "Collections/deductions",
+        "Freight accrual",
+        "Carrier invoice/audit",
+        "AP and payment",
+        "Allocation",
+        "Trade finance"
+      ],
+      "sources": [
+        "apqcFinance",
+        "uncefact"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "exception",
+      "title": "Execution control & exception recovery",
+      "code": "CAN-11",
+      "accent": "#d26136",
+      "position": [
+        62,
+        57
+      ],
+      "group": "rail",
+      "short": "Observe, detect, recover, escalate and learn across every execution domain.",
+      "scope": "A cross-domain control rail for expected/actual state comparison, severity, ownership, response clock, containment, recovery, communication, escalation, closure and root-cause feedback.",
+      "sub": [
+        "Observe expected state",
+        "Detect variance",
+        "Classify/severity",
+        "Assign owner and clock",
+        "Contain/recover",
+        "Communicate/escalate",
+        "Close with evidence",
+        "Learn/prevent"
+      ],
+      "sources": [
+        "scor",
+        "gs1"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "claims",
+      "title": "Resolution, claims & disputes",
+      "code": "CAN-12",
+      "accent": "#9d3d58",
+      "position": [
+        39,
+        80
+      ],
+      "group": "rail",
+      "short": "Route cargo/service claims, billing disputes and insurance recovery through distinct controls.",
+      "scope": "A Page-0 umbrella with separate branches for cargo/service claims, billing/commercial disputes and insurance recovery/subrogation. Each branch uses different standing, evidence, liability, approval and settlement rules.",
+      "sub": [
+        "Cargo/service claim: notice → evidence → liability → loss → adjudication",
+        "Billing/commercial dispute: charge → contract/rate → invoice → evidence → adjustment",
+        "Insurance recovery/subrogation: insured event → policy → coverage → recovery"
+      ],
+      "sources": [
+        "apqcFinance",
+        "cmr",
+        "montreal",
+        "otif",
+        "uncitral",
+        "fiata",
+        "fmc"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "customer",
+      "title": "Customer service & operations",
+      "code": "CAN-13",
+      "accent": "#2877a4",
+      "position": [
+        64,
+        80
+      ],
+      "group": "rail",
+      "short": "Manage enquiries, notifications, service requests, complaints and case resolution.",
+      "scope": "Customer contact and service operations linked to—rather than substituted for—authoritative order, shipment, delivery, billing and claim states.",
+      "sub": [
+        "Receive enquiry/request",
+        "Authenticate and identify context",
+        "Classify and route",
+        "Provide status/explanation",
+        "Coordinate action",
+        "Communicate outcome",
+        "Close and capture feedback"
+      ],
+      "sources": [
+        "apqc",
+        "gs1"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "assets",
+      "title": "Assets, equipment & maintenance",
+      "code": "CAN-14",
+      "accent": "#6f6a31",
+      "position": [
+        13,
+        34
+      ],
+      "group": "rail",
+      "short": "Plan, allocate, inspect, maintain and reposition operating assets and equipment.",
+      "scope": "Fleet, vehicle, trailer, container, ULD, wagon/railcar, material-handling equipment and facility-asset availability, allocation, inspection, maintenance, utilization and repositioning—conditional by operating model.",
+      "sub": [
+        "Plan availability",
+        "Allocate/assign",
+        "Inspect and certify",
+        "Maintain/repair/MRO",
+        "Control condition and location",
+        "Reposition empty equipment",
+        "Measure utilization",
+        "Retire/replace"
+      ],
+      "sources": [
+        "scor",
+        "apqc",
+        "gs1",
+        "isa95"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    },
+    {
+      "id": "masterdata",
+      "title": "Master & reference data",
+      "code": "CAN-15",
+      "accent": "#4e6d78",
+      "position": [
+        13,
+        57
+      ],
+      "group": "rail",
+      "short": "Govern party, location, item, asset, code and relationship identities across systems.",
+      "scope": "Cross-enterprise identity, reference-data, code-set, hierarchy, relationship, quality, stewardship, version and distribution controls. No universal shipment identifier is assumed.",
+      "sub": [
+        "Define authority by object",
+        "Create/validate identity",
+        "Maintain relationships",
+        "Version reference data",
+        "Distribute/synchronize",
+        "Measure quality",
+        "Resolve duplicates/conflicts",
+        "Retire/retain"
+      ],
+      "sources": [
+        "scor",
+        "uncefact",
+        "gs1",
+        "iso8000"
+      ],
+      "sourceRef": "page0-v6.2.2"
+    }
+  ],
+  "applicabilityDimensions": [
+    {
+      "id": "role",
+      "label": "Operating role",
+      "contextKey": "roles",
+      "processApplicabilityKey": "roleApplicability",
+      "stateKey": "role",
+      "cardinality": "ONE",
+      "neutralValues": [
+        "neutral"
+      ]
+    },
+    {
+      "id": "movement",
+      "label": "Movement pattern",
+      "contextKey": "movements",
+      "processApplicabilityKey": "movementApplicability",
+      "stateKey": "movements",
+      "cardinality": "MANY",
+      "neutralValues": [
+        "none"
+      ]
+    },
+    {
+      "id": "node",
+      "label": "Node focus",
+      "contextKey": "nodes",
+      "processApplicabilityKey": "nodeApplicability",
+      "stateKey": "node",
+      "cardinality": "ONE",
+      "neutralValues": [
+        "none"
+      ]
+    },
+    {
+      "id": "jurisdiction",
+      "label": "Jurisdiction / geography",
+      "contextKey": "jurisdictions",
+      "processApplicabilityKey": "jurisdictionApplicability",
+      "stateKey": "jurisdictions",
+      "cardinality": "MANY",
+      "neutralValues": [
+        "none"
+      ]
+    },
+    {
+      "id": "regime",
+      "label": "Carriage regime",
+      "contextKey": "regimes",
+      "processApplicabilityKey": "regimeApplicability",
+      "stateKey": "regimes",
+      "cardinality": "MANY",
+      "neutralValues": []
+    },
+    {
+      "id": "condition",
+      "label": "Conditions",
+      "contextKey": "conditions",
+      "processApplicabilityKey": "conditionApplicability",
+      "stateKey": "conditions",
+      "cardinality": "MANY",
+      "neutralValues": []
+    },
+    {
+      "id": "contract",
+      "label": "Contract / service context",
+      "contextKey": "contracts",
+      "processApplicabilityKey": "contractApplicability",
+      "stateKey": "contract",
+      "cardinality": "ONE",
+      "neutralValues": [
+        "contract-unresolved"
+      ]
+    }
+  ],
+  "signalTypes": [
+    {
+      "id": "physical",
+      "label": "Physical",
+      "color": "#1677d2",
+      "extract": [
+        {
+          "field": "custody"
+        }
+      ]
+    },
+    {
+      "id": "information",
+      "label": "Information",
+      "color": "#7a4fd8",
+      "extract": [
+        {
+          "field": "event"
+        },
+        {
+          "field": "producer",
+          "prefix": "Producer: "
+        },
+        {
+          "field": "consumers",
+          "prefix": "Consumers: "
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "label": "Data / Document",
+      "color": "#14a7a0",
+      "extract": [
+        {
+          "field": "inputs",
+          "prefix": "Inputs: "
+        },
+        {
+          "field": "outputs",
+          "prefix": "Outputs: "
+        },
+        {
+          "field": "authorityObject",
+          "prefix": "Authority object: "
+        },
+        {
+          "field": "authoritySystem",
+          "prefix": "Authority system: "
+        }
+      ]
+    },
+    {
+      "id": "financial",
+      "label": "Financial",
+      "color": "#ef8b17",
+      "extract": [
+        {
+          "field": "financial"
+        }
+      ]
+    },
+    {
+      "id": "control",
+      "label": "Control / Evidence",
+      "color": "#4aa84b",
+      "extract": [
+        {
+          "field": "control"
+        },
+        {
+          "field": "evidence",
+          "prefix": "Evidence: "
+        }
+      ]
+    }
+  ],
+  "transformationHeuristics": [
+    {
+      "id": "TF-HUMAN-INSPECTION",
+      "category": "handoff",
+      "label": "Human / inspection dependency",
+      "evaluator": "pattern",
+      "fields": [
+        "decision",
+        "rule",
+        "control",
+        "action",
+        "evidence",
+        "performer",
+        "decisionAuthority"
+      ],
+      "pattern": "\\bmanual\\b|\\bhuman\\b|inspect|inspection|adjudicat",
+      "hypothesis": "Potential cycle-time or consistency exposure where execution depends on human inspection, adjudication or manual work.",
+      "candidates": [
+        "Workflow orchestration",
+        "Rules-assisted validation",
+        "Human-in-the-loop automation"
+      ]
+    },
+    {
+      "id": "TF-RECONCILIATION",
+      "category": "reconciliation",
+      "label": "Reconciliation dependency",
+      "evaluator": "pattern",
+      "fields": [
+        "decision",
+        "rule",
+        "control",
+        "action",
+        "evidence",
+        "after",
+        "outcome"
+      ],
+      "pattern": "reconcil|discrepan|variance|mismatch|duplicate|crosswalk",
+      "hypothesis": "Potential rework or state-consistency exposure where execution depends on reconciliation, discrepancy resolution or duplicate control.",
+      "candidates": [
+        "Deterministic validation rules",
+        "Automated reconciliation",
+        "Exception-based workflow"
+      ]
+    },
+    {
+      "id": "TF-SYSTEM-AUTHORITY-HANDOFF",
+      "category": "systems",
+      "label": "Cross-system authority handoff",
+      "evaluator": "system_authority_handoff",
+      "hypothesis": "Potential synchronization exposure where the producing system and system of authority are different governed systems.",
+      "candidates": [
+        "API/event synchronization",
+        "Authoritative-state orchestration",
+        "Integration monitoring"
+      ]
+    },
+    {
+      "id": "TF-CONDITIONAL-EXCEPTION",
+      "category": "exception",
+      "label": "Conditional / exception branch",
+      "evaluator": "path_type",
+      "values": [
+        "CONDITIONAL",
+        "EXCEPTION"
+      ],
+      "hypothesis": "Potential operational complexity where the task is conditional or exception-path execution rather than the standard path.",
+      "candidates": [
+        "Rules-based routing",
+        "Exception classification",
+        "Case orchestration"
+      ]
+    },
+    {
+      "id": "TF-EVIDENCE-DOCUMENT",
+      "category": "evidence",
+      "label": "Evidence / document dependency",
+      "evaluator": "evidence_burden",
+      "hypothesis": "Potential handling or validation effort where the task depends on multiple governed documents or scan/photo/document evidence.",
+      "candidates": [
+        "Document intelligence",
+        "Computer-vision evidence capture",
+        "Automated completeness validation"
+      ]
+    },
+    {
+      "id": "TF-TIMING",
+      "category": "timing",
+      "label": "Time-window dependency",
+      "evaluator": "pattern",
+      "fields": [
+        "clock"
+      ],
+      "pattern": "cut-?off|\\bsla\\b|validity|window|same-day|real-time|timely|response clock",
+      "hypothesis": "Potential service-level exposure where execution depends on a governed validity period, cutoff, response clock or operating window.",
+      "candidates": [
+        "Event-driven alerts",
+        "Deadline orchestration",
+        "Predictive exception warning"
+      ]
+    },
+    {
+      "id": "TF-CONTROL",
+      "category": "control",
+      "label": "Control / approval dependency",
+      "evaluator": "pattern",
+      "fields": [
+        "control",
+        "decisionAuthority"
+      ],
+      "pattern": "override|approval|regulatory|qualification|sanction|audit|release|segregat|liabil",
+      "hypothesis": "Potential control latency or audit burden where execution depends on explicit approval, override, qualification, regulatory or release controls.",
+      "candidates": [
+        "Policy/rules engine",
+        "Approval workflow",
+        "Automated control evidence"
+      ]
+    },
+    {
+      "id": "TF-FINANCIAL-OBJECT",
+      "category": "financial",
+      "label": "Financial-object dependency",
+      "evaluator": "pattern",
+      "pattern": "rate|charge|invoice|settlement|claim|reserve|credit|payment|financial|cost",
+      "hypothesis": "Potential financial leakage or settlement exposure if the governed execution state feeding a financial object is incomplete or inconsistent.",
+      "candidates": [
+        "Automated charge validation",
+        "Revenue-assurance control",
+        "Financial reconciliation"
+      ],
+      "fields": [
+        "outputs"
+      ]
+    }
+  ],
+  "vocabulary": {
+    "universe": "Supply Chain Universe",
+    "territory": "Supply-chain territory",
+    "module": "Atlas model",
+    "task": "A5 task",
+    "object": "Canonical object",
+    "execution": "Execution",
+    "sourceClass": "SUPPLY CHAIN DOMAIN PACK"
+  },
+  "compatibility": {
+    "legacyContract": "atlas-data-contract-v1.0",
+    "legacyParent": "atlas-page0-contract-v1.0",
+    "territoryAlias": "page0DomainId"
+  },
+  "extensions": {
+    "note": "All SCM depth remains in SCM modules. This pack only registers SCM-specific vocabulary/configuration; it does not generalize the 70-page content."
+  },
+  "transformationCategories": {
+    "handoff": {
+      "label": "Handoff / Human",
+      "color": "#d86a45"
+    },
+    "reconciliation": {
+      "label": "Reconciliation",
+      "color": "#8b5bd6"
+    },
+    "systems": {
+      "label": "Cross-system",
+      "color": "#188db0"
+    },
+    "exception": {
+      "label": "Conditional / Exception",
+      "color": "#d44852"
+    },
+    "evidence": {
+      "label": "Evidence / Document",
+      "color": "#c08716"
+    },
+    "timing": {
+      "label": "Timing",
+      "color": "#4e7fbe"
+    },
+    "control": {
+      "label": "Control / Approval",
+      "color": "#4f9d54"
+    },
+    "financial": {
+      "label": "Financial",
+      "color": "#e0841a"
+    }
+  },
+  "version": "1.0",
+  "contracts": [
+    "atlas-data-contract-v1.1",
+    "execution-instance-contract-v1",
+    "document-state-contract-v1",
+    "temporal-constraint-contract-v1",
+    "measurement-contract-v1",
+    "system-exchange-contract-v1"
+  ],
+  "relationshipVocabulary": "relationship-vocabulary-v1",
+  "overlayRegistry": "overlay-registry-v1.1",
+  "ruleRegistry": "rule-registry-v1.1",
+  "baselineSidecars": {
+    "road-ltl": {
+      "claimProvenance": "data/provenance/road-ltl-claim-provenance-v1.json",
+      "temporalConstraints": "data/temporal/road-ltl-temporal-constraints-v1.json",
+      "systemExchanges": "data/exchanges/road-ltl-system-exchanges-v1.json"
+    }
+  },
+  "foundationContractVersion": "1.1",
+  "recoveryLineage": "Stage23 territory/signal/heuristic semantics preserved; Foundation v1.1 governance pointers added"
+}

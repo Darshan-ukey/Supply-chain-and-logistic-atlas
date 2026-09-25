@@ -1,0 +1,31 @@
+{
+  "stage": "19-rebase",
+  "auditType": "PRE_BUILD_REBASE",
+  "status": "PASS",
+  "base": "Stage 18.5",
+  "provisionalStage19PreservedAt": "atlas-canvas-stage19-provisional-pre18.5",
+  "reason": "Rebase document ingestion onto domain-neutral Enterprise Operations Core without changing current Supply Chain product behavior.",
+  "baseCanonicalHashes": {
+    "data/atlas-registry.json": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8",
+    "data/page0/page0-v6.2.2.json": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374",
+    "data/modules/road-ltl-v1.2.json": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55"
+  },
+  "baseCoreHashes": {
+    "engine/domain-neutral-core.js": "63eaf10e1c54480fe353012818ea22ed5a865f3a5adca56ea2b6a22644866251",
+    "engine/adapters/supply-chain-legacy-v1.js": "81de3a1d87a9c392af2a4e9aef157068a0338ce2880f7d01fd2de884006bc0e3",
+    "engine/adapters/legacy-canvas-compat.js": "07455cba9bd6220014c33023e3cf76dd6135352c8784cb83fb69af6847eeec03",
+    "data/core/enterprise-core-ontology-v1.json": "dd39177c2621a37253f156b1d6bd47cfd110d36e4d737b3903496226e9a95a98",
+    "data/contracts/domain-extension-contract-v1.schema.json": "7802793fb4fc03a16dc79a8d2714b7c69b6babe8582f74055a16445d3a5f8799",
+    "data/domains/supply-chain-domain-pack-v1.json": "3d17ba3dc5dd5c9ecae9eb97d3cfbd984f416a78e595b7794ee4ddbbd67d0237",
+    "data/domains/accounts-payable-fixture-domain-pack-v1.json": "4f52c9cc76733eac6f1420eac956d3030b210b06501b9e08dd575b149cc2457e",
+    "data/fixtures/accounts-payable-module-v0.1.json": "435806d83dafe4efcc23cb1fca49dae1e13d9648412950ae9345d65d7ec0cef6"
+  },
+  "provisionalFeatureFiles": [
+    "stage19-client.js",
+    "api/_documents.js",
+    "api/document-ingest.js",
+    "api/documents.js",
+    "api/document-facts.js",
+    "migrations/stage19-document-ingestion.sql"
+  ]
+}

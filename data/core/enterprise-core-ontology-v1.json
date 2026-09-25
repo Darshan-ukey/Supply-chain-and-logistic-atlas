@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "enterprise-operations-core-ontology-v1.0",
+  "status": "FROZEN_FOR_STAGE_18_5",
+  "scope": "Domain-neutral semantic core for enterprise operations. Domain packs may extend but may not redefine these concepts.",
+  "concepts": [
+    {
+      "id": "process",
+      "name": "Process",
+      "definition": "A governed set of related work contributing to an operational objective."
+    },
+    {
+      "id": "task",
+      "name": "Task",
+      "definition": "An executable unit of work within a process."
+    },
+    {
+      "id": "state",
+      "name": "State",
+      "definition": "A condition of an operational entity before or after work occurs."
+    },
+    {
+      "id": "event",
+      "name": "Event",
+      "definition": "An occurrence that triggers, records, or results from execution."
+    },
+    {
+      "id": "decision",
+      "name": "Decision",
+      "definition": "A governed choice or evaluation point in execution."
+    },
+    {
+      "id": "rule",
+      "name": "Rule",
+      "definition": "A deterministic or policy constraint applied to execution."
+    },
+    {
+      "id": "control",
+      "name": "Control",
+      "definition": "A safeguard, validation, approval, or compliance mechanism."
+    },
+    {
+      "id": "actor",
+      "name": "Actor",
+      "definition": "A person, role, organization, or autonomous component participating in work."
+    },
+    {
+      "id": "system",
+      "name": "System",
+      "definition": "A technology system that produces, stores, authoritatively owns, or consumes operational state."
+    },
+    {
+      "id": "business-object",
+      "name": "Business Object",
+      "definition": "A governed operational object used, created, or changed by work."
+    },
+    {
+      "id": "evidence",
+      "name": "Evidence",
+      "definition": "A record supporting that an event, decision, action, or control occurred."
+    },
+    {
+      "id": "outcome",
+      "name": "Outcome",
+      "definition": "The operational result produced by execution."
+    },
+    {
+      "id": "relationship",
+      "name": "Relationship",
+      "definition": "A typed connection among governed concepts."
+    },
+    {
+      "id": "provenance",
+      "name": "Provenance",
+      "definition": "The source, version, confidence, and evidence basis for a governed assertion."
+    },
+    {
+      "id": "applicability",
+      "name": "Applicability",
+      "definition": "A domain-defined predicate describing when governed knowledge applies."
+    }
+  ],
+  "relationshipPrimitives": [
+    "REQUIRES",
+    "PRECEDES",
+    "FOLLOWS",
+    "OPTIONAL_AFTER",
+    "BRANCHES_TO",
+    "TRIGGERS",
+    "MAY_TRIGGER",
+    "BLOCKS",
+    "ALTERNATIVE_TO"
+  ],
+  "executionGrammar": [
+    "stateBefore",
+    "event",
+    "decision",
+    "rule",
+    "control",
+    "action",
+    "evidence",
+    "stateAfter",
+    "outcome"
+  ],
+  "extensionRule": "Domain packs may register new semantic types, applicability dimensions, territories, signals, transformation heuristics, and vocabulary. They may not mutate the meaning of core concepts.",
+  "id": "enterprise-core-v1",
+  "version": "1.0",
+  "entities": [
+    "Capability",
+    "Process",
+    "Task",
+    "State",
+    "Event",
+    "Decision",
+    "Rule",
+    "Control",
+    "Action",
+    "Evidence",
+    "Outcome",
+    "Actor",
+    "Role",
+    "System",
+    "BusinessObject",
+    "Relationship",
+    "Source",
+    "Applicability",
+    "Provenance"
+  ],
+  "relationshipTypes": [
+    "REQUIRES",
+    "PRECEDES",
+    "FOLLOWS",
+    "OPTIONAL_AFTER",
+    "BRANCHES_TO",
+    "TRIGGERS",
+    "BLOCKS",
+    "ALTERNATIVE_TO",
+    "PRODUCES",
+    "CONSUMES",
+    "PERFORMED_BY",
+    "AUTHORIZED_BY",
+    "EVIDENCED_BY",
+    "SUPPORTED_BY"
+  ],
+  "principles": [
+    "Domain concepts extend the core; they do not redefine it.",
+    "LLMs may reason over governed knowledge but may not redefine canonical knowledge.",
+    "Unknown and unsupported relationships remain explicit."
+  ],
+  "foundationHardeningVersion": "1.1"
+}

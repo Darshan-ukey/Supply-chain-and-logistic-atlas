@@ -1,0 +1,661 @@
+{
+  "schemaVersion": "atlas-v2-agent-execution-queue-v19",
+  "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v18",
+  "updatedAt": "2026-09-20T09:40:00+05:30",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
+  "demoIntegrationTargetBranch": "main",
+  "recoveryStandardPath": "governance/standards/ATLAS_PRE_P6_FOUNDATION_RECOVERY_STANDARD_V1.md",
+  "assetCustodyStandardPath": "governance/standards/ATLAS_ASSET_CUSTODY_AND_GOVERNANCE_SYNC_STANDARD_V1.md",
+  "roadmapPath": "governance/backlog/NEXT_PRODUCTION_EXECUTION_INTELLIGENCE_CRITICAL_PATH.md",
+  "architectureRefinementBacklogPath": "governance/architecture-refinement/ARCHITECTURE_REFINEMENT_BACKLOG_V1.md",
+  "architectureDecisionLedgerPath": "governance/architecture-refinement/ARCHITECTURE_DECISION_LEDGER_V1.md",
+  "architectureRefinementLogPath": "governance/architecture-refinement/ARCHITECTURE_REFINEMENT_LOG.md",
+  "demoBuildProtocolPath": "governance/demo-sprint/ATLAS_V2_DEMO_BUILD_PROTOCOL.md",
+  "demoHandoverPath": "governance/demo-sprint/ATLAS_V2_DEMO_HANDOVER.md",
+  "demoBuildLogPath": "governance/demo-sprint/ATLAS_V2_DEMO_BUILD_LOG.md",
+  "sharedExecutorCoordinationPath": "claude_chatGPT.md",
+  "githubOnlyReleasePolicyPath": "governance/demo-sprint/ATLAS_GITHUB_ONLY_DEMO_RELEASE_POLICY.md",
+  "executionPolicy": {
+    "readBeforeSelectingWork": true,
+    "identifierField": "stageId",
+    "legacyIdentifierAlias": "id",
+    "selfAuthorizeNextPhase": false,
+    "conflictPolicy": "STOP_AND_REPORT",
+    "assetCustodyCheckpointsRequired": true,
+    "governanceChangesMustSyncToGitHubBeforeExecution": true,
+    "driveDurableMirrorRequiredForGovernanceAndStageEvidence": true,
+    "subsequentStageInputsMustResolveOnGovernanceBranchByCheckpointC": true,
+    "neverWorkDirectlyOnMain": true,
+    "neverRedesignFrozenCanvasWithoutOwnerApproval": true,
+    "neverFabricateBusinessKnowledge": true,
+    "neverTargetHistoricalCountsDuringRebuild": true,
+    "neverMutateHistoricalCertifiedEvidence": true,
+    "neverInventUniverseOrCrosswalkIdentifiers": true,
+    "subStageAuthorizationIsBinding": true,
+    "architectureNorthStar": "GOVERNED_ENTERPRISE_TO_TOOL_INTELLIGENCE_AND_SPECIFICATION_LAYER",
+    "canonicalBoundaryPrinciple": "ATLAS_OWNS_UNDERSTANDING_AND_SPECIFICATION__DOWNSTREAM_PLATFORMS_OWN_EXECUTION",
+    "runtimeBusinessExecutionOutsideAtlasBoundary": true,
+    "technologyNeutralCanonicalBusinessTruthRequired": true,
+    "readinessMustFailClosedOnMandatoryKnowledgeGaps": true,
+    "demoPrimaryExecutor": "CHATGPT",
+    "demoBackupExecutor": "CLAUDE",
+    "claudeDemoBackupAuthorized": true,
+    "claudeBackupScope": "EXACT_CURRENT_AUTHORIZED_DEMO_STAGE_ONLY",
+    "claudeBackupActivation": [
+      "CHATGPT_UNAVAILABLE",
+      "CHATGPT_FAILED",
+      "OWNER_DIRECTS_TAKEOVER"
+    ],
+    "sharedExecutorLogRequired": true,
+    "demoNoDeltaOnlyCertification": true,
+    "demoPreMidPostAuditRequired": true,
+    "demoFullStateFreezeAfterEveryPassedStage": true,
+    "demoPriorFreezePointsImmutable": true,
+    "demoStrategy": "HYBRID_REUSE_PROVEN_EXECUTION_LINEAGE_WITH_ADDITIVE_ATLAS_V2_SURFACE",
+    "demoIsProofOfConceptNotProductionCertification": true,
+    "demoGovernanceViewSecondaryNotPrimaryNarrative": true,
+    "demoDoNotClaimV15GeneratesExistingMalkomProjection": true,
+    "demoDoNotSilentlyBridgeV12_V23_AND_V14_V15": true,
+    "demoDoNotHandAuthorLTL03WithoutExplicitOwnerSubAuthorization": true,
+    "demoRepresentativeExecutionDepthPreferredOverArtificialFullCoverage": true,
+    "demoGitHubOnly": true,
+    "demoVercelDeploymentAuthorized": false,
+    "demoVercelPreviewAuthorized": false,
+    "demoVercelPromotionAuthorized": false,
+    "demoVercelDeletionAuthorized": false,
+    "vercelReadOnlyAuditAllowed": true,
+    "demoImplementationMustUseExplicitBranch": "atlas-v2-demo-2026-09-14",
+    "demoMergeToMainRequiresOwnerApproval": true,
+    "mainMergeDoesNotImplyVercelDeploymentApproval": true,
+    "stopBeforeAnyActionExpectedToTriggerVercel": true
+  },
+  "mode": "ATLAS_V2_HYBRID_DEMO_SPRINT_GITHUB_ONLY",
+  "currentStageId": "D2.0.7",
+  "currentPhase": "ATLAS_V2_DEMO_SPRINT",
+  "demoTargetDate": "2026-09-14",
+  "stakeholderDemoDate": "2026-09-15",
+  "phases": [
+    {
+      "stageId": "R0.0",
+      "id": "R0.0",
+      "name": "Forensic Baseline & Recovery Governance",
+      "status": "COMPLETE"
+    },
+    {
+      "stageId": "R0.1",
+      "id": "R0.1",
+      "name": "Universe Materialization, Identity Reconciliation & Reference Ownership",
+      "status": "COMPLETE",
+      "subStages": [
+        {
+          "stageId": "R0.1A",
+          "id": "R0.1A",
+          "status": "COMPLETE_SUPERSEDED_FOR_CANONICAL_PROMOTION_BY_R0_1A_R"
+        },
+        {
+          "stageId": "R0.1A-R",
+          "id": "R0.1A-R",
+          "status": "COMPLETE",
+          "qaDisposition": "PASS",
+          "postQaGovernedStatePath": "governance/recovery/R0.1A-R/POST_QA_GOVERNED_STATE.json",
+          "certifiedSemanticStructuresSha256": "82104521148e1d1c24d4cc161afa872f6076e6d204e06c062393f3dac656044d"
+        },
+        {
+          "stageId": "R0.1B",
+          "id": "R0.1B",
+          "status": "COMPLETE",
+          "qaDisposition": "PASS",
+          "postQaGovernedStatePath": "governance/recovery/R0.1B/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json"
+        },
+        {
+          "stageId": "R0.1C",
+          "id": "R0.1C",
+          "status": "COMPLETE",
+          "qaDisposition": "PASS",
+          "postQaGovernedStatePath": "governance/recovery/R0.1C/POST_QA_GOVERNED_STATE.json",
+          "certifiedResult": {
+            "a5ReferencedCount": 82,
+            "a5Derivability": "82_OF_82",
+            "scpReferencedCount": 22,
+            "scpOrphans": 0,
+            "trueReferenceDefects": 0
+          }
+        }
+      ]
+    },
+    {
+      "stageId": "R0.2",
+      "id": "R0.2",
+      "name": "Road LTL Source Closure, Effective 1.5 & P6.0 Re-certification",
+      "status": "COMPLETE",
+      "qaDisposition": "PASS",
+      "postQaGovernedStatePath": "governance/recovery/R0.2/POST_QA_GOVERNED_STATE.json",
+      "certifiedResult": {
+        "releasePackageSha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+        "roadLtl14ModuleSha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+        "roadLtl14OperationalKnowledgeSha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e",
+        "effectiveRoadLtl15Sha256": "a303d30d1c415d0bbfa9efab27ae1ac1edcd32fffb5f9e236e8c1ebf629bf7f6",
+        "effectiveLineage": "21x1.4_PLUS_LTL-03x1.5",
+        "p6_0Recertification": "502_OF_502_PASS",
+        "productionPointersPromoted": false
+      }
+    },
+    {
+      "stageId": "R0.3",
+      "id": "R0.3",
+      "name": "Road LTL Operational Knowledge + Canonical Information Hardening",
+      "status": "COMPLETE",
+      "qaDisposition": "PASS",
+      "postQaGovernedStatePath": "governance/recovery/R0.3/POST_QA_GOVERNED_STATE_FINAL_CLOSURE.json",
+      "implementationEndingSha": "abfc12a675107555177dfaf2113b7833a7ded644",
+      "governanceMergeSha": "c45c5b443b3a9b19b43fd670d7412fa1144fd026",
+      "ciRunId": 34438976431,
+      "certifiedResult": {
+        "taskCount": 22,
+        "effectiveLineage": "21x1.4_PLUS_LTL-03x1.5",
+        "assessedCellsPerSurface": 528,
+        "composedSatisfied": 291,
+        "composedNestedOnly": 64,
+        "composedAbsent": 173,
+        "canonicalObjectsReferenced": 66,
+        "canonicalObjectContracts": 0,
+        "bolFields": 76,
+        "conformantInformationResolutionContracts": 0,
+        "knowledgeGapsOpen": 24,
+        "productionPointersPromoted": false
+      }
+    },
+    {
+      "stageId": "AR0.0",
+      "id": "AR0.0",
+      "name": "Architecture Baseline & Challenge Register",
+      "status": "COMPLETE",
+      "ownerReviewDisposition": "OWNER_REVIEWED_ACCEPTED_AS_REFERENCE_BASELINE",
+      "primaryObjectiveSupersededByDecision": "AR-D013",
+      "authorizedExecutor": "CHATGPT",
+      "claudeExecutionAuthorized": false
+    },
+    {
+      "stageId": "AR0.1",
+      "id": "AR0.1",
+      "name": "V1.1 / WorkDefinition Sufficiency Audit",
+      "status": "COMPLETE",
+      "authorizedExecutor": "CHATGPT",
+      "claudeExecutionAuthorized": false,
+      "reviewPullRequest": 9,
+      "reviewPullRequestState": "MERGED",
+      "governanceMergeSha": "206db2b54f40140cc372c4f70bd314934abc489e",
+      "finalDisposition": "CORE_ARCHITECTURE_DIRECTION_VALID__PARTIALLY_SUFFICIENT__TARGETED_SUCCESSOR_REFINEMENT_REQUIRED"
+    },
+    {
+      "stageId": "AR0.2",
+      "id": "AR0.2",
+      "name": "Layer-Boundary Decision",
+      "status": "AWAITING_OWNER_REVIEW__TEMPORARILY_NOT_CURRENT_DURING_DEMO_SPRINT",
+      "authorizedExecutor": "CHATGPT",
+      "claudeExecutionAuthorized": false,
+      "workingBranch": "atlas-architecture-ar0-2-layer-boundary",
+      "reviewPullRequest": 10,
+      "reviewPullRequestState": "OPEN",
+      "candidateDisposition": "TARGETED_LAYER_BOUNDARY_REFINEMENT_REQUIRED__NO_MONOLITHIC_NEW_SEMANTIC_LAYER",
+      "nextStageAuthorization": "NONE"
+    },
+    {
+      "stageId": "AR0.3",
+      "id": "AR0.3",
+      "name": "Candidate Contract Architecture",
+      "status": "BLOCKED_UNTIL_AR0_2_OWNER_REVIEW",
+      "authorizedExecutor": "CHATGPT",
+      "claudeExecutionAuthorized": false
+    },
+    {
+      "stageId": "AR0.4",
+      "id": "AR0.4",
+      "name": "Adversarial Multi-Pattern Validation",
+      "status": "BLOCKED_UNTIL_AR0_3_REVIEW",
+      "authorizedExecutor": "CHATGPT",
+      "claudeExecutionAuthorized": false
+    },
+    {
+      "stageId": "AR0.5",
+      "id": "AR0.5",
+      "name": "Successor Architecture Candidate",
+      "status": "BLOCKED_UNTIL_AR0_4_REVIEW",
+      "authorizedExecutor": "CHATGPT",
+      "claudeExecutionAuthorized": false
+    },
+    {
+      "stageId": "AR0.6",
+      "id": "AR0.6",
+      "name": "Owner Freeze Decision & Recovery Re-baseline",
+      "status": "BLOCKED_UNTIL_AR0_5_REVIEW",
+      "authorizedExecutor": "CHATGPT",
+      "claudeExecutionAuthorized": false,
+      "ownerApprovalRequired": true
+    },
+    {
+      "stageId": "D2.0",
+      "id": "D2.0",
+      "name": "Atlas V2 Hybrid Demo Sprint",
+      "status": "ACTIVE",
+      "primaryExecutor": "CHATGPT",
+      "backupExecutor": "CLAUDE",
+      "demoObjective": "PROVE_REPRESENTATIVE_DOMAIN_TO_MALKOM_EXECUTION_PATH_WITHOUT_CLAIMING_FULL_NEW_PIPELINE_COMPLETENESS",
+      "subStages": [
+        {
+          "stageId": "D2.0.0",
+          "id": "D2.0.0",
+          "name": "Baseline seam verification + GitHub branch/freeze setup",
+          "status": "COMPLETE_WITH_EXCEPTION",
+          "primaryExecutor": "CHATGPT",
+          "backupExecutor": "CLAUDE",
+          "claudeBackupAuthorized": true,
+          "featureMutationAllowed": false,
+          "exitCriteria": [
+            "VERIFY_FOUNDATION_AND_REPOSITORY_BASELINE_RELATIONSHIP",
+            "LOCATE_AND_VERIFY_AUTHORITATIVE_CANVAS_V2_ASSET_AND_HISTORY",
+            "VERIFY_V12_TO_DOMAIN_WAREHOUSE_V23_TO_MALKOM_PROOF_ASSETS_AND_KNOWN_GAPS",
+            "VERIFY_ADDITIVE_COMPATIBILITY_WITH_FOUNDATION_CODEBASE",
+            "VERIFY_UNIVERSE_ROAD_LTL_OCEAN_ASK_ATLAS_VERSION_FACTS",
+            "VERIFY_GITHUB_BRANCH_INVENTORY_AND_ASSET_PROVENANCE",
+            "VERIFY_DEMO_BRANCH_ATLAS_V2_DEMO_2026_09_14_FROM_MAIN",
+            "CREATE_PRE_CHANGE_FULL_STATE_FREEZE",
+            "VERIFY_NO_VERCEL_SIDE_EFFECT"
+          ],
+          "executor": "CHATGPT+CLAUDE",
+          "evidence": "Exit criteria evidenced across claude_chatGPT.md 2026-09-12 09:41-16:22 IST entries; no dedicated POST_BUILD_AUDIT document exists.",
+          "exception": "CREATE_PRE_CHANGE_FULL_STATE_FREEZE was never performed; no freeze artifact exists on the demo branch. 8 of 9 exit criteria satisfied.",
+          "qaType": "SELF_REPORTED_NOT_INDEPENDENT"
+        },
+        {
+          "stageId": "D2.0.1",
+          "id": "D2.0.1",
+          "name": "Additive Canvas V2 shell + Atlas scope/future page",
+          "status": "COMPLETE",
+          "primaryExecutor": "CHATGPT",
+          "backupExecutor": "CLAUDE",
+          "implementationBranch": "atlas-v2-demo-2026-09-14",
+          "scope": "INTEGRATE_REUSABLE_CANVAS_V2_PRESENTATION_SHELL_WITHOUT_REDEFINING_CANONICAL_DATA; ADD_FROM_DOMAIN_KNOWLEDGE_TO_EXECUTION_READINESS_PAGE",
+          "guardrails": [
+            "ADDITIVE_ONLY",
+            "PRESERVE_FOUNDATION_SEMANTICS",
+            "NO_CLAIM_NEW_PIPELINE_IS_ALREADY_END_TO_END",
+            "NO_VERCEL_DEPLOYMENT"
+          ],
+          "executor": "CHATGPT",
+          "buildSha": "3336f658",
+          "auditDoc": "governance/demo-sprint/D2.0.1_POST_BUILD_AUDIT.md",
+          "qaType": "EXECUTOR_SELF_CERTIFIED"
+        },
+        {
+          "stageId": "D2.0.2",
+          "id": "D2.0.2",
+          "name": "Road LTL + Ocean demo domain surfaces",
+          "status": "COMPLETE",
+          "primaryExecutor": "CHATGPT",
+          "backupExecutor": "CLAUDE",
+          "implementationBranch": "atlas-v2-demo-2026-09-14",
+          "scope": "PRESENT_VERIFIED_ROAD_LTL_DOMAIN_SURFACE_AND_OWNER_AUTHORIZED_OCEAN_0_6_DEMO_SURFACE_WITH_CORRECT_STATUS_LABELING",
+          "guardrails": [
+            "DO_NOT_RELABEL_CANDIDATE_AS_PRODUCTION",
+            "FAIL_CLOSED_WHERE_DEPTH_IS_UNAVAILABLE",
+            "NO_VERCEL_DEPLOYMENT"
+          ],
+          "executor": "CLAUDE_BUILD_CHATGPT_AUDIT",
+          "buildSha": "0d2a8ad",
+          "auditDoc": "governance/demo-sprint/D2.0.2_POST_BUILD_AUDIT.md",
+          "qaType": "CROSS_AGENT_AUDITED",
+          "note": "Built by Claude, independently audited by ChatGPT. The only cross-agent-verified stage in this sprint."
+        },
+        {
+          "stageId": "D2.0.3",
+          "id": "D2.0.3",
+          "name": "Proven Road LTL execution-depth integration",
+          "status": "COMPLETE",
+          "primaryExecutor": "CHATGPT",
+          "backupExecutor": "CLAUDE",
+          "implementationBranch": "atlas-v2-demo-2026-09-14",
+          "scope": "INTEGRATE_VERIFIED_EXISTING_V12_DOMAIN_WAREHOUSE_V23_REFERENCE_WORKDEFINITION_DEPTH_AS_POC_EXECUTION_PROOF",
+          "guardrails": [
+            "LABEL_REFERENCE_PROOF_LINEAGE",
+            "DO_NOT_REBRAND_AS_V15_OUTPUT",
+            "PREFER_REPRESENTATIVE_PATTERNS_OVER_ARTIFICIAL_COMPLETION",
+            "NO_HAND_AUTHORED_LTL03_WITHOUT_EXPLICIT_OWNER_SUB_AUTHORIZATION",
+            "NO_VERCEL_DEPLOYMENT"
+          ],
+          "executor": "CLAUDE",
+          "buildSha": "f22b77d",
+          "auditDoc": "governance/demo-sprint/D2.0.3_POST_BUILD_AUDIT.md",
+          "qaType": "CROSS_AGENT_AUDITED",
+          "note": "Picked up after ChatGPT stalled fail-closed on a double-nested path. Malkom adapter imported byte-identical; 22/22 compatible and materializable.",
+          "crossAgentQA": {
+            "reviewer": "CHATGPT",
+            "result": "PASS",
+            "commit": "34bae44",
+            "caveat": "ChatGPT independently verified source identity, change scope, lineage truth and certification-guard logic from committed artifacts. It did not re-run Node locally; the execution runs (22/22, negative controls) remain executor-run evidence."
+          }
+        },
+        {
+          "stageId": "D2.0.4",
+          "id": "D2.0.4",
+          "name": "Malkom 3.0 adapter/projection integration",
+          "status": "COMPLETE",
+          "primaryExecutor": "CHATGPT",
+          "backupExecutor": "CLAUDE",
+          "implementationBranch": "atlas-v2-demo-2026-09-14",
+          "scope": "WIRE_AND_DEMONSTRATE_VERIFIED_EXISTING_MALKOM_ADAPTER_PROJECTION_FROM_PROVEN_REFERENCE_LINEAGE",
+          "guardrails": [
+            "MALKOM_IS_FIRST_CONSUMER_NOT_CANONICAL_ATLAS_MODEL",
+            "NO_FALSE_V15_COMPILER_CLAIM",
+            "DOCUMENT_KNOWN_ADAPTER_LOSSES_GAPS",
+            "NO_VERCEL_DEPLOYMENT"
+          ],
+          "executor": "CLAUDE",
+          "buildSha": "457003d",
+          "auditDoc": "governance/demo-sprint/D2.0.4_POST_BUILD_AUDIT.md",
+          "qaType": "CROSS_AGENT_AUDITED",
+          "note": "Deterministic Malkom reference projection artifact; lineage separation mechanically enforced by test; negative controls proven to fail closed.",
+          "crossAgentQA": {
+            "reviewer": "CHATGPT",
+            "result": "PASS",
+            "commit": "35d0b04",
+            "caveat": "ChatGPT independently verified source identity, change scope, lineage truth and certification-guard logic from committed artifacts. It did not re-run Node locally; the execution runs (22/22, negative controls) remain executor-run evidence."
+          }
+        },
+        {
+          "stageId": "D2.0.5",
+          "id": "D2.0.5",
+          "name": "Representative POC journey + secondary governance/readiness view",
+          "status": "COMPLETE",
+          "primaryExecutor": "CHATGPT",
+          "backupExecutor": "CLAUDE",
+          "implementationBranch": "atlas-v2-demo-2026-09-14",
+          "scope": "INTEGRATE_DEMO_NAVIGATION_TRACE_AND_REPRESENTATIVE_60_70_PERCENT_POC_JOURNEY; KEEP_GOVERNANCE_READINESS_SECONDARY",
+          "guardrails": [
+            "NO_FAKE_NUMERIC_COMPLETENESS_SCORE",
+            "SHOW_GOVERNANCE_EVIDENCE_ON_DEMAND_NOT_AS_PRIMARY_PITCH",
+            "TRACE_LINEAGE_ACCURATELY",
+            "NO_VERCEL_DEPLOYMENT"
+          ],
+          "executor": "CLAUDE",
+          "buildSha": "319147e",
+          "auditDoc": "governance/demo-sprint/D2.0.5_POST_BUILD_AUDIT.md",
+          "qaType": "CROSS_AGENT_AUDITED",
+          "note": "POC journey page; every stated value read from a committed artifact and asserted by test; 3 negative controls proven to fail closed.",
+          "crossAgentQA": {
+            "reviewer": "CHATGPT",
+            "result": "PASS",
+            "commit": "4ac3e4f",
+            "caveat": "ChatGPT independently verified source identity, change scope, lineage truth and certification-guard logic from committed artifacts. It did not re-run Node locally; the execution runs (22/22, negative controls) remain executor-run evidence."
+          }
+        },
+        {
+          "stageId": "D2.0.6",
+          "id": "D2.0.6",
+          "name": "GitHub full integration + regression + merge-readiness certification",
+          "status": "COMPLETE",
+          "primaryExecutor": "CHATGPT",
+          "backupExecutor": "CLAUDE",
+          "implementationBranch": "atlas-v2-demo-2026-09-14",
+          "scope": "END_TO_END_REPOSITORY_UI_DATA_SECURITY_NAVIGATION_BUILD_AND_MERGE_READINESS_CHECKS; CREATE_POST_BUILD_FULL_STATE_FREEZE",
+          "guardrails": [
+            "NO_DELTA_ONLY_CERTIFICATION",
+            "VERIFY_PUBLIC_ADMIN_BOUNDARIES",
+            "VERIFY_NO_STALE_OR_FALSE_VERSION_LABELS",
+            "NO_DEPLOYMENT_PARITY_REQUIREMENT",
+            "NO_VERCEL_DEPLOYMENT"
+          ],
+          "executor": "CLAUDE",
+          "buildSha": "0e6a715",
+          "auditDoc": "governance/demo-sprint/D2.0.6_POST_BUILD_AUDIT.md",
+          "freezeDoc": "governance/demo-sprint/D2.0.6_POST_BUILD_FULL_STATE_FREEZE.json",
+          "qaType": "SELF_REPORTED_NOT_INDEPENDENT",
+          "note": "Full-state cert 17/17 across 721 files. Main-baseline comparison exposed a regression from commit ed7507c (9th serverless function breaking the 8-router invariant); fixed architecturally, not by weakening the test.",
+          "mergeReadinessConditions": [
+            "data/module-catalog.json and vercel.json now differ from the v1.1.8 release-integrity pinned baseline (37 critical files). Both changes are intentional and evidenced. Pinned hashes deliberately NOT updated - that would forge release integrity. Requires a governed release-baseline bump (Owner decision).",
+            "If merged without that bump, the live /api/system?action=release-integrity endpoint will report criticalIntegrity:false."
+          ]
+        },
+        {
+          "stageId": "D2.0.7",
+          "id": "D2.0.7",
+          "name": "Owner-approved certified demo branch merge to main",
+          "status": "AUTHORIZED_BLOCKED_PENDING_VERCEL_INTEGRATION_RESOLUTION",
+          "primaryExecutor": "CHATGPT",
+          "backupExecutor": "CLAUDE",
+          "ownerApprovalRequired": true,
+          "scope": "COMPARE_CERTIFIED_DEMO_BRANCH_TO_MAIN_AND_MERGE_ONLY_THE_CERTIFIED_GITHUB_STATE; RECORD_MERGE_SHA_AND_POST_MERGE_REPOSITORY_INTEGRITY",
+          "guardrails": [
+            "NO_VERCEL_DEPLOYMENT",
+            "MAIN_MERGE_IS_NOT_LIVE_PROMOTION",
+            "STOP_IF_GIT_INTEGRATION_WOULD_AUTO_DEPLOY",
+            "PRESERVE_ROLLBACK_FREEZE_POINT"
+          ],
+          "recordedBlocker": {
+            "guardrail": "STOP_IF_GIT_INTEGRATION_WOULD_AUTO_DEPLOY",
+            "status": "UNRESOLVED",
+            "finding": "The Vercel GitHub App on this repository has historically produced a deployment record on every push to every branch (333 preview + 13 production observed 2026-09-12). A merge to main would likely trigger a production deployment rather than being a GitHub-only action.",
+            "inspectionBlocked": "The connected Vercel account returns 403 on project logistic_atlas_v2 (account/team scope mismatch), so the integration cannot currently be inspected or disabled.",
+            "requiredBeforeStage": "Reconnect Vercel under ukeydarsh-2051s-projects or supply a scoped token, confirm integration behaviour, and prefer a preview deployment of the demo branch over a main merge for browser verification."
+          },
+          "recommendedAlternative": "Deploy atlas-v2-demo-2026-09-14 as a Vercel PREVIEW rather than merging to main. Closes the outstanding browser/visual verification gap without triggering production auto-deploy and without hitting the release-integrity condition above."
+        }
+      ]
+    },
+    {
+      "stageId": "ATLAS_V2_DEMO_GO_LIVE",
+      "id": "ATLAS_V2_DEMO_GO_LIVE",
+      "name": "Atlas V2 Demo Live Deployment",
+      "status": "SUSPENDED_BY_OWNER_NO_VERCEL_RULE",
+      "ownerApprovalRequired": true,
+      "productionCertificationClaim": false,
+      "note": "NOT_PART_OF_CURRENT_DEMO_SPRINT; REQUIRES_SEPARATE_FUTURE_OWNER_AUTHORIZATION"
+    },
+    {
+      "stageId": "R0.4",
+      "id": "R0.4",
+      "name": "Generic Recursive Decomposition Compiler & Road LTL Re-certification",
+      "status": "SUSPENDED_BY_ARCHITECTURE_REFINEMENT_GATE",
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "stageId": "R0.5",
+      "id": "R0.5",
+      "name": "Ocean FCL/LCL 0.6 Source Closure & Operational Knowledge Depth Uplift",
+      "status": "BLOCKED_UNTIL_ARCHITECTURE_AND_R0_4_QA",
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "stageId": "R0.6",
+      "id": "R0.6",
+      "name": "Multi-Mode Decomposition Proof & Pre-P6 Readiness Certification",
+      "status": "BLOCKED_UNTIL_R0_5_QA",
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "stageId": "P6.2",
+      "id": "P6.2",
+      "name": "Canonical WorkDefinition Compilation",
+      "status": "SUSPENDED_BY_RECOVERY_AND_ARCHITECTURE_GATE",
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "stageId": "P6.3",
+      "id": "P6.3",
+      "name": "Identity, Authorization & Public/Protected Certification",
+      "status": "BLOCKED_UNTIL_P6_2_QA",
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "stageId": "P6.4",
+      "id": "P6.4",
+      "name": "Multi-mode Execution Depth / Projection Proof",
+      "status": "TO_BE_RESCOPED_AFTER_ARCHITECTURE_AND_RECOVERY"
+    },
+    {
+      "stageId": "P6.5",
+      "id": "P6.5",
+      "name": "Atlas V2 Integration & Production Certification",
+      "status": "BLOCKED_UNTIL_PRIOR_QA",
+      "qaRequiredBeforeNext": true
+    },
+    {
+      "stageId": "ATLAS_V2_GO_LIVE",
+      "id": "ATLAS_V2_GO_LIVE",
+      "name": "Atlas V2.0 Production Promotion",
+      "status": "BLOCKED",
+      "ownerApprovalRequired": true
+    }
+  ],
+  "demoCriticalPath": [
+    "D2.0.0",
+    "D2.0.1",
+    "D2.0.2",
+    "D2.0.3",
+    "D2.0.4",
+    "D2.0.5",
+    "D2.0.6",
+    "D2.0.7"
+  ],
+  "productionCriticalPath": [
+    "AR0.2_OWNER_REVIEW",
+    "AR0.3",
+    "AR0.4",
+    "AR0.5",
+    "AR0.6_OWNER_FREEZE",
+    "R0.4",
+    "R0.5",
+    "R0.6",
+    "P6.2",
+    "P6.3",
+    "P6.4",
+    "P6.5",
+    "ATLAS_V2_GO_LIVE"
+  ],
+  "certificationDimensions": [
+    "PHYSICAL_EXISTENCE",
+    "SEMANTICS",
+    "COVERAGE",
+    "EVIDENCE",
+    "DEPENDENCY_CLOSURE",
+    "REPRODUCIBILITY",
+    "REFERENTIAL_INTEGRITY",
+    "REGISTRY_COHERENCE",
+    "CLASSIFICATION_ACCURACY",
+    "SECURITY_BOUNDARY",
+    "REGRESSION",
+    "MERGE_READINESS"
+  ],
+  "historicalFindings": [
+    {
+      "stageId": "FINDING-UNIVERSE-01",
+      "status": "REMATERIALIZED_AND_AUTHORITY_CERTIFIED_NOT_PRODUCTION_PROMOTED"
+    },
+    {
+      "stageId": "FINDING-UNIVERSE-02",
+      "status": "RESOLVED_BY_R0_1C_NO_REFERENCE_DEFECT"
+    },
+    {
+      "stageId": "FINDING-CROSSWALK-01",
+      "status": "REGISTERED_EXISTING_GOVERNED_ASSET"
+    },
+    {
+      "stageId": "FINDING-LTL-BASE-01",
+      "status": "RESOLVED_BY_R0_2_QA_PASS"
+    },
+    {
+      "stageId": "FINDING-P6-1-01",
+      "status": "DEFERRED_TO_ARCHITECTURE_REBASE_BEFORE_ANY_REBUILD"
+    },
+    {
+      "stageId": "FINDING-OCEAN-01",
+      "status": "RECOVERY_REQUIRED_AFTER_ARCHITECTURE_GATE_FOR_FULL_CERTIFICATION__DEMO_SURFACE_MAY_USE_EXISTING_0_6_AS_OWNER_ASSUMPTION"
+    },
+    {
+      "stageId": "FINDING-VERCEL-01",
+      "status": "VERCEL_READ_ONLY_AUDIT_ONLY__NO_DEPLOY_DELETE_OR_PROMOTE_AUTHORIZED"
+    }
+  ],
+  "demoSprintOpenItems": [
+    "BROWSER_VISUAL_VERIFICATION_NEVER_PERFORMED — still the single functional gap; no browser or headless driver available to either executor.",
+    "D2.0.0 CREATE_PRE_CHANGE_FULL_STATE_FREEZE never performed; cannot be recreated retroactively (D2.0.6 freeze is post-build only).",
+    "D2.0.3-D2.0.5 are now CROSS_AGENT_AUDITED by ChatGPT (PASS). D2.0.6 remains executor self-reported and is open to the same independent audit.",
+    "D2.0.7 auto-deploy conflict unresolved (see D2.0.7.recordedBlocker).",
+    "DRIVE CUSTODY GAP: no D2.0.x demo-sprint artifact has been mirrored to Drive. Newest Drive content is AR0.1/AR0.2 dated 2026-09-11. Drive writes are returning \"No approval received\" to the connector."
+  ],
+  "forwardProductBuildBacklog": [
+    {
+      "stageId": "ATL-35",
+      "id": "ATL-35",
+      "name": "Research authoritative decomposition rules for LTL E5 tasks",
+      "status": "BLOCKED_PENDING_ATL_4_OWNER_AUTHORIZATION",
+      "owner": "CHATGPT",
+      "linearIssue": "ATL-35",
+      "relatedTo": [
+        "ATL-32"
+      ],
+      "objective": "Determine how far Atlas can generate Work Decomposition and WorkDefinitions deterministically from authoritative domain sources rather than using an LLM to invent the decomposition.",
+      "scope": [
+        "START_FROM_GOVERNED_LTL_E5_22_TASK_INVENTORY",
+        "IDENTIFY_AUTHORITATIVE_SOURCES_FOR_PROCESSES_SUBPROCESSES_ACTIVITIES_INFORMATION_DECISIONS_CONTROLS_HANDOFFS_AND_LIFECYCLE_EVENTS",
+        "DISTINGUISH_INDUSTRY_STANDARD_WORK_FROM_CARRIER_CLIENT_BPO_SPECIFIC_OPERATING_MODEL_WORK",
+        "BUILD_SOURCE_BACKED_DECOMPOSITION_MAP_BEGINNING_WITH_DOCUMENTATION_BOL",
+        "DERIVE_DETERMINISTIC_GENERATION_RULE_CANDIDATES_FROM_GOVERNED_DOMAIN_PRIMITIVES",
+        "IDENTIFY_RESIDUAL_GAPS_REQUIRING_CLIENT_SOP_OR_SME_EVIDENCE",
+        "DERIVE_EXECUTION_QUEUE_CANDIDATES_FROM_AUTHORITATIVE_LIFECYCLE_STATES_ACTIONS_EXCEPTIONS_AND_UNRESOLVED_DEPENDENCIES",
+        "SEPARATE_IDENTITY_ASSIGNMENT_FROM_BOOKING_PICKUP_AND_DOCUMENT_LIFECYCLES_UNLESS_SOURCE_EVIDENCE_PROVES_DEPENDENCY"
+      ],
+      "deliverables": [
+        "AUTHORITATIVE_SOURCE_HIERARCHY",
+        "22_TASK_EVIDENCE_AND_DECOMPOSITION_COVERAGE_MATRIX",
+        "DETAILED_BOL_DOCUMENTATION_WORKED_DECOMPOSITION",
+        "DETERMINISTIC_GENERATION_RULE_CANDIDATES",
+        "CLIENT_SOP_SME_KNOWLEDGE_GAPS",
+        "P6_1_REPLACEMENT_DESIGN_RECOMMENDATION",
+        "SOURCE_DERIVED_EXECUTION_QUEUE_AND_STATE_TRANSITION_MAP",
+        "RECOVERY_READY_RESEARCH_CUSTODY_PACKAGE_FOR_DRIVE_WITH_SOURCE_LOCATIONS_EXTRACTED_PRIMITIVES_RULES_AND_PROVENANCE"
+      ],
+      "guardrails": [
+        "LLM_MAY_RESEARCH_EXTRACT_NORMALIZE_AND_MAP_EVIDENCE_BUT_LLM_GENERATED_DECOMPOSITION_IS_NOT_AUTHORITATIVE_EVIDENCE",
+        "GOVERNED_DECOMPOSITION_MUST_BE_TRACEABLE_TO_AUTHORITATIVE_SOURCES_AND_RULES",
+        "DO_NOT_RECONSTRUCT_HISTORICAL_P6_1_GENERATOR",
+        "DO_NOT_TARGET_OR_MANUFACTURE_HISTORICAL_COUNTS",
+        "FORWARD_PRODUCT_BUILD_WORK_NOT_RECOVERY_REOPENING",
+        "QUEUES_MUST_BE_DERIVED_FROM_GOVERNED_SOURCE_BACKED_STATES_RULES_OR_EXCEPTIONS_NOT_MANUALLY_INVENTED"
+      ],
+      "blockedBy": [
+        "ATL-4"
+      ],
+      "methodologyStandardPath": "governance/standards/ATLAS_EXECUTION_READINESS_DERIVATION_METHOD_V1.md",
+      "methodologyDriveUrl": "https://docs.google.com/document/d/12SRbTomHs-_sEZusn7JY2msMwEZ7zMCqOPhJE7q2vDs/edit?usp=drivesdk"
+    },
+    {
+      "stageId": "ATL-36",
+      "title": "Independent QA — P6.1 successor generator against LTL-03 BOL evidence",
+      "status": "BLOCKED_PENDING_GENERATOR_EVIDENCE_PACKAGE",
+      "owner": "CLAUDE",
+      "blockedBy": [
+        "ATL-35"
+      ],
+      "scope": [
+        "INDEPENDENTLY_AUDIT_SUCCESSOR_GENERATOR_MECHANISM",
+        "VERIFY_SOURCE_TO_PRIMITIVE_TO_DECOMPOSITION_RULE_TRACEABILITY",
+        "VERIFY_P6_1_RECURSION_WITHOUT_UNSUPPORTED_SYNTHESIS",
+        "VERIFY_DOMAIN_EXECUTION_CONTRACT_COMPLETENESS_AND_TECHNOLOGY_NEUTRALITY",
+        "VERIFY_GENERATOR_OUTPUT_AGAINST_INDEPENDENT_BOL_FIELD_UNIVERSE",
+        "IDENTIFY_FALSE_POSITIVES_MISSING_FIELDS_UNSUPPORTED_RULES_AND_CLIENT_ASSUMPTIONS_PROMOTED_TO_CANONICAL"
+      ],
+      "deliverables": [
+        "CLAUDE_INDEPENDENT_AUDIT_REPORT",
+        "FIELD_LEVEL_GENERATOR_COVERAGE_AND_GAP_FINDINGS",
+        "FINAL_DISPOSITION_FOR_OWNER_REVIEW"
+      ],
+      "guardrails": [
+        "BUILDER_CHATGPT_CANNOT_CLOSE_OWN_FINAL_QA_GATE",
+        "AUDIT_MUST_USE_FROZEN_EVIDENCE_PACKAGE",
+        "OWNER_RETAINS_FINAL_ACCEPTANCE_AUTHORITY"
+      ]
+    }
+  ]
+}

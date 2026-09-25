@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "atlas-module-validation-report-v1.0",
+  "moduleId": "road-ltl",
+  "moduleVersion": "1.2",
+  "status": "PASS",
+  "gates": {
+    "SCHEMA": "PASS",
+    "PAGE0_INHERITANCE": "PASS",
+    "ONTOLOGY_REFERENCES": "PASS",
+    "PROCESS_RELATIONSHIPS": "PASS",
+    "SOURCE_REFERENCES": "PASS",
+    "APPLICABILITY": "PASS",
+    "REGRESSION": "PASS",
+    "HUMAN_APPROVAL": "PASS"
+  },
+  "counts": {
+    "a3Parents": 13,
+    "processes": 22,
+    "processFlowEdges": 39,
+    "sources": 29
+  },
+  "note": "Stage 17 preserves the Stage 16 published module unchanged; this report exists so the hidden governance link has a concrete runtime artifact."
+}

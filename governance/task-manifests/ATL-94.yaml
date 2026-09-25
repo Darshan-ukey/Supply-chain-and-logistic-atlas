@@ -1,0 +1,115 @@
+task_id: ATL-94
+title: "CI executable gate — GitHub runs ATL-82 candidate SQL on every commit (no agent needs to execute SQL)"
+task_status: GOVERNED_COMPLETE
+status_detail: "ATL-94 acceptance criteria satisfied. Byte-exact reviewed workflow/runner/publisher/gate pins verified after landing. First GitHub Actions canary run 35994787044 completed success and published PASS proof at commit e25e938ad65e0077e73851573e0e13ffe8eba46c. Actions and atlas-ci-proofs branch publication are operational. No Supabase mutation."
+manifest_status: CLOSED
+execution_owner: "Claude (build and local verification); ChatGPT (GitHub landing); Owner (workflow-file push fallback and repository settings)"
+decision_authority: "Darshan / Atlas Owner-Governor"
+parent_task: ATL-60
+related_tasks: [ATL-82, ATL-83]
+linear_url: "https://linear.app/sefl-transformation/issue/ATL-94/ci-executable-gate-github-runs-atl-82-candidate-sql-on-every-commit-no"
+created_at: "2026-09-24"
+last_updated: "2026-09-24"
+
+origin: "Owner request 2026-09-24: ChatGPT (ATL-82 builder) cannot run SQL, so ATL-82 V0.2 reached QA never executed (it did not compile). Make SQL execution independent of any agent."
+
+governing_inputs:
+  - governance/implementation/ATL_83_BOUNDED_REQA_ATL_82_V0_2_V0_1.md
+  - governance/implementation/ATL_83_CORRECTED_CANDIDATE_GATE_V0_1.sh
+  - governance/implementation/ATL_83_EXECUTABLE_TEST_PACK_V0_2.sh
+  - governance/implementation/ATL_83_TEST_PACK_OUTPUT_V0_2.txt
+  - governance/task-manifests/ATL-82.yaml
+  - governance/standards/AGENT_INDEPENDENT_TASK_CONTINUITY_STANDARD_V1.md
+
+acceptance_criteria:
+  - "1. Runs on push/PR touching candidate SQL (including misnamed ATL-82 SQL), ATL-82.yaml, the gate and its reference files, the runner, publisher or workflow; plus manual dispatch."
+  - "2. The CI PostgreSQL reproduces the recorded DIAGNOSTIC-B golden output; the canary proves it on every run."
+  - "3. Unregistered, mis-pinned, misnamed or failing candidates, and pins without a candidate, fail the run; historical V0.1/V0.2 are reported as skipped."
+  - "4. No secrets, no Supabase, no network database; the gate job has read-only repository permission."
+  - "5. The result is durable and readable by ChatGPT, Claude and the Owner as plain files on branch atlas-ci-proofs, with no Actions API access."
+  - "6. The first CI run after landing is recorded here as executed evidence."
+
+hard_stops:
+  - "No Supabase mutation or connection."
+  - "No DDL outside the disposable CI or local database."
+  - "No weakening of the gate, its reference pins or the runner rules without a governed change and review."
+  - "The publish job writes only to atlas-ci-proofs; never to atlas-governance-registry-v2.1 or main."
+
+current_outputs:
+  - path: .github/workflows/atl94-candidate-sql-gate.yml
+    commit: "23998d2624293f6775b7f086eaf4c64dcbffa6e0"
+    blob_sha: b4e179a99be1416a0b240b507a6584371b1ccbf4
+    sha256: 404c744df71514c64d2ae4d015458f6a23073739b4a5054f3275be3289a97eb3
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1sTTah2N7ZeECpHcVvQWgpSiMOKD5YFI0"
+    note: "Pushing this path needs a credential with workflow permission; fallback is the Owner adding it through the GitHub web UI."
+  - path: governance/implementation/ATL_94_CI_CANDIDATE_GATE_RUNNER_V0_1.sh
+    commit: "a9de283f80757b77da757ef8cad21e506f352cfd"
+    blob_sha: ab833c26fb605d620a978da8f680b42413520c2a
+    sha256: b3662c7052aa6be4075381e27dc4728f35495799e01cbfa2117ebf6e19273a26
+    mode: "100755"
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 13OXnRJgRNKPMf02-kJJtxGE2_8wVcPvs"
+  - path: governance/implementation/ATL_94_CI_PROOF_PUBLISHER_V0_1.sh
+    commit: "a9de283f80757b77da757ef8cad21e506f352cfd"
+    blob_sha: 792e6155236e0b661f539ed02100d5a1fcccd201
+    sha256: 713b68a018eec6e151477c1edf4d5ce836d9787af2e8d2b4019f9e62b60d8792
+    mode: "100755"
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1jIpppOVkSgFoJ4Dfa59oy_XXF5UXZvTS"
+  - path: governance/implementation/ATL_94_CI_GATE_LOCAL_VERIFICATION_V0_1.txt
+    commit: "a9de283f80757b77da757ef8cad21e506f352cfd"
+    blob_sha: a1a03209ff4a2a00f7c35cb8f88b2ddf76c9c3bb
+    sha256: 9d38876f2e870254541c2393db3b57778319805e540a68f41460063f5366a732
+    status: PROOF_RECORDED
+    authored_by: Claude
+    landed_by: ChatGPT
+    custody_source: "Google Drive — 1qU2srRpmehaE2OsRrex8xIS6U65PDRU9"
+
+reviewed_ci_code_blobs:
+  note: "A proof on atlas-ci-proofs is accepted as PASS only when its 'CI code' line shows exactly these blobs and the gate blob below."
+  workflow: b4e179a99be1416a0b240b507a6584371b1ccbf4
+  runner: ab833c26fb605d620a978da8f680b42413520c2a
+  publisher: 792e6155236e0b661f539ed02100d5a1fcccd201
+  gate: 9af8eef15dbd3e6750dc643583ad0cf6ae1e2c6b
+
+verification:
+  local:
+    environment: "Ubuntu 24.04, PostgreSQL 16.13, non-root user; the gate job's run steps extracted from the workflow YAML and run with bash -e; GITHUB_ENV emulated."
+    runner_scenarios: "22/22 as expected (S1-S16, N1-N4 plus S5b): correct pinned candidate PASS; unpinned (still gated for feedback), mis-pinned, conflicting or duplicate-key pins, pin without file, gate tampering, V0.2 defects as a new candidate, byte copy of V0.2, misnamed, subfolder, symlink, historical edited in place, .gitattributes byte filter, other-name and folder variants, and path-smuggled pin all FAIL."
+    publisher_cases: "Orphan-branch creation with decoy refs, append, failed/cancelled/crashed gate recorded FAIL, forged verdict recorded FAIL, concurrent publish with retry, refusals for other branch / bad SHA / bad run id; governance branch never touched."
+    lint: "actionlint 1.7.12 (with shellcheck) and shellcheck -S warning: 0 findings."
+    locale: "Gate result identical under C.UTF-8 and en_US.UTF-8; CI pins C.UTF-8."
+  independent_review: "Two rounds by a separate agent (GitHub docs, runner-image sources, experiments). Round 1: Actions semantics confirmed; false-PASS paths, a ref-ambiguity defect and overstated claims found. Round 2: round-1 items closed; variants N1-N4 and N6 found. All fixed and covered by scenarios."
+  not_verified: "An actual GitHub Actions run; GitHub's API is not reachable from Claude's session."
+  first_ci_run:
+    source_commit: "23998d2624293f6775b7f086eaf4c64dcbffa6e0"
+    run_url: "https://github.com/Darshan-ukey/Supply-chain-and-logistic-atlas/actions/runs/35994787044"
+    proof_path: "atlas-ci-proofs:ATL-94/by-commit/23998d2624293f6775b7f086eaf4c64dcbffa6e0.md"
+    proof_commit: "e25e938ad65e0077e73851573e0e13ffe8eba46c"
+    verdict: "PASS (canary only: no candidate beyond the historical V0.1/V0.2 exists yet)"
+
+open_risks:
+  - "Pushing .github/workflows/ needs workflow permission on the pushing credential."
+  - "A repository ruleset covering all branches could block the atlas-ci-proofs push."
+  - "workflow_dispatch works only once the workflow file is also on the default branch (main)."
+  - "CI runs PostgreSQL 16.15 while the golden results were recorded on 16.13; the canary turns any drift into a visible FAIL."
+  - "A candidate that fails QA later and stays in the repo keeps CI red until it is added to the runner's historical list (governed edit)."
+  - "by-commit/<sha>.md shows the last published run for a commit; INDEX.tsv keeps all runs."
+
+builder_protocol_for_atl82_candidates: "Replaces 'run the gate locally' in the ATL-83 re-QA handoff. Land the candidate as governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V<n>_<m>.sql; CI gates it and its proof shows the gate result and the file's blob, but FAIL until pinned. Pin that blob in ATL-82.yaml working_outputs (path + blob_sha); the proof for the pin commit must read 'PASS (1 of 1 candidate(s) passed the gate)' with the reviewed CI code blobs. That proof, cited by path, run URL and source commit, is the builder's executable first-party proof."
+
+current_checkpoint: "ATL-94 landed byte-exact. First GitHub Actions run 35994787044 on source commit 23998d2624293f6775b7f086eaf4c64dcbffa6e0 completed success; atlas-ci-proofs verdict PASS (canary only), proof commit e25e938ad65e0077e73851573e0e13ffe8eba46c. Reviewed CI code blobs match governed pins. No Supabase mutation."
+next_action: "Downstream consumer ATL-82 now uses ATL-94 for V0.3 executable first-party proof. ATL-94 reopens only for a governed CI/gate change or a failed proof requiring investigation."
+
+last_execution_record:
+  operator: Claude
+  date: "2026-09-24"
+  state: PROOF_RECORDED
+  note: "Read-only GitHub; all files delivered through Drive for ChatGPT landing. Local verification only, in a disposable PostgreSQL; no Supabase connection."

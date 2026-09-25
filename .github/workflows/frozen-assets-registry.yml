@@ -1,0 +1,36 @@
+name: Frozen Asset Registry
+
+on:
+  pull_request:
+    paths:
+      - 'governance/frozen-assets/**'
+      - 'governance/standards/**'
+      - 'scripts/frozen-assets-registry.mjs'
+      - 'scripts/validate-road-ltl-v1.5-freeze.mjs'
+      - 'data/modules/road-ltl-v1.5.json'
+      - 'data/operational-knowledge/**'
+      - 'data/source-claims/road-ltl-v1.5-bol-resolution-claims.json'
+      - 'schemas/operational-knowledge-contract-v2.json'
+      - 'schemas/information-resolution-contract-v1.json'
+  push:
+    paths:
+      - 'governance/frozen-assets/**'
+      - 'governance/standards/**'
+      - 'scripts/frozen-assets-registry.mjs'
+      - 'scripts/validate-road-ltl-v1.5-freeze.mjs'
+      - 'data/modules/road-ltl-v1.5.json'
+      - 'data/operational-knowledge/**'
+      - 'data/source-claims/road-ltl-v1.5-bol-resolution-claims.json'
+      - 'schemas/operational-knowledge-contract-v2.json'
+      - 'schemas/information-resolution-contract-v1.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node scripts/frozen-assets-registry.mjs validate
+      - run: node scripts/validate-road-ltl-v1.5-freeze.mjs

@@ -1,0 +1,14 @@
+{
+  "name": "@malkom/extract-server",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "malkom-extract-server": "./dist/bin.js"
+  },
+  "engines": {
+    "node": ">=22.5"
+  },
+  "dependencies": {
+    "@malkom/extract-core": "0.1.0"
+  }
+}

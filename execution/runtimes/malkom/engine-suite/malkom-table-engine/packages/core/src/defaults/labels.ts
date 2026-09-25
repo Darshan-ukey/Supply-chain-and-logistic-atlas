@@ -1,0 +1,87 @@
+import { DEFAULT_OPERATOR_LABELS } from '../conditions.js';
+import type { MalkomTableLabels } from '../types.js';
+
+export const DEFAULT_LABELS: MalkomTableLabels = {
+  searchPlaceholder: 'Search across all columns...',
+  records: 'Records',
+  lastSync: 'Last sync:',
+  live: 'LIVE',
+  exportLabel: 'EXPORT',
+  exporting: 'Exporting...',
+  settingsLabel: 'SETTINGS',
+  refreshTitle: 'Reload data',
+  densityTitle: 'Toggle density',
+  viewControls: 'View Controls',
+  clearFilters: 'Clear Filters',
+  clearSort: 'Clear Sort',
+  groupDataBy: 'Group Data By',
+  noGrouping: 'None (No Grouping)',
+  groupedBy: 'Grouped:',
+  clearGroupingTitle: 'Clear grouping',
+  smartPrefilters: 'Smart Prefilters',
+  createNewFilter: 'Create New Filter',
+  noSavedFilters: 'No saved filters yet',
+  visibleColumns: 'Visible Columns',
+  masterReset: 'Master Reset',
+  totalRows: 'Total Rows:',
+  filteredRows: 'Filtered Rows:',
+  rowsPerPage: 'Rows:',
+  noRecords: 'No records to show',
+  blanks: '(Blanks)',
+  selectAll: 'Select All',
+  clear: 'Clear',
+  apply: 'Apply',
+  cancel: 'Cancel',
+  save: 'Save Filter',
+  close: 'Close',
+  noMatches: 'No matches found',
+  newSmartFilter: 'New Smart Filter',
+  editSmartFilter: 'Edit Smart Filter',
+  filterName: 'Filter Name',
+  filterNamePlaceholder: 'e.g. Priority Sydney',
+  filterLogic: 'Filter Logic',
+  filterLogicHint: 'Build nested AND / OR conditions',
+  addCondition: 'Add Condition',
+  addGroup: 'Add Group',
+  showMyConditions: 'Show my conditions',
+  previewTitle: 'Your smart conditions',
+  previewSubtitle:
+    'Your smart conditions will filter data when the rules below match a row.',
+  previewIntro:
+    'Read this like a sentence. A row is shown only when the conditions below are true.',
+  previewShowRowWhen: 'Show a row when...',
+  previewJoinHint:
+    'Items joined by AND must all be true. Inside an either/or box, only one option needs to match.',
+  previewMatchEither: 'Match either of these',
+  previewMatchEitherHint: 'This part passes when any one option below is true.',
+  previewNoConditions: 'No conditions have been added yet.',
+  previewFinishFirst: 'Finish these before saving',
+  valuePlaceholder: 'Value...',
+  oneOfPlaceholder: 'Comma-separated values...',
+  and: 'AND',
+  or: 'OR',
+  deleteFilterConfirm: 'Delete this filter?',
+  filterSaved: 'Filter saved and applied',
+  filterApplied: 'Applied: {name}',
+  filterRemoved: 'Removed: {name}',
+  filtersCleared: 'Filters cleared',
+  sortCleared: 'Sort cleared',
+  viewReset: 'View reset',
+  dataRefreshed: 'Data refreshed',
+  loadError: 'Error loading data',
+  exportSuccess: 'Export successful',
+  exportFailed: 'Export failed',
+  exportNoData: 'No data to export',
+  exportNoColumns: 'No columns to export',
+  nameRequired: 'Please provide a filter name.',
+  conditionRequired: 'Please add at least one condition.',
+  operatorLabels: { ...DEFAULT_OPERATOR_LABELS }
+};
+
+/** Simple `{name}` interpolation for labels. */
+export function formatLabel(
+  template: string,
+  vars: Record<string, string>
+): string {
+  return template.replace(/\{(\w+)\}/g, (match, key: string) => vars[key] ?? match);
+}

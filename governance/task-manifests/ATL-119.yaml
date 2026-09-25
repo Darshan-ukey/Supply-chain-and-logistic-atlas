@@ -1,0 +1,78 @@
+task_id: ATL-119
+task_title: "Business Logic & Rule Ontology — extensible taxonomy, evaluation and runtime consumption contract"
+task_status: VERIFIED_FIRST_PARTY
+status_detail: "Owner-aligned candidate contract created in GitHub, linked into Atlas v2 product contract/coverage and Linear, mirrored to Drive custody, and post-write reconciliation performed. Independent QA/freeze remains under ATL-110."
+execution_owner: ChatGPT
+decision_authority: Darshan Ukey
+linear_url: "https://linear.app/sefl-transformation/issue/ATL-119/business-logic-and-rule-ontology-extensible-taxonomy-evaluation-and"
+manifest_status: ACTIVE
+last_updated: "2026-09-24T18:03:00Z"
+
+governing_inputs:
+  - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
+    ref: atlas-governance-registry-v2.1
+    blob_sha: 1cb7324049a0f818f3130141740751ae2838a93c
+  - path: governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json
+    ref: atlas-governance-registry-v2.1
+    blob_sha: 0637aee9f253724dbb55a2b63ea18f7828bfcde9
+  - path: governance/standards/ATLAS_PRODUCT_CONSTITUTION_V1.md
+    ref: atlas-governance-registry-v2.1
+  - linear_tasks:
+      - ATL-60
+      - ATL-95
+      - ATL-107
+
+current_outputs:
+  - path: governance/product/ATLAS_V2_BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION_CONTRACT_V0_1_CANDIDATE.md
+    identity: "blob:a7d3f8c4762e722764e19fd9e470e864cdf38ace"
+    status: VERIFIED_FIRST_PARTY
+  - system: Google Drive
+    title: "Atlas v2 Business Logic Rule Ontology Runtime Consumption Contract V0.1 Candidate"
+    file_id: "1OE0AYLX0k81xhIes_Xbr87cNLdR2hNXF3zrQrdjCOsQ"
+    status: CANDIDATE_CUSTODY_MIRROR_READBACK_VERIFIED
+  - system: Google Drive
+    title: "Atlas v2 Product End-State Contract V1 Candidate"
+    file_id: "1xDudUaf8wLMDpgdC939UszKqkVIN7_jDKBwxot0AVuo"
+    status: UPDATED_WITH_RULE_ONTOLOGY_AND_CURRENT_GITHUB_IDENTITIES
+  - system: Google Drive
+    title: "ATLAS - CURRENT FROZEN ASSET POINTER"
+    file_id: "1wAtXmGGR5H-sPHfGpaquH25qndpHNmAaHVAZSnkxI2Y"
+    status: UPDATED_WITH_RULE_ONTOLOGY_AND_CURRENT_GITHUB_IDENTITIES
+
+qa_and_decisions:
+  - type: OWNER_DIRECTION
+    date: "2026-09-24"
+    decision: "Rule taxonomy must be exhaustive enough as a seed but explicitly extensible; new domains/processes/Operational Knowledge may introduce additional rule categories."
+  - type: OWNER_DIRECTION
+    date: "2026-09-24"
+    decision: "Atlas must not be an always-on dependency for every executor; preferred default is hybrid distribution using embedded/snapshotted rules plus selective dynamic lookups."
+  - type: FIRST_PARTY_RECONCILIATION
+    date: "2026-09-24"
+    result: PASS_WITH_INDEPENDENT_QA_PENDING
+    evidence: "GitHub + Linear + Drive post-write readback"
+
+current_checkpoint: "Rule ontology/runtime-consumption candidate is represented consistently across GitHub, Linear and Drive. Taxonomy/evaluation/distribution lists are explicitly seed/extensible. Parent product and runtime-projection tasks inherit the hybrid consumption rule."
+next_action: "ATL-119 must be independently reconciled against OKv2, frozen Work Decomposition/WorkDefinition and a structurally different domain/process before ATL-110 product freeze."
+
+open_items:
+  - "Independent QA/reconciliation of seed taxonomy against LTL-03/BOL and at least one structurally different domain/process."
+  - "Physical backend schema/API design for rule storage/retrieval."
+  - "Executable proof of EMBED/SNAPSHOT/DYNAMIC_LOOKUP and Atlas-unavailable behavior."
+  - "Final Drive frozen identity update after ATL-110 corrections/freeze."
+
+blocked_actions:
+  - action: "Freeze seed taxonomy as exhaustive universal rule ontology."
+    blocker: "Taxonomy is explicitly extensible from future governed Operational Knowledge."
+    release_condition: "Never; future extensions use governed successor taxonomy versions."
+  - action: "Make Atlas a mandatory always-on dependency for all downstream execution."
+    blocker: "Hybrid distribution architecture is the v2 default."
+    release_condition: "Only a specific governed rule/runtime requirement may require dynamic Atlas lookup."
+
+handoff:
+  pickup_sequence:
+    - "Read ATL-119."
+    - "Read this manifest."
+    - "Read the current v2 product contract and rule ontology candidate."
+    - "Verify current GitHub blob identities and Drive custody IDs."
+    - "Reconcile against actual OKv2/WD/rule evidence; do not rely on chat."
+  chat_history_required: false

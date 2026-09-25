@@ -1,0 +1,16 @@
+{
+  "name": "@malkom/domainwarehouse-core",
+  "version": "0.2.4",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@malkom/domainwarehouse-contract": "0.2.4",
+    "zod": "^4.0.0"
+  }
+}

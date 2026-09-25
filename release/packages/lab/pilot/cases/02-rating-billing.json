@@ -1,0 +1,9 @@
+{
+  "id": "P23-DOC-002",
+  "title": "Unstructured commercial and settlement notes",
+  "documentType": "Workshop Notes",
+  "expectedDisposition": ["ACCEPTED", "REVIEW_REQUIRED"],
+  "expectedProcessIds": ["LTL-02", "LTL-16", "LTL-17"],
+  "forbiddenProcessIds": ["LTL-09"],
+  "text": "Rate handling is split. Commercial team first classifies the service and commits the offer. After movement, operations supplies executed shipment details and the rating team recalculates the freight charges including approved accessorials. Finance then issues the invoice; disputed or rejected invoices are held for audit before approval and settlement. There is no single process description and names differ across countries."
+}

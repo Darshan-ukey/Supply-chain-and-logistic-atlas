@@ -1,0 +1,13 @@
+{
+  "baseline": "Universe V7.1",
+  "candidate": "Universe V7.2",
+  "baselineSha256": "8570cc045b60001447f03dde8b2ba970b43f55802458d3ca9cf0e92713825cb8",
+  "candidateSha256": "a9408b8a06e580a397256e86893e782ebc62c9fab61553dc16094b760e6dec8a",
+  "declaredIdCountBefore": 344,
+  "declaredIdCountAfter": 344,
+  "declaredIdsAdded": [],
+  "declaredIdsRemoved": [],
+  "locationMasterReferencesBefore": 7,
+  "locationMasterReferencesAfter": 7,
+  "expectedSourceIdAdded": "src-uncefact-multimodal-visibility-brs-v1"
+}

@@ -1,0 +1,338 @@
+{
+  "contractVersion": "enterprise-domain-extension-v1.0",
+  "id": "accounts-payable-fixture",
+  "name": "Accounts Payable Architecture Fixture",
+  "status": "TEST_ONLY",
+  "coreOntologyVersion": "enterprise-operations-core-ontology-v1.0",
+  "ontologyExtensions": [
+    {
+      "id": "invoice",
+      "name": "Invoice",
+      "extendsCore": "business-object"
+    },
+    {
+      "id": "purchase-order",
+      "name": "Purchase Order",
+      "extendsCore": "business-object"
+    },
+    {
+      "id": "receipt-record",
+      "name": "Receipt Record",
+      "extendsCore": "evidence"
+    },
+    {
+      "id": "payment",
+      "name": "Payment",
+      "extendsCore": "business-object"
+    },
+    {
+      "id": "legal-entity",
+      "name": "Legal Entity",
+      "extendsCore": "applicability"
+    },
+    {
+      "id": "invoice-type",
+      "name": "Invoice Type",
+      "extendsCore": "applicability"
+    },
+    {
+      "id": "match-policy",
+      "name": "Match Policy",
+      "extendsCore": "applicability"
+    }
+  ],
+  "territories": [
+    {
+      "id": "ap-intake",
+      "title": "Invoice Receipt",
+      "code": "AP-01",
+      "accent": "#3569b8",
+      "position": [
+        10,
+        48
+      ],
+      "group": "fixture",
+      "short": "Invoice Receipt fixture territory",
+      "scope": "Architecture fixture only; not a researched Finance taxonomy.",
+      "sub": [],
+      "sources": [
+        "fixture"
+      ]
+    },
+    {
+      "id": "ap-validation",
+      "title": "Validate",
+      "code": "AP-02",
+      "accent": "#0a91ae",
+      "position": [
+        24,
+        30
+      ],
+      "group": "fixture",
+      "short": "Validate fixture territory",
+      "scope": "Architecture fixture only; not a researched Finance taxonomy.",
+      "sub": [],
+      "sources": [
+        "fixture"
+      ]
+    },
+    {
+      "id": "ap-match",
+      "title": "Match",
+      "code": "AP-03",
+      "accent": "#59763b",
+      "position": [
+        40,
+        48
+      ],
+      "group": "fixture",
+      "short": "Match fixture territory",
+      "scope": "Architecture fixture only; not a researched Finance taxonomy.",
+      "sub": [],
+      "sources": [
+        "fixture"
+      ]
+    },
+    {
+      "id": "ap-exception",
+      "title": "Exception",
+      "code": "AP-04",
+      "accent": "#b4485b",
+      "position": [
+        54,
+        30
+      ],
+      "group": "fixture",
+      "short": "Exception fixture territory",
+      "scope": "Architecture fixture only; not a researched Finance taxonomy.",
+      "sub": [],
+      "sources": [
+        "fixture"
+      ]
+    },
+    {
+      "id": "ap-approval",
+      "title": "Approval",
+      "code": "AP-05",
+      "accent": "#8061c5",
+      "position": [
+        68,
+        48
+      ],
+      "group": "fixture",
+      "short": "Approval fixture territory",
+      "scope": "Architecture fixture only; not a researched Finance taxonomy.",
+      "sub": [],
+      "sources": [
+        "fixture"
+      ]
+    },
+    {
+      "id": "ap-posting",
+      "title": "Post",
+      "code": "AP-06",
+      "accent": "#c08716",
+      "position": [
+        82,
+        30
+      ],
+      "group": "fixture",
+      "short": "Post fixture territory",
+      "scope": "Architecture fixture only; not a researched Finance taxonomy.",
+      "sub": [],
+      "sources": [
+        "fixture"
+      ]
+    },
+    {
+      "id": "ap-payment",
+      "title": "Payment",
+      "code": "AP-07",
+      "accent": "#0e8a72",
+      "position": [
+        91,
+        54
+      ],
+      "group": "fixture",
+      "short": "Payment fixture territory",
+      "scope": "Architecture fixture only; not a researched Finance taxonomy.",
+      "sub": [],
+      "sources": [
+        "fixture"
+      ]
+    }
+  ],
+  "applicabilityDimensions": [
+    {
+      "id": "entity",
+      "label": "Legal entity",
+      "contextKey": "entities",
+      "processApplicabilityKey": "entityApplicability",
+      "stateKey": "entities",
+      "cardinality": "MANY",
+      "neutralValues": []
+    },
+    {
+      "id": "invoiceType",
+      "label": "Invoice type",
+      "contextKey": "invoiceTypes",
+      "processApplicabilityKey": "invoiceTypeApplicability",
+      "stateKey": "invoiceTypes",
+      "cardinality": "MANY",
+      "neutralValues": []
+    },
+    {
+      "id": "matchPolicy",
+      "label": "Match policy",
+      "contextKey": "matchPolicies",
+      "processApplicabilityKey": "matchPolicyApplicability",
+      "stateKey": "matchPolicies",
+      "cardinality": "MANY",
+      "neutralValues": []
+    }
+  ],
+  "signalTypes": [
+    {
+      "id": "document",
+      "label": "Document / Evidence",
+      "color": "#3569b8",
+      "extract": [
+        {
+          "field": "inputs",
+          "prefix": "Inputs: "
+        },
+        {
+          "field": "outputs",
+          "prefix": "Outputs: "
+        },
+        {
+          "field": "evidence",
+          "prefix": "Evidence: "
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "label": "Data / System State",
+      "color": "#14a7a0",
+      "extract": [
+        {
+          "field": "producer",
+          "prefix": "Producer: "
+        },
+        {
+          "field": "authoritySystem",
+          "prefix": "Authority: "
+        },
+        {
+          "field": "consumers",
+          "prefix": "Consumers: "
+        }
+      ]
+    },
+    {
+      "id": "financial",
+      "label": "Financial State",
+      "color": "#ef8b17",
+      "extract": [
+        {
+          "field": "financial"
+        },
+        {
+          "field": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "control",
+      "label": "Control / Decision",
+      "color": "#4aa84b",
+      "extract": [
+        {
+          "field": "decision"
+        },
+        {
+          "field": "rule"
+        },
+        {
+          "field": "control"
+        }
+      ]
+    }
+  ],
+  "transformationHeuristics": [
+    {
+      "id": "APF-MATCH-EXCEPTION",
+      "category": "reconciliation",
+      "label": "Match / exception dependency",
+      "evaluator": "pattern",
+      "fields": [
+        "decision",
+        "action",
+        "outcome"
+      ],
+      "pattern": "match|exception|variance",
+      "hypothesis": "Fixture hypothesis: reconciliation or exception handling may create rework or latency.",
+      "candidates": [
+        "Rules-assisted matching",
+        "Exception workflow"
+      ]
+    },
+    {
+      "id": "APF-APPROVAL",
+      "category": "control",
+      "label": "Approval dependency",
+      "evaluator": "pattern",
+      "fields": [
+        "decision",
+        "control",
+        "decisionAuthority"
+      ],
+      "pattern": "approv",
+      "hypothesis": "Fixture hypothesis: an explicit approval gate may introduce control latency.",
+      "candidates": [
+        "Approval workflow",
+        "Policy/rules engine"
+      ]
+    },
+    {
+      "id": "APF-SYSTEM-HANDOFF",
+      "category": "systems",
+      "label": "Cross-system handoff",
+      "evaluator": "system_authority_handoff",
+      "hypothesis": "Fixture hypothesis: producer/authority separation may require state synchronization.",
+      "candidates": [
+        "API/event synchronization"
+      ]
+    }
+  ],
+  "vocabulary": {
+    "universe": "Accounts Payable Fixture Universe",
+    "territory": "AP fixture stage",
+    "module": "Fixture module",
+    "task": "AP task",
+    "object": "Finance object",
+    "execution": "AP execution",
+    "sourceClass": "ARCHITECTURE FIXTURE \u00b7 NOT AUTHORITATIVE FINANCE KNOWLEDGE"
+  },
+  "compatibility": {
+    "testOnly": true
+  },
+  "extensions": {
+    "warning": "This fixture exists only to prove domain neutrality. It is not a Finance Atlas and must not be published as domain knowledge."
+  },
+  "transformationCategories": {
+    "reconciliation": {
+      "label": "Match / Reconciliation",
+      "color": "#8b5bd6"
+    },
+    "control": {
+      "label": "Approval / Control",
+      "color": "#4f9d54"
+    },
+    "systems": {
+      "label": "Cross-system",
+      "color": "#188db0"
+    }
+  }
+}

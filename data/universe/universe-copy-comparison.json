@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "atlas-universe-copy-comparison-v2",
+  "stageId": "R0.1A",
+  "extractorVersion": "atlas-universe-semantic-extractor-1.0.0",
+  "classification": "RAW_OBSERVATION_NO_INTERPRETATION",
+  "copies": [
+    {
+      "path": "reference/universe-v7.3.html",
+      "sourceSha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "embeddedSemanticIdentity": {
+        "id": "supply-chain-logistics-universe-v7.2",
+        "version": "7.2.0",
+        "releaseDate": "2026-08-30",
+        "classification": "PRIVATE_CANONICAL"
+      },
+      "structureCount": 61,
+      "recordCount": 1330,
+      "unresolved": [],
+      "semanticPayloadHash": "2d6405c534b96f4054cb87ac2428a0a7a1bf4626334a86e5cc96ec342add4043"
+    },
+    {
+      "path": "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html",
+      "sourceSha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+      "embeddedSemanticIdentity": {
+        "id": "supply-chain-logistics-universe-v7.2",
+        "version": "7.2.0",
+        "releaseDate": "2026-08-30",
+        "classification": "PRIVATE_CANONICAL"
+      },
+      "structureCount": 61,
+      "recordCount": 1330,
+      "unresolved": [],
+      "semanticPayloadHash": "b592485bf1c21dbc58c9a97a4fd8bb1ae3e9ce4a3ad42ee2fd67659ca362881e"
+    },
+    {
+      "path": "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html",
+      "sourceSha256": "d674a8f775dfd2f6997ec2ca9cbc7cf799aeae73016d2b5b9676de87c0c0d9ef",
+      "embeddedSemanticIdentity": {
+        "id": "supply-chain-logistics-universe-v7.2",
+        "version": "7.2.0",
+        "releaseDate": "2026-08-30",
+        "classification": "PRIVATE_CANONICAL"
+      },
+      "structureCount": 61,
+      "recordCount": 1330,
+      "unresolved": [],
+      "semanticPayloadHash": "2d6405c534b96f4054cb87ac2428a0a7a1bf4626334a86e5cc96ec342add4043"
+    }
+  ],
+  "distinctSourceHashes": 2,
+  "distinctSemanticPayloadHashes": 2,
+  "structureCountPerCopy": [
+    61
+  ],
+  "identicalStructureCount": 58,
+  "differingStructureCount": 3,
+  "differingStructures": [
+    {
+      "name": "defaults",
+      "differenceClassification": "PENDING_R0_1B",
+      "perCopyValueHashes": [
+        {
+          "path": "reference/universe-v7.3.html",
+          "valueHash": "bda3de1d8b032ead874da5e2bb04d2e703ec8dfcc06f5d0a76ede9de8da52de1"
+        },
+        {
+          "path": "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html",
+          "valueHash": "1e59e5759570180e36cd6d8377b36acd960ac6abd757acf06cd06c6d42191db3"
+        },
+        {
+          "path": "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html",
+          "valueHash": "bda3de1d8b032ead874da5e2bb04d2e703ec8dfcc06f5d0a76ede9de8da52de1"
+        }
+      ]
+    },
+    {
+      "name": "liveModuleRoutes",
+      "differenceClassification": "PENDING_R0_1B",
+      "perCopyValueHashes": [
+        {
+          "path": "reference/universe-v7.3.html",
+          "valueHash": "21f5d9447ac61f0fba2352ab1c55ff43cc8d1677f1d8591c14b21834a2167a41"
+        },
+        {
+          "path": "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html",
+          "valueHash": "60a55c1852d5c7c64dac4ca467cbf8779ba5232a787bcf8ab0f766c28f69001d"
+        },
+        {
+          "path": "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html",
+          "valueHash": "21f5d9447ac61f0fba2352ab1c55ff43cc8d1677f1d8591c14b21834a2167a41"
+        }
+      ]
+    },
+    {
+      "name": "moduleCoverageStatus",
+      "differenceClassification": "PENDING_R0_1B",
+      "perCopyValueHashes": [
+        {
+          "path": "reference/universe-v7.3.html",
+          "valueHash": "7923e77495cbb060ab3191e2ae1eec0a0fc7c6425e48b87814b932e1272f87a1"
+        },
+        {
+          "path": "frozen-assets/inbox/supply-chain-logistics-universe-v7.3/Supply-Chain-Logistics-Universe-V7.3.html",
+          "valueHash": "ef966170aab57750d2c59270c29db8283bf7a1a1457ad839872dca3f57898a65"
+        },
+        {
+          "path": "frozen-assets/inbox/ocean-fcl-lcl-v0.5-v7.3/site/universe-v7.3.html",
+          "valueHash": "7923e77495cbb060ab3191e2ae1eec0a0fc7c6425e48b87814b932e1272f87a1"
+        }
+      ]
+    }
+  ],
+  "differenceClassification": "PENDING_R0_1B",
+  "authorityDetermination": "NOT_DETERMINED_PENDING_R0_1B",
+  "note": "Differences are recorded as observed facts. Whether they are semantic, presentation, build-state or non-semantic noise is determined in R0.1B, as is source authority."
+}

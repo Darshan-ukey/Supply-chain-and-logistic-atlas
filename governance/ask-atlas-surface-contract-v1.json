@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "ask-atlas-surface-contract-v1",
+  "principle": "Ask Atlas is one governed intelligence layer across Atlas surfaces. Surface context scopes retrieval and UI actions; it does not create separate knowledge engines.",
+  "surfaces": ["canvas", "universe", "daughter", "admin"],
+  "commands": {
+    "navigate_surface": {"required": ["surface"], "allowedSurfaces": ["canvas", "universe", "daughter", "admin"]},
+    "open_daughter": {"required": ["moduleId"]},
+    "open_in_canvas": {"required": [], "optional": ["moduleId", "processId"]},
+    "highlight_reference": {"required": ["entityId"], "optional": ["entityType"]}
+  },
+  "security": {
+    "publicSurfaces": ["canvas", "universe", "daughter"],
+    "protectedSurfaces": ["admin"],
+    "adminAuthorization": "server-side",
+    "rule": "A model response can only use evidence the current authorized surface could retrieve."
+  },
+  "compatibility": {
+    "legacyCanvasStateAccepted": true,
+    "preferredRequestField": "surfaceState"
+  }
+}

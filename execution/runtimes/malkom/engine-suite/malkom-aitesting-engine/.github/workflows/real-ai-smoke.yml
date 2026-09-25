@@ -1,0 +1,51 @@
+name: Real AI Smoke
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-ai-smoke:
+    name: Real AI Provider Smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Build
+        run: npm run build
+
+      - name: Run real AI smoke
+        env:
+          BRISK_AITESTING_AI_PROVIDER: ${{ vars.BRISK_AITESTING_AI_PROVIDER }}
+          BRISK_AITESTING_AI_MODEL: ${{ vars.BRISK_AITESTING_AI_MODEL }}
+          BRISK_AITESTING_AI_API_KEY: ${{ secrets.BRISK_AITESTING_AI_API_KEY }}
+        run: npm run smoke:real-ai
+
+      - name: Upload real AI smoke artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brisk-aitesting-real-ai-artifacts
+          path: |
+            .brisk-aitesting-real-ai/**
+            brisk-aitesting-playwright-work/**
+            test-results/**
+          if-no-files-found: ignore
+          retention-days: 7

@@ -1,0 +1,36 @@
+# Copy to governance/task-manifests/<LINEAR_ID>.yaml
+task_id: PENDING
+task_title: PENDING
+task_status: PENDING
+execution_owner: PENDING
+decision_authority: Darshan Ukey
+linear_url: PENDING
+manifest_status: ACTIVE
+last_updated: PENDING
+
+governing_inputs: []
+consumed_inputs: []
+working_outputs: []
+current_outputs: []
+superseded_outputs: []
+qa_and_decisions: []
+
+current_checkpoint: PENDING
+next_action: PENDING
+open_items: []
+authorized_actions: []
+blocked_actions: []
+
+handoff:
+  pickup_sequence:
+    - Read Linear task and dependencies.
+    - Read this manifest.
+    - Read governing_inputs.
+    - Verify current_outputs and current_checkpoint against stored artifacts.
+    - Execute only next_action within authorized_actions.
+  chat_history_required: false
+
+last_execution_record:
+  operator: PENDING
+  stopped_at: PENDING
+  durable_state_written: false

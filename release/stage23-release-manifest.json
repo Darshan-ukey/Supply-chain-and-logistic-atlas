@@ -1,0 +1,353 @@
+{
+  "schemaVersion": "atlas-release-manifest-v1",
+  "stage": "23",
+  "releaseId": "stage23-2026.08.23-r1",
+  "sourceStage": "22.2",
+  "generatedAt": "2026-08-23T10:29:47.516Z",
+  "nodeEngine": "24.x",
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 1389,
+      "sha256": "7b2b4f4db13ca683807e641fb13dfe1f4900b8346a3b556187f925eca1603151"
+    },
+    {
+      "path": "api/_atlas.js",
+      "bytes": 10925,
+      "sha256": "6037e1d2f9b93a5c459d7b7b75d61e774fc9febcedc6152c1e594b333b3d99fc"
+    },
+    {
+      "path": "api/_document-domain.js",
+      "bytes": 1704,
+      "sha256": "de7137a661b4588412e124555db99c52025a3fc092e751c1073923fa246c7d30"
+    },
+    {
+      "path": "api/_documents.js",
+      "bytes": 14280,
+      "sha256": "30042a4365b9c87a1176a3073f34f7bab46fe049ed5a5590bf63cc66912f8c0c"
+    },
+    {
+      "path": "api/_llm.js",
+      "bytes": 2754,
+      "sha256": "abcb532c84eb2e394447e5f2ff6d842e0dc205ad645ad2b4928f9bf774310415"
+    },
+    {
+      "path": "api/_office.js",
+      "bytes": 13162,
+      "sha256": "6bc29900686fb15ba6d6e866f1f907b3dd888f05d228c8a3f5280b4a68f96139"
+    },
+    {
+      "path": "api/_utils.js",
+      "bytes": 3404,
+      "sha256": "653cb195a17e2f147603d44349b6ceb6c36a2f16dbb4081ec042179f0baaf9ce"
+    },
+    {
+      "path": "api/ask-atlas.js",
+      "bytes": 6838,
+      "sha256": "716a9b1d162fab00aca6d0e102711fdde98be1eceed679b6aaa201661dfd01b3"
+    },
+    {
+      "path": "api/audit.js",
+      "bytes": 621,
+      "sha256": "1bd8f65628ea4000f49a42062759a4d84ab9b52062424c25bedf0d5cb49fe36d"
+    },
+    {
+      "path": "api/auth-login.js",
+      "bytes": 525,
+      "sha256": "36d1241a9ee30adc84bbed829630e3f124db085cc075b8152202d736fb23114b"
+    },
+    {
+      "path": "api/auth-logout.js",
+      "bytes": 342,
+      "sha256": "0c6ae1cb012f5d45b3de5b5ec5fe6430b01d7db772dd11faa2d4d5964f7939d8"
+    },
+    {
+      "path": "api/auth-session.js",
+      "bytes": 478,
+      "sha256": "050683477c569eb28e4acdfbe3637e1dc67c1b95c579ed47ae39801b5500aab5"
+    },
+    {
+      "path": "api/auth-signup.js",
+      "bytes": 686,
+      "sha256": "9832c976e7285647846d3c91a764498fabd81d8c2c3388228eb3c79b8039bbe4"
+    },
+    {
+      "path": "api/client-state.js",
+      "bytes": 1534,
+      "sha256": "1df6db9e85bf5185880bc6698d647d154429c2914a50eaf1ea4fe7021c7eb985"
+    },
+    {
+      "path": "api/collaboration.js",
+      "bytes": 6251,
+      "sha256": "9865bbca41f2cdca40a121a5ca8b6597c5286509ed89251c51a0758e73f329da"
+    },
+    {
+      "path": "api/command-validate.js",
+      "bytes": 543,
+      "sha256": "6ea403cc3beb972ff26b7a11bf4197bb6665abd3f47ca029c5bb7c61803447a0"
+    },
+    {
+      "path": "api/config.js",
+      "bytes": 1300,
+      "sha256": "739582da34e52b146653ec7462e369b0cf20d4dbbd0a43d21ee247cc319c74fb"
+    },
+    {
+      "path": "api/document-facts.js",
+      "bytes": 4821,
+      "sha256": "a8ddec252c767ae1458482432e63755bc8447aa8177db227d4cc966e5cf71475"
+    },
+    {
+      "path": "api/document-ingest.js",
+      "bytes": 5823,
+      "sha256": "0ffb17774254f64876e41d36141ef45d508be6c0520e90a2b103a09ba36cfdc6"
+    },
+    {
+      "path": "api/documents.js",
+      "bytes": 4511,
+      "sha256": "3ef9b0396e5ae04948d8550989f9f72b0d0a96ae69c35a11649628ed7e194fc2"
+    },
+    {
+      "path": "api/evidence-upload.js",
+      "bytes": 1999,
+      "sha256": "eb03e19eacd6a47f08b0e04942f3fbcfb48073052abe76f77c73a284eed616da"
+    },
+    {
+      "path": "api/foundation-proposals.js",
+      "bytes": 2994,
+      "sha256": "da43c98b946d8a6e463a19bd7ef22aae6964c2934cb5731875cb9c848e88b2ff"
+    },
+    {
+      "path": "api/health.js",
+      "bytes": 359,
+      "sha256": "d7375b486493da451205c4b63140e8a9757ded928ff19c67db1df76b3a402859"
+    },
+    {
+      "path": "api/llm-status.js",
+      "bytes": 349,
+      "sha256": "49e3bb3f50da7ea966bbb828409bf0ae0f872ac8d3863153926810575cbe7f6e"
+    },
+    {
+      "path": "api/pilot-evaluation.js",
+      "bytes": 3004,
+      "sha256": "61f704552aa18b91b30b92587299030475bf3e4bc0270e41d150863fb10e9b16"
+    },
+    {
+      "path": "api/pilot-readiness.js",
+      "bytes": 1904,
+      "sha256": "1d2bbb34cbb73276eb58679470185a7359b0655e2543222bafc3750db2fec23e"
+    },
+    {
+      "path": "api/readiness.js",
+      "bytes": 2334,
+      "sha256": "a2fece2d80c51d3c72f314fcdcf8d1e294650ae23995766b36586880af9237c0"
+    },
+    {
+      "path": "api/release-integrity.js",
+      "bytes": 988,
+      "sha256": "dbaafb61761d80668b0d464f461bd75c781e6b40ef504d141f93a10f5a80293f"
+    },
+    {
+      "path": "api/saved-views.js",
+      "bytes": 1307,
+      "sha256": "c283f502abdd8c9bf6056a11d093f9f95b62fcf141a60dd9f8e6c552b7057afc"
+    },
+    {
+      "path": "api/session-document-ingest.js",
+      "bytes": 6105,
+      "sha256": "8d8b8d051613d9855feef8ada0655afd9769e150a56ba1c66734ff9f0611d46c"
+    },
+    {
+      "path": "api/session-fact-confirm.js",
+      "bytes": 3767,
+      "sha256": "3608d1b8fe7b203c6235eb56b8d7c762bbb206e2b18a232e665564b371481123"
+    },
+    {
+      "path": "api/telemetry.js",
+      "bytes": 4700,
+      "sha256": "c2eee05cb1f6173cba9e24792f5fd3189432e7234d98c20cdc4c54c05d9ac26a"
+    },
+    {
+      "path": "api/transformation-export.js",
+      "bytes": 1253,
+      "sha256": "3125473a10330f8f2c9188ee0d529193f865cbbf5164eee9058ef0d9331b8176"
+    },
+    {
+      "path": "api/version.js",
+      "bytes": 305,
+      "sha256": "33ff228b9531cf576115e545f58afe3ea43ee0920ce125ca34e23964d86f0b73"
+    },
+    {
+      "path": "api/workspaces.js",
+      "bytes": 1082,
+      "sha256": "15630e6d6a9ae8af76430efa916d4a3272282f0c830e6a5988fc01c6366d505a"
+    },
+    {
+      "path": "data/atlas-registry.json",
+      "bytes": 12519,
+      "sha256": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8"
+    },
+    {
+      "path": "data/contracts/atlas-data-contract-v1.0.schema.json",
+      "bytes": 5260,
+      "sha256": "7ff5527e1a9c2bcb2c9a98ab7bf90b47feac4515fee2682fbfd8ca03cd6fc14c"
+    },
+    {
+      "path": "data/contracts/domain-extension-contract-v1.schema.json",
+      "bytes": 1547,
+      "sha256": "7802793fb4fc03a16dc79a8d2714b7c69b6babe8582f74055a16445d3a5f8799"
+    },
+    {
+      "path": "data/contracts/enterprise-module-contract-v1.schema.json",
+      "bytes": 1256,
+      "sha256": "2a79952855eed4fd9e0cc29140b8bd80444d2cff16fbeb39c521d4d982218dd7"
+    },
+    {
+      "path": "data/core/enterprise-core-ontology-v1.json",
+      "bytes": 2529,
+      "sha256": "dd39177c2621a37253f156b1d6bd47cfd110d36e4d737b3903496226e9a95a98"
+    },
+    {
+      "path": "data/domain-pack-catalog.json",
+      "bytes": 577,
+      "sha256": "798ae206113e706c5f16434d8f2a586259ec9560f4836a78fdea2016b3947d6d"
+    },
+    {
+      "path": "data/domains/accounts-payable-fixture-domain-pack-v1.json",
+      "bytes": 7927,
+      "sha256": "4f52c9cc76733eac6f1420eac956d3030b210b06501b9e08dd575b149cc2457e"
+    },
+    {
+      "path": "data/domains/supply-chain-domain-pack-v1.json",
+      "bytes": 24572,
+      "sha256": "3d17ba3dc5dd5c9ecae9eb97d3cfbd984f416a78e595b7794ee4ddbbd67d0237"
+    },
+    {
+      "path": "data/fixtures/accounts-payable-module-v0.1.json",
+      "bytes": 19339,
+      "sha256": "435806d83dafe4efcc23cb1fca49dae1e13d9648412950ae9345d65d7ec0cef6"
+    },
+    {
+      "path": "data/module-catalog.json",
+      "bytes": 2236,
+      "sha256": "46be596a2cc0c7f3bb77621a1e4eb31a8270f8e943909eb2dda8f525e162d509"
+    },
+    {
+      "path": "data/modules/road-ltl-v1.2.json",
+      "bytes": 347718,
+      "sha256": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55"
+    },
+    {
+      "path": "data/page0/page0-v6.2.2.json",
+      "bytes": 33700,
+      "sha256": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374"
+    },
+    {
+      "path": "data/reports/road-ltl-v1.2.validation.json",
+      "bytes": 656,
+      "sha256": "fcdd50b1f7d7711f0a72d9cba2ba1e920010d6e596e1103165935a347653a293"
+    },
+    {
+      "path": "engine/adapters/legacy-canvas-compat.js",
+      "bytes": 454,
+      "sha256": "07455cba9bd6220014c33023e3cf76dd6135352c8784cb83fb69af6847eeec03"
+    },
+    {
+      "path": "engine/adapters/supply-chain-legacy-v1.js",
+      "bytes": 678,
+      "sha256": "81de3a1d87a9c392af2a4e9aef157068a0338ce2880f7d01fd2de884006bc0e3"
+    },
+    {
+      "path": "engine/domain-neutral-core.js",
+      "bytes": 14082,
+      "sha256": "63eaf10e1c54480fe353012818ea22ed5a865f3a5adca56ea2b6a22644866251"
+    },
+    {
+      "path": "governance/answer-evidence-contract-v1.json",
+      "bytes": 815,
+      "sha256": "8ac82954a785c2db24d8096547e6f3840072fa4262d122a22ba9e28b272959c0"
+    },
+    {
+      "path": "governance/canvas-command-contract-v1.json",
+      "bytes": 1163,
+      "sha256": "22abaff0e811bea936e26a766cdff1c3c407776e7cd030a2dd932f051e92e6c1"
+    },
+    {
+      "path": "governance/knowledge-gap-queue.schema.json",
+      "bytes": 1525,
+      "sha256": "ddc5346cb7630f9a0fb5948b86cc9c7e662928aeb853ef9b8fe584d6b6d34d82"
+    },
+    {
+      "path": "governance/overlay-registry-v1.json",
+      "bytes": 43262,
+      "sha256": "d133e735156dde3299036491ecd7336fe16b6d7978c413803a03c94ebad6175f"
+    },
+    {
+      "path": "governance/rule-registry-v1.json",
+      "bytes": 10865,
+      "sha256": "cf58593eac7be3ff2ac995fd1b3b5d5c6411205fcaff97a71446c51238684251"
+    },
+    {
+      "path": "governance/version-policy-v1.json",
+      "bytes": 849,
+      "sha256": "81a3ddea748e47b9792fc49aa46ec29cafe294db1e701025d63c8acac98ce32a"
+    },
+    {
+      "path": "index.html",
+      "bytes": 497404,
+      "sha256": "896a7fa9927c3440d900c5dc3cc9f1f78731b30c4fa92e55b5dec12c05bd981a"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1840,
+      "sha256": "b346164a4adcd11d702e54a7ec78096591fbfca75d3dcfa2b848239af7d86eca"
+    },
+    {
+      "path": "release/baselines/core-hashes-stage21.json",
+      "bytes": 972,
+      "sha256": "9e1aa1f718d410177af75db7c2836cf6c9693f57f732e012ddade2060b2e7986"
+    },
+    {
+      "path": "release/release-meta.js",
+      "bytes": 693,
+      "sha256": "bc4ff9f32d721426d83c1d2f727df542e2204e087f7a9a83db772a5479672135"
+    },
+    {
+      "path": "stage17-client.js",
+      "bytes": 13284,
+      "sha256": "c5b29ceb9eb365541d0598cfd9f59a134ed866a9bd0c21bcbf03ee460c64f35d"
+    },
+    {
+      "path": "stage18-client.js",
+      "bytes": 7854,
+      "sha256": "52170214df14f9412db05682195d7c5a26a6fb691eb5d1e25a044913490259f1"
+    },
+    {
+      "path": "stage19-client.js",
+      "bytes": 20988,
+      "sha256": "f1c92dd1c09eb3714a7cf204f125221ca31156dbc3e148846866442c810dffaa"
+    },
+    {
+      "path": "stage20-client.js",
+      "bytes": 36566,
+      "sha256": "86f707a669edb2ec8a1cd58e4de399f6b46147455fa6e596172c025e22f45e67"
+    },
+    {
+      "path": "stage21-client.js",
+      "bytes": 29213,
+      "sha256": "b1d0c420efb31bba3a9cadd31cf0bdafa51d79563d5615268db66068451ab5a7"
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 1106,
+      "sha256": "b460712ec4346df2bc65eef957fc07e0b3acc307412b90a3e4c086efcbf33e06"
+    }
+  ],
+  "canonical": {
+    "data/atlas-registry.json": "cead9f85c8cdffa869b1bd40140708f593a0bb49c1d2a09c08ea22597a341ac8",
+    "data/page0/page0-v6.2.2.json": "d4c85e4ecce2999c754ff61bb887214b63c393233f4beb155da0d00cb7f52374",
+    "data/modules/road-ltl-v1.2.json": "1368f1dd56c2d153699f03b6c1729c826aaab73ef4ca81c4b7a4dc7132fb0a55",
+    "data/core/enterprise-core-ontology-v1.json": "dd39177c2621a37253f156b1d6bd47cfd110d36e4d737b3903496226e9a95a98",
+    "data/contracts/domain-extension-contract-v1.schema.json": "7802793fb4fc03a16dc79a8d2714b7c69b6babe8582f74055a16445d3a5f8799",
+    "data/domains/supply-chain-domain-pack-v1.json": "3d17ba3dc5dd5c9ecae9eb97d3cfbd984f416a78e595b7794ee4ddbbd67d0237"
+  }
+}

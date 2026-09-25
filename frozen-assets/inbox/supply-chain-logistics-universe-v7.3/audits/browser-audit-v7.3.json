@@ -1,0 +1,393 @@
+{
+  "generatedAt": "2026-08-30T14:08:00.481Z",
+  "results": {
+    "universe": {
+      "desktop": {
+        "title": "Supply Chain & Logistics Universe V7.3",
+        "integrity": {
+          "status": "passed",
+          "errors": [],
+          "version": "Universe V7.3",
+          "coreDomainCount": 8,
+          "conditionalDomainCount": 1,
+          "crossEnterpriseRailCount": 6,
+          "enterpriseCoverageLensCount": 27,
+          "businessCycleViewCount": 9,
+          "navigatorEntryCount": 71,
+          "navigatorPlannedCount": 67,
+          "executiveIntentCount": 9,
+          "sourceForensicNoteCount": 8,
+          "ontologyContractEdgeCount": 8,
+          "systemAuthorityRuleCount": 12,
+          "operatingRoleCount": 11,
+          "modeOverlayCount": 13,
+          "modeRelevanceRecordCount": 14,
+          "enterpriseWideDiscoveryEnvelopeCount": 14,
+          "movementPatternCount": 12,
+          "logisticsNodeCount": 15,
+          "contextResolverRuleCount": 51,
+          "crossModeDiscoveryAuditCount": 13,
+          "applicabilityScenarioCount": 18,
+          "roadLtlStressScenarioCount": 12,
+          "compatibilityScenarioCount": 12,
+          "compatibilityCombinationCount": 728,
+          "contractServiceContextCount": 5,
+          "contextOptionCount": 13,
+          "jurisdictionCount": 3,
+          "carriageRegimeCount": 5,
+          "conditionCount": 5,
+          "authorityDomainCount": 17,
+          "referencePlacementCount": 192,
+          "governedSourceRecordCount": 67,
+          "firstClassEntityCount": 265,
+          "relationshipTypeCount": 30,
+          "mappedSystemDisplayTermCount": 67,
+          "mappedBusinessObjectDisplayTermCount": 127,
+          "directionalExchangeCount": 36
+        },
+        "status": "{\"status\":\"passed\",\"errors\":[],\"version\":\"Universe V7.3\",\"coreDomainCount\":8,\"conditionalDomainCount\":1,\"crossEnterpriseRailCount\":6,\"enterpriseCoverageLensCount\":27,\"businessCycleViewCount\":9,\"navigatorEntryCount\":71,\"navigatorPlannedCount\":67,\"executiveIntentCount\":9,\"sourceForensicNoteCount\":8,\"ontologyContractEdgeCount\":8,\"systemAuthorityRuleCount\":12,\"operatingRoleCount\":11,\"modeOverlayCount\":13,\"modeRelevanceRecordCount\":14,\"enterpriseWideDiscoveryEnvelopeCount\":14,\"movementPatternCount\":12,\"logisticsNodeCount\":15,\"contextResolverRuleCount\":51,\"crossModeDiscoveryAuditCount\":13,\"applicabilityScenarioCount\":18,\"roadLtlStressScenarioCount\":12,\"compatibilityScenarioCount\":12,\"compatibilityCombinationCount\":728,\"contractServiceContextCount\":5,\"contextOptionCount\":13,\"jurisdictionCount\":3,\"carriageRegimeCount\":5,\"conditionCount\":5,\"authorityDomainCount\":17,\"referencePlacementCount\":192,\"governedSourceRecordCount\":67,\"firstClassEntityCount\":265,\"relationshipTypeCount\":30,\"mappedSystemDisplayTermCount\":67,\"mappedBusinessObjectDisplayTermCount\":127,\"directionalExchangeCount\":36}",
+        "nav": [
+          "How to read",
+          "Overview",
+          "Daughter modules",
+          "Ecosystem atlas",
+          "Enterprise coverage",
+          "Operating roles",
+          "Execution overlays",
+          "Systems & exchanges",
+          "L3–L5 contract",
+          "White-space discovery",
+          "Source-native models",
+          "Governance & freshness",
+          "Sources"
+        ],
+        "sections": [
+          "overview",
+          "navigator",
+          "atlas",
+          "enterprise",
+          "operating",
+          "modes",
+          "systems",
+          "execution-contract",
+          "discovery",
+          "reference",
+          "governance",
+          "sources"
+        ],
+        "switcher": true,
+        "viewApi": {
+          "version": "1.0",
+          "active": "universe",
+          "routes": {
+            "canvas": "https://supplychainatlas.vercel.app/",
+            "universe": "Supply-Chain-Logistics-Universe-V7.3.html",
+            "daughters": {
+              "Road LTL": "daughters/road-ltl-v1.2.html",
+              "Ocean FCL": "daughters/ocean-fcl-v0.4.html",
+              "Ocean LCL": "daughters/ocean-lcl-v0.4.html"
+            }
+          },
+          "liveDaughters": [
+            "Road LTL",
+            "Ocean FCL",
+            "Ocean LCL"
+          ]
+        },
+        "guide623": true,
+        "guide73": true,
+        "daughterOptions": [
+          "",
+          "Road LTL",
+          "Ocean FCL",
+          "Ocean LCL"
+        ],
+        "liveRoutes": [
+          [
+            "Road LTL",
+            "daughters/road-ltl-v1.2.html",
+            "A5 VERIFIED"
+          ],
+          [
+            "Ocean FCL",
+            "daughters/ocean-fcl-v0.4.html",
+            "A5 VERIFIED"
+          ],
+          [
+            "Ocean LCL",
+            "daughters/ocean-lcl-v0.4.html",
+            "A5 VERIFIED"
+          ]
+        ],
+        "oceanFclStatus": "A5 VERIFIED",
+        "oceanLclStatus": "A5 VERIFIED",
+        "overflow": 0,
+        "bodyOverflow": 0,
+        "errors": [],
+        "logCount": 0
+      },
+      "mobile": {
+        "title": "Supply Chain & Logistics Universe V7.3",
+        "integrity": {
+          "status": "passed",
+          "errors": [],
+          "version": "Universe V7.3",
+          "coreDomainCount": 8,
+          "conditionalDomainCount": 1,
+          "crossEnterpriseRailCount": 6,
+          "enterpriseCoverageLensCount": 27,
+          "businessCycleViewCount": 9,
+          "navigatorEntryCount": 71,
+          "navigatorPlannedCount": 67,
+          "executiveIntentCount": 9,
+          "sourceForensicNoteCount": 8,
+          "ontologyContractEdgeCount": 8,
+          "systemAuthorityRuleCount": 12,
+          "operatingRoleCount": 11,
+          "modeOverlayCount": 13,
+          "modeRelevanceRecordCount": 14,
+          "enterpriseWideDiscoveryEnvelopeCount": 14,
+          "movementPatternCount": 12,
+          "logisticsNodeCount": 15,
+          "contextResolverRuleCount": 51,
+          "crossModeDiscoveryAuditCount": 13,
+          "applicabilityScenarioCount": 18,
+          "roadLtlStressScenarioCount": 12,
+          "compatibilityScenarioCount": 12,
+          "compatibilityCombinationCount": 728,
+          "contractServiceContextCount": 5,
+          "contextOptionCount": 13,
+          "jurisdictionCount": 3,
+          "carriageRegimeCount": 5,
+          "conditionCount": 5,
+          "authorityDomainCount": 17,
+          "referencePlacementCount": 192,
+          "governedSourceRecordCount": 67,
+          "firstClassEntityCount": 265,
+          "relationshipTypeCount": 30,
+          "mappedSystemDisplayTermCount": 67,
+          "mappedBusinessObjectDisplayTermCount": 127,
+          "directionalExchangeCount": 36
+        },
+        "status": "{\"status\":\"passed\",\"errors\":[],\"version\":\"Universe V7.3\",\"coreDomainCount\":8,\"conditionalDomainCount\":1,\"crossEnterpriseRailCount\":6,\"enterpriseCoverageLensCount\":27,\"businessCycleViewCount\":9,\"navigatorEntryCount\":71,\"navigatorPlannedCount\":67,\"executiveIntentCount\":9,\"sourceForensicNoteCount\":8,\"ontologyContractEdgeCount\":8,\"systemAuthorityRuleCount\":12,\"operatingRoleCount\":11,\"modeOverlayCount\":13,\"modeRelevanceRecordCount\":14,\"enterpriseWideDiscoveryEnvelopeCount\":14,\"movementPatternCount\":12,\"logisticsNodeCount\":15,\"contextResolverRuleCount\":51,\"crossModeDiscoveryAuditCount\":13,\"applicabilityScenarioCount\":18,\"roadLtlStressScenarioCount\":12,\"compatibilityScenarioCount\":12,\"compatibilityCombinationCount\":728,\"contractServiceContextCount\":5,\"contextOptionCount\":13,\"jurisdictionCount\":3,\"carriageRegimeCount\":5,\"conditionCount\":5,\"authorityDomainCount\":17,\"referencePlacementCount\":192,\"governedSourceRecordCount\":67,\"firstClassEntityCount\":265,\"relationshipTypeCount\":30,\"mappedSystemDisplayTermCount\":67,\"mappedBusinessObjectDisplayTermCount\":127,\"directionalExchangeCount\":36}",
+        "nav": [
+          "How to read",
+          "Overview",
+          "Daughter modules",
+          "Ecosystem atlas",
+          "Enterprise coverage",
+          "Operating roles",
+          "Execution overlays",
+          "Systems & exchanges",
+          "L3–L5 contract",
+          "White-space discovery",
+          "Source-native models",
+          "Governance & freshness",
+          "Sources"
+        ],
+        "sections": [
+          "overview",
+          "navigator",
+          "atlas",
+          "enterprise",
+          "operating",
+          "modes",
+          "systems",
+          "execution-contract",
+          "discovery",
+          "reference",
+          "governance",
+          "sources"
+        ],
+        "switcher": true,
+        "viewApi": {
+          "version": "1.0",
+          "active": "universe",
+          "routes": {
+            "canvas": "https://supplychainatlas.vercel.app/",
+            "universe": "Supply-Chain-Logistics-Universe-V7.3.html",
+            "daughters": {
+              "Road LTL": "daughters/road-ltl-v1.2.html",
+              "Ocean FCL": "daughters/ocean-fcl-v0.4.html",
+              "Ocean LCL": "daughters/ocean-lcl-v0.4.html"
+            }
+          },
+          "liveDaughters": [
+            "Road LTL",
+            "Ocean FCL",
+            "Ocean LCL"
+          ]
+        },
+        "guide623": true,
+        "guide73": true,
+        "daughterOptions": [
+          "",
+          "Road LTL",
+          "Ocean FCL",
+          "Ocean LCL"
+        ],
+        "liveRoutes": [
+          [
+            "Road LTL",
+            "daughters/road-ltl-v1.2.html",
+            "A5 VERIFIED"
+          ],
+          [
+            "Ocean FCL",
+            "daughters/ocean-fcl-v0.4.html",
+            "A5 VERIFIED"
+          ],
+          [
+            "Ocean LCL",
+            "daughters/ocean-lcl-v0.4.html",
+            "A5 VERIFIED"
+          ]
+        ],
+        "oceanFclStatus": "A5 VERIFIED",
+        "oceanLclStatus": "A5 VERIFIED",
+        "overflow": 0,
+        "bodyOverflow": 0,
+        "errors": [],
+        "logCount": 0
+      }
+    },
+    "road-ltl": {
+      "desktop": {
+        "title": "Road LTL / Groupage Execution Atlas V1.2 Frozen Child",
+        "switcher": true,
+        "viewApi": {
+          "version": "1.0",
+          "active": "daughter",
+          "daughter": "Road LTL / Groupage Execution Atlas V1.2 Frozen Child",
+          "routes": {
+            "canvas": "https://supplychainatlas.vercel.app/",
+            "universe": "../Supply-Chain-Logistics-Universe-V7.3.html",
+            "daughters": {
+              "Road LTL": "road-ltl-v1.2.html",
+              "Ocean FCL": "ocean-fcl-v0.4.html",
+              "Ocean LCL": "ocean-lcl-v0.4.html"
+            }
+          }
+        },
+        "overflow": 0,
+        "bodyOverflow": 0,
+        "text": "Canvas\nUniverse\nDaughter\nRoad LTL\nRoad LTL\nOcean FCL\nOcean LCL\nSkip to execution graph\nLTL 01\nPAGE-0 DERIVED EXECUTION MODEL\nRoad LTL / Groupage Execution Atlas V1.2\nEcosystem · Page 0\n›\nMode & Service\n›\nRoad LTL\nEvidence\nReset LTL\nOverview\nCompose context\nExecution graph\nReference configurations\nEnterprise lenses\nSources\nYOU ARE HERE\nPage 0 › Road LTL V1.2\nMode\nRoad LTL\nView\nEnd-to-End\nReset to Road LTL base\nMODE & SERVICE EXECUTION MODEL · GOVERNED CHILD\nRoad LTL\n/ Groupage\n\nThe governed Road ",
+        "logCount": 0
+      },
+      "mobile": {
+        "title": "Road LTL / Groupage Execution Atlas V1.2 Frozen Child",
+        "switcher": true,
+        "viewApi": {
+          "version": "1.0",
+          "active": "daughter",
+          "daughter": "Road LTL / Groupage Execution Atlas V1.2 Frozen Child",
+          "routes": {
+            "canvas": "https://supplychainatlas.vercel.app/",
+            "universe": "../Supply-Chain-Logistics-Universe-V7.3.html",
+            "daughters": {
+              "Road LTL": "road-ltl-v1.2.html",
+              "Ocean FCL": "ocean-fcl-v0.4.html",
+              "Ocean LCL": "ocean-lcl-v0.4.html"
+            }
+          }
+        },
+        "overflow": 0,
+        "bodyOverflow": 0,
+        "text": "Canvas\nUniverse\nDaughter\nRoad LTL\nRoad LTL\nOcean FCL\nOcean LCL\nSkip to execution graph\nLTL 01\nRoad LTL / Groupage Execution Atlas V1.2\nReset LTL\nOverview\nCompose context\nExecution graph\nReference configurations\nEnterprise lenses\nSources\nMode\nRoad LTL\nView\nEnd-to-End\nReset to Road LTL base\nMODE & SERVICE EXECUTION MODEL · GOVERNED CHILD\nRoad LTL\n/ Groupage\n\nThe governed Road LTL execution sub-universe derived from the frozen Page‑0 model. One evidence-governed graph is composed through role, move",
+        "logCount": 0
+      }
+    },
+    "ocean-fcl": {
+      "desktop": {
+        "title": "Ocean FCL v0.4 · A5 VERIFIED",
+        "switcher": true,
+        "viewApi": {
+          "version": "1.0",
+          "active": "daughter",
+          "daughter": "Ocean FCL v0.4 · A5 VERIFIED",
+          "routes": {
+            "canvas": "https://supplychainatlas.vercel.app/",
+            "universe": "../Supply-Chain-Logistics-Universe-V7.3.html",
+            "daughters": {
+              "Road LTL": "road-ltl-v1.2.html",
+              "Ocean FCL": "ocean-fcl-v0.4.html",
+              "Ocean LCL": "ocean-lcl-v0.4.html"
+            }
+          }
+        },
+        "overflow": 0,
+        "bodyOverflow": 0,
+        "text": "Canvas\nUniverse\nDaughter\nOcean FCL\nRoad LTL\nOcean FCL\nOcean LCL\nOcean FCL — v0.4 · Universe V7.3 · A5 VERIFIED\nUniverse V7.3 daughter module · frozen daughter reference\n15 A3\n30 A5 contracts\n56 graph edges\n28 governed sources\nA5 VERIFIED · OWNER FROZEN\nCommercial schedule & service design\nFCL-01\nResolve ocean service and schedule options\nTrigger\nShipment demand exists; ocean container service is being considered.\nDecision\nWhich routing/service options meet origin, destination, timing and contain",
+        "logCount": 0
+      },
+      "mobile": {
+        "title": "Ocean FCL v0.4 · A5 VERIFIED",
+        "switcher": true,
+        "viewApi": {
+          "version": "1.0",
+          "active": "daughter",
+          "daughter": "Ocean FCL v0.4 · A5 VERIFIED",
+          "routes": {
+            "canvas": "https://supplychainatlas.vercel.app/",
+            "universe": "../Supply-Chain-Logistics-Universe-V7.3.html",
+            "daughters": {
+              "Road LTL": "road-ltl-v1.2.html",
+              "Ocean FCL": "ocean-fcl-v0.4.html",
+              "Ocean LCL": "ocean-lcl-v0.4.html"
+            }
+          }
+        },
+        "overflow": 0,
+        "bodyOverflow": 0,
+        "text": "Canvas\nUniverse\nDaughter\nOcean FCL\nRoad LTL\nOcean FCL\nOcean LCL\nOcean FCL — v0.4 · Universe V7.3 · A5 VERIFIED\nUniverse V7.3 daughter module · frozen daughter reference\n15 A3\n30 A5 contracts\n56 graph edges\n28 governed sources\nA5 VERIFIED · OWNER FROZEN\nCommercial schedule & service design\nFCL-01\nResolve ocean service and schedule options\nTrigger\nShipment demand exists; ocean container service is being considered.\nDecision\nWhich routing/service options meet origin, destination, timing and contain",
+        "logCount": 0
+      }
+    },
+    "ocean-lcl": {
+      "desktop": {
+        "title": "Ocean LCL / Consolidation v0.4 · A5 VERIFIED",
+        "switcher": true,
+        "viewApi": {
+          "version": "1.0",
+          "active": "daughter",
+          "daughter": "Ocean LCL / Consolidation v0.4 · A5 VERIFIED",
+          "routes": {
+            "canvas": "https://supplychainatlas.vercel.app/",
+            "universe": "../Supply-Chain-Logistics-Universe-V7.3.html",
+            "daughters": {
+              "Road LTL": "road-ltl-v1.2.html",
+              "Ocean FCL": "ocean-fcl-v0.4.html",
+              "Ocean LCL": "ocean-lcl-v0.4.html"
+            }
+          }
+        },
+        "overflow": 0,
+        "bodyOverflow": 0,
+        "text": "Canvas\nUniverse\nDaughter\nOcean LCL\nRoad LTL\nOcean FCL\nOcean LCL\nOcean LCL / Consolidation — v0.4 · Universe V7.3 · A5 VERIFIED\nUniverse V7.3 daughter module · frozen daughter reference\n14 A3\n30 A5 contracts\n56 graph edges\n28 governed sources\nA5 VERIFIED · OWNER FROZEN\nCommercial & consolidation service design\nLCL-01\nResolve LCL service, consolidation lane and schedule eligibility\nTrigger\nCustomer has less-than-container-load cargo demand.\nDecision\nWhich CFS/consolidation service, route and sched",
+        "logCount": 0
+      },
+      "mobile": {
+        "title": "Ocean LCL / Consolidation v0.4 · A5 VERIFIED",
+        "switcher": true,
+        "viewApi": {
+          "version": "1.0",
+          "active": "daughter",
+          "daughter": "Ocean LCL / Consolidation v0.4 · A5 VERIFIED",
+          "routes": {
+            "canvas": "https://supplychainatlas.vercel.app/",
+            "universe": "../Supply-Chain-Logistics-Universe-V7.3.html",
+            "daughters": {
+              "Road LTL": "road-ltl-v1.2.html",
+              "Ocean FCL": "ocean-fcl-v0.4.html",
+              "Ocean LCL": "ocean-lcl-v0.4.html"
+            }
+          }
+        },
+        "overflow": 0,
+        "bodyOverflow": 0,
+        "text": "Canvas\nUniverse\nDaughter\nOcean LCL\nRoad LTL\nOcean FCL\nOcean LCL\nOcean LCL / Consolidation — v0.4 · Universe V7.3 · A5 VERIFIED\nUniverse V7.3 daughter module · frozen daughter reference\n14 A3\n30 A5 contracts\n56 graph edges\n28 governed sources\nA5 VERIFIED · OWNER FROZEN\nCommercial & consolidation service design\nLCL-01\nResolve LCL service, consolidation lane and schedule eligibility\nTrigger\nCustomer has less-than-container-load cargo demand.\nDecision\nWhich CFS/consolidation service, route and sched",
+        "logCount": 0
+      }
+    }
+  }
+}

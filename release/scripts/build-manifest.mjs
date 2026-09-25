@@ -1,0 +1,10 @@
+import fs from 'node:fs';import path from 'node:path';import {root,walk,fileInfo,sha} from './common.mjs';
+const runtimeRoots=['api','engine','data','governance'];
+let files=['index.html','stage17-client.js','stage18-client.js','stage19-client.js','stage20-client.js','stage21-client.js','package.json','vercel.json','.env.example','release/release-meta.js','release/baselines/core-hashes-stage21.json'];
+for(const r of runtimeRoots)files.push(...walk(path.join(root,r)).map(p=>path.relative(root,p)));
+files=[...new Set(files)].filter(rel=>fs.existsSync(path.join(root,rel))).sort();
+const manifest={schemaVersion:'atlas-release-manifest-v1',stage:'23',releaseId:'stage23-2026.08.23-r1',sourceStage:'22.2',generatedAt:new Date().toISOString(),nodeEngine:JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8')).engines.node,files:files.map(fileInfo)};
+const canonical=['data/atlas-registry.json','data/page0/page0-v6.2.2.json','data/modules/road-ltl-v1.2.json','data/core/enterprise-core-ontology-v1.json','data/contracts/domain-extension-contract-v1.schema.json','data/domains/supply-chain-domain-pack-v1.json'];
+manifest.canonical=Object.fromEntries(canonical.map(rel=>[rel,sha(path.join(root,rel))]));
+fs.writeFileSync(path.join(root,'release/stage23-release-manifest.json'),JSON.stringify(manifest,null,2));
+console.log(JSON.stringify({ok:true,files:manifest.files.length,releaseId:manifest.releaseId},null,2));

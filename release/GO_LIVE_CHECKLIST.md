@@ -1,0 +1,22 @@
+# Go-Live Checklist
+
+- [x] Node engine pinned to 24.x in `package.json`.
+- [x] Stable/Lab release contract defined.
+- [x] Liveness/readiness/version/integrity endpoints added.
+- [x] Security headers hardened.
+- [x] Canonical core/SCM hashes frozen.
+- [x] Regression tests made path-portable (no `/mnt/data/stageXX` dependency).
+- [x] Stage 17/18/18.5/19/20/21 source regression passes.
+- [x] Supabase Stage 17/19/21 migration history present.
+- [x] All current `atlas_*` client-work tables have RLS enabled.
+- [x] Both client Storage buckets are private.
+- [x] Supabase security advisor: zero findings.
+- [x] Stable package excludes AP standalone fixture.
+- [x] Lab package retains AP neutrality fixture.
+- [ ] Vercel Lab project connected/created.
+- [ ] Vercel Stable project connected/created.
+- [ ] Target environment variables configured and audited.
+- [ ] Deployed Lab readiness/integrity/E2E run completed.
+- [ ] Live LLM-provider test completed if provider is enabled for go-live.
+- [ ] Isolated database restore/PITR rehearsal completed before real client data.
+- [ ] Stable promoted from exact tested Lab artifact.

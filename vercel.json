@@ -1,0 +1,201 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 30
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/admin.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store, max-age=0"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/auth-admin-login",
+      "destination": "/api/auth?action=auth-admin-login"
+    },
+    {
+      "source": "/api/auth-admin-session",
+      "destination": "/api/auth?action=auth-admin-session"
+    },
+    {
+      "source": "/api/auth-admin-logout",
+      "destination": "/api/auth?action=auth-admin-logout"
+    },
+    {
+      "source": "/api/admin-workdefinitions",
+      "destination": "/api/atlas?action=admin-workdefinitions"
+    },
+    {
+      "source": "/api/runtime-access",
+      "destination": "/api/atlas?action=runtime-access"
+    },
+    {
+      "source": "/api/malkom-projections",
+      "destination": "/api/atlas?action=malkom-projections"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin.html"
+    },
+    {
+      "source": "/api/auth-login",
+      "destination": "/api/auth?action=auth-login"
+    },
+    {
+      "source": "/api/auth-logout",
+      "destination": "/api/auth?action=auth-logout"
+    },
+    {
+      "source": "/api/auth-session",
+      "destination": "/api/auth?action=auth-session"
+    },
+    {
+      "source": "/api/auth-signup",
+      "destination": "/api/auth?action=auth-signup"
+    },
+    {
+      "source": "/api/workspaces",
+      "destination": "/api/workspace?action=workspaces"
+    },
+    {
+      "source": "/api/client-state",
+      "destination": "/api/workspace?action=client-state"
+    },
+    {
+      "source": "/api/saved-views",
+      "destination": "/api/workspace?action=saved-views"
+    },
+    {
+      "source": "/api/audit",
+      "destination": "/api/workspace?action=audit"
+    },
+    {
+      "source": "/api/documents",
+      "destination": "/api/documents?action=documents"
+    },
+    {
+      "source": "/api/document-ingest",
+      "destination": "/api/documents?action=document-ingest"
+    },
+    {
+      "source": "/api/document-facts",
+      "destination": "/api/documents?action=document-facts"
+    },
+    {
+      "source": "/api/evidence-upload",
+      "destination": "/api/documents?action=evidence-upload"
+    },
+    {
+      "source": "/api/session-document-ingest",
+      "destination": "/api/documents?action=session-document-ingest"
+    },
+    {
+      "source": "/api/session-fact-confirm",
+      "destination": "/api/documents?action=session-fact-confirm"
+    },
+    {
+      "source": "/api/health",
+      "destination": "/api/system?action=health"
+    },
+    {
+      "source": "/api/version",
+      "destination": "/api/system?action=version"
+    },
+    {
+      "source": "/api/config",
+      "destination": "/api/system?action=config"
+    },
+    {
+      "source": "/api/readiness",
+      "destination": "/api/system?action=readiness"
+    },
+    {
+      "source": "/api/pilot-readiness",
+      "destination": "/api/system?action=pilot-readiness"
+    },
+    {
+      "source": "/api/release-integrity",
+      "destination": "/api/system?action=release-integrity"
+    },
+    {
+      "source": "/api/llm-status",
+      "destination": "/api/system?action=llm-status"
+    },
+    {
+      "source": "/api/ask-atlas",
+      "destination": "/api/atlas?action=ask-atlas"
+    },
+    {
+      "source": "/api/command-validate",
+      "destination": "/api/atlas?action=command-validate"
+    },
+    {
+      "source": "/api/collaboration",
+      "destination": "/api/collab?action=collaboration"
+    },
+    {
+      "source": "/api/telemetry",
+      "destination": "/api/collab?action=telemetry"
+    },
+    {
+      "source": "/api/transformation-export",
+      "destination": "/api/transform?action=transformation-export"
+    },
+    {
+      "source": "/api/foundation-proposals",
+      "destination": "/api/transform?action=foundation-proposals"
+    },
+    {
+      "source": "/api/pilot-evaluation",
+      "destination": "/api/evaluation?action=pilot-evaluation"
+    },
+    {
+      "source": "/app",
+      "destination": "/index.html"
+    }
+  ]
+}

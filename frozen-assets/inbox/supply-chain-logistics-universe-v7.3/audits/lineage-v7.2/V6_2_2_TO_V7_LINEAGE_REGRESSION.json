@@ -1,0 +1,130 @@
+{
+  "status": "PASS",
+  "checks": {
+    "domains": {
+      "baselineCount": 15,
+      "v7Count": 15,
+      "missingBaselineIds": [],
+      "addedV7Ids": []
+    },
+    "models": {
+      "baselineCount": 32,
+      "v7Count": 32,
+      "missingBaselineIds": [],
+      "addedV7Ids": []
+    },
+    "modes": {
+      "baselineCount": 14,
+      "v7Count": 14,
+      "missingBaselineIds": [],
+      "addedV7Ids": []
+    },
+    "authorityRules": {
+      "baselineCount": 12,
+      "v7Count": 12,
+      "missingBaselineIds": [],
+      "addedV7Ids": []
+    },
+    "systemRecords": {
+      "baselineCount": 73,
+      "v7Count": 78,
+      "missingBaselineIds": [],
+      "addedV7Ids": [
+        "sys-carrier-documentation",
+        "sys-cfs-platform",
+        "sys-ebl-platform",
+        "sys-maritime-single-window",
+        "sys-terminal-operating"
+      ]
+    },
+    "businessObjectRecords": {
+      "baselineCount": 115,
+      "v7Count": 128,
+      "missingBaselineIds": [],
+      "addedV7Ids": [
+        "obj-arrival-notice",
+        "obj-cfs-handoff",
+        "obj-consignment",
+        "obj-consolidation",
+        "obj-container",
+        "obj-deconsolidation",
+        "obj-execution-instance",
+        "obj-house-transport-document",
+        "obj-master-transport-document",
+        "obj-port-call",
+        "obj-seal",
+        "obj-shipping-instructions",
+        "obj-vgm-record"
+      ]
+    },
+    "documentRecords": {
+      "baselineCount": 9,
+      "v7Count": 19,
+      "missingBaselineIds": [],
+      "addedV7Ids": [
+        "doc-arrival-notice",
+        "doc-bay-plan",
+        "doc-load-list",
+        "doc-ocean-carrier-bl",
+        "doc-ocean-house-bl",
+        "doc-ocean-master-bl",
+        "doc-ocean-sea-waybill",
+        "doc-release-instruction",
+        "doc-shipping-instructions",
+        "doc-vgm-declaration"
+      ]
+    },
+    "navigatorFamilies": {
+      "baselineCount": 71,
+      "v7Count": 71,
+      "equalExceptApprovedUniverseRename": true,
+      "baselineRoot": [
+        "Ecosystem / Page 0"
+      ],
+      "v7Root": [
+        "Universe"
+      ]
+    },
+    "sources": {
+      "baselineCount": 51,
+      "v7Count": 63,
+      "missingBaselineIds": [],
+      "addedV7Ids": [
+        "src-ctu-code-2014",
+        "src-dcsa-arrival",
+        "src-dcsa-blueprint-2026q1",
+        "src-dcsa-commercial-schedules",
+        "src-dcsa-load-list-bay-plan",
+        "src-dcsa-ovs",
+        "src-dcsa-port-call",
+        "src-dcsa-vgm",
+        "src-fiata-efbl-guide-2026",
+        "src-imdg-2024-a42-24",
+        "src-imo-compendium-2026",
+        "src-tic40-2025-019"
+      ]
+    },
+    "locationNormalizationIdParity": {
+      "equal": true,
+      "before": 345,
+      "after": 345,
+      "added": [],
+      "removed": []
+    },
+    "locationMaster": {
+      "id": "obj-location-master",
+      "canonicalName": "Location Master",
+      "aliases": [
+        "Location Identity",
+        "Place Master",
+        "Site Master"
+      ],
+      "authorityRulePreserved": true
+    }
+  },
+  "allowedChanges": [
+    "Navigator root display renamed from Ecosystem / Page 0 to Universe; destination count and all other navigator items unchanged.",
+    "Location Master canonical label normalized by stable ID; aliases preserve prior terminology."
+  ],
+  "errors": []
+}

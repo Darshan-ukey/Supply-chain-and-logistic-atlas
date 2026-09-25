@@ -1,0 +1,14 @@
+{
+  "desktop": {
+    "errors": [],
+    "overflow": 0,
+    "llmRequired": true,
+    "storeFalse": true
+  },
+  "mobile": {
+    "errors": [],
+    "overflow": 0,
+    "llmRequired": true,
+    "storeFalse": true
+  }
+}

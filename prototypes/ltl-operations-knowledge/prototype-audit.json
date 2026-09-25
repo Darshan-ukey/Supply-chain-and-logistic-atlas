@@ -1,0 +1,30 @@
+{
+  "prototypeVersion": "0.1",
+  "files": {
+    "index.html": {
+      "bytes": 65606,
+      "sha256": "051b1ca053e133927d334506024d487f941d912d05f04cec65469bb084e3f1a3"
+    },
+    "operations-knowledge-v0.1.json": {
+      "bytes": 67967,
+      "sha256": "592c78bc062c04181ccb0abb98cd0771eeffbb958ffff3f2ef79cc5df470de48"
+    },
+    "RESEARCH_FINDINGS.md": {
+      "bytes": 4307,
+      "sha256": "3b0348b04e93e37ba379d76612e02aeed723e48f2f235821a0d85e4936f780d7"
+    },
+    "README.md": {
+      "bytes": 632,
+      "sha256": "51a6e47b5d61f25ca13b5bd50f2eb187004fdabdcd757e3ffade6c349840228f"
+    }
+  },
+  "caseIds": [
+    "LTL-04",
+    "LTL-06",
+    "LTL-18",
+    "LTL-19"
+  ],
+  "sourceCount": 8,
+  "standalone": true,
+  "canonicalFilesModified": false
+}

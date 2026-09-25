@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "atlas-canvas-presentation-v2",
+  "moduleId": "road-ltl",
+  "moduleVersion": "1.2",
+  "note": "Presentation hints only. No business logic lives in the renderer; future daughters publish their own hints or richer semantic labels.",
+  "journeys": {
+    "mode-service": {
+      "label": "Road LTL execution",
+      "stages": [
+        {"id":"booking","label":"Booking","processIds":["LTL-01","LTL-02","LTL-03"]},
+        {"id":"pickup","label":"Pickup","processIds":["LTL-04","LTL-05"]},
+        {"id":"origin","label":"Origin","processIds":["LTL-06","LTL-07"]},
+        {"id":"linehaul","label":"Linehaul","processIds":["LTL-08"]},
+        {"id":"destination","label":"Destination","processIds":["LTL-11","LTL-12"]},
+        {"id":"delivery","label":"Delivery / POD","processIds":["LTL-13"]},
+        {"id":"billing","label":"Billing","processIds":["LTL-16","LTL-17"]}
+      ]
+    }
+  },
+  "adjacentFamilies": [
+    {"id":"network-variant","label":"Network variant","processIds":["LTL-09","LTL-10"]},
+    {"id":"exception","label":"Exception / recovery","processIds":["LTL-14","LTL-15"]},
+    {"id":"claims","label":"Claims / disputes","processIds":["LTL-18"]},
+    {"id":"trade","label":"Regulatory hold / release","processIds":["LTL-19"]},
+    {"id":"resource","label":"Resource readiness","processIds":["LTL-20"]},
+    {"id":"masterdata","label":"Master data control","processIds":["LTL-21"]},
+    {"id":"customer","label":"Customer coordination","processIds":["LTL-22"]}
+  ]
+}

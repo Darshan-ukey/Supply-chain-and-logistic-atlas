@@ -1,0 +1,610 @@
+{
+  "schemaVersion": "atlas-frozen-asset-register-v1",
+  "updatedAt": "2026-09-23T12:30:00+05:30",
+  "repository": "Darshan-ukey/Supply-chain-and-logistic-atlas",
+  "governanceBranch": "atlas-governance-registry-v2.1",
+  "latestIntegrationLock": {
+    "version": "2.2",
+    "path": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json"
+  },
+  "rules": [
+    "Read CURRENT.json or LATEST.md first; do not search old chat threads for latest asset identity.",
+    "Frozen files are immutable. A later iteration creates a new version and supersession record; it never overwrites the historical frozen payload.",
+    "CURRENT.json is the only mutable latest-pointer file.",
+    "Candidate and production-baseline status are separate; freezing a candidate does not activate it.",
+    "Every frozen repository asset should carry SHA-256, lineage, status and repository path where materialized.",
+    "Execution-contract assets marked IMPLEMENTATION_PENDING are architecture commitments, not completed implementations."
+  ],
+  "assets": [
+    {
+      "assetId": "universe-7.3",
+      "family": "universe",
+      "name": "Supply Chain Universe",
+      "version": "7.3",
+      "status": "FROZEN_PRODUCTION_BASELINE",
+      "category": "foundation",
+      "current": true,
+      "source": "metadata",
+      "notes": "Canonical production Universe baseline."
+    },
+    {
+      "assetId": "road-ltl-1.3",
+      "family": "road-ltl",
+      "name": "Road LTL",
+      "version": "1.3",
+      "status": "FROZEN_PRODUCTION_BASELINE",
+      "category": "daughter",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "data/modules/road-ltl-v1.3.json",
+      "sha256": "0f855cc0b11991a0f58a76791d64def8b688f4349b0e5bd1105161241f7ad808"
+    },
+    {
+      "assetId": "ocean-fcl-0.5",
+      "family": "ocean-fcl",
+      "name": "Ocean FCL",
+      "version": "0.5",
+      "status": "FROZEN_PRODUCTION_BASELINE",
+      "category": "daughter",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "data/modules/ocean-fcl-v0.5.json",
+      "sha256": "71526914c600cb10c47434a5b6dc064e851062776a336ae480f37e487e108ebc"
+    },
+    {
+      "assetId": "ocean-lcl-0.5",
+      "family": "ocean-lcl",
+      "name": "Ocean LCL",
+      "version": "0.5",
+      "status": "FROZEN_PRODUCTION_BASELINE",
+      "category": "daughter",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "data/modules/ocean-lcl-v0.5.json",
+      "sha256": "9dbaadc129a6c8be30e9e77c7ff319af40a9f5c4226e82817c2389cde01d18e6"
+    },
+    {
+      "assetId": "road-ltl-1.4-candidate",
+      "family": "road-ltl-candidate",
+      "name": "Road LTL",
+      "version": "1.4",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "category": "daughter-candidate",
+      "current": false,
+      "source": "artifact-package",
+      "artifactPackage": "atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+      "artifactPath": "data/modules/road-ltl-v1.4.json",
+      "repositoryPath": "data/modules/road-ltl-v1.4.json",
+      "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+      "supersedes": "road-ltl-1.3",
+      "custodyStatus": "GOVERNED_REPOSITORY_PATH_QA_VERIFIED_R0_2",
+      "notes": "Immutable historical execution-reference candidate; superseded as latest candidate by Road LTL 1.5, not production-promoted. R0.2 QA bound the recovered byte-identical repository path while preserving artifact-package lineage."
+    },
+    {
+      "assetId": "road-ltl-1.4-operational",
+      "family": "road-ltl-operational-knowledge",
+      "name": "Road LTL Operational Knowledge",
+      "version": "1.4",
+      "status": "FROZEN_OPERATIONAL_REFERENCE",
+      "category": "operational-knowledge",
+      "current": false,
+      "source": "artifact-package",
+      "artifactPackage": "atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+      "artifactPath": "data/operational-knowledge/road-ltl-v1.4-operational.json",
+      "repositoryPath": "data/operational-knowledge/road-ltl-v1.4-operational.json",
+      "sha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e",
+      "custodyStatus": "GOVERNED_REPOSITORY_PATH_QA_VERIFIED_R0_2",
+      "notes": "Recovered immutable Road LTL 1.4 Operational Knowledge base. R0.2 QA registered the byte-identical repository path; retained as the base for Road LTL 1.5 OKv2."
+    },
+    {
+      "assetId": "road-ltl-1.5-candidate",
+      "family": "road-ltl-candidate",
+      "name": "Road LTL",
+      "version": "1.5",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "category": "daughter-candidate",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "data/modules/road-ltl-v1.5.json",
+      "sha256": "22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f",
+      "supersedes": "road-ltl-1.4-candidate",
+      "baseAsset": "road-ltl-1.4-candidate",
+      "changedTaskIds": [
+        "LTL-03"
+      ],
+      "universeVersion": "7.3",
+      "notes": "Validated immutable reference candidate. Lossless v1.4 inheritance; LTL-03 Operational Knowledge v2 enrichment only. NOT production promotion."
+    },
+    {
+      "assetId": "road-ltl-1.5-operational",
+      "family": "road-ltl-operational-knowledge",
+      "name": "Road LTL Operational Knowledge",
+      "version": "1.5 / OKv2",
+      "status": "FROZEN_OPERATIONAL_REFERENCE",
+      "category": "operational-knowledge",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "data/operational-knowledge/road-ltl-v1.5-operational.json",
+      "sha256": "6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9",
+      "baseArtifactPath": "data/operational-knowledge/road-ltl-v1.4-operational.json",
+      "baseSha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e",
+      "notes": "Frozen operational payload supporting Road LTL 1.5; only LTL-03 is overridden."
+    },
+    {
+      "assetId": "ocean-fcl-0.6-candidate",
+      "family": "ocean-fcl-candidate",
+      "name": "Ocean FCL",
+      "version": "0.6",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "category": "daughter-candidate",
+      "current": true,
+      "source": "artifact-package",
+      "artifactPackage": "atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+      "artifactPath": "data/modules/ocean-fcl-v0.6.json",
+      "sha256": "334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a",
+      "supersedes": "ocean-fcl-0.5",
+      "notes": "Immutable candidate; not ACTIVE production until promotion gates pass."
+    },
+    {
+      "assetId": "ocean-lcl-0.6-candidate",
+      "family": "ocean-lcl-candidate",
+      "name": "Ocean LCL",
+      "version": "0.6",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "category": "daughter-candidate",
+      "current": true,
+      "source": "artifact-package",
+      "artifactPackage": "atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+      "artifactPath": "data/modules/ocean-lcl-v0.6.json",
+      "sha256": "73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f",
+      "supersedes": "ocean-lcl-0.5",
+      "notes": "Immutable candidate; not ACTIVE production until promotion gates pass."
+    },
+    {
+      "assetId": "ocean-0.6-public-safe-projections-bundle",
+      "family": "ocean-projection-candidate",
+      "name": "Ocean FCL/LCL 0.6 Public-Safe Execution-Depth Projection Bundle",
+      "version": "0.6",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "category": "materialized-projection-candidate",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "data/materialized/ocean-0.6-public-safe-projections.json.gz.b64",
+      "generatorPath": "tools/ocean-projection/build-ocean-projection.mjs",
+      "demoOnly": true,
+      "demoBranch": "atlas-v2-demo-2026-09-14",
+      "demoBranchCommit": "f36771e",
+      "baseModules": {
+        "ocean-fcl-0.6-candidate": "334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a",
+        "ocean-lcl-0.6-candidate": "73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f"
+      },
+      "taskCoverage": {
+        "ocean-fcl@0.6": 30,
+        "ocean-lcl@0.6": 30
+      },
+      "contentDepth": "OK_V1_MECHANICAL_SUMMARY_NOT_OKV2_NARRATIVE",
+      "notes": "Closes the gap flagged 2026-09-12 12:05 IST: governance/presentation/p2-projection-source-registry.json already registered ocean-fcl@0.6/ocean-lcl@0.6 as materialized:true pointing at this exact bundle path, but the file did not exist. Generated via a dedicated Ocean-specific builder (Ocean tasks use a structurally different OK-v1-era shape than the Road LTL v1.5 function expects -- direct reuse silently produced null content, caught by testing, not shipped). Every field is a direct real value or a mechanical join of real sourced items; no narrative invented; fields with no honest Ocean equivalent left null, consistent with this registrys own pre-existing informationResolutionDepth: NOT_POPULATED_AT_OKV2_DEPTH label. Verified: all 60 tasks (30 FCL + 30 LCL) render cleanly through the real, unmodified renderer; real HTTP simulation through the real route handler confirmed. Demo-branch artifact only; not promoted to any production pointer."
+    },
+    {
+      "assetId": "daughter-release-ltl1.4-ocean0.6",
+      "family": "release-package",
+      "name": "LTL 1.4 + Ocean FCL/LCL 0.6 Daughter V2 Release",
+      "version": "2026-09-02",
+      "status": "FROZEN_BUILD_ARTIFACT",
+      "category": "release-package",
+      "current": true,
+      "source": "external-build-artifact",
+      "fileName": "atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+      "repositoryPath": "release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+      "sha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289",
+      "manifestPath": "governance/frozen-assets/CANDIDATE_PAYLOAD_MANIFEST.json",
+      "repositoryBinaryMaterialization": "MATERIALIZED_AND_QA_VERIFIED_R0_2",
+      "githubActionsArtifactId": 10070289750,
+      "githubActionsWrapperSha256": "a116a912cb0fe12c9550c077c3633b93b48d3dac081ebca8ff95788fd8a552f2",
+      "historicalDriveSourceFileId": "1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI",
+      "r0_2QaDriveFolderId": "1fQr01v1JWHEmADE_kOiKJh5I_iAjtc0B",
+      "r0_2QaDriveArtifactFileId": "1YzFUw4s9cGEQjOZiK-H5cQUNq7EQ0C0x",
+      "notes": "Exact original release ZIP custody independently verified by SHA against both the GitHub-side committed binary and historical Drive source. Filename variants do not define identity; SHA-256 is authoritative."
+    },
+    {
+      "assetId": "insideOutOutsideInOperationalResearch",
+      "family": "governing-standard",
+      "name": "Inside-Out / Outside-In Operational Research Standard",
+      "version": "1",
+      "status": "FROZEN",
+      "category": "governance",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "governance/standards/INSIDE_OUT_OUTSIDE_IN_OPERATIONAL_RESEARCH_STANDARD_V1_FROZEN.md",
+      "sha256": "d2702b1966fbc7ee1f2518175b4c3028eb30c4481322b35fc3903ece13e60fe5"
+    },
+    {
+      "assetId": "executabilityRecursiveDecomposition",
+      "family": "governing-standard",
+      "name": "Executability & Recursive Decomposition Standard",
+      "version": "1",
+      "status": "FROZEN",
+      "category": "governance",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "governance/standards/EXECUTABILITY_AND_RECURSIVE_DECOMPOSITION_STANDARD_V1_FROZEN.md",
+      "sha256": "045fb2762d6296f37815669b66ea21c5f4314c639fff0213d7323ca4d0b5fd0d"
+    },
+    {
+      "assetId": "evidenceEpistemicClassification",
+      "family": "governing-standard",
+      "name": "Evidence / Epistemic Classification Vocabulary",
+      "version": "1",
+      "status": "FROZEN",
+      "category": "governance",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "governance/standards/EVIDENCE_EPISTEMIC_CLASSIFICATION_V1_FROZEN.md",
+      "sha256": "78f725fb6b537c477608ec80de5ef68b6afedd584e5bfc05fd07cef29903cda7"
+    },
+    {
+      "assetId": "knowledgeToExecutionArchitecture",
+      "family": "governing-standard",
+      "name": "Knowledge-to-Execution Architecture",
+      "version": "1",
+      "status": "FROZEN",
+      "category": "governance",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "governance/standards/KNOWLEDGE_TO_EXECUTION_ARCHITECTURE_V1_FROZEN.md",
+      "sha256": "e159013e571584ec9443e85474ea1879bde2ff1c004688285e1f31836ab90a3c"
+    },
+    {
+      "assetId": "clientBindingResolutionPrinciple",
+      "family": "governing-standard",
+      "name": "Client Binding Resolution Principle",
+      "version": "1",
+      "status": "FROZEN",
+      "category": "governance",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "governance/standards/CLIENT_BINDING_RESOLUTION_PRINCIPLE_V1_FROZEN.md",
+      "sha256": "da94d9b06fd2a36bf58fefea33c4bbe282d345cd48aa135786011dfc92d05732"
+    },
+    {
+      "assetId": "daughter-production-standard-2",
+      "family": "daughter-production-standard",
+      "name": "Daughter Production Standard",
+      "version": "2",
+      "status": "FROZEN_SCHEMA_CANDIDATE",
+      "category": "schema",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "schemas/daughter-production-standard-v2.json",
+      "sha256": "89e86a85c060c1db8daa58e4825f1746edddd0f24917b86090d67de735cdddf3"
+    },
+    {
+      "assetId": "operational-knowledge-contract-1",
+      "family": "operational-knowledge-contract",
+      "name": "Operational Knowledge Contract",
+      "version": "1",
+      "status": "FROZEN_SCHEMA_CANDIDATE",
+      "category": "schema",
+      "current": false,
+      "source": "repository",
+      "repositoryPath": "schemas/operational-knowledge-v1.json",
+      "sha256": "75cefb11bfabfcb77c7cdab8b17d2cbdb2f4cc3a684150a4da3d94be045f6846",
+      "notes": "Historical frozen schema candidate superseded as latest reference by Operational Knowledge Contract v2."
+    },
+    {
+      "assetId": "operational-knowledge-contract-2-candidate",
+      "family": "operational-knowledge-contract",
+      "name": "Operational Knowledge Contract",
+      "version": "2",
+      "status": "FROZEN_SCHEMA_CANDIDATE",
+      "category": "schema",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "schemas/operational-knowledge-contract-v2.json",
+      "sha256": "d58d33c38adc0ac3e63400b66680115699c0cfa5c4c831e44b22c19eedfa4a18",
+      "supersedes": "operational-knowledge-contract-1",
+      "notes": "Validated frozen reference schema. Information Resolution v1 is embedded as a first-class Operational Knowledge component."
+    },
+    {
+      "assetId": "information-resolution-contract-1",
+      "family": "information-resolution-contract",
+      "name": "Information Resolution Contract",
+      "version": "1",
+      "status": "FROZEN_SCHEMA_REFERENCE",
+      "category": "schema",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "schemas/information-resolution-contract-v1.json",
+      "sha256": "77224aaaef03689f1d918e41c6c2a4bd6e126dd5872782f09894c818a76dda73",
+      "notes": "Frozen supporting schema for Operational Knowledge Contract v2 and BOL information resolution."
+    },
+    {
+      "assetId": "bol-information-resolution-baseline-0.1",
+      "family": "information-resolution-reference-baseline",
+      "name": "BOL Information Resolution Baseline — Road LTL / Malkom",
+      "version": "0.1",
+      "status": "FROZEN_REFERENCE_BASELINE",
+      "category": "reference-baseline",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md",
+      "sha256": "8d1593ca7133c6c0ebe72099e01e18feccd5bb906851a6affa1a36ccbddb8400",
+      "supportingArtifacts": [
+        {
+          "path": "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+          "sha256": "b130da47c06a849c53980201027b6eaa05e440afd349e949c4bc8f3f4ac25480"
+        },
+        {
+          "path": "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+          "sha256": "4a799a8cfa9252b8ebf0f191aa054d5c4942d8f9e35ffe670d1cfdefba6ae69c"
+        }
+      ],
+      "notes": "Frozen reference baseline preserving 76 source-reported fields, metric anomalies, authoritative source boundaries and LTL-03 information-resolution findings."
+    },
+    {
+      "assetId": "process-concept-crosswalk-1",
+      "family": "process-concept-crosswalk",
+      "name": "Atlas Cross-Module Process Concept Crosswalk",
+      "version": "1.0",
+      "status": "GOVERNED_CROSS_LAYER_CONTRACT",
+      "category": "cross-layer-contract",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "data/crosswalks/process-concept-crosswalk-v1.json",
+      "sha256": "0baf0a0c297ddd0740f80909df15ad44bd02128b31d24a4f0d37cdb5e0fb4094",
+      "notes": "Pre-existing governed cross-module concept layer surfaced and ownership-certified by R0.1C. Defines 22 scp-* concepts and Road LTL SPECIALIZES/APPROVED_BASELINE mappings; Ocean mapping coverage remains a later R0.5 gap. Registration does not mutate crosswalk semantics."
+    },
+    {
+      "assetId": "client-binding-contract-1",
+      "family": "client-binding-contract",
+      "name": "Client Binding Requirement Contract",
+      "version": "1",
+      "status": "FROZEN_SCHEMA_CANDIDATE",
+      "category": "schema",
+      "current": true,
+      "source": "repository",
+      "repositoryPath": "schemas/client-binding-requirement-v1.json",
+      "sha256": "d67786bb7c8f5749fc77fd20d15b2ac4d449874a5ff22a87212ddeef861856df"
+    },
+    {
+      "assetId": "canonicalWorkDecompositionContract",
+      "family": "canonicalWorkDecompositionContract",
+      "name": "Canonical Work Decomposition Contract",
+      "version": "1",
+      "status": "IMPLEMENTATION_PENDING",
+      "category": "execution-contract",
+      "current": false,
+      "source": "repository",
+      "repositoryPath": "governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_PENDING.md",
+      "sha256": "3fd0884f5481abe03a9246e5794f86cb3ad28c57deb9eec8dca942a29dbcdf6b",
+      "notes": "Historical Sep-2 IMPLEMENTATION_PENDING commitment. Superseded operationally by the frozen P6.1 contract used by P6.2; retained unchanged at its historical path/hash."
+    },
+    {
+      "assetId": "canonicalWorkDecompositionContractV1Frozen",
+      "family": "canonicalWorkDecompositionContract",
+      "name": "Canonical Work Decomposition Contract",
+      "version": "1.0.0",
+      "status": "FROZEN",
+      "category": "execution-contract",
+      "current": true,
+      "source": "cross-branch-governed-implementation",
+      "repositoryPath": "governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_FROZEN.md",
+      "sourceBranch": "atlas-presentation-architecture-v1-p6-2",
+      "sourceCommit": "c72b50025d38c6ba103a98e6b698ac2181d5017b",
+      "gitBlobSha": "046885c71dc9fb24532b398cacd47ffc522f3a1b",
+      "supersedes": "canonicalWorkDecompositionContract",
+      "sha256Status": "NOT_RECORDED_IN_RECOVERED_P6_1_REGISTRY; Git blob identity verified by ATL-86",
+      "notes": "Frozen P6.1 upstream contract consumed by the frozen P6.2 WorkDefinition contract. Historical pending file remains immutable."
+    },
+    {
+      "assetId": "canonicalWorkDefinitionContract",
+      "family": "canonicalWorkDefinitionContract",
+      "name": "Canonical WorkDefinition Contract",
+      "version": "VNext",
+      "status": "IMPLEMENTATION_COMPILATION_PENDING",
+      "category": "execution-contract",
+      "current": false,
+      "source": "repository",
+      "repositoryPath": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_VNEXT_PENDING.md",
+      "sha256": "0f91a03e837dceadb57fdb83099a5882c46a286dc7f52b37924ab117a1978550",
+      "notes": "Historical Sep-2 VNext pending commitment. Explicitly superseded by Canonical WorkDefinition Contract V1 per CANONICAL_WORKDEFINITION_CONTRACT_SUPERSESSION_V1.json; retained unchanged."
+    },
+    {
+      "assetId": "canonicalWorkDefinitionContractV1",
+      "family": "canonicalWorkDefinitionContract",
+      "name": "Canonical WorkDefinition Contract",
+      "version": "1.0.0",
+      "status": "FROZEN",
+      "category": "execution-contract",
+      "current": true,
+      "source": "cross-branch-governed-implementation",
+      "repositoryPath": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md",
+      "sourceBranch": "atlas-presentation-architecture-v1-p6-2",
+      "sourceCommit": "c72b50025d38c6ba103a98e6b698ac2181d5017b",
+      "gitBlobSha": "c074489f2cf7edacde962f7e0260e2b240d24b87",
+      "sha256": "f51dfdb0719ba4b005f287e8293634a7b031cb87d5ad23ede29658d0dfa816f4",
+      "supersedes": "canonicalWorkDefinitionContract",
+      "supersessionRecord": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_SUPERSESSION_V1.json",
+      "notes": "Frozen P6.2 executor-neutral WorkDefinition contract. Current governed contract; runtime-specific projections remain downstream."
+    },
+    {
+      "assetId": "knowledge-execution-warehouse-schema-1",
+      "family": "backend-schema",
+      "name": "Knowledge Execution Warehouse Schema",
+      "version": "1",
+      "status": "FROZEN_SCHEMA_CANDIDATE_NOT_APPLIED",
+      "category": "backend",
+      "current": false,
+      "source": "repository",
+      "repositoryPath": "backend/supabase/001_knowledge_execution_warehouse.sql",
+      "sha256": "89bf4faad892117655653dc835582b8894959304ae3bc440f31020376003ca30",
+      "notes": "Historical Sep-2 NOT_APPLIED warehouse candidate. Its atlas_work_definitions shape is incompatible with deployed P6.2 and MUST NOT be executed against the current live schema. ATL-60/ATL-82 is the governed successor physical-design path."
+    },
+    {
+      "assetId": "canvas-2.0.0",
+      "family": "canvas",
+      "name": "Canvas",
+      "version": "2.0.0",
+      "status": "FROZEN_PRODUCTION_BASELINE",
+      "category": "platform",
+      "current": true,
+      "source": "metadata",
+      "sha256": "bc340946d703ef25297ffd67e6de2e5879958c132722e71d95be058c5ba2c1cb"
+    },
+    {
+      "assetId": "canvas-2.0.1-candidate",
+      "family": "canvas-candidate",
+      "name": "Canvas",
+      "version": "2.0.1",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "category": "platform-candidate",
+      "current": true,
+      "source": "repository",
+      "baseAsset": "canvas-2.0.0",
+      "extends": "canvas-2.0.0",
+      "shellUnchanged": true,
+      "shellVerification": {
+        "note": "The frozen canvas-2.0.0 visual shell is byte-identical and unmodified. 2.0.1 is additive: a governed Canvas->Daughter routing bridge layered on top, not a shell revision.",
+        "files": [
+          {
+            "path": "canvas-v2/canvas-v2/index.html",
+            "sha256": "f196331e91262daee147293ae8985112953b51877d29606ffb5bf1127a3d69a3"
+          },
+          {
+            "path": "canvas-v2/canvas-v2/assets/canvas-v2.js",
+            "sha256": "4d1bda9c4460fdbb8c21aabb798adb436af3901fba7ac91cbd7686c66ecae411"
+          },
+          {
+            "path": "canvas-v2/canvas-v2/assets/canvas-v2.css",
+            "sha256": "48cbe09bc4344e5d60cf740bf3ccf3e891dc586d23edeb106e4563cb3dbab451"
+          }
+        ]
+      },
+      "bridgeFiles": [
+        {
+          "path": "assets/canvas-daughter-bridge-v2.0.1.mjs",
+          "sha256": "1b7bf486856fdf00578e8797f29ae8d21009ee8a58356d201ce730da20c77667"
+        },
+        {
+          "path": "assets/universal-daughter-renderer-v2.js",
+          "sha256": "3437e8e8363b7e3e91e0ffd1b6f2fbcca254b2ad4623b17863f1ccdd4ea66f0f"
+        },
+        {
+          "path": "daughter.html",
+          "sha256": "b0a09e20f47b052ea7a9bb4290ba7ce4be70bc940e814e1affda76b2c04626b8"
+        },
+        {
+          "path": "governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json",
+          "sha256": "2f6fa30228c27b5a5fa4beb22be4b2119bab36b26e4f50b6ebfd53873b194a1d"
+        },
+        {
+          "path": "execution/ui/runtime-access-shell.js",
+          "sha256": "063f41ae4f4318ed5388f6cd3c0b75f030d94a58cde0698bd489f7b20dd1486b"
+        }
+      ],
+      "sourceBranch": "atlas-presentation-architecture-v1-p6-2",
+      "sourceCommit": "6ae00356b6",
+      "governedTargets": {
+        "road-ltl": {
+          "daughterModuleVersion": "1.5",
+          "sampleTaskId": "LTL-03"
+        },
+        "ocean-fcl": {
+          "daughterModuleVersion": "0.6",
+          "targetStatus": "APPROVED_PRODUCTION_GO_LIVE_TARGET"
+        },
+        "ocean-lcl": {
+          "daughterModuleVersion": "0.6",
+          "targetStatus": "APPROVED_PRODUCTION_GO_LIVE_TARGET"
+        }
+      },
+      "verification": {
+        "existingSuite": "tests/p4-canvas-daughter-integration.mjs — 37/37 PASS, independently re-run 2026-09-12",
+        "syntaxCheck": "node --check PASS on all 3 JS/mjs files (real parse, not pattern-match)",
+        "localStructuralServe": "PASS — daughter.html, renderer script, and the resolved road-ltl/1.5/LTL-03 tuple URL all served 200 from a local static server; no Vercel contact",
+        "notTested": "Live DOM rendering and any live-backend data path. Requires a browser against a real deployment; Vercel action is prohibited under the current demo release policy. This is the one open gap behind the CANDIDATE (not PRODUCTION_BASELINE) status below."
+      },
+      "supersedes": null,
+      "notes": "Registered under explicit Owner direction 2026-09-12 as permanent scaffolding, not demo-only throwaway. CANDIDATE status mirrors road-ltl-1.5-candidate's treatment in this same registry: hash-pinned and code/logic verified, but not yet production-promoted pending a live/visual check. canvas-2.0.0's own entry is unchanged. NOT production promotion; productionBaseline.canvas remains canvas-2.0.0."
+    },
+    {
+      "assetId": "universal-ask-2.0.1",
+      "family": "universal-ask",
+      "name": "Universal Ask",
+      "version": "2.0.1",
+      "status": "CERTIFIED_IN_BASELINE_PACKAGE",
+      "category": "platform",
+      "current": true,
+      "source": "metadata"
+    },
+    {
+      "assetId": "atlas-warehouse-1",
+      "family": "atlas-warehouse",
+      "name": "Atlas Warehouse",
+      "version": "1",
+      "status": "FROZEN_PRODUCTION_BASELINE",
+      "category": "backend",
+      "current": true,
+      "source": "metadata"
+    },
+    {
+      "assetId": "road-ltl-v2.3-malkom-reference-projection",
+      "family": "malkom-projection-candidate",
+      "name": "Road LTL v2.3 Malkom 3.0 Reference Projection",
+      "version": "2.3",
+      "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "category": "materialized-projection-candidate",
+      "current": true,
+      "source": "repository",
+      "demoOnly": true,
+      "demoBranch": "atlas-v2-demo-2026-09-14",
+      "demoBranchCommit": "457003d",
+      "repositoryPath": "data/materialized/road-ltl-v2.3-malkom-reference-projection.json",
+      "generatorPath": "tools/malkom-projection/build-malkom-reference-projection.mjs",
+      "lineage": "PROVEN_EXECUTION_REFERENCE: Road LTL V1.2 -> Domain Warehouse v2.3 -> Malkom 3.0",
+      "semanticHash": "d077166ff0c1c0a0c9cffc3ba368b76a374cd15a73fc23305bd8f1719e6fcb59",
+      "notes": "22/22 adapter-compatible and materializable. NOT generated from Road LTL 1.5, Operational Knowledge v2, the P6.1 decomposition or the P6.2 compiler - the artifact declares this explicitly and its certification test enforces it by asserting no declared input matches governed-target-lineage path patterns. Known gaps preserved: 3 ESCALATE PARTIAL tasks, 176 client bindings across 8 families, 5 adapter operations not enabled. Demo-branch artifact; not a production promotion."
+    },
+    {
+      "assetId": "d2-0-6-post-build-full-state-freeze",
+      "family": "demo-sprint-freeze",
+      "name": "D2.0.6 Post-Build Full-State Freeze",
+      "version": "D2.0.6",
+      "status": "FROZEN_DEMO_STATE_RECORD",
+      "category": "freeze-record",
+      "current": true,
+      "source": "repository",
+      "demoOnly": true,
+      "demoBranch": "atlas-v2-demo-2026-09-14",
+      "demoBranchCommit": "0e6a715",
+      "repositoryPath": "governance/demo-sprint/D2.0.6_POST_BUILD_FULL_STATE_FREEZE.json",
+      "fileCount": 721,
+      "fullStateTreeHash": "f79f8c2700633dfb",
+      "notARetroactivePreChangeFreeze": true,
+      "notes": "Post-build freeze of the certified demo state. Does NOT close D2.0.0's missing CREATE_PRE_CHANGE_FULL_STATE_FREEZE, which cannot be recreated retroactively and remains open."
+    }
+  ],
+  "executionGuards": [
+    {
+      "guardId": "ATL86-SEP1-WORKDEFINITION-PROTOTYPE-NONRUNNABLE",
+      "status": "ACTIVE",
+      "paths": [
+        "migrations/v2-admin-workdefinitions.sql",
+        "scripts/seed-v2-workdefinitions.mjs"
+      ],
+      "sourceCommit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+      "disposition": "HISTORICAL_PROTOTYPE_DO_NOT_APPLY",
+      "reason": "Targets public.atlas_work_definitions with a pre-P6.2 incompatible schema and Road LTL/V1.2-oriented seed."
+    },
+    {
+      "guardId": "ATL86-SEP2-WAREHOUSE-CANDIDATE-NONRUNNABLE",
+      "status": "ACTIVE",
+      "paths": [
+        "backend/supabase/001_knowledge_execution_warehouse.sql"
+      ],
+      "sourceCommit": "fdfdb666d3360b1e9e4589dc0f2b49e5db32fb44",
+      "disposition": "HISTORICAL_CANDIDATE_DO_NOT_APPLY",
+      "reason": "Contains an atlas_work_definitions physical shape incompatible with deployed P6.2; retained as architecture history only."
+    }
+  ]
+}

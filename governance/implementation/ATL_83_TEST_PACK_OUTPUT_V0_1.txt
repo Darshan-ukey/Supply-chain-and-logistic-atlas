@@ -1,0 +1,219 @@
+candidate blob pinned: b16a4bd9b16763287a76574e7231695b2c271f2e
+== PHASE-1 candidate as written
+PHASE-1 ATL-82 tables remaining after ROLLBACK: 0
+== PHASE-2 defect probes (unmodified candidate, committed copy)
+== T2a grants to anon and authenticated on the 9 ATL-82 tables (expect none if the protected pattern were followed)
+             table_name             |    grantee    |                          privs
+------------------------------------+---------------+---------------------------------------------------------
+ atlas_generation_z5_outputs        | anon          | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_generation_z5_outputs        | authenticated | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_entities           | anon          | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_entities           | authenticated | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_entity_types       | anon          | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_entity_types       | authenticated | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_evidence_links     | anon          | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_evidence_links     | authenticated | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_generation_runs    | anon          | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_generation_runs    | authenticated | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_relationship_types | anon          | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_relationship_types | authenticated | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_relationships      | anon          | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_knowledge_relationships      | authenticated | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_readiness_evidence           | anon          | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_readiness_evidence           | authenticated | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_readiness_runs               | anon          | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+ atlas_readiness_runs               | authenticated | DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE
+
+== T2b HARNESS REFERENCE ONLY (not evidence): the P6 stubs carry the P6.1/P6.2 migration revoke, reproduced by the harness
+ p6_anon_auth_grants
+---------------------
+                   0
+
+== T3a exact-pin FK: entity pinned to non-existent type version (expect ERROR)
+psql:/tmp/tmp.lJx09IbOEi/probes.sql:13: ERROR:  insert or update on table "atlas_knowledge_entities" violates foreign key constraint "atlas_knowledge_entities_entity_type_entity_type_version_fkey"
+DETAIL:  Key (entity_type, entity_type_version)=(ET-TEST, 9.9.9) is not present in table "atlas_knowledge_entity_types".
+== T3b evidence link targets both entity and relationship (expect ERROR)
+psql:/tmp/tmp.lJx09IbOEi/probes.sql:15: ERROR:  new row for relation "atlas_knowledge_evidence_links" violates check constraint "atlas_knowledge_evidence_links_target_chk"
+DETAIL:  Failing row contains (L2, K1, 1, R1, 1, CLIENT_PROVIDED, doc, x, null, null, SUPPORTS, {}, 2026-09-23 16:06:36.167786+05:30).
+== T3c evidence link half-key (knowledge_id without version) (expect ERROR)
+psql:/tmp/tmp.lJx09IbOEi/probes.sql:17: ERROR:  new row for relation "atlas_knowledge_evidence_links" violates check constraint "atlas_knowledge_evidence_links_target_chk"
+DETAIL:  Failing row contains (L3, K1, null, null, null, CLIENT_PROVIDED, doc, x, null, null, SUPPORTS, {}, 2026-09-23 16:06:36.168136+05:30).
+== T3d invalid readiness vocabulary (expect ERROR)
+psql:/tmp/tmp.lJx09IbOEi/probes.sql:20: ERROR:  new row for relation "atlas_readiness_runs" violates check constraint "atlas_readiness_runs_state_chk"
+DETAIL:  Failing row contains (RR0, M, null, null, MOSTLY_READY, CANDIDATE, RC, 1, G1, {}, ih, [], {}, 2026-09-23 16:06:36.169921+05:30).
+== T4a type contract edited IN PLACE while a knowledge row pins it (expect ERROR if immutability enforced)
+ type_id | type_version |      schema_contract_after_in_place_edit
+---------+--------------+-----------------------------------------------
+ ET-TEST | 1.0.0        | {"type": "object", "required": ["new_field"]}
+
+== T4b knowledge semantic content edited in place (expect ERROR if append-only enforced)
+ knowledge_id | knowledge_version | definition_after_in_place_edit
+--------------+-------------------+--------------------------------
+ K1           | 1                 | silently rewritten
+
+== T4c same source classified two different ways by two links (expect ERROR if source class is a property of the source)
+ evidence_ref |         classes_for_same_source
+--------------+------------------------------------------
+ DOC-123      | AUTHORITATIVE_RESEARCH + CLIENT_PROVIDED
+
+== T4d relationship lifecycle: can R1 be marked CANDIDATE? (column exists?)
+ relationship_lifecycle_columns
+--------------------------------
+                              0
+
+== T4e ENTERPRISE readiness run with no client/workspace scope and no requested level (expect ERROR if scope required)
+ readiness_run_id |      readiness_state
+------------------+----------------------------
+ RR1              | ENTERPRISE_EXECUTION_READY
+
+== T4f Z5 bridge: output with NULL hash pointing at non-existent WorkDefinition (expect ERROR if lineage integrity enforced)
+     output_id     | hash_is_null | target_rows
+-------------------+--------------+-------------
+ WD-DOES-NOT-EXIST | t            |           0
+
+== T4g knowledge gap linkage: any FK-bearing path from atlas_knowledge_gaps to a knowledge record?
+ fks_touching_gaps
+-------------------
+                 0
+
+== T5 RLS as authenticated: SELECT (expect 0 rows) then TRUNCATE a leaf table (RLS does not govern TRUNCATE)
+ evidence_links_before_truncate_as_owner
+-----------------------------------------
+                                       2
+
+ visible_rows_to_authenticated
+-------------------------------
+                             0
+
+ evidence_links_after_authenticated_truncate
+---------------------------------------------
+                                           0
+
+== T6 DELETE of a type row that knowledge pins (FK should block) and DELETE of an unpinned type row
+psql:/tmp/tmp.lJx09IbOEi/probes.sql:48: ERROR:  update or delete on table "atlas_knowledge_entity_types" violates foreign key constraint "atlas_knowledge_entities_entity_type_entity_type_version_fkey" on table "atlas_knowledge_entities"
+DETAIL:  Key (type_id, type_version)=(ET-TEST, 1.0.0) is still referenced from table "atlas_knowledge_entities".
+                ?column?
+----------------------------------------
+ unpinned ACTIVE type row deleted: true
+
+== PHASE-3 reference corrections + post-correction tests
+== P-C3 relationship defaults to CANDIDATE (expect CANDIDATE)
+ relationship_id | lifecycle_status
+-----------------+------------------
+ R1              | CANDIDATE
+
+== P-C2a legitimate lifecycle promotion of entity + type status (expect success, 2 rows)
+     ?column?
+------------------
+ entity VALIDATED
+ type VALIDATED
+
+== P-C2b pinned type contract edited in place (expect ERROR append-only)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:23: ERROR:  append-only: atlas_knowledge_entity_types.schema_contract is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 16 at RAISE
+== P-C2c knowledge definition rewritten in place (expect ERROR append-only)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:25: ERROR:  append-only: atlas_knowledge_entities.definition is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 16 at RAISE
+== P-C2d DELETE semantic row (expect ERROR append-only)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:27: ERROR:  append-only: DELETE on atlas_knowledge_relationships is not permitted; supersede with a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 10 at RAISE
+== P-C2e TRUNCATE as table owner (expect ERROR append-only)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:29: ERROR:  append-only: TRUNCATE on atlas_knowledge_evidence_links is not permitted
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 8 at RAISE
+== P-C2f generation run manifest rewritten (expect ERROR); status transition (expect success)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:31: ERROR:  append-only: atlas_knowledge_generation_runs.consumed_knowledge_manifest is immutable; create a successor version
+CONTEXT:  PL/pgSQL function atlas_guard_append_only() line 16 at RAISE
+ run_id | run_status
+--------+------------
+ G1     | VALIDATED
+
+== P-C1a authenticated: SELECT (expect permission denied) and TRUNCATE (expect permission denied)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:36: ERROR:  permission denied for table atlas_knowledge_entities
+psql:/tmp/tmp.lJx09IbOEi/post.sql:37: ERROR:  permission denied for table atlas_knowledge_evidence_links
+== P-C1b service_role: SELECT allowed (expect count), TRUNCATE denied (expect permission denied)
+ service_role_visible_entities
+-------------------------------
+                             2
+
+psql:/tmp/tmp.lJx09IbOEi/post.sql:42: ERROR:  permission denied for table atlas_knowledge_evidence_links
+== P-C1c grants to anon/authenticated on new tables (expect no rows)
+ table_name | grantee
+------------+---------
+
+== P-C1d guard function not executable by anon/authenticated (expect f,f)
+ anon_exec | authenticated_exec
+-----------+--------------------
+ f         | f
+
+== P-C4a same source registered twice under a different class (expect ERROR unique)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:49: ERROR:  duplicate key value violates unique constraint "atlas_evidence_sources_evidence_source_kind_evidence_ref_key"
+DETAIL:  Key (evidence_source_kind, evidence_ref)=(regulation, 49 CFR 172.202) already exists.
+== P-C4b client evidence without workspace (expect ERROR client_scope)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:51: ERROR:  new row for relation "atlas_evidence_sources" violates check constraint "atlas_evidence_sources_client_scope_chk"
+DETAIL:  Failing row contains (S-X, CLIENT_PROVIDED, client_document, doc-uuid-9, null, null, null, 2026-09-23 16:06:36.602865+05:30).
+== P-C4c authoritative research scoped to a client workspace (expect ERROR research_scope)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:53: ERROR:  new row for relation "atlas_evidence_sources" violates check constraint "atlas_evidence_sources_research_scope_chk"
+DETAIL:  Failing row contains (S-Y, AUTHORITATIVE_RESEARCH, regulation, 49 CFR 373.101, 00000000-0000-0000-0000-00000000000a, null, null, 2026-09-23 16:06:36.6031+05:30).
+== P-C4d link class is derived from its source (expect K1 <- AUTHORITATIVE_RESEARCH)
+ knowledge_id |      source_class
+--------------+------------------------
+ K1           | AUTHORITATIVE_RESEARCH
+
+== P-C7a valid gap link to entity (expect success) then half-key and nonexistent gap (expect 2 ERRORs)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:58: ERROR:  new row for relation "atlas_knowledge_gap_links" violates check constraint "atlas_knowledge_gap_links_target_chk"
+DETAIL:  Failing row contains (00000000-0000-0000-0000-0000000000b1, K2, null, null, null, 2026-09-23 16:06:36.605017+05:30).
+psql:/tmp/tmp.lJx09IbOEi/post.sql:59: ERROR:  insert or update on table "atlas_knowledge_gap_links" violates foreign key constraint "atlas_knowledge_gap_links_gap_id_fkey"
+DETAIL:  Key (gap_id)=(00000000-0000-0000-0000-0000000000ff) is not present in table "atlas_knowledge_gaps".
+ gap_links
+-----------
+         1
+
+== P-C8 Z5 output with NULL hash (expect ERROR not-null)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:62: ERROR:  null value in column "output_hash" of relation "atlas_generation_z5_outputs" violates not-null constraint
+DETAIL:  Failing row contains (G1, WORK_DEFINITION, WD-1, 1, null, 2026-09-23 16:06:36.605666+05:30, null, WD-1).
+== P-R1a Z5 output pointing at nonexistent WorkDefinition (expect ERROR fk)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:64: ERROR:  insert or update on table "atlas_generation_z5_outputs" violates foreign key constraint "atlas_generation_z5_outputs_work_definition_id_fkey"
+DETAIL:  Key (work_definition_id)=(WD-NOPE) is not present in table "atlas_work_definitions".
+== P-R1b valid Z5 output (expect success) and kind/target mismatch (expect ERROR target_chk)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:67: ERROR:  new row for relation "atlas_generation_z5_outputs" violates check constraint "atlas_generation_z5_outputs_target_chk"
+DETAIL:  Failing row contains (G1, WORK_DECOMPOSITION, WD-1, 2, hwd, 2026-09-23 16:06:36.607255+05:30, null, WD-1).
+ run_id |   output_kind   | output_id
+--------+-----------------+-----------
+ G1     | WORK_DEFINITION | WD-1
+
+== REGRESSION: original passing controls still hold (expect 3 ERRORs: FK pin, target_chk, readiness vocab)
+psql:/tmp/tmp.lJx09IbOEi/post.sql:70: ERROR:  insert or update on table "atlas_knowledge_entities" violates foreign key constraint "atlas_knowledge_entities_entity_type_entity_type_version_fkey"
+DETAIL:  Key (entity_type, entity_type_version)=(ET-TEST, 9.9.9) is not present in table "atlas_knowledge_entity_types".
+psql:/tmp/tmp.lJx09IbOEi/post.sql:71: ERROR:  new row for relation "atlas_knowledge_evidence_links" violates check constraint "atlas_knowledge_evidence_links_target_chk"
+DETAIL:  Failing row contains (L2, K1, 1, R1, 1, null, SUPPORTS, {}, 2026-09-23 16:06:36.607942+05:30, S-CFR).
+psql:/tmp/tmp.lJx09IbOEi/post.sql:72: ERROR:  new row for relation "atlas_readiness_runs" violates check constraint "atlas_readiness_runs_state_chk"
+DETAIL:  Failing row contains (RR0, M, null, null, MOSTLY_READY, CANDIDATE, RC, 1, G1, {}, ih, [], {}, 2026-09-23 16:06:36.608116+05:30).
+== PHASE-4 drop and rebuild
+== PHASE-4a drop corrected structures (reverse dependency order, one statement per table)
+ new_structures_remaining
+--------------------------
+                        0
+(1 row)
+
+ protected_stub_row_intact | gap_row_intact
+---------------------------+----------------
+                         1 |              1
+(1 row)
+
+== PHASE-4b rebuild verification (after re-applying candidate + corrections)
+ rebuilt_structures
+--------------------
+                 11
+(1 row)
+
+ append_only_triggers
+----------------------
+                   18
+(1 row)
+
+ protected_stub_row_still_intact
+---------------------------------
+                               1
+(1 row)
+
+== ATL-83 test pack complete

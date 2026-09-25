@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "atlas-universe-construction-boundary-evidence-v1",
+  "stageId": "R0.1B",
+  "source": "reference/universe-v7.3.html",
+  "chainedDeclarations": [
+    {
+      "name": "systemRecords",
+      "chainedExpression": ".map(record=>({...record,description:'Governed Universe system entity; authority remains o"
+    },
+    {
+      "name": "businessObjectRecords",
+      "chainedExpression": ".map(record=>({...record,description:record.description||'Governed atomic business object;"
+    },
+    {
+      "name": "records",
+      "chainedExpression": ".sort((a,b)=>Number(b.id===state.selectedEntityId)-Number(a.id===state.selectedEntityId))."
+    }
+  ],
+  "postDeclarationMutations": [
+    {
+      "target": "modes",
+      "fieldAdded": "focus"
+    },
+    {
+      "target": "systemRecords",
+      "fieldAdded": "domainIds"
+    },
+    {
+      "target": "businessObjectRecords",
+      "fieldAdded": "domainIds"
+    },
+    {
+      "target": "domains",
+      "fieldAdded": "systemIds"
+    },
+    {
+      "target": "modes",
+      "fieldAdded": "objectIds"
+    }
+  ],
+  "fieldSetDivergenceGroups": [
+    {
+      "pathSet": "businessObjectRecords | firstClassEntities.businessObjects",
+      "count": 109,
+      "observedFieldSets": [
+        {
+          "path": "businessObjectRecords",
+          "fields": "aliases,code,id,name"
+        },
+        {
+          "path": "firstClassEntities.businessObjects",
+          "fields": "aliases,code,description,id,name"
+        }
+      ]
+    },
+    {
+      "pathSet": "firstClassEntities.systems | systemRecords",
+      "count": 78,
+      "observedFieldSets": [
+        {
+          "path": "firstClassEntities.systems",
+          "fields": "aliases,code,description,id,name"
+        },
+        {
+          "path": "systemRecords",
+          "fields": "aliases,code,id,name"
+        }
+      ]
+    },
+    {
+      "pathSet": "domains | models",
+      "count": 1,
+      "observedFieldSets": [
+        {
+          "path": "domains",
+          "fields": "accent,apqc,boundary,code,group,id,inputs,models,outputs,questions,scope,scor,short,sources,sub,systems,title"
+        },
+        {
+          "path": "models",
+          "fields": "desc,domains,flag,id,name"
+        }
+      ]
+    },
+    {
+      "pathSet": "domains | executiveIntents",
+      "count": 1,
+      "observedFieldSets": [
+        {
+          "path": "domains",
+          "fields": "accent,apqc,boundary,code,group,id,inputs,models,outputs,questions,scope,scor,short,sources,sub,systems,title"
+        },
+        {
+          "path": "executiveIntents",
+          "fields": "id,label,lensIds"
+        }
+      ]
+    }
+  ],
+  "totalDivergentRecords": 189
+}

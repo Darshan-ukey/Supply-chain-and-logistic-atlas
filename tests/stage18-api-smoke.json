@@ -1,0 +1,117 @@
+{
+  "ok": true,
+  "tests": [
+    {
+      "name": "provider-status",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "stage": "18",
+        "provider": "none",
+        "configured": false,
+        "model": null,
+        "keysExposedToBrowser": false
+      }
+    },
+    {
+      "name": "grounded-fallback",
+      "pass": true,
+      "detail": {
+        "answer": "LTL-06 — Receive at origin service centre and verify handling-unit state. Event: Arrival/receiving scan and inspection recorded.. Decision: Do handling-unit identity, count, weight/dimensions, condition and routing attributes reconcile?. Action: Unload, identify, inspect, measure/reweigh where controlled, receive or hold.. State after: Handling units RECEIVED, HELD or EXCEPTION..",
+        "citations": [
+          "E1",
+          "E12"
+        ],
+        "grounding": {
+          "retrieved": 15,
+          "cited": 2,
+          "clientEvidenceUsed": false,
+          "clientWorkspaceRequested": false
+        }
+      }
+    },
+    {
+      "name": "coverage-guardrail",
+      "pass": true,
+      "detail": {
+        "answer": "Road FTL is PLANNED at REFERENCE ONLY depth. Detailed A4/A5 execution is not published, so Ask Atlas will not synthesize it.",
+        "citations": [
+          [
+            "E13",
+            "COVERAGE",
+            "Coverage · Road FTL"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "command-validation",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "stage": "18",
+        "valid": [
+          {
+            "type": "select_process",
+            "args": {
+              "processId": "LTL-06"
+            }
+          }
+        ],
+        "rejected": [
+          {
+            "command": {
+              "type": "select_process",
+              "args": {
+                "processId": "FAKE-1"
+              }
+            },
+            "reason": "Process ID is not in the active module."
+          },
+          {
+            "command": {
+              "type": "activate_module",
+              "args": {
+                "moduleId": "road-ftl"
+              }
+            },
+            "reason": "Module is not A5-verified/published."
+          }
+        ]
+      }
+    },
+    {
+      "name": "structured-command-proposal",
+      "pass": true,
+      "detail": [
+        {
+          "type": "trace_object",
+          "args": {
+            "objectId": "obj-shipment"
+          }
+        }
+      ]
+    },
+    {
+      "name": "context-command-fallback",
+      "pass": true,
+      "detail": [
+        {
+          "type": "set_context_option",
+          "args": {
+            "dimension": "condition",
+            "optionId": "cond-dangerous-goods"
+          }
+        }
+      ]
+    },
+    {
+      "name": "client-workspace-auth-gate",
+      "pass": true,
+      "detail": {
+        "ok": false,
+        "error": "Authentication required"
+      }
+    }
+  ]
+}

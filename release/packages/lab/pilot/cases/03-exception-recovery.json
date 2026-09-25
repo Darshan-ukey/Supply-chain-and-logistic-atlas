@@ -1,0 +1,9 @@
+{
+  "id": "P23-DOC-003",
+  "title": "Exception and recovery fragments",
+  "documentType": "SOP excerpt",
+  "expectedDisposition": ["ACCEPTED", "REVIEW_REQUIRED"],
+  "expectedProcessIds": ["LTL-14", "LTL-15", "LTL-22"],
+  "forbiddenProcessIds": ["LTL-01"],
+  "text": "When a delivery or linehaul variance is noticed the exception is classified and assigned. The owning team contains the issue, replans the next action and records recovery evidence. Customer communications are coordinated throughout so the latest resolution status and supporting evidence are available. This section is copied from several operating notes and may contain duplicated wording."
+}

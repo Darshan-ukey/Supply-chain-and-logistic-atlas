@@ -1,0 +1,464 @@
+{
+  "contractVersion": "atlas-daughter-rule-pack-v1.0",
+  "moduleId": "road-ltl",
+  "moduleVersion": "V1.3",
+  "status": "CAPTURED_NOT_CANVAS_ACTIVATED",
+  "behaviorDonor": "Road LTL V1.2 standalone reference page",
+  "purpose": "Externalize domain behavior from renderer while preserving current behavior.",
+  "neutralValues": {
+    "role": "neutral",
+    "movement": "none",
+    "node": "none",
+    "jurisdiction": "none",
+    "contract": "contract-unresolved"
+  },
+  "pathRules": {
+    "directShipment": {
+      "when": {
+        "movement": "mp-direct-shipment"
+      },
+      "bypassProcessIds": [
+        "LTL-06",
+        "LTL-07",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11"
+      ],
+      "replacementEdges": [
+        {
+          "id": "VAR-DIRECT-01",
+          "from": "LTL-05",
+          "type": "DIRECT_VARIANT_TO",
+          "to": "LTL-08",
+          "variant": "DIRECT_SHIPMENT"
+        },
+        {
+          "id": "VAR-DIRECT-02",
+          "from": "LTL-08",
+          "type": "DIRECT_VARIANT_TO",
+          "to": "LTL-12",
+          "variant": "DIRECT_SHIPMENT"
+        }
+      ]
+    },
+    "activationRules": [
+      {
+        "processId": "LTL-09",
+        "activeWhenAny": [
+          {
+            "movementIn": [
+              "mp-hub-and-spoke",
+              "mp-consolidation-deconsolidation",
+              "mp-intermodal",
+              "mp-multimodal",
+              "mp-transshipment"
+            ]
+          },
+          {
+            "node": "node-cross-dock"
+          }
+        ]
+      },
+      {
+        "processId": "LTL-10",
+        "activeWhenAny": [
+          {
+            "movementIn": [
+              "mp-hub-and-spoke",
+              "mp-intermodal",
+              "mp-multimodal",
+              "mp-transshipment"
+            ]
+          }
+        ]
+      },
+      {
+        "processId": "LTL-19",
+        "activeWhenAny": [
+          {
+            "jurisdictionNot": "none"
+          },
+          {
+            "regimeCountGt": 0
+          },
+          {
+            "conditionCountGt": 0
+          }
+        ]
+      },
+      {
+        "processId": "LTL-20",
+        "activeWhenAny": [
+          {
+            "role": "carrier"
+          },
+          {
+            "conditionIn": [
+              "cond-dangerous-goods",
+              "cond-temperature-controlled",
+              "cond-security-controlled"
+            ]
+          }
+        ]
+      },
+      {
+        "processId": "LTL-21",
+        "activeWhenAny": [
+          {
+            "lens": "ecl-g"
+          },
+          {
+            "queryRegex": "identity|master"
+          }
+        ]
+      },
+      {
+        "processId": "LTL-22",
+        "activeWhenAny": [
+          {
+            "lensIn": [
+              "ecl-m",
+              "ecl-n",
+              "ecl-u",
+              "ecl-aa"
+            ]
+          },
+          {
+            "view": "exceptions"
+          }
+        ]
+      },
+      {
+        "processId": "LTL-18",
+        "activeWhenAny": [
+          {
+            "lens": "ecl-n"
+          },
+          {
+            "view": "exceptions"
+          }
+        ]
+      },
+      {
+        "pathType": "EXCEPTION",
+        "activeWhenAny": [
+          {
+            "view": "exceptions"
+          }
+        ]
+      }
+    ]
+  },
+  "overlayIssueRules": [
+    {
+      "id": "LTL-GUARD-NVOCC",
+      "when": {
+        "role": "nvocc",
+        "not": {
+          "movementIn": [
+            "mp-intermodal",
+            "mp-multimodal"
+          ],
+          "nodeIn": [
+            "node-port-marine-terminal",
+            "node-cfs",
+            "node-container-depot",
+            "node-icd-dry-port"
+          ]
+        }
+      },
+      "state": "LOCKED",
+      "reason": "NVOCC requires wider ocean/multimodal context and compatible interface node."
+    },
+    {
+      "id": "LTL-GUARD-BROKER",
+      "when": {
+        "role": "broker",
+        "conditionNoneOf": [
+          "cond-customs-transit",
+          "cond-bonded"
+        ]
+      },
+      "state": "LOCKED",
+      "reason": "Customs Broker requires customs-transit or bonded context."
+    },
+    {
+      "id": "LTL-GUARD-RAIL",
+      "when": {
+        "node": "node-rail-ramp-terminal",
+        "movementNotIn": [
+          "mp-intermodal",
+          "mp-multimodal"
+        ]
+      },
+      "state": "LOCKED",
+      "reason": "Rail Ramp requires Intermodal or Multimodal."
+    },
+    {
+      "id": "LTL-GUARD-CMR-US",
+      "when": {
+        "regimeIncludes": "cr-cmr",
+        "jurisdiction": "jur-united-states"
+      },
+      "state": "LOCKED",
+      "reason": "Domestic United States scope does not establish CMR applicability."
+    },
+    {
+      "id": "LTL-GUARD-PARCEL",
+      "when": {
+        "node": "node-parcel-hub-sort-centre"
+      },
+      "state": "INCOMPATIBLE",
+      "reason": "Parcel Hub belongs to the Parcel / CEP child."
+    },
+    {
+      "id": "LTL-GUARD-POSTAL-CONTRACT",
+      "when": {
+        "contractIn": [
+          "contract-designated-postal",
+          "contract-private-cep"
+        ]
+      },
+      "state": "INCOMPATIBLE",
+      "reason": "Postal/CEP contracts are outside Road LTL."
+    },
+    {
+      "id": "LTL-GUARD-DIRECT-CROSSDOCK",
+      "when": {
+        "movement": "mp-direct-shipment",
+        "node": "node-cross-dock"
+      },
+      "state": "INCOMPATIBLE",
+      "reason": "Direct Shipment bypasses Cross-Dock."
+    },
+    {
+      "id": "LTL-GUARD-BONDED",
+      "when": {
+        "node": "node-bonded-warehouse",
+        "conditionNoneOf": [
+          "cond-customs-transit",
+          "cond-bonded"
+        ]
+      },
+      "state": "LOCKED",
+      "reason": "Bonded Warehouse requires bonded/customs context."
+    },
+    {
+      "id": "LTL-GUARD-INTERFACE",
+      "when": {
+        "nodeIn": [
+          "node-port-marine-terminal",
+          "node-cfs",
+          "node-icd-dry-port",
+          "node-container-depot"
+        ],
+        "movementNotIn": [
+          "mp-intermodal",
+          "mp-multimodal",
+          "mp-drayage"
+        ],
+        "conditionNoneOf": [
+          "cond-customs-transit",
+          "cond-bonded"
+        ]
+      },
+      "state": "LOCKED",
+      "reason": "Interface node requires drayage, multimodal/intermodal or customs context."
+    },
+    {
+      "id": "LTL-GUARD-DRAYAGE-NODE",
+      "when": {
+        "movement": "mp-drayage",
+        "nodeNotIn": [
+          "node-port-marine-terminal",
+          "node-cfs",
+          "node-icd-dry-port",
+          "node-container-depot"
+        ]
+      },
+      "state": "CONDITIONAL",
+      "reason": "Drayage is selectable but needs a compatible interface node before execution."
+    },
+    {
+      "id": "LTL-GUARD-DG-COARSE",
+      "when": {
+        "jurisdiction": "jur-north-america",
+        "conditionIncludes": "cond-dangerous-goods"
+      },
+      "state": "RESEARCH_REQUIRED",
+      "reason": "North America is too coarse for dangerous-goods law."
+    },
+    {
+      "id": "LTL-GUARD-DG-NATIONAL",
+      "when": {
+        "jurisdictionIn": [
+          "jur-canada",
+          "jur-mexico",
+          "jur-india"
+        ],
+        "conditionIncludes": "cond-dangerous-goods"
+      },
+      "state": "RESEARCH_REQUIRED",
+      "reason": "Current national dangerous-goods source pack is not frozen."
+    }
+  ],
+  "sourceActivationRules": [
+    {
+      "sourceIds": [
+        "src-dsdc-visibility-draft"
+      ],
+      "state": "RESEARCH_REQUIRED"
+    },
+    {
+      "sourceIds": [
+        "src-nmfc",
+        "src-nmfta-dsdc-ltl",
+        "src-dsdc-pickup",
+        "src-dsdc-pfc",
+        "src-x12",
+        "src-nmfta-scac",
+        "src-nmfta-splc"
+      ],
+      "candidateWhen": {
+        "jurisdictionIn": [
+          "jur-north-america",
+          "jur-united-states",
+          "jur-canada",
+          "jur-mexico"
+        ]
+      },
+      "otherwise": "MODEL_EVIDENCE"
+    },
+    {
+      "sourceIds": [
+        "src-49cfr373",
+        "src-fmcsa-roles",
+        "src-49usc14706"
+      ],
+      "candidateWhen": {
+        "jurisdiction": "jur-united-states"
+      },
+      "otherwise": "AVAILABLE_NOT_CURRENTLY_ACTIVE"
+    },
+    {
+      "sourceIds": [
+        "src-49cfr177"
+      ],
+      "candidateWhen": {
+        "jurisdiction": "jur-united-states",
+        "conditionIncludes": "cond-dangerous-goods"
+      },
+      "otherwise": "AVAILABLE_NOT_CURRENTLY_ACTIVE"
+    },
+    {
+      "sourceIds": [
+        "src-49cfr370"
+      ],
+      "candidateWhen": {
+        "jurisdiction": "jur-united-states",
+        "claimsContext": true
+      },
+      "otherwise": "AVAILABLE_NOT_CURRENTLY_ACTIVE"
+    },
+    {
+      "sourceIds": [
+        "src-cmr"
+      ],
+      "operativeWhen": {
+        "regimeIncludes": "cr-cmr"
+      },
+      "otherwise": "MODEL_EVIDENCE"
+    },
+    {
+      "sourceIds": [
+        "src-ecmr",
+        "src-uncefact-ecmr-brs"
+      ],
+      "candidateWhen": {
+        "regimeIncludes": "cr-cmr"
+      },
+      "otherwise": "AVAILABLE_NOT_CURRENTLY_ACTIVE"
+    },
+    {
+      "sourceIds": [
+        "src-adr"
+      ],
+      "candidateWhen": {
+        "conditionIncludes": "cond-dangerous-goods"
+      },
+      "otherwise": "AVAILABLE_NOT_CURRENTLY_ACTIVE"
+    },
+    {
+      "sourceIds": [
+        "src-atp"
+      ],
+      "candidateWhen": {
+        "conditionIncludes": "cond-temperature-controlled"
+      },
+      "otherwise": "AVAILABLE_NOT_CURRENTLY_ACTIVE"
+    },
+    {
+      "sourceIds": [
+        "src-tir"
+      ],
+      "candidateWhen": {
+        "conditionAnyOf": [
+          "cond-customs-transit",
+          "cond-bonded"
+        ]
+      },
+      "otherwise": "AVAILABLE_NOT_CURRENTLY_ACTIVE"
+    },
+    {
+      "sourceIds": [
+        "src-india-eway"
+      ],
+      "candidateWhen": {
+        "jurisdiction": "jur-india"
+      },
+      "otherwise": "AVAILABLE_NOT_CURRENTLY_ACTIVE"
+    },
+    {
+      "sourceIds": [
+        "src-wco-dm"
+      ],
+      "candidateWhen": {
+        "conditionAnyOf": [
+          "cond-customs-transit",
+          "cond-bonded"
+        ]
+      },
+      "otherwise": "MODEL_EVIDENCE"
+    },
+    {
+      "sourceIds": [
+        "src-iso14083"
+      ],
+      "candidateWhen": {
+        "lens": "ecl-y"
+      },
+      "otherwise": "AVAILABLE_NOT_CURRENTLY_ACTIVE"
+    }
+  ],
+  "responsibilityOverlayRules": {
+    "contract-direct-carriage": {
+      "physical": "actor-operating-carrier PERFORMS/HAS_CUSTODY/OWNS",
+      "customer": "actor-operating-carrier RECEIVES_OUTPUT",
+      "financial": [
+        "actor-operating-carrier BILLS",
+        "actor-shipper PAYS"
+      ]
+    },
+    "contract-forwarder-arranged": {
+      "orchestrator": "actor-forwarder ARRANGES/OBSERVES (+OWNS for customer-facing tasks)",
+      "physical": "actor-operating-carrier PERFORMS/HAS_CUSTODY",
+      "financial": "actor-forwarder BILLS/PAYS contract-dependent"
+    },
+    "contract-managed-logistics": {
+      "orchestrator": "actor-3pl or actor-4pl ARRANGES/OWNS/OBSERVES (+ESCALATES for non-standard paths)",
+      "physical": "actor-operating-carrier PERFORMS/HAS_CUSTODY",
+      "financial": "orchestrator BILLS/PAYS contract-dependent"
+    }
+  },
+  "migrationNote": "Eligibility option rules remain represented by the existing per-process applicability matrices and the V1.2 standalone UI until the generic daughter composer consumes this rule pack. No behavior has been switched in V1.3."
+}

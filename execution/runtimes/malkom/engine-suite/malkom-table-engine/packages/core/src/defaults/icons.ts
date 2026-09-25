@@ -1,0 +1,37 @@
+import type { MalkomTableIcons } from '../types.js';
+
+/** Google Material Symbols (Rounded) icon names. */
+export const DEFAULT_ICONS: MalkomTableIcons = {
+  table: 'table_chart',
+  search: 'search',
+  refresh: 'refresh',
+  export: 'table_view',
+  exportBusy: 'progress_activity',
+  settings: 'tune',
+  densityCompact: 'view_compact',
+  densityComfortable: 'view_agenda',
+  close: 'close',
+  filter: 'filter_list',
+  filterActive: 'filter_alt',
+  filterOff: 'filter_alt_off',
+  sort: 'sort',
+  group: 'layers',
+  prefilter: 'auto_fix',
+  add: 'add',
+  addCircle: 'add_circle',
+  remove: 'remove',
+  removeCircle: 'remove_circle',
+  edit: 'edit',
+  delete: 'delete',
+  visibility: 'visibility',
+  visibilityOff: 'visibility_off',
+  lock: 'lock',
+  reset: 'restart_alt',
+  check: 'check',
+  expandMore: 'expand_more',
+  moveUp: 'keyboard_arrow_up',
+  moveDown: 'keyboard_arrow_down',
+  calendar: 'calendar_month',
+  info: 'info',
+  gamepad: 'stadia_controller'
+};

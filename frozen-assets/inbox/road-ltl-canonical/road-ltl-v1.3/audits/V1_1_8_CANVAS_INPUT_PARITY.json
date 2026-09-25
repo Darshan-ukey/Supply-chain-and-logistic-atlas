@@ -1,0 +1,11 @@
+{
+  "playbackParity": true,
+  "canvasDomainParity": true,
+  "canvasA3Parity": true,
+  "canvasA4Parity": true,
+  "traceCandidateParity": true,
+  "inspectorCoreParity": true,
+  "systemLensParity": true,
+  "processLensParity": true,
+  "status": "PASS"
+}

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "atlas-final-integration-lock-v2.1",
+  "releaseTarget": "Supply Chain Atlas 2.0",
+  "updatedAt": "2026-09-02T12:00:00+05:30",
+  "status": "FROZEN_CANDIDATE_ASSETS_REGISTERED_NOT_PROMOTED",
+  "governanceMeaning": "Road LTL V1.4 and Ocean FCL/LCL V0.6 are frozen candidate daughter assets under Daughter Production Standard V2. They do not replace the currently frozen ACTIVE/A5_VERIFIED production baselines until promotion gates pass. V2.1 additionally freezes the repeatable operational-research, executability, epistemic, knowledge-to-execution and client-binding governance standards and registers the two next execution-definition contracts as implementation-pending assets.",
+  "productionBaseline": {
+    "universe": {"version":"7.3","required":true},
+    "modules": {
+      "road-ltl": {"version":"1.3","depth":"A5_VERIFIED","status":"FROZEN_PRODUCTION_BASELINE","sha256":"0f855cc0b11991a0f58a76791d64def8b688f4349b0e5bd1105161241f7ad808","expected":{"processes":22,"a3":13,"edges":39,"transitions":22,"sources":29}},
+      "ocean-fcl": {"version":"0.5","depth":"A5_VERIFIED","status":"FROZEN_PRODUCTION_BASELINE","sha256":"71526914c600cb10c47434a5b6dc064e851062776a336ae480f37e487e108ebc","expected":{"processes":30,"a3":15,"edges":56,"transitions":30,"ontologyEdges":240}},
+      "ocean-lcl": {"version":"0.5","depth":"A5_VERIFIED","status":"FROZEN_PRODUCTION_BASELINE","sha256":"9dbaadc129a6c8be30e9e77c7ff319af40a9f5c4226e82817c2389cde01d18e6","expected":{"processes":30,"a3":14,"edges":56,"transitions":30,"ontologyEdges":240}}
+    },
+    "foundation": {"version":"1.2","sourceRegistryCount":87,"sourceToAtlasCoverageCount":445},
+    "atlasWarehouse": {"version":"1","modules":3,"workDecompositions":82,"workDefinitions":82,"dependencyRecords":82},
+    "canvas": {"version":"2.0.0","frozenZipSha256":"bc340946d703ef25297ffd67e6de2e5879958c132722e71d95be058c5ba2c1cb"},
+    "universalAsk": {"version":"2.0.1","status":"CERTIFIED_IN_BASELINE_PACKAGE"}
+  },
+  "candidateDaughterStack": {
+    "releaseId": "atlas-daughter-production-v2-2026-09-02",
+    "productionStandard": {"name":"Daughter Production Standard V2","schema":"schemas/daughter-production-standard-v2.json","sha256":"89e86a85c060c1db8daa58e4825f1746edddd0f24917b86090d67de735cdddf3"},
+    "operationalKnowledgeContract": {"version":"1","schema":"schemas/operational-knowledge-v1.json","sha256":"75cefb11bfabfcb77c7cdab8b17d2cbdb2f4cc3a684150a4da3d94be045f6846"},
+    "clientBindingContract": {"version":"1","schema":"schemas/client-binding-requirement-v1.json","sha256":"d67786bb7c8f5749fc77fd20d15b2ac4d449874a5ff22a87212ddeef861856df"},
+    "modules": {
+      "road-ltl": {"version":"1.4","derivedFrom":"1.3","status":"FROZEN_EXECUTION_REFERENCE_CANDIDATE","depth":"A5_EXECUTION_REFERENCE_CANDIDATE","modulePath":"data/modules/road-ltl-v1.4.json","sha256":"c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4","operationalKnowledgePath":"data/operational-knowledge/road-ltl-v1.4-operational.json","operationalKnowledgeSha256":"6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e","clientBindingsPath":"data/client-binding-requirements/road-ltl-v1.4-bindings.json","clientBindingsSha256":"d461990914038a90277a06299faa5663221b6c6b371493758893a19cd71a384c","sourceClaimsPath":"data/source-claims/road-ltl-v1.4-claims.json","sourceClaimsSha256":"379e48422906732cc6e01a1e324108ca23a2f1ff05faab8cb53c3ba342000ac0","expected":{"tasks":22,"requiredInformation":152,"decisionGates":75,"branchTransitions":150,"clientBindings":128,"sourceClaims":132}},
+      "ocean-fcl": {"version":"0.6","derivedFrom":"0.5","status":"FROZEN_EXECUTION_REFERENCE_CANDIDATE","depth":"A5_EXECUTION_REFERENCE_CANDIDATE","modulePath":"data/modules/ocean-fcl-v0.6.json","sha256":"334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a","operationalKnowledgePath":"data/operational-knowledge/ocean-fcl-v0.6-operational.json","operationalKnowledgeSha256":"c665f946fa30ccea081fa6a8ad3129e7217cfdff1d20ea7ee15e4ac70506aae3","clientBindingsPath":"data/client-binding-requirements/ocean-fcl-v0.6-bindings.json","clientBindingsSha256":"9a86fe6c26360993673fc899ac8529103704a55a1a7f3d7b8455123e4261a005","sourceClaimsPath":"data/source-claims/ocean-fcl-v0.6-claims.json","sourceClaimsSha256":"99cd023485c0e632d387defcd8419d64ad1e68b58a0136db535721421946d1ef","systemExchangesPath":"data/exchanges/ocean-fcl-v0.6-system-exchanges.json","systemExchangesSha256":"e0e19d7f7e81d5a44f2e7b03669e150c86ca74f8e22f37b61355efb0490cc346","expected":{"tasks":30,"requiredInformation":113,"decisionGates":34,"branchTransitions":68,"clientBindings":99,"sourceClaims":90,"systemExchanges":30}},
+      "ocean-lcl": {"version":"0.6","derivedFrom":"0.5","status":"FROZEN_EXECUTION_REFERENCE_CANDIDATE","depth":"A5_EXECUTION_REFERENCE_CANDIDATE","modulePath":"data/modules/ocean-lcl-v0.6.json","sha256":"73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f","operationalKnowledgePath":"data/operational-knowledge/ocean-lcl-v0.6-operational.json","operationalKnowledgeSha256":"3ba54c522a28e8e05f1f65e418eb450ba46c701de0a0d353234d467c9033307e","clientBindingsPath":"data/client-binding-requirements/ocean-lcl-v0.6-bindings.json","clientBindingsSha256":"47633373b70ac43fc02e271eb22b4a2b678107160f17385faf277b9e5a903a46","sourceClaimsPath":"data/source-claims/ocean-lcl-v0.6-claims.json","sourceClaimsSha256":"4d06be7436755ebddfc66ff74da2fe67583bd104def6b6c598a0e77a3d31fd21","systemExchangesPath":"data/exchanges/ocean-lcl-v0.6-system-exchanges.json","systemExchangesSha256":"5df868d6714454e239186d6097d39e261219858fc39b38d345f5b68a440a0828","expected":{"tasks":30,"requiredInformation":127,"decisionGates":34,"branchTransitions":68,"clientBindings":99,"sourceClaims":90,"systemExchanges":30}}
+    },
+    "persistenceContract": {"status":"FROZEN_SCHEMA_CANDIDATE_NOT_APPLIED","path":"backend/supabase/001_knowledge_execution_warehouse.sql","sha256":"89bf4faad892117655653dc835582b8894959304ae3bc440f31020376003ca30"},
+    "validation": {"status":"PASS_CANDIDATE","path":"validation/VALIDATION.json","sha256":"bae9f19b5d7c4a28c67397270161e4557679cc86deb0b6cc7a92b17ec83930be","gates":{"structuralIntegrity":"PASS","ltlBaselineIdParity":"PASS","operationalDepth":"PASS_CANDIDATE","clientBindingCompleteness":"PASS","systemExchangeResolution":"PASS","provenanceResolution":"PASS_FOR_GENERATED_OCEAN_CLAIMS","recursiveExecutability":"MODELED_NOT_EXECUTOR_PROVEN","workDefinitionCompilation":"NEXT_LAYER_NOT_INCLUDED","independentExecutionProof":"PENDING"}}
+  },
+  "promotionGates": [
+    "Run exact semantic regression of Road LTL V1.4 against frozen Road LTL V1.3.",
+    "Run exact semantic regression of Ocean FCL V0.6 and Ocean LCL V0.6 against frozen Ocean V0.5 baselines.",
+    "Compile recursive Work Decomposition and executor-neutral WorkDefinitions from the candidate daughters.",
+    "Pass losslessness, graph, provenance, execution-boundary and client-binding quality gates for compiled WorkDefinitions.",
+    "Complete independent execution/runtime proof before promoting candidate daughters to ACTIVE/A5_VERIFIED production status.",
+    "Do not alter the production baseline registry/module activation until explicit promotion approval."
+  ],
+  "rules": [
+    "Never substitute legacy Page 0 or Road LTL for a missing frozen asset.",
+    "Only ACTIVE + A5_VERIFIED daughters can expose production A5 execution.",
+    "FROZEN_EXECUTION_REFERENCE_CANDIDATE means immutable regression input, not production activation.",
+    "No LLM backfilling of unpublished execution depth.",
+    "Public and Admin retrieval must remain separate authorization scopes.",
+    "Canvas must remain daughter-generic; no Ocean-specific renderer branches.",
+    "Candidate daughter assets are additive and must not mutate the frozen Universe, production daughter baselines, Canvas, Universal Ask or current Atlas Warehouse until promotion gates pass.",
+    "Final release status may become CERTIFIED only after exact frozen assets are materialized and the full regression suite passes."
+  ],
+  "frozenGoverningStandards": {
+    "insideOutOutsideInOperationalResearch": {"version":"1","status":"FROZEN","path":"governance/standards/INSIDE_OUT_OUTSIDE_IN_OPERATIONAL_RESEARCH_STANDARD_V1_FROZEN.md","sha256":"d2702b1966fbc7ee1f2518175b4c3028eb30c4481322b35fc3903ece13e60fe5"},
+    "executabilityRecursiveDecomposition": {"version":"1","status":"FROZEN","path":"governance/standards/EXECUTABILITY_AND_RECURSIVE_DECOMPOSITION_STANDARD_V1_FROZEN.md","sha256":"045fb2762d6296f37815669b66ea21c5f4314c639fff0213d7323ca4d0b5fd0d"},
+    "evidenceEpistemicClassification": {"version":"1","status":"FROZEN","path":"governance/standards/EVIDENCE_EPISTEMIC_CLASSIFICATION_V1_FROZEN.md","sha256":"78f725fb6b537c477608ec80de5ef68b6afedd584e5bfc05fd07cef29903cda7"},
+    "knowledgeToExecutionArchitecture": {"version":"1","status":"FROZEN","path":"governance/standards/KNOWLEDGE_TO_EXECUTION_ARCHITECTURE_V1_FROZEN.md","sha256":"e159013e571584ec9443e85474ea1879bde2ff1c004688285e1f31836ab90a3c"},
+    "clientBindingResolutionPrinciple": {"version":"1","status":"FROZEN","path":"governance/standards/CLIENT_BINDING_RESOLUTION_PRINCIPLE_V1_FROZEN.md","sha256":"da94d9b06fd2a36bf58fefea33c4bbe282d345cd48aa135786011dfc92d05732"}
+  },
+  "nextExecutionDefinitionAssets": {
+    "canonicalWorkDecompositionContract": {"version":"1","status":"IMPLEMENTATION_PENDING","path":"governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_PENDING.md","next":true,"sha256":"3fd0884f5481abe03a9246e5794f86cb3ad28c57deb9eec8dca942a29dbcdf6b"},
+    "canonicalWorkDefinitionContract": {"version":"VNext","status":"IMPLEMENTATION_COMPILATION_PENDING","path":"governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_VNEXT_PENDING.md","nextAfter":"canonicalWorkDecompositionContract","sha256":"0f91a03e837dceadb57fdb83099a5882c46a286dc7f52b37924ab117a1978550"}
+  },
+  "assetRegistrySystem": {
+    "canonicalLocation": "governance/frozen-assets/",
+    "readFirst": "governance/frozen-assets/LATEST.md",
+    "machinePointer": "governance/frozen-assets/CURRENT.json",
+    "fullRegister": "governance/frozen-assets/ASSET_REGISTER.json",
+    "updateProtocol": "governance/frozen-assets/README.md",
+    "historyRule": "Never overwrite a frozen version; append a new immutable version and update CURRENT.json.",
+    "repositoryBranch": "atlas-governance-registry-v2.1"
+  }
+}

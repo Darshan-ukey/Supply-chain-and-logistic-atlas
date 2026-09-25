@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0",
+  "moduleId": "road-ltl",
+  "moduleVersion": "1.3",
+  "source": "Extracted from certified Road LTL V1.2 composition behavior; no rule semantics changed.",
+  "processApplicabilitySource": "processes[].applicability",
+  "variants": {
+    "directShipment": {
+      "movementPatternId": "mp-direct-shipment",
+      "bypassProcessIds": [
+        "LTL-06",
+        "LTL-07",
+        "LTL-09",
+        "LTL-10",
+        "LTL-11"
+      ],
+      "syntheticEdges": [
+        {
+          "from": "LTL-05",
+          "to": "LTL-08",
+          "type": "DIRECT_VARIANT_TO"
+        },
+        {
+          "from": "LTL-08",
+          "to": "LTL-12",
+          "type": "DIRECT_VARIANT_TO"
+        }
+      ]
+    },
+    "nextLegIteration": {
+      "relationshipType": "ITERATES_TO_NEXT_LEG",
+      "finiteByRoutePlanRequired": true
+    }
+  },
+  "sourceActivationPolicies": {
+    "preserveCertifiedV1_2Behavior": true
+  },
+  "governance": {
+    "rendererMustNotOverrideRulePack": true,
+    "canvasBehaviorChangeAllowed": false
+  }
+}

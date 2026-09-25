@@ -1,0 +1,295 @@
+{
+  "release": "v1.1.4",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "desktop: no runtime errors",
+      "ok": true
+    },
+    {
+      "name": "desktop: v1.1.4 identity",
+      "ok": true
+    },
+    {
+      "name": "desktop: spatial universe intact",
+      "ok": true
+    },
+    {
+      "name": "desktop: Stage17-21 all initialized",
+      "ok": true
+    },
+    {
+      "name": "desktop: Lens Compose Trace Play controls",
+      "ok": true
+    },
+    {
+      "name": "desktop: Lens Compose Trace interactions",
+      "ok": true
+    },
+    {
+      "name": "desktop: v1.1 contract + 71 registry",
+      "ok": true
+    },
+    {
+      "name": "desktop: exact Road LTL structure",
+      "ok": true
+    },
+    {
+      "name": "desktop: semantic zoom 0-3",
+      "ok": true
+    },
+    {
+      "name": "desktop: rich A5 inspector",
+      "ok": true
+    },
+    {
+      "name": "desktop: playback + freeze",
+      "ok": true
+    },
+    {
+      "name": "desktop: Transform Deliver Review",
+      "ok": true
+    },
+    {
+      "name": "desktop: Ask Atlas runtime",
+      "ok": true
+    },
+    {
+      "name": "desktop: zero horizontal overflow",
+      "ok": true
+    },
+    {
+      "name": "mobile: no runtime errors",
+      "ok": true
+    },
+    {
+      "name": "mobile: v1.1.4 identity",
+      "ok": true
+    },
+    {
+      "name": "mobile: spatial universe intact",
+      "ok": true
+    },
+    {
+      "name": "mobile: Stage17-21 all initialized",
+      "ok": true
+    },
+    {
+      "name": "mobile: Lens Compose Trace Play controls",
+      "ok": true
+    },
+    {
+      "name": "mobile: Lens Compose Trace interactions",
+      "ok": true
+    },
+    {
+      "name": "mobile: v1.1 contract + 71 registry",
+      "ok": true
+    },
+    {
+      "name": "mobile: exact Road LTL structure",
+      "ok": true
+    },
+    {
+      "name": "mobile: semantic zoom 0-3",
+      "ok": true
+    },
+    {
+      "name": "mobile: rich A5 inspector",
+      "ok": true
+    },
+    {
+      "name": "mobile: playback + freeze",
+      "ok": true
+    },
+    {
+      "name": "mobile: Transform Deliver Review",
+      "ok": true
+    },
+    {
+      "name": "mobile: Ask Atlas runtime",
+      "ok": true
+    },
+    {
+      "name": "mobile: zero horizontal overflow",
+      "ok": true
+    },
+    {
+      "name": "mobile: inspector close",
+      "ok": true
+    }
+  ],
+  "cases": {
+    "desktop": {
+      "base": {
+        "title": "Enterprise Operations Platform \u00b7 Supply Chain \u00b7 v1.1.4",
+        "brand": "Enterprise Operations Platform \u00b7 Supply Chain \u00b7 v1.1.4",
+        "domainNodes": 15,
+        "fields": 1,
+        "ambientMesh": 1,
+        "ambientDots": 110,
+        "miniMap": 1,
+        "boxedTerritories": 0,
+        "stage17": true,
+        "stage18": true,
+        "stage19": true,
+        "stage20": true,
+        "stage21": true,
+        "lens": true,
+        "compose": true,
+        "trace": true,
+        "play": true,
+        "overflow": 0,
+        "dataContract": "atlas-data-contract-v1.1",
+        "registryTotal": 71
+      },
+      "active": {
+        "a3": 13,
+        "a5": 22,
+        "edges": 39,
+        "transitions": 22,
+        "sources": 29
+      },
+      "levels": {
+        "0": {
+          "cls": "stage151-hardened stage152-ui v152-sidebar-collapsed v152-level-0",
+          "a3": 0,
+          "a4": 0
+        },
+        "1": {
+          "cls": "stage151-hardened stage152-ui v152-sidebar-collapsed v152-level-1",
+          "a3": 13,
+          "a4": 0
+        },
+        "2": {
+          "cls": "stage151-hardened stage152-ui v152-sidebar-collapsed v152-level-2",
+          "a3": 13,
+          "a4": 22
+        },
+        "3": {
+          "cls": "stage151-hardened stage152-ui v152-sidebar-collapsed v152-level-3",
+          "a3": 13,
+          "a4": 22
+        }
+      },
+      "inspectorHasA5": true,
+      "surfaces": {
+        "lens": true,
+        "compose": true,
+        "trace": true
+      },
+      "playback": {
+        "enabled": true,
+        "bar": true,
+        "seq": 13,
+        "frozen": true
+      },
+      "transform": {
+        "enabled": true,
+        "findings": true,
+        "opportunities": true,
+        "future": true,
+        "deliver": true,
+        "review": true,
+        "deliverOpen": true,
+        "reviewOpen": true
+      },
+      "askAtlas": {
+        "global": true,
+        "send": true,
+        "drawer": true,
+        "module": "road-ltl"
+      },
+      "mobileInspectorClose": null,
+      "finalOverflow": 0,
+      "runtimeErrors": []
+    },
+    "mobile": {
+      "base": {
+        "title": "Enterprise Operations Platform \u00b7 Supply Chain \u00b7 v1.1.4",
+        "brand": "Enterprise Operations Platform \u00b7 Supply Chain \u00b7 v1.1.4",
+        "domainNodes": 15,
+        "fields": 1,
+        "ambientMesh": 1,
+        "ambientDots": 110,
+        "miniMap": 1,
+        "boxedTerritories": 0,
+        "stage17": true,
+        "stage18": true,
+        "stage19": true,
+        "stage20": true,
+        "stage21": true,
+        "lens": true,
+        "compose": true,
+        "trace": true,
+        "play": true,
+        "overflow": 0,
+        "dataContract": "atlas-data-contract-v1.1",
+        "registryTotal": 71
+      },
+      "active": {
+        "a3": 13,
+        "a5": 22,
+        "edges": 39,
+        "transitions": 22,
+        "sources": 29
+      },
+      "levels": {
+        "0": {
+          "cls": "stage151-hardened stage152-ui v152-sidebar-collapsed v152-level-0",
+          "a3": 0,
+          "a4": 0
+        },
+        "1": {
+          "cls": "stage151-hardened stage152-ui v152-sidebar-collapsed v152-level-1",
+          "a3": 13,
+          "a4": 0
+        },
+        "2": {
+          "cls": "stage151-hardened stage152-ui v152-sidebar-collapsed v152-level-2",
+          "a3": 13,
+          "a4": 22
+        },
+        "3": {
+          "cls": "stage151-hardened stage152-ui v152-sidebar-collapsed v152-level-3",
+          "a3": 13,
+          "a4": 22
+        }
+      },
+      "inspectorHasA5": true,
+      "surfaces": {
+        "lens": true,
+        "compose": true,
+        "trace": true
+      },
+      "playback": {
+        "enabled": true,
+        "bar": true,
+        "seq": 13,
+        "frozen": true
+      },
+      "transform": {
+        "enabled": true,
+        "findings": true,
+        "opportunities": true,
+        "future": true,
+        "deliver": true,
+        "review": true,
+        "deliverOpen": true,
+        "reviewOpen": true
+      },
+      "askAtlas": {
+        "global": true,
+        "send": true,
+        "drawer": true,
+        "module": "road-ltl"
+      },
+      "mobileInspectorClose": {
+        "before": true,
+        "after": false
+      },
+      "finalOverflow": 0,
+      "runtimeErrors": []
+    }
+  }
+}

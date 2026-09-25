@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://brisk-aitesting.dev/schemas/engineering-records.v1.json",
+  "title": "brisk-aitesting engineering records",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "requirements", "capabilities", "claims", "decisions", "testCoverage", "proofClasses", "statusTransitions"],
+  "properties": {
+    "schemaVersion": { "const": "brisk-aitesting.engineering-records.v1" },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "requirement", "implementation", "testProof", "evidence", "status"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[A-Z]+-[0-9]{3}$" },
+          "requirement": { "type": "string", "minLength": 10 },
+          "implementation": { "type": "string", "minLength": 1 },
+          "testProof": { "type": "string", "minLength": 1 },
+          "evidence": { "type": "string", "minLength": 1 },
+          "status": { "$ref": "#/$defs/engineeringStatus" }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "capability", "requirementIds", "status", "currentEvidence", "requiredNextProof"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^CAP-[0-9]{3}$" },
+          "capability": { "type": "string", "minLength": 3 },
+          "requirementIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^[A-Z]+-[0-9]{3}$" }
+          },
+          "status": { "$ref": "#/$defs/capabilityStatus" },
+          "currentEvidence": { "type": "string", "minLength": 1 },
+          "requiredNextProof": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "claim", "capabilityIds", "status", "proofClass", "procedure", "environment", "result", "evidence", "exclusions"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^CLM-[0-9]{4}$" },
+          "claim": { "type": "string", "minLength": 10 },
+          "capabilityIds": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^CAP-[0-9]{3}$" }
+          },
+          "status": { "enum": ["verified", "unverified", "invalidated"] },
+          "proofClass": { "enum": ["static", "synthetic", "reference-app", "host-integration", "cross-architecture", "production"] },
+          "procedure": { "type": "string", "minLength": 1 },
+          "environment": { "type": "string", "minLength": 1 },
+          "result": { "type": "string", "minLength": 1 },
+          "evidence": { "type": "string", "minLength": 1 },
+          "exclusions": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "decision", "status", "path"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^ADR-[0-9]{4}$" },
+          "decision": { "type": "string", "minLength": 5 },
+          "status": { "enum": ["proposed", "accepted", "superseded", "rejected"] },
+          "path": { "type": "string", "pattern": "^ADR-[A-Za-z0-9._-]+\\.md$" }
+        }
+      }
+    },
+    "testCoverage": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "sha256", "documentationStatus", "legacyBaseline", "proofClass", "requirementIds", "dimensions", "risk", "authoritativeInputs", "expectedEvidence", "exclusions"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^TCV-[0-9]{4}$" },
+          "path": { "type": "string", "pattern": "^smoke/run-[A-Za-z0-9._-]+\\.mjs$" },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "documentationStatus": { "enum": ["documented", "legacy-backfill-pending"] },
+          "legacyBaseline": { "type": "boolean" },
+          "proofClass": { "enum": ["static", "synthetic", "reference-app", "host-integration", "cross-architecture", "production"] },
+          "requirementIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^[A-Z]+-[0-9]{3}$" }
+          },
+          "dimensions": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "enum": ["positive", "negative", "boundary", "adversarial", "fault", "security", "cancellation", "timeout", "cleanup", "compatibility", "packaging", "reference-app", "cross-platform"] }
+          },
+          "risk": { "type": "string", "minLength": 20 },
+          "authoritativeInputs": { "type": "string", "minLength": 5 },
+          "expectedEvidence": { "type": "string", "minLength": 10 },
+          "exclusions": { "type": "string", "minLength": 10 }
+        }
+      }
+    },
+    "proofClasses": {
+      "type": "array",
+      "minItems": 6,
+      "items": { "type": "string", "enum": ["static", "synthetic", "reference-app", "host-integration", "cross-architecture", "production"] }
+    },
+    "statusTransitions": {
+      "type": "array",
+      "minItems": 6,
+      "items": { "$ref": "#/$defs/engineeringStatus" }
+    }
+  },
+  "$defs": {
+    "engineeringStatus": {
+      "enum": ["specified", "implemented", "integration-proven", "cross-architecture-proven", "release-ready", "complete"]
+    },
+    "capabilityStatus": {
+      "enum": ["implemented", "production-proven", "partially-proven", "missing", "blocked-product-decision", "blocked-external-dependency"]
+    }
+  }
+}

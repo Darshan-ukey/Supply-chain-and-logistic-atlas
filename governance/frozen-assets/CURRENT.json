@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "atlas-current-assets-pointer-v1",
+  "updatedAt": "2026-09-02T21:42:00+05:30",
+  "integrationLock": "governance/frozen-assets/history/frozen-stack-lock-v2.2.json",
+  "productionBaseline": {
+    "universe": "universe-7.3",
+    "roadLtl": "road-ltl-1.3",
+    "oceanFcl": "ocean-fcl-0.5",
+    "oceanLcl": "ocean-lcl-0.5",
+    "canvas": "canvas-2.0.0",
+    "universalAsk": "universal-ask-2.0.1",
+    "atlasWarehouse": "atlas-warehouse-1"
+  },
+  "latestFrozenCandidates": {
+    "roadLtl": "road-ltl-1.5-candidate",
+    "oceanFcl": "ocean-fcl-0.6-candidate",
+    "oceanLcl": "ocean-lcl-0.6-candidate",
+    "canvas": "canvas-2.0.1-candidate",
+    "oceanProjectionBundle": "ocean-0.6-public-safe-projections-bundle"
+  },
+  "latestFrozenReferenceAssets": {
+    "roadLtlOperationalKnowledge": "road-ltl-1.5-operational",
+    "operationalKnowledgeContract": "operational-knowledge-contract-2-candidate",
+    "informationResolutionContract": "information-resolution-contract-1",
+    "bolInformationResolutionBaseline": "bol-information-resolution-baseline-0.1"
+  },
+  "activeEnrichmentCandidates": null,
+  "governingStandards": [
+    "insideOutOutsideInOperationalResearch",
+    "executabilityRecursiveDecomposition",
+    "evidenceEpistemicClassification",
+    "knowledgeToExecutionArchitecture",
+    "clientBindingResolutionPrinciple"
+  ],
+  "nextImplementation": [
+    "canonicalWorkDecompositionContract",
+    "canonicalWorkDefinitionContract"
+  ],
+  "readHumanSummary": "governance/frozen-assets/LATEST.md",
+  "statusNote": "Road LTL 1.5, Operational Knowledge Contract v2 and BOL Information Resolution Baseline v0.1 are frozen reference assets. Production Road LTL remains 1.3 until separate promotion gates pass. Universe remains 7.3."
+}

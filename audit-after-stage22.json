@@ -1,0 +1,136 @@
+{
+  "stage": "22",
+  "name": "Deployment, Release Hardening & Production-Scale Validation",
+  "status": "PASS_WITH_EXTERNAL_GO_LIVE_GATES",
+  "releaseId": "stage22-2026.08.23-r1",
+  "releaseEngineering": {
+    "stableLabContract": "PASS",
+    "environmentMatrix": "PASS",
+    "livenessReadinessVersionIntegrity": "PASS",
+    "securityHeaders": "PASS",
+    "rollbackRunbook": "PASS",
+    "backupRestoreRunbook": "PASS",
+    "observabilityContract": "PASS",
+    "releaseManifest": "PASS",
+    "portableRegressionTests": "PASS",
+    "stableLabPackages": "PASS"
+  },
+  "regression": {
+    "sourceRegression": "PASS",
+    "canonicalCoreFrozen": "PASS",
+    "domainNeutralFixture": "PASS",
+    "stage19Ingestion": "PASS",
+    "stage20Completion": "PASS",
+    "stage21CollaborationTelemetry": "PASS",
+    "browserStandalone": "PASS"
+  },
+  "performance": {
+    "stage": "22",
+    "status": "PASS",
+    "environment": {
+      "node": "v22.16.0",
+      "note": "in-process serverless handler benchmark; network/CDN not included"
+    },
+    "results": [
+      {
+        "name": "health",
+        "requests": 1000,
+        "concurrency": 50,
+        "statuses": {
+          "200": 1000
+        },
+        "p50Ms": 0.316,
+        "p95Ms": 1.208,
+        "p99Ms": 1.568,
+        "maxMs": 2.685
+      },
+      {
+        "name": "command-validation",
+        "requests": 500,
+        "concurrency": 25,
+        "statuses": {
+          "200": 500
+        },
+        "p50Ms": 0.371,
+        "p95Ms": 2.664,
+        "p99Ms": 13.751,
+        "maxMs": 14.083
+      },
+      {
+        "name": "ask-atlas-deterministic",
+        "requests": 200,
+        "concurrency": 20,
+        "statuses": {
+          "200": 200
+        },
+        "p50Ms": 38.901,
+        "p95Ms": 69.808,
+        "p99Ms": 69.952,
+        "maxMs": 70.331
+      }
+    ]
+  },
+  "supabase": {
+    "stage": "22",
+    "projectId": "aaoyesktlzhaunqqjhdq",
+    "atlasTables": 16,
+    "atlasTablesWithRls": 16,
+    "storage": [
+      {
+        "id": "atlas-client-documents",
+        "public": false,
+        "fileSizeLimit": 26214400
+      },
+      {
+        "id": "atlas-client-evidence",
+        "public": false,
+        "fileSizeLimit": 20971520
+      }
+    ],
+    "securityAdvisorFindings": 0,
+    "performanceAdvisor": "INFO-only unused-index notices on low/no-traffic schema",
+    "transactionalRestoreRehearsal": "PASS",
+    "pitrRestoreRehearsal": "PENDING_ISOLATED_TARGET"
+  },
+  "vercel": {
+    "stage": "22",
+    "teamId": "team_82G0YS5CSlKdabFzFBgLUj3r",
+    "teamSlug": "ukeydarsh-2051s-projects",
+    "projectsVisible": 0,
+    "labDeployment": "NOT_ATTEMPTED_NO_IDENTIFIED_TARGET",
+    "stableDeployment": "NOT_ATTEMPTED_NO_IDENTIFIED_TARGET"
+  },
+  "openGates": [
+    "Create/connect an identified Vercel Lab project and Stable project (or equivalent approved target).",
+    "Configure and audit target environment variables.",
+    "Run deployed HTTP/browser E2E plus readiness/integrity checks.",
+    "Generate and commit a dependency lockfile before Stable promotion.",
+    "Run live LLM provider acceptance only if a provider is enabled for go-live.",
+    "Run an isolated full PITR/restore rehearsal before storing real client-confidential production data."
+  ],
+  "limitations": {
+    "localNodeRuntime": "v22.16.0; package/deployment engine is pinned to 24.x, so Node 24 live build remains a deployment gate.",
+    "httpBrowserNavigation": "ERR_BLOCKED_BY_ADMINISTRATOR in execution environment; direct Chromium standalone render passed.",
+    "npmRegistry": "package-lock generation timed out; direct dependencies pinned exactly."
+  },
+  "evidence": {
+    "validation": "PASS",
+    "smoke": "PASS",
+    "browser": "PASS",
+    "securityAdvisorFindings": 0
+  },
+  "runtimeHashes": {
+    "index.html": "31e3014e115391f4f026c73413df9fd46d1a73bbe52837dd9abff4811b34c89d",
+    "stage17-client.js": "2d8e4d827957fbc966ae5154c15e2bedb5ef04594fe80bda32ab60ec7b00c6ba",
+    "stage18-client.js": "52170214df14f9412db05682195d7c5a26a6fb691eb5d1e25a044913490259f1",
+    "stage19-client.js": "efddc1e2fb5b3f54644c7965639a0e39a0c98ca382f2d57f71ff04333bf3eeeb",
+    "stage20-client.js": "86f707a669edb2ec8a1cd58e4de399f6b46147455fa6e596172c025e22f45e67",
+    "stage21-client.js": "b1d0c420efb31bba3a9cadd31cf0bdafa51d79563d5615268db66068451ab5a7",
+    "api/health.js": "d7375b486493da451205c4b63140e8a9757ded928ff19c67db1df76b3a402859",
+    "api/readiness.js": "a2fece2d80c51d3c72f314fcdcf8d1e294650ae23995766b36586880af9237c0",
+    "api/version.js": "33ff228b9531cf576115e545f58afe3ea43ee0920ce125ca34e23964d86f0b73",
+    "api/release-integrity.js": "dbaafb61761d80668b0d464f461bd75c781e6b40ef504d141f93a10f5a80293f",
+    "vercel.json": "b460712ec4346df2bc65eef957fc07e0b3acc307412b90a3e4c086efcbf33e06",
+    "package.json": "c36ca8c02197d8e8160b8d9139f2bb70d232efb4b021076ad45a917394375d4c"
+  }
+}

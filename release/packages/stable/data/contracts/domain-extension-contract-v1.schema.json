@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"domain-extension-contract-v1.schema.json",
+  "title":"Enterprise Operations Domain Extension Contract v1.0",
+  "type":"object",
+  "required":["contractVersion","id","name","territories","applicabilityDimensions","signalTypes","transformationHeuristics","vocabulary"],
+  "properties":{
+    "contractVersion":{"const":"enterprise-domain-extension-v1.0"},
+    "id":{"type":"string","minLength":1},
+    "name":{"type":"string","minLength":1},
+    "status":{"type":"string"},
+    "ontologyExtensions":{"type":"array","items":{"type":"object","required":["id","name","extendsCore"],"additionalProperties":true}},
+    "territories":{"type":"array","items":{"type":"object","required":["id","title","code","position"],"properties":{"position":{"type":"array","minItems":2,"maxItems":2,"items":{"type":"number"}}},"additionalProperties":true}},
+    "applicabilityDimensions":{"type":"array","items":{"type":"object","required":["id","label","contextKey","processApplicabilityKey","cardinality"],"additionalProperties":true}},
+    "signalTypes":{"type":"array","minItems":1,"items":{"type":"object","required":["id","label","color","extract"],"additionalProperties":true}},
+    "transformationHeuristics":{"type":"array","items":{"type":"object","required":["id","category","label","evaluator","hypothesis"],"additionalProperties":true}},
+    "vocabulary":{"type":"object"},
+    "compatibility":{"type":"object"},
+    "extensions":{"type":"object"}
+  },
+  "additionalProperties":true
+}

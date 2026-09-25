@@ -1,0 +1,24 @@
+{
+  "name": "@malkom/agenticai-gateway",
+  "version": "0.1.0",
+  "description": "The MCP gateway — the only door to data. Tools generated from org config, passes checked, every call recorded.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "@malkom/agenticai-contract": "*",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.24.1"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "enterprise-domain-pack-catalog-v1.0",
+  "coreOntologyPath": "data/core/enterprise-core-ontology-v1.json",
+  "domainExtensionContractPath": "data/contracts/domain-extension-contract-v1.schema.json",
+  "packs": [
+    {
+      "id": "supply-chain",
+      "name": "Supply Chain & Logistics",
+      "url": "data/domains/supply-chain-domain-pack-v1.json",
+      "status": "ACTIVE",
+      "production": true,
+      "path": "data/domains/supply-chain-domain-pack-v1.json"
+    },
+    {
+      "id": "accounts-payable-fixture",
+      "name": "Accounts Payable Architecture Fixture",
+      "url": "data/domains/accounts-payable-fixture-domain-pack-v1.json",
+      "status": "TEST_ONLY",
+      "production": false,
+      "path": "data/domains/accounts-payable-fixture-domain-pack-v1.json"
+    }
+  ],
+  "version": "1.1.4"
+}

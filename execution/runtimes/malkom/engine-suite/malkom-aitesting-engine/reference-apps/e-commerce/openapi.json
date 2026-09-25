@@ -1,0 +1,78 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "E-commerce Proof App", "version": "1.0.0" },
+  "paths": {
+    "/api/health": {
+      "get": {
+        "responses": {
+          "200": { "description": "healthy", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Health" } } } }
+        }
+      }
+    },
+    "/api/products": {
+      "get": {
+        "responses": {
+          "200": { "description": "products", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ProductList" } } } }
+        }
+      }
+    },
+    "/api/carts/{cartId}": {
+      "get": {
+        "parameters": [{ "name": "cartId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "200": { "description": "cart", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Cart" } } } }
+        }
+      }
+    },
+    "/api/carts/{cartId}/items": {
+      "post": {
+        "parameters": [{ "name": "cartId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AddCartItem" },
+              "example": { "productId": "prod_keyboard", "quantity": 1 }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "cart updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Cart" } } } },
+          "400": { "description": "bad quantity", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } },
+          "404": { "description": "missing product", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } },
+          "409": { "description": "out of stock", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } }
+        }
+      }
+    },
+    "/api/carts/{cartId}/checkout": {
+      "post": {
+        "parameters": [{ "name": "cartId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "201": { "description": "order created", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/OrderResponse" } } } },
+          "400": { "description": "empty cart", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } }
+        }
+      }
+    },
+    "/api/orders": {
+      "get": {
+        "responses": {
+          "200": { "description": "orders", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/OrderList" } } } }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Health": { "type": "object", "required": ["ok", "service"], "properties": { "ok": { "type": "boolean" }, "service": { "type": "string" } } },
+      "Product": { "type": "object", "required": ["id", "name", "price", "stock"], "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "price": { "type": "number" }, "stock": { "type": "integer" } } },
+      "ProductList": { "type": "object", "required": ["products", "total"], "properties": { "products": { "type": "array", "items": { "$ref": "#/components/schemas/Product" } }, "total": { "type": "integer" } } },
+      "AddCartItem": { "type": "object", "required": ["productId", "quantity"], "properties": { "productId": { "type": "string" }, "quantity": { "type": "integer", "minimum": 1 } } },
+      "CartItem": { "type": "object", "required": ["productId", "quantity"], "properties": { "productId": { "type": "string" }, "quantity": { "type": "integer" } } },
+      "Cart": { "type": "object", "required": ["cartId", "items", "totalItems", "total"], "properties": { "cartId": { "type": "string" }, "items": { "type": "array", "items": { "$ref": "#/components/schemas/CartItem" } }, "totalItems": { "type": "integer" }, "total": { "type": "number" } } },
+      "Order": { "type": "object", "required": ["id", "cartId", "total", "status"], "properties": { "id": { "type": "string" }, "cartId": { "type": "string" }, "total": { "type": "number" }, "status": { "type": "string" } } },
+      "OrderResponse": { "type": "object", "required": ["order"], "properties": { "order": { "$ref": "#/components/schemas/Order" } } },
+      "OrderList": { "type": "object", "required": ["orders", "total"], "properties": { "orders": { "type": "array", "items": { "$ref": "#/components/schemas/Order" } }, "total": { "type": "integer" } } },
+      "ErrorResponse": { "type": "object", "required": ["error"], "properties": { "error": { "type": "object", "required": ["code"], "properties": { "code": { "type": "string" } } } } }
+    }
+  }
+}

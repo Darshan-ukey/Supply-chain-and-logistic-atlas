@@ -1,0 +1,247 @@
+{
+  "release": "v1.1.6",
+  "releaseId": "scoip-v1.1.6-release-certified-2026.08.24",
+  "generatedAt": "2026-08-24T11:55:21.258343+00:00",
+  "donors": {
+    "v1.1.4ZipSha256": "6a6578430e8b06e14536f03205190758fe444825132415de6f0da6dac42ef938",
+    "v1.1.5ZipSha256": "006e3f2659ddc7164da2967b7c497976937de34cb55fd02c5744845c642b5ea3"
+  },
+  "releaseAll": {
+    "passLines": 142,
+    "failLines": 0,
+    "exit": "PASS"
+  },
+  "sourceDiffVsV1.1.5": {
+    "v1.1.5Files": 332,
+    "v1.1.6Files": 343,
+    "identical": 318,
+    "modified": [
+      ".env.example",
+      "README.md",
+      "data/atlas-registry.json",
+      "index.html",
+      "lib/api/release-integrity.js",
+      "package.json",
+      "pilot/results/stage23-offline-eval.json",
+      "preview-standalone.html",
+      "release/release-meta.js"
+    ],
+    "added": [
+      "RELEASE_V1.1.6.md",
+      "audits/v1.1.4/release-manifest-v1.1.4.json",
+      "audits/v1.1.5/legacy-critical-baseline-v1.1.5.json",
+      "release/DEPENDENCY_LOCK_STATUS_V1.1.6.md",
+      "release/baselines/v1.1.6-critical-hashes.json",
+      "release/scripts/legacy/v1.1.4-build-manifest.mjs",
+      "release/scripts/legacy/v1.1.4-build-packages.mjs",
+      "release/scripts/legacy/v1.1.4-package-check.mjs",
+      "release/scripts/v1.1.6-build-manifest.mjs",
+      "release/scripts/v1.1.6-build-packages.mjs",
+      "release/scripts/v1.1.6-package-check.mjs",
+      "release/v1.1.6-release-manifest.json",
+      "tests/v1.1.6-api-router-smoke.mjs",
+      "tests/v1.1.6-canonical-integrity.mjs",
+      "tests/v1.1.6-live-browser-certificate.mjs",
+      "tests/v1.1.6-scale-smoke.mjs"
+    ],
+    "removed": [
+      "release/baselines/v1.1.4-critical-hashes.json",
+      "release/scripts/v1.1.4-build-manifest.mjs",
+      "release/scripts/v1.1.4-build-packages.mjs",
+      "release/scripts/v1.1.4-package-check.mjs",
+      "release/v1.1.4-release-manifest.json"
+    ]
+  },
+  "criticalParity": {
+    "stage17-client.js": {
+      "v1.1.4": "c5b29ceb9eb365541d0598cfd9f59a134ed866a9bd0c21bcbf03ee460c64f35d",
+      "v1.1.5": "c5b29ceb9eb365541d0598cfd9f59a134ed866a9bd0c21bcbf03ee460c64f35d",
+      "v1.1.6": "c5b29ceb9eb365541d0598cfd9f59a134ed866a9bd0c21bcbf03ee460c64f35d",
+      "allEqual": true
+    },
+    "stage18-client.js": {
+      "v1.1.4": "52170214df14f9412db05682195d7c5a26a6fb691eb5d1e25a044913490259f1",
+      "v1.1.5": "52170214df14f9412db05682195d7c5a26a6fb691eb5d1e25a044913490259f1",
+      "v1.1.6": "52170214df14f9412db05682195d7c5a26a6fb691eb5d1e25a044913490259f1",
+      "allEqual": true
+    },
+    "stage19-client.js": {
+      "v1.1.4": "f1c92dd1c09eb3714a7cf204f125221ca31156dbc3e148846866442c810dffaa",
+      "v1.1.5": "f1c92dd1c09eb3714a7cf204f125221ca31156dbc3e148846866442c810dffaa",
+      "v1.1.6": "f1c92dd1c09eb3714a7cf204f125221ca31156dbc3e148846866442c810dffaa",
+      "allEqual": true
+    },
+    "stage20-client.js": {
+      "v1.1.4": "86f707a669edb2ec8a1cd58e4de399f6b46147455fa6e596172c025e22f45e67",
+      "v1.1.5": "86f707a669edb2ec8a1cd58e4de399f6b46147455fa6e596172c025e22f45e67",
+      "v1.1.6": "86f707a669edb2ec8a1cd58e4de399f6b46147455fa6e596172c025e22f45e67",
+      "allEqual": true
+    },
+    "stage21-client.js": {
+      "v1.1.4": "b1d0c420efb31bba3a9cadd31cf0bdafa51d79563d5615268db66068451ab5a7",
+      "v1.1.5": "b1d0c420efb31bba3a9cadd31cf0bdafa51d79563d5615268db66068451ab5a7",
+      "v1.1.6": "b1d0c420efb31bba3a9cadd31cf0bdafa51d79563d5615268db66068451ab5a7",
+      "allEqual": true
+    },
+    "data/page0/page0-v6.2.2.json": {
+      "v1.1.4": "c8805c194f87cd795014e4a44f362d67c921f5e0e978b9a29014befafc0fbbd0",
+      "v1.1.5": "c8805c194f87cd795014e4a44f362d67c921f5e0e978b9a29014befafc0fbbd0",
+      "v1.1.6": "c8805c194f87cd795014e4a44f362d67c921f5e0e978b9a29014befafc0fbbd0",
+      "allEqual": true
+    },
+    "data/modules/road-ltl-v1.2.json": {
+      "v1.1.4": "2d5c78d4480bb693747bcb18a2c006b3fe0a63e6150c506e84ea3e4c5f3f6cfd",
+      "v1.1.5": "2d5c78d4480bb693747bcb18a2c006b3fe0a63e6150c506e84ea3e4c5f3f6cfd",
+      "v1.1.6": "2d5c78d4480bb693747bcb18a2c006b3fe0a63e6150c506e84ea3e4c5f3f6cfd",
+      "allEqual": true
+    },
+    "engine/domain-neutral-core.js": {
+      "v1.1.4": "63eaf10e1c54480fe353012818ea22ed5a865f3a5adca56ea2b6a22644866251",
+      "v1.1.5": "63eaf10e1c54480fe353012818ea22ed5a865f3a5adca56ea2b6a22644866251",
+      "v1.1.6": "63eaf10e1c54480fe353012818ea22ed5a865f3a5adca56ea2b6a22644866251",
+      "allEqual": true
+    },
+    "data/core/enterprise-core-ontology-v1.json": {
+      "v1.1.4": "43cb2e69b7b4203ad8418394f3aa7050b55fa06a11939bf0909c24a494438b9c",
+      "v1.1.5": "43cb2e69b7b4203ad8418394f3aa7050b55fa06a11939bf0909c24a494438b9c",
+      "v1.1.6": "43cb2e69b7b4203ad8418394f3aa7050b55fa06a11939bf0909c24a494438b9c",
+      "allEqual": true
+    },
+    "data/contracts/atlas-data-contract-v1.1.schema.json": {
+      "v1.1.4": "b9415084acee824546134d643c7f8d4b41e792b843d88a5ef66cb3c6db5d2de9",
+      "v1.1.5": "b9415084acee824546134d643c7f8d4b41e792b843d88a5ef66cb3c6db5d2de9",
+      "v1.1.6": "b9415084acee824546134d643c7f8d4b41e792b843d88a5ef66cb3c6db5d2de9",
+      "allEqual": true
+    },
+    "data/domains/supply-chain-domain-pack-v1.json": {
+      "v1.1.4": "e2fb5a9eeb5c6906c3e5fd2fcf1f29d9b3e7e1a450f7346d163234cf978acab7",
+      "v1.1.5": "e2fb5a9eeb5c6906c3e5fd2fcf1f29d9b3e7e1a450f7346d163234cf978acab7",
+      "v1.1.6": "e2fb5a9eeb5c6906c3e5fd2fcf1f29d9b3e7e1a450f7346d163234cf978acab7",
+      "allEqual": true
+    },
+    "data/crosswalks/process-concept-crosswalk-v1.json": {
+      "v1.1.4": "0baf0a0c297ddd0740f80909df15ad44bd02128b31d24a4f0d37cdb5e0fb4094",
+      "v1.1.5": "0baf0a0c297ddd0740f80909df15ad44bd02128b31d24a4f0d37cdb5e0fb4094",
+      "v1.1.6": "0baf0a0c297ddd0740f80909df15ad44bd02128b31d24a4f0d37cdb5e0fb4094",
+      "allEqual": true
+    },
+    "data/governance/source-registry-v1.json": {
+      "v1.1.4": "fae7c3a5411ad0becf35078fba4f200f70f328447fe0685a793f1d9f359f653e",
+      "v1.1.5": "fae7c3a5411ad0becf35078fba4f200f70f328447fe0685a793f1d9f359f653e",
+      "v1.1.6": "fae7c3a5411ad0becf35078fba4f200f70f328447fe0685a793f1d9f359f653e",
+      "allEqual": true
+    },
+    "governance/relationship-vocabulary-v1.json": {
+      "v1.1.4": "5fd59c52f6617d7d55f862af23cac0561423babdb4085ba20f28031edf498382",
+      "v1.1.5": "5fd59c52f6617d7d55f862af23cac0561423babdb4085ba20f28031edf498382",
+      "v1.1.6": "5fd59c52f6617d7d55f862af23cac0561423babdb4085ba20f28031edf498382",
+      "allEqual": true
+    },
+    "governance/rule-registry-v1.1.json": {
+      "v1.1.4": "b2c47fbdec3fefecae6108c38c28cbf223f89561edb40c0ff1099f7717ef46c7",
+      "v1.1.5": "b2c47fbdec3fefecae6108c38c28cbf223f89561edb40c0ff1099f7717ef46c7",
+      "v1.1.6": "b2c47fbdec3fefecae6108c38c28cbf223f89561edb40c0ff1099f7717ef46c7",
+      "allEqual": true
+    },
+    "governance/overlay-registry-v1.1.json": {
+      "v1.1.4": "2b4a39cc90658a9cd9c827e259cddb00cf0c13f2af2f2a54a55b62a6efd62299",
+      "v1.1.5": "2b4a39cc90658a9cd9c827e259cddb00cf0c13f2af2f2a54a55b62a6efd62299",
+      "v1.1.6": "2b4a39cc90658a9cd9c827e259cddb00cf0c13f2af2f2a54a55b62a6efd62299",
+      "allEqual": true
+    },
+    "data/module-catalog.json": {
+      "v1.1.4": "07f5eb404336b93cd2dae2916797e8c15bb6398dafb400d5c136e2f06e3c3c5c",
+      "v1.1.5": "07f5eb404336b93cd2dae2916797e8c15bb6398dafb400d5c136e2f06e3c3c5c",
+      "v1.1.6": "07f5eb404336b93cd2dae2916797e8c15bb6398dafb400d5c136e2f06e3c3c5c",
+      "allEqual": true
+    },
+    "data/domain-pack-catalog.json": {
+      "v1.1.4": "0d0e83159dc16bf1aa008e44b44e5325d7ef51b0e76e5c35d7270364af82d238",
+      "v1.1.5": "0d0e83159dc16bf1aa008e44b44e5325d7ef51b0e76e5c35d7270364af82d238",
+      "v1.1.6": "0d0e83159dc16bf1aa008e44b44e5325d7ef51b0e76e5c35d7270364af82d238",
+      "allEqual": true
+    }
+  },
+  "frozenSourceParity": {
+    "reference/source/page0-v6.2.2-frozen-original.html": {
+      "v1.1.4": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
+      "v1.1.5": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
+      "v1.1.6": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
+      "allEqual": true
+    },
+    "reference/source/page0-road-ltl-v1.2-integrated-original.html": {
+      "v1.1.4": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747",
+      "v1.1.5": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747",
+      "v1.1.6": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747",
+      "allEqual": true
+    }
+  },
+  "migrations": {
+    "migrations/schema-contract.sql": {
+      "v1.1.5": "c719847749bafd109bd09de0d0b7909ca25e5de91b9231446ba0e71bbe9ec89e",
+      "v1.1.6": "c719847749bafd109bd09de0d0b7909ca25e5de91b9231446ba0e71bbe9ec89e",
+      "equal": true
+    },
+    "migrations/stage17-workspaces.sql": {
+      "v1.1.5": "c27e8c7bd3e87dc2dab7e402da8f6b86333f101d4bdb5fbd399c2f70909c611f",
+      "v1.1.6": "c27e8c7bd3e87dc2dab7e402da8f6b86333f101d4bdb5fbd399c2f70909c611f",
+      "equal": true
+    },
+    "migrations/stage19-document-ingestion.sql": {
+      "v1.1.5": "0b637e6fcd36318521b70646dc7c1fd8b9c46f39664892ef78b446a10fae45e5",
+      "v1.1.6": "0b637e6fcd36318521b70646dc7c1fd8b9c46f39664892ef78b446a10fae45e5",
+      "equal": true
+    },
+    "migrations/stage21-collaboration-telemetry.sql": {
+      "v1.1.5": "1da9abd91e92007dbda666d141cd44b472d68002abafed67243f6d9e19c933c7",
+      "v1.1.6": "1da9abd91e92007dbda666d141cd44b472d68002abafed67243f6d9e19c933c7",
+      "equal": true
+    },
+    "migrations/stage22_2_pilot_rbac.sql": {
+      "v1.1.5": "0986cfb38ebd58dfb86f8f4865f0a89f7d22260d794e54847a2ca586e6659f09",
+      "v1.1.6": "0986cfb38ebd58dfb86f8f4865f0a89f7d22260d794e54847a2ca586e6659f09",
+      "equal": true
+    },
+    "migrations/stage23-pilot-evaluations.sql": {
+      "v1.1.5": "4a09c4c42c05af42641bbb7b8724d726c06fb4bff8dbef8e50531ff65f6e2760",
+      "v1.1.6": "4a09c4c42c05af42641bbb7b8724d726c06fb4bff8dbef8e50531ff65f6e2760",
+      "equal": true
+    }
+  },
+  "runtime": {
+    "serverlessFunctions": 8,
+    "publicApiPaths": 28,
+    "releaseIntegrityFiles": 28,
+    "destinationScale": 71,
+    "syntheticProcesses": 2130,
+    "browserDesktop": "PASS",
+    "browserMobile": "PASS",
+    "boxedTerritories": 0,
+    "spatialTerritories": 15,
+    "ambientDots": 110,
+    "stage17To21Runtime": "PASS",
+    "activeJsMjsSyntaxFiles": 80,
+    "syntaxFailures": 0
+  },
+  "security": {
+    "supabaseSecurityAdvisorFindings": 0,
+    "supabasePerformanceAdvisor": "INFO_ONLY_UNUSED_INDEXES",
+    "ephemeralPersistence": "NONE",
+    "geminiStore": false,
+    "geminiKeyInUrl": false,
+    "foundationDirectPublication": false
+  },
+  "versioning": {
+    "applicationRelease": "1.1.6",
+    "registrySchema": "1.1.4 (unchanged)",
+    "moduleCatalogVersion": "1.1.4 (unchanged)",
+    "domainPackCatalogVersion": "1.1.4 (unchanged)",
+    "principle": "Application release version is independent from unchanged Atlas schema/catalog versions."
+  },
+  "externalGates": {
+    "liveGeminiCertification": "PENDING_EXTERNAL_CONFIGURATION",
+    "deployedVercelE2E": "PENDING",
+    "packageLock": "PENDING_REGISTRY_ACCESS",
+    "isolatedRestorePITR": "DEFERRED_NOT_RUNTIME_DEPENDENCY"
+  }
+}

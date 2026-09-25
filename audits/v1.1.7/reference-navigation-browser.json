@@ -1,0 +1,133 @@
+{
+  "release": "v1.1.7",
+  "certifiedAt": "2026-08-24T13:55:35.181Z",
+  "results": {
+    "page0-1440": {
+      "nav": [
+        "How to read",
+        "Overview",
+        "Planned navigator",
+        "Ecosystem atlas",
+        "Source-native models",
+        "Enterprise coverage",
+        "Operating roles",
+        "Execution overlays",
+        "Systems & exchanges",
+        "L3–L5 contract",
+        "White-space discovery",
+        "Sources"
+      ],
+      "overflow": 0,
+      "guide": true,
+      "sections": [
+        "overview",
+        "navigator",
+        "atlas",
+        "reference",
+        "enterprise",
+        "operating",
+        "modes",
+        "systems",
+        "execution-contract",
+        "discovery",
+        "sources",
+        "v623-start",
+        "v623-method",
+        "v623-sources",
+        "v623-taxonomy",
+        "v623-context",
+        "v623-provenance",
+        "v623-page0",
+        "v623-ltl",
+        "v623-client",
+        "v623-ask"
+      ],
+      "title": "Supply Chain & Logistics Process Atlas V6.2.2 · Integrated Road LTL V1.2"
+    },
+    "ltl-1440": {
+      "nav": [
+        "Overview",
+        "Compose context",
+        "Execution graph",
+        "Reference configurations",
+        "Enterprise lenses",
+        "Sources"
+      ],
+      "overflow": 0,
+      "guide": false,
+      "sections": [
+        "overview",
+        "context",
+        "execution",
+        "scenarios",
+        "enterprise",
+        "sources"
+      ],
+      "title": "Road LTL / Groupage Execution Atlas V1.2 Frozen Child"
+    },
+    "page0-390": {
+      "nav": [
+        "How to read",
+        "Overview",
+        "Planned navigator",
+        "Ecosystem atlas",
+        "Source-native models",
+        "Enterprise coverage",
+        "Operating roles",
+        "Execution overlays",
+        "Systems & exchanges",
+        "L3–L5 contract",
+        "White-space discovery",
+        "Sources"
+      ],
+      "overflow": 0,
+      "guide": true,
+      "sections": [
+        "overview",
+        "navigator",
+        "atlas",
+        "reference",
+        "enterprise",
+        "operating",
+        "modes",
+        "systems",
+        "execution-contract",
+        "discovery",
+        "sources",
+        "v623-start",
+        "v623-method",
+        "v623-sources",
+        "v623-taxonomy",
+        "v623-context",
+        "v623-provenance",
+        "v623-page0",
+        "v623-ltl",
+        "v623-client",
+        "v623-ask"
+      ],
+      "title": "Supply Chain & Logistics Process Atlas V6.2.2 · Integrated Road LTL V1.2"
+    },
+    "ltl-390": {
+      "nav": [
+        "Overview",
+        "Compose context",
+        "Execution graph",
+        "Reference configurations",
+        "Enterprise lenses",
+        "Sources"
+      ],
+      "overflow": 0,
+      "guide": false,
+      "sections": [
+        "overview",
+        "context",
+        "execution",
+        "scenarios",
+        "enterprise",
+        "sources"
+      ],
+      "title": "Road LTL / Groupage Execution Atlas V1.2 Frozen Child"
+    }
+  },
+  "failures": 0
+}
