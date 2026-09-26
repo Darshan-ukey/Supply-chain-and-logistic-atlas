@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "atlas-worker-job-envelope-v1",
+  "status": "CANDIDATE",
+  "purpose": "Machine-readable bounded job envelope for dispatching a single unit of controller-initiated work to an external agent worker (ChatGPT or Claude) under the ATL-100 Linear-first cross-agent handoff protocol, per ATL-122.",
+  "type": "object",
+  "required": [
+    "jobId", "taskRef", "role", "allowedScope", "immutableInputs",
+    "expectedOutputs", "evidenceLocation", "timeoutPolicy", "stopConditions",
+    "idempotencyKey", "issuedAt", "issuedBy"
+  ],
+  "properties": {
+    "jobId": {
+      "type": "string",
+      "description": "Globally unique dispatch identity for this exact job attempt. MUST change on every re-dispatch, including retries."
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "description": "Stable identity for the underlying unit of work, independent of retry count. A worker or landing operator MUST reject a job whose idempotencyKey has already reached a terminal state, rather than re-executing it."
+    },
+    "taskRef": {
+      "type": "string",
+      "description": "Linear issue identifier this job is dispatched under, e.g. ATL-122."
+    },
+    "role": {
+      "type": "string",
+      "enum": ["BUILDER", "INDEPENDENT_REVIEWER", "LANDING_OPERATOR"],
+      "description": "The exact function the receiving agent is authorized to perform. A BUILDER MUST NOT self-assign INDEPENDENT_REVIEWER on the same idempotencyKey (builder self-QA is always rejected)."
+    },
+    "assignedAgent": {
+      "type": "string",
+      "enum": ["Agent — ChatGPT", "Agent — Claude"],
+      "description": "The Linear ownership token this job is dispatched to. Must match the agent that actually acts; a job actioned by an agent other than the one named here is a protocol violation and MUST be rejected on ingestion."
+    },
+    "allowedScope": {
+      "type": "object",
+      "required": ["branch", "pathAllowlist", "operationAllowlist"],
+      "properties": {
+        "branch": { "type": "string", "description": "The exact branch this job may write to. Any write to a different branch/path is out-of-scope and MUST be rejected." },
+        "pathAllowlist": { "type": "array", "items": { "type": "string" }, "description": "Exact file path(s) this job may create or modify. No other path may change." },
+        "operationAllowlist": { "type": "array", "items": { "type": "string" }, "description": "e.g. ['APPEND_ONE_LINE']. The precise, bounded operation permitted — not general edit authority." }
+      }
+    },
+    "immutableInputs": {
+      "type": "object",
+      "required": ["inputRefs", "inputHashes"],
+      "properties": {
+        "inputRefs": { "type": "array", "items": { "type": "string" }, "description": "Exact source file(s)/commit(s) the job is based on." },
+        "inputHashes": { "type": "object", "description": "path -> sha256 (or git blob sha) of every input the job depends on, frozen at dispatch time. A worker acting against an input whose hash has since changed MUST fail closed rather than silently using the drifted input." }
+      }
+    },
+    "expectedOutputs": {
+      "type": "object",
+      "required": ["description", "verifiableClaim"],
+      "properties": {
+        "description": { "type": "string" },
+        "verifiableClaim": { "type": "string", "description": "The single, precise, checkable claim the output must satisfy (e.g. exact literal line added, byte-for-byte)." }
+      }
+    },
+    "evidenceLocation": {
+      "type": "object",
+      "required": ["type", "target"],
+      "properties": {
+        "type": { "type": "string", "enum": ["GITHUB_COMMIT"] },
+        "target": { "type": "string", "description": "branch + path where durable commit evidence must appear." }
+      }
+    },
+    "timeoutPolicy": {
+      "type": "object",
+      "required": ["maxWaitHours", "onTimeout"],
+      "properties": {
+        "maxWaitHours": { "type": "number" },
+        "onTimeout": { "type": "string", "enum": ["FAIL_CLOSED_NO_SILENT_SUBSTITUTION"] }
+      }
+    },
+    "stopConditions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Conditions under which ingestion MUST fail closed rather than advance: WORKER_ENDPOINT_UNAVAILABLE, EVIDENCE_MISSING, HASH_MISMATCH, OUT_OF_SCOPE_MUTATION, SELF_QA_ATTEMPT, DUPLICATE_IDEMPOTENCY_KEY_ALREADY_TERMINAL."
+    },
+    "issuedAt": { "type": "string", "format": "date-time" },
+    "issuedBy": { "type": "string", "description": "The controller identity issuing this job (the agent/session acting as controller for this dispatch)." }
+  }
+}
