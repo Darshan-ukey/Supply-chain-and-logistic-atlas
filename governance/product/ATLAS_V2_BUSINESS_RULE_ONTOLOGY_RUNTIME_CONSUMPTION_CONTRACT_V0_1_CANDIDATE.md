@@ -164,6 +164,14 @@ The following families are the **current seed taxonomy**. They are not the only 
 - OBSERVATION_RECONCILIATION_RULE
 - KNOWLEDGE_PROMOTION_RULE
 
+### 4.1 Primary family and cross-cutting concerns
+
+`rule_family` is single-valued for a canonical rule instance: it identifies the primary business obligation being governed. Cross-cutting concerns are not represented by assigning multiple primary families.
+
+Where another concern is independently governed, represent it as a separate related rule through `related rules / dependencies`. Where it only constrains applicability, represent it in the canonical applicability conditions.
+
+Example: a hazardous-material classification obligation remains a `CLASSIFICATION_RULE`; the regulatory authority that governs when/how it applies is linked as a related `REGULATORY_RULE` or applicability constraint. Executor-specific mechanisms such as LLM classification versus deterministic evaluation are not rule families and are selected only in downstream runtime projection.
+
 ## 5. Taxonomy extension rule
 
 The seed taxonomy above MUST NOT become a constraint that distorts new Operational Knowledge.
