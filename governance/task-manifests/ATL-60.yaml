@@ -1,12 +1,12 @@
 task_id: ATL-60
 task_title: "ATL-49A — LTL-03 Research Evidence Recovery & Reconciliation"
-task_status: IN_PROGRESS
+task_status: QA_READY
 execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-60/atl-49a-ltl-03-research-evidence-recovery-and-reconciliation"
 manifest_status: ACTIVE
 last_updated: "2026-09-26"
-status_detail: "ATL-123 governed Supabase apply completed, independently QA-passed, and Owner-approved 2026-09-26. Durable evidence: ATL-123 manifest commit 8c6f2242f88eab9b7e55860db86c216d3cc9b548; apply blob 42cf8adf698290091f6db47ac30bed07390cc5a9; PG17 CI run 36240211320 PASS; Supabase migration 20260926115514. ATL-60 resumes retained-evidence reconciliation and candidate structuring. Canonical knowledge promotion/freeze remains separately governed."
+status_detail: "Retained LTL-03 research is reconciled into a QA-ready structured execution-knowledge candidate. Principal machine substrate: LTL_03_EXECUTION_LOGIC_GRAPH_V0_1.json blob 25b7a49649fa91799e45e08c9ff892113d6cb347 (471 nodes / 2538 edges / 148 generated instances / zero broken edges). ATL-60 reconciliation candidate commit a0fae37cb3dd5aa83abb46a780a7f33475b703c2, blob dc532e3e8e336668e3d9b3c8abc0de3cdf827996. No canonical knowledge promotion; independent crossed QA required."
 
 governing_inputs:
   - type: github_standard
@@ -161,8 +161,8 @@ qa_and_decisions:
     commit: "f6960e87b7ab5a59b82994a6d42b6deefb04e12b"
     does_not_authorize: "Any migration or canonical mutation."
 
-current_checkpoint: "ATL-123 governed schema apply is complete: independent QA PASS and Owner advancement approval recorded 2026-09-26. Physical schema prerequisite is therefore no longer pending. ATL-60 remains active for its primary objective: reconcile retained LTL-03 evidence and materialize the structured execution-knowledge baseline. Canonical knowledge promotion/freeze remains separately governed."
-next_action: "Continue LTL-03 retained-evidence reconciliation and candidate structuring: verify retained Drive evidence accessibility, reconcile authoritative Working Evidence against Source Register / Validation Ledger, and materialize only source-backed structured candidate knowledge with explicit gaps. Do not repeat external research where retained evidence is sufficient. No canonical knowledge promotion/freeze without its separate governed gate."
+current_checkpoint: "ATL-60 builder scope is QA_READY_CANDIDATE after integrating retained evidence, frozen BOL reference, independent field/lifecycle/rule research, exact eBOL schema closure, and the verified 471-node execution graph. Exit determination requires independent crossed QA; no Supabase knowledge promotion/freeze is implied."
+next_action: "Independent crossed QA by Claude: verify ATL-60 exit criterion against candidate blob dc532e3e8e336668e3d9b3c8abc0de3cdf827996, execution graph blob 25b7a49649fa91799e45e08c9ff892113d6cb347, freeze-candidate manifest blob 942ecd6e7e140bbc76db0a1c64593f74cb3e281c, retained evidence/provenance and explicit gaps. QA must not treat builder disposition as approval."
 
 open_items:
   - "Logical-design erratum C3: relationship lifecycle/status must be represented consistently in the logical contract and physical design before final freeze."
