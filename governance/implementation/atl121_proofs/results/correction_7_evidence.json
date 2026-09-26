@@ -1,0 +1,9 @@
+{
+  "test_name": "test_correction_7_fast_path_all_corrections",
+  "acquisition_trace_id": "cb612e09-392e-4372-8f00-e24855506a69",
+  "candidate_id": "cand-UOM_CODE",
+  "package_id": "exec-pkg-cand-UOM_CODE",
+  "evidence_ref": "atlas-knowledge-store/candidates/UOM_CODE/cb612e09-392e-4372-8f00-e24855506a69",
+  "promotion_status": "NOT_PURSUED",
+  "timestamp": "2026-09-26T19:20:30.181086+00:00"
+}
