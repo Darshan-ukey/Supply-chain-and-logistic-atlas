@@ -362,12 +362,23 @@ This proof is **not self-approving**:
 
 ### V0.2 (current — executable evidence, awaiting independent QA)
 
-| Artifact | Path | Status | Blob SHA | Commit |
-|---|---|---|---|---|
-| Executable evidence doc | governance/implementation/ATL_121_EXECUTABLE_EVIDENCE_V0_2.md | AWAITING_INDEPENDENT_QA | _recorded in follow-up commit_ | _pending_ |
-| Proof harness code + results | governance/implementation/atl121_proofs/ (10 files + results/) | AWAITING_INDEPENDENT_QA | _recorded in follow-up commit_ | _pending_ |
+**Commit:** `1ebdc8c5b0cbeb77ec0c234722cd3d7d09afb4cf` on branch `darshanukey/atl-121-atl-119a-rule-ontology-runtime-proof-adversarial-validation`
 
-_Exact blob SHAs and the commit hash will be recorded here in a follow-up commit against this same file, per this repo's established pattern (see `cf10322` → `e2e47aa` for V0.1), immediately after the code/evidence commit lands — not before, so the recorded identities are always real, not anticipated._
+| Artifact | Path | Status | Blob SHA |
+|---|---|---|---|
+| Executable evidence doc | governance/implementation/ATL_121_EXECUTABLE_EVIDENCE_V0_2.md | AWAITING_INDEPENDENT_QA | 867d208f9e55526099683b3aa71c0bff7cc5fe81 |
+| Rule ontology model | governance/implementation/atl121_proofs/rule_ontology.py | AWAITING_INDEPENDENT_QA | 7bbf8d53c334f5f3e45e84ba0d8a8b08e27a0be7 |
+| Package builder (real SHA-256) | governance/implementation/atl121_proofs/packages.py | AWAITING_INDEPENDENT_QA | 17a38c5ec44848e8d4c6002143223b46644dc24f |
+| Real local HTTP services (+labeled mock) | governance/implementation/atl121_proofs/atlas_services.py | AWAITING_INDEPENDENT_QA | 8855f8fa585b39437dc054a5ce3fbe22d6d8ea8e |
+| Runtime executor | governance/implementation/atl121_proofs/runtime_executor.py | AWAITING_INDEPENDENT_QA | 5a01f41884042d7997caead21b38eaccfc9729c3 |
+| BOL rule declarations | governance/implementation/atl121_proofs/bol_rules.py | AWAITING_INDEPENDENT_QA | 438d62a72951319aedd29e70a492067cfa43243b |
+| Shipment-tracking rule (Proof 3) | governance/implementation/atl121_proofs/shipment_tracking_rules.py | AWAITING_INDEPENDENT_QA | 8f3bb7c94f79d1a8e860722b6082a481b6ca3263 |
+| Owner invariants A-F | governance/implementation/atl121_proofs/owner_invariants.py | AWAITING_INDEPENDENT_QA | 83f09e2a0e3805df1b46c7f1bafbeaf3c4b70c1f |
+| Test suite (16 tests) | governance/implementation/atl121_proofs/test_atl121_proofs.py | AWAITING_INDEPENDENT_QA | 699b41cf192890b41bddbc7b844561b2088c9d8c |
+| Captured real execution log (16 passed) | governance/implementation/atl121_proofs/results/EXECUTION_LOG.txt | AWAITING_INDEPENDENT_QA | dd35eea2c1492ba7398bbee040fe57b777956dcf |
+| This structure/manifest file (prior revision, pre-identity-fill) | governance/implementation/ATL_121_RULE_ONTOLOGY_RUNTIME_PROOF_V0_1.md | AWAITING_INDEPENDENT_QA | ed2f089cfa9dfceb9bc4a8661ed016e51cb23ad5 |
+
+All blob SHAs above were extracted with `git rev-parse HEAD:<path>` against commit `1ebdc8c` after it landed — recorded after the fact, not anticipated before the commit existed.
 
 ---
 
