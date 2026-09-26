@@ -443,15 +443,16 @@
       "sourceCommit": "c72b50025d38c6ba103a98e6b698ac2181d5017b",
       "gitBlobSha": "046885c71dc9fb24532b398cacd47ffc522f3a1b",
       "supersedes": "canonicalWorkDecompositionContract",
-      "sha256Status": "NOT_RECORDED_IN_RECOVERED_P6_1_REGISTRY; Git blob identity verified by ATL-86",
       "notes": "Frozen P6.1 upstream contract consumed by the frozen P6.2 WorkDefinition contract. Historical pending file remains immutable. Materialized byte-for-byte on canonical-governance repair branch from verified git blob 046885c71dc9fb24532b398cacd47ffc522f3a1b; SHA-256 must be recorded from executable validator evidence before ATL-118 closure.",
       "atlasV2Disposition": "REUSE_AS_GOVERNING_INPUT",
       "atlasV2Rationale": "Current frozen decomposition contract; inherit into v2 unless ATL-110 identifies a binding gap.",
       "integrityCorrection": {
         "correctedBy": "ChatGPT ATL-118 binding rework, 2026-09-26",
         "finding": "Registered frozen repositoryPath was absent on canonical governance branch.",
-        "resolution": "Byte-for-byte materialization from verified source blob 046885c71dc9fb24532b398cacd47ffc522f3a1b. No regeneration or semantic modification."
-      }
+        "resolution": "Byte-for-byte materialization from verified source blob 046885c71dc9fb24532b398cacd47ffc522f3a1b. No regeneration or semantic modification.",
+        "sha256": "Computed from the exact UTF-8 bytes of verified git blob 046885c71dc9fb24532b398cacd47ffc522f3a1b."
+      },
+      "sha256": "31bfbb413f771c8692cae218fb4f37f22bdf2fa7c6d7926d0698db95c7646139"
     },
     {
       "assetId": "canonicalWorkDefinitionContract",
