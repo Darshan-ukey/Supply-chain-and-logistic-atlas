@@ -1,7 +1,7 @@
 name: ATL-94 Candidate SQL Gate
 
 # GitHub executes the ATL-82 candidate SQL so that no agent has to (ATL-94).
-# - gate: starts a disposable PostgreSQL 16 on the runner (Unix socket only, no network listener, no secrets,
+# - gate: starts a disposable PostgreSQL 17 on the runner (Unix socket only, no network listener, no secrets,
 #   never Supabase), proves the environment with a canary, and runs the ATL-83 corrected-candidate gate against
 #   every conventionally named ATL-82 candidate other than the failed historical V0.1/V0.2. ATL-82 SQL files that
 #   break the naming convention, and pinned .sql paths with no such candidate, fail the run (see the runner
@@ -50,7 +50,7 @@ permissions: {}
 
 jobs:
   gate:
-    name: Execute ATL-82 candidate SQL in a disposable PostgreSQL 16
+    name: Execute ATL-82 candidate SQL in a disposable PostgreSQL 17
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     permissions:
@@ -64,13 +64,13 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Start a disposable PostgreSQL 16 (Unix socket only)
+      - name: Start a disposable PostgreSQL 17 (Unix socket only)
         run: |
           set -euo pipefail
-          PGBIN=/usr/lib/postgresql/16/bin
+          PGBIN=/usr/lib/postgresql/17/bin
           if [ ! -x "$PGBIN/initdb" ]; then
             sudo apt-get update -q
-            sudo apt-get install -y -q postgresql-16
+            sudo apt-get install -y -q postgresql-17
           fi
           SOCK="$RUNNER_TEMP/atl94-pgsock"
           DATA="$RUNNER_TEMP/atl94-pgdata"
