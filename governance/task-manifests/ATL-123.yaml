@@ -1,6 +1,6 @@
 task_id: ATL-123
 title: "ATL-60C — Governed Supabase Apply: ATL-82 V0.3 Schema"
-task_status: IMPLEMENTED_UNVERIFIED
+task_status: PROOF_RECORDED
 manifest_status: ACTIVE
 execution_owner: ChatGPT
 decision_authority: "Darshan / Atlas Owner-Governor"
@@ -14,11 +14,11 @@ source_candidate:
   blob_sha: 31e9f4ca8c3877519dda71f84b82502d7476ff86
   qa: "ATL-83 pass-3 PASS"
 release_controls:
-  ATL-124: "APPLY_ARTIFACT_BUILT_PENDING_FINAL_GATE"
-  ATL-125: "DOWN_MIGRATION_BUILT_PENDING_EXECUTABLE_PROOF"
-  ATL-126: "REBUILD_EVIDENCE_RECORDED_PENDING_FINAL_GATE"
-  ATL-127: "PG17_CI_IN_PROGRESS"
-  ATL-128: "LIVE_READ_ONLY_BASELINE_PASS"
+  ATL-124: "PASS"
+  ATL-125: "PASS"
+  ATL-126: "PASS"
+  ATL-127: "PASS — run 36240211320, PostgreSQL 17.11"
+  ATL-128: "PASS"
 working_outputs:
   - path: governance/implementation/ATL_123_GOVERNED_APPLY_V0_1.sql
     blob_sha: 42cf8adf698290091f6db47ac30bed07390cc5a9
@@ -34,5 +34,5 @@ live_preapply:
   target_tables_present: false
   preexisting_work_decompositions_rows: 1
   mutation_performed: false
-hard_stop: "Do not apply to Supabase until ATL-124 through ATL-128 are all durably PASS."
-next_action: "Complete PG17 executable gate, executable proof of apply/down artifacts, close five child controls, then reassess release gate."
+hard_stop: "RELEASED: ATL-124 through ATL-128 are durably PASS. Supabase application is now permitted by Owner conditional authorization; execute only blob-pinned ATL-123 artifact, then deterministic post-apply verification and crossed QA."
+next_action: "Apply blob 42cf8adf698290091f6db47ac30bed07390cc5a9 through Supabase apply_migration, verify resulting state deterministically, persist evidence, then route to Claude independent QA."
