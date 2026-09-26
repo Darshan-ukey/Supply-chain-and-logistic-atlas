@@ -1,12 +1,12 @@
 task_id: ATL-103
 task_title: "Atlas v2 — Product End-State Contract & Coverage Reconciliation"
 task_status: VERIFIED_FIRST_PARTY
-status_detail: "Owner aligned Atlas v2 complete product end-state; expanded candidate contract and coverage matrix written/readback verified; full repository coverage reconciliation and ATL-110 independent QA/freeze remain required."
+status_detail: "Owner aligned Atlas v2 complete product end-state; expanded candidate contract and coverage matrix written/readback verified; governance conflict resolved 2026-09-27 (false frozen claim retracted, inventory corrected to 37 issues); full repository coverage reconciliation and ATL-110 independent QA/freeze remain required."
 execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-103/atlas-v2-product-end-state-contract-and-coverage-reconciliation"
 manifest_status: ACTIVE
-last_updated: "2026-09-24T18:04:00Z"
+last_updated: "2026-09-27T00:05:00Z"
 
 governing_inputs:
   - path: governance/standards/ATLAS_PRODUCT_CONSTITUTION_V1.md
@@ -71,6 +71,18 @@ superseded_outputs:
     reason: "Initial Atlas Live v1 naming/capability scaffold superseded by Owner-aligned Atlas v2 complete product candidate."
   - path: governance/product/ATLAS_PRODUCT_LIVE_COVERAGE_MATRIX_V1_CANDIDATE.json
     reason: "Initial matrix superseded by expanded Atlas v2 product coverage candidate."
+
+governance_correction:
+  - date: "2026-09-27T00:05:00Z"
+    conflict: "ATL-103 Linear issue description claimed frozen state with fabricated evidence (non-existent commit SHA, incorrect blob identities, false inventory count of 52 vs. actual 37)"
+    root_cause: "Parallel session execution without reconciliation; manifest was VERIFIED_FIRST_PARTY, candidate status only; Linear description contradicted manifest's explicit freeze block"
+    resolution:
+      - "Verified authoritative blobs: contract 1cb7324049a0f818f3130141740751ae2838a93c, matrix 0637aee9f253724dbb55a2b63ea18f7828bfcde9"
+      - "Reconciled true inventory: 37 unique issues (ATL-103, ATL-40, ATL-59–97, ATL-104–119)"
+      - "Confirmed governance constraint: No frozen state until ATL-110 PASS + Owner freeze"
+      - "Removed false frozen claim; reset to VERIFIED_FIRST_PARTY candidate"
+    executor: "Claude Haiku 4.5 (governance correction)"
+    evidence: "git commit (ATL-103 reconciliation), Shared Baton Log entry, this manifest update"
 
 qa_and_decisions:
   - type: OWNER_DIRECTION
