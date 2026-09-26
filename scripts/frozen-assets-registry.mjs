@@ -16,15 +16,35 @@ if(new Set(reg.assets.map(a=>a.assetId)).size!==reg.assets.length) fail.push('du
 const sha=/^[a-f0-9]{64}$/;
 for(const a of reg.assets){
   if(a.sha256 && !sha.test(a.sha256)) fail.push(`${a.assetId}: invalid sha256`);
-  if(a.repositoryPath && fs.existsSync(path.join(root,a.repositoryPath)) && a.sha256){
-    const actual=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,a.repositoryPath))).digest('hex');
-    if(actual!==a.sha256) fail.push(`${a.assetId}: checksum mismatch`);
+  if(a.repositoryPath){
+    const p=path.join(root,a.repositoryPath);
+    const exists=fs.existsSync(p);
+    const allowedExternal = a.demoOnly===true && Boolean(a.demoBranchCommit);
+    if(a.current===true && !exists && !allowedExternal){
+      fail.push(`${a.assetId}: current repositoryPath missing: ${a.repositoryPath}`);
+    }
+    if(exists){
+      const bytes=fs.readFileSync(p);
+      if(a.sha256){
+        const actual=crypto.createHash('sha256').update(bytes).digest('hex');
+        if(actual!==a.sha256) fail.push(`${a.assetId}: checksum mismatch`);
+      }
+      if(a.gitBlobSha){
+        const header=Buffer.from(`blob ${bytes.length}\\0`);
+        const actualBlob=crypto.createHash('sha1').update(header).update(bytes).digest('hex');
+        if(actualBlob!==a.gitBlobSha) fail.push(`${a.assetId}: gitBlobSha mismatch`);
+      }
+    }
   }
 }
 const ids=[];
 for(const group of [cur.productionBaseline,cur.latestFrozenCandidates]) for(const v of Object.values(group||{})) ids.push(v);
 for(const v of cur.governingStandards||[]) ids.push(v);
-for(const v of cur.nextImplementation||[]) ids.push(v);
+if(Array.isArray(cur.nextImplementation)){
+  for(const v of cur.nextImplementation) ids.push(v);
+} else if(cur.nextImplementation!==null && cur.nextImplementation!==undefined && typeof cur.nextImplementation!=='object'){
+  fail.push('CURRENT nextImplementation must be an array, object, null, or omitted');
+}
 for(const id of ids) if(!byId.has(id)) fail.push(`CURRENT points to missing asset: ${id}`);
 
 if(cmd==='latest'){
