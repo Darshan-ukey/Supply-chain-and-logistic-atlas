@@ -24,7 +24,7 @@ governing_inputs:
 
 current_outputs:
   - path: governance/product/ATLAS_V2_BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION_CONTRACT_V0_1_CANDIDATE.md
-    identity: "blob:4d3cfc7b46fdd07c1b8388e45030cceeee38bda6"
+    identity: "blob:81a7c3bd1a3e7f400571745aa609eea646c70731"
     status: VERIFIED_FIRST_PARTY
   - system: Google Drive
     title: "Atlas v2 Business Logic Rule Ontology Runtime Consumption Contract V0.1 Candidate"
@@ -51,7 +51,7 @@ qa_and_decisions:
     result: PASS_WITH_INDEPENDENT_QA_PENDING
     evidence: "GitHub + Linear + Drive post-write readback"
 
-current_checkpoint: "PR #17 candidate corrected for C1/C2 independent-QA findings. GitHub manifest identity now matches the corrected contract blob. Drive custody remains candidate/stale until governed sync threshold; §14 runtime proofs remain unresolved and must not be fabricated."
+current_checkpoint: "PR #17 candidate corrected for C1/C2 independent-QA findings. Manifest records corrected contract blob 81a7c3bd1a3e7f400571745aa609eea646c70731. Drive custody remains candidate/stale until governed sync threshold; §14 runtime proofs remain unresolved and must not be fabricated."
 next_action: "Claude targeted independent re-QA of PR #17 C2 and manifest identity. Do not authorize ATL-110; §14 real runtime proofs remain required before contract freeze."
 
 open_items:
