@@ -1,12 +1,17 @@
 task_id: ATL-119
 task_title: "Business Logic & Rule Ontology — extensible taxonomy, evaluation and runtime consumption contract"
-task_status: VERIFIED_FIRST_PARTY
-status_detail: "Owner-aligned candidate contract created in GitHub, linked into Atlas v2 product contract/coverage and Linear, mirrored to Drive custody, and post-write reconciliation performed. Independent QA/freeze remains under ATL-110."
+task_status: INDEPENDENT_QA_CORRECTIONS_REQUIRED
+status_detail: "Independent QA (Claude) complete per governance/product/ATL_119_INDEPENDENT_QA_RESULT_V1.md. Two in-boundary corrections required (WorkDefinition V1 §8 runtime-leakage boundary reconciliation; evidence-sufficiency-gating rule family gap found via real LTL-03/BOL classification test). Two acceptance items (§14.3, §14.5) blocked on upstream ATL-87/second-domain evidence not yet existing. Four acceptance items (§14.6-14.9) require executable proof infrastructure that does not yet exist; scoping decision (in-task vs. new downstream task) flagged for Owner, not blocking the two corrections below. Routed back to Agent — ChatGPT with Autonomous Rework."
 execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-119/business-logic-and-rule-ontology-extensible-taxonomy-evaluation-and"
 manifest_status: ACTIVE
-last_updated: "2026-09-24T18:03:00Z"
+last_updated: "2026-09-26T09:20:00+05:30"
+independent_qa:
+  reviewer: Claude
+  result_doc: "governance/product/ATL_119_INDEPENDENT_QA_RESULT_V1.md"
+  disposition: CORRECTIONS_REQUIRED
+  reviewed_commit: "71512de"
 
 governing_inputs:
   - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
@@ -51,8 +56,8 @@ qa_and_decisions:
     result: PASS_WITH_INDEPENDENT_QA_PENDING
     evidence: "GitHub + Linear + Drive post-write readback"
 
-current_checkpoint: "Rule ontology/runtime-consumption candidate is represented consistently across GitHub, Linear and Drive. Taxonomy/evaluation/distribution lists are explicitly seed/extensible. Parent product and runtime-projection tasks inherit the hybrid consumption rule."
-next_action: "ATL-119 must be independently reconciled against OKv2, frozen Work Decomposition/WorkDefinition and a structurally different domain/process before ATL-110 product freeze."
+current_checkpoint: "Independent QA performed against real governed artifacts (OKv2 full text, frozen WorkDefinition Contract V1 by pinned blob SHA, real LTL-03/BOL evidence). OKv2 reconciliation passed with no contradiction. Two corrections required before re-submission; see independent_qa.result_doc."
+next_action: "Builder (ChatGPT) applies the two corrections in governance/product/ATL_119_INDEPENDENT_QA_RESULT_V1.md §5 items 1-2, then resubmits for re-QA. Owner input needed only on item 4's scoping question (does ATL-119 own building §14.6-14.9 executable proof, or is it a new downstream task)."
 
 open_items:
   - "Independent QA/reconciliation of seed taxonomy against LTL-03/BOL and at least one structurally different domain/process."
