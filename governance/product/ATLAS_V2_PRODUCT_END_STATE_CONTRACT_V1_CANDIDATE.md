@@ -650,6 +650,12 @@ Primary v2 workstreams currently include:
 
 Existing certified/recovery/architecture tasks must be mapped into the coverage matrix rather than duplicated.
 
+### 24.1 Governance/orchestration infrastructure — explicitly out of product-capability scope
+
+ATL-99, ATL-100, ATL-101, ATL-102 and ATL-120 are Atlas's own build/governance/orchestration tooling — how Atlas is autonomously built by ChatGPT and Claude under Owner authority (the Shared Baton Log protocol, GitHub-landing broker, executable-verification harness, and the not-yet-frozen Controller Architecture contract). They are not a capability of the delivered Atlas product and are deliberately excluded from the Product Coverage Matrix's capability rows, but they are recorded explicitly (see `governance_infrastructure_disposition` in the coverage matrix JSON) so no Linear issue is silently unaccounted for.
+
+ATL-102 states in its own text that controller design/implementation "remains blocked until the product end-state is reconciled, independently QA'd and Owner-frozen" — i.e. it is blocked by this contract's ATL-110 freeze. This forward dependency was not previously cross-referenced from either task and is recorded here as of the 2026-09-26 reconciliation pass.
+
 ## 25. Product Coverage Matrix requirement
 
 Maintain a machine-readable matrix linking:
@@ -722,3 +728,9 @@ Required before freeze:
 - explicit Owner freeze.
 
 Material changes after freeze require a successor contract/version with impact analysis.
+
+### 28.1 Reconciliation status — 2026-09-26 (Claude, ATL-103)
+
+Full Linear-project issue inventory completed: all 51 issues in the Atlas project cross-referenced against the coverage matrix. Gaps closed: ATL-121 (ATL-119A runtime-proof child) and ATL-123–128 (the now-applied governed Supabase apply chain) added to their governing capabilities; ATL-99/100/101/102/120/122/36 explicitly recorded as governance/orchestration infrastructure outside product-capability scope (§24.1); ATL-118 and ATL-103's own status corrected to current state.
+
+**This reconciliation is scoped to Linear-issue coverage mapping and governance/status correction. It does NOT complete the full ATL-103 charter** — the deeper repository-implementation-evidence inventory (mapping exact GitHub artifacts per capability, per §25's full schema) and the ATL-104–117 workstream-level product build-out remain open. ATL-110 independent QA/freeze remains gated on ATL-121 PASS (ATL-119 Governance Hold, Owner decision 2026-09-26T10:53:45Z, reaffirmed 17:39Z) regardless of this reconciliation's progress.
