@@ -144,3 +144,60 @@ Directly retained:
 ### Stage-2 determination
 
 For ATL-60's retained-evidence structuring objective, the material knowledge dimensions requested by the issue are now represented either by source-backed structured content or explicit governed gaps. This does not freeze the BOL field universe, validate execution readiness, or promote canonical knowledge.
+
+
+## Stage 3 — canonical retained execution-graph reconciliation
+
+ATL-60 now consumes the retained ATL-35 freeze-candidate package as the principal structured research substrate rather than reconstructing equivalent knowledge from prose.
+
+### Verified machine artifact
+- `governance/research/LTL_03_EXECUTION_LOGIC_GRAPH_V0_1.json`
+- verified current blob: `25b7a49649fa91799e45e08c9ff892113d6cb347`
+- graph-declared validation: 471 nodes; 2,538 typed edges; 148 generated rule instances; 11 reusable patterns; 0 broken edges; 0 stranded evidence; 0 unused families/primitives; no generated instance missing evidence, primitive or family linkage.
+- graph governance declares research closed and broad-research reopen only for a specific QA/closure defect.
+
+### Retained freeze-candidate manifest
+- `governance/research/ATL_35_LTL_03_FREEZE_CANDIDATE_MANIFEST_V0_1.md`
+- verified blob: `942ecd6e7e140bbc76db0a1c64593f74cb3e281c`
+- records 69 evidence nodes, 149 domain facts, 21 semantic primitives, 18 rule families, 148 generated instances, 31 explicit exceptions, 11 reusable execution patterns, 15 explicit client-binding requirements, 3 explicit knowledge gaps and 5 runtime projection types.
+- records exact NMFTA eBOL 2.1 raw-source SHA-256 `39715755793a2f39ee290e17f3997cb1bd7cadf001e5531f4a61093df1094e8c`; prior exact BOL_Request property/nesting/cardinality gap is recorded as resolved.
+- records ATL-37 independent disposition `PASS_WITH_BINDING_CORRECTIONS` and the correction-cycle identities. ATL-60 does not reinterpret that as unconditional QA PASS.
+
+### Reconciliation evidence
+`governance/research/LTL_03_EXECUTION_GRAPH_RECONCILIATION_VERIFICATION_V0_1.md` (blob `5b668c7d225c841027b796e01cf937c22ce73d43`) records PASS for the governed graph relationship mechanism and bidirectional downstream accessibility at its reconciliation boundary.
+
+### ATL-60 materialization decision
+
+The structured execution-knowledge baseline is the combination of:
+1. the retained reconciled evidence/provenance corpus;
+2. the verified execution-logic graph above as the machine-addressable structured knowledge substrate;
+3. the retained freeze-candidate manifest defining source hierarchy, rule/primitives, bindings/gaps and QA boundary;
+4. this ATL-60 reconciliation artifact, which records scope, retained-evidence integration, unresolved boundaries and promotion restrictions.
+
+ATL-60 must not copy the 471-node graph into a second competing canonical graph merely to satisfy its exit wording. The verified retained graph is the source-backed structured baseline candidate; ATL-60's role is reconciliation/materialization governance and explicit gap preservation.
+
+### Exit-criterion assessment
+
+ATL-60 issue dimensions are now accounted for as follows:
+- operational purpose / trigger / outcomes / process context — REPRESENTED;
+- canonical objects / relationships — REPRESENTED;
+- BOL/information concepts / sections / cardinality / aliases — REPRESENTED in retained graph/schema closure, with client aliases/bindings explicit;
+- field semantics / object association — REPRESENTED;
+- actors / roles / systems / interfaces — REPRESENTED where source-backed; production-client topology remains explicit gap/binding;
+- inputs / outputs / dependencies — REPRESENTED;
+- decision logic / rules / validations — REPRESENTED through 18 retained families + generated instances;
+- conditional applicability / jurisdiction — REPRESENTED with explicit jurisdiction gaps;
+- lifecycle/state semantics — REPRESENTED for researched scope; non-universal client patterns remain bindings;
+- exceptions / HITL — REPRESENTED through explicit exceptions and client-binding requirements;
+- authority / source precedence / conflict resolution — REPRESENTED;
+- provenance/evidence — REPRESENTED and graph-linked;
+- normalization/transformation — REPRESENTED;
+- client binding / master data — REPRESENTED as explicit governed requirements;
+- knowledge gaps / uncertainty — REPRESENTED as first-class gaps;
+- executor-consumable decomposition / WorkDefinition / execution-contract mappings — represented as governed machine substrate and downstream mappings, but downstream execution-readiness certification remains ATL-59/ATL-67 and related governed stages.
+
+### Builder disposition
+
+**ATL-60 BUILD SCOPE: QA_READY_CANDIDATE.**
+
+This is not self-approval and not canonical Supabase knowledge promotion. Independent crossed QA must verify this reconciliation/exit determination, including that the retained graph + manifest genuinely satisfy ATL-60's issue exit criterion and that no unresolved item has been incorrectly hidden as complete.
