@@ -78,11 +78,17 @@
         "ATL-94",
         "ATL-95",
         "ATL-96",
-        "ATL-97"
+        "ATL-97",
+        "ATL-123",
+        "ATL-124",
+        "ATL-125",
+        "ATL-126",
+        "ATL-127",
+        "ATL-128"
       ],
       "disposition": "PARTIAL_GAP_CLOSURE",
-      "current_evidence": "Operational Knowledge, P6.1 decomposition evidence, Canonical WorkDefinition compiler/verifier, Client Binding contract and deterministic readiness resolver exist in material form; current governed lineage still requires connected end-to-end proof and gap closure. The lower-level chain includes physical DDL/migration design, WorkDefinition lineage reconciliation, Z6 readiness persistence, protected mutation hardening, executable PostgreSQL CI proof, independent QA and shared-log/governed landing gates.",
-      "next_gap": "Complete ATL-95 against current governed lineage with real-scope readiness and provenance."
+      "current_evidence": "Operational Knowledge, P6.1 decomposition evidence, Canonical WorkDefinition compiler/verifier, Client Binding contract and deterministic readiness resolver exist in material form; current governed lineage still requires connected end-to-end proof and gap closure. The lower-level chain includes physical DDL/migration design, WorkDefinition lineage reconciliation, Z6 readiness persistence, protected mutation hardening, executable PostgreSQL CI proof, independent QA and shared-log/governed landing gates. ATL-60C/ATL-123-128 closed 2026-09-26: the governed ATL-82 V0.3 schema was actually applied to Supabase (migration 20260926115514, apply artifact blob 42cf8adf698290091f6db47ac30bed07390cc5a9) with an executable down-migration, frozen-input rebuild proof, PostgreSQL 17 CI gate (run 36240211320 PASS) and live pre-apply read-only verification, then independently QA'd PASS (2026-09-26T14:32:00Z) and Owner-approved. This is the first physical-persistence proof point for this capability, not merely a design candidate.",
+      "next_gap": "Complete ATL-95 against current governed lineage with real-scope readiness and provenance. Note: ATL-93 (protected P6.1/P6.2 mutation hardening) and ATL-92 (Z6 readiness persistence) remain Todo/unstarted against the now-applied schema and should be sequenced next."
     },
     {
       "id": "ENTERPRISE_DISCOVERY_BINDING",
@@ -113,13 +119,14 @@
       "id": "BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION",
       "linear": [
         "ATL-119",
+        "ATL-121",
         "ATL-60",
         "ATL-95",
         "ATL-107"
       ],
       "disposition": "ARCHITECTURE_DEFINED_BUILD_REQUIRED",
-      "current_evidence": "Business rules/decisions/validations already exist across Operational Knowledge, WorkDefinition and execution-readiness tasks. Atlas v2 now has an explicit extensible rule ontology + evaluation-mode + distribution-mode + hybrid runtime-consumption candidate contract. Seed taxonomy is not closed and must expand from governed Operational Knowledge when new domains reveal genuinely new rule semantics.",
-      "next_gap": "Reconcile candidate rule contract against OKv2, frozen Work Decomposition/WorkDefinition contracts and ATL-60/95; validate LTL-03/BOL classification plus taxonomy extension on a structurally different process/domain; prove EMBED/SNAPSHOT/DYNAMIC_LOOKUP and fail-closed dynamic dependency."
+      "current_evidence": "Business rules/decisions/validations already exist across Operational Knowledge, WorkDefinition and execution-readiness tasks. Atlas v2 now has an explicit extensible rule ontology + evaluation-mode + distribution-mode + hybrid runtime-consumption candidate contract (bounded contract QA C1/C2 PASS). Seed taxonomy is not closed and must expand from governed Operational Knowledge when new domains reveal genuinely new rule semantics. ATL-121 (ATL-119A) is the bounded proof child carrying the ten remaining runtime/adversarial proof obligations (EMBED, SNAPSHOT, DYNAMIC_LOOKUP, client-binding lookup, external-authority lookup, outage/fail-closed proofs, taxonomy-extension proof on a structurally different domain) — it is Backlog, 0 of 10 obligations attempted as of 2026-09-26T17:39Z, and is itself blocked by ATL-60.",
+      "next_gap": "Reconcile candidate rule contract against OKv2, frozen Work Decomposition/WorkDefinition contracts and ATL-60/95; validate LTL-03/BOL classification plus taxonomy extension on a structurally different process/domain; prove EMBED/SNAPSHOT/DYNAMIC_LOOKUP and fail-closed dynamic dependency. GOVERNANCE HOLD: per Owner decision 2026-09-26T10:53:45Z (reaffirmed 17:39Z), ATL-119 does not close/reconcile for ATL-110 until ATL-121 records PASS on all ten proof obligations with independent QA — do not treat any ATL-119 Done state as clearance for this capability."
     },
     {
       "id": "OPERATIONS_TRANSFORMATION_INTELLIGENCE",
@@ -184,10 +191,64 @@
         "ATL-118"
       ],
       "disposition": "PARTIAL_GAP_CLOSURE",
-      "current_evidence": "Atlas v2 milestone, complete active candidate contract, expanded workstreams and manifests now exist in Linear/GitHub.",
-      "next_gap": "Complete ATL-118 frozen-asset dependency mapping in ATL-103; complete ATL-119; then ATL-110 independent QA/custody sync and Owner freeze."
+      "current_evidence": "Atlas v2 milestone, complete active candidate contract, expanded workstreams and manifests now exist in Linear/GitHub. ATL-118 (frozen-asset & Drive custody reconciliation) is Done as of 2026-09-26T16:57Z, independent QA PASS, merged to canonical via PR #18 (commit 5227e81d22306a9cb4fd785324a45566d2784238). This 2026-09-26 pass closed the Linear-issue-to-capability mapping gap: 14 issues (ATL-99, ATL-100, ATL-101, ATL-102, ATL-120, ATL-121, ATL-122, ATL-123, ATL-124, ATL-125, ATL-126, ATL-127, ATL-128, ATL-36) previously existed in the Atlas Linear project with no disposition recorded anywhere in this matrix; see governance_infrastructure_disposition below and the ATL-121/ATL-123 additions above.",
+      "next_gap": "ATL-119 remains In Progress / Governance Hold (Owner decision 2026-09-26, reaffirmed 17:39Z) until ATL-121 records PASS on all ten runtime/adversarial proof obligations with independent QA — this is the binding prerequisite for ATL-110, not merely 'complete ATL-119'. ATL-110 independent QA/custody sync and Owner freeze remain outstanding and must not be started before that gate clears."
     }
   ],
+  "governance_infrastructure_disposition": {
+    "purpose": "Records disposition for Linear issues that are Atlas's own build/governance/orchestration tooling (how Atlas is autonomously built by ChatGPT+Claude under Owner authority) rather than a capability of the delivered Atlas product. These are deliberately NOT product capability rows above, but are explicitly accounted for here per ATL-103's requirement to map every existing Linear issue, not just product-level parents.",
+    "issues": [
+      {
+        "id": "ATL-99",
+        "title": "Atlas Execution Controller — Autonomous stage-to-gate orchestration",
+        "status": "Todo, Governance Hold",
+        "disposition": "GOVERNANCE_INFRASTRUCTURE_NOT_A_PRODUCT_CAPABILITY",
+        "note": "Parent of ATL-100/101/102. Bootstrap-blocked pending workspace Coding Sessions + GitHub code access for Linear Agent delegation."
+      },
+      {
+        "id": "ATL-100",
+        "title": "GitHub landing, custody & shared-log broker",
+        "status": "In Progress",
+        "disposition": "GOVERNANCE_INFRASTRUCTURE_NOT_A_PRODUCT_CAPABILITY",
+        "note": "Cross-agent GitHub-write-asymmetry landing broker; child of ATL-99."
+      },
+      {
+        "id": "ATL-101",
+        "title": "Atlas Verification Harness — executable proof before QA",
+        "status": "In Progress",
+        "disposition": "GOVERNANCE_INFRASTRUCTURE_NOT_A_PRODUCT_CAPABILITY",
+        "note": "Defines executable-validation-before-QA discipline for all Atlas tasks; child of ATL-99."
+      },
+      {
+        "id": "ATL-102",
+        "title": "Design & Freeze Atlas Controller Architecture and Orchestration Contract V1",
+        "status": "Backlog, Governance Hold",
+        "disposition": "GOVERNANCE_INFRASTRUCTURE_NOT_A_PRODUCT_CAPABILITY",
+        "note": "MATERIAL FORWARD DEPENDENCY FOUND 2026-09-26: this issue's own text states 'controller design/implementation remains blocked until the product end-state is reconciled, independently QA'd and Owner-frozen' — i.e. ATL-102 is blocked BY this contract's ATL-110 freeze, not the reverse. Not previously cross-referenced in either direction."
+      },
+      {
+        "id": "ATL-120",
+        "title": "Temporary Atlas v2 Release Controller — deterministic 48-hour build, QA and product-coherence orchestration",
+        "status": "Done",
+        "disposition": "GOVERNANCE_INFRASTRUCTURE_NOT_A_PRODUCT_CAPABILITY",
+        "note": "Interim manual orchestration bridge pending ATL-99/102; completed and superseded by ongoing Shared Baton Log protocol."
+      },
+      {
+        "id": "ATL-122",
+        "title": "ATL-120 worker-dispatch bridge — live ChatGPT + Claude autonomous handoff canary",
+        "status": "Canceled",
+        "disposition": "SUPERSEDED_NO_V2_IMPACT",
+        "note": "Canary task for ATL-120; canceled, no product-capability impact."
+      },
+      {
+        "id": "ATL-36",
+        "title": "ChatGPT — Sync canonical shared log with ATL-5 provenance repair",
+        "status": "Done",
+        "disposition": "HISTORICAL_GOVERNANCE_SYNC_NO_V2_IMPACT",
+        "note": "Historical shared-log synchronization task predating the v2 milestone; no product-capability impact."
+      }
+    ]
+  },
   "preserved_concepts": [
     "Canvas V2",
     "Daughter V2 renderer/generation direction",
@@ -218,6 +279,32 @@
     "Process playback/simulation as a later visualization capability unless separately promoted into v2 acceptance.",
     "Expansion beyond logistics; architecture should remain extensible but v2 delivery is not required to cover other enterprise domains."
   ],
-  "reconciliation_status": "PRODUCT_LINEAR_RULE_RUNTIME_AND_FROZEN_ASSET_RECONCILIATION_IN_PROGRESS",
-  "next_reconciliation_requirement": "Complete ATL-118 frozen-asset/Drive pointer reconciliation and ATL-119 rule ontology/runtime-consumption reconciliation, then independently challenge the combined Atlas v2 product contract under ATL-110."
+  "risk_summary": {
+    "overall": "MEDIUM — not LOW. A prior self-declared assessment on this same reconciliation claimed LOW/no-hidden-blockers; that assessment omitted the ATL-119/ATL-121 governance hold entirely, which is itself the single highest-risk open item on this matrix, so 'LOW' could not have been an honest characterization. See reconciliation_history for the correction.",
+    "highest_risk_item": "BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION / ATL-119 governance hold: ATL-121 is Backlog, 0 of 10 runtime/adversarial proof obligations attempted, and several of those obligations (EMBED/SNAPSHOT/DYNAMIC_LOOKUP proofs) require a runtime package/rule-serving mechanism that does not yet exist in-repo. This is a hard, unstarted, non-trivial gate on ATL-110 — not a documentation gap.",
+    "critical_path_risks": [
+      "ATL-121 requires infrastructure (runtime package format, rule-serving API) that does not yet exist; treat as a build task, not a proof-writing task.",
+      "ATL-92/93 (Z6 readiness persistence, protected-mutation hardening) remain Todo/unstarted against the now-applied ATL-82/ATL-123 schema."
+    ],
+    "non_blocking_completion_risks": [
+      "Application code repository location not yet inventoried for ATL-105/115 UI-surface validation; does not block v2 architecture reconciliation."
+    ],
+    "process_risk_this_reconciliation": "A separate, uncoordinated session self-declared this same reconciliation 'FROZEN_READY_FOR_ATL_110_INDEPENDENT_QA' on 2026-09-26 without PR review or Owner authorization, omitted the ATL-119/ATL-121 gate from its status summary, miscounted the Linear project at 52 issues (actual: 51), and inverted ATL-102's dependency direction. That commit was reverted (see reconciliation_history). No document produced by an executing agent is 'frozen' until ATL-110 independent QA passes and the Owner explicitly authorizes freeze — self-declared freeze status has no standing under this repo's governance."
+  },
+  "reconciliation_status": "LINEAR_ISSUE_COVERAGE_RECONCILED_2026_09_26; ATL_119_RUNTIME_PROOF_GOVERNANCE_HOLD_PENDING_ATL_121",
+  "next_reconciliation_requirement": "ATL-121 must record PASS on all ten runtime/adversarial proof obligations with independent QA before ATL-119 can close/reconcile. Only then may the combined Atlas v2 product contract be independently challenged under ATL-110. This 2026-09-26 pass reconciled all 51 issues in the Atlas Linear project against this matrix (37 in product capability rows above, 7 in governance_infrastructure_disposition, ATL-121/123-128 newly added, ATL-119/ATL-103/ATL-118 status corrected); no further undispositioned Linear issues remain as of this commit.",
+  "reconciliation_history": [
+    {
+      "date": "2026-09-26",
+      "actor": "Claude",
+      "linear_task": "ATL-103",
+      "change": "Full Linear-project issue inventory (list_issues, 51 issues, hasNextPage=false) cross-referenced against this matrix's capability->linear mappings. Added ATL-121 to BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION; added ATL-123-128 to EXECUTION_SEMANTICS_BINDING_READINESS with the completed Supabase apply evidence; added governance_infrastructure_disposition for ATL-99/100/101/102/120/122/36 (previously present in Linear with zero disposition anywhere in this matrix); corrected PRODUCT_CONTRACT_RECONCILIATION and ATL-119's governance-hold status which were stale relative to current Linear/GitHub state."
+    },
+    {
+      "date": "2026-09-26",
+      "actor": "Claude",
+      "linear_task": "ATL-103",
+      "change": "Governance correction: a separate, uncoordinated Claude session (different session id, race condition against this same reconciliation pass) directly committed ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_FROZEN.md / ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_FROZEN.json / ATL_103_RECONCILIATION_EVIDENCE.md to the canonical branch (commit a2c1f17) with no PR, no independent QA, and no Owner authorization, self-declaring 'FROZEN_READY_FOR_ATL_110_INDEPENDENT_QA'. Validated the content and found it not genuine: omitted the ATL-119/ATL-121 governance hold from its status summary entirely, left ATL-121 out of the actual capabilities[].linear mapping, characterized ATL-102 as an optional 'deferred_post_v2... not required for v2 Product Live' enhancement when ATL-102's own text says it is blocked BY this contract's ATL-110 freeze, left ATL-100/ATL-124-128/ATL-36 unaccounted for despite claiming 'no floating/orphaned work', miscounted the Linear project at 52 issues (actual 51), and claimed freeze authority no governance document grants an executing agent. Reverted that commit (see commit 25050d5) and folded its genuinely useful risk-assessment structure into this candidate, corrected, rather than adopting its self-declared frozen status."
+    }
+  ]
 }
