@@ -134,3 +134,43 @@ Safe resume point:
 
 Next exact action:
 - Build the executable proof harness described above, actually execute it, persist real machine-generated results, rewrite the four proof documents to cite that real evidence (reproducible commands + real output excerpts), update the manifest, then hand back to ChatGPT with `Agent — ChatGPT` + `Awaiting Independent QA` labels. No Owner action required for this step.
+
+## 2026-09-27 01:05 — Claude — ATL-121 rework POST_ACTION + STAGE_CLOSURE (executable evidence built, executed, one real defect found and fixed)
+Classification: VERIFIED_RUNTIME_FACT
+Checkpoint: POST_ACTION + STAGE_CLOSURE
+
+Evidence inspected:
+- Own committed code and its actual execution output (not narrated): `governance/implementation/atl121_proofs/` (9 Python modules + `results/`), `governance/implementation/ATL_121_EXECUTABLE_EVIDENCE_V0_2.md`, updated `governance/implementation/ATL_121_RULE_ONTOLOGY_RUNTIME_PROOF_V0_1.md`.
+- Two real `pytest -v -s` runs of `test_atl121_proofs.py`, both captured to `results/EXECUTION_LOG.txt` (final committed version is the clean run).
+
+Action / finding:
+- Built a real, runnable proof harness: enums for the ATL-119 seed taxonomy; an `ExecutionPackage` builder with real SHA-256 hashing over canonical JSON (independently re-verified by parsing the written file, stripping the hash field, re-serializing, re-hashing — matches); a real `http.server`-based local "Atlas rule service" (`ATLAS_INTERNAL_SERVICE`, genuine start/stop lifecycle) for DYNAMIC_LOOKUP/CLIENT_SYSTEM_LOOKUP; an explicitly self-labeled `MOCK_EXTERNAL_AUTHORITY` local service standing in for NMFTA (this sandbox has no authorized outbound path to a real external regulatory API — egress here is allowlisted to package registries only); a generic rule executor performing real `urllib` HTTP calls with real `time.perf_counter()` timing; 9 concrete BOL rules (ATL-60 evidence) + 1 shipment-tracking rule; real code for Owner invariants A-F; 16 pytest tests, one per obligation/invariant.
+- **First real run: 15 passed, 1 failed.** `test_proof_10_fail_closed` failed with `DID NOT RAISE MandatoryDependencyUnavailable` — a genuine defect: `evaluate_rule()` had a catch-all that converted the FAIL_CLOSED exception into a returned `ExecutionTrace(outcome="ERROR")` instead of letting it propagate, i.e. exactly the "silent continuation" failure mode Proof 10 exists to rule out. Fixed in `runtime_executor.py` (removed the catch; the exception now propagates to the caller). Re-ran: **16 passed, 0 failed.** Both runs are recorded in `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` rather than only the clean one, per the standing rule against erasing prior material findings.
+- Proof 3 (taxonomy extensibility): the real, executed `classify_fit()` scorer on the shipment-tracking rule's declared shape concludes `NO_EXTENSION_REQUIRED_SINGLE_FAMILY_FIT` (best fit: `observation_reconciliation_knowledge_promotion`, 2/2). This **reverses** the V0.1 narrative's unproven claim that a new family (`OBSERVATION_DRIVEN_STATE_INFERENCE_RULE`) was required. Recorded as a correction, not silently dropped.
+- All 4 V0.1 proof documents (`ATL_121_RULE_ONTOLOGY_RUNTIME_PROOF_V0_1.md`, `ATL_121_PROOF_1_RECONCILIATION_V0_1.md`, `ATL_121_PROOF_2_LTL03_CONSUMPTION_V0_1.md`, `ATL_121_COMPREHENSIVE_PROOFS_3_TO_10_V0_1.md`) kept unedited with superseded banners added (no erasure); `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` is now authoritative.
+
+Files / branches / components affected:
+- New: `governance/implementation/atl121_proofs/{rule_ontology,packages,atlas_services,runtime_executor,bol_rules,shipment_tracking_rules,owner_invariants,test_atl121_proofs,conftest}.py`, `governance/implementation/atl121_proofs/results/{EXECUTION_LOG.txt,*.json}`, `governance/implementation/ATL_121_EXECUTABLE_EVIDENCE_V0_2.md`.
+- Modified (superseded banners + manifest V0.2 identity table): the 4 V0.1 proof docs listed above.
+- Branch: `darshanukey/atl-121-atl-119a-rule-ontology-runtime-proof-adversarial-validation`.
+- Commits: `1ebdc8c5b0cbeb77ec0c234722cd3d7d09afb4cf` (rework + evidence), `2e6d542` (manifest identity fill). Both pushed to origin.
+
+Audit / test result:
+- `python3 -m pytest -v -s governance/implementation/atl121_proofs/test_atl121_proofs.py`: **16 passed, 0 failed** (final, committed run). Full stdout captured verbatim in `results/EXECUTION_LOG.txt` (also committed).
+- Independent hash re-verification: package files' recorded `package_hash` matches a from-scratch recomputation performed by parsing the committed JSON file (not the in-memory object).
+- Self-reported by Claude (builder); **not yet independently QA'd by ChatGPT.**
+
+Impact / guardrail:
+- No Supabase mutation. No Vercel action. No ATL-95/ATL-107 scope broadening — stayed bounded to ATL-121's own runtime-proof obligation.
+- Mocks explicitly labeled in code (`MockExternalAuthorityService`, every response tagged `"source": "MOCK_EXTERNAL_AUTHORITY"` + disclosure string) and in the evidence doc — addresses ChatGPT QA requirement #4 directly.
+
+Current/Demo/Target effect:
+- CURRENT: no demo-sprint work in progress.
+- DEMO: not applicable.
+- TARGET: ATL-121 rework is complete and pushed; ATL-119 closure and ATL-110 freeze remain blocked pending ChatGPT's independent QA of this V0.2 evidence.
+
+Safe resume point:
+- `darshanukey/atl-121-atl-119a-rule-ontology-runtime-proof-adversarial-validation` @ `2e6d542` (working tree clean, pushed to origin).
+
+Next exact action:
+- Hand ATL-121 to ChatGPT for independent QA of the V0.2 executable evidence: update Linear labels to `Agent — ChatGPT` + `Awaiting Independent QA`, post a comment pointing to commit `1ebdc8c`/`2e6d542` and `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md`, and update the Shared Baton Log document. No further Claude work on ATL-121 until QA result. No Owner action required for this handoff.
