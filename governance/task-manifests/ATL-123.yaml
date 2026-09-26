@@ -1,0 +1,38 @@
+task_id: ATL-123
+title: "ATL-60C — Governed Supabase Apply: ATL-82 V0.3 Schema"
+task_status: IMPLEMENTED_UNVERIFIED
+manifest_status: ACTIVE
+execution_owner: ChatGPT
+decision_authority: "Darshan / Atlas Owner-Governor"
+parent_task: ATL-60
+last_updated: "2026-09-26"
+authority:
+  owner_authorization: "CONDITIONAL_AUTHORIZATION_RECEIVED"
+  condition: "Apply only after end-product compatibility and all F5 release controls pass."
+source_candidate:
+  path: governance/implementation/ATL_82_CANDIDATE_PHYSICAL_MIGRATION_V0_3.sql
+  blob_sha: 31e9f4ca8c3877519dda71f84b82502d7476ff86
+  qa: "ATL-83 pass-3 PASS"
+release_controls:
+  ATL-124: "APPLY_ARTIFACT_BUILT_PENDING_FINAL_GATE"
+  ATL-125: "DOWN_MIGRATION_BUILT_PENDING_EXECUTABLE_PROOF"
+  ATL-126: "REBUILD_EVIDENCE_RECORDED_PENDING_FINAL_GATE"
+  ATL-127: "PG17_CI_IN_PROGRESS"
+  ATL-128: "LIVE_READ_ONLY_BASELINE_PASS"
+working_outputs:
+  - path: governance/implementation/ATL_123_GOVERNED_APPLY_V0_1.sql
+    blob_sha: 42cf8adf698290091f6db47ac30bed07390cc5a9
+    status: IMPLEMENTED_UNVERIFIED
+  - path: governance/implementation/ATL_123_DOWN_MIGRATION_V0_1.sql
+    blob_sha: f0b7284a96708f7010a1a1d8176d81aa5182a2f5
+    status: IMPLEMENTED_UNVERIFIED
+  - path: governance/implementation/ATL_123_RELEASE_CONTROL_EVIDENCE_V0_1.md
+    status: PROOF_RECORDED
+live_preapply:
+  project_id: aaoyesktlzhaunqqjhdq
+  postgres: "17.6"
+  target_tables_present: false
+  preexisting_work_decompositions_rows: 1
+  mutation_performed: false
+hard_stop: "Do not apply to Supabase until ATL-124 through ATL-128 are all durably PASS."
+next_action: "Complete PG17 executable gate, executable proof of apply/down artifacts, close five child controls, then reassess release gate."
