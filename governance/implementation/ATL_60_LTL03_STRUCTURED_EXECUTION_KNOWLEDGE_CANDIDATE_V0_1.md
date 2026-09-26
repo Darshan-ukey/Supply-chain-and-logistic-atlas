@@ -47,3 +47,157 @@ This decomposition is a candidate transformation of retained evidence, not a fro
 ## Governance disposition
 
 This artifact materially advances ATL-60 candidate structuring but does not satisfy ATL-60 exit by itself. It deliberately preserves unresolved areas rather than fabricating completion. Canonical Supabase knowledge promotion/freeze remains blocked. The next bounded step is to extend this candidate from retained governed evidence into the remaining required structures — especially complete information-concept/field semantics where evidence exists, actors/systems/interfaces, inputs/outputs, normalization rules and executor-consumable mappings — while retaining the gap states above.
+
+
+## Retained frozen-reference enrichment — 2026-09-26
+
+The bounded candidate above is now additionally reconciled against retained Drive **BOL Information Resolution Baseline v0.1 — Road LTL / Malkom — FROZEN_REFERENCE_BASELINE** (Drive ID `1oxEYH8mHZEZ4Y2D7mgLj2wlSl1d7bcmlBhT3lWV7J7Q`) and **Atlas Execution-Readiness Derivation Method v1** (Drive ID `12SRbTomHs-_sEZusn7JY2msMwEZ7zMCqOPhJE7q2vDs`). This enrichment does not alter the frozen references.
+
+### Object/relationship detail now directly evidenced
+- `TransportDocument/BOL → Consignment → Parties[] + References[] + HandlingUnits[] + LineItems[] + Instructions[] + ServiceEventWindows[]`.
+- Party roles explicitly include Shipper/Consignor, Consignee and BillTo.
+- LineItems may carry conditional DangerousGoods[].
+- Reference is typed with value, type, issuer/role and related object; PRO remains distinct where the governing LTL standard defines it.
+- Party information resolves to party instances before client-layout address bindings.
+- Handling-unit/line-item/package relationships must be resolved from governing standard/client context rather than inferred from flat labels.
+
+### Source-backed rule/validation families
+- Hazardous Flag belongs to the correct line item; unrelated text is insufficient.
+- UN/NA number, proper shipping name, hazard class/division and packing group where applicable form a linked DangerousGoods basic-description object and require cross-field validation.
+- Technical Name and inhalation-hazard Zone are conditional in specified regulatory cases; requiredWhen/prohibitedWhen must be explicit.
+- Emergency response phone and responsible person/ERI-provider identity are relationship-aware where applicable.
+- Handling Unit Count/Type and Line Item Piece Count are distinct and require explicit object hierarchy/association.
+- Description, packaging, NMFC/sub, dimensions/weight and freight class should be cross-validated where governing classification rules permit.
+
+### Explicit unresolved semantics carried as governed gaps
+Do not invent canonical meanings for: Code; SHC; Related Value; BOL Type; Reference Number Type Full Name; Handling Unit Line No; Shipper Code; exact Bill To/Consignee Account Number meanings; exact Instruction Type values; exact Time Critical Details coding. These remain `SOURCE_CONTEXT_PENDING` or `CLIENT_BINDING_REQUIRED`.
+
+### Lifecycle/identity controls now directly evidenced
+The retained execution-readiness method requires industry canonical semantics to remain separate from client operating patterns. PRO may be requestor-preassigned or carrier-assigned; it must not be hard-coded as universal booking output. Booking reference, PRO, BOL and other identifiers require a canonical reference object with assigning party/system, related object, relationship, status, uniqueness scope, creation event and authority. Source-backed eBOL operations include create, update and delete/cancel. Invalid-information and identity-not-found failures remain separate exception classes.
+
+### Measurement-integrity control
+The frozen BOL reference records 11 source-reported Accuracy values above 100%. They must be preserved as reported but cannot be interpreted as mathematical accuracy until metric name, numerator, denominator, population, sample size and counting event are defined. The retained target model is Extraction Recall; Value Accuracy; Object Association Accuracy; Semantic Classification Accuracy; Normalization Accuracy; Validation Pass Rate; Critical False-Negative Rate; HITL Rate; Validated STP Yield.
+
+### Readiness disposition
+This enrichment strengthens object, rule, identity/lifecycle and explicit-gap coverage, but does not make the candidate `DOMAIN_EXECUTION_READY`. A complete source-backed state-transition table, exhaustive rule expressions, queue authority, complete information-concept universe and unresolved client/source-context semantics remain open or separately gated. No Supabase knowledge rows are promoted by this change.
+
+
+## Retained governed research integration — Stage 2
+
+The candidate is now reconciled with four retained GitHub research artifacts already produced under ATL-35. These are consumed as retained governed research inputs; ATL-60 does not re-run their external research:
+
+- `governance/research/LTL_03_INDEPENDENT_BOL_FIELD_UNIVERSE_V0_1.md` — blob `ea5c13cd113f58319b46875e60eca0a5a4600327`
+- `governance/research/LTL_03_REGULATORY_MINIMUM_AND_LIFECYCLE_AUTHORITY_MATRIX_V0_1.md` — blob `cbe8a5519c853bdc33692c7de68cc6379f42b8d6`
+- `governance/research/LTL_03_RULE_NORMALIZATION_RETROSPECTIVE_V0_1.md` — blob `55c32dbab8b8061c8b2cc988111828c3e2c39836`
+- `governance/research/LTL_03_BOL_UNIVERSE_NORMALIZED_CROSSWALK_V0_1.md` — blob `2d52372d4bae36618d5635a7820cd7245eddd7c4`
+
+### Information-concept / field-semantic baseline
+
+The independent universe provides source-backed semantics across thirteen categories: shipment/consignment identity; transport-document identity/lifecycle; references/identifiers; parties; locations; consignment items/commodity; packages/handling units; service/accessorial families; payment terms; classification; conditional hazmat/regulatory information; instructions/notes; error/result semantics.
+
+Examples directly carried into this candidate include role-specific party/location relationships, scoped identifiers, measure ownership, package hierarchy, repeating item/package collections, controlled-value families, and explicit separation of classification from hazardous-material semantics.
+
+The retained evidence boundary remains binding: exact NMFTA BOL_Request property/cardinality claims not directly established by issuer evidence are not invented here. SEFL-specific field names are not promoted as canonical solely because they exist in a client implementation.
+
+### Actors / systems / interfaces
+
+Evidence supports distinct authority/interaction roles for consignor/shipper, consignee, carrier, requestor/partner and client operations. System/interface semantics directly evidenced include NMFTA eBOL create/update/delete operations, carrier/shipper-scoped LocationID, carrier/client specialization of optional fields/constraints, client master/reference reconciliation, and downstream executor projections.
+
+The complete production Malkom/client system topology remains OPEN where retained internal evidence does not establish it.
+
+### Inputs / outputs / dependencies
+
+Source-backed input classes now include transport-document/eBOL evidence, shipment/consignment identity, party/location data, references, item/commodity data, package/handling-unit structures, instructions/accessorial/payment/classification codes, and conditional dangerous-goods data.
+
+Controlled outputs are validated/canonical information, explicit unresolved/binding state, provenance/evidence, governed exception state and executor-specific projection only after canonical resolution. Dependencies include applicable regulation/industry standards, controlled vocabularies/reference masters, client/carrier masters/bindings, lifecycle target identity and source-authority context.
+
+### Normalization / transformation semantics
+
+Retained normalization architecture:
+`Authoritative Evidence → Domain Fact → Semantic Primitive → Reusable Rule Family → Generated Rule Instance → Client Binding → Runtime/Tool Projection`.
+
+The retained candidate grammar includes RF1–RF16: identity/reference resolution; relationship integrity; lifecycle/state transition; requiredness/cardinality; controlled-value validation; master/reference reconciliation; conditional activation; error/exception semantics; source authority/precedence; representation constraints; client specialization; aggregate reconciliation; measure semantics; hierarchy; candidate parsing/semantic assignment; instruction/note ownership.
+
+A retained 30-element BOL crosswalk demonstrated composition through these families without introducing a new family for that sample. This remains a scalability signal, not a claim that the full universe is frozen or that Rule Reuse Ratio is proven.
+
+### Source-backed lifecycle / validation / exception structure
+
+Directly retained:
+- create/update/delete-cancel document lifecycle;
+- PRO resolution for update/delete and configurable assignment authority;
+- invalid-data vs target-not-found error separation;
+- regulatory requiredness for consignor, consignee, origin, destination, package count, freight description and rating-relevant measure under the researched U.S. scope;
+- conditional hazardous-material information and representation constraints;
+- structural → semantic → value correctness ordering;
+- client specialization must not rewrite canonical domain semantics.
+
+### Remaining explicit gaps after retained-artifact integration
+
+1. The independent BOL universe artifact is marked PARTIAL / NOT FROZEN; ATL-67 remains the independent freeze gate.
+2. Exact issuer property/cardinality detail must remain bounded to the recovered authoritative raw eBOL artifact / independently governed field-universe work; do not infer absent properties.
+3. Production client/Malkom actors, system topology, source precedence and permitted-action matrix remain unresolved where internal evidence is absent.
+4. Complete state-transition coverage outside directly evidenced eBOL lifecycle remains incomplete.
+5. Full generated rule-instance enumeration and Rule Reuse Ratio remain unproven.
+6. Exact client SOP/master-data bindings and production exception/HITL routing remain client-specific/open.
+7. Executor-ready WorkDefinition compilation is downstream governed work; this candidate records the traceable knowledge substrate and does not self-certify it.
+
+### Stage-2 determination
+
+For ATL-60's retained-evidence structuring objective, the material knowledge dimensions requested by the issue are now represented either by source-backed structured content or explicit governed gaps. This does not freeze the BOL field universe, validate execution readiness, or promote canonical knowledge.
+
+
+## Stage 3 — canonical retained execution-graph reconciliation
+
+ATL-60 now consumes the retained ATL-35 freeze-candidate package as the principal structured research substrate rather than reconstructing equivalent knowledge from prose.
+
+### Verified machine artifact
+- `governance/research/LTL_03_EXECUTION_LOGIC_GRAPH_V0_1.json`
+- verified current blob: `25b7a49649fa91799e45e08c9ff892113d6cb347`
+- graph-declared validation: 471 nodes; 2,538 typed edges; 148 generated rule instances; 11 reusable patterns; 0 broken edges; 0 stranded evidence; 0 unused families/primitives; no generated instance missing evidence, primitive or family linkage.
+- graph governance declares research closed and broad-research reopen only for a specific QA/closure defect.
+
+### Retained freeze-candidate manifest
+- `governance/research/ATL_35_LTL_03_FREEZE_CANDIDATE_MANIFEST_V0_1.md`
+- verified blob: `942ecd6e7e140bbc76db0a1c64593f74cb3e281c`
+- records 69 evidence nodes, 149 domain facts, 21 semantic primitives, 18 rule families, 148 generated instances, 31 explicit exceptions, 11 reusable execution patterns, 15 explicit client-binding requirements, 3 explicit knowledge gaps and 5 runtime projection types.
+- records exact NMFTA eBOL 2.1 raw-source SHA-256 `39715755793a2f39ee290e17f3997cb1bd7cadf001e5531f4a61093df1094e8c`; prior exact BOL_Request property/nesting/cardinality gap is recorded as resolved.
+- records ATL-37 independent disposition `PASS_WITH_BINDING_CORRECTIONS` and the correction-cycle identities. ATL-60 does not reinterpret that as unconditional QA PASS.
+
+### Reconciliation evidence
+`governance/research/LTL_03_EXECUTION_GRAPH_RECONCILIATION_VERIFICATION_V0_1.md` (blob `5b668c7d225c841027b796e01cf937c22ce73d43`) records PASS for the governed graph relationship mechanism and bidirectional downstream accessibility at its reconciliation boundary.
+
+### ATL-60 materialization decision
+
+The structured execution-knowledge baseline is the combination of:
+1. the retained reconciled evidence/provenance corpus;
+2. the verified execution-logic graph above as the machine-addressable structured knowledge substrate;
+3. the retained freeze-candidate manifest defining source hierarchy, rule/primitives, bindings/gaps and QA boundary;
+4. this ATL-60 reconciliation artifact, which records scope, retained-evidence integration, unresolved boundaries and promotion restrictions.
+
+ATL-60 must not copy the 471-node graph into a second competing canonical graph merely to satisfy its exit wording. The verified retained graph is the source-backed structured baseline candidate; ATL-60's role is reconciliation/materialization governance and explicit gap preservation.
+
+### Exit-criterion assessment
+
+ATL-60 issue dimensions are now accounted for as follows:
+- operational purpose / trigger / outcomes / process context — REPRESENTED;
+- canonical objects / relationships — REPRESENTED;
+- BOL/information concepts / sections / cardinality / aliases — REPRESENTED in retained graph/schema closure, with client aliases/bindings explicit;
+- field semantics / object association — REPRESENTED;
+- actors / roles / systems / interfaces — REPRESENTED where source-backed; production-client topology remains explicit gap/binding;
+- inputs / outputs / dependencies — REPRESENTED;
+- decision logic / rules / validations — REPRESENTED through 18 retained families + generated instances;
+- conditional applicability / jurisdiction — REPRESENTED with explicit jurisdiction gaps;
+- lifecycle/state semantics — REPRESENTED for researched scope; non-universal client patterns remain bindings;
+- exceptions / HITL — REPRESENTED through explicit exceptions and client-binding requirements;
+- authority / source precedence / conflict resolution — REPRESENTED;
+- provenance/evidence — REPRESENTED and graph-linked;
+- normalization/transformation — REPRESENTED;
+- client binding / master data — REPRESENTED as explicit governed requirements;
+- knowledge gaps / uncertainty — REPRESENTED as first-class gaps;
+- executor-consumable decomposition / WorkDefinition / execution-contract mappings — represented as governed machine substrate and downstream mappings, but downstream execution-readiness certification remains ATL-59/ATL-67 and related governed stages.
+
+### Builder disposition
+
+**ATL-60 BUILD SCOPE: QA_READY_CANDIDATE.**
+
+This is not self-approval and not canonical Supabase knowledge promotion. Independent crossed QA must verify this reconciliation/exit determination, including that the retained graph + manifest genuinely satisfy ATL-60's issue exit criterion and that no unresolved item has been incorrectly hidden as complete.

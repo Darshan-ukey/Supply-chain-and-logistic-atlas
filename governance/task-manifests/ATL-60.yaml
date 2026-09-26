@@ -1,12 +1,12 @@
 task_id: ATL-60
 task_title: "ATL-49A — LTL-03 Research Evidence Recovery & Reconciliation"
-task_status: IN_PROGRESS
+task_status: COMPLETE
 execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-60/atl-49a-ltl-03-research-evidence-recovery-and-reconciliation"
 manifest_status: ACTIVE
 last_updated: "2026-09-26"
-status_detail: "ATL-123 governed Supabase apply completed, independently QA-passed, and Owner-approved 2026-09-26. Durable evidence: ATL-123 manifest commit 8c6f2242f88eab9b7e55860db86c216d3cc9b548; apply blob 42cf8adf698290091f6db47ac30bed07390cc5a9; PG17 CI run 36240211320 PASS; Supabase migration 20260926115514. ATL-60 resumes retained-evidence reconciliation and candidate structuring. Canonical knowledge promotion/freeze remains separately governed."
+status_detail: "Independent crossed QA PASS confirmed ATL-60 exit criterion. Drive post-QA custody record created and read back: 1FHdunbVGBCbRebJ7LhNa85suNGi41eaJ2dNI4n2xMnY. Candidate blob dc532e3e8e336668e3d9b3c8abc0de3cdf827996; retained execution graph blob 25b7a49649fa91799e45e08c9ff892113d6cb347. ATL-60 is governed complete; no canonical Supabase knowledge promotion or DOMAIN_EXECUTION_READY claim."
 
 governing_inputs:
   - type: github_standard
@@ -161,8 +161,8 @@ qa_and_decisions:
     commit: "f6960e87b7ab5a59b82994a6d42b6deefb04e12b"
     does_not_authorize: "Any migration or canonical mutation."
 
-current_checkpoint: "ATL-123 governed schema apply is complete: independent QA PASS and Owner advancement approval recorded 2026-09-26. Physical schema prerequisite is therefore no longer pending. ATL-60 remains active for its primary objective: reconcile retained LTL-03 evidence and materialize the structured execution-knowledge baseline. Canonical knowledge promotion/freeze remains separately governed."
-next_action: "Continue LTL-03 retained-evidence reconciliation and candidate structuring: verify retained Drive evidence accessibility, reconcile authoritative Working Evidence against Source Register / Validation Ledger, and materialize only source-backed structured candidate knowledge with explicit gaps. Do not repeat external research where retained evidence is sufficient. No canonical knowledge promotion/freeze without its separate governed gate."
+current_checkpoint: "ATL-60 GOVERNED_COMPLETE after independent QA PASS and verified Drive custody readback. Inherited ATL-37 atl37CorrectionCycle=IN_PROGRESS caveat remains explicit and non-blocking for ATL-60."
+next_action: "Release ATL-60 downstream blockers according to live Linear dependencies and Shared Baton sequencing. ATL-121 is newly unblocked by ATL-60 but still requires valid agent routing/eligibility before autonomous execution."
 
 open_items:
   - "Logical-design erratum C3: relationship lifecycle/status must be represented consistently in the logical contract and physical design before final freeze."
