@@ -1,0 +1,108 @@
+{
+  "BOL-R01": {
+    "rule_id": "BOL-R01",
+    "kind": "field_presence",
+    "distribution_mode": "EMBED",
+    "network_io": false,
+    "latency_ms": 0.002,
+    "outcome": "PASS",
+    "detail": {
+      "field": "shipper_name",
+      "value": "Acme Manufacturing Co"
+    },
+    "exception_type": null
+  },
+  "BOL-R02": {
+    "rule_id": "BOL-R02",
+    "kind": "regex_format",
+    "distribution_mode": "EMBED",
+    "network_io": false,
+    "latency_ms": 0.014,
+    "outcome": "PASS",
+    "detail": {
+      "field": "weight_lbs",
+      "value": "482.50",
+      "pattern": "\\d+(\\.\\d{1,2})?"
+    },
+    "exception_type": null
+  },
+  "BOL-R05": {
+    "rule_id": "BOL-R05",
+    "kind": "set_membership",
+    "distribution_mode": "EMBED",
+    "network_io": false,
+    "latency_ms": 0.002,
+    "outcome": "PASS",
+    "detail": {
+      "field": "carrier_scac",
+      "value": "SEFL",
+      "allowed_set": [
+        "SEFL",
+        "AACT",
+        "SAIA"
+      ]
+    },
+    "exception_type": null
+  },
+  "BOL-R08": {
+    "rule_id": "BOL-R08",
+    "kind": "uniqueness_check",
+    "distribution_mode": "EMBED",
+    "network_io": false,
+    "latency_ms": 0.004,
+    "outcome": "PASS",
+    "detail": {
+      "field": "bol_number",
+      "value": "BOL-2026-000481",
+      "duplicate": false
+    },
+    "exception_type": null
+  },
+  "BOL-R10": {
+    "rule_id": "BOL-R10",
+    "kind": "time_cutoff",
+    "distribution_mode": "EMBED",
+    "network_io": false,
+    "latency_ms": 0.001,
+    "outcome": "PASS",
+    "detail": {
+      "field": "pickup_requested_time",
+      "value": "14:30",
+      "cutoff": "17:00"
+    },
+    "exception_type": null
+  },
+  "BOL-R04": {
+    "rule_id": "BOL-R04",
+    "kind": "table_lookup",
+    "distribution_mode": "SNAPSHOT",
+    "network_io": false,
+    "latency_ms": 0.003,
+    "outcome": "PASS",
+    "detail": {
+      "field": "hazmat_un_number",
+      "key": "UN1993",
+      "table_version": "hazmat-snapshot-2026-09-01",
+      "resolved": {
+        "class": "3",
+        "packing_group": "II",
+        "label": "Flammable liquid, n.o.s."
+      }
+    },
+    "exception_type": null
+  },
+  "BOL-R07": {
+    "rule_id": "BOL-R07",
+    "kind": "dynamic_lookup",
+    "distribution_mode": "DYNAMIC_LOOKUP",
+    "network_io": true,
+    "latency_ms": 0.209,
+    "outcome": "ESCALATED",
+    "detail": {
+      "reason": "dynamic_source_unreachable",
+      "field": "fuel_surcharge_pct",
+      "error": "<urlopen error [Errno 111] Connection refused>"
+    },
+    "exception_type": null
+  }
+}

@@ -1,6 +1,15 @@
 # ATL-121 Proof 2: LTL-03/BOL Rule Set Classification and Consumption
 
-**Status:** VERIFIED  
+> **SUPERSEDED — 2026-09-27.** ChatGPT independent QA (Linear comments `0006cec8` and
+> `9ff327f7`) correctly found this content was narrative/authored, not executable
+> evidence. It is retained unedited for audit trail only. Authoritative evidence is now
+> `governance/implementation/ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` and
+> `governance/implementation/atl121_proofs/bol_rules.py` +
+> `test_proof_2_bol_rule_consumption` (real, executed code — 9 rules actually
+> evaluated against a concrete record). **Do not cite the content below as proof of
+> anything.**
+
+**Status:** VERIFIED (SUPERSEDED — see banner above)  
 **Date:** 2026-09-26T18:42:00Z  
 **Evidence source:** ATL-60 LTL-03 Research Evidence, BOL operational knowledge, Business Rule Ontology seed taxonomy  
 

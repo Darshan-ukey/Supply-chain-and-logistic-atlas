@@ -1,0 +1,181 @@
+{
+  "built_at": "2026-09-26T18:59:12.118932+00:00",
+  "canonical_promotion_status": "PENDING",
+  "consumer_scope": "MALKOM_REFERENCE",
+  "declared_dynamic_rules": [
+    {
+      "distribution_mode": "EXTERNAL_AUTHORITY",
+      "evaluation_mode": "EXTERNAL_API",
+      "failure_behavior": "ESCALATE",
+      "family": "classification_derivation_calculation_transformation_normalization",
+      "is_mock_channel": true,
+      "kind": "external_lookup",
+      "notes": "NMFC freight classification is externally authoritative; Atlas is not source of truth.",
+      "params": {
+        "field": "commodity_description"
+      },
+      "rule_id": "BOL-R03",
+      "source_authority": "NMFTA (National Motor Freight Traffic Association)",
+      "version": "1.0"
+    },
+    {
+      "distribution_mode": "CLIENT_SYSTEM_LOOKUP",
+      "evaluation_mode": "CLIENT_BINDING",
+      "failure_behavior": "ESCALATE",
+      "family": "client_binding_client_override_system_of_record_client_master",
+      "is_mock_channel": false,
+      "kind": "client_binding_lookup",
+      "notes": "Liftgate accessorial code is universal in meaning but client-specific in encoding.",
+      "params": {
+        "field": "accessorial_code"
+      },
+      "rule_id": "BOL-R06",
+      "source_authority": null,
+      "version": "1.0"
+    },
+    {
+      "distribution_mode": "DYNAMIC_LOOKUP",
+      "evaluation_mode": "TABLE_LOOKUP",
+      "failure_behavior": "FAIL_CLOSED",
+      "family": "timing_sla_cutoff_effective_date_temporal_precedence",
+      "is_mock_channel": false,
+      "kind": "dynamic_lookup",
+      "notes": "Fuel surcharge must be current at billing time; mandatory, no stale fallback permitted.",
+      "params": {
+        "field": "fuel_surcharge_pct"
+      },
+      "rule_id": "BOL-R07",
+      "source_authority": null,
+      "version": "1.0"
+    }
+  ],
+  "embedded_rules": [
+    {
+      "distribution_mode": "EMBED",
+      "evaluation_mode": "DETERMINISTIC_EXPRESSION",
+      "failure_behavior": "ESCALATE",
+      "family": "mandatory_conditional_data",
+      "is_mock_channel": false,
+      "kind": "field_presence",
+      "notes": "BOL shipper name is mandatory per BOL information-resolution baseline.",
+      "params": {
+        "field": "shipper_name"
+      },
+      "rule_id": "BOL-R01",
+      "source_authority": null,
+      "version": "1.0"
+    },
+    {
+      "distribution_mode": "EMBED",
+      "evaluation_mode": "DETERMINISTIC_EXPRESSION",
+      "failure_behavior": "ESCALATE",
+      "family": "format_datatype_allowed_values_master_reference_data",
+      "is_mock_channel": false,
+      "kind": "regex_format",
+      "notes": "Declared weight must be numeric with at most 2 decimal places.",
+      "params": {
+        "field": "weight_lbs",
+        "pattern": "\\d+(\\.\\d{1,2})?"
+      },
+      "rule_id": "BOL-R02",
+      "source_authority": null,
+      "version": "1.0"
+    },
+    {
+      "distribution_mode": "EMBED",
+      "evaluation_mode": "DETERMINISTIC_EXPRESSION",
+      "failure_behavior": "ESCALATE",
+      "family": "applicability_eligibility_prerequisites",
+      "is_mock_channel": false,
+      "kind": "set_membership",
+      "notes": "Carrier SCAC must be in the lane's eligible-carrier set.",
+      "params": {
+        "allowed_set": [
+          "SEFL",
+          "AACT",
+          "SAIA"
+        ],
+        "field": "carrier_scac"
+      },
+      "rule_id": "BOL-R05",
+      "source_authority": null,
+      "version": "1.0"
+    },
+    {
+      "distribution_mode": "EMBED",
+      "evaluation_mode": "DETERMINISTIC_EXPRESSION",
+      "failure_behavior": "ESCALATE",
+      "family": "relationships_cardinality_consistency_duplicate_reconciliation",
+      "is_mock_channel": false,
+      "kind": "uniqueness_check",
+      "notes": "BOL number must not duplicate a previously seen number in this execution scope.",
+      "params": {
+        "field": "bol_number",
+        "registry": "bol_number_registry"
+      },
+      "rule_id": "BOL-R08",
+      "source_authority": null,
+      "version": "1.0"
+    },
+    {
+      "distribution_mode": "EMBED",
+      "evaluation_mode": "DETERMINISTIC_EXPRESSION",
+      "failure_behavior": "ESCALATE",
+      "family": "timing_sla_cutoff_effective_date_temporal_precedence",
+      "is_mock_channel": false,
+      "kind": "time_cutoff",
+      "notes": "Same-day pickup requests after the 17:00 cutoff route to next-day.",
+      "params": {
+        "cutoff": "17:00",
+        "field": "pickup_requested_time"
+      },
+      "rule_id": "BOL-R10",
+      "source_authority": null,
+      "version": "1.0"
+    }
+  ],
+  "package_hash": "501ab5c2770be32e83c237f28ba9837dfd7b8869b6d6a645b2e4e52fbf68b67e",
+  "package_id": "bol-snapshot-demo",
+  "snapshot_rules": [
+    {
+      "distribution_mode": "SNAPSHOT",
+      "evaluation_mode": "TABLE_LOOKUP",
+      "failure_behavior": "ESCALATE",
+      "family": "jurisdiction_policy_compliance_regulatory_contractual",
+      "is_mock_channel": false,
+      "kind": "table_lookup",
+      "notes": "Hazmat UN-number classification snapshotted at package build time.",
+      "params": {
+        "field": "hazmat_un_number",
+        "table": "hazmat_snapshot"
+      },
+      "rule_id": "BOL-R04",
+      "source_authority": null,
+      "version": "1.0"
+    }
+  ],
+  "snapshot_tables": {
+    "hazmat_snapshot": {
+      "data": {
+        "UN1170": {
+          "class": "3",
+          "label": "Ethanol solution",
+          "packing_group": "II"
+        },
+        "UN1993": {
+          "class": "3",
+          "label": "Flammable liquid, n.o.s.",
+          "packing_group": "II"
+        },
+        "UN3077": {
+          "class": "9",
+          "label": "Environmentally hazardous substance, solid, n.o.s.",
+          "packing_group": "III"
+        }
+      },
+      "version": "hazmat-snapshot-2026-09-27"
+    }
+  },
+  "source_evidence_ref": "atl60-ltl03-bol-universe-v1",
+  "version": "2.0"
+}

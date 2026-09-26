@@ -1,0 +1,145 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/supply-chain-and-logistic-atlas/governance/implementation/atl121_proofs
+plugins: anyio-4.13.0
+collecting ... collected 16 items
+
+test_atl121_proofs.py::test_proof_1_reconciliation 
+[Proof 1] contract_path=/home/claude/supply-chain-and-logistic-atlas/governance/product/ATLAS_V2_BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION_CONTRACT_V0_1_CANDIDATE.md
+[Proof 1] used distribution modes=['CLIENT_SYSTEM_LOOKUP', 'DYNAMIC_LOOKUP', 'EMBED', 'EXTERNAL_AUTHORITY', 'SNAPSHOT'] missing_from_contract=[]
+[Proof 1] used evaluation modes=['CLIENT_BINDING', 'COMPOSITE', 'DETERMINISTIC_EXPRESSION', 'EXTERNAL_API', 'TABLE_LOOKUP'] missing_from_contract=[]
+[Proof 1] cross-referenced product end-state contract present at /home/claude/supply-chain-and-logistic-atlas/governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
+PASSED
+test_atl121_proofs.py::test_proof_2_bol_rule_consumption 
+[Proof 2] 9 BOL rules classify into 8 distinct seed families: ['applicability_eligibility_prerequisites', 'classification_derivation_calculation_transformation_normalization', 'client_binding_client_override_system_of_record_client_master', 'format_datatype_allowed_values_master_reference_data', 'jurisdiction_policy_compliance_regulatory_contractual', 'mandatory_conditional_data', 'relationships_cardinality_consistency_duplicate_reconciliation', 'timing_sla_cutoff_effective_date_temporal_precedence']
+[Proof 2]   BOL-R01: family=mandatory_conditional_data eval=DETERMINISTIC_EXPRESSION dist=EMBED kind=field_presence
+[Proof 2]   BOL-R02: family=format_datatype_allowed_values_master_reference_data eval=DETERMINISTIC_EXPRESSION dist=EMBED kind=regex_format
+[Proof 2]   BOL-R03: family=classification_derivation_calculation_transformation_normalization eval=EXTERNAL_API dist=EXTERNAL_AUTHORITY kind=external_lookup
+[Proof 2]   BOL-R04: family=jurisdiction_policy_compliance_regulatory_contractual eval=TABLE_LOOKUP dist=SNAPSHOT kind=table_lookup
+[Proof 2]   BOL-R05: family=applicability_eligibility_prerequisites eval=DETERMINISTIC_EXPRESSION dist=EMBED kind=set_membership
+[Proof 2]   BOL-R06: family=client_binding_client_override_system_of_record_client_master eval=CLIENT_BINDING dist=CLIENT_SYSTEM_LOOKUP kind=client_binding_lookup
+[Proof 2]   BOL-R07: family=timing_sla_cutoff_effective_date_temporal_precedence eval=TABLE_LOOKUP dist=DYNAMIC_LOOKUP kind=dynamic_lookup
+[Proof 2]   BOL-R08: family=relationships_cardinality_consistency_duplicate_reconciliation eval=DETERMINISTIC_EXPRESSION dist=EMBED kind=uniqueness_check
+[Proof 2]   BOL-R10: family=timing_sla_cutoff_effective_date_temporal_precedence eval=DETERMINISTIC_EXPRESSION dist=EMBED kind=time_cutoff
+[Proof 2]   evaluate BOL-R01: outcome=PASS latency_ms=0.001 detail={'field': 'shipper_name', 'value': 'Acme Manufacturing Co'}
+[Proof 2]   evaluate BOL-R02: outcome=PASS latency_ms=0.087 detail={'field': 'weight_lbs', 'value': '482.50', 'pattern': '\\d+(\\.\\d{1,2})?'}
+[Proof 2]   evaluate BOL-R05: outcome=PASS latency_ms=0.001 detail={'field': 'carrier_scac', 'value': 'SEFL', 'allowed_set': ['SEFL', 'AACT', 'SAIA']}
+[Proof 2]   evaluate BOL-R08: outcome=PASS latency_ms=0.002 detail={'field': 'bol_number', 'value': 'BOL-2026-000481', 'duplicate': False}
+[Proof 2]   evaluate BOL-R10: outcome=PASS latency_ms=0.001 detail={'field': 'pickup_requested_time', 'value': '14:30', 'cutoff': '17:00'}
+PASSED
+test_atl121_proofs.py::test_proof_3_taxonomy_extension 
+[Proof 3] TRK-R01 shape={'multi_signal': True, 'has_temporal_cutoff': True, 'is_state_transition': True, 'is_reconciliation_of_observations': True, 'is_classification_or_derivation': False, 'is_external_authority_sourced': False}
+[Proof 3] classify_fit result: {
+  "scores": {
+    "decision_routing_sequencing_state_transition_completion": 1,
+    "timing_sla_cutoff_effective_date_temporal_precedence": 1,
+    "observation_reconciliation_knowledge_promotion": 2,
+    "classification_derivation_calculation_transformation_normalization": 0,
+    "source_authority_precedence_conflict_override": 0
+  },
+  "ranked": [
+    [
+      "observation_reconciliation_knowledge_promotion",
+      2
+    ],
+    [
+      "decision_routing_sequencing_state_transition_completion",
+      1
+    ],
+    [
+      "timing_sla_cutoff_effective_date_temporal_precedence",
+      1
+    ],
+    [
+      "classification_derivation_calculation_transformation_normalization",
+      0
+    ],
+    [
+      "source_authority_precedence_conflict_override",
+      0
+    ]
+  ],
+  "best_family": "observation_reconciliation_knowledge_promotion",
+  "best_score": 2,
+  "max_possible": 2,
+  "strong_matches": [
+    "observation_reconciliation_knowledge_promotion"
+  ],
+  "fits_seed_taxonomy": true,
+  "recommendation": "NO_EXTENSION_REQUIRED_SINGLE_FAMILY_FIT"
+}
+[Proof 3]   scenario=delivered -> {'signals_present': ['pod_scan_event', 'signature_capture_event'], 'status': 'DELIVERED'}
+[Proof 3]   scenario=in_transit -> {'signals_present': [], 'status': 'IN_TRANSIT'}
+[Proof 3]   scenario=exception -> {'signals_present': [], 'status': 'EXCEPTION'}
+[Proof 3]   scenario=partial_signals -> {'signals_present': ['pod_scan_event'], 'status': 'IN_TRANSIT'}
+[Proof 3] CONCLUSION: NO_EXTENSION_REQUIRED_SINGLE_FAMILY_FIT (supersedes prior unproven claim that a new family was required)
+PASSED
+test_atl121_proofs.py::test_proof_4_embed_mode 
+[Proof 4] package written to /home/claude/supply-chain-and-logistic-atlas/governance/implementation/atl121_proofs/results/bol-embed-demo.1.0.json
+[Proof 4] package_hash (in-code)   = a5fabd9e7e0f35283c4d5b586a2ec5d3f3d3d75642d34641ec8982b3df4e8789
+[Proof 4] package_hash (recomputed independently from the written file) = a5fabd9e7e0f35283c4d5b586a2ec5d3f3d3d75642d34641ec8982b3df4e8789
+[Proof 4] evaluated BOL-R01 fully offline from reloaded package: {'rule_id': 'BOL-R01', 'kind': 'field_presence', 'distribution_mode': 'EMBED', 'network_io': False, 'latency_ms': 0.001, 'outcome': 'PASS', 'detail': {'field': 'shipper_name', 'value': 'Acme Manufacturing Co'}, 'exception_type': None}
+PASSED
+test_atl121_proofs.py::test_proof_5_snapshot_mode 
+[Proof 5] v1 package=/home/claude/supply-chain-and-logistic-atlas/governance/implementation/atl121_proofs/results/bol-snapshot-demo.1.0.json hash=bf7f62abcba6b390f39e3f427a255b078d1721a6c9d2e41814050c4fe53c3f73 table_version=hazmat-snapshot-2026-09-01
+[Proof 5] v2 package=/home/claude/supply-chain-and-logistic-atlas/governance/implementation/atl121_proofs/results/bol-snapshot-demo.2.0.json hash=501ab5c2770be32e83c237f28ba9837dfd7b8869b6d6a645b2e4e52fbf68b67e table_version=hazmat-snapshot-2026-09-27
+[Proof 5] deployed v1 package evaluating UN1170 (only in v2 table): {'rule_id': 'BOL-R04', 'kind': 'table_lookup', 'distribution_mode': 'SNAPSHOT', 'network_io': False, 'latency_ms': 0.002, 'outcome': 'FAIL', 'detail': {'field': 'hazmat_un_number', 'key': 'UN1170', 'table_version': 'hazmat-snapshot-2026-09-01', 'resolved': None}, 'exception_type': None}
+[Proof 5] refreshed v2 package evaluating same record: {'rule_id': 'BOL-R04', 'kind': 'table_lookup', 'distribution_mode': 'SNAPSHOT', 'network_io': False, 'latency_ms': 0.001, 'outcome': 'PASS', 'detail': {'field': 'hazmat_un_number', 'key': 'UN1170', 'table_version': 'hazmat-snapshot-2026-09-27', 'resolved': {'class': '3', 'label': 'Ethanol solution', 'packing_group': 'II'}}, 'exception_type': None}
+PASSED
+test_atl121_proofs.py::test_proof_6_dynamic_lookup_mode 
+[Proof 6] service base_url=http://127.0.0.1:40101
+[Proof 6] first dynamic-lookup call: network_io=True latency_ms=1.832 detail={'rule_id': 'BOL-R07', 'field': 'fuel_surcharge_pct', 'value': 18.5, 'source': 'ATLAS_INTERNAL_SERVICE', 'version': 'live'}
+[Proof 6] after upstream update, second dynamic-lookup call: detail={'rule_id': 'BOL-R07', 'field': 'fuel_surcharge_pct', 'value': 21.75, 'source': 'ATLAS_INTERNAL_SERVICE', 'version': 'live'}
+PASSED
+test_atl121_proofs.py::test_proof_7_client_binding 
+[Proof 7] CLIENT_A: {'client_id': 'CLIENT_A', 'accessorial_code': 'ACC-LIFTGATE-STD', 'bound_to_master_rule': 'BOL-R06', 'version': '1.0', 'source': 'ATLAS_INTERNAL_SERVICE'}
+[Proof 7] CLIENT_B: {'client_id': 'CLIENT_B', 'accessorial_code': 'ACC-LIFTGATE-PREMIUM-B', 'bound_to_master_rule': 'BOL-R06', 'version': '1.0', 'source': 'ATLAS_INTERNAL_SERVICE'}
+PASSED
+test_atl121_proofs.py::test_proof_8_external_authority 
+[Proof 8] external-authority call result: {'rule_id': 'BOL-R03', 'kind': 'external_lookup', 'distribution_mode': 'EXTERNAL_AUTHORITY', 'network_io': True, 'latency_ms': 1.371, 'outcome': 'PASS', 'detail': {'commodity': 'LCD_TV_PALLETIZED', 'nmfc_code': '61340', 'freight_class': '92.5', 'source': 'MOCK_EXTERNAL_AUTHORITY', 'disclosure': 'Local mock standing in for NMFTA; sandboxed environment has no authorized outbound path to the real NMFTA API. This value/format is illustrative, not an observed real NMFTA response.'}, 'exception_type': None}
+PASSED
+test_atl121_proofs.py::test_proof_9_outage_resilience 
+[Proof 9] Atlas service stopped (real shutdown). Evaluating full BOL record:
+[Proof 9]   BOL-R01 (EMBED): PASS
+[Proof 9]   BOL-R02 (EMBED): PASS
+[Proof 9]   BOL-R05 (EMBED): PASS
+[Proof 9]   BOL-R08 (EMBED): PASS
+[Proof 9]   BOL-R10 (EMBED): PASS
+[Proof 9]   BOL-R04 (SNAPSHOT): PASS
+[Proof 9]   BOL-R07 (DYNAMIC_LOOKUP, ESCALATE): outcome=ESCALATED exception=None detail={'reason': 'dynamic_source_unreachable', 'field': 'fuel_surcharge_pct', 'error': '<urlopen error [Errno 111] Connection refused>'}
+PASSED
+test_atl121_proofs.py::test_proof_10_fail_closed 
+[Proof 10] mandatory FAIL_CLOSED rule correctly raised: MandatoryDependencyUnavailable: BOL-R07: no service URL configured
+[Proof 10] mandatory FAIL_CLOSED rule against a configured-but-down URL correctly raised: MandatoryDependencyUnavailable: BOL-R07 DYNAMIC_LOOKUP unreachable and failure_behavior=FAIL_CLOSED: <urlopen error [Errno 111] Connection refused>
+PASSED
+test_atl121_proofs.py::test_owner_a_dual_triggers 
+[Owner A] human trigger: mechanism_id=atlas-source-first-acquisition-v1 steps=['existing_knowledge_lookup', 'explicit_gap_confirmed', 'authoritative_research', 'extraction', 'normalization_synonym_entity_resolution', 'reconciliation_conflict_handling', 'ontology_mapping', 'validation', 'governed_persistence_candidate']
+[Owner A] downstream trigger: mechanism_id=atlas-source-first-acquisition-v1 steps=['existing_knowledge_lookup', 'explicit_gap_confirmed', 'authoritative_research', 'extraction', 'normalization_synonym_entity_resolution', 'reconciliation_conflict_handling', 'ontology_mapping', 'validation', 'governed_persistence_candidate']
+PASSED
+test_atl121_proofs.py::test_owner_b_validation_vs_promotion 
+[Owner B] validation=ValidationRecord(candidate_id='cand-detention_hours', execution_safe=True, reasons=['all_required_evidence_present'], canonical_promotion_status='PENDING')
+[Owner B] package released while promotion still PENDING: {'package_id': 'exec-pkg-cand-detention_hours', 'consumer_scope': 'MALKOM_REFERENCE', 'released_at': '2026-09-26T18:59:14.143000+00:00', 'candidate_id': 'cand-detention_hours', 'source_field': 'detention_hours', 'source_value': 2, 'source_evidence_ref': 'sop-extract-2026-09-27', 'canonical_promotion_status_at_release': 'PENDING'}
+PASSED
+test_atl121_proofs.py::test_owner_c_storage_layers 
+[Owner C] registry.deployment_lineage=[{'event': 'RELEASED', 'at': '2026-09-26T18:59:14.144812+00:00'}]
+[Owner C] runtime_cache_copy.deployment_lineage=[{'event': 'RELEASED', 'at': '2026-09-26T18:59:14.144812+00:00'}, {'event': 'RUNTIME_CACHE_ONLY_MUTATION'}]
+PASSED
+test_atl121_proofs.py::test_owner_d_fast_path 
+[Owner D] fast-path chain result: {
+  "acquisition": "AcquisitionResult(field_name='detention_hours', requester_type='DOWNSTREAM_EXECUTION', mechanism_id='atlas-source-first-acquisition-v1', trace_id='a91d8848-98d3-4244-8cd2-d319bea7fa8e', steps=['existing_knowledge_lookup', 'explicit_gap_confirmed', 'authoritative_research', 'extraction', 'normalization_synonym_entity_resolution', 'reconciliation_conflict_handling', 'ontology_mapping', 'validation', 'governed_persistence_candidate'])",
+  "candidate": "{'candidate_id': 'cand-detention_hours', 'field_name': 'detention_hours', 'value': 2, 'evidence_ref': 'acquired-via-a91d8848-98d3-4244-8cd2-d319bea7fa8e'}",
+  "validation": "ValidationRecord(candidate_id='cand-detention_hours', execution_safe=True, reasons=['all_required_evidence_present'], canonical_promotion_status='PENDING')",
+  "package": "{'package_id': 'exec-pkg-cand-detention_hours', 'consumer_scope': 'MALKOM_REFERENCE', 'released_at': '2026-09-26T18:59:14.145563+00:00', 'candidate_id': 'cand-detention_hours', 'source_field': 'detention_hours', 'source_value': 2, 'source_evidence_ref': 'acquired-via-a91d8848-98d3-4244-8cd2-d319bea7fa8e', 'canonical_promotion_status_at_release': 'PENDING'}"
+}
+PASSED
+test_atl121_proofs.py::test_owner_e_lineage 
+[Owner E] package manifest: id=bol-lineage-demo version=1.0 hash=a4d5916bc93441690ef4b127c020b4e6e9fee6f0e2ea26dcc0b566bb6280d033 source_evidence_ref=atl60-ltl03-bol-universe-v1 consumer_scope=MALKOM_REFERENCE
+[Owner E] runtime execution log entry joins back to package: {'package_id': 'bol-lineage-demo', 'package_version': '1.0', 'package_hash': 'a4d5916bc93441690ef4b127c020b4e6e9fee6f0e2ea26dcc0b566bb6280d033', 'rule_id': 'BOL-R01', 'outcome': 'PASS'}
+PASSED
+test_atl121_proofs.py::test_owner_f_fail_closed_unsafe_candidates 
+[Owner F] validation of unsafe candidate: ValidationRecord(candidate_id='cand-bad', execution_safe=False, reasons=['missing_required_evidence:value,evidence_ref'], canonical_promotion_status='PENDING')
+[Owner F] build_scoped_package correctly refused the unsafe candidate
+PASSED
+
+============================== 16 passed in 2.06s ==============================

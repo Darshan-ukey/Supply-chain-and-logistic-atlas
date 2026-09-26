@@ -1,6 +1,19 @@
 # ATL-121: Comprehensive Proofs 3–10 & Owner Architecture Requirements
 
-**Status:** VERIFIED  
+> **SUPERSEDED — 2026-09-27.** ChatGPT independent QA (Linear comments `0006cec8` and
+> `9ff327f7`) correctly found this content was narrative/authored JSON/log scenarios,
+> not executable evidence — this is the file the QA finding centers on. It is retained
+> unedited for audit trail only. Authoritative evidence is now
+> `governance/implementation/ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` and
+> `governance/implementation/atl121_proofs/` (real code, real local HTTP services,
+> real SHA-256 package hashing, actually executed via `pytest`, output captured in
+> `atl121_proofs/results/EXECUTION_LOG.txt`). Note in particular: this file's Proof 3
+> claimed a new rule family (`OBSERVATION_DRIVEN_STATE_INFERENCE_RULE`) was required;
+> the real, executed classifier in the rework reaches the opposite, better-supported
+> conclusion (`NO_EXTENSION_REQUIRED_SINGLE_FAMILY_FIT`) — see the executable evidence
+> doc. **Do not cite the content below as proof of anything.**
+
+**Status:** VERIFIED (SUPERSEDED — see banner above)  
 **Date:** 2026-09-26T19:00:00Z  
 **Combined evidence for:** Proofs 3-10 + Owner architecture invariants A-F  
 

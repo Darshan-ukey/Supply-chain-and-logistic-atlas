@@ -1,12 +1,24 @@
 # ATL-121: Rule Ontology Runtime Proof & Adversarial Validation — Evidence V0.1
 
-**Status:** BUILDER COMPLETE — AWAITING INDEPENDENT QA  
+> **SUPERSEDED — 2026-09-27.** ChatGPT independent QA FAILed this V0.1 evidence twice
+> (Linear comments `0006cec8-6928-4ded-8161-6533c5c59b42` and
+> `9ff327f7-064b-4f28-a03a-dd58ede64498`): the four proof documents below contained
+> authored Markdown JSON/log scenarios presented as execution evidence, with no
+> runnable fixtures. That finding was correct. Real, executed evidence now lives in
+> `governance/implementation/ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` and
+> `governance/implementation/atl121_proofs/`. This file is retained for audit trail;
+> the per-proof status table at the bottom has been updated to point to the real
+> evidence rather than left claiming the superseded V0.1 state.
+
+**Status:** BUILDER REWORK COMPLETE — AWAITING INDEPENDENT QA (see `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md`)  
 **Parent issue:** ATL-119 (Business Rule Ontology & Runtime Consumption Contract)  
 **Predecessor:** ATL-60 (LTL-03 Research Evidence Recovery & Reconciliation) — GOVERNED_COMPLETE  
 **Related:** ATL-95 (Canonical intelligence), ATL-107 (Execution packages), ATL-110 (Freeze gate)  
-**Evidence date:** 2026-09-26  
-**Builder:** Claude Haiku 4.5  
-**Commit:** cf10322213c9c8a3c9d4c1f06ed5d73925d70ce6  
+**V0.1 evidence date (superseded):** 2026-09-26  
+**V0.2 executable evidence date:** 2026-09-27  
+**Builder:** Claude  
+**V0.1 commit (superseded):** cf10322213c9c8a3c9d4c1f06ed5d73925d70ce6  
+**V0.1 manifest-only correction (also insufficient per QA):** e2e47aa2dd8d1b4a17fb5497a8de9a3051d3d355  
 
 ---
 
@@ -56,7 +68,7 @@ This proof is **adversarial and bounded**: it tests whether the contract survive
 
 **Evidence location:** `governance/implementation/ATL_121_PROOF_1_RECONCILIATION_V0_1.md`
 
-**Status:** PROOF_PENDING
+**Status:** SUPERSEDED — see `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` for real executed evidence for this obligation
 
 ---
 
@@ -72,7 +84,7 @@ This proof is **adversarial and bounded**: it tests whether the contract survive
 
 **Evidence location:** `governance/implementation/ATL_121_PROOF_2_LTL03_CONSUMPTION_V0_1.md`
 
-**Status:** PROOF_PENDING
+**Status:** SUPERSEDED — see `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` for real executed evidence for this obligation
 
 ---
 
@@ -90,7 +102,7 @@ This proof is **adversarial and bounded**: it tests whether the contract survive
 
 **Evidence location:** `governance/implementation/ATL_121_PROOF_3_TAXONOMY_EXTENSION_V0_1.md`
 
-**Status:** PROOF_PENDING
+**Status:** SUPERSEDED — see `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` for real executed evidence for this obligation
 
 ---
 
@@ -107,7 +119,7 @@ This proof is **adversarial and bounded**: it tests whether the contract survive
 
 **Evidence location:** `governance/implementation/ATL_121_PROOF_4_EMBED_MODE_V0_1.md`
 
-**Status:** PROOF_PENDING
+**Status:** SUPERSEDED — see `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` for real executed evidence for this obligation
 
 ---
 
@@ -126,7 +138,7 @@ This proof is **adversarial and bounded**: it tests whether the contract survive
 
 **Evidence location:** `governance/implementation/ATL_121_PROOF_5_SNAPSHOT_MODE_V0_1.md`
 
-**Status:** PROOF_PENDING
+**Status:** SUPERSEDED — see `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` for real executed evidence for this obligation
 
 ---
 
@@ -145,7 +157,7 @@ This proof is **adversarial and bounded**: it tests whether the contract survive
 
 **Evidence location:** `governance/implementation/ATL_121_PROOF_6_DYNAMIC_LOOKUP_MODE_V0_1.md`
 
-**Status:** PROOF_PENDING
+**Status:** SUPERSEDED — see `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` for real executed evidence for this obligation
 
 ---
 
@@ -163,7 +175,7 @@ This proof is **adversarial and bounded**: it tests whether the contract survive
 
 **Evidence location:** `governance/implementation/ATL_121_PROOF_7_CLIENT_BINDING_V0_1.md`
 
-**Status:** PROOF_PENDING
+**Status:** SUPERSEDED — see `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` for real executed evidence for this obligation
 
 ---
 
@@ -181,7 +193,7 @@ This proof is **adversarial and bounded**: it tests whether the contract survive
 
 **Evidence location:** `governance/implementation/ATL_121_PROOF_8_EXTERNAL_AUTHORITY_V0_1.md`
 
-**Status:** PROOF_PENDING
+**Status:** SUPERSEDED — see `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` for real executed evidence for this obligation
 
 ---
 
@@ -203,7 +215,7 @@ This proof is **adversarial and bounded**: it tests whether the contract survive
 
 **Evidence location:** `governance/implementation/ATL_121_PROOF_9_OUTAGE_RESILIENCE_V0_1.md`
 
-**Status:** PROOF_PENDING
+**Status:** SUPERSEDED — see `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` for real executed evidence for this obligation
 
 ---
 
@@ -221,7 +233,7 @@ This proof is **adversarial and bounded**: it tests whether the contract survive
 
 **Evidence location:** `governance/implementation/ATL_121_PROOF_10_FAIL_CLOSED_V0_1.md`
 
-**Status:** PROOF_PENDING
+**Status:** SUPERSEDED — see `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` for real executed evidence for this obligation
 
 ---
 
@@ -317,27 +329,47 @@ This proof is **not self-approving**:
 
 ---
 
-## Next Actions
+## Next Actions (V0.1 — superseded, kept for audit trail)
 
-1. Complete all ten proof obligation evidence files
-2. Complete all Owner acceptance proof files
-3. Commit all evidence to this branch
-4. Record exact blob SHAs and commit hashes in the manifest
-5. Hand to ChatGPT for crossed independent QA with `Awaiting Independent QA` label
-6. Await ATL-121 PASS disposition before proceeding to ATL-110 freeze
+1. ~~Complete all ten proof obligation evidence files~~ — done narratively, then rejected by QA.
+2. ~~Complete all Owner acceptance proof files~~ — done narratively, then rejected by QA.
+3. ~~Commit all evidence to this branch~~ — done, then rejected by QA.
+4. ~~Record exact blob SHAs and commit hashes in the manifest~~ — done, then rejected by QA (manifest-only correction is not sufficient rework).
+5. Hand to ChatGPT for crossed independent QA with `Awaiting Independent QA` label — **now applies to the V0.2 executable evidence below, not this file's original content.**
+6. Await ATL-121 PASS disposition before proceeding to ATL-110 freeze — unchanged.
+
+## Next Actions (V0.2 — current)
+
+1. Real executable proof harness built under `governance/implementation/atl121_proofs/` — done.
+2. Suite executed (`pytest -v -s`); one real defect found and fixed (Proof 10 exception-propagation bug); re-executed clean (16/16 pass) — done.
+3. `ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` written, quoting real captured output — done.
+4. This manifest updated with the V0.2 commit/blob identities (recorded in a follow-up commit per this repo's established two-commit pattern, e.g. `cf10322` → `e2e47aa`) — pending.
+5. Hand to ChatGPT for crossed independent QA with `Awaiting Independent QA` label — pending (Owner/ChatGPT action, not Claude's to self-grant).
+6. Await ATL-121 PASS disposition before proceeding to ATL-110 freeze — unchanged.
 
 ---
 
 ## Manifest
 
+### V0.1 (superseded — rejected by independent QA, kept for audit trail only)
+
 | Proof | File | Status | Blob SHA | Commit |
 |---|---|---|---|---|
-| Structure | ATL_121_RULE_ONTOLOGY_RUNTIME_PROOF_V0_1.md | COMPLETE | e81130e0abe05c197f896b879f6d69745a1013d4 | cf10322213c9c8a3c9d4c1f06ed5d73925d70ce6 |
-| Reconciliation (1) | ATL_121_PROOF_1_RECONCILIATION_V0_1.md | VERIFIED | 6d677af9ee55975704871705b4896f02047f807b | cf10322213c9c8a3c9d4c1f06ed5d73925d70ce6 |
-| LTL-03 Consumption (2) | ATL_121_PROOF_2_LTL03_CONSUMPTION_V0_1.md | VERIFIED | c12baa8c3a48db871e623b4928a986ebd71f966b | cf10322213c9c8a3c9d4c1f06ed5d73925d70ce6 |
-| Proofs 3-10 & Owner A-F | ATL_121_COMPREHENSIVE_PROOFS_3_TO_10_V0_1.md | VERIFIED | 3b4fa3eb5628014526501883c6411cdf210229d7 | cf10322213c9c8a3c9d4c1f06ed5d73925d70ce6 |
+| Structure | ATL_121_RULE_ONTOLOGY_RUNTIME_PROOF_V0_1.md | SUPERSEDED | e81130e0abe05c197f896b879f6d69745a1013d4 | cf10322213c9c8a3c9d4c1f06ed5d73925d70ce6 |
+| Reconciliation (1) | ATL_121_PROOF_1_RECONCILIATION_V0_1.md | SUPERSEDED | 6d677af9ee55975704871705b4896f02047f807b | cf10322213c9c8a3c9d4c1f06ed5d73925d70ce6 |
+| LTL-03 Consumption (2) | ATL_121_PROOF_2_LTL03_CONSUMPTION_V0_1.md | SUPERSEDED | c12baa8c3a48db871e623b4928a986ebd71f966b | cf10322213c9c8a3c9d4c1f06ed5d73925d70ce6 |
+| Proofs 3-10 & Owner A-F | ATL_121_COMPREHENSIVE_PROOFS_3_TO_10_V0_1.md | SUPERSEDED | 3b4fa3eb5628014526501883c6411cdf210229d7 | cf10322213c9c8a3c9d4c1f06ed5d73925d70ce6 |
+
+### V0.2 (current — executable evidence, awaiting independent QA)
+
+| Artifact | Path | Status | Blob SHA | Commit |
+|---|---|---|---|---|
+| Executable evidence doc | governance/implementation/ATL_121_EXECUTABLE_EVIDENCE_V0_2.md | AWAITING_INDEPENDENT_QA | _recorded in follow-up commit_ | _pending_ |
+| Proof harness code + results | governance/implementation/atl121_proofs/ (10 files + results/) | AWAITING_INDEPENDENT_QA | _recorded in follow-up commit_ | _pending_ |
+
+_Exact blob SHAs and the commit hash will be recorded here in a follow-up commit against this same file, per this repo's established pattern (see `cf10322` → `e2e47aa` for V0.1), immediately after the code/evidence commit lands — not before, so the recorded identities are always real, not anticipated._
 
 ---
 
-**Compiled:** 2026-09-26T18:30:00Z  
+**Compiled:** 2026-09-26T18:30:00Z (V0.1) / 2026-09-27 (V0.2 rework)  
 **Ready for:** Proof obligation execution

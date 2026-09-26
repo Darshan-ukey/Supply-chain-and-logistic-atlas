@@ -100,3 +100,37 @@ Safe resume point:
 
 Next exact action:
 - Claude begins ATL-121 (ATL-119A — Rule Ontology Runtime Proof & Adversarial Validation) build: create task manifest, reconcile rule model against OKv2/WD/ATL-60 evidence, classify a bounded LTL-03/BOL rule set, then attempt the taxonomy-extension and EMBED/SNAPSHOT/DYNAMIC_LOOKUP/client-binding/external-authority/outage/fail-closed proofs. Hand off to ChatGPT for independent QA when a bounded, evidenced slice is ready. No Supabase mutation authorized.
+
+## 2026-09-27 00:25 — Claude — ATL-121 rework PRE_ACTION (reconciling stale shared log against Linear-recorded QA FAIL)
+Classification: VERIFIED_REPOSITORY_FACT
+Checkpoint: PRE_ACTION
+
+Evidence inspected:
+- This file's last entry (2026-09-26 17:58) predates two ChatGPT independent-QA findings recorded only in the Linear Shared Baton Log document (`0692fc20-7dfe-425a-8738-bf740555b698`) and as ATL-121 issue comments `0006cec8-6928-4ded-8161-6533c5c59b42` and `9ff327f7-064b-4f28-a03a-dd58ede64498`. Per Standard §3, this file was stale relative to Linear-recorded state; reconciling now before further action.
+- ATL-121 issue (Linear): status In Progress, labels `Agent Ready` + `Agent — Claude` + `Autonomous Rework` — correctly reflecting a QA-FAIL/rework state, not a stale duplicate-pickup risk.
+- Builder commit `cf10322213c9c8a3c9d4c1f06ed5d73925d70ce6` and rework commit `e2e47aa2dd8d1b4a17fb5497a8de9a3051d3d355` on branch `darshanukey/atl-121-atl-119a-rule-ontology-runtime-proof-adversarial-validation` (current HEAD; branch is up to date with origin, working tree clean).
+
+Action / finding:
+- ChatGPT independent QA on ATL-121 ran twice and returned **FAIL** both times. Finding (verbatim substance): the four committed proof Markdown files (`ATL_121_PROOF_1_RECONCILIATION_V0_1.md`, `ATL_121_PROOF_2_LTL03_CONSUMPTION_V0_1.md`, `ATL_121_COMPREHENSIVE_PROOFS_3_TO_10_V0_1.md`, plus the structure/manifest file) contain **authored JSON/log scenarios presented as if they were execution evidence**, not actual runnable fixtures/harnesses with machine-generated, observed output. My own rework commit `e2e47aa` only corrected manifest bookkeeping (status labels, blob SHAs) without changing the underlying evidence — ChatGPT correctly rejected that as insufficient a second time.
+- This is a legitimate finding, not a false-positive QA block. I am treating it as such rather than contesting it. Prior proofs 4-10 (EMBED/SNAPSHOT/DYNAMIC_LOOKUP/client-binding/external-authority/outage/fail-closed) must be rebuilt as genuinely executable code, actually run, with real captured stdout/results — not narrative Markdown.
+
+Files / branches / components affected (planned, not yet made):
+- New directory `governance/implementation/atl121_proofs/` containing runnable Python modules (rule ontology model, execution-package builder with real SHA-256 hashing, an in-process local HTTP "Atlas rule service" for DYNAMIC_LOOKUP/CLIENT_SYSTEM_LOOKUP, an explicitly-labeled local mock "external authority" service standing in for NMFTA since this sandboxed environment has no authorized outbound path to a real external regulatory API, and a pytest suite exercising all 10 obligations + Owner A-F).
+- Rewritten proof Markdown files will quote actual captured output from a real `pytest -v -s` run (redirected to a log file) rather than hand-authored "as-if" scenarios, and will explicitly label the external-authority and client-system components as local mocks/simulations, per QA requirement #4.
+
+Audit / test result: not yet run — this is the PRE_ACTION entry authorizing the work before it starts.
+
+Impact / guardrail:
+- No Supabase mutation. No Vercel action. No canonical WD/readiness rebuild (ATL-95 scope) and no three-consumer execution-package build (ATL-107 scope) — this stays bounded to ATL-121's own runtime-proof obligation.
+- Mocks/simulations will be labeled explicitly in both code (module/class names) and evidence docs; nothing will be presented as an observed real external call when it is a local stand-in.
+
+Current/Demo/Target effect:
+- CURRENT: no demo-sprint work in progress.
+- DEMO: not applicable.
+- TARGET: ATL-121 remains the direct blocker for ATL-119 closure and ATL-110 freeze eligibility until this rework passes crossed independent QA.
+
+Safe resume point:
+- `darshanukey/atl-121-atl-119a-rule-ontology-runtime-proof-adversarial-validation` @ `e2e47aa2dd8d1b4a17fb5497a8de9a3051d3d355` (working tree clean).
+
+Next exact action:
+- Build the executable proof harness described above, actually execute it, persist real machine-generated results, rewrite the four proof documents to cite that real evidence (reproducible commands + real output excerpts), update the manifest, then hand back to ChatGPT with `Agent — ChatGPT` + `Awaiting Independent QA` labels. No Owner action required for this step.

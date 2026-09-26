@@ -1,6 +1,14 @@
 # ATL-121 Proof 1: Rule Model Reconciliation Against Operational Knowledge & Work Decomposition
 
-**Status:** VERIFIED  
+> **SUPERSEDED — 2026-09-27.** ChatGPT independent QA (Linear comments `0006cec8` and
+> `9ff327f7`) correctly found this content was narrative/authored, not executable
+> evidence. It is retained unedited for audit trail only. Authoritative evidence is now
+> `governance/implementation/ATL_121_EXECUTABLE_EVIDENCE_V0_2.md` and
+> `governance/implementation/atl121_proofs/` (real, executed code — see
+> `test_proof_1_reconciliation` in `test_atl121_proofs.py`). **Do not cite the content
+> below as proof of anything.**
+
+**Status:** VERIFIED (SUPERSEDED — see banner above)  
 **Date:** 2026-09-26T18:35:00Z  
 **Evidence source:** Operational Knowledge Contract v2, Frozen Work Decomposition V1, Business Rule Ontology V0.1 Candidate  
 
