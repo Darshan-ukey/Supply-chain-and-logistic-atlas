@@ -277,8 +277,8 @@ Task: BOL_DIGITIZATION
 RuleSet:
   BOL_CORE_V7        -> EMBED / DETERMINISTIC_EXPRESSION
   US_HAZMAT_V4       -> projection-selected SNAPSHOT / evaluation mode selected from the bound input representation
-  NMFC_REFERENCE_VX  -> DYNAMIC_LOOKUP / REFERENCE_LOOKUP
-  CLIENT_REF_RULES   -> CLIENT_SYSTEM_LOOKUP or versioned CLIENT_BINDING
+  NMFC_REFERENCE_VX  -> EXTERNAL_AUTHORITY / REFERENCE_LOOKUP (NMFTA is the declared external authority)
+  CLIENT_REF_RULES   -> CLIENT_SYSTEM_LOOKUP / CLIENT_BINDING
   AMBIGUITY_RULES    -> projection-selected reasoning/HITL handling
 ```
 
