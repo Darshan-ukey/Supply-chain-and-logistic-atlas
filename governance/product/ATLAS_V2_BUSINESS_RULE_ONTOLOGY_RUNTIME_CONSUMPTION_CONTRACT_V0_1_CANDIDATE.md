@@ -130,6 +130,7 @@ The following families are the **current seed taxonomy**. They are not the only 
 
 ### Evidence and audit
 - EVIDENCE_RULE
+- EVIDENCE_SUFFICIENCY_RULE — gates an assertion, derivation, cardinality, classification or other knowledge claim until the governed evidence required to support that claim has been recovered and validated; distinct from confidence/ambiguity handling after evidence exists
 - AUDIT_RULE
 - TRACEABILITY_RULE
 
@@ -215,6 +216,8 @@ Where deterministic execution is sufficient, do not rely on an LLM merely becaus
 ## 7. Distribution mode — downstream runtime-projection property
 
 `distribution_mode` is **not canonical rule content**. It is chosen by the governed runtime projection/release based on the executor, authority, freshness requirement and operational dependency. A canonical rule can be EMBED for one consumer and DYNAMIC_LOOKUP for another without creating two canonical business truths.
+
+This boundary is governed by frozen Canonical WorkDefinition V1 §8: distribution modes, runtime endpoints/connectors/adapters, queues, mappings, packaging mechanics and other runtime structure MUST NOT appear in a canonical WorkDefinition. The canonical rule envelope's `runtime projection requirements` field is therefore limited to stable semantic requirement references/constraints needed by a later projection (for example, an external-authority requirement, freshness constraint, or governed client-binding requirement). It MUST NOT contain `distribution_mode`, executor configuration, service endpoints, connector identities, runtime mappings, prompts, queues, or other runtime implementation structure. `distribution_mode` and concrete runtime requirements are materialized only downstream of Canonical WorkDefinition, after client binding where applicable, in the bounded runtime projection.
 
 Seed distribution modes:
 - EMBED — rule is packaged directly into the version-closed runtime package;
