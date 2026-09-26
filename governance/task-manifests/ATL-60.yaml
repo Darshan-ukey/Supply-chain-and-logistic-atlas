@@ -5,8 +5,8 @@ execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-60/atl-49a-ltl-03-research-evidence-recovery-and-reconciliation"
 manifest_status: ACTIVE
-last_updated: "2026-09-24"
-status_detail: "ATL-60 physical-design chain: ATL-90/ATL-86 closed; ATL-94 CI gate GOVERNED_COMPLETE; ATL-82 V0.3 has its ATL-94 CI executable proof and passed ATL-83 bounded independent re-QA (pass 3, 2026-09-24). No schema is applied: application needs Owner authorization and a separately governed apply task. Z6 readiness persistence is split to ATL-92; P6.1/P6.2 hardening to ATL-93. No canonical mutation authorized."
+last_updated: "2026-09-26"
+status_detail: "Owner D3=A recorded 2026-09-26. ATL-82 physical-design scope is GOVERNED_COMPLETE. Separate governed apply task ATL-123 created; creation does not authorize Supabase mutation. ATL-123 retains ATL-83 pass-3 F5 release controls and explicit Owner authorization. No canonical mutation authorized."
 
 governing_inputs:
   - type: github_standard
@@ -141,6 +141,11 @@ superseded_outputs:
     reason: "Canonical shared-log authority; execution-readiness branch copy diverged and is non-authoritative for pickup."
 
 qa_and_decisions:
+  - disposition: OWNER_D3_A
+    date: "2026-09-26"
+    scope: "Close ATL-82 physical-design scope as GOVERNED_COMPLETE and separate any Supabase apply into governed ATL-123."
+    apply_task: ATL-123
+    does_not_authorize: "Supabase mutation or canonical promotion."
   - disposition: PASS_WITH_BINDING_CORRECTIONS
     source: claude_chatGPT.md
     branch: atlas-governance-registry-v2.1
@@ -157,7 +162,7 @@ qa_and_decisions:
     does_not_authorize: "Any migration or canonical mutation."
 
 current_checkpoint: "ATL-90 PASS and ATL-86 closed. ATL-83 pass 1 failed ATL-82 V0.1 as written. Owner D1=A split Z6 readiness persistence to ATL-92; D2 created ATL-93 for protected P6.1/P6.2 hardening. ATL-82 V0.2 bounded re-QA failed B1/B2. ATL-94 executable CI gate GOVERNED_COMPLETE. ATL-82 V0.3 (blob 31e9f4ca8c3877519dda71f84b82502d7476ff86): ATL-94 CI run 35999395289 PASS, then ATL-83 pass-3 bounded independent re-QA PASS (evidence commit f6960e87b7ab5a59b82994a6d42b6deefb04e12b). The physical-design candidate is verified; nothing is applied. No Supabase mutation."
-next_action: "Owner decides D3 (close ATL-82 as GOVERNED_COMPLETE with any apply in a new governed task, recommended; or hold ATL-82 at OWNER_AUTHORIZATION_REQUIRED) and whether to authorize a governed apply task for the V0.3 schema under ATL-83 pass-3 condition F5. Canonical Supabase data mutation/promotion stays blocked on its own release conditions. ATL-92 and ATL-93 continue separately; before either produces DDL, extend the ATL-94 executable gate to their SQL (ATL-83 R9); before any apply, move ATL-94 CI to PostgreSQL 17 (R10)."
+next_action: "D3=A is resolved. ATL-123 is the sole governed path for applying ATL-82 V0.3 and remains at Owner authorization gate; do not mutate Supabase until ATL-123 F5 release controls and explicit Owner authorization are satisfied. Continue other independently authorized ATL-60 evidence/reconciliation work per baton/dependencies."
 
 open_items:
   - "Logical-design erratum C3: relationship lifecycle/status must be represented consistently in the logical contract and physical design before final freeze."
