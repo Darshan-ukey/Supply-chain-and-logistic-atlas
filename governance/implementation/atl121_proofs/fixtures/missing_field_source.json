@@ -1,0 +1,12 @@
+{
+  "authority": "ATL-121 bounded committed source fixture",
+  "source_type": "GOVERNED_TEST_FIXTURE",
+  "scope": "BOL missing-field proof only; not canonical operational truth",
+  "fields": [{
+    "field_name": "detention_authorization_code",
+    "canonical_name": "detention_authorization_code",
+    "aliases": ["detention auth code", "detention approval code"],
+    "value": "AUTH-REQ",
+    "ontology_entity": "BOL_FIELD"
+  }]
+}
