@@ -53,9 +53,8 @@ A material rule should carry, where applicable:
 - epistemic / knowledge state;
 - client_binding_required;
 - related rules / dependencies;
-- evaluation_mode;
-- distribution_mode;
-- runtime requirements;
+- taxonomy_version;
+- runtime projection requirements (references only; executor-specific binding is downstream);
 - evidence/audit requirements;
 - failure / escalation / recovery behavior;
 - Z0–Z7 ownership and governing contract where material.
@@ -181,9 +180,11 @@ If a new domain/process reveals a materially different rule concept:
 The ontology therefore evolves from evidence:
 **new Operational Knowledge → candidate semantic pattern → taxonomy review → governed extension**.
 
-## 6. Evaluation mode — how a rule is enforced
+## 6. Evaluation mode — downstream executor-binding property
 
-Rule family and evaluation mode are independent dimensions.
+`evaluation_mode` is **not canonical rule content**. Canonical Atlas truth defines the business obligation and semantics; the evaluation mode is selected later when that rule is bound/projected to an executor and available input representation. The same canonical rule may therefore have different evaluation modes across runtime projections without changing its business meaning.
+
+Rule family and evaluation mode are independent dimensions, but they live in different layers: `rule_family` is canonical semantic classification; `evaluation_mode` belongs to the bounded runtime projection / executor binding.
 
 Seed evaluation modes:
 - DETERMINISTIC_EXPRESSION
@@ -203,7 +204,9 @@ The list is extensible under the same evidence-driven extension rule.
 
 Where deterministic execution is sufficient, do not rely on an LLM merely because the consuming runtime contains AI.
 
-## 7. Distribution mode — how the executor receives the rule
+## 7. Distribution mode — downstream runtime-projection property
+
+`distribution_mode` is **not canonical rule content**. It is chosen by the governed runtime projection/release based on the executor, authority, freshness requirement and operational dependency. A canonical rule can be EMBED for one consumer and DYNAMIC_LOOKUP for another without creating two canonical business truths.
 
 Seed distribution modes:
 - EMBED — rule is packaged directly into the version-closed runtime package;
@@ -253,17 +256,22 @@ A runtime projection should specify, for each material rule/rule set:
 - required client binding;
 - failure behavior;
 - evidence/audit capture;
-- refresh/revalidation policy.
+- refresh/revalidation policy;
+- `taxonomy_version` of the canonical rule;
+- explicit `failure_behavior` chosen from `FAIL_CLOSED`, `ROUTE_HUMAN`, `RETRY_THEN_FAIL_CLOSED`, `USE_VALID_SNAPSHOT`, or `EXTERNAL_AUTHORITY_FALLBACK` where that fallback is itself governed;
+- snapshot/cache identity, effective time and maximum permitted staleness where SNAPSHOT/cache is used.
+
+A runtime MUST NOT silently continue with an expired snapshot. During Atlas unavailability, an embedded/snapshotted rule may continue only while its governed validity/staleness policy remains satisfied. Once that bound is exceeded, the projection follows its explicit failure behavior; absence of such behavior fails closed.
 
 Example conceptual projection:
 ```
 Task: BOL_DIGITIZATION
 RuleSet:
   BOL_CORE_V7        -> EMBED / DETERMINISTIC_EXPRESSION
-  US_HAZMAT_V4       -> SNAPSHOT / DECISION_TABLE + deterministic validation
+  US_HAZMAT_V4       -> projection-selected SNAPSHOT / evaluation mode selected from the bound input representation
   NMFC_REFERENCE_VX  -> DYNAMIC_LOOKUP / REFERENCE_LOOKUP
   CLIENT_REF_RULES   -> CLIENT_SYSTEM_LOOKUP or versioned CLIENT_BINDING
-  AMBIGUITY_RULES    -> RETRIEVE_AND_REASON + HUMAN_DECISION threshold
+  AMBIGUITY_RULES    -> projection-selected reasoning/HITL handling
 ```
 
 ## 10. BOL example
@@ -320,16 +328,18 @@ Exact physical schema is governed separately and must reuse/extend the current A
 
 ## 14. Validation / acceptance
 
-Before this contract freezes:
+Before this contract freezes (prose review alone is insufficient for runtime-behavior items):
 - reconcile against Operational Knowledge Contract v2;
 - reconcile against Canonical Work Decomposition V1 and WorkDefinition V1;
 - reconcile ATL-60/87/95 semantics;
 - prove rule extraction/classification using LTL-03/BOL;
 - prove taxonomy can extend using at least one structurally different process/domain example;
-- prove EMBED, SNAPSHOT and DYNAMIC_LOOKUP consumption patterns;
+- prove EMBED, SNAPSHOT and DYNAMIC_LOOKUP consumption patterns against an actual governed runtime package / rule store / rule API, not a self-authored surrogate harness;
 - prove one client-binding lookup and one external-authority/reference lookup;
 - prove Atlas unavailability does not block a runtime transaction that depends only on embedded/snapshotted rules;
-- prove a mandatory dynamic rule fails closed when its required service is unavailable.
+- prove a mandatory dynamic rule fails closed when its required service is unavailable;
+- prove taxonomy_version is present on canonical rules used by the test package;
+- prove snapshot/cache expiry follows the governed staleness and failure policy during Atlas unavailability.
 
 ## 15. Non-goals
 
