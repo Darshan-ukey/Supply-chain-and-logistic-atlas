@@ -47,3 +47,36 @@ This decomposition is a candidate transformation of retained evidence, not a fro
 ## Governance disposition
 
 This artifact materially advances ATL-60 candidate structuring but does not satisfy ATL-60 exit by itself. It deliberately preserves unresolved areas rather than fabricating completion. Canonical Supabase knowledge promotion/freeze remains blocked. The next bounded step is to extend this candidate from retained governed evidence into the remaining required structures — especially complete information-concept/field semantics where evidence exists, actors/systems/interfaces, inputs/outputs, normalization rules and executor-consumable mappings — while retaining the gap states above.
+
+
+## Retained frozen-reference enrichment — 2026-09-26
+
+The bounded candidate above is now additionally reconciled against retained Drive **BOL Information Resolution Baseline v0.1 — Road LTL / Malkom — FROZEN_REFERENCE_BASELINE** (Drive ID `1oxEYH8mHZEZ4Y2D7mgLj2wlSl1d7bcmlBhT3lWV7J7Q`) and **Atlas Execution-Readiness Derivation Method v1** (Drive ID `12SRbTomHs-_sEZusn7JY2msMwEZ7zMCqOPhJE7q2vDs`). This enrichment does not alter the frozen references.
+
+### Object/relationship detail now directly evidenced
+- `TransportDocument/BOL → Consignment → Parties[] + References[] + HandlingUnits[] + LineItems[] + Instructions[] + ServiceEventWindows[]`.
+- Party roles explicitly include Shipper/Consignor, Consignee and BillTo.
+- LineItems may carry conditional DangerousGoods[].
+- Reference is typed with value, type, issuer/role and related object; PRO remains distinct where the governing LTL standard defines it.
+- Party information resolves to party instances before client-layout address bindings.
+- Handling-unit/line-item/package relationships must be resolved from governing standard/client context rather than inferred from flat labels.
+
+### Source-backed rule/validation families
+- Hazardous Flag belongs to the correct line item; unrelated text is insufficient.
+- UN/NA number, proper shipping name, hazard class/division and packing group where applicable form a linked DangerousGoods basic-description object and require cross-field validation.
+- Technical Name and inhalation-hazard Zone are conditional in specified regulatory cases; requiredWhen/prohibitedWhen must be explicit.
+- Emergency response phone and responsible person/ERI-provider identity are relationship-aware where applicable.
+- Handling Unit Count/Type and Line Item Piece Count are distinct and require explicit object hierarchy/association.
+- Description, packaging, NMFC/sub, dimensions/weight and freight class should be cross-validated where governing classification rules permit.
+
+### Explicit unresolved semantics carried as governed gaps
+Do not invent canonical meanings for: Code; SHC; Related Value; BOL Type; Reference Number Type Full Name; Handling Unit Line No; Shipper Code; exact Bill To/Consignee Account Number meanings; exact Instruction Type values; exact Time Critical Details coding. These remain `SOURCE_CONTEXT_PENDING` or `CLIENT_BINDING_REQUIRED`.
+
+### Lifecycle/identity controls now directly evidenced
+The retained execution-readiness method requires industry canonical semantics to remain separate from client operating patterns. PRO may be requestor-preassigned or carrier-assigned; it must not be hard-coded as universal booking output. Booking reference, PRO, BOL and other identifiers require a canonical reference object with assigning party/system, related object, relationship, status, uniqueness scope, creation event and authority. Source-backed eBOL operations include create, update and delete/cancel. Invalid-information and identity-not-found failures remain separate exception classes.
+
+### Measurement-integrity control
+The frozen BOL reference records 11 source-reported Accuracy values above 100%. They must be preserved as reported but cannot be interpreted as mathematical accuracy until metric name, numerator, denominator, population, sample size and counting event are defined. The retained target model is Extraction Recall; Value Accuracy; Object Association Accuracy; Semantic Classification Accuracy; Normalization Accuracy; Validation Pass Rate; Critical False-Negative Rate; HITL Rate; Validated STP Yield.
+
+### Readiness disposition
+This enrichment strengthens object, rule, identity/lifecycle and explicit-gap coverage, but does not make the candidate `DOMAIN_EXECUTION_READY`. A complete source-backed state-transition table, exhaustive rule expressions, queue authority, complete information-concept universe and unresolved client/source-context semantics remain open or separately gated. No Supabase knowledge rows are promoted by this change.
