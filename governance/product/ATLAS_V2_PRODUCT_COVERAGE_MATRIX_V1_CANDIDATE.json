@@ -180,11 +180,12 @@
       "id": "PRODUCT_CONTRACT_RECONCILIATION",
       "linear": [
         "ATL-103",
-        "ATL-110"
+        "ATL-110",
+        "ATL-118"
       ],
       "disposition": "PARTIAL_GAP_CLOSURE",
       "current_evidence": "Atlas v2 milestone, complete active candidate contract, expanded workstreams and manifests now exist in Linear/GitHub.",
-      "next_gap": "Finish artifact-level GitHub/Drive/Linear mapping, identify stale/duplicate work, independent QA/custody sync and explicit Owner freeze."
+      "next_gap": "Complete ATL-118 frozen-asset dependency mapping in ATL-103; complete ATL-119; then ATL-110 independent QA/custody sync and Owner freeze."
     }
   ],
   "preserved_concepts": [
