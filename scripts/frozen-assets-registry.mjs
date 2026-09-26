@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 
 const root=process.cwd();
 const regPath=path.join(root,'governance/frozen-assets/ASSET_REGISTER.json');
@@ -30,8 +31,7 @@ for(const a of reg.assets){
         if(actual!==a.sha256) fail.push(`${a.assetId}: checksum mismatch`);
       }
       if(a.gitBlobSha){
-        const header=Buffer.from(`blob ${bytes.length}\\0`);
-        const actualBlob=crypto.createHash('sha1').update(header).update(bytes).digest('hex');
+        const actualBlob=execFileSync('git',['hash-object','--no-filters',a.repositoryPath],{cwd:root,encoding:'utf8'}).trim();
         if(actualBlob!==a.gitBlobSha) fail.push(`${a.assetId}: gitBlobSha mismatch`);
       }
     }
