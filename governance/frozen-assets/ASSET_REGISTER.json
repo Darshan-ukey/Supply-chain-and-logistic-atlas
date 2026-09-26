@@ -1,6 +1,6 @@
 {
   "schemaVersion": "atlas-frozen-asset-register-v1",
-  "updatedAt": "2026-09-23T12:30:00+05:30",
+  "updatedAt": "2026-09-26T08:30:00+05:30",
   "repository": "Darshan-ukey/Supply-chain-and-logistic-atlas",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "latestIntegrationLock": {
@@ -25,7 +25,9 @@
       "category": "foundation",
       "current": true,
       "source": "metadata",
-      "notes": "Canonical production Universe baseline."
+      "notes": "Canonical production Universe baseline.",
+      "atlasV2Disposition": "REUSE_WITH_SUCCESSOR",
+      "atlasV2Rationale": "Preserve immutable v1 baseline; v2 needs structured canonical live-store/source-refresh/change-delta mechanics rather than mutating 7.3."
     },
     {
       "assetId": "road-ltl-1.3",
@@ -37,7 +39,9 @@
       "current": true,
       "source": "repository",
       "repositoryPath": "data/modules/road-ltl-v1.3.json",
-      "sha256": "0f855cc0b11991a0f58a76791d64def8b688f4349b0e5bd1105161241f7ad808"
+      "sha256": "0f855cc0b11991a0f58a76791d64def8b688f4349b0e5bd1105161241f7ad808",
+      "atlasV2Disposition": "REUSE_AS_IS",
+      "atlasV2Rationale": "Current v1 production baseline. Preserve; do not mutate for v2."
     },
     {
       "assetId": "ocean-fcl-0.5",
@@ -49,7 +53,9 @@
       "current": true,
       "source": "repository",
       "repositoryPath": "data/modules/ocean-fcl-v0.5.json",
-      "sha256": "71526914c600cb10c47434a5b6dc064e851062776a336ae480f37e487e108ebc"
+      "sha256": "71526914c600cb10c47434a5b6dc064e851062776a336ae480f37e487e108ebc",
+      "atlasV2Disposition": "REUSE_AS_IS",
+      "atlasV2Rationale": "Historical/pre-live v1 baseline; preserve only."
     },
     {
       "assetId": "ocean-lcl-0.5",
@@ -61,7 +67,9 @@
       "current": true,
       "source": "repository",
       "repositoryPath": "data/modules/ocean-lcl-v0.5.json",
-      "sha256": "9dbaadc129a6c8be30e9e77c7ff319af40a9f5c4226e82817c2389cde01d18e6"
+      "sha256": "9dbaadc129a6c8be30e9e77c7ff319af40a9f5c4226e82817c2389cde01d18e6",
+      "atlasV2Disposition": "REUSE_AS_IS",
+      "atlasV2Rationale": "Historical/pre-live v1 baseline; preserve only."
     },
     {
       "assetId": "road-ltl-1.4-candidate",
@@ -78,7 +86,9 @@
       "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
       "supersedes": "road-ltl-1.3",
       "custodyStatus": "GOVERNED_REPOSITORY_PATH_QA_VERIFIED_R0_2",
-      "notes": "Immutable historical execution-reference candidate; superseded as latest candidate by Road LTL 1.5, not production-promoted. R0.2 QA bound the recovered byte-identical repository path while preserving artifact-package lineage."
+      "notes": "Immutable historical execution-reference candidate; superseded as latest candidate by Road LTL 1.5, not production-promoted. R0.2 QA bound the recovered byte-identical repository path while preserving artifact-package lineage.",
+      "atlasV2Disposition": "HISTORICAL_REFERENCE_ONLY",
+      "atlasV2Rationale": "Required lineage/base evidence; not current v2 target."
     },
     {
       "assetId": "road-ltl-1.4-operational",
@@ -94,7 +104,9 @@
       "repositoryPath": "data/operational-knowledge/road-ltl-v1.4-operational.json",
       "sha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e",
       "custodyStatus": "GOVERNED_REPOSITORY_PATH_QA_VERIFIED_R0_2",
-      "notes": "Recovered immutable Road LTL 1.4 Operational Knowledge base. R0.2 QA registered the byte-identical repository path; retained as the base for Road LTL 1.5 OKv2."
+      "notes": "Recovered immutable Road LTL 1.4 Operational Knowledge base. R0.2 QA registered the byte-identical repository path; retained as the base for Road LTL 1.5 OKv2.",
+      "atlasV2Disposition": "HISTORICAL_REFERENCE_ONLY",
+      "atlasV2Rationale": "Required base for Road LTL 1.5 OK lineage; preserve immutable."
     },
     {
       "assetId": "road-ltl-1.5-candidate",
@@ -113,7 +125,9 @@
         "LTL-03"
       ],
       "universeVersion": "7.3",
-      "notes": "Validated immutable reference candidate. Lossless v1.4 inheritance; LTL-03 Operational Knowledge v2 enrichment only. NOT production promotion."
+      "notes": "Validated immutable reference candidate. Lossless v1.4 inheritance; LTL-03 Operational Knowledge v2 enrichment only. NOT production promotion.",
+      "atlasV2Disposition": "REUSE_WITH_VALIDATION",
+      "atlasV2Rationale": "Strong current execution-reference candidate; v2 must reconnect it to the final source->depth->WD->readiness chain before promotion."
     },
     {
       "assetId": "road-ltl-1.5-operational",
@@ -128,7 +142,9 @@
       "sha256": "6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9",
       "baseArtifactPath": "data/operational-knowledge/road-ltl-v1.4-operational.json",
       "baseSha256": "6e5899b2c31f7458a7959ead18950911ea916a366ac28d2aeee7077855dac13e",
-      "notes": "Frozen operational payload supporting Road LTL 1.5; only LTL-03 is overridden."
+      "notes": "Frozen operational payload supporting Road LTL 1.5; only LTL-03 is overridden.",
+      "atlasV2Disposition": "REUSE_WITH_VALIDATION",
+      "atlasV2Rationale": "Valuable LTL-03 OKv2 reference; not universal proof of all v2 Operational Knowledge."
     },
     {
       "assetId": "ocean-fcl-0.6-candidate",
@@ -143,7 +159,9 @@
       "artifactPath": "data/modules/ocean-fcl-v0.6.json",
       "sha256": "334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a",
       "supersedes": "ocean-fcl-0.5",
-      "notes": "Immutable candidate; not ACTIVE production until promotion gates pass."
+      "notes": "Immutable candidate; not ACTIVE production until promotion gates pass.",
+      "atlasV2Disposition": "REUSE_WITH_VALIDATION",
+      "atlasV2Rationale": "Useful Daughter/go-live candidate; current OK depth does not prove v2 execution depth."
     },
     {
       "assetId": "ocean-lcl-0.6-candidate",
@@ -158,7 +176,9 @@
       "artifactPath": "data/modules/ocean-lcl-v0.6.json",
       "sha256": "73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f",
       "supersedes": "ocean-lcl-0.5",
-      "notes": "Immutable candidate; not ACTIVE production until promotion gates pass."
+      "notes": "Immutable candidate; not ACTIVE production until promotion gates pass.",
+      "atlasV2Disposition": "REUSE_WITH_VALIDATION",
+      "atlasV2Rationale": "Same as FCL 0.6."
     },
     {
       "assetId": "ocean-0.6-public-safe-projections-bundle",
@@ -183,7 +203,9 @@
         "ocean-lcl@0.6": 30
       },
       "contentDepth": "OK_V1_MECHANICAL_SUMMARY_NOT_OKV2_NARRATIVE",
-      "notes": "Closes the gap flagged 2026-09-12 12:05 IST: governance/presentation/p2-projection-source-registry.json already registered ocean-fcl@0.6/ocean-lcl@0.6 as materialized:true pointing at this exact bundle path, but the file did not exist. Generated via a dedicated Ocean-specific builder (Ocean tasks use a structurally different OK-v1-era shape than the Road LTL v1.5 function expects -- direct reuse silently produced null content, caught by testing, not shipped). Every field is a direct real value or a mechanical join of real sourced items; no narrative invented; fields with no honest Ocean equivalent left null, consistent with this registrys own pre-existing informationResolutionDepth: NOT_POPULATED_AT_OKV2_DEPTH label. Verified: all 60 tasks (30 FCL + 30 LCL) render cleanly through the real, unmodified renderer; real HTTP simulation through the real route handler confirmed. Demo-branch artifact only; not promoted to any production pointer."
+      "notes": "Closes the gap flagged 2026-09-12 12:05 IST: governance/presentation/p2-projection-source-registry.json already registered ocean-fcl@0.6/ocean-lcl@0.6 as materialized:true pointing at this exact bundle path, but the file did not exist. Generated via a dedicated Ocean-specific builder (Ocean tasks use a structurally different OK-v1-era shape than the Road LTL v1.5 function expects -- direct reuse silently produced null content, caught by testing, not shipped). Every field is a direct real value or a mechanical join of real sourced items; no narrative invented; fields with no honest Ocean equivalent left null, consistent with this registrys own pre-existing informationResolutionDepth: NOT_POPULATED_AT_OKV2_DEPTH label. Verified: all 60 tasks (30 FCL + 30 LCL) render cleanly through the real, unmodified renderer; real HTTP simulation through the real route handler confirmed. Demo-branch artifact only; not promoted to any production pointer.",
+      "atlasV2Disposition": "HISTORICAL_REFERENCE_ONLY",
+      "atlasV2Rationale": "Demo/public-safe mechanical projection; non-reconstructive and not v2 canonical execution truth."
     },
     {
       "assetId": "daughter-release-ltl1.4-ocean0.6",
@@ -204,7 +226,9 @@
       "historicalDriveSourceFileId": "1CVUC40CZuhexs8oJjasBFw7OAjv4AhUI",
       "r0_2QaDriveFolderId": "1fQr01v1JWHEmADE_kOiKJh5I_iAjtc0B",
       "r0_2QaDriveArtifactFileId": "1YzFUw4s9cGEQjOZiK-H5cQUNq7EQ0C0x",
-      "notes": "Exact original release ZIP custody independently verified by SHA against both the GitHub-side committed binary and historical Drive source. Filename variants do not define identity; SHA-256 is authoritative."
+      "notes": "Exact original release ZIP custody independently verified by SHA against both the GitHub-side committed binary and historical Drive source. Filename variants do not define identity; SHA-256 is authoritative.",
+      "atlasV2Disposition": "HISTORICAL_REFERENCE_ONLY",
+      "atlasV2Rationale": "Exact release package remains critical recovery/lineage evidence; not a mutable v2 product asset."
     },
     {
       "assetId": "insideOutOutsideInOperationalResearch",
@@ -216,7 +240,9 @@
       "current": true,
       "source": "repository",
       "repositoryPath": "governance/standards/INSIDE_OUT_OUTSIDE_IN_OPERATIONAL_RESEARCH_STANDARD_V1_FROZEN.md",
-      "sha256": "d2702b1966fbc7ee1f2518175b4c3028eb30c4481322b35fc3903ece13e60fe5"
+      "sha256": "d2702b1966fbc7ee1f2518175b4c3028eb30c4481322b35fc3903ece13e60fe5",
+      "atlasV2Disposition": "REUSE_AS_GOVERNING_INPUT",
+      "atlasV2Rationale": "Still aligned with v2; supplement with explicit Source->Universe and Universe->Daughter generation contracts."
     },
     {
       "assetId": "executabilityRecursiveDecomposition",
@@ -228,7 +254,9 @@
       "current": true,
       "source": "repository",
       "repositoryPath": "governance/standards/EXECUTABILITY_AND_RECURSIVE_DECOMPOSITION_STANDARD_V1_FROZEN.md",
-      "sha256": "045fb2762d6296f37815669b66ea21c5f4314c639fff0213d7323ca4d0b5fd0d"
+      "sha256": "045fb2762d6296f37815669b66ea21c5f4314c639fff0213d7323ca4d0b5fd0d",
+      "atlasV2Disposition": "REUSE_AS_GOVERNING_INPUT",
+      "atlasV2Rationale": "Core decomposition standard remains relevant; reconcile with current frozen WD contracts and ATL-60/95."
     },
     {
       "assetId": "evidenceEpistemicClassification",
@@ -240,7 +268,9 @@
       "current": true,
       "source": "repository",
       "repositoryPath": "governance/standards/EVIDENCE_EPISTEMIC_CLASSIFICATION_V1_FROZEN.md",
-      "sha256": "78f725fb6b537c477608ec80de5ef68b6afedd584e5bfc05fd07cef29903cda7"
+      "sha256": "78f725fb6b537c477608ec80de5ef68b6afedd584e5bfc05fd07cef29903cda7",
+      "atlasV2Disposition": "REUSE_AS_GOVERNING_INPUT",
+      "atlasV2Rationale": "Preserve; v2 knowledge-state taxonomy now adds explicit UI/readiness/research integration."
     },
     {
       "assetId": "knowledgeToExecutionArchitecture",
@@ -252,7 +282,9 @@
       "current": true,
       "source": "repository",
       "repositoryPath": "governance/standards/KNOWLEDGE_TO_EXECUTION_ARCHITECTURE_V1_FROZEN.md",
-      "sha256": "e159013e571584ec9443e85474ea1879bde2ff1c004688285e1f31836ab90a3c"
+      "sha256": "e159013e571584ec9443e85474ea1879bde2ff1c004688285e1f31836ab90a3c",
+      "atlasV2Disposition": "HISTORICAL_REFERENCE_ONLY",
+      "atlasV2Rationale": "Important historical architecture, but top-level product architecture is now Product Constitution + three-product AR0.2 rebase + Atlas v2 contract."
     },
     {
       "assetId": "clientBindingResolutionPrinciple",
@@ -264,7 +296,9 @@
       "current": true,
       "source": "repository",
       "repositoryPath": "governance/standards/CLIENT_BINDING_RESOLUTION_PRINCIPLE_V1_FROZEN.md",
-      "sha256": "da94d9b06fd2a36bf58fefea33c4bbe282d345cd48aa135786011dfc92d05732"
+      "sha256": "da94d9b06fd2a36bf58fefea33c4bbe282d345cd48aa135786011dfc92d05732",
+      "atlasV2Disposition": "REUSE_AS_GOVERNING_INPUT",
+      "atlasV2Rationale": "Still valid and consistent with v2."
     },
     {
       "assetId": "daughter-production-standard-2",
@@ -276,7 +310,9 @@
       "current": true,
       "source": "repository",
       "repositoryPath": "schemas/daughter-production-standard-v2.json",
-      "sha256": "89e86a85c060c1db8daa58e4825f1746edddd0f24917b86090d67de735cdddf3"
+      "sha256": "89e86a85c060c1db8daa58e4825f1746edddd0f24917b86090d67de735cdddf3",
+      "atlasV2Disposition": "REUSE_WITH_VALIDATION",
+      "atlasV2Rationale": "Preserve structure; reconcile with structured canonical store, generated pages and change-impact graph."
     },
     {
       "assetId": "operational-knowledge-contract-1",
@@ -289,7 +325,9 @@
       "source": "repository",
       "repositoryPath": "schemas/operational-knowledge-v1.json",
       "sha256": "75cefb11bfabfcb77c7cdab8b17d2cbdb2f4cc3a684150a4da3d94be045f6846",
-      "notes": "Historical frozen schema candidate superseded as latest reference by Operational Knowledge Contract v2."
+      "notes": "Historical frozen schema candidate superseded as latest reference by Operational Knowledge Contract v2.",
+      "atlasV2Disposition": "HISTORICAL_REFERENCE_ONLY",
+      "atlasV2Rationale": "Superseded by OK Contract v2."
     },
     {
       "assetId": "operational-knowledge-contract-2-candidate",
@@ -303,7 +341,9 @@
       "repositoryPath": "schemas/operational-knowledge-contract-v2.json",
       "sha256": "d58d33c38adc0ac3e63400b66680115699c0cfa5c4c831e44b22c19eedfa4a18",
       "supersedes": "operational-knowledge-contract-1",
-      "notes": "Validated frozen reference schema. Information Resolution v1 is embedded as a first-class Operational Knowledge component."
+      "notes": "Validated frozen reference schema. Information Resolution v1 is embedded as a first-class Operational Knowledge component.",
+      "atlasV2Disposition": "REUSE_WITH_VALIDATION",
+      "atlasV2Rationale": "Strong current schema reference; reconcile against ATL-60 extensible Z1 design and future domain extensibility."
     },
     {
       "assetId": "information-resolution-contract-1",
@@ -316,7 +356,9 @@
       "source": "repository",
       "repositoryPath": "schemas/information-resolution-contract-v1.json",
       "sha256": "77224aaaef03689f1d918e41c6c2a4bd6e126dd5872782f09894c818a76dda73",
-      "notes": "Frozen supporting schema for Operational Knowledge Contract v2 and BOL information resolution."
+      "notes": "Frozen supporting schema for Operational Knowledge Contract v2 and BOL information resolution.",
+      "atlasV2Disposition": "REUSE_AS_GOVERNING_INPUT",
+      "atlasV2Rationale": "Still usable as embedded OK information semantics."
     },
     {
       "assetId": "bol-information-resolution-baseline-0.1",
@@ -339,7 +381,9 @@
           "sha256": "4a799a8cfa9252b8ebf0f191aa054d5c4942d8f9e35ffe670d1cfdefba6ae69c"
         }
       ],
-      "notes": "Frozen reference baseline preserving 76 source-reported fields, metric anomalies, authoritative source boundaries and LTL-03 information-resolution findings."
+      "notes": "Frozen reference baseline preserving 76 source-reported fields, metric anomalies, authoritative source boundaries and LTL-03 information-resolution findings.",
+      "atlasV2Disposition": "REUSE_AS_GOVERNING_INPUT",
+      "atlasV2Rationale": "Strong LTL-03/BOL evidence baseline; do not generalize as exhaustive cross-domain model."
     },
     {
       "assetId": "process-concept-crosswalk-1",
@@ -352,7 +396,9 @@
       "source": "repository",
       "repositoryPath": "data/crosswalks/process-concept-crosswalk-v1.json",
       "sha256": "0baf0a0c297ddd0740f80909df15ad44bd02128b31d24a4f0d37cdb5e0fb4094",
-      "notes": "Pre-existing governed cross-module concept layer surfaced and ownership-certified by R0.1C. Defines 22 scp-* concepts and Road LTL SPECIALIZES/APPROVED_BASELINE mappings; Ocean mapping coverage remains a later R0.5 gap. Registration does not mutate crosswalk semantics."
+      "notes": "Pre-existing governed cross-module concept layer surfaced and ownership-certified by R0.1C. Defines 22 scp-* concepts and Road LTL SPECIALIZES/APPROVED_BASELINE mappings; Ocean mapping coverage remains a later R0.5 gap. Registration does not mutate crosswalk semantics.",
+      "atlasV2Disposition": "REUSE_AS_IS",
+      "atlasV2Rationale": "Governed cross-layer concept contract remains useful; Ocean coverage gap remains separate."
     },
     {
       "assetId": "client-binding-contract-1",
@@ -364,7 +410,9 @@
       "current": true,
       "source": "repository",
       "repositoryPath": "schemas/client-binding-requirement-v1.json",
-      "sha256": "d67786bb7c8f5749fc77fd20d15b2ac4d449874a5ff22a87212ddeef861856df"
+      "sha256": "d67786bb7c8f5749fc77fd20d15b2ac4d449874a5ff22a87212ddeef861856df",
+      "atlasV2Disposition": "REUSE_WITH_VALIDATION",
+      "atlasV2Rationale": "Preserve; reconcile with enterprise-discovery ingestion and richer binding workflow."
     },
     {
       "assetId": "canonicalWorkDecompositionContract",
@@ -377,7 +425,9 @@
       "source": "repository",
       "repositoryPath": "governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_PENDING.md",
       "sha256": "3fd0884f5481abe03a9246e5794f86cb3ad28c57deb9eec8dca942a29dbcdf6b",
-      "notes": "Historical Sep-2 IMPLEMENTATION_PENDING commitment. Superseded operationally by the frozen P6.1 contract used by P6.2; retained unchanged at its historical path/hash."
+      "notes": "Historical Sep-2 IMPLEMENTATION_PENDING commitment. Superseded operationally by the frozen P6.1 contract used by P6.2; retained unchanged at its historical path/hash.",
+      "atlasV2Disposition": "HISTORICAL_REFERENCE_ONLY",
+      "atlasV2Rationale": "Historical Sep-2 pending file only; do not use as current contract."
     },
     {
       "assetId": "canonicalWorkDecompositionContractV1Frozen",
@@ -394,7 +444,14 @@
       "gitBlobSha": "046885c71dc9fb24532b398cacd47ffc522f3a1b",
       "supersedes": "canonicalWorkDecompositionContract",
       "sha256Status": "NOT_RECORDED_IN_RECOVERED_P6_1_REGISTRY; Git blob identity verified by ATL-86",
-      "notes": "Frozen P6.1 upstream contract consumed by the frozen P6.2 WorkDefinition contract. Historical pending file remains immutable."
+      "notes": "Frozen P6.1 upstream contract consumed by the frozen P6.2 WorkDefinition contract. Historical pending file remains immutable. Materialized byte-for-byte on canonical-governance repair branch from verified git blob 046885c71dc9fb24532b398cacd47ffc522f3a1b; SHA-256 must be recorded from executable validator evidence before ATL-118 closure.",
+      "atlasV2Disposition": "REUSE_AS_GOVERNING_INPUT",
+      "atlasV2Rationale": "Current frozen decomposition contract; inherit into v2 unless ATL-110 identifies a binding gap.",
+      "integrityCorrection": {
+        "correctedBy": "ChatGPT ATL-118 binding rework, 2026-09-26",
+        "finding": "Registered frozen repositoryPath was absent on canonical governance branch.",
+        "resolution": "Byte-for-byte materialization from verified source blob 046885c71dc9fb24532b398cacd47ffc522f3a1b. No regeneration or semantic modification."
+      }
     },
     {
       "assetId": "canonicalWorkDefinitionContract",
@@ -407,7 +464,9 @@
       "source": "repository",
       "repositoryPath": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_VNEXT_PENDING.md",
       "sha256": "0f91a03e837dceadb57fdb83099a5882c46a286dc7f52b37924ab117a1978550",
-      "notes": "Historical Sep-2 VNext pending commitment. Explicitly superseded by Canonical WorkDefinition Contract V1 per CANONICAL_WORKDEFINITION_CONTRACT_SUPERSESSION_V1.json; retained unchanged."
+      "notes": "Historical Sep-2 VNext pending commitment. Explicitly superseded by Canonical WorkDefinition Contract V1 per CANONICAL_WORKDEFINITION_CONTRACT_SUPERSESSION_V1.json; retained unchanged.",
+      "atlasV2Disposition": "HISTORICAL_REFERENCE_ONLY",
+      "atlasV2Rationale": "Historical VNext pending file; do not use as current contract."
     },
     {
       "assetId": "canonicalWorkDefinitionContractV1",
@@ -422,10 +481,18 @@
       "sourceBranch": "atlas-presentation-architecture-v1-p6-2",
       "sourceCommit": "c72b50025d38c6ba103a98e6b698ac2181d5017b",
       "gitBlobSha": "c074489f2cf7edacde962f7e0260e2b240d24b87",
-      "sha256": "f51dfdb0719ba4b005f287e8293634a7b031cb87d5ad23ede29658d0dfa816f4",
+      "sha256": "eee39c840249f9b8e9081d79c07d73f5b0217591194a3d9a3b69485fbdfba91b",
       "supersedes": "canonicalWorkDefinitionContract",
       "supersessionRecord": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_SUPERSESSION_V1.json",
-      "notes": "Frozen P6.2 executor-neutral WorkDefinition contract. Current governed contract; runtime-specific projections remain downstream."
+      "notes": "Frozen P6.2 executor-neutral WorkDefinition contract. Current governed contract; runtime-specific projections remain downstream.",
+      "atlasV2Disposition": "REUSE_AS_GOVERNING_INPUT",
+      "atlasV2Rationale": "Current frozen executor-neutral WD contract; preserve and validate against richer ATL-60/95 semantics.",
+      "integrityCorrection": {
+        "correctedBy": "Claude Sonnet 5 (independent QA pass, 2026-09-25)",
+        "previousClaimedHash": "f51dfdb0719ba4b005f287e8293634a7b031cb87d5ad23ede29658d0dfa816f4",
+        "finding": "Previous hash did not match any content found anywhere in repo history. File itself was absent from this branch entirely.",
+        "resolution": "File materialized onto this branch from its sole authoritative source: commit c72b50025d38c6ba103a98e6b698ac2181d5017b on branch atlas-presentation-architecture-v1-p6-2 (\"P6.2: freeze Canonical WorkDefinition Contract V1, compiler and verifier\"). Hash corrected to match that verified content."
+      }
     },
     {
       "assetId": "knowledge-execution-warehouse-schema-1",
@@ -438,7 +505,9 @@
       "source": "repository",
       "repositoryPath": "backend/supabase/001_knowledge_execution_warehouse.sql",
       "sha256": "89bf4faad892117655653dc835582b8894959304ae3bc440f31020376003ca30",
-      "notes": "Historical Sep-2 NOT_APPLIED warehouse candidate. Its atlas_work_definitions shape is incompatible with deployed P6.2 and MUST NOT be executed against the current live schema. ATL-60/ATL-82 is the governed successor physical-design path."
+      "notes": "Historical Sep-2 NOT_APPLIED warehouse candidate. Its atlas_work_definitions shape is incompatible with deployed P6.2 and MUST NOT be executed against the current live schema. ATL-60/ATL-82 is the governed successor physical-design path.",
+      "atlasV2Disposition": "DO_NOT_APPLY",
+      "atlasV2Rationale": "Explicitly incompatible with deployed P6.2/current successor path; historical architecture only."
     },
     {
       "assetId": "canvas-2.0.0",
@@ -449,7 +518,9 @@
       "category": "platform",
       "current": true,
       "source": "metadata",
-      "sha256": "bc340946d703ef25297ffd67e6de2e5879958c132722e71d95be058c5ba2c1cb"
+      "sha256": "bc340946d703ef25297ffd67e6de2e5879958c132722e71d95be058c5ba2c1cb",
+      "atlasV2Disposition": "REUSE_AS_IS",
+      "atlasV2Rationale": "Preserve byte-identical v1 shell."
     },
     {
       "assetId": "canvas-2.0.1-candidate",
@@ -525,7 +596,9 @@
         "notTested": "Live DOM rendering and any live-backend data path. Requires a browser against a real deployment; Vercel action is prohibited under the current demo release policy. This is the one open gap behind the CANDIDATE (not PRODUCTION_BASELINE) status below."
       },
       "supersedes": null,
-      "notes": "Registered under explicit Owner direction 2026-09-12 as permanent scaffolding, not demo-only throwaway. CANDIDATE status mirrors road-ltl-1.5-candidate's treatment in this same registry: hash-pinned and code/logic verified, but not yet production-promoted pending a live/visual check. canvas-2.0.0's own entry is unchanged. NOT production promotion; productionBaseline.canvas remains canvas-2.0.0."
+      "notes": "Registered under explicit Owner direction 2026-09-12 as permanent scaffolding, not demo-only throwaway. CANDIDATE status mirrors road-ltl-1.5-candidate's treatment in this same registry: hash-pinned and code/logic verified, but not yet production-promoted pending a live/visual check. canvas-2.0.0's own entry is unchanged. NOT production promotion; productionBaseline.canvas remains canvas-2.0.0.",
+      "atlasV2Disposition": "REUSE_WITH_VALIDATION",
+      "atlasV2Rationale": "Strong bridge candidate; needs v2 data integration + real browser/live validation before promotion."
     },
     {
       "assetId": "universal-ask-2.0.1",
@@ -535,7 +608,9 @@
       "status": "CERTIFIED_IN_BASELINE_PACKAGE",
       "category": "platform",
       "current": true,
-      "source": "metadata"
+      "source": "metadata",
+      "atlasV2Disposition": "REUSE_WITH_VALIDATION",
+      "atlasV2Rationale": "Preserve certified baseline; v2 requires Universal Ask across complete graph/context/Trace/Compare/readiness surfaces."
     },
     {
       "assetId": "atlas-warehouse-1",
@@ -545,7 +620,9 @@
       "status": "FROZEN_PRODUCTION_BASELINE",
       "category": "backend",
       "current": true,
-      "source": "metadata"
+      "source": "metadata",
+      "atlasV2Disposition": "HISTORICAL_REFERENCE_ONLY",
+      "atlasV2Rationale": "Preserve as v1/backend/forensic asset; must not become v2 canonical truth if Supabase structured store is adopted."
     },
     {
       "assetId": "road-ltl-v2.3-malkom-reference-projection",
@@ -563,7 +640,9 @@
       "generatorPath": "tools/malkom-projection/build-malkom-reference-projection.mjs",
       "lineage": "PROVEN_EXECUTION_REFERENCE: Road LTL V1.2 -> Domain Warehouse v2.3 -> Malkom 3.0",
       "semanticHash": "d077166ff0c1c0a0c9cffc3ba368b76a374cd15a73fc23305bd8f1719e6fcb59",
-      "notes": "22/22 adapter-compatible and materializable. NOT generated from Road LTL 1.5, Operational Knowledge v2, the P6.1 decomposition or the P6.2 compiler - the artifact declares this explicitly and its certification test enforces it by asserting no declared input matches governed-target-lineage path patterns. Known gaps preserved: 3 ESCALATE PARTIAL tasks, 176 client bindings across 8 families, 5 adapter operations not enabled. Demo-branch artifact; not a production promotion."
+      "notes": "22/22 adapter-compatible and materializable. NOT generated from Road LTL 1.5, Operational Knowledge v2, the P6.1 decomposition or the P6.2 compiler - the artifact declares this explicitly and its certification test enforces it by asserting no declared input matches governed-target-lineage path patterns. Known gaps preserved: 3 ESCALATE PARTIAL tasks, 176 client bindings across 8 families, 5 adapter operations not enabled. Demo-branch artifact; not a production promotion.",
+      "atlasV2Disposition": "HISTORICAL_REFERENCE_ONLY",
+      "atlasV2Rationale": "Valuable reference fixture; explicitly not generated from current governed Road LTL 1.5/P6 chain. ATL-95 requires a new current-lineage projection."
     },
     {
       "assetId": "d2-0-6-post-build-full-state-freeze",
@@ -581,7 +660,9 @@
       "fileCount": 721,
       "fullStateTreeHash": "f79f8c2700633dfb",
       "notARetroactivePreChangeFreeze": true,
-      "notes": "Post-build freeze of the certified demo state. Does NOT close D2.0.0's missing CREATE_PRE_CHANGE_FULL_STATE_FREEZE, which cannot be recreated retroactively and remains open."
+      "notes": "Post-build freeze of the certified demo state. Does NOT close D2.0.0's missing CREATE_PRE_CHANGE_FULL_STATE_FREEZE, which cannot be recreated retroactively and remains open.",
+      "atlasV2Disposition": "HISTORICAL_REFERENCE_ONLY",
+      "atlasV2Rationale": "Preserve as demo-state evidence only."
     }
   ],
   "executionGuards": [
@@ -605,6 +686,29 @@
       "sourceCommit": "fdfdb666d3360b1e9e4589dc0f2b49e5db32fb44",
       "disposition": "HISTORICAL_CANDIDATE_DO_NOT_APPLY",
       "reason": "Contains an atlas_work_definitions physical shape incompatible with deployed P6.2; retained as architecture history only."
+    }
+  ],
+  "changeLog": [
+    {
+      "date": "2026-09-26T08:30:00+05:30",
+      "actor": "ChatGPT",
+      "trigger": "Claude full-charter ATL-118 independent QA — B1/B2 canonical-branch binding corrections",
+      "changes": [
+        "Carried the independently verified 35-asset Atlas v2 disposition reconciliation onto the canonical-governance repair branch.",
+        "Retained corrected Canonical WorkDefinition V1 identity/hash and materialized its authoritative frozen payload.",
+        "Materialized Canonical Work Decomposition V1 from verified source blob without modification.",
+        "Preserved canonical CURRENT/LATEST cross-branch execution-contract pointers; no production promotion."
+      ]
+    },
+    {
+      "date": "2026-09-25T20:45:00+05:30",
+      "actor": "Claude Sonnet 5",
+      "trigger": "Independent QA challenge on ATL-118 (findings posted to Linear)",
+      "changes": [
+        "Added atlasV2Disposition (canonical 5-category) + atlasV2Rationale to all 35 assets, sourced from ATLAS_V2_FROZEN_ASSET_RECONCILIATION_2026-09-24.md's first-pass table.",
+        "Materialized governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md onto this branch (was entirely absent) and corrected its registered sha256 to match the sole verified source commit.",
+        "No other frozen payload content was modified. No sha256 was changed except the one factual correction above, which is independently reproducible from cited commit c72b500."
+      ]
     }
   ]
 }
