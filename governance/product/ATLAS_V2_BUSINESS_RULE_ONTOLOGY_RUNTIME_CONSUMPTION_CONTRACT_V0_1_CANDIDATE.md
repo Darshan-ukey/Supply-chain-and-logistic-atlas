@@ -165,6 +165,16 @@ The following families are the **current seed taxonomy**. They are not the only 
 - OBSERVATION_RECONCILIATION_RULE
 - KNOWLEDGE_PROMOTION_RULE
 
+### 4.1 Single-valued family, multi-valued cross-reference
+
+`rule_family` is **single-valued per rule instance** — every rule has exactly one primary family, chosen for the obligation it most directly enforces. This is deliberate: a single-valued primary key keeps ownership, versioning and change-propagation (§12) unambiguous.
+
+A rule that is *also* governed by another concern (e.g. a `CLASSIFICATION_RULE` whose applicability is itself set by federal regulation) does not become multi-family. Instead:
+- the regulatory/jurisdictional aspect is captured as a **separate, related rule** (e.g. a `REGULATORY_RULE` or `JURISDICTION_RULE` instance) using the existing `related rules / dependencies` field in the rule envelope (§3) to link them;
+- or, where the second concern is a *constraint on when the first rule applies* rather than an independent obligation, it is captured as an `applicability condition` on the primary rule (§3), not a second family tag.
+
+This was underspecified in V0.1 and is added as a clarification, not a new mechanism — §3's envelope already has both fields; this section only states which one to use and why a rule is never tagged with two families. Concretely, for the BOL/LTL-03 example worked during independent QA: a hazmat classification rule governed by 49 CFR 172.201 is `rule_family: CLASSIFICATION_RULE` with a `related_rules` link to the governing `REGULATORY_RULE` (the CFR citation), not a rule tagged `CLASSIFICATION_RULE + REGULATORY_RULE`.
+
 ## 5. Taxonomy extension rule
 
 The seed taxonomy above MUST NOT become a constraint that distorts new Operational Knowledge.
