@@ -1,12 +1,12 @@
 task_id: ATL-119
 task_title: "Business Logic & Rule Ontology — extensible taxonomy, evaluation and runtime consumption contract"
 task_status: VERIFIED_FIRST_PARTY
-status_detail: "Owner-aligned candidate contract created in GitHub, linked into Atlas v2 product contract/coverage and Linear, mirrored to Drive custody, and post-write reconciliation performed. Independent QA/freeze remains under ATL-110."
+status_detail: "Owner-aligned candidate corrected on PR #17 after targeted independent QA. C1 layer separation and C2 runtime-example inconsistencies corrected; targeted independent re-QA remains required before PASS. Runtime proofs required by contract §14 remain downstream freeze gates."
 execution_owner: ChatGPT
 decision_authority: Darshan Ukey
 linear_url: "https://linear.app/sefl-transformation/issue/ATL-119/business-logic-and-rule-ontology-extensible-taxonomy-evaluation-and"
 manifest_status: ACTIVE
-last_updated: "2026-09-24T18:03:00Z"
+last_updated: "2026-09-26T03:41:00Z"
 
 governing_inputs:
   - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
@@ -24,7 +24,7 @@ governing_inputs:
 
 current_outputs:
   - path: governance/product/ATLAS_V2_BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION_CONTRACT_V0_1_CANDIDATE.md
-    identity: "blob:a7d3f8c4762e722764e19fd9e470e864cdf38ace"
+    identity: "blob:4d3cfc7b46fdd07c1b8388e45030cceeee38bda6"
     status: VERIFIED_FIRST_PARTY
   - system: Google Drive
     title: "Atlas v2 Business Logic Rule Ontology Runtime Consumption Contract V0.1 Candidate"
@@ -51,8 +51,8 @@ qa_and_decisions:
     result: PASS_WITH_INDEPENDENT_QA_PENDING
     evidence: "GitHub + Linear + Drive post-write readback"
 
-current_checkpoint: "Rule ontology/runtime-consumption candidate is represented consistently across GitHub, Linear and Drive. Taxonomy/evaluation/distribution lists are explicitly seed/extensible. Parent product and runtime-projection tasks inherit the hybrid consumption rule."
-next_action: "ATL-119 must be independently reconciled against OKv2, frozen Work Decomposition/WorkDefinition and a structurally different domain/process before ATL-110 product freeze."
+current_checkpoint: "PR #17 candidate corrected for C1/C2 independent-QA findings. GitHub manifest identity now matches the corrected contract blob. Drive custody remains candidate/stale until governed sync threshold; §14 runtime proofs remain unresolved and must not be fabricated."
+next_action: "Claude targeted independent re-QA of PR #17 C2 and manifest identity. Do not authorize ATL-110; §14 real runtime proofs remain required before contract freeze."
 
 open_items:
   - "Independent QA/reconciliation of seed taxonomy against LTL-03/BOL and at least one structurally different domain/process."
