@@ -361,3 +361,39 @@ This contract does not:
 - freeze the seed rule-family list forever;
 - promote a new taxonomy category solely because an LLM suggested it;
 - make runtime-specific implementation details canonical business truth.
+
+## 16. Dual-trigger on-demand depth and execution-package release boundary
+
+On-demand depth has two first-class triggers into one governed research mechanism:
+1. explicit human/user demand for deeper operational/execution knowledge; and
+2. downstream execution demand when Malkom, an agent, RPA/BPM/workflow or another approved consumer requires a field, rule, decision, validation or other semantic Atlas cannot supply at the required governed depth.
+
+Both triggers converge on: existing governed knowledge lookup → explicit gap → authoritative research → extraction → normalization and synonym/alias/entity resolution → evidence reconciliation/conflict handling → ontology mapping → validation → governed persistence/reuse. A downstream request does not create a separate research truth path.
+
+### 16.1 Separate execution-validation and canonical-promotion gates
+
+The lifecycle distinguishes:
+- **VALIDATED_FOR_BOUNDED_EXECUTION** (or equivalent release state): the exact immutable candidate/version has sufficient evidence and validation for a declared consumer/scope; and
+- **canonically promoted** knowledge: the reusable semantic has separately passed Atlas promotion controls and is APPROVED/ACTIVE under the applicable canonical lifecycle.
+
+Unvalidated research is never executable truth. Canonical promotion is not a prerequisite merely to unblock a time-sensitive execution once bounded-execution validation has passed. After that common validation gate, execution release and canonical promotion may proceed independently/in parallel.
+
+If evidence is conflicting/insufficient, required client/master data is missing, or material ambiguity remains, execution fails closed or routes governed human/client/SME resolution.
+
+### 16.2 Three logical storage responsibilities
+
+1. **Atlas Knowledge Store** — durable, versioned, evidence-backed semantic truth and candidates: fields, rules, decisions, validations, relationships, provenance, epistemic/support state and promotion lifecycle.
+2. **Atlas Execution Package Registry** — a first-class durable registry of immutable/version-closed packages authorized for a bounded consumer/scope. Each package records at minimum package ID/version/hash, consumer/tool class, scope and client binding where applicable, WorkDefinition ID/version, exact knowledge/rule versions, evaluation/distribution bindings, external/reference/master dependencies, exception/failure behavior, evidence/audit requirements, validity/effective/expiry/staleness policy, source Atlas manifest/hash, release status and deployment lineage.
+3. **Downstream runtime store/cache** — the deployed/optimized representation consumed by Malkom/agent/RPA/BPM. It is not an independent source of business truth. Atlas retains authoritative package identity and lineage even where the runtime executes without Atlas connectivity.
+
+These are logical storage layers and may share physical infrastructure only where their boundaries remain mechanically enforceable. No ungoverned parallel rule truth store is permitted.
+
+### 16.3 Fast path for newly researched execution logic
+
+Downstream gap → source-first research/reconciliation → bounded-execution validation → immutable execution-package successor → downstream deployment/use.
+
+In parallel, reusable candidate knowledge follows canonical promotion. If promoted, future packages consume the canonical successor. If not promoted, the historical package remains traceable to the exact candidate/version/evidence used and the candidate cannot silently become reusable Atlas truth. One-off/client-specific logic remains execution-scoped or Client Binding as appropriate; recurrence alone does not establish universality.
+
+### 16.4 Additional acceptance proof
+
+Executable proof must demonstrate both trigger paths; a missing BOL field/rule; source-first acquisition; bounded-execution validation distinct from canonical promotion; release of an immutable package to Malkom or representative consumer without waiting for canonical promotion; subsequent promotion or non-promotion disposition; package→knowledge/evidence lineage; runtime copy/cache execution; and fail-closed handling for a candidate that is not execution-safe.
