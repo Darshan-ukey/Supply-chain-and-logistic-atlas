@@ -103,3 +103,5 @@ V2 checks include:
 - real Chromium desktop/mobile UI checks for Public and Admin layers.
 
 See `audits/v2/` and `V2_GITHUB_RELEASE_AUDIT.md`.
+
+<!-- Governance Branch V2.1 Write Verification: 2026-09-26 09:04 Asia/Kolkata UTC+05:30 Claude Haiku 4.5 -->
