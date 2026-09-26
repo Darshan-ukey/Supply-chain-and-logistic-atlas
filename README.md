@@ -47,3 +47,5 @@ npm run release:packages   # build Lab / Stable deployment folders
 This project is **locally release-certified**, not production-certified. Live deployment still requires the exact Vercel Lab E2E gate and, for confidential document testing, the approved live Gemini/provider evaluation. The isolated Supabase restore/PITR rehearsal remains deferred and is not a runtime dependency.
 
 See `RELEASE_V1.1.8.md` and `audits/v1.1.8/`.
+
+<!-- GitHub Write Verification: 2026-09-26 09:03 Asia/Kolkata - Claude Haiku 4.5 test write -->
