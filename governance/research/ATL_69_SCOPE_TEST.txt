@@ -1,1 +1,43 @@
-ATL-69 experimental scope evidence placeholder.
+ATL-69 Experimental Testable Field Scope v1.0
+Status: READY FOR INDEPENDENT QA
+Date: 2026-09-27
+Input: ATL-68 v1.1 55ef31a0faf9573b18d19a6723d076547a4fed4f
+
+FROZEN PRE-RESULT DENOMINATOR
+Source universe: 76.
+Primary document-observable test scope: 66 = 43 canonical + 14 conditional + 8 contextual document-observable + 1 AREA measure.
+Excluded: 10 = 6 CLIENT_BINDING_REQUIRED + 3 MASTER_DATA_REQUIRED + 1 SEMANTICS_UNRESOLVED.
+Runtime-only: 0.
+
+CLIENT_BINDING_REQUIRED:
+Reference Number Type Full Name; Instruction Type; Code; SHC; BOL Type; Related Value.
+Reason: local vocabulary, relationship, or Malkom/client-form meaning requires frozen source/client binding.
+
+MASTER_DATA_REQUIRED:
+Bill To Account Number; Consignee Account Number; Shipper Code.
+Reason: client/carrier identity master required.
+
+SEMANTICS_UNRESOLVED:
+ATL-68 source field #48.
+Reason: source meaning unconfirmed; do not invent ground truth.
+
+AREA:
+Malkom Line Item Square Yards is eligible when source evidence exists. Atlas representation: Measure type AREA, owner ConsignmentItem, value, unit YDK. Evidence commit ca46e78e33b00182310f839d0534af909313cb32.
+
+TIME CRITICAL DETAILS TYPE:
+Eligible for literal source extraction when present. Normalized-code scoring remains excluded until coding authority is established.
+
+CONTROLS:
+1. Freeze 66-field scope before ATL-70 ground truth and before experimental results.
+2. Never change scope because observed accuracy is favorable/unfavorable.
+3. Conditional fields score only applicable/present ground-truth cases.
+4. Preserve semantic owner/cardinality for repeating structures.
+5. Measure value and required unit are atomic.
+6. Client/master exclusions enter only a later versioned bound test after dependencies are frozen.
+7. Source field #48 cannot be scored until semantics resolve.
+8. Missing/illegible ground truth is separate from model failure.
+9. Any denominator change requires evidence, reason, versioning.
+
+RECONCILIATION:
+66 + 6 + 3 + 1 = 76.
+Acceptance: denominator frozen; 10/10 exclusions reasoned; categories separated; no cherry-picking control explicit.
