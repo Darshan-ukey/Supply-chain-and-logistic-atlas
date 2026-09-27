@@ -1,0 +1,17 @@
+name: ATL-129 clean proof
+on:
+  pull_request:
+    paths:
+      - 'governance/implementation/atl129_clean/**'
+      - 'governance/product/ATLAS_V2_BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION_CONTRACT_V0_1_CANDIDATE.md'
+      - '.github/workflows/atl129-clean-proof.yml'
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run ATL-129 deterministic proof suite
+        run: python -m unittest -v governance/implementation/atl129_clean/test_clean_proof.py
