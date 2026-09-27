@@ -428,7 +428,7 @@ F-130-04 (Asset Deprecation Enforcement) remains OPEN — CONFIRMED as the only 
 
 **Durable Evidence Archive:**
 - Supabase query results (above, live execution timestamp)
-- GitHub branch: `atlas-governance-registry-v2.1` @ `84cbcb971043386b17a71f42a795e7fb4f4039eb`
+- GitHub branch: `atlas-governance-registry-v2.1` @ `cfc92fea9d7984577a3124bbb663dfc79bc7574e` (Shared Baton Log update with materialization completion evidence)
 - Linear issue: ATL-130, status In Progress, comments with full evidence traces
 - Shared log: This entry (permanent audit record)
 
