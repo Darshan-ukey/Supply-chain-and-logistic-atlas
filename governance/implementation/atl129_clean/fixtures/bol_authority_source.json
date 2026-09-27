@@ -1,0 +1,23 @@
+{
+  "source_id": "ATL129-BOL-AUTH-001",
+  "source_type": "GOVERNED_TEST_AUTHORITY_FIXTURE",
+  "document_type": "BILL_OF_LADING",
+  "field": {
+    "canonical_name": "detention_authorization_code",
+    "aliases": ["detention auth code", "detention approval code"],
+    "rule_family": "CONDITIONAL_MANDATORY_RULE",
+    "condition": "detention_requested == true",
+    "required": true,
+    "value_domain": "non_empty_string"
+  },
+  "authority": {
+    "name": "ATL-129 bounded BOL authority fixture",
+    "scope": "ATL-129 executable proof only",
+    "not_external_observation": true
+  },
+  "provenance": {
+    "purpose": "Deterministic committed source used to prove source-first acquisition without representing a live carrier/NMFTA observation",
+    "owner": "Atlas governance",
+    "status": "TEST_AUTHORITY"
+  }
+}
