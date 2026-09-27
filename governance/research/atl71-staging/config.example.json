@@ -1,0 +1,34 @@
+{
+  "environment": "atlas-bol-staging",
+  "staging_only": true,
+  "allow_production_writeback": false,
+  "governance": {
+    "scope": {"issue": "ATL-69", "testable_fields": 66, "universe_fields": 76, "commit": "6a67854b75b567344f474ba59544717cd49770ce"},
+    "benchmark_contract": {"issue": "ATL-70", "commit": "865f2cc6ea61812db383044843a20d661ee99328"}
+  },
+  "run_manifest_required": [
+    "run_id",
+    "arm",
+    "source_sha256",
+    "corpus_manifest_sha256",
+    "scope_version",
+    "contract_version",
+    "extractor_version",
+    "scorer_version"
+  ],
+  "arms": {
+    "control": {"atlas_enrichment": false},
+    "treatment": {"atlas_enrichment": true}
+  },
+  "comparability": {
+    "require_same_source_sha256": true,
+    "require_same_corpus_manifest_sha256": true,
+    "require_same_normalized_extraction": true,
+    "require_same_truth_and_scorer": true
+  },
+  "evidence": {
+    "immutable_run_id": true,
+    "hash_artifacts": true,
+    "record_config_versions": true
+  }
+}
