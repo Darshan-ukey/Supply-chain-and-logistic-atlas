@@ -1,4 +1,4 @@
-# ATL-68 — SEFL/Malkom 76-Field Crosswalk v1.0
+# ATL-68 — SEFL/Malkom 76-Field Crosswalk v1.1
 
 Status: EXECUTION EVIDENCE — READY FOR INDEPENDENT QA
 Date: 2026-09-27
@@ -13,7 +13,8 @@ This artifact crosswalks every source-reported SEFL/Malkom field against the fro
 
 1. **SEFL/Malkom denominator and field names:** `data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json` on retained branch `road-ltl-v1.5-bol-operational-enrichment`, array `fieldPerformanceBaseline`. It contains exactly **76 rows** and preserves source-reported accuracy/extraction metrics.
 2. **Governed Drive corroboration:** `BOL Information Resolution Baseline v0.1 — Road LTL / Malkom — FROZEN_REFERENCE_BASELINE`, Drive ID `1oxEYH8mHZEZ4Y2D7mgLj2wlSl1d7bcmlBhT3lWV7J7Q`, which states scope = 76 source-reported Malkom BOL fields and preserves the same unresolved-semantics controls.
-3. **Independent comparison universe:** `governance/research/ATL_67_INDEPENDENT_BOL_FIELD_UNIVERSE_FREEZE_V1_0.md` on `atlas-governance-registry-v2.1`.
+3. **Owner operational clarification (2026-09-27):** after BOL review, Code, SHC and Related Value were not identifiable on the BOL and may be Malkom-form/client-specific; Handling Unit Line No was clarified as shipment-item/line structure when multiple shipment items/descriptions occur; square yard was clarified as a legitimate area unit for area-based commodities; Hazardous Contract Number remains semantically unresolved pending Ops/source definition.
+4. **Independent comparison universe:** `governance/research/ATL_67_INDEPENDENT_BOL_FIELD_UNIVERSE_FREEZE_V1_0.md` on `atlas-governance-registry-v2.1`.
 
 ## Coverage denominator
 
@@ -24,13 +25,13 @@ This artifact crosswalks every source-reported SEFL/Malkom field against the fro
 
 ## Classification summary
 
-- **Canonical BOL/domain: 42**
+- **Canonical BOL/domain: 43**
 - **Conditional domain: 14**
 - **Derived/contextual: 8**
-- **Atlas knowledge gap: 4**
-- **Client-specific: 3**
+- **Atlas knowledge gap: 1**
+- **Client-specific: 6**
 - **Master-data-dependent: 3**
-- **Unsupported SEFL field: 2**
+- **Unsupported SEFL field: 1**
 
 Interpretation controls:
 - **Canonical BOL/domain** = directly maps to a frozen ATL-67 semantic family/object, including client-layout aliases such as Address 2/3 → canonical `addressLines[]`.
@@ -76,7 +77,7 @@ Interpretation controls:
 | 28 | Bill To Phone Extension | 89.89 | 99.97 | Derived/contextual | Party — contact context (not frozen canonical core) | Useful party contact context, but not part of ATL-67 frozen canonical core; retain without declaring a domain gap. |
 | 29 | Bill To City | 90.31 | 87.8 | Canonical BOL/domain | Party[BillTo] — postal address/addressLines | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
 | 30 | Consignee Phone Extension | 90.36 | 99.8 | Derived/contextual | Party — contact context (not frozen canonical core) | Useful party contact context, but not part of ATL-67 frozen canonical core; retain without declaring a domain gap. |
-| 31 | Code | 90.61 | 69.47 | Atlas knowledge gap | No frozen canonical meaning; source context required | ATL-67 explicitly retains this label as SOURCE_CONTEXT_PENDING; do not invent semantics. |
+| 31 | Code | 90.61 | 69.47 | Client-specific | Malkom-form/client binding — exact meaning pending Ops | Owner BOL review did not identify this field on the BOL. Probable Malkom-form/client-specific pending Ops confirmation; not an Atlas domain gap. |
 | 32 | Consignee Account Number | 91.32 | 87.44 | Master-data-dependent | Party[Consignee] — client master identifier binding | Meaning depends on client/carrier master identity and binding; not a missing domain concept. |
 | 33 | Line Item NMFC | 91.48 | 73.86 | Canonical BOL/domain | Classification — NMFC/NMFTA family | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
 | 34 | Bill To State | 91.77 | 87.61 | Canonical BOL/domain | Party[BillTo] — postal address/addressLines | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
@@ -88,7 +89,7 @@ Interpretation controls:
 | 40 | Consignee City | 94.36 | 98.11 | Canonical BOL/domain | Party[Consignee] — postal address/addressLines | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
 | 41 | Bill To Phone | 95.55 | 98.36 | Derived/contextual | Party — contact context (not frozen canonical core) | Useful party contact context, but not part of ATL-67 frozen canonical core; retain without declaring a domain gap. |
 | 42 | Shipper State | 96.43 | 99.44 | Canonical BOL/domain | Party[Shipper/Consignor] — postal address/addressLines | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
-| 43 | SHC | 96.6 | 89.76 | Atlas knowledge gap | No frozen canonical meaning; source context required | ATL-67 explicitly retains this label as SOURCE_CONTEXT_PENDING; do not invent semantics. |
+| 43 | SHC | 96.6 | 89.76 | Client-specific | Malkom-form/client binding — exact meaning pending Ops | Owner BOL review did not identify this field on the BOL. Probable Malkom-form/client-specific pending Ops confirmation; not an Atlas domain gap. |
 | 44 | Weight | 96.8 | 99.93 | Canonical BOL/domain | Shipment / Consignment — gross/net weight (binding must select semantic owner) | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
 | 45 | Emergency Contact Phone | 96.96 | 96.65 | Conditional domain | Dangerous Goods — emergency response phone | Domain-valid only when dangerous-goods applicability/relationship conditions are satisfied. |
 | 46 | Time Critical Details Date Begin | 97.12 | 96.81 | Conditional domain | Service / Accessorial / Handling — time-critical family | Domain-valid service/event-window information; applicability depends on service/appointment context. |
@@ -103,7 +104,7 @@ Interpretation controls:
 | 55 | Time Critical Details Date End | 98.69 | 99.96 | Conditional domain | Service / Accessorial / Handling — time-critical family | Domain-valid service/event-window information; applicability depends on service/appointment context. |
 | 56 | Consignee State | 98.83 | 97.16 | Canonical BOL/domain | Party[Consignee] — postal address/addressLines | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
 | 57 | BOL Type | 99.14 | 100 | Client-specific | Transport Document / BOL — local lifecycle/type binding | Canonical family exists, but exact local vocabulary/type semantics require client/source binding. |
-| 58 | Related Value | 99.22 | 99.99 | Atlas knowledge gap | No frozen canonical meaning; source context required | ATL-67 explicitly retains this label as SOURCE_CONTEXT_PENDING; do not invent semantics. |
+| 58 | Related Value | 99.22 | 99.99 | Client-specific | Malkom-form/client binding — exact relationship pending Ops | Owner BOL review did not identify this field on the BOL. Probable Malkom-form/client-specific pending Ops confirmation; exact related object/value remains unresolved. |
 | 59 | Pro Number | 99.3 | 100 | Canonical BOL/domain | Transport Document / BOL — PRO (distinct reference) | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
 | 60 | Interline SCAC | 99.46 | 99.95 | Canonical BOL/domain | Party/Carrier identifier / reference | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
 | 61 | Bill To Email | 99.55 | 97.87 | Derived/contextual | Party — contact context (not frozen canonical core) | Useful party contact context, but not part of ATL-67 frozen canonical core; retain without declaring a domain gap. |
@@ -113,7 +114,7 @@ Interpretation controls:
 | 65 | Consignee Country | 99.97 | 97.16 | Canonical BOL/domain | Party[Consignee] — postal address/addressLines | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
 | 66 | Handling Unit Dimensions | 100.63 | 85.01 | Canonical BOL/domain | Package / Handling Unit — owned measures | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
 | 67 | Line Item Hazardous Technical Name | 100.91 | 96.45 | Conditional domain | Dangerous Goods — conditional technical name | Domain-valid only when dangerous-goods applicability/relationship conditions are satisfied. |
-| 68 | Line Item Square Yards | 101.04 | 96.98 | Unsupported SEFL field | No frozen canonical area-measure target | Area measure is not present in the frozen ATL-67 canonical measure set; requires authoritative expansion evidence. |
+| 68 | Line Item Square Yards | 101.04 | 96.98 | Atlas knowledge gap | Consignment Item / Commodity — area measure + unit (square yard) | Owner operational clarification establishes square yard as a legitimate area unit for area-based commodities. ATL-67 lacks canonical item-level area-measure representation; record as Atlas model-coverage gap without retroactively expanding ATL-67. |
 | 69 | Line Item Hazardous Packing Group | 101.24 | 96.61 | Conditional domain | Dangerous Goods — packing group | Domain-valid only when dangerous-goods applicability/relationship conditions are satisfied. |
 | 70 | Line Item Hazardous UNNA Number | 101.28 | 97.04 | Conditional domain | Dangerous Goods — UN/NA number | Domain-valid only when dangerous-goods applicability/relationship conditions are satisfied. |
 | 71 | Line Item Hazardous Class | 101.32 | 97.01 | Conditional domain | Dangerous Goods — hazard class/division | Domain-valid only when dangerous-goods applicability/relationship conditions are satisfied. |
@@ -121,12 +122,12 @@ Interpretation controls:
 | 73 | Line Item Hazardous Zone | 102.2 | 97.25 | Conditional domain | Dangerous Goods — inhalation-hazard zone | Domain-valid only when dangerous-goods applicability/relationship conditions are satisfied. |
 | 74 | Line Item Hazardous Proper Name | 102.27 | 94.23 | Conditional domain | Dangerous Goods — proper shipping name | Domain-valid only when dangerous-goods applicability/relationship conditions are satisfied. |
 | 75 | Handling Unit Count | 105.3 | 37.33 | Canonical BOL/domain | Package / Handling Unit — quantity | Direct semantic family/object exists in the frozen ATL-67 independent universe; preserve object ownership/cardinality. |
-| 76 | Handling Unit Line No | 120.83 | 10.26 | Atlas knowledge gap | Package / Handling Unit — sequence/relationship unresolved | ATL-67 explicitly retains this label as SOURCE_CONTEXT_PENDING; do not invent semantics. |
+| 76 | Handling Unit Line No | 120.83 | 10.26 | Canonical BOL/domain | Consignment Item / Package hierarchy — shipment-item line/sequence association | Owner clarification: identifies shipment-item/line structure when multiple shipment items are clubbed and more than one description line is present. Preserve item-to-handling-unit hierarchy; it is not another count. |
 
 ## One-to-many / many-to-one controls
 
 1. **Address families:** Address, Address 2 and Address 3 are multiple SEFL layout fields mapping to one canonical party postal-address structure with `addressLines[]`, city, subdivision/state, postcode and country. They are not three independent global concepts.
-2. **Counts:** `Piece Count`, `Line Item Piece Count`, `Handling Unit Count` and `Handling Unit Line No` must not be collapsed. Semantic owner and hierarchy determine meaning.
+2. **Counts and line structure:** `Piece Count`, `Line Item Piece Count` and `Handling Unit Count` remain distinct quantities. `Handling Unit Line No` is a line/sequence association for shipment-item structure when multiple item/description lines occur; it must not be interpreted as another count.
 3. **Weights:** `Weight` and `Line Item Weight` map to different ownership levels; neither may overwrite the other without source/object association.
 4. **References:** Reference Number, Reference Number Type, Reference Number Type Full Name and PRO participate in the broader Reference/Identifier model. PRO remains distinct; local type vocabulary cannot redefine canonical reference semantics.
 5. **Dangerous goods:** hazardous flag, UN/NA, proper shipping name, class/division, packing group, technical name, zone, emergency phone and responsible-person identity form a conditional relationship-aware object. They are not independent universally mandatory fields.
@@ -135,19 +136,23 @@ Interpretation controls:
 
 ## Unmatched / unresolved disposition
 
-### Atlas knowledge gaps — 4
+### Probable Malkom-form / client-specific fields pending Ops confirmation — 3
 - **Code**
 - **SHC**
 - **Related Value**
-- **Handling Unit Line No**
 
-All four are explicitly SOURCE_CONTEXT_PENDING in the frozen evidence. ATL-68 does not invent meanings for them.
+Owner BOL review did not find these on the BOL. Exact definitions remain pending Operations/client-source confirmation; they are not treated as Atlas domain gaps at this stage.
 
-### Unsupported SEFL fields — 2
-- **Line Item Hazardous Contract Number** — exact label is not supported by ATL-67's dangerous-goods object. It must not be silently rewritten to “contact number”; source evidence is required.
-- **Line Item Square Yards** — area measure is not part of ATL-67's frozen canonical item/consignment measure set. It requires authoritative source evidence before any universe expansion.
+### Resolved through Owner operational clarification — 1
+- **Handling Unit Line No** — shipment-item/line structure when multiple shipment items are clubbed and multiple description lines occur. Classified as canonical domain relationship/sequence information.
 
-### Client/master-data bindings — 6
+### Atlas model-coverage gap — 1
+- **Line Item Square Yards** — square yard is a legitimate area unit for area-based commodities. Frozen ATL-67 lacks canonical item-level area-measure representation. Retain as an Atlas model gap for governed downstream expansion; ATL-67 remains frozen.
+
+### Semantically unresolved — 1
+- **Line Item Hazardous Contract Number** — exact source label/meaning remains unconfirmed. It may be client/Malkom specific, a source-label issue, or a missing hazardous-material concept. Ops/source definition is required before deciding.
+
+### Existing client/master-data bindings — 6
 - Reference Number Type Full Name
 - Instruction Type
 - BOL Type
@@ -155,13 +160,13 @@ All four are explicitly SOURCE_CONTEXT_PENDING in the frozen evidence. ATL-68 do
 - Consignee Account Number
 - Shipper Code
 
-These are not Atlas gaps merely because their exact semantics depend on client/carrier vocabulary or master data.
+These remain non-gap bindings whose exact semantics depend on client/carrier vocabulary or master data.
 
 ## ATL-68 acceptance reconciliation
 
 - **All available SEFL fields accounted for:** PASS — 76/76.
 - **Coverage denominator explicit:** PASS — 76 source rows, 76 crosswalk rows.
-- **Unmatched items classified with rationale/evidence:** PASS — 4 knowledge gaps + 2 unsupported labels explicitly preserved.
+- **Unmatched items classified with rationale/evidence:** PASS — revised with Owner evidence: 3 probable Malkom/client fields pending Ops, 1 operationally resolved domain field, 1 Atlas area-measure model gap, and 1 unresolved hazardous label.
 - **No field treated as Atlas gap merely because client/runtime specific:** PASS — client/master-data/contextual classes separated.
 - **One-to-many/many-to-one preserved:** PASS — address, count, weight, reference, hazmat, service-window and party families explicitly controlled.
 - **Independent baseline preserved:** PASS — no ATL-67 expansion performed.
