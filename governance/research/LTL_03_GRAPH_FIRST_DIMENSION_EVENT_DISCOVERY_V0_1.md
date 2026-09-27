@@ -77,6 +77,72 @@ preserve gross volume separately; derive/reconcile only when governed evidence p
 GI-CHARGEABLE-WEIGHT:
 preserve chargeable weight as a distinct semantic from gross/declared/verified/billing weight.
 
+### A2. Area-measure semantics
+
+Authoritative evidence establishes AREA as a legitimate measurement dimension rather than an implementation-specific field:
+- UN/CEFACT Recommendation 20 defines **square yard** as a unit of area, representation symbol `yd²`, common code `YDK`, with SI conversion factor 0.8361274 m².
+- UN/CEFACT transport/supply-chain semantics model a **Consignment Item** as an independently identifiable goods item and use reusable measure/unit semantics across logistics objects.
+- Therefore execution fields such as SEFL/Malkom `Line Item Square Yards` are implementation bindings to a domain measure, not canonical field names that Atlas should copy literally.
+
+### Domain facts
+
+DF-AREA-MEASURE-SEMANTICS:
+Area is a physical measure that may be owned by a commodity/consignment item (or another authoritative object when source semantics establish that owner). Preserve numeric value, measure type and unit as one semantic value.
+
+DF-AREA-UNIT-CODE:
+Area units must use governed unit vocabulary where available. Square yard is represented as `YDK` / `yd²` under UN/CEFACT Recommendation 20. Unit aliases such as `SQ YD`, `SQYD`, `YD2` or local display labels may normalize to the canonical code only when source evidence and parsing rules establish equivalence.
+
+DF-EXECUTION-FIELD-BINDING:
+A system-specific field such as `Line Item Square Yards` binds to the generic domain representation `Measure(measureType=AREA, semanticOwner=ConsignmentItem, value=<numeric>, unit=YDK)`. The execution field does not create a new domain primitive.
+
+### Primitive mapping
+
+Existing reusable primitive: **Measure**. No new primitive is required.
+
+Extend recognized measure semantics to include:
+- `AREA` as a measureType;
+- numeric value;
+- semantic owner / object relationship;
+- canonical unit code and display symbol;
+- source value/unit preservation;
+- provenance/confidence;
+- governed normalization/conversion.
+
+Minimum example:
+```text
+source: "250 SQ YD"
+semanticOwner: ConsignmentItem
+measureType: AREA
+value: 250
+unitCode: YDK
+unitSymbol: yd²
+```
+
+### Validation / generation rules
+
+G-AREA-01 — WHEN an item/commodity area quantity is present, GENERATE an AREA Measure attached to the resolved semantic owner; do not flatten it into a document-level scalar.
+
+G-AREA-02 — Require value + unit semantics. Preserve original source expression and normalized value/unit separately.
+
+G-AREA-03 — Do not infer AREA solely from a bare number. Require explicit unit, field binding, commodity context, or other governed evidence.
+
+G-AREA-04 — Do not create unit-specific domain fields (`squareYards`, `squareFeet`, `squareMetres`). Represent them as AREA measures with governed unit codes.
+
+G-AREA-05 — Execution adapters may expose specific fields required by downstream forms. Example: Malkom `Line Item Square Yards` ↔ Atlas AREA Measure with `unitCode=YDK`.
+
+### Source provenance
+
+- UNECE / UN/CEFACT Recommendation No. 20, Annex II — Units of Measure: square yard, symbol yd², common code YDK, SI conversion 0.8361274 m².
+  https://unece.org/fileadmin/DAM/cefact/recommendations/rec20/rec20_rev3_Annex2e.pdf
+- UN/CEFACT MMT/eCMR semantic model — Consignment and Consignment Item transport semantics.
+  https://service.unece.org/trade/uncefact/publication/Transport-Logistics/eCMR/HTML/04286.htm
+- UN/CEFACT Buy-Ship-Pay vocabulary — reusable ConsignmentItem and measure-related logistics semantics.
+  https://service.unece.org/trade/uncefact/vocabulary/uncefact/
+
+### Gap closure consequence
+
+The previously observed coverage issue should be described as **missing AREA specialization in Atlas Measure semantics**, not “missing Square Yards field.” This enrichment closes the research/domain-semantic gap while leaving execution-schema implementation and production promotion to their governed downstream stages.
+
 ## B. Pickup visibility events
 
 NMFTA Pickup Request & Visibility standard defines pickup lifecycle/status semantics including:
