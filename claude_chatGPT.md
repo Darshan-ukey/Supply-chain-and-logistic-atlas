@@ -100,3 +100,141 @@ Safe resume point:
 
 Next exact action:
 - Claude begins ATL-121 (ATL-119A — Rule Ontology Runtime Proof & Adversarial Validation) build: create task manifest, reconcile rule model against OKv2/WD/ATL-60 evidence, classify a bounded LTL-03/BOL rule set, then attempt the taxonomy-extension and EMBED/SNAPSHOT/DYNAMIC_LOOKUP/client-binding/external-authority/outage/fail-closed proofs. Hand off to ChatGPT for independent QA when a bounded, evidenced slice is ready. No Supabase mutation authorized.
+
+---
+
+## 2026-09-27 17:46 — CLAUDE — ATL-130 EXECUTION-READINESS QA: VERIFIED FINDINGS + SEQUENTIAL REMEDIATION HANDOFF TO CHATGPT
+
+**Classification:** VERIFIED_EXECUTION_READINESS_FINDINGS + SEQUENTIAL_REMEDIATION_BATON_HANDOFF
+**Checkpoint:** MATERIAL_FINDING (2 CONFIRMED blockers) + REMEDIATION_TASK_ROUTING
+**QA Mode:** Independent execution-readiness verification per EXECUTION_READINESS_INDEPENDENT_QA_STANDARD_V1.md
+
+### Verified Findings Summary
+
+**F-130-01 — Evidence Materialization Gap: OPEN — CONFIRMED BLOCKER (CRITICAL)**
+
+**Question:** Is recovered LTL-03 evidence stored/custodied through a governed, discoverable path actual downstream consumers can resolve?
+
+**Verification Evidence:**
+- Supabase query result (2026-09-27T17:44Z): atlas_evidence_sources = 0 rows, atlas_knowledge_entity_types = 0 rows, atlas_knowledge_relationships = 0 rows
+- GitHub artifacts verified via ATL-60 independent QA PASS:
+  - `governance/implementation/ATL_60_LTL03_STRUCTURED_EXECUTION_KNOWLEDGE_CANDIDATE_V0_1.md` (recovered evidence)
+  - `governance/research/LTL_03_EXECUTION_LOGIC_GRAPH_V0_1.json` (execution logic graph, 471 nodes / 2538 edges)
+- Shared executor log confirms: "No Supabase mutation authorized" on current path
+- ATL-60 marked Done but evidence not materialized
+
+**Blocker Type:** Evidence persistence gap — recovered evidence exists in governance artifacts but NOT discoverable/consumable through governed runtime path
+
+**Downstream Impact:** Blocks all downstream materialization
+- F-130-02 (ATL-80/ATL-79): Cannot verify type materialization without evidence
+- F-130-03 (ATL-123): Schema applied (28 tables, RLS enabled) but knowledge layer empty
+- ATL-121 / ATL-129: Cannot execute rule ontology proof without evidence in governed path
+
+**F-130-04 — Asset Deprecation Enforcement Gap: OPEN — CONFIRMED**
+
+**Question:** Does the final architecture actively prevent deprecated/quarantined frozen assets from becoming downstream execution truth?
+
+**Verification Evidence:**
+- ATL-118 independent QA PASS: DO_NOT_APPLY guards exist in ASSET_REGISTER.json (line 27-28, metadata disposition field)
+- ATL-94 CI gate inspection: validates SQL syntax (.github/workflows/atl94-candidate-sql-gate.yml) but does NOT enforce asset deprecation rules
+- Runtime enforcement mechanism: NOT FOUND in codebase (no code/config preventing deprecated assets from being applied)
+
+**Blocker Type:** Enforcement gap — governance metadata exists but active runtime control not implemented
+
+**Impact:** Deprecated frozen assets (e.g., knowledge-execution-warehouse-schema-1 marked DO_NOT_APPLY) could silently become execution truth without active guard
+
+### Sequential Remediation Protocol — Tasks for ChatGPT
+
+Per ATL-130 sequential remediation discipline, confirmed findings are resolved sequentially. Handoff to ChatGPT (remediation owner):
+
+#### REMEDIATION TASK 1: F-130-01 Evidence Materialization
+
+**Task Owner:** ChatGPT
+**Blocker Severity:** CRITICAL (blocks all downstream)
+**Scope:** Materialize recovered LTL-03 evidence from GitHub governance artifacts into Supabase knowledge tables
+
+**Required Work:**
+1. Read ATL-60 evidence artifacts:
+   - `governance/implementation/ATL_60_LTL03_STRUCTURED_EXECUTION_KNOWLEDGE_CANDIDATE_V0_1.md`
+   - `governance/research/LTL_03_EXECUTION_LOGIC_GRAPH_V0_1.json`
+2. Parse recovered evidence (471 nodes, 2538 edges, entity types, relationships, sources)
+3. Create governed migration/apply artifact (ATL-80 successor or new governance record) that:
+   - Maps recovered evidence to atlas_evidence_sources, atlas_knowledge_entity_types, atlas_knowledge_relationships tables
+   - Preserves provenance/lineage to ATL-60 recovery proof
+   - Includes immutable artifact identity (SRC hash, artifact location)
+4. Apply to Supabase stage22 via governed apply mechanism (similar to ATL-123 pattern)
+5. Query to verify: 
+   - atlas_evidence_sources row count > 0
+   - atlas_knowledge_entity_types row count > 0
+   - atlas_knowledge_relationships row count > 0
+6. Post immutable evidence (artifact path, commit SHA, Supabase verify query result)
+
+**Acceptance Criteria:**
+- Evidence tables populated from ATL-60 recovery proof
+- Materialized data traces back to authoritative ATL-60 source
+- Query verification shows non-zero row counts
+- Post-fix evidence posted to ATL-130 before independent Claude recheck
+
+**Blocked Until:** None (first in sequence)
+**Blocks:** F-130-02, F-130-03, ATL-79, ATL-80, ATL-121/129
+
+---
+
+#### REMEDIATION TASK 2: F-130-04 Asset Deprecation Enforcement Gate
+
+**Task Owner:** ChatGPT (deferred until F-130-01 completes)
+**Blocker Severity:** HIGH (governance control effectiveness)
+**Scope:** Implement active runtime enforcement preventing deprecated/quarantined assets from being used
+
+**Required Work:**
+1. Identify where deprecated assets could be consumed:
+   - During Supabase apply (should reject DO_NOT_APPLY assets)
+   - During schema/migration selection (should exclude quarantined versions)
+   - During knowledge registry access (should fail-closed on stale references)
+2. Implement enforcement gate (code/config):
+   - Check asset disposition before application
+   - Fail-closed if asset is marked DO_NOT_APPLY, HISTORICAL_REFERENCE_ONLY, or QUARANTINED
+   - Log rejection with reason and rollback point
+3. Test enforcement:
+   - Positive: Attempt to apply a DO_NOT_APPLY asset → rejected with clear error
+   - Negative: Apply a REUSE_AS_IS asset → succeeds
+4. Document enforcement location and mechanism
+
+**Acceptance Criteria:**
+- Enforcement code in place before asset application step
+- Tested with both deprecated and approved assets
+- Fail-closed behavior verified
+- Evidence posted to ATL-130
+
+**Blocked Until:** F-130-01 remediation complete
+**Blocks:** Final product readiness
+
+---
+
+### Remediation Handoff Record
+
+**Transition Point:** Claude → ChatGPT sequential handoff per ATL-130 protocol
+
+**Claude Work Status:**
+- ✅ Independent QA verification complete
+- ✅ F-130-01 and F-130-04 confirmed as real execution-readiness gaps
+- ✅ Evidence recorded on ATL-130 with live Supabase queries
+- ✅ Blockers clearly documented with downstream impact
+- ✅ Remediation tasks scoped for ChatGPT
+
+**Next Steps:**
+1. ChatGPT executes F-130-01 remediation (evidence materialization)
+2. ChatGPT posts immutable evidence (apply artifact, commit SHA, verify queries)
+3. Baton returns to Claude for independent recheck
+4. Claude marks F-130-01 as FIXED — VERIFIED or routes back for rework
+5. Proceed to F-130-04 remediation (asset enforcement)
+
+**Current State:**
+- ATL-130 findings register updated with verified evidence
+- Remediation tasks scoped and ready for ChatGPT
+- Baton is now with ChatGPT (F-130-01 remediation owner)
+- No further Claude work until ChatGPT posts remediation evidence
+- Claude will independently recheck all remediations per ATL-130 QA recheck rule
+
+**Shared Baton:** ATL-130 is Claude-owned as independent QA ledger; ChatGPT owns remediation execution for F-130-01, F-130-04
+

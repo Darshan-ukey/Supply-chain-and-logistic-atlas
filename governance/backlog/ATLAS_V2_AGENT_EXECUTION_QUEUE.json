@@ -1,7 +1,7 @@
 {
   "schemaVersion": "atlas-v2-agent-execution-queue-v19",
   "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v18",
-  "updatedAt": "2026-09-20T09:40:00+05:30",
+  "updatedAt": "2026-09-27T03:50:01.368197Z",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
   "demoIntegrationTargetBranch": "main",
@@ -578,13 +578,82 @@
     }
   ],
   "demoSprintOpenItems": [
-    "BROWSER_VISUAL_VERIFICATION_NEVER_PERFORMED — still the single functional gap; no browser or headless driver available to either executor.",
+    "BROWSER_VISUAL_VERIFICATION_NEVER_PERFORMED \u2014 still the single functional gap; no browser or headless driver available to either executor.",
     "D2.0.0 CREATE_PRE_CHANGE_FULL_STATE_FREEZE never performed; cannot be recreated retroactively (D2.0.6 freeze is post-build only).",
     "D2.0.3-D2.0.5 are now CROSS_AGENT_AUDITED by ChatGPT (PASS). D2.0.6 remains executor self-reported and is open to the same independent audit.",
     "D2.0.7 auto-deploy conflict unresolved (see D2.0.7.recordedBlocker).",
     "DRIVE CUSTODY GAP: no D2.0.x demo-sprint artifact has been mirrored to Drive. Newest Drive content is AR0.1/AR0.2 dated 2026-09-11. Drive writes are returning \"No approval received\" to the connector."
   ],
   "forwardProductBuildBacklog": [
+    {
+      "stageId": "ATL-130-F01-REMEDIATION",
+      "linearIssue": "ATL-130",
+      "findingId": "F-130-01",
+      "name": "Remediation: Evidence Materialization Gap (ATL-60 \u2192 Supabase)",
+      "status": "PENDING_REMEDIATION",
+      "owner": "CHATGPT",
+      "severity": "CRITICAL",
+      "blockers": [
+        "F-130-02",
+        "F-130-03",
+        "ATL-79",
+        "ATL-80",
+        "ATL-121"
+      ],
+      "objective": "Materialize recovered LTL-03 evidence from GitHub governance artifacts into Supabase knowledge tables",
+      "scope": [
+        "PARSE_ATL60_RECOVERED_EVIDENCE_ARTIFACTS",
+        "MAP_EVIDENCE_TO_KNOWLEDGE_TABLES",
+        "CREATE_GOVERNED_APPLY_ARTIFACT",
+        "APPLY_TO_SUPABASE_STAGE22",
+        "VERIFY_MATERIALIZATION_WITH_QUERIES",
+        "POST_IMMUTABLE_EVIDENCE_TO_ATL130"
+      ],
+      "acceptanceCriteria": [
+        "atlas_evidence_sources populated with row count > 0",
+        "atlas_knowledge_entity_types populated with row count > 0",
+        "atlas_knowledge_relationships populated with row count > 0",
+        "Materialized data traces to ATL-60 source",
+        "Immutable evidence posted (artifact path, commit SHA, verify queries)"
+      ],
+      "sequentialOrder": 1,
+      "prerequisite": "None (first remediation)",
+      "unblocks": [
+        "F-130-02-REMEDIATION",
+        "F-130-03-REMEDIATION",
+        "ATL-80-VERIFICATION",
+        "ATL-79-VERIFICATION",
+        "ATL-129-EXECUTION"
+      ]
+    },
+    {
+      "stageId": "ATL-130-F04-REMEDIATION",
+      "linearIssue": "ATL-130",
+      "findingId": "F-130-04",
+      "name": "Remediation: Asset Deprecation Enforcement Gate",
+      "status": "PENDING_REMEDIATION",
+      "owner": "CHATGPT",
+      "severity": "HIGH",
+      "objective": "Implement active runtime enforcement preventing deprecated/quarantined frozen assets from being applied",
+      "scope": [
+        "IDENTIFY_ASSET_CONSUMPTION_PATHS",
+        "IMPLEMENT_ENFORCEMENT_GATE_CODE",
+        "TEST_DEPRECATED_ASSET_REJECTION",
+        "TEST_APPROVED_ASSET_APPLICATION",
+        "DOCUMENT_ENFORCEMENT_MECHANISM",
+        "POST_EVIDENCE_TO_ATL130"
+      ],
+      "acceptanceCriteria": [
+        "Enforcement code checks asset disposition before application",
+        "DO_NOT_APPLY assets rejected with clear error",
+        "REUSE_AS_IS assets apply successfully",
+        "Fail-closed behavior verified in tests",
+        "Evidence posted with test results"
+      ],
+      "sequentialOrder": 2,
+      "prerequisite": "ATL-130-F01-REMEDIATION PASS",
+      "blockedUntil": "F-130-01 remediation completes"
+    },
     {
       "stageId": "ATL-35",
       "id": "ATL-35",
@@ -632,7 +701,7 @@
     },
     {
       "stageId": "ATL-36",
-      "title": "Independent QA — P6.1 successor generator against LTL-03 BOL evidence",
+      "title": "Independent QA \u2014 P6.1 successor generator against LTL-03 BOL evidence",
       "status": "BLOCKED_PENDING_GENERATOR_EVIDENCE_PACKAGE",
       "owner": "CLAUDE",
       "blockedBy": [
@@ -657,5 +726,11 @@
         "OWNER_RETAINS_FINAL_ACCEPTANCE_AUTHORITY"
       ]
     }
-  ]
+  ],
+  "lastUpdate": {
+    "timestamp": "2026-09-27T03:50:01.368218Z",
+    "event": "ATL-130 Execution-Readiness QA Findings: Added F-130-01 and F-130-04 remediation tasks",
+    "addedBy": "CLAUDE",
+    "remark": "Sequential remediation protocol: F-130-01 (evidence materialization) is first/critical; F-130-04 (enforcement gate) deferred until F-130-01 completes"
+  }
 }
