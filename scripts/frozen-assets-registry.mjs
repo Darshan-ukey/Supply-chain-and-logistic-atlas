@@ -47,6 +47,17 @@ if(Array.isArray(cur.nextImplementation)){
 }
 for(const id of ids) if(!byId.has(id)) fail.push(`CURRENT points to missing asset: ${id}`);
 
+// F-130-04: execution-facing pointers must fail closed for assets classified DO_NOT_APPLY.
+for(const id of new Set(ids)){
+  const asset=byId.get(id);
+  if(asset?.atlasV2Disposition==='DO_NOT_APPLY') fail.push(`CURRENT execution-facing pointer selects DO_NOT_APPLY asset: ${id}`);
+}
+for(const id of cur.doNotApply||[]){
+  const asset=byId.get(id);
+  if(!asset) fail.push(`CURRENT doNotApply points to missing asset: ${id}`);
+  else if(asset.atlasV2Disposition!=='DO_NOT_APPLY') fail.push(`CURRENT doNotApply asset lacks DO_NOT_APPLY disposition: ${id}`);
+}
+
 if(cmd==='latest'){
  console.log(JSON.stringify({productionBaseline:cur.productionBaseline,latestFrozenCandidates:cur.latestFrozenCandidates,governingStandards:cur.governingStandards,nextImplementation:cur.nextImplementation},null,2));
  process.exit(0);
