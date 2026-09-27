@@ -1,8 +1,10 @@
-name: ATL-129 clean proof
+name: ATL-129 clean proof and F-130-06 runtime integration
 on:
   pull_request:
     paths:
       - 'governance/implementation/atl129_clean/**'
+      - 'runtime/rule_ontology_consumer.py'
+      - 'runtime/test_rule_ontology_consumer.py'
       - 'governance/product/ATLAS_V2_BUSINESS_RULE_ONTOLOGY_RUNTIME_CONSUMPTION_CONTRACT_V0_1_CANDIDATE.md'
       - '.github/workflows/atl129-clean-proof.yml'
 jobs:
@@ -17,3 +19,6 @@ jobs:
         run: |
           cd governance/implementation/atl129_clean
           python -m unittest -v test_clean_proof.py
+      - name: Run F-130-06 production-consumer integration suite
+        run: |
+          python -m unittest -v runtime/test_rule_ontology_consumer.py
