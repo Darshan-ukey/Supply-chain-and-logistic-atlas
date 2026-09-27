@@ -14,4 +14,6 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run ATL-129 deterministic proof suite
-        run: python -m unittest -v governance/implementation/atl129_clean/test_clean_proof.py
+        run: |
+          cd governance/implementation/atl129_clean
+          python -m unittest -v test_clean_proof.py
