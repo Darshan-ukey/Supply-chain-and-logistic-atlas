@@ -58,9 +58,11 @@ for(const id of cur.doNotApply||[]){
   else if(asset.atlasV2Disposition!=='DO_NOT_APPLY') fail.push(`CURRENT doNotApply asset lacks DO_NOT_APPLY disposition: ${id}`);
 }
 
+// Single fail-closed gate shared by validation and machine-readable consumption paths.
+if(fail.length){ console.error('Frozen asset registry INVALID'); for(const e of fail) console.error(' - '+e); process.exit(1); }
+
 if(cmd==='latest'){
  console.log(JSON.stringify({productionBaseline:cur.productionBaseline,latestFrozenCandidates:cur.latestFrozenCandidates,governingStandards:cur.governingStandards,nextImplementation:cur.nextImplementation},null,2));
  process.exit(0);
 }
-if(fail.length){ console.error('Frozen asset registry INVALID'); for(const e of fail) console.error(' - '+e); process.exit(1); }
 console.log(`Frozen asset registry VALID: ${reg.assets.length} assets; lock ${reg.latestIntegrationLock.version}`);
