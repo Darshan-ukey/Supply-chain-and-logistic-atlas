@@ -1,0 +1,197 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ATL-71 isolated BOL staging proof - no production writeback
+Parameters:
+  EnvironmentName:
+    Type: String
+    Default: atlas-bol-staging
+    AllowedValues: [atlas-bol-staging]
+  AllowProductionWriteback:
+    Type: String
+    Default: 'false'
+    AllowedValues: ['false']
+Resources:
+  IntakeBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      VersioningConfiguration: {Status: Enabled}
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault: {SSEAlgorithm: AES256}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+  EvidenceBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      VersioningConfiguration: {Status: Enabled}
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault: {SSEAlgorithm: AES256}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+  RunLedger:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - {AttributeName: run_id, AttributeType: S}
+      KeySchema:
+        - {AttributeName: run_id, KeyType: HASH}
+      PointInTimeRecoverySpecification: {PointInTimeRecoveryEnabled: true}
+  OrchestratorRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: states.amazonaws.com}
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: InvokeStagingFunctionsOnly
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: lambda:InvokeFunction
+                Resource:
+                  - !GetAtt ValidateRunFunction.Arn
+                  - !GetAtt ExtractFunction.Arn
+                  - !GetAtt AtlasEnrichFunction.Arn
+                  - !GetAtt ValidateFunction.Arn
+                  - !GetAtt PersistEvidenceFunction.Arn
+  LambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: lambda.amazonaws.com}
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: StagingEvidenceOnly
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [s3:GetObject]
+                Resource: !Sub '${IntakeBucket.Arn}/*'
+              - Effect: Allow
+                Action: [s3:GetObject, s3:PutObject]
+                Resource: !Sub '${EvidenceBucket.Arn}/*'
+              - Effect: Allow
+                Action: [dynamodb:GetItem, dynamodb:PutItem, dynamodb:UpdateItem]
+                Resource: !GetAtt RunLedger.Arn
+              - Effect: Allow
+                Action: [logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents]
+                Resource: '*'
+  ValidateRunFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.12
+      Handler: index.handler
+      Role: !GetAtt LambdaRole.Arn
+      Timeout: 30
+      Environment:
+        Variables:
+          STAGING_ONLY: 'true'
+          ALLOW_PRODUCTION_WRITEBACK: 'false'
+      Code:
+        ZipFile: |
+          import os
+          def handler(event, context):
+              if os.environ.get("STAGING_ONLY") != "true" or os.environ.get("ALLOW_PRODUCTION_WRITEBACK") != "false":
+                  raise RuntimeError("staging safety guard failed")
+              if event.get("arm") not in ("control","treatment"):
+                  raise ValueError("arm must be control or treatment")
+              required=("run_id","source_sha256","corpus_manifest_sha256","scope_version","contract_version","extractor_version","scorer_version")
+              missing=[k for k in required if not event.get(k)]
+              if missing: raise ValueError("missing governed manifest fields: "+",".join(missing))
+              return event
+  ExtractFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.12
+      Handler: index.handler
+      Role: !GetAtt LambdaRole.Arn
+      Timeout: 30
+      Code:
+        ZipFile: |
+          def handler(event, context):
+              # Generic IDP adapter boundary. Both arms use this single normalized extraction.
+              event["normalized_extraction"]={"adapter_status":"CONFIGURE_STAGING_IDP"}
+              return event
+  AtlasEnrichFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.12
+      Handler: index.handler
+      Role: !GetAtt LambdaRole.Arn
+      Timeout: 30
+      Code:
+        ZipFile: |
+          def handler(event, context):
+              # Post-extraction Atlas adapter; never mutates raw normalized_extraction.
+              event["atlas_enrichment"]={"adapter_status":"CONFIGURE_STAGING_ATLAS"}
+              return event
+  ValidateFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.12
+      Handler: index.handler
+      Role: !GetAtt LambdaRole.Arn
+      Timeout: 30
+      Code:
+        ZipFile: |
+          def handler(event, context):
+              # ATL-70 scorer adapter boundary; frozen truth/scoring contract supplied by version.
+              event["validation"]={"scorer_version":event["scorer_version"],"status":"READY_FOR_SCORER_ADAPTER"}
+              return event
+  PersistEvidenceFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.12
+      Handler: index.handler
+      Role: !GetAtt LambdaRole.Arn
+      Timeout: 30
+      Environment:
+        Variables:
+          EVIDENCE_BUCKET: !Ref EvidenceBucket
+          RUN_LEDGER: !Ref RunLedger
+      Code:
+        ZipFile: |
+          import json, os, boto3
+          s3=boto3.client("s3"); ddb=boto3.client("dynamodb")
+          def handler(event, context):
+              run_id=event["run_id"]
+              key=f"runs/{run_id}/result.json"
+              s3.put_object(Bucket=os.environ["EVIDENCE_BUCKET"],Key=key,Body=json.dumps(event,sort_keys=True).encode())
+              ddb.put_item(TableName=os.environ["RUN_LEDGER"],Item={"run_id":{"S":run_id},"arm":{"S":event["arm"]},"evidence_key":{"S":key}})
+              return {"run_id":run_id,"evidence_key":key,"arm":event["arm"]}
+  ProofStateMachine:
+    Type: AWS::StepFunctions::StateMachine
+    Properties:
+      RoleArn: !GetAtt OrchestratorRole.Arn
+      DefinitionString: !Sub |
+        {
+          "StartAt":"ValidateRun",
+          "States":{
+            "ValidateRun":{"Type":"Task","Resource":"${ValidateRunFunction.Arn}","Next":"Extract"},
+            "Extract":{"Type":"Task","Resource":"${ExtractFunction.Arn}","Next":"ArmChoice"},
+            "ArmChoice":{"Type":"Choice","Choices":[{"Variable":"$.arm","StringEquals":"treatment","Next":"AtlasEnrich"}],"Default":"Validate"},
+            "AtlasEnrich":{"Type":"Task","Resource":"${AtlasEnrichFunction.Arn}","Next":"Validate"},
+            "Validate":{"Type":"Task","Resource":"${ValidateFunction.Arn}","Next":"PersistEvidence"},
+            "PersistEvidence":{"Type":"Task","Resource":"${PersistEvidenceFunction.Arn}","End":true}
+          }
+        }
+Outputs:
+  StateMachineArn: {Value: !Ref ProofStateMachine}
+  IntakeBucketName: {Value: !Ref IntakeBucket}
+  EvidenceBucketName: {Value: !Ref EvidenceBucket}
+  RunLedgerName: {Value: !Ref RunLedger}
