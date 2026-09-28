@@ -1,0 +1,258 @@
+{
+  "schema_version": "atlas.firi.field.v1.0-candidate",
+  "lifecycle_status": "CANDIDATE_PENDING_INDEPENDENT_QA",
+  "field_id": "BOL-002",
+  "field_name": "Line Item Description",
+  "canonical_object": "Consignment Item / Commodity — description",
+  "purpose": "Governed reusable intelligence for identifying, separating, associating, validating and resolving commodity-description evidence without performing the transaction.",
+  "boundary": "Atlas supplies governed identification/resolution intelligence; runtime consumers observe transaction evidence and execute.",
+  "resolution_states": [
+    "OBSERVED_DESCRIPTION",
+    "SEMANTICALLY_IDENTIFIED_DESCRIPTION",
+    "CLASSIFICATION_SUFFICIENT_DESCRIPTION",
+    "UNRESOLVED"
+  ],
+  "mechanism": [
+    "OBSERVE",
+    "CANDIDATE",
+    "CONTEXT",
+    "OBJECT_CARDINALITY",
+    "SEPARATE",
+    "ASSOCIATE",
+    "CORROBORATE",
+    "VALIDATE",
+    "RESOLVE_ESCALATE"
+  ],
+  "object_model": {
+    "owner": "CommodityItem",
+    "distinct_from": [
+      "HandlingUnit",
+      "Package",
+      "ShipmentWeight",
+      "NMFCItem",
+      "NMFCSubitem",
+      "FreightClass",
+      "DangerousGoodsAttributes"
+    ],
+    "cardinality_rules": [
+      "Preserve each positively established CommodityItem; do not collapse multiple commodities into one description.",
+      "HandlingUnit, Package and CommodityItem are distinct concepts; do not infer one-to-one equivalence.",
+      "Permit evidence-supported many-to-many HandlingUnit↔CommodityItem association.",
+      "A printed line/sequence number is not a CommodityItem identifier unless its semantic role is established."
+    ]
+  },
+  "identification": {
+    "positive_signals": [
+      "Text occupying a commodity/article/description position or group in shipment evidence.",
+      "Text associated with a CommodityItem and corroborated by neighboring package quantity/type, weight, NMFC item/subitem, freight class or dangerous-goods evidence.",
+      "Article/commodity wording that can be tested against applicable NMFC provisions where classification validation is required."
+    ],
+    "negative_competing_concepts": [
+      "handling-unit quantity/type",
+      "package quantity/type",
+      "shipment or line weight",
+      "NMFC item/subitem number",
+      "freight class",
+      "hazardous-material identification number",
+      "hazard class/division",
+      "packing group"
+    ],
+    "non_rules": [
+      "Do not identify description solely from page coordinates or a fixed template.",
+      "Do not assume pallet/skid count equals commodity count.",
+      "Do not assume Handling Unit Line No equals Commodity Item Number."
+    ]
+  },
+  "rules": [
+    {
+      "id": "FIRI-BOL002-R01",
+      "stage": "SEPARATE",
+      "statement": "Commodity Description is semantically distinct from handling-unit, package, weight, NMFC, class and dangerous-goods attributes; compound evidence must be decomposed before association.",
+      "authority": [
+        "GS1_BOL_MODEL",
+        "NMFC_ITEM_250100"
+      ],
+      "kind": "SOURCE_BACKED"
+    },
+    {
+      "id": "FIRI-BOL002-R02",
+      "stage": "OBJECT_CARDINALITY",
+      "statement": "Multiple positively established commodities require separately represented CommodityItem descriptions; preserve source cardinality.",
+      "authority": [
+        "NMFTA_BOL_GUIDANCE"
+      ],
+      "kind": "SOURCE_BACKED"
+    },
+    {
+      "id": "FIRI-BOL002-R03",
+      "stage": "OBJECT_CARDINALITY",
+      "statement": "HandlingUnit, Package and CommodityItem are distinct. Do not force 1:1 relationships; retain evidence-supported associations.",
+      "authority": [
+        "GS1_BOL_MODEL",
+        "NMFC_ITEM_110_SEC_8D"
+      ],
+      "kind": "SYNTHESIZED_FROM_SOURCES"
+    },
+    {
+      "id": "FIRI-BOL002-R04",
+      "stage": "VALIDATE",
+      "statement": "When choosing among applicable NMFC descriptions, a specific applicable description takes precedence over a more general description only when the article/material is embraced by the specific description; evaluate relevant headings, subheadings, notes, exceptions and references.",
+      "authority": [
+        "NMFC_RULE_420_SEC_5"
+      ],
+      "kind": "SOURCE_BACKED"
+    },
+    {
+      "id": "FIRI-BOL002-R05",
+      "stage": "CORROBORATE",
+      "statement": "Packaging/form of shipment is a separate concept but may be material evidence for commodity identification/classification and applicable packaging provisions.",
+      "authority": [
+        "NMFTA_CLASSIFICATION_GUIDANCE",
+        "NMFTA_INTERPRETATION_REQUIREMENTS"
+      ],
+      "kind": "SOURCE_BACKED"
+    },
+    {
+      "id": "FIRI-BOL002-R06",
+      "stage": "RESOLVE_ESCALATE",
+      "statement": "Preserve observed description text even when vague or abbreviated. Semantic field identification does not imply classification sufficiency; never fabricate a more specific commodity description.",
+      "authority": [
+        "ATLAS_NON_FABRICATION_POLICY",
+        "NMFTA_INTERPRETATION_REQUIREMENTS"
+      ],
+      "kind": "SYNTHESIZED_FROM_SOURCES"
+    },
+    {
+      "id": "FIRI-BOL002-R07",
+      "stage": "VALIDATE",
+      "statement": "ClassIT+ is authoritative acquisition/validation infrastructure but API lookup alone is not complete contextual resolution; structured subitem-selection logic is not currently supplied.",
+      "authority": [
+        "CLASSIT_API_FAQ"
+      ],
+      "kind": "SOURCE_BACKED"
+    },
+    {
+      "id": "FIRI-BOL002-R08",
+      "stage": "RESOLVE_ESCALATE",
+      "statement": "When unresolved, return the observed value, unresolved reason and pointed additional evidence needed instead of generic guessing/HITL.",
+      "authority": [
+        "NMFTA_INTERPRETATION_REQUIREMENTS",
+        "ATLAS_NON_FABRICATION_POLICY"
+      ],
+      "kind": "SYNTHESIZED_FROM_SOURCES"
+    }
+  ],
+  "additional_evidence": [
+    "manufacturer description/type/model/invoice reference",
+    "photos/diagrams/product literature or product link",
+    "function/purpose",
+    "shipping package type",
+    "form of shipment",
+    "construction materials",
+    "SDS/MSDS when hazardous",
+    "food label/contents when applicable",
+    "competing NMFC candidate items"
+  ],
+  "external_knowledge": {
+    "source_family": "NMFTA/NMFC/ClassIT+",
+    "lifecycle": "bounded acquisition → source snapshot/reference → provenance/version/effective-date/licence controls → normalize → validate → promote → reuse",
+    "runtime_lookup_conditions": [
+      "governed knowledge absent",
+      "freshness/effective-date verification required",
+      "licensing requires live retrieval",
+      "stored version unsafe for decision"
+    ],
+    "mutation_policy": "Execution-learned information is candidate evidence and MUST NOT silently mutate canonical Atlas knowledge."
+  },
+  "unresolved_non_blocking": [
+    {
+      "id": "FIRI-BOL002-U01",
+      "question": "Exact universal semantics of Handling Unit Line No and when it is an association key versus sequence.",
+      "policy": "Do not equate with CommodityItem identifier without source/client evidence."
+    },
+    {
+      "id": "FIRI-BOL002-U02",
+      "question": "Universal precedence/association semantics for continuation BOLs and external commodity attachments.",
+      "policy": "Support additional evidence structurally; do not invent universal precedence."
+    }
+  ],
+  "consumer_contract": {
+    "generic_input": [
+      "observed text/layout/group evidence",
+      "candidate object/group associations",
+      "available cross-field evidence",
+      "optional governed external classification knowledge"
+    ],
+    "generic_output": [
+      "observed_description",
+      "resolution_state",
+      "commodity_item_association",
+      "corroborating_evidence",
+      "validation_result",
+      "unresolved_reason",
+      "required_next_evidence",
+      "provenance_trace"
+    ],
+    "malkom_projection": "Malkom may consume this contract to configure/apply commodity-description contextualization, validation, exception/HITL and master/external-lookup behavior; Malkom runtime constructs are not canonical Atlas semantics.",
+    "non_malkom_projection": "A VLM/agent/document-digitization workflow can consume the same generic input/output and rule set without Malkom queues, schemas or APIs."
+  },
+  "design_gate": {
+    "MALKOM_UTILITY": {
+      "status": "PASS_CANDIDATE",
+      "evidence": "Contract specifies what a Malkom implementation needs to identify, separate, associate, validate and escalate BOL-002 rather than rediscovering those domain rules."
+    },
+    "CONSUMER_INDEPENDENCE": {
+      "status": "PASS_CANDIDATE",
+      "evidence": "Canonical contract contains no Malkom queue/API/runtime dependency and defines a second VLM/agent/document-digitization projection."
+    }
+  },
+  "sufficiency": {
+    "previous": "EXECUTION_SUFFICIENT",
+    "candidate": "EXECUTION_SUFFICIENT_PENDING_INDEPENDENT_QA",
+    "rationale": "Field-specific identification/resolution chain is now explicit and adversarially testable; freeze remains blocked on independent QA and unresolved questions remain fail-closed rather than guessed."
+  },
+  "provenance": [
+    {
+      "id": "SRC-NMFTA-RULE420",
+      "authority": "NMFTA",
+      "locator": "Classification Goes Back to School: NMFC Fundamentals for Beginners",
+      "claim": "Specific applicable description precedence; consider complete item, notes, exceptions and references."
+    },
+    {
+      "id": "SRC-NMFTA-MIXED",
+      "authority": "NMFTA",
+      "locator": "How to classify a mixed-freight package, skid, or crate",
+      "claim": "Multiple handling units can require per-handling-unit density treatment; supports non-collapse of handling-unit structure."
+    },
+    {
+      "id": "SRC-NMFTA-INTERPRET",
+      "authority": "NMFTA",
+      "locator": "Requirements for Submitting an Interpretation Request",
+      "claim": "Defines additional evidence useful to resolve commodity identity/classification."
+    },
+    {
+      "id": "SRC-CLASSIT-FAQ",
+      "authority": "NMFTA ClassIT+",
+      "locator": "ClassIT+ API Frequently Asked Questions",
+      "claim": "Structured logic for subitem selection is not currently implemented."
+    },
+    {
+      "id": "SRC-GS1-BOL",
+      "authority": "GS1 US",
+      "locator": "Bill of Lading Guideline R4.0",
+      "claim": "Separates handling unit, package, commodity description, NMFC and class attributes."
+    },
+    {
+      "id": "SRC-49CFR-373101",
+      "authority": "US eCFR",
+      "locator": "49 CFR 373.101",
+      "claim": "BOL/shipping-paper freight description and quantity/weight requirements."
+    },
+    {
+      "id": "SRC-49CFR-172",
+      "authority": "US eCFR",
+      "locator": "49 CFR 172.201/.202/.203",
+      "claim": "Conditional hazardous-material description grammar and qualifiers."
+    }
+  ]
+}
