@@ -1,7 +1,7 @@
 {
   "schemaVersion": "atlas-v2-agent-execution-queue-v20",
   "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v19",
-  "updatedAt": "2026-09-28T10:40:00Z",
+  "updatedAt": "2026-09-28T10:55:00Z",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
   "demoIntegrationTargetBranch": "main",
@@ -752,10 +752,10 @@
     }
   ],
   "lastUpdate": {
-    "timestamp": "2026-09-28T10:40:00Z",
-    "event": "Owner release sequencing decision: Atlas v1.5 Malkom Domain Warehouse inserted before full Atlas v2.0; BOL POC removed as v1.5 gate",
+    "timestamp": "2026-09-28T10:55:00Z",
+    "event": "Deferred BOL/FIRI continuation backlog frozen for post-v1.5 resume",
     "addedBy": "CHATGPT",
-    "remark": "ATL-136–142 define v1.5. Full v2 end-state remains under ATL-103. Execution is not self-authorized by this roadmap update."
+    "remark": "Completed checkpoints restored/preserved. ATL-143 handover and ATL-144/145-151 prevent post-v1.5 drift. Current v1.5 execution stage remains V1.5.PLAN."
   },
   "currentReleaseTarget": "ATLAS_V1_5_MALKOM_DOMAIN_WAREHOUSE",
   "releaseStrategy": {
@@ -877,5 +877,50 @@
       "ATL-130"
     ],
     "objective": "Complete the full governed execution-readiness platform on top of the v1.5 reusable domain/work product."
+  },
+  "deferredBolFiriContinuation": {
+    "status": "DEFERRED_BEHIND_ATLAS_V1_5__DO_NOT_EXECUTE",
+    "governancePath": "governance/product/ATLAS_V2_BOL_FIRI_CONTINUATION_BACKLOG_V1.md",
+    "v15HandoverGate": "ATL-143",
+    "v2Parent": "ATL-144",
+    "preserveCompleted": [
+      "ATL-67",
+      "ATL-68",
+      "ATL-69",
+      "ATL-70",
+      "ATL-73",
+      "ATL-134"
+    ],
+    "existingOpenEmpirical": [
+      "ATL-71",
+      "ATL-72",
+      "ATL-74",
+      "ATL-75",
+      "ATL-76",
+      "ATL-77"
+    ],
+    "existingOpenFiri": [
+      "ATL-132",
+      "ATL-135",
+      "ATL-133"
+    ],
+    "newContinuation": [
+      "ATL-145",
+      "ATL-146",
+      "ATL-147",
+      "ATL-148",
+      "ATL-149",
+      "ATL-150",
+      "ATL-151"
+    ],
+    "resumeRule": "AFTER_ATL_143_FREEZE_AND_OWNER_OR_GOVERNED_QUEUE_AUTHORIZATION",
+    "convergence": "ATL_150_PLUS_ATL_77__THEN_ATL_151__THEN_ATL_133__THEN_ATL_107_AS_REQUIRED__THEN_ATL_130",
+    "antiDrift": [
+      "DO_NOT_REOPEN_COMPLETED_CHECKPOINTS_WITHOUT_NEW_GOVERNED_EVIDENCE",
+      "ATL_71_REQUIRES_ACTUAL_RUNTIME_DEPLOYMENT_PROOF_NOT_IAC_ONLY",
+      "NO_MASS_FIRI_SCALE_BEFORE_ATL_147_FREEZES_TRUE_DENOMINATOR",
+      "NO_GENERIC_FIRI_CLAIM_BEFORE_ATL_149_NON_BOL_TRANSFER_PROOF",
+      "NO_HELD_OUT_CORPUS_OR_ANSWER_LEAKAGE_BEFORE_GOVERNED_RELEASE"
+    ]
   }
 }
