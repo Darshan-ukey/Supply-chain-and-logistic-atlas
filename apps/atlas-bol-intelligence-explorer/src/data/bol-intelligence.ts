@@ -14,7 +14,17 @@ export interface Validation { validation_id: string; statement: string; severity
 export interface Dependency { dependency_id: string; dependency_type: string; statement: string; status: "SATISFIED" | "UNSATISFIED" | "NOT_ASSESSED"; source_refs: SourceReference[]; }
 export interface Hierarchy { owner_object: string; parent_object: string; cardinality: string; path: string[]; status: AssessmentStatus; }
 export interface SufficiencyAssessment { classification: AssessmentClassification; rationale: string; present_components: string[]; missing_components: string[]; }
-export interface BolFieldIntelligence { field_id: string; field_number: number; field_name: string; source_classification: string; canonical_object: string; governed_rationale: string; semantic_definition: string; aliases: string[]; hierarchy: Hierarchy; relationships: Relationship[]; rules: BusinessRule[]; applicability_conditions: string[]; validations: Validation[]; precedence: string[]; exceptions: string[]; dependencies: Dependency[]; provenance: SourceReference[]; support_status: SupportStatus; gap_flag: boolean; sufficiency: SufficiencyAssessment; version: string; }
+export interface IdentificationResolutionIntelligence {
+  mechanism: string[];
+  resolution_states: string[];
+  positive_signals: string[];
+  competing_concepts: string[];
+  association_constraints: string[];
+  additional_evidence: string[];
+  unresolved_research: { id: string; question: string; policy: string }[];
+  consumer_projection: { malkom: string; non_malkom: string; };
+}
+export interface BolFieldIntelligence { field_id: string; field_number: number; field_name: string; source_classification: string; canonical_object: string; governed_rationale: string; semantic_definition: string; aliases: string[]; hierarchy: Hierarchy; relationships: Relationship[]; rules: BusinessRule[]; applicability_conditions: string[]; validations: Validation[]; precedence: string[]; exceptions: string[]; dependencies: Dependency[]; provenance: SourceReference[]; identification_resolution?: IdentificationResolutionIntelligence; support_status: SupportStatus; gap_flag: boolean; sufficiency: SufficiencyAssessment; version: string; }
 export interface BolIntelligencePackage { package_id: string; package_name: string; package_version: string; package_hash: string; hash_algorithm: "SHA-256"; hash_scope: string; lifecycle_status: "EXPERIMENTAL_POC"; generated_at: null; source_scope: string; field_count: 76; assessment_notice: string; semantic_controls: string[]; operational_policies: string[]; fields: BolFieldIntelligence[]; }
 
 type CrosswalkRow = { field_number: number; field_name: string; source_classification: string; canonical_object: string; governed_rationale: string };
@@ -586,6 +596,11 @@ const sourceClaims: Record<string, SourceReference> = {
   "src-dsdc-ebol-2.1": { source_id: "src-dsdc-ebol-2.1", artifact_name: "DSDC eBOL", version: "2.1", locator: "standardized LTL BOL structures/value families", status: "ASSESSED", claim: "Standardized LTL BOL structures/value families." },
   "src-uncefact-transport-logistics": { source_id: "src-uncefact-transport-logistics", artifact_name: "UN/CEFACT Transport & Logistics", version: "supplied claim", locator: "canonical model", status: "ASSESSED", claim: "Canonical object-first semantics." },
   "src-nmfta-nmfc": { source_id: "src-nmfta-nmfc", artifact_name: "NMFTA NMFC", version: "supplied claim", locator: "classification model", status: "ASSESSED", claim: "Classification semantics." },
+  "src-nmfta-rule-420": { source_id: "src-nmfta-rule-420", artifact_name: "NMFTA classification guidance / NMFC Rule 420", version: "current researched guidance", locator: "specific vs general description applicability", status: "ASSESSED", claim: "A specific applicable description takes precedence over a more general description when the article/material is embraced by the specific description; complete item context, notes, exceptions and references matter." },
+  "src-nmfta-mixed-freight": { source_id: "src-nmfta-mixed-freight", artifact_name: "NMFTA mixed-freight classification guidance", version: "current researched guidance", locator: "mixed freight package/skid/crate", status: "ASSESSED", claim: "Mixed-freight handling requires preserving handling-unit and commodity structure rather than collapsing the shipment into one homogeneous item." },
+  "src-nmfta-interpretation": { source_id: "src-nmfta-interpretation", artifact_name: "NMFTA interpretation request requirements", version: "current researched guidance", locator: "additional evidence for commodity interpretation", status: "ASSESSED", claim: "Useful disambiguating evidence includes manufacturer description/model, product literature, function/purpose, package/form of shipment, construction material, SDS where hazardous, food contents and competing NMFC candidates." },
+  "src-classit-api-faq": { source_id: "src-classit-api-faq", artifact_name: "NMFTA ClassIT+ API FAQ", version: "current researched guidance", locator: "subitem selection / API limitations", status: "ASSESSED", claim: "ClassIT+ does not currently provide structured subitem-selection logic; API access alone is not complete contextual resolution." },
+  "src-gs1-bol": { source_id: "src-gs1-bol", artifact_name: "GS1 US Bill of Lading Guideline R4.0", version: "R4.0", locator: "handling unit / package / commodity / NMFC / class structure", status: "ASSESSED", claim: "Handling Unit, Package, Commodity Description, NMFC and Class are represented as distinct attributes/structures." },
 };
 
 const partyFields = new Set([7,9,10,12,13,14,15,16,20,21,23,24,25,29,34,35,38,40,42,53,56,63,64,65]);
@@ -639,9 +654,83 @@ function fieldProvenance(n: number, classification: string) {
   if (classification === "Client-specific" || classification === "Master-data-dependent" || classification === "Derived/contextual") return refs("src-atl-68", "src-uncefact-transport-logistics");
   return refs(...Array.from(new Set(ids)));
 }
+function bol002SpecificRefs() {
+  return refs(
+    "src-atl-68",
+    "src-ecfr-49-373-101",
+    "src-dsdc-ebol-2.1",
+    "src-nmfta-nmfc",
+    "src-nmfta-rule-420",
+    "src-nmfta-mixed-freight",
+    "src-nmfta-interpretation",
+    "src-classit-api-faq",
+    "src-gs1-bol",
+  );
+}
+function bol002SpecificRules(): BusinessRule[] {
+  const r=bol002SpecificRefs();
+  return [
+    { rule_id:"FIRI-BOL002-R01", statement:"Commodity Description is distinct from handling-unit quantity/type, package quantity/type, weight, NMFC item/subitem, freight class and dangerous-goods attributes; compound evidence must be decomposed before association.", conditions:[], logic_constraint:"SEPARATE_COMPOUND_EVIDENCE_BEFORE_ASSOCIATION", precedence:10, exceptions:[], source_refs:refs("src-gs1-bol","src-nmfta-nmfc") },
+    { rule_id:"FIRI-BOL002-R02", statement:"Multiple positively established Commodity Items require separately represented descriptions; preserve source cardinality.", conditions:["More than one Commodity Item is positively established by row/group/object evidence."], logic_constraint:"ONE_DESCRIPTION_ASSOCIATION_PER_ESTABLISHED_COMMODITY_ITEM_WITH_SOURCE_CARDINALITY", precedence:20, exceptions:[], source_refs:refs("src-nmfta-nmfc","src-ecfr-49-373-101") },
+    { rule_id:"FIRI-BOL002-R03", statement:"Handling Unit, Package and Commodity Item are distinct concepts. Do not force one-to-one equivalence; permit evidence-supported many-to-many HandlingUnit↔CommodityItem association.", conditions:[], logic_constraint:"NO_HU_PACKAGE_COMMODITY_COLLAPSE", precedence:30, exceptions:[], source_refs:refs("src-gs1-bol","src-nmfta-mixed-freight") },
+    { rule_id:"FIRI-BOL002-R04", statement:"When choosing among applicable NMFC descriptions, use the most specific applicable description over a more general applicable description only when the article/material is embraced by that specific provision; evaluate relevant headings, subheadings, notes, exceptions and references.", conditions:["NMFC classification validation is required and multiple candidate provisions exist."], logic_constraint:"SPECIFIC_APPLICABLE_OVER_GENERAL_WITH_FULL_CONTEXT", precedence:40, exceptions:["Do not choose a specific provision that does not actually embrace the article/material."], source_refs:refs("src-nmfta-rule-420") },
+    { rule_id:"FIRI-BOL002-R05", statement:"Packaging/form of shipment is separate from Commodity Description but may be material corroborating evidence for commodity identification/classification.", conditions:["Packaging/form evidence is present or an applicable NMFC provision depends on packaging/form."], logic_constraint:"USE_PACKAGING_AS_CONTEXT_NOT_DESCRIPTION_SUBSTITUTE", precedence:50, exceptions:[], source_refs:refs("src-nmfta-interpretation","src-nmfta-nmfc") },
+    { rule_id:"FIRI-BOL002-R06", statement:"Preserve the observed commodity-description text even when vague or abbreviated. Semantic field identification does not imply classification sufficiency, and Atlas must not fabricate a more specific description.", conditions:[], logic_constraint:"PRESERVE_OBSERVED_VALUE_NON_FABRICATION", precedence:60, exceptions:[], source_refs:refs("src-atl-68","src-nmfta-interpretation") },
+    { rule_id:"FIRI-BOL002-R07", statement:"ClassIT+ is authoritative acquisition/validation infrastructure but API lookup alone is not complete contextual resolution; missing structured subitem-selection logic or omitted references must not be treated as negative evidence.", conditions:["ClassIT+ or equivalent NMFC API is used."], logic_constraint:"API_RESULT_IS_EVIDENCE_NOT_COMPLETE_RESOLUTION", precedence:70, exceptions:[], source_refs:refs("src-classit-api-faq") },
+    { rule_id:"FIRI-BOL002-R08", statement:"When evidence is insufficient or conflicting, return the observed value, unresolved reason and pointed additional evidence required; do not guess or silently attach the description to an arbitrary object.", conditions:["Object association, semantic identity or classification sufficiency remains unresolved."], logic_constraint:"FAIL_CLOSED_WITH_POINTED_EVIDENCE_REQUEST", precedence:80, exceptions:[], source_refs:r },
+  ];
+}
+function bol002Relationships(): Relationship[] {
+  const r=bol002SpecificRefs();
+  return [
+    { relationship_id:"REL-BOL002-COMMODITY-OWNER", relationship_type:"OWNED_BY", target_field_id:"canonical:CommodityItem", statement:"Line Item Description belongs to a Commodity Item / Consignment Item object.", source_refs:r },
+    { relationship_id:"REL-BOL002-PACKAGE-SEPARATION", relationship_type:"DISTINCT_BUT_CORROBORATING", target_field_id:"BOL-008", statement:"Packaging Type is distinct from description but can corroborate commodity resolution/classification.", source_refs:refs("src-gs1-bol","src-nmfta-interpretation") },
+    { relationship_id:"REL-BOL002-NMFC", relationship_type:"VALIDATES_OR_CORROBORATES", target_field_id:"BOL-033", statement:"NMFC item/subitem may validate or contradict a description candidate but does not replace observed description text.", source_refs:refs("src-nmfta-nmfc","src-nmfta-rule-420") },
+    { relationship_id:"REL-BOL002-CLASS", relationship_type:"CORROBORATES", target_field_id:"BOL-017", statement:"Freight Class is separate from description and may corroborate classification consistency.", source_refs:refs("src-gs1-bol","src-nmfta-nmfc") },
+    { relationship_id:"REL-BOL002-HU-COMMODITY", relationship_type:"MANY_TO_MANY_PERMITTED_IF_EVIDENCED", target_field_id:"canonical:HandlingUnit", statement:"Do not infer 1 Handling Unit = 1 Commodity Item; preserve evidence-supported associations.", source_refs:refs("src-gs1-bol","src-nmfta-mixed-freight") },
+  ];
+}
+function bol002Validations(): Validation[] {
+  return [
+    { validation_id:"VAL-BOL002-01", statement:"Reject automatic resolution if candidate text is actually package/HU quantity/type, NMFC/subitem, freight class, weight or hazardous-material attribute rather than commodity description.", severity:"ERROR", source_refs:refs("src-gs1-bol","src-nmfta-nmfc") },
+    { validation_id:"VAL-BOL002-02", statement:"If multiple Commodity Items are established, verify that descriptions and related attributes remain separately associated rather than collapsed.", severity:"ERROR", source_refs:refs("src-nmfta-nmfc","src-nmfta-mixed-freight") },
+    { validation_id:"VAL-BOL002-03", statement:"If classification sufficiency is claimed, verify the applicable NMFC item/subitem context including specific-vs-general applicability and relevant notes/exceptions/references.", severity:"ERROR", source_refs:refs("src-nmfta-rule-420","src-nmfta-nmfc") },
+    { validation_id:"VAL-BOL002-04", statement:"A vague or abbreviated observed description may be semantically identified while classification sufficiency remains unresolved; do not upgrade the text without evidence.", severity:"WARNING", source_refs:refs("src-nmfta-interpretation","src-atl-68") },
+  ];
+}
+function bol002IdentificationResolution(): IdentificationResolutionIntelligence {
+  return {
+    mechanism:["OBSERVE","CANDIDATE","CONTEXT","OBJECT_CARDINALITY","SEPARATE","ASSOCIATE","CORROBORATE","VALIDATE","RESOLVE_ESCALATE"],
+    resolution_states:["OBSERVED_DESCRIPTION","SEMANTICALLY_IDENTIFIED_DESCRIPTION","CLASSIFICATION_SUFFICIENT_DESCRIPTION","UNRESOLVED"],
+    positive_signals:[
+      "Text occupying a commodity/article/description position or group in shipment evidence.",
+      "Text associated with a Commodity Item and corroborated by neighboring package quantity/type, weight, NMFC item/subitem, freight class or dangerous-goods evidence.",
+      "Article/commodity wording that can be tested against applicable NMFC provisions when classification validation is required."
+    ],
+    competing_concepts:["Handling Unit quantity/type","Package quantity/type","Line/shipment weight","NMFC item/subitem number","Freight Class","Hazardous-material identification number","Hazard class/division","Packing Group","Hazmat technical name"],
+    association_constraints:[
+      "Preserve each positively established Commodity Item; do not collapse multiple commodities.",
+      "Handling Unit, Package and Commodity Item are distinct concepts.",
+      "Permit evidence-supported many-to-many HandlingUnit↔CommodityItem association.",
+      "A printed line/sequence number is not a Commodity Item identifier unless its semantic role is established.",
+      "Do not identify description solely from fixed page coordinates or one client template."
+    ],
+    additional_evidence:["manufacturer description/type/model/invoice reference","photos/diagrams/product literature or product link","function/purpose","shipping package type","form of shipment","construction materials","SDS/MSDS when hazardous","food label/contents when applicable","competing NMFC candidate items"],
+    unresolved_research:[
+      { id:"FIRI-BOL002-U01", question:"Exact universal semantics of Handling Unit Line No and when it is an association key versus sequence.", policy:"Do not equate with Commodity Item identifier without source/client evidence." },
+      { id:"FIRI-BOL002-U02", question:"Universal precedence/association semantics for continuation BOLs and external commodity attachments.", policy:"Support additional evidence structurally; do not invent universal precedence." },
+    ],
+    consumer_projection:{
+      malkom:"Project the same canonical rules into Malkom contextualization/rule/HITL/external-lookup configuration; Malkom runtime constructs are not canonical Atlas truth.",
+      non_malkom:"A VLM/agent/document-digitization workflow can consume the same identification, association, validation and escalation contract without Malkom queues, schemas or APIs."
+    }
+  };
+}
+
 function fieldRules(n: number, provenance: SourceReference[]) {
   const ruleProvenance = n === 48 ? refs("src-atl-68") : provenance;
   const out: BusinessRule[] = [controlRule(0, ruleProvenance), policyRule(0, ruleProvenance), policyRule(1, ruleProvenance)];
+  if (n === 2) out.push(...bol002SpecificRules());
   if (partyFields.has(n)) out.push(controlRule(1, provenance));
   if (referenceFields.has(n)) out.push(controlRule(2, provenance), controlRule(11, provenance));
   if (measureFields.has(n)) out.push(controlRule(3, provenance));
@@ -657,6 +746,7 @@ function fieldRules(n: number, provenance: SourceReference[]) {
 }
 function fieldRelationships(n: number, provenance: SourceReference[]): Relationship[] {
   const result: Relationship[] = [];
+  if (n === 2) result.push(...bol002Relationships());
   if (addressFields.has(n)) result.push({ relationship_id: "REL-ADDRESS-LINES", relationship_type: "MANY_TO_ONE_REPRESENTATION", target_field_id: "canonical:addressLines[]", statement: semanticControl(9), source_refs: provenance });
   if ([22,44].includes(n)) result.push({ relationship_id: "REL-WEIGHT-OWNERSHIP", relationship_type: "DISTINCT_SEMANTIC_OWNER", target_field_id: n === 22 ? "BOL-044" : "BOL-022", statement: semanticControl(10), source_refs: provenance });
   if (referenceFields.has(n)) result.push({ relationship_id: "REL-REFERENCE-MODEL", relationship_type: "BROADER_REFERENCE_MODEL", target_field_id: "canonical:Reference", statement: semanticControl(11), source_refs: provenance });
@@ -674,6 +764,7 @@ function classify(row: CrosswalkRow): GovernedSufficiencyClassification {
   const n=row.field_number;
   if (dependencyFields.has(n)) return "DEPENDENCY_BOUND";
   if (unsupportedFields.has(n)) return "NOT_EXECUTION_SUFFICIENT";
+  if (n === 2) return "PARTIALLY_SUFFICIENT";
   if (derivedFields.has(n) || eventFields.has(n) || n === 1 || partialCanonicalFields.has(n)) return "PARTIALLY_SUFFICIENT";
   if (executionHazmatFields.has(n) || row.source_classification === "Canonical BOL/domain") return "EXECUTION_SUFFICIENT";
   return "UNRESOLVED_OR_NA";
@@ -684,6 +775,7 @@ function sufficiencyRationale(row: CrosswalkRow, classification: GovernedSuffici
   if (derivedFields.has(row.field_number)) return `Partially sufficient: ${row.governed_rationale} Supplied evidence does not provide field-level execution logic.`;
   if (eventFields.has(row.field_number)) return `Partially sufficient: ${row.governed_rationale} Exact local coding and applicability are not fully supplied.`;
   if (row.field_number === 1) return "Partially sufficient: hazardous-goods activation is relationship-aware and the flag alone is incomplete; full applicability decision semantics are required.";
+  if (row.field_number === 2) return "Partially sufficient pending independent QA: field-specific FIRI now covers identification, competing-concept separation, CommodityItem cardinality/association, NMFC validation context, ambiguity/non-fabrication, pointed evidence requests and consumer-neutral projection. Independent QA must verify the rules before freeze/execution-sufficient status.";
   if (partialCanonicalFields.has(row.field_number)) return `Partially sufficient: ${row.governed_rationale} Canonical mapping is present, but the supplied evidence does not fully define field-level execution constraints.`;
   if (executionHazmatFields.has(row.field_number)) return `Execution-sufficient only within stated US hazardous-material applicability: ${row.governed_rationale} Supplied regulatory claims and DangerousGoods relationship controls cover the field.`;
   return `Execution-sufficient for pre-execution semantic resolution: ${row.governed_rationale} Supplied object ownership, relationship controls, and source claims cover the field; this is not runtime accuracy proof.`;
@@ -695,6 +787,7 @@ function missingComponents(row: CrosswalkRow, classification: GovernedSufficienc
   if (derivedFields.has(row.field_number)) return ["field-level execution logic", "governed validation constraints"];
   if (eventFields.has(row.field_number)) return ["exact local coding", "complete applicability decision semantics"];
   if (row.field_number === 1) return ["complete dangerous-goods activation decision semantics", "linked DangerousGoods object evidence"];
+  if (row.field_number === 2) return ["independent QA of FIRI v1 candidate", "freeze decision after QA"];
   return ["field-level execution constraints"];
 }
 function hierarchyFor(row: CrosswalkRow): Hierarchy {
@@ -708,8 +801,12 @@ function buildField(row: CrosswalkRow): BolFieldIntelligence {
   const dependencies=dependenciesFor(row,provenance);
   const support: SupportStatus = classification === "EXECUTION_SUFFICIENT" ? "SUPPORTED" : classification === "DEPENDENCY_BOUND" ? "DEPENDENCY_BOUND" : classification === "NOT_EXECUTION_SUFFICIENT" ? "UNSUPPORTED" : "PARTIALLY_SUPPORTED";
   const applicability = row.source_classification === "Conditional domain" ? [row.governed_rationale, ...(hazmatFields.has(row.field_number) ? ["Within stated US hazardous-material applicability."] : [])] : [];
+  if (row.field_number === 2) applicability.push("NMFC/classification validation is conditional on the execution purpose and available authoritative knowledge; semantic identification of observed description does not itself establish classification sufficiency.");
   const relationships=fieldRelationships(row.field_number,provenance);
   const rules=fieldRules(row.field_number,provenance);
+  const validations=row.field_number === 2 ? bol002Validations() : [];
+  const identificationResolution=row.field_number === 2 ? bol002IdentificationResolution() : undefined;
+  const effectiveProvenance=row.field_number === 2 ? Array.from(new Map([...provenance,...bol002SpecificRefs()].map((ref)=>[ref.source_id,ref])).values()) : provenance;
   const presentComponents=[
     "governed ATL-68 mapping",
     "governed canonical target statement",
@@ -717,8 +814,9 @@ function buildField(row: CrosswalkRow): BolFieldIntelligence {
     "source provenance",
     ...(relationships.length ? ["relationship controls"] : []),
     ...(rules.length ? ["applicable semantic controls"] : []),
+    ...(row.field_number === 2 ? ["field-specific FIRI identification/resolution contract","field-specific validations","pointed additional-evidence requirements","Malkom + non-Malkom consumer projection"] : []),
   ];
-  return { field_id:`BOL-${String(row.field_number).padStart(3,"0")}`, ...row, semantic_definition:row.governed_rationale, aliases:[], hierarchy:hierarchyFor(row), relationships, rules, applicability_conditions:applicability, validations:[], precedence:[semanticControl(7), operationalPolicy(1)], exceptions:[], dependencies, provenance, support_status:support, gap_flag:classification !== "EXECUTION_SUFFICIENT", sufficiency:{ classification, rationale:sufficiencyRationale(row,classification), present_components:presentComponents, missing_components:missingComponents(row,classification) }, version:"experimental-poc-2026.09.27" };
+  return { field_id:`BOL-${String(row.field_number).padStart(3,"0")}`, ...row, semantic_definition:row.governed_rationale, aliases:[], hierarchy:hierarchyFor(row), relationships, rules, applicability_conditions:applicability, validations, precedence:[semanticControl(7), operationalPolicy(1)], exceptions:row.field_number === 2 ? ["Do not infer Handling Unit Line No = Commodity Item Number without evidence.","Do not invent universal continuation/attachment precedence."] : [], dependencies, provenance:effectiveProvenance, ...(identificationResolution ? { identification_resolution: identificationResolution } : {}), support_status:support, gap_flag:classification !== "EXECUTION_SUFFICIENT", sufficiency:{ classification, rationale:sufficiencyRationale(row,classification), present_components:presentComponents, missing_components:missingComponents(row,classification) }, version:row.field_number === 2 ? "firi-v1-candidate-2026.09.28" : "experimental-poc-2026.09.27" };
 }
 
 export const bolIntelligencePackage: BolIntelligencePackage = { package_id:"atlas-bol-intelligence-atl-68", package_name:"Atlas BOL Intelligence Package", package_version:"experimental-poc-2026.09.27", package_hash:"sha256:4192b4252431efb2b88bb93713f5d8b1902c3514e2638afec373e6df97fc1c2c", hash_algorithm:"SHA-256", hash_scope:"Canonical JSON serialization of the complete package with package_hash set to an empty string.", lifecycle_status:"EXPERIMENTAL_POC", generated_at:null, source_scope:"Governed ATL-68 76-field crosswalk with supplied semantic controls, operational policies and source claims.", field_count:76, assessment_notice:"Pre-execution knowledge sufficiency assessment — not runtime accuracy proof.", semantic_controls:semanticControls, operational_policies:operationalPolicies, fields:governedCrosswalk.map(buildField) };
