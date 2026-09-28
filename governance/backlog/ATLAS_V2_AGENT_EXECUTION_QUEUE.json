@@ -68,7 +68,31 @@
     "demoImplementationMustUseExplicitBranch": "atlas-v2-demo-2026-09-14",
     "demoMergeToMainRequiresOwnerApproval": true,
     "mainMergeDoesNotImplyVercelDeploymentApproval": true,
-    "stopBeforeAnyActionExpectedToTriggerVercel": true
+    "stopBeforeAnyActionExpectedToTriggerVercel": true,
+    "referenceConsumer": "MALKOM_3_0",
+    "referenceConsumerIsArchitectureBoundary": false,
+    "mandatoryConsumerDesignGate": {
+      "gateA": "USEFUL_ENOUGH_FOR_MALKOM",
+      "gateB": "INDEPENDENT_ENOUGH_FROM_MALKOM",
+      "appliesTo": [
+        "CANONICAL_KNOWLEDGE",
+        "OPERATIONAL_KNOWLEDGE",
+        "WORK_DECOMPOSITION",
+        "WORKDEFINITION",
+        "READINESS",
+        "EXECUTION_PACKAGE",
+        "RUNTIME_PROJECTION",
+        "CONSUMER_INTEGRATION"
+      ],
+      "executorEvidenceRequired": true,
+      "independentQaRecheckRequired": true,
+      "failClosedIfMaterialGateFailsOrUnsupported": true,
+      "requiredEvidenceFields": [
+        "MALKOM_UTILITY",
+        "CONSUMER_INDEPENDENCE"
+      ],
+      "notApplicableRequiresExplicitReason": true
+    }
   },
   "mode": "ATLAS_V2_HYBRID_DEMO_SPRINT_GITHUB_ONLY",
   "currentStageId": "D2.0.7",
@@ -578,7 +602,7 @@
     }
   ],
   "demoSprintOpenItems": [
-    "BROWSER_VISUAL_VERIFICATION_NEVER_PERFORMED \u2014 still the single functional gap; no browser or headless driver available to either executor.",
+    "BROWSER_VISUAL_VERIFICATION_NEVER_PERFORMED — still the single functional gap; no browser or headless driver available to either executor.",
     "D2.0.0 CREATE_PRE_CHANGE_FULL_STATE_FREEZE never performed; cannot be recreated retroactively (D2.0.6 freeze is post-build only).",
     "D2.0.3-D2.0.5 are now CROSS_AGENT_AUDITED by ChatGPT (PASS). D2.0.6 remains executor self-reported and is open to the same independent audit.",
     "D2.0.7 auto-deploy conflict unresolved (see D2.0.7.recordedBlocker).",
@@ -589,7 +613,7 @@
       "stageId": "ATL-130-F01-REMEDIATION",
       "linearIssue": "ATL-130",
       "findingId": "F-130-01",
-      "name": "Remediation: Evidence Materialization Gap (ATL-60 \u2192 Supabase)",
+      "name": "Remediation: Evidence Materialization Gap (ATL-60 → Supabase)",
       "status": "PENDING_REMEDIATION",
       "owner": "CHATGPT",
       "severity": "CRITICAL",
@@ -701,7 +725,7 @@
     },
     {
       "stageId": "ATL-36",
-      "title": "Independent QA \u2014 P6.1 successor generator against LTL-03 BOL evidence",
+      "title": "Independent QA — P6.1 successor generator against LTL-03 BOL evidence",
       "status": "BLOCKED_PENDING_GENERATOR_EVIDENCE_PACKAGE",
       "owner": "CLAUDE",
       "blockedBy": [
