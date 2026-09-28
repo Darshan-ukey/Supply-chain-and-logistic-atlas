@@ -251,3 +251,13 @@ The Owner must not freeze the successor architecture at AR0.6 unless every `DG-0
 2. **explicitly OWNER-DEFERRED** with rationale, known downstream impact and a named future gate.
 
 Demo-only shortcuts, representative JSON, special URL flags, stale version fallbacks, page-specific business knowledge, or manual custody knowledge must not silently become production architecture.
+
+
+### DG-12 — Execution-readiness intelligence closure
+**Problem exposed:** BOL-002 showed that semantic definition, ownership and provenance can be present while an executor still lacks identification/distinguishability, object/cardinality association, validation, ambiguity handling, work sequencing and a complete execution contract.
+
+**Required architecture outcome:** implement the requirements in `EXECUTION_READINESS_INTELLIGENCE_CLOSURE_V1.md`: Synthesized Domain Intelligence; Execution-Readiness Interrogation; execution-gap classification; pointed On-Demand Depth research; FIRI/successor resolution mechanism; Field→Object/Decision→Work readiness; Canonical vs Bound readiness; Client Binding complement; Execution Contract; integration semantics; and governed knowledge promotion/reuse.
+
+**Acceptance principle:** a new implementation must not have to rediscover established reusable domain/work intelligence already governed by Atlas. Mandatory unresolved knowledge must still fail closed. Runtime execution remains downstream.
+
+**Proof path:** ATL-132/BOL-002 first; do not mass-enrich the remaining BOL fields under the prior sufficiency definition before this loop is validated.
