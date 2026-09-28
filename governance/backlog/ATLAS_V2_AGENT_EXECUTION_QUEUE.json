@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "atlas-v2-agent-execution-queue-v19",
-  "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v18",
-  "updatedAt": "2026-09-27T03:50:01.368197Z",
+  "schemaVersion": "atlas-v2-agent-execution-queue-v20",
+  "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v19",
+  "updatedAt": "2026-09-28T10:40:00Z",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
   "demoIntegrationTargetBranch": "main",
@@ -94,9 +94,9 @@
       "notApplicableRequiresExplicitReason": true
     }
   },
-  "mode": "ATLAS_V2_HYBRID_DEMO_SPRINT_GITHUB_ONLY",
-  "currentStageId": "D2.0.7",
-  "currentPhase": "ATLAS_V2_DEMO_SPRINT",
+  "mode": "ATLAS_V1_5_MALKOM_DOMAIN_WAREHOUSE_RELEASE_PLANNING",
+  "currentStageId": "V1.5.PLAN",
+  "currentPhase": "ATLAS_V1_5_MALKOM_DOMAIN_WAREHOUSE_RELEASE",
   "demoTargetDate": "2026-09-14",
   "stakeholderDemoDate": "2026-09-15",
   "phases": [
@@ -752,9 +752,130 @@
     }
   ],
   "lastUpdate": {
-    "timestamp": "2026-09-27T03:50:01.368218Z",
-    "event": "ATL-130 Execution-Readiness QA Findings: Added F-130-01 and F-130-04 remediation tasks",
-    "addedBy": "CLAUDE",
-    "remark": "Sequential remediation protocol: F-130-01 (evidence materialization) is first/critical; F-130-04 (enforcement gate) deferred until F-130-01 completes"
+    "timestamp": "2026-09-28T10:40:00Z",
+    "event": "Owner release sequencing decision: Atlas v1.5 Malkom Domain Warehouse inserted before full Atlas v2.0; BOL POC removed as v1.5 gate",
+    "addedBy": "CHATGPT",
+    "remark": "ATL-136–142 define v1.5. Full v2 end-state remains under ATL-103. Execution is not self-authorized by this roadmap update."
+  },
+  "currentReleaseTarget": "ATLAS_V1_5_MALKOM_DOMAIN_WAREHOUSE",
+  "releaseStrategy": {
+    "decisionDate": "2026-09-28",
+    "ownerDecision": "SHIP_ATLAS_V1_5_MALKOM_DOMAIN_WAREHOUSE_AS_INTERMEDIATE_RELEASE_BEFORE_FULL_V2_0",
+    "reason": [
+      "ORIGINAL_MALKOM_DOMAIN_WAREHOUSE_ASK_IS_NARROWER_THAN_FULL_ATLAS_V2_END_STATE",
+      "SUBSTANTIAL_GOVERNED_DOMAIN_AND_FROZEN_UX_ASSETS_ALREADY_EXIST",
+      "FULL_BOL_FIRI_AND_EXECUTION_READINESS_CLOSURE_WOULD_DELAY_A_USEFUL_ARCHITECTURALLY_ALIGNED_PRODUCT_SLICE",
+      "NEW_PROCESS_AND_CLIENT_GAPS_WILL_CONTINUE_TO_EMERGE_SO_V15_REQUIRES_EXPLICIT_GAP_STATE_NOT_EXHAUSTIVE_COMPLETENESS"
+    ],
+    "v15Objective": "PROVIDE_DOMAIN_AND_WORK_DETAILS_MALKOM_NEEDS_IN_A_MALKOM_CONSUMABLE_FORM_SO_IMPLEMENTATIONS_DO_NOT_RECREATE_THE_DOMAIN",
+    "v15LinearParent": "ATL-136",
+    "v15ReleaseContractPath": "governance/product/ATLAS_V1_5_MALKOM_DOMAIN_WAREHOUSE_RELEASE_CONTRACT_V1.md",
+    "v15UxPolicy": "PRESERVE_FROZEN_CURRENT_ATLAS_IDENTITY__ADDITIVE_IMPROVEMENT_ONLY",
+    "v15CanonicalBoundary": "MALKOM_SPECIFIC_SHAPES_STAY_IN_PROJECTION_ADAPTER__CANONICAL_ATLAS_REMAINS_RUNTIME_NEUTRAL",
+    "bolPocDisposition": "PAUSED_AS_V15_RELEASE_DEPENDENCY__PRESERVE_COMPLETED_EVIDENCE__DEFER_UNFINISHED_WORK_TO_V2",
+    "v20EndStatePreserved": true,
+    "v20ParentLinearIssue": "ATL-103",
+    "executionAuthorization": "NOT_GRANTED_BY_THIS_ROADMAP_UPDATE__OWNER_TO_AUTHORIZE_V15_IMPLEMENTATION"
+  },
+  "atlasV15ReleaseTrack": {
+    "stageId": "V1.5",
+    "id": "V1.5",
+    "name": "Atlas v1.5 — Malkom Domain Warehouse Demo/Live Release",
+    "status": "OWNER_APPROVED_SCOPE__PLANNED__AWAITING_EXECUTION_AUTHORIZATION",
+    "linearParent": "ATL-136",
+    "objective": "Make Atlas look and behave as a finished-enough Malkom Domain Warehouse while preserving Atlas core identity and forward compatibility with v2.0.",
+    "nonGoals": [
+      "FULL_BOL_FIRI_POC",
+      "FULL_V2_EXECUTION_READINESS_CLOSURE",
+      "FULL_GENERIC_WORKDEFINITION_PERSISTENCE",
+      "FULL_CLIENT_BINDING_ENGINE",
+      "SELF_ENRICHMENT",
+      "THREE_CONSUMER_PROJECTION_PROOF",
+      "FULL_V2_BACKEND_AND_PRODUCT_CERTIFICATION"
+    ],
+    "subStages": [
+      {
+        "stageId": "V1.5.0",
+        "linearIssue": "ATL-137",
+        "name": "Baseline/Frozen-Asset & Current UX Reuse Audit",
+        "status": "PLANNED"
+      },
+      {
+        "stageId": "V1.5.1",
+        "linearIssue": "ATL-138",
+        "name": "Malkom Domain Warehouse Consumption Contract",
+        "status": "PLANNED",
+        "blockedBy": [
+          "V1.5.0"
+        ]
+      },
+      {
+        "stageId": "V1.5.2",
+        "linearIssue": "ATL-139",
+        "name": "Current-Lineage Road LTL → Malkom Domain Warehouse Package",
+        "status": "PLANNED",
+        "blockedBy": [
+          "V1.5.1"
+        ]
+      },
+      {
+        "stageId": "V1.5.3",
+        "linearIssue": "ATL-140",
+        "name": "Product UX Integration",
+        "status": "PLANNED",
+        "blockedBy": [
+          "V1.5.0"
+        ]
+      },
+      {
+        "stageId": "V1.5.4",
+        "linearIssue": "ATL-141",
+        "name": "Release Integrity, Browser/Visual Regression & Product Polish",
+        "status": "PLANNED",
+        "blockedBy": [
+          "V1.5.2",
+          "V1.5.3"
+        ]
+      },
+      {
+        "stageId": "V1.5.5",
+        "linearIssue": "ATL-142",
+        "name": "Independent QA, Drive Custody & Owner-Gated Go-Live",
+        "status": "PLANNED",
+        "blockedBy": [
+          "V1.5.4"
+        ]
+      }
+    ]
+  },
+  "v15CriticalPath": [
+    "V1.5.0",
+    "V1.5.1",
+    "V1.5.2",
+    "V1.5.3",
+    "V1.5.4",
+    "V1.5.5"
+  ],
+  "v20DeferredScope": {
+    "status": "PRESERVED_NOT_REDUCED",
+    "parentLinearIssue": "ATL-103",
+    "linearIssues": [
+      "ATL-104",
+      "ATL-105",
+      "ATL-106",
+      "ATL-107",
+      "ATL-108",
+      "ATL-109",
+      "ATL-111",
+      "ATL-112",
+      "ATL-113",
+      "ATL-114",
+      "ATL-115",
+      "ATL-116",
+      "ATL-117",
+      "ATL-133",
+      "ATL-130"
+    ],
+    "objective": "Complete the full governed execution-readiness platform on top of the v1.5 reusable domain/work product."
   }
 }
