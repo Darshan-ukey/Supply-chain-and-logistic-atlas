@@ -30,13 +30,14 @@ If QA fails, the same task remains authoritative and is routed back to ChatGPT f
 10. ATL-163 — Malkom-Oriented Readiness Summary
 11. ATL-139 — Current-Lineage Road LTL → Malkom Domain Warehouse Package
 12. ATL-169 — Current-Lineage Malkom Projection Boundary & Handoff
-13. ATL-167 — Coherent Public/Private Interaction Slice
-14. ATL-140 — Product UX Integration for Malkom Domain Warehouse Demo
-15. ATL-175 — Bounded API, Versioning, Release & Rollback Contract
-16. ATL-173 — Malkom Domain Warehouse Utility Proof
-17. ATL-141 — Release Integrity, Browser/Visual Regression & Product Polish
-18. ATL-143 — v1.5 → v2 BOL/FIRI Deferred-Work Handover Freeze
-19. ATL-142 — Independent QA, Drive Custody & Owner-Gated Go-Live
+13. ATL-178 — Generated Queue Flow Explorer & BPMN Export
+14. ATL-167 — Coherent Public/Private Interaction Slice
+15. ATL-140 — Product UX Integration for Malkom Domain Warehouse Demo
+16. ATL-175 — Bounded API, Versioning, Release & Rollback Contract
+17. ATL-173 — Malkom Domain Warehouse Utility Proof
+18. ATL-141 — Release Integrity, Browser/Visual Regression & Product Polish
+19. ATL-143 — v1.5 → v2 BOL/FIRI Deferred-Work Handover Freeze
+20. ATL-142 — Independent QA, Drive Custody & Owner-Gated Go-Live
 
 ## v2 continuity
 
@@ -64,3 +65,10 @@ Full-v2-only capabilities remain preserved in the existing v2 backlog:
 - end-to-end v2 release/go-live proof.
 
 Execution itself remains outside Atlas.
+
+
+## Added Hasmukh capability — generated Queue Flow Explorer / BPMN
+
+v1.5 adds ATL-178 after ATL-159/ATL-169. It must generate flow/BPMN from governed data, not hand-drawn diagrams. Malkom-specific `subQueues[].outcomes` may be used as a projection input but must not become canonical Atlas truth.
+
+The generic cross-domain/BPMN continuation is ATL-179 and remains deferred to v2.
