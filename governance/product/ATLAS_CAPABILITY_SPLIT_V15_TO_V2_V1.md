@@ -100,3 +100,15 @@ Each v2 continuation:
 2. A v2 continuation must never restart from conceptual design if v1.5 has a validated implementation.
 3. v1.5 scope must not silently expand into the v2 delta.
 4. v2 scope must not silently drop a deferred requirement because v1.5 shipped without it.
+
+## Completeness revalidation additions — 28 Sep 2026
+
+The full-concept audit identified three partial capabilities that had been implicit but not paired:
+
+| Capability | v1.5 bounded slice | v2 continuation | Governing v2 issue(s) |
+|---|---|---|---|
+| Operational Knowledge / canonical information semantics | ATL-171 | ATL-172 | ATL-95 / ATL-119 / ATL-133 / ATL-150 |
+| Malkom Domain Warehouse utility proof | ATL-173 | ATL-174 | ATL-117 |
+| API/versioning/release/rollback | ATL-175 | ATL-176 | ATL-106 / ATL-109 |
+
+These ensure Daughter/Depth has an explicit semantic bridge to WorkDefinition, v1.5 proves actual Malkom utility, and the release is versioned/recoverable rather than a one-off demo.
