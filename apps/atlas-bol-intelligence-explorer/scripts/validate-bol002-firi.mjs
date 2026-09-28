@@ -29,7 +29,7 @@ const vectors = [
   "multiple pallets / same commodity",
   "multiple commodities / multiple handling units",
   "description + NMFC",
-  "vague description",
+  "vague description PARTS",
   "abbreviated description",
   "general vs specific NMFC candidate",
   "hazmat commodity",
