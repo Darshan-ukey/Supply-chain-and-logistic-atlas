@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { getBolField } from "@/data/bol-intelligence";
+export const Route = createFileRoute("/api/bol/fields/$fieldId/intelligence")({ server: { handlers: { GET: async ({ params }) => { const field = getBolField(params.fieldId); return field ? Response.json({ field_id: field.field_id, intelligence: field }) : Response.json({ error: "FIELD_NOT_FOUND", field_id: params.fieldId }, { status: 404 }); } } } });

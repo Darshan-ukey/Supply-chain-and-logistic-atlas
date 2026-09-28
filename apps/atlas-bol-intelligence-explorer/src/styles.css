@@ -1,0 +1,50 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+  --radius-sm: calc(var(--radius) - 2px); --radius-md: var(--radius); --radius-lg: calc(var(--radius) + 2px);
+  --color-background: var(--background); --color-foreground: var(--foreground); --color-card: var(--card); --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover); --color-popover-foreground: var(--popover-foreground); --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary); --color-secondary-foreground: var(--secondary-foreground); --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent); --color-accent-foreground: var(--accent-foreground); --color-destructive: var(--destructive); --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border); --color-input: var(--input); --color-ring: var(--ring); --color-warning-subtle: var(--warning-subtle); --color-warning-border: var(--warning-border); --color-warning-foreground: var(--warning-foreground);
+  --color-success: var(--success); --color-info: var(--info); --color-code: var(--code); --color-code-foreground: var(--code-foreground);
+}
+
+:root {
+  --radius: .375rem;
+  --background: oklch(.975 .004 240); --foreground: oklch(.22 .025 245); --card: oklch(1 0 0); --card-foreground: var(--foreground);
+  --popover: var(--card); --popover-foreground: var(--foreground); --primary: oklch(.34 .105 240); --primary-foreground: oklch(.99 0 0);
+  --secondary: oklch(.94 .01 240); --secondary-foreground: oklch(.30 .04 240); --muted: oklch(.955 .006 240); --muted-foreground: oklch(.48 .025 245);
+  --accent: oklch(.91 .028 205); --accent-foreground: oklch(.28 .07 225); --destructive: oklch(.55 .19 27); --destructive-foreground: oklch(.99 0 0);
+  --border: oklch(.87 .012 240); --input: oklch(.83 .015 240); --ring: oklch(.54 .13 230);
+  --warning-subtle: oklch(.95 .045 85); --warning-border: oklch(.81 .10 77); --warning-foreground: oklch(.34 .075 64);
+  --success: oklch(.55 .12 160); --info: oklch(.55 .12 230); --code: oklch(.18 .025 245); --code-foreground: oklch(.91 .015 220);
+}
+
+@layer base { * { border-color: var(--color-border); } html { font-family: var(--font-sans); } body { margin: 0; background: var(--color-background); color: var(--color-foreground); letter-spacing: 0; } button, a { letter-spacing: 0; } }
+@layer components {
+  .nav-link { @apply inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground; }
+  .nav-link-active { @apply bg-secondary text-primary; }
+  .page-shell { @apply mx-auto w-full max-w-[1600px] px-4 py-7 sm:px-6 lg:px-8; }
+  .eyebrow { @apply mb-2 font-mono text-[11px] font-semibold uppercase text-muted-foreground; }
+  .page-title { @apply text-2xl font-semibold leading-tight sm:text-3xl; }
+  .page-copy { @apply mt-2 max-w-3xl text-sm leading-6 text-muted-foreground; }
+  .section-heading { @apply text-sm font-semibold text-foreground; }
+  .status-badge { @apply inline-flex max-w-full items-center gap-1.5 rounded border border-border bg-muted px-2 py-1 font-mono text-[10px] font-semibold text-muted-foreground; }
+  .status-pending { @apply border-warning-border bg-warning-subtle text-warning-foreground; }
+  .metric-strip { @apply mt-6 grid overflow-hidden rounded-md border border-border bg-card sm:grid-cols-2 lg:grid-cols-5; }
+  .metric { @apply min-w-0 border-b border-border p-4 last:border-b-0 sm:border-r lg:border-b-0; }
+  .data-panel { @apply overflow-hidden rounded-md border border-border bg-card; }
+  .json-panel { @apply overflow-hidden rounded-md border border-border bg-code text-code-foreground; }
+  .json-toolbar { @apply flex items-center justify-between border-b border-code-foreground/15 px-4 py-2 font-mono text-xs; }
+  .json-panel pre { @apply max-h-[68vh] overflow-auto p-4 font-mono text-xs leading-5; }
+  .detail-grid { @apply grid gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-2; }
+  .detail-cell { @apply min-w-0 bg-card p-5; }
+  .detail-label { @apply mb-2 font-mono text-[10px] font-semibold uppercase text-muted-foreground; }
+  .empty-state { @apply rounded border border-dashed border-border bg-muted/50 px-3 py-3 text-sm text-muted-foreground; }
+}

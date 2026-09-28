@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { bolIntelligencePackage } from "@/data/bol-intelligence";
+export const Route = createFileRoute("/api/bol/fields/")({ server: { handlers: { GET: async () => Response.json({ package_version: bolIntelligencePackage.package_version, assessment_status: "GOVERNED_EXPERIMENTAL_POC", count: bolIntelligencePackage.field_count, fields: bolIntelligencePackage.fields }) } } });
