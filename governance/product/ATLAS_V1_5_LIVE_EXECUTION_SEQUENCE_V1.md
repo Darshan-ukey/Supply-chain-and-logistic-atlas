@@ -72,3 +72,8 @@ Execution itself remains outside Atlas.
 v1.5 adds ATL-178 after ATL-159/ATL-169. It must generate flow/BPMN from governed data, not hand-drawn diagrams. Malkom-specific `subQueues[].outcomes` may be used as a projection input but must not become canonical Atlas truth.
 
 The generic cross-domain/BPMN continuation is ATL-179 and remains deferred to v2.
+
+
+## Independent QA standard
+
+Every task is independently reviewed under `governance/product/ATLAS_V1_5_QA_OUTCOME_ARCHITECTURE_STANDARD_V1.md`. QA must verify both implementation correctness and outcome/architecture fitness, including storage/ownership, retrieval, consumption, interaction, lineage, future-scope compatibility, Malkom utility and consumer independence.
