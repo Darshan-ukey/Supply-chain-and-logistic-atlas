@@ -436,3 +436,23 @@ F-130-04 (Asset Deprecation Enforcement) remains OPEN — CONFIRMED as the only 
 
 **End CURRENT BATON Update — 2026-09-27 07:22 UTC**
 
+
+
+---
+## GOVERNING AGENT STANDARD — DUAL CONSUMER DESIGN GATE — 28 SEP 2026
+
+Effective immediately for ChatGPT, Claude and any future Atlas executor/QA agent:
+
+**Standard design gate:**
+1. **Useful enough for Malkom.**
+2. **Independent enough from Malkom.**
+
+For every material knowledge/execution-readiness/WorkDefinition/projection/consumer change, the executing agent MUST post explicit evidence fields:
+- MALKOM_UTILITY: PASS|FAIL|NOT_APPLICABLE
+- CONSUMER_INDEPENDENCE: PASS|FAIL|NOT_APPLICABLE
+
+The independent QA agent MUST independently re-evaluate both. It may not inherit the executor's disposition. A material FAIL/unsupported gate blocks QA PASS/freeze/production-readiness. NOT_APPLICABLE requires explicit justification.
+
+Interpretation: Malkom 3.0 is the first/reference consumer and acceptance target. Atlas must be sufficiently useful to it without becoming Malkom-specific. Canonical Atlas truth remains runtime-neutral; Malkom-specific implementation belongs in adapter/projection/client-binding layers. Existing rule remains: Atlas owns understanding/specification; downstream platforms own execution.
+
+This standard applies to baton pickup and QA even if an older issue description does not repeat it.
