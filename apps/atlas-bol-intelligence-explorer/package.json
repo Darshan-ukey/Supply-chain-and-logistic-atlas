@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "validate:bol002-firi": "node scripts/validate-bol002-firi.mjs"
+    "validate:bol002-firi": "node scripts/validate-bol002-firi.mjs",
+    "hash:bol-intelligence": "bun scripts/hash-bol-intelligence.ts"
   },
   "overrides": {
     "rolldown": "1.2.1"
