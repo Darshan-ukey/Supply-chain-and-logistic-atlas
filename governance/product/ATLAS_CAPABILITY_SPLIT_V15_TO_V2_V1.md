@@ -112,3 +112,12 @@ The full-concept audit identified three partial capabilities that had been impli
 | API/versioning/release/rollback | ATL-175 | ATL-176 | ATL-106 / ATL-109 |
 
 These ensure Daughter/Depth has an explicit semantic bridge to WorkDefinition, v1.5 proves actual Malkom utility, and the release is versioned/recoverable rather than a one-off demo.
+
+
+## Queue Flow Explorer / BPMN pair
+
+| Capability | v1.5 bounded slice | v2 continuation | Governing v2 issue(s) |
+|---|---|---|---|
+| Generated Queue Flow Explorer / BPMN export | ATL-178 | ATL-179 | ATL-104 / ATL-107 / ATL-115 / ATL-103 |
+
+Boundary: Atlas may render from a Malkom queue projection, but the Malkom `subQueues[].outcomes` schema remains an adapter/output concern. Canonical Atlas semantics remain runtime-neutral.
