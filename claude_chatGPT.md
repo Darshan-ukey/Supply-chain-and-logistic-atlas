@@ -557,3 +557,36 @@ Do not skip Linear dependencies:
 `ATL-146 → ATL-147 → ATL-148 → ATL-149 → ATL-150 → ATL-151 → ATL-133`.
 
 This BOL/FIRI track continues to use `claude_chatGPT.md` only; do not route it through the Linear Shared Baton.
+
+
+---
+## BOL/FIRI INDEPENDENT QA — EXPANDED STANDARD MANDATORY — 28 SEP 2026
+
+Effective immediately for ATL-146 and every subsequent BOL/FIRI independent QA task, Claude MUST use the expanded Atlas QA standard in:
+`governance/product/ATLAS_V1_5_QA_OUTCOME_ARCHITECTURE_STANDARD_V1.md`
+
+This applies even though the BOL/FIRI workstream is an owner-run track outside the Linear Shared Baton.
+
+For every material QA handoff Claude MUST explicitly disposition each dimension as `PASS | FAIL | NOT_APPLICABLE` with evidence:
+
+- `BUILD_CORRECTNESS`
+- `OUTCOME_FITNESS`
+- `ARCHITECTURE_FITNESS`
+- `FUTURE_SCOPE_COMPATIBILITY`
+- `DATA_STORAGE_OWNERSHIP`
+- `RETRIEVAL_CONSUMPTION`
+- `INTERACTION_MODEL`
+- `LINEAGE_RECOVERY`
+- `MALKOM_UTILITY`
+- `CONSUMER_INDEPENDENCE`
+- `FINAL`
+
+Rules:
+1. `FINAL=PASS` is prohibited if any material dimension is FAIL or unsupported.
+2. `NOT_APPLICABLE` requires explicit rationale.
+3. Build/test success alone is insufficient for PASS.
+4. Claude must independently verify intended outcome, architecture fit, storage/ownership, retrieval/consumption, interaction reachability, lineage/recovery, Malkom utility and consumer independence.
+5. This standard supplements task-specific checks such as hash recomputation, regression tests and freeze verification; it does not replace them.
+6. The same expanded disposition set must be used on ATL-146, ATL-147, ATL-148, ATL-149, ATL-150, ATL-151 and ATL-133 wherever Claude performs independent QA.
+
+This is a binding owner QA rule for the BOL/FIRI track.
