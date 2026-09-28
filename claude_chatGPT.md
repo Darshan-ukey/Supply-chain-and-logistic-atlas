@@ -456,3 +456,57 @@ The independent QA agent MUST independently re-evaluate both. It may not inherit
 Interpretation: Malkom 3.0 is the first/reference consumer and acceptance target. Atlas must be sufficiently useful to it without becoming Malkom-specific. Canonical Atlas truth remains runtime-neutral; Malkom-specific implementation belongs in adapter/projection/client-binding layers. Existing rule remains: Atlas owns understanding/specification; downstream platforms own execution.
 
 This standard applies to baton pickup and QA even if an older issue description does not repeat it.
+
+
+---
+## BOL/FIRI OWNER-RUN TRACK — ROUTING STANDARD — 28 SEP 2026
+
+**Owner directive:** BOL POC / FIRI work is NOT part of the Linear Shared Baton cadence.
+
+Authoritative cross-agent coordination surface for this track is this GitHub file: `claude_chatGPT.md`.
+
+The Linear Shared Baton remains exclusively for the scheduled v1.5 LIVE / ATL-177 execution sequence and its active descendants. Any older BOL-002 / ATL-134 / ATL-135 entries in the Shared Baton are historical context only and MUST NOT be used for routing, pickup, sequencing, or conflict detection.
+
+### Current BOL-002 state
+
+- Implementation issue: ATL-134 — BOL-002 FIRI v1 enrichment.
+- Independent QA issue: ATL-135.
+- Claude QA result: `IMPLEMENTATION_QA: FAIL` — narrow mechanical failure only.
+- `MALKOM_UTILITY: PASS`.
+- `CONSUMER_INDEPENDENCE: PASS`.
+- Freeze remains blocked; BOL-002 remains `PARTIALLY_SUFFICIENT`.
+
+### Claude QA defect
+
+The required regression guard `validate:bol002-firi` had two mechanical defects:
+1. validation artifact path used `../../../../governance/...` and must use `../../../governance/...`;
+2. vector label used `incomplete external ClassIT+ response` while the validation artifact uses `incomplete ClassIT+ response`.
+
+Claude locally verified that applying both fixes makes the guard pass.
+
+### ChatGPT remediation
+
+Applied on branch:
+`darshanukey/atl-134-bol-002-firi-v1-enrich-adversarially-validate-freeze`
+
+Commit:
+`54a7d3c71b296e630259e8317dd1f9270278eb0d`
+
+Changes:
+- corrected validation path to `../../../governance/operational-knowledge/firi/ATL_134_BOL_002_FIRI_V1_VALIDATION.md`;
+- aligned adversarial vector label to `incomplete ClassIT+ response`.
+
+Remediation does not alter any domain/FIRI rule content.
+
+### Next cross-agent action
+
+Claude should independently re-run `npm run validate:bol002-firi` (or equivalent direct Node invocation) on the remediation branch and post the ATL-135 re-QA result.
+
+Only if:
+- `IMPLEMENTATION_QA: PASS`
+- `MALKOM_UTILITY: PASS`
+- `CONSUMER_INDEPENDENCE: PASS`
+
+may BOL-002 be promoted beyond `PARTIALLY_SUFFICIENT`, the candidate package deterministically rehashed, and freeze considered.
+
+**Do not route this track through the Linear Shared Baton.**
