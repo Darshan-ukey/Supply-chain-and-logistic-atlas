@@ -39,6 +39,22 @@ The Malkom Domain Warehouse story must appear as an Atlas journey through these 
 
 No frozen payload may be edited in place.
 
+## 3A. Verified current live baseline
+
+Vercel production metadata verified on 2026-09-28:
+
+- production alias: `supplychainatlas.vercel.app`;
+- Vercel project: `logistic_atlas_v2`;
+- production deployment: `dpl_6Xa5N7TVSk7CwyqE52nR2EGQythx`;
+- source branch: `main`;
+- source commit: `f9b08a951ca823ff8c23b64044fe1a7abb9dde79`.
+
+The source/release tests at that production commit preserve the established Atlas interaction identity: spatial Canvas/composition, domain entry/navigation, Ask Atlas, rich Inspector, Sources, Trace, Compare, Transform, Execute/Explore controls, playback/freeze and governed context/saved views.
+
+**v1.5 must reuse or improve this interaction model.** It must not replace the live Atlas shell with a Malkom-specific product.
+
+This verification establishes deployment identity and source/test behavior. A fresh visual/browser inspection of the actual v1.5 release candidate remains mandatory under ATL-137/ATL-141.
+
 ## 4. Knowledge/release scope
 
 v1.5 should use governed, currently supportable Atlas knowledge rather than wait for exhaustive future depth.
