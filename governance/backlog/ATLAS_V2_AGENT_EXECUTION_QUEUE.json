@@ -1,7 +1,7 @@
 {
   "schemaVersion": "atlas-v2-agent-execution-queue-v20",
   "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v19",
-  "updatedAt": "2026-09-28T10:55:00Z",
+  "updatedAt": "2026-09-28T11:40:00Z",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
   "demoIntegrationTargetBranch": "main",
@@ -752,10 +752,10 @@
     }
   ],
   "lastUpdate": {
-    "timestamp": "2026-09-28T10:55:00Z",
-    "event": "Deferred BOL/FIRI continuation backlog frozen for post-v1.5 resume",
+    "timestamp": "2026-09-28T11:40:00Z",
+    "event": "Split every partial v1.5 capability into explicit v1.5 bounded slice and v2 continuation",
     "addedBy": "CHATGPT",
-    "remark": "Completed checkpoints restored/preserved. ATL-143 handover and ATL-144/145-151 prevent post-v1.5 drift. Current v1.5 execution stage remains V1.5.PLAN."
+    "remark": "ATL-152 is the capability continuity register. v2 continuations ATL-154/156/158/160/162/164/166/168/170 are deferred and not v1.5 release gates."
   },
   "currentReleaseTarget": "ATLAS_V1_5_MALKOM_DOMAIN_WAREHOUSE",
   "releaseStrategy": {
@@ -922,5 +922,97 @@
       "NO_GENERIC_FIRI_CLAIM_BEFORE_ATL_149_NON_BOL_TRANSFER_PROOF",
       "NO_HELD_OUT_CORPUS_OR_ANSWER_LEAKAGE_BEFORE_GOVERNED_RELEASE"
     ]
+  },
+  "v15CapabilitySplit": {
+    "status": "ACTIVE_V15_SLICES_WITH_DEFERRED_V2_CONTINUATIONS",
+    "linearRegister": "ATL-152",
+    "governancePath": "governance/product/ATLAS_CAPABILITY_SPLIT_V15_TO_V2_V1.md",
+    "pairs": [
+      {
+        "capability": "SOURCE_UNIVERSE",
+        "v15": "ATL-153",
+        "v2": "ATL-154",
+        "v2Governing": [
+          "ATL-111",
+          "ATL-113"
+        ]
+      },
+      {
+        "capability": "DAUGHTER_GENERATION",
+        "v15": "ATL-155",
+        "v2": "ATL-156",
+        "v2Governing": [
+          "ATL-112",
+          "ATL-104"
+        ]
+      },
+      {
+        "capability": "ON_DEMAND_DEPTH",
+        "v15": "ATL-157",
+        "v2": "ATL-158",
+        "v2Governing": [
+          "ATL-40",
+          "ATL-116",
+          "ATL-133"
+        ]
+      },
+      {
+        "capability": "WORK_DECOMPOSITION_CANONICAL_WD",
+        "v15": "ATL-159",
+        "v2": "ATL-160",
+        "v2Governing": [
+          "ATL-95",
+          "ATL-133",
+          "ATL-103"
+        ]
+      },
+      {
+        "capability": "KNOWLEDGE_STATES",
+        "v15": "ATL-161",
+        "v2": "ATL-162",
+        "v2Governing": [
+          "ATL-116"
+        ]
+      },
+      {
+        "capability": "READINESS",
+        "v15": "ATL-163",
+        "v2": "ATL-164",
+        "v2Governing": [
+          "ATL-133",
+          "ATL-95"
+        ]
+      },
+      {
+        "capability": "CLIENT_BINDING",
+        "v15": "ATL-165",
+        "v2": "ATL-166",
+        "v2Governing": [
+          "ATL-114",
+          "ATL-95"
+        ]
+      },
+      {
+        "capability": "INTERACTION_PUBLIC_PRIVATE",
+        "v15": "ATL-167",
+        "v2": "ATL-168",
+        "v2Governing": [
+          "ATL-115",
+          "ATL-105"
+        ]
+      },
+      {
+        "capability": "MALKOM_MULTI_CONSUMER",
+        "v15": "ATL-169",
+        "v2": "ATL-170",
+        "v2Governing": [
+          "ATL-107"
+        ]
+      }
+    ],
+    "v15Rule": "COMPLETE_BOUNDED_SLICE_AND_FREEZE_HANDOVER_BOUNDARY",
+    "v2Rule": "START_FROM_FROZEN_V15_EVIDENCE__IMPLEMENT_ONLY_REMAINING_DELTA",
+    "releaseGate": "ATL-141_BLOCKED_BY_ALL_V15_CAPABILITY_SLICES",
+    "v2ContinuationsGateV15": false
   }
 }
