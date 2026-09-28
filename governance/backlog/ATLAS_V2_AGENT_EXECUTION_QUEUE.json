@@ -1,7 +1,7 @@
 {
   "schemaVersion": "atlas-v2-agent-execution-queue-v20",
   "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v19",
-  "updatedAt": "2026-09-28T11:40:00Z",
+  "updatedAt": "2026-09-28T11:50:00Z",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
   "demoIntegrationTargetBranch": "main",
@@ -94,9 +94,9 @@
       "notApplicableRequiresExplicitReason": true
     }
   },
-  "mode": "ATLAS_V1_5_MALKOM_DOMAIN_WAREHOUSE_RELEASE_PLANNING",
-  "currentStageId": "V1.5.PLAN",
-  "currentPhase": "ATLAS_V1_5_MALKOM_DOMAIN_WAREHOUSE_RELEASE",
+  "mode": "ATLAS_V1_5_LIVE_EXECUTION",
+  "currentStageId": "V1.5.0",
+  "currentPhase": "ATLAS_V1_5_LIVE_EXECUTION",
   "demoTargetDate": "2026-09-14",
   "stakeholderDemoDate": "2026-09-15",
   "phases": [
@@ -752,10 +752,10 @@
     }
   ],
   "lastUpdate": {
-    "timestamp": "2026-09-28T11:40:00Z",
-    "event": "Split every partial v1.5 capability into explicit v1.5 bounded slice and v2 continuation",
+    "timestamp": "2026-09-28T11:50:00Z",
+    "event": "Owner authorized Atlas v1.5 live execution; canonical 19-task ChatGPT→Claude crossed-QA sequence activated",
     "addedBy": "CHATGPT",
-    "remark": "ATL-152 is the capability continuity register. v2 continuations ATL-154/156/158/160/162/164/166/168/170 are deferred and not v1.5 release gates."
+    "remark": "Current task ATL-137. Full-concept revalidation added ATL-171/172, ATL-173/174 and ATL-175/176. Shared Baton is runtime authority."
   },
   "currentReleaseTarget": "ATLAS_V1_5_MALKOM_DOMAIN_WAREHOUSE",
   "releaseStrategy": {
@@ -775,7 +775,7 @@
     "bolPocDisposition": "PAUSED_AS_V15_RELEASE_DEPENDENCY__PRESERVE_COMPLETED_EVIDENCE__DEFER_UNFINISHED_WORK_TO_V2",
     "v20EndStatePreserved": true,
     "v20ParentLinearIssue": "ATL-103",
-    "executionAuthorization": "NOT_GRANTED_BY_THIS_ROADMAP_UPDATE__OWNER_TO_AUTHORIZE_V15_IMPLEMENTATION"
+    "executionAuthorization": "OWNER_AUTHORIZED_2026_09_28"
   },
   "atlasV15ReleaseTrack": {
     "stageId": "V1.5",
@@ -1008,11 +1008,81 @@
         "v2Governing": [
           "ATL-107"
         ]
+      },
+      {
+        "capability": "OPERATIONAL_KNOWLEDGE_INFORMATION_SEMANTICS",
+        "v15": "ATL-171",
+        "v2": "ATL-172",
+        "v2Governing": [
+          "ATL-95",
+          "ATL-119",
+          "ATL-133",
+          "ATL-150"
+        ]
+      },
+      {
+        "capability": "MALKOM_UTILITY_VALUE_PROOF",
+        "v15": "ATL-173",
+        "v2": "ATL-174",
+        "v2Governing": [
+          "ATL-117"
+        ]
+      },
+      {
+        "capability": "API_VERSIONING_RELEASE_ROLLBACK",
+        "v15": "ATL-175",
+        "v2": "ATL-176",
+        "v2Governing": [
+          "ATL-106",
+          "ATL-109"
+        ]
       }
     ],
     "v15Rule": "COMPLETE_BOUNDED_SLICE_AND_FREEZE_HANDOVER_BOUNDARY",
     "v2Rule": "START_FROM_FROZEN_V15_EVIDENCE__IMPLEMENT_ONLY_REMAINING_DELTA",
     "releaseGate": "ATL-141_BLOCKED_BY_ALL_V15_CAPABILITY_SLICES",
     "v2ContinuationsGateV15": false
+  },
+  "atlasV15LiveExecution": {
+    "status": "AUTHORIZED_ACTIVE",
+    "linearSequence": "ATL-177",
+    "governancePath": "governance/product/ATLAS_V1_5_LIVE_EXECUTION_SEQUENCE_V1.md",
+    "cadence": {
+      "chatgpt": [
+        "00",
+        "30"
+      ],
+      "claude": [
+        "15",
+        "45"
+      ]
+    },
+    "roleSeparation": "CHATGPT_BUILD__CLAUDE_INDEPENDENT_QA",
+    "currentTask": "ATL-137",
+    "currentHolder": "CHATGPT",
+    "tasks": [
+      "ATL-137",
+      "ATL-138",
+      "ATL-153",
+      "ATL-161",
+      "ATL-155",
+      "ATL-171",
+      "ATL-157",
+      "ATL-159",
+      "ATL-165",
+      "ATL-163",
+      "ATL-139",
+      "ATL-169",
+      "ATL-167",
+      "ATL-140",
+      "ATL-175",
+      "ATL-173",
+      "ATL-141",
+      "ATL-143",
+      "ATL-142"
+    ],
+    "rule": "EACH_TASK_REQUIRES_CHATGPT_DURABLE_BUILD_EVIDENCE_THEN_CLAUDE_INDEPENDENT_QA_BEFORE_FORWARD_HANDOFF",
+    "defectRule": "REMEDIATE_ON_SAME_TASK_UNLESS_GENUINELY_DISTINCT_MATERIAL_PREREQUISITE",
+    "goLiveGate": "ATL_142_PASS_PLUS_EXPLICIT_OWNER_VERCEL_PROMOTION_APPROVAL"
   }
 }
