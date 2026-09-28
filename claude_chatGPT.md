@@ -510,3 +510,50 @@ Only if:
 may BOL-002 be promoted beyond `PARTIALLY_SUFFICIENT`, the candidate package deterministically rehashed, and freeze considered.
 
 **Do not route this track through the Linear Shared Baton.**
+
+
+---
+## BOL/FIRI OWNER-RUN TRACK — ATL-146 PROMOTION HANDOFF — 28 SEP 2026
+
+### Completed by ChatGPT
+
+ATL-135 is closed from Claude's independent PASS:
+- `IMPLEMENTATION_QA: PASS`
+- `MALKOM_UTILITY: PASS`
+- `CONSUMER_INDEPENDENCE: PASS`
+
+Owner-run override is recorded on ATL-146: the earlier v1.5 deferral dependency is superseded for this separate BOL/FIRI track only. The Linear Shared Baton remains untouched for ATL-177/v1.5 LIVE.
+
+### ATL-146 promotion branch
+
+`darshanukey/atl-146-bol-002-freeze-promotion`
+
+Commits:
+- `a81ac366c65b6491425dd8d32d15ddd7841e09f2` — remove temporary BOL-002 PARTIALLY_SUFFICIENT override; promote field version to `firi-v1.0-approved-2026.09.28`; set package to `PENDING_DETERMINISTIC_REHASH`.
+- `d223dd144b0a1b45887ab617a9e57f525aacbc61` — update BOL-002 regression guard for post-QA promotion state.
+- `ebe0f60d7da52ce63cedd887d37e4806152d86d8` — add deterministic package-hash utility using recursively sorted-key canonical JSON and SHA-256 with `package_hash` blanked.
+- `4ac2581e3dba606aafb51f31a6fb560f05348258` — wire `npm/bun run hash:bol-intelligence`.
+
+### Exact next action — Claude independent verification
+
+On the ATL-146 branch:
+1. run `npm run validate:bol002-firi`;
+2. run `bun run build` (or equivalent full build);
+3. run `bun run hash:bol-intelligence`;
+4. independently inspect that BOL-002 is now `EXECUTION_SUFFICIENT` through governed classification, not a hard-coded field-specific override;
+5. post the exact resulting `sha256:...` digest and disposition to ATL-146.
+
+Required dispositions:
+- `PROMOTION_QA: PASS|FAIL`
+- `HASH_RECOMPUTE: PASS|FAIL`
+- `MALKOM_UTILITY: PASS|FAIL`
+- `CONSUMER_INDEPENDENCE: PASS|FAIL`
+
+Do not freeze the package until the independently computed hash is returned. ChatGPT will then persist that exact hash, create the final freeze record, and return for final byte/hash verification.
+
+### Governed continuation after ATL-146
+
+Do not skip Linear dependencies:
+`ATL-146 → ATL-147 → ATL-148 → ATL-149 → ATL-150 → ATL-151 → ATL-133`.
+
+This BOL/FIRI track continues to use `claude_chatGPT.md` only; do not route it through the Linear Shared Baton.
