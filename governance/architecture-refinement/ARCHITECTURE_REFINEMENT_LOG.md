@@ -60,3 +60,12 @@ This entry records a **working architecture correction supported by current evid
 
 ### Demo implication
 The demo path must be corrected separately: the target Road LTL 1.5 lineage can no longer be described as lacking recursive decomposition/WD compiler capability. It has certified decomposition and a technically proven WD compilation path, but no governed persisted canonical WDs or verified new-lineage Malkom projection. The old V1.2 → Domain Warehouse v2.3 → Malkom lineage remains the proven runtime-projection/reference implementation unless D2.0.0 discovers stronger evidence.
+
+
+## 28 September 2026 — BOL-002 exposed execution-readiness intelligence gap
+
+Owner review of the BOL Intelligence Explorer and BOL-002 Line Item Description challenged the prior meaning of execution sufficiency. The key finding is that knowing what a concept means is insufficient if Atlas cannot explain how a consumer identifies it in real evidence, distinguishes it from competing concepts, preserves object/cardinality relationships, validates it, and knows when to escalate.
+
+The resulting architecture refinement is recorded in `EXECUTION_READINESS_INTELLIGENCE_CLOSURE_V1.md` and AR-D018. It introduces Synthesized Domain Intelligence, Execution-Readiness Interrogation, execution-gap-directed On-Demand Depth, readiness scopes (Field → Object/Decision → Work), Canonical vs Bound readiness, explicit Client Binding complement, Execution Contracts, integration semantics and governed candidate→verify→promote→reuse.
+
+ATL-132 remains the proof/freeze gate for FIRI. No universal FIRI freeze is asserted by this architecture update. AR-D013 remains unchanged: Atlas owns understanding/specification; downstream platforms own execution.
