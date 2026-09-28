@@ -87,7 +87,19 @@ The BOL/FIRI work is **PAUSED AS AN ATLAS v1.5 RELEASE DEPENDENCY**, not abandon
 
 Completed BOL evidence remains governed/frozen. Unfinished BOL experimental/validation work moves to the v2.0 backlog. It resumes as a deeper execution-readiness/enrichment proof after v1.5 unless a specific v1.5 Malkom package gap requires one bounded BOL fact.
 
-### Atlas v2.0 remains the future product
+### Deferred BOL/FIRI continuation after Atlas v1.5
+
+The detailed resume sequence is frozen in:
+`governance/product/ATLAS_V2_BOL_FIRI_CONTINUATION_BACKLOG_V1.md`
+
+Linear:
+- v1.5 handover freeze: **ATL-143**
+- v2 continuation parent: **ATL-144**
+- new continuation gates: **ATL-145 → ATL-146 → ATL-147 → ATL-148 → ATL-149 → ATL-150**, converging with **ATL-77** at **ATL-151** before **ATL-133** may close.
+
+Existing completed checkpoints ATL-67/68/69/70/73/134 remain completed and must not be re-run. Existing open empirical gates ATL-71/72/74/75/76/77 and independent FIRI QA ATL-135 remain the authoritative tasks; they are not duplicated.
+
+## Atlas v2.0 remains the future product
 
 Atlas v2.0 retains the full product end state governed under ATL-103 and its children. v2.0 must build on v1.5 rather than replace it:
 
