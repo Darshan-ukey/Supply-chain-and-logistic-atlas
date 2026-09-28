@@ -56,3 +56,15 @@ Rationale: recovered P6.1/P6.2 implementation evidence materially changes the cr
 
 ## Demo guardrail associated with AR-D014–D017
 The demo does not authorize P6.2 persistence. Recent findings change the **truthful narrative**, not the shortest runtime proof path: Road LTL 1.5 now has certified decomposition and a technically proven WD compiler path, but the verified Malkom-consumable projection remains the older V1.2 → Domain Warehouse v2.3 → Malkom reference lineage unless new evidence proves otherwise.
+
+
+## AR-D018 — Execution-readiness intelligence closure and cold-start reuse standard
+Decision: OWNER-DIRECTED CANDIDATE / VALIDATION REQUIRED BEFORE SUCCESSOR FREEZE.
+
+BOL-002/ATL-132 exposed that semantic definition, canonical ownership and provenance do not alone prove execution readiness. Atlas must additionally govern synthesized domain intelligence, execution-readiness interrogation, field→object/decision→work readiness, canonical-vs-bound readiness, execution contracts, integration semantics and a governed candidate→verify→promote→reuse lifecycle.
+
+On-Demand Depth must be driven by explicit execution gaps and pointed research questions rather than generic topic deepening. Client Binding remains a first-class complementary layer: client-specific values may remain outside canonical Atlas, but their binding contract/authority/precedence must be governed.
+
+This is additive to AR-D013. Atlas continues to own reusable understanding/specification; downstream platforms continue to own runtime execution. The architectural cold-start test is whether a new implementation must rediscover established domain/work knowledge Atlas already knows.
+
+Full contract: `governance/architecture-refinement/EXECUTION_READINESS_INTELLIGENCE_CLOSURE_V1.md`.
