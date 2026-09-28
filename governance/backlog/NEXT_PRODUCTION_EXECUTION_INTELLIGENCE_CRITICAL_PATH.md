@@ -1,8 +1,124 @@
 # Atlas V2 — Governed Roadmap and Critical Paths
 
-Status: ACTIVE BACKLOG / DEMO SPRINT PRIORITY / ARCHITECTURE REFINEMENT PRESERVED  
+Status: ACTIVE ROADMAP / ATLAS v1.5 MALKOM DOMAIN WAREHOUSE RELEASE PRIORITY / ATLAS v2.0 END-STATE PRESERVED  
 Updated: 12 September 2026  
 Canonical machine queue: `governance/backlog/ATLAS_V2_AGENT_EXECUTION_QUEUE.json` on `atlas-governance-registry-v2.1`.
+
+## Owner sequencing decision — Atlas v1.5 Malkom Domain Warehouse before Atlas v2.0 — 28 Sep 2026
+
+### Decision
+
+Atlas will use a deliberate intermediate release:
+
+> **Atlas v1.5 — Malkom Domain Warehouse Demo/Live**
+
+before completing:
+
+> **Atlas v2.0 — Governed Execution-Readiness Platform**
+
+This is a sequencing decision, **not a change to the Atlas North Star or canonical architecture**.
+
+### Specific reason
+
+The immediate stakeholder/Hasmukh requirement is narrower than the Atlas v2.0 end state:
+
+> **Atlas should provide the domain/work details Malkom needs, in the form Malkom needs them, so Malkom does not have to recreate the domain for every implementation.**
+
+Atlas already has substantial reusable governed domain/process/task knowledge, frozen presentation architecture, Road LTL execution-reference assets and a historical Malkom projection proof. Requiring the full BOL/FIRI proof, full execution-readiness closure, generic WorkDefinition completion, self-enrichment, full Client Binding and multi-consumer runtime proof before demonstrating this narrower value would delay a useful product slice without changing the eventual v2 architecture.
+
+Operational/domain gaps will continue to emerge whenever Atlas is applied to a new process, client or execution context. Therefore **v1.5 must expose unresolved/client-binding-required knowledge honestly rather than require exhaustive domain completeness as a release condition**. v2.0 will deepen, automate and govern that enrichment loop.
+
+### Atlas v1.5 product objective
+
+Atlas v1.5 must demonstrate a finished-enough **Malkom Domain Warehouse** experience while preserving Atlas's own product identity:
+
+**governed domain reference → understandable Atlas UX → Malkom-consumable domain/work package → traceable lineage/gaps**
+
+Malkom remains a consumer, not the canonical Atlas schema or product boundary.
+
+### v1.5 UX identity rule
+
+Reuse the frozen/current Atlas interaction model unless an additive improvement is required:
+
+- spatial Canvas/domain navigation;
+- Explore / Execute / Trace / Compare / Transform interaction model where applicable;
+- Ask Atlas;
+- rich task/A5 Inspector;
+- Sources/provenance;
+- governed context;
+- Canvas → Daughter/domain/process/task navigation.
+
+**Do not replace Atlas with a Malkom-specific dashboard.** The Malkom Domain Warehouse journey must be added as a consumer-oriented product path within Atlas.
+
+Frozen Canvas/renderer assets remain immutable. Any v1.5 UX change must be additive or use an explicitly governed successor.
+
+### v1.5 required scope
+
+1. Reuse the governed Universe/domain structure and frozen Atlas presentation foundation.
+2. Use the current governed Road LTL 1.5 reference/effective lineage where certified.
+3. Expose useful reusable domain/work semantics at domain → process → task/work level.
+4. Produce a **current-lineage Malkom Domain Warehouse package/projection**; do not present the historical Road LTL 1.2 → Domain Warehouse 2.3 → Malkom 3.0 proof as if generated from Road LTL 1.5.
+5. Define a stable Malkom-facing contract/API/export with version, lineage, package identity and explicit capability/loss/binding disposition.
+6. Show unresolved knowledge, client-binding requirements and unsupported semantics explicitly; never silently fabricate them.
+7. Provide an end-to-end demo journey from Atlas domain knowledge to a Malkom-consumable package and trace/provenance.
+8. Complete release-quality UX hardening, regression, browser/visual QA, accessibility/readability, stale-label checks and release integrity.
+9. Complete independent QA, governed Drive custody and explicit Owner-gated Vercel production promotion.
+
+### v1.5 non-goals / deferred to v2.0
+
+The following are **not v1.5 release gates** unless a narrower subset is strictly required to make the Domain Warehouse package truthful and consumable:
+
+- BOL/FIRI POC completion or exhaustive BOL field proof;
+- universal field → object → decision → work execution-readiness closure;
+- full generic recursive Work Decomposition regeneration;
+- complete canonical WorkDefinition persistence for all executable leaves;
+- full Client Binding workflow/enterprise discovery engine;
+- deterministic domain/enterprise/runtime readiness for all scopes;
+- source-first autonomous/on-demand self-enrichment mechanism;
+- cross-domain Daughter generation at full v2 depth;
+- multi-consumer projection proof across Malkom + agents + RPA/BPM;
+- complete v2 backend/API/upgrade architecture;
+- full Operations / Transformation / Execution Intelligence end-state;
+- v2 value/kill-test and final v2 production certification.
+
+### BOL POC disposition
+
+The BOL/FIRI work is **PAUSED AS AN ATLAS v1.5 RELEASE DEPENDENCY**, not abandoned and not invalidated.
+
+Completed BOL evidence remains governed/frozen. Unfinished BOL experimental/validation work moves to the v2.0 backlog. It resumes as a deeper execution-readiness/enrichment proof after v1.5 unless a specific v1.5 Malkom package gap requires one bounded BOL fact.
+
+### Atlas v2.0 remains the future product
+
+Atlas v2.0 retains the full product end state governed under ATL-103 and its children. v2.0 must build on v1.5 rather than replace it:
+
+**v1.5 reusable domain/work product → richer source-backed knowledge → Work Intelligence / Work Decomposition → Canonical WorkDefinition → Client Binding → readiness → multi-consumer projections → governed learning/self-enrichment loop**
+
+v2.0 therefore remains responsible for:
+- ATL-103 end-state contract and coverage;
+- ATL-104 generic product-surface generation;
+- ATL-105 full product UX/UI;
+- ATL-106 backend/API/upgrade architecture;
+- ATL-107 multi-consumer execution packages;
+- ATL-108 three-product end state;
+- ATL-109 end-to-end v2 release/go-live proof;
+- ATL-111 source/universe refresh architecture;
+- ATL-112 Daughter knowledge generation;
+- ATL-113 cross-layer impact/staleness graph;
+- ATL-114 enterprise discovery/client context ingestion;
+- ATL-115 universal interaction layer;
+- ATL-116 knowledge-state promotion/compounding and future self-enrichment;
+- ATL-117 value/kill test;
+- ATL-133 execution-readiness intelligence closure;
+- ATL-130 final execution-readiness QA ledger.
+
+### Anti-drift gate
+
+v1.5 is acceptable only if both remain true:
+
+1. **Useful enough for Malkom:** Malkom can consume material reusable domain/work detail without recreating the domain from scratch.
+2. **Independent enough from Malkom:** canonical Atlas semantics remain Malkom-neutral; Malkom-specific shapes remain projection/adapter concerns.
+
+This release split supersedes the assumption that the BOL POC or full v2 execution-readiness closure must precede the first useful Malkom Domain Warehouse release.
 
 ## Immediate priority — Atlas V2 Demo Sprint
 
