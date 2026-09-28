@@ -1,0 +1,73 @@
+{
+  "contract_id": "ATL-161-V1.5-KNOWLEDGE-GAP-STATES",
+  "version": "1.0.0",
+  "status": "QA_CANDIDATE",
+  "taxonomy": [
+    "KNOWN_AUTHORITATIVE",
+    "VALIDATED",
+    "CANDIDATE",
+    "INFERRED",
+    "CONFLICTING",
+    "UNKNOWN",
+    "RESEARCH_REQUIRED",
+    "CLIENT_BINDING_REQUIRED",
+    "MASTER_OR_EXTERNAL_DATA_REQUIRED",
+    "NOT_APPLICABLE",
+    "UNSUPPORTED"
+  ],
+  "required_surfaces": [
+    "DAUGHTER_DEPTH",
+    "INSPECTOR_ASK",
+    "BOUNDED_WORKDEFINITION",
+    "READINESS_SUMMARY",
+    "MALKOM_PROJECTION"
+  ],
+  "fail_closed": {
+    "CONFLICTING": "block positive claim until governed resolution",
+    "UNKNOWN": "do not fabricate",
+    "RESEARCH_REQUIRED": "bounded research only",
+    "CLIENT_BINDING_REQUIRED": "requires evidenced client policy/SOP/configuration/contract/decision",
+    "MASTER_OR_EXTERNAL_DATA_REQUIRED": "requires governed master/reference/transactional/external data",
+    "UNSUPPORTED": "outside governed capability/evidence",
+    "INFERRED": "never silently promote to KNOWN_AUTHORITATIVE",
+    "CANDIDATE": "non-canonical until explicit validation gate",
+    "NOT_APPLICABLE": "requires applicability rationale/evidence"
+  },
+  "allowed_transitions": [
+    {
+      "from": "CANDIDATE",
+      "to": "VALIDATED",
+      "required": [
+        "candidate_id",
+        "original_provenance",
+        "validation_scope",
+        "validation_evidence",
+        "explicit_result",
+        "validator_or_governed_action",
+        "timestamp_or_version",
+        "candidate_lineage_link"
+      ]
+    }
+  ],
+  "prohibited_v15": [
+    "cross_engagement_learning",
+    "repeated_observation_promotion",
+    "automatic_canonical_successor_generation",
+    "generalized_compounding",
+    "autonomous_conflict_reconciliation",
+    "automatic_promotion_beyond_candidate_to_validated"
+  ],
+  "minimum_record": [
+    "knowledge_state",
+    "object_or_claim_id",
+    "scope",
+    "reason",
+    "source_or_provenance_ids",
+    "unresolved_dependency_if_relevant",
+    "candidate_lineage_id_if_validation",
+    "validation_evidence_ids_if_validation",
+    "updated_at_or_version"
+  ],
+  "handover_to": "ATL-162/v2",
+  "source_contract": "governance/product/ATL_161_V1_5_EXPLICIT_KNOWLEDGE_GAP_STATES_V1.md"
+}
