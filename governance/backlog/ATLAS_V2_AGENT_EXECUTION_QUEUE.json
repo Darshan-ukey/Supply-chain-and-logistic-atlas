@@ -1,7 +1,7 @@
 {
   "schemaVersion": "atlas-v2-agent-execution-queue-v20",
   "supersedesSchemaVersion": "atlas-v2-agent-execution-queue-v19",
-  "updatedAt": "2026-09-28T11:50:00Z",
+  "updatedAt": "2026-09-28T12:20:00Z",
   "governanceBranch": "atlas-governance-registry-v2.1",
   "demoImplementationBranch": "atlas-v2-demo-2026-09-14",
   "demoIntegrationTargetBranch": "main",
@@ -752,10 +752,10 @@
     }
   ],
   "lastUpdate": {
-    "timestamp": "2026-09-28T11:50:00Z",
-    "event": "Owner authorized Atlas v1.5 live execution; canonical 19-task ChatGPT→Claude crossed-QA sequence activated",
+    "timestamp": "2026-09-28T12:20:00Z",
+    "event": "Added Hasmukh Queue Flow Explorer/BPMN capability to Atlas v1.5 with deferred generic v2 continuation",
     "addedBy": "CHATGPT",
-    "remark": "Current task ATL-137. Full-concept revalidation added ATL-171/172, ATL-173/174 and ATL-175/176. Shared Baton is runtime authority."
+    "remark": "ATL-178 is v1.5; ATL-179 is v2. Malkom subQueues/outcomes remain projection-specific, not canonical Atlas semantics."
   },
   "currentReleaseTarget": "ATLAS_V1_5_MALKOM_DOMAIN_WAREHOUSE",
   "releaseStrategy": {
@@ -1036,6 +1036,17 @@
           "ATL-106",
           "ATL-109"
         ]
+      },
+      {
+        "capability": "GENERATED_QUEUE_FLOW_BPMN",
+        "v15": "ATL-178",
+        "v2": "ATL-179",
+        "v2Governing": [
+          "ATL-104",
+          "ATL-107",
+          "ATL-115",
+          "ATL-103"
+        ]
       }
     ],
     "v15Rule": "COMPLETE_BOUNDED_SLICE_AND_FREEZE_HANDOVER_BOUNDARY",
@@ -1073,6 +1084,7 @@
       "ATL-163",
       "ATL-139",
       "ATL-169",
+      "ATL-178",
       "ATL-167",
       "ATL-140",
       "ATL-175",
