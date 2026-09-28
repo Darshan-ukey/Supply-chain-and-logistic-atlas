@@ -87,7 +87,29 @@ The BOL/FIRI work is **PAUSED AS AN ATLAS v1.5 RELEASE DEPENDENCY**, not abandon
 
 Completed BOL evidence remains governed/frozen. Unfinished BOL experimental/validation work moves to the v2.0 backlog. It resumes as a deeper execution-readiness/enrichment proof after v1.5 unless a specific v1.5 Malkom package gap requires one bounded BOL fact.
 
-### Deferred BOL/FIRI continuation after Atlas v1.5
+### v1.5 partial-capability split / v2 continuation control
+
+Every capability partially implemented in v1.5 is now paired with a separate v2 continuation so the release can ship without losing the remaining product requirement.
+
+Canonical split manifest:
+`governance/product/ATLAS_CAPABILITY_SPLIT_V15_TO_V2_V1.md`
+
+Linear register: **ATL-152**
+
+Pairs:
+- ATL-153 → ATL-154 — Source/Universe
+- ATL-155 → ATL-156 — Daughter generation
+- ATL-157 → ATL-158 — On-Demand Depth
+- ATL-159 → ATL-160 — Work Decomposition / Canonical WD
+- ATL-161 → ATL-162 — Knowledge/gap states
+- ATL-163 → ATL-164 — Readiness
+- ATL-165 → ATL-166 — Client Binding
+- ATL-167 → ATL-168 — Interaction/public-private UX
+- ATL-169 → ATL-170 — Malkom projection / multi-consumer
+
+The v2 half of each pair is not a v1.5 release gate. It remains deferred but mandatory for the full v2 product.
+
+## Deferred BOL/FIRI continuation after Atlas v1.5
 
 The detailed resume sequence is frozen in:
 `governance/product/ATLAS_V2_BOL_FIRI_CONTINUATION_BACKLOG_V1.md`
