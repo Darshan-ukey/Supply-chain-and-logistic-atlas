@@ -36,10 +36,10 @@ const vectors = [
   "compound commodity line",
   "missing association",
   "conflicting evidence",
-  "incomplete external ClassIT+ response",
+  "incomplete ClassIT+ response",
 ];
 
-const validation = fs.readFileSync(new URL("../../../../governance/operational-knowledge/firi/ATL_134_BOL_002_FIRI_V1_VALIDATION.md", import.meta.url), "utf8");
+const validation = fs.readFileSync(new URL("../../../governance/operational-knowledge/firi/ATL_134_BOL_002_FIRI_V1_VALIDATION.md", import.meta.url), "utf8");
 for (const vector of vectors) assert.ok(validation.includes(vector), `missing adversarial vector: ${vector}`);
 
 console.log("ATL-134 BOL-002 FIRI regression guard: PASS");
