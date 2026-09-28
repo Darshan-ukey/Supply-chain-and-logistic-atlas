@@ -722,3 +722,40 @@ Required before freeze:
 - explicit Owner freeze.
 
 Material changes after freeze require a successor contract/version with impact analysis.
+
+
+## Owner architecture invariant — Reference Consumer Utility + Consumer Independence Gate — 28 Sep 2026
+
+Malkom 3.0 is Atlas's **first/reference execution consumer and acceptance target**, but it is not Atlas's product boundary or canonical architecture.
+
+Every material Atlas knowledge, execution-readiness, WorkDefinition, runtime-projection, agent-execution and QA change MUST pass both halves of the standard design gate:
+
+> **Useful enough for Malkom.**  
+> **Independent enough from Malkom.**
+
+### Gate A — Useful enough for Malkom
+Atlas must provide sufficient governed reusable domain/work intelligence that Malkom can consume it without its implementation team independently rediscovering material domain semantics. Where material, this includes objects/fields, identification signals, relationships/cardinality, rules/decisions, applicability, validations, exceptions, evidence, dependencies, work/state semantics, ambiguity/escalation and client-binding requirements.
+
+A semantic definition or canonical label alone does not prove this gate. For document manifestation, FIRI-style identification/resolution intelligence is required where the executor must identify or distinguish evidence at runtime.
+
+### Gate B — Independent enough from Malkom
+The same underlying canonical intelligence must remain executor/runtime neutral. Malkom-specific schemas, prompts, APIs, queue/work-allocation constructs, tool calls, storage or orchestration belong only in an adapter/projection/binding layer and MUST NOT contaminate canonical Atlas business truth.
+
+At least one materially different consumer/tool class must be able to consume the same canonical semantics through its own projection without redefining the business meaning.
+
+### Mandatory executor + QA control
+All agents selecting, executing, remediating or independently QA'ing Atlas work MUST explicitly assess both Gate A and Gate B for any change that affects canonical knowledge, Operational Knowledge, Work Decomposition, WorkDefinition, readiness, execution packages, runtime projection/adapters or consumer integration.
+
+- Executor evidence must state MALKOM_UTILITY: PASS|FAIL|NOT_APPLICABLE and CONSUMER_INDEPENDENCE: PASS|FAIL|NOT_APPLICABLE, with evidence/rationale.
+- Independent QA MUST challenge both dispositions rather than inherit the executor's claim.
+- If either gate is material and FAIL or unsupported, QA cannot mark the work PASS/frozen/production-ready.
+- NOT_APPLICABLE requires an explicit reason and may not be used to bypass a material consumer-facing architecture question.
+
+### Roadmap adjustment
+1. Use Malkom 3.0 as the first concrete reference consumer for Atlas execution-intelligence acceptance.
+2. Convert Malkom's required domain/work inputs into consumer requirements; do not copy Malkom runtime capabilities into Atlas.
+3. Prove Atlas→Malkom usefulness on representative Road LTL/BOL work, including field identification/resolution (ATL-132/FIRI lineage).
+4. Prove the same canonical intelligence through at least one non-Malkom projection/consumer.
+5. Only then treat the relevant Atlas mechanism as reusable/cross-runtime architecture.
+
+This invariant is additive to the existing boundary: **Atlas owns understanding/specification; downstream platforms own execution.**
