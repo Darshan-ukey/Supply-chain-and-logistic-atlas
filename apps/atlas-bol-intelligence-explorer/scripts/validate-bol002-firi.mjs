@@ -13,13 +13,15 @@ const required = [
   "Malkom",
   "VLM/agent/document-digitization",
   "Handling Unit Line No = Commodity Item Number",
-  "PENDING_INDEPENDENT_QA_REHASH",
+  "PENDING_DETERMINISTIC_REHASH",
 ];
 
 for (const token of required) assert.ok(source.includes(token), `missing required BOL-002 FIRI token: ${token}`);
 
-assert.ok(source.includes('if (n === 2) return "PARTIALLY_SUFFICIENT";'), "BOL-002 must remain PARTIALLY_SUFFICIENT before independent QA");
-assert.ok(!source.includes('if (n === 2) return "EXECUTION_SUFFICIENT";'), "BOL-002 must not self-promote to EXECUTION_SUFFICIENT");
+assert.ok(!source.includes('if (n === 2) return "PARTIALLY_SUFFICIENT";'), "post-QA promotion must remove the temporary BOL-002 PARTIALLY_SUFFICIENT override");
+assert.ok(!source.includes('if (n === 2) return "EXECUTION_SUFFICIENT";'), "BOL-002 should inherit EXECUTION_SUFFICIENT from governed canonical/FIRI classification rather than a field-specific hard-force");
+assert.ok(source.includes('firi-v1.0-approved-2026.09.28'), "BOL-002 approved FIRI version missing");
+assert.ok(source.includes('PENDING_DETERMINISTIC_REHASH'), "package must remain explicitly pending deterministic rehash until the hash is computed and independently verified");
 assert.ok(source.includes("Do not equate with Commodity Item identifier without source/client evidence."), "Handling Unit Line No ambiguity must remain fail-closed");
 assert.ok(source.includes("Do not invent universal continuation/attachment precedence."), "Continuation/attachment precedence must remain fail-closed");
 
