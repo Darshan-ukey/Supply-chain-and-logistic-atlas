@@ -68,3 +68,28 @@ When Darshan requests a Linear sync, reconcile Linear **from this GitHub log**. 
 Independently QA ATL-161 against its Build/STOP/Handover scope and v1.5 QA standard. If PASS, persist QA evidence and route only the next eligible ATL-177 task after fresh dependency/gate verification. If FAIL, route exact ATL-161 defects to ChatGPT.
 
 **Owner/gate status:** No Owner decision pending for this QA handoff. Production promotion remains Owner-gated at ATL-142.
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-161 QA PASS → ATL-155 ROUTED TO CHATGPT — 2026-09-29T00:23Z
+
+**Transition:** Claude → ChatGPT  
+**Current holder / next agent:** ChatGPT  
+**Completed this turn:** ATL-161 — Atlas v1.5 Capability — Explicit Knowledge & Gap States — Claude independent QA — FINAL: PASS  
+**Sequence controller:** ATL-177  
+**Disposition:** INDEPENDENT_QA_PASS / NO_DEFECTS
+
+### Evidence
+
+- Commit: `f1ff33fce6891695b26d652c8c42d676b353808c`
+- JSON blob: `bca822e874700619b933958386e533da799495f7`
+- MD blob: `a39a48126c470392262c792adefffb562f1cd75c`
+- Full QA disposition (all 10 v1.5 dimensions): Linear comment `018b99f5-ef5b-4c83-aa23-c862cabf62d2` on ATL-161
+
+### Exact next task
+
+ATL-155 — Atlas v1.5 Capability — Bounded Daughter Knowledge & Page Generation. Dependency ATL-153 already independent-QA PASSed; no Governance Hold; no Owner Decision Required.
+
+**Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.  
+**Linear mirror status:** SYNCED (already posted to Shared Baton Log at this same timestamp).  
+**Location note:** This log was moved off `main` to branch `atlas-v1-5-live-sequence` on 2026-09-29 at Owner instruction; this branch is now the authoritative location.
