@@ -1,7 +1,7 @@
 {
   "contractId": "ATL-155-BOUNDED-DAUGHTER-GENERATION-V1",
   "version": "1.0.0",
-  "status": "QA_CANDIDATE",
+  "status": "FROZEN",
   "authority": {
     "baselineCommit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
     "dependency": "ATL-153",
