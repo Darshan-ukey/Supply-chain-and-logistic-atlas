@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "atlas-daughter-page-projection-v1",
+  "status": "FROZEN",
+  "identity": {
+    "baselineCommit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+    "moduleId": "ocean-lcl",
+    "moduleVersion": "PLANNED",
+    "moduleSha256": "23a8b3e0ca8dab935e97c5f8a1adcb95182ec1b75f0e419ecad0df9ef29feb4a",
+    "generatorId": "atl-155-bounded-daughter-generator",
+    "generatorVersion": "1.1.0",
+    "contractVersion": "ATL-155-BOUNDED-DAUGHTER-GENERATION-V1",
+    "inputHash": "9ce4da26b47c046b21885a211b280c3d3ec2a6db360ac4838ea21c1bb68f8024",
+    "outputHash": "6ff258d492e8cc1ba24e36e6f1ac8646d8ad55983905be2515bc25b732e3f245",
+    "canonicalModelHash": "8dafa693364d6601676d878035639982ceef7c4b7295d7677d0bc8d7fb9f6a88"
+  },
+  "ux": {
+    "entrypoint": "index.html",
+    "activation": "registry/reference coverage lookup for ocean-lcl",
+    "component": "existing Atlas module registry/reference coverage surface",
+    "contract": "atlas-page0-contract-v1.0"
+  },
+  "module": {
+    "id": "ocean-lcl",
+    "depth": "REFERENCE_ONLY"
+  },
+  "sections": [
+    {
+      "id": "coverage-gap",
+      "state": "RESEARCH_REQUIRED",
+      "gapId": "ocean-lcl::A4_A5"
+    }
+  ],
+  "knowledgeModelPath": "data/generated/daughters/ocean-lcl/knowledge-model-v1.json"
+}
