@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "atlas-workdefinition-contract-v1.0",
+  "status": "FROZEN",
+  "task": "ATL-159",
+  "boundedScope": {"moduleId":"road-ltl","processIds":["LTL-04"],"genericRecursiveDecomposition":false},
+  "canonicalInput": "data/generated/operational-semantics/road-ltl-v1.json",
+  "canonicalOutput": "data/generated/workdefinitions/road-ltl-ltl04-v1.json",
+  "schema": "data/contracts/atlas-workdefinition-v1.schema.json",
+  "compiler": "scripts/materialize-workdefinition-v1.cjs",
+  "identity": {"pattern":"wd::<moduleId>::<processId>::v1","versionRequired":true,"lineageRequired":true,"sourceIdsRequired":true},
+  "requiredSemantics": ["requiredInputs","decisionSemantics","actorsSystems","actions","outcomes","exceptions","bindingNeeds","knowledgeState"],
+  "failClosed": ["missing required canonical semantic","UNKNOWN material semantic","CONFLICTING material semantic","UNSUPPORTED material semantic","unresolved client binding before executable projection"],
+  "unsupportedSemantics": {"clientSpecificActors":"CLIENT_BINDING_REQUIRED","clientSpecificSystems":"CLIENT_BINDING_REQUIRED","clientMasterExecutionParameters":"CLIENT_BINDING_REQUIRED"},
+  "malkomProjection": {"source":"canonical WorkDefinition only","bespokePageDataAllowed":false,"projectionImplementation":"downstream / outside ATL-159 bounded compiler"},
+  "historicalP61PayloadUsed": false,
+  "stopBoundary": ["no generic recursive decomposition across all tasks/domains","no 100% WorkDefinition persistence coverage"],
+  "handover": {"consumer":"Malkom projection capability","testedScope":"road-ltl/LTL-04"}
+}
