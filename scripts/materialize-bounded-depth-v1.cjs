@@ -9,6 +9,8 @@ if(req.trigger?.actorType!=='AUTHORIZED_HUMAN'||req.trigger?.explicitRequest!==t
 if(req.moduleId!=='road-ltl') fail('UNSUPPORTED_MODULE',req.moduleId);
 const semantics=read('data/generated/operational-semantics/road-ltl-v1.json');
 const provenance=read('data/provenance/road-ltl-claim-provenance-v1.json');
+const sourceRegistry=read('data/governance/source-registry-v1.json');
+const sourceById=new Map((sourceRegistry.sources||sourceRegistry.items||[]).map(s=>[s.id||s.sourceId,s]));
 const record=semantics.records.find(x=>x.processId===req.processId);
 if(!record) fail('UNKNOWN_PROCESS',req.processId);
 const allowed=['stateBefore','event','decision','rule','control','action','evidence','stateAfter','outcome','inputs','outputs'];
@@ -17,6 +19,8 @@ if(!requested.length) fail('NO_DEPTH_FIELDS');
 const unsupported=requested.filter(x=>!allowed.includes(x));
 if(unsupported.length) fail('UNSUPPORTED_REQUESTED_FIELD',unsupported.join(','));
 if(!Array.isArray(record.sourceIds)||!record.sourceIds.length) fail('MISSING_PROVENANCE');
+const unregistered=record.sourceIds.filter(id=>!sourceById.has(id));
+if(unregistered.length) fail('UNREGISTERED_AUTHORITATIVE_SOURCE',unregistered.join(','));
 const claims=provenance.claims.filter(c=>c.processId===req.processId);
 const byField={};
 for(const c of claims){const k=String(c.field||'').toLowerCase();(byField[k]??=[]).push(c)}
@@ -36,7 +40,8 @@ for(const field of requested){
   if(conflicts){
     gaps.push({field,state:'CANDIDATE_REVIEW_REQUIRED',reason:'Multiple source-backed statements require human conflict resolution.',sourceIds});continue;
   }
-  candidates.push({field,value,knowledgeState:record.knowledgeState||'KNOWN_SYNTHESIS',sourceIds,claims:claimSet.map(c=>({claimId:c.claimId,evidenceClass:c.evidenceClass,claimBoundary:c.claimBoundary,confidence:c.confidence,status:c.status}))});
+  const sourceAuthorities=sourceIds.map(id=>{const s=sourceById.get(id);return {sourceId:id,issuer:s.issuer||null,title:s.title||null,version:s.version||s.atlasBaselineVersion||null};});
+  candidates.push({field,normalizedField:field,entityResolution:{moduleId:req.moduleId,processId:req.processId,canonicalSemanticRecordId:record.semanticRecordId},value,knowledgeState:record.knowledgeState||'KNOWN_SYNTHESIS',sourceIds,sourceAuthorities,claims:claimSet.map(c=>({claimId:c.claimId,evidenceClass:c.evidenceClass,claimBoundary:c.claimBoundary,confidence:c.confidence,status:c.status}))});
 }
 const researchNeeded=gaps.map(g=>({field:g.field,question:`Resolve ${req.moduleId}/${req.processId} ${g.field} using bounded authoritative sources only.`,allowedSourceIds:record.sourceIds,status:'NOT_EXECUTED_BY_MATERIALIZER'}));
 const out={
@@ -44,7 +49,7 @@ const out={
  trigger:{actorType:req.trigger.actorType,explicitRequest:true,requestId:req.trigger.requestId||null},
  existingKnowledgeLookup:{semanticRecordId:record.semanticRecordId,sourceIds:record.sourceIds},
  gapDetection:{requestedFieldCount:requested.length,gaps},
- boundedResearch:{mode:'AUTHORITATIVE_SOURCE_IDS_ONLY',researchNeeded},
+ boundedResearch:{mode:'GOVERNED_SOURCE_REGISTRY_ONLY',sourceRegistry:'data/governance/source-registry-v1.json',eligibleSources:record.sourceIds.map(id=>{const s=sourceById.get(id);return {sourceId:id,issuer:s.issuer||null,title:s.title||null,version:s.version||null};}),researchNeeded},
  candidateKnowledge:candidates,
  validation:{failClosed:true,canonicalMutation:false,allCandidatesProvenanced:candidates.every(c=>c.sourceIds.length>0),unresolvedCount:gaps.length},
  persistenceDisposition:gaps.length?'CANDIDATE_OVERLAY_WITH_UNRESOLVED':'CANDIDATE_OVERLAY_READY_FOR_HUMAN_APPROVAL',
