@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "atlas-workdefinition-set-v1.0",
+  "status": "FROZEN",
+  "bounded": true,
+  "moduleId": "road-ltl",
+  "scopeProcessIds": [
+    "LTL-04"
+  ],
+  "workDefinitionCount": 1,
+  "workDefinitions": [
+    {
+      "workDefinitionId": "wd::road-ltl::LTL-04::v1",
+      "version": "1.0.0",
+      "lineage": {
+        "semanticRecordId": "road-ltl::LTL-04::operational-semantics::v1",
+        "moduleVersion": "1.2",
+        "sourceIds": [
+          "src-dsdc-pickup",
+          "src-uncefact-rdm",
+          "src-x12"
+        ],
+        "compiler": "ATL-159 deterministic compiler v1"
+      },
+      "scope": {
+        "moduleId": "road-ltl",
+        "processId": "LTL-04",
+        "stateBefore": "Shipment valid; pickup not yet accepted; freight may not be ready.",
+        "event": "evt-booking-requested · pickup/service request submitted.",
+        "stateAfter": "Pickup ACCEPTED, CONDITIONAL, REJECTED or CANCELLED."
+      },
+      "requiredInputs": [
+        {"objectId": "obj-shipment", "requirementState": "REQUIRED"},
+        {"objectId": "obj-transport-document", "requirementState": "REQUIRED"},
+        {"objectId": "obj-shipment-readiness", "requirementState": "REQUIRED"},
+        {"objectId": "obj-appointment", "requirementState": "REQUIRED"}
+      ],
+      "decisionSemantics": {
+        "decision": "Can the carrier/service accept requested location, window, quantity and freight readiness?",
+        "rule": "Valid identity, serviceability, pickup window, cargo readiness and condition-specific prerequisites required.",
+        "control": "Request/response correlation, idempotency, change/cancel reason and stale-version rejection.",
+        "evidence": "Pickup request, acknowledgement/status, appointment and change history."
+      },
+      "actorsSystems": {
+        "actors": [{"id": "actor-authorized-operator", "state": "CLIENT_BINDING_REQUIRED"}],
+        "systems": [{"id": "system-execution-platform", "state": "CLIENT_BINDING_REQUIRED"}]
+      },
+      "actions": [{"sequence": 1, "action": "Schedule, update/reschedule or cancel pickup and publish response."}],
+      "outcomes": [{"outcome": "Executable pickup commitment synchronized with shipper and carrier.", "outputs": ["obj-pickup","obj-booking","obj-transport-event"]}],
+      "exceptions": [{"type": "UNRESOLVED_CLIENT_BINDING", "on": "missing client/master execution parameters", "disposition": "FAIL_CLOSED"}],
+      "bindingNeeds": [{"type": "CLIENT_BINDING_REQUIRED", "dimension": "client/master execution parameters", "reason": "Canonical generic semantics require client-specific master/contract values before executable projection."}],
+      "knowledgeState": "CLIENT_BINDING_REQUIRED"
+    }
+  ]
+}
