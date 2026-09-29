@@ -1,0 +1,870 @@
+{
+  "schemaVersion": "atlas-operational-semantics-v1.0",
+  "status": "FROZEN",
+  "moduleId": "road-ltl",
+  "moduleVersion": "1.2",
+  "recordCount": 22,
+  "records": [
+    {
+      "semanticRecordId": "road-ltl::LTL-01::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-01",
+      "stateBefore": "Demand approved; transport service not yet committed.",
+      "event": "evt-shipment-requested · shipment service requested",
+      "decision": "Is Road LTL eligible for cargo, lane, service and required date?",
+      "rule": "Serviceability, commodity, size/weight, prohibited-goods, lane, cut-off and contract rules must pass.",
+      "control": "Eligibility rule version and override authority recorded.",
+      "action": "Create or reject the transport service request with reason.",
+      "evidence": "Eligibility result, rule version, request timestamp and rejection/override record.",
+      "stateAfter": "LTL service request ELIGIBLE or REJECTED.",
+      "outcome": "Valid demand enters rating and commitment without silent scope assumptions.",
+      "inputs": [
+        "obj-order",
+        "obj-contract",
+        "obj-product-master",
+        "obj-transport-service-request"
+      ],
+      "outputs": [
+        "obj-transport-service-request",
+        "obj-shipment"
+      ],
+      "sourceIds": [
+        "src-scor",
+        "src-apqc-pcf",
+        "src-uncefact-rdm"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "evt-shipment-requested"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-02::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-02",
+      "stateBefore": "Service eligible; class, rate and charge basis unresolved.",
+      "event": "Rate/classification requested or recalculation triggered.",
+      "decision": "Which classification, tariff/contract rate, accessorial basis and service offer apply?",
+      "rule": "Use contract/tariff hierarchy, effective dates, verified attributes and approval tolerances; NMFC only in its applicable North-American relationship.",
+      "control": "Preserve input measures, classification/rate version, exception approvals and quoted-to-executed linkage.",
+      "action": "Determine class/rating basis, calculate offer and record commitment or controlled referral.",
+      "evidence": "Class/rate response, source/version, charge components, approval and quote.",
+      "stateAfter": "Commercial offer COMMITTED, REFERRED or REJECTED.",
+      "outcome": "Traceable price and expected cost without treating classification as a global taxonomy.",
+      "inputs": [
+        "obj-transport-service-request",
+        "obj-rate",
+        "obj-contract",
+        "obj-product-master"
+      ],
+      "outputs": [
+        "obj-rate",
+        "obj-quote",
+        "obj-freight-charge"
+      ],
+      "sourceIds": [
+        "src-apqc-pcf",
+        "src-nmfc",
+        "src-uncefact-rdm"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-02"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-03::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-03",
+      "stateBefore": "Commercial commitment exists; execution identities/doc state incomplete.",
+      "event": "Shipment/consignment and BOL/eBOL or consignment-note creation requested.",
+      "decision": "Are parties, locations, cargo, references and document form complete and mutually consistent?",
+      "rule": "Reuse Page‑0 atomic objects; distinguish shipment, consignment and transport document; apply eBOL, CMR/e-CMR or national form only when scope resolves.",
+      "control": "Uniqueness, required-field, version, duplicate and amendment controls.",
+      "action": "Create canonical shipment/consignment records and issue or prepare the applicable transport document.",
+      "evidence": "Versioned shipment, transport document, validation response and identifier crosswalk.",
+      "stateAfter": "Execution identity VALIDATED or BLOCKED.",
+      "outcome": "One traceable identity spine across commercial, physical and financial records.",
+      "inputs": [
+        "obj-order",
+        "obj-contract",
+        "obj-rate",
+        "obj-party-master",
+        "obj-product-master"
+      ],
+      "outputs": [
+        "obj-shipment",
+        "obj-transport-document",
+        "obj-handling-unit"
+      ],
+      "sourceIds": [
+        "src-uncefact-rdm",
+        "src-nmfta-dsdc-ltl",
+        "src-49cfr373",
+        "src-cmr",
+        "src-ecmr",
+        "src-nmfta-scac",
+        "src-nmfta-splc"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-03"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-04::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-04",
+      "stateBefore": "Shipment valid; pickup not yet accepted; freight may not be ready.",
+      "event": "evt-booking-requested · pickup/service request submitted.",
+      "decision": "Can the carrier/service accept requested location, window, quantity and freight readiness?",
+      "rule": "Valid identity, serviceability, pickup window, cargo readiness and condition-specific prerequisites required.",
+      "control": "Request/response correlation, idempotency, change/cancel reason and stale-version rejection.",
+      "action": "Schedule, update/reschedule or cancel pickup and publish response.",
+      "evidence": "Pickup request, acknowledgement/status, appointment and change history.",
+      "stateAfter": "Pickup ACCEPTED, CONDITIONAL, REJECTED or CANCELLED.",
+      "outcome": "Executable pickup commitment synchronized with shipper and carrier.",
+      "inputs": [
+        "obj-shipment",
+        "obj-transport-document",
+        "obj-shipment-readiness",
+        "obj-appointment"
+      ],
+      "outputs": [
+        "obj-pickup",
+        "obj-booking",
+        "obj-transport-event"
+      ],
+      "sourceIds": [
+        "src-dsdc-pickup",
+        "src-uncefact-rdm",
+        "src-x12"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "evt-booking-requested"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-20::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-20",
+      "stateBefore": "Pickup planned; vehicle/equipment/qualified resource not yet proven available.",
+      "event": "Equipment or resource assignment proposed.",
+      "decision": "Is the assigned resource available, suitable, inspected and qualified for active conditions?",
+      "rule": "Capacity, compatibility, maintenance, inspection, qualification and condition-specific requirements must pass.",
+      "control": "Authoritative availability/inspection record and controlled override.",
+      "action": "Allocate, inspect, substitute or block resource.",
+      "evidence": "Assignment, availability state, inspection/qualification evidence and exception approval.",
+      "stateAfter": "Resource READY or BLOCKED.",
+      "outcome": "Safe and feasible execution capacity.",
+      "inputs": [
+        "obj-equipment",
+        "obj-vehicle",
+        "obj-trailer",
+        "obj-driver",
+        "obj-availability-state"
+      ],
+      "outputs": [
+        "obj-equipment",
+        "obj-inspection-evidence",
+        "obj-dispatch"
+      ],
+      "sourceIds": [
+        "src-scor",
+        "src-apqc-pcf"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-20"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-05::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-05",
+      "stateBefore": "Carrier not yet in custody; pickup commitment open.",
+      "event": "evt-pickup-dispatched followed by physical acceptance or refusal.",
+      "decision": "Does presented freight match the accepted request/document and acceptance criteria?",
+      "rule": "Identity, count, apparent condition, prohibited/controlled-goods and document checks must pass or reservations/refusal be recorded.",
+      "control": "Positive identity match, timestamp/location, condition/count variance and custody acknowledgement.",
+      "action": "Dispatch, inspect presented freight, accept with/without reservation, or refuse with reason.",
+      "evidence": "Dispatch event, pickup scan, receipt/BOL acknowledgement, count/condition record and reservation/refusal.",
+      "stateAfter": "Custody ACCEPTED, ACCEPTED WITH RESERVATION or REFUSED.",
+      "outcome": "Provable custody start and freight state.",
+      "inputs": [
+        "obj-pickup",
+        "obj-shipment",
+        "obj-transport-document",
+        "obj-handling-unit"
+      ],
+      "outputs": [
+        "obj-custody-record",
+        "obj-condition-record",
+        "obj-transport-event"
+      ],
+      "sourceIds": [
+        "src-49cfr373",
+        "src-cmr",
+        "src-gs1-epcis"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "evt-pickup-dispatched"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-06::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-06",
+      "stateBefore": "Carrier custody active; origin-node receipt not reconciled.",
+      "event": "Arrival/receiving scan and inspection recorded.",
+      "decision": "Do handling-unit identity, count, weight/dimensions, condition and routing attributes reconcile?",
+      "rule": "Receive only against authoritative shipment/handling-unit identity; quarantine or case any discrepancy.",
+      "control": "Scan/measurement provenance, scale/device validity where required, duplicate/missing-unit and damage controls.",
+      "action": "Unload, identify, inspect, measure/reweigh where controlled, receive or hold.",
+      "evidence": "Node receipt, scans, measurements, condition images/records and variance case.",
+      "stateAfter": "Handling units RECEIVED, HELD or EXCEPTION.",
+      "outcome": "Reliable origin inventory/custody state for network planning.",
+      "inputs": [
+        "obj-shipment",
+        "obj-handling-unit",
+        "obj-custody-record",
+        "obj-transport-document"
+      ],
+      "outputs": [
+        "obj-receipt",
+        "obj-condition-record",
+        "obj-transport-event",
+        "obj-exception-case"
+      ],
+      "sourceIds": [
+        "src-gs1-epcis",
+        "src-gs1-cbv",
+        "src-gs1-genspec",
+        "src-nmfc"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-06"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-07::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-07",
+      "stateBefore": "Freight at origin node; outbound load not authorized.",
+      "event": "Consolidation/load-build proposal created or changed.",
+      "decision": "Which handling units can share the planned vehicle/route while meeting service and condition constraints?",
+      "rule": "Capacity, route, compatibility, segregation, cut-off, custody and load-integrity rules must pass.",
+      "control": "Planned-versus-scanned unit reconciliation and supervisor release for exceptions.",
+      "action": "Group handling units, assign route/leg/equipment, stage/load and authorize departure.",
+      "evidence": "Load plan, manifest, scan reconciliation, seal/closure evidence where used and release.",
+      "stateAfter": "Origin load BUILT and AUTHORIZED or BLOCKED.",
+      "outcome": "Feasible consolidated movement with complete unit lineage.",
+      "inputs": [
+        "obj-handling-unit",
+        "obj-route",
+        "obj-leg",
+        "obj-equipment",
+        "obj-capacity-profile"
+      ],
+      "outputs": [
+        "obj-load-plan",
+        "obj-dispatch",
+        "obj-transport-event"
+      ],
+      "sourceIds": [
+        "src-scor",
+        "src-uncefact-rdm",
+        "src-gs1-epcis"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-07"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-08::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-08",
+      "stateBefore": "Load authorized at origin/intermediate node.",
+      "event": "Departure, in-transit observation, arrival or deviation event.",
+      "decision": "Can the leg continue within route, hours, safety, condition and service constraints?",
+      "rule": "Only authorized load/resource may depart; actual events must preserve leg, load and unit correlation.",
+      "control": "Departure gate, route/deviation monitoring, event chronology and unresolved-hold block.",
+      "action": "Depart, move, update actual state, arrive or safely stop/escalate.",
+      "evidence": "Departure/arrival events, location/time, load/resource identity and deviation evidence.",
+      "stateAfter": "Leg IN TRANSIT, ARRIVED, STOPPED or EXCEPTION.",
+      "outcome": "Observable movement state and reliable downstream ETA/service evidence.",
+      "inputs": [
+        "obj-load-plan",
+        "obj-dispatch",
+        "obj-route",
+        "obj-leg",
+        "obj-equipment"
+      ],
+      "outputs": [
+        "obj-transport-event",
+        "obj-execution-state"
+      ],
+      "sourceIds": [
+        "src-gs1-epcis",
+        "src-gs1-cbv",
+        "src-uncefact-rdm",
+        "src-x12",
+        "src-dsdc-visibility-draft",
+        "src-nmfta-splc"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-08"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-09::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-09",
+      "stateBefore": "Handling units contained in arrived load; next-leg assignment pending.",
+      "event": "Unload/transfer scan and sort decision.",
+      "decision": "Does each unit reconcile and which outbound route/door/load should receive it?",
+      "rule": "Positive identity, custody continuity, route eligibility, condition and cut-off controls must pass; unresolved units move to exception state.",
+      "control": "Inbound-to-outbound scan reconciliation, missort prevention, damage/shortage capture and controlled release.",
+      "action": "Unload, scan, sort, stage, cross-dock, hold or redirect.",
+      "evidence": "Transfer events, location/door, unit/load containment, condition and outbound assignment.",
+      "stateAfter": "Unit TRANSFERRED, STAGED, HELD, MISSORTED or EXCEPTION.",
+      "outcome": "Network connection achieved without losing custody or identity lineage.",
+      "inputs": [
+        "obj-load-plan",
+        "obj-handling-unit",
+        "obj-transport-event",
+        "obj-route"
+      ],
+      "outputs": [
+        "obj-custody-record",
+        "obj-transport-event",
+        "obj-load-plan",
+        "obj-exception-case"
+      ],
+      "sourceIds": [
+        "src-gs1-epcis",
+        "src-gs1-cbv",
+        "src-scor"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-09"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-10::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-10",
+      "stateBefore": "Unit available at transfer node; successor custody/leg unresolved.",
+      "event": "Transfer/interchange offer, acceptance and handoff event.",
+      "decision": "Is the successor party/leg authorized, ready and compatible with the active contract/regime/condition?",
+      "rule": "Leg-by-leg carrier, contract, document, custody and legal scope must be resolved; do not merge regimes.",
+      "control": "Successor identity/authority, handoff evidence, document correlation and unresolved-scope lock.",
+      "action": "Offer, accept/reject, hand over and open the next leg; or hold/escalate.",
+      "evidence": "Interchange receipt, custody record, successor leg ID, document link and timestamps.",
+      "stateAfter": "Successor leg OPEN and custody ACKNOWLEDGED, or transfer BLOCKED.",
+      "outcome": "Leg-level composability without false end-to-end legal simplification.",
+      "inputs": [
+        "obj-handling-unit",
+        "obj-leg",
+        "obj-contract",
+        "obj-transport-document",
+        "obj-custody-record"
+      ],
+      "outputs": [
+        "obj-leg",
+        "obj-custody-record",
+        "obj-transport-event"
+      ],
+      "sourceIds": [
+        "src-uncefact-rdm",
+        "src-cmr",
+        "src-gs1-epcis"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-10"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-11::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-11",
+      "stateBefore": "Inbound consolidated load arrived; delivery units/routes not ready.",
+      "event": "Destination receipt, deconsolidation and route-build event.",
+      "decision": "Which units are releasable and which route/stop/appointment can execute them?",
+      "rule": "Receipt reconciliation, active holds, service/recipient constraints, route capacity and delivery readiness must pass.",
+      "control": "Inbound/unit reconciliation, hold block, route assignment and planned-versus-loaded check.",
+      "action": "Unload, deconsolidate, stage, assign route/stop and build delivery load.",
+      "evidence": "Destination receipt, unit state, route/stop/load plan and release.",
+      "stateAfter": "Delivery load READY or unit HELD/EXCEPTION.",
+      "outcome": "Reliable handoff from transportation to destination/last-mile execution.",
+      "inputs": [
+        "obj-load-plan",
+        "obj-handling-unit",
+        "obj-transport-event",
+        "obj-hold"
+      ],
+      "outputs": [
+        "obj-destination-handoff",
+        "obj-route",
+        "obj-stop",
+        "obj-dispatch"
+      ],
+      "sourceIds": [
+        "src-scor",
+        "src-gs1-epcis",
+        "src-uncefact-rdm"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-11"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-12::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-12",
+      "stateBefore": "Destination load prepared; recipient/site readiness unresolved.",
+      "event": "Appointment/readiness response and dispatch event.",
+      "decision": "Can the shipment be dispatched to the recipient/site under active instructions, restrictions and window?",
+      "rule": "Valid recipient/location, appointment, access constraints, holds, service and special-condition prerequisites required.",
+      "control": "Latest-instruction/version check, hold check, appointment acknowledgement and dispatch authority.",
+      "action": "Confirm/reschedule appointment, dispatch, hold or redirect.",
+      "evidence": "Appointment response, recipient instruction, dispatch and change record.",
+      "stateAfter": "Delivery DISPATCHED, RESCHEDULED or HELD.",
+      "outcome": "Executable destination commitment and reduced failed attempts.",
+      "inputs": [
+        "obj-destination-handoff",
+        "obj-appointment",
+        "obj-recipient",
+        "obj-hold"
+      ],
+      "outputs": [
+        "obj-dispatch",
+        "obj-delivery-order",
+        "obj-transport-event"
+      ],
+      "sourceIds": [
+        "src-apqc-pcf",
+        "src-uncefact-rdm"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-12"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-13::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-13",
+      "stateBefore": "Shipment out for delivery; carrier custody active.",
+      "event": "evt-delivery-attempted and, when successful, evt-pod-captured.",
+      "decision": "Was delivery completed to an authorized recipient/site, refused, short/damaged or unsuccessful?",
+      "rule": "Identity, authorization, actual count/condition, exception reason and applicable signature/evidence requirements must pass.",
+      "control": "Geotime/user/device provenance, tamper-resistant evidence, reservation/refusal and failed-attempt reason controls.",
+      "action": "Deliver and obtain acceptance/reservation, or record failed attempt/refusal and trigger recovery.",
+      "evidence": "POD/acceptance, delivery attempt, recipient, count/condition, reservation/refusal and location/time.",
+      "stateAfter": "DELIVERED / DELIVERED WITH RESERVATION / FAILED / REFUSED.",
+      "outcome": "Provable service completion or actionable exception with custody state.",
+      "inputs": [
+        "obj-delivery-order",
+        "obj-dispatch",
+        "obj-handling-unit",
+        "obj-recipient"
+      ],
+      "outputs": [
+        "obj-delivery-attempt",
+        "obj-pod",
+        "obj-acceptance",
+        "obj-failure-reason",
+        "obj-delivery-evidence"
+      ],
+      "sourceIds": [
+        "src-cmr",
+        "src-gs1-epcis",
+        "src-apqc-pcf"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "evt-delivery-attempted"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-14::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-14",
+      "stateBefore": "Execution state deviates or evidence is absent/inconsistent.",
+      "event": "evt-exception-detected.",
+      "decision": "What is the failure class, severity, affected object, true detection point and accountable recovery owner?",
+      "rule": "Do not assign root cause to detection location; correlate object lineage, upstream process, system/role and downstream impact.",
+      "control": "Duplicate-case prevention, severity model, owner/clock assignment and evidence preservation.",
+      "action": "Open/classify case, preserve evidence, assign owner and response clock, communicate/escalate.",
+      "evidence": "Exception case, variance, affected object/version, detection signal, owner and clock.",
+      "stateAfter": "Exception DETECTED, CLASSIFIED and OWNED.",
+      "outcome": "Recovery starts from evidence before the response window is lost.",
+      "inputs": [
+        "obj-execution-state",
+        "obj-transport-event",
+        "obj-condition-record",
+        "obj-control-evidence"
+      ],
+      "outputs": [
+        "obj-exception-case",
+        "obj-risk-signal"
+      ],
+      "sourceIds": [
+        "src-scor",
+        "src-apqc-pcf",
+        "src-gs1-epcis",
+        "src-iso10002"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "evt-exception-detected"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-15::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-15",
+      "stateBefore": "Exception open; affected freight/service/financial state unresolved.",
+      "event": "Recovery option proposed, authorized, executed and evidenced.",
+      "decision": "Which feasible action contains risk and restores an authorized execution state with least justified consequence?",
+      "rule": "Recovery cannot precede detection/ownership; respect holds, custody, contract, safety and legal scope.",
+      "control": "Decision record, authority, alternative evaluation, action confirmation, state reconciliation and closure evidence.",
+      "action": "Hold, rework, redirect, redeliver, return, substitute, communicate, settle or escalate as permitted.",
+      "evidence": "Decision, authorized action, actual recovery event, reconciled objects and closure approval.",
+      "stateAfter": "RECOVERED to a valid process state, ESCALATED, or CLOSED WITH CONSEQUENCE.",
+      "outcome": "Controlled service recovery and preserved learning/evidence.",
+      "inputs": [
+        "obj-exception-case",
+        "obj-risk-signal",
+        "obj-execution-state"
+      ],
+      "outputs": [
+        "obj-recovery-action",
+        "obj-resolution",
+        "obj-control-evidence"
+      ],
+      "sourceIds": [
+        "src-scor",
+        "src-apqc-pcf",
+        "src-iso10002"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-15"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-16::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-16",
+      "stateBefore": "Quoted/planned charge exists; executed charge state incomplete.",
+      "event": "Preliminary charge/reweigh/reclass/accessorial notification or billable-completion event.",
+      "decision": "Which evidenced, contractually valid charges or changes can be accrued/billed/referred?",
+      "rule": "Reconcile contract/rate version, measured facts, service events, accessorial evidence, tax context and approval tolerance.",
+      "control": "Quote-to-charge comparison, duplicate charge, effective-rate, evidence and approval controls.",
+      "action": "Calculate preliminary/executed charges; accrue, refer variance or publish billable amount.",
+      "evidence": "Charge lines, rate basis, measures, events, variance reason and approval.",
+      "stateAfter": "Charge PRELIMINARY, ACCRUED, BILLABLE or IN DISPUTE.",
+      "outcome": "Timely, explainable freight economics and reduced leakage.",
+      "inputs": [
+        "obj-rate",
+        "obj-contract",
+        "obj-transport-event",
+        "obj-delivery-evidence",
+        "obj-condition-record"
+      ],
+      "outputs": [
+        "obj-freight-charge",
+        "obj-accrual"
+      ],
+      "sourceIds": [
+        "src-dsdc-pfc",
+        "src-x12",
+        "src-apqc-pcf"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-16"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-17::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-17",
+      "stateBefore": "Charge recognized; invoice/payment state not controlled.",
+      "event": "Invoice received/issued, audit result, approval and settlement event.",
+      "decision": "Does invoice/receivable reconcile to contract, rate, shipment, performed service, evidence, tax and tolerance?",
+      "rule": "No approval without authoritative charge/evidence; preserve original invoice and controlled adjustment; segregate duties.",
+      "control": "Duplicate, three-way/evidence match, tolerance, approval, beneficiary and payment-release controls.",
+      "action": "Issue/receive, validate, match, approve, reject/dispute, post and settle.",
+      "evidence": "Invoice, audit result, approval, posting, payment/receipt and settlement reference.",
+      "stateAfter": "INVOICED, APPROVED, DISPUTED, PAID/COLLECTED or SETTLED.",
+      "outcome": "Accurate cash and cost with operational lineage.",
+      "inputs": [
+        "obj-freight-charge",
+        "obj-carrier-invoice",
+        "obj-customer-invoice",
+        "obj-delivery-evidence",
+        "obj-accrual"
+      ],
+      "outputs": [
+        "obj-approved-payable",
+        "obj-payment",
+        "obj-settlement",
+        "obj-control-evidence"
+      ],
+      "sourceIds": [
+        "src-apqc-pcf",
+        "src-x12",
+        "src-uncefact-rdm"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "evt-invoice-approved"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-18::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-18",
+      "stateBefore": "Issue alleged; standing, liability/charge basis, quantum and time state unresolved.",
+      "event": "Claim/dispute filed, acknowledged, evaluated, decided and settled/declined.",
+      "decision": "Does claimant have standing and do contract/regime, evidence, causation, time bar, liability/charge and quantum support relief?",
+      "rule": "Keep cargo/service claim, billing dispute and insurance recovery separate; apply only resolved contract/regime/policy.",
+      "control": "Completeness, evidence integrity, conflict, reserve, authority, time-bar and settlement controls.",
+      "action": "Acknowledge, investigate, request evidence, reserve, decide, settle/decline and pursue recovery/subrogation where valid.",
+      "evidence": "Claim file, liability/coverage position, decision, settlement/decline and recovery evidence.",
+      "stateAfter": "CLAIM/DISPUTE SETTLED, DECLINED, WITHDRAWN or ESCALATED.",
+      "outcome": "Controlled financial/customer resolution without invented liability.",
+      "inputs": [
+        "obj-claim-file",
+        "obj-delivery-evidence",
+        "obj-custody-record",
+        "obj-condition-record",
+        "obj-invoice"
+      ],
+      "outputs": [
+        "obj-liability-position",
+        "obj-coverage-position",
+        "obj-credit-adjustment",
+        "obj-settlement"
+      ],
+      "sourceIds": [
+        "src-cmr",
+        "src-49usc14706",
+        "src-49cfr370",
+        "src-apqc-pcf",
+        "src-iso10002"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-18"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-19::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-19",
+      "stateBefore": "Execution case exists; applicable authority/instrument and release state unresolved.",
+      "event": "Scope determination, filing/response, inspection, hold or release event.",
+      "decision": "Which operative authority/instrument and participant duty apply to this lane, goods, party, facility and procedure?",
+      "rule": "No regime loads from mode name alone; resolve legal scope separately and block movement when an operative hold exists.",
+      "control": "Source/effective-date record, filing correlation, authority-response provenance and hold-release segregation.",
+      "action": "Classify/screen, file where required, receive response, inspect, hold, release or escalate.",
+      "evidence": "Scope record, declaration/shipping paper, authority response, inspection, hold/release and retained evidence.",
+      "stateAfter": "REGULATORY STATUS RESOLVED, HELD, RELEASED or RESEARCH REQUIRED.",
+      "outcome": "Compliant execution without jurisdictional overgeneralization.",
+      "inputs": [
+        "obj-product-master",
+        "obj-transport-document",
+        "obj-regulatory-status",
+        "obj-contract"
+      ],
+      "outputs": [
+        "obj-declaration",
+        "obj-inspection",
+        "obj-hold",
+        "obj-release",
+        "obj-control-evidence"
+      ],
+      "sourceIds": [
+        "src-wco-dm",
+        "src-49cfr177",
+        "src-cmr",
+        "src-adr",
+        "src-atp",
+        "src-tir",
+        "src-india-eway"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "evt-customs-status"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-21::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-21",
+      "stateBefore": "Two or more records cannot be reliably correlated.",
+      "event": "Identity mismatch or master/reference-data exception detected.",
+      "decision": "Which authoritative identity/version and relationship survives for the governed scope?",
+      "rule": "Apply Page‑0 object authority; never merge shipment, consignment, handling unit, document or equipment into one compound object.",
+      "control": "Stewardship, survivorship, version, uniqueness and consumer acknowledgement.",
+      "action": "Resolve, map, correct, republish and acknowledge trusted identity/version.",
+      "evidence": "Crosswalk, stewardship decision, source/version, changed records and consumer acknowledgements.",
+      "stateAfter": "Identity RECONCILED or execution BLOCKED.",
+      "outcome": "No silent identity drift across shipper, carrier, node and finance.",
+      "inputs": [
+        "obj-party-master",
+        "obj-location-master",
+        "obj-shipment",
+        "obj-handling-unit",
+        "obj-reference-code"
+      ],
+      "outputs": [
+        "obj-lineage",
+        "obj-control-evidence"
+      ],
+      "sourceIds": [
+        "src-uncefact-rdm",
+        "src-gs1-genspec",
+        "src-scor",
+        "src-nmfta-scac",
+        "src-nmfta-splc"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-21"
+        }
+      ]
+    },
+    {
+      "semanticRecordId": "road-ltl::LTL-22::operational-semantics::v1",
+      "moduleId": "road-ltl",
+      "processId": "LTL-22",
+      "stateBefore": "Customer outcome or information need unresolved.",
+      "event": "Service request/contact received, response/action communicated and resolution accepted or escalated.",
+      "decision": "What authenticated, authorized and evidenced response/action can be provided without contradicting execution truth?",
+      "rule": "Use authoritative shipment/case state; protect data; do not promise recovery/credit outside authority.",
+      "control": "Identity/authentication, case linkage, SLA, approval and communication-history controls.",
+      "action": "Acknowledge, explain, coordinate, notify, resolve or escalate.",
+      "evidence": "Service request, authenticated party, response, commitment, resolution and feedback.",
+      "stateAfter": "Customer case RESOLVED, WAITING, ESCALATED or linked to recovery/claim.",
+      "outcome": "Consistent service communication and preserved customer evidence.",
+      "inputs": [
+        "obj-service-request",
+        "obj-shipment",
+        "obj-exception-case",
+        "obj-delivery-evidence"
+      ],
+      "outputs": [
+        "obj-resolution",
+        "obj-control-evidence"
+      ],
+      "sourceIds": [
+        "src-apqc-pcf",
+        "src-iso10002"
+      ],
+      "knowledgeState": "KNOWN_SYNTHESIS",
+      "dependencyClass": "CLIENT_MASTER_REQUIRED",
+      "relationships": [
+        {
+          "type": "OBSERVES_EVENT",
+          "targetId": "ltl-evt-22"
+        }
+      ]
+    }
+  ]
+}
