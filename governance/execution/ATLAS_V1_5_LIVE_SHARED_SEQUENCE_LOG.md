@@ -808,3 +808,41 @@ Independently QA ATL-139 branch `atl-139-v15-current-lineage-malkom-dw` at tip `
 
 **Owner/gates:** No Owner decision pending for ATL-139 QA. ATL-142 production/go-live remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved persistence/recovery:** NONE.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-169 RECOVERY COMPLETE → CLAUDE INDEPENDENT QA — 2026-09-29T08:15:00Z
+
+**Transition:** ChatGPT → Claude  
+**Current holder / next agent:** Claude  
+**Exact task:** ATL-169 — Atlas v1.5 Capability — Current-Lineage Malkom Projection Boundary & Handoff  
+**Disposition:** CHATGPT_BUILD_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_QA
+
+### Predecessor context from Linear Continuation 01
+Active pickup authority was Linear document `Atlas Autonomous Execution — Shared Baton Log — Continuation 01`, ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`. Its latest valid Claude → ChatGPT handoff records ATL-139 INDEPENDENT_QA_PASS with no defects, verified tip `a57ad4d4f9488f190737701736beb5f807a19867`, and explicitly routes ATL-169. It verifies all five ATL-169 blockedBy dependencies satisfied: ATL-163, ATL-139, ATL-165, ATL-138, ATL-159 all independent-QA PASS. No Governance Hold / Owner Decision Required applies.
+
+### Recovery/result
+This invocation was recovery-first after the prior ATL-169 turn partially persisted two artifacts but failed later GitHub persistence. Fresh read confirmed authorization unchanged and the branch remained a clean descendant of ATL-139. No previously durable implementation was rebuilt. Only the missing governance/test persistence and designated handoff were completed.
+
+**Implementation branch:** `atl-169-v15-malkom-projection-boundary`  
+**Final tip:** `88bd3da8e9bf46d41676adbfce0c96fc45cf013c`  
+**Base:** ATL-139 verified tip `a57ad4d4f9488f190737701736beb5f807a19867`  
+**Delta:** ahead 4 / behind 0; four additive files only.
+
+Durable evidence:
+- schema `data/contracts/atlas-malkom-projection-boundary-v1.schema.json` — blob `7357321fd673351ee1685e3a7c479ceb7065287f`;
+- projection boundary `data/generated/malkom-domain-warehouse/road-ltl-ltl04-projection-boundary-v1.json` — blob `1a542b1a13fd93c837bdb37e21cd3183c8a21d5d`;
+- governance freeze `governance/product/ATL_169_V1_5_MALKOM_PROJECTION_BOUNDARY_V1.md` — commit `cb617f52c879636c3381afeecae5cc8d3993a05f`, blob `2dca27862a824bb8bf1e30bee1132c9e3bcb8f39`;
+- contract test `tests/atl-169-malkom-projection-boundary.test.cjs` — commit/final tip `88bd3da8e9bf46d41676adbfce0c96fc45cf013c`, blob `abd43015ac45b0b71438ee4a8d80c679b4970552`.
+
+Contract test executed against the read-back persisted schema/artifact content: `node tests/atl-169-malkom-projection-boundary.test.cjs` → `ATL-169 Malkom projection boundary: PASS`.
+
+### Boundary proven
+The artifact consumes ATL-139 package identity and preserves canonical `wd::road-ltl::LTL-04::v1` identity/version/lineage. It explicitly represents SUPPORTED, CLIENT_BINDING_REQUIRED, UNKNOWN, LOSS_OR_UNSUPPORTED, and REQUIREMENT_NOT_CONFIRMED projection states; mandatory unresolved/unrepresentable semantics fail closed; `canonicalMutation=false`; package release is deterministic; Malkom interface is machine-readable JSON with API endpoint deliberately null / REQUIREMENT_NOT_CONFIRMED; trace paths point back to canonical WorkDefinition, client bindings and current-lineage Malkom package. Required downstream consumer is only MALKOM. Agentic AI, RPA/BPM/workflow, SAP, TMS, WMS and other runtime package proofs are explicitly outside the v1.5 boundary. Production promotion is false.
+
+### Exact Claude QA/recheck action
+Independently fetch branch `atl-169-v15-malkom-projection-boundary` at tip `88bd3da8e9bf46d41676adbfce0c96fc45cf013c`. Run `node tests/atl-169-malkom-projection-boundary.test.cjs`. Verify the four-file additive delta from ATL-139; ATL-138/ATL-139 consumption and current-lineage identities; canonical ID/version/lineage retention; deterministic package/manifest identity; capability/loss map; explicit CLIENT_BINDING_REQUIRED/UNKNOWN/LOSS_OR_UNSUPPORTED/REQUIREMENT_NOT_CONFIRMED states; no guessed API interface; fail-closed mandatory semantics; canonical non-mutation; traceability to canonical Atlas semantics; Malkom-only STOP boundary; and no production-promotion claim. Return PASS or exact ATL-169 remediation through Linear Continuation 01. If PASS, route only the exact next eligible ATL-177 task after dependency verification.
+
+**Owner/gate status:** No Owner decision pending for ATL-169 independent QA. ATL-142 production/go-live remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE if this GitHub persistence and mandatory read-back verify. No Linear self-handoff is created by ChatGPT.
