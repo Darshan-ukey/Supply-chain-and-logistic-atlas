@@ -1,3 +1,49 @@
+# CROSS-SURFACE ALTERNATING HANDOFF PROTOCOL — OWNER DIRECTIVE — 2026-09-29
+
+> **Effective immediately. This directive supersedes the older GitHub-only, Linear-only, primary/fallback, mirror-first, and “single final authority” language below wherever it conflicts with this protocol. Historical entries remain evidence; they are not the current pickup rule.**
+
+## Why this changed
+
+Atlas v1.5 LIVE has repeatedly experienced persistence/write failures when handoffs depended on only GitHub or only Linear. Valid implementation or QA work has therefore sometimes completed while the next-agent handoff remained missing/stale, producing recovery loops and sequence ambiguity.
+
+The governing model is now an **alternating cross-surface handshake**. Each agent reads the handoff written by the other agent from a designated surface, performs only that routed work, then writes the next handoff to its own designated surface.
+
+## Binding alternating rule
+
+### ChatGPT (:00 / :30)
+- **READ/PICKUP:** latest valid Claude → ChatGPT handoff from the Linear document `Atlas Autonomous Execution — Shared Baton Log`.
+- Verify exact task, predecessor result/evidence, ATL-177 dependency eligibility, disposition, exact action, and Owner/gate status.
+- Execute only that exact Linear-routed action.
+- **WRITE/HANDOFF:** append the complete ChatGPT → Claude result/handoff to this GitHub shared log and read it back.
+- Do not require or create a duplicate Linear handoff as the authorization for Claude.
+
+### Claude (:15 / :45)
+- **READ/PICKUP:** latest valid ChatGPT → Claude handoff from this GitHub shared log.
+- Verify exact task, predecessor result/evidence, ATL-177 dependency eligibility, disposition, exact action, and Owner/gate status.
+- Execute only that exact GitHub-routed QA/recheck.
+- **WRITE/HANDOFF:** write the complete Claude → ChatGPT result/handoff to the Linear Shared Baton and read it back.
+- Do not require or create a duplicate GitHub handoff as the authorization for ChatGPT.
+
+## No self-surface pickup
+
+ChatGPT must never treat its own latest GitHub entry as authorization for new ChatGPT work. Claude must never treat its own latest Linear entry as authorization for new Claude work. A new task is executable only after the opposite agent writes a valid handoff to that agent's designated pickup surface.
+
+## Mandatory context preservation
+
+Every handoff must carry: UTC timestamp; transition/current holder; exact ATL-177 task/finding ID/title; predecessor disposition/result; durable evidence identities; dependency/eligibility basis; exact next action; Owner/gate status; and unresolved persistence/recovery state. The receiving agent preserves that context when writing the next handoff and adds verified execution/QA evidence without silently reinterpreting predecessor state.
+
+## Failure/recovery
+
+If ChatGPT cannot persist/read back its designated GitHub handoff after substantive work, it must not substitute a Linear self-handoff; preserve pending GitHub persistence and retry it on the next eligible ChatGPT recovery turn. If Claude cannot persist/read back its designated Linear handoff after QA, it must not substitute a GitHub self-handoff; preserve pending Linear persistence and retry it on the next eligible Claude recovery turn. Never redo verified substantive work merely because handoff persistence failed. Missing opposite-agent handoff on the designated pickup surface means fail closed—never infer from backlog order or task numbering.
+
+Owner gates, Governance Holds, ATL-130 controls, acceptance criteria, and the BOL/FIRI exclusion remain binding.
+
+## Current state at protocol activation
+
+The latest read-back-verified handoff is already on the correct surface: **ChatGPT → Claude / ATL-171 independent QA**, sequence-log commit `46930ae91db91211371ea3e190aac4b9d11fe265`, implementation commit `086390b53990306c556fed09660421e61f2d1d9a`. Claude consumes that GitHub handoff. After ATL-171 QA, Claude must write its PASS/REWORK result and exact next ChatGPT action to the Linear Shared Baton. ChatGPT waits for that Linear handoff before any further v1.5 LIVE execution.
+
+---
+
 # Atlas v1.5 LIVE — Authoritative Shared Sequence & Handoff Log
 
 ## Purpose and authority
