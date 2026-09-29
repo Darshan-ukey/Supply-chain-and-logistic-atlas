@@ -1,39 +1,47 @@
-# Atlas v1.5 LIVE — Shared Sequence & Failover Log
+# Atlas v1.5 LIVE — Authoritative Shared Sequence & Handoff Log
 
-## Purpose
+## Purpose and authority
 
-This file is the durable GitHub failover log for the Atlas v1.5 LIVE ChatGPT ↔ Claude execution sequence controlled by ATL-177.
+This file is the **single final authoritative sequencing and handoff log** for the Atlas v1.5 LIVE ChatGPT ↔ Claude execution chain controlled by ATL-177.
 
-Linear remains the normal execution/task mirror and should be updated on every transition. This GitHub log exists so a Linear mutation/persistence failure does **not** stop an otherwise authorized and evidenced sequence.
+**GitHub decides the current holder, exact task, handoff, recovery obligation, and next eligible executor action. Linear does not.**
 
-## Authority and failover rules
+Linear is an asynchronous task/evidence/governance mirror that may be synchronized from this log at any later time. A stale, missing, contradictory, or failed Linear update must never block, override, reinterpret, or pause a valid GitHub-routed sequence.
 
-1. At the start of every executor invocation, read the Linear `Atlas Autonomous Execution — Shared Baton Log` **and** this GitHub log before selecting work.
-2. When both surfaces are current and consistent, follow the latest identical routed transition.
-3. Every completed implementation/remediation or independent QA handoff should be persisted to **both** Linear and this GitHub log and read back.
-4. If Linear persistence fails but the same transition is successfully written to this GitHub log and read back, GitHub becomes the temporary durable sequencing authority for that transition. The sequence must **not** pause merely because Linear could not be updated.
-5. The next eligible ChatGPT worker (:00 or :30) must first repair the missing Linear mirror using the exact GitHub-persisted evidence/transition. After read-back verifies the Linear mirror, it must continue the exact work currently assigned to ChatGPT by the latest valid GitHub transition, if any.
-6. Do not redo implementation or QA already evidenced and read-back verified. Repair only the missing mirror/persistence step.
-7. If GitHub persistence fails but Linear succeeds, Linear remains sufficient for the handoff; the next eligible worker repairs this GitHub mirror first.
-8. If both persistence surfaces fail, preserve `PERSISTENCE_RETRY_REQUIRED` and fail closed for that invocation. Both ChatGPT workers remain enabled; the next eligible worker retries recovery first.
-9. A stale surface never overrides a newer, read-back-verified transition on the other surface. Reconcile the stale mirror before new implementation.
-10. Never use this failover mechanism to bypass Owner gates, Governance Holds, task acceptance criteria, independent QA, or ATL-130 governance.
-11. BOL/FIRI owner-run work remains outside this v1.5 LIVE sequence unless explicitly re-routed by the Owner.
-12. Expected cadence remains ChatGPT :00/:30 and Claude :15/:45.
+## Mandatory executor rules
 
-## Mirror-repair payload requirement
+1. Every ChatGPT/Claude executor invocation MUST start by reading this file and resolving its latest valid `CURRENT BATON` entry.
+2. Execute only when that latest GitHub baton explicitly names the executor and gives an exact eligible action. Never select substitute work from Linear/backlog.
+3. Linear may be read for task acceptance criteria, dependencies, issue metadata, historical evidence, ATL-130 governance, and Owner gates, but **never as sequencing authority**.
+4. Every material implementation/remediation/QA result and every handoff MUST be appended to this GitHub log and read back. The handoff becomes effective only after GitHub persistence + read-back succeeds.
+5. Linear synchronization is non-blocking and may occur immediately or later. Failure to update Linear does not create `PERSISTENCE_RETRY_REQUIRED` if the complete result/handoff is durably persisted and read back here.
+6. If a Linear write fails, record the exact missing Linear mirror payload/status in the same GitHub baton entry. Continue the GitHub-authorized sequence normally.
+7. The next ChatGPT worker should repair any explicitly pending Linear mirror first when practical, but **Linear repair must not prevent completion of the exact GitHub-assigned work in that same invocation**. If repair still fails, record it here and continue governed work.
+8. If GitHub persistence itself fails, then preserve `PERSISTENCE_RETRY_REQUIRED` and fail closed for that invocation. The next eligible worker retries the missing GitHub persistence first. Neither ChatGPT worker is disabled.
+9. Never redo implementation or independent QA already evidenced and read-back verified.
+10. Claude-required independent QA remains independent. ChatGPT never self-marks Claude QA PASS/FIXED—VERIFIED.
+11. Owner gates, Governance Holds, task acceptance criteria, ATL-130 governance and dependency controls remain binding even though Linear is not sequencing authority.
+12. BOL/FIRI owner-run work remains outside this v1.5 LIVE sequence unless explicitly rerouted by the Owner.
+13. Expected cadence remains ChatGPT :00/:30 and Claude :15/:45.
 
-A failover entry must contain enough information to recreate the missing mirror exactly:
+## Linear synchronization contract
 
-- timestamp;
+Each GitHub baton entry MUST be sufficiently complete to reconstruct/synchronize Linear later without interpretation. Include:
+
+- UTC timestamp;
 - transition and current holder;
-- exact task/finding ID;
+- exact task/finding ID and title;
 - sequence controller;
-- disposition;
-- implementation/QA evidence IDs, commit/blob/artifact references as applicable;
+- disposition/status;
+- acceptance/result summary;
+- implementation or QA evidence IDs;
+- commit SHA, blob SHA and artifact paths where applicable;
 - exact next-agent action;
 - Owner/gate status;
-- which mirror failed and what exact persistence remains.
+- Linear mirror status: `SYNCED`, `PENDING`, or `NOT_REQUIRED`;
+- if `PENDING`, the exact issue/comment/baton payload still to mirror.
+
+When Darshan requests a Linear sync, reconcile Linear **from this GitHub log**. Do not use Linear to modify or reinterpret the sequence recorded here.
 
 ## Bootstrap state
 
