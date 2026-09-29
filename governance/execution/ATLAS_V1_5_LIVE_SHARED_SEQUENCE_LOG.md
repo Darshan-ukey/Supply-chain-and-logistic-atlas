@@ -501,3 +501,42 @@ Do not start ATL-172/v2 or any task beyond ATL-171.
 
 **Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.
 **Linear mirror status:** PENDING this turn — mirroring to ATL-171 issue comment and the Linear Shared Baton Log immediately after this GitHub append is read back.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-171 REMEDIATION COMPLETE → CLAUDE INDEPENDENT RECHECK — 2026-09-29T03:35Z
+
+**Transition:** ChatGPT → Claude  
+**Current holder / next agent:** Claude  
+**Exact current task:** ATL-171 — Atlas v1.5 Capability — Bounded Operational Knowledge & Canonical Information Semantics — independent remediation recheck  
+**Sequence controller:** ATL-177  
+**Disposition:** CHATGPT_REMEDIATION_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_RECHECK
+
+### Predecessor context from Linear
+
+Claude handoff at 2026-09-29T03:19:32Z: ATL-171 independent recheck = FAIL / REWORK_REQUIRED. The earlier output-file consistency defect was verified fixed at commit `e7864715cb4865365dfa3d1f7163e94dcdbc9ad5`. New defect: CommonJS materializer/test used `.js` under root `"type":"module"`, so committed filenames were not runnable with `node <path>`. Exact remediation authorized: rename both to `.cjs` (or convert to ESM), preserve verified record/schema/contract content, and return to Claude for recheck.
+
+### Remediation result and durable evidence
+
+Implementation branch: `atl-171-v15-operational-semantics`.
+
+- Created `scripts/materialize-operational-semantics-v1.cjs`; content blob SHA `33bc6d17b14ca202ee3287cff8245bd0b36ce14b` (same materializer content as the verified corrected `.js` source).
+- Created `tests/atl-171-operational-semantics.test.cjs`; blob SHA `c63a3ec996d8509ed2dc3da30cd62cdc7a81ff67`; test invocation now targets `scripts/materialize-operational-semantics-v1.cjs`.
+- Removed obsolete `scripts/materialize-operational-semantics-v1.js`.
+- Removed obsolete `tests/atl-171-operational-semantics.test.js`.
+- Final remediation commit: `c7c25ebad683796af29bf03d229b61566f8c9a97`.
+- Intermediate commits: `234f500ab7469452fa10a7a35a2c2270139d0b4f`, `6694f10fb8fd95d428fb7619c9715964264d49f3`, `2bcbf9ae6ffa4d645829b8e40b96c2fcc34decc2`.
+- GitHub read-back verified both `.cjs` paths exist with the above blobs and both obsolete `.js` paths are absent.
+- No operational-semantic record, schema, contract, or generated canonical data content was changed by this remediation.
+
+### Dependency / eligibility basis
+
+ATL-155 and ATL-161 remain independently QA-PASS prerequisites. Claude's Linear handoff explicitly authorized this ATL-171 rework. ATL-172/v2 remains unrouted and blocked pending ATL-171 PASS.
+
+### Exact Claude action
+
+Independently recheck ATL-171 at final commit `c7c25ebad683796af29bf03d229b61566f8c9a97`: verify the committed `.cjs` materializer executes under the repository's ESM package configuration, the committed `.cjs` test executes and PASSes, deterministic materializer output remains byte-identical to the frozen generated artifact, and no previously verified ATL-171 semantics/schema/contract behavior regressed. If PASS, write Claude → ChatGPT disposition and exact next authorized action to the Linear Shared Baton. If FAIL, route only the exact remaining ATL-171 defect through Linear.
+
+**Owner/gate status:** No Owner decision pending. ATL-142 production promotion remains Owner-gated. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved persistence/recovery state:** None at handoff; GitHub implementation mutations and designated GitHub handoff are to be read-back verified.  
