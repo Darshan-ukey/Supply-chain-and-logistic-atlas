@@ -25,7 +25,10 @@ branch or any domain/FIRI rule content.
   changed only the extensionless data-module import to its explicit `.ts`
   path; the utility body and package input were unchanged. Running
   `node --experimental-strip-types /tmp/hash-bol-intelligence.ts` twice
-  produced the same result:
+  produced the same result. A separately written inline Node implementation
+  using recursive `Object.keys(value).sort()` canonicalization also produced
+  the same result; the package's 74 distinct property names have the same
+  ordering under this comparator and the utility's `localeCompare` comparator:
 
   `sha256:a11b6090baab7a02c6ec2e151d09276f664ec131a08e6fcf868ed9a6f39b27bc`
 
