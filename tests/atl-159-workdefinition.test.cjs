@@ -1,0 +1,10 @@
+const fs=require('fs'),assert=require('assert');
+const wd=JSON.parse(fs.readFileSync('data/generated/workdefinitions/road-ltl-ltl04-v1.json','utf8'));
+assert.strictEqual(wd.workDefinitionCount,1);
+const x=wd.workDefinitions[0];
+assert.strictEqual(x.workDefinitionId,'wd::road-ltl::LTL-04::v1');
+assert.ok(x.lineage.sourceIds.length>0);
+assert.strictEqual(x.knowledgeState,'CLIENT_BINDING_REQUIRED');
+assert.ok(x.bindingNeeds.some(v=>v.type==='CLIENT_BINDING_REQUIRED'));
+assert.ok(x.exceptions.some(v=>v.disposition==='FAIL_CLOSED'));
+console.log('PASS ATL-159 bounded canonical WorkDefinition: '+x.workDefinitionId);
