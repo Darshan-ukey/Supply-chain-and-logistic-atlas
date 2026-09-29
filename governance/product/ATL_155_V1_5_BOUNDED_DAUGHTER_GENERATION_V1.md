@@ -1,6 +1,6 @@
 # ATL-155 — Atlas v1.5 Bounded Daughter Knowledge & Page Generation Contract
 
-Status: **QA_CANDIDATE**
+Status: **FROZEN**
 
 ## Decision
 Atlas v1.5 generates a **canonical Daughter knowledge model first** and derives the page as a projection. The projection cannot introduce claims absent from the canonical model.
@@ -25,3 +25,11 @@ Universal ~70-Daughter generation; unsupported A4/A5 synthesis; absent structura
 
 ## STOP / handover
 Freeze generator inputs/outputs, supported patterns, unsupported patterns and proof dispositions. Generic cross-domain generation/regeneration remains ATL-156/v2.
+
+## Frozen implementation
+- Generator: `scripts/generate-bounded-daughter-v1.js` (deterministic, no LLM-authored canonical content).
+- Schemas: `data/contracts/atlas-daughter-knowledge-model-v1.schema.json` and `data/contracts/atlas-daughter-page-projection-v1.schema.json`.
+- Materialized outputs: Road LTL canonical model + derived projection; Ocean FCL/LCL REFERENCE_ONLY model/projection pairs under `data/generated/daughters/`.
+- Verification: `tests/atl-155-bounded-daughter-generation.test.js` covers byte-identical regeneration, 22/13/39/29 reconciliation, REFERENCE_ONLY A4/A5 refusal, and TEST_ONLY publication refusal.
+- Existing UX consumption target: `index.html` → `window.activateModule("road-ltl")` → existing spatial canvas / selected-item Inspector. Reference-only daughters remain registry/reference coverage surfaces until governed depth exists.
+- Ownership: generator writes; ATL-155 verification validates; promotion remains Owner-gated at ATL-142.
