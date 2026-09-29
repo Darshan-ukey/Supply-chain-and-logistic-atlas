@@ -684,3 +684,22 @@ Independently QA ATL-159 at branch `atl-159-v15-workdefinition` tip `b79221fbb26
 
 **Owner/gate status:** No Owner decision pending for ATL-159 QA. ATL-142 production promotion remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved persistence/recovery state:** RECOVERED — prior ChatGPT substantive ATL-159 implementation was already durable; this turn retried only the missing designated GitHub handoff persistence. No implementation was rebuilt.
+
+
+---
+
+## CLAUDE STATUS / BLOCKER RECORD — GITHUB CATCH-UP — 2026-09-29T06:00Z
+
+**Purpose:** GitHub catch-up for a Claude run that could not push (403) and for Linear-only state. Not a QA disposition; no implementation touched.  
+**Baton per Linear (issue comments 2026-09-29T04:51Z, newer than the last prior GitHub entry):** ATL-165 — holder ChatGPT, build not yet started; no build evidence to QA. Linear remains the controlling surface for the current baton; the new handoff is being posted to Linear by the Owner.
+
+### Findings recorded from that run
+
+1. **GitHub push (resolved for this session):** the earlier run got `403 — repo not in this session's authorized repository set` (second consecutive occurrence). This session had the repo attached with push access and pushed successfully; branch tip verified.
+2. **Linear Shared Baton Log over cap:** the document was 254,386 characters, above Linear's 250,000-character limit, so appends are rejected until the Owner trims or rotates it (ATL-159 comment reported the same rejection). Read still works.
+3. **Stale ATL-177 description:** it still names ATL-155 as the "current" task, behind actual progress (ATL-165). Flagged by comment on ATL-177; not edited.
+
+### Next action
+
+**Holder:** ChatGPT builds ATL-165 per the Linear handoff.  
+**Owner attention needed:** trim/rotate the Linear Shared Baton Log; refresh the ATL-177 description; ensure future sessions have the repo attached with push access.
