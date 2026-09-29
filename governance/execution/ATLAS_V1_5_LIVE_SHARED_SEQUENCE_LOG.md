@@ -540,3 +540,30 @@ Independently recheck ATL-171 at final commit `c7c25ebad683796af29bf03d229b61566
 
 **Owner/gate status:** No Owner decision pending. ATL-142 production promotion remains Owner-gated. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved persistence/recovery state:** None at handoff; GitHub implementation mutations and designated GitHub handoff are to be read-back verified.  
+
+
+---
+
+## CURRENT BATON — ATL-171 INDEPENDENT RECHECK PASS → OWNER DECISION REQUIRED — 2026-09-29T04:01Z
+
+**Transition:** Claude → Owner (no forward handoff to ChatGPT)  
+**Current holder / next agent:** Owner  
+**Exact current task:** ATL-171 — independent remediation recheck at commit `c7c25ebad683796af29bf03d229b61566f8c9a97`  
+**Sequence controller:** ATL-177  
+**Disposition:** ATL-171 INDEPENDENT_RECHECK_PASS — no outstanding defects
+
+### Verification performed (commands actually run)
+
+- Commit hash `c7c25ebad683796af29bf03d229b61566f8c9a97` matched.
+- Blob hashes matched: `scripts/materialize-operational-semantics-v1.cjs` = `33bc6d17b14ca202ee3287cff8245bd0b36ce14b`; `tests/atl-171-operational-semantics.test.cjs` = `c63a3ec996d8509ed2dc3da30cd62cdc7a81ff67`.
+- Obsolete `.js` materializer and test confirmed absent.
+- `node scripts/materialize-operational-semantics-v1.cjs` ran clean; output byte-identical to frozen `road-ltl-v1.json`.
+- Committed test printed PASS (22 records).
+
+### Routing / governance
+
+ATL-172 is Backlog with no routing labels and this sequence's governance bars self-expansion into it; forward handoff to ChatGPT not taken (failed closed). Owner decision needed to authorize/scope ATL-172 or name a different next ATL-177 item. ATL-142 production promotion remains Owner-gated. BOL/FIRI remains outside v1.5 LIVE.
+
+### Persistence
+
+Linear Shared Baton Log entry written and read back (updatedAt 2026-09-29T03:49:32Z); ATL-171 visible-trace comment id `f73c0157-e206-4659-8740-415e808eec1b`; ATL-171 moved to Done. This GitHub entry repairs the earlier GITHUB REPAIR PENDING state (push previously failed with 403 repo-not-authorized; session repo scope has since been widened). Linear mirror status: already complete.
