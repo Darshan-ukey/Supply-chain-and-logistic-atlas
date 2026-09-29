@@ -1,0 +1,13 @@
+const assert=require('assert'),cp=require('child_process'),path=require('path');
+const root=path.resolve(__dirname,'..');
+const run=(fixture='tests/fixtures/atl-157-road-ltl-depth-request.json')=>cp.execFileSync(process.execPath,['scripts/materialize-bounded-depth-v1.cjs',fixture],{cwd:root,encoding:'utf8'});
+const a=run(),b=run(); assert.strictEqual(a,b,'materialization must be deterministic');
+const x=JSON.parse(a);
+assert.strictEqual(x.moduleId,'road-ltl'); assert.strictEqual(x.processId,'LTL-04');
+assert.strictEqual(x.trigger.actorType,'AUTHORIZED_HUMAN'); assert.strictEqual(x.validation.failClosed,true);
+assert.strictEqual(x.validation.canonicalMutation,false); assert.strictEqual(x.downstream.canonicalPromotion,'NOT_PERFORMED');
+assert.ok(x.candidateKnowledge.length>=5); assert.ok(x.candidateKnowledge.every(c=>c.sourceIds.length>0));
+assert.ok(x.candidateKnowledge.every(c=>c.claims.length>0));
+const bad=path.join(root,'tests/fixtures/atl-157-machine-trigger-reject.json');
+let rejected=false;try{run('tests/fixtures/atl-157-machine-trigger-reject.json')}catch(e){rejected=String(e.stderr||e.message).includes('HUMAN_TRIGGER_REQUIRED')}assert.ok(rejected,'machine trigger must fail closed');
+console.log('PASS ATL-157 bounded human-triggered depth: '+x.candidateKnowledge.length+' provenanced candidates');
