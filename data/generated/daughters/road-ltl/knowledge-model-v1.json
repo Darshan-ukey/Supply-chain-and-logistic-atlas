@@ -1,0 +1,4174 @@
+{
+  "schemaVersion": "atlas-daughter-knowledge-model-v1",
+  "status": "FROZEN",
+  "identity": {
+    "baselineCommit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+    "moduleId": "road-ltl",
+    "moduleVersion": "V1.2",
+    "moduleSha256": "2d5c78d4480bb693747bcb18a2c006b3fe0a63e6150c506e84ea3e4c5f3f6cfd",
+    "generatorId": "atl-155-bounded-daughter-generator",
+    "generatorVersion": "1.1.0",
+    "contractVersion": "ATL-155-BOUNDED-DAUGHTER-GENERATION-V1",
+    "inputHash": "a5b771a5c4c04c2f0ef26bc28b3ccaa376a7b6e3053af7d94fac1ef4df0677fd",
+    "outputHash": "29da44d8c1594af07f2e31a3ea9e654b990f6e51f12597447f8a53fe7945104d"
+  },
+  "knowledgeStateMapping": {
+    "BASELINE_GOVERNED": "KNOWN_AUTHORITATIVE",
+    "CANDIDATE": "CANDIDATE_UNVALIDATED",
+    "CONDITIONAL": "CONTEXT_CONDITIONAL",
+    "CONFLICT": "CONFLICTING_EVIDENCE",
+    "UNRESOLVED": "UNKNOWN_OR_NOT_YET_GOVERNED"
+  },
+  "hierarchy": {
+    "a3": [
+      {
+        "id": "a3-commercial-commitment",
+        "stableId": "road-ltl::a3-commercial-commitment",
+        "label": "Commercial, order and service commitment",
+        "childProcessIds": [
+          "LTL-01",
+          "LTL-02"
+        ]
+      },
+      {
+        "id": "a3-shipment-document",
+        "stableId": "road-ltl::a3-shipment-document",
+        "label": "Shipment and transport-document establishment",
+        "childProcessIds": [
+          "LTL-03"
+        ]
+      },
+      {
+        "id": "a3-pickup-execution",
+        "stableId": "road-ltl::a3-pickup-execution",
+        "label": "Pickup request, readiness and acceptance",
+        "childProcessIds": [
+          "LTL-04",
+          "LTL-05"
+        ]
+      },
+      {
+        "id": "a3-resource-readiness",
+        "stableId": "road-ltl::a3-resource-readiness",
+        "label": "Vehicle, equipment and qualified-resource readiness",
+        "childProcessIds": [
+          "LTL-20"
+        ]
+      },
+      {
+        "id": "a3-origin-terminal",
+        "stableId": "road-ltl::a3-origin-terminal",
+        "label": "Origin terminal receipt and consolidation",
+        "childProcessIds": [
+          "LTL-06",
+          "LTL-07"
+        ]
+      },
+      {
+        "id": "a3-network-movement",
+        "stableId": "road-ltl::a3-network-movement",
+        "label": "Road network movement and transfer",
+        "childProcessIds": [
+          "LTL-08",
+          "LTL-09",
+          "LTL-10"
+        ]
+      },
+      {
+        "id": "a3-destination-delivery",
+        "stableId": "road-ltl::a3-destination-delivery",
+        "label": "Destination readiness, delivery and acceptance",
+        "childProcessIds": [
+          "LTL-11",
+          "LTL-12",
+          "LTL-13"
+        ]
+      },
+      {
+        "id": "a3-exception-recovery",
+        "stableId": "road-ltl::a3-exception-recovery",
+        "label": "Execution exception and recovery",
+        "childProcessIds": [
+          "LTL-14",
+          "LTL-15"
+        ]
+      },
+      {
+        "id": "a3-freight-settlement",
+        "stableId": "road-ltl::a3-freight-settlement",
+        "label": "Freight charge, invoice and settlement",
+        "childProcessIds": [
+          "LTL-16",
+          "LTL-17"
+        ]
+      },
+      {
+        "id": "a3-claims-resolution",
+        "stableId": "road-ltl::a3-claims-resolution",
+        "label": "Claims and disputes resolution",
+        "childProcessIds": [
+          "LTL-18"
+        ]
+      },
+      {
+        "id": "a3-regulatory-control",
+        "stableId": "road-ltl::a3-regulatory-control",
+        "label": "Trade, regulatory hold and release",
+        "childProcessIds": [
+          "LTL-19"
+        ]
+      },
+      {
+        "id": "a3-master-data-control",
+        "stableId": "road-ltl::a3-master-data-control",
+        "label": "Master and reference-data control",
+        "childProcessIds": [
+          "LTL-21"
+        ]
+      },
+      {
+        "id": "a3-customer-resolution",
+        "stableId": "road-ltl::a3-customer-resolution",
+        "label": "Customer service coordination and resolution",
+        "childProcessIds": [
+          "LTL-22"
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "id": "LTL-01",
+        "stableId": "road-ltl::LTL-01",
+        "label": "Resolve service demand and execution eligibility",
+        "parentId": "a3-commercial-commitment",
+        "objects": {
+          "inputs": [
+            "obj-order",
+            "obj-contract",
+            "obj-product-master",
+            "obj-transport-service-request"
+          ],
+          "outputs": [
+            "obj-transport-service-request",
+            "obj-shipment"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Shipper, order team or logistics provider",
+          "Active role; shipper/3PL/4PL commonly initiates",
+          "Commercial / transport service owner",
+          "Contracted service owner; controlled override authority",
+          "Commercial or transport case owner"
+        ],
+        "systems": [
+          "sys-tms",
+          "sys-oms / sys-erp / sys-customer-portal",
+          "sys-tms / sys-rate-engine"
+        ],
+        "events": [
+          "evt-shipment-requested"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Serviceability, commodity, size/weight, prohibited-goods, lane, cut-off and contract rules must pass.",
+          "Eligibility rule version and override authority recorded."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-transport-service-request",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-01",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-scor",
+            "issuer": "ASCM",
+            "source_version": "SCOR Digital Standard · maintained digital edition",
+            "source_status": "Published and actively maintained by ASCM",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Page‑0 commercial/transport handoff deepened as an Atlas eligibility control; no source is claimed to prescribe one universal LTL gate."
+          },
+          {
+            "claim_id": "LTL-01",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-apqc-pcf",
+            "issuer": "APQC",
+            "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+            "source_status": "Current public Cross-Industry PCF release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Page‑0 commercial/transport handoff deepened as an Atlas eligibility control; no source is claimed to prescribe one universal LTL gate."
+          },
+          {
+            "claim_id": "LTL-01",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-uncefact-rdm",
+            "issuer": "UN/CEFACT",
+            "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+            "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Page‑0 commercial/transport handoff deepened as an Atlas eligibility control; no source is claimed to prescribe one universal LTL gate."
+          }
+        ]
+      },
+      {
+        "id": "LTL-02",
+        "stableId": "road-ltl::LTL-02",
+        "label": "Classify, rate and commit the commercial offer",
+        "parentId": "a3-commercial-commitment",
+        "objects": {
+          "inputs": [
+            "obj-transport-service-request",
+            "obj-rate",
+            "obj-contract",
+            "obj-product-master"
+          ],
+          "outputs": [
+            "obj-rate",
+            "obj-quote",
+            "obj-freight-charge"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Pricing/rating team or system",
+          "Commercial owner or contracted logistics provider",
+          "Pricing / commercial management",
+          "Rate owner; exception approval matrix",
+          "Rating exception owner"
+        ],
+        "systems": [
+          "sys-rate-engine",
+          "sys-rate-engine / sys-cpq",
+          "sys-tms / sys-billing / customer channel"
+        ],
+        "events": [
+          "ltl-evt-02"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Use contract/tariff hierarchy, effective dates, verified attributes and approval tolerances; NMFC only in its applicable North-American relationship.",
+          "Preserve input measures, classification/rate version, exception approvals and quoted-to-executed linkage."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-rate",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-02",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-apqc-pcf",
+            "issuer": "APQC",
+            "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+            "source_status": "Current public Cross-Industry PCF release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "NMFC substantiates North-American LTL classification characteristics, not final price or contractual incorporation. Rating workflow is an Atlas control construct requiring enterprise rules."
+          },
+          {
+            "claim_id": "LTL-02",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-nmfc",
+            "issuer": "National Motor Freight Traffic Association",
+            "source_version": "Issuer-maintained National Motor Freight Classification; freeze the effective publication/tariff profile",
+            "source_status": "Active NMFTA classification standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "NMFC substantiates North-American LTL classification characteristics, not final price or contractual incorporation. Rating workflow is an Atlas control construct requiring enterprise rules."
+          },
+          {
+            "claim_id": "LTL-02",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-uncefact-rdm",
+            "issuer": "UN/CEFACT",
+            "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+            "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "NMFC substantiates North-American LTL classification characteristics, not final price or contractual incorporation. Rating workflow is an Atlas control construct requiring enterprise rules."
+          }
+        ]
+      },
+      {
+        "id": "LTL-03",
+        "stableId": "road-ltl::LTL-03",
+        "label": "Create and validate shipment, consignment and transport-document identity",
+        "parentId": "a3-shipment-document",
+        "objects": {
+          "inputs": [
+            "obj-order",
+            "obj-contract",
+            "obj-rate",
+            "obj-party-master",
+            "obj-product-master"
+          ],
+          "outputs": [
+            "obj-shipment",
+            "obj-transport-document",
+            "obj-handling-unit"
+          ],
+          "documents": [
+            "doc-transport-document",
+            "doc-road-cmr-bol"
+          ]
+        },
+        "actors": [
+          "Shipper/provider documentation function",
+          "Role resolved by contract and regime",
+          "Shipment data owner",
+          "Document issuer or legally authorized party",
+          "Master-data/document case owner"
+        ],
+        "systems": [
+          "sys-tms",
+          "sys-tms / sys-customer-portal",
+          "sys-carrier-platform / sys-wms / sys-dms / sys-billing"
+        ],
+        "events": [
+          "ltl-evt-03"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Reuse Page‑0 atomic objects; distinguish shipment, consignment and transport document; apply eBOL, CMR/e-CMR or national form only when scope resolves.",
+          "Uniqueness, required-field, version, duplicate and amendment controls."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-shipment",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-03",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-uncefact-rdm",
+            "issuer": "UN/CEFACT",
+            "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+            "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+          },
+          {
+            "claim_id": "LTL-03",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-nmfta-dsdc-ltl",
+            "issuer": "NMFTA Digital Standards Development Council · Digital LTL Council",
+            "source_version": "eBOL API Standard 2.1 plus issuer-maintained LTL API family",
+            "source_status": "Active Digital LTL standards family",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+          },
+          {
+            "claim_id": "LTL-03",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-49cfr373",
+            "issuer": "U.S. Department of Transportation / eCFR",
+            "source_version": "Current eCFR",
+            "source_status": "OPERATIVE U.S. REGULATION",
+            "scope": {
+              "mode": "Applicable for-hire motor carriage",
+              "jurisdiction": "United States",
+              "role": "Motor carrier"
+            },
+            "supports": "Receipt/bill-of-lading content duties within the regulation’s scope.",
+            "not_supports": "Non-U.S. carriage, complete eBOL data model, classification or price.",
+            "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+          },
+          {
+            "claim_id": "LTL-03",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-cmr",
+            "issuer": "UNECE",
+            "source_version": "CMR Convention · Geneva, 19 May 1956",
+            "source_status": "In force within Convention conditions and contracting-party scope",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+          },
+          {
+            "claim_id": "LTL-03",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-ecmr",
+            "issuer": "UNECE",
+            "source_version": "Additional Protocol to CMR concerning the electronic consignment note · 2008",
+            "source_status": "In force only within Protocol participation and applicable legal scope",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+          },
+          {
+            "claim_id": "LTL-03",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-nmfta-scac",
+            "issuer": "NMFTA",
+            "source_version": "Issuer-maintained transportation-provider identifier registry",
+            "source_status": "ACTIVE IDENTIFIER STANDARD",
+            "scope": {
+              "mode": "North-American freight-carrier and transportation-provider identification",
+              "jurisdiction": "North-American commercial, system, contract or government context where adopted or requested",
+              "role": "Motor carriers and other transportation providers"
+            },
+            "supports": "Transportation-provider identity and reference-code crosswalks for carrier/party master data.",
+            "not_supports": "A universal legal requirement, proof of operating authority, or an automatic requirement for every Road LTL transaction.",
+            "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+          },
+          {
+            "claim_id": "LTL-03",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-nmfta-splc",
+            "issuer": "NMFTA",
+            "source_version": "Issuer-maintained North-American freight-location coding system",
+            "source_status": "ACTIVE LOCATION-CODE STANDARD",
+            "scope": {
+              "mode": "North-American freight-origin, destination and network-location identification",
+              "jurisdiction": "United States, Canada and Mexico freight locations where adopted",
+              "role": "Shippers, carriers, terminals, intermediaries and data-platform operators"
+            },
+            "supports": "Location Master cross-references and governed reference codes for North-American freight locations.",
+            "not_supports": "A universal global Location Master, a node-type taxonomy, geocoding, or mandatory adoption in every transaction.",
+            "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+          }
+        ]
+      },
+      {
+        "id": "LTL-04",
+        "stableId": "road-ltl::LTL-04",
+        "label": "Request pickup and prove shipment readiness",
+        "parentId": "a3-pickup-execution",
+        "objects": {
+          "inputs": [
+            "obj-shipment",
+            "obj-transport-document",
+            "obj-shipment-readiness",
+            "obj-appointment"
+          ],
+          "outputs": [
+            "obj-pickup",
+            "obj-booking",
+            "obj-transport-event"
+          ],
+          "documents": [
+            "doc-transport-document",
+            "doc-road-cmr-bol"
+          ]
+        },
+        "actors": [
+          "Requester and carrier pickup desk/platform",
+          "Shipper/3PL requests; carrier responds",
+          "Transport execution owner",
+          "Carrier service/capacity authority",
+          "Pickup coordination owner"
+        ],
+        "systems": [
+          "sys-carrier-platform",
+          "sys-tms / sys-customer-portal",
+          "sys-carrier-platform / sys-dispatch / sys-wms"
+        ],
+        "events": [
+          "evt-booking-requested"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Valid identity, serviceability, pickup window, cargo readiness and condition-specific prerequisites required.",
+          "Request/response correlation, idempotency, change/cancel reason and stale-version rejection."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-booking",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-04",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-dsdc-pickup",
+            "issuer": "NMFTA DSDC / Digital LTL Council",
+            "source_version": "1.0.0",
+            "source_status": "ACTIVE STANDARD",
+            "scope": {
+              "mode": "North-American LTL pickup interface",
+              "jurisdiction": "North America / adopted trading relationship",
+              "role": "Shipper/3PL and carrier"
+            },
+            "supports": "Schedule, update/reschedule, cancel and receive pickup status/delay information.",
+            "not_supports": "Physical acceptance, custody transfer or every carrier operating rule.",
+            "claim_boundary": "DSDC supports adopted North-American pickup interface states; it does not prove physical acceptance or universal carrier rules."
+          },
+          {
+            "claim_id": "LTL-04",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-uncefact-rdm",
+            "issuer": "UN/CEFACT",
+            "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+            "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "DSDC supports adopted North-American pickup interface states; it does not prove physical acceptance or universal carrier rules."
+          },
+          {
+            "claim_id": "LTL-04",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-x12",
+            "issuer": "ANSI Accredited Standards Committee X12",
+            "source_version": "Issuer-maintained transaction-set catalogue; freeze the implementation version and trading-partner guide",
+            "source_status": "Active X12 standards catalogue",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "DSDC supports adopted North-American pickup interface states; it does not prove physical acceptance or universal carrier rules."
+          }
+        ]
+      },
+      {
+        "id": "LTL-20",
+        "stableId": "road-ltl::LTL-20",
+        "label": "Assure vehicle, equipment and qualified resource readiness",
+        "parentId": "a3-resource-readiness",
+        "objects": {
+          "inputs": [
+            "obj-equipment",
+            "obj-vehicle",
+            "obj-trailer",
+            "obj-driver",
+            "obj-availability-state"
+          ],
+          "outputs": [
+            "obj-equipment",
+            "obj-inspection-evidence",
+            "obj-dispatch"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Carrier fleet/operations and facility",
+          "Carrier or contracted provider",
+          "Asset/fleet owner",
+          "Fleet/operations authority; regulatory authority where applicable",
+          "Fleet/asset exception owner"
+        ],
+        "systems": [
+          "sys-fleet",
+          "sys-fleet / sys-eam / sys-cmms",
+          "sys-dispatch / sys-tms / sys-wms"
+        ],
+        "events": [
+          "ltl-evt-20"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Capacity, compatibility, maintenance, inspection, qualification and condition-specific requirements must pass.",
+          "Authoritative availability/inspection record and controlled override."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-equipment",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "MEDIUM",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-20",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-scor",
+            "issuer": "ASCM",
+            "source_version": "SCOR Digital Standard · maintained digital edition",
+            "source_status": "Published and actively maintained by ASCM",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Page‑0 asset readiness is deepened generically. Mode-, jurisdiction- and commodity-specific qualification rules must be supplied by the active source pack."
+          },
+          {
+            "claim_id": "LTL-20",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-apqc-pcf",
+            "issuer": "APQC",
+            "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+            "source_status": "Current public Cross-Industry PCF release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Page‑0 asset readiness is deepened generically. Mode-, jurisdiction- and commodity-specific qualification rules must be supplied by the active source pack."
+          }
+        ]
+      },
+      {
+        "id": "LTL-05",
+        "stableId": "road-ltl::LTL-05",
+        "label": "Dispatch pickup, accept freight and establish custody",
+        "parentId": "a3-pickup-execution",
+        "objects": {
+          "inputs": [
+            "obj-pickup",
+            "obj-shipment",
+            "obj-transport-document",
+            "obj-handling-unit"
+          ],
+          "outputs": [
+            "obj-custody-record",
+            "obj-condition-record",
+            "obj-transport-event"
+          ],
+          "documents": [
+            "doc-transport-document",
+            "doc-road-cmr-bol"
+          ]
+        },
+        "actors": [
+          "Driver/pickup operator and tendering party",
+          "Operating carrier",
+          "Carrier pickup operations",
+          "Authorized carrier representative within legal/contract scope",
+          "Pickup exception owner"
+        ],
+        "systems": [
+          "sys-carrier-platform",
+          "sys-mobile-delivery / sys-carrier-platform",
+          "sys-tms / sys-visibility / sys-dms"
+        ],
+        "events": [
+          "evt-pickup-dispatched"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Identity, count, apparent condition, prohibited/controlled-goods and document checks must pass or reservations/refusal be recorded.",
+          "Positive identity match, timestamp/location, condition/count variance and custody acknowledgement."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-custody-record",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-05",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-49cfr373",
+            "issuer": "U.S. Department of Transportation / eCFR",
+            "source_version": "Current eCFR",
+            "source_status": "OPERATIVE U.S. REGULATION",
+            "scope": {
+              "mode": "Applicable for-hire motor carriage",
+              "jurisdiction": "United States",
+              "role": "Motor carrier"
+            },
+            "supports": "Receipt/bill-of-lading content duties within the regulation’s scope.",
+            "not_supports": "Non-U.S. carriage, complete eBOL data model, classification or price.",
+            "claim_boundary": "The legal meaning of receipt, reservation and custody depends on active law/contract; EPCIS supports event semantics only."
+          },
+          {
+            "claim_id": "LTL-05",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-cmr",
+            "issuer": "UNECE",
+            "source_version": "CMR Convention · Geneva, 19 May 1956",
+            "source_status": "In force within Convention conditions and contracting-party scope",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The legal meaning of receipt, reservation and custody depends on active law/contract; EPCIS supports event semantics only."
+          },
+          {
+            "claim_id": "LTL-05",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-epcis",
+            "issuer": "GS1",
+            "source_version": "EPCIS 2.0.1",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The legal meaning of receipt, reservation and custody depends on active law/contract; EPCIS supports event semantics only."
+          }
+        ]
+      },
+      {
+        "id": "LTL-06",
+        "stableId": "road-ltl::LTL-06",
+        "label": "Receive at origin service centre and verify handling-unit state",
+        "parentId": "a3-origin-terminal",
+        "objects": {
+          "inputs": [
+            "obj-shipment",
+            "obj-handling-unit",
+            "obj-custody-record",
+            "obj-transport-document"
+          ],
+          "outputs": [
+            "obj-receipt",
+            "obj-condition-record",
+            "obj-transport-event",
+            "obj-exception-case"
+          ],
+          "documents": [
+            "doc-transport-document",
+            "doc-road-cmr-bol"
+          ]
+        },
+        "actors": [
+          "Origin terminal/service-centre team",
+          "Carrier or contracted node operator",
+          "Origin-node operations",
+          "Node supervisor; controlled hold/release authority",
+          "Origin-node case owner"
+        ],
+        "systems": [
+          "sys-wms",
+          "sys-wms / sys-carrier-platform",
+          "sys-tms / sys-event-platform / sys-rate-engine"
+        ],
+        "events": [
+          "ltl-evt-06"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Receive only against authoritative shipment/handling-unit identity; quarantine or case any discrepancy.",
+          "Scan/measurement provenance, scale/device validity where required, duplicate/missing-unit and damage controls."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-inventory-state",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-06",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-epcis",
+            "issuer": "GS1",
+            "source_version": "EPCIS 2.0.1",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Cross-dock/service-centre execution is an A3–A5 specialization of Page‑0 Warehouse/Cross‑Dock; no new top-level node taxonomy is claimed."
+          },
+          {
+            "claim_id": "LTL-06",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-cbv",
+            "issuer": "GS1",
+            "source_version": "Core Business Vocabulary 2.0.0",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Cross-dock/service-centre execution is an A3–A5 specialization of Page‑0 Warehouse/Cross‑Dock; no new top-level node taxonomy is claimed."
+          },
+          {
+            "claim_id": "LTL-06",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-genspec",
+            "issuer": "GS1",
+            "source_version": "GS1 General Specifications 26.0.0 · Jan 2026",
+            "source_status": "Current GS1 General Specifications release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Cross-dock/service-centre execution is an A3–A5 specialization of Page‑0 Warehouse/Cross‑Dock; no new top-level node taxonomy is claimed."
+          },
+          {
+            "claim_id": "LTL-06",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-nmfc",
+            "issuer": "National Motor Freight Traffic Association",
+            "source_version": "Issuer-maintained National Motor Freight Classification; freeze the effective publication/tariff profile",
+            "source_status": "Active NMFTA classification standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Cross-dock/service-centre execution is an A3–A5 specialization of Page‑0 Warehouse/Cross‑Dock; no new top-level node taxonomy is claimed."
+          }
+        ]
+      },
+      {
+        "id": "LTL-07",
+        "stableId": "road-ltl::LTL-07",
+        "label": "Build consolidation and authorize origin load",
+        "parentId": "a3-origin-terminal",
+        "objects": {
+          "inputs": [
+            "obj-handling-unit",
+            "obj-route",
+            "obj-leg",
+            "obj-equipment",
+            "obj-capacity-profile"
+          ],
+          "outputs": [
+            "obj-load-plan",
+            "obj-dispatch",
+            "obj-transport-event"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Origin line-haul planning and dock team",
+          "Operating carrier/node operator",
+          "Origin line-haul operations",
+          "Load planner/supervisor",
+          "Load-build exception owner"
+        ],
+        "systems": [
+          "sys-tms",
+          "sys-tms / sys-wms / sys-dock",
+          "sys-dispatch / sys-carrier-platform / sys-visibility"
+        ],
+        "events": [
+          "ltl-evt-07"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Capacity, route, compatibility, segregation, cut-off, custody and load-integrity rules must pass.",
+          "Planned-versus-scanned unit reconciliation and supervisor release for exceptions."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-load-plan",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-07",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-scor",
+            "issuer": "ASCM",
+            "source_version": "SCOR Digital Standard · maintained digital edition",
+            "source_status": "Published and actively maintained by ASCM",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Consolidation is Page‑0-derived. Detailed carrier loading methods remain implementation-specific unless separately sourced."
+          },
+          {
+            "claim_id": "LTL-07",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-uncefact-rdm",
+            "issuer": "UN/CEFACT",
+            "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+            "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Consolidation is Page‑0-derived. Detailed carrier loading methods remain implementation-specific unless separately sourced."
+          },
+          {
+            "claim_id": "LTL-07",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-epcis",
+            "issuer": "GS1",
+            "source_version": "EPCIS 2.0.1",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Consolidation is Page‑0-derived. Detailed carrier loading methods remain implementation-specific unless separately sourced."
+          }
+        ]
+      },
+      {
+        "id": "LTL-08",
+        "stableId": "road-ltl::LTL-08",
+        "label": "Execute line-haul leg and publish actual movement state",
+        "parentId": "a3-network-movement",
+        "objects": {
+          "inputs": [
+            "obj-load-plan",
+            "obj-dispatch",
+            "obj-route",
+            "obj-leg",
+            "obj-equipment"
+          ],
+          "outputs": [
+            "obj-transport-event",
+            "obj-execution-state"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Driver and carrier network operations",
+          "Operating carrier or disclosed subcontractor",
+          "Line-haul operations",
+          "Carrier operations; competent authority within mandate",
+          "Network control/case owner"
+        ],
+        "systems": [
+          "sys-carrier-platform",
+          "sys-carrier-platform / sys-fleet / sys-event-platform",
+          "sys-tms / sys-visibility / sys-control-tower"
+        ],
+        "events": [
+          "ltl-evt-08"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Only authorized load/resource may depart; actual events must preserve leg, load and unit correlation.",
+          "Departure gate, route/deviation monitoring, event chronology and unresolved-hold block."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-transport-event",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-08",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-epcis",
+            "issuer": "GS1",
+            "source_version": "EPCIS 2.0.1",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+          },
+          {
+            "claim_id": "LTL-08",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-cbv",
+            "issuer": "GS1",
+            "source_version": "Core Business Vocabulary 2.0.0",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+          },
+          {
+            "claim_id": "LTL-08",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-uncefact-rdm",
+            "issuer": "UN/CEFACT",
+            "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+            "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+          },
+          {
+            "claim_id": "LTL-08",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-x12",
+            "issuer": "ANSI Accredited Standards Committee X12",
+            "source_version": "Issuer-maintained transaction-set catalogue; freeze the implementation version and trading-partner guide",
+            "source_status": "Active X12 standards catalogue",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+          },
+          {
+            "claim_id": "LTL-08",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-dsdc-visibility-draft",
+            "issuer": "NMFTA DSDC / Digital LTL Council",
+            "source_version": "Issuer work item",
+            "source_status": "IN DEVELOPMENT",
+            "scope": {
+              "mode": "Prospective North-American LTL visibility",
+              "jurisdiction": "North America",
+              "role": "Carrier and visibility consumers"
+            },
+            "supports": "Research direction only.",
+            "not_supports": "A governed final API, conformance claim or required milestone model.",
+            "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+          },
+          {
+            "claim_id": "LTL-08",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-nmfta-splc",
+            "issuer": "NMFTA",
+            "source_version": "Issuer-maintained North-American freight-location coding system",
+            "source_status": "ACTIVE LOCATION-CODE STANDARD",
+            "scope": {
+              "mode": "North-American freight-origin, destination and network-location identification",
+              "jurisdiction": "United States, Canada and Mexico freight locations where adopted",
+              "role": "Shippers, carriers, terminals, intermediaries and data-platform operators"
+            },
+            "supports": "Location Master cross-references and governed reference codes for North-American freight locations.",
+            "not_supports": "A universal global Location Master, a node-type taxonomy, geocoding, or mandatory adoption in every transaction.",
+            "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+          }
+        ]
+      },
+      {
+        "id": "LTL-09",
+        "stableId": "road-ltl::LTL-09",
+        "label": "Unload, sort and cross-dock at an intermediate service centre",
+        "parentId": "a3-network-movement",
+        "objects": {
+          "inputs": [
+            "obj-load-plan",
+            "obj-handling-unit",
+            "obj-transport-event",
+            "obj-route"
+          ],
+          "outputs": [
+            "obj-custody-record",
+            "obj-transport-event",
+            "obj-load-plan",
+            "obj-exception-case"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Intermediate terminal/service-centre team",
+          "Carrier or contracted node operator",
+          "Intermediate-node operations",
+          "Sort/load supervisor",
+          "Intermediate-node case owner"
+        ],
+        "systems": [
+          "sys-wms",
+          "sys-wms / sys-carrier-platform",
+          "sys-tms / sys-event-platform / sys-dispatch"
+        ],
+        "events": [
+          "ltl-evt-09"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Positive identity, custody continuity, route eligibility, condition and cut-off controls must pass; unresolved units move to exception state.",
+          "Inbound-to-outbound scan reconciliation, missort prevention, damage/shortage capture and controlled release."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-inventory-state",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "MEDIUM",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-09",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-epcis",
+            "issuer": "GS1",
+            "source_version": "EPCIS 2.0.1",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Intermediate service-centre execution is a conditional child specialization of Page‑0 Cross‑Dock/Warehouse. Exact sort steps are not asserted beyond evidence."
+          },
+          {
+            "claim_id": "LTL-09",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-cbv",
+            "issuer": "GS1",
+            "source_version": "Core Business Vocabulary 2.0.0",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Intermediate service-centre execution is a conditional child specialization of Page‑0 Cross‑Dock/Warehouse. Exact sort steps are not asserted beyond evidence."
+          },
+          {
+            "claim_id": "LTL-09",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-scor",
+            "issuer": "ASCM",
+            "source_version": "SCOR Digital Standard · maintained digital edition",
+            "source_status": "Published and actively maintained by ASCM",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Intermediate service-centre execution is a conditional child specialization of Page‑0 Cross‑Dock/Warehouse. Exact sort steps are not asserted beyond evidence."
+          }
+        ]
+      },
+      {
+        "id": "LTL-10",
+        "stableId": "road-ltl::LTL-10",
+        "label": "Transfer or interchange to the next network leg",
+        "parentId": "a3-network-movement",
+        "objects": {
+          "inputs": [
+            "obj-handling-unit",
+            "obj-leg",
+            "obj-contract",
+            "obj-transport-document",
+            "obj-custody-record"
+          ],
+          "outputs": [
+            "obj-leg",
+            "obj-custody-record",
+            "obj-transport-event"
+          ],
+          "documents": [
+            "doc-transport-document",
+            "doc-road-cmr-bol"
+          ]
+        },
+        "actors": [
+          "Transferring and receiving carrier/provider",
+          "Role varies by active service chain",
+          "Service-chain/transport owner",
+          "Authorized parties under each contract/leg",
+          "Transfer/interchange case owner"
+        ],
+        "systems": [
+          "sys-tms",
+          "sys-carrier-platform / sys-forwarder-platform",
+          "sys-tms / successor platform / sys-dms"
+        ],
+        "events": [
+          "ltl-evt-10"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Leg-by-leg carrier, contract, document, custody and legal scope must be resolved; do not merge regimes.",
+          "Successor identity/authority, handoff evidence, document correlation and unresolved-scope lock."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-leg",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "MEDIUM",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-10",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-uncefact-rdm",
+            "issuer": "UN/CEFACT",
+            "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+            "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The generic interchange relationship is Atlas synthesis. Legal/custody effect is resolved per leg and active instrument."
+          },
+          {
+            "claim_id": "LTL-10",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-cmr",
+            "issuer": "UNECE",
+            "source_version": "CMR Convention · Geneva, 19 May 1956",
+            "source_status": "In force within Convention conditions and contracting-party scope",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The generic interchange relationship is Atlas synthesis. Legal/custody effect is resolved per leg and active instrument."
+          },
+          {
+            "claim_id": "LTL-10",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-epcis",
+            "issuer": "GS1",
+            "source_version": "EPCIS 2.0.1",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The generic interchange relationship is Atlas synthesis. Legal/custody effect is resolved per leg and active instrument."
+          }
+        ]
+      },
+      {
+        "id": "LTL-11",
+        "stableId": "road-ltl::LTL-11",
+        "label": "Deconsolidate and build the destination-delivery load",
+        "parentId": "a3-destination-delivery",
+        "objects": {
+          "inputs": [
+            "obj-load-plan",
+            "obj-handling-unit",
+            "obj-transport-event",
+            "obj-hold"
+          ],
+          "outputs": [
+            "obj-destination-handoff",
+            "obj-route",
+            "obj-stop",
+            "obj-dispatch"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Destination service-centre and dispatch team",
+          "Operating carrier/node operator",
+          "Destination operations",
+          "Destination dispatch supervisor",
+          "Destination-node case owner"
+        ],
+        "systems": [
+          "sys-tms",
+          "sys-wms / sys-tms",
+          "sys-dispatch / sys-last-mile / sys-visibility"
+        ],
+        "events": [
+          "ltl-evt-11"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Receipt reconciliation, active holds, service/recipient constraints, route capacity and delivery readiness must pass.",
+          "Inbound/unit reconciliation, hold block, route assignment and planned-versus-loaded check."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-destination-handoff",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-11",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-scor",
+            "issuer": "ASCM",
+            "source_version": "SCOR Digital Standard · maintained digital edition",
+            "source_status": "Published and actively maintained by ASCM",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The record respects Page‑0 transport-to-delivery boundary; route tasks remain implementation-specific."
+          },
+          {
+            "claim_id": "LTL-11",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-epcis",
+            "issuer": "GS1",
+            "source_version": "EPCIS 2.0.1",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The record respects Page‑0 transport-to-delivery boundary; route tasks remain implementation-specific."
+          },
+          {
+            "claim_id": "LTL-11",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-uncefact-rdm",
+            "issuer": "UN/CEFACT",
+            "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+            "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The record respects Page‑0 transport-to-delivery boundary; route tasks remain implementation-specific."
+          }
+        ]
+      },
+      {
+        "id": "LTL-12",
+        "stableId": "road-ltl::LTL-12",
+        "label": "Confirm destination readiness, appointment and delivery dispatch",
+        "parentId": "a3-destination-delivery",
+        "objects": {
+          "inputs": [
+            "obj-destination-handoff",
+            "obj-appointment",
+            "obj-recipient",
+            "obj-hold"
+          ],
+          "outputs": [
+            "obj-dispatch",
+            "obj-delivery-order",
+            "obj-transport-event"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Carrier dispatch and recipient/customer",
+          "Operating carrier or contracted last-mile provider",
+          "Delivery operations",
+          "Carrier dispatch; recipient within service terms",
+          "Delivery coordination owner"
+        ],
+        "systems": [
+          "sys-dispatch",
+          "sys-dispatch / sys-customer-portal",
+          "sys-mobile-delivery / sys-tms / sys-crm"
+        ],
+        "events": [
+          "ltl-evt-12"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Valid recipient/location, appointment, access constraints, holds, service and special-condition prerequisites required.",
+          "Latest-instruction/version check, hold check, appointment acknowledgement and dispatch authority."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-dispatch",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-12",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-apqc-pcf",
+            "issuer": "APQC",
+            "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+            "source_status": "Current public Cross-Industry PCF release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Appointment/readiness is Page‑0 derived; channel, entitlement and local delivery rules require implementation evidence."
+          },
+          {
+            "claim_id": "LTL-12",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-uncefact-rdm",
+            "issuer": "UN/CEFACT",
+            "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+            "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Appointment/readiness is Page‑0 derived; channel, entitlement and local delivery rules require implementation evidence."
+          }
+        ]
+      },
+      {
+        "id": "LTL-13",
+        "stableId": "road-ltl::LTL-13",
+        "label": "Attempt delivery, capture acceptance/reservations and close custody",
+        "parentId": "a3-destination-delivery",
+        "objects": {
+          "inputs": [
+            "obj-delivery-order",
+            "obj-dispatch",
+            "obj-handling-unit",
+            "obj-recipient"
+          ],
+          "outputs": [
+            "obj-delivery-attempt",
+            "obj-pod",
+            "obj-acceptance",
+            "obj-failure-reason",
+            "obj-delivery-evidence"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Driver/delivery operator and recipient",
+          "Operating carrier or contracted delivery provider",
+          "Delivery operations",
+          "Authorized carrier representative and recipient within applicable scope",
+          "Delivery exception owner"
+        ],
+        "systems": [
+          "sys-last-mile",
+          "sys-mobile-delivery / sys-dms",
+          "sys-tms / sys-billing / sys-crm / sys-claims"
+        ],
+        "events": [
+          "evt-delivery-attempted",
+          "evt-pod-captured"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Identity, authorization, actual count/condition, exception reason and applicable signature/evidence requirements must pass.",
+          "Geotime/user/device provenance, tamper-resistant evidence, reservation/refusal and failed-attempt reason controls."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-delivery-evidence",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-13",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-cmr",
+            "issuer": "UNECE",
+            "source_version": "CMR Convention · Geneva, 19 May 1956",
+            "source_status": "In force within Convention conditions and contracting-party scope",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The required form and legal effect of delivery evidence/reservations depend on contract, regime and jurisdiction; EPCIS is event semantics, not proof law."
+          },
+          {
+            "claim_id": "LTL-13",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-epcis",
+            "issuer": "GS1",
+            "source_version": "EPCIS 2.0.1",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The required form and legal effect of delivery evidence/reservations depend on contract, regime and jurisdiction; EPCIS is event semantics, not proof law."
+          },
+          {
+            "claim_id": "LTL-13",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-apqc-pcf",
+            "issuer": "APQC",
+            "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+            "source_status": "Current public Cross-Industry PCF release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The required form and legal effect of delivery evidence/reservations depend on contract, regime and jurisdiction; EPCIS is event semantics, not proof law."
+          }
+        ]
+      },
+      {
+        "id": "LTL-14",
+        "stableId": "road-ltl::LTL-14",
+        "label": "Detect, classify and assign execution variance",
+        "parentId": "a3-exception-recovery",
+        "objects": {
+          "inputs": [
+            "obj-execution-state",
+            "obj-transport-event",
+            "obj-condition-record",
+            "obj-control-evidence"
+          ],
+          "outputs": [
+            "obj-exception-case",
+            "obj-risk-signal"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Event/control tower/node/service/customer function",
+          "Detecting role or automated deterministic rule",
+          "Exception control owner",
+          "Severity/triage authority",
+          "Named case owner"
+        ],
+        "systems": [
+          "sys-case",
+          "sys-event-platform / sys-wms / sys-tms / sys-crm",
+          "sys-control-tower / sys-workflow / sys-claims"
+        ],
+        "events": [
+          "evt-exception-detected"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Do not assign root cause to detection location; correlate object lineage, upstream process, system/role and downstream impact.",
+          "Duplicate-case prevention, severity model, owner/clock assignment and evidence preservation."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-exception-case",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "MEDIUM",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-14",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-scor",
+            "issuer": "ASCM",
+            "source_version": "SCOR Digital Standard · maintained digital edition",
+            "source_status": "Published and actively maintained by ASCM",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The control pattern is Atlas synthesis anchored in Page‑0 exception governance; exact clocks and liability triggers require the active source/contract."
+          },
+          {
+            "claim_id": "LTL-14",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-apqc-pcf",
+            "issuer": "APQC",
+            "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+            "source_status": "Current public Cross-Industry PCF release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The control pattern is Atlas synthesis anchored in Page‑0 exception governance; exact clocks and liability triggers require the active source/contract."
+          },
+          {
+            "claim_id": "LTL-14",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-epcis",
+            "issuer": "GS1",
+            "source_version": "EPCIS 2.0.1",
+            "source_status": "Ratified GS1 standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The control pattern is Atlas synthesis anchored in Page‑0 exception governance; exact clocks and liability triggers require the active source/contract."
+          },
+          {
+            "claim_id": "LTL-14",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-iso10002",
+            "issuer": "ISO",
+            "source_version": "ISO 10002:2018 · edition 3",
+            "source_status": "Published International Standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "The control pattern is Atlas synthesis anchored in Page‑0 exception governance; exact clocks and liability triggers require the active source/contract."
+          }
+        ]
+      },
+      {
+        "id": "LTL-15",
+        "stableId": "road-ltl::LTL-15",
+        "label": "Contain, replan and recover service",
+        "parentId": "a3-exception-recovery",
+        "objects": {
+          "inputs": [
+            "obj-exception-case",
+            "obj-risk-signal",
+            "obj-execution-state"
+          ],
+          "outputs": [
+            "obj-recovery-action",
+            "obj-resolution",
+            "obj-control-evidence"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Case owner and affected operations/enterprise functions",
+          "Role selected by recovery action",
+          "Exception/recovery owner",
+          "Contract/control owner; regulator where applicable",
+          "Named recovery case owner"
+        ],
+        "systems": [
+          "sys-workflow",
+          "sys-case / sys-control-tower",
+          "sys-tms / sys-wms / sys-crm / sys-billing / sys-claims"
+        ],
+        "events": [
+          "ltl-evt-15"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Recovery cannot precede detection/ownership; respect holds, custody, contract, safety and legal scope.",
+          "Decision record, authority, alternative evaluation, action confirmation, state reconciliation and closure evidence."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-recovery-action",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "MEDIUM",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-15",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-scor",
+            "issuer": "ASCM",
+            "source_version": "SCOR Digital Standard · maintained digital edition",
+            "source_status": "Published and actively maintained by ASCM",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Recovery categories are Page‑0 derived. Specific operational remedy, customer entitlement and legal effect remain contextual."
+          },
+          {
+            "claim_id": "LTL-15",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-apqc-pcf",
+            "issuer": "APQC",
+            "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+            "source_status": "Current public Cross-Industry PCF release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Recovery categories are Page‑0 derived. Specific operational remedy, customer entitlement and legal effect remain contextual."
+          },
+          {
+            "claim_id": "LTL-15",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-iso10002",
+            "issuer": "ISO",
+            "source_version": "ISO 10002:2018 · edition 3",
+            "source_status": "Published International Standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Recovery categories are Page‑0 derived. Specific operational remedy, customer entitlement and legal effect remain contextual."
+          }
+        ]
+      },
+      {
+        "id": "LTL-16",
+        "stableId": "road-ltl::LTL-16",
+        "label": "Calculate preliminary and executed freight charges",
+        "parentId": "a3-freight-settlement",
+        "objects": {
+          "inputs": [
+            "obj-rate",
+            "obj-contract",
+            "obj-transport-event",
+            "obj-delivery-evidence",
+            "obj-condition-record"
+          ],
+          "outputs": [
+            "obj-freight-charge",
+            "obj-accrual"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Carrier billing/revenue or shipper/3PL accrual function",
+          "Financial responsibility varies by active role/contract",
+          "Revenue/cost accounting owner",
+          "Rate/charge approval authority",
+          "Charge variance/dispute owner"
+        ],
+        "systems": [
+          "sys-billing",
+          "sys-rate-engine / sys-tms / sys-billing",
+          "sys-erp / sys-freight-audit / sys-ar / sys-ap"
+        ],
+        "events": [
+          "ltl-evt-16"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Reconcile contract/rate version, measured facts, service events, accessorial evidence, tax context and approval tolerance.",
+          "Quote-to-charge comparison, duplicate charge, effective-rate, evidence and approval controls."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-freight-charge",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-16",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-dsdc-pfc",
+            "issuer": "NMFTA DSDC / Digital LTL Council",
+            "source_version": "1.0.0",
+            "source_status": "AVAILABLE STANDARD · SOURCE STATUS CONFLICT NOTED",
+            "scope": {
+              "mode": "North-American LTL preliminary charges",
+              "jurisdiction": "North America / adopted trading relationship",
+              "role": "Carrier and charge-data consumer"
+            },
+            "supports": "Preliminary charge notifications including accessorial, reweigh and reclass changes.",
+            "not_supports": "A final invoice, legal tariff entitlement or payment approval.",
+            "claim_boundary": "DSDC preliminary charges support a notification interface, not final invoice entitlement. Revenue assurance remains an Atlas analytical/control construct."
+          },
+          {
+            "claim_id": "LTL-16",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-x12",
+            "issuer": "ANSI Accredited Standards Committee X12",
+            "source_version": "Issuer-maintained transaction-set catalogue; freeze the implementation version and trading-partner guide",
+            "source_status": "Active X12 standards catalogue",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "DSDC preliminary charges support a notification interface, not final invoice entitlement. Revenue assurance remains an Atlas analytical/control construct."
+          },
+          {
+            "claim_id": "LTL-16",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-apqc-pcf",
+            "issuer": "APQC",
+            "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+            "source_status": "Current public Cross-Industry PCF release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "DSDC preliminary charges support a notification interface, not final invoice entitlement. Revenue assurance remains an Atlas analytical/control construct."
+          }
+        ]
+      },
+      {
+        "id": "LTL-17",
+        "stableId": "road-ltl::LTL-17",
+        "label": "Invoice, audit, approve and settle transport obligations",
+        "parentId": "a3-freight-settlement",
+        "objects": {
+          "inputs": [
+            "obj-freight-charge",
+            "obj-carrier-invoice",
+            "obj-customer-invoice",
+            "obj-delivery-evidence",
+            "obj-accrual"
+          ],
+          "outputs": [
+            "obj-approved-payable",
+            "obj-payment",
+            "obj-settlement",
+            "obj-control-evidence"
+          ],
+          "documents": [
+            "doc-invoice"
+          ]
+        },
+        "actors": [
+          "Carrier billing, shipper/3PL audit, AR/AP and treasury",
+          "Resolved by active role and commercial relationship",
+          "Finance process owner",
+          "Financial approval and payment authority",
+          "Billing dispute/finance case owner"
+        ],
+        "systems": [
+          "sys-erp",
+          "sys-billing / supplier billing",
+          "sys-freight-audit / sys-ap / sys-ar / sys-treasury"
+        ],
+        "events": [
+          "evt-invoice-approved"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "No approval without authoritative charge/evidence; preserve original invoice and controlled adjustment; segregate duties.",
+          "Duplicate, three-way/evidence match, tolerance, approval, beneficiary and payment-release controls."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-invoice",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "HIGH",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-17",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-apqc-pcf",
+            "issuer": "APQC",
+            "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+            "source_status": "Current public Cross-Industry PCF release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "APQC and X12 support directional finance/message mappings; accounting, tax, tolerance and settlement policies remain enterprise/jurisdiction specific."
+          },
+          {
+            "claim_id": "LTL-17",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-x12",
+            "issuer": "ANSI Accredited Standards Committee X12",
+            "source_version": "Issuer-maintained transaction-set catalogue; freeze the implementation version and trading-partner guide",
+            "source_status": "Active X12 standards catalogue",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "APQC and X12 support directional finance/message mappings; accounting, tax, tolerance and settlement policies remain enterprise/jurisdiction specific."
+          },
+          {
+            "claim_id": "LTL-17",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-uncefact-rdm",
+            "issuer": "UN/CEFACT",
+            "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+            "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "APQC and X12 support directional finance/message mappings; accounting, tax, tolerance and settlement policies remain enterprise/jurisdiction specific."
+          }
+        ]
+      },
+      {
+        "id": "LTL-18",
+        "stableId": "road-ltl::LTL-18",
+        "label": "Adjudicate cargo/service claim or billing dispute",
+        "parentId": "a3-claims-resolution",
+        "objects": {
+          "inputs": [
+            "obj-claim-file",
+            "obj-delivery-evidence",
+            "obj-custody-record",
+            "obj-condition-record",
+            "obj-invoice"
+          ],
+          "outputs": [
+            "obj-liability-position",
+            "obj-coverage-position",
+            "obj-credit-adjustment",
+            "obj-settlement"
+          ],
+          "documents": [
+            "doc-invoice",
+            "doc-claim-file"
+          ]
+        },
+        "actors": [
+          "Claimant, carrier/provider claims, finance and insurer",
+          "Claims/dispute team by active role",
+          "Claims/dispute owner",
+          "Authorized adjudicator; court/authority where applicable",
+          "Claim/dispute case owner"
+        ],
+        "systems": [
+          "sys-claims",
+          "sys-claims / sys-billing-dispute",
+          "sys-erp / sys-insurance / sys-crm / sys-dms"
+        ],
+        "events": [
+          "ltl-evt-18"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Keep cargo/service claim, billing dispute and insurance recovery separate; apply only resolved contract/regime/policy.",
+          "Completeness, evidence integrity, conflict, reserve, authority, time-bar and settlement controls."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-claim-file",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "MEDIUM",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-18",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-cmr",
+            "issuer": "UNECE",
+            "source_version": "CMR Convention · Geneva, 19 May 1956",
+            "source_status": "In force within Convention conditions and contracting-party scope",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "CMR supports claims/liability only when Convention scope resolves. 49 U.S.C. §14706 and 49 CFR Part 370 apply only when their U.S. statutory/regulatory scope resolves. Service claims, billing disputes, insurance recovery and non-U.S. claims remain separately governed; no universal LTL liability hierarchy or time bar is asserted."
+          },
+          {
+            "claim_id": "LTL-18",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-49usc14706",
+            "issuer": "U.S. House Office of the Law Revision Counsel",
+            "source_version": "Current U.S. Code",
+            "source_status": "OPERATIVE U.S. STATUTE",
+            "scope": {
+              "mode": "Motor-carrier/freight-forwarder transportation within statutory jurisdiction",
+              "jurisdiction": "United States and specified adjacent-country through-carriage scope",
+              "role": "Motor carriers, freight forwarders and entitled claimants within scope"
+            },
+            "supports": "Carrier/freight-forwarder liability framework for actual loss or injury to property under the statute, including receipt/bill-of-lading linkage and statutory scope.",
+            "not_supports": "Every service claim, billing dispute, insurance recovery, contract time bar or non-U.S. road claim.",
+            "claim_boundary": "CMR supports claims/liability only when Convention scope resolves. 49 U.S.C. §14706 and 49 CFR Part 370 apply only when their U.S. statutory/regulatory scope resolves. Service claims, billing disputes, insurance recovery and non-U.S. claims remain separately governed; no universal LTL liability hierarchy or time bar is asserted."
+          },
+          {
+            "claim_id": "LTL-18",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-49cfr370",
+            "issuer": "U.S. Department of Transportation / eCFR",
+            "source_version": "Current eCFR",
+            "source_status": "OPERATIVE U.S. REGULATION",
+            "scope": {
+              "mode": "Claims for loss, damage, injury or delay to property transported/accepted by covered motor carriers and freight forwarders",
+              "jurisdiction": "United States interstate/foreign commerce within Part 370 scope",
+              "role": "Covered carriers, freight forwarders and claimants"
+            },
+            "supports": "Minimum claim filing, acknowledgment, investigation, disposition/status and salvage-processing requirements within scope.",
+            "not_supports": "A universal LTL claim process, contractual liability allocation outside the regulation, non-U.S. carriage or billing-dispute rules.",
+            "claim_boundary": "CMR supports claims/liability only when Convention scope resolves. 49 U.S.C. §14706 and 49 CFR Part 370 apply only when their U.S. statutory/regulatory scope resolves. Service claims, billing disputes, insurance recovery and non-U.S. claims remain separately governed; no universal LTL liability hierarchy or time bar is asserted."
+          },
+          {
+            "claim_id": "LTL-18",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-apqc-pcf",
+            "issuer": "APQC",
+            "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+            "source_status": "Current public Cross-Industry PCF release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "CMR supports claims/liability only when Convention scope resolves. 49 U.S.C. §14706 and 49 CFR Part 370 apply only when their U.S. statutory/regulatory scope resolves. Service claims, billing disputes, insurance recovery and non-U.S. claims remain separately governed; no universal LTL liability hierarchy or time bar is asserted."
+          },
+          {
+            "claim_id": "LTL-18",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-iso10002",
+            "issuer": "ISO",
+            "source_version": "ISO 10002:2018 · edition 3",
+            "source_status": "Published International Standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "CMR supports claims/liability only when Convention scope resolves. 49 U.S.C. §14706 and 49 CFR Part 370 apply only when their U.S. statutory/regulatory scope resolves. Service claims, billing disputes, insurance recovery and non-U.S. claims remain separately governed; no universal LTL liability hierarchy or time bar is asserted."
+          }
+        ]
+      },
+      {
+        "id": "LTL-19",
+        "stableId": "road-ltl::LTL-19",
+        "label": "Resolve regulatory scope, operate hold/release and retain evidence",
+        "parentId": "a3-regulatory-control",
+        "objects": {
+          "inputs": [
+            "obj-product-master",
+            "obj-transport-document",
+            "obj-regulatory-status",
+            "obj-contract"
+          ],
+          "outputs": [
+            "obj-declaration",
+            "obj-inspection",
+            "obj-hold",
+            "obj-release",
+            "obj-control-evidence"
+          ],
+          "documents": [
+            "doc-transport-document",
+            "doc-road-cmr-bol",
+            "doc-customs-declaration"
+          ]
+        },
+        "actors": [
+          "Shipper/carrier/broker and competent authority",
+          "Duty holder or authorized representative",
+          "Trade/compliance owner",
+          "Competent authority and internal authorized control owner",
+          "Trade/regulatory case owner"
+        ],
+        "systems": [
+          "sys-gtm",
+          "sys-gtm / sys-broker-platform / sys-customs-platform",
+          "sys-tms / sys-wms / sys-control-tower"
+        ],
+        "events": [
+          "evt-customs-status"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "No regime loads from mode name alone; resolve legal scope separately and block movement when an operative hold exists.",
+          "Source/effective-date record, filing correlation, authority-response provenance and hold-release segregation."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-regulatory-status",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "MEDIUM",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-19",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-wco-dm",
+            "issuer": "World Customs Organization",
+            "source_version": "WCO Data Model 4.3.0 · approved Jun 2026; unveiled Jul 2026",
+            "source_status": "Current WCO Data Model release at the evidence snapshot",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+          },
+          {
+            "claim_id": "LTL-19",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-49cfr177",
+            "issuer": "U.S. Department of Transportation / PHMSA / eCFR",
+            "source_version": "Current eCFR",
+            "source_status": "OPERATIVE U.S. REGULATION",
+            "scope": {
+              "mode": "Highway carriage of regulated hazardous materials",
+              "jurisdiction": "United States",
+              "role": "Offeror/carrier duties by provision"
+            },
+            "supports": "Highway hazardous-material carriage and shipping-paper controls within scope.",
+            "not_supports": "India, ADR scope, ordinary freight or an LTL process taxonomy.",
+            "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+          },
+          {
+            "claim_id": "LTL-19",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-cmr",
+            "issuer": "UNECE",
+            "source_version": "CMR Convention · Geneva, 19 May 1956",
+            "source_status": "In force within Convention conditions and contracting-party scope",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+          },
+          {
+            "claim_id": "LTL-19",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-adr",
+            "issuer": "UNECE / ADR contracting parties",
+            "source_version": "2025 edition",
+            "source_status": "APPLICABLE FROM 1 JAN 2025 WITHIN SCOPE",
+            "scope": {
+              "mode": "International carriage of dangerous goods by road",
+              "jurisdiction": "ADR legal scope and applicable national implementation",
+              "role": "Participants assigned duties by ADR"
+            },
+            "supports": "Road dangerous-goods classification, documentation, packaging, equipment and operating controls within scope.",
+            "not_supports": "Automatic applicability from selecting CMR or any non-ADR jurisdiction.",
+            "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+          },
+          {
+            "claim_id": "LTL-19",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-atp",
+            "issuer": "UNECE / ATP contracting parties",
+            "source_version": "2025 edition",
+            "source_status": "CURRENT ISSUER HANDBOOK",
+            "scope": {
+              "mode": "International carriage of specified perishable foodstuffs",
+              "jurisdiction": "ATP scope and contracting parties",
+              "role": "Participants/equipment within scope"
+            },
+            "supports": "Special equipment and temperature conditions for specified international carriage.",
+            "not_supports": "All temperature-controlled goods, domestic carriage or service-level temperature promises.",
+            "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+          },
+          {
+            "claim_id": "LTL-19",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-tir",
+            "issuer": "UNECE / TIR contracting parties",
+            "source_version": "2024 handbook",
+            "source_status": "OPERATIVE WITHIN QUALIFYING TRANSIT",
+            "scope": {
+              "mode": "Qualifying customs transit",
+              "jurisdiction": "TIR contracting parties and approved operation",
+              "role": "Authorized holder, customs and guarantee chain"
+            },
+            "supports": "TIR transit controls and documentary/guarantee architecture within scope.",
+            "not_supports": "Every customs transit movement or ordinary LTL carriage.",
+            "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+          },
+          {
+            "claim_id": "LTL-19",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-india-eway",
+            "issuer": "Goods and Services Tax Network / NIC",
+            "source_version": "API v1.03 documentation",
+            "source_status": "OPERATIVE SYSTEM GUIDANCE",
+            "scope": {
+              "mode": "Goods movement subject to Indian e-way-bill rules",
+              "jurisdiction": "India",
+              "role": "Registered persons and transporters within scope"
+            },
+            "supports": "E-way-bill document/transport references and system exchange requirements.",
+            "not_supports": "A complete Indian LTL workflow or frozen dangerous-goods source pack.",
+            "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+          }
+        ]
+      },
+      {
+        "id": "LTL-21",
+        "stableId": "road-ltl::LTL-21",
+        "label": "Reconcile party, location, shipment, unit and network identities",
+        "parentId": "a3-master-data-control",
+        "objects": {
+          "inputs": [
+            "obj-party-master",
+            "obj-location-master",
+            "obj-shipment",
+            "obj-handling-unit",
+            "obj-reference-code"
+          ],
+          "outputs": [
+            "obj-lineage",
+            "obj-control-evidence"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Data steward and transaction owner",
+          "MDM/data operations",
+          "Master/reference-data owner by object",
+          "Governed data steward",
+          "Data-quality case owner"
+        ],
+        "systems": [
+          "sys-mdm",
+          "sys-mdm / authoritative transaction system",
+          "sys-erp / sys-oms / sys-tms / sys-wms / sys-billing"
+        ],
+        "events": [
+          "ltl-evt-21"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Apply Page‑0 object authority; never merge shipment, consignment, handling unit, document or equipment into one compound object.",
+          "Stewardship, survivorship, version, uniqueness and consumer acknowledgement."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-lineage",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "MEDIUM",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-21",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-uncefact-rdm",
+            "issuer": "UN/CEFACT",
+            "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+            "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Identity semantics/authority derive from Page‑0 and standards; enterprise survivorship remains configured by object scope."
+          },
+          {
+            "claim_id": "LTL-21",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-gs1-genspec",
+            "issuer": "GS1",
+            "source_version": "GS1 General Specifications 26.0.0 · Jan 2026",
+            "source_status": "Current GS1 General Specifications release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Identity semantics/authority derive from Page‑0 and standards; enterprise survivorship remains configured by object scope."
+          },
+          {
+            "claim_id": "LTL-21",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-scor",
+            "issuer": "ASCM",
+            "source_version": "SCOR Digital Standard · maintained digital edition",
+            "source_status": "Published and actively maintained by ASCM",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Identity semantics/authority derive from Page‑0 and standards; enterprise survivorship remains configured by object scope."
+          },
+          {
+            "claim_id": "LTL-21",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-nmfta-scac",
+            "issuer": "NMFTA",
+            "source_version": "Issuer-maintained transportation-provider identifier registry",
+            "source_status": "ACTIVE IDENTIFIER STANDARD",
+            "scope": {
+              "mode": "North-American freight-carrier and transportation-provider identification",
+              "jurisdiction": "North-American commercial, system, contract or government context where adopted or requested",
+              "role": "Motor carriers and other transportation providers"
+            },
+            "supports": "Transportation-provider identity and reference-code crosswalks for carrier/party master data.",
+            "not_supports": "A universal legal requirement, proof of operating authority, or an automatic requirement for every Road LTL transaction.",
+            "claim_boundary": "Identity semantics/authority derive from Page‑0 and standards; enterprise survivorship remains configured by object scope."
+          },
+          {
+            "claim_id": "LTL-21",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-nmfta-splc",
+            "issuer": "NMFTA",
+            "source_version": "Issuer-maintained North-American freight-location coding system",
+            "source_status": "ACTIVE LOCATION-CODE STANDARD",
+            "scope": {
+              "mode": "North-American freight-origin, destination and network-location identification",
+              "jurisdiction": "United States, Canada and Mexico freight locations where adopted",
+              "role": "Shippers, carriers, terminals, intermediaries and data-platform operators"
+            },
+            "supports": "Location Master cross-references and governed reference codes for North-American freight locations.",
+            "not_supports": "A universal global Location Master, a node-type taxonomy, geocoding, or mandatory adoption in every transaction.",
+            "claim_boundary": "Identity semantics/authority derive from Page‑0 and standards; enterprise survivorship remains configured by object scope."
+          }
+        ]
+      },
+      {
+        "id": "LTL-22",
+        "stableId": "road-ltl::LTL-22",
+        "label": "Coordinate customer communication and resolution evidence",
+        "parentId": "a3-customer-resolution",
+        "objects": {
+          "inputs": [
+            "obj-service-request",
+            "obj-shipment",
+            "obj-exception-case",
+            "obj-delivery-evidence"
+          ],
+          "outputs": [
+            "obj-resolution",
+            "obj-control-evidence"
+          ],
+          "documents": []
+        },
+        "actors": [
+          "Customer and customer-service/provider team",
+          "Active customer-facing role",
+          "Customer service owner",
+          "Service entitlement/credit/recovery authority",
+          "Customer case owner"
+        ],
+        "systems": [
+          "sys-case",
+          "sys-crm / sys-customer-portal",
+          "sys-tms / sys-workflow / sys-billing / sys-claims"
+        ],
+        "events": [
+          "ltl-evt-22"
+        ],
+        "dependencies": {
+          "upstream": "Page‑0 demand, master data and approved commercial commitment",
+          "downstream": "Road LTL service, cost, cash, compliance and customer outcomes"
+        },
+        "controls": [
+          "Use authoritative shipment/case state; protect data; do not promise recovery/credit outside authority.",
+          "Identity/authentication, case linkage, SLA, approval and communication-history controls."
+        ],
+        "knownGaps": [],
+        "minimum_record": {
+          "affected_object": "obj-service-request",
+          "evidence_class": "BASELINE_GOVERNED",
+          "confidence": "MEDIUM",
+          "promotion_requirement": "NONE_FROZEN_BASELINE"
+        },
+        "knowledge_state": "KNOWN_AUTHORITATIVE",
+        "provenance": [
+          {
+            "claim_id": "LTL-22",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-apqc-pcf",
+            "issuer": "APQC",
+            "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+            "source_status": "Current public Cross-Industry PCF release",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Complaint-handling guidance supports the response loop, not contract entitlement, liability or operational root cause."
+          },
+          {
+            "claim_id": "LTL-22",
+            "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+            "governed_source_id": "src-iso10002",
+            "issuer": "ISO",
+            "source_version": "ISO 10002:2018 · edition 3",
+            "source_status": "Published International Standard",
+            "scope": {
+              "mode": null,
+              "jurisdiction": null,
+              "role": null
+            },
+            "supports": null,
+            "not_supports": null,
+            "claim_boundary": "Complaint-handling guidance supports the response loop, not contract entitlement, liability or operational root cause."
+          }
+        ]
+      }
+    ]
+  },
+  "edges": [
+    {
+      "id": "FLOW-01",
+      "from": "LTL-01",
+      "type": "PRECEDES",
+      "to": "LTL-02"
+    },
+    {
+      "id": "FLOW-02",
+      "from": "LTL-02",
+      "type": "PRECEDES",
+      "to": "LTL-03"
+    },
+    {
+      "id": "FLOW-03",
+      "from": "LTL-03",
+      "type": "PRECEDES",
+      "to": "LTL-04"
+    },
+    {
+      "id": "FLOW-04",
+      "from": "LTL-04",
+      "type": "PRECEDES",
+      "to": "LTL-05"
+    },
+    {
+      "id": "FLOW-05",
+      "from": "LTL-04",
+      "type": "PRECEDES",
+      "to": "LTL-20"
+    },
+    {
+      "id": "FLOW-06",
+      "from": "LTL-20",
+      "type": "ENABLES",
+      "to": "LTL-05"
+    },
+    {
+      "id": "FLOW-07",
+      "from": "LTL-05",
+      "type": "PRECEDES",
+      "to": "LTL-06"
+    },
+    {
+      "id": "FLOW-08",
+      "from": "LTL-06",
+      "type": "PRECEDES",
+      "to": "LTL-07"
+    },
+    {
+      "id": "FLOW-09",
+      "from": "LTL-07",
+      "type": "PRECEDES",
+      "to": "LTL-08"
+    },
+    {
+      "id": "FLOW-10",
+      "from": "LTL-08",
+      "type": "PRECEDES",
+      "to": "LTL-11"
+    },
+    {
+      "id": "FLOW-11",
+      "from": "LTL-08",
+      "type": "BRANCHES_TO",
+      "to": "LTL-09"
+    },
+    {
+      "id": "FLOW-12",
+      "from": "LTL-09",
+      "type": "PRECEDES",
+      "to": "LTL-10"
+    },
+    {
+      "id": "FLOW-13",
+      "from": "LTL-10",
+      "type": "ITERATES_TO_NEXT_LEG",
+      "to": "LTL-08",
+      "iteration": {
+        "template": "LTL-08",
+        "fromLeg": "N",
+        "toLeg": "N+1",
+        "finiteByRoutePlan": true
+      }
+    },
+    {
+      "id": "FLOW-14",
+      "from": "LTL-11",
+      "type": "PRECEDES",
+      "to": "LTL-12"
+    },
+    {
+      "id": "FLOW-15",
+      "from": "LTL-12",
+      "type": "PRECEDES",
+      "to": "LTL-13"
+    },
+    {
+      "id": "FLOW-16",
+      "from": "LTL-02",
+      "type": "ENABLES",
+      "to": "LTL-16"
+    },
+    {
+      "id": "FLOW-17",
+      "from": "LTL-06",
+      "type": "MAY_TRIGGER",
+      "to": "LTL-16"
+    },
+    {
+      "id": "FLOW-18",
+      "from": "LTL-09",
+      "type": "MAY_TRIGGER",
+      "to": "LTL-16"
+    },
+    {
+      "id": "FLOW-19",
+      "from": "LTL-13",
+      "type": "PRECEDES",
+      "to": "LTL-16"
+    },
+    {
+      "id": "FLOW-20",
+      "from": "LTL-16",
+      "type": "PRECEDES",
+      "to": "LTL-17"
+    },
+    {
+      "id": "FLOW-21",
+      "from": "LTL-13",
+      "type": "MAY_TRIGGER",
+      "to": "LTL-18"
+    },
+    {
+      "id": "FLOW-22",
+      "from": "LTL-17",
+      "type": "MAY_TRIGGER",
+      "to": "LTL-18"
+    },
+    {
+      "id": "FLOW-23",
+      "from": "LTL-06",
+      "type": "TRIGGERS",
+      "to": "LTL-14"
+    },
+    {
+      "id": "FLOW-24",
+      "from": "LTL-08",
+      "type": "TRIGGERS",
+      "to": "LTL-14"
+    },
+    {
+      "id": "FLOW-25",
+      "from": "LTL-09",
+      "type": "TRIGGERS",
+      "to": "LTL-14"
+    },
+    {
+      "id": "FLOW-26",
+      "from": "LTL-13",
+      "type": "TRIGGERS",
+      "to": "LTL-14"
+    },
+    {
+      "id": "FLOW-27",
+      "from": "LTL-14",
+      "type": "ESCALATES_TO",
+      "to": "LTL-15"
+    },
+    {
+      "id": "FLOW-28",
+      "from": "LTL-15",
+      "type": "RECOVERS_TO",
+      "to": "LTL-08"
+    },
+    {
+      "id": "FLOW-29",
+      "from": "LTL-15",
+      "type": "RECOVERS_TO",
+      "to": "LTL-12"
+    },
+    {
+      "id": "FLOW-30",
+      "from": "LTL-15",
+      "type": "RECOVERS_TO",
+      "to": "LTL-13"
+    },
+    {
+      "id": "FLOW-31",
+      "from": "LTL-19",
+      "type": "BLOCKS",
+      "to": "LTL-05"
+    },
+    {
+      "id": "FLOW-32",
+      "from": "LTL-19",
+      "type": "BLOCKS",
+      "to": "LTL-08"
+    },
+    {
+      "id": "FLOW-33",
+      "from": "LTL-19",
+      "type": "BLOCKS",
+      "to": "LTL-12"
+    },
+    {
+      "id": "FLOW-34",
+      "from": "LTL-21",
+      "type": "ENABLES",
+      "to": "LTL-01"
+    },
+    {
+      "id": "FLOW-35",
+      "from": "LTL-21",
+      "type": "ENABLES",
+      "to": "LTL-03"
+    },
+    {
+      "id": "FLOW-36",
+      "from": "LTL-21",
+      "type": "ENABLES",
+      "to": "LTL-17"
+    },
+    {
+      "id": "FLOW-37",
+      "from": "LTL-14",
+      "type": "TRIGGERS",
+      "to": "LTL-22"
+    },
+    {
+      "id": "FLOW-38",
+      "from": "LTL-15",
+      "type": "MAY_TRIGGER",
+      "to": "LTL-22"
+    },
+    {
+      "id": "FLOW-39",
+      "from": "LTL-18",
+      "type": "MAY_TRIGGER",
+      "to": "LTL-22"
+    }
+  ],
+  "dimensions": [
+    "hierarchy",
+    "objects/documents",
+    "actors",
+    "systems",
+    "events",
+    "dependencies",
+    "controls",
+    "known gaps"
+  ],
+  "knownGaps": [],
+  "provenance": [
+    {
+      "claim_id": "LTL-01",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-scor",
+      "issuer": "ASCM",
+      "source_version": "SCOR Digital Standard · maintained digital edition",
+      "source_status": "Published and actively maintained by ASCM",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Page‑0 commercial/transport handoff deepened as an Atlas eligibility control; no source is claimed to prescribe one universal LTL gate."
+    },
+    {
+      "claim_id": "LTL-01",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-apqc-pcf",
+      "issuer": "APQC",
+      "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+      "source_status": "Current public Cross-Industry PCF release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Page‑0 commercial/transport handoff deepened as an Atlas eligibility control; no source is claimed to prescribe one universal LTL gate."
+    },
+    {
+      "claim_id": "LTL-01",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-uncefact-rdm",
+      "issuer": "UN/CEFACT",
+      "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+      "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Page‑0 commercial/transport handoff deepened as an Atlas eligibility control; no source is claimed to prescribe one universal LTL gate."
+    },
+    {
+      "claim_id": "LTL-02",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-apqc-pcf",
+      "issuer": "APQC",
+      "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+      "source_status": "Current public Cross-Industry PCF release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "NMFC substantiates North-American LTL classification characteristics, not final price or contractual incorporation. Rating workflow is an Atlas control construct requiring enterprise rules."
+    },
+    {
+      "claim_id": "LTL-02",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-nmfc",
+      "issuer": "National Motor Freight Traffic Association",
+      "source_version": "Issuer-maintained National Motor Freight Classification; freeze the effective publication/tariff profile",
+      "source_status": "Active NMFTA classification standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "NMFC substantiates North-American LTL classification characteristics, not final price or contractual incorporation. Rating workflow is an Atlas control construct requiring enterprise rules."
+    },
+    {
+      "claim_id": "LTL-02",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-uncefact-rdm",
+      "issuer": "UN/CEFACT",
+      "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+      "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "NMFC substantiates North-American LTL classification characteristics, not final price or contractual incorporation. Rating workflow is an Atlas control construct requiring enterprise rules."
+    },
+    {
+      "claim_id": "LTL-03",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-uncefact-rdm",
+      "issuer": "UN/CEFACT",
+      "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+      "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+    },
+    {
+      "claim_id": "LTL-03",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-nmfta-dsdc-ltl",
+      "issuer": "NMFTA Digital Standards Development Council · Digital LTL Council",
+      "source_version": "eBOL API Standard 2.1 plus issuer-maintained LTL API family",
+      "source_status": "Active Digital LTL standards family",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+    },
+    {
+      "claim_id": "LTL-03",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-49cfr373",
+      "issuer": "U.S. Department of Transportation / eCFR",
+      "source_version": "Current eCFR",
+      "source_status": "OPERATIVE U.S. REGULATION",
+      "scope": {
+        "mode": "Applicable for-hire motor carriage",
+        "jurisdiction": "United States",
+        "role": "Motor carrier"
+      },
+      "supports": "Receipt/bill-of-lading content duties within the regulation’s scope.",
+      "not_supports": "Non-U.S. carriage, complete eBOL data model, classification or price.",
+      "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+    },
+    {
+      "claim_id": "LTL-03",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-cmr",
+      "issuer": "UNECE",
+      "source_version": "CMR Convention · Geneva, 19 May 1956",
+      "source_status": "In force within Convention conditions and contracting-party scope",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+    },
+    {
+      "claim_id": "LTL-03",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-ecmr",
+      "issuer": "UNECE",
+      "source_version": "Additional Protocol to CMR concerning the electronic consignment note · 2008",
+      "source_status": "In force only within Protocol participation and applicable legal scope",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+    },
+    {
+      "claim_id": "LTL-03",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-nmfta-scac",
+      "issuer": "NMFTA",
+      "source_version": "Issuer-maintained transportation-provider identifier registry",
+      "source_status": "ACTIVE IDENTIFIER STANDARD",
+      "scope": {
+        "mode": "North-American freight-carrier and transportation-provider identification",
+        "jurisdiction": "North-American commercial, system, contract or government context where adopted or requested",
+        "role": "Motor carriers and other transportation providers"
+      },
+      "supports": "Transportation-provider identity and reference-code crosswalks for carrier/party master data.",
+      "not_supports": "A universal legal requirement, proof of operating authority, or an automatic requirement for every Road LTL transaction.",
+      "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+    },
+    {
+      "claim_id": "LTL-03",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-nmfta-splc",
+      "issuer": "NMFTA",
+      "source_version": "Issuer-maintained North-American freight-location coding system",
+      "source_status": "ACTIVE LOCATION-CODE STANDARD",
+      "scope": {
+        "mode": "North-American freight-origin, destination and network-location identification",
+        "jurisdiction": "United States, Canada and Mexico freight locations where adopted",
+        "role": "Shippers, carriers, terminals, intermediaries and data-platform operators"
+      },
+      "supports": "Location Master cross-references and governed reference codes for North-American freight locations.",
+      "not_supports": "A universal global Location Master, a node-type taxonomy, geocoding, or mandatory adoption in every transaction.",
+      "claim_boundary": "Document content/form is selected by active jurisdiction and carriage scope. DSDC eBOL is North-American interface evidence; CMR/e-CMR is separate legal scope."
+    },
+    {
+      "claim_id": "LTL-04",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-dsdc-pickup",
+      "issuer": "NMFTA DSDC / Digital LTL Council",
+      "source_version": "1.0.0",
+      "source_status": "ACTIVE STANDARD",
+      "scope": {
+        "mode": "North-American LTL pickup interface",
+        "jurisdiction": "North America / adopted trading relationship",
+        "role": "Shipper/3PL and carrier"
+      },
+      "supports": "Schedule, update/reschedule, cancel and receive pickup status/delay information.",
+      "not_supports": "Physical acceptance, custody transfer or every carrier operating rule.",
+      "claim_boundary": "DSDC supports adopted North-American pickup interface states; it does not prove physical acceptance or universal carrier rules."
+    },
+    {
+      "claim_id": "LTL-04",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-uncefact-rdm",
+      "issuer": "UN/CEFACT",
+      "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+      "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "DSDC supports adopted North-American pickup interface states; it does not prove physical acceptance or universal carrier rules."
+    },
+    {
+      "claim_id": "LTL-04",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-x12",
+      "issuer": "ANSI Accredited Standards Committee X12",
+      "source_version": "Issuer-maintained transaction-set catalogue; freeze the implementation version and trading-partner guide",
+      "source_status": "Active X12 standards catalogue",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "DSDC supports adopted North-American pickup interface states; it does not prove physical acceptance or universal carrier rules."
+    },
+    {
+      "claim_id": "LTL-20",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-scor",
+      "issuer": "ASCM",
+      "source_version": "SCOR Digital Standard · maintained digital edition",
+      "source_status": "Published and actively maintained by ASCM",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Page‑0 asset readiness is deepened generically. Mode-, jurisdiction- and commodity-specific qualification rules must be supplied by the active source pack."
+    },
+    {
+      "claim_id": "LTL-20",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-apqc-pcf",
+      "issuer": "APQC",
+      "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+      "source_status": "Current public Cross-Industry PCF release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Page‑0 asset readiness is deepened generically. Mode-, jurisdiction- and commodity-specific qualification rules must be supplied by the active source pack."
+    },
+    {
+      "claim_id": "LTL-05",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-49cfr373",
+      "issuer": "U.S. Department of Transportation / eCFR",
+      "source_version": "Current eCFR",
+      "source_status": "OPERATIVE U.S. REGULATION",
+      "scope": {
+        "mode": "Applicable for-hire motor carriage",
+        "jurisdiction": "United States",
+        "role": "Motor carrier"
+      },
+      "supports": "Receipt/bill-of-lading content duties within the regulation’s scope.",
+      "not_supports": "Non-U.S. carriage, complete eBOL data model, classification or price.",
+      "claim_boundary": "The legal meaning of receipt, reservation and custody depends on active law/contract; EPCIS supports event semantics only."
+    },
+    {
+      "claim_id": "LTL-05",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-cmr",
+      "issuer": "UNECE",
+      "source_version": "CMR Convention · Geneva, 19 May 1956",
+      "source_status": "In force within Convention conditions and contracting-party scope",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The legal meaning of receipt, reservation and custody depends on active law/contract; EPCIS supports event semantics only."
+    },
+    {
+      "claim_id": "LTL-05",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-epcis",
+      "issuer": "GS1",
+      "source_version": "EPCIS 2.0.1",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The legal meaning of receipt, reservation and custody depends on active law/contract; EPCIS supports event semantics only."
+    },
+    {
+      "claim_id": "LTL-06",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-epcis",
+      "issuer": "GS1",
+      "source_version": "EPCIS 2.0.1",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Cross-dock/service-centre execution is an A3–A5 specialization of Page‑0 Warehouse/Cross‑Dock; no new top-level node taxonomy is claimed."
+    },
+    {
+      "claim_id": "LTL-06",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-cbv",
+      "issuer": "GS1",
+      "source_version": "Core Business Vocabulary 2.0.0",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Cross-dock/service-centre execution is an A3–A5 specialization of Page‑0 Warehouse/Cross‑Dock; no new top-level node taxonomy is claimed."
+    },
+    {
+      "claim_id": "LTL-06",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-genspec",
+      "issuer": "GS1",
+      "source_version": "GS1 General Specifications 26.0.0 · Jan 2026",
+      "source_status": "Current GS1 General Specifications release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Cross-dock/service-centre execution is an A3–A5 specialization of Page‑0 Warehouse/Cross‑Dock; no new top-level node taxonomy is claimed."
+    },
+    {
+      "claim_id": "LTL-06",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-nmfc",
+      "issuer": "National Motor Freight Traffic Association",
+      "source_version": "Issuer-maintained National Motor Freight Classification; freeze the effective publication/tariff profile",
+      "source_status": "Active NMFTA classification standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Cross-dock/service-centre execution is an A3–A5 specialization of Page‑0 Warehouse/Cross‑Dock; no new top-level node taxonomy is claimed."
+    },
+    {
+      "claim_id": "LTL-07",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-scor",
+      "issuer": "ASCM",
+      "source_version": "SCOR Digital Standard · maintained digital edition",
+      "source_status": "Published and actively maintained by ASCM",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Consolidation is Page‑0-derived. Detailed carrier loading methods remain implementation-specific unless separately sourced."
+    },
+    {
+      "claim_id": "LTL-07",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-uncefact-rdm",
+      "issuer": "UN/CEFACT",
+      "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+      "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Consolidation is Page‑0-derived. Detailed carrier loading methods remain implementation-specific unless separately sourced."
+    },
+    {
+      "claim_id": "LTL-07",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-epcis",
+      "issuer": "GS1",
+      "source_version": "EPCIS 2.0.1",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Consolidation is Page‑0-derived. Detailed carrier loading methods remain implementation-specific unless separately sourced."
+    },
+    {
+      "claim_id": "LTL-08",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-epcis",
+      "issuer": "GS1",
+      "source_version": "EPCIS 2.0.1",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+    },
+    {
+      "claim_id": "LTL-08",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-cbv",
+      "issuer": "GS1",
+      "source_version": "Core Business Vocabulary 2.0.0",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+    },
+    {
+      "claim_id": "LTL-08",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-uncefact-rdm",
+      "issuer": "UN/CEFACT",
+      "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+      "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+    },
+    {
+      "claim_id": "LTL-08",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-x12",
+      "issuer": "ANSI Accredited Standards Committee X12",
+      "source_version": "Issuer-maintained transaction-set catalogue; freeze the implementation version and trading-partner guide",
+      "source_status": "Active X12 standards catalogue",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+    },
+    {
+      "claim_id": "LTL-08",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-dsdc-visibility-draft",
+      "issuer": "NMFTA DSDC / Digital LTL Council",
+      "source_version": "Issuer work item",
+      "source_status": "IN DEVELOPMENT",
+      "scope": {
+        "mode": "Prospective North-American LTL visibility",
+        "jurisdiction": "North America",
+        "role": "Carrier and visibility consumers"
+      },
+      "supports": "Research direction only.",
+      "not_supports": "A governed final API, conformance claim or required milestone model.",
+      "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+    },
+    {
+      "claim_id": "LTL-08",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-nmfta-splc",
+      "issuer": "NMFTA",
+      "source_version": "Issuer-maintained North-American freight-location coding system",
+      "source_status": "ACTIVE LOCATION-CODE STANDARD",
+      "scope": {
+        "mode": "North-American freight-origin, destination and network-location identification",
+        "jurisdiction": "United States, Canada and Mexico freight locations where adopted",
+        "role": "Shippers, carriers, terminals, intermediaries and data-platform operators"
+      },
+      "supports": "Location Master cross-references and governed reference codes for North-American freight locations.",
+      "not_supports": "A universal global Location Master, a node-type taxonomy, geocoding, or mandatory adoption in every transaction.",
+      "claim_boundary": "Generic actual-event semantics are governed. DSDC in-transit visibility is explicitly IN DEVELOPMENT and is not treated as a final standard."
+    },
+    {
+      "claim_id": "LTL-09",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-epcis",
+      "issuer": "GS1",
+      "source_version": "EPCIS 2.0.1",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Intermediate service-centre execution is a conditional child specialization of Page‑0 Cross‑Dock/Warehouse. Exact sort steps are not asserted beyond evidence."
+    },
+    {
+      "claim_id": "LTL-09",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-cbv",
+      "issuer": "GS1",
+      "source_version": "Core Business Vocabulary 2.0.0",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Intermediate service-centre execution is a conditional child specialization of Page‑0 Cross‑Dock/Warehouse. Exact sort steps are not asserted beyond evidence."
+    },
+    {
+      "claim_id": "LTL-09",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-scor",
+      "issuer": "ASCM",
+      "source_version": "SCOR Digital Standard · maintained digital edition",
+      "source_status": "Published and actively maintained by ASCM",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Intermediate service-centre execution is a conditional child specialization of Page‑0 Cross‑Dock/Warehouse. Exact sort steps are not asserted beyond evidence."
+    },
+    {
+      "claim_id": "LTL-10",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-uncefact-rdm",
+      "issuer": "UN/CEFACT",
+      "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+      "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The generic interchange relationship is Atlas synthesis. Legal/custody effect is resolved per leg and active instrument."
+    },
+    {
+      "claim_id": "LTL-10",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-cmr",
+      "issuer": "UNECE",
+      "source_version": "CMR Convention · Geneva, 19 May 1956",
+      "source_status": "In force within Convention conditions and contracting-party scope",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The generic interchange relationship is Atlas synthesis. Legal/custody effect is resolved per leg and active instrument."
+    },
+    {
+      "claim_id": "LTL-10",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-epcis",
+      "issuer": "GS1",
+      "source_version": "EPCIS 2.0.1",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The generic interchange relationship is Atlas synthesis. Legal/custody effect is resolved per leg and active instrument."
+    },
+    {
+      "claim_id": "LTL-11",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-scor",
+      "issuer": "ASCM",
+      "source_version": "SCOR Digital Standard · maintained digital edition",
+      "source_status": "Published and actively maintained by ASCM",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The record respects Page‑0 transport-to-delivery boundary; route tasks remain implementation-specific."
+    },
+    {
+      "claim_id": "LTL-11",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-epcis",
+      "issuer": "GS1",
+      "source_version": "EPCIS 2.0.1",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The record respects Page‑0 transport-to-delivery boundary; route tasks remain implementation-specific."
+    },
+    {
+      "claim_id": "LTL-11",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-uncefact-rdm",
+      "issuer": "UN/CEFACT",
+      "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+      "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The record respects Page‑0 transport-to-delivery boundary; route tasks remain implementation-specific."
+    },
+    {
+      "claim_id": "LTL-12",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-apqc-pcf",
+      "issuer": "APQC",
+      "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+      "source_status": "Current public Cross-Industry PCF release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Appointment/readiness is Page‑0 derived; channel, entitlement and local delivery rules require implementation evidence."
+    },
+    {
+      "claim_id": "LTL-12",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-uncefact-rdm",
+      "issuer": "UN/CEFACT",
+      "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+      "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Appointment/readiness is Page‑0 derived; channel, entitlement and local delivery rules require implementation evidence."
+    },
+    {
+      "claim_id": "LTL-13",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-cmr",
+      "issuer": "UNECE",
+      "source_version": "CMR Convention · Geneva, 19 May 1956",
+      "source_status": "In force within Convention conditions and contracting-party scope",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The required form and legal effect of delivery evidence/reservations depend on contract, regime and jurisdiction; EPCIS is event semantics, not proof law."
+    },
+    {
+      "claim_id": "LTL-13",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-epcis",
+      "issuer": "GS1",
+      "source_version": "EPCIS 2.0.1",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The required form and legal effect of delivery evidence/reservations depend on contract, regime and jurisdiction; EPCIS is event semantics, not proof law."
+    },
+    {
+      "claim_id": "LTL-13",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-apqc-pcf",
+      "issuer": "APQC",
+      "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+      "source_status": "Current public Cross-Industry PCF release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The required form and legal effect of delivery evidence/reservations depend on contract, regime and jurisdiction; EPCIS is event semantics, not proof law."
+    },
+    {
+      "claim_id": "LTL-14",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-scor",
+      "issuer": "ASCM",
+      "source_version": "SCOR Digital Standard · maintained digital edition",
+      "source_status": "Published and actively maintained by ASCM",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The control pattern is Atlas synthesis anchored in Page‑0 exception governance; exact clocks and liability triggers require the active source/contract."
+    },
+    {
+      "claim_id": "LTL-14",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-apqc-pcf",
+      "issuer": "APQC",
+      "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+      "source_status": "Current public Cross-Industry PCF release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The control pattern is Atlas synthesis anchored in Page‑0 exception governance; exact clocks and liability triggers require the active source/contract."
+    },
+    {
+      "claim_id": "LTL-14",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-epcis",
+      "issuer": "GS1",
+      "source_version": "EPCIS 2.0.1",
+      "source_status": "Ratified GS1 standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The control pattern is Atlas synthesis anchored in Page‑0 exception governance; exact clocks and liability triggers require the active source/contract."
+    },
+    {
+      "claim_id": "LTL-14",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-iso10002",
+      "issuer": "ISO",
+      "source_version": "ISO 10002:2018 · edition 3",
+      "source_status": "Published International Standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "The control pattern is Atlas synthesis anchored in Page‑0 exception governance; exact clocks and liability triggers require the active source/contract."
+    },
+    {
+      "claim_id": "LTL-15",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-scor",
+      "issuer": "ASCM",
+      "source_version": "SCOR Digital Standard · maintained digital edition",
+      "source_status": "Published and actively maintained by ASCM",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Recovery categories are Page‑0 derived. Specific operational remedy, customer entitlement and legal effect remain contextual."
+    },
+    {
+      "claim_id": "LTL-15",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-apqc-pcf",
+      "issuer": "APQC",
+      "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+      "source_status": "Current public Cross-Industry PCF release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Recovery categories are Page‑0 derived. Specific operational remedy, customer entitlement and legal effect remain contextual."
+    },
+    {
+      "claim_id": "LTL-15",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-iso10002",
+      "issuer": "ISO",
+      "source_version": "ISO 10002:2018 · edition 3",
+      "source_status": "Published International Standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Recovery categories are Page‑0 derived. Specific operational remedy, customer entitlement and legal effect remain contextual."
+    },
+    {
+      "claim_id": "LTL-16",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-dsdc-pfc",
+      "issuer": "NMFTA DSDC / Digital LTL Council",
+      "source_version": "1.0.0",
+      "source_status": "AVAILABLE STANDARD · SOURCE STATUS CONFLICT NOTED",
+      "scope": {
+        "mode": "North-American LTL preliminary charges",
+        "jurisdiction": "North America / adopted trading relationship",
+        "role": "Carrier and charge-data consumer"
+      },
+      "supports": "Preliminary charge notifications including accessorial, reweigh and reclass changes.",
+      "not_supports": "A final invoice, legal tariff entitlement or payment approval.",
+      "claim_boundary": "DSDC preliminary charges support a notification interface, not final invoice entitlement. Revenue assurance remains an Atlas analytical/control construct."
+    },
+    {
+      "claim_id": "LTL-16",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-x12",
+      "issuer": "ANSI Accredited Standards Committee X12",
+      "source_version": "Issuer-maintained transaction-set catalogue; freeze the implementation version and trading-partner guide",
+      "source_status": "Active X12 standards catalogue",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "DSDC preliminary charges support a notification interface, not final invoice entitlement. Revenue assurance remains an Atlas analytical/control construct."
+    },
+    {
+      "claim_id": "LTL-16",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-apqc-pcf",
+      "issuer": "APQC",
+      "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+      "source_status": "Current public Cross-Industry PCF release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "DSDC preliminary charges support a notification interface, not final invoice entitlement. Revenue assurance remains an Atlas analytical/control construct."
+    },
+    {
+      "claim_id": "LTL-17",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-apqc-pcf",
+      "issuer": "APQC",
+      "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+      "source_status": "Current public Cross-Industry PCF release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "APQC and X12 support directional finance/message mappings; accounting, tax, tolerance and settlement policies remain enterprise/jurisdiction specific."
+    },
+    {
+      "claim_id": "LTL-17",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-x12",
+      "issuer": "ANSI Accredited Standards Committee X12",
+      "source_version": "Issuer-maintained transaction-set catalogue; freeze the implementation version and trading-partner guide",
+      "source_status": "Active X12 standards catalogue",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "APQC and X12 support directional finance/message mappings; accounting, tax, tolerance and settlement policies remain enterprise/jurisdiction specific."
+    },
+    {
+      "claim_id": "LTL-17",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-uncefact-rdm",
+      "issuer": "UN/CEFACT",
+      "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+      "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "APQC and X12 support directional finance/message mappings; accounting, tax, tolerance and settlement policies remain enterprise/jurisdiction specific."
+    },
+    {
+      "claim_id": "LTL-18",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-cmr",
+      "issuer": "UNECE",
+      "source_version": "CMR Convention · Geneva, 19 May 1956",
+      "source_status": "In force within Convention conditions and contracting-party scope",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "CMR supports claims/liability only when Convention scope resolves. 49 U.S.C. §14706 and 49 CFR Part 370 apply only when their U.S. statutory/regulatory scope resolves. Service claims, billing disputes, insurance recovery and non-U.S. claims remain separately governed; no universal LTL liability hierarchy or time bar is asserted."
+    },
+    {
+      "claim_id": "LTL-18",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-49usc14706",
+      "issuer": "U.S. House Office of the Law Revision Counsel",
+      "source_version": "Current U.S. Code",
+      "source_status": "OPERATIVE U.S. STATUTE",
+      "scope": {
+        "mode": "Motor-carrier/freight-forwarder transportation within statutory jurisdiction",
+        "jurisdiction": "United States and specified adjacent-country through-carriage scope",
+        "role": "Motor carriers, freight forwarders and entitled claimants within scope"
+      },
+      "supports": "Carrier/freight-forwarder liability framework for actual loss or injury to property under the statute, including receipt/bill-of-lading linkage and statutory scope.",
+      "not_supports": "Every service claim, billing dispute, insurance recovery, contract time bar or non-U.S. road claim.",
+      "claim_boundary": "CMR supports claims/liability only when Convention scope resolves. 49 U.S.C. §14706 and 49 CFR Part 370 apply only when their U.S. statutory/regulatory scope resolves. Service claims, billing disputes, insurance recovery and non-U.S. claims remain separately governed; no universal LTL liability hierarchy or time bar is asserted."
+    },
+    {
+      "claim_id": "LTL-18",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-49cfr370",
+      "issuer": "U.S. Department of Transportation / eCFR",
+      "source_version": "Current eCFR",
+      "source_status": "OPERATIVE U.S. REGULATION",
+      "scope": {
+        "mode": "Claims for loss, damage, injury or delay to property transported/accepted by covered motor carriers and freight forwarders",
+        "jurisdiction": "United States interstate/foreign commerce within Part 370 scope",
+        "role": "Covered carriers, freight forwarders and claimants"
+      },
+      "supports": "Minimum claim filing, acknowledgment, investigation, disposition/status and salvage-processing requirements within scope.",
+      "not_supports": "A universal LTL claim process, contractual liability allocation outside the regulation, non-U.S. carriage or billing-dispute rules.",
+      "claim_boundary": "CMR supports claims/liability only when Convention scope resolves. 49 U.S.C. §14706 and 49 CFR Part 370 apply only when their U.S. statutory/regulatory scope resolves. Service claims, billing disputes, insurance recovery and non-U.S. claims remain separately governed; no universal LTL liability hierarchy or time bar is asserted."
+    },
+    {
+      "claim_id": "LTL-18",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-apqc-pcf",
+      "issuer": "APQC",
+      "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+      "source_status": "Current public Cross-Industry PCF release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "CMR supports claims/liability only when Convention scope resolves. 49 U.S.C. §14706 and 49 CFR Part 370 apply only when their U.S. statutory/regulatory scope resolves. Service claims, billing disputes, insurance recovery and non-U.S. claims remain separately governed; no universal LTL liability hierarchy or time bar is asserted."
+    },
+    {
+      "claim_id": "LTL-18",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-iso10002",
+      "issuer": "ISO",
+      "source_version": "ISO 10002:2018 · edition 3",
+      "source_status": "Published International Standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "CMR supports claims/liability only when Convention scope resolves. 49 U.S.C. §14706 and 49 CFR Part 370 apply only when their U.S. statutory/regulatory scope resolves. Service claims, billing disputes, insurance recovery and non-U.S. claims remain separately governed; no universal LTL liability hierarchy or time bar is asserted."
+    },
+    {
+      "claim_id": "LTL-19",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-wco-dm",
+      "issuer": "World Customs Organization",
+      "source_version": "WCO Data Model 4.3.0 · approved Jun 2026; unveiled Jul 2026",
+      "source_status": "Current WCO Data Model release at the evidence snapshot",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+    },
+    {
+      "claim_id": "LTL-19",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-49cfr177",
+      "issuer": "U.S. Department of Transportation / PHMSA / eCFR",
+      "source_version": "Current eCFR",
+      "source_status": "OPERATIVE U.S. REGULATION",
+      "scope": {
+        "mode": "Highway carriage of regulated hazardous materials",
+        "jurisdiction": "United States",
+        "role": "Offeror/carrier duties by provision"
+      },
+      "supports": "Highway hazardous-material carriage and shipping-paper controls within scope.",
+      "not_supports": "India, ADR scope, ordinary freight or an LTL process taxonomy.",
+      "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+    },
+    {
+      "claim_id": "LTL-19",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-cmr",
+      "issuer": "UNECE",
+      "source_version": "CMR Convention · Geneva, 19 May 1956",
+      "source_status": "In force within Convention conditions and contracting-party scope",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+    },
+    {
+      "claim_id": "LTL-19",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-adr",
+      "issuer": "UNECE / ADR contracting parties",
+      "source_version": "2025 edition",
+      "source_status": "APPLICABLE FROM 1 JAN 2025 WITHIN SCOPE",
+      "scope": {
+        "mode": "International carriage of dangerous goods by road",
+        "jurisdiction": "ADR legal scope and applicable national implementation",
+        "role": "Participants assigned duties by ADR"
+      },
+      "supports": "Road dangerous-goods classification, documentation, packaging, equipment and operating controls within scope.",
+      "not_supports": "Automatic applicability from selecting CMR or any non-ADR jurisdiction.",
+      "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+    },
+    {
+      "claim_id": "LTL-19",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-atp",
+      "issuer": "UNECE / ATP contracting parties",
+      "source_version": "2025 edition",
+      "source_status": "CURRENT ISSUER HANDBOOK",
+      "scope": {
+        "mode": "International carriage of specified perishable foodstuffs",
+        "jurisdiction": "ATP scope and contracting parties",
+        "role": "Participants/equipment within scope"
+      },
+      "supports": "Special equipment and temperature conditions for specified international carriage.",
+      "not_supports": "All temperature-controlled goods, domestic carriage or service-level temperature promises.",
+      "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+    },
+    {
+      "claim_id": "LTL-19",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-tir",
+      "issuer": "UNECE / TIR contracting parties",
+      "source_version": "2024 handbook",
+      "source_status": "OPERATIVE WITHIN QUALIFYING TRANSIT",
+      "scope": {
+        "mode": "Qualifying customs transit",
+        "jurisdiction": "TIR contracting parties and approved operation",
+        "role": "Authorized holder, customs and guarantee chain"
+      },
+      "supports": "TIR transit controls and documentary/guarantee architecture within scope.",
+      "not_supports": "Every customs transit movement or ordinary LTL carriage.",
+      "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+    },
+    {
+      "claim_id": "LTL-19",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-india-eway",
+      "issuer": "Goods and Services Tax Network / NIC",
+      "source_version": "API v1.03 documentation",
+      "source_status": "OPERATIVE SYSTEM GUIDANCE",
+      "scope": {
+        "mode": "Goods movement subject to Indian e-way-bill rules",
+        "jurisdiction": "India",
+        "role": "Registered persons and transporters within scope"
+      },
+      "supports": "E-way-bill document/transport references and system exchange requirements.",
+      "not_supports": "A complete Indian LTL workflow or frozen dangerous-goods source pack.",
+      "claim_boundary": "This is a conditional control shell. It does not assert that ADR, ATP, TIR or any national rule applies until exact scope is validated."
+    },
+    {
+      "claim_id": "LTL-21",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-uncefact-rdm",
+      "issuer": "UN/CEFACT",
+      "source_version": "Maintained BSP, MMT and Supply Chain Reference Data Models",
+      "source_status": "Published issuer catalogue; artefacts are maintained by UN/CEFACT",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Identity semantics/authority derive from Page‑0 and standards; enterprise survivorship remains configured by object scope."
+    },
+    {
+      "claim_id": "LTL-21",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-gs1-genspec",
+      "issuer": "GS1",
+      "source_version": "GS1 General Specifications 26.0.0 · Jan 2026",
+      "source_status": "Current GS1 General Specifications release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Identity semantics/authority derive from Page‑0 and standards; enterprise survivorship remains configured by object scope."
+    },
+    {
+      "claim_id": "LTL-21",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-scor",
+      "issuer": "ASCM",
+      "source_version": "SCOR Digital Standard · maintained digital edition",
+      "source_status": "Published and actively maintained by ASCM",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Identity semantics/authority derive from Page‑0 and standards; enterprise survivorship remains configured by object scope."
+    },
+    {
+      "claim_id": "LTL-21",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-nmfta-scac",
+      "issuer": "NMFTA",
+      "source_version": "Issuer-maintained transportation-provider identifier registry",
+      "source_status": "ACTIVE IDENTIFIER STANDARD",
+      "scope": {
+        "mode": "North-American freight-carrier and transportation-provider identification",
+        "jurisdiction": "North-American commercial, system, contract or government context where adopted or requested",
+        "role": "Motor carriers and other transportation providers"
+      },
+      "supports": "Transportation-provider identity and reference-code crosswalks for carrier/party master data.",
+      "not_supports": "A universal legal requirement, proof of operating authority, or an automatic requirement for every Road LTL transaction.",
+      "claim_boundary": "Identity semantics/authority derive from Page‑0 and standards; enterprise survivorship remains configured by object scope."
+    },
+    {
+      "claim_id": "LTL-21",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-nmfta-splc",
+      "issuer": "NMFTA",
+      "source_version": "Issuer-maintained North-American freight-location coding system",
+      "source_status": "ACTIVE LOCATION-CODE STANDARD",
+      "scope": {
+        "mode": "North-American freight-origin, destination and network-location identification",
+        "jurisdiction": "United States, Canada and Mexico freight locations where adopted",
+        "role": "Shippers, carriers, terminals, intermediaries and data-platform operators"
+      },
+      "supports": "Location Master cross-references and governed reference codes for North-American freight locations.",
+      "not_supports": "A universal global Location Master, a node-type taxonomy, geocoding, or mandatory adoption in every transaction.",
+      "claim_boundary": "Identity semantics/authority derive from Page‑0 and standards; enterprise survivorship remains configured by object scope."
+    },
+    {
+      "claim_id": "LTL-22",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-apqc-pcf",
+      "issuer": "APQC",
+      "source_version": "Cross-Industry PCF 8.0 · published 27 Feb 2026",
+      "source_status": "Current public Cross-Industry PCF release",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Complaint-handling guidance supports the response loop, not contract entitlement, liability or operational root cause."
+    },
+    {
+      "claim_id": "LTL-22",
+      "baseline_commit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+      "governed_source_id": "src-iso10002",
+      "issuer": "ISO",
+      "source_version": "ISO 10002:2018 · edition 3",
+      "source_status": "Published International Standard",
+      "scope": {
+        "mode": null,
+        "jurisdiction": null,
+        "role": null
+      },
+      "supports": null,
+      "not_supports": null,
+      "claim_boundary": "Complaint-handling guidance supports the response loop, not contract entitlement, liability or operational root cause."
+    }
+  ],
+  "counts": {
+    "processCount": 22,
+    "a3Count": 13,
+    "edgeCount": 39,
+    "sourceCount": 29
+  },
+  "storage": {
+    "path": "data/generated/daughters/road-ltl/knowledge-model-v1.json",
+    "writer": "atl-155-bounded-daughter-generator",
+    "validator": "tests/atl-155-bounded-daughter-generation.test.js",
+    "promoter": "Owner gate ATL-142"
+  },
+  "retrieval": {
+    "interface": "static governed JSON",
+    "consumer": "Atlas runtime via window.activateModule(\"road-ltl\"); Inspector reads canonical selected process"
+  }
+}
