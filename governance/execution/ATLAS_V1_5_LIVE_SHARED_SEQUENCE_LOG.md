@@ -646,3 +646,41 @@ Next task: **ATL-159** — Atlas v1.5 Capability — Bounded Work Decomposition 
 
 **Owner/gate status:** No Owner decision pending on ATL-157 or ATL-159. ATL-142 final production gate unaffected. BOL/FIRI remains outside v1.5 LIVE. ATL-172/v2 entry remains Owner-gated (unchanged from the prior standing hold).
 **Unresolved recovery state:** NONE. This entry is being persisted to GitHub first (primary) and mirrored to the Linear Shared Baton Log this same turn; both will be read back before this turn ends.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-159 BUILD COMPLETE → CLAUDE INDEPENDENT QA — 2026-09-29T04:36Z
+
+**Transition:** ChatGPT → Claude  
+**Current holder / next agent:** Claude  
+**Exact current task:** ATL-159 — Atlas v1.5 Capability — Bounded Work Decomposition & Canonical WorkDefinition — independent QA  
+**Sequence controller:** ATL-177  
+**Disposition:** CHATGPT_BUILD_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_QA
+
+### Predecessor context from Linear
+
+Claude independently QA-PASSed ATL-157 at 2026-09-29T04:21:03Z and explicitly routed ATL-159 to ChatGPT. Eligibility basis recorded by Claude: ATL-157 PASS + prior ATL-171 PASS satisfy ATL-159 inputs; ATL-159 had no Governance Hold or Owner Decision Required; ATL-172/v2 remains Owner-gated and unrouted.
+
+### Implementation result and durable evidence
+
+Implementation branch: `atl-159-v15-workdefinition`. Final branch tip / implementation commit: `b79221fbb267319c3956087da7f51fbbe20b5b17`.
+
+Durably read-back evidence includes:
+- canonical WorkDefinition schema: `data/contracts/atlas-workdefinition-v1.schema.json`, blob `d8399abca4f2da2f032abe05d094a178823c8943`;
+- ATL-159 committed contract test: `tests/atl-159-workdefinition.test.cjs`, blob `1ca6adabb202183b6f86426d563a522ab232a6bf`;
+- frozen bounded Road LTL LTL-04 WorkDefinition at `data/generated/workdefinitions/road-ltl-ltl04-v1.json`;
+- bounded WorkDefinition compiler and ATL-159 governance/contract artifacts committed on the same branch lineage.
+
+The committed test asserts one bounded canonical WorkDefinition, canonical ID `wd::road-ltl::LTL-04::v1`, non-empty source lineage, explicit `CLIENT_BINDING_REQUIRED` knowledge state/binding need, and a fail-closed exception disposition. No Claude-required QA PASS is self-certified here.
+
+### Dependency / eligibility basis
+
+ATL-157 independent QA PASS and ATL-171 independent QA PASS are durable predecessors. This build is the exact ATL-159 action routed by Claude through Linear. No BOL/FIRI work was entered. ATL-172/v2 remains outside this route.
+
+### Exact Claude action
+
+Independently QA ATL-159 at branch `atl-159-v15-workdefinition` tip `b79221fbb267319c3956087da7f51fbbe20b5b17` against the ATL-159 Linear Build/STOP/Handover scope and ATL-177 outcome/architecture criteria. Verify the canonical WorkDefinition schema, bounded compiler/materialization behavior, frozen LTL-04 WorkDefinition, source/provenance lineage, explicit UNKNOWN/CLIENT_BINDING_REQUIRED handling, fail-closed exceptions, consumption/compatibility with ATL-157 candidate knowledge and ATL-171 operational semantics, determinism, and STOP boundary. Run the committed ATL-159 test and any direct compiler checks required. If PASS, write Claude → ChatGPT PASS and the exact next eligible ATL-177 action to the Linear Shared Baton. If FAIL, route only exact ATL-159 defects to ChatGPT through Linear.
+
+**Owner/gate status:** No Owner decision pending for ATL-159 QA. ATL-142 production promotion remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved persistence/recovery state:** RECOVERED — prior ChatGPT substantive ATL-159 implementation was already durable; this turn retried only the missing designated GitHub handoff persistence. No implementation was rebuilt.
