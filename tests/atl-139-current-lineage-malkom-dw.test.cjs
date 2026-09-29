@@ -1,0 +1,11 @@
+const assert=require('node:assert/strict');const fs=require('node:fs');const path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const p=JSON.parse(fs.readFileSync(path.join(root,'data/generated/malkom-domain-warehouse/road-ltl-ltl04-v1.json'),'utf8'));
+const wd=JSON.parse(fs.readFileSync(path.join(root,'data/generated/workdefinitions/road-ltl-ltl04-v1.json'),'utf8')).workDefinitions[0];
+const cb=JSON.parse(fs.readFileSync(path.join(root,'data/generated/client-bindings/road-ltl-ltl04-client-binding-v1.json'),'utf8'));
+assert.equal(p.consumer,'MALKOM');assert.equal(p.canonicalMutation,false);assert.equal(p.lineage.workDefinitionId,wd.workDefinitionId);assert.deepEqual(p.lineage.sourceIds,wd.lineage.sourceIds);assert.equal(p.lineage.historicalFixtureRelabeled,false);
+assert.deepEqual(p.projection.requiredInputs,wd.requiredInputs);assert.equal(p.projection.decision,wd.decisionSemantics.decision);assert.equal(p.projection.rule,wd.decisionSemantics.rule);assert.equal(p.projection.control,wd.decisionSemantics.control);assert.equal(p.projection.evidence,wd.decisionSemantics.evidence);
+assert.equal(p.bindings.state,cb.readiness.state);assert.deepEqual(new Set(p.bindings.resolvedIds),new Set(cb.malkomPackage.resolvedBindingIds));assert.deepEqual(new Set(p.bindings.unresolved.map(x=>x.bindingId)),new Set(cb.malkomPackage.unresolvedBindingIds));
+assert.equal(p.readiness.failClosed,true);assert.equal(p.interface.apiEndpoint,null);assert.equal(p.interface.apiEndpointDisposition,'REQUIREMENT_NOT_CONFIRMED');assert.equal(p.manifest.deterministic,true);
+for(const k of ['unknown','unsupported','loss'])assert.ok(Array.isArray(p.dispositions[k]));
+console.log('ATL-139 current-lineage Malkom DW package: PASS');
