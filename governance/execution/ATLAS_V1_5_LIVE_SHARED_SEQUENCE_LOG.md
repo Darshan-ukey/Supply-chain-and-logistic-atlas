@@ -774,3 +774,37 @@ Independently QA ATL-165 at branch `atl-165-v15-client-binding` tip `ba44ed6842e
 
 **Owner/gate status:** No Owner decision pending for ATL-163 independent QA. ATL-142 final production promotion remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE if this GitHub handoff persists and read-back verifies. No Linear self-handoff is created by ChatGPT.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-139 BUILD COMPLETE → CLAUDE INDEPENDENT QA — 2026-09-29T07:39Z
+
+**Transition:** ChatGPT → Claude  
+**Current holder / next agent:** Claude  
+**Exact task:** ATL-139 — Atlas v1.5 — Current-Lineage Road LTL → Malkom Domain Warehouse Package — independent QA  
+**Disposition:** CHATGPT_BUILD_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_QA
+
+### Predecessor context / eligibility
+Linear Continuation 01 document `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7` records Claude independent QA PASS for ATL-163 and explicitly routes ATL-139 to ChatGPT. Its four blockedBy dependencies were verified satisfied: ATL-165 PASS, ATL-163 PASS, ATL-159 PASS, ATL-138 PASS. No Governance Hold or Owner Decision Required applies to ATL-139.
+
+### Build result
+Branch: `atl-139-v15-current-lineage-malkom-dw`. Final implementation tip: `a57ad4d4f9488f190737701736beb5f807a19867`.
+
+Durable artifacts:
+- `governance/product/ATL_139_V1_5_CURRENT_LINEAGE_MALKOM_DW_PACKAGE_V1.md` — blob `5028b2544f2eaee73cb81420fb68f58104b13467`;
+- `data/generated/malkom-domain-warehouse/road-ltl-ltl04-v1.json` — blob `c3bb7336361a46daf365d9c75066da5f046f8302`;
+- `tests/atl-139-current-lineage-malkom-dw.test.cjs` — blob `31d00ad0fd9df7488ddb5b9dbbabb7af7b5a8e0c`.
+
+The package is explicitly current-lineage and bounded to Road LTL/LTL-04. It references canonical `wd::road-ltl::LTL-04::v1`, preserves canonical source IDs and semantics, keeps `canonicalMutation=false`, carries ATL-165 resolved/unresolved client-binding state, and remains fail-closed `CLIENT_BINDING_REQUIRED`. It does not relabel the historical Road LTL 1.2 → Domain Warehouse 2.3 → Malkom 3.0 fixture. The Malkom interface is a machine-readable JSON export; API endpoint is null with `REQUIREMENT_NOT_CONFIRMED`, so no unconfirmed interface was guessed. Explicit UNKNOWN/UNSUPPORTED/LOSS arrays are present and mandatory unrepresentable semantics are contractually fail-closed.
+
+The committed regression test compares package lineage/semantics against the frozen WorkDefinition and ATL-165 binding artifact, checks canonical non-mutation, unresolved binding propagation, fail-closed readiness, deterministic manifest and the unconfirmed-interface boundary. ChatGPT has not self-certified independent runtime QA.
+
+### Recovery state
+This turn retried after prior GitHub safety rejection. Fresh Linear authorization remained ATL-139. The GitHub write path succeeded on retry. No earlier partial ATL-139 artifact existed before this retry. Unresolved recovery state: NONE.
+
+### Exact Claude action
+Independently QA ATL-139 branch `atl-139-v15-current-lineage-malkom-dw` at tip `a57ad4d4f9488f190737701736beb5f807a19867`. Run `node tests/atl-139-current-lineage-malkom-dw.test.cjs` and inspect the package against ATL-139 acceptance plus ATL-138 consumption contract/outcome architecture. Verify current-lineage identity, no historical-fixture relabeling, deterministic materialization/projection, canonical IDs/source lineage, required work semantics, explicit binding/gap/loss dispositions, no guessed interface, machine-readable consumer usability, manifest/version/hash treatment, fail-closed behavior, canonical-truth separation, MALKOM_UTILITY and CONSUMER_INDEPENDENCE. If PASS, route only the exact next eligible ATL-177 task to ChatGPT through Linear Continuation 01 and read it back. If FAIL, route only exact ATL-139 remediation through that same continuation.
+
+**Owner/gates:** No Owner decision pending for ATL-139 QA. ATL-142 production/go-live remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved persistence/recovery:** NONE.
