@@ -1,0 +1,40 @@
+{
+  "schemaVersion":"atlas-malkom-domain-warehouse-package-v1.0",
+  "packageId":"malkom-dw::road-ltl::LTL-04::v1",
+  "version":"1.0.0",
+  "status":"BUILD_CANDIDATE",
+  "bounded":true,
+  "consumer":"MALKOM",
+  "lineage":{
+    "workDefinitionId":"wd::road-ltl::LTL-04::v1",
+    "workDefinitionVersion":"1.0.0",
+    "moduleId":"road-ltl",
+    "processId":"LTL-04",
+    "sourceIds":["src-dsdc-pickup","src-uncefact-rdm","src-x12"],
+    "compiler":"ATL-139 deterministic projection v1",
+    "historicalFixtureRelabeled":false
+  },
+  "canonicalMutation":false,
+  "projection":{
+    "scope":{"stateBefore":"Shipment valid; pickup not yet accepted; freight may not be ready.","event":"evt-booking-requested · pickup/service request submitted.","stateAfter":"Pickup ACCEPTED, CONDITIONAL, REJECTED or CANCELLED."},
+    "requiredInputs":[{"objectId":"obj-shipment","requirementState":"REQUIRED"},{"objectId":"obj-transport-document","requirementState":"REQUIRED"},{"objectId":"obj-shipment-readiness","requirementState":"REQUIRED"},{"objectId":"obj-appointment","requirementState":"REQUIRED"}],
+    "decision":"Can the carrier/service accept requested location, window, quantity and freight readiness?",
+    "rule":"Valid identity, serviceability, pickup window, cargo readiness and condition-specific prerequisites required.",
+    "control":"Request/response correlation, idempotency, change/cancel reason and stale-version rejection.",
+    "evidence":"Pickup request, acknowledgement/status, appointment and change history.",
+    "actors":[{"id":"actor-authorized-operator","state":"CLIENT_BINDING_REQUIRED","bindingId":"binding::road-ltl::LTL-04::authorized-operator","resolvedValue":"pickup-planner","resolutionMethod":"GOVERNED_MANUAL"}],
+    "systems":[{"id":"system-execution-platform","state":"CLIENT_BINDING_REQUIRED","bindingId":"binding::road-ltl::LTL-04::execution-platform","resolvedValue":"malkom-demo","resolutionMethod":"GOVERNED_MANUAL"}],
+    "actions":[{"sequence":1,"action":"Schedule, update/reschedule or cancel pickup and publish response."}],
+    "outcomes":[{"outcome":"Executable pickup commitment synchronized with shipper and carrier.","outputs":["obj-pickup","obj-booking","obj-transport-event"]}],
+    "exceptions":[{"type":"UNRESOLVED_CLIENT_BINDING","on":"missing client/master execution parameters","disposition":"FAIL_CLOSED"}]
+  },
+  "bindings":{
+    "state":"CLIENT_BINDING_REQUIRED",
+    "resolvedIds":["binding::road-ltl::LTL-04::authorized-operator","binding::road-ltl::LTL-04::execution-platform"],
+    "unresolved":[{"bindingId":"binding::road-ltl::LTL-04::execution-parameters","state":"CLIENT_BINDING_REQUIRED","reason":"Canonical generic pickup semantics require client-specific master or contract values before executable projection.","collectionQuestion":"Which governed client/master execution parameters and approved values apply to this pickup request?"}]
+  },
+  "dispositions":{"unknown":[],"unsupported":[],"loss":[]},
+  "readiness":{"state":"CLIENT_BINDING_REQUIRED","failClosed":true,"mandatoryUnrepresentableCount":0},
+  "interface":{"type":"MACHINE_READABLE_EXPORT","format":"JSON","apiEndpoint":null,"apiEndpointDisposition":"REQUIREMENT_NOT_CONFIRMED"},
+  "manifest":{"projectionRulesVersion":"atl-139-projection-v1","deterministic":true,"contentHashAlgorithm":"GIT_BLOB_SHA1","packageBlobSha":"SELF"}
+}
