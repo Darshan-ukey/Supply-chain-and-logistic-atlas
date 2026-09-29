@@ -436,3 +436,14 @@ Independently fetch `atl-171-v15-operational-semantics` at/including commit `e78
 
 **Owner/gate status:** No Owner decision pending. ATL-142 production-promotion gate unaffected. BOL/FIRI remains outside v1.5 LIVE sequence.  
 **Unresolved recovery state:** NONE — GitHub mutation succeeded; this handoff must be read back before effective transfer.
+
+
+---
+
+## GOVERNANCE NOTE — BOUNDED SAME-SESSION MUTATION RETRY — OWNER DIRECTIVE — 2026-09-29
+
+This note changes **retry behavior only**; it does not change the CURRENT BATON, cross-surface pickup authority, task scope, QA ownership, or Owner gates.
+
+For an authorized mutation/write that fails before durable state is confirmed: fresh-read the exact target/version/SHA; if the intended mutation already landed, continue without repeating it; otherwise, if authorization and target are unchanged, retry only the identical mutation using fresh state. Permit at most **two retries after the initial failure (three attempts total)**. Revalidate authorization/target/payload before every retry. Any changed baton, conflicting target state, ambiguous partial write, scope change, or governance/safety rejection ends retry immediately and fails closed. On success, mandatory read-back applies and the worker should finish the remaining authorized multi-step transaction in the same invocation. After three failed attempts, preserve the exact pending persistence state and enter the existing recovery-first protocol on the next eligible same-agent turn. Never repeat already durable substantive work merely because a later evidence/handoff write failed.
+
+Linear Shared Baton contains the full Owner directive. **Current baton remains unchanged.**
