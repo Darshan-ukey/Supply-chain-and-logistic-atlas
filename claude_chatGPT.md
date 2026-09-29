@@ -590,3 +590,66 @@ Rules:
 6. The same expanded disposition set must be used on ATL-146, ATL-147, ATL-148, ATL-149, ATL-150, ATL-151 and ATL-133 wherever Claude performs independent QA.
 
 This is a binding owner QA rule for the BOL/FIRI track.
+
+
+---
+## BOL/FIRI OWNER-RUN TRACK — ATL-146 COPILOT QA PASS + HASH PERSISTED + FREEZE CANDIDATE — 29 SEP 2026
+
+Claude was unavailable due to credit exhaustion. Owner authorized GitHub Copilot as the independent QA agent for ATL-146 while preserving the same Atlas v1.5 independent-QA standard.
+
+### Independent QA
+
+GitHub Issue #22 routed ATL-146 independent QA to Copilot. Copilot produced PR #23 and `ATL_146_INDEPENDENT_QA_REPORT.md`.
+
+Copilot independently returned PASS for all required material dimensions:
+- BUILD_CORRECTNESS
+- OUTCOME_FITNESS
+- ARCHITECTURE_FITNESS
+- FUTURE_SCOPE_COMPATIBILITY
+- DATA_STORAGE_OWNERSHIP
+- RETRIEVAL_CONSUMPTION
+- INTERACTION_MODEL
+- LINEAGE_RECOVERY
+- MALKOM_UTILITY
+- CONSUMER_INDEPENDENCE
+- PROMOTION_QA
+- HASH_RECOMPUTE
+- FINAL
+
+Independent digest:
+`sha256:a11b6090baab7a02c6ec2e151d09276f664ec131a08e6fcf868ed9a6f39b27bc`
+
+Copilot verified BOL-002 resolves to `EXECUTION_SUFFICIENT` through governed classification and not a BOL-002-specific hard-coded override. It also verified the deterministic hashing contract and bounded Atlas/Malkom architecture.
+
+### ChatGPT post-QA action
+
+The exact independently returned digest was persisted on:
+`darshanukey/atl-146-bol-002-freeze-promotion`
+
+Hash-persistence commit:
+`dc4d24bdec24b646f1f5386a5f4b90f496ae0fc2`
+
+Hash-persisted data blob:
+`fbb7b5e4872504c587758d5f5bec839afdb6ffdb`
+
+A freeze record was then created:
+`governance/operational-knowledge/firi/ATL_146_BOL_002_FIRI_V1_PROMOTION_FREEZE_RECORD.md`
+
+Freeze-record commit:
+`e476fb973eb72b0070b0ba1114a7eb93102ed110`
+
+Current state:
+`FROZEN_PENDING_FINAL_BYTE_HASH_VERIFICATION`
+
+### Exact next action
+
+Independent agent must verify the hash-persisted package bytes at commit `dc4d24bdec24b646f1f5386a5f4b90f496ae0fc2`, blank only `package_hash`, recompute the governed digest, confirm exact equality with:
+`sha256:a11b6090baab7a02c6ec2e151d09276f664ec131a08e6fcf868ed9a6f39b27bc`,
+and verify that no semantic/domain/FIRI content changed in the persistence step.
+
+Required disposition:
+`FINAL_BYTE_HASH_VERIFICATION: PASS|FAIL`
+
+Only PASS makes ATL-146 final frozen custody and unlocks ATL-147.
+
+This BOL/FIRI track remains outside the Linear Shared Baton. The ATL-177/v1.5 LIVE baton is unchanged.
