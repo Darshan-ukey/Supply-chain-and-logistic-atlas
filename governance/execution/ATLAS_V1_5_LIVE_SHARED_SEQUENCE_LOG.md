@@ -189,3 +189,52 @@ If PASS: append independent QA evidence here and route only the next eligible AT
 
 **Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.  
 **Linear mirror status:** PENDING — ATL-155 implementation evidence and this handoff have not been mirrored to Linear; synchronization is non-blocking and may be performed later from this GitHub entry.
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-155 INDEPENDENT QA REWORK_REQUIRED → CHATGPT AUTONOMOUS REWORK — 2026-09-29T00:50Z
+
+**Transition:** Claude → ChatGPT  
+**Current holder / next agent:** ChatGPT  
+**Exact current task:** ATL-155 — Atlas v1.5 Capability — Bounded Daughter Knowledge & Page Generation — remediation (Autonomous Rework)  
+**Sequence controller:** ATL-177  
+**Disposition:** INDEPENDENT_QA_REWORK_REQUIRED (FINAL: REWORK_REQUIRED). Not PASS. ATL-156/v2 and any downstream task are NOT routed.  
+**Surface note:** Written to GitHub by Claude in the Owner's interactive session; the 06:15 IST :45 monitor fired on the old Linear-only prompt (00:45:55Z, before the dual-surface prompt update at 00:46:06Z), found no Linear handoff naming Claude, and wrote nothing.
+
+### Verified independently this turn (real tool output)
+
+- Branch `atl-155-v15-bounded-daughter-generation` tip `221255757f1105500a889c7256c253326f6d7182`; commits `9b539c9…` (JSON) and `2212557…` (MD) both exist.
+- JSON blob `2bbae8d6444fd08a302f9e6629115a6f37ba10bc` and MD blob `6d1549fbfe8275c478583f9a3e171d6d679ad36c` match the claimed identities exactly.
+- Branch diff vs `main` = exactly two files (168 insertions). No generator code, no generated model, no page projection, no tests exist anywhere on the branch or in `main` (grep for daughterKnowledgeModel / daughterPageProjection: zero hits).
+- Baseline claims TRUE at pinned commit `f9b08a951ca823ff8c23b64044fe1a7abb9dde79`: all six cited evidence paths exist; `data/atlas-registry.json` records road-ltl ACTIVE / A5_VERIFIED, processCount 22, a3Count 13, edgeCount 39, sourceCount 29; `data/module-catalog.json` lists ocean-fcl and ocean-lcl as PLANNED / REFERENCE_ONLY and the accounts-payable fixture as TEST_ONLY / mustNotPublish. Consistent with the ATL-153 pinned baseline.
+- `baselineState: KNOWN_AUTHORITATIVE` and `gapState: RESEARCH_REQUIRED` are valid members of the ATL-161 taxonomy.
+
+### QA dispositions (ATLAS_V1_5_QA_OUTCOME_ARCHITECTURE_STANDARD_V1 @ 715f13b)
+
+- BUILD_CORRECTNESS: **FAIL** — every factual claim in the contract is accurate, but the ATL-155 "Build in v1.5" clause (prove generation on Road LTL; generate hierarchy to A5/task baseline; render through existing UX) is not delivered. Output is a contract only; the "Road LTL governed A5 proof" is a designated proof case, not a proof.
+- OUTCOME_FITNESS: **FAIL** — the task exists to show a credible Daughter model/page generated from governed truth without hand-authoring; nothing was generated, so usefulness is not established.
+- ARCHITECTURE_FITNESS: **PASS** — canonical model precedes page projection; projection may not add claims; fail-closed Ocean (no A4/A5 fabrication); TEST_ONLY fixture never publishes; baseline vs on-demand depth separated. Design direction is sound.
+- FUTURE_SCOPE_COMPATIBILITY: **PASS** — ATL-156/v2 boundary and unsupported-pattern list are explicit.
+- DATA_STORAGE_OWNERSHIP: **FAIL** — where the canonical daughterKnowledgeModel lives, and who may write/validate/promote it, is unspecified.
+- RETRIEVAL_CONSUMPTION: **FAIL** — no query/API/lookup for the model or projection; consumption by Inspector/Ask Atlas/Malkom unspecified.
+- INTERACTION_MODEL: **FAIL** — "existing UX" is not named (no route/component/contract); no reachable journey shown.
+- LINEAGE_RECOVERY: **FAIL** — versionIdentityRequired/provenanceRequired are asserted but no identity fields, generator version, input/output hashes or determinism check are defined; artifact remains QA_CANDIDATE with no freeze/custody record.
+- MALKOM_UTILITY: **N/A** — upstream of the Malkom contract.
+- CONSUMER_INDEPENDENCE: **PASS** — no Malkom/page-specific structure in canonical semantics.
+- FINAL: **REWORK_REQUIRED**
+
+### Binding corrections for ChatGPT (exact remediation)
+
+1. **Generate, don't describe.** Implement a deterministic bounded generator (no LLM-authored canonical content) and commit its real Road LTL output — a canonical daughterKnowledgeModel and a derived daughterPageProjection — from the pinned f9b08a9 inputs, with a test proving regeneration is byte-identical and that 22 / 13 / 39 / 29 reconcile to the registry.
+2. **Schema the outputs.** Provide JSON Schemas for both outputs covering all eight structural dimensions, stable IDs, version identity (baseline commit, module id/version/sha256, generator id/version, contract version, input and output hashes), per-claim provenance (ATL-153 §3 fields) and ATL-161 minimum_record / knowledge_state. Map the ATL-153 state set (BASELINE_GOVERNED / CANDIDATE / CONDITIONAL / CONFLICT / UNRESOLVED) to the ATL-161 taxonomy explicitly.
+3. **Ocean and fixture.** Emit the actual Ocean FCL/LCL reference-and-gap projection outputs (not only dispositions), plus negative tests: generator refuses A4/A5 for REFERENCE_ONLY modules and refuses to publish a TEST_ONLY fixture.
+4. **Name the UX target.** Bind the projection to the specific existing Atlas UX route/component/contract and show it rendering (or state the non-UI callable interface and how a fresh user reaches it).
+5. **Ownership, retrieval, freeze.** State where models are stored, who writes/validates/promotes, and how they are retrieved; then freeze per the Generation & Freeze-Asset Standard (status FROZEN, hashes, custody record) instead of leaving QA_CANDIDATE.
+6. **Baton hygiene.** The 00:31Z timestamp on the prior ATL-155 → Claude entry precedes the evidence it cites (JSON commit 00:42:04Z, MD 00:42:06Z, log commit 00:42:25Z); use a real UTC timestamp on the resubmission. ATL-155 in Linear currently has no labels (no Agent — Claude / routing state), status Todo, and no comments; update it so Linear-side eligibility checks match this handoff.
+
+### Exact next action
+
+ChatGPT remediates items 1–6 on `atl-155-v15-bounded-daughter-generation`, re-freezes the artifacts, records new commit/blob identities here, and hands ATL-155 back to Claude for independent recheck. Do not start ATL-156/v2 or any downstream task.
+
+**Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.  
+**Linear mirror status:** COMMENT POSTED on ATL-155 (issue-level); the large Linear Shared Baton document was not edited this turn — mirror pending, non-blocking.
