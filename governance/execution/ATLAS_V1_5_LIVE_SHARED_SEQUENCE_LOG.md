@@ -238,3 +238,45 @@ ChatGPT remediates items 1–6 on `atl-155-v15-bounded-daughter-generation`, re-
 
 **Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.  
 **Linear mirror status:** COMMENT POSTED on ATL-155 (issue-level); the large Linear Shared Baton document was not edited this turn — mirror pending, non-blocking.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-155 REMEDIATION COMPLETE → CLAUDE INDEPENDENT RECHECK — 2026-09-29T01:14:30Z
+
+**Transition:** ChatGPT → Claude  
+**Current holder / next agent:** Claude  
+**Exact current task:** ATL-155 — Atlas v1.5 Capability — Bounded Daughter Knowledge & Page Generation — independent recheck after autonomous remediation  
+**Sequence controller:** ATL-177  
+**Disposition:** REMEDIATION_COMPLETE / AWAITING_INDEPENDENT_QA. ChatGPT does NOT self-mark PASS. ATL-156/v2 and downstream work remain unrouted.
+
+### Predecessor result verified
+This handoff directly remediates Claude's 2026-09-29T00:50Z ATL-155 REWORK_REQUIRED disposition. No Owner decision was required. The branch was resumed rather than recreated.
+
+### Durable remediation evidence
+- Branch: `atl-155-v15-bounded-daughter-generation`
+- Frozen custody commit: `41fd15a79e778837c580b5fa30c6d024f24e7e61`
+- Generator: `scripts/generate-bounded-daughter-v1.js` — blob `564f561e91c013fed1b97b1e95d8a7c1196819a5`
+- Executable test: `tests/atl-155-bounded-daughter-generation.test.js` — blob `b3a1f2252014d64fe1d9130d0bbe7a11cfd8f587`
+- Knowledge-model schema blob: `0dacf499eb9afff8a32fdb57c72f6e10de7e721f`
+- Page-projection schema blob: `269e51dd76d7bc8c00fb2af693b879b073d26135`
+- Road LTL model blob: `534aa47747707d869264e8d41f19622bd9263be8`; read-back counts = 22 / 13 / 39 / 29; status FROZEN.
+- Road LTL projection blob: `6390457cc211d688d4ed7c8e93db684fe787145f`; depth A5_VERIFIED; status FROZEN.
+- Ocean FCL model/projection blobs: `15d52a8fae2f79cff8da6f8b2f9a09d5a5965cff` / `5819b37fb79905463f5acceb434c3ef07bcb7bf5`; REFERENCE_ONLY / RESEARCH_REQUIRED.
+- Ocean LCL model/projection blobs: `724b224743a2172e1b0540ac3a910fb0426ab842` / `af6eeaf57f29d821c223c205bc44509989f02e84`; REFERENCE_ONLY / RESEARCH_REQUIRED.
+- Freeze record: `governance/product/ATL_155_V1_5_FROZEN_CUSTODY_RECORD.md`.
+- Contract status changed from QA_CANDIDATE to FROZEN.
+
+### Corrections satisfied
+1. Real generated canonical/page outputs now exist; Road LTL reconciles 22 processes / 13 A3 / 39 edges / 29 sources.
+2. Schemas now require stable identity, generator/contract/baseline/input/output hashes, minimum_record/knowledge_state and provenance fields; ATL-153 → ATL-161 mapping is explicit.
+3. Ocean FCL/LCL actual bounded outputs exist; executable negative tests refuse A5 generation for REFERENCE_ONLY modules and refuse TEST_ONLY fixture publication.
+4. Existing UX target is explicit: `index.html` → `window.activateModule("road-ltl")` → existing spatial canvas + selected-item Inspector; reference-only daughters stay on registry/reference coverage.
+5. Storage/retrieval/ownership and Owner promotion gate are explicit; frozen custody record exists.
+6. Linear ATL-155 now carries `Agent — Claude` + `Awaiting Independent QA`, with remediation evidence comment `d22a872b-3c26-45e9-8fff-46bf960101cd`.
+
+### Exact Claude QA action
+Independently fetch branch `atl-155-v15-bounded-daughter-generation`. Review/execute `tests/atl-155-bounded-daughter-generation.test.js`; verify materialized output bytes/identity, schema coverage, Road 22/13/39/29 reconciliation, per-claim provenance, ATL-153→ATL-161 mapping, Ocean fail-closed depth, TEST_ONLY refusal, existing UX consumption binding, storage/retrieval ownership, and frozen custody. Return PASS or exact defects. Do not self-expand into ATL-156/v2.
+
+**Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.  
+**Linear mirror status:** ATL-155 routing labels and complete remediation evidence comment updated; shared-document mirror may lag, but GitHub primary handoff is complete.
