@@ -1,0 +1,141 @@
+{
+  "contractId": "ATL-155-BOUNDED-DAUGHTER-GENERATION-V1",
+  "version": "1.0.0",
+  "status": "QA_CANDIDATE",
+  "authority": {
+    "baselineCommit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+    "dependency": "ATL-153",
+    "knowledgeStateContract": "ATL-161"
+  },
+  "invariants": {
+    "canonicalModelPrecedesPageProjection": true,
+    "noHandAuthoredGeneratedResult": true,
+    "noUnsupportedDepthFabrication": true,
+    "provenanceRequired": true,
+    "versionIdentityRequired": true,
+    "baselineVsOnDemandDepthSeparated": true,
+    "existingUxProjectionTarget": true
+  },
+  "generator": {
+    "inputClasses": [
+      "frozen Page-0 parent",
+      "approved module/catalog/registry",
+      "governed source/provenance records",
+      "ATL-161 knowledge/gap state"
+    ],
+    "canonicalOutput": "daughterKnowledgeModel",
+    "pageOutput": "daughterPageProjection",
+    "hierarchyTarget": "meaningful hierarchy through A5/task baseline only where governed evidence supports it",
+    "structuralDimensions": [
+      "hierarchy",
+      "objects/documents",
+      "actors",
+      "systems",
+      "events",
+      "dependencies",
+      "controls",
+      "known gaps"
+    ],
+    "projectionRule": "Page is derived from canonical daughterKnowledgeModel; page content may not add canonical claims."
+  },
+  "proofCases": [
+    {
+      "id": "road-ltl",
+      "baselineState": "KNOWN_AUTHORITATIVE",
+      "publication": "ACTIVE",
+      "depth": "A5_VERIFIED",
+      "generationDisposition": "GENERATE_CANONICAL_MODEL_AND_PAGE_PROJECTION",
+      "evidence": [
+        "data/page0/page0-v6.2.2.json",
+        "data/modules/road-ltl-v1.2.json",
+        "data/provenance/road-ltl-claim-provenance-v1.json",
+        "data/atlas-registry.json"
+      ],
+      "expected": {
+        "processCount": 22,
+        "a3Count": 13,
+        "edgeCount": 39,
+        "sourceCount": 29
+      }
+    },
+    {
+      "id": "ocean-fcl",
+      "baselineState": "KNOWN_AUTHORITATIVE",
+      "publication": "PLANNED",
+      "depth": "REFERENCE_ONLY",
+      "generationDisposition": "GENERATE_REFERENCE_AND_GAP_PROJECTION_ONLY",
+      "gapState": "RESEARCH_REQUIRED",
+      "prohibited": [
+        "fabricated A4",
+        "fabricated A5",
+        "invented execution topology"
+      ],
+      "evidence": [
+        "data/module-catalog.json",
+        "data/atlas-registry.json",
+        "reference/atlas-source-manifest.csv"
+      ]
+    },
+    {
+      "id": "ocean-lcl",
+      "baselineState": "KNOWN_AUTHORITATIVE",
+      "publication": "PLANNED",
+      "depth": "REFERENCE_ONLY",
+      "generationDisposition": "GENERATE_REFERENCE_AND_GAP_PROJECTION_ONLY",
+      "gapState": "RESEARCH_REQUIRED",
+      "prohibited": [
+        "fabricated A4",
+        "fabricated A5",
+        "invented execution topology"
+      ],
+      "evidence": [
+        "data/module-catalog.json",
+        "data/atlas-registry.json",
+        "reference/atlas-source-manifest.csv"
+      ]
+    }
+  ],
+  "supportedPatterns": [
+    {
+      "pattern": "ACTIVE_A5_VERIFIED_MODULE",
+      "support": "SUPPORTED",
+      "behavior": "derive canonical model from frozen parent + approved child + provenance; project to existing UX"
+    },
+    {
+      "pattern": "PLANNED_REFERENCE_ONLY_MODULE",
+      "support": "SUPPORTED_FAIL_CLOSED",
+      "behavior": "derive identity/reference/source/gap projection; stop before unsupported A4/A5"
+    },
+    {
+      "pattern": "TEST_ONLY_FIXTURE",
+      "support": "SUPPORTED_FOR_MECHANISM_TEST_ONLY",
+      "behavior": "may prove generator mechanics but mustNotPublish=true"
+    }
+  ],
+  "unsupportedPatterns": [
+    "Universal generation for all ~70 daughters",
+    "A4/A5 synthesis for modules whose governed depth is REFERENCE_ONLY",
+    "Structural patterns absent from frozen inputs",
+    "Universal selective regeneration",
+    "Automatic promotion of research/candidate knowledge beyond ATL-161 controlled transition"
+  ],
+  "depthPolicy": {
+    "baseline": "Generate only frozen/validated governed depth.",
+    "onDemand": "Represent deeper requested scope as RESEARCH_REQUIRED until governed evidence is validated; do not silently merge into baseline."
+  },
+  "handover": {
+    "freeze": [
+      "generator inputs",
+      "canonical outputs",
+      "page projection outputs",
+      "supported structural patterns",
+      "unsupported daughter patterns"
+    ],
+    "v2Continuation": "ATL-156 generic cross-domain generation/regeneration"
+  },
+  "stopBoundary": [
+    "No all-daughter generation requirement",
+    "No every-pattern proof requirement",
+    "No universal selective regeneration"
+  ]
+}
