@@ -447,3 +447,57 @@ This note changes **retry behavior only**; it does not change the CURRENT BATON,
 For an authorized mutation/write that fails before durable state is confirmed: fresh-read the exact target/version/SHA; if the intended mutation already landed, continue without repeating it; otherwise, if authorization and target are unchanged, retry only the identical mutation using fresh state. Permit at most **two retries after the initial failure (three attempts total)**. Revalidate authorization/target/payload before every retry. Any changed baton, conflicting target state, ambiguous partial write, scope change, or governance/safety rejection ends retry immediately and fails closed. On success, mandatory read-back applies and the worker should finish the remaining authorized multi-step transaction in the same invocation. After three failed attempts, preserve the exact pending persistence state and enter the existing recovery-first protocol on the next eligible same-agent turn. Never repeat already durable substantive work merely because a later evidence/handoff write failed.
 
 Linear Shared Baton contains the full Owner directive. **Current baton remains unchanged.**
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-171 INDEPENDENT RECHECK — FILE-CONSISTENCY FIX VERIFIED PASS / NEW EXECUTABILITY DEFECT FOUND → CHATGPT REMEDIATION — 2026-09-29T03:19:32Z
+
+**Transition:** Claude → ChatGPT
+**Current holder / next agent:** ChatGPT
+**Exact current task:** ATL-171 — Atlas v1.5 Capability — Bounded Operational Knowledge & Canonical Information Semantics — remediate newly-found executability defect
+**Sequence controller:** ATL-177
+**Disposition:** INDEPENDENT_RECHECK_FAIL (FINAL: REWORK_REQUIRED). The specific 2026-09-29T02:47Z file-consistency defect IS confirmed fixed. A distinct, previously undetected defect blocks PASS. ATL-172/v2 and downstream tasks remain unrouted.
+
+### Predecessor result verified this turn (real tool output)
+
+- Resolved current baton from this GitHub log (`atlas-v1-5-live-sequence`), cross-checked against the Linear Shared Baton document (latest content there is the 2026-09-29T02:47Z FAIL entry plus a non-timestamped governance note) — GitHub's 03:06:00Z remediation-complete entry is newer and not contradicted; no conflict.
+- `git clone --branch atl-171-v15-operational-semantics` of the real repository; `git rev-parse HEAD` = `e7864715cb4865365dfa3d1f7163e94dcdbc9ad5` — exact match to the claimed commit.
+- `git hash-object scripts/materialize-operational-semantics-v1.js` = `33bc6d17b14ca202ee3287cff8245bd0b36ce14b` — exact match to claimed script blob.
+- `git hash-object data/generated/operational-semantics/road-ltl-v1.json` = `3de9d96e1eb0bc09851c8bcfb551913e57bb6614` — exact match to claimed committed-file blob.
+
+### File-consistency fix (2026-09-29T00:50Z/02:47Z defect): CONFIRMED FIXED
+
+- The materializer source no longer injects a post-serialization `identity` envelope (confirmed by direct source read: it now does `process.stdout.write(JSON.stringify(out,null,2)+'\n')` on the plain `out` object).
+- Independently ran the materializer's logic (see note below on how) and byte-diffed its stdout against the committed `data/generated/operational-semantics/road-ltl-v1.json`: **zero diff, exact byte match**, `recordCount: 22`, no `identity` field on either side.
+- Independently ran the committed test logic: both `run()` invocations produced identical output, `recordCount === 22`, and every record carries the required fields (`semanticRecordId`, `stateBefore`, `event`, `decision`, `rule`, `control`, `action`, `evidence`, `stateAfter`, `outcome`, `knowledgeState`, `dependencyClass`, non-empty `sourceIds`) — test logic reports **PASS ATL-171 deterministic operational semantics: 22 records**.
+
+### New defect found this turn (real tool output, not narrative) — NOT previously flagged
+
+**NON_EXECUTABLE_AS_COMMITTED:** Running the committed files exactly as named and as the exact-Claude-QA-action instructed —
+```
+node scripts/materialize-operational-semantics-v1.js
+node tests/atl-171-operational-semantics.test.js
+```
+— fails immediately on a clean checkout of this branch with:
+```
+ReferenceError: require is not defined in ES module scope
+```
+Root cause: the repository's root `package.json` declares `"type": "module"`, so Node treats any plain `.js` file as an ES module by default. Both new ATL-171 files are written in CommonJS syntax (`require(...)`, no `import`/`export`), so they cannot run under their committed filenames in this repository. This is reproducible on a fresh `git clone` of the exact evidence commit — not an environment quirk on this end.
+
+This contradicts the "Executable test" claim in the 02:21Z and 03:06Z durable-evidence lists: the test is not executable as committed. It also breaks the established repository convention — every other script/test in `scripts/` and `tests/` that uses Node's CommonJS-style patterns is named `.mjs` and written as ESM (`publish-module.mjs`, `validate-module.mjs`, `source-governance-audit.mjs`, all `tests/stage*.mjs`); ATL-171's two files are the only plain-`.js` CommonJS files in either directory, and they are the only ones that fail to run.
+
+I could only confirm the byte-identity/record-count/field results above by copying both files into an isolated scratch directory under a `.cjs` extension (forcing CommonJS interpretation) — a workaround performed only to verify the underlying content logic, which does not constitute passing evidence for the files as actually committed. The committed artifacts themselves do not run.
+
+### Exact ChatGPT remediation action
+
+Fix only the execution defect — do not touch the already-verified-correct record content, schema, or contract:
+1. Convert `scripts/materialize-operational-semantics-v1.js` and `tests/atl-171-operational-semantics.test.js` to the repository's existing convention: either (a) rename both to `.cjs` (updating the test's internal reference to the script's filename accordingly), or (b) rewrite both in ES module syntax (`import`/`export`) and rename to `.mjs`, matching every other script/test in these two directories.
+2. Push the fix on `atl-171-v15-operational-semantics`; do not regenerate or alter `data/generated/operational-semantics/road-ltl-v1.json`, the schema, or the contract — only the two source files' module packaging changes.
+3. Confirm the committed filenames actually run: `node scripts/<new-name>` produces stdout byte-identical to `data/generated/operational-semantics/road-ltl-v1.json`, and `node tests/<new-name>` prints the PASS line, both using the real committed filenames (no workaround copy).
+4. Record new commit/blob identities here and hand back to Claude for a final recheck restricted to confirming committed-filename executability plus a no-regression byte/record check.
+
+Do not start ATL-172/v2 or any task beyond ATL-171.
+
+**Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.
+**Linear mirror status:** PENDING this turn — mirroring to ATL-171 issue comment and the Linear Shared Baton Log immediately after this GitHub append is read back.
