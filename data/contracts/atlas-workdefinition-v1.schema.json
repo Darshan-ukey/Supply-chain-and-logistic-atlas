@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "atlas-workdefinition-v1",
+  "title": "Atlas Canonical WorkDefinition v1",
+  "type": "object",
+  "required": ["workDefinitionId","version","lineage","scope","requiredInputs","decisionSemantics","actorsSystems","actions","outcomes","exceptions","bindingNeeds","knowledgeState"],
+  "properties": {
+    "workDefinitionId":{"type":"string"},
+    "version":{"type":"string"},
+    "lineage":{"type":"object","required":["semanticRecordId","moduleVersion","sourceIds"]},
+    "scope":{"type":"object","required":["moduleId","processId"]},
+    "requiredInputs":{"type":"array"},
+    "decisionSemantics":{"type":"object","required":["decision","rule","control"]},
+    "actorsSystems":{"type":"object"},
+    "actions":{"type":"array","minItems":1},
+    "outcomes":{"type":"array","minItems":1},
+    "exceptions":{"type":"array"},
+    "bindingNeeds":{"type":"array"},
+    "knowledgeState":{"enum":["KNOWN_AUTHORITATIVE","KNOWN_CONDITIONAL","KNOWN_SYNTHESIS","UNKNOWN","CONFLICTING","NOT_APPLICABLE","UNSUPPORTED","CLIENT_BINDING_REQUIRED"]}
+  },
+  "additionalProperties": true
+}
