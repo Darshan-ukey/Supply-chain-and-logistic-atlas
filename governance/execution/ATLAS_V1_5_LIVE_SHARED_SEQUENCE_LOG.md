@@ -93,3 +93,57 @@ ATL-155 — Atlas v1.5 Capability — Bounded Daughter Knowledge & Page Generati
 **Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.  
 **Linear mirror status:** SYNCED (already posted to Shared Baton Log at this same timestamp).  
 **Location note:** This log was moved off `main` to branch `atlas-v1-5-live-sequence` on 2026-09-29 at Owner instruction; this branch is now the authoritative location.
+
+
+---
+
+## DUAL-SURFACE CONTINUITY / FALLBACK RULE — OWNER DIRECTIVE — 2026-09-29
+
+GitHub remains the **primary sequencing surface** for Atlas v1.5 LIVE. Linear Shared Baton is now the **explicit fallback sequencing surface** when the GitHub shared log cannot provide a usable current handoff.
+
+### Pickup order
+
+1. Read the GitHub shared sequence log on branch `atlas-v1-5-live-sequence`.
+2. Resolve the **latest valid CURRENT BATON**, not merely the last block or last completed task.
+3. If the GitHub log is unavailable, missing, unreadable, write-stale, or does not contain a usable current handoff for the executor, read the Linear document **Atlas Autonomous Execution — Shared Baton Log** as fallback.
+4. A worker may execute from Linear fallback only when the Linear entry contains a complete valid handoff.
+
+### Valid-handoff test
+
+A handoff is executable only when it contains enough context to prove all of the following:
+- exact sequence controller: ATL-177;
+- exact current task ID/title;
+- exact current holder / next agent;
+- predecessor task/result where relevant;
+- disposition (implementation complete, QA PASS/FAIL, remediation required, etc.);
+- durable evidence identities sufficient to establish what was completed;
+- exact next action;
+- Owner/gate status;
+- no contradiction with known task dependencies or an explicitly newer handoff on the other readable surface.
+
+**Never infer the current task from the last completed work.**  
+**Never pick the numerically/chronologically next task without an explicit valid handoff.**
+
+### Cross-surface conflict / freshness rule
+
+If both surfaces are readable:
+- prefer the **newest valid handoff by explicit UTC timestamp and transition context**, regardless of which surface contains it;
+- verify that the newer handoff references the predecessor result/evidence expected by ATL-177;
+- if one surface is stale and the other has a newer valid handoff, use the newer valid handoff and later mirror it to the stale surface;
+- if timestamps/context conflict materially and neither can be proven newer/valid, fail closed and reconcile before implementation.
+
+### Write / fallback behavior
+
+**ChatGPT preferred write path:** GitHub shared log first, then Linear mirror.  
+If GitHub write fails but Linear is writable, ChatGPT may persist the complete handoff to Linear as continuity fallback and continue only after read-back verifies that Linear now contains a valid current handoff.
+
+**Claude preferred write path:** GitHub shared log when available.  
+If Claude cannot write GitHub but can write Linear, Claude must persist the complete QA result + next handoff to Linear and read it back. ChatGPT may then consume that Linear handoff and mirror it to GitHub on its next turn.
+
+A worker that successfully picks up from the fallback surface should, when it has write access to the primary surface, repair/mirror the missing handoff before or alongside its own result so both surfaces converge.
+
+### Continuity invariant
+
+At least one surface must contain a **complete current handoff** at all times. A partial update, a completion-only note, or a stale last-task record does not authorize work.
+
+GitHub is primary; Linear is continuity fallback. Neither surface may cause execution to regress to already completed work.
