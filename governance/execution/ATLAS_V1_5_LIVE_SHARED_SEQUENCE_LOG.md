@@ -605,3 +605,44 @@ Linear Shared Baton Log entry written and read back (updatedAt 2026-09-29T03:49:
 
 **Owner/gate status:** Owner routing decision resolved: ATL-157 authorized. No production promotion authorization. ATL-142 final production gate unaffected. BOL/FIRI remains outside v1.5 LIVE except ATL-143 freeze/handover at its scheduled sequence point.  
 **Unresolved recovery state:** NONE for implementation. GitHub handoff persistence requires this entry to be read back before transfer is effective.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-157 INDEPENDENT QA PASS → ChatGPT / ATL-159 BUILD — 2026-09-29T04:21:03Z
+
+**Transition:** Claude → ChatGPT
+**Current holder / next agent:** ChatGPT
+**Task QA'd:** ATL-157 — Atlas v1.5 Capability — Bounded On-Demand Depth: Deepen This Scope
+**Sequence controller:** ATL-177
+**Disposition:** ATL-157 INDEPENDENT_QA_PASS — no defects found
+
+### Verification performed (commands actually run, this turn)
+
+- `git fetch origin atl-157-v15-bounded-depth` and `git worktree add` at tip `770ae4ab9865ae924dd4badb4df6b16f16e52531` — matched the ChatGPT-claimed implementation tip exactly.
+- Confirmed via `git diff c7c25ebad683796af29bf03d229b61566f8c9a97 770ae4ab9865ae924dd4badb4df6b16f16e52531 --stat`: only 5 new additive files (contract, materializer, test, 2 fixtures); `data/generated/operational-semantics/road-ltl-v1.json` (canonical) has zero diff — canonical mutation claim (false) independently confirmed.
+- `sha1sum scripts/materialize-bounded-depth-v1.cjs` = `e44f2d4d5cac58260f079ca76ffb763428f0dbe9` (git blob `348f4c48c7ce58ef629d0660e3ea3281537679ae`, matches ChatGPT's cited blob).
+- Ran the committed test directly: `node tests/atl-157-bounded-depth.test.cjs` → exit 0, printed `PASS ATL-157 bounded human-triggered depth: 6 provenanced candidates`.
+- Independently re-ran the materializer twice against the positive fixture (`tests/fixtures/atl-157-road-ltl-depth-request.json`) — byte-identical output both runs (determinism confirmed outside the packaged test harness).
+- Independently ran the materializer against the negative fixture (`tests/fixtures/atl-157-machine-trigger-reject.json`, `actorType:"MALKOM_RUNTIME"`) — failed closed with `HUMAN_TRIGGER_REQUIRED`, exit 1, as required by the v1.5 human-only-trigger boundary.
+- Positive-fixture output inspected directly: 6/6 candidates provenanced (`sourceIds` + `claims` non-empty on every field), `validation.failClosed=true`, `validation.canonicalMutation=false`, `downstream.canonicalPromotion="NOT_PERFORMED"`, `gapDetection.gaps=[]`.
+- Checked `data/governance/source-registry-v1.json` — the three cited source IDs (`src-dsdc-pickup`, `src-uncefact-rdm`, `src-x12`) resolve to real registry entries.
+- Searched the full repo tree (`find . -iname '*ocean*'`) at this branch tip: no Ocean/other module exists anywhere in the repo. ChatGPT's stated evidence limitation ("no eligible governed Ocean module was present on the ATL-171 lineage") is independently confirmed true, not a fabricated excuse.
+- Searched `api/`, `engine/` for any wiring of `materialize-bounded-depth-v1` or `materialize-operational-semantics-v1` into the live product: none found for either ATL-157 or its ATL-171 predecessor. Judged **not a defect** for this task: ATL-177's own staged sequence defers product/UI reachability to Stage 5 (ATL-167 / ATL-140), not Stage 2 knowledge/depth capability tasks — reachability is out of scope for ATL-157.
+
+### Outcome/architecture standard applied
+
+`governance/product/ATLAS_V1_5_QA_OUTCOME_ARCHITECTURE_STANDARD_V1.md` (cited by ATL-177) does **not exist in the repository on any ref checked** (`main`, `atlas-v1-5-live-sequence`) — `search_code` for `QA_OUTCOME_ARCHITECTURE_STANDARD` returns 0 results repo-wide. Flagging this as a real gap: the criteria list was applied directly from ATL-177's own issue description instead (outcome, coherence, v2 compatibility, canonical ownership, reachability, provenance, fail-closed, architecture, MALKOM_UTILITY/CONSUMER_INDEPENDENCE). All applicable criteria pass at this stage boundary.
+
+### Eligibility note (recorded, not treated as a blocker)
+
+ATL-157 currently carries **no Linear labels** (no `Agent — Claude`, no `Governance Hold`, no `Owner Decision Required`) and status `In Progress`, not one of the `Agent Ready`/`Awaiting Independent QA`/`Autonomous Rework` routing states. This QA proceeded anyway because ATL-177 is explicitly the shared-baton-governed exception to label-based routing ("GitHub decides the current holder... Linear is not sequencing authority"; ATL-177's own Eligibility rule requires only predecessor PASS + evidence + dependencies + no Owner decision + Shared Baton naming the correct agent — all satisfied here). Recommend Owner review of whether label hygiene should be tightened for this sequence.
+
+### Forward handoff (QA-PASS optimization)
+
+Next task: **ATL-159** — Atlas v1.5 Capability — Bounded Work Decomposition & Canonical WorkDefinition. Authorization basis: next item in ATL-177's superseding 20-task v1.5 sequence (`...ATL-171 → ATL-157 → ATL-159...`); ATL-159 status is `Todo`, carries no `Governance Hold` / `Owner Decision Required` label; its stated inputs (governed Daughter/depth knowledge) are now satisfied by the ATL-157 PASS recorded above plus the already-PASSed ATL-171 contract. Do not route ATL-165/ATL-163 or anything past ATL-159; do not touch ATL-172 (still Owner-gated per the standing hold).
+
+**Exact ChatGPT action:** Build ATL-159 per its Linear description (bounded work decomposition + canonical WorkDefinition consuming the ATL-157 candidate-knowledge contract and ATL-171 operational-semantics contract; no compilation from unverifiable historical P6.1 payload; explicit UNKNOWN/CLIENT_BINDING_REQUIRED states; stay inside the stated STOP boundary). Persist implementation evidence (branch, commit SHA, blob SHAs, test output) to this GitHub log and read it back before marking BUILD_COMPLETE / AWAITING_INDEPENDENT_QA. Claude does not self-mark PASS on ChatGPT's behalf and did not implement this task.
+
+**Owner/gate status:** No Owner decision pending on ATL-157 or ATL-159. ATL-142 final production gate unaffected. BOL/FIRI remains outside v1.5 LIVE. ATL-172/v2 entry remains Owner-gated (unchanged from the prior standing hold).
+**Unresolved recovery state:** NONE. This entry is being persisted to GitHub first (primary) and mirrored to the Linear Shared Baton Log this same turn; both will be read back before this turn ends.
