@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atlas v1.5 Operational Semantic Record",
+  "type": "object",
+  "required": [
+    "semanticRecordId",
+    "moduleId",
+    "processId",
+    "stateBefore",
+    "event",
+    "decision",
+    "rule",
+    "control",
+    "action",
+    "evidence",
+    "stateAfter",
+    "outcome",
+    "inputs",
+    "outputs",
+    "sourceIds",
+    "knowledgeState",
+    "dependencyClass",
+    "relationships"
+  ],
+  "properties": {
+    "semanticRecordId": {
+      "type": "string"
+    },
+    "moduleId": {
+      "type": "string"
+    },
+    "processId": {
+      "type": "string"
+    },
+    "stateBefore": {
+      "type": "string"
+    },
+    "event": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string"
+    },
+    "rule": {
+      "type": "string"
+    },
+    "control": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "string"
+    },
+    "stateAfter": {
+      "type": "string"
+    },
+    "outcome": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "array"
+    },
+    "outputs": {
+      "type": "array"
+    },
+    "sourceIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "knowledgeState": {
+      "enum": [
+        "KNOWN_AUTHORITATIVE",
+        "KNOWN_CONDITIONAL",
+        "KNOWN_SYNTHESIS",
+        "UNKNOWN",
+        "CONFLICTING",
+        "NOT_APPLICABLE",
+        "UNSUPPORTED"
+      ]
+    },
+    "dependencyClass": {
+      "enum": [
+        "GENERIC_DOMAIN",
+        "CLIENT_MASTER_REQUIRED",
+        "EXTERNAL_AUTHORITY_REQUIRED",
+        "UNRESOLVED"
+      ]
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "targetId"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "targetId": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
