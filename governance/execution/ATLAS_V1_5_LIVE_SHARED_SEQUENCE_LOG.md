@@ -703,3 +703,43 @@ Independently QA ATL-159 at branch `atl-159-v15-workdefinition` tip `b79221fbb26
 
 **Holder:** ChatGPT builds ATL-165 per the Linear handoff.  
 **Owner attention needed:** trim/rotate the Linear Shared Baton Log; refresh the ATL-177 description; ensure future sessions have the repo attached with push access.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-165 BUILD COMPLETE → CLAUDE INDEPENDENT QA — 2026-09-29T06:44Z
+
+**Transition:** ChatGPT → Claude  
+**Current holder / next agent:** Claude  
+**Exact current task:** ATL-165 — Atlas v1.5 Capability — Minimal Client Binding Requirements & Manual Resolution — independent QA  
+**Sequence controller:** ATL-177  
+**Disposition:** CHATGPT_BUILD_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_QA
+
+### Predecessor context from Linear Continuation 01
+
+Active pickup authority was Linear document `Atlas Autonomous Execution — Shared Baton Log — Continuation 01`, document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`. Its current valid Claude → ChatGPT handoff records ATL-159 INDEPENDENT_QA_PASS and authorizes ATL-165 BUILD. Eligibility basis: ATL-159's canonical WorkDefinition exposes `CLIENT_BINDING_REQUIRED` / `bindingNeeds`; ATL-165 is Todo + `Agent — ChatGPT` + `Agent Ready`; no Governance Hold / Owner Decision Required. ATL-142 remains Owner-gated; ATL-172/v2 remains Owner-gated; BOL/FIRI remains outside v1.5 LIVE.
+
+### Implementation result and durable evidence
+
+Implementation branch: `atl-165-v15-client-binding`. Final implementation tip: `ba44ed6842eea132d0ce3a50646901edae8fd362`.
+
+ATL-165 is a clean three-commit descendant of ATL-159 tip `b79221fbb267319c3956087da7f51fbbe20b5b17` (compare: ahead 3, behind 0). Durable artifacts:
+- governance contract `governance/product/ATL_165_V1_5_CLIENT_BINDING_CONTRACT_V1.md`, blob `126b83de0384641ee7dd672211cb5d019973bb45`;
+- client-binding schema `data/contracts/atlas-client-binding-set-v1.schema.json`, blob `1d3000f527b9b168f89ac4dbb2a7609a7edbac79`;
+- frozen bounded binding set `data/generated/client-bindings/road-ltl-ltl04-client-binding-v1.json`, blob `47fe62aa91005cb48bbae69f0bd890d8b0e42d28`;
+- committed contract test `tests/atl-165-client-binding.test.cjs`, blob `d6698c63f8a215b8879754015ad1ef60bf8fdfc7`.
+
+The binding set references ATL-159 WorkDefinition `wd::road-ltl::LTL-04::v1` and consumes its `CLIENT_BINDING_REQUIRED` dimension. Every binding records reason, expected value/source/system/authority, collection question and canonical-source provenance. Two bounded demo bindings are explicitly `GOVERNED_MANUAL` with binding-evidence IDs; one execution-parameters binding remains `CLIENT_BINDING_REQUIRED`. Readiness therefore remains fail-closed with resolvedCount=2 / unresolvedCount=1. The Malkom package projects the same resolved/unresolved IDs and state with `canonicalMutation=false`. Client values are not written into the canonical WorkDefinition.
+
+The committed CommonJS contract test checks ATL-159 binding-need consumption, actionable binding metadata, manual-resolution evidence, resolved/unresolved counts, fail-closed readiness, Malkom state propagation, and canonical non-mutation. ChatGPT has not self-certified independent QA; Claude must execute the committed test/runtime checks.
+
+### Recovery state
+
+This build resumed from a prior write-path recovery condition. Prepared descendant commit `9266e1bf0b9a458818bcddac32ec2d9ae841fd53` had already been created but the branch ref previously failed to advance. On this recovery turn, the branch was fresh-read and the exact pending non-force fast-forward to `9266e1bf...` succeeded. No force update and no reconstruction of already-durable work occurred. The contract test was then added normally, producing final tip `ba44ed6842eea132d0ce3a50646901edae8fd362`. **Unresolved recovery state: NONE.**
+
+### Exact Claude action
+
+Independently QA ATL-165 at branch `atl-165-v15-client-binding` tip `ba44ed6842eea132d0ce3a50646901edae8fd362` against ATL-165 Build/STOP/Handover scope and ATL-177 outcome/architecture criteria. Run `node tests/atl-165-client-binding.test.cjs` and independently inspect the frozen binding set. Verify: consumption of ATL-159 `bindingNeeds`; reason + expected value/source/system/authority + collection question for each binding; governed/manual resolution evidence; unresolved fail-closed behavior; strict separation from canonical reusable domain truth; readiness and Malkom package propagation; provenance; bounded Road LTL/LTL-04 scope; and STOP boundary (no enterprise discovery, bulk SOP ingestion, automated extraction/mapping, or full enterprise-model onboarding). If PASS, write Claude → ChatGPT PASS plus the exact next eligible ATL-177 action to **Linear Continuation 01 document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`** and read it back. If FAIL, route only exact ATL-165 defects to ChatGPT through that same Linear continuation.
+
+**Owner/gate status:** No Owner decision pending for ATL-165 QA. ATL-142 production promotion remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved persistence/recovery state:** NONE.
