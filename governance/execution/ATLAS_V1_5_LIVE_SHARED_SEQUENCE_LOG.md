@@ -403,3 +403,36 @@ If PASS: persist independent QA evidence and route only the next eligible ATL-17
 
 **Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.  
 **Linear mirror status:** PENDING — this recovered ATL-171 implementation result + Claude QA handoff must be mirrored to ATL-171 / Linear Shared Baton when writable. GitHub primary handoff is complete once this append is read-back verified.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-171 FILE-CONSISTENCY REMEDIATION COMPLETE → CLAUDE RECHECK — 2026-09-29T03:06:00Z
+
+**Transition:** ChatGPT → Claude  
+**Current holder / next agent:** Claude  
+**Exact task/finding:** ATL-171 — Atlas v1.5 Capability — Bounded Operational Knowledge & Canonical Information Semantics — remediate Claude QA finding “Output File Consistency Mismatch”  
+**Sequence controller:** ATL-177  
+**Disposition:** REMEDIATION_COMPLETE / AWAITING_INDEPENDENT_QA. ChatGPT does not self-mark PASS/FIXED—VERIFIED.
+
+### Predecessor context from Linear
+Latest valid Claude → ChatGPT handoff in Linear Shared Baton: **2026-09-29T02:47Z — FAIL / REMEDIATION REQUIRED**. Claude verified operational-semantics content, deterministic generation, 22 records, schema, canonical identity, dependency-class separation, knowledge state, provenance, rule-ontology semantics, bounded scope, and contract requirements as correct. Exact defect: materializer appended an `identity.sha256` envelope absent from committed `data/generated/operational-semantics/road-ltl-v1.json`, causing file-level mismatch despite core records matching. Claude authorized Option A or B and recommended **Option A: remove identity field from materializer output**.
+
+### Result / durable evidence
+- Executed only authorized Option A on branch `atl-171-v15-operational-semantics`.
+- Commit: `e7864715cb4865365dfa3d1f7163e94dcdbc9ad5`.
+- Updated file: `scripts/materialize-operational-semantics-v1.js`.
+- New script blob: `33bc6d17b14ca202ee3287cff8245bd0b36ce14b`.
+- Exact change: removed post-serialization `out.identity={sha256:...}`; materializer now emits the canonical `out` object directly with the same pretty JSON + trailing newline format as the committed artifact.
+- Frozen canonical output was **not modified**: `data/generated/operational-semantics/road-ltl-v1.json` blob remains `3de9d96e1eb0bc09851c8bcfb551913e57bb6614`; read-back confirms `recordCount: 22` and no `identity` envelope.
+- Read-back of the updated script confirms the identity injection is absent.
+- No ATL-172/v2 work started; no unrelated implementation redone.
+
+### Dependency / eligibility basis
+ATL-171 remained explicitly routed to ChatGPT by Claude’s Linear FAIL/remediation handoff; no Owner decision was pending; the defect was isolated to writer/output consistency. This turn was recovery-first because the prior substantive mutation attempts had failed before repository mutation; current branch state was re-read before retry.
+
+### Exact Claude recheck action
+Independently fetch `atl-171-v15-operational-semantics` at/including commit `e7864715cb4865365dfa3d1f7163e94dcdbc9ad5`. Re-run/review the ATL-171 deterministic materialization test and verify that materializer stdout is now byte-identical to committed `data/generated/operational-semantics/road-ltl-v1.json` blob `3de9d96e1eb0bc09851c8bcfb551913e57bb6614`, while all previously PASSed ATL-171 semantics remain unchanged. Return PASS or exact remaining defects. Do not start ATL-172/v2 unless separately routed after QA.
+
+**Owner/gate status:** No Owner decision pending. ATL-142 production-promotion gate unaffected. BOL/FIRI remains outside v1.5 LIVE sequence.  
+**Unresolved recovery state:** NONE — GitHub mutation succeeded; this handoff must be read back before effective transfer.
