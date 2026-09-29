@@ -567,3 +567,41 @@ ATL-172 is Backlog with no routing labels and this sequence's governance bars se
 ### Persistence
 
 Linear Shared Baton Log entry written and read back (updatedAt 2026-09-29T03:49:32Z); ATL-171 visible-trace comment id `f73c0157-e206-4659-8740-415e808eec1b`; ATL-171 moved to Done. This GitHub entry repairs the earlier GITHUB REPAIR PENDING state (push previously failed with 403 repo-not-authorized; session repo scope has since been widened). Linear mirror status: already complete.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-157 BUILD COMPLETE → CLAUDE INDEPENDENT QA — 2026-09-29T04:10:00Z
+
+**Transition:** ChatGPT → Claude  
+**Current holder / next agent:** Claude  
+**Exact task:** ATL-157 — Atlas v1.5 Capability — Bounded On-Demand Depth: Deepen This Scope  
+**Sequence controller:** ATL-177
+
+**Owner routing correction:** Darshan explicitly directed ChatGPT this turn to pick ATL-157 and continue the canonical v1.5 sequence even if the prior baton incorrectly pointed toward ATL-172. ATL-177's superseding 20-task sequence independently confirms ATL-171 → ATL-157. ATL-172 remains a v2 continuation and was not started.
+
+**Predecessor context from Linear:** Claude independently marked ATL-171 COMPLETE/PASS after executing the committed .cjs materializer/test at commit `c7c25ebad683796af29bf03d229b61566f8c9a97`; 22-record output was byte-identical and both prior ATL-171 defects were confirmed fixed. Claude then incorrectly held for ATL-172 Owner scoping. Owner has now resolved that routing ambiguity in favor of ATL-157.
+
+**Result / disposition:** BUILD_COMPLETE / AWAITING_INDEPENDENT_QA. ChatGPT does not self-mark PASS or FIXED—VERIFIED.
+
+**Durable implementation evidence:**
+- branch: `atl-157-v15-bounded-depth`
+- branch base: ATL-171 verified commit `c7c25ebad683796af29bf03d229b61566f8c9a97`
+- current implementation tip: `770ae4ab9865ae924dd4badb4df6b16f16e52531`
+- bounded-depth contract: `data/contracts/atlas-bounded-depth-v1.json` (read-back blob `86f1a82a231ed13c50fccc49d6377e25c34e7e80`)
+- materializer: `scripts/materialize-bounded-depth-v1.cjs` (post-source-registry update blob `348f4c48c7ce58ef629d0660e3ea3281537679ae`)
+- positive fixture: `tests/fixtures/atl-157-road-ltl-depth-request.json`
+- negative machine-trigger fixture: `tests/fixtures/atl-157-machine-trigger-reject.json`
+- test: `tests/atl-157-bounded-depth.test.cjs` (read-back blob `a254a7a611b2c2881c35e44f5c5c19e085ef41ff`)
+- ATL-157 Linear state set to In Progress; no QA result self-certified.
+
+**Implemented v1.5 boundary:** explicit AUTHORIZED_HUMAN trigger; existing operational-semantics lookup first; requested-field gap detection; governed source-registry-only bounded research eligibility; field/entity normalization to canonical module/process/semantic-record identity; conflict detection; provenanced candidate overlay; fail-closed non-human/unknown/unregistered-source/unsupported-field behavior; no canonical mutation; WorkDefinition input eligibility only when unresolved gaps are zero. Malkom-triggered/continuous autonomous research and universal compounding remain prohibited.
+
+**Evidence limitation / Ocean boundary:** No eligible governed Ocean module was present on the verified ATL-171 lineage used as the ATL-157 base. The ATL-157 requirement says Ocean/other proof only “if evidence permits”; ChatGPT did not invent an Ocean proof or import unverified external semantics. Claude should independently confirm this boundary is acceptable or identify a governed current-lineage Ocean artifact that must be incorporated.
+
+**Dependency / eligibility basis:** ATL-171 predecessor independent QA PASS is durable; ATL-157 is the next task in ATL-177's superseding 20-task v1.5 sequence; Owner explicitly corrected the stale ATL-172 routing and authorized ATL-157 in this turn. No BOL/FIRI work was entered.
+
+**Exact Claude QA/recheck action:** Independently fetch `atl-157-v15-bounded-depth` at/including `770ae4ab9865ae924dd4badb4df6b16f16e52531`. Run `node tests/atl-157-bounded-depth.test.cjs` and directly run the materializer with both fixtures. Verify deterministic output; human-only trigger; existing-knowledge-first behavior; source-registry/provenance integrity; gap/conflict fail-closed behavior; candidate-only persistence/no canonical mutation; WD-input gating; v1.5 STOP boundary; and the conditional Ocean/other evidence limitation. Also apply the superseding ATL-177 outcome/architecture QA standard. Return PASS or exact ATL-157 defects to ChatGPT via Linear. If PASS, route only the next canonical v1.5 task (ATL-159) if its explicit dependencies are satisfied; do not route ATL-172.
+
+**Owner/gate status:** Owner routing decision resolved: ATL-157 authorized. No production promotion authorization. ATL-142 final production gate unaffected. BOL/FIRI remains outside v1.5 LIVE except ATL-143 freeze/handover at its scheduled sequence point.  
+**Unresolved recovery state:** NONE for implementation. GitHub handoff persistence requires this entry to be read back before transfer is effective.
