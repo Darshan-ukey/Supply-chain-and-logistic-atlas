@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "atlas-malkom-readiness-summary-v1.0",
+  "status": "FROZEN",
+  "bounded": true,
+  "moduleId": "road-ltl",
+  "processId": "LTL-04",
+  "workDefinitionId": "wd::road-ltl::LTL-04::v1",
+  "readinessClass": "V1_5_MALKOM_HANDOFF_READINESS",
+  "universalExecutionReady": false,
+  "reusableDomainKnowledge": {"state":"AVAILABLE","sourceIds":["src-dsdc-pickup","src-uncefact-rdm","src-x12"]},
+  "workSemantics": {"state":"AVAILABLE","workDefinitionVersion":"1.0.0","requiredInputCount":4,"actionCount":1,"outcomeCount":1},
+  "rulesControlsCoverage": {"state":"AVAILABLE","decision":true,"rule":true,"control":true,"evidence":true},
+  "knowledgeGaps": [{"gapId":"gap::road-ltl::LTL-04::client-execution-parameters","state":"CLIENT_BINDING_REQUIRED","blocking":true,"question":"Which governed client/master execution parameters and approved values apply to this pickup request?"}],
+  "clientBindings": {"state":"CLIENT_BINDING_REQUIRED","resolvedCount":2,"unresolvedCount":1,"unresolvedBindingIds":["binding::road-ltl::LTL-04::execution-parameters"]},
+  "masterExternalDependencies": [{"dependency":"client master data or governed carrier/client contract","system":"client TMS/master-data system or approved Malkom configuration source","authority":"authorized client operations/master-data owner","state":"REQUIRED"}],
+  "projection": {"consumer":"MALKOM","disposition":"BLOCKED","supported":false,"supportedWithLoss":false,"blocked":true,"reason":"One required client binding remains unresolved; fail-closed projection is required."},
+  "blockers": [{"type":"CLIENT_BINDING_REQUIRED","id":"binding::road-ltl::LTL-04::execution-parameters","nextQuestion":"Which governed client/master execution parameters and approved values apply to this pickup request?"}],
+  "lineage": {"workDefinition":"data/generated/workdefinitions/road-ltl-ltl04-v1.json","clientBindingSet":"data/generated/client-bindings/road-ltl-ltl04-client-binding-v1.json"},
+  "stopBoundary": ["NO_UNIVERSAL_DOMAIN_ENTERPRISE_RUNTIME_RESOLVER","NO_FIRI_GENERALIZED_READINESS","NO_AUTOMATIC_READINESS_DRIVEN_RESEARCH_LOOP"]
+}
