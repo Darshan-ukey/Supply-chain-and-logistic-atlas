@@ -147,3 +147,45 @@ A worker that successfully picks up from the fallback surface should, when it ha
 At least one surface must contain a **complete current handoff** at all times. A partial update, a completion-only note, or a stale last-task record does not authorize work.
 
 GitHub is primary; Linear is continuity fallback. Neither surface may cause execution to regress to already completed work.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-155 IMPLEMENTATION COMPLETE → CLAUDE INDEPENDENT QA — 2026-09-29T00:31Z
+
+**Transition:** ChatGPT → Claude  
+**Current holder / next agent:** Claude  
+**Exact current task:** ATL-155 — Atlas v1.5 Capability — Bounded Daughter Knowledge & Page Generation — independent QA  
+**Sequence controller:** ATL-177  
+**Disposition:** CHATGPT_IMPLEMENTATION_COMPLETE / QA_CANDIDATE
+
+### Acceptance/result summary
+
+- Frozen a v1.5 bounded Daughter-generation contract with canonical Daughter knowledge model as source of truth and page as derived projection.
+- Road LTL is the supported ACTIVE / A5_VERIFIED proof case, bound to frozen baseline evidence and expected registry counts (22 processes / 13 A3 / 39 edges / 29 sources).
+- Ocean FCL and Ocean LCL are explicitly handled at their actual frozen PLANNED / REFERENCE_ONLY depth: reference/source/gap projection only, with deeper scope RESEARCH_REQUIRED.
+- Explicitly prohibits fabricated Ocean A4/A5/execution topology.
+- Separates baseline knowledge from deeper/on-demand research; provenance/version identity required.
+- Freezes generator inputs/outputs, supported patterns and known unsupported patterns.
+- Preserves ATL-156/v2 STOP boundary: no all-~70 daughter generation, every-pattern proof or universal selective regeneration.
+
+### Durable implementation evidence
+
+- Implementation branch: `atl-155-v15-bounded-daughter-generation`
+- JSON artifact: `governance/product/ATL_155_V1_5_BOUNDED_DAUGHTER_GENERATION_V1.json`
+- JSON commit: `9b539c9cfef5b01797a7c0d95bea6f51847030bf`
+- JSON blob: `2bbae8d6444fd08a302f9e6629115a6f37ba10bc`
+- MD artifact: `governance/product/ATL_155_V1_5_BOUNDED_DAUGHTER_GENERATION_V1.md`
+- MD commit: `221255757f1105500a889c7256c253326f6d7182`
+- MD blob: `6d1549fbfe8275c478583f9a3e171d6d679ad36c`
+- Frozen baseline commit referenced: `f9b08a951ca823ff8c23b64044fe1a7abb9dde79`
+- Read-back verification completed for both ATL-155 artifacts.
+
+### Exact Claude QA action
+
+Independently fetch/read both ATL-155 artifacts from branch `atl-155-v15-bounded-daughter-generation`. Verify against ATL-155 Build/STOP/Handover acceptance and frozen baseline: canonical model vs page projection separation; Road LTL governed A5 proof; Ocean FCL/LCL bounded use without fabricated depth; meaningful structural-dimension contract; provenance/version identity; baseline vs on-demand depth separation; existing-UX projection target; supported/unsupported pattern freeze; and ATL-156/v2 STOP boundary.
+
+If PASS: append independent QA evidence here and route only the next eligible ATL-177 task after fresh dependency/gate verification. If FAIL: route exact ATL-155 defects to ChatGPT. Do not self-expand into ATL-156/v2.
+
+**Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.  
+**Linear mirror status:** PENDING — ATL-155 implementation evidence and this handoff have not been mirrored to Linear; synchronization is non-blocking and may be performed later from this GitHub entry.
