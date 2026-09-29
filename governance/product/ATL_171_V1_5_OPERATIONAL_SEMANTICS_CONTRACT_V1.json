@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "atlas-operational-semantics-v1.0",
+  "status": "FROZEN",
+  "task": "ATL-171",
+  "scope": {
+    "moduleId": "road-ltl",
+    "moduleVersion": "1.2",
+    "depth": "A5_VERIFIED",
+    "bounded": true,
+    "exhaustiveFieldResolution": false
+  },
+  "canonicalInputs": [
+    "data/modules/road-ltl-v1.2.json",
+    "data/core/enterprise-core-ontology-v1.json",
+    "governance/relationship-vocabulary-v1.json",
+    "governance/rule-registry-v1.1.json",
+    "data/provenance/road-ltl-claim-provenance-v1.json"
+  ],
+  "semanticDimensions": [
+    "businessObjects",
+    "documents",
+    "fields",
+    "rules",
+    "decisions",
+    "validations",
+    "controls",
+    "states",
+    "events",
+    "exceptions",
+    "evidence",
+    "relationships"
+  ],
+  "identityContract": {
+    "stableId": "<moduleId>::<processId>::<semanticType>::<sourceIdentity>",
+    "sourceIdsRequired": true,
+    "provenanceRequired": true,
+    "canonicalIdentityNeverInferredFromPageText": true
+  },
+  "ruleSemantics": {
+    "registry": "governance/rule-registry-v1.1.json",
+    "deterministicValidationRequired": true,
+    "llmCannotOverride": true,
+    "unknownInteractionCreatesKnowledgeGap": true,
+    "relationshipType": "EVALUATES_RULE"
+  },
+  "dependencyClasses": [
+    "GENERIC_DOMAIN",
+    "CLIENT_MASTER_REQUIRED",
+    "EXTERNAL_AUTHORITY_REQUIRED",
+    "UNRESOLVED"
+  ],
+  "knowledgeStates": [
+    "KNOWN_AUTHORITATIVE",
+    "KNOWN_CONDITIONAL",
+    "KNOWN_SYNTHESIS",
+    "UNKNOWN",
+    "CONFLICTING",
+    "NOT_APPLICABLE",
+    "UNSUPPORTED"
+  ],
+  "workDefinitionInputContract": {
+    "id": "atlas-workdefinition-semantic-input-v1",
+    "required": [
+      "semanticRecordId",
+      "moduleId",
+      "processId",
+      "stateBefore",
+      "event",
+      "decision",
+      "rule",
+      "control",
+      "action",
+      "evidence",
+      "stateAfter",
+      "outcome",
+      "inputs",
+      "outputs",
+      "sourceIds",
+      "knowledgeState",
+      "dependencyClass",
+      "relationships"
+    ],
+    "failClosed": "UNKNOWN/CONFLICTING/UNSUPPORTED material semantics cannot be converted into executable WorkDefinition assertions."
+  },
+  "storage": {
+    "canonicalPath": "data/generated/operational-semantics/road-ltl-v1.json",
+    "writer": "ATL-171 deterministic materializer",
+    "validator": "ATL-171 contract validator / independent QA",
+    "promotion": "Owner-gated release custody",
+    "retrieval": "stable semanticRecordId or moduleId+processId; downstream ATL-159 consumes workDefinitionInputContract"
+  },
+  "stopBoundary": [
+    "no exhaustive information-resolution coverage across every Road LTL field/object/task",
+    "no complete FIRI scale-up",
+    "no universal semantic coverage across all daughters/domains"
+  ],
+  "handover": {
+    "consumer": "ATL-159",
+    "v2Continuation": "ATL-172"
+  }
+}
