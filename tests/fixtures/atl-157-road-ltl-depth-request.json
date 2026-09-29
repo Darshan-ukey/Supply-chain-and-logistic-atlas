@@ -1,0 +1,6 @@
+{
+  "moduleId": "road-ltl",
+  "processId": "LTL-04",
+  "trigger": {"actorType": "AUTHORIZED_HUMAN", "explicitRequest": true, "requestId": "ATL-157-PROOF-ROAD-LTL-01"},
+  "requestedFields": ["decision","rule","control","action","evidence","outcome"]
+}
