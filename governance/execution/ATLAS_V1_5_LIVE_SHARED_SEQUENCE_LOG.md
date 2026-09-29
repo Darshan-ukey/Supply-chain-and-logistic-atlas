@@ -743,3 +743,34 @@ Independently QA ATL-165 at branch `atl-165-v15-client-binding` tip `ba44ed6842e
 
 **Owner/gate status:** No Owner decision pending for ATL-165 QA. ATL-142 production promotion remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved persistence/recovery state:** NONE.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-163 BUILD DURABLE → CLAUDE INDEPENDENT QA — 2026-09-29T07:15:00Z
+
+**Transition:** ChatGPT → Claude  
+**Current holder / next agent:** Claude  
+**Exact task:** ATL-163 — Atlas v1.5 Capability — Malkom-Oriented Readiness Summary  
+**Sequence controller:** ATL-177
+
+**Predecessor context from Linear Continuation 01:** Claude independently QA-PASSed ATL-165 at branch `atl-165-v15-client-binding` tip `ba44ed6842eea132d0ce3a50646901edae8fd362`, including direct execution of `node tests/atl-165-client-binding.test.cjs` and inspection of the frozen binding set. Claude confirmed 2 resolved / 1 unresolved binding, fail-closed `CLIENT_BINDING_REQUIRED`, no canonical WorkDefinition mutation, and explicitly routed ATL-163 to ChatGPT. Pickup authority was active Linear Continuation 01 document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`.
+
+**Result / disposition:** BUILD_DURABLE / AWAITING_INDEPENDENT_QA. This is a recovery-first persistence completion: the ATL-163 implementation already existed durably; no substantive implementation was redone. ChatGPT does not self-mark PASS/FIXED—VERIFIED.
+
+**Durable implementation evidence:**
+- branch: `atl-163-v15-readiness-summary`
+- predecessor/base: ATL-165 verified tip `ba44ed6842eea132d0ce3a50646901edae8fd362`
+- branch comparison: ahead by 2, behind by 0; only two additive files versus ATL-165
+- schema commit previously persisted: `18d776db576f68974efd09a3f3db326428b69069`
+- readiness-summary commit previously persisted: `fcf3206470455d6782a7c29cacd9bcf09651b8d9`
+- schema: `schemas/malkom-readiness-summary-v1.schema.json`, blob `42507e6053096f86e294df5e69d974c60fc3c105`
+- frozen readiness artifact: `data/generated/readiness/road-ltl-ltl04-malkom-readiness-v1.json`, blob `d43f41309304b12756baa491f5664f39a0e59c7d`
+- artifact read-back confirms reusable domain knowledge AVAILABLE; work semantics AVAILABLE; decision/rule/control/evidence coverage AVAILABLE; one blocking knowledge gap; client bindings 2 resolved / 1 unresolved; required master/external dependency; Malkom projection `BLOCKED`; `universalExecutionReady=false`; and explicit STOP boundary.
+
+**Dependency / eligibility basis:** ATL-159 and ATL-161 blockers were already independently QA-PASSed; ATL-165 predecessor is independently QA-PASSed and its unresolved binding is intentionally consumed as a fail-closed ATL-163 blocker rather than hidden. Linear Continuation 01 explicitly authorized ATL-163. No Governance Hold / Owner Decision Required applies to ATL-163 build/QA.
+
+**Exact Claude QA/recheck action:** Independently fetch `atl-163-v15-readiness-summary` and verify its two-commit additive delta from ATL-165 tip `ba44ed6842eea132d0ce3a50646901edae8fd362`. Validate the schema and frozen readiness artifact against ATL-163 acceptance criteria and ATL-177 outcome/architecture requirements: reusable-domain availability, work-semantics availability, rules/controls coverage, unresolved knowledge gaps, exact ATL-165 client-binding consumption, master/external dependencies, projection disposition, blockers/next questions, lineage, fail-closed behavior, and STOP boundary. Confirm it does not claim universal EXECUTION_READY while the client binding is unresolved and does not implement a universal resolver, FIRI-generalized readiness, or an automatic readiness-driven research loop. Return PASS or exact ATL-163 defects to ChatGPT through Linear Continuation 01. If PASS, route only the exact next eligible ATL-177 task after dependency verification.
+
+**Owner/gate status:** No Owner decision pending for ATL-163 independent QA. ATL-142 final production promotion remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE if this GitHub handoff persists and read-back verifies. No Linear self-handoff is created by ChatGPT.
