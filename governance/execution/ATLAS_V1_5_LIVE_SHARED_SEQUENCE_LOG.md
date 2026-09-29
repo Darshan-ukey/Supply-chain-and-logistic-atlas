@@ -280,3 +280,40 @@ Independently fetch branch `atl-155-v15-bounded-daughter-generation`. Review/exe
 
 **Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.  
 **Linear mirror status:** ATL-155 routing labels and complete remediation evidence comment updated; shared-document mirror may lag, but GitHub primary handoff is complete.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-155 INDEPENDENT QA PASS → ATL-171 ROUTED TO CHATGPT — 2026-09-29T01:32Z
+
+**Transition:** Claude → ChatGPT
+**Current holder / next agent:** ChatGPT
+**Exact current task:** ATL-171 — Atlas v1.5 Capability — Bounded Operational Knowledge & Canonical Information Semantics — build/execute
+**Sequence controller:** ATL-177
+**Disposition:** ATL-155 INDEPENDENT_QA = **PASS** (FINAL). ATL-171 forward-routed per canonical 20-task sequence. ATL-156/v2 remains out of scope.
+
+### Predecessor result verified this turn (real tool output)
+
+- Resolved current baton by reading `origin/atlas-v1-5-live-sequence` (fetched this turn) and cross-checked against the Linear Shared Baton document (`updatedAt` 2026-09-29T00:40:49Z, older than this GitHub entry) — GitHub is newer/authoritative, no conflict.
+- Branch `atl-155-v15-bounded-daughter-generation` tip `41fd15a79e778837c580b5fa30c6d024f24e7e61`. Verified by direct `git rev-parse` against the working tree (not asserted from the log) that every claimed blob/commit identity is exact: generator `564f561e`, test `b3a1f225`, knowledge schema `0dacf499`, projection schema `269e51dd`, Road model `534aa477`, Road projection `6390457c`, Ocean FCL model/projection `15d52a8f`/`5819b37f`, Ocean LCL model/projection `724b2247`/`af6eeaf5`.
+- Extracted the branch tree and ran `tests/atl-155-bounded-daughter-generation.test.js` directly with Node (CommonJS): **all assertions passed** — two independent `road()` calls serialize byte-identical; Road counts reconcile exactly to `{processCount:22, a3Count:13, edgeCount:39, sourceCount:29}`; both outputs carry `status:"FROZEN"` and full identity hashes; projection's `canonicalModelHash` matches model's `outputHash`; `STATE_MAP` matches the required ATL-153→ATL-161 mapping; Ocean FCL/LCL `reference()` returns zero tasks, `RESEARCH_REQUIRED` gap state, `REFERENCE_ONLY` projection depth, and throws `REFUSE_UNGOVERNED_DEPTH` when A5 is requested; `assertPublishable('accounts-payable-fixture')` throws `REFUSE_TEST_ONLY_PUBLICATION`.
+- Independently re-ran the generator and byte-compared its live output against every committed `data/generated/daughters/**` file: exact match for Road LTL, Ocean FCL, and Ocean LCL (model + projection).
+- Independently confirmed `data/atlas-registry.json` records `road-ltl` as `ACTIVE`/`A5_VERIFIED` with `processCount:22, a3Count:13, edgeCount:39, sourceCount:29` — matches generator/test output exactly (no fabricated baseline).
+- Inspected `data/contracts/atlas-daughter-knowledge-model-v1.schema.json`: requires `identity.baselineCommit/generatorId/inputHash/outputHash` and per-task `minimum_record/knowledge_state/provenance`. Version identity and provenance requirements from the prior REWORK_REQUIRED are present in the schema, not just asserted.
+- Confirmed the named UX target is real and pre-existing: `activateModule('road-ltl')` is called from multiple existing chat/canvas command handlers in `index.html` (not a fabricated binding).
+- Read `governance/product/ATL_155_V1_5_FROZEN_CUSTODY_RECORD.md`: status FROZEN, all blob hashes and file SHA-256 values match what this session independently computed running the test.
+
+### QA disposition (ATLAS_V1_5_QA_OUTCOME_ARCHITECTURE_STANDARD_V1)
+
+All six binding corrections from the 2026-09-29T00:50Z REWORK_REQUIRED are satisfied with verified evidence, not narrative: (1) real deterministic generator + committed Road output, reproducibility test passing; (2) schemas carry version identity + per-claim provenance + ATL-153→ATL-161 mapping; (3) actual Ocean FCL/LCL bounded outputs + passing negative tests (no A4/A5 fabrication, TEST_ONLY refusal); (4) existing UX target named and confirmed reachable; (5) storage/ownership/retrieval stated and frozen with matching custody hashes; (6) this baton carries a UTC timestamp after its cited evidence. **FINAL: PASS.**
+
+### Forward-handoff (ATL-177 canonical 20-task sequence)
+
+Per the authoritative sequence in ATL-177 (`ATL-153 → ATL-161 → ATL-155 → ATL-171 → ATL-157 → …`), the next eligible task is **ATL-171 — Bounded Operational Knowledge & Canonical Information Semantics**. Dependency check (fresh, this turn): ATL-171 is `blockedBy` ATL-155 (now PASS) and ATL-161 (PASS per this log's 2026-09-29T00:23Z entry) — both satisfied. ATL-171 carries no `Governance Hold` and no `Owner Decision Required` label. Routed to ChatGPT as builder per the `:00/:30` ChatGPT / `:15/:45` Claude cadence.
+
+### Exact next action
+
+ChatGPT executes ATL-171 per its Build/STOP/Handover scope, persists GitHub (this log, primary) + Linear evidence, and hands the baton back to Claude for independent QA. Do not self-expand into ATL-156/v2, ATL-159, or any task beyond ATL-171.
+
+**Owner/gate status:** No Owner decision pending. Production promotion remains Owner-gated at ATL-142. BOL/FIRI remains outside this sequence.
+**Linear mirror status:** PENDING this turn — ATL-155 marked Done with PASS comment and ATL-171 labeled `Agent — ChatGPT` + `Agent Ready` in Linear as part of this same turn; the large Linear Shared Baton document mirror is being attempted immediately after this GitHub commit is read back.
