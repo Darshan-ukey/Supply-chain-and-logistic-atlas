@@ -716,3 +716,61 @@ Before ATL-147 implementation is accepted, Claude must independently challenge:
 ATL-146 final custody remains the gate into ATL-147. Once ATL-146 final byte/hash verification is PASS, implementation should proceed under the **reworked ATL-147 contract above**, then hand off to Claude for independent QA.
 
 Do not mass-author static FIRI packs as a substitute for implementing the detector/generator capability.
+
+
+---
+## ATLAS V2 PRODUCT REQUIREMENT — GENERALIZED RESOLUTION INTELLIGENCE — 01 OCT 2026
+
+### Validation finding
+
+Central governance already contains **Work Intelligence** explicitly:
+- ATL-133 required architecture capability #4 = Work Intelligence;
+- ATL-107 requires canonical WorkDefinition semantics covering decisions, rules, validations, controls, actors/systems, objects/fields/documents, state/events, actions/outcomes, timers/waits, exceptions/retries/escalations/recovery, evidence and binding needs.
+
+Therefore no duplicate “how to perform work” layer is created.
+
+A gap was confirmed: governance contained FIRI/information resolution and scattered contextual/human/fail-closed resolution concepts, but no first-class generalized capability governing the reusable intelligence needed to resolve execution context across arbitrary work.
+
+### Owner product addition
+
+**Resolution Intelligence** is now a first-class Atlas v2 capability.
+
+- **Work Intelligence:** what must be performed and how the task/work is performed.
+- **Resolution Intelligence:** what must be interpreted/distinguished/associated/validated/decided from specific evidence/context so that the governed work can proceed safely.
+
+FIRI (Field Identification & Resolution Intelligence) is one specialization, with BOL-002 as the first reference proof. FIRI is NOT the governing product abstraction.
+
+Generalized resolution targets include, where applicable:
+- field/information;
+- object/entity;
+- relationship/association/cardinality;
+- classification;
+- decision;
+- state/status;
+- exception/cause/disposition;
+- authority/precedence;
+- evidence/conflict;
+- temporal/window;
+- future evidence-backed extension types.
+
+Required lifecycle:
+`Work Intelligence → Resolution Requirement Detection → [if required] Resolution Intelligence generation/acquisition → validation/adversarial QA → candidate/promote/reuse → readiness → consumer projection`.
+
+Required detector outcomes include:
+`RESOLUTION_REQUIRED | RESOLUTION_NOT_REQUIRED | INSUFFICIENT_KNOWLEDGE`.
+
+Mandatory unresolved resolution knowledge fails readiness closed or routes an explicit governed client/master/external/human resolution dependency. Downstream consumers must not be forced to rediscover reusable resolution logic Atlas can govern.
+
+### Central governance updated
+
+- **ATL-103** — Atlas v2 Product End-State Contract & Coverage Reconciliation: Resolution Intelligence added as explicit end-state product requirement; next authoritative contract/coverage-matrix revision must include it before freeze.
+- **ATL-133** — Execution-Readiness Intelligence Closure: generalized Resolution Intelligence architecture/lifecycle/acceptance added; Work Intelligence remains distinct.
+- **ATL-172** renamed/expanded to **Generalized Operational Knowledge, Resolution Intelligence & Semantic Coverage**.
+
+### Consequence for BOL/FIRI track
+
+ATL-146/BOL-002 remains useful as a bounded field-resolution proof. It must not be treated as proof of generalized Resolution Intelligence.
+
+ATL-147–150 must preserve a path from their FIRI specialization toward the generalized detector/generator mechanism. BOL/field-specific semantics are specialization/instance knowledge, not the engine boundary.
+
+Future independent QA must test this separation and future-scope compatibility.
