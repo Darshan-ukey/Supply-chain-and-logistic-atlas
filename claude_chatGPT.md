@@ -774,3 +774,45 @@ ATL-146/BOL-002 remains useful as a bounded field-resolution proof. It must not 
 ATL-147–150 must preserve a path from their FIRI specialization toward the generalized detector/generator mechanism. BOL/field-specific semantics are specialization/instance knowledge, not the engine boundary.
 
 Future independent QA must test this separation and future-scope compatibility.
+
+
+---
+## RESOLUTION INTELLIGENCE — RELATED CAPABILITY RECONCILIATION — 01 OCT 2026
+
+Following the owner addition of Generalized Resolution Intelligence, related Atlas v2 capability tasks were reviewed and reconciled.
+
+### Updated tasks
+
+- ATL-131 — semantic/extensibility adversarial gate now explicitly attacks Resolution Intelligence, including complete-Work-Intelligence-but-missing-Resolution-Intelligence negative case and non-LTL generalized detector proof.
+- ATL-147 — FIRI Applicability Detector constrained as specialization-compatible implementation of generalized Resolution Requirement Detector.
+- ATL-148 — FIRI Generator separated into generic generation/acquisition/validation orchestration vs resolution-type-specific contracts vs BOL instance knowledge.
+- ATL-149 — non-BOL proof expanded toward generalized Resolution Intelligence and preferably a non-field resolution type.
+- ATL-150 — integration architecture generalized: FIRI becomes first specialization, not engine boundary.
+- ATL-151 — empirical architecture reconciliation must explicitly reconcile FIRI into generalized Resolution Intelligence before ATL-133 closure.
+- ATL-158 — missing/insufficient Resolution Intelligence becomes first-class On-Demand Depth trigger.
+- ATL-160 — WorkDefinition must expose/reference resolution requirements and approved Resolution Intelligence/dependencies; it must not absorb all resolution intelligence.
+- ATL-162 — knowledge promotion/epistemic lifecycle extended to Resolution Intelligence artifacts.
+- ATL-164 — deterministic readiness explicitly blocks on absent/invalid/stale/conflicting mandatory Resolution Intelligence.
+- ATL-166 — Client Binding owns client-specific resolution dependencies without contaminating reusable Resolution Intelligence.
+- ATL-170 — multi-consumer projection must carry/reference exact approved Resolution Intelligence/dependency and consumption mode.
+- ATL-107 — execution packages must preserve Work Intelligence → Resolution Intelligence lineage and cannot hide reusable resolution logic in adapters/prompts/workflows.
+- ATL-95 — canonical end-to-end chain now explicitly includes Resolution Requirement Detection and Resolution Intelligence before readiness/projection.
+- ATL-119 — boundary clarified: Resolution Intelligence composes/references governed rules; it is not a catch-all rule family and must not duplicate canonical rules.
+
+### Governing boundaries
+
+1. **Work Intelligence != Resolution Intelligence.**
+   Work Intelligence describes what/how work is performed; Resolution Intelligence supplies reusable semantics needed to interpret/resolve evidence/context while applying that work.
+
+2. **WorkDefinition references resolution requirements/intelligence; it does not become the Resolution Intelligence store.**
+
+3. **Rules != Resolution Intelligence.**
+   Resolution Intelligence can compose/reference rule identities/versions; canonical rule truth remains under the rule ontology.
+
+4. **FIRI is a specialization, not the engine/product boundary.**
+
+5. **Client/master/runtime values remain bindings/dependencies, not reusable Resolution Intelligence unless independently validated/promoted as reusable truth.**
+
+6. **Readiness must fail closed when mandatory Resolution Intelligence is unresolved even when Work Intelligence is otherwise complete.**
+
+Future Claude/ChatGPT execution and QA on ATL-147–151 and ATL-131 must use these updated requirements.
