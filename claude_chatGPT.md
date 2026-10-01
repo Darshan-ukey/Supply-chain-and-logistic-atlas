@@ -1004,3 +1004,42 @@ If Linear issue status and this POC custody log appear inconsistent, reconcile t
 
 ATL-147 is the next Branch-A task only after ATL-146 closes its re-QA gate.
 Branch-B execution remains governed by its own dependencies; this sequence declaration does not falsely mark ATL-71 or any later empirical task as complete or eligible.
+
+
+---
+## BOL POC GOVERNANCE CORRECTION — ATL-72 → ATL-74 HARD EVIDENCE GATE — 01 OCT 2026
+
+Validation of ATL-74 against ATL-70/71/72/73 confirmed that the Linear graph was missing a material experimental dependency.
+
+### Corrected empirical sequence
+
+`ATL-71 → ATL-72 → ATL-74 → ATL-75 → ATL-76 → ATL-77 → ATL-151`
+
+ATL-73 remains completed prerequisite evidence/integration and does not need to be rerun.
+
+### Why ATL-72 must block ATL-74
+
+ATL-74 requires:
+- the same frozen BOL corpus;
+- the same underlying IDP/OCR capability/configuration;
+- unchanged ATL-69 denominator and ATL-70 metrics;
+- treatment outputs comparable to the generic-IDP control arm.
+
+ATL-72 is the task that creates and freezes the control-run evidence and extraction configuration/version. Running the ATL-74 corpus treatment before ATL-72 would weaken causal attribution and permit extraction/configuration drift to be mistaken for Atlas/Jev improvement.
+
+The Linear relation has therefore been corrected: **ATL-72 now blocks ATL-74.**
+
+### Build-ahead exception
+
+Before ATL-72 closes, downstream preparation MAY proceed for:
+- ATL-74 treatment orchestration;
+- Jev adapter/interface;
+- evidence/logging schema;
+- deterministic-vs-Jev attribution instrumentation;
+- test scaffolding;
+- ATL-75 evaluator skeleton against the already frozen ATL-70 metric contract.
+
+This permission is **BUILD-AHEAD only**. It does not authorize the ATL-74 corpus treatment run, final metric computation, acceptance, or any conclusion dependent on ATL-72 evidence.
+
+Governing acceleration rule:
+**parallelize preparation and independent branches; never parallelize conclusions that depend on evidence that does not yet exist.**
