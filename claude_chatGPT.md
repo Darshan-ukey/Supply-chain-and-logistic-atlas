@@ -888,3 +888,119 @@ Owner architecture context to preserve:
 - Generalized Resolution Intelligence is now a first-class Atlas v2 requirement.
 - FIRI is one specialization of Resolution Intelligence.
 - BOL-002 is the first bounded reference proof, not the product boundary.
+
+
+---
+## AUTHORITATIVE OWNER-RUN BOL POC SEQUENCE — SEPARATE FROM ATLAS V1.5 LIVE — 01 OCT 2026
+
+### Governance separation — binding
+
+There are two concurrent but separate execution tracks:
+
+1. **Atlas v1.5 LIVE**
+   - governed through the Linear Shared Baton and its v1.5 sequencing;
+   - must not be displaced, paused, reordered or contaminated by BOL POC work unless the Owner explicitly changes that rule.
+
+2. **Owner-run BOL POC / FIRI / Resolution Intelligence proof**
+   - governed through this file, `claude_chatGPT.md`, on `atlas-governance-registry-v2.1`;
+   - ChatGPT and Claude use this shared log for exact POC custody/handoff context;
+   - do **not** route this POC through the v1.5 Linear Shared Baton;
+   - Linear issues remain the detailed task/specification/evidence records, but this file governs the owner-run POC sequence and cross-agent handoff.
+
+### BOL POC objective
+
+Use SEFL BOL as the first empirical proving ground for Atlas execution-readiness intelligence while preserving Atlas as the knowledge/specification authority rather than the transaction executor.
+
+The POC has **two evidence branches that converge**. Neither branch alone is sufficient for the final architecture conclusion.
+
+### Branch A — BOL/FIRI → Generalized Resolution Intelligence
+
+Current gate:
+**ATL-146 — BOL-002 FIRI QA Closure / bounded reference proof**
+- current next holder: Claude;
+- mandatory independent re-QA per the 01 Oct 2026 owner directive in this file;
+- prior Copilot QA is evidence, not accepted final independent QA;
+- ATL-147 remains locked until ATL-146 re-QA and any material remediation close.
+
+Then execute strictly:
+
+**ATL-146**
+→ **ATL-147 — FIRI Applicability Detection / Resolution Requirement Detector specialization + 76-field SEFL BOL scale proof**
+→ **ATL-148 — FIRI Generation/Validation / Resolution Intelligence Generator specialization + SEFL BOL scale proof**
+→ **ATL-149 — materially different non-BOL/non-field Detect→Generate transfer proof toward Generalized Resolution Intelligence**
+→ **ATL-150 — governed integration with Knowledge Store, On-Demand Depth, epistemic lifecycle, readiness and consumer projection**
+
+Governing architecture:
+- Work Intelligence is separate and already governed.
+- Resolution Intelligence is now a first-class Atlas v2 requirement.
+- FIRI is the first field/information specialization of Resolution Intelligence.
+- BOL-002 is the first bounded reference proof, not the product boundary.
+- SEFL BOL generated FIRI is governed instance/specialization knowledge; generic detector/generator/lifecycle mechanics are reusable product capability.
+
+### Branch B — Empirical BOL POC / control-vs-treatment proof
+
+Execute the preserved empirical sequence:
+
+**ATL-71 — AWS BOL Staging Architecture & Build**
+→ **ATL-72 — Generic IDP Baseline Run**
+→ **ATL-74 — Atlas-Enriched Experimental Run**
+→ **ATL-75 — Automated Evaluation Agent/Harness**
+→ **ATL-76 — Independent Experimental QA**
+→ **ATL-77 — LTL-03 Execution-Readiness Verdict**
+
+Preserved completed prerequisites/evidence MUST NOT be re-run merely because this sequence is restated:
+- ATL-67 — BOL Field Universe Freeze — Done / independent QA PASS.
+- ATL-68 — SEFL/Malkom 76-field crosswalk — amended v1.1 independent QA PASS.
+- ATL-69 — experimental scope — 66 testable + 10 exclusions — independent QA PASS.
+- ATL-70 — Benchmark, Ground Truth & Metrics Contract — Done.
+- ATL-73 — Atlas BOL Intelligence Explorer/API — remediated / independent QA PASS / production-runtime evidence.
+
+ATL-74 remains the governed Jev experiment; do not create a disconnected Jev POC. The empirical branch must preserve same-corpus/same-base-extraction control-vs-treatment attribution and fail-closed behavior.
+
+### Mandatory convergence
+
+The two branches converge at:
+
+**Branch A: ATL-146 → 147 → 148 → 149 → 150**
+                                   ↘
+                                  **ATL-151 — Empirical Proof → Architecture Reconciliation**
+                                   ↗
+**Branch B: ATL-71 → 72 → 74 → 75 → 76 → 77**
+
+ATL-151 must consume both:
+- validated/scaled Resolution Intelligence/FIRI mechanism and transfer evidence; and
+- independently QA'd empirical BOL outcome/readiness evidence.
+
+ATL-151 must not infer architecture from either branch alone.
+
+After ATL-151:
+→ reconcile/update **ATL-133 — Execution-Readiness Intelligence Closure**;
+→ route downstream production integration/readiness obligations through their governed v2 tasks (including ATL-107/ATL-130 where applicable).
+
+### ATL-131 relationship
+
+**ATL-131 is not a serial BOL POC task.**
+
+It is the broader Atlas Semantic Extensibility & Composition adversarial architecture gate. It now explicitly attacks Generalized Resolution Intelligence and guards against BOL/LTL-specific hardening.
+
+Use BOL POC evidence as input where relevant, but do not insert ATL-131 into the serial Branch A or Branch B sequence unless its own entry gate and governed sequencing require execution.
+
+### Cross-agent operating rule for this POC
+
+At each POC handoff:
+1. read this authoritative sequence;
+2. read the current task in Linear for exact scope/acceptance/evidence;
+3. read the latest POC handoff in this file;
+4. execute only the eligible next POC task;
+5. preserve completed evidence; do not restart passed tasks without a governed reason;
+6. record exact branch/commit/test/evidence and next-holder context here;
+7. keep the v1.5 Linear Shared Baton unchanged unless the work is genuinely v1.5 LIVE work.
+
+If Linear issue status and this POC custody log appear inconsistent, reconcile the discrepancy before executing rather than silently switching tracks.
+
+### Current POC custody at time of this entry
+
+**Claude → ATL-146 independent re-QA.**
+
+ATL-147 is the next Branch-A task only after ATL-146 closes its re-QA gate.
+Branch-B execution remains governed by its own dependencies; this sequence declaration does not falsely mark ATL-71 or any later empirical task as complete or eligible.
