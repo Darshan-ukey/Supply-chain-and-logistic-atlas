@@ -816,3 +816,75 @@ Following the owner addition of Generalized Resolution Intelligence, related Atl
 6. **Readiness must fail closed when mandatory Resolution Intelligence is unresolved even when Work Intelligence is otherwise complete.**
 
 Future Claude/ChatGPT execution and QA on ATL-147–151 and ATL-131 must use these updated requirements.
+
+
+---
+## ATL-146 — OWNER RE-QA DIRECTIVE TO CLAUDE — 01 OCT 2026
+
+### Status correction
+
+**ATL-146 is NOT accepted as finally QA-closed. Claude must independently re-QA ATL-146 before freeze/promotion closure.**
+
+The prior Copilot QA evidence is retained as evidence, but its overall/architecture-level PASS must not be treated as authoritative final independent QA.
+
+### Why re-QA is required
+
+Review of the Copilot QA found that it materially verified the bounded BOL-002 candidate, regression/build path and deterministic package hash, but some conclusions exceeded the tested scope.
+
+In particular:
+- the regression guard/validation evidence is BOL-002/FIRI-token specific;
+- Copilot marked FUTURE_SCOPE_COMPATIBILITY=PASS despite not proving generalized future-field/document/work applicability;
+- On-Demand Depth, generalized WorkDefinition integration, Client Binding/readiness integration and broader reusable architecture were outside the bounded proof;
+- subsequent owner architecture decisions now make **Generalized Resolution Intelligence** the governing abstraction, with FIRI/BOL-002 only the first specialization/reference proof.
+
+Therefore:
+- **BOL-002 candidate correctness:** evidence exists; re-verify independently.
+- **deterministic hash/reproducibility:** evidence exists; re-compute independently.
+- **promotion/freeze identity:** re-verify exact bytes/hash/branch/commit.
+- **future-scope/generalized architecture:** NOT established by the prior Copilot QA and MUST NOT be inherited as PASS.
+- **Generalized Resolution Intelligence:** explicitly outside ATL-146 proof unless directly evidenced; ATL-147–151/ATL-131 own subsequent generalization/proof.
+
+### Claude mandatory re-QA scope
+
+Use the expanded QA standard:
+`governance/product/ATLAS_V1_5_QA_OUTCOME_ARCHITECTURE_STANDARD_V1.md`
+
+Return explicit dispositions with evidence for:
+- BUILD_CORRECTNESS
+- OUTCOME_FITNESS
+- ARCHITECTURE_FITNESS
+- FUTURE_SCOPE_COMPATIBILITY
+- DATA_STORAGE_OWNERSHIP
+- RETRIEVAL_CONSUMPTION
+- INTERACTION_MODEL
+- LINEAGE_RECOVERY
+- MALKOM_UTILITY
+- CONSUMER_INDEPENDENCE
+- FINAL
+
+For ATL-146 specifically Claude must additionally:
+
+1. independently recompute the canonical BOL intelligence SHA-256 using the governed hash command and compare it to the persisted freeze/promotion record;
+2. run the BOL-002 FIRI regression/adversarial guard and full relevant build/tests;
+3. verify exact candidate/package bytes, commit/blob identity and promotion/freeze record lineage;
+4. inspect whether any post-QA/hash-persistence change altered semantics rather than only expected hash/freeze metadata;
+5. independently assess the BOL-002 FIRI content against ATL-132/134/135/146 objectives rather than accepting Copilot's narrative;
+6. explicitly distinguish **bounded BOL-002 suitability** from **future-scope compatibility**;
+7. do NOT mark FUTURE_SCOPE_COMPATIBILITY=PASS merely because BOL-002 is parameterized/versioned or because the current package is structurally extensible;
+8. treat generalized Resolution Intelligence / arbitrary future fields-documents-work as unproven here unless direct evidence exists;
+9. identify any finding that must be remediated before ATL-146 can close, preserving prior evidence rather than rewriting it;
+10. only return FINAL=PASS if every material required dimension is independently supported under the expanded standard.
+
+### Sequencing / handoff
+
+**Claude is the next holder for ATL-146 independent re-QA.**
+
+Do not start ATL-147 implementation/QA from a presumed ATL-146 PASS. ATL-147 remains gated until this re-QA produces a governed final disposition and any material ATL-146 findings are resolved.
+
+If ATL-146 passes only as a bounded BOL-002 reference proof, record that bounded disposition explicitly. Do not convert it into proof of the generalized FIRI/Resolution Intelligence engine.
+
+Owner architecture context to preserve:
+- Work Intelligence is already a separate governed Atlas capability.
+- Generalized Resolution Intelligence is now a first-class Atlas v2 requirement.
+- FIRI is one specialization of Resolution Intelligence.
+- BOL-002 is the first bounded reference proof, not the product boundary.
