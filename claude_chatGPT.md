@@ -653,3 +653,66 @@ Required disposition:
 Only PASS makes ATL-146 final frozen custody and unlocks ATL-147.
 
 This BOL/FIRI track remains outside the Linear Shared Baton. The ATL-177/v1.5 LIVE baton is unchanged.
+
+
+---
+## BOL/FIRI OWNER ARCHITECTURE CORRECTION — FIRI ENGINE, NOT STATIC FIELD PACKS — 01 OCT 2026
+
+### Owner decision
+
+FIRI must be a reusable Atlas product capability that can operate on current and future scope. The SEFL BOL field set is the first scale proof, not the product boundary.
+
+The target lifecycle is:
+
+`new/changed document | work | object | field scope → FIRI applicability detection → [if required] FIRI generation/acquisition → validation/adversarial QA → candidate/promote/rework → governed reusable intelligence → readiness re-evaluation → downstream consumption`
+
+BOL-002 Line Item Description remains the reference proof used to derive/validate the mechanism. It MUST NOT be interpreted as evidence that all current BOL fields already have FIRI, nor should its field-specific content become hard-coded generic engine logic.
+
+### Linear plan reworked
+
+ATL-147 through ATL-150 were rewritten on 01 Oct 2026:
+
+- **ATL-147 — Atlas v2 FIRI Engine — Applicability Detection & SEFL BOL Scale Proof**
+  - build a reusable FIRI Applicability Detector;
+  - output FIRI_REQUIRED | FIRI_NOT_REQUIRED | INSUFFICIENT_KNOWLEDGE plus reason/dimensions/provenance/dependencies;
+  - run the detector across all 76 governed SEFL BOL fields as validation evidence;
+  - include false-negative/adversarial tests and at least one unseen-field generalization check;
+  - PASS is prohibited if implementation is merely a hard-coded 76-field matrix.
+
+- **ATL-148 — Atlas v2 FIRI Engine — Generation, Validation & SEFL BOL Scale Proof**
+  - build a reusable FIRI Generator consuming ATL-147 output;
+  - generate field/object/work-specific FIRI only where required;
+  - preserve candidate→validate→promote lifecycle, provenance, fail-closed dependencies and adversarial validation;
+  - prove generation on prioritized SEFL BOL scope plus at least one unseen/new element without field-name-specific generator code;
+  - generated SEFL FIRI is instance knowledge; the reusable generator is the product capability.
+
+- **ATL-149 — Atlas v2 FIRI Engine — Non-BOL Detect→Generate Transfer Proof**
+  - test the complete detector→generator path on a materially different non-BOL/document/work context;
+  - do not manually pre-classify or adapt BOL-specific logic;
+  - PASS requires transfer without redefining core engine semantics or hidden bespoke prompt/field-name logic.
+
+- **ATL-150 — Atlas v2 FIRI Engine — Governed Integration, On-Demand Generation & Readiness**
+  - integrate detector + generator with Knowledge Store, On-Demand Depth, epistemic lifecycle, readiness resolver and consumer projection;
+  - new scope must be able to trigger applicability/generation without manual backlog redesign;
+  - readiness fails closed when required FIRI/prerequisite knowledge is absent or unresolved;
+  - engine version, generated knowledge version, client/master bindings and evidence remain separately traceable.
+
+### QA consequence for Claude
+
+**Do not QA ATL-147 against its superseded static 76-field-matrix objective.**
+
+Before ATL-147 implementation is accepted, Claude must independently challenge:
+1. whether applicability detection is genuinely reusable for future fields/documents/work contexts;
+2. whether the 76-field matrix is generated evidence rather than manually encoded product logic;
+3. false-negative risk — especially fields incorrectly classified FIRI_NOT_REQUIRED;
+4. INSUFFICIENT_KNOWLEDGE/fail-closed behavior;
+5. unseen-field generalization without adding field-identity-specific logic;
+6. separation of generic engine rules from SEFL/BOL instance knowledge;
+7. MALKOM_UTILITY and CONSUMER_INDEPENDENCE;
+8. all expanded QA dimensions already mandated for this track.
+
+### Sequencing
+
+ATL-146 final custody remains the gate into ATL-147. Once ATL-146 final byte/hash verification is PASS, implementation should proceed under the **reworked ATL-147 contract above**, then hand off to Claude for independent QA.
+
+Do not mass-author static FIRI packs as a substitute for implementing the detector/generator capability.
