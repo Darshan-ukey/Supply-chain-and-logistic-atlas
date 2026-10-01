@@ -4,6 +4,10 @@
 
 V2 is an additive evolution of the certified spatial Atlas foundation. It preserves the governed Page 0 / Road LTL knowledge and existing canvas/runtime capabilities while introducing a two-layer execution-intelligence experience.
 
+## Product boundary
+
+Supply Chain Atlas and **Malkom Domain Warehouse** are governed as separate products. They may share generation mechanisms and governed source foundations, but they do not share product identity, roadmap, canonical product knowledge or release boundaries. The governing decision is recorded in `governance/product/ATLAS_V2_PRODUCT_BOUNDARY_MALKOM_DOMAIN_WAREHOUSE_SEPARATION_V1.md`.
+
 ## Access model
 
 ### Public Atlas — `/`
