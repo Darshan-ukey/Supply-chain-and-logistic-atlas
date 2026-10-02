@@ -1,7 +1,10 @@
-const fs=require('fs');const assert=require('assert');
-const g=JSON.parse(fs.readFileSync('data/generated/flow-graphs/road-ltl-ltl04-v1.json','utf8'));const x=fs.readFileSync('data/generated/flow-graphs/road-ltl-ltl04-v1.bpmn','utf8');
-assert.equal(g.scope.workDefinitionId,'wd::road-ltl::LTL-04::v1');assert.equal(g.scope.malkomPackageId,'malkom-dw::road-ltl::LTL-04::v1');assert.equal(g.lineage.canonicalMutation,false);assert.equal(g.views.flow,'SAME_GRAPH');assert.equal(g.views.bpmn,'SAME_GRAPH');
+const fs=require('fs'),assert=require('assert');const {bpmn,svg}=require('../scripts/generate-atl178-flow.cjs');
+const g=JSON.parse(fs.readFileSync('data/generated/flow-graphs/road-ltl-ltl04-v1.json','utf8')),x=fs.readFileSync('data/generated/flow-graphs/road-ltl-ltl04-v1.bpmn','utf8');
+assert.equal(g.scope.workDefinitionId,'wd::road-ltl::LTL-04::v1');assert.equal(g.scope.malkomPackageId,'malkom-dw::road-ltl::LTL-04::v1');assert.equal(g.lineage.canonicalMutation,false);
 for(const o of ['ACCEPTED','CONDITIONAL','REJECTED','CANCELLED'])assert(g.edges.some(e=>e.outcome===o));assert(g.unsupported.some(u=>u.semantic==='sub-queue'&&u.disposition==='SURFACE_NOT_INVENT'));
 assert(x.startsWith('<?xml'));assert(x.includes('<definitions '));assert(x.includes('<process '));assert(x.includes('isExecutable="false"'));for(const id of g.nodes.map(n=>n.id))assert(x.includes('id="'+id+'"'));for(const id of g.edges.map(e=>e.id))assert(x.includes('id="'+id+'"'));
-const ui=fs.readFileSync('atl-178-flow-explorer.html','utf8');const home=fs.readFileSync('index.html','utf8');assert(ui.includes('id="flowView"'));assert(ui.includes('id="bpmnView"'));assert(ui.includes('id="traceBtn"'));assert(ui.includes('id="exportImage"'));assert(ui.includes('traceable'));assert(home.includes('/atl-178-flow-explorer.html'));
+const b1=bpmn(g),b2=bpmn(JSON.parse(JSON.stringify(g)));assert.strictEqual(b1,b2,'BPMN generation must be deterministic');const s1=svg(g),s2=svg(JSON.parse(JSON.stringify(g)));assert.strictEqual(s1,s2,'image generation must be deterministic');
+const changed=JSON.parse(JSON.stringify(g));changed.nodes.find(n=>n.id==='task-pickup').label+=' CHANGED';assert.notStrictEqual(bpmn(changed),b1,'governed graph change must change BPMN');assert.notStrictEqual(svg(changed),s1,'governed graph change must change diagram');
+const ui=fs.readFileSync('atl-178-flow-explorer.html','utf8'),home=fs.readFileSync('index.html','utf8');for(const id of ['flowView','bpmnView','traceBtn','exportImage'])assert(ui.includes('id="'+id+'"'));assert(ui.includes("fetch(SOURCE)"),'UI must consume governed graph, not a hand-drawn static graph');assert(ui.includes('graph.trace.selectedPath'));assert(ui.includes('XMLSerializer'));assert(home.includes('/atl-178-flow-explorer.html'));
+assert(!ui.includes('<svg id="diagram" viewBox="0 0 1000 420"><g'),'UI must not embed the old hand-drawn graph');
 console.log('ATL-178 generated flow/BPMN contract: PASS');
