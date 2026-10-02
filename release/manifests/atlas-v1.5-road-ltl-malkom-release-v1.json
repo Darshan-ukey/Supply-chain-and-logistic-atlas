@@ -73,7 +73,7 @@
   ],
   "rollbackBaseline": {
     "path": "release/baselines/v1.1.8-critical-hashes.json",
-    "blobSha": "98296aa26eb563479e666fe6dd007bf422920c6d"
+    "blobSha": "02a3e9e21a0362d1371e2863cfb028e62c966e23"
   },
   "verificationEndpoints": [
     "/api/version",
