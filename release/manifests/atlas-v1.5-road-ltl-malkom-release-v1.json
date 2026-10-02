@@ -1,12 +1,12 @@
 {
-  "schemaVersion": "atlas-v1.5-release-manifest-v1.0",
+  "schemaVersion": "atlas-v1.5-release-manifest-v1.1",
   "releaseId": "atlas-v1.5-road-ltl-malkom",
   "channelMapping": {
     "staging": "Lab",
     "production": "Stable"
   },
-  "sourceBranch": "atl-175-v15-release-contract",
-  "sourceTip": "ab628f71fcdbf3371e693873b17cb2fb661c5d1e",
+  "sourceBranch": "atl-141-v15-release-candidate",
+  "sourceTip": "PENDING_ATL_141_RELEASE_CANDIDATE_TIP",
   "ownerGateRequired": true,
   "productionPromotionAuthorized": false,
   "dependencies": [
@@ -75,5 +75,12 @@
     "/api/version",
     "/api/readiness",
     "/api/release-integrity"
-  ]
+  ],
+  "releaseCandidate": {
+    "sequence": "ATL-177",
+    "task": "ATL-141",
+    "predecessorTip": "b6df8cfe581fb5ac2ff8f51774cdbdfc15a54f77",
+    "browserEvidenceRequired": true,
+    "productionPromotionAuthorized": false
+  }
 }
