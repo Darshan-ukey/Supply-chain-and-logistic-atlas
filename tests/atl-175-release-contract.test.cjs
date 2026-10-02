@@ -1,0 +1,14 @@
+const fs=require('fs'),assert=require('assert');
+const p=JSON.parse(fs.readFileSync('governance/product/ATL_175_V1_5_RELEASE_CONTRACT_V1.json','utf8'));
+assert.equal(p.version,'1.0.0');
+assert.equal(p.apiContracts.malkomPackage.id,'malkom-dw::road-ltl::LTL-04::v1');
+assert.equal(p.apiContracts.malkomPackage.compatibility,'exact-current-lineage');
+assert.equal(p.authorization.default,'deny-if-boundary-or-lineage-unknown');
+assert.deepEqual(p.release.stagePath,['STAGING','INDEPENDENT_QA','OWNER_GATE','PRODUCTION']);
+assert.equal(p.release.ownerGateRequired,true);
+assert.equal(p.release.productionPromotionAuthorized,false);
+assert.equal(p.release.frozenAssetMutationAllowed,false);
+assert.ok(p.release.rollbackPoint.identity);
+assert.equal(p.backupRecoveryEvidence.required,true);
+for(const x of ['no universal schema-migration framework','no multi-generation version negotiation','no broad indexing redesign','no full future upgrade architecture'])assert(p.stopBoundary.includes(x));
+console.log('ATL-175 bounded release contract: PASS');
