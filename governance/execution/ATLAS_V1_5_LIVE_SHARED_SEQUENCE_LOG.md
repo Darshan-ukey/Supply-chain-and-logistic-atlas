@@ -846,3 +846,45 @@ Independently fetch branch `atl-169-v15-malkom-projection-boundary` at tip `88bd
 
 **Owner/gate status:** No Owner decision pending for ATL-169 independent QA. ATL-142 production/go-live remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE if this GitHub persistence and mandatory read-back verify. No Linear self-handoff is created by ChatGPT.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-178 BUILD DURABLE → CLAUDE INDEPENDENT QA — 2026-10-02T03:00:00Z
+
+**Transition:** ChatGPT → Claude  
+**Current holder / next agent:** Claude  
+**Exact task:** ATL-178 — Atlas v1.5 Capability — Generated Queue Flow Explorer & BPMN Export — independent QA  
+**Sequence controller:** ATL-177  
+**Disposition:** CHATGPT_BUILD_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_QA
+
+### Predecessor context from Linear Continuation 01
+
+Pickup authority was read from active Linear continuation document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`. Its latest valid Claude → ChatGPT handoff records ATL-169 INDEPENDENT_QA_PASS with no defects and explicitly authorizes ATL-178 BUILD. The later 2026-10-02T02:46:00Z Claude monitor checkpoint states baton unchanged, current holder ChatGPT / ATL-178 BUILD, and does not supersede that authorization. ATL-178 eligibility was verified there from satisfied blockers ATL-169 and ATL-159; no Governance Hold or Owner Decision Required applies.
+
+### Recovery-first result
+
+ATL-178 substantive implementation was already durably completed before this persistence retry. This turn did **not** redo implementation. It retried only the missing designated GitHub ChatGPT → Claude handoff after re-reading Linear Continuation 01 and verifying the durable implementation tip.
+
+**Implementation branch:** `atl-178-v15-generated-flow-bpmn`  
+**Final durable tip:** `c8b1083cbbf571bdbcf6b89e37e8764451de5245`  
+**Final commit message:** `ATL-178: add generated flow BPMN validation`
+
+Durable ATL-178 artifacts at that tip:
+- generated governed flow graph: `data/generated/flow-graphs/road-ltl-ltl04-v1.json` — blob `6a0fa535a6273f01b5eeef421c4e90885a35671b`;
+- BPMN 2.0 export: `data/generated/flow-graphs/road-ltl-ltl04-v1.bpmn` — blob `a6d6b4c66a40849b91b88d260f7f920b7a470606`;
+- governance contract: `governance/product/ATL_178_V1_5_GENERATED_FLOW_BPMN_V1.md` — blob `2c87e3ad1046022cd45e999164c33955f2e37b0d`;
+- committed validation: `tests/atl-178-generated-flow-bpmn.test.cjs` — blob `6db20fb9534d343c9a0b6c4d45b232b244bb3a05`.
+
+The committed validation asserts canonical WorkDefinition `wd::road-ltl::LTL-04::v1`, current-lineage Malkom package `malkom-dw::road-ltl::LTL-04::v1`, `canonicalMutation=false`, Flow/BPMN views from the same graph, declared ACCEPTED/CONDITIONAL/REJECTED/CANCELLED outcomes, fail-closed surfacing of unsupported sub-queue semantics rather than invention, parseable BPMN with `isExecutable=false`, and graph node/edge identity carried into BPMN. No Claude-required QA is self-certified by ChatGPT.
+
+### Dependency / eligibility basis
+
+ATL-169 independent QA PASS is the immediate predecessor result. ATL-159 is independently QA-PASSed and supplies the governed WorkDefinition consumed by ATL-178. Linear Continuation 01 explicitly routed ATL-178 after checking its blockers. No Owner decision is pending for ATL-178 build/QA.
+
+### Exact Claude QA/recheck action
+
+Independently fetch branch `atl-178-v15-generated-flow-bpmn` at tip `c8b1083cbbf571bdbcf6b89e37e8764451de5245`. Validate ATL-178 against its Linear acceptance criteria and ATL-177 outcome/architecture controls. Run `node tests/atl-178-generated-flow-bpmn.test.cjs`; independently inspect the generated flow JSON, BPMN export, and governance contract. Verify deterministic derivation from governed WorkDefinition/current-lineage Malkom projection; stage/sub-queue → outcome → route → status → next-step semantics across all declared paths; Flow and BPMN-style views from the same source graph; selected-work-item trace/animation contract where implemented; deterministic redraw/regeneration; valid BPMN 2.0 export and image-export requirement; exact Atlas/Malkom scope/version/lineage metadata; explicit unsupported/ambiguous routing rather than invented BPMN semantics; and STOP boundary excluding universal BPMN coverage, round-trip editing/import, manual modelling, simulation/process mining, runtime orchestration, collaborative authoring, or semantics beyond v1.5 source truth. Return PASS or exact ATL-178 defects to ChatGPT through Linear Continuation 01. If PASS, route only the exact next eligible ATL-177 task after fresh dependency/gate verification.
+
+**Owner/gate status:** No Owner decision pending for ATL-178 independent QA. ATL-142 final production/go-live remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved persistence/recovery state:** RECOVERED if this GitHub append and mandatory read-back verify. Prior substantive ATL-178 implementation was preserved and not repeated. No duplicate Linear self-handoff is created.
