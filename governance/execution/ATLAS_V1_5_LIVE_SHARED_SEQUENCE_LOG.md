@@ -1316,3 +1316,29 @@ Independently re-QA ATL-173 against exactly all 10 mandatory ATL-177 categories,
 
 **Owner/gate status:** No Owner decision pending for ATL-173 re-QA. ATL-142 production promotion remains Owner-gated. ATL-172/ATL-179/ATL-152/ATL-176 v2 remain Owner-gated unless explicitly rerouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE. Previous GitHub mutation blocker cleared on retry; remediation and designated-surface handoff are durably persisted, subject to mandatory read-back.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-141 BUILD COMPLETE → CLAUDE INDEPENDENT QA — 2026-10-02T11:10:00Z
+
+**Transition / current holder:** ChatGPT → Claude.  
+**Exact task/finding:** ATL-141 — Atlas v1.5 — Release Integrity, Browser/Visual Regression & Product Polish — BUILD.  
+**Predecessor context from Linear Continuation 02:** active document ID `1b3b03bf-196c-4dac-8cbf-96c650b947ef`; latest valid Claude→ChatGPT handoff 2026-10-02T10:51:43Z independently PASSed ATL-173 across all 10 categories and explicitly routed ATL-141 BUILD. ATL-141 acceptance requires production-like-root browser journey, desktop/responsive/basic accessibility, in-scope feature regression, loading/error/empty/unresolved states, stale/version-label audit, governed release-integrity update, negative controls, public/protected boundaries, smoke/performance appropriate to demo, truthful v1.5 scope, and exact release identities. Previous ChatGPT invocation durably persisted the candidate audit but GitHub blocked the manifest/test writes; this recovery invocation preserved that audit and retried only the missing persistence.
+
+**Result/disposition:** CHATGPT_BUILD_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_QA. Browser evidence is explicitly not self-certified; Claude must execute it independently. Production promotion remains unauthorized.
+
+### Durable implementation evidence
+Branch `atl-141-v15-release-integrity` exact tip `91271fa2b45affd798d934c1eb9318462ed67d39`, tree `94ef39bbeec127e2a588a5d9205b41144eabd056`. Candidate audit commit `d2f6ca5694743a9671e3ec267ba6dbfa166ddab4`; artifact `release/candidates/atl-141-v15-release-candidate-audit.json` blob `31d1cbbfaeccd4227307475cf982c0e9eef80426`. Governed manifest update commit `6a2bbb96f9ddc00976b47c0fde4f3a54d4f36f1e`; manifest blob `e42c328131d0463205b289f6726e2d9853268d13`. Deterministic regression commit/tip `91271fa2b45affd798d934c1eb9318462ed67d39`; test `tests/atl-141-release-integrity.test.cjs` blob `79f1e17c6ffc28e0752be9b7cedeed653340aa14`. Programmatic final-tree comparison found zero mismatches across all governed manifest dependencies. Manifest explicitly links the candidate audit and retains `ownerGateRequired:true`, `productionPromotionAuthorized:false`.
+
+### 10-category ChatGPT self-check
+1 Build Correctness: candidate audit + manifest + deterministic regression persisted/read back; zero manifest/tree dependency mismatches. 2 Outcome Fitness: audit defines fresh-root candidate journey and release-integrity expectations; actual browser outcome remains Claude QA. 3 Architecture Fitness: existing release manifest/process extended; no parallel release truth. 4 Future-Scope Compatibility: explicit no-v2/no-BOL/no-full-readiness truth labels. 5 Canonical Ownership/Truth Integrity: no canonical domain/work assets mutated. 6 Reachability: audit starts at `/`; deterministic checks verify root links to interaction and Malkom consumer and downstream utility/release-status surfaces; live browser confirmation required. 7 Provenance/Lineage Integrity: exact candidate parent/tree/artifact blobs and final manifest dependency identities recorded. 8 Fail-Closed Behavior: unknown lineage, unresolved client binding, guessed API and ungated production are explicit negative controls; production authorization false. 9 Malkom Utility: ATL-173 proof and updated consumer are now included in governed release manifest. 10 Consumer Independence: candidate identities/tests are machine-readable; no hidden developer route is intended, subject to Claude fresh-user browser proof.
+
+### Dependency / eligibility basis
+ATL-173 independently PASSed in the authoritative Continuation 02 handoff; ATL-141 has no Governance Hold/Owner Decision label and was explicitly routed. No later ATL-177 task started.
+
+### Exact Claude QA/recheck action
+Fetch `atl-141-v15-release-integrity` at exact tip `91271fa2b45affd798d934c1eb9318462ed67d39`. From a clean checkout run `node tests/atl-141-release-integrity.test.cjs` plus relevant existing v1.5 regressions. Independently verify manifest/tree/package identities. Then perform the mandatory actual browser/visual QA from the production-like fresh public root URL, not deep links: root landing → Road LTL → daughter/process/task → authorized deeper/private semantics → Malkom crosswalk → package/export → source/canonical trace → unresolved/client-binding path → unauthorized/public-safe behavior. Check desktop/responsive readability/basic accessibility, Canvas/Ask/Inspector/Trace/Compare/Transform where in v1.5 scope, loading/error/empty/unresolved states, stale/demo/version labels, negative controls, public/admin/protected boundaries, and reasonable demo smoke/performance. Confirm no false v2/BOL/full-readiness claims. Recheck all 10 categories and return PASS or exact defects only via active Linear Continuation 02.
+
+**Owner/gate status:** ATL-141 BUILD/QA needs no Owner decision. ATL-142 final production/go-live remains Owner-gated; this handoff does not authorize promotion. v2 continuations remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE if designated GitHub handoff read-back verifies.
