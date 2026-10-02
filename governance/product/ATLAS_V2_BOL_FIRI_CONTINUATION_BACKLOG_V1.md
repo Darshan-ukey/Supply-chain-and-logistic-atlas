@@ -20,7 +20,7 @@ The canonical ATL-144 continuation record identifies these as completed inputs:
 - ATL-69 — corrected experimental scope: 66 testable + 10 exclusions — independent QA PASS / Done.
 - ATL-70 — Benchmark, Ground Truth & Metrics Contract — Done.
 - ATL-73 — Atlas BOL Intelligence Explorer/API — remediated, independent QA PASS, production runtime evidence captured / Done.
-- ATL-134 — BOL-002 FIRI candidate implementation — Done; independent QA remains a separate gate.
+- ATL-134 — BOL-002 FIRI candidate implementation — Done.\n- ATL-135 — Independent QA of BOL-002 FIRI v1 candidate — Done (completed 2026-09-28); preserve as completed evidence and do not re-run.
 
 Historical superseded artifacts and denominators remain evidence only and MUST NOT be revived.
 
@@ -76,7 +76,7 @@ Linear:
 - ATL-145 — deterministic post-v1.5 resume reconciliation.
 - ATL-146 — BOL-002 QA closure/freeze/promotion.
 - ATL-59 / ATL-71–77 — empirical BOL execution-readiness chain.
-- ATL-132 / ATL-134 / ATL-135 — BOL-002 FIRI proof/candidate/independent QA.
+- ATL-132 / ATL-134 / ATL-135 — BOL-002 FIRI proof/candidate/independent QA; ATL-135 is Done and must remain preserved.
 - ATL-133 / ATL-107 / ATL-130 — convergence and final execution-readiness chain.
 
 GitHub:
