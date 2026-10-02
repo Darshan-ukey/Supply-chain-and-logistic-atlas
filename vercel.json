@@ -3,9 +3,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
-    "api/system.js": {
-      "maxDuration": 30,
-      "includeFiles": "{index.html,stage17-client.js,stage18-client.js,stage19-client.js,stage20-client.js,stage21-client.js,stage24-page0-rules.js,stage24-page0-composer.js,stage24-enterprise-entry.js,legacy-reference-client.js,.env.example,RELEASE_V1.1.8.md,engine/**,data/**,governance/**,release/**,reference/**,lib/api/**}"
+    "api/*.js": {
+      "maxDuration": 30
     }
   },
   "headers": [
