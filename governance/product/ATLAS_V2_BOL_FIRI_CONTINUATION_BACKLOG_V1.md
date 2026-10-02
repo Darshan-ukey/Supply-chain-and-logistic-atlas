@@ -42,7 +42,7 @@ ATL-73 is an input to this chain, not work to repeat.
 - ATL-135 — independent QA of BOL-002 FIRI v1 candidate.
 - ATL-145 — post-v1.5 resume reconciliation; must consume this freeze before any resumed execution.
 - ATL-146 — BOL-002 QA closure/freeze/promotion decision; blocked by ATL-145 + ATL-135. Existing In Progress status does NOT override those dependency gates and does not authorize execution during v1.5.
-- ATL-133 — execution-readiness intelligence architecture closure after proof generalization.
+- ATL-150 — FIRI Engine governed integration / on-demand generation; prerequisite to ATL-151.\n- ATL-151 — empirical proof architecture reconciliation; blocked by ATL-150 + ATL-77, and blocks ATL-133. Must reconcile FIRI as a specialization of generalized Resolution Intelligence from empirical evidence rather than merely renaming FIRI.\n- ATL-133 — execution-readiness intelligence architecture closure after ATL-151 reconciliation.
 - ATL-107 — multi-consumer production integration where applicable.
 - ATL-130 — final execution-readiness QA; never close contrary to its governance.
 
@@ -76,7 +76,7 @@ Linear:
 - ATL-146 — BOL-002 QA closure/freeze/promotion.
 - ATL-59 / ATL-71–77 — empirical BOL execution-readiness chain.
 - ATL-132 / ATL-134 / ATL-135 — BOL-002 FIRI proof/candidate/independent QA; ATL-135 is Done and must remain preserved.
-- ATL-133 / ATL-107 / ATL-130 — convergence and final execution-readiness chain.
+- ATL-150 / ATL-151 — governed FIRI integration and empirical generalized Resolution Intelligence reconciliation; ATL-151 blocks ATL-133.\n- ATL-133 / ATL-107 / ATL-130 — convergence and final execution-readiness chain.
 
 GitHub:
 - This file is the durable ATL-143 resume manifest on branch `atl-143-v15-bolfiri-handover-freeze`.
