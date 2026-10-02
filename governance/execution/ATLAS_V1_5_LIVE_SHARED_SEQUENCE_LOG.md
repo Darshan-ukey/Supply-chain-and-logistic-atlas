@@ -1097,3 +1097,35 @@ Fetch `atl-140-v15-product-ux-integration` at exact tip `e0c17bbb85bda27ebb9189b
 
 **Owner/gate status:** No Owner decision pending for ATL-140 independent QA. ATL-142 final production/go-live remains Owner-gated. ATL-172/ATL-179/ATL-152 v2 remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE if append/read-back verify. No duplicate Linear self-handoff is created.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-175 BUILD COMPLETE → CLAUDE INDEPENDENT QA — 2026-10-02T07:43:30Z
+
+**Transition / current holder:** ChatGPT → Claude  
+**Exact task/finding:** ATL-175 — Atlas v1.5 Capability — Bounded API, Versioning, Release & Rollback Contract — independent QA  
+**Sequence controller:** ATL-177  
+**Disposition:** CHATGPT_BUILD_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_QA
+
+### Predecessor context from Linear Continuation 01
+Claude independently QA-PASSed ATL-140 across all 10 mandatory categories and explicitly routed ATL-175 BUILD. ATL-175 blockers ATL-169 and ATL-140 are satisfied; labels contain no Governance Hold / Owner Decision Required.
+
+### Durable implementation evidence
+- Branch: `atl-175-v15-release-contract`
+- Build tip: `af951d15d43be061853b39cb8f0a9607fc0ac568`
+- Base / passed ATL-140 tip: `e0c17bbb85bda27ebb9189be7cc845e3c48979dd`
+- Contract JSON: `governance/product/ATL_175_V1_5_RELEASE_CONTRACT_V1.json` — blob `8a54720773aa84a379d172732f81eaa84c5d0208`
+- Contract MD: `governance/product/ATL_175_V1_5_RELEASE_CONTRACT_V1.md` — blob `73f47c7c3f01c643d7dbab6a872dcd16a9bc44b7`
+- Regression: `tests/atl-175-release-contract.test.cjs` — blob `42a9a12b6d4c2adf8398650bf3853250ede8cdce`
+- Contract freezes current-lineage API/export/package identity, exact compatibility, protected/public boundaries, fail-closed mismatch handling, release manifest semantics, rollback identity, backup/recovery requirement, STAGING→INDEPENDENT_QA→OWNER_GATE→PRODUCTION path, and no frozen-asset mutation.
+- STOP boundary explicitly excludes universal migration, multi-generation negotiation, broad indexing redesign, and future upgrade architecture.
+
+### Dependency / eligibility basis
+Linear Continuation 01 explicitly authorized ATL-175 after ATL-140 QA PASS. ATL-169 and ATL-140 are satisfied. No Owner decision is required for build or independent QA.
+
+### Exact Claude action
+Independently QA ATL-175 against its Linear Build/STOP/Handover criteria and all 10 ATL-177 categories: Build Correctness; Outcome Fitness; Architecture Fitness; Future-Scope Compatibility; Canonical Ownership / Truth Integrity; Reachability; Provenance / Lineage Integrity; Fail-Closed Behavior; Malkom Utility; Consumer Independence. Verify evidence independently; do not inherit ChatGPT's build claim. If defects exist, route exact ATL-175 remediation to ChatGPT in Linear Continuation 01. If PASS, route only the next explicitly eligible ATL-177 action there.
+
+**Owner/gate status:** No Owner decision pending for ATL-175 QA. ATL-142 production/go-live remains Owner-gated. v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE. Previous GitHub mutation blocker cleared on retry; substantive ATL-175 build is now durably persisted. Mandatory shared-log read-back required below.
