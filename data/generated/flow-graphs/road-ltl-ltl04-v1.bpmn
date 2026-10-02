@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_Atlas_LTL04" targetNamespace="https://atlas.example/v1.5" exporter="Atlas" exporterVersion="1.5">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Definitions_Atlas_LTL04" targetNamespace="https://atlas.example/v1.5" exporter="Atlas" exporterVersion="1.5">
   <documentation>graphId=flow::road-ltl::LTL-04::v1; workDefinitionId=wd::road-ltl::LTL-04::v1; malkomPackageId=malkom-dw::road-ltl::LTL-04::v1; version=1.0.0</documentation>
   <process id="Process_LTL04" name="Road LTL LTL-04 Pickup" isExecutable="false">
     <startEvent id="start" name="Pickup requested"><outgoing>e1</outgoing></startEvent>
