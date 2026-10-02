@@ -1,16 +1,33 @@
 {
   "contractId": "atlas-v1.5-release-contract::road-ltl::v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scope": "Atlas v1.5 current-lineage Road LTL / Malkom Domain Warehouse",
   "sourceReleaseTip": "e0c17bbb85bda27ebb9189be7cc845e3c48979dd",
   "apiContracts": {
-    "query": {"stability": "v1.5-bounded", "identityRequired": true},
-    "export": {"format": "governed-json", "identityRequired": true},
-    "malkomPackage": {"id": "malkom-dw::road-ltl::LTL-04::v1", "compatibility": "exact-current-lineage"}
+    "query": {
+      "stability": "v1.5-bounded",
+      "identityRequired": true
+    },
+    "export": {
+      "format": "governed-json",
+      "identityRequired": true
+    },
+    "malkomPackage": {
+      "id": "malkom-dw::road-ltl::LTL-04::v1",
+      "compatibility": "exact-current-lineage"
+    }
   },
   "authorization": {
-    "public": ["read public-safe governed projections", "download public-safe exports"],
-    "protected": ["controlled deepen", "client-binding resolution", "release promotion", "rollback execution"],
+    "public": [
+      "read public-safe governed projections",
+      "download public-safe exports"
+    ],
+    "protected": [
+      "controlled deepen",
+      "client-binding resolution",
+      "release promotion",
+      "rollback execution"
+    ],
     "default": "deny-if-boundary-or-lineage-unknown"
   },
   "compatibilityRules": [
@@ -20,21 +37,50 @@
     "no implicit multi-generation negotiation"
   ],
   "release": {
-    "stagePath": ["STAGING", "INDEPENDENT_QA", "OWNER_GATE", "PRODUCTION"],
+    "stagePath": [
+      "STAGING",
+      "INDEPENDENT_QA",
+      "OWNER_GATE",
+      "PRODUCTION"
+    ],
     "ownerGateRequired": true,
     "productionPromotionAuthorized": false,
-    "rollbackPoint": {"type": "production-baseline", "identity": "pre-v1.5-current-production"},
-    "frozenAssetMutationAllowed": false
+    "rollbackPoint": {
+      "type": "existing-integrity-baseline",
+      "identity": "release/baselines/v1.1.8-critical-hashes.json",
+      "blobSha": "98296aa26eb563479e666fe6dd007bf422920c6d",
+      "golden": "Exact v1.1.7 final GitHub master SHA-256 a2e64c9e89f9739c3a2fc47556566d7fbc39c8f1afb70eace8bc9d2c86a7d5f5"
+    },
+    "frozenAssetMutationAllowed": false,
+    "manifest": "release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json"
   },
   "backupRecoveryEvidence": {
     "required": true,
-    "releaseSignificantArtifacts": ["governed data", "generated projections", "release manifest", "API/package contract"],
-    "recoveryRule": "restore only from identity-verified backup/rollback evidence"
+    "releaseSignificantArtifacts": [
+      "governed data",
+      "generated projections",
+      "release manifest",
+      "API/package contract"
+    ],
+    "recoveryRule": "restore only from identity-verified backup/rollback evidence",
+    "manifest": "release/baselines/atlas-v1.5-road-ltl-malkom-critical-hashes.json",
+    "rollbackRunbook": "release/ROLLBACK_RUNBOOK.md"
   },
   "stopBoundary": [
     "no universal schema-migration framework",
     "no multi-generation version negotiation",
     "no broad indexing redesign",
     "no full future upgrade architecture"
-  ]
+  ],
+  "releaseGovernance": {
+    "existingContract": "release/RELEASE_CONTRACT.md",
+    "rollbackRunbook": "release/ROLLBACK_RUNBOOK.md",
+    "baselineConvention": "release/baselines/*-critical-hashes.json",
+    "promotionMapping": "Atlas v1.5 STAGING is the existing Lab channel; independently QA-verified exact artifact is promoted through OWNER_GATE to existing Stable. Stable is not rebuilt.",
+    "healthEndpoints": [
+      "/api/version",
+      "/api/readiness",
+      "/api/release-integrity"
+    ]
+  }
 }
