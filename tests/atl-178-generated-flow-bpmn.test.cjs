@@ -1,0 +1,6 @@
+const fs=require('fs');const assert=require('assert');const {XMLParser}=require('fast-xml-parser');
+const g=JSON.parse(fs.readFileSync('data/generated/flow-graphs/road-ltl-ltl04-v1.json','utf8'));const x=fs.readFileSync('data/generated/flow-graphs/road-ltl-ltl04-v1.bpmn','utf8');
+assert.equal(g.scope.workDefinitionId,'wd::road-ltl::LTL-04::v1');assert.equal(g.scope.malkomPackageId,'malkom-dw::road-ltl::LTL-04::v1');assert.equal(g.lineage.canonicalMutation,false);assert.equal(g.views.flow,'SAME_GRAPH');assert.equal(g.views.bpmn,'SAME_GRAPH');
+for(const o of ['ACCEPTED','CONDITIONAL','REJECTED','CANCELLED'])assert(g.edges.some(e=>e.outcome===o));assert(g.unsupported.some(u=>u.semantic==='sub-queue'&&u.disposition==='SURFACE_NOT_INVENT'));
+const p=new XMLParser({ignoreAttributes:false}).parse(x);assert(p.definitions.process);assert.equal(p.definitions.process['@_isExecutable'],'false');for(const id of g.nodes.map(n=>n.id))assert(x.includes('id="'+id+'"'));for(const id of g.edges.map(e=>e.id))assert(x.includes('id="'+id+'"'));
+console.log('ATL-178 generated flow/BPMN contract: PASS');
