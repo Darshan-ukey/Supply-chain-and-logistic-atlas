@@ -1129,3 +1129,45 @@ Independently QA ATL-175 against its Linear Build/STOP/Handover criteria and all
 
 **Owner/gate status:** No Owner decision pending for ATL-175 QA. ATL-142 production/go-live remains Owner-gated. v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE. Previous GitHub mutation blocker cleared on retry; substantive ATL-175 build is now durably persisted. Mandatory shared-log read-back required below.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-175 ROUND-1 REMEDIATION COMPLETE → CLAUDE RE-QA ROUND 2 — 2026-10-02T08:23:00Z
+
+**Transition / current holder:** ChatGPT → Claude.  
+**Exact task/finding:** ATL-175 — Atlas v1.5 Capability — Bounded API, Versioning, Release & Rollback Contract — round-1 remediation complete.  
+**Disposition:** CHATGPT_REWORK_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_RE_QA. No self-certified QA PASS.
+
+### Predecessor context from Linear Continuation 01
+Authoritative pickup was the latest valid Claude → ChatGPT handoff in active document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`, timestamp 2026-10-02T07:53:00Z: ATL-175 independent QA round 1 = REWORK_REQUIRED. Claude independently found five failing categories: Outcome Fitness, Architecture Fitness, Reachability, Provenance/Lineage Integrity and Malkom Utility. Exact authorized remediation was limited to: integrate the existing release/rollback architecture; replace fabricated rollback identity with a real baseline identity; create a concrete release manifest; create real backup/recovery evidence; and make the contract genuinely reachable/consumed. No Owner decision required.
+
+### Result / durable implementation evidence
+Branch `atl-175-v15-release-contract` tips at `4e5c4f908ee38ba147390ab53329df12131369e1`.
+
+Commits: `ab628f71fcdbf3371e693873b17cb2fb661c5d1e` integrates existing release governance + real rollback baseline; `c9c65835faffc38b240cfdc6b9e29bbb008b34c5` adds concrete release manifest; `60291be801f94bdcb1deff04aeceb15a487a03bc` adds recovery evidence; `dcc9d726cb4717d06aa9f0d77c5d194a2698a27b` adds protected release-status consumer; `8cbb73be97997c73c50556aa2853fb16b30393fa` links it from ATL-167 admin view; `4e5c4f908ee38ba147390ab53329df12131369e1` adds regression verification.
+
+Final blobs: contract `e5bf61e15b90505b3ed1a7ae1a14c8a1a080a435`; release manifest `c10d476a4f97aa564aed07cb4bb6a45f605bdc70`; recovery manifest `33372a14f059c9589eeb3aee3ca84922cb161a07`; release-status UI `a3dd3e0ef524f6ac565a2f43ee9cfdde3a6a9822`; ATL-167 admin page `72c4ce7ca1f1ed137f43470c54b662162c984c90`; test `06311b9510e7451550a8d5dd4dc1905b11c9fbba`.
+
+The contract now explicitly extends `release/RELEASE_CONTRACT.md`, `release/ROLLBACK_RUNBOOK.md`, existing Lab→Stable promotion and `/api/version`, `/api/readiness`, `/api/release-integrity`. Rollback resolves to real baseline `release/baselines/v1.1.8-critical-hashes.json` blob `98296aa26eb563479e666fe6dd007bf422920c6d` with its existing golden SHA-256 provenance. The concrete release manifest enumerates 14 release dependencies with Git blob identities. Recovery evidence follows the existing `release/baselines/` convention and records 9 v1.5 significant artifact identities plus rollback/runbook. A protected release-status view reads contract/manifest/recovery evidence, fails closed on fetch/identity mismatch, and is reachable from ATL-167's admin panel. Production remains unauthorized and Owner-gated.
+
+### Mandatory 10-category ChatGPT self-check
+1. Build Correctness: durable branch/files/blobs read back; regression validates real files and identities. Claude must execute independently.
+2. Outcome Fitness: rollback, release manifest, backup/recovery evidence and promotion mapping are concrete artifacts rather than declarations.
+3. Architecture Fitness: extends existing release contract/runbook/baseline convention and existing health endpoints; no parallel release system.
+4. Future-Scope Compatibility: bounded v1.5 contract retains STOP boundary; no v2 migration architecture introduced.
+5. Canonical Ownership / Truth Integrity: release/governance/UI/test artifacts only; no canonical knowledge mutation.
+6. Reachability: protected ATL-167 admin view links the real release-status consumer.
+7. Provenance / Lineage Integrity: rollback identity resolves to an existing baseline file/blob and golden provenance; release dependencies carry concrete blob SHAs.
+8. Fail-Closed Behavior: productionPromotionAuthorized=false/Owner gate remains; release-status view fails closed on missing/mismatched evidence.
+9. Malkom Utility: Malkom release artifacts are now explicitly represented in release/recovery manifests and inspectable from protected product UI.
+10. Consumer Independence: release status consumes machine-readable contract/manifest/evidence; identities are explicit rather than hidden manual knowledge.
+
+### Dependency / eligibility basis
+ATL-169 and ATL-140 blockers were already independently satisfied; Claude explicitly routed same-task ATL-175 remediation. No later task was started.
+
+### Exact Claude QA/recheck action
+Fetch `atl-175-v15-release-contract` at exact tip `4e5c4f908ee38ba147390ab53329df12131369e1`. From clean checkout run `node tests/atl-175-release-contract.test.cjs`. Independently verify all 10 categories, especially that the rollback identity resolves to the existing baseline, release manifest blob identities match actual files, recovery evidence is real and follows existing convention, protected UI is reachable and consumes the evidence, existing release architecture is extended rather than duplicated, and Owner-gated production remains fail-closed. Return PASS or exact remaining defects only through active Linear Continuation 01.
+
+**Owner/gate status:** No Owner decision pending for ATL-175 re-QA. ATL-142 production/go-live remains Owner-gated. ATL-172/ATL-179/ATL-152/ATL-176 v2 remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE if this append/read-back verifies. No duplicate Linear self-handoff is created.
