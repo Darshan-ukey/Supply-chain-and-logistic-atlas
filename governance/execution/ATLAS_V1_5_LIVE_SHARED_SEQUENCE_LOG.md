@@ -1372,3 +1372,37 @@ Fetch `atl-141-v15-release-integrity` at exact tip `39e520cbf48b1f4eddf74a50608d
 **Owner/gate status:** No Owner decision required for ATL-141 re-QA. ATL-142 production promotion remains Owner-gated. ATL-172/ATL-179/ATL-152/ATL-176 v2 remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.
 
 **Unresolved recovery state:** NONE for implementation. Prior GitHub safety-layer mutation rejection cleared on exact recovery retry. Designated GitHub handoff requires read-back after this write.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-141 INDEPENDENT RE-QA PASS → ATL-143 BUILD ROUTED TO CHATGPT — 2026-10-02T13:50:00Z
+
+**Transition / current holder:** Claude → ChatGPT
+**Exact task/finding:** ATL-141 — Atlas v1.5 — Release Integrity, Browser/Visual Regression & Product Polish. Round-2 independent re-QA of the Outcome Fitness remediation. Forward handoff: ATL-143 — v1.5 → v2 BOL/FIRI Deferred-Work Handover Freeze — BUILD.
+
+**Predecessor disposition/result:** Picked up via this same log's entry "CURRENT BATON — ATL-177 / ATL-141 REMEDIATION COMPLETE → CLAUDE INDEPENDENT RE-QA — 2026-10-02T12:52:00Z" (ChatGPT → Claude), newer than Linear Continuation 02's own last entry (2026-10-02T12:30:00Z) and correctly resolved as current baton. Claude independently re-verified all 10 mandatory ATL-177 categories this run (not inherited from ChatGPT's self-check): **PASS across all 10** — Build Correctness, Outcome Fitness (the round-1 failure, now fixed), Architecture Fitness, Future-Scope Compatibility, Canonical Ownership/Truth Integrity, Reachability, Provenance/Lineage Integrity, Fail-Closed Behavior, Malkom Utility, Consumer Independence. ATL-141 is independently QA-complete, with one disclosed non-blocking tooling gap (below).
+
+**Durable evidence (all obtained via real tool calls this run):**
+* `git fetch origin atl-141-v15-release-integrity` → tip `39e520cbf48b1f4eddf74a50608d5ae3d19b11ce`, exact match to the prior handoff's claimed tip.
+* Baseline blob `02a3e9e21a0362d1371e2863cfb028e62c966e23` (git ls-tree) exact match; live `sha256sum index.html` on a clean `git worktree add --detach` checkout = `565503f075d2539610cc5d67032334cbfbbe038d97c85899694b31b91f23bf88`, matching the baseline's recorded value.
+* Directly invoked the real committed `lib/api/release-integrity.js` handler via a Node harness (not the repo's own test, not narrative): `ok:true`, `criticalIntegrity:true`, `checkedFiles:37`, zero mismatches, HTTP 200.
+* Negative control: corrupted a disposable copy's baseline entry, re-ran the same handler → `ok:false`/`criticalIntegrity:false`/HTTP 500, confirming a live-computed guard.
+* Executed the verbatim client fetch-chain from `atl-175-release-status.html` against a local faithful reproduction of the real `vercel.json` rewrite chain (`/api/release-integrity` → `/api/system?action=release-integrity` → `lib/api/release-integrity.js`) on the corrupted copy: fail-closed path fired correctly.
+* Full regression suite from the clean checkout: 13/13 PASS (atl-139, atl-140, atl-141, atl-157, atl-159, atl-165, atl-167, atl-169, atl-171, atl-173×2, atl-175, atl-178).
+* `git diff --stat` across the round-2 remediation commits: only `atl-175-release-status.html`, baseline JSON, release-candidate-audit JSON, release manifest, and two test files changed — no canonical/governed source touched.
+* Vercel deployment `dpl_4AjsGNDKw7WZpmPxmCD5kPtKygjr` (real Vercel API call): `state: READY`, `meta.githubCommitSha: 39e520cbf48b1f4eddf74a50608d5ae3d19b11ce` — deployed candidate exactly matches the QA'd tip.
+* Static reachability: grep-confirmed real link chain `index.html → /atl-167-interaction-slice.html → /atl-175-release-status.html` and `index.html → /atl-140-malkom-consumer.html`; HTTP 200 on every page via a local server faithfully reproducing the real Vercel static/clean-URL rules.
+* Full per-category narrative posted as Linear comment `93dbffdc-f714-4489-8f39-b46aff6fcb6c` on the ATL-141 issue (2026-10-02T13:50:36Z) — treat that comment as the authoritative detailed record; this entry is its durable cross-surface summary.
+
+**Disclosed evidence gap (non-blocking):** This run's Playwright browser tool returned `net::ERR_BLOCKED_BY_CLIENT` for every destination attempted, including a trivial external control (`https://example.com/`) and `localhost` (`chrome-error://chromewebdata`) — a confirmed tool-wide outage this run, not a per-site restriction. The live, rendered, click-through browser journey layer of ATL-141's acceptance criteria could not be captured this run; real non-browser equivalents (direct handler execution, verbatim client-script execution, HTTP-level reachability against a faithful local reproduction) were substituted and found no defect. Flagged as BROWSER VERIFICATION PENDING (supplementary layer only) — a future Claude QA turn with working browser tooling should complete it before final visual/interactive sign-off, though ATL-142 (Owner-gated go-live) remains the actual production gate regardless.
+
+**Minor observation (non-blocking, pre-existing, outside this round's routed scope):** `atl-178-flow-explorer.html` lacks a viewport meta tag; several journey pages omit an `html lang` attribute. Confirmed via `git diff --stat` that ATL-141's remediation commits did not touch these files.
+
+**Dependency / eligibility basis:** ATL-143 `blockedBy` = {ATL-141}, now independently PASSed (this entry). ATL-143 has no Governance Hold, no Owner Decision Required label (verified via Linear `get_issue` this run). Per the ATL-177 canonical/superseding 20-task sequence, the task immediately following ATL-141 is ATL-143. No later ATL-177 task has started.
+
+**Exact next action (ChatGPT):** Execute ATL-143 — v1.5 → v2 BOL/FIRI Deferred-Work Handover Freeze — per its Linear acceptance criteria (read final outputs/findings from ATL-138, ATL-139, ATL-140 and ATL-141; capture any Malkom Domain Warehouse gaps belonging in the deferred BOL/FIRI or execution-readiness backlog; reconcile against existing BOL/FIRI evidence/tasks ATL-59/ATL-67–77, ATL-132/134/135, ATL-133, ATL-107/130; preserve independently QA-passed checkpoints as completed, do not restart them; record exact remaining open gates and resume order; update the v2 BOL/FIRI continuation parent/backlog only if v1.5 exposed a genuinely new gap; freeze exact GitHub/Linear/Drive pointers for the resume state). This is a handover/freeze task only — no BOL/FIRI implementation is authorized. Self-check all 10 ATL-177 QA categories before claiming BUILD_COMPLETE, with explicit per-category evidence, and hand back to Claude for independent re-QA via this GitHub shared sequence log once committed.
+
+**Owner/gate status:** No Owner decision pending for this finding or for ATL-143 BUILD routing. ATL-142 final production/go-live remains Owner-gated. ATL-172/ATL-179/ATL-152/ATL-176 v2 remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE except as a freeze/handover record. No gate self-approved.
+
+**Unresolved persistence/recovery state:** NONE pending this document's read-back. No GitHub or Linear persistence failure this run. Linear Continuation 02 updated in parallel with this same disposition.
