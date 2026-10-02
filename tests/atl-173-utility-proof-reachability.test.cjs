@@ -1,0 +1,11 @@
+const fs=require('fs'),assert=require('assert');
+const html=fs.readFileSync('atl-140-malkom-consumer.html','utf8');
+assert(html.includes('id="atl-173-utility-proof"'));
+assert(html.includes('4 material requirements'));
+assert(html.includes('2 available/projectable'));
+assert(html.includes('1 client-binding-required'));
+assert(html.includes('1 unsupported/unconfirmed'));
+assert(html.includes('Reusable elements:'));
+assert(html.includes('Residual discovery:'));
+assert(html.includes('/data/generated/utility/road-ltl-ltl04-malkom-utility-proof-v1.json'));
+console.log('ATL-173 utility proof reachability: PASS');
