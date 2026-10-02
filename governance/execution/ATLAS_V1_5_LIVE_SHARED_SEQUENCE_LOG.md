@@ -1205,3 +1205,28 @@ Perform ATL-175 round-2 independent QA against the Linear Build/STOP/Handover cr
 
 **Owner/gate status:** No Owner decision pending for ATL-175 round-2 QA. ATL-142 final production/go-live remains Owner-gated. v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE after successful persistence/read-back. This handoff recovers the previously blocked designated-surface persistence only; substantive remediation was not repeated.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-175 ROUND-2 REMEDIATION COMPLETE → CLAUDE RE-QA ROUND 3 — 2026-10-02T09:12:00Z
+
+**Transition / current holder:** ChatGPT → Claude.  
+**Exact task/finding:** ATL-175 — Bounded API, Versioning, Release & Rollback Contract — round-2 remediation.  
+**Predecessor context:** Active Linear Continuation 01 document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`, latest valid Claude→ChatGPT handoff 2026-10-02T08:57:00Z = round-2 REWORK_REQUIRED. Claude found exactly two remaining failures: Build Correctness (regression asserted a static rollback literal although UI renders it dynamically) and Provenance/Lineage Integrity (ATL-167 blob stale in both manifests).  
+**Result/disposition:** CHATGPT_REWORK_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_RE_QA. No independent QA PASS self-certified.
+
+### Durable evidence
+Branch `atl-175-v15-release-contract` tip `dc8cc88b4c6bd05404b18d263872276492516edf`. Commits: release-manifest identity correction `fafbe4d24a20070f46c8c6fd01a5c67538aa1a4a`; recovery-manifest correction `dc36d98f1994e27dea4732c2fd9194820f9dd594`; dynamic-render regression correction `dc8cc88b4c6bd05404b18d263872276492516edf`. Final blobs: release manifest `f3c7f2b86074af05533a0b9aa1b482269ff1cee7`; recovery manifest `e96175f1ae433fdd0b2981eeb2a3192ea1bc5888`; test `7808f8144522e189a6dfdcd1a0fd9b35191d2a75`. Both manifests now identify shipped `atl-167-interaction-slice.html` as `72c4ce7ca1f1ed137f43470c54b662162c984c90`. Programmatic Git-tree cross-check after all mutations found zero mismatches across all 14 release dependencies and all 9 recovery artifacts.
+
+### 10-category self-check
+1 Build Correctness: corrected regression targets dynamic rendering contract; durable test blob read back. 2 Outcome Fitness: unchanged/pass basis. 3 Architecture Fitness: unchanged/pass basis. 4 Future-Scope Compatibility: unchanged/pass basis. 5 Canonical Ownership: only two manifests + test changed. 6 Reachability: unchanged/pass basis. 7 Provenance/Lineage: zero manifest/tree mismatches after final mutation. 8 Fail-Closed: unchanged Owner-gated/fail-closed behavior. 9 Malkom Utility: identities remain concrete and inspectable. 10 Consumer Independence: unchanged machine-readable evidence consumption. Claude must independently verify.
+
+### Dependency / eligibility basis
+Same-task remediation explicitly authorized by Claude; ATL-169/ATL-140 blockers remain satisfied. No later task started.
+
+### Exact Claude action
+Fetch `atl-175-v15-release-contract` at `dc8cc88b4c6bd05404b18d263872276492516edf`; from clean checkout run `node tests/atl-175-release-contract.test.cjs`; independently compare every release/recovery manifest identity to the actual tree and verify the corrected dynamic rollback-render assertion; then recheck all 10 categories. Return PASS or exact remaining defects only via active Linear Continuation 01.
+
+**Owner/gate status:** no Owner decision pending for ATL-175 re-QA; ATL-142 final production/go-live remains Owner-gated; v2 continuations remain unrouted; BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE if designated handoff read-back verifies.
