@@ -1230,3 +1230,28 @@ Fetch `atl-175-v15-release-contract` at `dc8cc88b4c6bd05404b18d263872276492516ed
 
 **Owner/gate status:** no Owner decision pending for ATL-175 re-QA; ATL-142 final production/go-live remains Owner-gated; v2 continuations remain unrouted; BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE if designated handoff read-back verifies.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-175 ROUND-3 REMEDIATION COMPLETE → CLAUDE RE-QA ROUND 4 — 2026-10-02T09:39:00Z
+
+**Transition / current holder:** ChatGPT → Claude.  
+**Exact task/finding:** ATL-175 — Atlas v1.5 Capability — Bounded API, Versioning, Release & Rollback Contract — round-3 remediation, bounded UI fail-closed defect.  
+**Predecessor context from Linear Continuation 01:** exact active document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`; latest valid Claude→ChatGPT handoff 2026-10-02T09:32:13Z = INDEPENDENT_QA_REWORK_REQUIRED round 3. Claude verified rounds 1–2 defects closed and found one new Fail-Closed Behavior defect: bare `status` resolved to native `window.status`, leaving visible status frozen on Loading on both success and mismatch paths. Authorized remediation was bounded to `atl-175-release-status.html` plus optional regression guard.  
+**Result/disposition:** CHATGPT_REWORK_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_RE_QA. No independent PASS self-certified.
+
+### Durable evidence
+Branch `atl-175-v15-release-contract` tip `dd32b8a4eabe3c8c08f2da305efd79738c11ecd3`. Commit `2ce25ca360fb80795b009b999324051b94e39829` fixes the Window global collision by changing the element id to `releaseStatus`, binding it explicitly with `document.getElementById('releaseStatus')`, and using that element on both success and fail paths. HTML blob `d7272980d03329ec51811fdf631258d6fe1f6129`. Commit `dd32b8a4eabe3c8c08f2da305efd79738c11ecd3` adds a regression guard rejecting bare `status.textContent/status.className`; test blob `6d2fdf3097fb1b7cfaafb345ac98a884341bf3e5`. Final read-back confirms explicit releaseStatus binding, no bare status property access, and both success and fail-closed visible text assignments target the real element.
+
+### 10-category self-check
+1 Build Correctness: exact files/blobs read back; regression guard added. 2 Outcome Fitness: release status can now visibly resolve instead of remaining Loading. 3 Architecture Fitness: no architecture change. 4 Future-Scope Compatibility: no scope expansion. 5 Canonical Ownership: only UI + regression test changed. 6 Reachability: existing admin link unchanged. 7 Provenance/Lineage: manifests untouched; prior 0/23 mismatch state preserved. 8 Fail-Closed Behavior: mismatch path now explicitly targets visible releaseStatus element. 9 Malkom Utility: unchanged. 10 Consumer Independence: unchanged. Claude must independently execute browser verification.
+
+### Dependency / eligibility basis
+Same-task one-defect remediation explicitly authorized by Claude; no later ATL-177 task started.
+
+### Exact Claude QA/recheck action
+Fetch `atl-175-v15-release-contract` at exact tip `dd32b8a4eabe3c8c08f2da305efd79738c11ecd3`. From a clean checkout run `node tests/atl-175-release-contract.test.cjs`. Then perform live browser verification: normal evidence fetch must visibly change `#releaseStatus` to the STAGING/Lab assembled message; tampered rollback identity must visibly change `#releaseStatus` to `UNAVAILABLE / FAIL-CLOSED: release identity mismatch` and clear facts. Recheck all 10 categories and return PASS or exact remaining defects only via active Linear Continuation 01.
+
+**Owner/gate status:** no Owner decision pending for ATL-175 re-QA. ATL-142 final production/go-live remains Owner-gated. v2 continuations remain unrouted; BOL/FIRI outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE if designated handoff read-back verifies.
