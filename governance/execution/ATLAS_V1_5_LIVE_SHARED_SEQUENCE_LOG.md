@@ -1406,3 +1406,35 @@ Fetch `atl-141-v15-release-integrity` at exact tip `39e520cbf48b1f4eddf74a50608d
 **Owner/gate status:** No Owner decision pending for this finding or for ATL-143 BUILD routing. ATL-142 final production/go-live remains Owner-gated. ATL-172/ATL-179/ATL-152/ATL-176 v2 remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE except as a freeze/handover record. No gate self-approved.
 
 **Unresolved persistence/recovery state:** NONE pending this document's read-back. No GitHub or Linear persistence failure this run. Linear Continuation 02 updated in parallel with this same disposition.
+
+
+---
+
+## CORRECTION / CURRENT BATON — ATL-177 / ATL-141 INDEPENDENT QA — REWORK_REQUIRED (supersedes the 2026-10-02T13:50:00Z PASS entry above) — 2026-10-02T14:08:00Z
+
+**Why this correction exists:** Three concurrent scheduled-monitor Claude sessions independently QA'd this same ATL-141 evidence (tip `39e520cbf48b1f4eddf74a50608d5ae3d19b11ce`) within roughly the same 15-minute window, writing to Linear Continuation 02 without yet seeing each other's work: this session's 13:50:00Z entry (PASS → ATL-143, the entry directly above), a second session's 13:55:00Z entry (REWORK_REQUIRED on a real `rollbackBaseline.blobSha` lineage defect), and a third session's 14:00:00Z entry (PASS → ATL-143 again, also missing the same defect). GitHub — the actual pickup surface ChatGPT reads from — only ever received this session's erroneous PASS (commit `8392913`, directly above). This entry corrects that GitHub record before ChatGPT can pick it up and start ATL-143 on a false premise.
+
+**Transition:** Claude → ChatGPT
+**Current holder / next agent:** ChatGPT
+**Exact task/finding:** ATL-141 — Atlas v1.5 — Release Integrity, Browser/Visual Regression & Product Polish. Same-task remediation under the ATL-177 Rework rule (no parallel issue) — Provenance/Lineage Integrity (QA standard category 7).
+
+**Disposition:** REWORK_REQUIRED. This supersedes the 13:50:00Z PASS entry above (commit `8392913`), which this same session wrote without checking this specific field. The 13:50Z and a concurrent 14:00Z PASS (Linear only, never reached GitHub) were both incomplete QA for the same reason.
+
+**Independently re-verified just now (real tool output, not inherited from any of the three prior narratives):**
+* `git fetch origin atl-141-v15-release-integrity` → tip still `39e520cbf48b1f4eddf74a50608d5ae3d19b11ce` — unchanged since the prior entry; ChatGPT has pushed nothing new.
+* `git show origin/atl-141-v15-release-integrity:release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json` → `rollbackBaseline.blobSha` = `98296aa26eb563479e666fe6dd007bf422920c6d`.
+* `git cat-file -p 98296aa26eb563479e666fe6dd007bf422920c6d` → that blob's `files["index.html"]` = `30d4d9953f7326f2b2603e54219e1ccef12a742668f334ce1f89736fc01e6b92` — the **pre-refresh** hash.
+* `git cat-file -p 02a3e9e21a0362d1371e2863cfb028e62c966e23` (the live baseline blob, introduced by commit `5786c23`) → `files["index.html"]` = `565503f075d2539610cc5d67032334cbfbbe038d97c85899694b31b91f23bf88`, exactly matching `git show origin/atl-141-v15-release-integrity:index.html | sha256sum` on the live tip.
+* `git ls-tree` confirms all 15 `dependencies[].blobSha` entries in the same manifest (including `index.html` → `9cf88a867359ba33ebfbe85c1360f0ab21bc29b3`) correctly track current live blobs — only `rollbackBaseline.blobSha` is stale. The field sits in the same manifest, same shape as the correctly-tracking dependency entries, and documents which baseline blob this release's integrity contract is pinned to; it was never updated when commit `5786c23` refreshed the baseline file's content this round.
+* `git ls-remote origin` shows no `atl-143-*` branch — ChatGPT has not started ATL-143 on the false PASS. Nothing needs to be unwound, only the routing corrected.
+* Full reconciliation narrative posted as Linear comment `225624b8-4fcc-4e20-ae76-a2c8966ba1f4` on the ATL-141 issue (2026-10-02T14:08:00Z) — treat that comment as the authoritative detailed record; this entry is its durable cross-surface summary.
+
+**Per-category status (supersedes both PASS entries):** 9/10 checked-pass — Build Correctness, Outcome Fitness, Architecture Fitness, Future-Scope Compatibility, Canonical Ownership/Truth Integrity, Reachability, Fail-Closed Behavior, Malkom Utility, Consumer Independence (all independently re-confirmed correct in the earlier passes and not contradicted by this finding). 1/10 checked-FAIL: Provenance/Lineage Integrity (stale `rollbackBaseline.blobSha`, detailed above). Per the mandatory standard, no averaging — REWORK_REQUIRED.
+
+**Exact next action (ChatGPT):** Same-task remediation under the ATL-177 rework rule (no parallel issue): (1) update `release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json`'s `rollbackBaseline.blobSha` to `02a3e9e21a0362d1371e2863cfb028e62c966e23` (current live baseline blob); verify `rollbackBaseline.path` is still correct; (2) extend `tests/atl-141-release-integrity.test.cjs` (or a sibling test) to assert `manifest.rollbackBaseline.blobSha` equals the live baseline file's **computed** blob/hash at test time, not a hardcoded literal, so a future baseline refresh cannot silently leave this stale again; (3) self-check all 10 ATL-177 categories again with real evidence, explicitly re-verifying category 7 against this exact field, before re-claiming BUILD_COMPLETE; (4) hand back to Claude for independent re-QA via this GitHub shared sequence log once committed, with updated branch/commit/blob evidence. **Do not proceed to ATL-143** until this re-QA passes.
+
+**Owner/gate status:** No Owner decision pending for this finding. ATL-142 final production/go-live remains Owner-gated. ATL-172/ATL-179/ATL-152/ATL-176 v2 remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE. No gate self-approved.
+
+**Governance note for the Owner:** Three Claude scheduled-monitor sessions ran concurrently on the same ~15-minute slot and produced genuinely conflicting dispositions on the same evidence before any of them could see the others' work — two false PASSes and one correct REWORK_REQUIRED. This is a concurrency/race condition in how the scheduled monitor overlaps with itself, not a one-off QA lapse; worth the Owner's attention regardless of this specific finding being resolved.
+
+**Unresolved persistence/recovery state:** NONE pending this document's read-back. This entry corrects, in place in the sequence, the erroneous forward-routing written earlier in this same GitHub log by this same session.
