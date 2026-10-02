@@ -943,3 +943,44 @@ Fetch `atl-178-v15-generated-flow-bpmn` at tip `c1131d2ed7ebb5e4cab0fa0234a9b9bc
 
 **Owner/gate status:** No Owner decision pending for ATL-178 re-QA. ATL-142 final production/go-live remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved persistence/recovery state:** NONE if this GitHub append and read-back verify. No duplicate Linear self-handoff is created.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-178 ROUND-2 REMEDIATION RECOVERY → CLAUDE RE-QA ROUND 3 — 2026-10-02T05:08:00Z
+
+**Transition / current holder:** ChatGPT → Claude.  
+**Exact task/finding:** ATL-178 — Atlas v1.5 Capability — Generated Queue Flow Explorer & BPMN Export — round-2 remediation complete; independent re-QA round 3 required under ATL-177.  
+**Disposition:** CHATGPT_REMEDIATION_COMPLETE / HANDOFF_RECOVERED / AWAITING_CLAUDE_INDEPENDENT_RE_QA. ChatGPT does not self-mark QA PASS or FIXED—VERIFIED.
+
+### Predecessor context from Linear Continuation 01
+Pickup authority is the latest valid Claude → ChatGPT handoff in active Linear continuation document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`, timestamp 2026-10-02T04:21:46Z: ATL-178 INDEPENDENT_QA_REWORK_REQUIRED (round 2) → ChatGPT autonomous rework. Claude independently checked all 10 mandatory categories. Build Correctness and Outcome Fitness failed because committed generated BPMN/SVG did not equal fresh output from the committed generator/current graph; the other eight categories passed. Exact authorized remediation: regenerate the committed BPMN/SVG for real, add a regression assertion requiring committed artifacts to equal fresh regeneration, then hand back to Claude for round-3 re-QA. No Owner decision required.
+
+### Recovery-first basis
+The authorized substantive remediation was already durably completed before this recovery turn, but the required designated GitHub handoff persistence failed. Per protocol, this turn did not redo implementation. It verified the branch state and retried only the missing GitHub handoff persistence/read-back.
+
+### Result / durable implementation evidence
+ATL-178 branch `atl-178-v15-generated-flow-bpmn` tip is `df46cf2e261c2ee97b01ade607be6afbd8d21658` (`ATL-178 refresh generated artifacts and lock regeneration parity`), parent `c1131d2ed7ebb5e4cab0fa0234a9b9bc4f710bc1`.
+
+Durable blobs at that tip: regenerated BPMN `data/generated/flow-graphs/road-ltl-ltl04-v1.bpmn` = `ab71b01ec81c567b848713a7ddd50b020f4a3bb1`; regenerated SVG `data/generated/flow-graphs/road-ltl-ltl04-v1.svg` = `8c1eff0a7ee464255d7d4dae2325f75f76df015a`; regression test `tests/atl-178-generated-flow-bpmn.test.cjs` = `13cc3611ed5c75fdd0513c3b7aaad8868bbd2c5f`; deterministic generator remains `scripts/generate-atl178-flow.cjs` = `86ff2ed6626a13fae33527744740dc4bc13071f1`. The regression test now asserts `committed BPMN === bpmn(committed graph)` and `committed SVG === svg(committed graph)`, in addition to deterministic repeat-generation and source-mutation assertions. This directly closes Claude's round-2 drift finding.
+
+### Mandatory 10-category ChatGPT self-check for handoff
+1. **Build Correctness:** remediation specifically refreshes committed generated artifacts and adds exact regeneration-parity assertions. Claude must independently clean-run the test; ChatGPT does not claim independent QA PASS.
+2. **Outcome Fitness:** committed artifacts are now tied by regression assertions to the governed graph/generator, addressing the acceptance requirement that governed source change deterministically changes the generated diagram.
+3. **Architecture Fitness:** unchanged from prior re-QA PASS; generated projection remains downstream of governed graph/canonical WorkDefinition truth.
+4. **Future-Scope Compatibility:** unchanged from prior re-QA PASS; bounded v1.5 export/projection only.
+5. **Canonical Ownership / Truth Integrity:** unchanged from prior re-QA PASS; no canonical WorkDefinition mutation introduced by the remediation.
+6. **Reachability:** unchanged from prior re-QA PASS; index-linked Explorer remains the user-facing surface.
+7. **Provenance / Lineage Integrity:** unchanged from prior re-QA PASS; graph IDs/source lineage retained.
+8. **Fail-Closed Behavior:** unchanged from prior re-QA PASS; UNKNOWN/UNSUPPORTED semantics remain surfaced rather than invented.
+9. **Malkom Utility:** unchanged from prior re-QA PASS; bounded Road LTL/LTL-04 Malkom context remains usable.
+10. **Consumer Independence:** unchanged from prior re-QA PASS; data-driven node/edge generation remains in place for the representative v1.5 scope.
+
+### Dependency / eligibility basis
+ATL-169 and ATL-159 remain independently QA-PASSed predecessors. Claude's 2026-10-02T04:21:46Z Linear handoff explicitly authorized this same-task ATL-178 round-2 remediation and round-3 re-QA. No Governance Hold / Owner Decision Required applies to this rework cycle.
+
+### Exact Claude QA/recheck action
+Fetch `atl-178-v15-generated-flow-bpmn` at exact tip `df46cf2e261c2ee97b01ade607be6afbd8d21658`. From a clean checkout run `node tests/atl-178-generated-flow-bpmn.test.cjs`, and independently reproduce generator parity for the committed JSON → BPMN/SVG artifacts. Re-verify all 10 mandatory ATL-177 QA categories, especially Build Correctness and Outcome Fitness that failed round 2. Return PASS or exact remaining defects only through active Linear Continuation 01. Do not infer or route subsequent work unless ATL-178 independently passes and the next task is freshly dependency/gate verified.
+
+**Owner/gate status:** No Owner decision pending for ATL-178 round-3 re-QA. ATL-142 final production/go-live remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE if this append and mandatory read-back verify. This entry recovers the previously failed GitHub handoff persistence only; substantive ATL-178 work was not repeated. No duplicate Linear self-handoff is created.
