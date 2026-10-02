@@ -5,8 +5,8 @@
     "staging": "Lab",
     "production": "Stable"
   },
-  "sourceBranch": "atl-175-v15-release-contract",
-  "sourceTip": "ab628f71fcdbf3371e693873b17cb2fb661c5d1e",
+  "sourceBranch": "atl-141-v15-release-integrity",
+  "sourceTip": "d2f6ca5694743a9671e3ec267ba6dbfa166ddab4",
   "ownerGateRequired": true,
   "productionPromotionAuthorized": false,
   "dependencies": [
@@ -16,7 +16,7 @@
     },
     {
       "path": "atl-140-malkom-consumer.html",
-      "blobSha": "561a9c787469a1f832beb26b5cfe56c17451c1a7"
+      "blobSha": "a13fd8069b832f8cf2522ca78a75890c3d72b580"
     },
     {
       "path": "atl-167-interaction-slice.html",
@@ -25,6 +25,10 @@
     {
       "path": "atl-178-flow-explorer.html",
       "blobSha": "4cc2aaf46f071c49a6c57a81601da2a78dfbfaf5"
+    },
+    {
+      "path": "data/generated/utility/road-ltl-ltl04-malkom-utility-proof-v1.json",
+      "blobSha": "8608c68f1007ea5f18b07452eeb9d3894b9aea40"
     },
     {
       "path": "data/generated/malkom-domain-warehouse/road-ltl-ltl04-v1.json",
@@ -75,5 +79,9 @@
     "/api/version",
     "/api/readiness",
     "/api/release-integrity"
-  ]
+  ],
+  "releaseCandidateAudit": {
+    "path": "release/candidates/atl-141-v15-release-candidate-audit.json",
+    "blobSha": "31d1cbbfaeccd4227307475cf982c0e9eef80426"
+  }
 }
