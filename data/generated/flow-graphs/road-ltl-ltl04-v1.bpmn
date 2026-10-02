@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_Atlas_LTL04" targetNamespace="https://atlas.example/v1.5" exporter="Atlas" exporterVersion="1.5">
+  <documentation>graphId=flow::road-ltl::LTL-04::v1; workDefinitionId=wd::road-ltl::LTL-04::v1; malkomPackageId=malkom-dw::road-ltl::LTL-04::v1; version=1.0.0</documentation>
+  <process id="Process_LTL04" name="Road LTL LTL-04 Pickup" isExecutable="false">
+    <startEvent id="start" name="Pickup requested"><outgoing>e1</outgoing></startEvent>
+    <task id="task-pickup" name="Schedule, update/reschedule or cancel pickup and publish response."><incoming>e1</incoming><outgoing>e2</outgoing></task>
+    <exclusiveGateway id="gateway-result" name="Pickup disposition"><incoming>e2</incoming><outgoing>e3</outgoing><outgoing>e4</outgoing><outgoing>e5</outgoing><outgoing>e6</outgoing></exclusiveGateway>
+    <endEvent id="accepted" name="ACCEPTED"><incoming>e3</incoming></endEvent>
+    <endEvent id="conditional" name="CONDITIONAL"><incoming>e4</incoming></endEvent>
+    <endEvent id="rejected" name="REJECTED"><incoming>e5</incoming></endEvent>
+    <endEvent id="cancelled" name="CANCELLED"><incoming>e6</incoming></endEvent>
+    <sequenceFlow id="e1" sourceRef="start" targetRef="task-pickup"/>
+    <sequenceFlow id="e2" sourceRef="task-pickup" targetRef="gateway-result"/>
+    <sequenceFlow id="e3" name="ACCEPTED" sourceRef="gateway-result" targetRef="accepted"/>
+    <sequenceFlow id="e4" name="CONDITIONAL" sourceRef="gateway-result" targetRef="conditional"/>
+    <sequenceFlow id="e5" name="REJECTED" sourceRef="gateway-result" targetRef="rejected"/>
+    <sequenceFlow id="e6" name="CANCELLED" sourceRef="gateway-result" targetRef="cancelled"/>
+  </process>
+</definitions>
