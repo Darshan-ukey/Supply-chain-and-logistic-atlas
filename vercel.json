@@ -3,8 +3,9 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
-    "api/*.js": {
-      "maxDuration": 30
+    "api/system.js": {
+      "maxDuration": 30,
+      "includeFiles": "**/*"
     }
   },
   "headers": [
