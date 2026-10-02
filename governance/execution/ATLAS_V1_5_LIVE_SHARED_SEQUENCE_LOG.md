@@ -1171,3 +1171,37 @@ Fetch `atl-175-v15-release-contract` at exact tip `4e5c4f908ee38ba147390ab53329d
 
 **Owner/gate status:** No Owner decision pending for ATL-175 re-QA. ATL-142 production/go-live remains Owner-gated. ATL-172/ATL-179/ATL-152/ATL-176 v2 remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE if this append/read-back verifies. No duplicate Linear self-handoff is created.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-175 REMEDIATION COMPLETE → CLAUDE ROUND-2 INDEPENDENT QA — 2026-10-02T08:23:30Z
+
+**Transition / current holder:** ChatGPT → Claude  
+**Exact task/finding:** ATL-175 — Atlas v1.5 Capability — Bounded API, Versioning, Release & Rollback Contract — round-2 independent QA after authorized remediation  
+**Sequence controller:** ATL-177  
+**Disposition:** CHATGPT_REMEDIATION_COMPLETE / AWAITING_CLAUDE_ROUND_2_INDEPENDENT_QA
+
+### Predecessor context from Linear Continuation 01
+Claude independently QAed ATL-175 and returned REWORK_REQUIRED with five failing categories: Outcome Fitness, Architecture Fitness, Reachability, Provenance / Lineage Integrity, and Malkom Utility. Exact authorized remediation required integration with the existing release/rollback architecture, a real rollback identity, concrete release manifest, real backup/recovery evidence, and product reachability/consumption.
+
+### Durable remediation evidence
+- Branch: `atl-175-v15-release-contract`
+- Remediation tip: `4e5c4f908ee38ba147390ab53329df12131369e1`
+- Parent: `8cbb73be97997c73c50556aa2853fb16b30393fa`
+- Regression test at remediation tip: `tests/atl-175-release-contract.test.cjs` blob `06311b9510e7451550a8d5dd4dc1905b11c9fbba`
+- Contract now integrates existing `release/RELEASE_CONTRACT.md`, `release/ROLLBACK_RUNBOOK.md`, baseline convention and real `/api/version`, `/api/readiness`, `/api/release-integrity` endpoints.
+- Rollback resolves to real `release/baselines/v1.1.8-critical-hashes.json` (blob `98296aa26eb563479e666fe6dd007bf422920c6d`) and its recorded golden provenance.
+- Concrete release manifest: `release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json` with >=14 concrete dependency identities.
+- Backup/recovery manifest: `release/baselines/atlas-v1.5-road-ltl-malkom-critical-hashes.json` with release-significant artifact hashes and rollback binding.
+- Product reachability/consumption: `atl-175-release-status.html`, linked from `atl-167-interaction-slice.html`; status view exposes manifest, backup, rollback, Owner-gate and fail-closed release identity behavior.
+- Regression now verifies real files/identities rather than only self-referential contract literals.
+
+### Dependency / eligibility basis
+This remediation was explicitly authorized by the latest valid Claude → ChatGPT ATL-175 REWORK_REQUIRED handoff in Linear Continuation 01. No new task was inferred or started.
+
+### Exact Claude action
+Perform ATL-175 round-2 independent QA against the Linear Build/STOP/Handover criteria and exactly the mandatory 10 ATL-177 categories: Build Correctness; Outcome Fitness; Architecture Fitness; Future-Scope Compatibility; Canonical Ownership / Truth Integrity; Reachability; Provenance / Lineage Integrity; Fail-Closed Behavior; Malkom Utility; Consumer Independence. Independently verify the remediation evidence and especially the five previously failed categories. Do not inherit ChatGPT's remediation claim as QA evidence. If any category fails, route exact ATL-175 remediation through Linear Continuation 01. If all pass, route only the next explicitly eligible ATL-177 action there.
+
+**Owner/gate status:** No Owner decision pending for ATL-175 round-2 QA. ATL-142 final production/go-live remains Owner-gated. v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE after successful persistence/read-back. This handoff recovers the previously blocked designated-surface persistence only; substantive remediation was not repeated.
