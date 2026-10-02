@@ -1,19 +1,17 @@
 # ATL-178 — Generated Queue Flow Explorer & BPMN Export v1
 
-Status: BUILD_COMPLETE / AWAITING_INDEPENDENT_QA
+Status: REWORK_COMPLETE / AWAITING_INDEPENDENT_RE-QA
 
-The v1.5 explorer contract uses one generated runtime-neutral graph for two skins: Flow and BPMN. The bounded representative scope is Road LTL / LTL-04, derived from governed WorkDefinition `wd::road-ltl::LTL-04::v1` and current-lineage Malkom package `malkom-dw::road-ltl::LTL-04::v1`. Atlas canonical truth is not replaced by Malkom queue structures.
+The v1.5 explorer uses one governed runtime-neutral graph for Flow and BPMN skins in bounded Road LTL / LTL-04 scope, derived from WorkDefinition `wd::road-ltl::LTL-04::v1` and current-lineage Malkom package `malkom-dw::road-ltl::LTL-04::v1`. Atlas canonical truth is not replaced by Malkom queue structures.
 
-## Generation and redraw
-The graph is a deterministic projection of source work semantics. Node and edge order is stable. A source semantic change must produce a changed graph/export; unchanged source produces byte-stable logical graph content. Both views consume the same graph, so redraw is data-driven rather than manually modelled.
+## Reachable capability
+`atl-178-flow-explorer.html` is linked from product `index.html`. It presents Flow and BPMN views, a selected-path visual trace, and a downloadable SVG image export. The export artifact is `data/generated/flow-graphs/road-ltl-ltl04-v1.svg`.
 
 ## Supported mapping
-START → BPMN startEvent; governed work action → task; mutually exclusive declared disposition routes → exclusiveGateway; terminal declared outcomes → endEvent; declared routes → sequenceFlow. The graph traverses all four declared outcomes: ACCEPTED, CONDITIONAL, REJECTED, CANCELLED. Selected-work-item trace is represented as an ordered path over graph node IDs.
+START maps to start event; governed work action to task; mutually exclusive declared disposition routes to gateway; terminal declared outcomes to end states; declared routes to edges. All four declared outcomes are surfaced: ACCEPTED, CONDITIONAL, REJECTED, CANCELLED.
 
-## Unsupported/ambiguous semantics
-Sub-queue is UNKNOWN in the bounded canonical source and is surfaced, not invented. Runtime orchestration is UNSUPPORTED. No universal BPMN, round-trip import/editing, manual modelling, simulation/process mining, collaborative authoring, or unsupported event/compensation/subprocess semantics are claimed.
+## Unsupported / fail-closed boundary
+Sub-queue remains UNKNOWN and is surfaced rather than invented. Runtime orchestration remains UNSUPPORTED. No universal BPMN, round-trip import/editing, manual modelling, simulation/process mining, collaborative authoring, or unsupported event/compensation/subprocess semantics are claimed. Production/runtime execution is not authorized.
 
-## Exports
-Machine-readable graph: `data/generated/flow-graphs/road-ltl-ltl04-v1.json`. BPMN 2.0 XML: `data/generated/flow-graphs/road-ltl-ltl04-v1.bpmn`. Image export contract: a renderer must render the same graph and embed/accompany graphId, WorkDefinition ID, Malkom package ID and version; the v1.5 repository freezes the deterministic export contract rather than a manually drawn image.
-
-Production/runtime execution is not authorized.
+## Validation
+`tests/atl-178-generated-flow-bpmn.test.cjs` now uses Node built-ins only; the undeclared `fast-xml-parser` dependency was removed. It validates governed IDs, canonicalMutation=false, outcome coverage, unsupported-subqueue surfacing, BPMN structural markers/node-edge identity, and presence/reachability of Flow/BPMN/trace/export UI controls.
