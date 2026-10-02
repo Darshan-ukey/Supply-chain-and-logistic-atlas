@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "atlas-v1.5-release-manifest-v1.0",
+  "releaseId": "atlas-v1.5-road-ltl-malkom",
+  "channelMapping": {
+    "staging": "Lab",
+    "production": "Stable"
+  },
+  "sourceBranch": "atl-175-v15-release-contract",
+  "sourceTip": "ab628f71fcdbf3371e693873b17cb2fb661c5d1e",
+  "ownerGateRequired": true,
+  "productionPromotionAuthorized": false,
+  "dependencies": [
+    {
+      "path": "index.html",
+      "blobSha": "9cf88a867359ba33ebfbe85c1360f0ab21bc29b3"
+    },
+    {
+      "path": "atl-140-malkom-consumer.html",
+      "blobSha": "561a9c787469a1f832beb26b5cfe56c17451c1a7"
+    },
+    {
+      "path": "atl-167-interaction-slice.html",
+      "blobSha": "5d3855e1f7ca049ea720a1cd95862de4c12ff99b"
+    },
+    {
+      "path": "atl-178-flow-explorer.html",
+      "blobSha": "4cc2aaf46f071c49a6c57a81601da2a78dfbfaf5"
+    },
+    {
+      "path": "data/generated/malkom-domain-warehouse/road-ltl-ltl04-v1.json",
+      "blobSha": "c3bb7336361a46daf365d9c75066da5f046f8302"
+    },
+    {
+      "path": "data/generated/readiness/road-ltl-ltl04-malkom-readiness-v1.json",
+      "blobSha": "d43f41309304b12756baa491f5664f39a0e59c7d"
+    },
+    {
+      "path": "data/generated/malkom-domain-warehouse/road-ltl-ltl04-projection-boundary-v1.json",
+      "blobSha": "1a542b1a13fd93c837bdb37e21cd3183c8a21d5d"
+    },
+    {
+      "path": "data/generated/client-bindings/road-ltl-ltl04-client-binding-v1.json",
+      "blobSha": "47fe62aa91005cb48bbae69f0bd890d8b0e42d28"
+    },
+    {
+      "path": "data/generated/flow-graphs/road-ltl-ltl04-v1.json",
+      "blobSha": "6a0fa535a6273f01b5eeef421c4e90885a35671b"
+    },
+    {
+      "path": "release/RELEASE_CONTRACT.md",
+      "blobSha": "094a2b563e83b7966a24d7b568886e11db657325"
+    },
+    {
+      "path": "release/ROLLBACK_RUNBOOK.md",
+      "blobSha": "ea8fdc451f59d3456df11704b090956c45b2b10c"
+    },
+    {
+      "path": "lib/api/version.js",
+      "blobSha": "6b02bae449023a21de7a57f4ce3aefd0e00970b0"
+    },
+    {
+      "path": "lib/api/readiness.js",
+      "blobSha": "6bae3138ce3979083052b0027cb9d3927418d585"
+    },
+    {
+      "path": "lib/api/release-integrity.js",
+      "blobSha": "3d14ea655481abc5f042dff2c96c82bca117b57c"
+    }
+  ],
+  "rollbackBaseline": {
+    "path": "release/baselines/v1.1.8-critical-hashes.json",
+    "blobSha": "98296aa26eb563479e666fe6dd007bf422920c6d"
+  },
+  "verificationEndpoints": [
+    "/api/version",
+    "/api/readiness",
+    "/api/release-integrity"
+  ]
+}
