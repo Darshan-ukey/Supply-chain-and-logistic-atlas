@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "atlas-v1.5-critical-integrity-v1",
+  "releaseId": "atlas-v1.5-road-ltl-malkom",
+  "purpose": "Identity-verified recovery evidence for release-significant Atlas v1.5 Road LTL/Malkom artifacts. Git blob identities are content-addressed backup evidence; production rollback follows the existing runbook.",
+  "rollback": {
+    "runbook": "release/ROLLBACK_RUNBOOK.md",
+    "baseline": "release/baselines/v1.1.8-critical-hashes.json",
+    "baselineBlobSha": "98296aa26eb563479e666fe6dd007bf422920c6d"
+  },
+  "artifacts": {
+    "index.html": "9cf88a867359ba33ebfbe85c1360f0ab21bc29b3",
+    "atl-140-malkom-consumer.html": "561a9c787469a1f832beb26b5cfe56c17451c1a7",
+    "atl-167-interaction-slice.html": "5d3855e1f7ca049ea720a1cd95862de4c12ff99b",
+    "atl-178-flow-explorer.html": "4cc2aaf46f071c49a6c57a81601da2a78dfbfaf5",
+    "data/generated/malkom-domain-warehouse/road-ltl-ltl04-v1.json": "c3bb7336361a46daf365d9c75066da5f046f8302",
+    "data/generated/readiness/road-ltl-ltl04-malkom-readiness-v1.json": "d43f41309304b12756baa491f5664f39a0e59c7d",
+    "data/generated/malkom-domain-warehouse/road-ltl-ltl04-projection-boundary-v1.json": "1a542b1a13fd93c837bdb37e21cd3183c8a21d5d",
+    "data/generated/client-bindings/road-ltl-ltl04-client-binding-v1.json": "47fe62aa91005cb48bbae69f0bd890d8b0e42d28",
+    "data/generated/flow-graphs/road-ltl-ltl04-v1.json": "6a0fa535a6273f01b5eeef421c4e90885a35671b"
+  }
+}
