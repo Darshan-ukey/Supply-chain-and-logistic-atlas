@@ -1522,3 +1522,48 @@ Fetch `atl-143-v15-bolfiri-handover-freeze` at exact tip `f04e084887892759fa19b9
 **Owner/gate status:** No Owner decision required for ATL-143 re-QA. ATL-142 final production/go-live remains Owner-gated. ATL-172/ATL-179/ATL-152/ATL-176 remain Owner-gated/unrouted. BOL/FIRI implementation remains outside v1.5 LIVE unless explicitly rerouted.
 
 **Unresolved recovery state:** NONE for implementation. Prior GitHub mutation safety rejection cleared on recovery retry. Designated GitHub handoff requires read-back after this write.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-143 BUILD-CORRECTNESS REMEDIATION COMPLETE → CLAUDE INDEPENDENT RE-QA — 2026-10-02T16:38:00Z
+
+**Transition / current holder:** ChatGPT → Claude
+
+**Exact task/finding:** ATL-143 — Atlas v1.5 → v2 BOL/FIRI Deferred-Work Handover Freeze. Same-task Build Correctness remediation routed by Claude through active Linear Continuation 02: replace all literal two-character `\n` escape sequences in `governance/product/ATLAS_V2_BOL_FIRI_CONTINUATION_BACKLOG_V1.md` with real line breaks, without changing wording, IDs, dependency semantics, or resume order.
+
+**Predecessor Claude QA/recheck result:** REWORK_REQUIRED on Build Correctness only. Claude independently confirmed the prior ATL-150/ATL-151 Outcome Fitness and Future-Scope Compatibility defect was fixed, but found 9 literal `\n` sequences across the committed markdown. Categories 2–10 passed; category 1 failed and required pure formatting remediation.
+
+**Result / disposition:** CHATGPT_REMEDIATION_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_RE_QA. No PASS or FIXED—VERIFIED self-claim.
+
+### Durable implementation evidence
+- Authoritative branch: `atl-143-v15-bolfiri-handover-freeze`.
+- Artifact: `governance/product/ATLAS_V2_BOL_FIRI_CONTINUATION_BACKLOG_V1.md`.
+- Current artifact blob read back from GitHub: `71398c4f2e7237b5075844aa57e9a1facb875e9b`.
+- Read-back raw-content check: literal two-character `\n` occurrence count = **0**.
+- ATL-150 insertion remains present.
+- ATL-151 insertion remains present.
+- Resume order remains ATL-77 → ATL-150 → ATL-151 generalized Resolution Intelligence reconciliation → ATL-133.
+- No BOL/FIRI implementation was performed; this remains a governance handover/freeze artifact only.
+
+### 10-category ChatGPT self-check
+1. Build Correctness — checked: zero literal `\n` sequences remain in GitHub read-back.
+2. Outcome Fitness — checked: ATL-150/151 gate remains present in the unfinished chain/resume semantics.
+3. Architecture Fitness — checked: ATL-150 → ATL-151 → ATL-133 relationship remains intact with ATL-77 prerequisite.
+4. Future-Scope Compatibility — checked: generalized Resolution Intelligence reconciliation remains explicitly preserved.
+5. Canonical Ownership / Truth Integrity — checked: formatting-only correction; no canonical data or implementation mutation.
+6. Reachability — checked: same authoritative branch/path remains readable.
+7. Provenance / Lineage Integrity — checked: prior v1.5 closure evidence and custody pointers remain in the artifact.
+8. Fail-Closed Behavior — checked: artifact still does not authorize v2/BOL/FIRI execution.
+9. Malkom Utility — checked: Malkom reconciliation semantics remain unchanged.
+10. Consumer Independence — checked: durable IDs, dependency order, and resume instructions remain explicit without chat reconstruction.
+
+### Dependency / eligibility basis
+Active Linear Continuation 02 explicitly routes this pure formatting remediation from Claude → ChatGPT. No Owner decision is required for ATL-143 formatting remediation.
+
+### Exact Claude QA/recheck action
+Independently fetch `atl-143-v15-bolfiri-handover-freeze` and the ATL-143 freeze artifact at blob `71398c4f2e7237b5075844aa57e9a1facb875e9b`. Verify by raw byte/content inspection that zero literal two-character `\n` sequences remain; verify no wording, IDs, dependency semantics, ATL-150/151 generalized Resolution Intelligence gates, resume order, or fail-closed scope were altered by the formatting fix. Re-run all 10 mandatory ATL-177 QA categories and return PASS or exact remaining defects through active Linear Continuation 02.
+
+**Owner/gate status:** No Owner decision pending for ATL-143 remediation/re-QA. ATL-142 final production/go-live remains Owner-gated. ATL-172/ATL-179/ATL-152/ATL-176 remain Owner-gated/unrouted. BOL/FIRI implementation remains outside v1.5 LIVE unless explicitly rerouted.
+
+**Unresolved recovery state:** Formatting remediation is durably present. This entry is the recovery retry for the previously missing designated GitHub handoff; read-back is mandatory before considering persistence complete.
