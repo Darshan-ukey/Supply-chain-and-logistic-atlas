@@ -1342,3 +1342,33 @@ Fetch `atl-141-v15-release-integrity` at exact tip `91271fa2b45affd798d934c1eb93
 
 **Owner/gate status:** ATL-141 BUILD/QA needs no Owner decision. ATL-142 final production/go-live remains Owner-gated; this handoff does not authorize promotion. v2 continuations remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE if designated GitHub handoff read-back verifies.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-141 REMEDIATION COMPLETE → CLAUDE INDEPENDENT RE-QA — 2026-10-02T12:52:00Z
+
+**Transition / current holder:** ChatGPT → Claude  
+**Exact task/finding:** ATL-141 — Atlas v1.5 — Release Integrity, Browser/Visual Regression & Product Polish — Outcome Fitness / Fail-Closed surfacing remediation under ATL-177 rework rule.
+
+**Predecessor context from Linear Continuation 02:** Claude independent QA at 2026-10-02T12:30:00Z returned REWORK_REQUIRED: category 2 Outcome Fitness failed and category 8 Fail-Closed Behavior was partial. Exact defects were stale v1.1.8 critical baseline causing /api/release-integrity to return 500/ok:false/criticalIntegrity:false, plus atl-175-release-status.html falsely labeling itself Protected/admin while public and not consuming the live integrity endpoint.
+
+**Result / disposition:** CHATGPT_REMEDIATION_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_RE_QA. No PASS or FIXED—VERIFIED self-claim.
+
+### Durable remediation evidence
+- Authoritative branch: `atl-141-v15-release-integrity`.
+- Baseline refresh commit: `5786c23cefeb0d78e082433df2e40961c0cea503`; baseline blob `02a3e9e21a0362d1371e2863cfb028e62c966e23`. Current index SHA-256 is now recorded as `565503f075d2539610cc5d67032334cbfbbe038d97c85899694b31b91f23bf88`.
+- Release-status remediation commit: `c4a182119b4d8dd880ff0379ecc2cc86eddb5e17`; `atl-175-release-status.html` blob `e59334c8c59fd3045c35c0015de36dc32f8edb5c`. Surface now truthfully says Public staging release evidence and explicitly fetches `/api/release-integrity`; non-2xx, `ok:false`, or `criticalIntegrity!==true` routes to the existing fail-closed UI.
+- Regression update commit / current tip: `39e520cbf48b1f4eddf74a50608d5ae3d19b11ce`; test blob `ed2d2b3f6d60b61a14949c7d5b9755204cfefe6d`. Regression asserts baseline/current-root equality, truthful public label, live endpoint consumption, and fail-closed integrity condition.
+- Vercel deployment for the final tip was created as `dpl_4AjsGNDKw7WZpmPxmCD5kPtKygjr`; it was QUEUED at handoff observation. Claude must independently wait/verify deployed candidate rather than inherit deployment readiness.
+- The accidental branch `atl-141-v15-release-candidate` is abandoned/non-authoritative and MUST NOT be used for ATL-141 QA or sequence authority.
+
+### Dependency / eligibility basis
+Continuation 02 explicitly routes same-task ATL-141 remediation to ChatGPT; ATL-173 and earlier dependencies remain independently PASS; ATL-141 has no Governance Hold or Owner Decision Required. No later ATL-177 task is authorized.
+
+### Exact Claude re-QA action
+Fetch `atl-141-v15-release-integrity` at exact tip `39e520cbf48b1f4eddf74a50608d5ae3d19b11ce`. Independently verify the regenerated critical baseline against the clean current tree and invoke the real `/api/release-integrity` handler, requiring HTTP 200, `ok:true`, and `criticalIntegrity:true`. Run the updated ATL-141 regression plus relevant v1.5 regressions. Verify the deployed release-status surface is publicly and truthfully labeled, consumes the live integrity endpoint, and surfaces integrity failure fail-closed. Re-run the fresh-root browser journey and all 10 mandatory ATL-177 QA categories. Return PASS or exact defects only through active Linear Continuation 02.
+
+**Owner/gate status:** No Owner decision required for ATL-141 re-QA. ATL-142 production promotion remains Owner-gated. ATL-172/ATL-179/ATL-152/ATL-176 v2 remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.
+
+**Unresolved recovery state:** NONE for implementation. Prior GitHub safety-layer mutation rejection cleared on exact recovery retry. Designated GitHub handoff requires read-back after this write.
