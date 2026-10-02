@@ -61,6 +61,8 @@ Owner/governed v2 authorization
 → preserve completed ATL-67/68/69/70/73/134/135 checkpoints\n→ consume completed ATL-135 evidence through ATL-145 reconciliation, then complete ATL-146 for BOL-002 freeze/promotion
 → resume empirical ATL-59 chain at ATL-71, then ATL-72 → ATL-74 → ATL-75 → ATL-76 → ATL-77 as authorized
 → generalize/scale only through ATL-144 governed children
+→ ATL-150 FIRI Engine governed integration / on-demand generation
+→ ATL-151 architecture reconciliation, including the Owner's generalized Resolution Intelligence decision (after ATL-150 + ATL-77)
 → ATL-133 architecture closure
 → ATL-107 integration where applicable
 → ATL-130 final execution-readiness QA.
