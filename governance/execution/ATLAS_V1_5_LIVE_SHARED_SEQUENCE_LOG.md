@@ -1255,3 +1255,31 @@ Fetch `atl-175-v15-release-contract` at exact tip `dd32b8a4eabe3c8c08f2da305efd7
 
 **Owner/gate status:** no Owner decision pending for ATL-175 re-QA. ATL-142 final production/go-live remains Owner-gated. v2 continuations remain unrouted; BOL/FIRI outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE if designated handoff read-back verifies.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-173 BUILD COMPLETE → CLAUDE INDEPENDENT QA — 2026-10-02T10:03:00Z
+
+**Transition / current holder:** ChatGPT → Claude.  
+**Exact task/finding:** ATL-173 — Atlas v1.5 Capability — Malkom Domain Warehouse Utility Proof — BUILD.  
+**Predecessor context from Linear Continuation 01:** exact active document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`; latest valid Claude→ChatGPT handoff 2026-10-02T09:53:00Z recorded ATL-175 round-4 independent QA PASS across all 10 categories and explicitly routed ATL-173 BUILD. Eligibility: ATL-169 and ATL-140 have evidence-backed independent PASS; ATL-173 labels empty. No Owner decision required. Previous ChatGPT attempt created the dedicated branch but GitHub file-content persistence was blocked; this invocation re-read the same current authorization and resumed recovery-first at that missing persistence boundary.
+
+**Result/disposition:** CHATGPT_BUILD_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_QA. No independent QA PASS self-certified.
+
+### Durable implementation evidence
+Branch `atl-173-v15-malkom-utility-proof` tip `9d6c6853663de496501f69415825685b03d0e838`. Utility proof commit `a2f384845b287df4c94a7ae911f0025153a896d9`; artifact `data/generated/utility/road-ltl-ltl04-malkom-utility-proof-v1.json` blob `8608c68f1007ea5f18b07452eeb9d3894b9aea40`. Reproducibility-test commit/tip `9d6c6853663de496501f69415825685b03d0e838`; test `tests/atl-173-malkom-utility-proof.test.cjs` blob `6f2f3d4e8fbad9da15e08489475ad65a398f5e75`.
+
+The proof deterministically freezes the shipped four-row Malkom crosswalk baseline: 4 material requirements = 2 AVAILABLE/projectable, 1 CLIENT_BINDING_REQUIRED, 1 REQUIREMENT_NOT_CONFIRMED. It identifies exact reusable identity/lineage and work semantics Malkom need not rediscover; the unresolved execution-parameters binding with its governed collection question; and the unconfirmed API endpoint requirement while retaining machine-readable JSON export. It explicitly claims no savings/economic benefit and records unresolved ATL-117 metrics.
+
+### 10-category ChatGPT self-check
+1 Build Correctness: artifact/test committed and read back; exact IDs/counts agree with governed source artifacts. Claude must independently execute the Node test. 2 Outcome Fitness: directly answers Hasmukh-ask acceptance dimensions using the actual shipped crosswalk rather than prose-only narrative. 3 Architecture Fitness: consumes existing package/readiness/boundary/binding artifacts; no parallel truth system. 4 Future-Scope Compatibility: preserves single-scope v1.5 STOP boundary and hands unresolved metrics to ATL-117. 5 Canonical Ownership/Truth Integrity: adds derived utility proof + test only; canonical assets unchanged. 6 Reachability: proof is a durable machine-readable generated artifact on dedicated branch; no claim of new public UX because ATL-173 acceptance requires reproducible proof, not a new landing surface. 7 Provenance/Lineage Integrity: source paths/blob SHAs and exact package/workDefinition IDs recorded. 8 Fail-Closed Behavior: unresolved client binding remains explicitly blocking; no fabricated endpoint or savings. 9 Malkom Utility: exact reusable elements and residual discovery/configuration are enumerated. 10 Consumer Independence: proof can be reproduced from shipped governed JSON artifacts and test assertions without hidden manual interpretation.
+
+### Dependency / eligibility basis
+ATL-169 and ATL-140 independently PASSed per authoritative Linear handoff; no Governance Hold/Owner Decision label. No later ATL-177 task started.
+
+### Exact Claude QA action
+Fetch `atl-173-v15-malkom-utility-proof` at exact tip `9d6c6853663de496501f69415825685b03d0e838`. From clean checkout run `node tests/atl-173-malkom-utility-proof.test.cjs`. Independently recompute the material-requirement counts from the shipped ATL-140 crosswalk and governed package/readiness/projection-boundary/client-binding JSON; verify every reusable-element and residual-discovery statement is derivable, no savings are invented, lineage/source blobs are correct, fail-closed binding is preserved, STOP boundary is respected, and all 10 mandatory QA categories pass. Return PASS or exact defects only through active Linear Continuation 01.
+
+**Owner/gate status:** No Owner decision pending for ATL-173 QA. ATL-142 final production/go-live remains Owner-gated. v2 continuations remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE if designated handoff read-back verifies. No duplicate Linear self-handoff is created.
