@@ -58,8 +58,7 @@ No genuinely new BOL/FIRI implementation gap was identified by ATL-141 release c
 
 Owner/governed v2 authorization
 → ATL-145 post-v1.5 reconciliation
-→ preserve completed ATL-67/68/69/70/73/134 checkpoints
-→ complete ATL-135 and ATL-146 for BOL-002 QA/freeze/promotion
+→ preserve completed ATL-67/68/69/70/73/134/135 checkpoints\n→ consume completed ATL-135 evidence through ATL-145 reconciliation, then complete ATL-146 for BOL-002 freeze/promotion
 → resume empirical ATL-59 chain at ATL-71, then ATL-72 → ATL-74 → ATL-75 → ATL-76 → ATL-77 as authorized
 → generalize/scale only through ATL-144 governed children
 → ATL-133 architecture closure
@@ -83,8 +82,7 @@ GitHub:
 - This file is the durable ATL-143 resume manifest on branch `atl-143-v15-bolfiri-handover-freeze`.
 - v1.5 release closure input is frozen at ATL-141 tip `f0a5b90904c781ac721037be98f1ae71653e7551`.
 
-Drive:
-- ATL-143 creates no new Drive truth surface. Final v1.5 Drive custody/promotion is owned by ATL-142 and remains Owner-gated. A future resume must consume the ATL-142 custody evidence rather than reconstruct or invent a Drive pointer here.
+Drive:\n- Current Frozen Asset Pointer: `1wAtXmGGR5H-sPHfGpaquH25qndpHNmAaHVAZSnkxI2Y`.\n- ATL-132 FIRI recovery custody: `1JQoKrTJDAzmwRHVu6KhRZo70AdajD57xcpDE5dDc7ss`.\n- ATL-146 FIRI promotion custody: `1m7xZmnVGV-eyS0Qjv5kpJL-OUwxgyvpmzut0f3iHuIQ`.\n- ATL-143 creates no new Drive truth surface. Final v1.5 Drive custody/promotion is owned by ATL-142 and remains Owner-gated; these pointers freeze existing resume custody only.
 
 ## Gate truth
 
