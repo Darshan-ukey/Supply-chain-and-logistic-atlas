@@ -1057,3 +1057,43 @@ Fetch `atl-167-v15-coherent-interaction-slice-build` at exact tip `abbb472999025
 
 **Owner/gate status:** No Owner decision pending for ATL-167 round-2 re-QA. ATL-142 final production/go-live remains Owner-gated. ATL-172/ATL-179 v2 remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE if this append and mandatory read-back verify. No duplicate Linear self-handoff is created.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-140 BUILD COMPLETE → CLAUDE INDEPENDENT QA — 2026-10-02T07:11:00Z
+
+**Transition / current holder:** ChatGPT → Claude.  
+**Exact task:** ATL-140 — Atlas v1.5 — Product UX Integration for Malkom Domain Warehouse Demo.  
+**Disposition:** CHATGPT_BUILD_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_QA. ChatGPT does not self-mark QA PASS.
+
+### Predecessor context from Linear Continuation 01
+Pickup authority was the latest valid Claude → ChatGPT handoff in active Linear continuation document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`. Claude independently re-QA'd ATL-167 PASS across all 10 categories, verified its full blocker set satisfied, then explicitly routed ATL-140 BUILD to ChatGPT. ATL-140 blockers ATL-167 and ATL-178 are independently QA-PASSed; ATL-137 is Done. No Governance Hold / Owner Decision Required applies.
+
+### Result / durable implementation evidence
+Branch `atl-140-v15-product-ux-integration` tips at `e0c17bbb85bda27ebb9189be7cc845e3c48979dd`. Root-entry commit `ad2c1d9a4190e1677d056bb3d477b446fe53d12c`; governed Malkom consumer view commit `f3165b340cb93a9551db749c71a9c332fe33eacd`; regression commit `e0c17bbb85bda27ebb9189be7cc845e3c48979dd`.
+
+Final blobs: `index.html` = `9cf88a867359ba33ebfbe85c1360f0ab21bc29b3`; `atl-140-malkom-consumer.html` = `561a9c787469a1f832beb26b5cfe56c17451c1a7`; `tests/atl-140-product-ux-integration.test.cjs` = `5db7eb071e8dc541e8dc78c0898046d211484ebf`.
+
+The production-root artifact now visibly introduces Atlas v1.5 as the reusable domain/work intelligence layer and exposes Road LTL journey, Trace, and Malkom consumer output without deep-link knowledge. The consumer view reads the governed Malkom package, readiness summary and projection-boundary artifacts; shows the deterministic requirement/source/semantic/projection/status/evidence/output crosswalk; answers what Atlas supplies, origin/lineage, missing client-specific state, Malkom output and remaining consumer configuration; preserves Canvas/work/Trace navigation; labels the capability honestly as v1.5 Domain Warehouse demo/live; and fails closed on unavailable or mismatched governed evidence. Existing ATL-167 public/admin semantics and Ask/Inspector journey remain the work-detail path rather than being duplicated.
+
+### Mandatory 10-category ChatGPT self-check
+1. **Build Correctness:** branch/file/blob read-back succeeded; committed regression asserts root discovery, governed artifact identity, crosswalk columns, error state, responsive/accessibility markers and fail-closed readiness. Claude must independently execute it.
+2. **Outcome Fitness:** fresh-user root entry and inspectable/queryable Malkom coverage/disposition are implemented, not package-only/deep-link-only.
+3. **Architecture Fitness:** Malkom is presented as an Atlas projection/output; consumer UI reads existing governed ATL-139/163/169 artifacts and does not own canonical truth.
+4. **Future-Scope Compatibility:** labels and copy remain bounded v1.5; no v2 execution-ready claim or universal interaction expansion.
+5. **Canonical Ownership / Truth Integrity:** only root UX, consumer view and regression were added/changed; canonical WD/Malkom/binding artifacts are consumed read-only.
+6. **Reachability:** root → ATL-167 Road LTL/work journey → Trace/Malkom consumer output is explicitly discoverable, with navigation back to Canvas/work context.
+7. **Provenance / Lineage Integrity:** consumer view verifies package/workDefinition identities and exposes governed package/readiness/projection-boundary evidence.
+8. **Fail-Closed Behavior:** unresolved CLIENT_BINDING_REQUIRED remains visibly blocked; fetch/error or lineage mismatch renders unavailable/fail-closed rather than inventing readiness.
+9. **Malkom Utility:** authorized implementation user can inspect the deterministic crosswalk and directly access exact machine-readable package/readiness/boundary outputs.
+10. **Consumer Independence:** UI consumes the governed package/readiness/boundary contracts rather than hidden developer knowledge; bounded Road LTL scope is explicit.
+
+### Dependency / eligibility basis
+ATL-167 PASS was the immediate predecessor; ATL-178 PASS and ATL-137 Done satisfy the remaining ATL-140 blockers. Claude explicitly authorized ATL-140 BUILD in Linear Continuation 01. No later task was inferred or started.
+
+### Exact Claude QA action
+Fetch `atl-140-v15-product-ux-integration` at exact tip `e0c17bbb85bda27ebb9189be7cc845e3c48979dd`. From a clean checkout run `node tests/atl-140-product-ux-integration.test.cjs`. Independently verify all 10 mandatory categories, including fresh-user root discoverability, root→Road LTL/work→Malkom navigation, honest public/protected/Malkom labels, governed crosswalk correctness against the package/readiness/projection-boundary artifacts, empty/error/unresolved/client-binding-required behavior, responsive/accessibility evidence, lineage and no canonical mutation. Return PASS or exact defects only through active Linear Continuation 01. Do not advance to ATL-175/ATL-173/ATL-141 unless ATL-140 independently passes and the next exact task is freshly routed.
+
+**Owner/gate status:** No Owner decision pending for ATL-140 independent QA. ATL-142 final production/go-live remains Owner-gated. ATL-172/ATL-179/ATL-152 v2 remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE if append/read-back verify. No duplicate Linear self-handoff is created.
