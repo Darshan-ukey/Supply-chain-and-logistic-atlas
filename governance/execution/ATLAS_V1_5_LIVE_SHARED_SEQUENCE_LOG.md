@@ -1438,3 +1438,28 @@ Fetch `atl-141-v15-release-integrity` at exact tip `39e520cbf48b1f4eddf74a50608d
 **Governance note for the Owner:** Three Claude scheduled-monitor sessions ran concurrently on the same ~15-minute slot and produced genuinely conflicting dispositions on the same evidence before any of them could see the others' work — two false PASSes and one correct REWORK_REQUIRED. This is a concurrency/race condition in how the scheduled monitor overlaps with itself, not a one-off QA lapse; worth the Owner's attention regardless of this specific finding being resolved.
 
 **Unresolved persistence/recovery state:** NONE pending this document's read-back. This entry corrects, in place in the sequence, the erroneous forward-routing written earlier in this same GitHub log by this same session.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-141 LINEAGE REMEDIATION COMPLETE → CLAUDE INDEPENDENT RE-QA — 2026-10-02T14:20:00Z
+
+**Transition / current holder:** ChatGPT → Claude.  
+**Exact task/finding:** ATL-141 — Atlas v1.5 — Release Integrity, Browser/Visual Regression & Product Polish. Same-task remediation of ATL-177 QA category 7, Provenance/Lineage Integrity.
+
+**Predecessor context from Linear Continuation 02:** exact active document ID `1b3b03bf-196c-4dac-8cbf-96c650b947ef`; authoritative correction at 2026-10-02T14:08:00Z superseded concurrent false PASS entries and routed ATL-141 back to ChatGPT. Exact defect: `release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json.rollbackBaseline.blobSha` was stale (`98296aa26eb563fdd0b2981eeb2a3192ea1bc5888` was NOT the reported value; authoritative stale value was `98296aa26eb563479e666fe6dd007bf422920c6d`) while live baseline file blob is `02a3e9e21a0362d1371e2863cfb028e62c966e23`; regression lacked a manifest→live-baseline blob identity guard. Do not proceed to ATL-143 until Claude re-QA passes.
+
+**Result/disposition:** CHATGPT_REMEDIATION_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_RE_QA. No Claude-required PASS is self-claimed.
+
+### Durable implementation evidence
+Branch `atl-141-v15-release-integrity` final tip `f0a5b90904c781ac721037be98f1ae71653e7551`, tree `3aae4c19fcccea3aa8baa7d01c7e5faa5cc5e484`. Manifest-fix commit `10a133753734bb0dcd4085af3a7825dae96761ca`; current manifest blob `ccdf68570b77827a1dc9287a3372f603aa27f911`. Regression-guard commit/tip `f0a5b90904c781ac721037be98f1ae71653e7551`; test blob `e56270c8bba2496400258d857dcc0e620b117114`. Manifest rollback path remains `release/baselines/v1.1.8-critical-hashes.json`; declared rollback blob now `02a3e9e21a0362d1371e2863cfb028e62c966e23`; final tree reports that exact same blob for the path. Programmatic final-tree comparison found zero mismatches across all manifest dependencies. Regression now computes `git hash-object manifest.rollbackBaseline.path` at test time and asserts equality to `manifest.rollbackBaseline.blobSha`, preventing silent stale-lineage recurrence after future baseline refreshes.
+
+### 10-category ChatGPT remediation self-check
+1 Build Correctness — both exact requested mutations persisted and read back at final tip. 2 Outcome Fitness — no release behavior broadened; this fixes the false rollback identity only. 3 Architecture Fitness — existing governed manifest/test extended, no parallel truth surface. 4 Future-Scope Compatibility — dynamic guard survives future baseline refreshes. 5 Canonical Ownership/Truth Integrity — no canonical domain/work source mutated. 6 Reachability — no route/UI regression introduced; prior reachable release candidate files unchanged by this two-file remediation. 7 Provenance/Lineage Integrity — defect fixed: manifest rollback blob equals actual live baseline Git blob; all manifest dependencies also zero mismatches. 8 Fail-Closed Behavior — owner gate and production authorization fields unchanged; prior fail-closed controls untouched. 9 Malkom Utility — Malkom artifacts/dependencies untouched and still identity-consistent. 10 Consumer Independence — regression derives identity from repository state, not hidden developer knowledge/hardcoded replacement blob.
+
+**Dependency / eligibility basis:** ATL-141 remains the exact task routed by Continuation 02; no ATL-143 branch/work was started. Prior blockedBy tasks remain independently PASS according to the authoritative handoff; ATL-141 labels had no Governance Hold/Owner Decision Required.
+
+**Exact Claude re-QA action:** Fetch `atl-141-v15-release-integrity` at exact tip `f0a5b90904c781ac721037be98f1ae71653e7551`. Independently verify (1) `rollbackBaseline.path` resolves to the current baseline file; (2) manifest `rollbackBaseline.blobSha` equals that file's actual Git blob `02a3e9e21a0362d1371e2863cfb028e62c966e23`; (3) the regression computes the blob dynamically rather than comparing to a hardcoded replacement literal; (4) all manifest dependency blobs remain exact; (5) run ATL-141 plus relevant v1.5 regressions and re-check all 10 ATL-177 categories. Return PASS or exact defects only through active Linear Continuation 02. Do not route ATL-143 unless ATL-141 independently passes.
+
+**Owner/gate status:** No Owner decision pending for this remediation. ATL-142 final production/go-live remains Owner-gated. v2 continuations remain Owner-gated/unrouted. BOL/FIRI implementation remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE if this designated GitHub handoff read-back verifies.
