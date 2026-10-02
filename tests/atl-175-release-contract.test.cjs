@@ -1,14 +1,6 @@
-const fs=require('fs'),assert=require('assert');
-const p=JSON.parse(fs.readFileSync('governance/product/ATL_175_V1_5_RELEASE_CONTRACT_V1.json','utf8'));
-assert.equal(p.version,'1.0.0');
-assert.equal(p.apiContracts.malkomPackage.id,'malkom-dw::road-ltl::LTL-04::v1');
-assert.equal(p.apiContracts.malkomPackage.compatibility,'exact-current-lineage');
-assert.equal(p.authorization.default,'deny-if-boundary-or-lineage-unknown');
-assert.deepEqual(p.release.stagePath,['STAGING','INDEPENDENT_QA','OWNER_GATE','PRODUCTION']);
-assert.equal(p.release.ownerGateRequired,true);
-assert.equal(p.release.productionPromotionAuthorized,false);
-assert.equal(p.release.frozenAssetMutationAllowed,false);
-assert.ok(p.release.rollbackPoint.identity);
-assert.equal(p.backupRecoveryEvidence.required,true);
-for(const x of ['no universal schema-migration framework','no multi-generation version negotiation','no broad indexing redesign','no full future upgrade architecture'])assert(p.stopBoundary.includes(x));
-console.log('ATL-175 bounded release contract: PASS');
+const fs=require('fs'),assert=require('assert');const p=JSON.parse(fs.readFileSync('governance/product/ATL_175_V1_5_RELEASE_CONTRACT_V1.json')),m=JSON.parse(fs.readFileSync('release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json')),b=JSON.parse(fs.readFileSync('release/baselines/atlas-v1.5-road-ltl-malkom-critical-hashes.json')),old=JSON.parse(fs.readFileSync('release/baselines/v1.1.8-critical-hashes.json')),ui=fs.readFileSync('atl-175-release-status.html','utf8'),admin=fs.readFileSync('atl-167-interaction-slice.html','utf8');
+assert.equal(p.version,'1.1.0');assert.equal(p.releaseGovernance.existingContract,'release/RELEASE_CONTRACT.md');assert.equal(p.releaseGovernance.rollbackRunbook,'release/ROLLBACK_RUNBOOK.md');for(const x of ['/api/version','/api/readiness','/api/release-integrity'])assert(p.releaseGovernance.healthEndpoints.includes(x));
+assert.equal(p.release.rollbackPoint.identity,'release/baselines/v1.1.8-critical-hashes.json');assert.equal(p.release.rollbackPoint.blobSha,'98296aa26eb563479e666fe6dd007bf422920c6d');assert(old.provenance.golden.includes('a2e64c9e89f9739c3a2fc47556566d7fbc39c8f1afb70eace8bc9d2c86a7d5f5'));
+assert.equal(p.release.manifest,'release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json');assert(m.dependencies.length>=14);for(const d of m.dependencies){assert(fs.existsSync(d.path),d.path);assert.match(d.blobSha,/^[0-9a-f]{40}$/)}
+assert.equal(p.backupRecoveryEvidence.manifest,'release/baselines/atlas-v1.5-road-ltl-malkom-critical-hashes.json');assert.equal(b.rollback.baseline,p.release.rollbackPoint.identity);assert(Object.keys(b.artifacts).length>=9);for(const [x,s] of Object.entries(b.artifacts)){assert(fs.existsSync(x),x);assert.match(s,/^[0-9a-f]{40}$/)}
+assert(admin.includes('/atl-175-release-status.html'));for(const x of [p.release.manifest,p.backupRecoveryEvidence.manifest,p.release.rollbackPoint.identity,'Production promotion remains Owner-gated','release identity mismatch'])assert(ui.includes(x),x);assert(ui.includes('UNAVAILABLE / FAIL-CLOSED'));assert.equal(p.release.productionPromotionAuthorized,false);assert.equal(p.release.ownerGateRequired,true);console.log('ATL-175 integrated release contract: PASS');
