@@ -1,0 +1,40 @@
+{
+  "contractId": "atlas-v1.5-release-contract::road-ltl::v1",
+  "version": "1.0.0",
+  "scope": "Atlas v1.5 current-lineage Road LTL / Malkom Domain Warehouse",
+  "sourceReleaseTip": "e0c17bbb85bda27ebb9189be7cc845e3c48979dd",
+  "apiContracts": {
+    "query": {"stability": "v1.5-bounded", "identityRequired": true},
+    "export": {"format": "governed-json", "identityRequired": true},
+    "malkomPackage": {"id": "malkom-dw::road-ltl::LTL-04::v1", "compatibility": "exact-current-lineage"}
+  },
+  "authorization": {
+    "public": ["read public-safe governed projections", "download public-safe exports"],
+    "protected": ["controlled deepen", "client-binding resolution", "release promotion", "rollback execution"],
+    "default": "deny-if-boundary-or-lineage-unknown"
+  },
+  "compatibilityRules": [
+    "asset/package/version identities must match the release manifest",
+    "lineage mismatch fails closed",
+    "unknown compatibility fails closed",
+    "no implicit multi-generation negotiation"
+  ],
+  "release": {
+    "stagePath": ["STAGING", "INDEPENDENT_QA", "OWNER_GATE", "PRODUCTION"],
+    "ownerGateRequired": true,
+    "productionPromotionAuthorized": false,
+    "rollbackPoint": {"type": "production-baseline", "identity": "pre-v1.5-current-production"},
+    "frozenAssetMutationAllowed": false
+  },
+  "backupRecoveryEvidence": {
+    "required": true,
+    "releaseSignificantArtifacts": ["governed data", "generated projections", "release manifest", "API/package contract"],
+    "recoveryRule": "restore only from identity-verified backup/rollback evidence"
+  },
+  "stopBoundary": [
+    "no universal schema-migration framework",
+    "no multi-generation version negotiation",
+    "no broad indexing redesign",
+    "no full future upgrade architecture"
+  ]
+}
