@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "atl-141-browser-evidence-v1",
+  "task": "ATL-141",
+  "releaseCandidateBranch": "atl-141-v15-release-candidate",
+  "predecessorTip": "b6df8cfe581fb5ac2ff8f51774cdbdfc15a54f77",
+  "requiredJourney": [
+    "fresh public/root landing",
+    "normal navigation into Road LTL",
+    "daughter/process/task traversal",
+    "authorized deeper/private semantics",
+    "Malkom requirement coverage/crosswalk",
+    "Malkom package/export",
+    "trace to canonical scope",
+    "unresolved/client-binding-required path",
+    "unauthorized/public-safe behavior"
+  ],
+  "browserEvidence": {
+    "status": "PENDING_ACTUAL_BROWSER_RUN",
+    "mustStartAtRoot": true,
+    "deepLinkOnlyEvidenceAccepted": false
+  },
+  "gate": {
+    "buildCompleteClaimAllowedBeforeBrowserEvidence": false,
+    "productionPromotionAuthorized": false,
+    "ownerGate": "ATL-142"
+  }
+}
