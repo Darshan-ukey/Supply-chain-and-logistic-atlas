@@ -1283,3 +1283,36 @@ Fetch `atl-173-v15-malkom-utility-proof` at exact tip `9d6c6853663de496501f69415
 
 **Owner/gate status:** No Owner decision pending for ATL-173 QA. ATL-142 final production/go-live remains Owner-gated. v2 continuations remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE if designated handoff read-back verifies. No duplicate Linear self-handoff is created.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-173 REACHABILITY REMEDIATION COMPLETE → CLAUDE RE-QA — 2026-10-02T10:38:30Z
+
+**Transition / current holder:** ChatGPT → Claude  
+**Exact task/finding:** ATL-173 — Atlas v1.5 Capability — Malkom Domain Warehouse Utility Proof — Reachability remediation / independent re-QA  
+**Sequence controller:** ATL-177  
+**Disposition:** CHATGPT_REMEDIATION_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_RE_QA
+
+### Predecessor context from Linear Continuation 02
+Claude independently QAed ATL-173 build tip `9d6c6853663de496501f69415825685b03d0e838` and returned REWORK_REQUIRED solely for mandatory category 6 Reachability; the other 9 categories checked-pass. Exact authorized action was to surface the existing utility proof in the already-reachable `atl-140-malkom-consumer.html`, expose counts/reusable-elements/residual-discovery and a working JSON link, without changing canonical/governed source.
+
+### Durable remediation evidence
+- Branch: `atl-173-v15-malkom-utility-proof`
+- Remediation tip: `b6df8cfe581fb5ac2ff8f51774cdbdfc15a54f77`
+- UI commit: `c2705579afebd21786df359ae6dce2bd4df0c6b1`
+- `atl-140-malkom-consumer.html` blob: `a13fd8069b832f8cf2522ca78a75890c3d72b580`
+- New reachability regression: `tests/atl-173-utility-proof-reachability.test.cjs` blob `70a50a705bf2a53a77d2c6bd084b2475cde64cc6`
+- Original utility artifact unchanged: `data/generated/utility/road-ltl-ltl04-malkom-utility-proof-v1.json` blob `8608c68f1007ea5f18b07452eeb9d3894b9aea40`
+- Original proof regression unchanged: `tests/atl-173-malkom-utility-proof.test.cjs` blob `6f2f3d4e8fbad9da15e08489475ad65a398f5e75`
+- Visible UI section now surfaces 4 material requirements / 2 available-projectable / 1 client-binding-required / 1 unsupported-unconfirmed, reusable-elements summary, residual-discovery summary, and direct proof JSON link.
+- No canonical/governed source file was modified.
+
+### Dependency / eligibility basis
+Continuation 02 explicitly authorized same-task ATL-173 remediation under ATL-177. ATL-169 and ATL-140 remain independently PASS; no Governance Hold or Owner Decision Required; no later ATL-177 task started.
+
+### Exact Claude action
+Independently re-QA ATL-173 against exactly all 10 mandatory ATL-177 categories, with special verification of Reachability through the existing index → Malkom consumer chain, visible proof section and JSON link. Do not inherit ChatGPT's remediation claim. If any category fails, route exact ATL-173 remediation through Continuation 02. If all pass, route only the next explicitly eligible ATL-177 action through Continuation 02.
+
+**Owner/gate status:** No Owner decision pending for ATL-173 re-QA. ATL-142 production promotion remains Owner-gated. ATL-172/ATL-179/ATL-152/ATL-176 v2 remain Owner-gated unless explicitly rerouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE. Previous GitHub mutation blocker cleared on retry; remediation and designated-surface handoff are durably persisted, subject to mandatory read-back.
