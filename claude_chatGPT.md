@@ -1043,3 +1043,47 @@ This permission is **BUILD-AHEAD only**. It does not authorize the ATL-74 corpus
 
 Governing acceleration rule:
 **parallelize preparation and independent branches; never parallelize conclusions that depend on evidence that does not yet exist.**
+
+
+---
+## ATL-146 — CLAUDE INDEPENDENT RE-QA RESULT — 02 OCT 2026
+
+**Full report:** `governance/product/ATL_146_INDEPENDENT_REQA_RESULT_V1.md` (same commit as this entry; includes reproduction commands — re-derive, do not trust this summary).
+**Subject:** `darshanukey/atl-146-bol-002-freeze-promotion` @ `e476fb973eb72b0070b0ba1114a7eb93102ed110`.
+
+### Disposition
+
+**FINAL: `PASS_WITH_BINDING_CORRECTIONS` — bounded BOL-002 reference proof only.**
+`FINAL_BYTE_HASH_VERIFICATION: PASS` (hash identity only).
+**ATL-147 stays LOCKED** until B1–B4 below are applied and Claude re-verifies them.
+
+### Verified clean
+- Digest `sha256:a11b6090baab7a02c6ec2e151d09276f664ec131a08e6fcf868ed9a6f39b27bc` reproduced at `4ac2581`, `dc4d24b`, `e476fb9` with the governed command, and by an independently written canonicalizer.
+- `4ac2581 → dc4d24b` changes exactly one token (the hash value); with it blanked the files are byte-identical. Blob `fbb7b5e…` confirmed.
+- `vite build` and `tsc --noEmit` pass at `e476fb9`.
+
+### Findings
+- **F1 (HIGH) — guard FAILS at frozen head.** `validate:bol002-firi` passes at `4ac2581` (what Copilot tested) and fails at `dc4d24b` and `e476fb9`: it still requires `PENDING_DETERMINISTIC_REHASH`, which hash persistence removed. Not run in CI.
+- **F2 (HIGH) — `EXECUTION_SUFFICIENT` is not FIRI-derived.** `classify()` never reads FIRI; BOL-002 is sufficient only via `source_classification === "Canonical BOL/domain"`. 47 of 48 `EXECUTION_SUFFICIENT` fields have no FIRI. Contradicts ATL-132 and ATL-134 gate 7 and the validation doc's "Sufficiency correction".
+- **F3 (MED)** Freeze record lacks ATL-146's required `APPROVED_REUSABLE|BOUNDED_REFERENCE|REWORK_REQUIRED`, effective-date, epistemic state, promotable-vs-bounded decision, ATL-132 decision; provenance entries have no version/effective date.
+- **F4 (MED)** Canonical-source JSON still `CANDIDATE_PENDING_INDEPENDENT_QA` while the TS package is `approved`; JSON identity not frozen.
+- **F5 (MED)** The 13 adversarial vectors are prose "PASS", not executable; the guard only greps labels.
+
+### Dimensions
+BUILD_CORRECTNESS **FAIL** (F1) · OUTCOME_FITNESS / ARCHITECTURE_FITNESS / DATA_STORAGE_OWNERSHIP PASS_WITH_CORRECTIONS · **FUTURE_SCOPE_COMPATIBILITY NOT_ESTABLISHED** · RETRIEVAL_CONSUMPTION PASS (package access; API not independently exercised) · INTERACTION_MODEL NOT_INDEPENDENTLY_VERIFIED · LINEAGE_RECOVERY PASS · MALKOM_UTILITY / CONSUMER_INDEPENDENCE PASS (bounded, carried from ATL-135; rules not re-challenged against authorities this pass).
+
+### Binding corrections for ChatGPT
+- **B1** Replace the stale-token assertions in the guard with a self-verifying check (recompute hash == `package_hash`). Guard is outside the hashed bytes — no rehash. Re-run at the frozen head; ideally add CI.
+- **B2** Record in the freeze record that BOL-002 `EXECUTION_SUFFICIENT` is inherited from canonical-domain classification, not derived from FIRI coverage (FIRI-gated sufficiency belongs to ATL-147/148). Optionally correct the in-package rationale and re-hash as a new version. **Owner decision:** making `classify()` FIRI-gated would drop 47 fields from `EXECUTION_SUFFICIENT`.
+- **B3** Add to the freeze record: disposition `BOUNDED_REFERENCE` (recommended), effective date, epistemic state, promotable-vs-bounded list, and that **ATL-132 stays open**.
+- **B4** Record the candidate JSON blob hash and its relationship to the TS projection.
+
+Non-binding: use code-unit key ordering in the hash utility (N1); stale text inside the frozen package (N2); make T01–T13 executable fixtures (N3).
+
+### Exact next action
+**ChatGPT** applies B1–B4 on the ATL-146 promotion branch and logs commit hashes here. **Claude** then re-verifies against the actual commits and returns the final ATL-146 disposition. Do not start ATL-147 before that.
+
+### Custody notes
+- Claude now has push access to this repository (granted via the session's add-repo flow on 02 Oct 2026); this entry and the report were pushed by Claude. Claude pushed nothing to the promotion branch, Linear, or Supabase.
+- A throwaway branch `claude-write-probe-2026-10-02` exists on the remote from the access test; safe to delete.
+- BOL POC track only; the v1.5 LIVE Linear baton is untouched.
