@@ -1019,3 +1019,41 @@ Independently QA ATL-167 against its Linear acceptance criteria and the mandator
 
 **Owner/gate status:** No Owner decision pending for ATL-167 independent QA. ATL-142 production/go-live remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
 **Unresolved recovery state:** NONE after successful GitHub persistence and mandatory read-back. This entry recovers only the previously missing ChatGPT → Claude handoff; substantive ATL-167 work was not repeated.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-167 ROUND-1 REMEDIATION COMPLETE → CLAUDE RE-QA ROUND 2 — 2026-10-02T06:07:00Z
+
+**Transition / current holder:** ChatGPT → Claude.  
+**Exact task/finding:** ATL-167 — Atlas v1.5 Capability — Coherent Public/Private Interaction Slice — round-1 remediation complete; independent re-QA round 2 required under ATL-177.  
+**Disposition:** CHATGPT_REWORK_COMPLETE / AWAITING_CLAUDE_INDEPENDENT_RE_QA. ChatGPT does not self-mark QA PASS or FIXED—VERIFIED.
+
+### Predecessor context from Linear Continuation 01
+Pickup authority was the latest valid Claude → ChatGPT handoff in active Linear continuation document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7`: ATL-167 INDEPENDENT_QA_REWORK_REQUIRED. Claude's clean-checkout QA passed Build Correctness, Architecture Fitness, Future-Scope Compatibility, Canonical Ownership, Reachability, Provenance, Malkom Utility and Consumer Independence, but failed Outcome Fitness and Fail-Closed Behavior. Exact authorized fixes: real bounded Ask Atlas interaction; real public-safe/admin-private separation; browser/responsive/accessibility regression; and implemented/tested fail-closed client-binding behavior. No Owner decision required.
+
+### Result / durable implementation evidence
+Branch `atl-167-v15-coherent-interaction-slice-build` now tips at `abbb472999025df3278db0a2756b08186a40f183`. Implementation commit `d1372a3887b14e9bcc196b08ce3a0499d2855555` adds the four authorized capabilities; regression commit `abbb472999025df3278db0a2756b08186a40f183` adds coverage. Final HTML blob `5d3855e1f7ca049ea720a1cd95862de4c12ff99b`; final test blob `5d3333ee8b5d6e44c85cf7c8708f0c830b70ad93`.
+
+The page now provides an actual Ask Atlas form with bounded governed responses for WorkDefinition, Malkom package, lineage and unsupported scope, failing closed for unsupported questions; actual public/admin controls that change admin-panel rendering; governed client-binding JSON consumption with unknown/unsupported state mapped to `BLOCKED_UNKNOWN_BINDING` and `failClosed:true`; responsive CSS and viewport behavior; labelled controls, landmarks, live regions, aria-pressed state and keyboard DOM-order assertions. Existing root→slice→Trace/export reachability and lineage identities are preserved.
+
+### Mandatory 10-category ChatGPT self-check
+1. **Build Correctness:** final branch/blobs read back successfully; implementation and regression evidence are durable. Claude must independently run the committed test from clean checkout.
+2. **Outcome Fitness:** all four exact missing v1.5 deliverables identified by Claude now have implemented behavior/test evidence rather than labels only.
+3. **Architecture Fitness:** interaction remains a bounded presentation/consumption layer over existing governed identities/artifacts; no canonical ownership moved into UI.
+4. **Future-Scope Compatibility:** implementation remains bounded to the representative v1.5 slice and does not introduce universal interaction/admin scope.
+5. **Canonical Ownership / Truth Integrity:** no canonical WorkDefinition/Malkom source mutation is introduced; the page consumes/displays governed identities and binding state.
+6. **Reachability:** existing root/index route and downstream Trace/export links are preserved.
+7. **Provenance / Lineage Integrity:** existing WD, Malkom package and sourceReleaseTip identities remain unchanged.
+8. **Fail-Closed Behavior:** unsupported Ask queries do not invent answers; missing/unknown binding becomes `BLOCKED_UNKNOWN_BINDING` with failClosed=true and visible blocked state.
+9. **Malkom Utility:** real Malkom export/coverage path remains and binding state is now operationally surfaced.
+10. **Consumer Independence:** bounded logic is driven by governed state/identity for the accepted representative scope; no v2-wide generalization is claimed.
+
+### Dependency / eligibility basis
+ATL-167 blockers were independently cleared before Claude's round-1 QA; Claude explicitly routed same-task autonomous remediation through Linear Continuation 01. No Governance Hold / Owner Decision Required applies to this cycle.
+
+### Exact Claude QA/recheck action
+Fetch `atl-167-v15-coherent-interaction-slice-build` at exact tip `abbb472999025df3278db0a2756b08186a40f183`. From a clean checkout run `node tests/atl-167-interaction-slice.test.cjs`. Independently exercise/inspect the bounded Ask response path, public-safe vs admin/private rendering gate, fail-closed binding behavior, and browser/responsive/accessibility regression evidence; then re-verify all 10 ATL-177 mandatory QA categories. Return PASS or exact remaining defects only through active Linear Continuation 01.
+
+**Owner/gate status:** No Owner decision pending for ATL-167 round-2 re-QA. ATL-142 final production/go-live remains Owner-gated. ATL-172/ATL-179 v2 remain Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved recovery state:** NONE if this append and mandatory read-back verify. No duplicate Linear self-handoff is created.
