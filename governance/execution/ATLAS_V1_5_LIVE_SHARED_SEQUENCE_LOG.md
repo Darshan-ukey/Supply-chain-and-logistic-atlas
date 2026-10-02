@@ -905,3 +905,41 @@ Mandatory ChatGPT 10-category self-check: Build Correctness—checked, undeclare
 Dependency/eligibility: ATL-169 and ATL-159 remain independently QA-PASSed predecessors; this rework was explicitly authorized by the latest Linear handoff. Exact Claude action: fetch final tip, clean-run ATL-178 validation, independently re-verify all 10 categories including browser reachability, Flow/BPMN controls, trace, SVG image export, lineage, fail-closed boundaries, Malkom utility and consumer independence; return PASS or exact defects through Linear Continuation 01.
 
 Owner/gates: no ATL-178 Owner decision pending. ATL-142 production/go-live remains Owner-gated; ATL-172/v2 remains Owner-gated/unrouted; BOL/FIRI remains outside v1.5 LIVE. Unresolved recovery state: NONE if this append/read-back verifies. No Linear self-handoff created.
+
+
+---
+
+## CURRENT BATON — ATL-177 / ATL-178 REMEDIATION RETRY → CLAUDE RE-QA — 2026-10-02T04:09:00Z
+
+**Transition / current holder:** ChatGPT → Claude.  
+**Exact task:** ATL-178 — Atlas v1.5 Capability — Generated Queue Flow Explorer & BPMN Export.  
+**Disposition:** REMEDIATION_PERSISTED / AWAITING_CLAUDE_INDEPENDENT_RE_QA. ChatGPT does not self-mark QA PASS or FIXED—VERIFIED.
+
+### Predecessor context / pickup authority
+Active Linear Continuation 01 document ID `78d4d6bc-46b4-49fa-a2ee-b94ffb70d6a7` was read first. Latest valid Claude→ChatGPT authority remains ATL-178 REWORK_REQUIRED from 2026-10-02T03:18:14Z; Claude's 03:48:10Z monitor explicitly left holder=ChatGPT because GitHub verification was unavailable in that Claude session. Authorized defects: (1) undeclared `fast-xml-parser` dependency; (2) no reachable user capability for Flow/BPMN views, selected-path trace, and current-diagram image export. No Owner decision required.
+
+### Result and durable evidence
+GitHub access succeeded on retry. ATL-178 branch `atl-178-v15-generated-flow-bpmn` now tips at `c1131d2ed7ebb5e4cab0fa0234a9b9bc4f710bc1`, a clean descendant of predecessor `88bd3da8e9bf46d41676adbfce0c96fc45cf013c` (compare: ahead 10, behind 0).
+
+New/updated evidence: Explorer `atl-178-flow-explorer.html` blob `4cc2aaf46f071c49a6c57a81601da2a78dfbfaf5` now fetches the governed graph and renders Flow/BPMN skins, trace state, fail-closed load behavior, dynamic current-diagram SVG export, and BPMN download; deterministic generator `scripts/generate-atl178-flow.cjs` blob `86ff2ed6626a13fae33527744740dc4bc13071f1`; built-in-only validation `tests/atl-178-generated-flow-bpmn.test.cjs` blob `5f99c689e680697e071f87a1f21d41039c12c835`, including deterministic repeat-generation and source-mutation assertions. Existing governed graph `6a0fa535a6273f01b5eeef421c4e90885a35671b`, BPMN `a6d6b4c66a40849b91b88d260f7f920b7a470606`, SVG `45580c4bfa6c90b8b6882ca6999b6c6fa74d631c`, and index reachability `9002d9784c71ba1a37ba8ae61d375097f85cd8c3` remain durable.
+
+### Mandatory 10-category ChatGPT self-check
+1. **Build Correctness:** dependency defect removed; test imports Node built-ins plus committed generator only. Exact clean-checkout execution could not be performed in ChatGPT's local container because that runtime cannot resolve github.com; Claude must clean-run the committed test independently. No PASS is claimed from an unexecuted test.
+2. **Outcome Fitness:** issue acceptance is represented by governed graph derivation, all four declared outcome paths, Flow/BPMN skins, selected-path trace, deterministic generation assertions, image export, BPMN export, lineage display, and unsupported-semantics surfacing.
+3. **Architecture Fitness:** UI consumes runtime-neutral generated graph; no runtime orchestration added; canonical WorkDefinition remains upstream truth.
+4. **Future-Scope Compatibility:** bounded v1.5 projection/export only; no BPMN authoring/import, simulation/mining, orchestration, or universal semantics introduced; ATL-179/v2 remains separate.
+5. **Canonical Ownership / Truth Integrity:** `canonicalMutation=false`; compare shows no canonical WorkDefinition mutation; graph retains upstream IDs.
+6. **Reachability:** `index.html` links the Explorer and the Explorer is a user-facing HTML surface, not a repo-only data contract.
+7. **Provenance / Lineage Integrity:** graph retains `wd::road-ltl::LTL-04::v1`, `malkom-dw::road-ltl::LTL-04::v1`, source release tip `88bd3da8...`, and version metadata.
+8. **Fail-Closed Behavior:** unsupported sub-queue remains `UNKNOWN/SURFACE_NOT_INVENT`; runtime orchestration remains `UNSUPPORTED/STOP_BOUNDARY`; Explorer visibly fails closed if graph load fails.
+9. **Malkom Utility:** reachable Road LTL/LTL-04 Malkom Domain Warehouse context now gives business Flow view, BPMN view, path trace, and exports.
+10. **Consumer Independence:** generation/rendering is data-driven over graph nodes/edges rather than a manually embedded happy path; v1.5 intentionally ships one representative supported scope per ATL-178 acceptance. Claude should independently judge whether this bounded parameterization satisfies the standard.
+
+### Dependency / eligibility basis
+ATL-169 and ATL-159 remain independently QA-PASSed predecessors; ATL-178 was explicitly routed for rework by Claude in Linear Continuation 01. No Governance Hold / Owner Decision Required was introduced. ATL-142 production/go-live remains Owner-gated; ATL-172/v2 remains Owner-gated/unrouted; BOL/FIRI remains outside v1.5 LIVE.
+
+### Exact Claude QA/recheck action
+Fetch `atl-178-v15-generated-flow-bpmn` at tip `c1131d2ed7ebb5e4cab0fa0234a9b9bc4f710bc1`. From a clean checkout run `node tests/atl-178-generated-flow-bpmn.test.cjs`. Independently re-verify all 10 mandatory categories, with particular attention to actual browser reachability, data-driven redraw after governed graph change, selected-path trace, current-diagram SVG export, structurally valid BPMN 2.0 export, exact lineage, fail-closed behavior, Malkom utility, and Consumer Independence. Return PASS or exact defects only through Linear Continuation 01.
+
+**Owner/gate status:** No Owner decision pending for ATL-178 re-QA. ATL-142 final production/go-live remains Owner-gated. ATL-172/v2 remains Owner-gated/unrouted. BOL/FIRI remains outside v1.5 LIVE.  
+**Unresolved persistence/recovery state:** NONE if this GitHub append and read-back verify. No duplicate Linear self-handoff is created.
