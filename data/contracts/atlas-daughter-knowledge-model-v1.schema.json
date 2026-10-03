@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "atlas-daughter-knowledge-model-v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "status",
+    "identity",
+    "knowledgeStateMapping",
+    "hierarchy",
+    "edges",
+    "dimensions",
+    "knownGaps",
+    "storage",
+    "retrieval"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "atlas-daughter-knowledge-model-v1"
+    },
+    "status": {
+      "const": "FROZEN"
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "baselineCommit",
+        "moduleId",
+        "moduleVersion",
+        "moduleSha256",
+        "generatorId",
+        "generatorVersion",
+        "contractVersion",
+        "inputHash",
+        "outputHash"
+      ],
+      "properties": {
+        "baselineCommit": {
+          "type": "string"
+        },
+        "moduleId": {
+          "type": "string"
+        },
+        "moduleVersion": {
+          "type": "string"
+        },
+        "moduleSha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "generatorId": {
+          "type": "string"
+        },
+        "generatorVersion": {
+          "type": "string"
+        },
+        "contractVersion": {
+          "type": "string"
+        },
+        "inputHash": {
+          "type": "string"
+        },
+        "outputHash": {
+          "type": "string"
+        }
+      }
+    },
+    "knowledgeStateMapping": {
+      "type": "object",
+      "required": [
+        "BASELINE_GOVERNED",
+        "CANDIDATE",
+        "CONDITIONAL",
+        "CONFLICT",
+        "UNRESOLVED"
+      ]
+    },
+    "hierarchy": {
+      "type": "object",
+      "required": [
+        "a3",
+        "tasks"
+      ],
+      "properties": {
+        "a3": {
+          "type": "array"
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "stableId",
+              "objects",
+              "actors",
+              "systems",
+              "events",
+              "dependencies",
+              "controls",
+              "knownGaps",
+              "minimum_record",
+              "knowledge_state",
+              "provenance"
+            ]
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array"
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 8,
+      "contains": {
+        "const": "known gaps"
+      }
+    },
+    "knownGaps": {
+      "type": "array"
+    },
+    "storage": {
+      "type": "object",
+      "required": [
+        "path",
+        "writer",
+        "validator",
+        "promoter"
+      ]
+    },
+    "retrieval": {
+      "type": "object",
+      "required": [
+        "interface",
+        "consumer"
+      ]
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim_id",
+          "baseline_commit",
+          "governed_source_id",
+          "issuer",
+          "source_version",
+          "source_status",
+          "scope",
+          "supports",
+          "not_supports",
+          "claim_boundary"
+        ]
+      }
+    }
+  }
+}
