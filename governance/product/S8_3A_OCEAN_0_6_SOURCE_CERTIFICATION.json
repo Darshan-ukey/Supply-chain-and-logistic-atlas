@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "s8-3a-ocean-source-certification-v1",
+  "status": "FROZEN_CANDIDATE_SOURCE_CERTIFIED_FOR_S8_REGENERATION",
+  "promotion": false,
+  "package": {
+    "path": "release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+    "gitBlob": "5e7f31db1c2c9db6d265f0f6d9def6ff75b19a5e",
+    "sha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289"
+  },
+  "governanceMeaning": "Ocean 0.6 is a frozen execution-reference candidate used as the governed S8-3A regeneration input; this certification does not promote it to production.",
+  "payloads": {
+    "data/modules/ocean-fcl-v0.6.json": "334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a",
+    "data/modules/ocean-lcl-v0.6.json": "73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f",
+    "data/operational-knowledge/ocean-fcl-v0.6-operational.json": "c665f946fa30ccea081fa6a8ad3129e7217cfdff1d20ea7ee15e4ac70506aae3",
+    "data/operational-knowledge/ocean-lcl-v0.6-operational.json": "3ba54c522a28e8e05f1f65e418eb450ba46c701de0a0d353234d467c9033307e",
+    "data/client-binding-requirements/ocean-fcl-v0.6-bindings.json": "9a86fe6c26360993673fc899ac8529103704a55a1a7f3d7b8455123e4261a005",
+    "data/client-binding-requirements/ocean-lcl-v0.6-bindings.json": "47633373b70ac43fc02e271eb22b4a2b678107160f17385faf277b9e5a903a46",
+    "data/source-claims/ocean-fcl-v0.6-claims.json": "99cd023485c0e632d387defcd8419d64ad1e68b58a0136db535721421946d1ef",
+    "data/source-claims/ocean-lcl-v0.6-claims.json": "4d06be7436755ebddfc66ff74da2fe67583bd104def6b6c598a0e77a3d31fd21",
+    "data/exchanges/ocean-fcl-v0.6-system-exchanges.json": "e0e19d7f7e81d5a44f2e7b03669e150c86ca74f8e22f37b61355efb0490cc346",
+    "data/exchanges/ocean-lcl-v0.6-system-exchanges.json": "5df868d6714454e239186d6097d39e261219858fc39b38d345f5b68a440a0828"
+  },
+  "expected": {
+    "ocean-fcl": {"tasks": 30, "clientBindings": 99, "sourceClaims": 90, "systemExchanges": 30},
+    "ocean-lcl": {"tasks": 30, "clientBindings": 99, "sourceClaims": 90, "systemExchanges": 30}
+  },
+  "constraints": ["NO_OCEAN_0_5_FALLBACK", "NO_SEMANTIC_RECONSTRUCTION", "NO_PRODUCTION_PROMOTION"]
+}
