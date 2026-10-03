@@ -197,6 +197,5 @@
       "source": "/app",
       "destination": "/index.html"
     }
-  ],
-  "buildCommand": "node tests/s8-2e-atl159-workdefinition-lineage.test.cjs"
+  ]
 }
