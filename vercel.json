@@ -4,8 +4,7 @@
   "trailingSlash": false,
   "functions": {
     "api/system.js": {
-      "maxDuration": 30,
-      "includeFiles": "../**/*"
+      "maxDuration": 30
     }
   },
   "headers": [
