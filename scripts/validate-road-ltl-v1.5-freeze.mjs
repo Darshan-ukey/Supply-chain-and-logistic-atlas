@@ -80,3 +80,10 @@ for (const p of [paths.ltl, paths.ok, paths.bol, paths.operational, paths.ir, pa
   console.log(`SHA256 ${p} ${hash(p)}`);
 }
 console.log('Known open gates are disclosed; this validation authorizes immutable reference-candidate freeze, NOT production promotion.');
+
+// S8-2A bounded verification hook: execute the ATL-171 deterministic regression on the PR checkout.
+import { spawnSync } from 'node:child_process';
+const s82a = spawnSync(process.execPath, ['tests/s8-2a-atl171-operational-semantics.test.cjs'], { encoding: 'utf8' });
+if (s82a.stdout) process.stdout.write(s82a.stdout);
+if (s82a.stderr) process.stderr.write(s82a.stderr);
+if (s82a.status !== 0) process.exit(s82a.status ?? 1);
