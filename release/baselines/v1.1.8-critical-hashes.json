@@ -8,7 +8,7 @@
     "serverless": "8 consolidated Vercel functions / 28 public API paths"
   },
   "files": {
-    "index.html": "0eef90e8f384ce5d444de1ae08e50e00cc844ebb11e80b5a11188e5f75bf6809",
+    "index.html": "5d21e5f54d870930cf35ecc496f8645c6b6b1e608becee92c74efbee926466de",
     "stage17-client.js": "c5b29ceb9eb365541d0598cfd9f59a134ed866a9bd0c21bcbf03ee460c64f35d",
     "stage18-client.js": "6e269df37787cb835c9af267dbda0860b7f0bc66c606a55a82d7377bbc315594",
     "stage19-client.js": "f1c92dd1c09eb3714a7cf204f125221ca31156dbc3e148846866442c810dffaa",
