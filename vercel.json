@@ -197,5 +197,6 @@
       "source": "/app",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "buildCommand": "node tests/s8-2a-atl171-operational-semantics.test.cjs"
 }
