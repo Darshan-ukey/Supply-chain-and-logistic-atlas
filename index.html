@@ -1516,7 +1516,40 @@ const _stage10SelectA311=selectA3;selectA3=function(id){S.coveragePreview=null;r
 const _stage10SelectProcess11=selectProcess;selectProcess=function(id){S.coveragePreview=null;return _stage10SelectProcess11(id)};
 
 function stage11SelectCoverage(id,announce=true){const rec=S.registry?.items?.find(x=>x.id===id);if(!rec)return;if(rec.id==='ecosystem-page-0'){reset();stage10SetPrimary?.('navExplore');return}if(rec.status==='ACTIVE'&&rec.depth==='A5_VERIFIED'){activateModule(rec.id);return}_stage10Reset11();S.coveragePreview=id;stage10SetPrimary?.('navExplore');renderRegistry();renderCanvas();renderInspector();if(announce)stage11Toast(`${rec.name}: ${rec.depth.replaceAll('_',' ')}`)}
-function stage11RenderRegistry(){if(!S.registry)return;document.getElementById('coverageCount').textContent=S.registry.total;const q=(document.getElementById('moduleSearch')?.value||'').trim().toLowerCase();const base=q?S.registry.items:S.registry.items.filter(x=>x.family==='Mode & Service Execution Models'||x.name==='Ecosystem / Page 0');const filtered=base.filter(x=>!q||x.name.toLowerCase().includes(q)||x.family.toLowerCase().includes(q)).slice(0,q?30:20);document.getElementById('moduleList').innerHTML=filtered.map(x=>`<button class="module-item ${S.activeModule===x.id?'selected':''} ${x.status==='PLANNED'?'planned-preview':''} ${S.coveragePreview===x.id?'coverage-selected':''}" data-module11="${esc(x.id)}"><span><b>${esc(x.name)}</b><span class="meta">${esc(x.family)} · ${esc(x.depth.replaceAll('_',' '))}</span></span><span class="status ${x.status==='ACTIVE'?'active':x.status==='CURRENT'?'current':'planned'}">${x.status==='PLANNED'?'COMING SOON':x.status}</span></button>`).join('');document.querySelectorAll('[data-module11]').forEach(b=>b.onclick=()=>stage11SelectCoverage(b.dataset.module11));stage11RenderSaved()}
+function stage11SearchCorpus(){
+ const rows=[];
+ const add=(type,items,labelKey='name')=>(items||[]).forEach(x=>rows.push({id:x.id,type,label:x[labelKey]||x.name||x.title||x.code||x.id,code:x.code||'',aliases:Array.isArray(x.aliases)?x.aliases:[],raw:x}));
+ add('Page-0 domain',S.page0?.page0Domains||S.page0?.domains||[],'title');
+ add('System',S.page0?.systemRecords||[]);
+ add('Business object',S.page0?.businessObjectRecords||[]);
+ add('Event',S.page0?.eventRecords||[]);
+ add('Document',S.page0?.documentRecords||[]);
+ return rows;
+}
+function stage11CanonicalSearchInspector(hit){
+ const body=document.getElementById('inspectorBody');if(!body)return;
+ body.className='';body.innerHTML=`<div class="coverage-inspector11"><div class="hero11"><div class="ey">CANONICAL SEARCH · ${esc(hit.type)}</div><h2>${esc(hit.label)}</h2><p>Governed Universe concept resolved from canonical Page-0 data.</p></div><div class="coverage-grid11"><div><b>Canonical ID</b><span>${esc(hit.id)}</span></div><div><b>Type</b><span>${esc(hit.type)}</span></div><div><b>Code</b><span>${esc(hit.code||'—')}</span></div><div><b>Aliases</b><span>${esc(hit.aliases?.join(', ')||'—')}</span></div></div></div>`;
+}
+function stage11RenderRegistry(){
+ if(!S.registry)return;
+ document.getElementById('coverageCount').textContent=S.registry.total;
+ const q=(document.getElementById('moduleSearch')?.value||'').trim().toLowerCase();
+ if(q){
+  const registryHits=S.registry.items.filter(x=>[x.id,x.name,x.family].some(v=>String(v||'').toLowerCase().includes(q))).map(x=>({kind:'registry',x}));
+  const canonicalHits=stage11SearchCorpus().filter(x=>[x.id,x.label,x.code,...x.aliases].some(v=>String(v||'').toLowerCase().includes(q))).map(x=>({kind:'canonical',x}));
+  const hits=[...registryHits,...canonicalHits].slice(0,50);
+  document.getElementById('moduleList').innerHTML=hits.length?hits.map(h=>h.kind==='registry'
+   ?`<button class="module-item ${S.activeModule===h.x.id?'selected':''} ${h.x.status==='PLANNED'?'planned-preview':''}" data-module11="${esc(h.x.id)}"><span><b>${esc(h.x.name)}</b><span class="meta">${esc(h.x.family)} · ${esc(h.x.id)}</span></span><span class="status ${h.x.status==='ACTIVE'?'active':h.x.status==='CURRENT'?'current':'planned'}">${h.x.status==='PLANNED'?'COMING SOON':h.x.status}</span></button>`
+   :`<button class="module-item" data-canonical-search11="${esc(h.x.id)}"><span><b>${esc(h.x.label)}</b><span class="meta">${esc(h.x.type)} · ${esc(h.x.id)}${h.x.code?' · '+esc(h.x.code):''}</span></span><span class="status current">CANONICAL</span></button>`).join('')
+   :`<div class="empty"><b>No governed Atlas concept found.</b><span>Try a canonical ID, name, code, alias, mode or model.</span></div>`;
+  document.querySelectorAll('[data-module11]').forEach(b=>b.onclick=()=>stage11SelectCoverage(b.dataset.module11));
+  const corpus=stage11SearchCorpus();document.querySelectorAll('[data-canonical-search11]').forEach(b=>b.onclick=()=>{const hit=corpus.find(x=>x.id===b.dataset.canonicalSearch11);if(hit)stage11CanonicalSearchInspector(hit)});
+  stage11RenderSaved();return;
+ }
+ const base=S.registry.items.filter(x=>x.family==='Mode & Service Execution Models'||x.name==='Ecosystem / Page 0').slice(0,20);
+ document.getElementById('moduleList').innerHTML=base.map(x=>`<button class="module-item ${S.activeModule===x.id?'selected':''} ${x.status==='PLANNED'?'planned-preview':''} ${S.coveragePreview===x.id?'coverage-selected':''}" data-module11="${esc(x.id)}"><span><b>${esc(x.name)}</b><span class="meta">${esc(x.family)} · ${esc(x.depth.replaceAll('_',' '))}</span></span><span class="status ${x.status==='ACTIVE'?'active':x.status==='CURRENT'?'current':'planned'}">${x.status==='PLANNED'?'COMING SOON':x.status}</span></button>`).join('');
+ document.querySelectorAll('[data-module11]').forEach(b=>b.onclick=()=>stage11SelectCoverage(b.dataset.module11));stage11RenderSaved()
+}
 renderRegistry=stage11RenderRegistry;
 
 function stage11CoverageInspector(){const rec=S.registry?.items?.find(x=>x.id===S.coveragePreview);if(!rec)return false;const body=document.getElementById('inspectorBody');if(!body)return true;const depth=rec.depth||'REFERENCE_ONLY',a5=depth==='A5_VERIFIED';body.className='';body.innerHTML=`<div class="coverage-inspector11"><div class="hero11"><div class="ey">COVERAGE REGISTRY · ${esc(rec.status)}</div><h2>${esc(rec.name)}</h2><p>${esc(rec.family)}. This destination is visible in the governed Atlas universe, but detailed execution is only exposed to the depth actually published.</p></div><div class="coverage-grid11"><div><b>Publication state</b><span>${esc(rec.status)}</span></div><div><b>Verified depth</b><span>${esc(depth.replaceAll('_',' '))}</span></div><div><b>Explore</b><span>Universe / registry</span></div><div><b>A5 execution</b><span>${a5?'Available':'Not published'}</span></div></div><div class="coverage-lock11"><b>Coverage guardrail.</b> ${a5?'This module reports A5 verification. Runtime functionality unlocks only when its content module is loaded through the canonical module loader.':'The canvas will not manufacture A4/A5 execution, risks, trace lineage or mode-comparison detail for this destination. When its verified content is published, the existing canvas engine can consume it without a redesign.'}</div><div class="coverage-actions11"><button class="primary" id="coverageBackUniverse">Back to Universe</button>${rec.family==='Mode & Service Execution Models'&&!a5?'<button id="coverageCompareLocked">Why Compare is locked</button>':''}</div></div>`;document.getElementById('coverageBackUniverse')?.addEventListener('click',()=>reset());document.getElementById('coverageCompareLocked')?.addEventListener('click',()=>{stage11Toast('A5 comparison requires equivalent verified modules')});return true}
