@@ -1530,20 +1530,36 @@ function stage11CanonicalSearchInspector(hit){
  const body=document.getElementById('inspectorBody');if(!body)return;
  body.className='';body.innerHTML=`<div class="coverage-inspector11"><div class="hero11"><div class="ey">CANONICAL SEARCH · ${esc(hit.type)}</div><h2>${esc(hit.label)}</h2><p>Governed Universe concept resolved from canonical Page-0 data.</p></div><div class="coverage-grid11"><div><b>Canonical ID</b><span>${esc(hit.id)}</span></div><div><b>Type</b><span>${esc(hit.type)}</span></div><div><b>Code</b><span>${esc(hit.code||'—')}</span></div><div><b>Aliases</b><span>${esc(hit.aliases?.join(', ')||'—')}</span></div></div></div>`;
 }
+function stage11NormalizeAlias(v){return String(v||'').trim().toLowerCase().replace(/\s+/g,' ')}
+function stage11AliasIndex(corpus=stage11SearchCorpus()){
+ const idx=new Map();
+ corpus.forEach(x=>(x.aliases||[]).forEach(a=>{const k=stage11NormalizeAlias(a);if(!k)return;if(!idx.has(k))idx.set(k,[]);idx.get(k).push(x)}));
+ return idx;
+}
+function stage11AliasResolution(q,corpus=stage11SearchCorpus()){
+ const key=stage11NormalizeAlias(q),candidates=stage11AliasIndex(corpus).get(key)||[];
+ return {key,candidates,ambiguous:candidates.length>1,unique:candidates.length===1};
+}
+function stage11AmbiguityNotice(res){
+ return `<div class="context-card" data-alias-ambiguity11="${esc(res.key)}"><div class="row"><b>Ambiguous Atlas term</b><span class="status current">${res.candidates.length} OPTIONS</span></div><small>“${esc(res.key)}” maps to multiple governed canonical concepts. Atlas will not choose silently. Select the intended canonical concept below.</small></div>`;
+}
 function stage11RenderRegistry(){
  if(!S.registry)return;
  document.getElementById('coverageCount').textContent=S.registry.total;
  const q=(document.getElementById('moduleSearch')?.value||'').trim().toLowerCase();
  if(q){
   const registryHits=S.registry.items.filter(x=>[x.id,x.name,x.family].some(v=>String(v||'').toLowerCase().includes(q))).map(x=>({kind:'registry',x}));
-  const canonicalHits=stage11SearchCorpus().filter(x=>[x.id,x.label,x.code,...x.aliases].some(v=>String(v||'').toLowerCase().includes(q))).map(x=>({kind:'canonical',x}));
+  const corpus=stage11SearchCorpus();
+  const aliasResolution=stage11AliasResolution(q,corpus);
+  const canonicalHits=corpus.filter(x=>[x.id,x.label,x.code,...x.aliases].some(v=>String(v||'').toLowerCase().includes(q))).map(x=>({kind:'canonical',x}));
   const hits=[...registryHits,...canonicalHits].slice(0,50);
-  document.getElementById('moduleList').innerHTML=hits.length?hits.map(h=>h.kind==='registry'
+  const ambiguity=aliasResolution.ambiguous?stage11AmbiguityNotice(aliasResolution):'';
+  document.getElementById('moduleList').innerHTML=ambiguity+(hits.length?hits.map(h=>h.kind==='registry'
    ?`<button class="module-item ${S.activeModule===h.x.id?'selected':''} ${h.x.status==='PLANNED'?'planned-preview':''}" data-module11="${esc(h.x.id)}"><span><b>${esc(h.x.name)}</b><span class="meta">${esc(h.x.family)} · ${esc(h.x.id)}</span></span><span class="status ${h.x.status==='ACTIVE'?'active':h.x.status==='CURRENT'?'current':'planned'}">${h.x.status==='PLANNED'?'COMING SOON':h.x.status}</span></button>`
    :`<button class="module-item" data-canonical-search11="${esc(h.x.id)}"><span><b>${esc(h.x.label)}</b><span class="meta">${esc(h.x.type)} · ${esc(h.x.id)}${h.x.code?' · '+esc(h.x.code):''}</span></span><span class="status current">CANONICAL</span></button>`).join('')
-   :`<div class="empty"><b>No governed Atlas concept found.</b><span>Try a canonical ID, name, code, alias, mode or model.</span></div>`;
+   :`<div class="empty"><b>No governed Atlas concept found.</b><span>Try a canonical ID, name, code, alias, mode or model.</span></div>`);
   document.querySelectorAll('[data-module11]').forEach(b=>b.onclick=()=>stage11SelectCoverage(b.dataset.module11));
-  const corpus=stage11SearchCorpus();document.querySelectorAll('[data-canonical-search11]').forEach(b=>b.onclick=()=>{const hit=corpus.find(x=>x.id===b.dataset.canonicalSearch11);if(hit)stage11CanonicalSearchInspector(hit)});
+  document.querySelectorAll('[data-canonical-search11]').forEach(b=>b.onclick=()=>{const hit=corpus.find(x=>x.id===b.dataset.canonicalSearch11);if(hit)stage11CanonicalSearchInspector(hit)});
   stage11RenderSaved();return;
  }
  const base=S.registry.items.filter(x=>x.family==='Mode & Service Execution Models'||x.name==='Ecosystem / Page 0').slice(0,20);
