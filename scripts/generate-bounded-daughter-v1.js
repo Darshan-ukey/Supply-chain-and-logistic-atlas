@@ -54,7 +54,7 @@ function reference(id,requestedDepth='REFERENCE_ONLY'){
  const input={baselineCommit:BASELINE,planned,registry:reg,sourceManifest:'reference/atlas-source-manifest.csv'};
  const idn=identity(id,'PLANNED',sha(planned),input);
  const gap={id:id+'::A4_A5',stableId:id+'::gap::A4_A5',knowledge_state:'RESEARCH_REQUIRED',minimum_record:{affected_object:id,evidence_class:'UNRESOLVED',confidence:'UNKNOWN',promotion_requirement:'GOVERNED_RESEARCH_AND_VALIDATION'},claim_boundary:'No governed A4/A5 exists in the frozen baseline; synthesis is prohibited.'};
- const model={schemaVersion:'atlas-daughter-knowledge-model-v1',status:'FROZEN',identity:idn,knowledgeStateMapping:STATE_MAP,hierarchy:{a3:[],tasks:[]},edges:[],dimensions:DIMENSIONS,knownGaps:[gap],provenance:[],
+ const model={schemaVersion:'atlas-daughter-knowledge-model-v1',status:'FROZEN',identity:idn,knowledgeStateMapping:STATE_MAP,hierarchy:{a3:[],tasks:[]},edges:module.tasks.flatMap(t=>(t.branchTransitions||[]).map(x=>({...x,taskId:t.taskId}))),dimensions:DIMENSIONS,knownGaps:[gap],provenance:[],
   storage:{path:'data/generated/daughters/'+id+'/knowledge-model-v1.json',writer:GENERATOR_ID,validator:'tests/atl-155-bounded-daughter-generation.test.js',promoter:'Owner gate ATL-142'},
   retrieval:{interface:'static governed JSON',consumer:'Atlas registry/reference coverage surface; deeper request remains RESEARCH_REQUIRED'}};
  seal(model);
