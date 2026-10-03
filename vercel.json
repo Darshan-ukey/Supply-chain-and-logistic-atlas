@@ -197,5 +197,6 @@
       "source": "/app",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "buildCommand": "node tests/atl-155-bounded-daughter-generation.test.js"
 }
