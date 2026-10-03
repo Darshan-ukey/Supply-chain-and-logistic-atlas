@@ -197,6 +197,5 @@
       "source": "/app",
       "destination": "/index.html"
     }
-  ],
-  "buildCommand": "node tests/s8-2d-atl165-binding-schema.test.cjs"
+  ]
 }
