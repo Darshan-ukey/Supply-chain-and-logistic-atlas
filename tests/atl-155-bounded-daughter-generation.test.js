@@ -7,7 +7,7 @@ function run(){
  const a=road(),b=road();
  assert.strictEqual(Buffer.compare(bytes(a.model),bytes(b.model)),0,'Road model regeneration must be byte-identical');
  assert.strictEqual(Buffer.compare(bytes(a.projection),bytes(b.projection)),0,'Road projection regeneration must be byte-identical');
- assert.deepStrictEqual(a.model.counts,{processCount:22,a3Count:13,edgeCount:39,sourceCount:29});
+ assert.deepStrictEqual(a.model.counts,{processCount:22,a3Count:13,edgeCount:39,sourceCount:29});\n assert.ok(a.model.edges.length>0,'Road execution transitions must be preserved');
  assert.deepStrictEqual(a.model.dimensions,DIMENSIONS);
  assert.strictEqual(a.model.status,'FROZEN'); assert.strictEqual(a.projection.status,'FROZEN');\n assert.strictEqual(a.model.identity.moduleVersion,'1.5'); assert.strictEqual(a.model.identity.moduleSha256,'22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f');
  assert.ok(a.model.identity.inputHash&&a.model.identity.outputHash&&a.projection.identity.outputHash);
