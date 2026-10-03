@@ -32,7 +32,7 @@
     "governance/rule-registry-v1.1.json": "b2c47fbdec3fefecae6108c38c28cbf223f89561edb40c0ff1099f7717ef46c7",
     "governance/overlay-registry-v1.1.json": "2b4a39cc90658a9cd9c827e259cddb00cf0c13f2af2f2a54a55b62a6efd62299",
     "package.json": "1825a296adecd643eaf11c2ac1093341829b6a3a2ca8f6cc2504e99b721d2775",
-    "vercel.json": "802d7640bfa1c513c5c37a51c6b35ebfde98f855d53c303a117f1b08b5b9c5c9",
+    "vercel.json": "34d07ec5c93d122acabeb151a27cff24ea0a506c5bd8bf68c08d7e2e89eea36f",
     ".env.example": "ec3c46c8ea7c52a8618bb86ed45fbd28ba30221bfe14e26a821ea2c9d3d2fe63",
     "release/release-meta.js": "d81a11b8a6fa36cb12d766bb2c3d37356322b93283f2bbf4a24ca52ab3780f31",
     "lib/api/release-integrity.js": "5175c729902c36d143d78efb0b6ae56e7c05532f18c460cf8fcfd73acf94fc91",
