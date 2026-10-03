@@ -5,7 +5,7 @@
   "functions": {
     "api/system.js": {
       "maxDuration": 30,
-      "includeFiles": "**/*"
+      "includeFiles": "../**/*"
     }
   },
   "headers": [
