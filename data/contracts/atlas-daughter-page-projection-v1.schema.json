@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "atlas-daughter-page-projection-v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "status",
+    "identity",
+    "ux",
+    "module",
+    "sections",
+    "knowledgeModelPath"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "atlas-daughter-page-projection-v1"
+    },
+    "status": {
+      "const": "FROZEN"
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "baselineCommit",
+        "moduleId",
+        "generatorId",
+        "generatorVersion",
+        "contractVersion",
+        "inputHash",
+        "canonicalModelHash",
+        "outputHash"
+      ]
+    },
+    "ux": {
+      "type": "object",
+      "required": [
+        "entrypoint",
+        "activation",
+        "component",
+        "contract"
+      ]
+    },
+    "module": {
+      "type": "object",
+      "required": [
+        "id",
+        "depth"
+      ]
+    },
+    "sections": {
+      "type": "array"
+    },
+    "knowledgeModelPath": {
+      "type": "string"
+    }
+  }
+}
