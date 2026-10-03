@@ -197,5 +197,6 @@
       "source": "/app",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "buildCommand": "node tests/s8-2b-atl171-schema-compatibility.test.cjs"
 }
