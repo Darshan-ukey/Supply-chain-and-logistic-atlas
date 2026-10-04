@@ -1,0 +1,44 @@
+task: ATL-118
+title: Complete frozen-asset GitHub reconciliation
+status: blocked
+disposition: fail-closed
+verified_at: "2026-09-25T11:29:42Z"
+repository_ref:
+  branch: copilot/atl-118-complete-frozen-asset-reconciliation
+  head_commit: 45fc8b5
+objective: >-
+  Record the GitHub-side blocker for Atlas v2 frozen-asset reconciliation
+  without inventing missing frozen-asset identities, custody evidence, or
+  historical payload updates.
+governing_source_check:
+  required_paths:
+    - path: governance/task-manifests/ATL-118.yaml
+      status: created_in_this_pr
+      evidence: ATL-118 requires a durable manifest even though it was absent in the checkout.
+    - path: governance/frozen-assets/ASSET_REGISTER.json
+      status: missing
+    - path: governance/frozen-assets/CURRENT.json
+      status: missing
+    - path: governance/frozen-assets/LATEST.md
+      status: missing
+    - path: governance/product/ATLAS_V2_FROZEN_ASSET_RECONCILIATION_2026-09-24.md
+      status: missing
+    - path: governance/product/ATLAS_V2_PRODUCT_END_STATE_CONTRACT_V1_CANDIDATE.md
+      status: missing
+    - path: governance/product/ATLAS_V2_PRODUCT_COVERAGE_MATRIX_V1_CANDIDATE.json
+      status: missing
+verified_findings:
+  - The current repository checkout contains governance contracts and data/governance registries, but no governance/frozen-assets directory.
+  - No tracked file on this branch contains ATL-118, frozen-assets, ASSET_REGISTER.json, CURRENT.json, LATEST.md, or ATLAS_V2_PRODUCT_COVERAGE_MATRIX references.
+  - GitHub repository reads for the required ATL-118 paths on this branch also returned file-not-found.
+impact:
+  current_latest_reconciliation: blocked
+  asset_identity_verification: blocked
+  coverage_matrix_reference_reconciliation: blocked
+  frozen_payload_mutation: not_performed
+actions_taken:
+  - Added this manifest to preserve durable evidence of the repository state observed during ATL-118 execution.
+  - Left all existing repository payloads untouched because the authoritative frozen-asset records needed for reconciliation are absent.
+remaining_dependencies:
+  - Provide the missing ATL-118 governing source files in the repository before any CURRENT/LATEST or coverage-matrix reconciliation can be performed.
+  - Provide durable external custody evidence separately if Google Drive verification is required; this GitHub task cannot fabricate that readback.
