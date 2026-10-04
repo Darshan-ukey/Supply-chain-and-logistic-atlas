@@ -1,0 +1,138 @@
+{
+  "contract_id": "ATL-138-MALKOM-DW-CONSUMPTION-V1",
+  "contract_version": "1.0.0",
+  "status": "QA_CANDIDATE",
+  "purpose": "Stable Atlas v1.5 consumer contract for Malkom Domain Warehouse consumption without making Malkom the owner of canonical domain truth.",
+  "governance": {
+    "canonical_owner": "Atlas",
+    "consumer": "Malkom",
+    "source_baseline": "ATL-137 QA-passed v1.5 reuse baseline",
+    "historical_fixture": "Road LTL 1.2 -> Domain Warehouse 2.3 -> Malkom 3.0 is reference-only, not current-lineage proof",
+    "fail_closed_states": [
+      "REQUIREMENT_NOT_CONFIRMED",
+      "CLIENT_BINDING_REQUIRED",
+      "UNSUPPORTED"
+    ],
+    "no_guessing": true
+  },
+  "consumption": {
+    "interface_state": "REQUIREMENT_NOT_CONFIRMED",
+    "supported_contract_forms": [
+      "versioned machine-readable package",
+      "queryable structured projection"
+    ],
+    "note": "Current Malkom file/package/API/schema interface is not evidenced in ATL-138 authoritative inputs; downstream ATL-139/169 must bind only when evidence exists."
+  },
+  "disposition_enum": [
+    "AVAILABLE",
+    "PROJECTABLE",
+    "CLIENT_BINDING_REQUIRED",
+    "UNSUPPORTED",
+    "NOT_REQUIRED",
+    "REQUIREMENT_NOT_CONFIRMED"
+  ],
+  "requirements": [
+    {
+      "requirement_id": "MALKOM-DW-001",
+      "requirement": "Canonical domain concept identity",
+      "atlas_source": "Road LTL 1.5 canonical domain semantics",
+      "canonical_id_rule": "stable Atlas canonical ID",
+      "projection_rule": "emit canonical_id,label,definition,version,lineage",
+      "binding_loss_state": "PROJECTABLE",
+      "evidence_test": "ATL-139 must prove every emitted concept resolves to current Atlas lineage; no consumer-authored canonical IDs"
+    },
+    {
+      "requirement_id": "MALKOM-DW-002",
+      "requirement": "Work decomposition / work-definition semantics",
+      "atlas_source": "Atlas canonical work model where present",
+      "canonical_id_rule": "stable work/work-definition IDs",
+      "projection_rule": "project governed work semantics without changing canonical ownership",
+      "binding_loss_state": "PROJECTABLE",
+      "evidence_test": "round-trip ID and lineage test; missing semantics fail closed"
+    },
+    {
+      "requirement_id": "MALKOM-DW-003",
+      "requirement": "Rules, validations and contextual knowledge required by execution",
+      "atlas_source": "Atlas governed domain/work knowledge",
+      "canonical_id_rule": "source rule/validation IDs",
+      "projection_rule": "emit consumer projection with source IDs and version/provenance",
+      "binding_loss_state": "PROJECTABLE",
+      "evidence_test": "projection contains source identity and evidence pointer; Malkom does not recreate domain rule truth"
+    },
+    {
+      "requirement_id": "MALKOM-DW-004",
+      "requirement": "Client-specific values and mappings",
+      "atlas_source": "client binding layer, not reusable canonical domain truth",
+      "canonical_id_rule": "canonical semantic ID + client binding identity",
+      "projection_rule": "bind only from evidenced authorized client binding",
+      "binding_loss_state": "CLIENT_BINDING_REQUIRED",
+      "evidence_test": "absence of client binding produces explicit fail-closed state, never inferred value"
+    },
+    {
+      "requirement_id": "MALKOM-DW-005",
+      "requirement": "Runtime transaction/extraction values",
+      "atlas_source": "runtime/execution system",
+      "canonical_id_rule": "reference canonical semantic ID where applicable",
+      "projection_rule": "do not store transaction value as Atlas reusable domain truth",
+      "binding_loss_state": "NOT_REQUIRED",
+      "evidence_test": "contract/package contains schema/semantic requirement only, not fabricated runtime values"
+    },
+    {
+      "requirement_id": "MALKOM-DW-006",
+      "requirement": "Current Malkom ingestion interface and exact field/schema expectations",
+      "atlas_source": "Malkom authoritative interface evidence",
+      "canonical_id_rule": "consumer requirement ID",
+      "projection_rule": "bind adapter only after interface evidence is obtained",
+      "binding_loss_state": "REQUIREMENT_NOT_CONFIRMED",
+      "evidence_test": "ATL-139/169 must not claim executable adapter compatibility until interface evidence is linked"
+    },
+    {
+      "requirement_id": "MALKOM-DW-007",
+      "requirement": "Version, provenance and recovery lineage",
+      "atlas_source": "Atlas versioned canonical assets and source registry",
+      "canonical_id_rule": "asset/version/source IDs",
+      "projection_rule": "emit contract_version, source_version, provenance/evidence refs and deterministic package identity",
+      "binding_loss_state": "AVAILABLE",
+      "evidence_test": "same governed inputs reproduce same logical projection and lineage is inspectable"
+    },
+    {
+      "requirement_id": "MALKOM-DW-008",
+      "requirement": "Residual discovery / unsupported semantic reporting",
+      "atlas_source": "projection evaluation",
+      "canonical_id_rule": "requirement_id + canonical_id when known",
+      "projection_rule": "emit unresolved/unsupported/binding-required disposition rather than silently dropping",
+      "binding_loss_state": "AVAILABLE",
+      "evidence_test": "every material requirement has explicit disposition and loss state"
+    },
+    {
+      "requirement_id": "MALKOM-DW-009",
+      "requirement": "Authorized user inspection and product UX consumption",
+      "atlas_source": "this structured contract + ATL-139 package",
+      "canonical_id_rule": "requirement_id",
+      "projection_rule": "ATL-140/167 consume structured rows for status, lineage, evidence and residual display",
+      "binding_loss_state": "PROJECTABLE",
+      "evidence_test": "UI/product path queries contract data; documentation-only rendering is insufficient"
+    },
+    {
+      "requirement_id": "MALKOM-DW-010",
+      "requirement": "Consumer independence",
+      "atlas_source": "Atlas canonical semantics",
+      "canonical_id_rule": "Atlas IDs remain stable independent of Malkom labels/schema",
+      "projection_rule": "consumer adapter maps from Atlas IDs; never redefine Atlas canonical model around Malkom-specific field names",
+      "binding_loss_state": "AVAILABLE",
+      "evidence_test": "a second consumer can project from same canonical IDs without Malkom dependency"
+    }
+  ],
+  "malkom_must_not_recreate": [
+    "canonical domain concept definitions and IDs",
+    "canonical work/work-definition semantics already governed by Atlas",
+    "governed reusable domain rules/validations/context where Atlas supplies them",
+    "lineage/provenance/version truth for Atlas-supplied semantics"
+  ],
+  "downstream_contract": {
+    "ATL_139": "generate current-lineage package only from evidenced/projectable rows and preserve explicit residual states",
+    "ATL_169": "prove projection boundary, adapter/interface evidence and handoff without shifting canonical ownership to Malkom",
+    "ATL_140_ATL_167": "make requirements/dispositions/lineage/evidence inspectable and consumable in product interaction",
+    "ATL_173": "prove Malkom utility separately from consumer independence"
+  }
+}

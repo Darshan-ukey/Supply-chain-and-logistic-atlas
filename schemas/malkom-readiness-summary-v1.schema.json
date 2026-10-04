@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://atlas.local/schemas/malkom-readiness-summary-v1.schema.json",
+  "title":"Atlas v1.5 Malkom Readiness Summary",
+  "type":"object",
+  "required":["schemaVersion","status","bounded","moduleId","processId","workDefinitionId","universalExecutionReady","reusableDomainKnowledge","workSemantics","rulesControlsCoverage","knowledgeGaps","clientBindings","masterExternalDependencies","projection","blockers","lineage","stopBoundary"],
+  "properties":{
+    "schemaVersion":{"const":"atlas-malkom-readiness-summary-v1.0"},
+    "status":{"const":"FROZEN"},
+    "bounded":{"const":true},
+    "universalExecutionReady":{"const":false},
+    "projection":{"type":"object","required":["consumer","disposition","blocked"],"properties":{"consumer":{"const":"MALKOM"},"disposition":{"enum":["SUPPORTED","SUPPORTED_WITH_LOSS","BLOCKED"]},"blocked":{"type":"boolean"}}},
+    "blockers":{"type":"array"},
+    "knowledgeGaps":{"type":"array"},
+    "clientBindings":{"type":"object"},
+    "masterExternalDependencies":{"type":"array"},
+    "stopBoundary":{"type":"array"}
+  }
+}
