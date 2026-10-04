@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "s8-2e-leaf-compiler-exact-qa-v1",
+  "testedCommit": "91bde6f9d2d29f6323acbe9c1afb367d5724f16d",
+  "testedTree": "09c8650303efcee6a0083107e96a0464c9f9e171",
+  "base": "7937e3726b1b4fda87fef5cae1f7b693a41d3463",
+  "nodeVersion": "v24.11.0",
+  "platform": "win32",
+  "architecture": "x64",
+  "testScope": "Synthetic compiler conformance and prior S8-2 regressions only; no real domain derivative certification",
+  "status": "PASS",
+  "results": [
+    {
+      "command": [
+        "node",
+        "tests/p6-2-canonical-workdefinition-compiler.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "P6.2 Canonical WorkDefinition compiler/verifier certification PASS\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2e-leaf-compiler-correction.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2E leaf compiler correction: actual synthetic leaf compilation, deterministic bytes, frozen/local schemas, 16 rejection cases, protected output boundary. Real S8-3B domain output NOT certified.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2e-atl159-workdefinition-lineage.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2E historical lineage-plan compatibility only; regeneration=false; leaf compiler QA is separate\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2a-atl171-operational-semantics.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2A ATL-171 governed v1.5 semantics: 22 records; override LTL-03 only\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2b-atl171-schema-compatibility.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2B schema compatibility: 22 ATL-171 records conform to bounded v1.5 + OKv2/IR lineage\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2c-atl165-client-binding.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2C ATL-165 governed client binding: 3 requirements; 2 resolved; 1 fail-closed\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2d-atl165-binding-schema.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2D ATL-165 schema compatibility: governed requirement fields + bounded fail-closed projection\n",
+      "stderr": ""
+    }
+  ],
+  "restoredDonors": [
+    {
+      "path": "lib/compile/workdefinition-compiler.js",
+      "expectedBlob": "69f9f56e4e8fbb72e74936a467b884b4681175c9",
+      "actualBlob": "69f9f56e4e8fbb72e74936a467b884b4681175c9"
+    },
+    {
+      "path": "lib/compile/workdefinition-verifier.js",
+      "expectedBlob": "d503dbc4d3200657c7a1117a90b5c7d7dd227160",
+      "actualBlob": "d503dbc4d3200657c7a1117a90b5c7d7dd227160"
+    },
+    {
+      "path": "schemas/canonical-work-decomposition-contract-v1.schema.json",
+      "expectedBlob": "4b3e2e4040f05de82077b0e89790d47f6d0df989",
+      "actualBlob": "4b3e2e4040f05de82077b0e89790d47f6d0df989"
+    },
+    {
+      "path": "schemas/canonical-workdefinition-contract-v1.schema.json",
+      "expectedBlob": "dfe74707a2829a310ad8958be791eda0b17ad05d",
+      "actualBlob": "dfe74707a2829a310ad8958be791eda0b17ad05d"
+    },
+    {
+      "path": "tests/p6-2-canonical-workdefinition-compiler.mjs",
+      "expectedBlob": "9b595c9e4adc693d0e6bb66daf6c76b66400c235",
+      "actualBlob": "9b595c9e4adc693d0e6bb66daf6c76b66400c235"
+    },
+    {
+      "path": "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md",
+      "expectedBlob": "c074489f2cf7edacde962f7e0260e2b240d24b87",
+      "actualBlob": "c074489f2cf7edacde962f7e0260e2b240d24b87"
+    },
+    {
+      "path": "governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_FROZEN.md",
+      "expectedBlob": "046885c71dc9fb24532b398cacd47ffc522f3a1b",
+      "actualBlob": "046885c71dc9fb24532b398cacd47ffc522f3a1b"
+    }
+  ],
+  "changedFiles": [
+    "governance/product/S8_2E_LEAF_COMPILER_CORRECTION.md",
+    "governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md",
+    "governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_FROZEN.md",
+    "lib/compile/frozen-schema-validator.js",
+    "lib/compile/s8-workdefinition-compiler.js",
+    "lib/compile/workdefinition-compiler.js",
+    "lib/compile/workdefinition-verifier.js",
+    "schemas/canonical-work-decomposition-contract-v1.schema.json",
+    "schemas/canonical-workdefinition-contract-v1.schema.json",
+    "scripts/materialize-workdefinition-v1.cjs",
+    "scripts/workdefinition-lineage-plan-v1.cjs",
+    "tests/p6-2-canonical-workdefinition-compiler.mjs",
+    "tests/s8-2e-atl159-workdefinition-lineage.test.cjs",
+    "tests/s8-2e-leaf-compiler-correction.mjs"
+  ],
+  "cleanCheckout": true
+}

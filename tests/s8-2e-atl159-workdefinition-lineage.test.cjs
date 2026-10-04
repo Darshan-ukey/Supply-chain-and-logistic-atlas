@@ -1,5 +1,5 @@
 const cp=require('child_process'),fs=require('fs'),assert=require('assert');
-const run=()=>cp.execFileSync(process.execPath,['scripts/materialize-workdefinition-v1.cjs'],{encoding:'utf8'});
+const run=()=>cp.execFileSync(process.execPath,['scripts/materialize-workdefinition-v1.cjs','--plan'],{encoding:'utf8'});
 const a=run(),b=run();assert.strictEqual(a,b);
 const p=JSON.parse(a),s=JSON.parse(fs.readFileSync('data/contracts/atlas-workdefinition-v1.schema.json','utf8'));
 assert.strictEqual(p.status,'S8_2E_CONFORMED_NOT_REGENERATED');
@@ -18,4 +18,4 @@ for(const k of ['schemaVersion','workDefinitionId','contractVersion','version','
 assert.strictEqual(s.properties.contractVersion.const,'1.0.0');
 assert.strictEqual(s.properties.executability.properties.status.const,'EXECUTOR_READY');
 assert.strictEqual(s.properties.executability.properties.independentExecutorProofStatus.const,'NOT_INDEPENDENTLY_PROVEN');
-console.log('PASS S8-2E ATL-159 compiler/schema lineage conformance; regeneration=false; S8-3 retained');
+console.log('PASS S8-2E historical lineage-plan compatibility only; regeneration=false; leaf compiler QA is separate');

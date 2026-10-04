@@ -1,15 +1,29 @@
-const cp=require('child_process'),fs=require('fs');
-const semantics=JSON.parse(cp.execFileSync(process.execPath,['scripts/materialize-operational-semantics-v1.cjs'],{encoding:'utf8'}));
-const binding=JSON.parse(cp.execFileSync(process.execPath,['scripts/materialize-client-binding-v1.cjs'],{encoding:'utf8'}));
-const r=semantics.records.find(x=>x.processId==='LTL-04'); if(!r||r.moduleVersion!=='1.5') throw Error('CORRECTED_SEMANTIC_DONOR_REQUIRED');
-if(binding.semanticRecordId!==r.semanticRecordId||binding.semanticModuleVersion!=='1.5') throw Error('CLIENT_BINDING_LINEAGE_MISMATCH');
-const governing={
- decomposition:{path:'governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_FROZEN.md',commit:'c72b50025d38c6ba103a98e6b698ac2181d5017b',blob:'046885c71dc9fb24532b398cacd47ffc522f3a1b',version:'1.0.0'},
- workDefinition:{path:'governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md',commit:'c72b50025d38c6ba103a98e6b698ac2181d5017b',blob:'c074489f2cf7edacde962f7e0260e2b240d24b87',version:'1.0.0'}
-};
-const plan={schemaVersion:'atlas-workdefinition-compiler-lineage-v1.0',status:'S8_2E_CONFORMED_NOT_REGENERATED',moduleId:'road-ltl',effectiveModuleVersion:'1.5',sourceTaskId:'LTL-04',semanticRecordId:r.semanticRecordId,governingContracts:governing,compilerPolicy:{
- compilationUnit:'EXECUTOR_READY_TERMINAL_DECOMPOSITION_LEAF_ONLY',
- blockedLeafCompilation:false,deterministic:true,addsKnowledge:false,canonicalClientValues:false,runtimeSpecificStructure:false,fullDetailProtection:'EXECUTION_PROTECTED'
-},correctedDonors:{operationalSemantics:'scripts/materialize-operational-semantics-v1.cjs',clientBinding:'scripts/materialize-client-binding-v1.cjs',clientBindingState:binding.readiness.state},
-regeneration:{performed:false,stage:'S8-3',reason:'S8-2E aligns compiler/schema lineage only; actual WorkDefinition derivative regeneration is governed S8-3 work.'}};
-process.stdout.write(JSON.stringify(plan,null,2)+'\n');
+const fs=require('fs'),path=require('path'),cp=require('child_process');
+const root=path.resolve(__dirname,'..');
+async function main(){
+  const args=process.argv.slice(2);
+  if(args.length===1 && args[0]==='--plan') {
+    process.stdout.write(cp.execFileSync(process.execPath,['scripts/workdefinition-lineage-plan-v1.cjs'],{cwd:root}));return;
+  }
+  if(args.length<2 || args.length>3) throw Error('PINNED_PROTECTED_DECOMPOSITION_REQUIRED');
+  const [input,expectedHash,output]=args;
+  const envelope=JSON.parse(fs.readFileSync(path.resolve(input),'utf8'));
+  const donor=script=>JSON.parse(cp.execFileSync(process.execPath,[script],{cwd:root,encoding:'utf8'}));
+  const {compileCorrectedTask}=await import('../lib/compile/s8-workdefinition-compiler.js');
+  const result=compileCorrectedTask(envelope,expectedHash,donor('scripts/materialize-operational-semantics-v1.cjs'),donor('scripts/materialize-client-binding-v1.cjs'));
+  const {canonicalHash}=await import('../lib/compile/workdefinition-compiler.js');
+  if(output){
+    const requested=path.resolve(output);
+    const target=path.join(fs.realpathSync(path.dirname(requested)),path.basename(requested));
+    const relative=path.relative(fs.realpathSync(root),target);
+    if(!relative.startsWith('..'+path.sep) && !path.isAbsolute(relative)) throw Error('PROTECTED_OUTPUT_MUST_BE_OUTSIDE_PUBLIC_REPOSITORY');
+    fs.writeFileSync(target,JSON.stringify(result,null,2)+'\n',{flag:'wx'});
+  }
+  process.stdout.write(JSON.stringify({status:'DETERMINISTIC_COMPILATION_VERIFIED',moduleId:result.moduleId,moduleVersion:result.moduleVersion,totals:result.totals,governedInputContentHash:expectedHash,outputContentHash:canonicalHash(result),independentExecutorProofStatus:'NOT_INDEPENDENTLY_PROVEN',detailIncluded:false},null,2)+'\n');
+}
+main().catch(error=>{
+  // Structural diagnostics can contain protected unit IDs. Keep CLI failures
+  // non-reconstructive; detailed validation belongs in the protected caller.
+  console.error(/^[A-Z_]+$/.test(error.message)?error.message:'WORKDEFINITION_GENERATION_FAILED_CLOSED');
+  process.exitCode=1;
+});
