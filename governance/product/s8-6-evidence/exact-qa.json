@@ -1,0 +1,3332 @@
+{
+  "schemaVersion": "s8-6-exact-qa-v1",
+  "stage": "S8-6 successor RC / custody assembly (corrected; supersedes four historical REPLACE_ASSEMBLY assemblies)",
+  "testedCommit": "78a3b7c87f24d20f07c8fdb24c0202c33f5de6c2",
+  "testedTree": "e29b608555af535a972eef4461ada3d4fc58d82d",
+  "base": "97e3086daa7b1ca694d019f0f30bb2c3150e7a6d",
+  "baseTree": "33c820c5d5c347ca918f128492f9b6928ea07f64",
+  "nodeVersion": "v22.22.0",
+  "nodeEngineStated": "24.x",
+  "platform": "linux",
+  "architecture": "x64",
+  "cpus": 2,
+  "status": "PASS",
+  "overallClassification": "S8-6 PASS — successor RC assembled, internally consistent and frozen as a CANDIDATE ready for ATL-181 independent audit; NOT ATL-181 PASS, UAT, sign-off, promotion, deployment or runtime readiness",
+  "cleanFreshCheckout": true,
+  "deploymentCandidateIdentity": {
+    "class": "IDENTITY_ONLY_NOT_A_DEPLOYMENT",
+    "testedCommit": "78a3b7c87f24d20f07c8fdb24c0202c33f5de6c2",
+    "testedTree": "e29b608555af535a972eef4461ada3d4fc58d82d",
+    "successorManifest": {
+      "path": "release/manifests/atlas-v1.5-successor-s8-rc.json",
+      "gitBlob": "78ad434e4f1f26834ce7788ce7b5314b4065c571",
+      "sha256": "2daed14460ad93033d370bd0ae456d5eb0312f1a9ecdf1740c85526f5254f393"
+    },
+    "rollbackManifest": {
+      "path": "release/manifests/atlas-v1.5-successor-s8-rollback.json",
+      "gitBlob": "eb8ca8ac5d5468e121110fc4665f3e4ef0772da6",
+      "sha256": "a36935dbd7da9d168cad540f4d284716427761b2e2cd04fc8143614a7a53b531"
+    },
+    "sourceCustody": {
+      "path": "release/custody/s8-6/road-ltl-v1.4.governed-source.json",
+      "gitBlob": "d06974e9ee86cea59227e0866a98ad5d1367bfad",
+      "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4"
+    },
+    "integrityBaseline": {
+      "path": "release/baselines/v2-critical-hashes.json",
+      "gitBlob": "7ce574b1abaa6c2ab27f54bda35b25cb30b18868",
+      "sha256": "52fb5596ba3706f9b7d9e37cde822ba0b52864aae966a55a8f9fb20bafa971f9"
+    },
+    "packages": {
+      "lab": {
+        "path": "release/packages/lab",
+        "packageManifestSha256": "14d94745445b543f8d0b42c69efa691e3c999719369d531418c53ff1b3324c73",
+        "treeSha256": "5f239046482740b38f92d240f56d82adfd5cf98b6c832a6432e229b2474450fe",
+        "fileCount": 247
+      },
+      "stable": {
+        "path": "release/packages/stable",
+        "packageManifestSha256": "6e262bc837c64df69dde6a215298d25fd27a08feae8dbb68c934bd10543304d1",
+        "treeSha256": "442e72a94849ee89a4d38c57dbf34bf6fd13217568a23b57253756334fe21150",
+        "fileCount": 228
+      }
+    },
+    "successorIdentities": {
+      "journey": "74bc1919ae6904a3feb8ea115ab9040911055b7f",
+      "historyModule": "52631ec3628a2cf40509f4672a482ca5b2bf8bc3",
+      "router": "60dcb85999eed6d1bbc67e52b7ef6c3667cd5709",
+      "root": "043802523b1618c143a0e78b88bbfb2afaa7c7dd",
+      "shell": "e65e98b9a0f57acfb9abfd7633fcada4671a9084"
+    }
+  },
+  "rcSuite": {
+    "suite": "s8-6-successor-rc",
+    "total": 82,
+    "passed": 82,
+    "failed": 0,
+    "cases": [
+      "PASS manifest schema, stage meaning and successor spine",
+      "PASS deterministic regeneration equals the committed successor manifest byte-for-byte (twice)",
+      "PASS every governed lineage entry is MATCH (expected == observed) and the verifier accepts the committed manifest",
+      "PASS protected derivatives reproduce from the CUSTODY copy (hashes only) and equal the pins",
+      "PASS corrected S8-5B identities are pinned (WD/package/readiness/projection/flow/BPMN/SVG)",
+      "PASS certified Ask 2.0.1, Canvas, bridge and shell identities are pinned and match the tree",
+      "PASS successor identities: S8-5B router/Deepen/governed-depth + S8-6 journey and history module; superseded pins recorded but never accepted",
+      "PASS DAU remediation result is carried by the manifest (DAU-007 remediated pending audit; evidence PASS, pinned)",
+      "PASS four historical REPLACE_ASSEMBLY assemblies are mechanically shown NOT to be current authority",
+      "PASS predecessor S8-3F manifest/generator/CLI are untouched (history is not rewritten); S8-6 adds, never edits, prior evidence",
+      "PASS exclusions: every stale / superseded / wrong-donor identity is absent from the RC tree and is not authority",
+      "PASS source custody is self-contained: committed copy, blob/sha256/task hash pinned; no divergent-commit read",
+      "PASS custody is excluded from deployment (.vercelignore) and absent from both packages",
+      "PASS protected derivatives carry identity/classification/custody only (no bytes, no path); no tracked file equals protected bytes",
+      "PASS stale WD id appears in packages only as the pinned S8-2D governed schema const (permitted, identical bytes to the tracked contract)",
+      "PASS no ATL-157 / LTL-04 daughter or depth materialization in the RC tree (fail-closed)",
+      "PASS Lab and Stable packages verify exactly (file set + bytes + manifest + channel marker)",
+      "PASS package build is deterministic (rebuild into a scratch dir is byte-identical)",
+      "PASS packages carry the CURRENT identities (root, Canvas, bridge, Ask 2.0.1, router/API incl. governed-depth-summary, journey, history, Deepen)",
+      "PASS superseded Ask blob and stale package files are gone; protected/custody/test/compile material is absent; .vercelignore is respected",
+      "PASS package runtime check: release-integrity handler, router and governed-depth handler execute inside each package directory",
+      "PASS regenerated release-integrity baseline PASSES at the RC (repo root) and covers every successor-critical file",
+      "PASS drift is reconciled, not waived: 12 drifted files classified (authorized, in RC, not stale, not accidental); zero unexplained; verifier not weakened",
+      "PASS rollback manifest: three frozen production-baseline assets verified by sha256; reference-only; no candidate/stale branch nominated",
+      "PASS rollback reference material is not injected into active execution (not packaged, not imported by runtime code)",
+      "PASS controls: Owner gate required; production promotion false; exact identity fail-closed; no frozen-asset mutation; deployment candidate is identity only",
+      "PASS runtime readiness remains blocked and the blocked leaves stay visible",
+      "PASS deferred v2 obligations are preserved (not PASS); DEF-GOV-002 preserved open; DEF-REL-ASSET-001 S8 portion closed only on full proofs; downstream states",
+      "PASS generator/builder paths are pinned in the manifest and carry no stale WD marker; S8-6 generators exist and are the pinned blobs",
+      "PASS changed-path classification: every path changed since the S8-5B base is classified; frozen donors/root/shell/Canvas/bridge/Ask are byte-identical",
+      "PASS negative: S8-5B journey identity omitted → SUCCESSOR_IDENTITY_MISSING",
+      "PASS negative: journey replaced by the S8-4 journey pin → JOURNEY_IDENTITY_REPLACED",
+      "PASS negative: journey replaced by the S8-5B journey pin → JOURNEY_IDENTITY_REPLACED",
+      "PASS negative: history module identity omitted → SUCCESSOR_IDENTITY_MISSING",
+      "PASS negative: old api/atlas.js (S8-4 router) restored as the pin → IDENTITY_REPLACED_OR_STALE",
+      "PASS negative: stale ATL-142 root nominated as authority → STALE_ATL142_ROOT",
+      "PASS negative: stale ATL-142 custody assembly nominated as authority → STALE_ATL142_ROOT",
+      "PASS negative: stale ATL-141 RC nominated as authority → STALE_ATL141_RC_NOMINATED",
+      "PASS negative: stale ATL-141 release-integrity assembly nominated → STALE_ATL141_RC_NOMINATED",
+      "PASS negative: historical assembly record dropped → HISTORICAL_ASSEMBLY_RECORD_MISSING",
+      "PASS negative: historical evidence rewritten (predecessor manifest relabelled mutated) → HISTORICAL_EVIDENCE_REWRITTEN",
+      "PASS negative: historical assembly marked mutated → HISTORICAL_EVIDENCE_REWRITTEN",
+      "PASS negative: superseded Ask carried as the current Ask API pin → SUPERSEDED_ASK_INCLUDED",
+      "PASS negative: superseded Ask promoted to authority → STALE_IDENTITY_AS_AUTHORITY",
+      "PASS negative: ATL-157 LTL-04 materialization recorded → ATL157_LTL04_MATERIALIZED",
+      "PASS negative: protected bytes published (bytesPublished) → PROTECTED_BYTES_PUBLISHED",
+      "PASS negative: protected bytes published (embedded content) → PROTECTED_BYTES_PUBLISHED",
+      "PASS negative: protected path published → PROTECTED_BYTES_PUBLISHED",
+      "PASS negative: source custody entry removed → SOURCE_CUSTODY_MISSING",
+      "PASS negative: source custody sha256 pin removed → SOURCE_CUSTODY_MISSING",
+      "PASS negative: source custody hash altered → SOURCE_HASH_ALTERED",
+      "PASS negative: source custody task hash altered → SOURCE_HASH_ALTERED",
+      "PASS negative: divergent-branch dependency re-introduced → DIVERGENT_BRANCH_DEPENDENCY",
+      "PASS negative: rollback hash altered → MANIFEST_DRIFT",
+      "PASS negative: rollback points to a stale/candidate branch → ROLLBACK_STALE_BRANCH_NOMINATED",
+      "PASS negative: rollback injected into active execution → ROLLBACK_STALE_BRANCH_NOMINATED",
+      "PASS negative: rollback identity not established → ROLLBACK_IDENTITY_NOT_ESTABLISHED",
+      "PASS negative: production promotion true → PRODUCTION_PROMOTION_AUTHORIZED",
+      "PASS negative: Owner gate removed → OWNER_GATE_REMOVED",
+      "PASS negative: identity verification no longer fail-closed → IDENTITY_VERIFICATION_NOT_FAIL_CLOSED",
+      "PASS negative: readiness promoted (universalExecutionReady) → READINESS_PROMOTED",
+      "PASS negative: readiness promoted (runtimeReadiness) → READINESS_PROMOTED",
+      "PASS negative: blocked leaves hidden (not-compiled count) → BLOCKED_LEAVES_HIDDEN",
+      "PASS negative: blocked leaves hidden (binding state) → BLOCKED_LEAVES_HIDDEN",
+      "PASS negative: deferred ATL-71 marked PASS → DEFERRED_MARKED_PASS",
+      "PASS negative: deferred F-130-06 marked PASS → DEFERRED_MARKED_PASS",
+      "PASS negative: deferred obligation dropped → DEFERRED_OBLIGATION_MISSING",
+      "PASS negative: DEF-GOV-002 silently closed → GOV_002_SILENTLY_CLOSED",
+      "PASS negative: release-integrity drift waived → INTEGRITY_DRIFT_WAIVED",
+      "PASS negative: release-integrity verifier weakened → INTEGRITY_DRIFT_WAIVED",
+      "PASS negative: release-integrity state falsified → RELEASE_INTEGRITY_STATE_DRIFT",
+      "PASS negative: DAU-007 result omitted → DAU_RESULT_OMITTED",
+      "PASS negative: DAU-007 defect record omitted → DAU_RESULT_OMITTED",
+      "PASS negative: DEF-REL-ASSET-001 closed without proofs → DEF_REL_ASSET_CLOSED_WITHOUT_PROOFS",
+      "PASS negative: downstream altered (ATL-181 unblocked) → DOWNSTREAM_STATE_ALTERED",
+      "PASS negative: downstream altered (release mergeable) → DOWNSTREAM_STATE_ALTERED",
+      "PASS negative: exclusion record removed → EXCLUSION_RECORD_MISSING",
+      "PASS negative: exclusion reclassified → EXCLUSION_RECLASSIFIED",
+      "PASS negative: stale WD lineage marker reported → STALE_WD_LINEAGE_MARKER",
+      "PASS negative: Lab package declared unverified → PACKAGE_NOT_VERIFIED",
+      "PASS negative: manifest hand-edited (not equal to deterministic regeneration) → MANIFEST_DRIFT",
+      "PASS negative: schema version altered → SCHEMA_VERSION_MISMATCH"
+    ]
+  },
+  "dauBrowserRetestOnRc": {
+    "exitCode": 0,
+    "total": 110,
+    "passed": 110,
+    "failed": 0,
+    "rootLoadRaceTolerated": 0,
+    "browser": {
+      "engine": "chromium 141.0.7390.37",
+      "executable": "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
+    },
+    "failingCases": []
+  },
+  "suites": {
+    "total": 19,
+    "passed": 19,
+    "gatingFailures": [],
+    "newFailuresVsBase": []
+  },
+  "predecessorSuites": {
+    "s8_5b": {
+      "failingCases": [
+        "P01 no stale WD id, stale Malkom package id or stale source tip in any new or changed file; no stale ATL-167 / ATL-178 page restored; w",
+        "P02 journey modification is minimal and additive: the S8-4 exports/markup remain; only the successor import, one markup call and the in",
+        "Z01 changed paths vs the exact S8-5A head are only the classified set: 2 modified integration files + new ATL-167 files/tests/evidence",
+        "Z02 certified / predecessor / canonical paths are byte-identical to the S8-5A head (root, shell, Canvas, bridge, Ask, Daughter, vercel,",
+        "Z05 the successor-identity evidence records predecessor vs successor blobs for each changed product file and is deterministic"
+      ],
+      "expected": [
+        "Z01",
+        "Z02",
+        "Z05",
+        "P01",
+        "P02"
+      ],
+      "classification": "SUCCESSOR_ONLY_STAGE_LOCAL_IDENTITY_EVOLUTION"
+    },
+    "s8_5a": {
+      "failingCases": [
+        "S01 S8-5A scope: only additive verification/evidence/documentation paths vs the S8-3F evidence head; no product path, workbook, release",
+        "S02 inherited corrected-lineage identities are unchanged (manifest not regenerated; S8-3F evidence untouched)",
+        "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+        "V01 ATL-167 is recorded BLOCKED — NO CURRENT SUCCESSOR RETEST SURFACE, with mechanically verified evidence"
+      ],
+      "expected": [
+        "V01",
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "s02DiffSet": [
+        "release/manifests/atlas-v1.5-successor-s8-rc.json",
+        "release/manifests/atlas-v1.5-successor-s8-rollback.json"
+      ],
+      "s02Ok": true,
+      "classification": "SUCCESSOR_ONLY_STAGE_LOCAL_EVOLUTION"
+    },
+    "s8_4": {
+      "failingCases": [
+        "D01 every transplanted certified donor file is byte-identical to its donor blob (shell excepted: governed one-line adaptation) :: donor",
+        "P01 superseded Ask API blob cb2bcfea absent from every live path; only the two inherited release/packages copies (not introduced by S8-",
+        "P04 stale WorkDefinition id never appears in any file added or changed by S8-4 :: stale lineage in release/packages/lab/data/contracts/",
+        "S01 changed paths are exactly the governed transplant + new S8-4 files; no deletions :: unexpected changed path .vercelignore",
+        "S02 no S8-3A..3E governed output or implementation modified (lib/compile, S8 tests, S8 governance evidence) :: tests/s8-3f-governed-rel",
+        "S03 no runtime/release promotion: release/ and Canvas untouched; all public summaries remain BLOCKED / not certified :: release/baselin"
+      ],
+      "expected": [
+        "D01",
+        "P01",
+        "P04",
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "classification": "SUCCESSOR_ONLY_STAGE_LOCAL_IDENTITY_EVOLUTION",
+      "d01": "FAIL D01 every transplanted certified donor file is byte-identical to its donor blob (shell excepted: governed one-line adaptation) :: donor identity lost api/atlas.js"
+    },
+    "s8_3f": {
+      "failingCases": [
+        "S8-3F scope: changed paths vs the S8-4 final head are exactly the S8-3F implementation set (no prior-stage, Canvas, release-package or ",
+        "deterministic regeneration equals the committed manifest byte-for-byte",
+        "protected derivatives reproduce from the governed lineage (hashes only) and equal the pins",
+        "recovery evidence: every recovery artifact is identity-pinned and matches the tree",
+        "release integrity fails closed and the manifest does NOT certify the baseline",
+        "release packages are untouched relative to the S8-4 base (no rewrite)",
+        "superseded Ask copies under release/packages are detected and represented as UNRESOLVED residual, not current",
+        "verifier accepts the committed manifest"
+      ],
+      "expectedPrefixes": [
+        "deterministic regeneration equals the committed manifest",
+        "verifier accepts the committed manifest",
+        "protected derivatives reproduce from the governed lineage",
+        "superseded Ask copies under release/packages are detected",
+        "release packages are untouched relative to the S8-4 base",
+        "S8-3F scope: changed paths",
+        "recovery evidence: every recovery artifact is identity-pinned",
+        "release integrity fails closed and the manifest does NOT certify the baseline"
+      ],
+      "classification": "SUCCESSOR_ONLY_IDENTITY_EVOLUTION_AND_REMEDIATION_OF_RECORDED_DEFECTS",
+      "reasonProbe": {
+        "integrity": "PASSES_VERIFICATION",
+        "mismatched": 0,
+        "supersededAskCopies": 0,
+        "currentAskCopies": 6,
+        "recoveryMismatches": [
+          "assets/atl-140-v15-journey.mjs"
+        ]
+      },
+      "cliCheckFailures": [
+        "IDENTITY_MISMATCH interaction.atl-140-journey: recorded observed identity differs from the repository",
+        "IDENTITY_MISMATCH interaction.atl-140-journey: repository identity is MISMATCH",
+        "MANIFEST_DRIFT manifest differs from deterministic regeneration",
+        "RELEASE_INTEGRITY_STATE_DRIFT observedVerification differs from recomputation",
+        "ROLLBACK_RECOVERY_IDENTITY_DRIFT assets/atl-140-v15-journey.mjs"
+      ],
+      "cliExpected": [
+        "IDENTITY_MISMATCH interaction.atl-140-journey: recorded observed identity differs from the repository",
+        "IDENTITY_MISMATCH interaction.atl-140-journey: repository identity is MISMATCH",
+        "MANIFEST_DRIFT manifest differs from deterministic regeneration",
+        "RELEASE_INTEGRITY_STATE_DRIFT observedVerification differs from recomputation",
+        "ROLLBACK_RECOVERY_IDENTITY_DRIFT assets/atl-140-v15-journey.mjs"
+      ],
+      "cliClassification": "SUCCESSOR_ONLY_STAGE_LOCAL_IDENTITY_EVOLUTION",
+      "cliCleanAtBase": false
+    },
+    "probes": {
+      "journeyDeltaVsS85bJourney": {
+        "added": 3,
+        "removed": 0,
+        "ok": true
+      },
+      "modifiedPathsVsS85aHead": 35,
+      "modifiedSetOk": true,
+      "deletionsOnlyUnderReplacedPackages": true,
+      "staleIdOffenders": [
+        {
+          "path": "governance/product/s8-5b-evidence/governed-depth-summary-ltl04.json",
+          "marker": "divergent-source-commit",
+          "explainedBy": "IDENTICAL_TO_ACCEPTED_BASE_BLOB"
+        },
+        {
+          "path": "governance/product/s8-6-evidence/run-exact-qa.cjs",
+          "marker": "divergent-source-commit",
+          "explainedBy": "ALLOW_LIST: this QA runner pins the divergent commit to prove its absence from the lineage-only clone"
+        },
+        {
+          "path": "lib/release/s8-6-successor-manifest.js",
+          "marker": "divergent-source-commit",
+          "explainedBy": "ALLOW_LIST: pinned constant: provenance + EXCLUDED_DIVERGENT_DEPENDENCY record (never read)"
+        },
+        {
+          "path": "release/custody/s8-6/custody-pins.json",
+          "marker": "divergent-source-commit",
+          "explainedBy": "ALLOW_LIST: custody provenance record (origin of the committed copy; dependencyAfterCustody=false)"
+        },
+        {
+          "path": "release/manifests/atlas-v1.5-successor-s8-rc.json",
+          "marker": "stale-source-tip",
+          "explainedBy": "ALLOW_LIST: recorded as an excluded stale source tip (exclusion entry; the manifest pins it as NOT current)"
+        },
+        {
+          "path": "release/manifests/atlas-v1.5-successor-s8-rc.json",
+          "marker": "divergent-source-commit",
+          "explainedBy": "ALLOW_LIST: exclusion + custody provenance records"
+        },
+        {
+          "path": "release/packages/lab/data/contracts/atlas-client-binding-set-v1.schema.json",
+          "marker": "stale-wd-id",
+          "explainedBy": "PACKAGE_COPY_IDENTICAL_TO_ACCEPTED_BASE_BLOB:data/contracts/atlas-client-binding-set-v1.schema.json"
+        },
+        {
+          "path": "release/packages/lab/governance/product/s8-3b-evidence/reconstruction-summary.json",
+          "marker": "divergent-source-commit",
+          "explainedBy": "PACKAGE_COPY_IDENTICAL_TO_ACCEPTED_BASE_BLOB:governance/product/s8-3b-evidence/reconstruction-summary.json"
+        },
+        {
+          "path": "release/packages/lab/governance/product/s8-5a-evidence/atl-167-blocked-record.json",
+          "marker": "stale-source-tip",
+          "explainedBy": "PACKAGE_COPY_IDENTICAL_TO_ACCEPTED_BASE_BLOB:governance/product/s8-5a-evidence/atl-167-blocked-record.json"
+        },
+        {
+          "path": "release/packages/lab/governance/product/s8-5a-evidence/atl-173-successor-utility-proof.json",
+          "marker": "stale-malkom-package-id",
+          "explainedBy": "PACKAGE_COPY_IDENTICAL_TO_ACCEPTED_BASE_BLOB:governance/product/s8-5a-evidence/atl-173-successor-utility-proof.json"
+        },
+        {
+          "path": "release/packages/lab/governance/product/s8-5b-evidence/governed-depth-summary-ltl04.json",
+          "marker": "divergent-source-commit",
+          "explainedBy": "PACKAGE_COPY_IDENTICAL_TO_ACCEPTED_BASE_BLOB:governance/product/s8-5b-evidence/governed-depth-summary-ltl04.json"
+        },
+        {
+          "path": "release/packages/stable/data/contracts/atlas-client-binding-set-v1.schema.json",
+          "marker": "stale-wd-id",
+          "explainedBy": "PACKAGE_COPY_IDENTICAL_TO_ACCEPTED_BASE_BLOB:data/contracts/atlas-client-binding-set-v1.schema.json"
+        },
+        {
+          "path": "release/packages/stable/governance/product/s8-3b-evidence/reconstruction-summary.json",
+          "marker": "divergent-source-commit",
+          "explainedBy": "PACKAGE_COPY_IDENTICAL_TO_ACCEPTED_BASE_BLOB:governance/product/s8-3b-evidence/reconstruction-summary.json"
+        },
+        {
+          "path": "release/packages/stable/governance/product/s8-5a-evidence/atl-167-blocked-record.json",
+          "marker": "stale-source-tip",
+          "explainedBy": "PACKAGE_COPY_IDENTICAL_TO_ACCEPTED_BASE_BLOB:governance/product/s8-5a-evidence/atl-167-blocked-record.json"
+        },
+        {
+          "path": "release/packages/stable/governance/product/s8-5a-evidence/atl-173-successor-utility-proof.json",
+          "marker": "stale-malkom-package-id",
+          "explainedBy": "PACKAGE_COPY_IDENTICAL_TO_ACCEPTED_BASE_BLOB:governance/product/s8-5a-evidence/atl-173-successor-utility-proof.json"
+        },
+        {
+          "path": "release/packages/stable/governance/product/s8-5b-evidence/governed-depth-summary-ltl04.json",
+          "marker": "divergent-source-commit",
+          "explainedBy": "PACKAGE_COPY_IDENTICAL_TO_ACCEPTED_BASE_BLOB:governance/product/s8-5b-evidence/governed-depth-summary-ltl04.json"
+        },
+        {
+          "path": "tests/s8-6-dau-history-sync.test.mjs",
+          "marker": "stale-wd-id",
+          "explainedBy": "ALLOW_LIST: DAU negative tests inject the stale WD id as a protected value that the history module MUST reject"
+        },
+        {
+          "path": "tests/s8-6-dau-history-sync.test.mjs",
+          "marker": "stale-malkom-package-id",
+          "explainedBy": "ALLOW_LIST: DAU negative tests inject the stale package id as a protected value that the history module MUST reject"
+        },
+        {
+          "path": "tests/s8-6-dau-mutations.test.mjs",
+          "marker": "stale-malkom-package-id",
+          "explainedBy": "ALLOW_LIST: DAU mutation payload injects the stale package id; the module must reject it"
+        }
+      ],
+      "staleIdOffendersAllPermitted": true,
+      "packagedSchemaPinOk": true,
+      "supersededAskBlobCopiesInTree": 0,
+      "z05DriftedProductFiles": [
+        "assets/atl-140-v15-journey.mjs"
+      ],
+      "s85aEvidenceGeneratorDrift": {
+        "files": 3,
+        "diffs": [
+          [
+            "governance/product/s8-5a-evidence/atl-167-blocked-record.json.mechanicallyVerifiedEvidence.tracked167Tests",
+            0,
+            5
+          ]
+        ]
+      }
+    },
+    "exactCommitRepass": {
+      "s84": {
+        "commit": "07a41138f7b52e5fe1d0c9d5989f72b9835560c5",
+        "test": "tests/s8-4-interaction-rebinding.test.mjs",
+        "exitCode": 0,
+        "summary": {
+          "suite": "s8-4-interaction-rebinding",
+          "total": 34,
+          "passed": 34,
+          "failed": 0,
+          "caseIds": [
+            "D01",
+            "D02",
+            "D03",
+            "D04",
+            "D05",
+            "D06",
+            "A01",
+            "A02",
+            "A03",
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "B01",
+            "B02",
+            "B03",
+            "B04",
+            "B05",
+            "B06",
+            "B07",
+            "B08",
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "N01",
+            "N02",
+            "N03",
+            "N04",
+            "N05"
+          ]
+        }
+      },
+      "s83f": {
+        "commit": "67c80d513aa9de798e33814b963ee0e62ed7abad",
+        "test": "tests/s8-3f-governed-release-manifest.test.mjs",
+        "exitCode": 0,
+        "summary": {
+          "suite": "s8-3f-governed-release-manifest",
+          "total": 63,
+          "passed": 63,
+          "failed": 0
+        }
+      },
+      "s85aTested": {
+        "commit": "cf6c89dc51187329e4455f20fa12e2d742735621",
+        "test": "tests/s8-5a-successor-retests.test.mjs",
+        "exitCode": 0,
+        "summary": {
+          "suite": "s8-5a-successor-retests",
+          "total": 47,
+          "passed": 47,
+          "failed": 0
+        }
+      },
+      "s85aHead": {
+        "commit": "f8dc6c3863bc7310d8d83addf2d6ff1b6d34e12f",
+        "test": "tests/s8-5a-successor-retests.test.mjs",
+        "exitCode": 0,
+        "summary": {
+          "suite": "s8-5a-successor-retests",
+          "total": 47,
+          "passed": 47,
+          "failed": 0
+        }
+      },
+      "s85bTested": {
+        "commit": "c05d35d7eea79dacfa2290bc04bd0bf1727b1ef0",
+        "test": "tests/s8-5b-atl167-ltl04-deepen.test.mjs",
+        "exitCode": 0,
+        "summary": {
+          "suite": "s8-5b-atl167-ltl04-deepen",
+          "total": 33,
+          "passed": 33,
+          "failed": 0,
+          "caseIds": [
+            "Z01",
+            "Z02",
+            "Z03",
+            "Z04",
+            "Z05",
+            "D01",
+            "D02",
+            "D03",
+            "A01",
+            "A02",
+            "A03",
+            "A04",
+            "A05",
+            "A06",
+            "A07",
+            "A08",
+            "A09",
+            "A10",
+            "A11",
+            "A12",
+            "A13",
+            "A14",
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "P01",
+            "P02"
+          ]
+        }
+      },
+      "s85bHead": {
+        "commit": "97e3086daa7b1ca694d019f0f30bb2c3150e7a6d",
+        "test": "tests/s8-5b-atl167-ltl04-deepen.test.mjs",
+        "exitCode": 0,
+        "summary": {
+          "suite": "s8-5b-atl167-ltl04-deepen",
+          "total": 33,
+          "passed": 33,
+          "failed": 0,
+          "caseIds": [
+            "Z01",
+            "Z02",
+            "Z03",
+            "Z04",
+            "Z05",
+            "D01",
+            "D02",
+            "D03",
+            "A01",
+            "A02",
+            "A03",
+            "A04",
+            "A05",
+            "A06",
+            "A07",
+            "A08",
+            "A09",
+            "A10",
+            "A11",
+            "A12",
+            "A13",
+            "A14",
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "P01",
+            "P02"
+          ]
+        }
+      }
+    },
+    "exactCommitRepassOk": true,
+    "explanation": "S8-6 legitimately evolves identities previously pinned by predecessor suites (journey, router, release packages, baseline, deploy exclusions) and repairs two defects the S8-3F suite pinned as recorded residuals (stale Ask copies in release/packages; failing release-integrity baseline). Each predecessor suite is unmodified; it fails here only on the expected stage-local cases and passes in full at its own accepted commit."
+  },
+  "manifest": {
+    "checkReproduceRuns": [
+      {
+        "ok": true,
+        "entries": 89,
+        "failures": [],
+        "reproduced": true
+      },
+      {
+        "ok": true,
+        "entries": 89,
+        "failures": [],
+        "reproduced": true
+      }
+    ],
+    "regenerationInCleanWorktreeByteIdentical": true,
+    "releaseControlCheck": {
+      "ok": true,
+      "mode": "CHECK",
+      "baseline": {
+        "status": "PASSES_VERIFICATION",
+        "fileCount": 63,
+        "mismatches": []
+      },
+      "drift": {
+        "preBaselineFileCount": 44,
+        "matchCount": 32,
+        "driftCount": 12,
+        "unexplainedCount": 0,
+        "allReconciled": true,
+        "byClassification": {
+          "AUTHORIZED_LINEAGE_CHANGE_AFTER_BASELINE": 4,
+          "BASELINE_VALUE_PREDATES_LINEAGE": 8
+        },
+        "unexplainedPaths": []
+      }
+    },
+    "protectedDerivativesFromCustody": {
+      "all": true,
+      "count": 8,
+      "taskHash": "b0bee64f418dcf99ccd60480c86dcd9dcd066231fe72ab7033c80994922b4e65"
+    }
+  },
+  "packages": {
+    "ok": true,
+    "v": {
+      "lab": {
+        "tree": "5f239046482740b38f92d240f56d82adfd5cf98b6c832a6432e229b2474450fe",
+        "fileCount": 247,
+        "inRepoOk": true,
+        "rebuiltOk": true,
+        "failures": []
+      },
+      "stable": {
+        "tree": "442e72a94849ee89a4d38c57dbf34bf6fd13217568a23b57253756334fe21150",
+        "fileCount": 228,
+        "inRepoOk": true,
+        "rebuiltOk": true,
+        "failures": []
+      }
+    }
+  },
+  "releaseIntegrity": {
+    "perLocation": {
+      "repoRoot": {
+        "status": 200,
+        "ok": true,
+        "files": 63,
+        "bad": [],
+        "router": "function",
+        "governedDepth": "function"
+      },
+      "lab": {
+        "status": 200,
+        "ok": true,
+        "files": 63,
+        "bad": [],
+        "router": "function",
+        "governedDepth": "function"
+      },
+      "stable": {
+        "status": 200,
+        "ok": true,
+        "files": 63,
+        "bad": [],
+        "router": "function",
+        "governedDepth": "function"
+      }
+    },
+    "allPass": true
+  },
+  "lineageOnlyClone": {
+    "branch": "s8-6-successor-rc-certification",
+    "clonedFrom": "file://repo --single-branch --no-local",
+    "historicalCommitsPresentInClone": {
+      "ATL-141 RC (S7-IMP-003)": false,
+      "ATL-142 custody (S7-IMP-004/006)": false,
+      "ATL-141 release integrity (S7-IMP-021)": false,
+      "ATL-175": false,
+      "divergent source": false
+    },
+    "noHistoricalOrDivergentCommitPresent": true,
+    "manifestCheckReproduce": {
+      "ok": true,
+      "failures": [],
+      "reproduced": true
+    },
+    "manifestRegeneratedByteIdenticalToCommitted": true,
+    "protectedDerivativesReproducedFromCustody": true,
+    "rcSuite": {
+      "total": 82,
+      "passed": 82,
+      "failed": 0
+    },
+    "releaseControlCheck": true,
+    "ok": true
+  },
+  "mutationSuites": {
+    "rc": {
+      "exitCode": 0,
+      "suite": "s8-6-rc-mutations",
+      "control": true,
+      "mutations": 41,
+      "detected": 41,
+      "survived": 0
+    },
+    "dau": {
+      "exitCode": 0,
+      "total": 22,
+      "passed": 22,
+      "mutations": 21,
+      "detected": 21,
+      "survived": []
+    },
+    "rcMatrix": {
+      "control": {
+        "failures": [],
+        "lineageEntries": 89,
+        "lineageMatch": 89,
+        "exclusionsAbsent": 24,
+        "exclusions": 24
+      },
+      "mutations": [
+        {
+          "id": "R01-OLD-S8-4-JOURNEY-RESTORED",
+          "name": "old S8-4 journey (2c97dbde) restored",
+          "expectedCodes": [
+            "OLD_JOURNEY_RESTORED",
+            "JOURNEY_IDENTITY_REPLACED",
+            "SUCCESSOR_IDENTITY_MISMATCH"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "SUCCESSOR_IDENTITY_MISMATCH",
+            "OLD_JOURNEY_RESTORED",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R02-OLD-S8-5B-JOURNEY-RESTORED",
+          "name": "S8-5B journey (6c11bf4c, no history registration) restored",
+          "expectedCodes": [
+            "OLD_JOURNEY_RESTORED",
+            "SUCCESSOR_IDENTITY_MISMATCH"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "SUCCESSOR_IDENTITY_MISMATCH",
+            "OLD_JOURNEY_RESTORED",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R03-OLD-API-ATLAS-RESTORED",
+          "name": "old S8-4 api/atlas.js (no governed-depth-summary) restored",
+          "expectedCodes": [
+            "OLD_API_ATLAS_RESTORED",
+            "SUCCESSOR_IDENTITY_MISMATCH"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "SUCCESSOR_IDENTITY_MISMATCH",
+            "OLD_API_ATLAS_RESTORED",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R04-STALE-ATL142-ROOT",
+          "name": "stale ATL-142 root (379f988c) restored as index.html",
+          "expectedCodes": [
+            "STALE_ATL142_ROOT"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "STALE_ATL142_ROOT",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R05-STALE-ATL140-ROOT",
+          "name": "stale ATL-140 root (9cf88a86) restored as index.html",
+          "expectedCodes": [
+            "STALE_ATL140_ROOT"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "STALE_ATL141_RC_NOMINATED",
+            "STALE_ATL140_ROOT",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R06-STALE-ATL141-RC-ANCESTRY",
+          "name": "stale ATL-141 RC commit (ef6e375c) becomes an ancestor of the RC",
+          "expectedCodes": [
+            "STALE_ATL141_RC_NOMINATED"
+          ],
+          "observedCodes": [
+            "STALE_ATL141_RC_NOMINATED",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R07-STALE-ATL142-CUSTODY-ANCESTRY",
+          "name": "stale ATL-142 commit (dba6968b) becomes an ancestor of the RC",
+          "expectedCodes": [
+            "STALE_ATL142_ROOT"
+          ],
+          "observedCodes": [
+            "STALE_ATL142_ROOT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R08-SUPERSEDED-ASK-IN-TREE",
+          "name": "superseded Ask API (cb2bcfea) restored as lib/api/ask-atlas.js",
+          "expectedCodes": [
+            "SUPERSEDED_ASK_INCLUDED"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "STALE_ATL141_RC_NOMINATED",
+            "STALE_ATL142_ROOT",
+            "SUPERSEDED_ASK_INCLUDED",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R09-SUPERSEDED-ASK-IN-LAB",
+          "name": "superseded Ask API copied into the Lab package",
+          "expectedCodes": [
+            "SUPERSEDED_ASK_INCLUDED",
+            "PACKAGE_STALE_OR_DRIFTED_FILE"
+          ],
+          "observedCodes": [
+            "STALE_ATL141_RC_NOMINATED",
+            "STALE_ATL142_ROOT",
+            "SUPERSEDED_ASK_INCLUDED",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R10-ATL157-LTL04-MODULE",
+          "name": "ATL-157 LTL-04 daughter source materialized as data/modules/road-ltl-v1.4.json",
+          "expectedCodes": [
+            "ATL157_LTL04_MATERIALIZED"
+          ],
+          "observedCodes": [
+            "PACKAGE_FILE_MISSING",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "ATL157_LTL04_MATERIALIZED",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R11-ATL157-MECHANISM-IN-PRODUCT",
+          "name": "ATL-157 bounded-depth mechanism shipped in a product path",
+          "expectedCodes": [
+            "ATL157_LTL04_MATERIALIZED"
+          ],
+          "observedCodes": [
+            "PACKAGE_FILE_MISSING",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "ATL157_LTL04_MATERIALIZED",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R12-PROTECTED-BYTES-PUBLISHED",
+          "name": "protected derivative bytes written into a tracked public path",
+          "expectedCodes": [
+            "PROTECTED_BYTES_PUBLISHED"
+          ],
+          "observedCodes": [
+            "PROTECTED_BYTES_PUBLISHED",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R13-CUSTODY-REMOVED",
+          "name": "source custody copy removed",
+          "expectedCodes": [
+            "SOURCE_CUSTODY_MISSING",
+            "SOURCE_CUSTODY_DRIFT"
+          ],
+          "observedCodes": [
+            "SOURCE_CUSTODY_DRIFT",
+            "UNKNOWN_ENTRY",
+            "SOURCE_CUSTODY_MISSING",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R14-CUSTODY-HASH-ALTERED",
+          "name": "source custody bytes altered (one trailing space)",
+          "expectedCodes": [
+            "SOURCE_HASH_ALTERED"
+          ],
+          "observedCodes": [
+            "SOURCE_CUSTODY_DRIFT",
+            "SOURCE_HASH_ALTERED",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R15-CUSTODY-PINS-REMOVED",
+          "name": "custody pin record removed",
+          "expectedCodes": [
+            "SOURCE_CUSTODY_MISSING",
+            "SOURCE_CUSTODY_DRIFT"
+          ],
+          "observedCodes": [
+            "SOURCE_HASH_ALTERED",
+            "SOURCE_CUSTODY_DRIFT",
+            "UNKNOWN_ENTRY",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R16-CUSTODY-DEPLOYED",
+          "name": "custody no longer excluded from deployment (.vercelignore)",
+          "expectedCodes": [
+            "CUSTODY_NOT_EXCLUDED_FROM_DEPLOYMENT"
+          ],
+          "observedCodes": [
+            "IDENTITY_REPLACED_OR_STALE",
+            "IDENTITY_MISMATCH",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "CUSTODY_NOT_EXCLUDED_FROM_DEPLOYMENT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R17-ROLLBACK-ASSET-ALTERED",
+          "name": "rollback target asset (ocean-fcl-v0.5) altered",
+          "expectedCodes": [
+            "ROLLBACK_ASSET_DRIFT"
+          ],
+          "observedCodes": [
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "ROLLBACK_ASSET_DRIFT",
+            "ROLLBACK_MANIFEST_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R18-ROLLBACK-HASH-ALTERED",
+          "name": "rollback manifest expected hash altered",
+          "expectedCodes": [
+            "ROLLBACK_HASH_ALTERED"
+          ],
+          "observedCodes": [
+            "IDENTITY_REPLACED_OR_STALE",
+            "IDENTITY_MISMATCH",
+            "ROLLBACK_HASH_ALTERED",
+            "ROLLBACK_MANIFEST_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R19-ROLLBACK-STALE-BRANCH",
+          "name": "rollback manifest nominates a stale candidate branch",
+          "expectedCodes": [
+            "ROLLBACK_STALE_BRANCH_NOMINATED",
+            "ROLLBACK_TARGET_SET"
+          ],
+          "observedCodes": [
+            "IDENTITY_REPLACED_OR_STALE",
+            "IDENTITY_MISMATCH",
+            "ROLLBACK_TARGET_SET",
+            "ROLLBACK_STALE_BRANCH_NOMINATED",
+            "ROLLBACK_MANIFEST_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R20-ROLLBACK-INJECTED",
+          "name": "rollback manifest marked injected into active execution",
+          "expectedCodes": [
+            "ROLLBACK_INJECTED_INTO_ACTIVE_EXECUTION"
+          ],
+          "observedCodes": [
+            "IDENTITY_REPLACED_OR_STALE",
+            "IDENTITY_MISMATCH",
+            "ROLLBACK_INJECTED_INTO_ACTIVE_EXECUTION",
+            "ROLLBACK_MANIFEST_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R21-PROMOTION-TRUE-IN-ROLLBACK",
+          "name": "production promotion authorized in the rollback manifest",
+          "expectedCodes": [
+            "PRODUCTION_PROMOTION_AUTHORIZED"
+          ],
+          "observedCodes": [
+            "IDENTITY_REPLACED_OR_STALE",
+            "IDENTITY_MISMATCH",
+            "PRODUCTION_PROMOTION_AUTHORIZED",
+            "ROLLBACK_MANIFEST_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R22-BASELINE-DRIFT",
+          "name": "unreconciled drift of a baseline-covered file",
+          "expectedCodes": [
+            "INTEGRITY_BASELINE_FAILS_AT_RC"
+          ],
+          "observedCodes": [
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R23-BASELINE-REGENERATED-OVER-UNEXPLAINED-DRIFT",
+          "name": "baseline regenerated over an unexplained post-base change (reconciliation must refuse)",
+          "expectedCodes": [
+            "INTEGRITY_UNEXPLAINED_DRIFT"
+          ],
+          "observedCodes": [
+            "IDENTITY_REPLACED_OR_STALE",
+            "IDENTITY_MISMATCH",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_UNEXPLAINED_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R24-BASELINE-COVERAGE-REDUCED",
+          "name": "baseline silently drops a covered file (waiver by omission)",
+          "expectedCodes": [
+            "INTEGRITY_BASELINE_COVERAGE_REDUCED"
+          ],
+          "observedCodes": [
+            "IDENTITY_REPLACED_OR_STALE",
+            "IDENTITY_MISMATCH",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_COVERAGE_REDUCED",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R25-BASELINE-FAILS-WAIVED-BY-RECON",
+          "name": "reconciliation record falsified to hide drift",
+          "expectedCodes": [
+            "INTEGRITY_UNEXPLAINED_DRIFT"
+          ],
+          "observedCodes": [
+            "IDENTITY_REPLACED_OR_STALE",
+            "IDENTITY_MISMATCH",
+            "INTEGRITY_UNEXPLAINED_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R26-LAB-STALE-FILE",
+          "name": "stale README_DEPLOY.txt left in the Lab package",
+          "expectedCodes": [
+            "PACKAGE_STALE_OR_DRIFTED_FILE"
+          ],
+          "observedCodes": [
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R27-STABLE-FILE-DRIFT",
+          "name": "Stable package file altered after build",
+          "expectedCodes": [
+            "PACKAGE_STALE_OR_DRIFTED_FILE"
+          ],
+          "observedCodes": [
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R28-STABLE-MISSING-HISTORY-MODULE",
+          "name": "history module missing from the Stable package",
+          "expectedCodes": [
+            "PACKAGE_FILE_MISSING"
+          ],
+          "observedCodes": [
+            "PACKAGE_FILE_MISSING",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R29-PACKAGE-MANIFEST-TAMPERED",
+          "name": "Lab package manifest tampered",
+          "expectedCodes": [
+            "PACKAGE_STALE_OR_DRIFTED_FILE"
+          ],
+          "observedCodes": [
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R30-PROTECTED-EXECUTION-IN-PACKAGE",
+          "name": "protected execution implementation copied into the Stable package",
+          "expectedCodes": [
+            "PACKAGE_STALE_OR_DRIFTED_FILE"
+          ],
+          "observedCodes": [
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R31-HISTORICAL-MANIFEST-REWRITTEN",
+          "name": "predecessor S8-3F manifest rewritten",
+          "expectedCodes": [
+            "HISTORICAL_EVIDENCE_REWRITTEN"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "HISTORICAL_EVIDENCE_REWRITTEN",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R32-DAU-EVIDENCE-OMITTED",
+          "name": "DAU-007 exact-QA evidence removed",
+          "expectedCodes": [
+            "DAU_RESULT_OMITTED"
+          ],
+          "observedCodes": [
+            "IDENTITY_REPLACED_OR_STALE",
+            "IDENTITY_MISMATCH",
+            "DAU_RESULT_OMITTED",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R33-DAU-EVIDENCE-ALTERED",
+          "name": "DAU-007 exact-QA evidence altered",
+          "expectedCodes": [
+            "DAU_RESULT_OMITTED"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "DAU_RESULT_OMITTED",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R34-HISTORY-MODULE-REMOVED",
+          "name": "history module removed from the tree",
+          "expectedCodes": [
+            "IDENTITY_MISMATCH",
+            "SUCCESSOR_IDENTITY_MISSING",
+            "PACKAGE_BASELINE_FILE_UNTRACKED"
+          ],
+          "observedCodes": [
+            "PACKAGE_BASELINE_FILE_UNTRACKED"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R35-STALE-WD-MARKER",
+          "name": "stale WD lineage marker introduced into a lineage asset",
+          "expectedCodes": [
+            "STALE_WD_LINEAGE_MARKER"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "STALE_WD_LINEAGE_MARKER",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R36-PREDECESSOR-GENERATOR-EDITED",
+          "name": "predecessor S8-3F generator edited",
+          "expectedCodes": [
+            "IDENTITY_MISMATCH"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R37-SUCCESSOR-GENERATOR-EDITED",
+          "name": "successor generator edited after the manifest was written",
+          "expectedCodes": [
+            "IDENTITY_MISMATCH"
+          ],
+          "observedCodes": [
+            "IDENTITY_REPLACED_OR_STALE",
+            "IDENTITY_MISMATCH",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R38-DEEPEN-MODULE-ALTERED",
+          "name": "S8-5B Deepen module altered",
+          "expectedCodes": [
+            "IDENTITY_MISMATCH"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R39-ASK-RUNTIME-ALTERED",
+          "name": "certified Ask runtime altered",
+          "expectedCodes": [
+            "IDENTITY_MISMATCH"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R41-STALE-WD-ID-IN-PACKAGE",
+          "name": "stale WD id shipped in a packaged file other than the pinned governed schema",
+          "expectedCodes": [
+            "STALE_WD_LINEAGE_MARKER"
+          ],
+          "observedCodes": [
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "STALE_WD_LINEAGE_MARKER",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        },
+        {
+          "id": "R40-ROOT-ALTERED",
+          "name": "certified root altered",
+          "expectedCodes": [
+            "IDENTITY_MISMATCH"
+          ],
+          "observedCodes": [
+            "IDENTITY_MISMATCH",
+            "PACKAGE_STALE_OR_DRIFTED_FILE",
+            "INTEGRITY_BASELINE_FAILS_AT_RC",
+            "RELEASE_INTEGRITY_STATE_DRIFT",
+            "DEF_REL_ASSET_STATE_DRIFT",
+            "MANIFEST_DRIFT"
+          ],
+          "rejected": true,
+          "rejectedByExpectedCode": true
+        }
+      ]
+    }
+  },
+  "baseComparisons": [],
+  "nonGatingPreExistingFailures": [
+    {
+      "test": "tests/v2-ui-browser-smoke.mjs",
+      "testedCommitExitCode": 1,
+      "baseExitCode": 1,
+      "failureAlreadyPresentOnBase": true,
+      "identicalOutcome": true,
+      "testedTail": "FAIL · Chromium available",
+      "baseTail": "FAIL · Chromium available"
+    },
+    {
+      "test": "tests/v1.1.4-static-parity.mjs",
+      "testedCommitExitCode": 1,
+      "baseExitCode": 1,
+      "failureAlreadyPresentOnBase": true,
+      "identicalOutcome": true,
+      "testedTail": "PASS · v1.1 data contract active | PASS · Stage23 ontology node parity · 220 | PASS · Stage23 ontology edges parity · 176",
+      "baseTail": "PASS · v1.1 data contract active | PASS · Stage23 ontology node parity · 220 | PASS · Stage23 ontology edges parity · 176"
+    }
+  ],
+  "results": [
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/p6-2-canonical-workdefinition-compiler.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2e-leaf-compiler-correction.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2e-atl159-workdefinition-lineage.test.cjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2a-atl171-operational-semantics.test.cjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2b-atl171-schema-compatibility.test.cjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2c-atl165-client-binding.test.cjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2d-atl165-binding-schema.test.cjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3b-atl159-ltl04-workdefinition.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3c-malkom-package-readiness.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": {
+        "schemaVersion": "s8-3c-package-readiness-evidence-v1",
+        "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+        "detailIncluded": false,
+        "inputHashes": {
+          "wd": "fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61",
+          "binding": "2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9",
+          "semantics": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576"
+        },
+        "packageHash": "6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367",
+        "readinessHash": "c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617",
+        "deterministic": true,
+        "canonicalNonMutation": true,
+        "canonicalLeafProjectionLossless": true,
+        "retainedReadinessSchema": "PASS",
+        "packageQA": "PASS",
+        "readinessQA": "PASS",
+        "negativeCasesPassed": 5,
+        "totals": {
+          "taskCount": 1,
+          "workUnitCount": 7,
+          "leafCount": 5,
+          "workDefinitionCount": 1,
+          "notCompiledLeafCount": 4,
+          "blockedByClientBindingLeafCount": 2,
+          "blockedByKnowledgeGapLeafCount": 2,
+          "fullyCompiledTaskCount": 0
+        },
+        "unresolvedBindingCount": 1,
+        "projectionDisposition": "BLOCKED",
+        "universalExecutionReady": false,
+        "independentExecutorProofStatus": "NOT_INDEPENDENTLY_PROVEN",
+        "stageAcceptance": "PASS",
+        "runtimeCertification": false
+      },
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3d-malkom-projection-boundary.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": {
+        "schemaVersion": "s8-3d-projection-evidence-v1",
+        "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+        "detailIncluded": false,
+        "inputHashes": {
+          "wd": "fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61",
+          "binding": "2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9",
+          "semantics": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576",
+          "base": "97459a5e06abda96cbe3b2a121dfbee3a0bcf41e",
+          "package": "6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367",
+          "readiness": "c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617"
+        },
+        "projectionHash": "703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c",
+        "deterministic": true,
+        "canonicalNonMutation": true,
+        "losslessCompiledLeaf": true,
+        "coverageAndResidualsPreserved": true,
+        "retainedBoundarySchema": "PASS",
+        "negativeCasesPassed": 10,
+        "totals": {
+          "taskCount": 1,
+          "workUnitCount": 7,
+          "leafCount": 5,
+          "workDefinitionCount": 1,
+          "notCompiledLeafCount": 4,
+          "blockedByClientBindingLeafCount": 2,
+          "blockedByKnowledgeGapLeafCount": 2,
+          "fullyCompiledTaskCount": 0
+        },
+        "unresolvedBindingCount": 1,
+        "readiness": "BLOCKED",
+        "universalExecutionReady": false,
+        "independentExecutorProofStatus": "NOT_INDEPENDENTLY_PROVEN",
+        "materializable": false,
+        "runtimeCertification": false,
+        "stageAcceptance": "PASS"
+      },
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3e-atl178-flow-bpmn.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": {
+        "schemaVersion": "s8-3e-flow-evidence-v1",
+        "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+        "detailIncluded": false,
+        "flowSchemaVersion": "atlas-flow-graph-v1.5-s8-3e",
+        "inputHashes": {
+          "wd": "fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61",
+          "package": "6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367",
+          "readiness": "c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617",
+          "projection": "703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c",
+          "binding": "2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9",
+          "semantics": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576",
+          "sourceReleaseTip": "97459a5e06abda96cbe3b2a121dfbee3a0bcf41e"
+        },
+        "workDefinitionId": "road-ltl@1.5::LTL-04::LTL-04::ACT::02::WD",
+        "artifactIdentities": {
+          "graphHash": "dfad5a029ce830e4c1bff68ea1a9ac7f482315c619495a7295aef3c50abe408e",
+          "flowViewSha256": "1b3839e0bde5e92216373b9ff232a5d20de5e84a7c25250f7d4ce4b93dbaba6f",
+          "bpmnSha256": "1ede708543a8906333646f010b082446ec75dbf371337ad6069481c4958dfd61",
+          "svgSha256": "dbd7d34f978d21a7f81059b58b6de6cac78c89c66c047af6bf98c71ead237482"
+        },
+        "counts": {
+          "nodes": 7,
+          "edges": 6,
+          "declaredPaths": 4,
+          "blockedLeaves": 4,
+          "unsupportedDispositions": 6,
+          "bpmnShapes": 7,
+          "bpmnEdges": 6
+        },
+        "bpmnValidation": {
+          "valid": true,
+          "validator": "lib/compile/s8-bpmn-structure.js",
+          "scope": "BOUNDED_BPMN_2_0_STRUCTURAL"
+        },
+        "boundary": {
+          "canonicalMutation": false,
+          "deterministic": true,
+          "runtimeReadiness": "NOT_PROMOTED",
+          "runtimeOrchestration": "STOP_BOUNDARY",
+          "universalExecutionReady": false,
+          "materializable": false,
+          "runtimeCertification": false,
+          "malkomQueueStructuresCanonical": false
+        },
+        "qa": {
+          "caseIds": [
+            "G01",
+            "G02",
+            "G03",
+            "G04",
+            "L01",
+            "L02",
+            "L03",
+            "L04",
+            "L05",
+            "P01",
+            "P02",
+            "P03",
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "D01",
+            "D02",
+            "D03",
+            "T01",
+            "T02",
+            "T03",
+            "T04",
+            "S01",
+            "S02",
+            "B01",
+            "B02",
+            "B03",
+            "B04",
+            "E01"
+          ],
+          "caseCount": 36
+        }
+      },
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p2-projection-boundary.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p3-universal-daughter-renderer.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p4-canvas-daughter-integration.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p5-ask-trace-governance.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/v2-api-router-smoke.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/v2-public-ip-boundary.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    }
+  ],
+  "identity": {
+    "unchangedProofVsS85bHead": [
+      {
+        "path": "index.html",
+        "baseBlob": "043802523b1618c143a0e78b88bbfb2afaa7c7dd",
+        "testedBlob": "043802523b1618c143a0e78b88bbfb2afaa7c7dd",
+        "unchanged": true
+      },
+      {
+        "path": "execution/ui/runtime-access-shell.js",
+        "baseBlob": "e65e98b9a0f57acfb9abfd7633fcada4671a9084",
+        "testedBlob": "e65e98b9a0f57acfb9abfd7633fcada4671a9084",
+        "unchanged": true
+      },
+      {
+        "path": "assets/canvas-daughter-bridge-v2.0.1.mjs",
+        "baseBlob": "264e4ed26f112845bd4afb3d1e990138971d13fe",
+        "testedBlob": "264e4ed26f112845bd4afb3d1e990138971d13fe",
+        "unchanged": true
+      },
+      {
+        "path": "canvas-v2/canvas-v2/index.html",
+        "baseBlob": "4dfa0a8410eba303ba7dad73a5cee6431dfe3258",
+        "testedBlob": "4dfa0a8410eba303ba7dad73a5cee6431dfe3258",
+        "unchanged": true
+      },
+      {
+        "path": "canvas-v2/canvas-v2/assets/canvas-v2.css",
+        "baseBlob": "860c878491479b40c1a71c8530d2f1725564341b",
+        "testedBlob": "860c878491479b40c1a71c8530d2f1725564341b",
+        "unchanged": true
+      },
+      {
+        "path": "canvas-v2/canvas-v2/assets/canvas-v2.js",
+        "baseBlob": "672dd1b5a1eb8c3c1698fae436fa0b3db53cd5d0",
+        "testedBlob": "672dd1b5a1eb8c3c1698fae436fa0b3db53cd5d0",
+        "unchanged": true
+      },
+      {
+        "path": "runtime/universal-ask-atlas.js",
+        "baseBlob": "521c47a3956c81367bab942a657f998d576ff15f",
+        "testedBlob": "521c47a3956c81367bab942a657f998d576ff15f",
+        "unchanged": true
+      },
+      {
+        "path": "lib/api/ask-atlas.js",
+        "baseBlob": "8fa80f9dd0b733a523aed6970269f5f32d5e64da",
+        "testedBlob": "8fa80f9dd0b733a523aed6970269f5f32d5e64da",
+        "unchanged": true
+      },
+      {
+        "path": "lib/ask/p5-governed-retrieval.js",
+        "baseBlob": "6f3c29dcbdf0ee60a694cd2f7ac7c9e521367a00",
+        "testedBlob": "6f3c29dcbdf0ee60a694cd2f7ac7c9e521367a00",
+        "unchanged": true
+      },
+      {
+        "path": "governance/ask-atlas-surface-contract-v1.json",
+        "baseBlob": "608956d30ea89859e9e649457debb73d267e04cd",
+        "testedBlob": "608956d30ea89859e9e649457debb73d267e04cd",
+        "unchanged": true
+      },
+      {
+        "path": "api/atlas.js",
+        "baseBlob": "60dcb85999eed6d1bbc67e52b7ef6c3667cd5709",
+        "testedBlob": "60dcb85999eed6d1bbc67e52b7ef6c3667cd5709",
+        "unchanged": true
+      },
+      {
+        "path": "lib/api/release-integrity.js",
+        "baseBlob": "7e29009871ef8b11f523c3bce158a49b17a3dd51",
+        "testedBlob": "7e29009871ef8b11f523c3bce158a49b17a3dd51",
+        "unchanged": true
+      },
+      {
+        "path": "release/release-meta.js",
+        "baseBlob": "ed41cf8a7a7b29c365d6308aadfb5b25ad8353df",
+        "testedBlob": "ed41cf8a7a7b29c365d6308aadfb5b25ad8353df",
+        "unchanged": true
+      },
+      {
+        "path": "assets/atl-167-v15-deepen-inspect.mjs",
+        "baseBlob": "34bc9e6b4ca719823257c51b2058b19522169e9f",
+        "testedBlob": "34bc9e6b4ca719823257c51b2058b19522169e9f",
+        "unchanged": true
+      },
+      {
+        "path": "lib/api/governed-depth-summary.js",
+        "baseBlob": "01a3594fd9ccd8286131c493f422f80a26e5aaf9",
+        "testedBlob": "01a3594fd9ccd8286131c493f422f80a26e5aaf9",
+        "unchanged": true
+      },
+      {
+        "path": "lib/projections/governed-depth-summary.js",
+        "baseBlob": "9a6b07bd2141e8212d9ffbc78a1b2f3fabc92695",
+        "testedBlob": "9a6b07bd2141e8212d9ffbc78a1b2f3fabc92695",
+        "unchanged": true
+      },
+      {
+        "path": "release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json",
+        "baseBlob": "4bdc0873086c514e399d16972875b69716d69fde",
+        "testedBlob": "4bdc0873086c514e399d16972875b69716d69fde",
+        "unchanged": true
+      },
+      {
+        "path": "lib/release/s8-release-manifest.js",
+        "baseBlob": "14db0fdfd8e5dc2809f2c64051c71dc1f66c22b0",
+        "testedBlob": "14db0fdfd8e5dc2809f2c64051c71dc1f66c22b0",
+        "unchanged": true
+      },
+      {
+        "path": "scripts/s8-3f-release-manifest.mjs",
+        "baseBlob": "7ebe8fb7f5176c41cca58bf6fa334e117a0b5a91",
+        "testedBlob": "7ebe8fb7f5176c41cca58bf6fa334e117a0b5a91",
+        "unchanged": true
+      }
+    ],
+    "allUnchanged": true,
+    "priorEvidenceAndCompileChangedPaths": [],
+    "workbookPathsTouched": []
+  },
+  "changedPathsVsS85bHead": {
+    "byCategory": {
+      "DAU_REMEDIATION_EVIDENCE": 5,
+      "DAU_REMEDIATION_MODULE": 2,
+      "DAU_REMEDIATION_TESTS": 3,
+      "RC_CUSTODY": 2,
+      "RC_DEPLOY_EXCLUSION": 1,
+      "RC_EVIDENCE_AND_DOCS": 4,
+      "RC_GENERATOR": 6,
+      "RC_PACKAGES_REPLACED": 253,
+      "RC_RELEASE_CONTROL": 4,
+      "RC_TESTS": 2
+    },
+    "scopeOk": true,
+    "total": 282,
+    "paths": [
+      {
+        "status": "M",
+        "path": ".vercelignore",
+        "category": "RC_DEPLOY_EXCLUSION"
+      },
+      {
+        "status": "M",
+        "path": "assets/atl-140-v15-journey.mjs",
+        "category": "DAU_REMEDIATION_MODULE"
+      },
+      {
+        "status": "A",
+        "path": "assets/atl-s8-history-sync.mjs",
+        "category": "DAU_REMEDIATION_MODULE"
+      },
+      {
+        "status": "A",
+        "path": "governance/product/S8_6_DAU_HISTORY_SYNC.md",
+        "category": "DAU_REMEDIATION_EVIDENCE"
+      },
+      {
+        "status": "A",
+        "path": "governance/product/S8_6_SUCCESSOR_RC.md",
+        "category": "RC_EVIDENCE_AND_DOCS"
+      },
+      {
+        "status": "A",
+        "path": "governance/product/s8-6-evidence/dau-exact-qa-run1-contended-FAIL.json",
+        "category": "DAU_REMEDIATION_EVIDENCE"
+      },
+      {
+        "status": "A",
+        "path": "governance/product/s8-6-evidence/dau-exact-qa.json",
+        "category": "DAU_REMEDIATION_EVIDENCE"
+      },
+      {
+        "status": "A",
+        "path": "governance/product/s8-6-evidence/dau-qa-run-history.md",
+        "category": "DAU_REMEDIATION_EVIDENCE"
+      },
+      {
+        "status": "A",
+        "path": "governance/product/s8-6-evidence/gov-002-residual-routing.md",
+        "category": "RC_EVIDENCE_AND_DOCS"
+      },
+      {
+        "status": "A",
+        "path": "governance/product/s8-6-evidence/release-integrity-drift-reconciliation.json",
+        "category": "RC_RELEASE_CONTROL"
+      },
+      {
+        "status": "A",
+        "path": "governance/product/s8-6-evidence/run-dau-qa.cjs",
+        "category": "DAU_REMEDIATION_EVIDENCE"
+      },
+      {
+        "status": "A",
+        "path": "governance/product/s8-6-evidence/run-exact-qa.cjs",
+        "category": "RC_EVIDENCE_AND_DOCS"
+      },
+      {
+        "status": "A",
+        "path": "governance/product/s8-6-evidence/v2-preservation-handoff.md",
+        "category": "RC_EVIDENCE_AND_DOCS"
+      },
+      {
+        "status": "A",
+        "path": "lib/release/s8-6-package-builder.js",
+        "category": "RC_GENERATOR"
+      },
+      {
+        "status": "A",
+        "path": "lib/release/s8-6-release-control.js",
+        "category": "RC_GENERATOR"
+      },
+      {
+        "status": "A",
+        "path": "lib/release/s8-6-successor-manifest.js",
+        "category": "RC_GENERATOR"
+      },
+      {
+        "status": "M",
+        "path": "release/baselines/v2-critical-hashes.json",
+        "category": "RC_RELEASE_CONTROL"
+      },
+      {
+        "status": "A",
+        "path": "release/custody/s8-6/custody-pins.json",
+        "category": "RC_CUSTODY"
+      },
+      {
+        "status": "A",
+        "path": "release/custody/s8-6/road-ltl-v1.4.governed-source.json",
+        "category": "RC_CUSTODY"
+      },
+      {
+        "status": "A",
+        "path": "release/manifests/atlas-v1.5-successor-s8-rc.json",
+        "category": "RC_RELEASE_CONTROL"
+      },
+      {
+        "status": "A",
+        "path": "release/manifests/atlas-v1.5-successor-s8-rollback.json",
+        "category": "RC_RELEASE_CONTROL"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/.env.example",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/.vercelignore",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/ADMIN_AUTH_SETUP.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/PACKAGE_MANIFEST.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "D",
+        "path": "release/packages/lab/README_DEPLOY.txt",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/admin.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/api/atlas.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/api/auth.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/assets/atl-140-consumer-view.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/assets/atl-140-v15-journey.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/assets/atl-167-v15-deepen-inspect.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/assets/atl-s8-history-sync.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/assets/canvas-daughter-bridge-v2.0.1.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/assets/universal-daughter-renderer-v2.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/atl-140-malkom-consumer.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/ASSET_MANIFEST.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/CANVAS_V2_0_INTEGRATION_CONTRACT.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/CANVAS_V2_AUDIT_AND_BUILD.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/FREEZE_CERTIFICATE.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/README.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/SHA256SUMS.txt",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/assets/canvas-v2.css",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/assets/canvas-v2.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/canvas-v2-a5.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/canvas-v2-desktop.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/canvas-v2-initial.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/canvas-v2-trace.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/canvas-v2-workdefinition.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/data/road-ltl-canvas-presentation-v2.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/data/road-ltl-workdefinitions-v2.3.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/index.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/preview-standalone.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/review/mobile-390-cdp.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/review/mobile-390-css.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/review/mobile-reference-approved.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/tests/canvas-v2-smoke.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/canvas-v2/canvas-v2/visual-reference-approved.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/data/atlas-registry.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/atlas-warehouse-v1.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/contracts/atlas-client-binding-set-v1.schema.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/contracts/atlas-operational-semantic-record-v1.schema.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/contracts/atlas-workdefinition-v1.schema.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/governance/foundation-v1.2.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/materialized/ocean-0.6-public-safe-projections.json.gz.b64",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/data/module-catalog.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/modules/ocean-fcl-v0.5.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/modules/ocean-lcl-v0.5.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/modules/road-ltl-v1.3.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/modules/road-ltl-v1.5.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/daughter.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/execution/ui/atlas-execution-flow.css",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/execution/ui/atlas-execution-flow.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/execution/ui/runtime-access-shell.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/ask-atlas-surface-contract-v1.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/presentation/p2-projection-source-registry.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-3b-evidence/reconstruction-summary.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-3c-evidence/ATL_138_CONSUMPTION_CONTRACT.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-3c-evidence/package-readiness-summary.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-3d-evidence/ATL_169_BOUNDARY_SCHEMA.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-3d-evidence/blocked-exact-qa.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-3d-evidence/projection-summary.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-3e-evidence/flow-summary.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-3e-evidence/supplementary-bpmn-validation.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-4-evidence/donor-provenance.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-4-evidence/e2e-smoke.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-5a-evidence/atl-157-retest-summary.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-5a-evidence/atl-167-blocked-record.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-5a-evidence/atl-173-successor-utility-proof.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-5b-evidence/governed-depth-summary-ltl04.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/product/s8-5b-evidence/successor-identity.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/proposals/ROAD_LTL_V1.5_BOL_OPERATIONAL_ENRICHMENT_CHARTER.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_VNEXT_PENDING.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_PENDING.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/standards/CLIENT_BINDING_RESOLUTION_PRINCIPLE_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/standards/EVIDENCE_EPISTEMIC_CLASSIFICATION_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/standards/EXECUTABILITY_AND_RECURSIVE_DECOMPOSITION_STANDARD_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/standards/INSIDE_OUT_OUTSIDE_IN_OPERATIONAL_RESEARCH_STANDARD_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/governance/standards/KNOWLEDGE_TO_EXECUTION_ARCHITECTURE_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/index.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/lib/api/_atlas.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/lib/api/_utils.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/api/admin-workdefinitions.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/lib/api/ask-atlas.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/api/auth-admin-login.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/api/auth-admin-logout.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/api/auth-admin-session.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/lib/api/auth-session.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/api/execution-depth-projection.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/api/governance-operational-projection.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/api/governed-depth-summary.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/api/malkom-projections.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/lib/api/release-integrity.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/api/runtime-access.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/api/work-decomposition.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/ask/p5-governed-retrieval.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/projections/execution-depth-projection.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/lib/projections/governed-depth-summary.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/migrations/v2-admin-workdefinitions.sql",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/migrations/v2.1-execution-fabric.sql",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/package.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/preview-standalone.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/reference/daughters/ocean-fcl-v0.5.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/reference/daughters/ocean-lcl-v0.5.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/reference/daughters/road-ltl-v1.3.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/reference/reference-with-ask.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/reference/universe-v7.3.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/release/RELEASE_CONTRACT.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/release/RELEASE_RUNBOOK.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/release/ROLLBACK_RUNBOOK.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "D",
+        "path": "release/packages/lab/release/baselines/v1.1.7-critical-hashes.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/release/baselines/v2-critical-hashes.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/release/release-meta.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/runtime/universal-ask-atlas.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/lab/scripts/seed-v2-workdefinitions.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/stage18-client.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/lab/vercel.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/.env.example",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/.vercelignore",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/ADMIN_AUTH_SETUP.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/PACKAGE_MANIFEST.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "D",
+        "path": "release/packages/stable/README_DEPLOY.txt",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/admin.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/api/atlas.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/api/auth.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/assets/atl-140-consumer-view.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/assets/atl-140-v15-journey.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/assets/atl-167-v15-deepen-inspect.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/assets/atl-s8-history-sync.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/assets/canvas-daughter-bridge-v2.0.1.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/assets/universal-daughter-renderer-v2.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/atl-140-malkom-consumer.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/ASSET_MANIFEST.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/CANVAS_V2_0_INTEGRATION_CONTRACT.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/CANVAS_V2_AUDIT_AND_BUILD.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/FREEZE_CERTIFICATE.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/README.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/SHA256SUMS.txt",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/assets/canvas-v2.css",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/assets/canvas-v2.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/canvas-v2-a5.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/canvas-v2-desktop.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/canvas-v2-initial.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/canvas-v2-trace.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/canvas-v2-workdefinition.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/data/road-ltl-canvas-presentation-v2.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/data/road-ltl-workdefinitions-v2.3.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/index.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/preview-standalone.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/review/mobile-390-cdp.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/review/mobile-390-css.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/review/mobile-reference-approved.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/tests/canvas-v2-smoke.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/canvas-v2/canvas-v2/visual-reference-approved.png",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/data/atlas-registry.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/atlas-warehouse-v1.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/contracts/atlas-client-binding-set-v1.schema.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/contracts/atlas-operational-semantic-record-v1.schema.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/contracts/atlas-workdefinition-v1.schema.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/governance/foundation-v1.2.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/materialized/ocean-0.6-public-safe-projections.json.gz.b64",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/data/module-catalog.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/modules/ocean-fcl-v0.5.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/modules/ocean-lcl-v0.5.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/modules/road-ltl-v1.3.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/modules/road-ltl-v1.5.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/operational-knowledge/BOL_INFORMATION_RESOLUTION_BASELINE_V0.1.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/daughter.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/execution/ui/atlas-execution-flow.css",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/execution/ui/atlas-execution-flow.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/execution/ui/runtime-access-shell.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/ask-atlas-surface-contract-v1.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/presentation/p2-projection-source-registry.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-3b-evidence/reconstruction-summary.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-3c-evidence/ATL_138_CONSUMPTION_CONTRACT.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-3c-evidence/package-readiness-summary.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-3d-evidence/ATL_169_BOUNDARY_SCHEMA.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-3d-evidence/blocked-exact-qa.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-3d-evidence/projection-summary.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-3e-evidence/flow-summary.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-3e-evidence/supplementary-bpmn-validation.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-4-evidence/donor-provenance.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-4-evidence/e2e-smoke.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-5a-evidence/atl-157-retest-summary.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-5a-evidence/atl-167-blocked-record.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-5a-evidence/atl-173-successor-utility-proof.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-5b-evidence/governed-depth-summary-ltl04.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/product/s8-5b-evidence/successor-identity.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/proposals/ROAD_LTL_V1.5_BOL_OPERATIONAL_ENRICHMENT_CHARTER.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_VNEXT_PENDING.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_PENDING.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/standards/CLIENT_BINDING_RESOLUTION_PRINCIPLE_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/standards/EVIDENCE_EPISTEMIC_CLASSIFICATION_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/standards/EXECUTABILITY_AND_RECURSIVE_DECOMPOSITION_STANDARD_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/standards/INSIDE_OUT_OUTSIDE_IN_OPERATIONAL_RESEARCH_STANDARD_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/governance/standards/KNOWLEDGE_TO_EXECUTION_ARCHITECTURE_V1_FROZEN.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/index.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/lib/api/_atlas.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/lib/api/_utils.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/api/admin-workdefinitions.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/lib/api/ask-atlas.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/api/auth-admin-login.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/api/auth-admin-logout.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/api/auth-admin-session.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/lib/api/auth-session.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/api/execution-depth-projection.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/api/governance-operational-projection.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/api/governed-depth-summary.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/api/malkom-projections.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/lib/api/release-integrity.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/api/runtime-access.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/api/work-decomposition.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/ask/p5-governed-retrieval.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/projections/execution-depth-projection.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/lib/projections/governed-depth-summary.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/migrations/README.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/migrations/schema-contract.sql",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/migrations/stage17-workspaces.sql",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/migrations/stage19-document-ingestion.sql",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/migrations/stage21-collaboration-telemetry.sql",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/migrations/stage22_2_pilot_rbac.sql",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/migrations/stage23-pilot-evaluations.sql",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/migrations/v2-admin-workdefinitions.sql",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/migrations/v2.1-execution-fabric.sql",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/package.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/preview-standalone.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/reference/daughters/ocean-fcl-v0.5.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/reference/daughters/ocean-lcl-v0.5.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/reference/daughters/road-ltl-v1.3.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/reference/reference-with-ask.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/reference/universe-v7.3.html",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/release/RELEASE_CONTRACT.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/release/RELEASE_RUNBOOK.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/release/ROLLBACK_RUNBOOK.md",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "D",
+        "path": "release/packages/stable/release/baselines/v1.1.7-critical-hashes.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/release/baselines/v2-critical-hashes.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/release/release-meta.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/runtime/universal-ask-atlas.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/packages/stable/scripts/seed-v2-workdefinitions.mjs",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/stage18-client.js",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "M",
+        "path": "release/packages/stable/vercel.json",
+        "category": "RC_PACKAGES_REPLACED"
+      },
+      {
+        "status": "A",
+        "path": "release/scripts/s8-6-assemble-release-control.mjs",
+        "category": "RC_GENERATOR"
+      },
+      {
+        "status": "A",
+        "path": "release/scripts/s8-6-build-packages.mjs",
+        "category": "RC_GENERATOR"
+      },
+      {
+        "status": "A",
+        "path": "scripts/s8-6-successor-manifest.mjs",
+        "category": "RC_GENERATOR"
+      },
+      {
+        "status": "A",
+        "path": "tests/s8-6-dau-history-sync.test.mjs",
+        "category": "DAU_REMEDIATION_TESTS"
+      },
+      {
+        "status": "A",
+        "path": "tests/s8-6-dau-mutations.test.mjs",
+        "category": "DAU_REMEDIATION_TESTS"
+      },
+      {
+        "status": "A",
+        "path": "tests/s8-6-rc-mutations.test.mjs",
+        "category": "RC_TESTS"
+      },
+      {
+        "status": "A",
+        "path": "tests/s8-6-successor-rc.test.mjs",
+        "category": "RC_TESTS"
+      },
+      {
+        "status": "A",
+        "path": "tests/s8-6-support/atlas-browser.mjs",
+        "category": "DAU_REMEDIATION_TESTS"
+      }
+    ]
+  },
+  "environmentVariance": {
+    "node": "v22.22.0",
+    "engineStated": "24.x",
+    "note": "QA ran on Node v22.22.0 while package.json engines state 24.x; chromium from /opt/pw-browsers; 2 CPUs; browser suites are timing-sensitive under CPU load (see dau-qa-run-history.md)."
+  },
+  "residuals": [
+    "No deployment identity exists; deployment rollback identity NOT_ESTABLISHED (none inferred).",
+    "Root init-order defect (stage15RenderContract is not defined) and root load-time race are pre-existing in the unchanged root; compensated/tolerated narrowly and counted (DAU evidence).",
+    "Share-link serialization cannot encode A4 vs A5; history overlays reset on traversal.",
+    "Deployment bundling of governed-depth-summary is verified in-package only, not on a deployment.",
+    "LTL-04 Daughter/execution-depth/Ask paths return 404 by design (ATL-157 not materialized).",
+    "ATL-71, F-130-06, ATL-107, generalized v2 interaction, runtime-readiness profiles and v2 BOL/FIRI are DEFERRED_NOT_PASS.",
+    "DEF-GOV-002 preserved open; DEF-DAU-007 remediated pending ATL-181 independent audit; DEF-REL-ASSET-001 closed for the S8 portion only.",
+    "S8-3B closure-row QA hash discrepancy remains recorded; ATL-141 moving-tip assumption noted.",
+    "Seven of twelve release-integrity drifted files were last changed by the pre-S8 v2.1.0 RC1 history (authorized by ancestry through the accepted base; flagged for ATL-181).",
+    "The first DAU exact-QA run at e0a1ce28 FAILED once (R02 diagnostic probe under load) before the idle rerun PASSED; both are preserved."
+  ]
+}
