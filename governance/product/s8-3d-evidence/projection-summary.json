@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "s8-3d-projection-evidence-v1",
+  "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+  "detailIncluded": false,
+  "inputHashes": {
+    "wd": "fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61",
+    "binding": "2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9",
+    "semantics": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576",
+    "base": "97459a5e06abda96cbe3b2a121dfbee3a0bcf41e",
+    "package": "6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367",
+    "readiness": "c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617"
+  },
+  "projectionHash": "703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c",
+  "deterministic": true,
+  "canonicalNonMutation": true,
+  "losslessCompiledLeaf": true,
+  "coverageAndResidualsPreserved": true,
+  "retainedBoundarySchema": "PASS",
+  "negativeCasesPassed": 10,
+  "totals": {
+    "taskCount": 1,
+    "workUnitCount": 7,
+    "leafCount": 5,
+    "workDefinitionCount": 1,
+    "notCompiledLeafCount": 4,
+    "blockedByClientBindingLeafCount": 2,
+    "blockedByKnowledgeGapLeafCount": 2,
+    "fullyCompiledTaskCount": 0
+  },
+  "unresolvedBindingCount": 1,
+  "readiness": "BLOCKED",
+  "universalExecutionReady": false,
+  "independentExecutorProofStatus": "NOT_INDEPENDENTLY_PROVEN",
+  "materializable": false,
+  "runtimeCertification": false,
+  "stageAcceptance": "PASS"
+}
