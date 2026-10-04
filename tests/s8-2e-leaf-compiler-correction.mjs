@@ -1,0 +1,55 @@
+import assert from 'node:assert/strict';
+import cp from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {compileCorrectedTask} from '../lib/compile/s8-workdefinition-compiler.js';
+import {canonicalHash,stableStringify} from '../lib/compile/workdefinition-compiler.js';
+
+// Synthetic bodies prove compiler behavior, not real task decomposition.
+const donor=script=>JSON.parse(cp.execFileSync(process.execPath,[script],{encoding:'utf8'}));
+const semantics=donor('scripts/materialize-operational-semantics-v1.cjs');
+const binding=donor('scripts/materialize-client-binding-v1.cjs');
+const record=semantics.records.find(r=>r.processId==='LTL-04');
+const unit=(id,parent,type,status,sequence)=>({workUnitId:id,parentWorkUnitId:parent,sequence,unitType:type,name:'Synthetic '+id,purpose:'Synthetic compiler QA only',sourceRefs:record.sourceIds,executorReadiness:{status,blockingReasons:[],requiredClientBindings:status==='BLOCKED_BY_CLIENT_BINDING'?['synthetic-binding']:[],requiredKnowledgeGaps:status==='BLOCKED_BY_KNOWLEDGE_GAP'?['synthetic-gap']:[],downstreamCompilationTarget:'CANONICAL_WORKDEFINITION'}});
+const d={schemaVersion:'atlas-canonical-work-decomposition-v1',decompositionId:'synthetic-compiler-qa',contractVersion:'1.0.0',status:'DRAFT',daughterModule:'road-ltl',daughterVersion:'1.5',sourceTaskId:'LTL-04',sourceTaskTitle:'Synthetic QA fixture',executionReadinessStatus:'COMPILED',semanticLineage:{semanticSourceVersion:'1.4',effectiveModuleVersion:'1.5',inheritance:'LOSSLESS_UNCHANGED_TASK'},parentLink:{parentLevel:'A4',parentTaskId:'synthetic-parent'},stopCriterion:'Every terminal leaf ready or explicitly blocked',workUnits:[unit('root',null,'TASK_ROOT','NEEDS_DECOMPOSITION',1),{...unit('ready','root','ATOMIC_ACTION','EXECUTOR_READY',1),atomicActions:['Synthetic operation'],evidenceRequirements:['Synthetic evidence']},unit('binding','root','ATOMIC_ACTION','BLOCKED_BY_CLIENT_BINDING',2),unit('gap','root','ATOMIC_ACTION','BLOCKED_BY_KNOWLEDGE_GAP',3)],summary:{workUnitCount:4,leafCount:3,leafStatusCounts:{EXECUTOR_READY:1,BLOCKED_BY_CLIENT_BINDING:1,BLOCKED_BY_KNOWLEDGE_GAP:1},knowledgeGapCount:1,clientBindingRefCount:1,requiredKnowledgeGaps:['synthetic-gap'],requiredClientBindings:['synthetic-binding'],executorProof:'NOT_INDEPENDENTLY_PROVEN',workDefinitionCompilationStatus:'NOT_STARTED'}};
+const e={classification:'EXECUTION_PROTECTED',decomposition:d,correctedDonors:{semanticRecordHash:canonicalHash(record),clientBindingHash:canonicalHash(binding)}};
+const hash=canonicalHash(d),run=(x=e,h=hash)=>compileCorrectedTask(x,h,semantics,binding);
+const before=stableStringify(e),a=run(),b=run();
+assert.equal(stableStringify(a),stableStringify(b));assert.equal(stableStringify(e),before);
+assert.equal(a.definitions.length,1);assert.equal(a.coverage[0].notCompiled.length,2);
+assert.deepEqual(a.definitions[0].lineage.workUnitPath,['root','ready']);
+assert.deepEqual(a.definitions[0].actions,d.workUnits[1].atomicActions);
+assert.equal(a.definitions[0].provenance.governedInputContentHash,hash);
+assert.equal(a.definitions[0].lineage.daughterVersion,'1.5');assert.equal(a.definitions[0].lineage.semanticSourceVersion,'1.4');
+assert.equal(a.definitions[0].executability.independentExecutorProofStatus,'NOT_INDEPENDENTLY_PROVEN');
+assert.ok(!JSON.stringify(a).includes('pickup-planner') && !JSON.stringify(a).includes('malkom-demo'));
+let negatives=0;
+const reject=(mutate,pattern)=>{const x=structuredClone(e);mutate(x);assert.throws(()=>run(x,canonicalHash(x.decomposition)),pattern);negatives++;};
+assert.throws(()=>run(e,'0'.repeat(64)),/HASH_MISMATCH/);negatives++;
+reject(x=>x.decomposition.daughterVersion='1.2',/EXACT_CORRECTED_TUPLE/);
+reject(x=>x.decomposition.semanticLineage.semanticSourceVersion='1.2',/INHERITANCE/);
+reject(x=>x.correctedDonors.semanticRecordHash='0'.repeat(64),/FINGERPRINT/);
+reject(x=>x.decomposition.workUnits[0].executorReadiness.status='EXECUTOR_READY',/COMPOSITE/);
+reject(x=>x.decomposition.workUnits[1].executorReadiness.status='NEEDS_DECOMPOSITION',/COUNTS|NEEDS_DECOMPOSITION/);
+reject(x=>x.decomposition.workUnits[2].executorReadiness.requiredClientBindings=[],/CLIENT_BLOCKER/);
+reject(x=>x.decomposition.workUnits[3].executorReadiness.requiredKnowledgeGaps=[],/KNOWLEDGE_BLOCKER/);
+reject(x=>x.decomposition.workUnits[1].executorReadiness.requiredKnowledgeGaps=['missing'],/READY_LEAF_HAS/);
+reject(x=>x.decomposition.workUnits[1].sourceRefs=['UNKNOWN_SOURCE'],/SOURCE_REFERENCE/);
+reject(x=>x.decomposition.workUnits[1].parentWorkUnitId='missing',/Orphan/);
+reject(x=>x.decomposition.workUnits[1].atomicActions=[{binding:{clientFieldMapping:'synthetic-client-value'}}],/VERIFIER/);
+reject(x=>x.decomposition.workUnits[1].name='',/SCHEMA/);
+reject(x=>x.decomposition.summary.workUnitCount=999,/SUMMARY/);
+const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'atlas-leaf-qa-'));
+try{
+  const input=path.join(tmp,'synthetic-input.json'),output=path.join(tmp,'synthetic-output.json');fs.writeFileSync(input,JSON.stringify(e));
+  const command=()=>cp.execFileSync(process.execPath,['scripts/materialize-workdefinition-v1.cjs',input,hash],{encoding:'utf8'});
+  assert.equal(command(),command());const summary=JSON.parse(command());
+  assert.equal(summary.detailIncluded,false);assert.equal(summary.totals.workDefinitionCount,1);assert.ok(!('definitions' in summary));
+  cp.execFileSync(process.execPath,['scripts/materialize-workdefinition-v1.cjs',input,hash,output]);
+  assert.deepEqual(JSON.parse(fs.readFileSync(output)),a);
+  assert.throws(()=>cp.execFileSync(process.execPath,['scripts/materialize-workdefinition-v1.cjs',input,hash,'data/generated/forbidden-private-output.json'],{stdio:'pipe'}));negatives++;
+  assert.ok(!fs.existsSync('data/generated/forbidden-private-output.json'));
+  assert.throws(()=>cp.execFileSync(process.execPath,['scripts/materialize-workdefinition-v1.cjs'],{stdio:'pipe'}));negatives++;
+}finally{fs.rmSync(tmp,{recursive:true,force:true});}
+console.log(`PASS S8-2E leaf compiler correction: actual synthetic leaf compilation, deterministic bytes, frozen/local schemas, ${negatives} rejection cases, protected output boundary. Real S8-3B domain output NOT certified.`);
