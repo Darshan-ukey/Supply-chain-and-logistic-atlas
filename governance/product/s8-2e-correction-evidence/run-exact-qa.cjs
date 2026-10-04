@@ -1,0 +1,18 @@
+const fs=require('fs'),path=require('path'),cp=require('child_process'),crypto=require('crypto');
+const repo=path.resolve(process.argv[2]),checkout=path.resolve(process.argv[3]),output=path.resolve(process.argv[4]);
+if(fs.existsSync(checkout))throw Error('Fresh checkout directory required');
+const git=(args,cwd=repo)=>cp.execFileSync('git',['-c','safe.directory='+cwd,...args],{cwd,encoding:'utf8'}).trim();
+const head=git(['rev-parse','HEAD']);
+cp.execFileSync('git',['-c','safe.directory='+repo,'-c','safe.directory='+repo+'/.git','clone','--no-hardlinks','--no-checkout',repo,checkout],{stdio:'pipe'});
+git(['checkout','--detach',head],checkout);
+const tests=['tests/p6-2-canonical-workdefinition-compiler.mjs','tests/s8-2e-leaf-compiler-correction.mjs','tests/s8-2e-atl159-workdefinition-lineage.test.cjs','tests/s8-2a-atl171-operational-semantics.test.cjs','tests/s8-2b-atl171-schema-compatibility.test.cjs','tests/s8-2c-atl165-client-binding.test.cjs','tests/s8-2d-atl165-binding-schema.test.cjs'];
+const results=tests.map(test=>{const r=cp.spawnSync(process.execPath,[test],{cwd:checkout,encoding:'utf8'});return {command:['node',test],exitCode:r.status,stdout:r.stdout,stderr:r.stderr};});
+const restored=['lib/compile/workdefinition-compiler.js','lib/compile/workdefinition-verifier.js','schemas/canonical-work-decomposition-contract-v1.schema.json','schemas/canonical-workdefinition-contract-v1.schema.json','tests/p6-2-canonical-workdefinition-compiler.mjs','governance/standards/CANONICAL_WORKDEFINITION_CONTRACT_V1_FROZEN.md','governance/standards/CANONICAL_WORK_DECOMPOSITION_CONTRACT_V1_FROZEN.md'];
+const donors=restored.map(p=>({path:p,expectedBlob:git(['rev-parse','c72b50025d38c6ba103a98e6b698ac2181d5017b:'+p]),actualBlob:git(['rev-parse',head+':'+p])}));
+const changed=git(['diff','--name-only','7937e3726b1b4fda87fef5cae1f7b693a41d3463',head]).split('\n');
+const clean=git(['status','--porcelain'],checkout)==='';
+const pass=results.every(r=>r.exitCode===0)&&donors.every(d=>d.expectedBlob===d.actualBlob)&&clean;
+const evidence={schemaVersion:'s8-2e-leaf-compiler-exact-qa-v1',testedCommit:head,testedTree:git(['rev-parse',head+'^{tree}']),base:'7937e3726b1b4fda87fef5cae1f7b693a41d3463',nodeVersion:process.version,platform:process.platform,architecture:process.arch,testScope:'Synthetic compiler conformance and prior S8-2 regressions only; no real domain derivative certification',status:pass?'PASS':'FAIL',results,restoredDonors:donors,changedFiles:changed,cleanCheckout:clean};
+fs.writeFileSync(output,JSON.stringify(evidence,null,2)+'\n');
+console.log(JSON.stringify({status:evidence.status,testedCommit:head,testedTree:evidence.testedTree,passedTests:results.filter(r=>r.exitCode===0).length,totalTests:tests.length,donorBlobsMatched:donors.every(d=>d.expectedBlob===d.actualBlob),cleanCheckout:clean,evidenceSha256:crypto.createHash('sha256').update(fs.readFileSync(output)).digest('hex')},null,2));
+if(!pass)process.exitCode=1;
