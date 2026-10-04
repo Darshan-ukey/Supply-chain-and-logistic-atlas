@@ -79,7 +79,7 @@ const deletionsOk = S85A_VS_RC.filter((x) => x.st === 'D').every((x) => /^releas
 //  (a) the file is byte-identical to the accepted S8-5B base at the same path, or
 //  (b) it is a release/packages/<channel>/X copy byte-identical to the accepted base file X, or
 //  (c) it is an S8-6 provenance/negative-test record on the explicit allow-list below.
-const MARKERS = [['stale-wd-id', ['wd', '::road-ltl::LTL-04::v', '1'].join('')], ['stale-malkom-package-id', ['malkom-dw', '::road-ltl::LTL-04::v', '1'].join('')], ['stale-source-tip', '88bd3da8'], ['divergent-source-commit', DIVERGENT]];
+const MARKERS = [['stale-wd-id', ['wd', '::road-ltl::LTL-04::v', '1'].join('')], ['stale-malkom-package-id', ['malkom-dw', '::road-ltl::LTL-04::v', '1'].join('')], ['stale-source-tip', ['88bd3da', '8'].join('')], ['divergent-source-commit', DIVERGENT]];
 const staleOffenders = [];
 for (const x of S85A_VS_RC) { if (x.st === 'D' || /\.(b64|gz|png)$/.test(x.p) || x.p === 'tests/s8-5b-atl167-ltl04-deepen.test.mjs') continue; const f = path.join(checkout, x.p); if (!fs.existsSync(f)) continue; const t = fs.readFileSync(f, 'utf8'); const cur = gitTry(['hash-object', x.p], checkout);
   const pkgSrc = (x.p.match(/^release\/packages\/(?:lab|stable)\/(.+)$/) || [])[1];
