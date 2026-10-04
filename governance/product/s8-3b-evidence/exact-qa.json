@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "s8-3b-exact-qa-v1",
+  "testedCommit": "b4c15fd51b0efbb208f8fbf2107a16cc50becfe6",
+  "testedTree": "0aa076fa57679bb5a0359b3ad0b118cbb54a1cce",
+  "base": "5ca674472ef5e0a76290a43d9c31167fa931f39d",
+  "nodeVersion": "v24.11.0",
+  "platform": "win32",
+  "architecture": "x64",
+  "testScope": "S8-3B source reconstruction and protected compilation plus compiler and S8-2 donor regressions; no runtime, merge or deployment certification",
+  "status": "PASS",
+  "results": [
+    {
+      "command": [
+        "node",
+        "tests/p6-2-canonical-workdefinition-compiler.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "P6.2 Canonical WorkDefinition compiler/verifier certification PASS\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2e-leaf-compiler-correction.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2E leaf compiler correction: actual synthetic leaf compilation, deterministic bytes, frozen/local schemas, 16 rejection cases, protected output boundary. Real S8-3B domain output NOT certified.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2e-atl159-workdefinition-lineage.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2E historical lineage-plan compatibility only; regeneration=false; leaf compiler QA is separate\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2a-atl171-operational-semantics.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2A ATL-171 governed v1.5 semantics: 22 records; override LTL-03 only\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2b-atl171-schema-compatibility.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2B schema compatibility: 22 ATL-171 records conform to bounded v1.5 + OKv2/IR lineage\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2c-atl165-client-binding.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2C ATL-165 governed client binding: 3 requirements; 2 resolved; 1 fail-closed\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2d-atl165-binding-schema.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2D ATL-165 schema compatibility: governed requirement fields + bounded fail-closed projection\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-3b-atl159-ltl04-workdefinition.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-3B LTL-04: 1 protected WD, deterministic/schema-valid, 4 blocked leaves preserved, no client values, 2 rejection cases.\n",
+      "stderr": ""
+    }
+  ],
+  "cleanCheckout": true
+}
+
