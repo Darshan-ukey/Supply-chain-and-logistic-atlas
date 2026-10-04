@@ -75,43 +75,60 @@ const MOD_ALLOWED = (p) => ['api/atlas.js', 'assets/atl-140-v15-journey.mjs', '.
 const modifiedVsS85a = S85A_VS_RC.filter((x) => x.st === 'M');
 const modifiedSetOk = modifiedVsS85a.every((x) => MOD_ALLOWED(x.p)) && ['api/atlas.js', 'assets/atl-140-v15-journey.mjs'].every((p) => modifiedVsS85a.some((x) => x.p === p));
 const deletionsOk = S85A_VS_RC.filter((x) => x.st === 'D').every((x) => /^release\/packages\/(lab|stable)\//.test(x.p));
-const STALE = [['wd', '::road-ltl::LTL-04::v', '1'].join(''), ['malkom-dw', '::road-ltl::LTL-04::v', '1'].join(''), DIVERGENT];
-const staleOffenders = []; for (const x of S85A_VS_RC) { if (x.st === 'D' || /\.(b64|gz|png)$/.test(x.p)) continue; const f = path.join(checkout, x.p); if (!fs.existsSync(f)) continue; const t = fs.readFileSync(f, 'utf8'); for (const s of STALE) if (t.includes(s) && x.p !== 'tests/s8-5b-atl167-ltl04-deepen.test.mjs') staleOffenders.push({path: x.p, marker: s === DIVERGENT ? 'divergent-source-commit' : s.startsWith('wd') ? 'stale-wd-id' : 'stale-malkom-package-id'}); }
+// Exact replica of the S8-5B P01 scan (S8-5A head..HEAD, same three markers) plus the S8-6 divergent-source marker. Every hit must be explained:
+//  (a) the file is byte-identical to the accepted S8-5B base at the same path, or
+//  (b) it is a release/packages/<channel>/X copy byte-identical to the accepted base file X, or
+//  (c) it is an S8-6 provenance/negative-test record on the explicit allow-list below.
+const MARKERS = [['stale-wd-id', ['wd', '::road-ltl::LTL-04::v', '1'].join('')], ['stale-malkom-package-id', ['malkom-dw', '::road-ltl::LTL-04::v', '1'].join('')], ['stale-source-tip', '88bd3da8'], ['divergent-source-commit', DIVERGENT]];
+const staleOffenders = [];
+for (const x of S85A_VS_RC) { if (x.st === 'D' || /\.(b64|gz|png)$/.test(x.p) || x.p === 'tests/s8-5b-atl167-ltl04-deepen.test.mjs') continue; const f = path.join(checkout, x.p); if (!fs.existsSync(f)) continue; const t = fs.readFileSync(f, 'utf8'); const cur = gitTry(['hash-object', x.p], checkout);
+  const pkgSrc = (x.p.match(/^release\/packages\/(?:lab|stable)\/(.+)$/) || [])[1];
+  const sameAsBase = cur !== null && cur === gitTry(['rev-parse', BASE + ':' + x.p], checkout);
+  const pkgCopyOfAccepted = !!pkgSrc && cur !== null && cur === gitTry(['rev-parse', BASE + ':' + pkgSrc], checkout);
+  for (const [marker, s] of MARKERS) if (t.includes(s)) staleOffenders.push({path: x.p, marker, explainedBy: sameAsBase ? 'IDENTICAL_TO_ACCEPTED_BASE_BLOB' : pkgCopyOfAccepted ? 'PACKAGE_COPY_IDENTICAL_TO_ACCEPTED_BASE_BLOB:' + pkgSrc : null}); }
 const STALE_ALLOWED = [
   {path: 'tests/s8-6-dau-history-sync.test.mjs', marker: 'stale-wd-id', reason: 'DAU negative tests inject the stale WD id as a protected value that the history module MUST reject'},
   {path: 'tests/s8-6-dau-history-sync.test.mjs', marker: 'stale-malkom-package-id', reason: 'DAU negative tests inject the stale package id as a protected value that the history module MUST reject'},
+  {path: 'tests/s8-6-dau-mutations.test.mjs', marker: 'stale-malkom-package-id', reason: 'DAU mutation payload injects the stale package id; the module must reject it'},
   {path: 'lib/release/s8-6-successor-manifest.js', marker: 'divergent-source-commit', reason: 'pinned constant: provenance + EXCLUDED_DIVERGENT_DEPENDENCY record (never read)'},
   {path: 'release/custody/s8-6/custody-pins.json', marker: 'divergent-source-commit', reason: 'custody provenance record (origin of the committed copy; dependencyAfterCustody=false)'},
   {path: 'release/manifests/atlas-v1.5-successor-s8-rc.json', marker: 'divergent-source-commit', reason: 'exclusion + custody provenance records'},
   {path: 'release/manifests/atlas-v1.5-successor-s8-rc.json', marker: 'stale-wd-id', reason: 'exclusion/negative records and the permitted packaged-schema occurrence record'},
+  {path: 'release/manifests/atlas-v1.5-successor-s8-rc.json', marker: 'stale-source-tip', reason: 'recorded as an excluded stale source tip (exclusion entry; the manifest pins it as NOT current)'},
   {path: 'lib/release/s8-6-release-control.js', marker: 'stale-wd-id', reason: 'drift-reconciliation notStale check (marker built by join, detects the stale id)'},
   {path: 'tests/s8-6-successor-rc.test.mjs', marker: 'stale-wd-id', reason: 'RC test asserts the permitted packaged-schema occurrence'},
   {path: 'tests/s8-6-rc-mutations.test.mjs', marker: 'stale-wd-id', reason: 'RC mutation payload'},
-  {path: 'release/packages/lab/data/contracts/atlas-client-binding-set-v1.schema.json', marker: 'stale-wd-id', reason: 'pinned S8-2D governed schema const (blob 4e777a05…); identical bytes to the tracked governed contract'},
-  {path: 'release/packages/stable/data/contracts/atlas-client-binding-set-v1.schema.json', marker: 'stale-wd-id', reason: 'pinned S8-2D governed schema const (blob 4e777a05…); identical bytes to the tracked governed contract'}
+  {path: 'governance/product/s8-6-evidence/run-exact-qa.cjs', marker: 'divergent-source-commit', reason: 'this QA runner pins the divergent commit to prove its absence from the lineage-only clone'}
 ];
-const unallowedStale = staleOffenders.filter((o) => !STALE_ALLOWED.some((a) => a.path === o.path && a.marker === o.marker));
-const staleP01Ok = unallowedStale.length === 0 && staleOffenders.every((o) => STALE_ALLOWED.some((a) => a.path === o.path && a.marker === o.marker));
+const allowedBy = (o) => o.explainedBy || ((STALE_ALLOWED.find((a) => a.path === o.path && a.marker === o.marker) || {}).reason ? 'ALLOW_LIST: ' + STALE_ALLOWED.find((a) => a.path === o.path && a.marker === o.marker).reason : null);
+for (const o of staleOffenders) o.explainedBy = allowedBy(o);
+const unallowedStale = staleOffenders.filter((o) => !o.explainedBy);
+const staleP01Ok = unallowedStale.length === 0;
 const schemaPkgBlobs = ['lab', 'stable'].map((ch) => gitTry(['hash-object', `release/packages/${ch}/data/contracts/atlas-client-binding-set-v1.schema.json`], checkout));
 const schemaPinOk = schemaPkgBlobs.every((b) => b === '4e777a0504855bfc4f08c3eec2cd508050e95d34') && gitTry(['hash-object', 'data/contracts/atlas-client-binding-set-v1.schema.json'], checkout) === '4e777a0504855bfc4f08c3eec2cd508050e95d34';
 const supersededAskCopies = git(['ls-files', '-s'], checkout).split('\n').filter((l) => l.includes('cb2bcfea0892adf5a871fb4584461b50729ab383')).length;
-const s83fProbe = inline(`import fs from 'node:fs';import {integrityState,packageAskResidual,MANIFEST_PATH} from './lib/release/s8-release-manifest.js';const ri=integrityState(process.cwd());const askRes=packageAskResidual(process.cwd());const m=JSON.parse(fs.readFileSync(MANIFEST_PATH,'utf8'));const rec=m.rollback.recoveryEvidence.gitContentAddressedArtifacts;import cp from 'node:child_process';const bad=Object.entries(rec).filter(([p,b])=>cp.execFileSync('git',['hash-object',p],{encoding:'utf8'}).trim()!==b).map(([p])=>p);console.log(JSON.stringify({integrity:ri.observedVerification.status,mismatched:ri.observedVerification.mismatchedCount,askCopies:askRes.affectedPaths.length,recoveryMismatches:bad}))`, checkout);
+const s83fProbe = inline(`import fs from 'node:fs';import {integrityState,packageAskResidual,MANIFEST_PATH} from './lib/release/s8-release-manifest.js';const ri=integrityState(process.cwd());const askRes=packageAskResidual(process.cwd());const m=JSON.parse(fs.readFileSync(MANIFEST_PATH,'utf8'));const rec=m.rollback.recoveryEvidence.gitContentAddressedArtifacts;import cp from 'node:child_process';const bad=Object.entries(rec).filter(([p,b])=>cp.execFileSync('git',['hash-object',p],{encoding:'utf8'}).trim()!==b).map(([p])=>p);console.log(JSON.stringify({integrity:ri.observedVerification.status,mismatched:ri.observedVerification.mismatchedCount,supersededAskCopies:askRes.affectedPaths.filter(a=>a.supersededAskApiBlob).length,currentAskCopies:askRes.affectedPaths.length,recoveryMismatches:bad}))`, checkout);
 const s83fProbeJson = lastJson(s83fProbe.stdout);
-const s83fReasonOk = !!s83fProbeJson && s83fProbeJson.integrity === 'PASSES_VERIFICATION' && s83fProbeJson.mismatched === 0 && s83fProbeJson.askCopies === 0 && JSON.stringify(s83fProbeJson.recoveryMismatches) === JSON.stringify(['assets/atl-140-v15-journey.mjs']);
+const s83fReasonOk = !!s83fProbeJson && s83fProbeJson.integrity === 'PASSES_VERIFICATION' && s83fProbeJson.mismatched === 0 && s83fProbeJson.supersededAskCopies === 0 && s83fProbeJson.currentAskCopies === 6 && JSON.stringify(s83fProbeJson.recoveryMismatches) === JSON.stringify(['assets/atl-140-v15-journey.mjs']);
 const idRec = JSON.parse(fs.readFileSync(path.join(checkout, 'governance/product/s8-5b-evidence/successor-identity.json'), 'utf8'));
 const z05Probe = (() => { const out = []; for (const f of idRec.modifiedProductFiles || []) { const cur = gitTry(['hash-object', f.path], checkout); if (cur !== f.successorBlob) out.push(f.path); } return out; })();
 const z05Ok = JSON.stringify(z05Probe) === JSON.stringify(['assets/atl-140-v15-journey.mjs']);
 
 const byStd = (g) => ({s85b, s85a, s84, s83f, cli: s83fCli})[g];
-const S85B_EXPECTED = ['Z01', 'Z02', 'Z05', 'P01', 'P02'], S85A_EXPECTED = ['V01', 'S01', 'S03'], S84_EXPECTED = ['D01', 'P01', 'P04', 'S01', 'S02', 'S03'];
-const S83F_EXPECTED = ['deterministic regeneration equals the committed manifest', 'verifier accepts the committed manifest', 'protected derivatives reproduce from the governed lineage', 'superseded Ask copies under release/packages are detected', 'S8-3F scope: changed paths', 'recovery evidence: every recovery artifact is identity-pinned', 'release integrity fails closed and the manifest does NOT certify the baseline'];
+const S85B_EXPECTED = ['Z01', 'Z02', 'Z05', 'P01', 'P02'], S85A_EXPECTED = ['V01', 'S01', 'S02', 'S03'], S84_EXPECTED = ['D01', 'P01', 'P04', 'S01', 'S02', 'S03'];
+const S83F_EXPECTED = ['deterministic regeneration equals the committed manifest', 'verifier accepts the committed manifest', 'protected derivatives reproduce from the governed lineage', 'superseded Ask copies under release/packages are detected', 'release packages are untouched relative to the S8-4 base', 'S8-3F scope: changed paths', 'recovery evidence: every recovery artifact is identity-pinned', 'release integrity fails closed and the manifest does NOT certify the baseline'];
 const exactSet = (failed, expected) => JSON.stringify(failed.map(caseId).sort()) === JSON.stringify([...expected].sort());
 const s85bFailed = failCases(s85b), s85aFailed = failCases(s85a), s84Failed = failCases(s84), s83fFailed = failCases(s83f);
 const s85bOk = exactSet(s85bFailed, S85B_EXPECTED) && modifiedSetOk && deletionsOk && journeyDeltaOk && staleP01Ok && schemaPinOk && z05Ok;
-const s85aOk = exactSet(s85aFailed, S85A_EXPECTED) && modifiedSetOk;
+const S85A_S02_DIFF = git(['diff', '--name-only', 'a3e2dc1687a9dd8a290645a4ed77895fb39f97e7', 'HEAD', '--', 'release/manifests', 'governance/product/s8-3f-evidence', 'governance/product/s8-4-evidence', 'governance/product/s8-3e-evidence'], checkout).split('\n').filter(Boolean).sort();
+const s85aS02Ok = JSON.stringify(S85A_S02_DIFF) === JSON.stringify(['release/manifests/atlas-v1.5-successor-s8-rc.json', 'release/manifests/atlas-v1.5-successor-s8-rollback.json']) && git(['rev-parse', 'HEAD:release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json'], checkout) === git(['rev-parse', BASE + ':release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json'], checkout);
+const drift = inline(`import {generateEvidence} from './tests/s8-5a-support/evidence.mjs';import fs from 'node:fs';const g=await generateEvidence(process.cwd());const diffs=[];const walk=(x,y,p)=>{if(typeof x!=='object'||x===null||typeof y!=='object'||y===null){if(JSON.stringify(x)!==JSON.stringify(y))diffs.push([p,x,y]);return}for(const k of new Set([...Object.keys(x),...Object.keys(y)]))walk(x[k],y[k],p+'.'+k)};let n=0;for(const [p,c] of Object.entries(g.files)){walk(JSON.parse(fs.readFileSync(p,'utf8')),JSON.parse(c),p);n++}console.log(JSON.stringify({files:n,diffs}))`, checkout);
+const s85aDrift = lastJson(drift.stdout);
+const s85aDriftOk = !!s85aDrift && s85aDrift.diffs.length === 1 && /atl-167-blocked-record\.json\.mechanicallyVerifiedEvidence\.tracked167Tests$/.test(s85aDrift.diffs[0][0]);
+const s85aOk = exactSet(s85aFailed, S85A_EXPECTED) && modifiedSetOk && s85aS02Ok && s85aDriftOk;
 const s84D01 = (s84.stdout.match(/^FAIL D01.*$/m) || [''])[0];
 const s84Ok = exactSet(s84Failed, S84_EXPECTED) && /donor identity lost api\/atlas\.js/.test(s84D01) && !/donor identity lost (?!api\/atlas\.js)/.test(s84D01) && supersededAskCopies === 0 && schemaPinOk && modifiedSetOk;
-const s83fOk = s83fFailed.length === S83F_EXPECTED.length && s83fFailed.every((c) => S83F_EXPECTED.some((e) => c.startsWith(e))) && s83fReasonOk;
+const s83fOk = s83fFailed.length === S83F_EXPECTED.length && S83F_EXPECTED.every((e) => s83fFailed.some((c) => c.startsWith(e))) && s83fReasonOk && modifiedSetOk && deletionsOk;
 let cliJson = null; try { cliJson = JSON.parse(s83fCli.stdout); } catch { /* */ }
 const cliFailures = cliJson ? cliJson.failures.map((f) => f.code + ' ' + f.detail).sort() : null;
 const EXPECTED_CLI = ['IDENTITY_MISMATCH interaction.atl-140-journey: recorded observed identity differs from the repository', 'IDENTITY_MISMATCH interaction.atl-140-journey: repository identity is MISMATCH', 'MANIFEST_DRIFT manifest differs from deterministic regeneration', 'RELEASE_INTEGRITY_STATE_DRIFT observedVerification differs from recomputation', 'ROLLBACK_RECOVERY_IDENTITY_DRIFT assets/atl-140-v15-journey.mjs'].sort();
@@ -122,8 +139,6 @@ s84.classification = s84Ok && repassOk ? 'SUCCESSOR_ONLY_STAGE_LOCAL_IDENTITY_EV
 s83f.classification = s83fOk && repassOk ? 'SUCCESSOR_ONLY_IDENTITY_EVOLUTION_AND_REMEDIATION_OF_RECORDED_DEFECTS' : 'FAIL';
 s83fCli.classification = cliOk && repassOk ? 'SUCCESSOR_ONLY_STAGE_LOCAL_IDENTITY_EVOLUTION' : 'FAIL';
 // S8-5A evidence generator drift: V01/S03 differ only because ATL-167 now has a successor test (tracked167Tests 0 -> 1) — identical to the S8-5B-stage classification.
-const drift = inline(`import {generateEvidence} from './tests/s8-5a-support/evidence.mjs';import fs from 'node:fs';const g=await generateEvidence(process.cwd());const diffs=[];const walk=(x,y,p)=>{if(typeof x!=='object'||x===null||typeof y!=='object'||y===null){if(JSON.stringify(x)!==JSON.stringify(y))diffs.push([p,x,y]);return}for(const k of new Set([...Object.keys(x),...Object.keys(y)]))walk(x[k],y[k],p+'.'+k)};let n=0;for(const [p,c] of Object.entries(g.files)){walk(JSON.parse(fs.readFileSync(p,'utf8')),JSON.parse(c),p);n++}console.log(JSON.stringify({files:n,diffs}))`, checkout);
-const s85aDrift = lastJson(drift.stdout);
 
 // ------------------------------------------------------------------------------------------------ manifest determinism / verifier / custody / release integrity / packages
 const cli1 = run(['scripts/s8-6-successor-manifest.mjs', '--check', '--reproduce'], checkout), cli2 = run(['scripts/s8-6-successor-manifest.mjs', '--check', '--reproduce'], checkout);
@@ -222,7 +237,7 @@ const evidence = {schemaVersion: 's8-6-exact-qa-v1', stage: 'S8-6 successor RC /
   rcSuite: {...rcSummary, cases: cases(rcSuite)},
   dauBrowserRetestOnRc: {exitCode: dauSuite.exitCode, total: dauSummary && dauSummary.total, passed: dauSummary && dauSummary.passed, failed: dauSummary && dauSummary.failed, rootLoadRaceTolerated: dauSummary && dauSummary.rootLoadRaceTolerated, browser: dauSummary && {engine: dauSummary.browser, executable: dauSummary.browserExecutable}, failingCases: failCases(dauSuite)},
   suites: {total: results.length + 2, passed: results.filter((r) => r.exitCode === 0).length + [rcSuite, dauSuite].filter((r) => r.exitCode === 0).length, gatingFailures, newFailuresVsBase},
-  predecessorSuites: {s8_5b: {failingCases: s85bFailed, expected: S85B_EXPECTED, classification: s85b.classification}, s8_5a: {failingCases: s85aFailed, expected: S85A_EXPECTED, classification: s85a.classification}, s8_4: {failingCases: s84Failed, expected: S84_EXPECTED, classification: s84.classification, d01: s84D01.slice(0, 200)},
+  predecessorSuites: {s8_5b: {failingCases: s85bFailed, expected: S85B_EXPECTED, classification: s85b.classification}, s8_5a: {failingCases: s85aFailed, expected: S85A_EXPECTED, s02DiffSet: S85A_S02_DIFF, s02Ok: s85aS02Ok, classification: s85a.classification}, s8_4: {failingCases: s84Failed, expected: S84_EXPECTED, classification: s84.classification, d01: s84D01.slice(0, 200)},
     s8_3f: {failingCases: s83fFailed, expectedPrefixes: S83F_EXPECTED, classification: s83f.classification, reasonProbe: s83fProbeJson, cliCheckFailures: cliFailures, cliExpected: EXPECTED_CLI, cliClassification: s83fCli.classification, cliCleanAtBase: (() => { try { return JSON.parse(cliBase.stdout).ok === true; } catch { return null; } })()},
     probes: {journeyDeltaVsS85bJourney: {added: journeyDelta.added.length, removed: journeyDelta.removed.length, ok: journeyDeltaOk}, modifiedPathsVsS85aHead: modifiedVsS85a.map((x) => x.p).length, modifiedSetOk, deletionsOnlyUnderReplacedPackages: deletionsOk, staleIdOffenders: staleOffenders, staleIdOffendersAllPermitted: staleP01Ok, packagedSchemaPinOk: schemaPinOk, supersededAskBlobCopiesInTree: supersededAskCopies, z05DriftedProductFiles: z05Probe, s85aEvidenceGeneratorDrift: s85aDrift},
     exactCommitRepass: repass, exactCommitRepassOk: repassOk, explanation: 'S8-6 legitimately evolves identities previously pinned by predecessor suites (journey, router, release packages, baseline, deploy exclusions) and repairs two defects the S8-3F suite pinned as recorded residuals (stale Ask copies in release/packages; failing release-integrity baseline). Each predecessor suite is unmodified; it fails here only on the expected stage-local cases and passes in full at its own accepted commit.'},
