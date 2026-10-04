@@ -1,0 +1,1003 @@
+{
+  "schemaVersion": "s8-5a-exact-qa-v1",
+  "testedCommit": "cf6c89dc51187329e4455f20fa12e2d742735621",
+  "testedTree": "c8a17ab0aaf813381813810da5a2e1b92f1370e2",
+  "base": "a3e2dc1687a9dd8a290645a4ed77895fb39f97e7",
+  "nodeVersion": "v22.22.0",
+  "platform": "linux",
+  "architecture": "x64",
+  "testScope": "S8-5A bounded successor retests: ATL-157 compatibility retest (historical blob-pinned fixtures against corrected S8 inputs; not a shipped successor component), ATL-173 corrected successor utility derivation (no historical counts, no utility-value claim), ATL-167 BLOCKED record (not executed/ported/superseded); inherited S8 suites, certified donor suites, S8-4 and S8-3F suites compared with the exact S8-3F base; deliberate mutation tests. PARTIAL is not release readiness.",
+  "status": "PASS",
+  "overallClassification": "S8-5A PARTIAL — EXECUTABLE RETESTS PASS; ATL-167 BLOCKED PENDING BOUNDED REMEDIATION DECISION",
+  "itemResults": {
+    "ATL-157": "PASS (compatibility only)",
+    "ATL-173": "PASS (corrected bounded state; no readiness/utility-value claim)",
+    "ATL-167": "BLOCKED — NO CURRENT SUCCESSOR RETEST SURFACE"
+  },
+  "suites": {
+    "total": 20,
+    "passed": 18,
+    "scopeGuardOnlyException": 2,
+    "gatingFailures": [],
+    "newFailuresVsS83fBase": []
+  },
+  "s85aSuite": {
+    "suite": "s8-5a-successor-retests",
+    "total": 47,
+    "passed": 47,
+    "failed": 0,
+    "cases": [
+      "PASS K01 historical ATL-157 fixtures are byte-identical to the pinned historical blobs and resolvable at the historical commit",
+      "PASS K02 fixtures are test-only: outside product paths; ATL-157 is not shipped in the successor tree",
+      "PASS K03 corrected successor inputs are pinned (semantics record, provenance, source registry) and corrected lineage verifies",
+      "PASS K04 the UNMODIFIED historical ATL-157 test passes in a sandbox built from corrected successor inputs",
+      "PASS K05 successor output is bound to the corrected semantics record and its governed sources (field-for-field)",
+      "PASS K06 bounded-depth guarantees hold on corrected inputs: human trigger, fail-closed, no canonical mutation/promotion, governed-registry-only research",
+      "PASS K07 deterministic; and compatible with the historical (pre-S8) semantics: identical candidates, only the document moduleVersion differs",
+      "PASS K08 fail-closed on corrected inputs: historical machine-trigger fixture → HUMAN_TRIGGER_REQUIRED",
+      "PASS K08 fail-closed on corrected inputs: non-human trigger → HUMAN_TRIGGER_REQUIRED",
+      "PASS K08 fail-closed on corrected inputs: trigger without explicit request → HUMAN_TRIGGER_REQUIRED",
+      "PASS K08 fail-closed on corrected inputs: unsupported module → UNSUPPORTED_MODULE",
+      "PASS K08 fail-closed on corrected inputs: unknown process → UNKNOWN_PROCESS",
+      "PASS K08 fail-closed on corrected inputs: unsupported requested field → UNSUPPORTED_REQUESTED_FIELD",
+      "PASS K08 fail-closed on corrected inputs: no depth fields requested → NO_DEPTH_FIELDS",
+      "PASS K08 fail-closed on corrected inputs: record without provenance sourceIds → MISSING_PROVENANCE",
+      "PASS K08 fail-closed on corrected inputs: record source not in governed registry → UNREGISTERED_AUTHORITATIVE_SOURCE",
+      "PASS K08 fail-closed on corrected inputs: claim without sourceIds → MISSING_PROVENANCE",
+      "PASS K09 conflicting source claims are NOT promoted: field becomes CANDIDATE_REVIEW_REQUIRED, no candidate, no downstream eligibility",
+      "PASS K09 missing field-level provenance is NOT promoted (CANDIDATE_REVIEW_REQUIRED); empty governed value is UNKNOWN",
+      "PASS K10 harness rejects tampered historical fixtures and a stale-semantics substitution",
+      "PASS U01 corrected package/readiness/projection identities equal the accepted pins and the public S8-3B..3D summaries",
+      "PASS U02 the successor proof is deterministic, key-order independent, and equals the committed proof byte-for-byte",
+      "PASS U03 findings are DERIVED from the corrected artifacts (requirement statuses and counts)",
+      "PASS U04 truthfully reports the corrected bounded state (partial semantics, 4 knowledge-gap entries, 4 of 5 leaves not compiled, unresolved binding)",
+      "PASS U05 independent cross-check: the proof agrees with the S8-4 consumer crosswalk built from the public S8-3 summaries",
+      "PASS U06 historical baseline is preserved as HISTORICAL_ONLY with an explicit delta; historical counts/PASS are not reproduced",
+      "PASS U07 no promotion: not runtime/universal-execution ready, not materializable, not independently proven; no utility-value claim",
+      "PASS U08 the committed proof is public-safe: no source ids, binding ids, knowledge-gap ids or handoff ids",
+      "PASS U09 rejects readiness promoted to AVAILABLE work semantics → LINEAGE_IDENTITY_MISMATCH:(package|readiness)",
+      "PASS U09 rejects client binding silently resolved → LINEAGE_IDENTITY_MISMATCH:(package|readiness)",
+      "PASS U09 rejects projection promoted to materializable → LINEAGE_IDENTITY_MISMATCH:projection",
+      "PASS U09 rejects package interface changed to an invented endpoint → LINEAGE_IDENTITY_MISMATCH:package",
+      "PASS U09 rejects WorkDefinition leaf coverage inflated → LINEAGE_IDENTITY_MISMATCH:wd",
+      "PASS U09 rejects substituting the HISTORICAL (stale) readiness/package/projection blobs for the corrected artifacts",
+      "PASS U10 verifier rejects tampered proof: work semantics overstated → WORK_SEMANTICS_OVERSTATED",
+      "PASS U10 verifier rejects tampered proof: readiness promoted → READINESS_PROMOTED",
+      "PASS U10 verifier rejects tampered proof: materializable promoted → READINESS_PROMOTED",
+      "PASS U10 verifier rejects tampered proof: historical counts claimed as current → HISTORICAL_COUNTS_CLAIMED_AS_CURRENT",
+      "PASS U10 verifier rejects tampered proof: no-savings guard removed → UTILITY_VALUE_CLAIM_GUARD_REMOVED",
+      "PASS U10 verifier rejects tampered proof: client-binding blocker removed → UNRESOLVED_BLOCKER_REMOVED",
+      "PASS U10 verifier rejects tampered proof: stale source blob injected → STALE_IDENTITY_IN_PROOF",
+      "PASS U10 verifier rejects tampered proof: any other drift → PROOF_DRIFT",
+      "PASS V01 ATL-167 is recorded BLOCKED — NO CURRENT SUCCESSOR RETEST SURFACE, with mechanically verified evidence",
+      "PASS V02 ATL-167 is NOT executed, ported, rebuilt, marked superseded, or partially claimed as PASS",
+      "PASS S01 S8-5A scope: only additive verification/evidence/documentation paths vs the S8-3F evidence head; no product path, workbook, release or root change",
+      "PASS S02 inherited corrected-lineage identities are unchanged (manifest not regenerated; S8-3F evidence untouched)",
+      "PASS S03 evidence artifacts are deterministic: regenerated files equal committed files"
+    ]
+  },
+  "scopeGuardAnalysis": {
+    "s84": {
+      "failedCasesOnTestedCommit": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "atExactS84TestedCommit": {
+        "commit": "07a41138f7b52e5fe1d0c9d5989f72b9835560c5",
+        "exitCode": 0,
+        "summary": {
+          "suite": "s8-4-interaction-rebinding",
+          "total": 34,
+          "passed": 34,
+          "failed": 0,
+          "caseIds": [
+            "D01",
+            "D02",
+            "D03",
+            "D04",
+            "D05",
+            "D06",
+            "A01",
+            "A02",
+            "A03",
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "B01",
+            "B02",
+            "B03",
+            "B04",
+            "B05",
+            "B06",
+            "B07",
+            "B08",
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "N01",
+            "N02",
+            "N03",
+            "N04",
+            "N05"
+          ]
+        }
+      },
+      "alreadyFailingOnS83fBase": [
+        "S01 changed paths are exactly the governed transplant + new S8-4 files; no deletions :: unexpected changed path governan",
+        "S02 no S8-3A..3E governed output or implementation modified (lib/compile, S8 tests, S8 governance evidence) :: tests/s8-",
+        "S03 no runtime/release promotion: release/ and Canvas untouched; all public summaries remain BLOCKED / not certified :: "
+      ]
+    },
+    "s83f": {
+      "failedCasesOnTestedCommit": [
+        "S8-3F scope: changed paths vs the S8-4 final head are exactly the S8-3F implementation set (no prior-stage, Canvas, rele"
+      ],
+      "atExactS83fTestedCommit": {
+        "commit": "67c80d513aa9de798e33814b963ee0e62ed7abad",
+        "exitCode": 0,
+        "summary": {
+          "suite": "s8-3f-governed-release-manifest",
+          "total": 63,
+          "passed": 63,
+          "failed": 0
+        }
+      }
+    },
+    "explanation": "These cases compare the changed-path set to their own stage diff and necessarily fail on any successor commit. All product cases pass. Scope control for S8-5A is asserted by the S8-5A suite (additive allowlist) and the changed-path scan below."
+  },
+  "baseComparisons": [
+    {
+      "suite": "tests/s8-4-interaction-rebinding.test.mjs",
+      "group": "S8-4",
+      "testedExit": 1,
+      "baseExit": 1,
+      "failingCasesOnTested": [
+        "S01 changed paths are exactly the governed transplant + new S8-4 files; no deletions :: unexpected changed path governan",
+        "S02 no S8-3A..3E governed output or implementation modified (lib/compile, S8 tests, S8 governance evidence) :: tests/s8-",
+        "S03 no runtime/release promotion: release/ and Canvas untouched; all public summaries remain BLOCKED / not certified :: "
+      ],
+      "failingCasesOnBase": [
+        "S01 changed paths are exactly the governed transplant + new S8-4 files; no deletions :: unexpected changed path governan",
+        "S02 no S8-3A..3E governed output or implementation modified (lib/compile, S8 tests, S8 governance evidence) :: tests/s8-",
+        "S03 no runtime/release promotion: release/ and Canvas untouched; all public summaries remain BLOCKED / not certified :: "
+      ],
+      "newFailuresVsBase": [],
+      "identicalToBase": true
+    },
+    {
+      "suite": "tests/s8-3f-governed-release-manifest.test.mjs",
+      "group": "S8-3F",
+      "testedExit": 1,
+      "baseExit": 0,
+      "failingCasesOnTested": [
+        "S8-3F scope: changed paths vs the S8-4 final head are exactly the S8-3F implementation set (no prior-stage, Canvas, rele"
+      ],
+      "failingCasesOnBase": [],
+      "newFailuresVsBase": [
+        "S8-3F scope: changed paths vs the S8-4 final head are exactly the S8-3F implementation set (no prior-stage, Canvas, rele"
+      ],
+      "identicalToBase": false
+    }
+  ],
+  "results": [
+    {
+      "group": "S8-5A",
+      "command": [
+        "node",
+        "tests/s8-5a-successor-retests.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": {
+        "suite": "s8-5a-successor-retests",
+        "total": 47,
+        "passed": 47,
+        "failed": 0
+      },
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/p6-2-canonical-workdefinition-compiler.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2e-leaf-compiler-correction.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2e-atl159-workdefinition-lineage.test.cjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2a-atl171-operational-semantics.test.cjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2b-atl171-schema-compatibility.test.cjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2c-atl165-client-binding.test.cjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2d-atl165-binding-schema.test.cjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3b-atl159-ltl04-workdefinition.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3c-malkom-package-readiness.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": {
+        "schemaVersion": "s8-3c-package-readiness-evidence-v1",
+        "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+        "detailIncluded": false,
+        "inputHashes": {
+          "wd": "fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61",
+          "binding": "2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9",
+          "semantics": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576"
+        },
+        "packageHash": "6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367",
+        "readinessHash": "c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617",
+        "deterministic": true,
+        "canonicalNonMutation": true,
+        "canonicalLeafProjectionLossless": true,
+        "retainedReadinessSchema": "PASS",
+        "packageQA": "PASS",
+        "readinessQA": "PASS",
+        "negativeCasesPassed": 5,
+        "totals": {
+          "taskCount": 1,
+          "workUnitCount": 7,
+          "leafCount": 5,
+          "workDefinitionCount": 1,
+          "notCompiledLeafCount": 4,
+          "blockedByClientBindingLeafCount": 2,
+          "blockedByKnowledgeGapLeafCount": 2,
+          "fullyCompiledTaskCount": 0
+        },
+        "unresolvedBindingCount": 1,
+        "projectionDisposition": "BLOCKED",
+        "universalExecutionReady": false,
+        "independentExecutorProofStatus": "NOT_INDEPENDENTLY_PROVEN",
+        "stageAcceptance": "PASS",
+        "runtimeCertification": false
+      },
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3d-malkom-projection-boundary.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": {
+        "schemaVersion": "s8-3d-projection-evidence-v1",
+        "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+        "detailIncluded": false,
+        "inputHashes": {
+          "wd": "fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61",
+          "binding": "2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9",
+          "semantics": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576",
+          "base": "97459a5e06abda96cbe3b2a121dfbee3a0bcf41e",
+          "package": "6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367",
+          "readiness": "c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617"
+        },
+        "projectionHash": "703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c",
+        "deterministic": true,
+        "canonicalNonMutation": true,
+        "losslessCompiledLeaf": true,
+        "coverageAndResidualsPreserved": true,
+        "retainedBoundarySchema": "PASS",
+        "negativeCasesPassed": 10,
+        "totals": {
+          "taskCount": 1,
+          "workUnitCount": 7,
+          "leafCount": 5,
+          "workDefinitionCount": 1,
+          "notCompiledLeafCount": 4,
+          "blockedByClientBindingLeafCount": 2,
+          "blockedByKnowledgeGapLeafCount": 2,
+          "fullyCompiledTaskCount": 0
+        },
+        "unresolvedBindingCount": 1,
+        "readiness": "BLOCKED",
+        "universalExecutionReady": false,
+        "independentExecutorProofStatus": "NOT_INDEPENDENTLY_PROVEN",
+        "materializable": false,
+        "runtimeCertification": false,
+        "stageAcceptance": "PASS"
+      },
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3e-atl178-flow-bpmn.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": {
+        "schemaVersion": "s8-3e-flow-evidence-v1",
+        "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+        "detailIncluded": false,
+        "flowSchemaVersion": "atlas-flow-graph-v1.5-s8-3e",
+        "inputHashes": {
+          "wd": "fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61",
+          "package": "6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367",
+          "readiness": "c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617",
+          "projection": "703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c",
+          "binding": "2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9",
+          "semantics": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576",
+          "sourceReleaseTip": "97459a5e06abda96cbe3b2a121dfbee3a0bcf41e"
+        },
+        "workDefinitionId": "road-ltl@1.5::LTL-04::LTL-04::ACT::02::WD",
+        "artifactIdentities": {
+          "graphHash": "dfad5a029ce830e4c1bff68ea1a9ac7f482315c619495a7295aef3c50abe408e",
+          "flowViewSha256": "1b3839e0bde5e92216373b9ff232a5d20de5e84a7c25250f7d4ce4b93dbaba6f",
+          "bpmnSha256": "1ede708543a8906333646f010b082446ec75dbf371337ad6069481c4958dfd61",
+          "svgSha256": "dbd7d34f978d21a7f81059b58b6de6cac78c89c66c047af6bf98c71ead237482"
+        },
+        "counts": {
+          "nodes": 7,
+          "edges": 6,
+          "declaredPaths": 4,
+          "blockedLeaves": 4,
+          "unsupportedDispositions": 6,
+          "bpmnShapes": 7,
+          "bpmnEdges": 6
+        },
+        "bpmnValidation": {
+          "valid": true,
+          "validator": "lib/compile/s8-bpmn-structure.js",
+          "scope": "BOUNDED_BPMN_2_0_STRUCTURAL"
+        },
+        "boundary": {
+          "canonicalMutation": false,
+          "deterministic": true,
+          "runtimeReadiness": "NOT_PROMOTED",
+          "runtimeOrchestration": "STOP_BOUNDARY",
+          "universalExecutionReady": false,
+          "materializable": false,
+          "runtimeCertification": false,
+          "malkomQueueStructuresCanonical": false
+        },
+        "qa": {
+          "caseIds": [
+            "G01",
+            "G02",
+            "G03",
+            "G04",
+            "L01",
+            "L02",
+            "L03",
+            "L04",
+            "L05",
+            "P01",
+            "P02",
+            "P03",
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "D01",
+            "D02",
+            "D03",
+            "T01",
+            "T02",
+            "T03",
+            "T04",
+            "S01",
+            "S02",
+            "B01",
+            "B02",
+            "B03",
+            "B04",
+            "E01"
+          ],
+          "caseCount": 36
+        }
+      },
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p2-projection-boundary.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p3-universal-daughter-renderer.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p4-canvas-daughter-integration.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p5-ask-trace-governance.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/v2-api-router-smoke.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-4",
+      "command": [
+        "node",
+        "tests/s8-4-interaction-rebinding.test.mjs"
+      ],
+      "exitCode": 1,
+      "signal": null,
+      "classification": "STAGE_SCOPE_GUARD_ONLY_NOT_PRODUCT_REGRESSION",
+      "summary": {
+        "suite": "s8-4-interaction-rebinding",
+        "total": 34,
+        "passed": 31,
+        "failed": 3,
+        "caseIds": [
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "D05",
+          "D06",
+          "A01",
+          "A02",
+          "A03",
+          "P01",
+          "P02",
+          "P03",
+          "P04",
+          "S01",
+          "S02",
+          "S03",
+          "S04",
+          "B01",
+          "B02",
+          "B03",
+          "B04",
+          "B05",
+          "B06",
+          "B07",
+          "B08",
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "N01",
+          "N02",
+          "N03",
+          "N04",
+          "N05"
+        ]
+      },
+      "failingCases": [
+        "S01 changed paths are exactly the governed transplant + new S8-4 files; no deletions :: unexpected changed path governan",
+        "S02 no S8-3A..3E governed output or implementation modified (lib/compile, S8 tests, S8 governance evidence) :: tests/s8-",
+        "S03 no runtime/release promotion: release/ and Canvas untouched; all public summaries remain BLOCKED / not certified :: "
+      ],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-3F",
+      "command": [
+        "node",
+        "tests/s8-3f-governed-release-manifest.test.mjs"
+      ],
+      "exitCode": 1,
+      "signal": null,
+      "classification": "STAGE_SCOPE_GUARD_ONLY_NOT_PRODUCT_REGRESSION",
+      "summary": {
+        "suite": "s8-3f-governed-release-manifest",
+        "total": 63,
+        "passed": 62,
+        "failed": 1
+      },
+      "failingCases": [
+        "S8-3F scope: changed paths vs the S8-4 final head are exactly the S8-3F implementation set (no prior-stage, Canvas, rele"
+      ],
+      "stderrTail": ""
+    },
+    {
+      "group": "S8-3F-cli-check-reproduce",
+      "command": [
+        "node",
+        "scripts/s8-3f-release-manifest.mjs",
+        "--check",
+        "--reproduce"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "summary": null,
+      "failingCases": [],
+      "stderrTail": ""
+    }
+  ],
+  "mutationTests": {
+    "total": 26,
+    "detected": 26,
+    "results": [
+      {
+        "id": "M01",
+        "mutation": "historical ATL-157 materializer fixture tampered (extra byte)",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 2,
+        "firstDetections": [
+          "K01 historical ATL-157 fixtures are byte-identical to the pinned historical blobs and resolvable at the historical commi",
+          "K10 harness rejects tampered historical fixtures and a stale-semantics substitution"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M02",
+        "mutation": "historical ATL-157 test fixture weakened (assertion removed)",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 4,
+        "firstDetections": [
+          "K01 historical ATL-157 fixtures are byte-identical to the pinned historical blobs and resolvable at the historical commi",
+          "K04 the UNMODIFIED historical ATL-157 test passes in a sandbox built from corrected successor inputs",
+          "K10 harness rejects tampered historical fixtures and a stale-semantics substitution"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M03",
+        "mutation": "historical machine-trigger rejection fixture deleted",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 0,
+        "firstDetections": [],
+        "detection": "SUITE_ABORT_FAIL_CLOSED",
+        "result": "DETECTED",
+        "abortTail": " | Node.js v22.22.0"
+      },
+      {
+        "id": "M04",
+        "mutation": "fixture provenance blob table altered",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 1,
+        "firstDetections": [
+          "K01 historical ATL-157 fixtures are byte-identical to the pinned historical blobs and resolvable at the historical commi"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M05",
+        "mutation": "corrected readiness pin replaced by a stale identity",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 0,
+        "firstDetections": [],
+        "detection": "SUITE_ABORT_FAIL_CLOSED",
+        "result": "DETECTED",
+        "abortTail": " | Node.js v22.22.0"
+      },
+      {
+        "id": "M06",
+        "mutation": "corrected semantics-record pin replaced by a stale identity",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 0,
+        "firstDetections": [],
+        "detection": "SUITE_ABORT_FAIL_CLOSED",
+        "result": "DETECTED",
+        "abortTail": " | Node.js v22.22.0"
+      },
+      {
+        "id": "M07",
+        "mutation": "stale source blob identity injected into the successor utility proof",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 2,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "U02 the successor proof is deterministic, key-order independent, and equals the committed proof byte-for-byte"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M08",
+        "mutation": "utility proof promotes universalExecutionReady",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 2,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "U02 the successor proof is deterministic, key-order independent, and equals the committed proof byte-for-byte"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M09",
+        "mutation": "utility proof promotes materializable/runtime certification",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 2,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "U02 the successor proof is deterministic, key-order independent, and equals the committed proof byte-for-byte"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M10",
+        "mutation": "utility proof overstates work semantics as AVAILABLE",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 2,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "U02 the successor proof is deterministic, key-order independent, and equals the committed proof byte-for-byte"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M11",
+        "mutation": "historical counts presented as the current successor counts",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 2,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "U02 the successor proof is deterministic, key-order independent, and equals the committed proof byte-for-byte"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M12",
+        "mutation": "client-binding blocker silently resolved in utility proof",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 2,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "U02 the successor proof is deterministic, key-order independent, and equals the committed proof byte-for-byte"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M13",
+        "mutation": "utility-value limitation guard removed from proof",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 2,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "U02 the successor proof is deterministic, key-order independent, and equals the committed proof byte-for-byte"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M14",
+        "mutation": "non-public source identifier leaked into the public proof",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 3,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "U02 the successor proof is deterministic, key-order independent, and equals the committed proof byte-for-byte",
+          "U08 the committed proof is public-safe: no source ids, binding ids, knowledge-gap ids or handoff ids"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M15",
+        "mutation": "ATL-167 recorded as PASS",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 3,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "V01 ATL-167 is recorded BLOCKED — NO CURRENT SUCCESSOR RETEST SURFACE, with mechanically verified evidence",
+          "V02 ATL-167 is NOT executed, ported, rebuilt, marked superseded, or partially claimed as PASS"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M16",
+        "mutation": "ATL-167 marked superseded by S8-4 exclusion",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 3,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "V01 ATL-167 is recorded BLOCKED — NO CURRENT SUCCESSOR RETEST SURFACE, with mechanically verified evidence",
+          "V02 ATL-167 is NOT executed, ported, rebuilt, marked superseded, or partially claimed as PASS"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M17",
+        "mutation": "ATL-167 stale slice page ported into the successor tree",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 3,
+        "firstDetections": [
+          "S01 S8-5A scope: only additive verification/evidence/documentation paths vs the S8-3F evidence head; no product path, wo",
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "V01 ATL-167 is recorded BLOCKED — NO CURRENT SUCCESSOR RETEST SURFACE, with mechanically verified evidence"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M18",
+        "mutation": "ATL-157 bounded-depth materializer introduced as a successor product component",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 2,
+        "firstDetections": [
+          "K02 fixtures are test-only: outside product paths; ATL-157 is not shipped in the successor tree",
+          "S01 S8-5A scope: only additive verification/evidence/documentation paths vs the S8-3F evidence head; no product path, wo"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M19",
+        "mutation": "certified root index.html modified to link the stale slice",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 4,
+        "firstDetections": [
+          "S01 S8-5A scope: only additive verification/evidence/documentation paths vs the S8-3F evidence head; no product path, wo",
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files",
+          "V01 ATL-167 is recorded BLOCKED — NO CURRENT SUCCESSOR RETEST SURFACE, with mechanically verified evidence"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M20",
+        "mutation": "ATL-157 summary claims a shipped successor component",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 1,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M21",
+        "mutation": "ATL-157 summary result/candidate count altered",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 1,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M22",
+        "mutation": "S8-3F release manifest hand-edited (manifest regeneration out of scope)",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 2,
+        "firstDetections": [
+          "S01 S8-5A scope: only additive verification/evidence/documentation paths vs the S8-3F evidence head; no product path, wo",
+          "S02 inherited corrected-lineage identities are unchanged (manifest not regenerated; S8-3F evidence untouched)"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M23",
+        "mutation": "S8-3F evidence altered",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 2,
+        "firstDetections": [
+          "S01 S8-5A scope: only additive verification/evidence/documentation paths vs the S8-3F evidence head; no product path, wo",
+          "S02 inherited corrected-lineage identities are unchanged (manifest not regenerated; S8-3F evidence untouched)"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M24",
+        "mutation": "product library path modified (scope creep)",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 1,
+        "firstDetections": [
+          "S01 S8-5A scope: only additive verification/evidence/documentation paths vs the S8-3F evidence head; no product path, wo"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M25",
+        "mutation": "S8-5A successor test harness helper tampered (derivation guard removed)",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 6,
+        "firstDetections": [
+          "U09 rejects WorkDefinition leaf coverage inflated → LINEAGE_IDENTITY_MISMATCH:wd",
+          "U09 rejects client binding silently resolved → LINEAGE_IDENTITY_MISMATCH:(package|readiness)",
+          "U09 rejects package interface changed to an invented endpoint → LINEAGE_IDENTITY_MISMATCH:package"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M26",
+        "mutation": "evidence summary no longer deterministic (field added to committed ATL-157 summary)",
+        "s85aSuiteExitCode": 1,
+        "detectedByFailingCases": 1,
+        "firstDetections": [
+          "S03 evidence artifacts are deterministic: regenerated files equal committed files"
+        ],
+        "detection": "CASE_FAILURE",
+        "result": "DETECTED"
+      }
+    ]
+  },
+  "nonGatingInheritedChecks": [
+    {
+      "test": "tests/v2-ui-browser-smoke.mjs",
+      "testedCommitExitCode": 1,
+      "s83fBaseExitCode": 1,
+      "failureAlreadyOnBase": true,
+      "identicalOutcome": true,
+      "testedCommitTail": "FAIL · Chromium available",
+      "s83fBaseTail": "FAIL · Chromium available"
+    },
+    {
+      "test": "tests/v1.1.4-static-parity.mjs",
+      "testedCommitExitCode": 1,
+      "s83fBaseExitCode": 1,
+      "failureAlreadyOnBase": true,
+      "identicalOutcome": true,
+      "testedCommitTail": "PASS · v1.1 data contract active | PASS · Stage23 ontology node parity · 220 | PASS · Stage23 ontology edges parity · 176",
+      "s83fBaseTail": "PASS · v1.1 data contract active | PASS · Stage23 ontology node parity · 220 | PASS · Stage23 ontology edges parity · 176"
+    }
+  ],
+  "changedPathsVsS83fBase": [
+    "A\tgovernance/product/S8_5A_BOUNDED_SUCCESSOR_RETESTS.md",
+    "A\tgovernance/product/s8-5a-evidence/atl-157-retest-summary.json",
+    "A\tgovernance/product/s8-5a-evidence/atl-167-blocked-record.json",
+    "A\tgovernance/product/s8-5a-evidence/atl-173-successor-utility-proof.json",
+    "A\tgovernance/product/s8-5a-evidence/run-exact-qa.cjs",
+    "A\ttests/fixtures/s8-5a/atl-157-historical/PROVENANCE.json",
+    "A\ttests/fixtures/s8-5a/atl-157-historical/atl-157-bounded-depth.test.cjs",
+    "A\ttests/fixtures/s8-5a/atl-157-historical/atl-157-machine-trigger-reject.json",
+    "A\ttests/fixtures/s8-5a/atl-157-historical/atl-157-road-ltl-depth-request.json",
+    "A\ttests/fixtures/s8-5a/atl-157-historical/atlas-bounded-depth-v1.json",
+    "A\ttests/fixtures/s8-5a/atl-157-historical/materialize-bounded-depth-v1.cjs",
+    "A\ttests/s8-5a-successor-retests.test.mjs",
+    "A\ttests/s8-5a-support/atl157-sandbox.mjs",
+    "A\ttests/s8-5a-support/atl173-utility-derivation.mjs",
+    "A\ttests/s8-5a-support/evidence.mjs",
+    "A\ttests/s8-5a-support/successor-lineage.mjs",
+    "A\ttests/s8-5a-support/write-evidence.mjs"
+  ],
+  "changedPathScopeOk": true,
+  "cleanCheckout": true
+}
