@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "atlas-bounded-depth-v1.0",
+  "status": "V1_5_BOUNDED",
+  "purpose": "Human-triggered deepening of an explicitly selected governed scope without silent canonical mutation.",
+  "trigger": {"requiredActor": "AUTHORIZED_HUMAN", "explicitRequestRequired": true, "automaticRuntimeTriggerAllowed": false},
+  "pipeline": ["LOOKUP_EXISTING","DETECT_GAPS","BOUND_RESEARCH","NORMALIZE_RESOLVE","FORM_CANDIDATE","VALIDATE","PERSIST_DISPOSITION"],
+  "allowedEpistemicStates": ["KNOWN_SOURCE_BACKED","KNOWN_SYNTHESIS","CANDIDATE_REVIEW_REQUIRED","UNKNOWN","CLIENT_BINDING_REQUIRED","UNSUPPORTED"],
+  "promotion": {"canonicalMutation": false, "defaultDisposition": "CANDIDATE_OVERLAY", "approvalRequired": true},
+  "failClosed": ["unknown module","unknown process","non-human trigger","missing provenance","unsupported requested field","conflicting source claims"],
+  "v1_5StopBoundary": ["no Malkom-triggered automatic depth","no continuous autonomous research","no universal canonical compounding","no executor-specific target-depth profiles","no readiness-triggered autonomous depth"]
+}

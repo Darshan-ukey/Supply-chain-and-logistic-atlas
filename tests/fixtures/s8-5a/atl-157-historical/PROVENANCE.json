@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "s8-5a-atl-157-historical-fixture-provenance-v1",
+  "classification": "HISTORICAL_TEST_FIXTURE_NOT_PRODUCT",
+  "statement": "Byte-identical copies of the historical ATL-157 mechanism, used ONLY as the subject of an S8-5A successor-compatibility retest inside an ephemeral sandbox. They are not successor product components and must never be placed under product paths (scripts/, lib/, data/, api/, assets/).",
+  "historicalBranch": "atl-157-v15-bounded-depth",
+  "historicalCommit": "770ae4ab9865ae924dd4badb4df6b16f16e52531",
+  "authority": "S6-LIN-032 / S7-IMP-018 (RETEST) ; S8-5A ruling A",
+  "files": [
+    {"fixture": "materialize-bounded-depth-v1.cjs", "historicalPath": "scripts/materialize-bounded-depth-v1.cjs", "blob": "348f4c48c7ce58ef629d0660e3ea3281537679ae"},
+    {"fixture": "atlas-bounded-depth-v1.json", "historicalPath": "data/contracts/atlas-bounded-depth-v1.json", "blob": "86f1a82a231ed13c50fccc49d6377e25c34e7e80"},
+    {"fixture": "atl-157-bounded-depth.test.cjs", "historicalPath": "tests/atl-157-bounded-depth.test.cjs", "blob": "a254a7a611b2c2881c35e44f5c5c19e085ef41ff"},
+    {"fixture": "atl-157-road-ltl-depth-request.json", "historicalPath": "tests/fixtures/atl-157-road-ltl-depth-request.json", "blob": "8e34f2e4a021d084e7f5509b67146c0a2895bbd0"},
+    {"fixture": "atl-157-machine-trigger-reject.json", "historicalPath": "tests/fixtures/atl-157-machine-trigger-reject.json", "blob": "c79ecf1cf04b9d46ed0197b3d1f4d490f3ba7c3f"}
+  ],
+  "historicalSemanticsInput": {"historicalPath": "data/generated/operational-semantics/road-ltl-v1.json", "blob": "3de9d96e1eb0bc09851c8bcfb551913e57bb6614", "note": "read from the historical commit by the harness for a differential comparison only; not copied into this tree"}
+}
