@@ -1,0 +1,407 @@
+{
+  "schemaVersion": "s8-4-exact-qa-v1",
+  "testedCommit": "07a41138f7b52e5fe1d0c9d5989f72b9835560c5",
+  "testedTree": "075784fe046f4f7a55ea719809d5ccb10376ea2c",
+  "base": "fe17ebb5c77fe86ef44a68d8a38eab65b5ce4751",
+  "nodeVersion": "v22.22.0",
+  "platform": "linux",
+  "architecture": "x64",
+  "testScope": "S8-4 controlled interaction rebinding: certified donor identity, corrected ancestry, prohibited lineage (ATL-142 root/Ask), ATL-140 behaviour preservation, scope/non-promotion, fail-closed; inherited S8-2/3 suites; certified donor suites p2-p5 + api router smoke; deliberate mutation tests; no runtime/release certification",
+  "status": "PASS",
+  "suites": {
+    "total": 17,
+    "passed": 17
+  },
+  "s84Suite": {
+    "suite": "s8-4-interaction-rebinding",
+    "total": 34,
+    "passed": 34,
+    "failed": 0,
+    "caseIds": [
+      "D01",
+      "D02",
+      "D03",
+      "D04",
+      "D05",
+      "D06",
+      "A01",
+      "A02",
+      "A03",
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "N01",
+      "N02",
+      "N03",
+      "N04",
+      "N05"
+    ]
+  },
+  "results": [
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/p6-2-canonical-workdefinition-compiler.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "P6.2 Canonical WorkDefinition compiler/verifier certification PASS\n",
+      "stderr": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2e-leaf-compiler-correction.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2E leaf compiler correction: actual synthetic leaf compilation, deterministic bytes, frozen/local schemas, 16 rejection cases, protected output boundary. Real S8-3B domain output NOT certified.\n",
+      "stderr": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2e-atl159-workdefinition-lineage.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2E historical lineage-plan compatibility only; regeneration=false; leaf compiler QA is separate\n",
+      "stderr": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2a-atl171-operational-semantics.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2A ATL-171 governed v1.5 semantics: 22 records; override LTL-03 only\n",
+      "stderr": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2b-atl171-schema-compatibility.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2B schema compatibility: 22 ATL-171 records conform to bounded v1.5 + OKv2/IR lineage\n",
+      "stderr": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2c-atl165-client-binding.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2C ATL-165 governed client binding: 3 requirements; 2 resolved; 1 fail-closed\n",
+      "stderr": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-2d-atl165-binding-schema.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2D ATL-165 schema compatibility: governed requirement fields + bounded fail-closed projection\n",
+      "stderr": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3b-atl159-ltl04-workdefinition.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-3B LTL-04: 1 protected WD, deterministic/schema-valid, 4 blocked leaves preserved, no client values, 2 rejection cases.\n",
+      "stderr": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3c-malkom-package-readiness.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"schemaVersion\":\"s8-3c-package-readiness-evidence-v1\",\"classification\":\"PUBLIC_NON_RECONSTRUCTIVE\",\"detailIncluded\":false,\"inputHashes\":{\"wd\":\"fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61\",\"binding\":\"2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9\",\"semantics\":\"d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576\"},\"packageHash\":\"6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367\",\"readinessHash\":\"c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617\",\"deterministic\":true,\"canonicalNonMutation\":true,\"canonicalLeafProjectionLossless\":true,\"retainedReadinessSchema\":\"PASS\",\"packageQA\":\"PASS\",\"readinessQA\":\"PASS\",\"negativeCasesPassed\":5,\"totals\":{\"taskCount\":1,\"workUnitCount\":7,\"leafCount\":5,\"workDefinitionCount\":1,\"notCompiledLeafCount\":4,\"blockedByClientBindingLeafCount\":2,\"blockedByKnowledgeGapLeafCount\":2,\"fullyCompiledTaskCount\":0},\"unresolvedBindingCount\":1,\"projectionDisposition\":\"BLOCKED\",\"universalExecutionReady\":false,\"independentExecutorProofStatus\":\"NOT_INDEPENDENTLY_PROVEN\",\"stageAcceptance\":\"PASS\",\"runtimeCertification\":false}\n",
+      "stderr": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3d-malkom-projection-boundary.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"schemaVersion\":\"s8-3d-projection-evidence-v1\",\"classification\":\"PUBLIC_NON_RECONSTRUCTIVE\",\"detailIncluded\":false,\"inputHashes\":{\"wd\":\"fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61\",\"binding\":\"2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9\",\"semantics\":\"d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576\",\"base\":\"97459a5e06abda96cbe3b2a121dfbee3a0bcf41e\",\"package\":\"6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367\",\"readiness\":\"c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617\"},\"projectionHash\":\"703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c\",\"deterministic\":true,\"canonicalNonMutation\":true,\"losslessCompiledLeaf\":true,\"coverageAndResidualsPreserved\":true,\"retainedBoundarySchema\":\"PASS\",\"negativeCasesPassed\":10,\"totals\":{\"taskCount\":1,\"workUnitCount\":7,\"leafCount\":5,\"workDefinitionCount\":1,\"notCompiledLeafCount\":4,\"blockedByClientBindingLeafCount\":2,\"blockedByKnowledgeGapLeafCount\":2,\"fullyCompiledTaskCount\":0},\"unresolvedBindingCount\":1,\"readiness\":\"BLOCKED\",\"universalExecutionReady\":false,\"independentExecutorProofStatus\":\"NOT_INDEPENDENTLY_PROVEN\",\"materializable\":false,\"runtimeCertification\":false,\"stageAcceptance\":\"PASS\"}\n",
+      "stderr": ""
+    },
+    {
+      "group": "S8-inherited",
+      "command": [
+        "node",
+        "tests/s8-3e-atl178-flow-bpmn.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"schemaVersion\":\"s8-3e-flow-evidence-v1\",\"classification\":\"PUBLIC_NON_RECONSTRUCTIVE\",\"detailIncluded\":false,\"flowSchemaVersion\":\"atlas-flow-graph-v1.5-s8-3e\",\"inputHashes\":{\"wd\":\"fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61\",\"package\":\"6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367\",\"readiness\":\"c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617\",\"projection\":\"703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c\",\"binding\":\"2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9\",\"semantics\":\"d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576\",\"sourceReleaseTip\":\"97459a5e06abda96cbe3b2a121dfbee3a0bcf41e\"},\"workDefinitionId\":\"road-ltl@1.5::LTL-04::LTL-04::ACT::02::WD\",\"artifactIdentities\":{\"graphHash\":\"dfad5a029ce830e4c1bff68ea1a9ac7f482315c619495a7295aef3c50abe408e\",\"flowViewSha256\":\"1b3839e0bde5e92216373b9ff232a5d20de5e84a7c25250f7d4ce4b93dbaba6f\",\"bpmnSha256\":\"1ede708543a8906333646f010b082446ec75dbf371337ad6069481c4958dfd61\",\"svgSha256\":\"dbd7d34f978d21a7f81059b58b6de6cac78c89c66c047af6bf98c71ead237482\"},\"counts\":{\"nodes\":7,\"edges\":6,\"declaredPaths\":4,\"blockedLeaves\":4,\"unsupportedDispositions\":6,\"bpmnShapes\":7,\"bpmnEdges\":6},\"bpmnValidation\":{\"valid\":true,\"validator\":\"lib/compile/s8-bpmn-structure.js\",\"scope\":\"BOUNDED_BPMN_2_0_STRUCTURAL\"},\"boundary\":{\"canonicalMutation\":false,\"deterministic\":true,\"runtimeReadiness\":\"NOT_PROMOTED\",\"runtimeOrchestration\":\"STOP_BOUNDARY\",\"universalExecutionReady\":false,\"materializable\":false,\"runtimeCertification\":false,\"malkomQueueStructuresCanonical\":false},\"qa\":{\"caseIds\":[\"G01\",\"G02\",\"G03\",\"G04\",\"L01\",\"L02\",\"L03\",\"L04\",\"L05\",\"P01\",\"P02\",\"P03\",\"F01\",\"F02\",\"F03\",\"F04\",\"F05\",\"F06\",\"F07\",\"F08\",\"F09\",\"F10\",\"D01\",\"D02\",\"D03\",\"T01\",\"T02\",\"T03\",\"T04\",\"S01\",\"S02\",\"B01\",\"B02\",\"B03\",\"B04\",\"E01\"],\"caseCount\":36}}\n",
+      "stderr": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p2-projection-boundary.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS · public projection class is explicit\nPASS · trace retains canonical module/task identity\nPASS · projection identifies P1R presentation contract version\nPASS · trace retains Operational Knowledge v2 lineage\nPASS · trace retains Information Resolution v1 lineage\nPASS · public projection contains useful Operational Knowledge\nPASS · public projection contains safe canonical object semantics\nPASS · public projection contains human-readable resolution summaries\nPASS · readiness reflects unresolved source-context/metric gates\nPASS · information resolution is not overstated as complete before proof\nPASS · source-context unresolved count is projected without raw labels\nPASS · client-binding unresolved count is projected without raw client values\nPASS · client-binding requirements are not falsely counted as operational-knowledge gaps\nPASS · metric-definition anomaly is surfaced as safe diagnostic count\nPASS · Work Decomposition detail is absent\nPASS · WorkDefinition detail is absent\nPASS · public projection excludes protected token · workDecompositionSeed\nPASS · public projection excludes protected token · resolutionWorkflow\nPASS · public projection excludes protected token · sourceClaimIds\nPASS · public projection excludes protected token · sourceClaimPackRef\nPASS · public projection excludes protected token · runtimeFeedbackProfileRef\nPASS · public projection excludes protected token · fieldPerformanceBaseline\nPASS · public projection excludes protected token · sourceRefs\nPASS · public projection excludes protected token · clientFieldOrApiElement\nPASS · public projection excludes protected token · runtimeMappings\nPASS · public projection excludes protected token · clientApplication\nPASS · public projection excludes protected token · clientEnvironment\nPASS · public projection excludes reconstructive/client/runtime detail · Shipper Code\nPASS · public projection excludes reconstructive/client/runtime detail · Handling Unit Line No\nPASS · public projection excludes reconstructive/client/runtime detail · exact Bill To Account Number semantics\nPASS · public projection excludes reconstructive/client/runtime detail · 120.83\nPASS · public projection excludes reconstructive/client/runtime detail · sourceClaimIds\nPASS · public projection excludes reconstructive/client/runtime detail · workDecompositionSeed\nPASS · governance projection class is explicit\nPASS · governance projection can retain governed runtime-feedback evidence\nPASS · governance projection can retain exact unresolved source/client labels\nPASS · governance projection declares protected omissions\nPASS · governance canonical data strips protected decomposition seed\nPASS · governance canonical data strips reconstructive resolution workflow\nPASS · governance canonical data strips detailed execution/source crosswalk from task rules\nPASS · unregistered request input cannot become a filesystem path\nPASS · P2 projection boundary · safe projection useful and protected execution detail absent\n",
+      "stderr": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p3-universal-daughter-renderer.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS · renderer version is V2\nPASS · renderer exposes exactly five canonical depths\nPASS · five-depth labels match frozen architecture\nPASS · only Work Decomposition and WorkDefinition are protected depths\nPASS · renderer consumes P2 public-safe projection endpoint\nPASS · shared renderer contains no daughter-specific token · road-ltl\nPASS · shared renderer contains no daughter-specific token · LTL-03\nPASS · shared renderer contains no daughter-specific token · ocean-fcl\nPASS · shared renderer contains no daughter-specific token · ocean-lcl\nPASS · public renderer does not know protected/governance endpoint · /api/work-decomposition\nPASS · public renderer does not know protected/governance endpoint · /api/admin-workdefinitions\nPASS · public renderer does not know protected/governance endpoint · /api/governance-operational-projection\nPASS · public renderer does not load canonical/private files · data/modules/\nPASS · public renderer does not load canonical/private files · data/operational-knowledge/\nPASS · public renderer does not load canonical/private files · data/source-claims/\nPASS · public renderer does not load canonical/private files · private-seed\nPASS · public renderer contains no protected canonical field token · workDecompositionSeed\nPASS · public renderer contains no protected canonical field token · resolutionWorkflow\nPASS · public renderer contains no protected canonical field token · sourceClaimIds\nPASS · public renderer contains no protected canonical field token · runtimeMappings\nPASS · public renderer contains no protected canonical field token · fieldPerformanceBaseline\nPASS · protected depth emits neutral authorization intent instead of fetching\nPASS · view does not inject unrelated trace outside selected depth\nPASS · same renderer renders a non-domain-specific contract-conformant projection\nPASS · all protected depth tabs remain visible as semantic depths\nPASS · projection content does not create script markup\nPASS · renderer escapes untrusted projection text\nPASS · exact module/version/task tuple is parsed without substitution\nPASS · incomplete exact-version selection is rejected\nPASS · projection fetch accepts only returned PUBLIC projection object\nPASS · requested exact version/task is preserved in projection API call\nPASS · unpublished exact selection fails closed\nPASS · failure UI explicitly rejects silent version substitution\nPASS · Daughter route uses shared V2 renderer module\nPASS · Daughter shell communicates projection/protection boundary\nPASS · Daughter page does not call protected execution endpoints\nPASS · Vercel exposes dedicated /daughter route\nPASS · P3 does not alter consolidated API function policy\nPASS · Canvas/index.html is byte-identical to P2 baseline\nPASS · Road LTL 1.5 semantic candidate is byte-identical to P2 baseline\nPASS · P3 Universal Daughter Renderer V2 · generic, fail-closed, projection-only and Canvas-neutral\n",
+      "stderr": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p4-canvas-daughter-integration.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS · P4 Canvas integration version is 2.0.1\nPASS · P4 governed Canvas→Daughter target registry exists\nPASS · P4 target registry is active\nPASS · P4 uses Universal Daughter route\nPASS · road-ltl has a governed Daughter target\nPASS · road-ltl routes to governed 1.5 execution-depth target\nPASS · road-ltl/LTL-03 resolves exact target tuple\nPASS · road-ltl/LTL-03 builds exact fail-closed Daughter URL\nPASS · ocean-fcl has a governed Daughter target\nPASS · ocean-fcl routes to governed 0.6 execution-depth target\nPASS · ocean-fcl/FCL-01 resolves exact target tuple\nPASS · ocean-fcl/FCL-01 builds exact fail-closed Daughter URL\nPASS · ocean-lcl has a governed Daughter target\nPASS · ocean-lcl routes to governed 0.6 execution-depth target\nPASS · ocean-lcl/LCL-01 resolves exact target tuple\nPASS · ocean-lcl/LCL-01 builds exact fail-closed Daughter URL\nPASS · Ocean FCL 0.6 is the approved go-live target\nPASS · Ocean LCL 0.6 is the approved go-live target\nPASS · Ocean FCL 0.5 is not deployed first\nPASS · Ocean LCL 0.5 is not deployed first\nPASS · no selected A5 yields no Daughter handoff\nPASS · unregistered module fails closed\nPASS · incomplete tuple fails closed\nPASS · P4 Canvas Daughter bridge exists\nPASS · Canvas bridge never calls protected endpoint /api/work-decomposition\nPASS · Canvas bridge never calls protected endpoint /api/admin-workdefinitions\nPASS · Canvas bridge never calls protected endpoint /api/governance-operational-projection\nPASS · Canvas bridge never calls protected endpoint /api/malkom-projections\nPASS · Canvas bridge contains no Ocean-specific semantic branch\nPASS · bridge resolves versions from governed registry rather than inference\nPASS · existing Atlas runtime bootstrap exists\nPASS · production /app bootstraps P4 bridge additively\nPASS · existing authorized runtime-access behavior is preserved\nPASS · Universal Daughter Renderer V2 surface remains present\nPASS · Daughter consumes only PUBLIC_SAFE execution-depth endpoint\nPASS · public Daughter renderer does not preload protected endpoints\nPASS · ocean-fcl@0.6 is materialized for PUBLIC_SAFE Daughter projection\nPASS · ocean-fcl@0.6 has no semantic fallback to Ocean 0.5\nPASS · ocean-lcl@0.6 is materialized for PUBLIC_SAFE Daughter projection\nPASS · ocean-lcl@0.6 has no semantic fallback to Ocean 0.5\nPASS · production Canvas/index.html remains byte-identical to P3/P3O baseline\nPASS · frozen Canvas V2 package HTML remains byte-identical\nPASS · frozen Canvas V2 package JS remains byte-identical\nPASS · frozen Canvas V2 package CSS remains byte-identical\nPASS · P4 Canvas V2.0.1 integration certification\n",
+      "stderr": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/p5-ask-trace-governance.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS · road-ltl resolves P4 governed target 1.5\nPASS · road-ltl missing browser version resolves only from governed P4 target registry\nPASS · road-ltl records governed version-resolution provenance\nPASS · ocean-fcl resolves P4 governed target 0.6\nPASS · ocean-fcl missing browser version resolves only from governed P4 target registry\nPASS · ocean-fcl records governed version-resolution provenance\nPASS · ocean-lcl resolves P4 governed target 0.6\nPASS · ocean-lcl missing browser version resolves only from governed P4 target registry\nPASS · ocean-lcl records governed version-resolution provenance\nPASS · Ocean 0.5 exact-version request is rejected; no 0.6/0.5 substitution\nPASS · Road LTL-03 Ask evidence is PUBLIC_SAFE projection-backed\nPASS · Road LTL-03 emits governed projection evidence only\nPASS · Ask projection citation does not expose exact source claim identifiers\nPASS · Ask trace preserves exact Road LTL target tuple\nPASS · Trace reports only three safe semantic depths used\nPASS · Trace does not imply protected execution inclusion\nPASS · Ocean FCL 0.6 Ask evidence is PUBLIC_SAFE projection-backed\nPASS · Ocean FCL projection preserves exact 0.6 trace\nPASS · Ocean FCL 0.6 reports full precompiled public-safe coverage\nPASS · Ocean LCL Canvas Ask resolves exact 0.6 target without 0.5 fallback\nPASS · Road LTL 1.5 non-materialized inherited task fails closed instead of reading older raw semantic source\nPASS · Road LTL 1.5 task-scoped P2 materialization limitation is explicit\nPASS · P5 Ask API responds from governed Ask stage\nPASS · P5 public A5 API declares PUBLIC_SAFE grounding\nPASS · P5 API emits exact safe trace tuple\nPASS · P5 API cites execution-depth projection, not raw ATLAS_PROCESS\nPASS · P5 A5 API excludes raw process/source/protected WD evidence classes\nPASS · P5 public Ask response excludes protected token · workDecompositionSeed\nPASS · P5 public Ask response excludes protected token · resolutionWorkflow\nPASS · P5 public Ask response excludes protected token · sourceClaimIds\nPASS · P5 public Ask response excludes protected token · sourceClaimPackRef\nPASS · P5 public Ask response excludes protected token · runtimeMappings\nPASS · P5 public Ask response excludes protected token · clientApplication\nPASS · P5 public Ask response excludes protected token · clientEnvironment\nPASS · Canvas Ask resolves Ocean FCL to governed 0.6 target\nPASS · Canvas Ask trace records registry-based exact-version resolution\nPASS · Ask API rejects stale Ocean 0.5 Daughter tuple instead of substituting\nPASS · ordinary Ask handler no longer reads protected WorkDefinition store directly\nPASS · ordinary Ask fallback has no legacy protected WD evidence path\nPASS · protected Ask intent is explicit rather than automatic on Admin surface\nPASS · explicit protected intent is capability-gated\nPASS · governance-safe projection class is explicit\nPASS · P5 Ask adapter does not hardcode Ocean version semantics\nPASS · Ask exact versions come from the governed P4 target registry\nPASS · P5 Ask Atlas / Trace / Governance projection-boundary certification\n",
+      "stderr": ""
+    },
+    {
+      "group": "certified-donor-suite",
+      "command": [
+        "node",
+        "tests/v2-api-router-smoke.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS · Vercel top-level function count remains 8 / <=12 · 8\nPASS · auth router exposes auth-admin-login\nPASS · auth router exposes auth-admin-session\nPASS · auth router exposes auth-admin-logout\nPASS · atlas router exposes execution-depth-projection\nPASS · atlas router exposes governance-operational-projection\nPASS · atlas router exposes work-decomposition\nPASS · atlas router exposes admin-workdefinitions\nPASS · Vercel rewrite present · /api/auth-admin-login\nPASS · Vercel rewrite present · /api/auth-admin-session\nPASS · Vercel rewrite present · /api/auth-admin-logout\nPASS · Vercel rewrite present · /api/execution-depth-projection\nPASS · Vercel rewrite present · /api/governance-operational-projection\nPASS · Vercel rewrite present · /api/work-decomposition\nPASS · Vercel rewrite present · /api/admin-workdefinitions\nPASS · Vercel rewrite present · /admin\nPASS · public projection uses consolidated Atlas function\nPASS · governance projection uses consolidated Atlas function\nPASS · protected Work Decomposition boundary uses consolidated Atlas function\nPASS · existing consolidated api/*.js function policy preserved\nPASS · V2 API/router · 8 consolidated functions retained with P2 projection routes\n",
+      "stderr": ""
+    },
+    {
+      "group": "S8-4",
+      "command": [
+        "node",
+        "tests/s8-4-interaction-rebinding.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS D01 every transplanted certified donor file is byte-identical to its donor blob (shell excepted: governed one-line adaptation)\nPASS D02 runtime shell = certified donor blob + exactly one governed additive line (donor separately identifiable)\nPASS D03 certified Canvas V2.0 donor present, byte-identical, and equal to the P6.2 donor commit blobs\nPASS D04 certified Canvas->Daughter bridge V2.0.1 present at its exact governing blob (no ungoverned replacement)\nPASS D05 certified Universal Ask 2.0.1 stack present: runtime 521c47a3, API 8fa80f9d, contract 608956d3, retrieval 6f3c29dc, cert d0dfd8b2\nPASS D06 donor provenance records the pinned donor commits and authorities\nPASS A01 S8-4 descends from the exact S8-3E base (and S8-3E implementation commit)\nPASS A02 no donor (P5, P6.2, ATL-140, ATL-142) is an ancestor of HEAD: donor ancestry did not replace S8 ancestry\nPASS A03 root index.html is the certified blob; neither the ATL-142 root nor the ATL-140 root is present\nPASS P01 superseded Ask API blob cb2bcfea absent from every live path; only the two inherited release/packages copies (not introduced by S8-4)\nPASS P02 live Ask API is the certified P5 governed stack (stage atlas-p5-governed-ask, governed retrieval + capability gate)\nPASS P03 stale ATL-140/167/178 pages and generated LTL-04 data are absent\nPASS P04 stale WorkDefinition id never appears in any file added or changed by S8-4\nPASS S01 changed paths are exactly the governed transplant + new S8-4 files; no deletions\nPASS S02 no S8-3A..3E governed output or implementation modified (lib/compile, S8 tests, S8 governance evidence)\nPASS S03 no runtime/release promotion: release/ and Canvas untouched; all public summaries remain BLOCKED / not certified\nPASS S04 no semantic invention: S8-4 new files carry no V2 scope, no guessed endpoint/queue/route semantics\nPASS B01 ATL-140 journey section: id, heading text, framing sentence, three links and public/protected note preserved\nPASS B02 journey work-detail link is resolved through the certified bridge + governed registry (exact Daughter tuple)\nPASS B03 journey fails closed (disabled link, no guessed target) when the governed registry does not resolve the module\nPASS B04 journey installs additively as a fixed launcher (idempotent) and never touches existing DOM\nPASS B05 runtime shell bootstraps both the certified bridge and the ATL-140 journey; root index.html unchanged\nPASS B06 consumer view preserves ATL-140 labels, 7-column crosswalk, fail-closed handling, aria-live and responsive layout\nPASS B07 consumer crosswalk keeps the four ATL-140 requirements with corrected statuses; BLOCKED / fail-closed\nPASS B08 consumer surfaces read only public non-reconstructive evidence summaries (no protected/admin/generated paths)\nPASS C01 consumer model lineage equals the independently reproduced S8-3B..3E chain (WD, package, readiness, projection, flow)\nPASS C02 consumer model coverage/readiness equal the reproduced compilation and package readiness (no promotion)\nPASS C03 consumer view model is public-safe: only hashes, counts, enums and scope ids (no source ids, binding ids, handoff ids or governed text)\nPASS C04 Ask (certified 2.0.1) fails closed for LTL-04 and serves only the governed public-safe tuple for LTL-03\nPASS N01 lineage tampering fails closed (each pinned link)\nPASS N02 any promotion claim fails closed (readiness, universal execution, runtime certification, materializable, executor proof)\nPASS N03 non-public or missing summaries fail closed\nPASS N04 summary/registry fetch failures fail closed (no model, no journey target)\nPASS N05 deterministic: model and crosswalk are stable under repeated builds and input key reordering\n{\"suite\":\"s8-4-interaction-rebinding\",\"total\":34,\"passed\":34,\"failed\":0,\"caseIds\":[\"D01\",\"D02\",\"D03\",\"D04\",\"D05\",\"D06\",\"A01\",\"A02\",\"A03\",\"P01\",\"P02\",\"P03\",\"P04\",\"S01\",\"S02\",\"S03\",\"S04\",\"B01\",\"B02\",\"B03\",\"B04\",\"B05\",\"B06\",\"B07\",\"B08\",\"C01\",\"C02\",\"C03\",\"C04\",\"N01\",\"N02\",\"N03\",\"N04\",\"N05\"]}\n",
+      "stderr": ""
+    }
+  ],
+  "mutationTests": {
+    "total": 14,
+    "detected": 14,
+    "results": [
+      {
+        "id": "M01",
+        "mutation": "reintroduce ATL-142 superseded Ask API (cb2bcfea) as the live Ask API",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "D01",
+          "D05",
+          "P02"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M02",
+        "mutation": "reintroduce ATL-142 wrong root index.html",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "A03",
+          "S01",
+          "B05"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M03",
+        "mutation": "replace the certified Canvas donor (modify canvas-v2.js)",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "D03",
+          "D06",
+          "S01",
+          "S03"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M04",
+        "mutation": "replace the certified bridge with an ungoverned stub",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "D01",
+          "D04",
+          "B02",
+          "B03"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M05",
+        "mutation": "replace the certified Ask runtime with an older/modified implementation",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "D05",
+          "D06",
+          "S01"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M06",
+        "mutation": "replace certified governed retrieval",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "D01",
+          "D05"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M07",
+        "mutation": "lose the ATL-140 behavioural delta: delete the journey module",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [],
+        "detectionKind": "LOAD_ERROR",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M08",
+        "mutation": "lose the ATL-140 behavioural delta: remove the shell journey bootstrap",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "D02",
+          "B05"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M09",
+        "mutation": "lose the ATL-140 behavioural delta: drop a crosswalk column from the consumer page",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "B06"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M10",
+        "mutation": "reintroduce stale ATL-178 flow explorer page",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "P03",
+          "S01"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M11",
+        "mutation": "modify a governed S8-3E output implementation",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "P04",
+          "S01",
+          "S02"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M12",
+        "mutation": "introduce the stale WorkDefinition id into the consumer page",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "P04"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M13",
+        "mutation": "promote readiness claim in the public consumer model path (tamper S8-3D summary to READY)",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [],
+        "detectionKind": "LOAD_ERROR",
+        "result": "DETECTED"
+      },
+      {
+        "id": "M14",
+        "mutation": "delete a pinned Canvas freeze certificate",
+        "s84SuiteExitCode": 1,
+        "detectedByFailingCases": [
+          "D03",
+          "D06",
+          "S01",
+          "S03"
+        ],
+        "detectionKind": "CASE_FAILURE",
+        "result": "DETECTED"
+      }
+    ]
+  },
+  "supplementaryBrowserCheck": {
+    "tool": "playwright-chromium",
+    "baseUrl": "http://127.0.0.1:39038",
+    "status": "PASS",
+    "detail": {
+      "journeyLinks": [
+        "/daughter?moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-04",
+        "/atl-140-malkom-consumer.html#generated-flow",
+        "/atl-140-malkom-consumer.html"
+      ],
+      "crosswalkRows": 4,
+      "state": "CLIENT_BINDING_REQUIRED — projection remains blocked/fail-closed.",
+      "pageErrors": []
+    }
+  },
+  "cleanCheckout": true
+}

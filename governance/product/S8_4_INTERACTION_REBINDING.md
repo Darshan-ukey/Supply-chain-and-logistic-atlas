@@ -42,3 +42,7 @@ No Canvas redesign; no V2 scope; ATL-142 not used; the ATL-167 interaction slice
 - Pre-existing failures identical on the S8-3E base: `tests/v2-ui-browser-smoke.mjs`, `tests/v1.1.4-static-parity.mjs` (not part of the gating set).
 - QA ran on Node v22 (repo `engines` states 24.x).
 - A PR to `main` carries stacked unmerged S8 predecessors; its diff is NOT standalone merge authority.
+
+## Closure (evidence submitted for independent reconciliation; not an authority advance)
+
+Fresh clean-checkout QA 17/17 suites at tested commit `07a41138f7b52e5fe1d0c9d5989f72b9835560c5` / tree `075784fe046f4f7a55ea719809d5ccb10376ea2c` (11 inherited S8 suites + certified donor suites p2/p3/p4/p5 + v2-api-router-smoke + the 34-case S8-4 suite), plus 14/14 deliberate mutation tests detected, Node v22.22.0, linux/x64, full-branch clone. QA evidence SHA256 `3ed23c6732f97d1451e62a32be517b19697ac24fee9f9cc8e769d0d365c3fe51` (`s8-4-evidence/exact-qa.json`). Supplementary non-gating Chromium check: PASS. The S8-4 stage is a draft PR only: OPEN / DRAFT / UNMERGED; ChatGPT must independently reconcile before any stage advance. S8-3F, S8-5, S8-6 are not started.
