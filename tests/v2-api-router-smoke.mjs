@@ -7,10 +7,13 @@ check(api.length===8,`Vercel top-level function count remains 8 / <=12 · ${api.
 const auth=fs.readFileSync(path.join(root,'api/auth.js'),'utf8');
 const atlas=fs.readFileSync(path.join(root,'api/atlas.js'),'utf8');
 for(const a of ['auth-admin-login','auth-admin-session','auth-admin-logout'])check(auth.includes(a),`auth router exposes ${a}`);
-check(atlas.includes('admin-workdefinitions'),'atlas router exposes protected admin-workdefinitions action');
+for(const a of ['execution-depth-projection','governance-operational-projection','work-decomposition','admin-workdefinitions'])check(atlas.includes(a),`atlas router exposes ${a}`);
 const v=JSON.parse(fs.readFileSync(path.join(root,'vercel.json'),'utf8'));
 const rw=new Map((v.rewrites||[]).map(x=>[x.source,x.destination]));
-for(const src of ['/api/auth-admin-login','/api/auth-admin-session','/api/auth-admin-logout','/api/admin-workdefinitions','/admin'])check(rw.has(src),`Vercel rewrite present · ${src}`);
+for(const src of ['/api/auth-admin-login','/api/auth-admin-session','/api/auth-admin-logout','/api/execution-depth-projection','/api/governance-operational-projection','/api/work-decomposition','/api/admin-workdefinitions','/admin'])check(rw.has(src),`Vercel rewrite present · ${src}`);
+check(rw.get('/api/execution-depth-projection')==='/api/atlas?action=execution-depth-projection','public projection uses consolidated Atlas function');
+check(rw.get('/api/governance-operational-projection')==='/api/atlas?action=governance-operational-projection','governance projection uses consolidated Atlas function');
+check(rw.get('/api/work-decomposition')==='/api/atlas?action=work-decomposition','protected Work Decomposition boundary uses consolidated Atlas function');
 check(v.functions?.['api/*.js']?.maxDuration===30,'existing consolidated api/*.js function policy preserved');
-console.log(failures?`FAIL · ${failures} API/router check(s) failed`:'PASS · V2 API/router · 8 consolidated functions retained');
+console.log(failures?`FAIL · ${failures} API/router check(s) failed`:'PASS · V2 API/router · 8 consolidated functions retained with P2 projection routes');
 if(failures)process.exit(1);
