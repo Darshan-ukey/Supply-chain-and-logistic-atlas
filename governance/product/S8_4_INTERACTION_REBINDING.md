@@ -26,7 +26,7 @@ Prohibited and absent: ATL-142 `dba6968b…` (root `index.html` `379f988c`, WRON
 
 ## Behaviour differences from ATL-140 (corrections, not inventions)
 
-- Stale ATL-140 lineage (`wd::road-ltl::LTL-04::v1`, `malkom-dw::…::v1`, `data/generated/*ltl04*`) is replaced by the corrected S8 identity `road-ltl@1.5::LTL-04::LTL-04::ACT::02::WD` and the pinned S8-3B..3E hashes.
+- Stale ATL-140 lineage (the legacy `…::v1` WorkDefinition and package ids and the `data/generated/*ltl04*` artifacts) is replaced by the corrected S8 identity `road-ltl@1.5::LTL-04::LTL-04::ACT::02::WD` and the pinned S8-3B..3E hashes.
 - The protected package detail ATL-140 displayed (source ids, nextQuestion text, downloadable package JSON) is EXECUTION_PROTECTED after S8-3C..3E and is not republished; the view shows non-reconstructive coverage/hash evidence instead.
 - "Trace flow" targets the public generated-flow evidence section (the graph/BPMN/SVG are protected). "Road LTL work detail" targets the certified Daughter route; LTL-04 is not publicly materialized, so the Daughter and Ask surfaces fail closed (404) for LTL-04 by design.
 

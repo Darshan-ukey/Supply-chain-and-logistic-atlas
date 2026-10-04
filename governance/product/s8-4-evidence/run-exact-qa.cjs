@@ -1,4 +1,4 @@
-const fs=require('fs'),path=require('path'),cp=require('child_process'),crypto=require('crypto'),http=require('http');
+const fs=require('fs'),path=require('path'),cp=require('child_process'),crypto=require('crypto');
 const repo=path.resolve(process.argv[2]||'.'),checkout=path.resolve(process.argv[3]),output=path.resolve(process.argv[4]);
 if(!process.argv[3]||!process.argv[4])throw Error('Usage: node run-exact-qa.cjs <repo> <fresh-checkout> <evidence-output>');
 if(fs.existsSync(checkout))throw Error('Fresh checkout directory required');
@@ -42,16 +42,17 @@ for(const [id,desc,fn] of mutations){
  git(['worktree','add','--detach',wt,head],checkout);
  let r;try{fn(wt);git(['add','-A'],wt);cp.execFileSync('git',['-c','safe.directory='+wt,'-c','user.name=qa','-c','user.email=qa@example.invalid','commit','-q','-m','mutation '+id],{cwd:wt});r=run(s84,wt)}catch(e){r={exitCode:null,stdout:'',stderr:String(e.message)}}
  const failedCases=(r.stdout.match(/^FAIL (\S+)/mg)||[]).map(x=>x.slice(5));
- mutationResults.push({id,mutation:desc,s84SuiteExitCode:r.exitCode,detectedByFailingCases:failedCases,result:(r.exitCode!==0&&r.exitCode!==null&&(failedCases.length>0||/Error/.test(r.stderr)))?'DETECTED':'NOT_DETECTED'});
+ mutationResults.push({id,mutation:desc,s84SuiteExitCode:r.exitCode,detectedByFailingCases:failedCases,detectionKind:failedCases.length?'CASE_FAILURE':'LOAD_ERROR',result:(r.exitCode!==0&&r.exitCode!==null&&(failedCases.length>0||/Error/.test(r.stderr)))?'DETECTED':'NOT_DETECTED'});
  git(['worktree','remove','--force',wt],checkout);
 }
 // Supplementary non-gating browser check.
 let browser={status:'SKIPPED',detail:'harness unavailable'};
 try{
- const srv=http.createServer((q,s)=>{const u=decodeURIComponent(q.url.split('?')[0]);let f=path.join(checkout,u==='/'?'index.html':u);try{if(fs.statSync(f).isDirectory())f=path.join(f,'index.html');const b=fs.readFileSync(f);const ext=path.extname(f);s.writeHead(200,{'content-type':{'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css'}[ext]||'application/octet-stream'});s.end(b)}catch{s.writeHead(404);s.end('nf')}});
- srv.listen(0);const port=srv.address().port;
- const r=cp.spawnSync(process.execPath,[path.join(checkout,'governance/product/s8-4-evidence/e2e-smoke.mjs'),'http://127.0.0.1:'+port],{encoding:'utf8',timeout:90000});
- srv.close();try{browser=JSON.parse(r.stdout.trim().split('\n').pop())}catch{}
+ const port=39000+Math.floor(Math.random()*500);
+ const srv=cp.spawn('python3',['-m','http.server',String(port),'--bind','127.0.0.1'],{cwd:checkout,stdio:'ignore'});
+ cp.spawnSync('sleep',['1']);
+ const r=cp.spawnSync(process.execPath,[path.join(checkout,'governance/product/s8-4-evidence/e2e-smoke.mjs'),'http://127.0.0.1:'+port],{encoding:'utf8',timeout:120000});
+ srv.kill();try{browser=JSON.parse(r.stdout.trim().split('\n').pop())}catch{browser={status:'SKIPPED',detail:'no output'}}
 }catch(e){browser={status:'SKIPPED',detail:String(e.message).slice(0,200)}}
 const pass=results.every(r=>r.exitCode===0)&&clean&&mutationResults.every(m=>m.result==='DETECTED');
 const evidence={schemaVersion:'s8-4-exact-qa-v1',testedCommit:head,testedTree:git(['rev-parse',head+'^{tree}']),base:BASE,nodeVersion:process.version,platform:process.platform,architecture:process.arch,testScope:'S8-4 controlled interaction rebinding: certified donor identity, corrected ancestry, prohibited lineage (ATL-142 root/Ask), ATL-140 behaviour preservation, scope/non-promotion, fail-closed; inherited S8-2/3 suites; certified donor suites p2-p5 + api router smoke; deliberate mutation tests; no runtime/release certification',status:pass?'PASS':'FAIL',suites:{total:results.length,passed:results.filter(r=>r.exitCode===0).length},s84Suite:s84Summary,results,mutationTests:{total:mutationResults.length,detected:mutationResults.filter(m=>m.result==='DETECTED').length,results:mutationResults},supplementaryBrowserCheck:browser,cleanCheckout:clean};
