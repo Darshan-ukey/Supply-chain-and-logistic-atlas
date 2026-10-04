@@ -95,6 +95,12 @@ await test('superseded Ask copies under release/packages are detected and repres
   assert.equal(git(['hash-object', 'lib/api/ask-atlas.js']), '8fa80f9dd0b733a523aed6970269f5f32d5e64da');
   assert.equal(git(['hash-object', 'release/packages/lab/lib/api/ask-atlas.js']), 'cb2bcfea0892adf5a871fb4584461b50729ab383');
 });
+await test('S8-3F scope: changed paths vs the S8-4 final head are exactly the S8-3F implementation set (no prior-stage, Canvas, release-package or workbook change)', () => {
+  const allowed = new Set(['governance/product/S8_3F_GOVERNED_RELEASE_MANIFEST.md', 'governance/product/s8-3f-evidence/run-exact-qa.cjs', 'governance/product/s8-3f-evidence/exact-qa.json', 'lib/release/s8-release-manifest.js', 'release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json', 'scripts/s8-3f-release-manifest.mjs', 'tests/s8-3f-governed-release-manifest.test.mjs']);
+  const changed = git(['diff', '--name-status', '3ead8bd108c349ba2149063d39376c8d2a04c2f3', 'HEAD']).split('\n').filter(Boolean).map((l) => l.split('\t'));
+  for (const [st, p] of changed) { assert.equal(st, 'A', `${p}: only additions are allowed`); assert.ok(allowed.has(p), `unexpected changed path ${p}`); }
+  for (const must of ['lib/release/s8-release-manifest.js', 'release/manifests/atlas-v1.5-road-ltl-malkom-release-v1.json', 'scripts/s8-3f-release-manifest.mjs', 'tests/s8-3f-governed-release-manifest.test.mjs']) assert.ok(changed.some(([, p]) => p === must), must);
+});
 await test('release packages are untouched relative to the S8-4 base (no rewrite)', () => {
   assert.equal(git(['diff', '--name-only', '3ead8bd108c349ba2149063d39376c8d2a04c2f3', 'HEAD', '--', 'release/packages']), '');
 });
