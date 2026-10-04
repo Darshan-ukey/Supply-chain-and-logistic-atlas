@@ -1,0 +1,810 @@
+{
+  "baseCommit": "97e3086daa7b1ca694d019f0f30bb2c3150e7a6d",
+  "class": "MECHANICAL_DRIFT_CLASSIFICATION (evidence; drift is reconciled by classification and baseline regeneration, never waived; verifier not weakened)",
+  "entries": [
+    {
+      "baselineMatchedAnyCommittedRevision": false,
+      "baselineMatchedCommit": null,
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "BASELINE_VALUE_PREDATES_LINEAGE",
+      "committedRevisionCount": 6,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "b9fc4616c89a201d06af4dcf16c055ffb9b35f5d",
+      "currentSha256": "557c47575542be6de815e77c2058f5e023acfd357daa40f17754eeb0d1e88981",
+      "driftOrigin": "BASELINE_NEVER_MATCHED_A_COMMITTED_REVISION (recorded value was not produced from this lineage)",
+      "lastChangeCommit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+      "lastChangeSubject": "Atlas v2.1.0 RC1 final integrated release",
+      "oldBaselineSha256": "3c5b8817f126cef46fe2281e59cbaddd3d6a4fff5eb123947271302dfe7368f2",
+      "path": ".env.example",
+      "provenance": "ACCEPTED_BASE_RELEASE_HISTORY (pre-S8 commit inherited through the accepted S8-5B base; for ATL-181 independent audit)",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+          "sha256": "557c47575542be6de815e77c2058f5e023acfd357daa40f17754eeb0d1e88981",
+          "subject": "Atlas v2.1.0 RC1 final integrated release"
+        },
+        {
+          "commit": "58b14c7d8f3fcdb99c279caab925c39effcd378c",
+          "sha256": "ec3c46c8ea7c52a8618bb86ed45fbd28ba30221bfe14e26a821ea2c9d3d2fe63",
+          "subject": "V1.1.8"
+        },
+        {
+          "commit": "584a98bf3f4eb53e1bbaec3a0bcc00f4dd39c935",
+          "sha256": "65a153edc7a5a0f029ba77f487822e2fe8f038a3fda0b0bc007ccda7bc8c2217",
+          "subject": "v1.1.7 UI zoom fix"
+        },
+        {
+          "commit": "a5c029927b512df34c5d88f3e29fe095e7155b88",
+          "sha256": "9dadb48d2580ddbf2a2c1621818f8d5e8b20f8670ef46a6e34efeedb9365e27c",
+          "subject": "v1.6.6"
+        },
+        {
+          "commit": "86f7123f8d16fc1186bccfe7ea3c372df2466e91",
+          "sha256": "1a2b751e464b2d849c1d1b6742ddb268c074b420735750b6febf9328be8f61bb",
+          "subject": "deploy v1.1.2 hobby compatible runtime"
+        },
+        {
+          "commit": "60d0479fe317faf7b329a7fb176f0327f340c6e5",
+          "sha256": "a56fd09a6cbce886f89ab3417d5dbcfd21cddf98a9001591359c99785bff1db2",
+          "subject": "atlas-intelligence-v0.6.4-deploy"
+        }
+      ],
+      "status": "DRIFT"
+    },
+    {
+      "currentSha256": "0b50f00ab1ff21f60dc802e9bfd46945bc896a1310139b510a06a7da8b0a6e9b",
+      "oldBaselineSha256": "0b50f00ab1ff21f60dc802e9bfd46945bc896a1310139b510a06a7da8b0a6e9b",
+      "path": "ADMIN_AUTH_SETUP.md",
+      "status": "MATCH"
+    },
+    {
+      "baselineMatchedAnyCommittedRevision": false,
+      "baselineMatchedCommit": null,
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "BASELINE_VALUE_PREDATES_LINEAGE",
+      "committedRevisionCount": 1,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "c33f69dbd4d62739fc7be79110d3d160735b1537",
+      "currentSha256": "d0beb3c7310e5dce221fae1101db615ff10ef194cc1d7d5a5d6a00c114f15966",
+      "driftOrigin": "BASELINE_NEVER_MATCHED_A_COMMITTED_REVISION (recorded value was not produced from this lineage)",
+      "lastChangeCommit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+      "lastChangeSubject": "Atlas v2.1.0 RC1 final integrated release",
+      "oldBaselineSha256": "73262217d8e94ae19afd5f88cfa3b7df67793a77468acff6bfee86496abf311f",
+      "path": "admin.html",
+      "provenance": "ACCEPTED_BASE_RELEASE_HISTORY (pre-S8 commit inherited through the accepted S8-5B base; for ATL-181 independent audit)",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+          "sha256": "d0beb3c7310e5dce221fae1101db615ff10ef194cc1d7d5a5d6a00c114f15966",
+          "subject": "Atlas v2.1.0 RC1 final integrated release"
+        }
+      ],
+      "status": "DRIFT"
+    },
+    {
+      "baselineMatchedAnyCommittedRevision": false,
+      "baselineMatchedCommit": null,
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "BASELINE_VALUE_PREDATES_LINEAGE",
+      "committedRevisionCount": 4,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "60dcb85999eed6d1bbc67e52b7ef6c3667cd5709",
+      "currentSha256": "7416ae0c8950d57c242c60b2e36a722b17d160708e89a18be2680f7e3d620858",
+      "driftOrigin": "BASELINE_NEVER_MATCHED_A_COMMITTED_REVISION (recorded value was not produced from this lineage)",
+      "lastChangeCommit": "5d0a8099fd3cc11111a5a90f8e75a5ad911d52ac",
+      "lastChangeSubject": "S8-5B: ATL-167 bounded LTL-04 public-safe Deepen/Inspect (existing-knowledge lookup; same-context journey integration)",
+      "oldBaselineSha256": "39d6fc080c04c7b0478515baeb201fcd938c1d7d36cc7a78ddf26cbdf7bc57f8",
+      "path": "api/atlas.js",
+      "provenance": "ACCEPTED_S8_STAGE_COMMIT",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "5d0a8099fd3cc11111a5a90f8e75a5ad911d52ac",
+          "sha256": "7416ae0c8950d57c242c60b2e36a722b17d160708e89a18be2680f7e3d620858",
+          "subject": "S8-5B: ATL-167 bounded LTL-04 public-safe Deepen/Inspect (existing-knowledge lookup; same-context journey integration)"
+        },
+        {
+          "commit": "ea12ac0316875e4a0cbafdbc12c94095eb21924b",
+          "sha256": "4bc3a472f180f8481551c4a462ecec89d01d7f590b7ba8ac7f9dbc64ce6bce5b",
+          "subject": "S8-4: controlled interaction rebinding (certified Canvas + bridge + Ask 2.0.1 donors, ATL-140 behaviour rebound)"
+        },
+        {
+          "commit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+          "sha256": "eeb600b26009bab6fc48e9f7f9e302045e673064458b69f8d163ac0e55da8e43",
+          "subject": "Atlas v2.1.0 RC1 final integrated release"
+        },
+        {
+          "commit": "a5c029927b512df34c5d88f3e29fe095e7155b88",
+          "sha256": "0a32f32b83390408b8e20331db90bf65691937439a8fd01540b30ca25c3fa405",
+          "subject": "v1.6.6"
+        }
+      ],
+      "status": "DRIFT"
+    },
+    {
+      "currentSha256": "03f741e7e672216cdba83bddd33bd17ab73130ec7a19ddee837b7c6b07a8700d",
+      "oldBaselineSha256": "03f741e7e672216cdba83bddd33bd17ab73130ec7a19ddee837b7c6b07a8700d",
+      "path": "api/auth.js",
+      "status": "MATCH"
+    },
+    {
+      "baselineMatchedAnyCommittedRevision": true,
+      "baselineMatchedCommit": "584a98bf3f4eb53e1bbaec3a0bcc00f4dd39c935",
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "AUTHORIZED_LINEAGE_CHANGE_AFTER_BASELINE",
+      "committedRevisionCount": 9,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "eadc0bbf862132796b9564eb009cd23b55cc7282",
+      "currentSha256": "f6a5b3559c0f48c41fa1fc9b3cf6448ef3eb2531f894329e3864e5bd2a305ee4",
+      "driftOrigin": "FILE_CHANGED_AFTER_THE_MATCHING_REVISION",
+      "lastChangeCommit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+      "lastChangeSubject": "Atlas v2.1.0 RC1 final integrated release",
+      "oldBaselineSha256": "a02a92e5aa090b27e6924d4bc8fb5252bc3744822e6b4559307e3d4ee6cf7776",
+      "path": "data/atlas-registry.json",
+      "provenance": "ACCEPTED_BASE_RELEASE_HISTORY (pre-S8 commit inherited through the accepted S8-5B base; for ATL-181 independent audit)",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+          "sha256": "f6a5b3559c0f48c41fa1fc9b3cf6448ef3eb2531f894329e3864e5bd2a305ee4",
+          "subject": "Atlas v2.1.0 RC1 final integrated release"
+        },
+        {
+          "commit": "584a98bf3f4eb53e1bbaec3a0bcc00f4dd39c935",
+          "sha256": "a02a92e5aa090b27e6924d4bc8fb5252bc3744822e6b4559307e3d4ee6cf7776",
+          "subject": "v1.1.7 UI zoom fix"
+        },
+        {
+          "commit": "a5c029927b512df34c5d88f3e29fe095e7155b88",
+          "sha256": "f0b3fe8417b9844c733d2eba4f680f6bfd658f38609cb5c6ab5fcfec6326fd69",
+          "subject": "v1.6.6"
+        },
+        {
+          "commit": "010909c9c81105ff89724a684eb58200daf9612d",
+          "sha256": "b0ef4acaf1e9391f95d6bd65e65c9c1b4c1b5212aaedd4274134a8c410c56582",
+          "subject": "BO Intelligence  V1"
+        },
+        {
+          "commit": "86f7123f8d16fc1186bccfe7ea3c372df2466e91",
+          "sha256": "654f769fc82bd8cdc92128358076902e0f2e1af43ace079eec225ded2769dbf9",
+          "subject": "deploy v1.1.2 hobby compatible runtime"
+        },
+        {
+          "commit": "613b2550c62fd9ccd9bf161de1e180d71cc5cd01",
+          "sha256": null,
+          "subject": "Revert \"LTL + Spatial map V1\""
+        }
+      ],
+      "status": "DRIFT"
+    },
+    {
+      "currentSha256": "b9415084acee824546134d643c7f8d4b41e792b843d88a5ef66cb3c6db5d2de9",
+      "oldBaselineSha256": "b9415084acee824546134d643c7f8d4b41e792b843d88a5ef66cb3c6db5d2de9",
+      "path": "data/contracts/atlas-data-contract-v1.1.schema.json",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "7802793fb4fc03a16dc79a8d2714b7c69b6babe8582f74055a16445d3a5f8799",
+      "oldBaselineSha256": "7802793fb4fc03a16dc79a8d2714b7c69b6babe8582f74055a16445d3a5f8799",
+      "path": "data/contracts/domain-extension-contract-v1.schema.json",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "43cb2e69b7b4203ad8418394f3aa7050b55fa06a11939bf0909c24a494438b9c",
+      "oldBaselineSha256": "43cb2e69b7b4203ad8418394f3aa7050b55fa06a11939bf0909c24a494438b9c",
+      "path": "data/core/enterprise-core-ontology-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "0baf0a0c297ddd0740f80909df15ad44bd02128b31d24a4f0d37cdb5e0fb4094",
+      "oldBaselineSha256": "0baf0a0c297ddd0740f80909df15ad44bd02128b31d24a4f0d37cdb5e0fb4094",
+      "path": "data/crosswalks/process-concept-crosswalk-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "0d0e83159dc16bf1aa008e44b44e5325d7ef51b0e76e5c35d7270364af82d238",
+      "oldBaselineSha256": "0d0e83159dc16bf1aa008e44b44e5325d7ef51b0e76e5c35d7270364af82d238",
+      "path": "data/domain-pack-catalog.json",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "e2fb5a9eeb5c6906c3e5fd2fcf1f29d9b3e7e1a450f7346d163234cf978acab7",
+      "oldBaselineSha256": "e2fb5a9eeb5c6906c3e5fd2fcf1f29d9b3e7e1a450f7346d163234cf978acab7",
+      "path": "data/domains/supply-chain-domain-pack-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "fae7c3a5411ad0becf35078fba4f200f70f328447fe0685a793f1d9f359f653e",
+      "oldBaselineSha256": "fae7c3a5411ad0becf35078fba4f200f70f328447fe0685a793f1d9f359f653e",
+      "path": "data/governance/source-registry-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "baselineMatchedAnyCommittedRevision": true,
+      "baselineMatchedCommit": "a5c029927b512df34c5d88f3e29fe095e7155b88",
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "AUTHORIZED_LINEAGE_CHANGE_AFTER_BASELINE",
+      "committedRevisionCount": 8,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "6f02e8c78bc2acd11e52708fb576ae5c5856796a",
+      "currentSha256": "dc212a2e69591de42ba4a0dbc9581cf06b3753041f6fc8bfa3cfc9464de03b93",
+      "driftOrigin": "FILE_CHANGED_AFTER_THE_MATCHING_REVISION",
+      "lastChangeCommit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+      "lastChangeSubject": "Atlas v2.1.0 RC1 final integrated release",
+      "oldBaselineSha256": "07f5eb404336b93cd2dae2916797e8c15bb6398dafb400d5c136e2f06e3c3c5c",
+      "path": "data/module-catalog.json",
+      "provenance": "ACCEPTED_BASE_RELEASE_HISTORY (pre-S8 commit inherited through the accepted S8-5B base; for ATL-181 independent audit)",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+          "sha256": "dc212a2e69591de42ba4a0dbc9581cf06b3753041f6fc8bfa3cfc9464de03b93",
+          "subject": "Atlas v2.1.0 RC1 final integrated release"
+        },
+        {
+          "commit": "a5c029927b512df34c5d88f3e29fe095e7155b88",
+          "sha256": "07f5eb404336b93cd2dae2916797e8c15bb6398dafb400d5c136e2f06e3c3c5c",
+          "subject": "v1.6.6"
+        },
+        {
+          "commit": "010909c9c81105ff89724a684eb58200daf9612d",
+          "sha256": "c1fc3cb3bfb13089357c5a628091e7ab2d7d21aec2c0f41c282911868fb84ac4",
+          "subject": "BO Intelligence  V1"
+        },
+        {
+          "commit": "86f7123f8d16fc1186bccfe7ea3c372df2466e91",
+          "sha256": "9c8c13ce410c9f69bc8b1145bf955cfd00eef2f2496241c408260c7272adf9f4",
+          "subject": "deploy v1.1.2 hobby compatible runtime"
+        },
+        {
+          "commit": "613b2550c62fd9ccd9bf161de1e180d71cc5cd01",
+          "sha256": null,
+          "subject": "Revert \"LTL + Spatial map V1\""
+        },
+        {
+          "commit": "ac283f69dd9204521016392f1bb97c7bdcda45b1",
+          "sha256": "9c8c13ce410c9f69bc8b1145bf955cfd00eef2f2496241c408260c7272adf9f4",
+          "subject": "LTL + Spatial map V1"
+        }
+      ],
+      "status": "DRIFT"
+    },
+    {
+      "currentSha256": "2d5c78d4480bb693747bcb18a2c006b3fe0a63e6150c506e84ea3e4c5f3f6cfd",
+      "oldBaselineSha256": "2d5c78d4480bb693747bcb18a2c006b3fe0a63e6150c506e84ea3e4c5f3f6cfd",
+      "path": "data/modules/road-ltl-v1.2.json",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "c8805c194f87cd795014e4a44f362d67c921f5e0e978b9a29014befafc0fbbd0",
+      "oldBaselineSha256": "c8805c194f87cd795014e4a44f362d67c921f5e0e978b9a29014befafc0fbbd0",
+      "path": "data/page0/page0-v6.2.2.json",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "07455cba9bd6220014c33023e3cf76dd6135352c8784cb83fb69af6847eeec03",
+      "oldBaselineSha256": "07455cba9bd6220014c33023e3cf76dd6135352c8784cb83fb69af6847eeec03",
+      "path": "engine/adapters/legacy-canvas-compat.js",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "7ea6b4465d8cf3a50cb03a60a34de03d2332a8dff0fd9eb3726b89325991d4f1",
+      "oldBaselineSha256": "7ea6b4465d8cf3a50cb03a60a34de03d2332a8dff0fd9eb3726b89325991d4f1",
+      "path": "engine/adapters/supply-chain-legacy-v1.js",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "63eaf10e1c54480fe353012818ea22ed5a865f3a5adca56ea2b6a22644866251",
+      "oldBaselineSha256": "63eaf10e1c54480fe353012818ea22ed5a865f3a5adca56ea2b6a22644866251",
+      "path": "engine/domain-neutral-core.js",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "2b4a39cc90658a9cd9c827e259cddb00cf0c13f2af2f2a54a55b62a6efd62299",
+      "oldBaselineSha256": "2b4a39cc90658a9cd9c827e259cddb00cf0c13f2af2f2a54a55b62a6efd62299",
+      "path": "governance/overlay-registry-v1.1.json",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "5fd59c52f6617d7d55f862af23cac0561423babdb4085ba20f28031edf498382",
+      "oldBaselineSha256": "5fd59c52f6617d7d55f862af23cac0561423babdb4085ba20f28031edf498382",
+      "path": "governance/relationship-vocabulary-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "b2c47fbdec3fefecae6108c38c28cbf223f89561edb40c0ff1099f7717ef46c7",
+      "oldBaselineSha256": "b2c47fbdec3fefecae6108c38c28cbf223f89561edb40c0ff1099f7717ef46c7",
+      "path": "governance/rule-registry-v1.1.json",
+      "status": "MATCH"
+    },
+    {
+      "baselineMatchedAnyCommittedRevision": false,
+      "baselineMatchedCommit": null,
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "BASELINE_VALUE_PREDATES_LINEAGE",
+      "committedRevisionCount": 8,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "043802523b1618c143a0e78b88bbfb2afaa7c7dd",
+      "currentSha256": "af8fa99364683d0f48ca96d90f22ee0fccfb8fd6cd38c7c5a1d2dfcace7bdb5e",
+      "driftOrigin": "BASELINE_NEVER_MATCHED_A_COMMITTED_REVISION (recorded value was not produced from this lineage)",
+      "lastChangeCommit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+      "lastChangeSubject": "Atlas v2.1.0 RC1 final integrated release",
+      "oldBaselineSha256": "c6c780790db5365f736683db6acf2bd398d5c872248ed1fa974c83918bbba4f4",
+      "path": "index.html",
+      "provenance": "ACCEPTED_BASE_RELEASE_HISTORY (pre-S8 commit inherited through the accepted S8-5B base; for ATL-181 independent audit)",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+          "sha256": "af8fa99364683d0f48ca96d90f22ee0fccfb8fd6cd38c7c5a1d2dfcace7bdb5e",
+          "subject": "Atlas v2.1.0 RC1 final integrated release"
+        },
+        {
+          "commit": "58b14c7d8f3fcdb99c279caab925c39effcd378c",
+          "sha256": "30d4d9953f7326f2b2603e54219e1ccef12a742668f334ce1f89736fc01e6b92",
+          "subject": "V1.1.8"
+        },
+        {
+          "commit": "584a98bf3f4eb53e1bbaec3a0bcc00f4dd39c935",
+          "sha256": "c3535e343fc8db6c84d8a24ea1ee3ae1df6823a5d1e4323fb6dc2a1a853166ba",
+          "subject": "v1.1.7 UI zoom fix"
+        },
+        {
+          "commit": "a5c029927b512df34c5d88f3e29fe095e7155b88",
+          "sha256": "c63ed39ca929f283b3bf5ae16b0bdc18af03b32b6df1f9cae99b7d3cccdf0f9e",
+          "subject": "v1.6.6"
+        },
+        {
+          "commit": "010909c9c81105ff89724a684eb58200daf9612d",
+          "sha256": "0789afb1cd49a3ca097b5e1b190a7790b889499e4a7d228912016d5731afe522",
+          "subject": "BO Intelligence  V1"
+        },
+        {
+          "commit": "86f7123f8d16fc1186bccfe7ea3c372df2466e91",
+          "sha256": "8df44bbd55290d8cb74ddf988fbc552e49a38d40e9824451d19a12c1a1529cc1",
+          "subject": "deploy v1.1.2 hobby compatible runtime"
+        }
+      ],
+      "status": "DRIFT"
+    },
+    {
+      "currentSha256": "a5fd0c48e0bbee6b4fd39fd8889872790f7a0dd26dc5762da750b54906d1fa4c",
+      "oldBaselineSha256": "a5fd0c48e0bbee6b4fd39fd8889872790f7a0dd26dc5762da750b54906d1fa4c",
+      "path": "legacy-reference-client.js",
+      "status": "MATCH"
+    },
+    {
+      "baselineMatchedAnyCommittedRevision": false,
+      "baselineMatchedCommit": null,
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "BASELINE_VALUE_PREDATES_LINEAGE",
+      "committedRevisionCount": 3,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "fb66b79b4846f5f2f29cba7564148f9cea5d4236",
+      "currentSha256": "d8c93454745fafefe33fad4c04bf7b228551f7249f5f0fa15bb9e1b65fecef17",
+      "driftOrigin": "BASELINE_NEVER_MATCHED_A_COMMITTED_REVISION (recorded value was not produced from this lineage)",
+      "lastChangeCommit": "ea12ac0316875e4a0cbafdbc12c94095eb21924b",
+      "lastChangeSubject": "S8-4: controlled interaction rebinding (certified Canvas + bridge + Ask 2.0.1 donors, ATL-140 behaviour rebound)",
+      "oldBaselineSha256": "4aae3becbd8ab6de440d03dd30455a9361636ca2d13043e19601315e1b07502e",
+      "path": "lib/api/_utils.js",
+      "provenance": "ACCEPTED_S8_STAGE_COMMIT",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "ea12ac0316875e4a0cbafdbc12c94095eb21924b",
+          "sha256": "d8c93454745fafefe33fad4c04bf7b228551f7249f5f0fa15bb9e1b65fecef17",
+          "subject": "S8-4: controlled interaction rebinding (certified Canvas + bridge + Ask 2.0.1 donors, ATL-140 behaviour rebound)"
+        },
+        {
+          "commit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+          "sha256": "d3d2db32e2ebb000d8d479edc7fc286f5c0d15cb175d43d77c13eb2b99efa834",
+          "subject": "Atlas v2.1.0 RC1 final integrated release"
+        },
+        {
+          "commit": "a5c029927b512df34c5d88f3e29fe095e7155b88",
+          "sha256": "653cb195a17e2f147603d44349b6ceb6c36a2f16dbb4081ec042179f0baaf9ce",
+          "subject": "v1.6.6"
+        }
+      ],
+      "status": "DRIFT"
+    },
+    {
+      "baselineMatchedAnyCommittedRevision": true,
+      "baselineMatchedCommit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "AUTHORIZED_LINEAGE_CHANGE_AFTER_BASELINE",
+      "committedRevisionCount": 2,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "111425af7501ecd6592a7b858f9390430d18ba7b",
+      "currentSha256": "218c6c69d9a7cf2e2545c45611bc1c588f6d5e2403cb71055f4b2af8e012f551",
+      "driftOrigin": "FILE_CHANGED_AFTER_THE_MATCHING_REVISION",
+      "lastChangeCommit": "ea12ac0316875e4a0cbafdbc12c94095eb21924b",
+      "lastChangeSubject": "S8-4: controlled interaction rebinding (certified Canvas + bridge + Ask 2.0.1 donors, ATL-140 behaviour rebound)",
+      "oldBaselineSha256": "e5977b26e5a3f73863e19415ff7cc0c699292a2fbbd1db2af80b622e37e9a8f6",
+      "path": "lib/api/admin-workdefinitions.js",
+      "provenance": "ACCEPTED_S8_STAGE_COMMIT",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "ea12ac0316875e4a0cbafdbc12c94095eb21924b",
+          "sha256": "218c6c69d9a7cf2e2545c45611bc1c588f6d5e2403cb71055f4b2af8e012f551",
+          "subject": "S8-4: controlled interaction rebinding (certified Canvas + bridge + Ask 2.0.1 donors, ATL-140 behaviour rebound)"
+        },
+        {
+          "commit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+          "sha256": "e5977b26e5a3f73863e19415ff7cc0c699292a2fbbd1db2af80b622e37e9a8f6",
+          "subject": "Atlas v2.1.0 RC1 final integrated release"
+        }
+      ],
+      "status": "DRIFT"
+    },
+    {
+      "currentSha256": "9f81879d56a45e593a8b0bcbc7e7f1daf7f20f6a1ad56b2ab325bc225682901b",
+      "oldBaselineSha256": "9f81879d56a45e593a8b0bcbc7e7f1daf7f20f6a1ad56b2ab325bc225682901b",
+      "path": "lib/api/auth-admin-login.js",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "8864533b70657fc2f37044de1cd44a2a03bb4f2ae4ff492538b7c245bcf5a2c5",
+      "oldBaselineSha256": "8864533b70657fc2f37044de1cd44a2a03bb4f2ae4ff492538b7c245bcf5a2c5",
+      "path": "lib/api/auth-admin-logout.js",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "6a6d4505c81bed24cb117280779a8814e38c8899e521f6a473beb28799cdb8db",
+      "oldBaselineSha256": "6a6d4505c81bed24cb117280779a8814e38c8899e521f6a473beb28799cdb8db",
+      "path": "lib/api/auth-admin-session.js",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "6e197333ac2f5dba0752d30cda4cdf756fc551f4e9c0e6e3c5c1657e7790beca",
+      "oldBaselineSha256": "6e197333ac2f5dba0752d30cda4cdf756fc551f4e9c0e6e3c5c1657e7790beca",
+      "path": "lib/api/release-integrity.js",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "0a8d62d2ed6a9af941f370aa87606b1eeaac4fb0b502f3495bb7c6fe88baf3ba",
+      "oldBaselineSha256": "0a8d62d2ed6a9af941f370aa87606b1eeaac4fb0b502f3495bb7c6fe88baf3ba",
+      "path": "migrations/v2-admin-workdefinitions.sql",
+      "status": "MATCH"
+    },
+    {
+      "baselineMatchedAnyCommittedRevision": false,
+      "baselineMatchedCommit": null,
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "BASELINE_VALUE_PREDATES_LINEAGE",
+      "committedRevisionCount": 13,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "6c6079def82c37b37e32bce61fcd543dd80d5832",
+      "currentSha256": "e134de29c8e3eab772ed3308859418e38f3ccc4ed400fc1aba7b163fd11f5895",
+      "driftOrigin": "BASELINE_NEVER_MATCHED_A_COMMITTED_REVISION (recorded value was not produced from this lineage)",
+      "lastChangeCommit": "ea12ac0316875e4a0cbafdbc12c94095eb21924b",
+      "lastChangeSubject": "S8-4: controlled interaction rebinding (certified Canvas + bridge + Ask 2.0.1 donors, ATL-140 behaviour rebound)",
+      "oldBaselineSha256": "24506ecb3fc93a6b3e021af5f76a65bbeebac5f47cc9b5ce2b938ee2c8a01c3e",
+      "path": "package.json",
+      "provenance": "ACCEPTED_S8_STAGE_COMMIT",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "ea12ac0316875e4a0cbafdbc12c94095eb21924b",
+          "sha256": "e134de29c8e3eab772ed3308859418e38f3ccc4ed400fc1aba7b163fd11f5895",
+          "subject": "S8-4: controlled interaction rebinding (certified Canvas + bridge + Ask 2.0.1 donors, ATL-140 behaviour rebound)"
+        },
+        {
+          "commit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+          "sha256": "09752b3a4dda94c4e83883586850dc304dd98be45a6d62a024c7c282a43c109e",
+          "subject": "Atlas v2.1.0 RC1 final integrated release"
+        },
+        {
+          "commit": "58b14c7d8f3fcdb99c279caab925c39effcd378c",
+          "sha256": "1825a296adecd643eaf11c2ac1093341829b6a3a2ca8f6cc2504e99b721d2775",
+          "subject": "V1.1.8"
+        },
+        {
+          "commit": "584a98bf3f4eb53e1bbaec3a0bcc00f4dd39c935",
+          "sha256": "be45ea2c20d6ee24b0fe8f6d875d675470e303e2585c524ee8a972d5d9b1a3ef",
+          "subject": "v1.1.7 UI zoom fix"
+        },
+        {
+          "commit": "a5c029927b512df34c5d88f3e29fe095e7155b88",
+          "sha256": "ef4d9f72846db40ec081f1d1d2bd283d923288a31a7fc5261232c7b737fad010",
+          "subject": "v1.6.6"
+        },
+        {
+          "commit": "010909c9c81105ff89724a684eb58200daf9612d",
+          "sha256": "270a33942aed7e0415bb1f191d7559fdd29333e0a74d63c9ece25e0b4deb413e",
+          "subject": "BO Intelligence  V1"
+        }
+      ],
+      "status": "DRIFT"
+    },
+    {
+      "currentSha256": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747",
+      "oldBaselineSha256": "70850a00baac10253d263e41465ab80fe3a0e4c269e6d06391e6a4f333af2747",
+      "path": "reference/legacy-v0.6.6/page0-road-ltl-v1.2-integrated-frozen.html",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
+      "oldBaselineSha256": "47a111bd72f8524ee1c1f2d67b85d6958156c5f1026659e9769f1c6a28639002",
+      "path": "reference/legacy-v0.6.6/page0-v6.2.2-frozen.html",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "45ea5ad55c6f0103bdb70ee33c05e2ca68587d98453a8c0c2c160e67d51e73c7",
+      "oldBaselineSha256": "45ea5ad55c6f0103bdb70ee33c05e2ca68587d98453a8c0c2c160e67d51e73c7",
+      "path": "reference/legacy-v0.6.6/page0-v6.2.3.html",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "a75ca386b0048af94aa8f8f9ea726dbe10f3c819c602d90daff4f90ddf942c92",
+      "oldBaselineSha256": "a75ca386b0048af94aa8f8f9ea726dbe10f3c819c602d90daff4f90ddf942c92",
+      "path": "reference/legacy-v0.6.6/road-ltl-v1.2.html",
+      "status": "MATCH"
+    },
+    {
+      "baselineMatchedAnyCommittedRevision": false,
+      "baselineMatchedCommit": null,
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "BASELINE_VALUE_PREDATES_LINEAGE",
+      "committedRevisionCount": 5,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "ed41cf8a7a7b29c365d6308aadfb5b25ad8353df",
+      "currentSha256": "e8b3cb66971983d653c58d613087f4359124bf0846db96f278f817ba65239ab2",
+      "driftOrigin": "BASELINE_NEVER_MATCHED_A_COMMITTED_REVISION (recorded value was not produced from this lineage)",
+      "lastChangeCommit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+      "lastChangeSubject": "Atlas v2.1.0 RC1 final integrated release",
+      "oldBaselineSha256": "143f1d45fe216ecaa17a4d3c6abc39099bedde041a32df7e42c5889e265d40a2",
+      "path": "release/release-meta.js",
+      "provenance": "ACCEPTED_BASE_RELEASE_HISTORY (pre-S8 commit inherited through the accepted S8-5B base; for ATL-181 independent audit)",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+          "sha256": "e8b3cb66971983d653c58d613087f4359124bf0846db96f278f817ba65239ab2",
+          "subject": "Atlas v2.1.0 RC1 final integrated release"
+        },
+        {
+          "commit": "58b14c7d8f3fcdb99c279caab925c39effcd378c",
+          "sha256": "d81a11b8a6fa36cb12d766bb2c3d37356322b93283f2bbf4a24ca52ab3780f31",
+          "subject": "V1.1.8"
+        },
+        {
+          "commit": "584a98bf3f4eb53e1bbaec3a0bcc00f4dd39c935",
+          "sha256": "2dd29cbf54305efa2bfcc74e62b9e1574bcf33d366597358b3e5bb25f0fc0a1d",
+          "subject": "v1.1.7 UI zoom fix"
+        },
+        {
+          "commit": "a5c029927b512df34c5d88f3e29fe095e7155b88",
+          "sha256": "1a9054b9dc1e31d67c77b1e1802227c277a37f4d22a3609706ff41638642f4c6",
+          "subject": "v1.6.6"
+        },
+        {
+          "commit": "010909c9c81105ff89724a684eb58200daf9612d",
+          "sha256": "8c162ddcba1e3ac781695e762b99c1f4adb94f87c725dea5d7cce376e7bd6299",
+          "subject": "BO Intelligence  V1"
+        }
+      ],
+      "status": "DRIFT"
+    },
+    {
+      "currentSha256": "18a44e30c9960bd04d4e28383b9caa992303fdfadf4e981c9f650117febe32b2",
+      "oldBaselineSha256": "18a44e30c9960bd04d4e28383b9caa992303fdfadf4e981c9f650117febe32b2",
+      "path": "scripts/seed-v2-workdefinitions.mjs",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "c5b29ceb9eb365541d0598cfd9f59a134ed866a9bd0c21bcbf03ee460c64f35d",
+      "oldBaselineSha256": "c5b29ceb9eb365541d0598cfd9f59a134ed866a9bd0c21bcbf03ee460c64f35d",
+      "path": "stage17-client.js",
+      "status": "MATCH"
+    },
+    {
+      "baselineMatchedAnyCommittedRevision": true,
+      "baselineMatchedCommit": "a5c029927b512df34c5d88f3e29fe095e7155b88",
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "AUTHORIZED_LINEAGE_CHANGE_AFTER_BASELINE",
+      "committedRevisionCount": 4,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "f78c34e721aaa7f04a54ea77a65815c1670ffcee",
+      "currentSha256": "6d818b2048ad80e0e2bc7d80aee95d28d822d02848705985091f5a52ec39d899",
+      "driftOrigin": "FILE_CHANGED_AFTER_THE_MATCHING_REVISION",
+      "lastChangeCommit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+      "lastChangeSubject": "Atlas v2.1.0 RC1 final integrated release",
+      "oldBaselineSha256": "52170214df14f9412db05682195d7c5a26a6fb691eb5d1e25a044913490259f1",
+      "path": "stage18-client.js",
+      "provenance": "ACCEPTED_BASE_RELEASE_HISTORY (pre-S8 commit inherited through the accepted S8-5B base; for ATL-181 independent audit)",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "659177be263df24728f31a8e342a5e8ac0f51b7e",
+          "sha256": "6d818b2048ad80e0e2bc7d80aee95d28d822d02848705985091f5a52ec39d899",
+          "subject": "Atlas v2.1.0 RC1 final integrated release"
+        },
+        {
+          "commit": "58b14c7d8f3fcdb99c279caab925c39effcd378c",
+          "sha256": "6e269df37787cb835c9af267dbda0860b7f0bc66c606a55a82d7377bbc315594",
+          "subject": "V1.1.8"
+        },
+        {
+          "commit": "a5c029927b512df34c5d88f3e29fe095e7155b88",
+          "sha256": "52170214df14f9412db05682195d7c5a26a6fb691eb5d1e25a044913490259f1",
+          "subject": "v1.6.6"
+        },
+        {
+          "commit": "010909c9c81105ff89724a684eb58200daf9612d",
+          "sha256": "ce9e075f1cc455d3ff75196d08ea46e3af1b0ef81b9c8d267bb9bfdba3231150",
+          "subject": "BO Intelligence  V1"
+        }
+      ],
+      "status": "DRIFT"
+    },
+    {
+      "currentSha256": "f1c92dd1c09eb3714a7cf204f125221ca31156dbc3e148846866442c810dffaa",
+      "oldBaselineSha256": "f1c92dd1c09eb3714a7cf204f125221ca31156dbc3e148846866442c810dffaa",
+      "path": "stage19-client.js",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "86f707a669edb2ec8a1cd58e4de399f6b46147455fa6e596172c025e22f45e67",
+      "oldBaselineSha256": "86f707a669edb2ec8a1cd58e4de399f6b46147455fa6e596172c025e22f45e67",
+      "path": "stage20-client.js",
+      "status": "MATCH"
+    },
+    {
+      "currentSha256": "b1d0c420efb31bba3a9cadd31cf0bdafa51d79563d5615268db66068451ab5a7",
+      "oldBaselineSha256": "b1d0c420efb31bba3a9cadd31cf0bdafa51d79563d5615268db66068451ab5a7",
+      "path": "stage21-client.js",
+      "status": "MATCH"
+    },
+    {
+      "baselineMatchedAnyCommittedRevision": false,
+      "baselineMatchedCommit": null,
+      "checks": {
+        "authorized": true,
+        "inRc": true,
+        "notAccidental": true,
+        "notStale": true,
+        "tracked": true
+      },
+      "classification": "BASELINE_VALUE_PREDATES_LINEAGE",
+      "committedRevisionCount": 18,
+      "currentEqualsBaseCommitRevision": true,
+      "currentGitBlob": "d526663b52aa8cf5d2531e8ae617f284c6384242",
+      "currentSha256": "90faee1b94c6a595f002b6da74940b0c5b6158e96d9164c67e1cf8ea4453ea9c",
+      "driftOrigin": "BASELINE_NEVER_MATCHED_A_COMMITTED_REVISION (recorded value was not produced from this lineage)",
+      "lastChangeCommit": "ea12ac0316875e4a0cbafdbc12c94095eb21924b",
+      "lastChangeSubject": "S8-4: controlled interaction rebinding (certified Canvas + bridge + Ask 2.0.1 donors, ATL-140 behaviour rebound)",
+      "oldBaselineSha256": "942c4557de25119b6e35ba30b0586e118593ffd2b64edd8319660a0438ad52f1",
+      "path": "vercel.json",
+      "provenance": "ACCEPTED_S8_STAGE_COMMIT",
+      "reconciled": true,
+      "revisionChain": [
+        {
+          "commit": "ea12ac0316875e4a0cbafdbc12c94095eb21924b",
+          "sha256": "90faee1b94c6a595f002b6da74940b0c5b6158e96d9164c67e1cf8ea4453ea9c",
+          "subject": "S8-4: controlled interaction rebinding (certified Canvas + bridge + Ask 2.0.1 donors, ATL-140 behaviour rebound)"
+        },
+        {
+          "commit": "7937e3726b1b4fda87fef5cae1f7b693a41d3463",
+          "sha256": "4a203e993519355b9b167991a24eab4b93115cf6cc21a6fc8332fb772780700b",
+          "subject": "S8-2E: remove temporary preview verification hook after PASS"
+        },
+        {
+          "commit": "1aaf8f1ff89d7191f1e1afefb59f6923f5e73df9",
+          "sha256": "0e0e0045c2e1a7c44ed72aff6f8962480dbbe58329d288686a1f2f01eab1572e",
+          "subject": "S8-2E verification only: execute ATL-159 conformance regression"
+        },
+        {
+          "commit": "269e31127afa84397917a32befc901c276bce92d",
+          "sha256": "4a203e993519355b9b167991a24eab4b93115cf6cc21a6fc8332fb772780700b",
+          "subject": "S8-2D: remove temporary preview verification hook after PASS"
+        },
+        {
+          "commit": "0ec14b88a284aea1591ffc6ea410f03e67b22990",
+          "sha256": "d48471dc866b1abe6599ca50e1ce4c24aea9eada2203198d779244fcb2dcd7e6",
+          "subject": "S8-2D verification only: execute binding schema regression"
+        },
+        {
+          "commit": "ddc5304a09e7fe371d3deba4c7fba80e2888e4d9",
+          "sha256": "4a203e993519355b9b167991a24eab4b93115cf6cc21a6fc8332fb772780700b",
+          "subject": "S8-2C: remove temporary preview verification hook after PASS"
+        }
+      ],
+      "status": "DRIFT"
+    }
+  ],
+  "preBaseline": {
+    "fileCount": 44,
+    "gitBlobAtBase": "1c4e7f34327817b7ed16e96b901392049f57b989",
+    "path": "release/baselines/v2-critical-hashes.json"
+  },
+  "rules": [
+    "authorized: the last change is a commit that is an ancestor of the accepted S8-5B final evidence head (the accepted base) - never a post-base or unexplained change",
+    "inRc: the file is tracked and present in the RC tree",
+    "notStale: the file does not carry the stale WD lineage marker",
+    "notAccidental: the change is attributable to a recorded commit with a stage subject",
+    "a drift entry that fails any check is UNEXPLAINED and blocks generation"
+  ],
+  "schemaVersion": "s8-6-release-integrity-drift-reconciliation-v1",
+  "summary": {
+    "allReconciled": true,
+    "byClassification": {
+      "AUTHORIZED_LINEAGE_CHANGE_AFTER_BASELINE": 4,
+      "BASELINE_VALUE_PREDATES_LINEAGE": 8
+    },
+    "driftCount": 12,
+    "matchCount": 32,
+    "preBaselineFileCount": 44,
+    "unexplainedCount": 0,
+    "unexplainedPaths": []
+  }
+}

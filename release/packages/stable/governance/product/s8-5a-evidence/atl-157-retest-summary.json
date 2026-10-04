@@ -1,0 +1,65 @@
+{
+  "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+  "correctedInputs": {
+    "generator": "scripts/materialize-operational-semantics-v1.cjs",
+    "provenanceBlob": "25cd876658c2de42445ca49eab80abe003eceea2",
+    "registryBlob": "6beaa755b5046d577b3211cd48ddccbe81f8475c",
+    "semanticsDocSha256": "c268f76b1afaf5f5a7f43375cf359909f561a1e66cb8f048b00021147cf0542f",
+    "semanticsRecordHash": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576",
+    "semanticsRecordPin": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576",
+    "semanticsStatus": "S8_REMEDIATED_CANDIDATE"
+  },
+  "differentialVsHistoricalSemantics": {
+    "candidatesIdentical": true,
+    "differingOutputPaths": [
+      "moduleVersion"
+    ],
+    "historicalSemanticsBlob": "3de9d96e1eb0bc09851c8bcfb551913e57bb6614",
+    "outputSha256": "28ae1f4715574a003683c8c0624dbb27ff8319b3a06fd38463590a13347f7d8a"
+  },
+  "historicalIdentity": {
+    "authority": "S6-LIN-032 / S7-IMP-018",
+    "branch": "atl-157-v15-bounded-depth",
+    "commit": "770ae4ab9865ae924dd4badb4df6b16f16e52531",
+    "fixtureClassification": "HISTORICAL_TEST_FIXTURE_NOT_PRODUCT",
+    "fixtureDir": "tests/fixtures/s8-5a/atl-157-historical",
+    "fixtures": {
+      "atl-157-bounded-depth.test.cjs": "a254a7a611b2c2881c35e44f5c5c19e085ef41ff",
+      "atl-157-machine-trigger-reject.json": "c79ecf1cf04b9d46ed0197b3d1f4d490f3ba7c3f",
+      "atl-157-road-ltl-depth-request.json": "8e34f2e4a021d084e7f5509b67146c0a2895bbd0",
+      "atlas-bounded-depth-v1.json": "86f1a82a231ed13c50fccc49d6377e25c34e7e80",
+      "materialize-bounded-depth-v1.cjs": "348f4c48c7ce58ef629d0660e3ea3281537679ae"
+    }
+  },
+  "historicalTest": {
+    "exit": 0,
+    "passLine": "PASS ATL-157 bounded human-triggered depth: 6 provenanced candidates"
+  },
+  "notes": [
+    "Semantic field content of the LTL-04 record is identical between the historical (ATL-171) and corrected (S8-2A) semantics; the corrected record adds record-level moduleVersion and governingLineage, and the document-level moduleVersion is 1.5 (historical 1.2), which is the only difference in the materializer output.",
+    "ATL-157 is not present in the successor product tree and is not introduced into it."
+  ],
+  "passMeans": "The historical ATL-157 bounded-depth mechanism remains compatible with the corrected S8 semantics/input lineage. It is NOT a shipped successor component and no ATL-157 product implementation was introduced.",
+  "result": "PASS",
+  "schemaVersion": "s8-5a-atl-157-retest-summary-v1",
+  "successorOutput": {
+    "candidateCount": 6,
+    "candidateFields": [
+      "decision",
+      "rule",
+      "control",
+      "action",
+      "evidence",
+      "outcome"
+    ],
+    "canonicalMutation": false,
+    "canonicalPromotion": "NOT_PERFORMED",
+    "deterministic": true,
+    "gapCount": 0,
+    "moduleId": "road-ltl",
+    "outputSha256": "bd79b0feb21edfb31a86cb75f69f2e490c4f4dc3d1ce8921453527590e373e61",
+    "persistenceDisposition": "CANDIDATE_OVERLAY_READY_FOR_HUMAN_APPROVAL",
+    "processId": "LTL-04",
+    "sandboxUnchanged": true
+  }
+}

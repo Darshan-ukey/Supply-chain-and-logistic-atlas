@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas.local/schemas/atlas-client-binding-set-v1.schema.json",
+  "title": "Atlas v1.5 Client Binding Set — S8 governed compatibility",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "status",
+    "bounded",
+    "moduleId",
+    "processId",
+    "semanticRecordId",
+    "semanticModuleVersion",
+    "workDefinitionContext",
+    "governingContract",
+    "canonicalTruthMutation",
+    "bindings",
+    "readiness",
+    "consumerProjection"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "atlas-client-binding-set-v1.1"
+    },
+    "status": {
+      "const": "S8_REMEDIATED_CANDIDATE"
+    },
+    "bounded": {
+      "const": true
+    },
+    "moduleId": {
+      "const": "road-ltl"
+    },
+    "processId": {
+      "const": "LTL-04"
+    },
+    "semanticRecordId": {
+      "const": "road-ltl::LTL-04::operational-semantics::v1"
+    },
+    "semanticModuleVersion": {
+      "const": "1.5"
+    },
+    "workDefinitionContext": {
+      "type": "object",
+      "required": [
+        "targetId",
+        "state",
+        "canonicalMutation"
+      ],
+      "properties": {
+        "targetId": {
+          "const": "wd::road-ltl::LTL-04::v1"
+        },
+        "state": {
+          "const": "CORRECTED_CONTEXT_REQUIRED_BEFORE_S8_3_REGENERATION"
+        },
+        "canonicalMutation": {
+          "const": false
+        }
+      }
+    },
+    "governingContract": {
+      "const": "schemas/client-binding-requirement-v1.json"
+    },
+    "canonicalTruthMutation": {
+      "const": false
+    },
+    "bindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "bindingId",
+          "taskId",
+          "bindingObject",
+          "bindingType",
+          "requiredWhen",
+          "why",
+          "valueOrigin",
+          "validation",
+          "sourceRefs",
+          "basis",
+          "systemOfRecord",
+          "clientFieldMapping",
+          "authorityOwner",
+          "collectionQuestion",
+          "resolutionStatus",
+          "resolution"
+        ],
+        "properties": {
+          "bindingId": {
+            "type": "string",
+            "pattern": "^binding::road-ltl::LTL-04::"
+          },
+          "taskId": {
+            "const": "LTL-04"
+          },
+          "bindingObject": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bindingType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredWhen": {
+            "type": "string",
+            "minLength": 1
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1
+          },
+          "valueOrigin": {
+            "type": "string",
+            "minLength": 1
+          },
+          "validation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sourceRefs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 1
+          },
+          "systemOfRecord": {
+            "type": "string",
+            "minLength": 1
+          },
+          "clientFieldMapping": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "authorityOwner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "collectionQuestion": {
+            "type": "string",
+            "minLength": 1
+          },
+          "resolutionStatus": {
+            "enum": [
+              "CLIENT_BINDING_REQUIRED",
+              "RESOLVED"
+            ]
+          },
+          "resolution": {
+            "type": "object",
+            "required": [
+              "state",
+              "method",
+              "value",
+              "evidenceIds"
+            ],
+            "properties": {
+              "state": {
+                "enum": [
+                  "CLIENT_BINDING_REQUIRED",
+                  "RESOLVED"
+                ]
+              },
+              "method": {
+                "enum": [
+                  "NOT_RESOLVED",
+                  "GOVERNED_MANUAL"
+                ]
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "evidenceIds": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "required": [
+        "state",
+        "resolvedCount",
+        "unresolvedCount",
+        "failClosed"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "CLIENT_BINDING_REQUIRED",
+            "READY"
+          ]
+        },
+        "resolvedCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolvedCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failClosed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "consumerProjection": {
+      "type": "object",
+      "required": [
+        "consumer",
+        "bindingState",
+        "canonicalMutation",
+        "resolvedBindingIds",
+        "unresolvedBindingIds"
+      ],
+      "properties": {
+        "consumer": {
+          "const": "MALKOM"
+        },
+        "bindingState": {
+          "enum": [
+            "CLIENT_BINDING_REQUIRED",
+            "READY"
+          ]
+        },
+        "canonicalMutation": {
+          "const": false
+        },
+        "resolvedBindingIds": {
+          "type": "array"
+        },
+        "unresolvedBindingIds": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

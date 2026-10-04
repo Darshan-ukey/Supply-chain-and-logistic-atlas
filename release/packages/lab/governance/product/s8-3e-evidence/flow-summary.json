@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "s8-3e-flow-evidence-v1",
+  "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+  "detailIncluded": false,
+  "flowSchemaVersion": "atlas-flow-graph-v1.5-s8-3e",
+  "inputHashes": {
+    "wd": "fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61",
+    "package": "6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367",
+    "readiness": "c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617",
+    "projection": "703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c",
+    "binding": "2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9",
+    "semantics": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576",
+    "sourceReleaseTip": "97459a5e06abda96cbe3b2a121dfbee3a0bcf41e"
+  },
+  "workDefinitionId": "road-ltl@1.5::LTL-04::LTL-04::ACT::02::WD",
+  "artifactIdentities": {
+    "graphHash": "dfad5a029ce830e4c1bff68ea1a9ac7f482315c619495a7295aef3c50abe408e",
+    "flowViewSha256": "1b3839e0bde5e92216373b9ff232a5d20de5e84a7c25250f7d4ce4b93dbaba6f",
+    "bpmnSha256": "1ede708543a8906333646f010b082446ec75dbf371337ad6069481c4958dfd61",
+    "svgSha256": "dbd7d34f978d21a7f81059b58b6de6cac78c89c66c047af6bf98c71ead237482"
+  },
+  "counts": {
+    "nodes": 7,
+    "edges": 6,
+    "declaredPaths": 4,
+    "blockedLeaves": 4,
+    "unsupportedDispositions": 6,
+    "bpmnShapes": 7,
+    "bpmnEdges": 6
+  },
+  "bpmnValidation": {
+    "valid": true,
+    "validator": "lib/compile/s8-bpmn-structure.js",
+    "scope": "BOUNDED_BPMN_2_0_STRUCTURAL"
+  },
+  "boundary": {
+    "canonicalMutation": false,
+    "deterministic": true,
+    "runtimeReadiness": "NOT_PROMOTED",
+    "runtimeOrchestration": "STOP_BOUNDARY",
+    "universalExecutionReady": false,
+    "materializable": false,
+    "runtimeCertification": false,
+    "malkomQueueStructuresCanonical": false
+  },
+  "qa": {
+    "caseIds": [
+      "G01",
+      "G02",
+      "G03",
+      "G04",
+      "L01",
+      "L02",
+      "L03",
+      "L04",
+      "L05",
+      "P01",
+      "P02",
+      "P03",
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "F06",
+      "F07",
+      "F08",
+      "F09",
+      "F10",
+      "D01",
+      "D02",
+      "D03",
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "S01",
+      "S02",
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "E01"
+    ],
+    "caseCount": 36
+  }
+}

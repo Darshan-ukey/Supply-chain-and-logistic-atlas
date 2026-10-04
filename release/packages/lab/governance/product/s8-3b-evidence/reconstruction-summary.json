@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "s8-ltl04-source-reconstruction-evidence-v1",
+  "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+  "detailIncluded": false,
+  "sourcePin": {
+    "commit": "662c7847d3839c1ffd95dc8589d3d0d6ac100d67",
+    "path": "data/modules/road-ltl-v1.4.json",
+    "blob": "d06974e9ee86cea59227e0866a98ad5d1367bfad",
+    "taskHash": "b0bee64f418dcf99ccd60480c86dcd9dcd066231fe72ab7033c80994922b4e65",
+    "semanticSourceVersion": "1.4"
+  },
+  "semanticRecordHash": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576",
+  "bindingHash": "2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9",
+  "inputHash": "c07bdba4beaa4e229d8958651f318ad5d1386e846fdd120f414e74a6f3898f5b",
+  "outputHash": "fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61",
+  "deterministicReconstruction": true,
+  "deterministicCompilation": true,
+  "schemaAndCompilerValidation": "PASS",
+  "sourceNonMutation": true,
+  "historicalEquivalenceClaimed": false,
+  "totals": {
+    "taskCount": 1,
+    "workUnitCount": 7,
+    "leafCount": 5,
+    "workDefinitionCount": 1,
+    "notCompiledLeafCount": 4,
+    "blockedByClientBindingLeafCount": 2,
+    "blockedByKnowledgeGapLeafCount": 2,
+    "fullyCompiledTaskCount": 0
+  },
+  "compiledSourceWorkUnitIds": [
+    "LTL-04::ACT::02"
+  ],
+  "compiledDefinitionsCarryValues": false,
+  "stageAcceptance": "PASS",
+  "stageStatus": "S8-3B_COMPLETE_PASS",
+  "protection": "Full envelope and output remain outside public repository",
+  "negativeCasesPassed": 2
+}
+

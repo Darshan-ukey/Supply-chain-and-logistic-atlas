@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "atlas-daughter-module-versioned-overlay-v1",
+  "moduleId": "road-ltl",
+  "version": "1.5",
+  "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+  "freezeScope": "IMMUTABLE_REFERENCE_CANDIDATE_NOT_PRODUCTION_PROMOTION",
+  "representation": "LOSSLESS_VERSIONED_OVERLAY",
+  "baseAsset": {
+    "assetId": "road-ltl-1.4-candidate",
+    "version": "1.4",
+    "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+    "artifactPath": "data/modules/road-ltl-v1.4.json",
+    "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4"
+  },
+  "materializationPolicy": {
+    "method": "LOSSLESS_INHERIT_BASE_THEN_APPLY_OVERRIDES",
+    "preserveAllUnchangedBaseContent": true,
+    "changedTaskIds": ["LTL-03"],
+    "taskIdentityChanges": [],
+    "page0OrUniverseChangeRequired": false,
+    "universeVersion": "7.3",
+    "note": "Effective Road LTL v1.5 equals frozen Road LTL v1.4 plus the governed LTL-03 enrichment in this file. All other v1.4 task/object/source content is inherited unchanged."
+  },
+  "contractRefs": {
+    "daughterProductionStandard": "daughter-production-standard-2",
+    "operationalKnowledgeContract": "operational-knowledge-contract-2-candidate",
+    "informationResolutionContract": "schemas/information-resolution-contract-v1.json",
+    "bolInformationResolutionBaseline": "bol-information-resolution-baseline-0.1",
+    "sourceClaimPack": "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+    "operationalPayload": "data/operational-knowledge/road-ltl-v1.5-operational.json"
+  },
+  "changeClassification": "MATERIAL_OPERATIONAL_ENRICHMENT_NO_CANONICAL_TASK_IDENTITY_CHANGE",
+  "taskOverrides": [{
+    "id": "LTL-03",
+    "label": "Create and validate shipment, consignment and transport-document identity",
+    "a5ContractId": "a5-ltl-03",
+    "canonicalProcessConceptId": "scp-shipment-transport-identity",
+    "identityPreservedFromBase": true,
+    "trigger": "Commercial offer or service request is accepted, or a governed transport-document/BOL instance requires creation, ingestion, amendment or validation for execution.",
+    "before": "Commercial commitment may exist, but shipment/consignment/document identity or one or more required information objects may be incomplete, unresolved, conflicting or unvalidated.",
+    "event": "Shipment/consignment and transport-document information-resolution work is initiated for the applicable document/regime and execution context.",
+    "decision": "Are the canonical shipment, consignment, party, reference, handling-unit, line-item, dangerous-goods, instruction and service-window objects sufficiently resolved, associated, validated and traceable for downstream execution?",
+    "rule": "Resolve canonical objects before client/runtime mapping; activate regulatory/industry rules only when their applicability is satisfied; unresolved client/runtime labels remain explicit bindings or source-context gaps; do not infer canonical semantics from flat field labels.",
+    "control": "Object identity/uniqueness, requiredWhen/prohibitedWhen, cardinality, object association, normalization, field/cross-field/cross-object validation, provenance, source-authority, conflict, confidence and HITL controls.",
+    "clock": "Before pickup acceptance and any applicable document, regulatory or client-system cut-off.",
+    "action": "Instantiate canonical document/consignment objects; resolve and associate parties, references, handling units, line items, dangerous goods, instructions and service windows; normalize and validate values; resolve or escalate conflicts; determine confidence/HITL; emit governed canonical outputs and explicit client-binding requirements.",
+    "evidence": "Versioned transport document and canonical object graph; field/object resolution evidence; source claims; validation results; exception/HITL record; identifier crosswalk; client-binding status; runtime-feedback linkage.",
+    "after": "Canonical execution identity and required information objects are VALIDATED, explicitly CLIENT_BINDING_REQUIRED/SOURCE_CONTEXT_PENDING, or BLOCKED with governed exception ownership.",
+    "outcome": "One traceable, source-backed information and identity spine that can be decomposed into executor-ready work and projected to Malkom or another runtime without semantic loss.",
+    "operationalKnowledgeV2": {
+      "businessMeaning": "Establish and validate the canonical execution identity and information contract that makes a Road LTL shipment and its transport document usable by downstream operational, compliance, commercial and financial work.",
+      "why": "Downstream execution cannot safely rely on flat document extraction. Parties, references, package/handling hierarchy, commodity/classification and conditional dangerous-goods information must be attached to the correct canonical objects and validated under the active context.",
+      "requiredWhen": [
+        "A new Road LTL shipment/consignment is established for execution.",
+        "A BOL/eBOL/consignment-note or equivalent transport-document instance must be created, ingested, amended or validated.",
+        "A downstream executor requires canonical shipment/document information not yet validated."
+      ],
+      "prohibitedWhen": [
+        "The record is outside Road LTL scope and no Road LTL leg/task specialization applies.",
+        "A jurisdiction/regime-specific rule is not applicable to the active context; such rule must not be universalized."
+      ],
+      "canonicalObjectModel": [
+        "TransportDocument","Consignment","Party:ShipperOrConsignor","Party:Consignee","Party:BillTo","Reference[]","HandlingUnit[]","LineItem[]","DangerousGoods[] (conditional)","Instruction[]","ServiceEventWindow[]"
+      ],
+      "informationResolutionBaselineRef": "BOL Information Resolution Baseline v0.1 — Road LTL / Malkom",
+      "resolutionWorkflow": [
+        "Validate document/input integrity and applicable scope.",
+        "Classify/identify the transport-document context.",
+        "Instantiate canonical document and consignment objects.",
+        "Identify party, reference, handling-unit, line-item, dangerous-goods, instruction and service-window object instances.",
+        "Extract or acquire candidate values from permitted evidence sources.",
+        "Associate each candidate value to the correct canonical object instance.",
+        "Normalize values into canonical domains and units.",
+        "Evaluate requiredWhen/prohibitedWhen and jurisdiction/condition applicability.",
+        "Run field, cross-field and cross-object validation.",
+        "Resolve source conflicts using authority policy.",
+        "Determine confidence and human-review requirement.",
+        "Emit validated canonical objects plus explicit binding/pending statuses.",
+        "Map only after canonical resolution to client/runtime fields and target systems.",
+        "Capture runtime evidence and feedback for governed learning."
+      ],
+      "criticalResolutionRules": [
+        {"fieldFamily":"DangerousGoods","rule":"Hazardous indicator, UN/NA identification number, proper shipping name, hazard class/division, packing group where applicable, technical name where conditionally required, inhalation zone where conditionally required, and emergency-response information are one associated conditional object family, not independent universal fields.","sourceClaimIds":["hazmat-entry-identification","hazmat-basic-description-object","hazmat-technical-name-conditional","hazmat-zone-conditional","hazmat-emergency-provider-identity"]},
+        {"fieldFamily":"HandlingUnitAndPieceHierarchy","rule":"Handling Unit Count/Type and Line Item Piece Count are distinct concepts. Resolve hierarchy/association before accepting counts; do not substitute handling units for pieces.","sourceClaimIds":["canonical-object-first-resolution"]},
+        {"fieldFamily":"References","rule":"Resolve references as typed Reference objects with value, type/type scheme, issuer/role and related object. Do not treat every identifier as an undifferentiated Reference Number.","sourceClaimIds":["canonical-object-first-resolution","ltl-ebol-standard-version"]},
+        {"fieldFamily":"PartiesAndAddresses","rule":"Resolve the party role/block first. Address 1/2/3 are layout bindings over canonical address-line and locality semantics, not separate universal business concepts.","sourceClaimIds":["canonical-object-first-resolution"]}
+      ],
+      "explicitBindingOrSourceContextPending": ["Code","SHC","Related Value","BOL Type","Reference Number Type Full Name","Handling Unit Line No","Shipper Code","exact Bill To Account Number semantics","exact Consignee Account Number semantics","exact Instruction Type values","exact Time Critical Details coding"],
+      "sourceClaimPackRef": "data/source-claims/road-ltl-v1.5-bol-resolution-claims.json",
+      "runtimeFeedbackProfileRef": "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json"
+    },
+    "executionReadiness": {
+      "status": "READY_FOR_RECURSIVE_DECOMPOSITION_WHEN_BINDING_AND_METRIC_GATES_SATISFIED",
+      "knownOpenGates": [
+        "Resolve source-reported Malkom Accuracy metric numerator/denominator/counting method for values above 100%.",
+        "Obtain governing Malkom/client schema for explicit unresolved labels.",
+        "Implement Canonical Work Decomposition Contract v1 and WorkDefinition VNext compilation."
+      ]
+    },
+    "downstreamRegressionRequired": ["LTL-04 — Request pickup and prove shipment readiness","Any downstream consumer of obj-shipment, obj-transport-document, obj-handling-unit or enriched line-item/dangerous-goods information"]
+  }],
+  "releaseNotesRef": "ROAD_LTL_V1.5_UPDATE_NOTES.md"
+}

@@ -1,0 +1,105 @@
+{
+  "atl157NonExpansion": {
+    "ltl03ExecutionDepthProjection": {
+      "bodySha256": "71f55bc1ba5b004ea78588900f6b84199182e83b6cd178a970e44da14d523634",
+      "projectionClass": "PUBLIC_SAFE",
+      "status": 200
+    },
+    "ltl04ExecutionDepthProjection": {
+      "body": {
+        "error": "Task is not materialized in registered projection source: LTL-04",
+        "ok": false
+      },
+      "status": 404
+    },
+    "materializedProofScope": "LTL-03",
+    "sourceBlobs": {
+      "data/modules/road-ltl-v1.5.json": "b69883d5369be8aad15bb9325f910610da875771",
+      "data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json": "1a5b564d2a98af69ff41ac96c8dc4a1412af9d7b",
+      "data/operational-knowledge/road-ltl-v1.5-operational.json": "91408e34382a26bd96f1d6224b252dfb9f8b8d53",
+      "governance/presentation/p2-projection-source-registry.json": "cfb870a6897c437376ff35f79d1e9fecd7a65d29",
+      "lib/api/execution-depth-projection.js": "4fd5c1ea5de77f3ccc35873ec24d86a00d268e9a",
+      "lib/projections/execution-depth-projection.js": "2a17ff45f9da928cc897c9205ef9b66ea3eaea21"
+    }
+  },
+  "base": {
+    "commit": "f8dc6c3863bc7310d8d83addf2d6ff1b6d34e12f",
+    "tree": "b2fa339ac2ce1c6410a623978c2cfcf4dc3ce0aa"
+  },
+  "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+  "expectedSuccessorOnlyFailuresOfPredecessorSuites": {
+    "tests/s8-3f-governed-release-manifest.test.mjs": [
+      "manifest regeneration / verifier / protected-derivative pin check / recovery identity (journey blob pinned in the predecessor manifest)",
+      "S8-3F scope guard"
+    ],
+    "tests/s8-4-interaction-rebinding.test.mjs": [
+      "D01 (api/atlas.js donor pin: one registered route)",
+      "S01",
+      "S02",
+      "S03 (stage-scope guards)"
+    ]
+  },
+  "modifiedProductFiles": [
+    {
+      "kind": "ROUTER_REGISTRATION_ONE_LINE",
+      "path": "api/atlas.js",
+      "predecessorBlob": "bf872b2b66cb222e53a5e9cff4a47dbeab65c546",
+      "reason": "Registers the bounded governed-depth-summary action in the consolidated Atlas router (8 top-level functions retained). Donor-pinned in S8-4 provenance.",
+      "successorBlob": "60dcb85999eed6d1bbc67e52b7ef6c3667cd5709"
+    },
+    {
+      "kind": "JOURNEY_INTEGRATION_POINT",
+      "path": "assets/atl-140-v15-journey.mjs",
+      "predecessorBlob": "2c97dbdee40fa1ba13ad108a7de6a0fa170bfec7",
+      "reason": "S8-4 journey module; additive Deepen/Inspect control + exact-context Ask/Trace links (S8-5B successor interaction identity; not a retroactive S8-4 mutation). Pinned in the S8-3F manifest.",
+      "successorBlob": "6c11bf4c89eaf212004beab7a939fd4cda38477c"
+    }
+  ],
+  "newProductFiles": [
+    {
+      "kind": "ATL167_SUCCESSOR_INTERACTION_MODULE",
+      "path": "assets/atl-167-v15-deepen-inspect.mjs",
+      "successorBlob": "34bc9e6b4ca719823257c51b2058b19522169e9f"
+    },
+    {
+      "kind": "ATL167_BOUNDED_API_HANDLER",
+      "path": "lib/api/governed-depth-summary.js",
+      "successorBlob": "01a3594fd9ccd8286131c493f422f80a26e5aaf9"
+    },
+    {
+      "kind": "ATL167_PUBLIC_SAFE_PROJECTION",
+      "path": "lib/projections/governed-depth-summary.js",
+      "successorBlob": "9a6b07bd2141e8212d9ffbc78a1b2f3fabc92695"
+    }
+  ],
+  "predecessorsPreserved": {
+    "s8_3f": {
+      "evidenceUntouched": true,
+      "manifestRegenerated": false,
+      "testedCommit": "67c80d513aa9de798e33814b963ee0e62ed7abad"
+    },
+    "s8_4": {
+      "evidenceUntouched": true,
+      "testedCommit": "07a41138f7b52e5fe1d0c9d5989f72b9835560c5"
+    },
+    "s8_5a": {
+      "evidenceUntouched": true,
+      "head": "f8dc6c3863bc7310d8d83addf2d6ff1b6d34e12f"
+    }
+  },
+  "schemaVersion": "s8-5b-successor-interaction-identity-v1",
+  "stage": "S8-5B ATL-167 bounded successor remediation (LTL-04 public-safe Deepen/Inspect)",
+  "statement": "S8-5B introduces a NEW successor interaction identity. It is not a retroactive mutation of S8-4 and does not re-pin, edit or reinterpret S8-4 or S8-3F evidence. S8-4 remains PASS at its own exact tested commit; S8-3F remains PASS at its own exact tested commit; the S8-3F release manifest is a PREDECESSOR manifest and is not regenerated here (S8-6 finalizes the successor manifest over this lineage).",
+  "unchangedCertifiedIdentities": {
+    "assets/atl-140-consumer-view.mjs": "fc20076a892356a84b0b80c285bc263bf4484c9a",
+    "assets/canvas-daughter-bridge-v2.0.1.mjs": "264e4ed26f112845bd4afb3d1e990138971d13fe",
+    "assets/universal-daughter-renderer-v2.js": "602828f809fc698173972386247b4a5e42a2b1ce",
+    "atl-140-malkom-consumer.html": "8a2739c4482824a52bdf7c49b1852815b6d75c0f",
+    "daughter.html": "d55cec5389e42e28ea9d9991b26c740661546f5c",
+    "execution/ui/runtime-access-shell.js": "e65e98b9a0f57acfb9abfd7633fcada4671a9084",
+    "index.html": "043802523b1618c143a0e78b88bbfb2afaa7c7dd",
+    "lib/api/ask-atlas.js": "8fa80f9dd0b733a523aed6970269f5f32d5e64da",
+    "runtime/universal-ask-atlas.js": "521c47a3956c81367bab942a657f998d576ff15f",
+    "vercel.json": "d526663b52aa8cf5d2531e8ae617f284c6384242"
+  }
+}

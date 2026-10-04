@@ -1,0 +1,96 @@
+{
+  "activeExecutionUse": "NONE — reference/restore evidence only; never loaded by the v1.5 runtime",
+  "assets": [
+    {
+      "assetId": "road-ltl-1.3",
+      "bytes": 639418,
+      "expectedSha256": "0f855cc0b11991a0f58a76791d64def8b688f4349b0e5bd1105161241f7ad808",
+      "frozenAssetRegister": {
+        "file": "governance/frozen-assets/ASSET_REGISTER.json",
+        "registerAgrees": true,
+        "sha256": "0f855cc0b11991a0f58a76791d64def8b688f4349b0e5bd1105161241f7ad808",
+        "status": "FROZEN_PRODUCTION_BASELINE"
+      },
+      "gitBlob": "6748763cde69ff7666323b6d1ce5c90d65ca0d05",
+      "observedSha256": "0f855cc0b11991a0f58a76791d64def8b688f4349b0e5bd1105161241f7ad808",
+      "path": "data/modules/road-ltl-v1.3.json",
+      "status": "MATCH"
+    },
+    {
+      "assetId": "ocean-fcl-0.5",
+      "bytes": 741490,
+      "expectedSha256": "71526914c600cb10c47434a5b6dc064e851062776a336ae480f37e487e108ebc",
+      "frozenAssetRegister": {
+        "file": "governance/frozen-assets/ASSET_REGISTER.json",
+        "registerAgrees": true,
+        "sha256": "71526914c600cb10c47434a5b6dc064e851062776a336ae480f37e487e108ebc",
+        "status": "FROZEN_PRODUCTION_BASELINE"
+      },
+      "gitBlob": "cc8a7535137f4412be714b0f95963a19087a3585",
+      "observedSha256": "71526914c600cb10c47434a5b6dc064e851062776a336ae480f37e487e108ebc",
+      "path": "data/modules/ocean-fcl-v0.5.json",
+      "status": "MATCH"
+    },
+    {
+      "assetId": "ocean-lcl-0.5",
+      "bytes": 754562,
+      "expectedSha256": "9dbaadc129a6c8be30e9e77c7ff319af40a9f5c4226e82817c2389cde01d18e6",
+      "frozenAssetRegister": {
+        "file": "governance/frozen-assets/ASSET_REGISTER.json",
+        "registerAgrees": true,
+        "sha256": "9dbaadc129a6c8be30e9e77c7ff319af40a9f5c4226e82817c2389cde01d18e6",
+        "status": "FROZEN_PRODUCTION_BASELINE"
+      },
+      "gitBlob": "dd746515b48aca25ae6174f593b74420908b056a",
+      "observedSha256": "9dbaadc129a6c8be30e9e77c7ff319af40a9f5c4226e82817c2389cde01d18e6",
+      "path": "data/modules/ocean-lcl-v0.5.json",
+      "status": "MATCH"
+    }
+  ],
+  "candidateBranchRollback": false,
+  "class": "ROLLBACK_REFERENCE_ONLY",
+  "deploymentRollbackIdentity": "NOT_ESTABLISHED (no deployment exists; none inferred)",
+  "injectedIntoActiveV15Execution": false,
+  "nominatedRollbackTargets": [
+    "ocean-fcl-0.5",
+    "ocean-lcl-0.5",
+    "road-ltl-1.3"
+  ],
+  "notRollbackTargets": [
+    {
+      "commit": "dd32b8a4eabe3c8c08f2da305efd79738c11ecd3",
+      "id": "atl-175-release-contract",
+      "nominatedAsRollback": false,
+      "reason": "ATL-175 branch tip is candidate/control evidence, not a rollback target"
+    },
+    {
+      "commit": "ef6e375ca947c34902ee1e366dd71e08914f7fa8",
+      "id": "atl-141-release-candidate",
+      "nominatedAsRollback": false,
+      "reason": "historical ATL-141 RC assembly (S7-IMP-003 REPLACE_ASSEMBLY); candidate, not rollback"
+    },
+    {
+      "commit": "f0a5b90904c781ac721037be98f1ae71653e7551",
+      "id": "atl-141-release-integrity",
+      "nominatedAsRollback": false,
+      "reason": "historical ATL-141 release-integrity assembly (S7-IMP-021 REPLACE_ASSEMBLY); candidate, not rollback"
+    },
+    {
+      "commit": "dba6968b0bdf28b533f4efd765302796e6ebed58",
+      "id": "atl-142-custody",
+      "nominatedAsRollback": false,
+      "reason": "historical ATL-142 custody/root assembly (S7-IMP-004/006 WRONG_DONOR); not rollback"
+    }
+  ],
+  "productionPromotionAuthorized": false,
+  "purpose": "Deterministic rollback identity for the v1.5 Road LTL successor RC: the frozen production-baseline daughter modules.",
+  "rules": [
+    "restore only from identity-verified (sha256) frozen production-baseline assets",
+    "a candidate branch/commit is never a rollback target",
+    "the current RC is not its own rollback",
+    "no rollback asset is injected into active v1.5 execution",
+    "application-first rollback to the last known-good deployment remains the operational mechanism (release/ROLLBACK_RUNBOOK.md); this manifest names the frozen data identities only"
+  ],
+  "schemaVersion": "atlas-v1.5-successor-rollback-manifest-v1-s8-6",
+  "staleBranchRollback": false
+}

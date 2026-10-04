@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "atlas-p4-canvas-daughter-targets-v1",
+  "canvasIntegrationVersion": "2.0.1",
+  "status": "ACTIVE_P4_INTEGRATION_CONTRACT",
+  "daughterRoute": "/daughter",
+  "targets": {
+    "road-ltl": {
+      "moduleId": "road-ltl",
+      "canvasBaselineVersion": "1.3",
+      "daughterModuleVersion": "1.5",
+      "targetStatus": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+      "taskIdentityPolicy": "EXACT_TASK_ID_PARITY_REQUIRED",
+      "productionCutover": false
+    },
+    "ocean-fcl": {
+      "moduleId": "ocean-fcl",
+      "canvasBaselineVersion": "0.5",
+      "daughterModuleVersion": "0.6",
+      "targetStatus": "APPROVED_PRODUCTION_GO_LIVE_TARGET",
+      "taskIdentityPolicy": "EXACT_TASK_ID_PARITY_REQUIRED",
+      "productionCutover": "PENDING_P4_INTEGRATION_AND_DEPLOYMENT_SMOKE",
+      "deployBaselineFirst": false
+    },
+    "ocean-lcl": {
+      "moduleId": "ocean-lcl",
+      "canvasBaselineVersion": "0.5",
+      "daughterModuleVersion": "0.6",
+      "targetStatus": "APPROVED_PRODUCTION_GO_LIVE_TARGET",
+      "taskIdentityPolicy": "EXACT_TASK_ID_PARITY_REQUIRED",
+      "productionCutover": "PENDING_P4_INTEGRATION_AND_DEPLOYMENT_SMOKE",
+      "deployBaselineFirst": false
+    }
+  },
+  "rules": [
+    "Canvas does not infer Daughter versions. Exact target versions come only from this governed registry.",
+    "Canvas does not fetch or preload protected Work Decomposition or WorkDefinition data.",
+    "Canvas hands off only moduleId, exact governed moduleVersion and canonical taskId to the Universal Daughter Renderer V2.",
+    "If the exact target tuple is unpublished, the Daughter projection fails closed; Canvas must not substitute another version.",
+    "Ocean 0.5 is a historical pre-live Canvas baseline during P4 and is not an execution-depth fallback for Ocean 0.6.",
+    "Ocean FCL/LCL 0.6 are the approved production go-live Daughter targets and P4 must route Ocean execution-depth handoffs to 0.6.",
+    "The bridge is domain-generic; module-specific version decisions live only in this governed target registry.",
+    "Protected execution surfaces remain separately authorized and outside this Canvas bridge."
+  ]
+}

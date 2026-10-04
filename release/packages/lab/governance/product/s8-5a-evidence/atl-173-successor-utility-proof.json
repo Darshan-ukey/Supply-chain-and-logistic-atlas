@@ -1,0 +1,195 @@
+{
+  "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+  "counts": {
+    "availableOrProjectable": 1,
+    "clientBindingRequired": 1,
+    "materialRequirements": 4,
+    "partial": 1,
+    "unsupportedOrUnconfirmed": 1
+  },
+  "historicalBaseline": {
+    "branch": "atl-173-v15-malkom-utility-proof",
+    "commit": "b6df8cfe581fb5ac2ff8f51774cdbdfc15a54f77",
+    "counts": {
+      "availableOrProjectable": 2,
+      "clientBindingRequired": 1,
+      "materialRequirements": 4,
+      "unsupportedOrUnconfirmed": 1
+    },
+    "delta": {
+      "availableOrProjectable": {
+        "historical": 2,
+        "successor": 1
+      },
+      "outcomeCount": {
+        "historical": 1,
+        "successor": 0
+      },
+      "requiredInputCount": {
+        "historical": 4,
+        "successor": 7
+      },
+      "unresolvedClientBinding": {
+        "historical": 1,
+        "successor": 1
+      },
+      "workSemanticsState": {
+        "historical": "AVAILABLE",
+        "successor": "PARTIAL"
+      }
+    },
+    "note": "Evidence about the OLD candidate under test; not transferable to the corrected successor and not reproduced here.",
+    "pinnedStaleSourceBlobs": [
+      "c3bb7336",
+      "d43f4130",
+      "1a542b1a",
+      "47fe62aa"
+    ],
+    "proofBlob": "8608c68f1007ea5f18b07452eeb9d3894b9aea40",
+    "status": "HISTORICAL_ONLY",
+    "workSemantics": {
+      "actionCount": 1,
+      "control": true,
+      "decision": true,
+      "evidence": true,
+      "outcomeCount": 1,
+      "requiredInputCount": 4,
+      "rule": true,
+      "state": "AVAILABLE"
+    }
+  },
+  "limitations": [
+    "Single representative Road LTL/LTL-04 scope only.",
+    "No savings, effort reduction or economic benefit is claimed because governed evidence does not quantify them.",
+    "No statistically robust enterprise study, cross-runtime comparison or final product kill decision.",
+    "Projection remains fail-closed while the required client execution-parameters binding is unresolved.",
+    "The corrected successor WorkDefinition is only partially compiled; the proof reports the corrected bounded state and does not claim the utility-value target is achieved."
+  ],
+  "method": {
+    "basis": "Deterministic re-derivation of the four-requirement ATL-140/ATL-173 Malkom crosswalk from the corrected S8 package/readiness/projection artifacts (identities verified against accepted pins before use).",
+    "correctedIdentities": {
+      "binding": "2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9",
+      "package": "6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367",
+      "projection": "703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c",
+      "readiness": "c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617",
+      "semanticsRecord": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576",
+      "taskHash": "b0bee64f418dcf99ccd60480c86dcd9dcd066231fe72ab7033c80994922b4e65",
+      "wd": "fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61"
+    },
+    "historicalCountsReproduced": false
+  },
+  "proofId": "utility-proof::road-ltl::LTL-04::malkom::successor-s8",
+  "requirements": [
+    {
+      "derivedFrom": "workDefinition/package/readiness/projection identity chain verified",
+      "projection": "PRESERVE",
+      "requirement": "Canonical identity/version/lineage",
+      "residual": "None for bounded identity/lineage.",
+      "status": "AVAILABLE"
+    },
+    {
+      "derivedFrom": "readiness.workSemantics + readiness.totals",
+      "projection": "PRESERVE_COMPILED_ONLY",
+      "requirement": "Work semantics",
+      "residual": "4 of 5 leaves are not compiled; downstream consumers still face rediscovery for those leaves.",
+      "status": "PARTIAL"
+    },
+    {
+      "derivedFrom": "readiness.clientBindings",
+      "projection": "SEPARATE_BINDING",
+      "requirement": "Client execution parameters",
+      "residual": "An authorized client/master-data owner must supply governed execution parameters before projection can execute.",
+      "status": "CLIENT_BINDING_REQUIRED"
+    },
+    {
+      "derivedFrom": "package.interface + projection.release.interface",
+      "projection": "NO_GUESSED_INTERFACE",
+      "requirement": "Malkom API endpoint",
+      "residual": "Confirm whether an API endpoint is actually required; no interface is implied.",
+      "status": "REQUIREMENT_NOT_CONFIRMED"
+    }
+  ],
+  "residualDiscovery": [
+    {
+      "blocking": true,
+      "count": 1,
+      "type": "CLIENT_BINDING_REQUIRED"
+    },
+    {
+      "blocking": true,
+      "count": 2,
+      "type": "KNOWLEDGE_GAP_BLOCKED_LEAF"
+    },
+    {
+      "blocking": true,
+      "count": 4,
+      "type": "PARTIAL_WORKDEFINITION_COVERAGE"
+    },
+    {
+      "blockingForCurrentJsonExport": false,
+      "id": "Malkom API endpoint",
+      "type": "REQUIREMENT_NOT_CONFIRMED"
+    },
+    {
+      "blocking": true,
+      "status": "NOT_INDEPENDENTLY_PROVEN",
+      "type": "NOT_INDEPENDENTLY_PROVEN"
+    }
+  ],
+  "reusableElements": {
+    "clientBindings": {
+      "resolvedCount": 2,
+      "state": "CLIENT_BINDING_REQUIRED",
+      "unresolvedCount": 1
+    },
+    "compilation": {
+      "blockedByClientBindingLeafCount": 2,
+      "blockedByKnowledgeGapLeafCount": 2,
+      "blockerTypes": [
+        "CLIENT_BINDING_REQUIRED",
+        "NOT_INDEPENDENTLY_PROVEN",
+        "PARTIAL_WORKDEFINITION_COVERAGE",
+        "REQUIREMENT_NOT_CONFIRMED"
+      ],
+      "compiledLeafCount": 1,
+      "knowledgeGapEntryCount": 4,
+      "leafCount": 5,
+      "notCompiledLeafCount": 4
+    },
+    "domainKnowledge": {
+      "sourceCount": 3,
+      "state": "AVAILABLE"
+    },
+    "rulesControlsCoverage": {
+      "controlCount": 0,
+      "decisionCount": 0,
+      "evidenceCount": 2,
+      "ruleCount": 0,
+      "state": "PARTIAL"
+    },
+    "workSemantics": {
+      "actionCount": 1,
+      "outcomeCount": 0,
+      "requiredInputCount": 7,
+      "state": "PARTIAL",
+      "workDefinitionVersion": "1.0.0"
+    }
+  },
+  "schemaVersion": "atlas-v1.5-malkom-utility-proof-successor-v1.0-s8-5a",
+  "scope": {
+    "consumer": "MALKOM",
+    "moduleId": "road-ltl",
+    "packageId": "malkom-dw::road-ltl::LTL-04::v1",
+    "processId": "LTL-04",
+    "workDefinitionId": "road-ltl@1.5::LTL-04::LTL-04::ACT::02::WD"
+  },
+  "state": {
+    "clientBindingState": "CLIENT_BINDING_REQUIRED",
+    "independentExecutorProofStatus": "NOT_INDEPENDENTLY_PROVEN",
+    "materializable": false,
+    "projectionBlocked": true,
+    "projectionDisposition": "BLOCKED",
+    "runtimeCertification": false,
+    "universalExecutionReady": false
+  }
+}

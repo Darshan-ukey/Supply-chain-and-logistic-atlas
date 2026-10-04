@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "s8-6-source-custody-v1",
+  "purpose": "Self-contained custody of the governed Road LTL 1.4 source module so the successor RC does not depend on the divergent source branch/commit.",
+  "classification": "GOVERNED_SOURCE_CUSTODY (source module; not a protected derivative; never deployed)",
+  "custodyFile": "release/custody/s8-6/road-ltl-v1.4.governed-source.json",
+  "gitBlob": "d06974e9ee86cea59227e0866a98ad5d1367bfad",
+  "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4",
+  "bytes": 981226,
+  "taskId": "LTL-04",
+  "taskHash": "b0bee64f418dcf99ccd60480c86dcd9dcd066231fe72ab7033c80994922b4e65",
+  "taskCount": 22,
+  "origin": {
+    "commit": "662c7847d3839c1ffd95dc8589d3d0d6ac100d67",
+    "path": "data/modules/road-ltl-v1.4.json",
+    "branch": "s8-3a-atl155-daughter-regeneration",
+    "divergentFromRc": true,
+    "dependencyAfterCustody": false
+  },
+  "frozenAssetRegister": {
+    "assetId": "road-ltl-1.4-candidate",
+    "register": "governance/frozen-assets/ASSET_REGISTER.json",
+    "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE"
+  },
+  "rules": [
+    "The successor generator and every S8-6 verifier read THIS file, never the origin commit.",
+    "The file is excluded from deployment (.vercelignore: release/custody/).",
+    "A hash or byte change fails closed; a missing file fails closed."
+  ]
+}

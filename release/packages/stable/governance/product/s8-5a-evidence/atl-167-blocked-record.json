@@ -1,0 +1,79 @@
+{
+  "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+  "historicalIdentity": {
+    "branch": "atl-167-v15-coherent-interaction-slice-build",
+    "commit": "abbb472999025df3278db0a2756b08186a40f183",
+    "historicalQa": "PASS_AFTER_REWORK (round-2 independent QA); lineage class STALE_UPSTREAM + WRONG_DONOR",
+    "htmlBlob": "5d3855e1f7ca049ea720a1cd95862de4c12ff99b",
+    "testBlob": "5d3333ee8b5d6e44c85cf7c8708f0c830b70ad93"
+  },
+  "historicalObligationInventory": [
+    {
+      "id": "O1",
+      "obligation": "Eight-step coherent journey (domain, daughter, inspect, deepen, wd, binding, coverage, export)",
+      "successorSurface": "NONE"
+    },
+    {
+      "id": "O2",
+      "obligation": "Lineage identifiers (WorkDefinition/package/boundary) shown on the page",
+      "successorSurface": "NONE (historical test pins stale identifiers; corrected identifiers differ)"
+    },
+    {
+      "id": "O3",
+      "obligation": "Link to the generated flow explorer",
+      "successorSurface": "NONE for the slice (S8-4 provides an unrelated consumer-page flow anchor; not claimed)"
+    },
+    {
+      "id": "O4",
+      "obligation": "Root index links the slice",
+      "successorSurface": "CONFLICTS with certified root byte-identity (root must not be modified)"
+    },
+    {
+      "id": "O5",
+      "obligation": "In-page interactive Ask with announced responses and fail-closed unsupported-question handling",
+      "successorSurface": "NONE in-page (certified Universal Ask 2.0.1 is a different surface; transferability not established)"
+    },
+    {
+      "id": "O6",
+      "obligation": "Distinct, gated public and admin views",
+      "successorSurface": "NONE for the slice"
+    },
+    {
+      "id": "O7",
+      "obligation": "Unknown client-binding state fails closed against governed binding state",
+      "successorSurface": "PARTIAL REFERENCE ONLY (S8-4 N-cases for the consumer model); not claimed as ATL-167 PASS"
+    },
+    {
+      "id": "O8",
+      "obligation": "Responsive layout, landmarks, labels, keyboard DOM order",
+      "successorSurface": "PARTIAL REFERENCE ONLY (S8-4 B06 for the consumer page); not claimed as ATL-167 PASS"
+    }
+  ],
+  "mechanicallyVerifiedEvidence": {
+    "certifiedRootIndexBlob": "043802523b1618c143a0e78b88bbfb2afaa7c7dd",
+    "certifiedRootLinksSlice": false,
+    "historicalTestBlobResolvable": true,
+    "historicalTestBoundToStaleHash88bd3da8": true,
+    "historicalTestBoundToStalePackageId": true,
+    "historicalTestBoundToStaleWorkDefinitionId": true,
+    "historicalTestRequiresRootToLinkSlice": true,
+    "s8_3fManifestExcludesStaleSlice": true,
+    "s8_4DocStatesSliceNotRebound": true,
+    "s8_4SuiteAssertsStalePagesAbsent": true,
+    "slicePageAbsentFromSuccessorTree": true,
+    "slicePageHistoricalBlobResolvable": true,
+    "tracked167Tests": 0
+  },
+  "nextAuthority": "A separate bounded remediation/authority decision is required; none is taken or implied here.",
+  "notAnAuthoritativeSupersession": "S8-4 deliberate exclusion of the stale page is NOT a supersession decision; PA-5 retains ATL-167 as v1.5 REMEDIATION / RETEST_AFTER_UPSTREAM.",
+  "obligation": "ATL-167 coherent public/private interaction slice (S7-IMP-019, S6-LIN-033)",
+  "paDisposition": {
+    "disposition": "RETEST",
+    "paRow": "PA-5 / S7-IMP-019",
+    "retestTiming": "RETEST_AFTER_UPSTREAM (SEQ-07: after corrected flow + presentation assembly; before successor release assembly)"
+  },
+  "reason": "NO_CURRENT_SUCCESSOR_RETEST_SURFACE",
+  "result": "BLOCKED",
+  "ruling": "S8-5A ruling B: BLOCKED — NO CURRENT SUCCESSOR RETEST SURFACE. Not executed, not implemented, not ported, not rebuilt, not marked superseded, and no partial S8-4 evidence is claimed as ATL-167 PASS.",
+  "schemaVersion": "s8-5a-atl-167-blocked-record-v1"
+}

@@ -1,0 +1,307 @@
+{
+  "schemaVersion": "s8-4-donor-provenance-v1",
+  "classification": "PUBLIC",
+  "base": {
+    "sha": "fe17ebb5c77fe86ef44a68d8a38eab65b5ce4751",
+    "description": "S8-3E final head (authoritative S8-4 successor base)"
+  },
+  "authority": {
+    "Canvas V2.0": "S7-IMP-029 / S6-LIN-007",
+    "Canvas->Daughter bridge V2.0.1": "S7-IMP-030 / S6-LIN-008",
+    "Universal Ask 2.0.1": "S7-IMP-031 / S6-LIN-010"
+  },
+  "bridge": {
+    "sourceRef": "atlas-presentation-architecture-v1-p6-2",
+    "sourceCommit": "6ae00356b656216749da7d2a7eed273aecec8cd8",
+    "path": "assets/canvas-daughter-bridge-v2.0.1.mjs",
+    "expectedBlob": "264e4ed26f112845bd4afb3d1e990138971d13fe",
+    "authority": "S7-IMP-030 / S6-LIN-008"
+  },
+  "imports": [
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "api/atlas.js",
+      "expectedBlob": "bf872b2b66cb222e53a5e9cff4a47dbeab65c546",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "assets/universal-daughter-renderer-v2.js",
+      "expectedBlob": "602828f809fc698173972386247b4a5e42a2b1ce",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "data/materialized/ocean-0.6-public-safe-projections.json.gz.b64",
+      "expectedBlob": "1e290089eae6533baa399a95e4b33e15df92dd14",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "daughter.html",
+      "expectedBlob": "d55cec5389e42e28ea9d9991b26c740661546f5c",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "execution/ui/runtime-access-shell.js",
+      "expectedBlob": "b72d0c8820d2a88aae408baac773ff0bcc228e43",
+      "disposition": "ADAPTED_ADDITIVE_ONE_LINE",
+      "adaptation": "Appended exactly one line: import('/assets/atl-140-v15-journey.mjs').catch(...). Reason: root index.html and Canvas assets must stay byte-identical (certified P4 test asserts it), so the ATL-140 journey is bootstrapped additively through the same mechanism the certified bridge uses. The donor blob remains separately identifiable as expectedBlob.",
+      "appendedLine": "import('/assets/atl-140-v15-journey.mjs').catch(e=>console.warn('Atlas ATL-140 v1.5 Malkom journey bootstrap',e));"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "lib/api/_utils.js",
+      "expectedBlob": "fb66b79b4846f5f2f29cba7564148f9cea5d4236",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "lib/api/admin-workdefinitions.js",
+      "expectedBlob": "111425af7501ecd6592a7b858f9390430d18ba7b",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "lib/api/ask-atlas.js",
+      "expectedBlob": "8fa80f9dd0b733a523aed6970269f5f32d5e64da",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "lib/api/execution-depth-projection.js",
+      "expectedBlob": "4fd5c1ea5de77f3ccc35873ec24d86a00d268e9a",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "lib/api/governance-operational-projection.js",
+      "expectedBlob": "d039d90a11b0a39571dc7d93149d1fe9fa7a9c95",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "lib/api/work-decomposition.js",
+      "expectedBlob": "2afea3431fd2127f1f9084d8a31a009d15aa0345",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "lib/ask/p5-governed-retrieval.js",
+      "expectedBlob": "6f3c29dcbdf0ee60a694cd2f7ac7c9e521367a00",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "lib/projections/execution-depth-projection.js",
+      "expectedBlob": "2a17ff45f9da928cc897c9205ef9b66ea3eaea21",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "package.json",
+      "expectedBlob": "6c6079def82c37b37e32bce61fcd543dd80d5832",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "tests/p2-projection-boundary.mjs",
+      "expectedBlob": "68c38db772986869fa83551eda8757c3fe210a6a",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "tests/p3-universal-daughter-renderer.mjs",
+      "expectedBlob": "f1f37d5931f4225ee31afb22df12007745168027",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "tests/p4-canvas-daughter-integration.mjs",
+      "expectedBlob": "8f8614dc7ad0e8dd155f3f1ffd3abea790e67b63",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "tests/p5-ask-trace-governance.mjs",
+      "expectedBlob": "59a62fdee42f455d4db28788a8e22f995ac90ec3",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "tests/v2-api-router-smoke.mjs",
+      "expectedBlob": "6d48370e781c02bc061717e9c56534b79dc5114d",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "vercel.json",
+      "expectedBlob": "d526663b52aa8cf5d2531e8ae617f284c6384242",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json",
+      "expectedBlob": "0daa4af6518478d1ca590dfafc67074a0cee2e09",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P5",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "governance/presentation/p2-projection-source-registry.json",
+      "expectedBlob": "cfb870a6897c437376ff35f79d1e9fecd7a65d29",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    },
+    {
+      "donor": "P6.2",
+      "sourceRef": "atlas-presentation-architecture-v1-p6-2",
+      "sourceCommit": "6ae00356b656216749da7d2a7eed273aecec8cd8",
+      "path": "assets/canvas-daughter-bridge-v2.0.1.mjs",
+      "expectedBlob": "264e4ed26f112845bd4afb3d1e990138971d13fe",
+      "disposition": "BYTE_IDENTICAL_IMPORT"
+    }
+  ],
+  "alreadyInBase": [
+    {
+      "donor": "Canvas V2.0",
+      "sourceRef": "atlas-presentation-architecture-v1-p6-2",
+      "sourceCommit": "6ae00356b656216749da7d2a7eed273aecec8cd8",
+      "path": "canvas-v2/canvas-v2/index.html",
+      "expectedBlob": "4dfa0a8410eba303ba7dad73a5cee6431dfe3258",
+      "disposition": "ALREADY_PRESENT_IN_BASE_BYTE_IDENTICAL",
+      "authority": "S7-IMP-029 / S6-LIN-007"
+    },
+    {
+      "donor": "Canvas V2.0",
+      "sourceRef": "atlas-presentation-architecture-v1-p6-2",
+      "sourceCommit": "6ae00356b656216749da7d2a7eed273aecec8cd8",
+      "path": "canvas-v2/canvas-v2/assets/canvas-v2.css",
+      "expectedBlob": "860c878491479b40c1a71c8530d2f1725564341b",
+      "disposition": "ALREADY_PRESENT_IN_BASE_BYTE_IDENTICAL",
+      "authority": "S7-IMP-029 / S6-LIN-007"
+    },
+    {
+      "donor": "Canvas V2.0",
+      "sourceRef": "atlas-presentation-architecture-v1-p6-2",
+      "sourceCommit": "6ae00356b656216749da7d2a7eed273aecec8cd8",
+      "path": "canvas-v2/canvas-v2/assets/canvas-v2.js",
+      "expectedBlob": "672dd1b5a1eb8c3c1698fae436fa0b3db53cd5d0",
+      "disposition": "ALREADY_PRESENT_IN_BASE_BYTE_IDENTICAL",
+      "authority": "S7-IMP-029 / S6-LIN-007"
+    },
+    {
+      "donor": "Canvas V2.0",
+      "sourceRef": "atlas-presentation-architecture-v1-p6-2",
+      "sourceCommit": "6ae00356b656216749da7d2a7eed273aecec8cd8",
+      "path": "canvas-v2/canvas-v2/FREEZE_CERTIFICATE.md",
+      "expectedBlob": "cff249802d6d61db395bf8d0a3587fafad26da67",
+      "disposition": "ALREADY_PRESENT_IN_BASE_BYTE_IDENTICAL",
+      "authority": "S7-IMP-029 / S6-LIN-007"
+    },
+    {
+      "donor": "Universal Ask 2.0.1",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "runtime/universal-ask-atlas.js",
+      "expectedBlob": "521c47a3956c81367bab942a657f998d576ff15f",
+      "disposition": "ALREADY_PRESENT_IN_BASE_BYTE_IDENTICAL",
+      "authority": "S7-IMP-031 / S6-LIN-010"
+    },
+    {
+      "donor": "Universal Ask 2.0.1",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "governance/ask-atlas-surface-contract-v1.json",
+      "expectedBlob": "608956d30ea89859e9e649457debb73d267e04cd",
+      "disposition": "ALREADY_PRESENT_IN_BASE_BYTE_IDENTICAL",
+      "authority": "S7-IMP-031 / S6-LIN-010"
+    },
+    {
+      "donor": "Universal Ask 2.0.1",
+      "sourceRef": "atlas-presentation-architecture-v1-p5",
+      "sourceCommit": "814d2e7dd2265fd06aba43e16a4ae75bdfca7190",
+      "path": "ATLAS_V2.0.1_UNIVERSAL_ASK_CERTIFICATION.md",
+      "expectedBlob": "d0dfd8b2e4343f7ea86af249407e33f158267959",
+      "disposition": "ALREADY_PRESENT_IN_BASE_BYTE_IDENTICAL",
+      "authority": "S7-IMP-031 / S6-LIN-010"
+    }
+  ],
+  "behaviouralDelta": {
+    "source": "ATL-140",
+    "commit": "e0c17bbb85bda27ebb9189be7cc845e3c48979dd",
+    "authority": "S7-IMP-005 / S6-LIN-009",
+    "verdict": "SALVAGE_REBIND / WRONG_DONOR",
+    "rootIndexBlobNotInherited": "9cf88a867359ba33ebfbe85c1360f0ab21bc29b3",
+    "preserved": [
+      "journey section text and three links (work detail, trace flow, consumer output)",
+      "consumer view: Malkom requirement coverage, readiness cards, 7-column deterministic requirements crosswalk (4 requirements), fail-closed state, lineage-mismatch error, aria-live status, responsive layout, export/lineage section"
+    ],
+    "resultingPaths": [
+      "assets/atl-140-v15-journey.mjs",
+      "assets/atl-140-consumer-view.mjs",
+      "atl-140-malkom-consumer.html",
+      "execution/ui/runtime-access-shell.js"
+    ]
+  },
+  "prohibited": {
+    "atl142": {
+      "commit": "dba6968b0bdf28b533f4efd765302796e6ebed58",
+      "authority": "S7-IMP-006 / S6-LIN-012",
+      "verdict": "WRONG_DONOR / REPLACE_ASSEMBLY",
+      "rootIndexBlob": "379f988ce807f33dc8fd43b49b227b917a15b8c0"
+    },
+    "supersededAskApi": {
+      "blob": "cb2bcfea0892adf5a871fb4584461b50729ab383",
+      "authority": "S7-IMP-037 / S6-LIN-011 SUPERSEDED_INPUT",
+      "inheritedPathsInBase": [
+        "release/packages/lab/lib/api/ask-atlas.js",
+        "release/packages/stable/lib/api/ask-atlas.js"
+      ],
+      "note": "Inherited from the S8-3E base, untouched by S8-4; successor-assembly cleanup belongs to S8-6."
+    }
+  }
+}
