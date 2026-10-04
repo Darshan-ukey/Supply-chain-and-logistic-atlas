@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "s8-3c-exact-qa-v1",
+  "testedCommit": "6959a4e015fb58c2e93875ebfaf55c714df551b2",
+  "testedTree": "e6a159383d0e40a12085aa9a60627f6dce8dc40e",
+  "base": "7c5384ec57c47cea3102911851a02add48d3007d",
+  "nodeVersion": "v24.11.0",
+  "platform": "win32",
+  "architecture": "x64",
+  "testScope": "S8-3C protected package generation and retained ATL-163 schema/behavior retest on exact corrected WD/binding; inherited S8-3B/compiler/S8-2 regressions; no runtime certification",
+  "status": "PASS",
+  "results": [
+    {
+      "command": [
+        "node",
+        "tests/p6-2-canonical-workdefinition-compiler.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "P6.2 Canonical WorkDefinition compiler/verifier certification PASS\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2e-leaf-compiler-correction.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2E leaf compiler correction: actual synthetic leaf compilation, deterministic bytes, frozen/local schemas, 16 rejection cases, protected output boundary. Real S8-3B domain output NOT certified.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2e-atl159-workdefinition-lineage.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2E historical lineage-plan compatibility only; regeneration=false; leaf compiler QA is separate\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2a-atl171-operational-semantics.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2A ATL-171 governed v1.5 semantics: 22 records; override LTL-03 only\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2b-atl171-schema-compatibility.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2B schema compatibility: 22 ATL-171 records conform to bounded v1.5 + OKv2/IR lineage\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2c-atl165-client-binding.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2C ATL-165 governed client binding: 3 requirements; 2 resolved; 1 fail-closed\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2d-atl165-binding-schema.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2D ATL-165 schema compatibility: governed requirement fields + bounded fail-closed projection\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-3b-atl159-ltl04-workdefinition.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-3B LTL-04: 1 protected WD, deterministic/schema-valid, 4 blocked leaves preserved, no client values, 2 rejection cases.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-3c-malkom-package-readiness.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"schemaVersion\":\"s8-3c-package-readiness-evidence-v1\",\"classification\":\"PUBLIC_NON_RECONSTRUCTIVE\",\"detailIncluded\":false,\"inputHashes\":{\"wd\":\"fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61\",\"binding\":\"2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9\",\"semantics\":\"d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576\"},\"packageHash\":\"6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367\",\"readinessHash\":\"c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617\",\"deterministic\":true,\"canonicalNonMutation\":true,\"canonicalLeafProjectionLossless\":true,\"retainedReadinessSchema\":\"PASS\",\"packageQA\":\"PASS\",\"readinessQA\":\"PASS\",\"negativeCasesPassed\":5,\"totals\":{\"taskCount\":1,\"workUnitCount\":7,\"leafCount\":5,\"workDefinitionCount\":1,\"notCompiledLeafCount\":4,\"blockedByClientBindingLeafCount\":2,\"blockedByKnowledgeGapLeafCount\":2,\"fullyCompiledTaskCount\":0},\"unresolvedBindingCount\":1,\"projectionDisposition\":\"BLOCKED\",\"universalExecutionReady\":false,\"independentExecutorProofStatus\":\"NOT_INDEPENDENTLY_PROVEN\",\"stageAcceptance\":\"PASS\",\"runtimeCertification\":false}\n",
+      "stderr": ""
+    }
+  ],
+  "cleanCheckout": true
+}
