@@ -1,0 +1,84 @@
+{
+  "runnerId": "s8-3a-local-exact-sha-ee15e10cf3f21dd2504129a57d1dffead8032083",
+  "startedAt": "2026-10-04T04:53:18.107Z",
+  "commit": "ee15e10cf3f21dd2504129a57d1dffead8032083",
+  "phase": "pre-generation",
+  "node": "v24.11.0",
+  "platform": "win32",
+  "commands": [
+    {
+      "executable": "git",
+      "args": [
+        "clone",
+        "--no-checkout",
+        "--shared",
+        "C:\\Users\\Darsh\\Documents\\Codex\\2026-10-04\\referenced-chatgpt-conversation-this-is-an\\work\\atlas",
+        "C:\\Users\\Darsh\\Documents\\Codex\\2026-10-04\\referenced-chatgpt-conversation-this-is-an\\work\\qa-original"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Cloning into 'C:\\Users\\Darsh\\Documents\\Codex\\2026-10-04\\referenced-chatgpt-conversation-this-is-an\\work\\qa-original'...\ndone.\n"
+    },
+    {
+      "executable": "git",
+      "args": [
+        "-c",
+        "core.autocrlf=false",
+        "checkout",
+        "--detach",
+        "ee15e10cf3f21dd2504129a57d1dffead8032083"
+      ],
+      "cwd": "work/qa-original",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Warning: you are leaving 1 commit behind, not connected to\nany of your branches:\n\n  28af71c S8-3A: repair ESM runner and generate three exact governed daughters\n\nIf you want to keep it by creating a new branch, this may be a good time\nto do so with:\n\n git branch <new-branch-name> 28af71c\n\nHEAD is now at ee15e10 S8-3A: trigger exact Daughter QA on branch push\n"
+    },
+    {
+      "executable": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "work/qa-original",
+      "exit": 0,
+      "stdout": "ee15e10cf3f21dd2504129a57d1dffead8032083\n",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "rev-parse",
+        "HEAD^{tree}"
+      ],
+      "cwd": "work/qa-original",
+      "exit": 0,
+      "stdout": "97100fa4776d37ff49741ad3538dddf1768bc369\n",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "work/qa-original",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "tests/atl-155-bounded-daughter-generation.test.js"
+      ],
+      "cwd": "work/qa-original",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "file:///C:/Users/Darsh/Documents/Codex/2026-10-04/referenced-chatgpt-conversation-this-is-an/work/qa-original/tests/atl-155-bounded-daughter-generation.test.js:2\r\nconst assert=require('assert'),crypto=require('crypto');\r\n             ^\r\n\r\nReferenceError: require is not defined in ES module scope, you can use import instead\r\nThis file is being treated as an ES module because it has a '.js' file extension and 'C:\\Users\\Darsh\\Documents\\Codex\\2026-10-04\\referenced-chatgpt-conversation-this-is-an\\work\\qa-original\\package.json' contains \"type\": \"module\". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.\r\n    at file:///C:/Users/Darsh/Documents/Codex/2026-10-04/referenced-chatgpt-conversation-this-is-an/work/qa-original/tests/atl-155-bounded-daughter-generation.test.js:2:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:691:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.0\r\n"
+    }
+  ],
+  "result": "FAIL",
+  "tree": "97100fa4776d37ff49741ad3538dddf1768bc369",
+  "failure": "Command failed: C:\\Program Files\\nodejs\\node.exe tests/atl-155-bounded-daughter-generation.test.js",
+  "finishedAt": "2026-10-04T04:53:23.035Z"
+}

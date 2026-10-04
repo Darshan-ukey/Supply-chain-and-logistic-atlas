@@ -1,0 +1,254 @@
+{
+  "runnerId": "s8-3a-local-exact-sha-28af71cc9eb354c5a5265c441d06f7d30ad9ab2a",
+  "startedAt": "2026-10-04T04:53:53.909Z",
+  "commit": "28af71cc9eb354c5a5265c441d06f7d30ad9ab2a",
+  "phase": "pre-generation",
+  "node": "v24.11.0",
+  "platform": "win32",
+  "commands": [
+    {
+      "executable": "git",
+      "args": [
+        "clone",
+        "--no-checkout",
+        "--shared",
+        "C:\\Users\\Darsh\\Documents\\Codex\\2026-10-04\\referenced-chatgpt-conversation-this-is-an\\work\\atlas",
+        "C:\\Users\\Darsh\\Documents\\Codex\\2026-10-04\\referenced-chatgpt-conversation-this-is-an\\work\\qa-corrected"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Cloning into 'C:\\Users\\Darsh\\Documents\\Codex\\2026-10-04\\referenced-chatgpt-conversation-this-is-an\\work\\qa-corrected'...\ndone.\n"
+    },
+    {
+      "executable": "git",
+      "args": [
+        "-c",
+        "core.autocrlf=false",
+        "checkout",
+        "--detach",
+        "28af71cc9eb354c5a5265c441d06f7d30ad9ab2a"
+      ],
+      "cwd": "work/qa-corrected",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "HEAD is now at 28af71c S8-3A: repair ESM runner and generate three exact governed daughters\n"
+    },
+    {
+      "executable": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "work/qa-corrected",
+      "exit": 0,
+      "stdout": "28af71cc9eb354c5a5265c441d06f7d30ad9ab2a\n",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "rev-parse",
+        "HEAD^{tree}"
+      ],
+      "cwd": "work/qa-corrected",
+      "exit": 0,
+      "stdout": "b478b50965ec8b179abd10ee70cf85f117ad8637\n",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "work/qa-corrected",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "tests/atl-155-bounded-daughter-generation.test.js"
+      ],
+      "cwd": "work/qa-corrected",
+      "exit": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"deterministicByteIdentity\": true,\n  \"governedInputs\": [\n    {\n      \"path\": \"governance/product/ATL_153_V1_5_GOVERNED_SOURCE_UNIVERSE_BASELINE_V1.md\",\n      \"gitBlob\": \"ab224f715a2735f19c590986eae31927b936fa2a\",\n      \"sha256\": \"3cc970b636e185d711fbc43ddb7aa93a462ad2ad29d7c9752280f7df926e19f9\"\n    },\n    {\n      \"path\": \"data/modules/road-ltl-v1.4.json\",\n      \"gitBlob\": \"d06974e9ee86cea59227e0866a98ad5d1367bfad\",\n      \"sha256\": \"c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4\"\n    },\n    {\n      \"path\": \"data/modules/road-ltl-v1.5.json\",\n      \"gitBlob\": \"b69883d5369be8aad15bb9325f910610da875771\",\n      \"sha256\": \"22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f\"\n    },\n    {\n      \"path\": \"data/operational-knowledge/road-ltl-v1.5-operational.json\",\n      \"gitBlob\": \"91408e34382a26bd96f1d6224b252dfb9f8b8d53\",\n      \"sha256\": \"6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9\"\n    },\n    {\n      \"path\": \"governance/product/s8-3a-baseline/data/governance/source-registry-v1.json\",\n      \"gitBlob\": \"6beaa755b5046d577b3211cd48ddccbe81f8475c\",\n      \"sha256\": \"fae7c3a5411ad0becf35078fba4f200f70f328447fe0685a793f1d9f359f653e\"\n    },\n    {\n      \"path\": \"governance/product/s8-3a-baseline/data/governance/destination-coverage-registry-v1.json\",\n      \"gitBlob\": \"20ec299542e20cc1f6b0373850fcae3010e80ec9\",\n      \"sha256\": \"5da91a90209f715faf001619e64cab3475de34532f5ea5027c8a752b5cac1e4a\"\n    },\n    {\n      \"path\": \"governance/product/s8-3a-baseline/data/atlas-registry.json\",\n      \"gitBlob\": \"d29f48119895c00555acee98d29f7ccbd27acb1b\",\n      \"sha256\": \"a02a92e5aa090b27e6924d4bc8fb5252bc3744822e6b4559307e3d4ee6cf7776\"\n    },\n    {\n      \"path\": \"governance/product/s8-3a-baseline/data/provenance/road-ltl-claim-provenance-v1.json\",\n      \"gitBlob\": \"25cd876658c2de42445ca49eab80abe003eceea2\",\n      \"sha256\": \"820f459f8aa7a365132dcb4517004da796f922fbd0150aa6f6fadcfa335db201\"\n    }\n  ],\n  \"oceanPackage\": {\n    \"path\": \"release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip\",\n    \"gitBlob\": \"5e7f31db1c2c9db6d265f0f6d9def6ff75b19a5e\",\n    \"sha256\": \"b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289\"\n  },\n  \"outputs\": {\n    \"road-ltl\": {\n      \"counts\": {\n        \"processCount\": 22,\n        \"a3Count\": 13,\n        \"edgeCount\": 150,\n        \"sourceCount\": 29\n      },\n      \"sourceVersion\": \"1.5\",\n      \"moduleSha256\": \"22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f\",\n      \"files\": {\n        \"data/generated/daughters/road-ltl/knowledge-model-v1.json\": \"0498d8571c0f670ecab419fd4e606ec6149a92fc9a03a62162edf564d768bb3f\",\n        \"data/generated/daughters/road-ltl/page-projection-v1.json\": \"b63d3b3c5875bacd5e8db3f4f24f76071e2168c46481781d0ee6eec22b050c00\"\n      }\n    },\n    \"ocean-fcl\": {\n      \"counts\": {\n        \"processCount\": 30,\n        \"a3Count\": 17,\n        \"edgeCount\": 68,\n        \"sourceCount\": 15\n      },\n      \"sourceVersion\": \"0.6\",\n      \"moduleSha256\": \"334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a\",\n      \"files\": {\n        \"data/generated/daughters/ocean-fcl/knowledge-model-v1.json\": \"db31faa2542041df32b3952a29d022e6b7880ceda5dae40e193e43375295cf1c\",\n        \"data/generated/daughters/ocean-fcl/page-projection-v1.json\": \"209f2f9f2bd7b377b2857785e1cbdf4fb4dc9b3ffd6ea477a698b9e578b301b8\"\n      }\n    },\n    \"ocean-lcl\": {\n      \"counts\": {\n        \"processCount\": 30,\n        \"a3Count\": 18,\n        \"edgeCount\": 68,\n        \"sourceCount\": 15\n      },\n      \"sourceVersion\": \"0.6\",\n      \"moduleSha256\": \"73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f\",\n      \"files\": {\n        \"data/generated/daughters/ocean-lcl/knowledge-model-v1.json\": \"44b216e3089aa7b46acfcd36e7167cbc78d9a24676c2c2e8dfc5795167974773\",\n        \"data/generated/daughters/ocean-lcl/page-projection-v1.json\": \"e630014f1e951432be14e7f363fdf32362c7c390993c2a0843c7c21ef6e57074\"\n      }\n    }\n  },\n  \"materializedOutputsVerified\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "ls-files",
+        "scripts/generate-bounded-daughter-v1.js",
+        "scripts/s8-3a-certified-inputs.js",
+        "tests/atl-155-bounded-daughter-generation.test.js",
+        "data/generated/daughters"
+      ],
+      "cwd": "work/qa-corrected",
+      "exit": 0,
+      "stdout": "scripts/generate-bounded-daughter-v1.js\nscripts/s8-3a-certified-inputs.js\ntests/atl-155-bounded-daughter-generation.test.js\n",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "rev-parse",
+        "28af71cc9eb354c5a5265c441d06f7d30ad9ab2a:scripts/generate-bounded-daughter-v1.js"
+      ],
+      "cwd": "work/qa-corrected",
+      "exit": 0,
+      "stdout": "d35e971df6449363bd781a8c245497c6434d19c8\n",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "rev-parse",
+        "28af71cc9eb354c5a5265c441d06f7d30ad9ab2a:scripts/s8-3a-certified-inputs.js"
+      ],
+      "cwd": "work/qa-corrected",
+      "exit": 0,
+      "stdout": "b40e6c4f6a85402f29824609a6f52fefee123263\n",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "rev-parse",
+        "28af71cc9eb354c5a5265c441d06f7d30ad9ab2a:tests/atl-155-bounded-daughter-generation.test.js"
+      ],
+      "cwd": "work/qa-corrected",
+      "exit": 0,
+      "stdout": "dc63cfce9f7d21ff9c17f140ae853a529fa41c82\n",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "work/qa-corrected",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "result": "PASS",
+  "tree": "b478b50965ec8b179abd10ee70cf85f117ad8637",
+  "regression": {
+    "ok": true,
+    "deterministicByteIdentity": true,
+    "governedInputs": [
+      {
+        "path": "governance/product/ATL_153_V1_5_GOVERNED_SOURCE_UNIVERSE_BASELINE_V1.md",
+        "gitBlob": "ab224f715a2735f19c590986eae31927b936fa2a",
+        "sha256": "3cc970b636e185d711fbc43ddb7aa93a462ad2ad29d7c9752280f7df926e19f9"
+      },
+      {
+        "path": "data/modules/road-ltl-v1.4.json",
+        "gitBlob": "d06974e9ee86cea59227e0866a98ad5d1367bfad",
+        "sha256": "c8a0af378ac114d684e79a0640871c73bfaa4493e96e3f5a4b413fa2f330b1d4"
+      },
+      {
+        "path": "data/modules/road-ltl-v1.5.json",
+        "gitBlob": "b69883d5369be8aad15bb9325f910610da875771",
+        "sha256": "22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f"
+      },
+      {
+        "path": "data/operational-knowledge/road-ltl-v1.5-operational.json",
+        "gitBlob": "91408e34382a26bd96f1d6224b252dfb9f8b8d53",
+        "sha256": "6bf09b05fef2967bda48800cf5ba926487f3df6ca467f0316ca52334045a22a9"
+      },
+      {
+        "path": "governance/product/s8-3a-baseline/data/governance/source-registry-v1.json",
+        "gitBlob": "6beaa755b5046d577b3211cd48ddccbe81f8475c",
+        "sha256": "fae7c3a5411ad0becf35078fba4f200f70f328447fe0685a793f1d9f359f653e"
+      },
+      {
+        "path": "governance/product/s8-3a-baseline/data/governance/destination-coverage-registry-v1.json",
+        "gitBlob": "20ec299542e20cc1f6b0373850fcae3010e80ec9",
+        "sha256": "5da91a90209f715faf001619e64cab3475de34532f5ea5027c8a752b5cac1e4a"
+      },
+      {
+        "path": "governance/product/s8-3a-baseline/data/atlas-registry.json",
+        "gitBlob": "d29f48119895c00555acee98d29f7ccbd27acb1b",
+        "sha256": "a02a92e5aa090b27e6924d4bc8fb5252bc3744822e6b4559307e3d4ee6cf7776"
+      },
+      {
+        "path": "governance/product/s8-3a-baseline/data/provenance/road-ltl-claim-provenance-v1.json",
+        "gitBlob": "25cd876658c2de42445ca49eab80abe003eceea2",
+        "sha256": "820f459f8aa7a365132dcb4517004da796f922fbd0150aa6f6fadcfa335db201"
+      }
+    ],
+    "oceanPackage": {
+      "path": "release/packages/frozen/atlas-daughter-release-ltl-v1.4-ocean-v0.6.zip",
+      "gitBlob": "5e7f31db1c2c9db6d265f0f6d9def6ff75b19a5e",
+      "sha256": "b81b22d2a31869441ccfbbee05a24f6ac296d32fd56ce4c46472cac7894eb289"
+    },
+    "outputs": {
+      "road-ltl": {
+        "counts": {
+          "processCount": 22,
+          "a3Count": 13,
+          "edgeCount": 150,
+          "sourceCount": 29
+        },
+        "sourceVersion": "1.5",
+        "moduleSha256": "22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f",
+        "files": {
+          "data/generated/daughters/road-ltl/knowledge-model-v1.json": "0498d8571c0f670ecab419fd4e606ec6149a92fc9a03a62162edf564d768bb3f",
+          "data/generated/daughters/road-ltl/page-projection-v1.json": "b63d3b3c5875bacd5e8db3f4f24f76071e2168c46481781d0ee6eec22b050c00"
+        }
+      },
+      "ocean-fcl": {
+        "counts": {
+          "processCount": 30,
+          "a3Count": 17,
+          "edgeCount": 68,
+          "sourceCount": 15
+        },
+        "sourceVersion": "0.6",
+        "moduleSha256": "334d6a11595d33c46fa3b4675aa953f1fa6943906894f1cad7a8caf30cad034a",
+        "files": {
+          "data/generated/daughters/ocean-fcl/knowledge-model-v1.json": "db31faa2542041df32b3952a29d022e6b7880ceda5dae40e193e43375295cf1c",
+          "data/generated/daughters/ocean-fcl/page-projection-v1.json": "209f2f9f2bd7b377b2857785e1cbdf4fb4dc9b3ffd6ea477a698b9e578b301b8"
+        }
+      },
+      "ocean-lcl": {
+        "counts": {
+          "processCount": 30,
+          "a3Count": 18,
+          "edgeCount": 68,
+          "sourceCount": 15
+        },
+        "sourceVersion": "0.6",
+        "moduleSha256": "73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f",
+        "files": {
+          "data/generated/daughters/ocean-lcl/knowledge-model-v1.json": "44b216e3089aa7b46acfcd36e7167cbc78d9a24676c2c2e8dfc5795167974773",
+          "data/generated/daughters/ocean-lcl/page-projection-v1.json": "e630014f1e951432be14e7f363fdf32362c7c390993c2a0843c7c21ef6e57074"
+        }
+      }
+    },
+    "materializedOutputsVerified": false
+  },
+  "identities": {
+    "scripts/generate-bounded-daughter-v1.js": {
+      "gitBlob": "d35e971df6449363bd781a8c245497c6434d19c8",
+      "sha256": "b0c2f0dd977bb86168e74a4d1d7af086e08f21a3880cb1c70812f74be6d5f0b9",
+      "bytes": 10341
+    },
+    "scripts/s8-3a-certified-inputs.js": {
+      "gitBlob": "b40e6c4f6a85402f29824609a6f52fefee123263",
+      "sha256": "0933d1d5c07be262ba4c1a62483688c863fb8fa4dd6ed4c094c4946c24809c67",
+      "bytes": 1905
+    },
+    "tests/atl-155-bounded-daughter-generation.test.js": {
+      "gitBlob": "dc63cfce9f7d21ff9c17f140ae853a529fa41c82",
+      "sha256": "abf8d06abf9abec028103a58cee538a9d1cff65857aae113007ad6a2d569dca9",
+      "bytes": 5360
+    }
+  },
+  "finishedAt": "2026-10-04T04:54:00.388Z"
+}
