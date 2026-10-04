@@ -1,0 +1,161 @@
+{
+  "apiRequest": "GET /api/atlas?action=governed-depth-summary&moduleId=road-ltl&moduleVersion=1.5&taskId=LTL-04",
+  "httpStatus": 200,
+  "projectionClassHeader": "PUBLIC_SAFE",
+  "summary": {
+    "basis": "EXISTING_GOVERNED_S8_EVIDENCE_ONLY",
+    "blockers": [
+      {
+        "blockedLeafCount": 2,
+        "code": "CLIENT_BINDING_REQUIRED",
+        "unresolvedBindingCount": 1
+      },
+      {
+        "blockedLeafCount": 2,
+        "code": "KNOWLEDGE_GAP"
+      },
+      {
+        "code": "LEAVES_NOT_COMPILED",
+        "leafCount": 5,
+        "notCompiledLeafCount": 4
+      },
+      {
+        "code": "PROJECTION_BLOCKED"
+      },
+      {
+        "code": "EXECUTOR_NOT_INDEPENDENTLY_PROVEN"
+      },
+      {
+        "code": "API_ENDPOINT_REQUIREMENT_NOT_CONFIRMED"
+      }
+    ],
+    "knowledgeGaps": {
+      "blockedLeafCount": 2,
+      "resolved": false
+    },
+    "lineage": {
+      "binding": "2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9",
+      "flow": {
+        "bpmnSha256": "1ede708543a8906333646f010b082446ec75dbf371337ad6069481c4958dfd61",
+        "flowViewSha256": "1b3839e0bde5e92216373b9ff232a5d20de5e84a7c25250f7d4ce4b93dbaba6f",
+        "graph": "dfad5a029ce830e4c1bff68ea1a9ac7f482315c619495a7295aef3c50abe408e",
+        "svgSha256": "dbd7d34f978d21a7f81059b58b6de6cac78c89c66c047af6bf98c71ead237482"
+      },
+      "package": "6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367",
+      "projection": "703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c",
+      "readiness": "c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617",
+      "semanticsRecord": "d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576",
+      "sourcePin": {
+        "blob": "d06974e9ee86cea59227e0866a98ad5d1367bfad",
+        "commit": "662c7847d3839c1ffd95dc8589d3d0d6ac100d67",
+        "note": "Source lineage identity only; not the requested module version and not a fallback.",
+        "semanticSourceVersion": "1.4",
+        "taskHash": "b0bee64f418dcf99ccd60480c86dcd9dcd066231fe72ab7033c80994922b4e65"
+      },
+      "workDefinition": "fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61"
+    },
+    "malkom": {
+      "apiEndpointDisposition": "REQUIREMENT_NOT_CONFIRMED",
+      "packageDisposition": "PACKAGE_IDENTITY_CONSUMED_NOT_REGENERATED",
+      "projectionDisposition": "BLOCKED",
+      "requirementCoverage": [
+        {
+          "projectionRule": "PRESERVE",
+          "requirement": "Canonical identity/version/lineage",
+          "status": "AVAILABLE"
+        },
+        {
+          "projectionRule": "PRESERVE_COMPILED_ONLY",
+          "requirement": "Work semantics",
+          "status": "PARTIAL"
+        },
+        {
+          "projectionRule": "SEPARATE_BINDING",
+          "requirement": "Client execution parameters",
+          "status": "CLIENT_BINDING_REQUIRED"
+        },
+        {
+          "projectionRule": "NO_GUESSED_INTERFACE",
+          "requirement": "Malkom API endpoint",
+          "status": "UNSUPPORTED"
+        }
+      ]
+    },
+    "mechanism": {
+      "atl157PublicDepth": {
+        "action": "execution-depth-projection",
+        "changed": false,
+        "ltl04Disposition": "NOT_MATERIALIZED_BY_DESIGN",
+        "materializedProofScope": "LTL-03"
+      },
+      "bindingResolution": false,
+      "canonicalWrite": false,
+      "enrichment": false,
+      "kind": "EXISTING_KNOWLEDGE_LOOKUP_NOT_A_MATERIALIZER",
+      "knowledgeGapFilling": false,
+      "newOperationalSemantics": false,
+      "readinessPromotion": false,
+      "research": false,
+      "workDefinitionCompilation": false
+    },
+    "notClaimed": [
+      "runtime ready",
+      "release ready",
+      "ATL-157 materialization of LTL-04",
+      "utility value achieved",
+      "knowledge gaps closed",
+      "client binding resolved"
+    ],
+    "projectionClass": "PUBLIC_SAFE",
+    "protectedOmissions": [
+      "WorkDefinition body/content",
+      "protected Malkom package bytes",
+      "readiness private payload",
+      "protected projection bytes",
+      "Flow/BPMN/SVG bytes",
+      "client values",
+      "hidden leaf internals",
+      "protected source claim content",
+      "runtime mappings"
+    ],
+    "readOnly": true,
+    "readiness": {
+      "clientBinding": "CLIENT_BINDING_REQUIRED",
+      "disposition": "BLOCKED",
+      "independentExecutorProofStatus": "NOT_INDEPENDENTLY_PROVEN",
+      "materializable": false,
+      "runtimeCertification": false,
+      "universalExecutionReady": false,
+      "unresolvedBindingCount": 1
+    },
+    "schemaVersion": "atlas-v1.5-governed-depth-summary-v1",
+    "scope": {
+      "contextKey": "road-ltl@1.5 / LTL-04",
+      "moduleId": "road-ltl",
+      "moduleVersion": "1.5",
+      "taskId": "LTL-04",
+      "workDefinitionId": "road-ltl@1.5::LTL-04::LTL-04::ACT::02::WD"
+    },
+    "trace": {
+      "flow": {
+        "blockedLeaves": 4,
+        "declaredPaths": 4,
+        "edges": 6,
+        "nodes": 7,
+        "unsupportedDispositions": 6
+      },
+      "protectedBytesIncluded": false,
+      "publicTracePath": "/atl-140-malkom-consumer.html#generated-flow"
+    },
+    "workDefinition": {
+      "blockedByClientBindingLeafCount": 2,
+      "blockedByKnowledgeGapLeafCount": 2,
+      "bodyIncluded": false,
+      "compiledLeafCount": 1,
+      "leafCount": 5,
+      "notCompiledLeafCount": 4,
+      "protectedCount": 1,
+      "workSemantics": "PARTIAL"
+    }
+  }
+}
