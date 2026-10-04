@@ -1,0 +1,17 @@
+const fs=require('fs'),path=require('path'),cp=require('child_process'),crypto=require('crypto');
+const repo=path.resolve(process.argv[2]||'.'),checkout=path.resolve(process.argv[3]),output=path.resolve(process.argv[4]);
+if(!process.argv[3]||!process.argv[4])throw Error('Usage: node run-exact-qa.cjs <repo> <fresh-checkout> <evidence-output>');
+if(fs.existsSync(checkout))throw Error('Fresh checkout directory required');
+const git=(args,cwd=repo)=>cp.execFileSync('git',['-c','safe.directory='+cwd,...args],{cwd,encoding:'utf8'}).trim();
+const head=git(['rev-parse','HEAD']);
+cp.execFileSync('git',['-c','safe.directory='+repo,'-c','safe.directory='+repo+'/.git','clone','--no-hardlinks','--no-checkout',repo,checkout],{stdio:'pipe'});
+git(['checkout','--detach',head],checkout);
+const tests=['tests/p6-2-canonical-workdefinition-compiler.mjs','tests/s8-2e-leaf-compiler-correction.mjs','tests/s8-2e-atl159-workdefinition-lineage.test.cjs','tests/s8-2a-atl171-operational-semantics.test.cjs','tests/s8-2b-atl171-schema-compatibility.test.cjs','tests/s8-2c-atl165-client-binding.test.cjs','tests/s8-2d-atl165-binding-schema.test.cjs','tests/s8-3b-atl159-ltl04-workdefinition.test.mjs'];
+const results=tests.map(test=>{const r=cp.spawnSync(process.execPath,[test],{cwd:checkout,encoding:'utf8'});return {command:['node',test],exitCode:r.status,stdout:r.stdout,stderr:r.stderr};});
+const clean=git(['status','--porcelain'],checkout)==='';
+const pass=results.every(r=>r.exitCode===0)&&clean;
+const evidence={schemaVersion:'s8-3b-exact-qa-v1',testedCommit:head,testedTree:git(['rev-parse',head+'^{tree}']),base:'5ca674472ef5e0a76290a43d9c31167fa931f39d',nodeVersion:process.version,platform:process.platform,architecture:process.arch,testScope:'S8-3B source reconstruction and protected compilation plus compiler and S8-2 donor regressions; no runtime, merge or deployment certification',status:pass?'PASS':'FAIL',results,cleanCheckout:clean};
+fs.writeFileSync(output,JSON.stringify(evidence,null,2)+'\n');
+console.log(JSON.stringify({status:evidence.status,testedCommit:head,testedTree:evidence.testedTree,passedTests:results.filter(r=>r.exitCode===0).length,totalTests:tests.length,cleanCheckout:clean,evidenceSha256:crypto.createHash('sha256').update(fs.readFileSync(output)).digest('hex')},null,2));
+if(!pass)process.exitCode=1;
+
