@@ -26,6 +26,9 @@ await test('K01 historical ATL-157 fixtures are byte-identical to the pinned his
   assert.deepEqual(verifyFixtures(path.join(root, FIXTURE_DIR)), {ok: true, mismatches: []});
   for (const [name, p] of Object.entries({'materialize-bounded-depth-v1.cjs': 'scripts/materialize-bounded-depth-v1.cjs', 'atlas-bounded-depth-v1.json': 'data/contracts/atlas-bounded-depth-v1.json', 'atl-157-bounded-depth.test.cjs': 'tests/atl-157-bounded-depth.test.cjs', 'atl-157-road-ltl-depth-request.json': 'tests/fixtures/atl-157-road-ltl-depth-request.json', 'atl-157-machine-trigger-reject.json': 'tests/fixtures/atl-157-machine-trigger-reject.json'})) assert.equal(git(['rev-parse', `${HISTORICAL_COMMIT}:${p}`]), FIXTURE_PINS[name].blob, name);
   assert.equal(git(['rev-parse', `${HISTORICAL_COMMIT}^{commit}`]), HISTORICAL_COMMIT);
+  const prov = JSON.parse(read(`${FIXTURE_DIR}/PROVENANCE.json`));
+  assert.equal(prov.historicalCommit, HISTORICAL_COMMIT);
+  assert.deepEqual(prov.files.map((f) => [f.fixture, f.blob]).sort(), Object.entries(FIXTURE_PINS).map(([n, v]) => [n, v.blob]).sort(), 'PROVENANCE blob table equals the pinned fixture blobs');
 });
 await test('K02 fixtures are test-only: outside product paths; ATL-157 is not shipped in the successor tree', () => {
   const tracked = git(['ls-files']).split('\n');

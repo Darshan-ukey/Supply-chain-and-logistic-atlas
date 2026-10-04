@@ -94,7 +94,7 @@ for(const [id,desc,fn] of mutations){
  const wt=wtPath(id);git(['worktree','add','--detach',wt,head],checkout);
  let r;try{fn(wt);git(['add','-A'],wt);cp.execFileSync('git',['-c','safe.directory='+wt,'-c','user.name=qa','-c','user.email=qa@example.invalid','commit','-q','--allow-empty','-m','mutation '+id],{cwd:wt});r=run([s85a],wt)}catch(e){r={exitCode:null,stdout:'',stderr:String(e.message).slice(0,400)}}
  const f=failCases(r);
- mutationResults.push({id,mutation:desc,s85aSuiteExitCode:r.exitCode,detectedByFailingCases:f.length,firstDetections:f.slice(0,3),result:(r.exitCode!==0&&r.exitCode!==null&&f.length>0)?'DETECTED':'NOT_DETECTED',...(r.exitCode===null?{infrastructureError:r.stderr}:{})});
+ mutationResults.push({id,mutation:desc,s85aSuiteExitCode:r.exitCode,detectedByFailingCases:f.length,firstDetections:f.slice(0,3),detection:f.length>0?'CASE_FAILURE':'SUITE_ABORT_FAIL_CLOSED',result:(r.exitCode!==0&&r.exitCode!==null)?'DETECTED':'NOT_DETECTED',...(f.length===0&&r.exitCode!==0&&r.exitCode!==null?{abortTail:(r.stderr||'').trim().split('\n').slice(-2).join(' | ').slice(0,300)}:{}),...(r.exitCode===null?{infrastructureError:r.stderr}:{})});
  git(['worktree','remove','--force',wt],checkout);
 }
 
