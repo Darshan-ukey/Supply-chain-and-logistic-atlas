@@ -1,0 +1,685 @@
+{
+  "schemaVersion": "s8-6-dau-exact-qa-v1",
+  "stage": "S8-6 bounded DAU-007 history-sync remediation (also closes the reopened DAU-006 deep-link/reload regression)",
+  "testedCommit": "e0a1ce28530735e4673d1e59ade4c8fd1ece58ce",
+  "testedTree": "42ee3010a3054efb174034edd6603640970a8edf",
+  "base": "97e3086daa7b1ca694d019f0f30bb2c3150e7a6d",
+  "baseTree": "33c820c5d5c347ca918f128492f9b6928ea07f64",
+  "nodeVersion": "v22.22.0",
+  "platform": "linux",
+  "architecture": "x64",
+  "nodeEngineStated": "24.x",
+  "status": "FAIL",
+  "classification": "DAU REMEDIATION FAIL — SEE EVIDENCE",
+  "cleanFreshCheckout": true,
+  "browser": {
+    "engine": "chromium 141.0.7390.37",
+    "executable": "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
+  },
+  "dauSuite": {
+    "runs": [
+      {
+        "exitCode": 0,
+        "total": 110,
+        "passed": 110,
+        "failed": 0,
+        "rootLoadRaceTolerated": 1,
+        "failingCases": []
+      },
+      {
+        "exitCode": 1,
+        "total": 110,
+        "passed": 109,
+        "failed": 1,
+        "rootLoadRaceTolerated": 0,
+        "failingCases": [
+          "R02 root load-race mechanism: a render task before the Stage-8 repair overflows the stack in the UNCHANGED root wit"
+        ]
+      }
+    ],
+    "identicalCaseSetAcrossRuns": true,
+    "caseIds": [
+      "B007-01",
+      "B007-02",
+      "B007-03",
+      "B007-04",
+      "B007-05",
+      "B007-06",
+      "B007-07",
+      "B007-08",
+      "B007-09",
+      "B007-10",
+      "C01",
+      "D6-D1",
+      "D6-L-A",
+      "D6-L-B",
+      "D6-L-C",
+      "D6-L-D",
+      "D6-L-E",
+      "D6-L-F",
+      "D6-L-G",
+      "D6-L-M",
+      "D6-R-A",
+      "D6-R-B",
+      "D6-R-C",
+      "D6-R-D",
+      "D6-R-E",
+      "D6-R-F",
+      "D6-R-G",
+      "D6-R-M",
+      "D6-R-U",
+      "D6-R2",
+      "D6-R3",
+      "I01",
+      "I02",
+      "I03",
+      "I04",
+      "I05",
+      "I06",
+      "I07",
+      "I08",
+      "I09",
+      "N-L-a4NoA3",
+      "N-L-invalidDepth",
+      "N-L-malformedJson",
+      "N-L-processMismatch",
+      "N-L-protectedProcess",
+      "N-L-stale",
+      "N-L-unknownA3",
+      "N-L-unknownDomain",
+      "N-L-unknownModule",
+      "N-L-unknownProcess",
+      "N-L-unsupportedModule",
+      "N-P-a4NoA3",
+      "N-P-incomplete",
+      "N-P-invalidDepth",
+      "N-P-invalidLevel",
+      "N-P-malformedArray",
+      "N-P-malformedEmpty",
+      "N-P-malformedString",
+      "N-P-processMismatch",
+      "N-P-protectedKey",
+      "N-P-protectedModule",
+      "N-P-protectedProcess",
+      "N-P-stalePin",
+      "N-P-unknownA3",
+      "N-P-unknownKey",
+      "N-P-unknownModule",
+      "N-P-unknownProcess",
+      "N-P-unknownViewKey",
+      "N-P-unsupportedModule",
+      "N-R-a4NoA3",
+      "N-R-incomplete",
+      "N-R-invalidDepth",
+      "N-R-invalidLevel",
+      "N-R-malformedArray",
+      "N-R-malformedEmpty",
+      "N-R-malformedString",
+      "N-R-processMismatch",
+      "N-R-protectedKey",
+      "N-R-protectedModule",
+      "N-R-protectedProcess",
+      "N-R-stalePin",
+      "N-R-unknownA3",
+      "N-R-unknownKey",
+      "N-R-unknownModule",
+      "N-R-unknownProcess",
+      "N-R-unknownViewKey",
+      "N-R-unsupportedModule",
+      "N-X1",
+      "N-X2",
+      "N-X3",
+      "R01",
+      "R02",
+      "R03",
+      "U01",
+      "U02",
+      "U03",
+      "U04",
+      "U05",
+      "U06",
+      "U07",
+      "U08",
+      "U09",
+      "U10",
+      "U11",
+      "U12",
+      "U13",
+      "U14",
+      "U15",
+      "U16",
+      "U17"
+    ],
+    "groups": {
+      "dau007": "B007-01..10 (14-step sequence, determinism, A4 independence, Back/Forward walk, module/A3 preservation, no duplicates, rapid traversal, A5)",
+      "dau006": "D6-R-* refresh, D6-L-* generated deep links, D6-D1 direct load, D6-R2/R3 Back/Forward with reload",
+      "negatives": "N-P-*/N-R-* (18 injected-state kinds via popstate and reload), N-L-* deep links, N-X1..X3",
+      "identity": "I01..I09",
+      "unit": "U01..U17",
+      "consumerNoop": "C01",
+      "rootLoadRace": "R01..R03"
+    },
+    "rootLoadRaceNote": "Pre-existing intermittent root load-time race (Stage-8 closeFutureDrawer recursion repaired by a later script block). Tolerated only as that exact message before the history module sets any status; counted; mechanism proven with the module absent (R02). Root unchanged."
+  },
+  "mutationSuite": {
+    "exitCode": 0,
+    "total": 22,
+    "passed": 22,
+    "mutations": 21,
+    "detected": 21,
+    "survived": [],
+    "detail": {
+      "control": {
+        "passed": 52
+      },
+      "M03-BACK-SKIPS-A4": {
+        "killedBy": [
+          "B007-01",
+          "B007-02",
+          "B007-03",
+          "B007-04",
+          "B007-05",
+          "B007-09",
+          "N-X2"
+        ],
+        "exit": 1,
+        "ran": 18
+      },
+      "M02-PROCESS-WITHOUT-A4": {
+        "killedBy": [
+          "B007-02",
+          "B007-01",
+          "B007-03",
+          "B007-04",
+          "B007-05",
+          "B007-09",
+          "B007-10",
+          "N-X2"
+        ],
+        "exit": 1,
+        "ran": 18
+      },
+      "M01-A4-ENTRY-OMITTED": {
+        "killedBy": [
+          "B007-02",
+          "B007-01",
+          "B007-03",
+          "B007-04",
+          "B007-05",
+          "B007-09",
+          "B007-08",
+          "D6-R-B",
+          "B007-10",
+          "D6-R-C",
+          "D6-L-C",
+          "N-X1",
+          "N-X2",
+          "N-X3"
+        ],
+        "exit": 1,
+        "ran": 18
+      },
+      "M04-FORWARD-LOSES-LTL01": {
+        "killedBy": [
+          "B007-02",
+          "B007-01",
+          "B007-03",
+          "B007-04",
+          "B007-09",
+          "B007-10",
+          "D6-R-C",
+          "D6-L-C"
+        ],
+        "exit": 1,
+        "ran": 18
+      },
+      "M05-RELOAD-LOSES-STATE": {
+        "killedBy": [
+          "B007-01",
+          "B007-03",
+          "D6-R-B",
+          "B007-10",
+          "D6-R-C"
+        ],
+        "exit": 1,
+        "ran": 18
+      },
+      "M06-ROOT-CHANGED": {
+        "killedBy": [
+          "I01",
+          "I08"
+        ],
+        "exit": 1,
+        "ran": 52
+      },
+      "M07-SHELL-CHANGED": {
+        "killedBy": [
+          "I02",
+          "I08"
+        ],
+        "exit": 1,
+        "ran": 52
+      },
+      "M08-ATL142-CONTROLLER-COPIED": {
+        "killedBy": [
+          "U16",
+          "I09"
+        ],
+        "exit": 1,
+        "ran": 52
+      },
+      "M09-PROTECTED-IN-HISTORY-STATE": {
+        "killedBy": [
+          "I09",
+          "B007-01",
+          "B007-02",
+          "B007-03",
+          "B007-04",
+          "B007-05",
+          "B007-06",
+          "B007-07",
+          "B007-09",
+          "B007-10",
+          "D6-R-B",
+          "D6-R-C",
+          "D6-R2",
+          "D6-R3",
+          "N-X2"
+        ],
+        "exit": 1,
+        "ran": 52
+      },
+      "M10-UNKNOWN-PROCESS-ACCEPTED": {
+        "killedBy": [
+          "U10",
+          "I09",
+          "N-P-unknownProcess",
+          "N-R-unknownProcess"
+        ],
+        "exit": 1,
+        "ran": 52
+      },
+      "M11-DUPLICATE-ENTRIES": {
+        "killedBy": [
+          "B007-02",
+          "B007-01",
+          "B007-03",
+          "B007-04",
+          "B007-05",
+          "B007-06",
+          "B007-07",
+          "B007-08",
+          "B007-09",
+          "B007-10",
+          "D6-D1",
+          "D6-L-C",
+          "N-X3",
+          "N-X2"
+        ],
+        "exit": 1,
+        "ran": 18
+      },
+      "M12-POPSTATE-PUSHES": {
+        "killedBy": [
+          "B007-01",
+          "B007-02",
+          "B007-03",
+          "B007-04",
+          "B007-06",
+          "B007-07",
+          "B007-09",
+          "B007-10",
+          "N-X2"
+        ],
+        "exit": 1,
+        "ran": 18
+      },
+      "M15-RESTORE-FEEDBACK-LOOP": {
+        "killedBy": [
+          "B007-01",
+          "B007-02",
+          "B007-03",
+          "B007-04",
+          "B007-06",
+          "B007-07",
+          "B007-09",
+          "B007-10",
+          "N-X2"
+        ],
+        "exit": 1,
+        "ran": 18
+      },
+      "M13-MODULE-NOT-PRESERVED": {
+        "killedBy": [
+          "U13",
+          "I09",
+          "B007-01",
+          "B007-02",
+          "B007-03",
+          "B007-04",
+          "B007-05",
+          "B007-06",
+          "B007-07",
+          "B007-08",
+          "B007-09",
+          "B007-10",
+          "D6-R-B",
+          "D6-R-C",
+          "D6-L-C",
+          "D6-R2",
+          "D6-R3",
+          "N-P-unknownModule",
+          "N-P-unknownProcess",
+          "N-R-unknownProcess",
+          "N-P-stalePin",
+          "N-R-stalePin",
+          "N-P-protectedKey",
+          "N-X1",
+          "N-X2",
+          "N-X3"
+        ],
+        "exit": 1,
+        "ran": 52
+      },
+      "M14-A3-NOT-PRESERVED": {
+        "killedBy": [
+          "U13",
+          "I09",
+          "B007-01",
+          "B007-02",
+          "B007-04",
+          "B007-03",
+          "B007-05",
+          "B007-07",
+          "B007-08",
+          "B007-09",
+          "B007-10",
+          "D6-R-B",
+          "D6-R-C",
+          "D6-L-C",
+          "D6-R3",
+          "D6-R2",
+          "N-P-unknownProcess",
+          "N-P-unknownModule",
+          "N-P-stalePin",
+          "N-R-unknownProcess",
+          "N-P-protectedKey",
+          "N-R-stalePin",
+          "N-X2",
+          "N-X1",
+          "N-X3"
+        ],
+        "exit": 1,
+        "ran": 52
+      },
+      "M16-STALE-PIN-ACCEPTED": {
+        "killedBy": [
+          "U12",
+          "I09",
+          "N-P-stalePin",
+          "N-R-stalePin"
+        ],
+        "exit": 1,
+        "ran": 52
+      },
+      "M18-CONSUMER-PAGE-NOT-NOOP": {
+        "killedBy": [
+          "U15",
+          "C01"
+        ],
+        "exit": 1,
+        "ran": 18
+      },
+      "M19-STARTUP-PUSHES": {
+        "killedBy": [
+          "B007-03",
+          "B007-09",
+          "D6-D1",
+          "D6-L-C"
+        ],
+        "exit": 1,
+        "ran": 18
+      },
+      "M20-UNKNOWN-MODULE-ACCEPTED": {
+        "killedBy": [
+          "U10",
+          "I09"
+        ],
+        "exit": 1,
+        "ran": 52
+      },
+      "M21-JOURNEY-OTHER-CHANGE": {
+        "killedBy": [
+          "U17",
+          "I09"
+        ],
+        "exit": 1,
+        "ran": 52
+      },
+      "M17-JOURNEY-NOT-LOADING-MODULE": {
+        "killedBy": [
+          "U17",
+          "I09",
+          "B007-02",
+          "B007-01",
+          "B007-03",
+          "B007-04",
+          "B007-05",
+          "B007-06",
+          "B007-07",
+          "B007-08",
+          "B007-09",
+          "B007-10",
+          "D6-R-B",
+          "D6-R-C",
+          "D6-L-C",
+          "D6-D1",
+          "D6-R2",
+          "D6-R3",
+          "N-P-unknownModule",
+          "N-P-unknownProcess",
+          "N-R-unknownProcess",
+          "N-P-stalePin",
+          "N-R-stalePin",
+          "N-P-protectedKey",
+          "N-X1",
+          "N-X2",
+          "N-X3",
+          "C01"
+        ],
+        "exit": 1,
+        "ran": 52
+      }
+    }
+  },
+  "identity": {
+    "unchangedProof": [
+      {
+        "path": "index.html",
+        "baseBlob": "043802523b1618c143a0e78b88bbfb2afaa7c7dd",
+        "testedBlob": "043802523b1618c143a0e78b88bbfb2afaa7c7dd",
+        "unchanged": true
+      },
+      {
+        "path": "execution/ui/runtime-access-shell.js",
+        "baseBlob": "e65e98b9a0f57acfb9abfd7633fcada4671a9084",
+        "testedBlob": "e65e98b9a0f57acfb9abfd7633fcada4671a9084",
+        "unchanged": true
+      },
+      {
+        "path": "assets/canvas-daughter-bridge-v2.0.1.mjs",
+        "baseBlob": "264e4ed26f112845bd4afb3d1e990138971d13fe",
+        "testedBlob": "264e4ed26f112845bd4afb3d1e990138971d13fe",
+        "unchanged": true
+      },
+      {
+        "path": "canvas-v2/canvas-v2/index.html",
+        "baseBlob": "4dfa0a8410eba303ba7dad73a5cee6431dfe3258",
+        "testedBlob": "4dfa0a8410eba303ba7dad73a5cee6431dfe3258",
+        "unchanged": true
+      },
+      {
+        "path": "canvas-v2/canvas-v2/assets/canvas-v2.css",
+        "baseBlob": "860c878491479b40c1a71c8530d2f1725564341b",
+        "testedBlob": "860c878491479b40c1a71c8530d2f1725564341b",
+        "unchanged": true
+      },
+      {
+        "path": "canvas-v2/canvas-v2/assets/canvas-v2.js",
+        "baseBlob": "672dd1b5a1eb8c3c1698fae436fa0b3db53cd5d0",
+        "testedBlob": "672dd1b5a1eb8c3c1698fae436fa0b3db53cd5d0",
+        "unchanged": true
+      },
+      {
+        "path": "canvas-v2/canvas-v2/FREEZE_CERTIFICATE.md",
+        "baseBlob": "cff249802d6d61db395bf8d0a3587fafad26da67",
+        "testedBlob": "cff249802d6d61db395bf8d0a3587fafad26da67",
+        "unchanged": true
+      },
+      {
+        "path": "runtime/universal-ask-atlas.js",
+        "baseBlob": "521c47a3956c81367bab942a657f998d576ff15f",
+        "testedBlob": "521c47a3956c81367bab942a657f998d576ff15f",
+        "unchanged": true
+      },
+      {
+        "path": "lib/api/ask-atlas.js",
+        "baseBlob": "8fa80f9dd0b733a523aed6970269f5f32d5e64da",
+        "testedBlob": "8fa80f9dd0b733a523aed6970269f5f32d5e64da",
+        "unchanged": true
+      },
+      {
+        "path": "governance/ask-atlas-surface-contract-v1.json",
+        "baseBlob": "608956d30ea89859e9e649457debb73d267e04cd",
+        "testedBlob": "608956d30ea89859e9e649457debb73d267e04cd",
+        "unchanged": true
+      },
+      {
+        "path": "lib/ask/p5-governed-retrieval.js",
+        "baseBlob": "6f3c29dcbdf0ee60a694cd2f7ac7c9e521367a00",
+        "testedBlob": "6f3c29dcbdf0ee60a694cd2f7ac7c9e521367a00",
+        "unchanged": true
+      },
+      {
+        "path": "ATLAS_V2.0.1_UNIVERSAL_ASK_CERTIFICATION.md",
+        "baseBlob": "d0dfd8b2e4343f7ea86af249407e33f158267959",
+        "testedBlob": "d0dfd8b2e4343f7ea86af249407e33f158267959",
+        "unchanged": true
+      },
+      {
+        "path": "assets/atl-140-consumer-view.mjs",
+        "baseBlob": "fc20076a892356a84b0b80c285bc263bf4484c9a",
+        "testedBlob": "fc20076a892356a84b0b80c285bc263bf4484c9a",
+        "unchanged": true
+      },
+      {
+        "path": "atl-140-malkom-consumer.html",
+        "baseBlob": "8a2739c4482824a52bdf7c49b1852815b6d75c0f",
+        "testedBlob": "8a2739c4482824a52bdf7c49b1852815b6d75c0f",
+        "unchanged": true
+      },
+      {
+        "path": "daughter.html",
+        "baseBlob": "d55cec5389e42e28ea9d9991b26c740661546f5c",
+        "testedBlob": "d55cec5389e42e28ea9d9991b26c740661546f5c",
+        "unchanged": true
+      },
+      {
+        "path": "assets/universal-daughter-renderer-v2.js",
+        "baseBlob": "602828f809fc698173972386247b4a5e42a2b1ce",
+        "testedBlob": "602828f809fc698173972386247b4a5e42a2b1ce",
+        "unchanged": true
+      },
+      {
+        "path": "api/atlas.js",
+        "baseBlob": "60dcb85999eed6d1bbc67e52b7ef6c3667cd5709",
+        "testedBlob": "60dcb85999eed6d1bbc67e52b7ef6c3667cd5709",
+        "unchanged": true
+      },
+      {
+        "path": "vercel.json",
+        "baseBlob": "d526663b52aa8cf5d2531e8ae617f284c6384242",
+        "testedBlob": "d526663b52aa8cf5d2531e8ae617f284c6384242",
+        "unchanged": true
+      },
+      {
+        "path": "assets/atl-167-v15-deepen-inspect.mjs",
+        "baseBlob": "34bc9e6b4ca719823257c51b2058b19522169e9f",
+        "testedBlob": "34bc9e6b4ca719823257c51b2058b19522169e9f",
+        "unchanged": true
+      },
+      {
+        "path": "lib/api/governed-depth-summary.js",
+        "baseBlob": "01a3594fd9ccd8286131c493f422f80a26e5aaf9",
+        "testedBlob": "01a3594fd9ccd8286131c493f422f80a26e5aaf9",
+        "unchanged": true
+      },
+      {
+        "path": "lib/projections/governed-depth-summary.js",
+        "baseBlob": "9a6b07bd2141e8212d9ffbc78a1b2f3fabc92695",
+        "testedBlob": "9a6b07bd2141e8212d9ffbc78a1b2f3fabc92695",
+        "unchanged": true
+      }
+    ],
+    "protectedS83BtoEAndCompileChangedPaths": [],
+    "allUnchanged": true
+  },
+  "successorIdentities": {
+    "historyModule": {
+      "path": "assets/atl-s8-history-sync.mjs",
+      "gitBlob": "52631ec3628a2cf40509f4672a482ca5b2bf8bc3",
+      "sha256": "09602b7a70f402e8f2282e46c1bf033cea59f77db9fcc7c4b0f3785248bd9039"
+    },
+    "journey": {
+      "path": "assets/atl-140-v15-journey.mjs",
+      "predecessorBlob": "6c11bf4c89eaf212004beab7a939fd4cda38477c",
+      "successorBlob": "74bc1919ae6904a3feb8ea115ab9040911055b7f",
+      "sha256": "d7106bc7e4c560e3da7a3e465208aecd2e0e94db1abceb9badf9ec11f35cb402",
+      "addedLinesOnly": true
+    }
+  },
+  "changedPaths": [
+    {
+      "status": "M",
+      "path": "assets/atl-140-v15-journey.mjs",
+      "category": "JOURNEY_LOADS_HISTORY_MODULE_THREE_ADDED_LINES"
+    },
+    {
+      "status": "A",
+      "path": "assets/atl-s8-history-sync.mjs",
+      "category": "HISTORY_SYNC_MODULE"
+    },
+    {
+      "status": "A",
+      "path": "governance/product/S8_6_DAU_HISTORY_SYNC.md",
+      "category": "DAU_GOVERNANCE_EVIDENCE"
+    },
+    {
+      "status": "A",
+      "path": "governance/product/s8-6-evidence/run-dau-qa.cjs",
+      "category": "DAU_GOVERNANCE_EVIDENCE"
+    },
+    {
+      "status": "A",
+      "path": "tests/s8-6-dau-history-sync.test.mjs",
+      "category": "DAU_TEST_OR_SUPPORT"
+    },
+    {
+      "status": "A",
+      "path": "tests/s8-6-dau-mutations.test.mjs",
+      "category": "DAU_TEST_OR_SUPPORT"
+    },
+    {
+      "status": "A",
+      "path": "tests/s8-6-support/atlas-browser.mjs",
+      "category": "DAU_TEST_OR_SUPPORT"
+    }
+  ],
+  "residuals": [
+    "Pre-existing root init-order defect (stage15RenderContract is not defined) remains in the unchanged root; compensated after root settle by the history module (hash/last-session restore re-applied).",
+    "Share-link serialization has no A4-vs-A5 field: an A5 deep link opens at A4 with its process; history entries carry the exact level.",
+    "Working-surface/context overlays (playback/trace/transform/compare/lens) are not recorded and reset on history traversal.",
+    "Module-level (module sha) staleness is delegated to the root own version gate.",
+    "Pre-existing root load-time stack-overflow race (see rootLoadRaceNote)."
+  ]
+}
