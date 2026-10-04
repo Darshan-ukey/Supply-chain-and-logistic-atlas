@@ -21,4 +21,9 @@ async function main(){
   }
   process.stdout.write(JSON.stringify({status:'DETERMINISTIC_COMPILATION_VERIFIED',moduleId:result.moduleId,moduleVersion:result.moduleVersion,totals:result.totals,governedInputContentHash:expectedHash,outputContentHash:canonicalHash(result),independentExecutorProofStatus:'NOT_INDEPENDENTLY_PROVEN',detailIncluded:false},null,2)+'\n');
 }
-main().catch(error=>{console.error(error.message);process.exitCode=1});
+main().catch(error=>{
+  // Structural diagnostics can contain protected unit IDs. Keep CLI failures
+  // non-reconstructive; detailed validation belongs in the protected caller.
+  console.error(/^[A-Z_]+$/.test(error.message)?error.message:'WORKDEFINITION_GENERATION_FAILED_CLOSED');
+  process.exitCode=1;
+});
