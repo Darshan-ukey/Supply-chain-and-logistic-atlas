@@ -8,6 +8,8 @@
 import {buildDaughterHref, resolveDaughterTarget, TARGET_REGISTRY_PATH} from './canvas-daughter-bridge-v2.0.1.mjs';
 // S8-5B successor interaction identity: bounded ATL-167 Deepen/Inspect control for road-ltl@1.5 / LTL-04 (additive; not a retroactive S8-4 change).
 import {deepenControlMarkup, wireDeepen} from './atl-167-v15-deepen-inspect.mjs';
+// S8-6 successor interaction identity: bounded DAU-007/DAU-006 governed history registration + restoration (additive; no-op off the Atlas root).
+import {installHistorySync} from './atl-s8-history-sync.mjs';
 
 export const JOURNEY_SECTION_ID = 'atlas-v15-malkom-journey';
 export const JOURNEY_SCOPE = Object.freeze({moduleId: 'road-ltl', taskId: 'LTL-04'});
@@ -57,6 +59,7 @@ export function install(doc, workDetailHref, {fetchImpl = globalThis.fetch} = {}
 
 export async function bootJourney({doc = globalThis.document, fetchImpl = globalThis.fetch} = {}) {
   if (!doc) return null;
+  try { installHistorySync(globalThis); } catch (e) { console.warn('Atlas S8 history sync bootstrap', e); }
   let href = null;
   try { href = resolveWorkDetailHref(await loadRegistry(fetchImpl)); } catch { href = null; }
   const run = () => install(doc, href, {fetchImpl});
