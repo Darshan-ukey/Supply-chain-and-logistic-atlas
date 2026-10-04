@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "s8-3e-exact-qa-v1",
+  "testedCommit": "7c6b5ce12e8d10738d7370186c55d2fdfeac0879",
+  "testedTree": "e973ca832559a45113ce4092d5589fcbc069e6ed",
+  "base": "ae21689cce53511227207eac6c15e187da5fb52f",
+  "governedSourceReleaseTip": "97459a5e06abda96cbe3b2a121dfbee3a0bcf41e",
+  "nodeVersion": "v22.22.0",
+  "platform": "linux",
+  "architecture": "x64",
+  "testScope": "S8-3E ATL-178 bounded Flow/BPMN regeneration: deterministic graph derivation, declared-path coverage, fail-visible unsupported/ambiguous routing, trace, structural BPMN 2.0, SVG, lineage; inherited S8-3D/3C/3B/compiler/S8-2 regressions; no runtime certification",
+  "status": "PASS",
+  "results": [
+    {
+      "command": [
+        "node",
+        "tests/p6-2-canonical-workdefinition-compiler.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "P6.2 Canonical WorkDefinition compiler/verifier certification PASS\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2e-leaf-compiler-correction.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2E leaf compiler correction: actual synthetic leaf compilation, deterministic bytes, frozen/local schemas, 16 rejection cases, protected output boundary. Real S8-3B domain output NOT certified.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2e-atl159-workdefinition-lineage.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2E historical lineage-plan compatibility only; regeneration=false; leaf compiler QA is separate\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2a-atl171-operational-semantics.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2A ATL-171 governed v1.5 semantics: 22 records; override LTL-03 only\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2b-atl171-schema-compatibility.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2B schema compatibility: 22 ATL-171 records conform to bounded v1.5 + OKv2/IR lineage\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2c-atl165-client-binding.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2C ATL-165 governed client binding: 3 requirements; 2 resolved; 1 fail-closed\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-2d-atl165-binding-schema.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-2D ATL-165 schema compatibility: governed requirement fields + bounded fail-closed projection\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-3b-atl159-ltl04-workdefinition.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS S8-3B LTL-04: 1 protected WD, deterministic/schema-valid, 4 blocked leaves preserved, no client values, 2 rejection cases.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-3c-malkom-package-readiness.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"schemaVersion\":\"s8-3c-package-readiness-evidence-v1\",\"classification\":\"PUBLIC_NON_RECONSTRUCTIVE\",\"detailIncluded\":false,\"inputHashes\":{\"wd\":\"fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61\",\"binding\":\"2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9\",\"semantics\":\"d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576\"},\"packageHash\":\"6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367\",\"readinessHash\":\"c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617\",\"deterministic\":true,\"canonicalNonMutation\":true,\"canonicalLeafProjectionLossless\":true,\"retainedReadinessSchema\":\"PASS\",\"packageQA\":\"PASS\",\"readinessQA\":\"PASS\",\"negativeCasesPassed\":5,\"totals\":{\"taskCount\":1,\"workUnitCount\":7,\"leafCount\":5,\"workDefinitionCount\":1,\"notCompiledLeafCount\":4,\"blockedByClientBindingLeafCount\":2,\"blockedByKnowledgeGapLeafCount\":2,\"fullyCompiledTaskCount\":0},\"unresolvedBindingCount\":1,\"projectionDisposition\":\"BLOCKED\",\"universalExecutionReady\":false,\"independentExecutorProofStatus\":\"NOT_INDEPENDENTLY_PROVEN\",\"stageAcceptance\":\"PASS\",\"runtimeCertification\":false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-3d-malkom-projection-boundary.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"schemaVersion\":\"s8-3d-projection-evidence-v1\",\"classification\":\"PUBLIC_NON_RECONSTRUCTIVE\",\"detailIncluded\":false,\"inputHashes\":{\"wd\":\"fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61\",\"binding\":\"2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9\",\"semantics\":\"d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576\",\"base\":\"97459a5e06abda96cbe3b2a121dfbee3a0bcf41e\",\"package\":\"6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367\",\"readiness\":\"c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617\"},\"projectionHash\":\"703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c\",\"deterministic\":true,\"canonicalNonMutation\":true,\"losslessCompiledLeaf\":true,\"coverageAndResidualsPreserved\":true,\"retainedBoundarySchema\":\"PASS\",\"negativeCasesPassed\":10,\"totals\":{\"taskCount\":1,\"workUnitCount\":7,\"leafCount\":5,\"workDefinitionCount\":1,\"notCompiledLeafCount\":4,\"blockedByClientBindingLeafCount\":2,\"blockedByKnowledgeGapLeafCount\":2,\"fullyCompiledTaskCount\":0},\"unresolvedBindingCount\":1,\"readiness\":\"BLOCKED\",\"universalExecutionReady\":false,\"independentExecutorProofStatus\":\"NOT_INDEPENDENTLY_PROVEN\",\"materializable\":false,\"runtimeCertification\":false,\"stageAcceptance\":\"PASS\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/s8-3e-atl178-flow-bpmn.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"schemaVersion\":\"s8-3e-flow-evidence-v1\",\"classification\":\"PUBLIC_NON_RECONSTRUCTIVE\",\"detailIncluded\":false,\"flowSchemaVersion\":\"atlas-flow-graph-v1.5-s8-3e\",\"inputHashes\":{\"wd\":\"fcc3e6cfd3d9a3a93e5a88dc33a61c40d698be212d4c346fddfb81bf2d58be61\",\"package\":\"6324ff247ba3e21e9bb973a87061ef7a943871d1b9bf676d428f993d981f9367\",\"readiness\":\"c2d2e9eef7b768f681558d0a1e37d4d4ff805c23d25186f3037dd3731fbdc617\",\"projection\":\"703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c\",\"binding\":\"2f532fad61c0a5878028fb0bf362827b18593f7c1c502ba88b557dcc8e3a56f9\",\"semantics\":\"d642c1d59f2e938e5afcc60355f086b61e57f33d63e57e54b2a72def09a21576\",\"sourceReleaseTip\":\"97459a5e06abda96cbe3b2a121dfbee3a0bcf41e\"},\"workDefinitionId\":\"road-ltl@1.5::LTL-04::LTL-04::ACT::02::WD\",\"artifactIdentities\":{\"graphHash\":\"dfad5a029ce830e4c1bff68ea1a9ac7f482315c619495a7295aef3c50abe408e\",\"flowViewSha256\":\"1b3839e0bde5e92216373b9ff232a5d20de5e84a7c25250f7d4ce4b93dbaba6f\",\"bpmnSha256\":\"1ede708543a8906333646f010b082446ec75dbf371337ad6069481c4958dfd61\",\"svgSha256\":\"dbd7d34f978d21a7f81059b58b6de6cac78c89c66c047af6bf98c71ead237482\"},\"counts\":{\"nodes\":7,\"edges\":6,\"declaredPaths\":4,\"blockedLeaves\":4,\"unsupportedDispositions\":6,\"bpmnShapes\":7,\"bpmnEdges\":6},\"bpmnValidation\":{\"valid\":true,\"validator\":\"lib/compile/s8-bpmn-structure.js\",\"scope\":\"BOUNDED_BPMN_2_0_STRUCTURAL\"},\"boundary\":{\"canonicalMutation\":false,\"deterministic\":true,\"runtimeReadiness\":\"NOT_PROMOTED\",\"runtimeOrchestration\":\"STOP_BOUNDARY\",\"universalExecutionReady\":false,\"materializable\":false,\"runtimeCertification\":false,\"malkomQueueStructuresCanonical\":false},\"qa\":{\"caseIds\":[\"G01\",\"G02\",\"G03\",\"G04\",\"L01\",\"L02\",\"L03\",\"L04\",\"L05\",\"P01\",\"P02\",\"P03\",\"F01\",\"F02\",\"F03\",\"F04\",\"F05\",\"F06\",\"F07\",\"F08\",\"F09\",\"F10\",\"D01\",\"D02\",\"D03\",\"T01\",\"T02\",\"T03\",\"T04\",\"S01\",\"S02\",\"B01\",\"B02\",\"B03\",\"B04\",\"E01\"],\"caseCount\":36}}\n",
+      "stderr": ""
+    }
+  ],
+  "cleanCheckout": true
+}

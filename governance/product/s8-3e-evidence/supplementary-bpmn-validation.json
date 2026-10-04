@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "s8-3e-supplementary-bpmn-validation-v1",
+  "classification": "PUBLIC_NON_RECONSTRUCTIVE",
+  "gating": false,
+  "note": "Independent corroboration run once on the exact tested outputs; not part of the deterministic fresh-checkout suite.",
+  "testedCommit": "7c6b5ce12e8d10738d7370186c55d2fdfeac0879",
+  "artifacts": {
+    "bpmnSha256": "1ede708543a8906333646f010b082446ec75dbf371337ad6069481c4958dfd61",
+    "bpmnGitBlob": "d9958291e240827af508d6549b38f6fdcd40e3bc",
+    "svgSha256": "dbd7d34f978d21a7f81059b58b6de6cac78c89c66c047af6bf98c71ead237482",
+    "svgGitBlob": "11abc5d8d72ba84bdca23b83dd2e3ff1796c8606",
+    "graphJsonSha256": "013c440d0cc0fe3c260d7265058eae4fd41a3e49178142cf0e971b642943391d",
+    "graphJsonGitBlob": "a9ef4bfe679fffe97f7bfeaea6601906caedf581",
+    "flowViewJsonSha256": "b997bd95233a1459197b87bcc18a320971047b89c0e7fdd3015aed78df3e7f7b",
+    "flowViewJsonGitBlob": "c54c347cfa892508d418325c8b49758060fdeda0"
+  },
+  "xsdSource": "npm bpmn-moddle@9.0.4 resources/bpmn/xsd (OMG BPMN 2.0 schemas)",
+  "xsdSha256": {
+    "BPMN20.xsd": "4c5e3d2c8e14c9e51cd0fc9f857ab9f53d761d04ba405be0e652efe8953204a7",
+    "Semantic.xsd": "aa37542753e49d53838fc91da3581cf2de28dabd0244ce71ace1baaa707fdadc",
+    "BPMNDI.xsd": "1bfaab6a1e3b4184055100b15d1404e3414601fd47768feb7e932b4cd49fe77f",
+    "DC.xsd": "b325cd3c0d03628d5a4e10f78a1e8816b4344a2b35c459b4f5ca1a9c71097590",
+    "DI.xsd": "62fa0d89138ac5de62152061be07c899a74e7b983c0486dc6803113e1a5f94a2"
+  },
+  "tools": {
+    "xmllint": "xmllint: using libxml version 20914",
+    "bpmnModdle": "9.0.4"
+  },
+  "results": {
+    "bpmnXsdValidation": "PASS (xmllint --schema BPMN20.xsd: validates)",
+    "bpmnModdleImportWarnings": 0,
+    "svgWellFormed": true,
+    "bpmnWellFormed": true
+  }
+}

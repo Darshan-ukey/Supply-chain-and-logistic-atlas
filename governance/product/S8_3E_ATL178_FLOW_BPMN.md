@@ -41,4 +41,10 @@ Protected inputs were obtained by deterministic reproduction from the exact gove
 
 ## Closure
 
-Exact fresh-checkout QA result and identities are recorded in `s8-3e-evidence/exact-qa.json` (committed in the closure commit after the implementation commit that was tested).
+Stage closure: COMPLETE/PASS (bounded S8-3E scope only). Fresh clean-checkout QA 11/11 at tested commit `7c6b5ce12e8d10738d7370186c55d2fdfeac0879` / tree `e973ca832559a45113ce4092d5589fcbc069e6ed` (10 inherited suites + the 36-case S8-3E suite, clean checkout, Node v22.22.0, linux/x64). QA evidence SHA256 `89cf052a6820bcfa609d3bfe42fe44365e7f703c91199296f23cceb7ad6152e8` (`s8-3e-evidence/exact-qa.json`).
+
+Generated artifact identities (protected; hashes only): graph `dfad5a029ce830e4c1bff68ea1a9ac7f482315c619495a7295aef3c50abe408e`; Flow view SHA256 `1b3839e0bde5e92216373b9ff232a5d20de5e84a7c25250f7d4ce4b93dbaba6f`; BPMN SHA256 `1ede708543a8906333646f010b082446ec75dbf371337ad6069481c4958dfd61`; SVG SHA256 `dbd7d34f978d21a7f81059b58b6de6cac78c89c66c047af6bf98c71ead237482`.
+
+Supplementary, non-gating corroboration (`s8-3e-evidence/supplementary-bpmn-validation.json`): the exact BPMN validates against the OMG BPMN 2.0 XSD (xmllint) and imports into bpmn-moddle@9.0.4 with 0 warnings.
+
+Residuals: runtime orchestration, sub-queue, next-step, client execution parameters, Malkom interface requirement and clock/timer semantics remain unsupported/unknown/blocked; no runtime readiness is promoted; ATL-181 stays blocked until S8-6; release remains DO NOT MERGE. The S8-3B suite reads pinned source commit `662c7847…`, which is reachable only from branch `s8-3a-atl155-daughter-regeneration` (not an ancestor of this head), so fresh-checkout QA requires a clone that carries all branches.
