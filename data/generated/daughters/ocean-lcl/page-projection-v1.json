@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "atlas-daughter-page-projection-v1",
+  "status": "FROZEN",
+  "identity": {
+    "baselineCommit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+    "moduleId": "ocean-lcl",
+    "moduleVersion": "0.6",
+    "moduleSha256": "73d416683f43357cd0eabfe96009405fa22d74008e452f977fa489f0c395850f",
+    "generatorId": "atl-155-bounded-daughter-generator",
+    "generatorVersion": "1.3.0-s8-3a",
+    "contractVersion": "ATL-155-BOUNDED-DAUGHTER-GENERATION-V1",
+    "inputHash": "eb971e688cd401a8256056595513c32be8bc86b70af4db0ef62d5985b4498e07",
+    "outputHash": "8ed44b20506dabfffe1b2e77e6e67e94d0a3d2fe126c6e2d71d756e466352a29",
+    "canonicalModelHash": "98a4dce03313654d09ad9efa4260025e997916e1bf938d0a67756c7766060dd2"
+  },
+  "executionBoundary": {
+    "depth": "A5_EXECUTION_REFERENCE_CANDIDATE",
+    "executionStatus": "MODELED_NOT_EXECUTOR_PROVEN",
+    "nextLayer": "NEXT_LAYER_NOT_INCLUDED",
+    "independentExecutionProof": "PENDING",
+    "promotion": false
+  },
+  "ux": {
+    "entrypoint": "index.html",
+    "activation": "window.activateModule(\"ocean-lcl\")",
+    "component": "existing Atlas spatial canvas + selected-item Inspector",
+    "contract": "atlas-page0-contract-v1.0"
+  },
+  "module": {
+    "id": "ocean-lcl",
+    "version": "0.6",
+    "status": "EXECUTION_READY_REFERENCE_CANDIDATE",
+    "depth": "A5_EXECUTION_REFERENCE_CANDIDATE"
+  },
+  "sections": [
+    {
+      "id": "ocean-lcl::a3::1",
+      "title": "Commercial & service selection",
+      "tasks": [
+        "LCL-01",
+        "LCL-02"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::2",
+      "title": "House booking",
+      "tasks": [
+        "LCL-03",
+        "LCL-04"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::3",
+      "title": "Origin CFS",
+      "tasks": [
+        "LCL-05",
+        "LCL-06",
+        "LCL-07"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::4",
+      "title": "Origin controls",
+      "tasks": [
+        "LCL-08",
+        "LCL-09"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::5",
+      "title": "Master booking",
+      "tasks": [
+        "LCL-10",
+        "LCL-11"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::6",
+      "title": "Consolidation",
+      "tasks": [
+        "LCL-12",
+        "LCL-13",
+        "LCL-14"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::7",
+      "title": "Documentation",
+      "tasks": [
+        "LCL-15",
+        "LCL-16"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::8",
+      "title": "Terminal export",
+      "tasks": [
+        "LCL-17"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::9",
+      "title": "Vessel execution",
+      "tasks": [
+        "LCL-18"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::10",
+      "title": "Ocean carriage",
+      "tasks": [
+        "LCL-19",
+        "LCL-20"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::11",
+      "title": "Destination terminal",
+      "tasks": [
+        "LCL-21"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::12",
+      "title": "Import controls",
+      "tasks": [
+        "LCL-22"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::13",
+      "title": "Destination CFS",
+      "tasks": [
+        "LCL-23",
+        "LCL-24"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::14",
+      "title": "Destination readiness",
+      "tasks": [
+        "LCL-25"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::15",
+      "title": "Cargo release",
+      "tasks": [
+        "LCL-26"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::16",
+      "title": "Destination delivery",
+      "tasks": [
+        "LCL-27"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::17",
+      "title": "Commercial closeout",
+      "tasks": [
+        "LCL-28"
+      ]
+    },
+    {
+      "id": "ocean-lcl::a3::18",
+      "title": "Exceptions & recovery",
+      "tasks": [
+        "LCL-29",
+        "LCL-30"
+      ]
+    }
+  ],
+  "knowledgeModelPath": "data/generated/daughters/ocean-lcl/knowledge-model-v1.json"
+}

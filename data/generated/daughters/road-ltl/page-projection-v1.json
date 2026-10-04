@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "atlas-daughter-page-projection-v1",
+  "status": "FROZEN",
+  "identity": {
+    "baselineCommit": "f9b08a951ca823ff8c23b64044fe1a7abb9dde79",
+    "moduleId": "road-ltl",
+    "moduleVersion": "1.5",
+    "moduleSha256": "22965f4b7ec2c3d192f86edf5bb073e4820fd3724cda02aa0502e4ff4404ac6f",
+    "generatorId": "atl-155-bounded-daughter-generator",
+    "generatorVersion": "1.3.0-s8-3a",
+    "contractVersion": "ATL-155-BOUNDED-DAUGHTER-GENERATION-V1",
+    "inputHash": "b41dae4541137d4fb7051aa8cbfc5a740aedea06afb2b10abe96aba166aa4574",
+    "outputHash": "17e11a46224790357cfd4534968915bc1af8db81378e190974494ab0a2aa8d40",
+    "canonicalModelHash": "337fa8730639784625e79a32f3d5fa71992059302f0cbc6c6062fd988f626612"
+  },
+  "executionBoundary": {
+    "depth": "A5_EXECUTION_REFERENCE_CANDIDATE",
+    "executionStatus": "MODELED_NOT_EXECUTOR_PROVEN",
+    "nextLayer": "NEXT_LAYER_NOT_INCLUDED",
+    "independentExecutionProof": "PENDING",
+    "promotion": false
+  },
+  "ux": {
+    "entrypoint": "index.html",
+    "activation": "window.activateModule(\"road-ltl\")",
+    "component": "existing Atlas spatial canvas + selected-item Inspector",
+    "contract": "atlas-page0-contract-v1.0"
+  },
+  "module": {
+    "id": "road-ltl",
+    "version": "1.5",
+    "status": "FROZEN_EXECUTION_REFERENCE_CANDIDATE",
+    "depth": "A5_EXECUTION_REFERENCE_CANDIDATE"
+  },
+  "sections": [
+    {
+      "id": "a3-commercial-commitment",
+      "title": "Commercial, order and service commitment",
+      "tasks": [
+        "LTL-01",
+        "LTL-02"
+      ]
+    },
+    {
+      "id": "a3-shipment-document",
+      "title": "Shipment and transport-document establishment",
+      "tasks": [
+        "LTL-03"
+      ]
+    },
+    {
+      "id": "a3-pickup-execution",
+      "title": "Pickup request, readiness and acceptance",
+      "tasks": [
+        "LTL-04",
+        "LTL-05"
+      ]
+    },
+    {
+      "id": "a3-resource-readiness",
+      "title": "Vehicle, equipment and qualified-resource readiness",
+      "tasks": [
+        "LTL-20"
+      ]
+    },
+    {
+      "id": "a3-origin-terminal",
+      "title": "Origin terminal receipt and consolidation",
+      "tasks": [
+        "LTL-06",
+        "LTL-07"
+      ]
+    },
+    {
+      "id": "a3-network-movement",
+      "title": "Road network movement and transfer",
+      "tasks": [
+        "LTL-08",
+        "LTL-09",
+        "LTL-10"
+      ]
+    },
+    {
+      "id": "a3-destination-delivery",
+      "title": "Destination readiness, delivery and acceptance",
+      "tasks": [
+        "LTL-11",
+        "LTL-12",
+        "LTL-13"
+      ]
+    },
+    {
+      "id": "a3-exception-recovery",
+      "title": "Execution exception and recovery",
+      "tasks": [
+        "LTL-14",
+        "LTL-15"
+      ]
+    },
+    {
+      "id": "a3-freight-settlement",
+      "title": "Freight charge, invoice and settlement",
+      "tasks": [
+        "LTL-16",
+        "LTL-17"
+      ]
+    },
+    {
+      "id": "a3-claims-resolution",
+      "title": "Claims and disputes resolution",
+      "tasks": [
+        "LTL-18"
+      ]
+    },
+    {
+      "id": "a3-regulatory-control",
+      "title": "Trade, regulatory hold and release",
+      "tasks": [
+        "LTL-19"
+      ]
+    },
+    {
+      "id": "a3-master-data-control",
+      "title": "Master and reference-data control",
+      "tasks": [
+        "LTL-21"
+      ]
+    },
+    {
+      "id": "a3-customer-resolution",
+      "title": "Customer service coordination and resolution",
+      "tasks": [
+        "LTL-22"
+      ]
+    }
+  ],
+  "knowledgeModelPath": "data/generated/daughters/road-ltl/knowledge-model-v1.json"
+}
