@@ -14,4 +14,3 @@ const evidence={schemaVersion:'s8-3c-exact-qa-v1',testedCommit:head,testedTree:g
 fs.writeFileSync(output,JSON.stringify(evidence,null,2)+'\n');
 console.log(JSON.stringify({status:evidence.status,testedCommit:head,testedTree:evidence.testedTree,passedTests:results.filter(r=>r.exitCode===0).length,totalTests:tests.length,cleanCheckout:clean,evidenceSha256:crypto.createHash('sha256').update(fs.readFileSync(output)).digest('hex')},null,2));
 if(!pass)process.exitCode=1;
-
