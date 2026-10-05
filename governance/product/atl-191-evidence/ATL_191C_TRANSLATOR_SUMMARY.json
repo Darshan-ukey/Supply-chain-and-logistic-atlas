@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "atl-191c-translator-evidence-v1",
+  "status": "PASS",
+  "adapter": "atlas-malkom-domainwarehouse-v23",
+  "inputs": [
+    "ATL-169 projection/P6.2 canonical WorkDefinition",
+    "separate pinned Malkom consumer profile"
+  ],
+  "atlasCanonicalAuthorityPreserved": true,
+  "historicalProfileSemanticAuthority": false,
+  "deterministic": true,
+  "canonicalMutation": false,
+  "finalMaterializable": false,
+  "currentExpectedReason": "ATLAS_UPSTREAM_NOT_MATERIALIZABLE",
+  "localActualAugustProfileSmoke": "PASS",
+  "actualProfileSha256": "1bed891ecfa7b2d8bf4dd996692e9a109de8033898933e74bd8c892397c16e88",
+  "releaseImpact": "NONE"
+}

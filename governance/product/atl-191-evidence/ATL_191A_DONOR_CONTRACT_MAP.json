@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "atl-191a-donor-contract-map-v1",
+  "classification": "GOVERNANCE_EVIDENCE_NON_RELEASE_BLOCKING",
+  "decision": "DEC-037",
+  "proof": "ATL-191",
+  "sourceAuthority": {
+    "atl169": {
+      "branch": "s8-3d-atl169-malkom-projection-boundary",
+      "testedCommit": "3fa4348628c0fb5bcd08e1ca33d841fb9024beb4",
+      "evidenceHead": "ae21689cce53511227207eac6c15e187da5fb52f",
+      "projectionSha256": "703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c",
+      "boundarySchemaBlob": "7357321fd673351ee1685e3a7c479ceb7065287f"
+    },
+    "p62": {
+      "contract": "CANONICAL-WORKDEFINITION-CONTRACT-V1",
+      "version": "1.0.0",
+      "frozenContractBlob": "c074489f2cf7edacde962f7e0260e2b240d24b87",
+      "schemaBlob": "dfe74707a2829a310ad8958be791eda0b17ad05d"
+    }
+  },
+  "consumerDonor": {
+    "package": "Malkom3o_engines-domainwarehouse-v0.2.4-complete.zip",
+    "packageSha256": "77d5db87be91f17a93c040c10d30c19710a0961c786f21bedf2c22a35dac7336",
+    "engineVersion": "0.2.4",
+    "contractSchemaSha256": "c9ad3167fd652639c53d3d3e83dc6c17269010b8f37100337abda932810bf704",
+    "compilerSha256": "4d92541b97e592fd0990c5773a33794fab988c000f7a5e527648b1f7cfe44686",
+    "verifierSha256": "fa0b0ae89691882f449716a75ee5b733c6dc41581b15e24e6bd667148d9735a8",
+    "workflowSha256": "9d9d097735375128f98806c7f74728b9667919cd80f9a2a19449674092044f43",
+    "ltl04HistoricalWorkDefinitionSha256": "d184c59679ba82c65edf13a31a24d560007bc7345f374bb78ab6bb2d83c8f189",
+    "ltl04MalkomProjectionProfileSha256": "1bed891ecfa7b2d8bf4dd996692e9a109de8033898933e74bd8c892397c16e88",
+    "note": "Road LTL V1.2 fixture is consumer-side donor evidence only. It is not Atlas semantic authority."
+  },
+  "architectureBoundary": {
+    "canonicalAuthority": "ATL-169/P6.2",
+    "consumerStructureAuthority": "Malkom projection profile, subject to compatibility validation",
+    "canonicalMutationAllowed": false,
+    "roadLtlV12MayBecomeAtlasAuthority": false,
+    "materializationPromotionAllowed": false
+  },
+  "mapping": [
+    {
+      "atlas": "workDefinitionId/version/lineage/provenance",
+      "malkom": "id/version/sourceTask/sourceRefs/provenance anchors",
+      "disposition": "DIRECT",
+      "rule": "Exact Atlas identity/version/provenance wins."
+    },
+    {
+      "atlas": "title/purpose",
+      "malkom": "canonicalName/taskLabel/queuePurpose narrative",
+      "disposition": "DIRECT_OR_FORMAT",
+      "rule": "Formatting only; no semantic addition."
+    },
+    {
+      "atlas": "applicability/trigger/inputs/decisions/rules/controls/actions/evidence/transitions/clocks/dependencies",
+      "malkom": "canonical/sourceRecord/sourceGraph descriptive fields",
+      "disposition": "TRANSFORM",
+      "rule": "Carry governed semantics only; explicit empty when absent."
+    },
+    {
+      "atlas": "clientBindingRequirements/executability/executionCharacteristics",
+      "malkom": "clientOverridePoints/binding-required/blocker metadata",
+      "disposition": "PRESERVE_AS_BLOCKER",
+      "rule": "Never synthesize client values or upgrade readiness."
+    },
+    {
+      "atlas": "coverage.notCompiled + readiness blockers",
+      "malkom": "materialization blockers / unsupported state",
+      "disposition": "PRESERVE_AS_BLOCKER",
+      "rule": "Blocked Atlas work remains visibly blocked."
+    },
+    {
+      "atlas": "queue/subqueue/worktype/field/outcome consumer structures",
+      "malkom": "decomposition.malkom",
+      "disposition": "CONSUMER_PROFILE_REQUIRED",
+      "rule": "Not derivable from P6.2 canonical WD. Use a pinned Malkom consumer profile only after compatibility validation; never treat historical v1.2 profile as canonical truth."
+    },
+    {
+      "atlas": "actors/systems/rules/outcomes absent from current compiled leaf",
+      "malkom": "required v2.3 canonical/consumer fields",
+      "disposition": "NO_SYNTHESIS",
+      "rule": "Do not backfill from old semantic record as Atlas truth. Consumer profile may supply only consumer structure; semantic claims remain Atlas-controlled."
+    },
+    {
+      "atlas": "distribution/runtime lookup semantics",
+      "malkom": "future runtime adapter behavior",
+      "disposition": "NOT_APPLICABLE",
+      "rule": "ATL-191 bounded proof does not implement dynamic lookup."
+    }
+  ],
+  "criticalFinding": {
+    "code": "CONSUMER_PROFILE_REQUIRED",
+    "statement": "A deterministic adapter is feasible, but compileMalkom cannot be fed from ATL-169/P6.2 alone because malkom.domain-work-definition/2.3 requires consumer-specific decomposition structures. The adapter must accept a separately pinned Malkom consumer projection profile.",
+    "impact": "No v1.5 scope change. ATL-194 should prefer NO ATL-169 schema change; ATL-195 should model the profile as an explicit second input."
+  },
+  "qa": {
+    "donorHashesPinned": true,
+    "atlasCanonicalAuthorityPreserved": true,
+    "staleRoadLtlV12RejectedAsAuthority": true,
+    "canonicalMutation": false,
+    "result": "PASS_WITH_EXPLICIT_CONSUMER_PROFILE_REQUIREMENT"
+  }
+}

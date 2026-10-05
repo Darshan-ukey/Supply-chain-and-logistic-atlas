@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "atl-191d-verifier-evidence-v1",
+  "status": "PASS",
+  "domainWarehouseDonorVersion": "0.2.4",
+  "originalVerifySha256": "fa0b0ae89691882f449716a75ee5b733c6dc41581b15e24e6bd667148d9735a8",
+  "patchSha256": "cf62b85713fd46a1b42f8b3330515b204f188ce180c41e09d904f3d548d565ef",
+  "contractAlreadySupportsAtlasDerived": true,
+  "compilerChanged": false,
+  "workflowChanged": false,
+  "positiveCases": 1,
+  "negativeCases": [
+    "missing Atlas lineage",
+    "mismatched WorkDefinition identity",
+    "invalid governed source hash",
+    "missing source refs",
+    "INFERRED canonical provenance",
+    "removed upstream blockers"
+  ],
+  "verifierResult": "PASS",
+  "releaseImpact": "NONE",
+  "note": "Patch is proof evidence against the uploaded August engine source. Canonical Domain Warehouse repo ownership remains ATL-184 v2 work."
+}
