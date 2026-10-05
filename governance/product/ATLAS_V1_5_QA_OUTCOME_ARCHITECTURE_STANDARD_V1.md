@@ -45,6 +45,25 @@ The capability is genuinely useful to the Malkom Domain Warehouse consumption co
 ### 10. Consumer Independence
 The capability does not hard-wire itself to a single fixture/example in a way that makes it unusable for any other consumer or scope without a code change. A result that only works for one hardcoded example (e.g. a single queue/work item) where the issue calls for a general, repeatable capability fails this category. Evidence: check whether the generation/consumption path is parameterized by governed source data, or whether the single shipped example is actually the entire capability.
 
+## v1.5 Malkom release boundary — explicit non-claims
+
+Atlas v1.5 proves a **bounded, governed Malkom consumption/package/projection boundary**. It does **not** claim any of the following:
+
+- Atlas is connected live to Malkom Runtime.
+- Malkom materializes directly from Atlas into Malkom Command/Runtime.
+- Runtime transactions can query Atlas.
+- Malkom can dynamically request missing rules/execution intelligence from Atlas.
+- Malkom runtime feedback is already flowing back into Atlas evidence/promotion.
+- Future Atlas semantic evolution is already guaranteed not to break every downstream adapter.
+- Generic multi-consumer adaptation is operational.
+- The August Domain Warehouse engine/repository is production-integrated with governed repo/package lifecycle and CI compatibility.
+- Malkom is execution-ready from Atlas alone.
+- A real production caller/runtime path has been proven.
+
+These are **v2 continuation obligations**, not v1.5 release claims. The governing split is DEC-036 / Atlas Governance Master V2-002. v1.5 evidence may prove only the bounded Malkom contract/package/projection, exact lineage, explicit binding/unsupported/loss states, and fail-closed behavior already certified through ATL-138/ATL-169/MAL-001..003.
+
+A QA or release statement that implies any deferred capability above is already live, production-integrated, execution-ready, or generally multi-consumer is a scope/claim defect and must be corrected before promotion.
+
 ## Handoff record-keeping requirement
 
 Every BUILD_COMPLETE handoff (ChatGPT → Claude) and every QA disposition (Claude → ChatGPT) must state, for each of the 10 categories, either a one-line confirmation of what was checked and how, or an explicit "not checked / pending" flag. Silence on a category is not evidence it passed.
