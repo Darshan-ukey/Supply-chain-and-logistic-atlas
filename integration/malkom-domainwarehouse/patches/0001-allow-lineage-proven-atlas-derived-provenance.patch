@@ -1,0 +1,19 @@
+--- packages/core/src/verify.ts (Domain Warehouse v0.2.4)
++++ packages/core/src/verify.ts (ATL-191 bounded proof)
+@@
+-    if(d.provenance.sourceRecord!=='SOURCE_BACKED'||d.provenance.canonical!=='SOURCE_BACKED')issues.push({severity:'ERROR',code:'SOURCE_PROVENANCE',message:'Canonical/source records must remain SOURCE_BACKED.',workDefinitionId:d.id});
++    const sourceProvenanceOk=d.provenance.sourceRecord==='SOURCE_BACKED'||d.provenance.sourceRecord==='ATLAS_DERIVED';
++    const canonicalProvenanceOk=d.provenance.canonical==='SOURCE_BACKED'||d.provenance.canonical==='ATLAS_DERIVED';
++    if(!sourceProvenanceOk||!canonicalProvenanceOk)issues.push({severity:'ERROR',code:'SOURCE_PROVENANCE',message:'Canonical/source records must be SOURCE_BACKED or lineage-proven ATLAS_DERIVED.',workDefinitionId:d.id});
++    if(d.provenance.sourceRecord==='ATLAS_DERIVED'||d.provenance.canonical==='ATLAS_DERIVED'){
++      const atlas=d.sourceRecord?.atlasCanonical;
++      const generatedFrom=d.projections?.[0]?.generatedFromWorkDefinitionId;
++      const sourceHash=String(d.sourceTask?.normalizedSourceSha256||'');
++      const sourceRefs=d.sourceTask?.sourceRefs||[];
++      if(!atlas||atlas.workDefinitionId!==generatedFrom||!/^[0-9a-f]{64}$/.test(sourceHash)||sourceRefs.length===0){
++        issues.push({severity:'ERROR',code:'ATLAS_DERIVED_LINEAGE',message:'ATLAS_DERIVED records require exact Atlas WorkDefinition linkage, 64-hex governed source hash and source references.',workDefinitionId:d.id});
++      }
++      if(atlas?.upstreamMaterializable===false&&(!Array.isArray(d.sourceRecord?.blockers)||d.sourceRecord.blockers.length===0)){
++        issues.push({severity:'ERROR',code:'ATLAS_UPSTREAM_BLOCKERS_REQUIRED',message:'Non-materializable Atlas-derived input must preserve explicit upstream blockers.',workDefinitionId:d.id});
++      }
++    }
