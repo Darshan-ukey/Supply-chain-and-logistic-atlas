@@ -14,6 +14,29 @@ export const CONTRACT_PATHS=Object.freeze({
 
 const clone=x=>JSON.parse(JSON.stringify(x));
 const sourceKey=(id,version)=>`${id}@${version}`;
+const OCEAN_PROFILE_CONTRACT='atlas-data-contract-v1.1 + daughter-quality-profile-v1';
+const OCEAN_BASE_CONTRACT='atlas-data-contract-v1.1';
+const OCEAN_LOADER_PATCH=Symbol.for('atlas.rp02.oceanProfileCompatibility');
+
+export function normalizeOceanProfileModule(mod){
+  if(!OCEAN_PUBLIC_DEPTH_IDS.includes(mod?.module?.id)||mod?.contractVersion!==OCEAN_PROFILE_CONTRACT)return mod;
+  const out=clone(mod);
+  out.atlasOriginalContractVersion=mod.contractVersion;
+  out.contractVersion=OCEAN_BASE_CONTRACT;
+  return out;
+}
+
+export function installOceanProfileCompatibility(loader){
+  if(!loader?.validateRuntime||!loader?.compose)throw new Error('Atlas module loader compatibility hooks are unavailable');
+  if(loader[OCEAN_LOADER_PATCH])return loader[OCEAN_LOADER_PATCH];
+  const validate=loader.validateRuntime.bind(loader);
+  const compose=loader.compose.bind(loader);
+  loader.validateRuntime=(mod,entry)=>validate(normalizeOceanProfileModule(mod),entry);
+  loader.compose=(mod,entry)=>compose(normalizeOceanProfileModule(mod),entry);
+  const marker=Object.freeze({installed:true,profileContract:OCEAN_PROFILE_CONTRACT,baseContract:OCEAN_BASE_CONTRACT});
+  Object.defineProperty(loader,OCEAN_LOADER_PATCH,{value:marker,enumerable:false,configurable:false,writable:false});
+  return marker;
+}
 
 export function deriveOceanPublicationPlan({targets,projections,registry,catalog}){
   if(targets?.status!=='ACTIVE_P4_INTEGRATION_CONTRACT')throw new Error('P4 target registry is not active');
@@ -94,10 +117,11 @@ export async function reconcileOceanPublicDepth({fetchImpl=globalThis.fetch,stat
     readJson(CONTRACT_PATHS.catalog,fetchImpl)
   ]);
   const plan=deriveOceanPublicationPlan({targets,projections,registry,catalog});
+  const compatibility=installOceanProfileCompatibility(loader);
   const result=applyOceanPublicationPlan({state,loader,plan});
   globalThis.renderRegistry?.();
   globalThis.dispatchEvent?.(new CustomEvent('atlas:ocean-public-depth-reconciled',{detail:{modules:[...result.touched]}}));
-  return Object.freeze({plan,result});
+  return Object.freeze({plan,result,compatibility});
 }
 
 export function bootOceanPublicDepth(){
