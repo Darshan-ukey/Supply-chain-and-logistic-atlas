@@ -49,8 +49,13 @@ export function deriveOceanPublicationPlan({targets,projections,registry,catalog
 
 const replaceById=(rows,row)=>{
   const i=rows.findIndex(x=>x.id===row.id);
-  if(i<0)throw new Error(`${row.id}: destination row missing from root state`);
+  if(i<0)throw new Error(`${row.id}: destination row missing from root registry state`);
   rows.splice(i,1,clone(row));
+};
+const upsertById=(rows,row)=>{
+  const i=rows.findIndex(x=>x.id===row.id);
+  if(i<0)rows.push(clone(row));
+  else rows.splice(i,1,clone(row));
 };
 
 export function applyOceanPublicationPlan({state,loader,plan}){
@@ -59,10 +64,16 @@ export function applyOceanPublicationPlan({state,loader,plan}){
   const touched=[];
   for(const p of plan){
     replaceById(state.registry.items,p.registry);
-    replaceById(state.moduleCatalog.modules,p.canvasBaseline);
+    // The frozen root's inline catalog omits Ocean from modules[] and leaves it in planned[].
+    // Add the independently verified baseline entry rather than requiring it to pre-exist.
+    upsertById(state.moduleCatalog.modules,p.canvasBaseline);
+    if(Array.isArray(state.moduleCatalog.planned))state.moduleCatalog.planned=state.moduleCatalog.planned.filter(x=>x.id!==p.id);
     // AtlasModuleLoader.catalog normally aliases S.moduleCatalog, but update independently
     // so this stays correct if a future root stops sharing the same object.
-    if(loader.catalog!==state.moduleCatalog)replaceById(loader.catalog.modules,p.canvasBaseline);
+    if(loader.catalog!==state.moduleCatalog){
+      upsertById(loader.catalog.modules,p.canvasBaseline);
+      if(Array.isArray(loader.catalog.planned))loader.catalog.planned=loader.catalog.planned.filter(x=>x.id!==p.id);
+    }
     touched.push(p.id);
   }
   return Object.freeze({touched:Object.freeze(touched),count:touched.length});
