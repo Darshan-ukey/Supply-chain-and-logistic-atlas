@@ -51,13 +51,13 @@
       "familyLabel": "Mode & Service Execution Models",
       "label": "Ocean FCL",
       "moduleId": "ocean-fcl",
-      "status": "PLANNED",
-      "depth": "REFERENCE_ONLY",
+      "status": "ACTIVE",
+      "depth": "A5_VERIFIED",
       "page0Represented": true,
-      "executionReady": false,
-      "compareReadyAtA5": false,
-      "transformReadyAtA5": false,
-      "lastReviewed": "2026-08-24"
+      "executionReady": true,
+      "compareReadyAtA5": true,
+      "transformReadyAtA5": true,
+      "lastReviewed": "2026-10-05"
     },
     {
       "destinationId": "mode-service--ocean-lcl",
@@ -65,13 +65,13 @@
       "familyLabel": "Mode & Service Execution Models",
       "label": "Ocean LCL",
       "moduleId": "ocean-lcl",
-      "status": "PLANNED",
-      "depth": "REFERENCE_ONLY",
+      "status": "ACTIVE",
+      "depth": "A5_VERIFIED",
       "page0Represented": true,
-      "executionReady": false,
-      "compareReadyAtA5": false,
-      "transformReadyAtA5": false,
-      "lastReviewed": "2026-08-24"
+      "executionReady": true,
+      "compareReadyAtA5": true,
+      "transformReadyAtA5": true,
+      "lastReviewed": "2026-10-05"
     },
     {
       "destinationId": "mode-service--air-cargo",
