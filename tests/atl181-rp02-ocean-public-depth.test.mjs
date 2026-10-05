@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {execFileSync} from 'node:child_process';
-import {deriveOceanPublicationPlan,applyOceanPublicationPlan,OCEAN_PUBLIC_DEPTH_IDS} from '../assets/atl-181-ocean-public-depth.mjs';
+import {deriveOceanPublicationPlan,applyOceanPublicationPlan,OCEAN_PUBLIC_DEPTH_IDS,normalizeOceanProfileModule,installOceanProfileCompatibility} from '../assets/atl-181-ocean-public-depth.mjs';
 
 const read=p=>JSON.parse(fs.readFileSync(new URL('../'+p,import.meta.url),'utf8'));
 const targets=read('governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json');
@@ -12,6 +12,24 @@ let pass=0;
 const ok=(cond,msg)=>{assert.ok(cond,msg);pass+=1};
 const rejects=(fn,re,msg)=>{assert.throws(fn,re,msg);pass+=1};
 
+const profileContract='atlas-data-contract-v1.1 + daughter-quality-profile-v1';
+const oceanProfile={module:{id:'ocean-fcl'},contractVersion:profileContract,payload:'preserved'};
+const normalizedProfile=normalizeOceanProfileModule(oceanProfile);
+ok(normalizedProfile!==oceanProfile,'Ocean profile normalization clones rather than mutates canonical input');
+ok(normalizedProfile.contractVersion==='atlas-data-contract-v1.1','Ocean profile normalizes only to the governed v1.1 base contract');
+ok(normalizedProfile.atlasOriginalContractVersion===profileContract,'Ocean profile retains the exact original profile contract marker');
+ok(normalizeOceanProfileModule({module:{id:'road-ltl'},contractVersion:'atlas-data-contract-v1.1'}).contractVersion==='atlas-data-contract-v1.1','ordinary Road v1.1 remains unchanged');
+const fakeLoader={
+  validateRuntime(mod){return {ok:mod?.contractVersion==='atlas-data-contract-v1.1',seen:mod?.contractVersion}},
+  compose(mod){return {contractVersion:mod?.contractVersion,original:mod?.atlasOriginalContractVersion||null}}
+};
+const compat=installOceanProfileCompatibility(fakeLoader);
+ok(compat.installed===true&&compat.baseContract==='atlas-data-contract-v1.1','Ocean loader compatibility installs against v1.1 base only');
+ok(fakeLoader.validateRuntime(oceanProfile).ok===true,'Ocean quality-profile module is accepted through the bounded compatibility adapter');
+const composedProfile=fakeLoader.compose(oceanProfile);
+ok(composedProfile.contractVersion==='atlas-data-contract-v1.1'&&composedProfile.original===profileContract,'compose path preserves original Ocean profile provenance while using the v1.1 base');
+ok(fakeLoader.validateRuntime({module:{id:'air-cargo'},contractVersion:profileContract}).ok===false,'non-Ocean profile is not broadened by the bounded adapter');
+ok(installOceanProfileCompatibility(fakeLoader)===compat,'Ocean loader compatibility installation is idempotent');
 const plan=deriveOceanPublicationPlan({targets,projections,registry,catalog});
 ok(plan.length===2,'exactly two Ocean publication targets are reconciled');
 ok(plan.map(x=>x.id).join(',')===OCEAN_PUBLIC_DEPTH_IDS.join(','),'only governed Ocean module ids are included');
