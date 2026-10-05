@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import handler from '../api/malkom-integration.js';
+import handler from '../lib/api/malkom-integration.js';
 
 const run=async({method='GET',body=null}={})=>{
   const req={method,body,query:{},url:'/api/malkom-integration',[Symbol.asyncIterator]:async function*(){}};
