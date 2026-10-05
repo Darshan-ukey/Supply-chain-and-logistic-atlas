@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "atl-191e-engine-compile-evidence-v1",
+  "status": "PASS",
+  "actualAugustProfileSha256": "1bed891ecfa7b2d8bf4dd996692e9a109de8033898933e74bd8c892397c16e88",
+  "verifierValid": true,
+  "existingCompilerChanged": false,
+  "existingWorkflowChanged": false,
+  "engineWorkflowMaterializable": true,
+  "engineRuntimeDisposition": "MAPPED",
+  "finalMaterializable": false,
+  "finalDisposition": "BLOCKED_BY_ATLAS_GOVERNANCE",
+  "blockingReasons": [
+    "ATLAS_UPSTREAM_NOT_MATERIALIZABLE",
+    "CONSUMER_PROFILE_NOT_VERIFIED",
+    "CLIENT_BINDING_REQUIRED"
+  ],
+  "queueSummary": {
+    "name": "Pickup Request",
+    "subQueues": 3,
+    "workTypes": 3,
+    "fields": 10,
+    "outcomes": 4
+  },
+  "adapterDefinitionSha256": "27a503187c8890aa9b3b37d83c98683ddabf63f496458f8d8d70defb6e2e558f",
+  "engineCompilationSha256": "e052a4e52237334cb9c6f9bba2ba34c7a9daad1bd525b1092c5cc64a34edd1fd",
+  "gateSha256": "8853e420fc96cccc046cd07fc933573034fd55359664b592edffa4f05ccca189",
+  "releaseImpact": "NONE_UNTIL_OWNER_REROUTE"
+}
