@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "atl-199e-successor-integration-package-v1",
+  "status": "MERGE_READY_NOT_MERGED",
+  "source": {
+    "branch": "atl-199-malkom-api-mcp-integration",
+    "pullRequest": 46,
+    "base": "atl-191-bounded-malkom-adapter-proof",
+    "baseHead": "e915c00e42feb49e9d661c6f47e3e21dc166cffe"
+  },
+  "files": {
+    "runtime": [
+      "lib/integrations/malkom-integration-service.js",
+      "lib/integrations/malkom-engine-provider.js",
+      "lib/integrations/malkom-service-runtime.js",
+      "lib/api/malkom-integration.js",
+      "mcp/malkom-tools.js",
+      "mcp/malkom-jsonrpc.js"
+    ],
+    "routing": [
+      "api/atlas.js",
+      "vercel.json"
+    ],
+    "tests": [
+      "tests/atl-199a-malkom-integration-service.test.mjs",
+      "tests/atl-199b-malkom-api.test.mjs",
+      "tests/atl-199c-malkom-mcp.test.mjs"
+    ],
+    "evidence": [
+      "governance/product/atl-199-evidence/ATL_199D_API_MCP_PARITY_QA.json",
+      "governance/product/atl-199-evidence/ATL_199D_API_MCP_PARITY_QA.md"
+    ]
+  },
+  "successorIntegration": {
+    "allowedOnlyAfter": "ATL-181 remediation/re-audit stabilizes and a successor branch is selected",
+    "steps": [
+      "Integrate exact approved PR46 commits onto the eventual successor branch after ATL-191/PR45 integration.",
+      "Confirm no conflict with ATL-181 remediation changes.",
+      "Run existing repository regression suite plus ATL-199A/B/C tests.",
+      "Repeat ATL-199D API/MCP parity QA against the exact governed Domain Warehouse donor.",
+      "Verify top-level API function count remains 8 and /api/malkom-integration is routed through api/atlas.js.",
+      "Update release manifest/integrity records with exact successor commit/tree and ATL-199 evidence identities.",
+      "Freeze new successor only after affected tests pass."
+    ],
+    "rollback": [
+      "Revert the ATL-199 integration commit range as one bounded adjunct.",
+      "Remove /api/malkom-integration rewrite and malkom-integration atlas-router action.",
+      "Remove MCP bounded integration modules/tools.",
+      "Retain ATL-191 adapter proof and historical ATL-199 QA evidence.",
+      "Do not alter canonical Atlas WorkDefinition or ATL-169 projection evidence."
+    ]
+  },
+  "targetedAcceptance": {
+    "mustPass": [
+      "Shared-service deterministic behavior",
+      "API/MCP semantic parity",
+      "Blocker preservation",
+      "finalMaterializable remains false unless upstream/profile/binding conditions are all satisfied",
+      "liveHostCertified remains false",
+      "No ATL-169/ATL-191 canonical mutation",
+      "Existing consolidated API function governance remains intact"
+    ],
+    "liveHostExcluded": true
+  },
+  "claims": {
+    "mergeReady": true,
+    "merged": false,
+    "liveHostCertified": false,
+    "productionMalkomIntegrationProven": false
+  }
+}

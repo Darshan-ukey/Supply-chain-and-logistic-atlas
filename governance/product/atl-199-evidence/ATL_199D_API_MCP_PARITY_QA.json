@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "atl-199d-api-mcp-parity-evidence-v1",
+  "status": "PASS",
+  "date": "2026-10-05",
+  "donor": {
+    "domainWarehouseZipSha256": "77d5db87be91f17a93c040c10d30c19710a0961c786f21bedf2c22a35dac7336",
+    "compilerSha256": "4d92541b97e592fd0990c5773a33794fab988c000f7a5e527648b1f7cfe44686",
+    "verifierSha256": "fa0b0ae89691882f449716a75ee5b733c6dc41581b15e24e6bd667148d9735a8",
+    "workflowSha256": "9d9d097735375128f98806c7f74728b9667919cd80f9a2a19449674092044f43",
+    "contractSchemaSha256": "c9ad3167fd652639c53d3d3e83dc6c17269010b8f37100337abda932810bf704",
+    "ltl04ConsumerProfileSha256": "1bed891ecfa7b2d8bf4dd996692e9a109de8033898933e74bd8c892397c16e88"
+  },
+  "qa": {
+    "sharedServiceDeterministic": true,
+    "apiMcpSemanticParity": true,
+    "verifierValid": true,
+    "finalMaterializable": false,
+    "finalDisposition": "BLOCKED_BY_ATLAS_GOVERNANCE",
+    "blockers": [
+      "ATLAS_UPSTREAM_NOT_MATERIALIZABLE",
+      "CONSUMER_PROFILE_NOT_VERIFIED",
+      "CLIENT_BINDING_REQUIRED"
+    ],
+    "queue": "Pickup Request",
+    "definitionHash": "e3ae3837988e88bf00d5b1001a93ff42437b840f53fdf512bda67fa755b485db",
+    "compilationHash": "23da31cebd580d5fb3ab3e80bf67e96ec1228a1675e131faf81e44a7ed9fd91b",
+    "summaryHash": "25c677ff70fc29ea9a2cd74236abc086de520842b0f0b5b256334b17d71c701b",
+    "negativeCases": [
+      "PROFILE_TASK_MISMATCH rejected through shared service",
+      "PROFILE_TASK_MISMATCH rejected through HTTP/API",
+      "PROFILE_TASK_MISMATCH rejected through MCP",
+      "ATLAS_UPSTREAM_BLOCKERS_REQUIRED rejected after blocker removal"
+    ]
+  },
+  "claims": {
+    "boundedNonLiveIntegrationProven": true,
+    "liveHostCertified": false,
+    "malkomCommandRuntimeConnected": false,
+    "currentFrozenRcMutated": false
+  },
+  "workPackages": {
+    "199A": "PASS",
+    "199B": "PASS",
+    "199C": "PASS",
+    "199D": "PASS",
+    "199F": "BLOCKED_EXTERNAL_DEPENDENCY"
+  }
+}

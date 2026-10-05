@@ -78,6 +78,10 @@
       "destination": "/api/atlas?action=malkom-projections"
     },
     {
+      "source": "/api/malkom-integration",
+      "destination": "/api/atlas?action=malkom-integration"
+    },
+    {
       "source": "/admin",
       "destination": "/admin.html"
     },
