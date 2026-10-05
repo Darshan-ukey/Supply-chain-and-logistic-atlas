@@ -19,4 +19,5 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 g.AtlasRuntimeAccess={refresh,open,close,get state(){return access}};
 })(globalThis);
 import('/assets/canvas-daughter-bridge-v2.0.1.mjs').catch(e=>console.warn('Atlas P4 Canvas→Daughter bridge bootstrap',e));
+import('/assets/atl-181-ocean-public-depth.mjs').catch(e=>console.warn('Atlas ATL-181 Ocean public-depth reconciliation',e));
 import('/assets/atl-140-v15-journey.mjs').catch(e=>console.warn('Atlas ATL-140 v1.5 Malkom journey bootstrap',e));
