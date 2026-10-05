@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "atl-191f-independent-qa-v1",
+  "status": "PASS_WITH_PROTECTED_INPUT_BOUNDARY",
+  "proofBranch": "atl-191-bounded-malkom-adapter-proof",
+  "proofPr": 45,
+  "exactDonors": {
+    "atl169ProjectionSha256": "703f3a5bb02a270275672105ac2efcfcee227e2290082c5e26e13d7d363b654c",
+    "atl169TestedCommit": "3fa4348628c0fb5bcd08e1ca33d841fb9024beb4",
+    "atl169EvidenceHead": "ae21689cce53511227207eac6c15e187da5fb52f",
+    "domainWarehouseZipSha256": "77d5db87be91f17a93c040c10d30c19710a0961c786f21bedf2c22a35dac7336",
+    "compilerSha256": "4d92541b97e592fd0990c5773a33794fab988c000f7a5e527648b1f7cfe44686",
+    "verifierSha256": "fa0b0ae89691882f449716a75ee5b733c6dc41581b15e24e6bd667148d9735a8",
+    "workflowSha256": "9d9d097735375128f98806c7f74728b9667919cd80f9a2a19449674092044f43",
+    "contractSchemaSha256": "c9ad3167fd652639c53d3d3e83dc6c17269010b8f37100337abda932810bf704",
+    "ltl04ConsumerProfileSha256": "1bed891ecfa7b2d8bf4dd996692e9a109de8033898933e74bd8c892397c16e88"
+  },
+  "cleanRun": {
+    "freshZipExtraction": true,
+    "donorHashesMatched": true,
+    "adapterDeterministic": true,
+    "adapterInputsUnmutated": true,
+    "verifierPositivePass": true,
+    "verifierNegativeCases": 6,
+    "engineCompilationDeterministic": true,
+    "engineWorkflowMaterializable": true,
+    "finalMaterializable": false,
+    "finalDisposition": "BLOCKED_BY_ATLAS_GOVERNANCE",
+    "reasons": [
+      "ATLAS_UPSTREAM_NOT_MATERIALIZABLE",
+      "CONSUMER_PROFILE_NOT_VERIFIED",
+      "CLIENT_BINDING_REQUIRED"
+    ],
+    "queueSummary": {
+      "name": "Pickup Request",
+      "subQueues": 3,
+      "workTypes": 3,
+      "fields": 10,
+      "outcomes": 4
+    },
+    "gateSha256": "8853e420fc96cccc046cd07fc933573034fd55359664b592edffa4f05ccca189"
+  },
+  "protectedInputBoundary": {
+    "fullAtl169ProtectedInstanceRepublished": false,
+    "atl169ExistingExactQaRetained": true,
+    "exactGeneratorBoundTestCommitted": true,
+    "exactGeneratorBoundTestCommit": "10d90e148a61ebabea511435ae4d504efd2975dc",
+    "githubActionsRunAvailable": false,
+    "statement": "ATL-191 does not re-certify ATL-169 protected bytes. It consumes ATL-169's existing exact certification as upstream authority and independently proves adapter/engine contract compatibility against the exact donor contracts and actual August consumer profile."
+  },
+  "releaseImpact": "NO_CURRENT_RC_MUTATION",
+  "nextGovernance": "Reconcile ATL-191 as a merge-time adjunct only after the parallel ATL-181 remediation freezes the eventual successor RC."
+}
