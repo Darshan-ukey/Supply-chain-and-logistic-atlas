@@ -23,3 +23,8 @@ import('/assets/atl-181-ocean-public-depth.mjs').catch(e=>console.warn('Atlas AT
 import('/assets/atl-181-road-ltl-current-truth.mjs').catch(e=>console.warn('Atlas ATL-181 Road LTL current-truth reconciliation',e));
 import('/assets/atl-181-ask-context-normalizer.mjs').catch(e=>console.warn('Atlas ATL-181 Ask context normalization',e));
 import('/assets/atl-140-v15-journey.mjs').catch(e=>console.warn('Atlas ATL-140 v1.5 Malkom journey bootstrap',e));
+
+import('/assets/atl-181-canonical-discovery.js')
+  .then(()=>import('/assets/atl-181-road-ltl-source-trace.js'))
+  .then(()=>import('/assets/atl-181-rp12-rp14-integration.js'))
+  .catch(e=>console.warn('Atlas ATL-181 canonical discovery / Road LTL source trace integration',e));
