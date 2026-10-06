@@ -28,6 +28,30 @@ export function parseDaughterSelection(search=''){
   return {moduleId,moduleVersion,taskId,complete:Boolean(moduleId&&moduleVersion&&taskId)};
 }
 
+export function validatePublicProjection(projection,selection){
+  const fail=(reason)=>{const e=new Error('Invalid PUBLIC_SAFE execution-depth projection: '+reason+'.');e.code='PROJECTION_INVALID';throw e;};
+  if(!projection||typeof projection!=='object'||Array.isArray(projection))fail('projection object is required');
+  if(projection.projectionClass!=='PUBLIC_SAFE')fail('projectionClass must be PUBLIC_SAFE');
+  const trace=projection.trace;
+  if(!trace||typeof trace!=='object')fail('trace is required');
+  if(trace.projectionContractVersion!=='1.1.0')fail('projection contract version must be 1.1.0');
+  for(const key of ['moduleId','moduleVersion','taskId']){
+    if(String(trace[key]??'')!==String(selection?.[key]??''))fail('trace.'+key+' does not match the exact request tuple');
+  }
+  for(const key of ['overview','operationalKnowledge','executionReadiness','protectedExecution']){
+    if(!projection[key]||typeof projection[key]!=='object'||Array.isArray(projection[key]))fail(key+' is required');
+  }
+  const protectedExecution=projection.protectedExecution;
+  for(const key of ['workDecomposition','workDefinition']){
+    const item=protectedExecution[key];
+    if(!item||typeof item!=='object'||Array.isArray(item))fail('protectedExecution.'+key+' status object is required');
+    if(item.detailIncluded!==false)fail('protectedExecution.'+key+'.detailIncluded must be false');
+    const forbidden=Object.keys(item).filter(k=>!['status','detailIncluded'].includes(k));
+    if(forbidden.length)fail('protectedExecution.'+key+' contains unexpected public fields: '+forbidden.join(','));
+  }
+  return projection;
+}
+
 export async function fetchPublicProjection(selection,{fetchImpl=globalThis.fetch}={}){
   if(!selection?.moduleId||!selection?.moduleVersion||!selection?.taskId){
     const e=new Error('A published moduleId, moduleVersion and taskId are required.');e.code='INCOMPLETE_SELECTION';throw e;
@@ -40,7 +64,7 @@ export async function fetchPublicProjection(selection,{fetchImpl=globalThis.fetc
     const e=new Error(payload?.error||`Execution-depth presentation is not published for this exact selection (${response.status}).`);
     e.status=response.status;e.code='PROJECTION_UNAVAILABLE';throw e;
   }
-  return payload.projection;
+  return validatePublicProjection(payload.projection,selection);
 }
 
 function section(title,body,extra=''){
