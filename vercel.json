@@ -3,6 +3,10 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
+    "api/atlas.js": {
+      "maxDuration": 30,
+      "includeFiles": "{governance/presentation/p2-projection-source-registry.json,data/modules/road-ltl-v1.5.json,data/operational-knowledge/road-ltl-v1.5-operational.json,data/operational-knowledge/road-ltl-v1.5-bol-resolution-baseline.json,data/materialized/ocean-0.6-public-safe-projections.json.gz.b64}"
+    },
     "api/*.js": {
       "maxDuration": 30
     }
