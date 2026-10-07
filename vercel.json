@@ -34,6 +34,9 @@
     }
   ],
   "redirects": [
+    {"source": "/", "destination": "/app", "permanent": false},
+    {"source": "/index", "destination": "/app", "permanent": false},
+    {"source": "/index.html", "destination": "/app", "permanent": false},
     {"source": "/canvas-v2/canvas-v2", "destination": "/app", "permanent": false},
     {"source": "/canvas-v2/canvas-v2/index", "destination": "/app", "permanent": false}
   ],

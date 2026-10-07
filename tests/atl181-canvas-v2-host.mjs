@@ -35,6 +35,15 @@ const resolve = pathname => {
 };
 assert.equal(config.redirects.find(r => r.source === '/canvas-v2/canvas-v2').destination, '/app');
 assert.equal(config.redirects.find(r => r.source === '/canvas-v2/canvas-v2').permanent, false);
+// Normal public-home recovery must never expose the retired root Canvas.
+for (const route of ['/', '/index', '/index.html']) {
+  assert.equal(resolve(route), '/canvas-v2-host', route);
+  assert.equal(config.redirects.find(r => r.source === route).permanent, false);
+}
+assert.equal(resolve('/admin'), '/admin.html');
+assert.equal(resolve('/daughter'), '/daughter.html');
+assert.equal(resolve('/api/auth-admin-logout'), '/api/auth?action=auth-admin-logout');
+assert.equal(resolve('/assets/canvas-v2-host.mjs'), '/assets/canvas-v2-host.mjs');
 // Vercel cleanUrls publishes HTML at extensionless destinations.
 for (const r of config.rewrites.filter(r => r.source === '/app')) {
   assert(!r.destination.endsWith('.html'));
