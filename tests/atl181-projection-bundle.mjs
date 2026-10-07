@@ -13,7 +13,12 @@ const registry = read(registryPath);
 const required = [...new Set([registryPath, ...registry.sources.flatMap(s =>
   ['modulePath','operationalKnowledgePath','informationResolutionBaselinePath','publicProjectionBundlePath'].map(k => s[k]).filter(Boolean))])];
 const pattern = read('vercel.json').functions['api/atlas.js'].includeFiles;
-assert.equal(pattern, `{${required.join(',')}}`, 'bundle must include exactly the registry dependency closure');
+function expand(s) {
+  const match = s.match(/\{([^{}]+)\}/);
+  return match ? match[1].split(',').flatMap(part => expand(s.slice(0,match.index)+part+s.slice(match.index+match[0].length))) : [s];
+}
+assert(pattern.length <= 256, 'Vercel includeFiles schema limit');
+assert.deepEqual([...new Set(expand(pattern))].sort(), [...required].sort(), 'bundle must include exactly the registry dependency closure');
 const tuples = registry.sources.flatMap(s => {
   const tasks = s.publicProjectionBundlePath
     ? Object.keys(JSON.parse(zlib.gunzipSync(Buffer.from(fs.readFileSync(s.publicProjectionBundlePath,'utf8').trim(),'base64'))).sources[s.sourceKey])
