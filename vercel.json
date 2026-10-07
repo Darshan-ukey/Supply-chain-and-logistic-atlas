@@ -5,7 +5,7 @@
   "functions": {
     "api/atlas.js": {
       "maxDuration": 30,
-      "includeFiles": "{governance/presentation/p2-projection-source-registry.json,data/{modules/road-ltl-v1.5.json,operational-knowledge/road-ltl-v1.5-{operational,bol-resolution-baseline}.json,materialized/ocean-0.6-public-safe-projections.json.gz.b64}}"
+      "includeFiles": "{governance/{presentation/*.json,product/s8-3*-evidence/*summary.json},data/{modules/road-ltl-v1.5.json,operational-knowledge/road-ltl-v1.5-*.json,materialized/ocean-0.6-*.b64}}"
     },
     "api/*.js": {
       "maxDuration": 30

@@ -13,12 +13,10 @@ const registry = read(registryPath);
 const required = [...new Set([registryPath, ...registry.sources.flatMap(s =>
   ['modulePath','operationalKnowledgePath','informationResolutionBaselinePath','publicProjectionBundlePath'].map(k => s[k]).filter(Boolean))])];
 const pattern = read('vercel.json').functions['api/atlas.js'].includeFiles;
-function expand(s) {
-  const match = s.match(/\{([^{}]+)\}/);
-  return match ? match[1].split(',').flatMap(part => expand(s.slice(0,match.index)+part+s.slice(match.index+match[0].length))) : [s];
-}
 assert(pattern.length <= 256, 'Vercel includeFiles schema limit');
-assert.deepEqual([...new Set(expand(pattern))].sort(), [...required].sort(), 'bundle must include exactly the registry dependency closure');
+const bundled=[...fs.globSync(pattern)].map(p=>p.replaceAll('\\','/')).sort();
+const summaryPaths=['governance/product/s8-3b-evidence/reconstruction-summary.json','governance/product/s8-3c-evidence/package-readiness-summary.json','governance/product/s8-3d-evidence/projection-summary.json','governance/product/s8-3e-evidence/flow-summary.json'];
+assert.deepEqual(bundled,[...required,'governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json',...summaryPaths].sort(),'only audited public projection/summary dependencies are bundled');
 const tuples = registry.sources.flatMap(s => {
   const tasks = s.publicProjectionBundlePath
     ? Object.keys(JSON.parse(zlib.gunzipSync(Buffer.from(fs.readFileSync(s.publicProjectionBundlePath,'utf8').trim(),'base64'))).sources[s.sourceKey])
@@ -28,7 +26,7 @@ const tuples = registry.sources.flatMap(s => {
 assert.equal(tuples.length,61);
 const dir = fs.mkdtempSync(path.join(os.tmpdir(),'atlas-projection-bundle-'));
 try {
-  for (const p of [...required, 'lib/projections/execution-depth-projection.js','lib/api/execution-depth-projection.js','lib/api/_utils.js']) {
+  for (const p of [...bundled, 'lib/projections/execution-depth-projection.js','lib/api/execution-depth-projection.js','lib/api/_utils.js','lib/projections/governed-depth-summary.js','lib/api/governed-depth-summary.js','assets/atl-140-consumer-view.mjs']) {
     const dest = path.join(dir,p);
     fs.mkdirSync(path.dirname(dest),{recursive:true}); fs.copyFileSync(path.join(root,p),dest);
   }
@@ -36,6 +34,7 @@ try {
   fs.writeFileSync(path.join(dir,'run.mjs'), `
 import assert from 'node:assert/strict';
 import handler from './lib/api/execution-depth-projection.js';
+import summaryHandler from './lib/api/governed-depth-summary.js';
 import {publicProjectionForbiddenTokens} from './lib/projections/execution-depth-projection.js';
 const call=async(query,method='GET')=>{let data;const res={setHeader(){},end(v){data=JSON.parse(v)}};await handler({method,query},res);return {status:res.statusCode,data}};
 for(const tuple of ${JSON.stringify(tuples)}){
@@ -50,6 +49,9 @@ for(const tuple of [
  {moduleId:'../../private',moduleVersion:'1',taskId:'x'}])assert.equal((await call(tuple)).status,404);
 assert.equal((await call({})).status,400);
 assert.equal((await call({},'POST')).status,405);
+let summary;const response={setHeader(){},end(v){summary=JSON.parse(v)}};
+await summaryHandler({method:'GET',query:{moduleId:'road-ltl',moduleVersion:'1.5',taskId:'LTL-04'}},response);
+assert.equal(response.statusCode,200,JSON.stringify(summary));assert.equal(summary.ok,true);
 console.log('PASS: isolated bundle; 61 exact PUBLIC_SAFE tuples; protected token exclusion; 6 fail-closed negatives');
 `);
   process.stdout.write(execFileSync(process.execPath,['run.mjs'],{cwd:dir,encoding:'utf8'}));
