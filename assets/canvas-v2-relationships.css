@@ -1,6 +1,6 @@
 #hostRelationshipControl,.host-overflow,.host-completeness{border:1px solid #bbd1eb;border-radius:8px;background:#f4f8fd;color:#164b80;padding:8px;font:600 11px/1.4 system-ui;white-space:normal}
 #hostRelationshipControl{max-width:230px;flex-shrink:1}
-.host-overflow{align-self:center;max-width:110px;min-height:44px}
+.host-overflow{align-self:center;max-width:110px;min-height:44px;pointer-events:auto}
 .host-completeness{display:block;width:100%;text-align:left;margin-bottom:8px}
 .related-card b{overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .related-card small{white-space:normal}
