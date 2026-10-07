@@ -1,2 +1,4 @@
 import {createRouter} from '../lib/api/_router.js';
-export default createRouter('transform',{'transformation-export':'./transformation-export.js','foundation-proposals':'./foundation-proposals.js'});
+import handler0 from '../lib/api/transformation-export.js';
+import handler1 from '../lib/api/foundation-proposals.js';
+export default createRouter('transform',{'transformation-export':handler0,'foundation-proposals':handler1});
