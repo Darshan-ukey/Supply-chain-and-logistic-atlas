@@ -50,30 +50,35 @@ export function densityWindow(items, limit) {
   return {visible:items.slice(0,limit),remaining:items.slice(limit),total:items.length};
 }
 
-export function installRelationshipDisclosure(module, {sourcePath} = {}) {
+export function canonicalRelationshipLabel(module, references, id) {
+  const row = [...(references.systemRecords||[]),...(references.businessObjectRecords||[]),...(references.documentRecords||[]),...(module.ontologyNodes||[]),...(module.entityNodes||[])].find(x=>x.id===id);
+  return row?.name || row?.label || id;
+}
+
+export function installRelationshipDisclosure(module, {sourcePath,references={}} = {}) {
   if (!sourcePath) throw new Error('Relationship source path is required');
   const style = document.createElement('link'); style.rel='stylesheet'; style.href='/assets/canvas-v2-relationships.css'; document.head.append(style);
-  const label = id => [...(module.ontologyNodes||[]),...(module.entityNodes||[])].find(x=>x.id===id)?.label || id;
+  const label = id => canonicalRelationshipLabel(module,references,id);
   const dialog = document.createElement('dialog'); dialog.id='hostRelationshipDialog'; dialog.setAttribute('aria-labelledby','hostRelationshipTitle'); document.body.append(dialog);
   let returnFocus, currentTask, selectedTask;
   const basis = row => [
     ...row.edges.map(e=>`Declared flow: ${e.from} → ${e.to}${e.type ? ' · '+e.type : ''}`),
-    row.sharedObjects.length ? 'Shared objects: '+row.sharedObjects.join(', ') : '',
-    row.sharedSystems.length ? 'Shared systems: '+row.sharedSystems.join(', ') : ''
+    row.sharedObjects.length ? 'Shared objects: '+row.sharedObjects.map(label).join(', ') : '',
+    row.sharedSystems.length ? 'Shared systems: '+row.sharedSystems.map(label).join(', ') : ''
   ].filter(Boolean).join('; ');
   const list = (rows, render) => rows.length ? `<ul>${rows.map(r=>`<li>${render(r)}</li>`).join('')}</ul>` : '<p>None declared in this source.</p>';
-  const section = (title, count, body) => `<details open><summary>${esc(title)} · ${count}</summary>${body}</details>`;
+  const section = (title, count, body) => `<details open><summary>${esc(title)}${count===null?'':' · '+count}</summary>${body}</details>`;
   function show(taskId, opener) {
     const model = relationshipModel(module,taskId), p=model.process;
     currentTask=taskId;
     if (!dialog.open) returnFocus=opener || document.activeElement;
     dialog.innerHTML=`<header><div><p>${taskId===selectedTask?'Selected task':'Related task reference · Canvas selection unchanged'}</p><h2 id="hostRelationshipTitle">${esc(taskId)} · ${esc(p.label)}</h2></div><button data-host-close aria-label="Close relationships">×</button></header>
-      <div class="host-relationship-content"><p>All relationships below come from the loaded module. Shared systems or objects indicate an association, not an inferred process flow. Source: <code>${esc(sourcePath)}</code>, task <code>${esc(taskId)}</code>.</p>
+      <div class="host-relationship-content"><p>Every declared relationship for this task is available below. Shared systems or objects show common context; they do not imply a process flow.</p><details><summary>Source and lineage</summary><p>Loaded module: <code>${esc(sourcePath)}</code>. Canonical task: <code>${esc(taskId)}</code>. Names resolve from canonical reference records; IDs and roles are unchanged.</p></details>
       ${taskId!==selectedTask?'<button data-host-return>Return to selected task</button>':''}
-      ${section('Related processes',model.related.length,list(model.related,r=>`<button data-host-inspect="${esc(r.id)}">${esc(r.id)} · ${esc(r.label)}</button><p>${esc(r.type)} · ${esc(basis(r))}</p>`))}
-      ${section('Systems',model.systems.length,list(model.systems,s=>`<strong>${esc(label(s.id))}</strong> <code>${esc(s.id)}</code><p>${esc(s.roles.join(' · '))}</p><small>Source fields: ${esc(s.fields.join(', '))}. Producer provides information; Authority owns authoritative state; Consumer uses the information.</small>`))}
+      ${section('Related processes',model.related.length,list(model.related,r=>`<button data-host-inspect="${esc(r.id)}">${esc(r.id)} · ${esc(r.label)}</button><p>${esc(r.type)} · ${r.edges.length?'Declared process connection':'Shared context'}</p><details><summary>Why related?</summary><p>${esc(basis(r))}</p></details>`))}
+      ${section('Systems',model.systems.length,'<p>Producer provides information. Authority owns the authoritative state. Consumer uses the information. A system may serve more than one role.</p>'+list(model.systems,s=>`<strong>${esc(label(s.id))}</strong><p>${esc(s.roles.join(' · '))}</p><details><summary>Source details</summary><code>${esc(s.id)}</code><p>Source fields: ${esc(s.fields.join(', '))}</p></details>`))}
       ${section('Objects and documents',model.objects.length,`<p>${model.inputCount} inputs · ${model.outputCount} outputs · ${model.documentCount} document touchpoints. An identity can have several roles.</p>`+list(model.objects,o=>`<strong>${esc(label(o.id))}</strong> <code>${esc(o.id)}</code><p>${esc(o.roles.join(' · '))}</p><small>Source fields: ${esc(o.fields.join(', '))}</small> <button data-trace="${esc(o.id)}">Trace ${esc(label(o.id))}</button>`))}
-      ${section('Actor and controls',1,`<dl><dt>Performer / actor</dt><dd>${esc(p.performer||p.actor||'Not stated')}</dd><dt>Control</dt><dd>${esc(p.control||'Not stated')}</dd><dt>Rule</dt><dd>${esc(p.rule||'Not stated')}</dd><dt>Evidence</dt><dd>${esc(p.evidence||'Not stated')}</dd></dl>`)}
+      ${section('Actor and controls',null,`<dl><dt>Performer / actor</dt><dd>${esc(p.performer||p.actor||'Not stated')}</dd><dt>Control</dt><dd>${esc(p.control||'Not stated')}</dd><dt>Rule</dt><dd>${esc(p.rule||'Not stated')}</dd><dt>Evidence</dt><dd>${esc(p.evidence||'Not stated')}</dd></dl>`)}
       ${section('Source references',model.sources.length,list(model.sources,id=>{const s=(module.sources||[]).find(x=>x.id===id); const url=s?.url||s?.sourceUrl;return `<code>${esc(id)}</code> ${esc(s?.title||'Source title not supplied')}${/^https?:\/\//.test(url||'')?` <a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Open source</a>`:''}`}))}
       <p>Execution-definition details remain subject to their separate authorization boundary.</p></div>`;
     if (!dialog.open) dialog.showModal();

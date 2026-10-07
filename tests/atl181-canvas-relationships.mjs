@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {systemRoles,relationshipModel,densityWindow} from '../assets/canvas-v2-relationships.mjs';
+import {systemRoles,relationshipModel,densityWindow,canonicalRelationshipLabel} from '../assets/canvas-v2-relationships.mjs';
 const module=JSON.parse(fs.readFileSync('data/modules/road-ltl-v1.2.json','utf8'));
+const references=JSON.parse(fs.readFileSync('data/page0/page0-v6.2.2.json','utf8'));
+assert.equal(canonicalRelationshipLabel(module,references,'sys-wms'),'Warehouse Management System');
+assert.equal(canonicalRelationshipLabel(module,references,'UNKNOWN'),'UNKNOWN');
 let cases=0;
 for(const p of module.processes){
  const m=relationshipModel(module,p.id);

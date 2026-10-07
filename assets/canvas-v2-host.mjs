@@ -21,4 +21,6 @@ observer.observe(document.getElementById('inspectorBody'), { childList: true });
 refresh();
 globalThis.AtlasCanvasV2Host = { refresh, observer, rendererVersion: '2.0.0', bridgeVersion: bridge.CANVAS_DAUGHTER_BRIDGE_VERSION };
 const { installRelationshipDisclosure } = await import('/assets/canvas-v2-relationships.mjs');
-globalThis.AtlasCanvasV2Host.relationships = installRelationshipDisclosure(module, {sourcePath:'/data/modules/road-ltl-v1.2.json'});
+const referenceResponse = await fetch('/data/page0/page0-v6.2.2.json');
+if (!referenceResponse.ok) throw new Error('Canonical relationship labels unavailable');
+globalThis.AtlasCanvasV2Host.relationships = installRelationshipDisclosure(module, {sourcePath:'/data/modules/road-ltl-v1.2.json',references:await referenceResponse.json()});
