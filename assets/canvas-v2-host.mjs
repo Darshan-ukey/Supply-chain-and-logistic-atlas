@@ -20,3 +20,5 @@ observer.observe(document.getElementById('playMetaText'), { childList: true, cha
 observer.observe(document.getElementById('inspectorBody'), { childList: true });
 refresh();
 globalThis.AtlasCanvasV2Host = { refresh, observer, rendererVersion: '2.0.0', bridgeVersion: bridge.CANVAS_DAUGHTER_BRIDGE_VERSION };
+const { installRelationshipDisclosure } = await import('/assets/canvas-v2-relationships.mjs');
+globalThis.AtlasCanvasV2Host.relationships = installRelationshipDisclosure(module, {sourcePath:'/data/modules/road-ltl-v1.2.json'});

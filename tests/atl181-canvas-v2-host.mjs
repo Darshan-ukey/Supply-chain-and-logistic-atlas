@@ -49,6 +49,8 @@ for (const route of ['/app', '/app/', '/canvas-v2/canvas-v2', '/canvas-v2/canvas
 }
 urls.delete('/canvas-v2/canvas-v2/');
 urls.add('/assets/canvas-daughter-bridge-v2.0.1.mjs');
+urls.add('/assets/canvas-v2-relationships.mjs');
+urls.add('/assets/canvas-v2-relationships.css');
 urls.add('/governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json');
 for (const url of urls) assert(fs.statSync(`.${resolve(url)}`).isFile(), url);
 const registry = JSON.parse(read('governance/presentation/P4_CANVAS_DAUGHTER_TARGETS.json'));
