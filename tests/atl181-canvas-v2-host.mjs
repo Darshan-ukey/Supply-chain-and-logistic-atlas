@@ -23,6 +23,8 @@ for (const file of manifest.files) {
 assert.equal(execFileSync('git', ['diff', 'b4ccbaab4430e23c0e656c206d3982888102e7f9', '--', 'canvas-v2', 'assets/canvas-daughter-bridge-v2.0.1.mjs']).length, 0);
 
 const resolve = pathname => {
+  const redirect = config.redirects.find(r => r.source === pathname);
+  if (redirect) return resolve(redirect.destination);
   const exact = config.rewrites.find(r => r.source === pathname);
   if (exact) return exact.destination;
   for (const r of config.rewrites.filter(r => r.source.endsWith('/:path*'))) {
@@ -31,6 +33,13 @@ const resolve = pathname => {
   }
   return pathname;
 };
+assert.equal(config.redirects.find(r => r.source === '/canvas-v2/canvas-v2').destination, '/app');
+assert.equal(config.redirects.find(r => r.source === '/canvas-v2/canvas-v2').permanent, false);
+// Vercel cleanUrls publishes HTML at extensionless destinations.
+for (const r of config.rewrites.filter(r => r.source === '/app')) {
+  assert(!r.destination.endsWith('.html'));
+  assert(fs.statSync(`.${r.destination}.html`).isFile());
+}
 const urls = new Set();
 for (const route of ['/app', '/app/', '/canvas-v2/canvas-v2', '/canvas-v2/canvas-v2/']) {
   assert.equal(resolve(route.replace(/\/$/, '')), '/canvas-v2-host');
