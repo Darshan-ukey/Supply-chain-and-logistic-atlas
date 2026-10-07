@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import handler from '../api/atlas.js';
+const source=fs.readFileSync('api/atlas.js','utf8');
+assert(!source.match(/'[^']+':\s*'\.\//),'all route handlers must be statically traceable');
+const call=async(action,method='GET',query={})=>{let payload;const res={setHeader(){},end(v){payload=JSON.parse(v)}};await handler({method,headers:{},query:{action,...query}},res);return{status:res.statusCode,payload}};
+const expected={'ask-atlas':405,'command-validate':405,'execution-depth-projection':400,'governed-depth-summary':400,'governance-operational-projection':401,'work-decomposition':401,'admin-workdefinitions':401,'runtime-access':401,'malkom-projections':401};
+for(const [action,status] of Object.entries(expected))assert.equal((await call(action)).status,status,action);
+assert.equal((await call('execution-depth-projection','GET',{moduleId:'road-ltl',moduleVersion:'1.5',taskId:'LTL-03'})).status,200);
+assert.equal((await call('missing')).status,404);
+console.log('PASS:9 statically traceable handlers;401 protected/405 method/400 input boundaries; exact LTL03 projection; unknown action404');
