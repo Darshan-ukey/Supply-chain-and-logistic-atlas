@@ -11,7 +11,7 @@ const frozen = read('canvas-v2/canvas-v2/index.html');
 assert.equal(read('assets/canvas-v2-page0-rules.js'), read('canvas-v2/canvas-v2/preview-standalone.html').match(/window\.__PAGE0_RULES24__=[^\n]+;/)[0] + '\n');
 assert.equal(host, frozen.replace('<head>', '<head>\n<base href="/canvas-v2/canvas-v2/">')
   .replace('</body>', '<script type="module" src="/assets/canvas-v2-host.mjs"></script>\n</body>'));
-assert.equal(config.rewrites.find(r => r.source === '/app').destination, '/canvas-v2-host.html');
+assert.equal(config.rewrites.find(r => r.source === '/app').destination, '/canvas-v2-host');
 assert.equal(config.cleanUrls, true);
 assert.equal(config.trailingSlash, false);
 const manifest = JSON.parse(read('canvas-v2/canvas-v2/ASSET_MANIFEST.json'));
@@ -33,7 +33,7 @@ const resolve = pathname => {
 };
 const urls = new Set();
 for (const route of ['/app', '/app/', '/canvas-v2/canvas-v2', '/canvas-v2/canvas-v2/']) {
-  assert.equal(resolve(route.replace(/\/$/, '')), '/canvas-v2-host.html');
+  assert.equal(resolve(route.replace(/\/$/, '')), '/canvas-v2-host');
   const base = new URL(host.match(/<base href="([^"]+)"/)[1], `https://preview.example${route}`);
   for (const m of host.matchAll(/(?:src|href)="([^"]+)"/g)) urls.add(new URL(m[1], base).pathname);
   for (const m of read('canvas-v2/canvas-v2/assets/canvas-v2.js').matchAll(/loadJson\('([^']+)'\)/g)) urls.add(new URL(m[1], base).pathname);

@@ -71,8 +71,8 @@
     {"source": "/daughter", "destination": "/daughter.html"},
     {"source": "/canvas-v2/data/:path*", "destination": "/data/:path*"},
     {"source": "/canvas-v2/stage24-page0-rules.js", "destination": "/assets/canvas-v2-page0-rules.js"},
-    {"source": "/canvas-v2/canvas-v2", "destination": "/canvas-v2-host.html"},
-    {"source": "/canvas-v2/canvas-v2/index", "destination": "/canvas-v2-host.html"},
-    {"source": "/app", "destination": "/canvas-v2-host.html"}
+    {"source": "/canvas-v2/canvas-v2", "destination": "/canvas-v2-host"},
+    {"source": "/canvas-v2/canvas-v2/index", "destination": "/canvas-v2-host"},
+    {"source": "/app", "destination": "/canvas-v2-host"}
   ]
 }
