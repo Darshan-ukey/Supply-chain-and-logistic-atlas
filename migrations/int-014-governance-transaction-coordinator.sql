@@ -59,7 +59,7 @@ begin
   if p_next_state='COMPLETE' then
     if jsonb_typeof(t.required_dependencies)<>'array' or jsonb_array_length(t.required_dependencies)=0 then raise exception 'DEPENDENCIES_NOT_DECLARED'; end if;
     for d in select value from jsonb_array_elements(t.required_dependencies) loop
-      if d->>'status' not in ('VERIFIED','NA') or (d->>'status'='NA' and nullif(d->>'reason','') is null)
+      if coalesce(d->>'status','') not in ('VERIFIED','NA') or (d->>'status'='NA' and nullif(d->>'reason','') is null)
          or (d->>'status'='VERIFIED' and nullif(d->>'evidence','') is null) then raise exception 'DEPENDENCY_NOT_CLOSED'; end if;
     end loop;
     select count(*) into pending from public.atlas_governance_outbox where transaction_id=p_id and (verified_at is null or evidence_uri is null);
