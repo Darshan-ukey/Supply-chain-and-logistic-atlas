@@ -1,0 +1,43 @@
+name: CP12 proof-only validators
+on:
+  push:
+    branches:
+      - cp12-qa3-ca1-ca4-proof-only-20261009
+    paths:
+      - 'tests/cp12-*.test.mjs'
+      - '.github/workflows/cp12-proof-only.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  proof-only:
+    name: CP12 isolated validators (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22', '24']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Verify immutable test-only scope
+        run: |
+          git status --porcelain
+          node --version
+      - name: CA-1 synthetic Universe identity and mutation checks
+        run: node --test tests/cp12-universe-identity.test.mjs
+      - name: CA-4 isolated DAU gate and negative cases
+        run: node --test tests/cp12-dau-race-gate.test.mjs
+      - name: Record proof execution identity
+        if: always()
+        run: |
+          printf 'commit=%s\nnode=%s\n' "$GITHUB_SHA" "$(node --version)" | tee cp12-proof-execution.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp12-proof-node-${{ matrix.node }}
+          path: cp12-proof-execution.txt
