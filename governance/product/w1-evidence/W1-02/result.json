@@ -1,0 +1,538 @@
+{
+ "sha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+ "bytes": 499471,
+ "checks": [
+  {
+   "name": "coreDomainCount",
+   "expected": 8,
+   "actual": 8,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "conditionalDomainCount",
+   "expected": 1,
+   "actual": 1,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "crossEnterpriseRailCount",
+   "expected": 6,
+   "actual": 6,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "enterpriseCoverageLensCount",
+   "expected": 27,
+   "actual": 27,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "businessCycleViewCount",
+   "expected": 9,
+   "actual": 9,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "navigatorEntryCount",
+   "expected": 71,
+   "actual": 71,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "systemAuthorityRuleCount",
+   "expected": 12,
+   "actual": 12,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "contextResolverRuleCount",
+   "expected": 51,
+   "actual": 51,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "operatingRoleCount",
+   "expected": 11,
+   "actual": 11,
+   "result": "match",
+   "note": "models minus neutral"
+  },
+  {
+   "name": "modeOverlayCount",
+   "expected": 13,
+   "actual": 13,
+   "result": "match",
+   "note": "modes minus none"
+  },
+  {
+   "name": "contractServiceContextCount",
+   "expected": 5,
+   "actual": 5,
+   "result": "match",
+   "note": "array incl. contract-unresolved placeholder; page formula subtracts 1"
+  },
+  {
+   "name": "authorityDomainCount (page formula = referenceGroups.length)",
+   "expected": 17,
+   "actual": 17,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "referencePlacementCount",
+   "expected": 192,
+   "actual": 192,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "governedSourceRecordCount (activePage0SourceIds)",
+   "expected": 67,
+   "actual": 67,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "governedSourceRecords in sourceRecords map",
+   "expected": 67,
+   "actual": 67,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "firstClassEntityCount",
+   "expected": 265,
+   "actual": 265,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "relationshipTypeCount",
+   "expected": 30,
+   "actual": 30,
+   "result": "match",
+   "note": ""
+  },
+  {
+   "name": "directionalExchangeCount",
+   "expected": 36,
+   "actual": 36,
+   "result": "match",
+   "note": ""
+  }
+ ],
+ "findings": {},
+ "entityGroups": {
+  "systems": 78,
+  "businessObjects": 128,
+  "actors": 11,
+  "events": 9,
+  "documents": 19,
+  "processRelationships": 20
+ },
+ "pageIntegrity": {
+  "status": "passed",
+  "errors": [],
+  "keysCompared": 39,
+  "mismatches": [],
+  "pageErrors": []
+ },
+ "idDuplicatesWithinRegistry": {
+  "domains": [],
+  "lenses": [],
+  "cycles": [],
+  "authority": [],
+  "models": [],
+  "modes": [],
+  "sources": [],
+  "systems": [],
+  "objects": [],
+  "actors": [],
+  "events": [],
+  "documents": [],
+  "relationships": [],
+  "contractCtx": [],
+  "roleProfiles": []
+ },
+ "crossRegistryIdReuse": [
+  {
+   "id": "warehouse",
+   "registries": [
+    "domains",
+    "models",
+    "roleProfiles"
+   ]
+  },
+  {
+   "id": "neutral",
+   "registries": [
+    "models",
+    "roleProfiles"
+   ]
+  },
+  {
+   "id": "shipper",
+   "registries": [
+    "models",
+    "roleProfiles"
+   ]
+  },
+  {
+   "id": "manufacturer",
+   "registries": [
+    "models",
+    "roleProfiles"
+   ]
+  },
+  {
+   "id": "distributor",
+   "registries": [
+    "models",
+    "roleProfiles"
+   ]
+  },
+  {
+   "id": "forwarder",
+   "registries": [
+    "models",
+    "roleProfiles"
+   ]
+  },
+  {
+   "id": "nvocc",
+   "registries": [
+    "models",
+    "roleProfiles"
+   ]
+  },
+  {
+   "id": "carrier",
+   "registries": [
+    "models",
+    "roleProfiles"
+   ]
+  },
+  {
+   "id": "3pl",
+   "registries": [
+    "models",
+    "roleProfiles"
+   ]
+  },
+  {
+   "id": "4pl",
+   "registries": [
+    "models",
+    "roleProfiles"
+   ]
+  },
+  {
+   "id": "broker",
+   "registries": [
+    "models",
+    "roleProfiles"
+   ]
+  },
+  {
+   "id": "authority",
+   "registries": [
+    "models",
+    "roleProfiles"
+   ]
+  }
+ ],
+ "brokenReferences": [],
+ "nonDomainRelationshipEndpoints": [
+  [
+   "rel-event-exception",
+   "event",
+   "domain"
+  ],
+  [
+   "rel-exception-state",
+   "domain",
+   "object"
+  ]
+ ],
+ "relationshipTypesUnused": 12,
+ "recordLevelSourceTagging": {
+  "systems": {
+   "records": 78,
+   "fields": [
+    "id",
+    "code",
+    "name",
+    "aliases",
+    "description",
+    "domainIds"
+   ],
+   "hasSourceField": false
+  },
+  "businessObjects": {
+   "records": 128,
+   "fields": [
+    "id",
+    "code",
+    "name",
+    "aliases",
+    "description",
+    "domainIds"
+   ],
+   "hasSourceField": false
+  },
+  "actors": {
+   "records": 11,
+   "fields": [
+    "id",
+    "code",
+    "name",
+    "aliases",
+    "description",
+    "domainIds"
+   ],
+   "hasSourceField": false
+  },
+  "events": {
+   "records": 9,
+   "fields": [
+    "id",
+    "code",
+    "name",
+    "aliases",
+    "domainIds"
+   ],
+   "hasSourceField": false
+  },
+  "documents": {
+   "records": 19,
+   "fields": [
+    "id",
+    "code",
+    "name",
+    "aliases",
+    "domainIds",
+    "description"
+   ],
+   "hasSourceField": false
+  },
+  "processRelationships": {
+   "records": 20,
+   "fields": [
+    "id",
+    "code",
+    "name",
+    "sourceEntityId",
+    "targetEntityId"
+   ],
+   "hasSourceField": true
+  }
+ },
+ "recordLevelTaggedRegistries": {
+  "domains": true,
+  "lenses": true,
+  "cycles": true
+ },
+ "familyKeyResolution": {
+  "scor": 1,
+  "apqc": 1,
+  "uncefact": 3,
+  "gs1": 5,
+  "dcsa": 10,
+  "iata": 2,
+  "fiata": 2,
+  "wco": 1,
+  "apqcFinance": 0,
+  "cmr": 1,
+  "montreal": 1,
+  "otif": 0,
+  "uncitral": 0,
+  "fmc": 1,
+  "isa95": 1,
+  "iso8000": 1
+ },
+ "unresolvedFamilyKeyOccurrences": [
+  {
+   "domain": "finance",
+   "key": "apqcFinance"
+  },
+  {
+   "domain": "claims",
+   "key": "apqcFinance"
+  },
+  {
+   "domain": "claims",
+   "key": "otif"
+  },
+  {
+   "domain": "claims",
+   "key": "uncitral"
+  }
+ ],
+ "resolutionRule": "source id === \"src-\"+key.toLowerCase() OR startsWith(\"src-\"+key.toLowerCase()+\"-\")",
+ "sourceReferenceDefinitions": {
+  "D1_lensCycleDirectSourceIds_notReferenced": 38,
+  "D2_plus_domainFamilyKeys_notReferenced": 20,
+  "D3_plus_evidenceProfileFamilyKeys_notReferenced": 13,
+  "D4_plus_placementMapper_notReferenced": 0,
+  "D5_exactIdLiteralAnywhereOutsideRegistry_notReferenced": [
+   "src-bpmn",
+   "src-unedifact-d25a",
+   "src-gs1-cbv",
+   "src-iata-one-record",
+   "src-iata-cargo",
+   "src-fiata",
+   "src-ecmr",
+   "src-upu",
+   "src-adn",
+   "src-hague-visby",
+   "src-rotterdam"
+  ],
+  "placementsTotal": 192,
+  "placementsWithoutResolvedSourceId": 82
+ },
+ "sourcesNotReferencedByDomainLensCycle": 20,
+ "sourcesNotInDomainLensCycleOrIdLiteral": [
+  "src-bpmn",
+  "src-unedifact-d25a",
+  "src-gs1-cbv",
+  "src-iata-one-record",
+  "src-iata-cargo",
+  "src-fiata",
+  "src-ecmr",
+  "src-upu",
+  "src-adn",
+  "src-hague-visby",
+  "src-rotterdam"
+ ],
+ "placementByGroup": [
+  [
+   1,
+   7
+  ],
+  [
+   2,
+   15
+  ],
+  [
+   3,
+   9
+  ],
+  [
+   4,
+   26
+  ],
+  [
+   5,
+   13
+  ],
+  [
+   6,
+   14
+  ],
+  [
+   7,
+   16
+  ],
+  [
+   8,
+   17
+  ],
+  [
+   9,
+   7
+  ],
+  [
+   10,
+   9
+  ],
+  [
+   11,
+   7
+  ],
+  [
+   12,
+   6
+  ],
+  [
+   13,
+   8
+  ],
+  [
+   14,
+   8
+  ],
+  [
+   15,
+   6
+  ],
+  [
+   16,
+   10
+  ],
+  [
+   17,
+   14
+  ]
+ ],
+ "objects": {
+  "count": 128,
+  "withAliases": 128,
+  "aliasCollisionsAcrossObjects": [],
+  "nonAtomicNames": [],
+  "nonAtomicNamesNote": "heuristic: name contains \" and \"/\" or \"/\"/\"/\"&\"/\",\"/\";\"",
+  "nameDuplicates": []
+ },
+ "systems": {
+  "count": 78,
+  "withAliases": 78,
+  "aliasCollisions": [],
+  "nonAtomicNames": [
+   "Sales and Operations Planning",
+   "Freight Audit and Payment",
+   "Governance Risk and Compliance System"
+  ],
+  "nameDuplicates": []
+ },
+ "crossSystemObjectAliasCollisions": [
+  {
+   "alias": "dispatch",
+   "ids": [
+    "sys-dispatch",
+    "obj-dispatch"
+   ]
+  },
+  {
+   "alias": "rma",
+   "ids": [
+    "sys-returns",
+    "obj-rma"
+   ]
+  }
+ ],
+ "idLiteralRegex": {
+  "literals": 349,
+  "distinct": 345,
+  "note": "regex count of {id:'...'} literals; not an ontology measure; not a threshold"
+ },
+ "embeddedIdentity": {
+  "id": "supply-chain-logistics-universe-v7.2",
+  "version": "7.2.0",
+  "releaseDate": "2026-08-30",
+  "correctionCycle": "V7_1_TO_V7_2"
+ },
+ "lensReadiness": {
+  "READY FOR WHITE-SPACE ANALYSIS": 7,
+  "PARTIALLY READY": 13,
+  "EXECUTION DETAIL REQUIRED": 5,
+  "SOURCE RESEARCH REQUIRED": 2
+ },
+ "lensesWithGap": 27
+}

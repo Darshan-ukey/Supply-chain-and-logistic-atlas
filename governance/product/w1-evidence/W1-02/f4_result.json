@@ -1,0 +1,109 @@
+{
+ "artifactSha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+ "sourceTotal": 67,
+ "counts": {
+  "R0_lensSourceIds_or_cycleSourceIds": 38,
+  "R1_R0_plus_domainKeyEqualsIdMinusSrc": 37,
+  "R2_R0_plus_domainFamilyKeyPrefix": 20,
+  "R3_R2_plus_evidenceProfileFamilyKeys": 13,
+  "R4_R3_plus_pageSourceIdsForPlacementMapper": 0,
+  "L_exactIdLiteralOutsideSourceRegistries": 11
+ },
+ "R0_notReferenced": [
+  "src-bpmn",
+  "src-unedifact-d25a",
+  "src-gs1-cbv",
+  "src-dcsa-booking",
+  "src-dcsa-ebl",
+  "src-dcsa-tt",
+  "src-iata-one-record",
+  "src-iata-cargo",
+  "src-fiata",
+  "src-ecmr",
+  "src-upu",
+  "src-cmni",
+  "src-ccnr",
+  "src-cesni-trin",
+  "src-cesni-ris",
+  "src-adn",
+  "src-hague-visby",
+  "src-rotterdam",
+  "src-ncd",
+  "src-x12",
+  "src-nmfta-dsdc-ltl",
+  "src-nmfc",
+  "src-dcsa-blueprint-2026q1",
+  "src-dcsa-port-call",
+  "src-dcsa-vgm",
+  "src-dcsa-arrival",
+  "src-dcsa-ovs",
+  "src-dcsa-commercial-schedules",
+  "src-dcsa-load-list-bay-plan",
+  "src-imo-compendium-2026",
+  "src-imdg-2024-a42-24",
+  "src-ctu-code-2014",
+  "src-tic40-2025-019",
+  "src-fiata-efbl-guide-2026",
+  "src-uncefact-ift-brs-v2",
+  "src-smdg-terminal-messages",
+  "src-fmc-oti-nvocc",
+  "src-uncefact-multimodal-visibility-brs-v1"
+ ],
+ "R1_minus_R0": [
+  "src-fiata"
+ ],
+ "L_set": [
+  "src-bpmn",
+  "src-unedifact-d25a",
+  "src-gs1-cbv",
+  "src-iata-one-record",
+  "src-iata-cargo",
+  "src-fiata",
+  "src-ecmr",
+  "src-upu",
+  "src-adn",
+  "src-hague-visby",
+  "src-rotterdam"
+ ],
+ "priorFive": [
+  "src-unedifact-d25a",
+  "src-gs1-cbv",
+  "src-iata-one-record",
+  "src-iata-cargo",
+  "src-hague-visby"
+ ],
+ "priorFiveAllInL": true,
+ "L_minus_priorFive": [
+  "src-bpmn",
+  "src-fiata",
+  "src-ecmr",
+  "src-upu",
+  "src-adn",
+  "src-rotterdam"
+ ],
+ "L_minus_priorFive_reachedBy": {
+  "src-bpmn": [
+   "pageMapperOnly"
+  ],
+  "src-fiata": [
+   "domainKeyEqualsId",
+   "evidenceKeyEqualsId",
+   "pageMapperOnly"
+  ],
+  "src-ecmr": [
+   "pageMapperOnly"
+  ],
+  "src-upu": [
+   "evidenceKeyEqualsId",
+   "pageMapperOnly"
+  ],
+  "src-adn": [
+   "evidenceKeyEqualsId",
+   "pageMapperOnly"
+  ],
+  "src-rotterdam": [
+   "pageMapperOnly"
+  ]
+ },
+ "note": "No single tested definition yields exactly the 5 of the prior L1 text; the 5 are a subset of set L (11)."
+}
