@@ -1,0 +1,98 @@
+{
+ "business_object": {
+  "n": 40,
+  "PASS": 8,
+  "PASS_WITH_NOTE": 18,
+  "PASS_WITH_LIMITATION": 12,
+  "NO_BASIS": 2,
+  "UNRESOLVED": 0,
+  "FAIL": 0,
+  "CRITICAL": 0
+ },
+ "system": {
+  "n": 10,
+  "PASS": 0,
+  "PASS_WITH_NOTE": 0,
+  "PASS_WITH_LIMITATION": 9,
+  "NO_BASIS": 1,
+  "UNRESOLVED": 0,
+  "FAIL": 0,
+  "CRITICAL": 0
+ },
+ "document_event": {
+  "n": 10,
+  "PASS": 5,
+  "PASS_WITH_NOTE": 3,
+  "PASS_WITH_LIMITATION": 2,
+  "NO_BASIS": 0,
+  "UNRESOLVED": 0,
+  "FAIL": 0,
+  "CRITICAL": 0
+ },
+ "ALL": {
+  "n": 60,
+  "PASS": 13,
+  "PASS_WITH_NOTE": 21,
+  "PASS_WITH_LIMITATION": 23,
+  "NO_BASIS": 3,
+  "UNRESOLVED": 0,
+  "FAIL": 0,
+  "CRITICAL": 0
+ },
+ "claim_class_by_category": {
+  "CC1|PASS": 13,
+  "CC2|PASS_WITH_NOTE": 21,
+  "CC3|PASS_WITH_LIMITATION": 7,
+  "CC4|PASS_WITH_LIMITATION": 7,
+  "CC5|NO_BASIS": 1,
+  "CC5|PASS_WITH_LIMITATION": 9,
+  "CC6|NO_BASIS": 2
+ },
+ "noBasis": [
+  "obj-subrogation",
+  "obj-wave",
+  "sys-customer-portal"
+ ],
+ "limitation": [
+  "obj-knowledge-asset",
+  "obj-asset-master",
+  "obj-cfs-handoff",
+  "obj-accrual",
+  "obj-control-evidence",
+  "obj-release",
+  "obj-shipment-readiness",
+  "obj-performance-record",
+  "obj-reserve",
+  "obj-load-plan",
+  "obj-sourcing-decision",
+  "obj-driver",
+  "sys-ibp",
+  "sys-billing",
+  "sys-control-tower",
+  "sys-forwarder-platform",
+  "sys-cpq",
+  "sys-oms",
+  "sys-analytics",
+  "sys-carrier-documentation",
+  "sys-tax-engine",
+  "evt-exception-detected",
+  "evt-delivery-attempted"
+ ],
+ "emptyDomainObjects": [
+  "obj-vehicle",
+  "obj-knowledge-asset",
+  "obj-seal",
+  "obj-shipping-instructions",
+  "obj-trailer",
+  "obj-cfs-handoff",
+  "obj-control-evidence",
+  "obj-execution-state",
+  "obj-refund",
+  "obj-performance-record",
+  "obj-emission-record",
+  "obj-pick-confirmation",
+  "obj-arrival-notice",
+  "obj-tender-response",
+  "obj-driver"
+ ]
+}

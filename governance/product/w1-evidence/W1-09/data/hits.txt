@@ -1,0 +1,818 @@
+====================================================================================================
+[business_object #1] obj-vehicle | Vehicle | aliases=['vehicle'] | terms=['Vehicle', 'transport means']
+  -- one-record: 10 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [N:Vehicle|s3] owl:ObjectProp vehicleType                                    | vehicleType | Vehicle or container type. Refer UNECE28, e.g. 4.. - Aircraft, type unknown.For Air refer to IATA Standard Schedules Information Manual in s  @IATA-1R-DM-Ontology.ttl
+     [N:transport means|s3] owl:Class,owl: TransportMeans                                 | TransportMeans | Transport means details  @IATA-1R-DM-Ontology.ttl
+     [N:transport means|s3] owl:ObjectProp transportMeansType                             | transportMeansType | Type of transport means, e.g. 744, RFS  @IATA-1R-DM-Ontology.ttl
+     [N:transport means|s2] owl:ObjectProp onTransportMeans                               | onTransportMeans | Reference to the TransportMeans that is being onloaded or offloaded  @IATA-1R-DM-Ontology.ttl
+     [N:transport means|s2] owl:ObjectProp operatingTransportMeans                        | operatingTransportMeans | Reference to the TransportMeans operating the TransportMovement  @IATA-1R-DM-Ontology.ttl
+     [N:Vehicle|s1] owl:DatatypePr vehicleSize                                    | vehicleSize | Size of the vehicle - free text  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 1 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [N:transport means|s1] owl:Class,owl: TransportMeansServiceType                      | TransportMeansServiceType | Restricted code list of possible transport means in transport legs in carrier bookings  @IATA-1R-CL-Ontology.ttl
+     [C:Vehicle|s0] owl:NamedIndiv VHCL                                           | VHCL | Vehicle / Machinary, Parts, Spares  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:Vehicle|s0] cbv:BizStep,ve BizStep-transporting                           | transporting | Process of moving an object from one location to another using a vehicle (e.g., a ship, a train, a lorry, an aircraft).  @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: 2 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [N:transport means|s3] def            logisticsTransportMeansType                    | Logistics_ Transport Means. Details | The devices used to convey goods or other objects from place to place during logistics cargo movements.  @logisticsTransportMeansType
+     [N:transport means|s3] def            referencedTransportMeansType                   | Referenced_ Transport Means. Details | Reference to a device or method used to convey people, goods, or other objects from place to place.  @referencedTransportMeansType
+     [C:Vehicle|s0] def            logisticsLabelType                             | Logistics_ Label. Details | A label used for identifying goods for logistics purposes, such as a barcode, a radio frequency tag or a Vehicle Identification Number (VIN)  @logisticsLabelType
+====================================================================================================
+[business_object #2] obj-equipment | Equipment | aliases=['equipment'] | terms=['Equipment', 'transport equipment', 'ULD', 'loading unit']
+  -- one-record: 13 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [N:ULD|s3] owl:Class,owl: ULD                                            | ULD | Unit Load Device details  @IATA-1R-DM-Ontology.ttl
+     [N:ULD|s3] owl:ObjectProp uldType                                        | uldType | Type of ULD as per IATA ULD Regulation  @IATA-1R-DM-Ontology.ttl
+     [N:loading unit|s3] owl:ObjectProp loadingUnit                                    | onLoadingUnit | Reference to the LoadingUnit composed in the Unit Composition or referenced in Composing actions  @IATA-1R-DM-Ontology.ttl
+     [N:loading unit|s3] owl:Class,owl: LoadingUnit                                    | LoadingUnit | Common loading unit/container details  @IATA-1R-DM-Ontology.ttl
+     [N:ULD|s1] owl:ObjectProp uldTypeCode                                    | uldTypeCode | Standard Unit Load Device type code e.g. AKE - Certified Container - Contoured. Refer to IATA ULD Technical Manual  @IATA-1R-DM-Ontology.ttl
+     [N:ULD|s1] owl:ObjectProp uldOwnerCode                                   | uldOwnerCode | Information about the ULD owner code described in a ULD specific piece or used for a rate in a Line Item  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 20 comment-only hits (showing top 6 by exactness)
+     [C:Equipment|s0] owl:NamedIndiv KB                                             | KB | Loading/unloading equipment (forklift etc.)  @IATA-1R-CL-Ontology.ttl
+     [C:Equipment|s0] owl:NamedIndiv ETD                                            | ETD | Explosives Trace Detection Equipment - Particles or Vapor  @IATA-1R-CL-Ontology.ttl
+     [C:Equipment|s0] owl:NamedIndiv XRY                                            | XRY | X-ray Equipment  @IATA-1R-CL-Ontology.ttl
+     [C:Equipment|s0] owl:NamedIndiv ELEC                                           | ELEC | Electronic equipment  @IATA-1R-CL-Ontology.ttl
+     [C:Equipment|s0] owl:NamedIndiv CONS_HRSE                                      | CONS_HRSE | Horse equipment  @IATA-1R-CL-Ontology.ttl
+     [C:Equipment|s0] owl:NamedIndiv CONS_SPRT                                      | CONS_SPRT | Sports equipment  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 7 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [N:Equipment|s3] def            oemEquipmentType                               | OEM_ Equipment. Details | Hardware or software typically marketed by a company other than the original manufacturer.  @oemEquipmentType
+     [N:Equipment|s3] def            guestCarriedEquipmentType                      | Guest_ Carried Equipment. Details | A tool or device carried by a guest for an activity.  @guestCarriedEquipmentType
+     [N:Equipment|s3] def            attachedTransportEquipmentType                 | Attached_ Transport Equipment. Details | A piece of attached transport equipment, such as a chain or a tarpaulin.  @attachedTransportEquipmentType
+     [N:Equipment|s3] def            logisticsTransportEquipmentType                | Logistics_ Transport Equipment. Details | A piece of equipment used to hold, protect or secure cargo for logistics purposes.  @logisticsTransportEquipmentType
+     [N:Equipment|s3] def            associatedTransportEquipmentType               | Associated_ Transport Equipment. Details | A piece of transport equipment that is associated with another piece of transport equipment, such as a maritime container placed on a rail w  @associatedTransportEquipmentType
+     [N:Equipment|s3] def            referencedLogisticsTransportEquipmentType      | Referenced_ Logistics_ Transport Equipment.  | A referenced piece of equipment used to hold, protect or secure cargo for logistics purposes.  @referencedLogisticsTransportEquipmentType
+====================================================================================================
+[business_object #3] obj-knowledge-asset | Knowledge Asset | aliases=['Knowledge asset'] | terms=['Knowledge Asset', 'knowledge']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #4] obj-filing | Filing | aliases=['filing'] | terms=['Filing', 'declaration', 'customs']
+  -- one-record: 18 name/label hits, 7 comment-only hits (showing top 6 by exactness)
+     [N:declaration|s2] owl:ObjectProp dgDeclaration                                  | dgDeclaration | Reference to the Dangerous Goods declaration  @IATA-1R-DM-Ontology.ttl
+     [N:customs|s2] owl:DatatypePr nvdForCustoms                                  | nvdForCustoms | When no value is declared for Customs, this field may be completed with the value TRUE otherwise FALSE  @IATA-1R-DM-Ontology.ttl
+     [N:declaration|s2] owl:Class,owl: DgDeclaration                                  | DgDeclaration | Dangerous goods declaration  @IATA-1R-DM-Ontology.ttl
+     [N:declaration|s2] owl:Class,owl: SecurityDeclaration                            | SecurityDeclaration | Security declaration details  @IATA-1R-DM-Ontology.ttl
+     [N:customs|s2] owl:ObjectProp declaredValueForCustoms                        | declaredValueForCustoms | The value of a shipment declared for customs purposes  @IATA-1R-DM-Ontology.ttl
+     [N:declaration|s1] owl:DatatypePr declarationDate                                | declarationDate | Date and time at which the DgDeclaration was declared  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 8 comment-only hits (showing top 6 by exactness)
+     [C:customs|s0] owl:NamedIndiv CC                                             | CC | Manual data entry for customs purposes  @IATA-1R-CL-Ontology.ttl
+     [C:customs|s0] owl:NamedIndiv CG                                             | CG | Electronic processing or transmission of data for customs purposes  @IATA-1R-CL-Ontology.ttl
+     [C:customs|s0] owl:NamedIndiv CI                                             | CI | Overtime and Other Customs Imposed Charges  @IATA-1R-CL-Ontology.ttl
+     [C:customs|s0] owl:NamedIndiv CTM                                            | CTM | Customs  @IATA-1R-CL-Ontology.ttl
+     [C:customs|s0] owl:NamedIndiv CCD                                            | CCD | The consignment has been cleared by the Customs authorities on this date at this location  @IATA-1R-CL-Ontology.ttl
+     [C:customs|s0] owl:NamedIndiv CRC                                            | CRC | The consignment has been reported to the Customs authorities on this date at this location  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: 0 name/label hits, 3 comment-only hits (showing top 6 by exactness)
+     [C:customs|s0] cbv:BizStep,te BizStep-sampling                               | sampling | Denotes a testing activity within a business process where one or more portions of an object are examined for quality testing, quality inspe  @CBV.ttl
+     [C:declaration|s0] cbv:ER,CBV-Com ER-did_not_occur                               | did not occur | The prior event is considered erroneous because it did not actually occur. \nThere are no corrective events. \n(In a CBV-Compliant Document,  @CBV.ttl
+     [C:declaration|s0] cbv:ER,correct ER-incorrect_data                              | incorrect data | The prior event is considered erroneous because some or all of the data in the event are incorrect. \nSubsequent events may provide a correc  @CBV.ttl
+  -- gs1-epcis: 3 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [N:declaration|s2] owl:Class , rd ErrorDeclaration                               | ErrorDeclaration | When an event contains an ErrorDeclaration element, it indicates that this event has special semantics: instead of the normal semantics whic  @EPCIS.ttl
+     [N:declaration|s2] owl:ObjectProp errorDeclaration                               | errorDeclaration | (Optional) If present, indicates that this event serves to assert that the assertions made by a prior event are in error.  @EPCIS.ttl
+     [N:declaration|s1] owl:DatatypePr declarationTime                                | declarationTime | The date and time at which the declaration of error is made. (Note that the eventTime of this event must match the eventTime of the prior ev  @EPCIS.ttl
+     [C:declaration|s0] owl:ObjectProp correctiveEventIDs                             | correctiveEventIDs | (Optional) If present, indicates that the events having the specified URIs as the value of their eventID fields are to be considered as 'cor  @EPCIS.ttl
+  -- uncefact: 5 name/label hits, 8 comment-only hits (showing top 6 by exactness)
+     [N:declaration|s3] def            declarationType                                | Specified_ Declaration. Details | An act of notification by formal documentation or action, in any form prescribed or accepted, such as a self-declaration.  @declarationType
+     [N:declaration|s3] def            exchangedDeclarationType                       | Exchanged_ Declaration. Details | A collection of data for a piece of written, printed or electronic matter that is exchanged between two parties as a formal declaration.  @exchangedDeclarationType
+     [N:declaration|s3] schema-file    UNECE-AirDangerousGoodsDeclaration.json        | Air Dangerous Goods Declaration | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-AirDangerousGoodsDeclaration.json
+     [N:declaration|s3] schema-file    UNECE-AirConsignmentSecurityDeclaration.json   | Air Consignment Security Declaration | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-AirConsignmentSecurityDeclaration.json
+     [N:customs|s1] def            crossBorderCustomsValuationType                | Cross-Border_ Customs Valuation. Details | A cross-border trade related assessment of the worth of an object, such as its monetary value, for customs purposes.  @crossBorderCustomsValuationType
+     [C:customs|s0] def            cargoType                                      | Transport_ Cargo. Details | Information about goods being transported identifying their nature for customs, statistical or transport purposes.  @cargoType
+====================================================================================================
+[business_object #5] obj-seal | Seal | aliases=['seal', 'container seal'] | terms=['Seal', 'container seal']
+  -- one-record: 2 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:Seal|s3] owl:DatatypePr seal                                           | seal | Seal identifier  @IATA-1R-DM-Ontology.ttl
+     [N:Seal|s1] owl:DatatypePr sealNumber                                     | sealNumber | ULD seal number if applicable  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: none
+  -- gs1-cbv: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:Seal|s0] cbv:Disp,seal  Disp-container_open                            | container open | A container's doors have been opened; or a seal of a shipment has been broken. \nThis disposition makes no indication as to whether the act   @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:Seal|s3] def            logisticsSealType                              | Logistics_ Seal. Details | A device used to secure an object and protect it from unauthorized entry or tampering during transport or other logistics operations.  @logisticsSealType
+====================================================================================================
+[business_object #6] obj-subrogation | Subrogation | aliases=['Subrogation'] | terms=['Subrogation', 'insurance']
+  -- one-record: 2 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [N:insurance|s3] owl:ObjectProp insurance                                      | insurance | Insurance details  @IATA-1R-DM-Ontology.ttl
+     [N:insurance|s3] owl:Class,owl: Insurance                                      | Insurance | Insurance details  @IATA-1R-DM-Ontology.ttl
+     [C:insurance|s0] owl:ObjectProp insuredAmount                                  | insuredAmount | Insured amount - amount covered by the insurance policy  @IATA-1R-DM-Ontology.ttl
+     [C:insurance|s0] owl:ObjectProp coveringOrganization                           | coveringOrganization | Party covering the insurance   @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:insurance|s0] owl:NamedIndiv IN                                             | IN | Insurance  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:insurance|s3] def            cargoInsuranceType                             | Transport_ Cargo Insurance. Details | Insurance coverage for cargo during transport movements.  @cargoInsuranceType
+====================================================================================================
+[business_object #7] obj-shipping-instructions | Shipping Instructions | aliases=['shipping instructions', 'SI'] | terms=['Shipping Instructions', 'SI', 'shipping instruction', 'forwarding instruction', 'transport instruction']
+  -- one-record: none
+  -- one-record-cl: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:SI|s3] owl:NamedIndiv SI                                             | SI | Sales Incentive  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:Shipping Instructions|s3] schema-file    UNECE-MultimodalShippingInstructions.json      | Multimodal Shipping Instructions | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MultimodalShippingInstructions.json
+====================================================================================================
+[business_object #8] obj-trailer | Trailer | aliases=['trailer'] | terms=['Trailer', 'chassis']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #9] obj-condition-record | Condition Record | aliases=['Condition'] | terms=['Condition Record', 'Condition']
+  -- one-record: 0 name/label hits, 5 comment-only hits (showing top 6 by exactness)
+     [C:Condition|s0] owl:ObjectProp contentCode                                    | contentCode | Customs, Security and Regulatory Control Information Identifier. Coded indicator qualifying Customs related information: Item Number \"I\",   @IATA-1R-DM-Ontology.ttl
+     [C:Condition|s0] owl:ObjectProp subjectCode                                    | subjectCode | Information Identifier. Code identifying a piece of information/entity e.g. \"IMP\" for import, \"EXP\" for export, \"AGT\" for Agent, \"ISS  @IATA-1R-DM-Ontology.ttl
+     [C:Condition|s0] owl:ObjectProp serviceabilityCode                             | serviceabilityCode | Designator of serviceability condition e.g. SER or DAM   @IATA-1R-DM-Ontology.ttl
+     [C:Condition|s0] owl:DatatypePr supplementaryInfoPrefix                        | supplementaryInfoPrefix | Additional information that may be added in addition to the proper shipping name to more fully describe the goods or to identify a particula  @IATA-1R-DM-Ontology.ttl
+     [C:Condition|s0] owl:DatatypePr supplementaryInfoSuffix                        | supplementaryInfoSuffix | Additional information that may be added in addition to the proper shipping to more fully describe the goods or to identify a particular con  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:Condition|s0] owl:Class,owl: ULDConditionCode                               | ULDConditionCode | Restricted code list corresponding to cXML code list 1.21 ULD Condition Codes  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: 0 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [C:Condition|s0] cbv:Disp       Disp-unknown                                   | unknown | An object's condition is not known.  @CBV.ttl
+     [C:Condition|s0] cbv:BizStep,sp BizStep-sensor_reporting                       | sensor reporting | Denotes a specific activity within a business process where sensor data, pertaining to the physical properties and condition of an object or  @CBV.ttl
+  -- gs1-epcis: 0 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [C:Condition|s0] owl:ObjectProp exception                                      | exception | (Optional) A sensor alert, including an alarm condition or an error condition. When this field is used, extra details can be specified via `  @EPCIS.ttl
+     [C:Condition|s0] owl:ObjectProp disposition                                    | disposition | (Optional) The business condition of the objects associated with the EPCs, presumed to hold true until contradicted by a subsequent event.  @EPCIS.ttl
+  -- uncefact: 3 name/label hits, 12 comment-only hits (showing top 6 by exactness)
+     [N:Condition|s3] def            conditionType                                  | Specified_ Condition. Details | A state, such as of a specified person or thing.  @conditionType
+     [N:Condition|s3] def            usageConditionType                             | Specified_ Usage Condition. Details | The particular state of something, affected by use, that should be respected.  @usageConditionType
+     [N:Condition|s3] def            productCharacteristicConditionType             | Product Characteristic_ Condition. Details | A state that applies to a product characteristic.  @productCharacteristicConditionType
+     [C:Condition|s0] def            assessmentType                                 | Specified_ Assessment. Details | The evaluation of an object, such as a product, process, or organization, with respect to the object's worth or condition.  @assessmentType
+     [C:Condition|s0] def            guestAllergyType                               | Guest_ Allergy. Details | A guest condition of the abnormal reaction of the body to a previously encountered substance introduced by inhalation, ingestion, injection,  @guestAllergyType
+     [C:Condition|s0] def            qualificationType                              | Specified_ Qualification. Details | A specified condition that must be fulfilled.  @qualificationType
+====================================================================================================
+[business_object #10] obj-supplier-invoice | Supplier Invoice | aliases=['Supplier invoice'] | terms=['Supplier Invoice', 'invoice']
+  -- one-record: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:invoice|s0] owl:ObjectProp taxDueAirline                                  | taxDueAirline | Tax due Airline (as per AWB, or VAT/GST as per invoice). Total VAT/TAX amount payable by agent to airline  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:invoice|s0] owl:NamedIndiv NI                                             | NI | CASS Invoice Amount  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:invoice|s3] cbv:BTT        BTT-inv                                        | Invoice | A document/message claiming payment for goods or services supplied under conditions agreed by the seller and buyer.  @CBV.ttl
+  -- gs1-epcis: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:invoice|s0] owl:ObjectProp bizRules                                       | bizRules | (Optional) Storage location of an electronic document accommodating product- or application-specific business rules on which basis the EPCIS  @EPCIS.ttl
+  -- uncefact: 2 name/label hits, 4 comment-only hits (showing top 6 by exactness)
+     [N:invoice|s3] schema-file    UNECE-CrossIndustryInvoice.json                | Cross Industry Invoice | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-CrossIndustryInvoice.json
+     [N:invoice|s1] schema-file    UNECE-InvoiceContextCCL.json                   | Invoice Context CCL | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-InvoiceContextCCL.json
+     [C:invoice|s0] def            lineTradeSettlementType                        | Line_ Trade Settlement. Details | The information, at a line level, that enables the reconciliation of a financial transaction with the item(s) that the financial transaction  @lineTradeSettlementType
+     [C:invoice|s0] def            headerTradeSettlementType                      | Header_ Trade Settlement. Details | The information, at a header level, that enables the reconciliation of a financial transaction, with the item(s) that the financial transact  @headerTradeSettlementType
+     [C:invoice|s0] def            paymentTradeSettlementType                     | Payment_ Trade Settlement. Details | The information that enables the reconciliation of a payment with the item(s) that the payment is intended to settle, for example a commerci  @paymentTradeSettlementType
+     [C:invoice|s0] def            subordinateLineTradeSettlementType             | Subordinate Line_ Trade Settlement. Details | The information, at a subordinate line level, that enables the reconciliation of a financial transaction with the item(s) that the financial  @subordinateLineTradeSettlementType
+====================================================================================================
+[business_object #11] obj-payment | Payment | aliases=['Payment'] | terms=['Payment']
+  -- one-record: 1 name/label hits, 3 comment-only hits (showing top 6 by exactness)
+     [N:Payment|s1] owl:ObjectProp chargePaymentType                              | chargePaymentType | Indicates if charge is prepaid or collect (P, C)  @IATA-1R-DM-Ontology.ttl
+     [C:Payment|s0] owl:ObjectProp otherChargesIndicator                          | otherChargesIndicator | Indicator whether the payment of Other Charges is to be made at origin (prepaid) or at destination (collect) as per bullet point 13 - data e  @IATA-1R-DM-Ontology.ttl
+     [C:Payment|s0] owl:DatatypePr accountingInformation                          | accountingInformation | Indicates the details of accounting information. Free text e.g. PAYMENT BY CERTIFIED CHEQUE etc.  @IATA-1R-DM-Ontology.ttl
+     [C:Payment|s0] owl:ObjectProp weightValuationIndicator                       | weightValuationIndicator | Indicator whether the payment for the Weight/Valuation is to be made at origin (prepaid) or at destination (collect) as per bullet point 13   @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: none
+  -- gs1-cbv: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:Payment|s0] cbv:BTT        BTT-inv                                        | Invoice | A document/message claiming payment for goods or services supplied under conditions agreed by the seller and buyer.  @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: 16 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [N:Payment|s3] def            advancePaymentType                             | Advance_ Payment. Details | A prepaid discharge of obligations in respect of funds or securities transferred between two or more parties.  @advancePaymentType
+     [N:Payment|s3] def            instalmentPaymentType                          | Instalment_ Payment. Details | A discharge of obligations in respect of funds or securities, transferred through one of several payments, between two or more parties.  @instalmentPaymentType
+     [N:Payment|s3] def            tradeSettlementPaymentType                     | Trade Settlement_ Payment. Details | The specific discharge obligations in respect of funds or securities transferred between two or more parties as part of a trade settlement.  @tradeSettlementPaymentType
+     [N:Payment|s1] def            paymentCashType                                | Payment_ Cash. Details | Coins, banknotes paid by the recipient of goods or services to the provider.  @paymentCashType
+     [N:Payment|s1] def            paymentChequeType                              | Payment_ Cheque. Details | A written payment order to a bank to pay the stated sum from the drawer's account.  @paymentChequeType
+     [N:Payment|s1] def            paymentBalanceOutType                          | Payment_ Balance Out. Details | Offset information to ensure that debits and credits are equal for a transaction.  @paymentBalanceOutType
+====================================================================================================
+[business_object #12] obj-order | Order | aliases=['Order'] | terms=['Order']
+  -- one-record: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:Order|s0] owl:Class,owl: BookingRequest                                 | BookingRequest | A party, usually the freight forwarder, creates the BookingRequest in order to confirm the booking to the Carrier  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [C:Order|s0] owl:NamedIndiv DK                                             | DK | Release order  @IATA-1R-CL-Ontology.ttl
+     [C:Order|s0] owl:NamedIndiv SF                                             | SF | Delivery Order  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: 3 name/label hits, 3 comment-only hits (showing top 6 by exactness)
+     [N:Order|s3] cbv:BTT        BTT-po                                         | Purchase Order | A document/message that specifies details for goods and services ordered under conditions agreed by the seller and buyer.  @CBV.ttl
+     [N:Order|s3] cbv:BTT,produc BTT-prodorder                                  | Production Order | An organisation-internal document or message issued by a producer that initiates a manufacturing process of goods.  @CBV.ttl
+     [N:Order|s1] cbv:BTT,purcha BTT-poc                                        | Purchase Order Confirmation | A document that provides confirmation from an external supplier to the request of a purchaser to deliver a specified quantity of material, o  @CBV.ttl
+     [C:Order|s0] cbv:BizStep,sp BizStep-picking                                | picking | Denotes a specific activity within a business process that includes the selecting of objects to fill an order.  @CBV.ttl
+     [C:Order|s0] cbv:BizStep,sp BizStep-stocking                               | stocking | Denotes a specific activity within a business process within a location to make an object available to the customer or for order fulfilment   @CBV.ttl
+     [C:Order|s0] cbv:BizStep,lo BizStep-cycle_counting                         | cycle counting | Process of counting objects within a location in order to obtain an accurate inventory for business needs other than accounting purposes (e.  @CBV.ttl
+  -- gs1-epcis: 0 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [C:Order|s0] owl:Class , rd BizTransaction                                 | BizTransaction | Document that describes a particular business transaction. An example is a specific Purchase Order or Despatch Advice. Business Transaction   @EPCIS.ttl
+     [C:Order|s0] owl:ObjectProp bizTransactionType                             | bizTransactionType | An identifier that indicates the type of BizTransaction document (e.g. Purchase Order, Despatch Advice).  @EPCIS.ttl
+  -- uncefact: 9 name/label hits, 7 comment-only hits (showing top 6 by exactness)
+     [N:Order|s3] schema-file    UNECE-CrossIndustryOrder.json                  | Cross Industry Order | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-CrossIndustryOrder.json
+     [N:Order|s1] schema-file    UNECE-OrderContextCCL.json                     | Order Context CCL | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-OrderContextCCL.json
+     [N:Order|s1] schema-file    UNECE-OrderChangeContextCCL.json               | Order Change Context CCL | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-OrderChangeContextCCL.json
+     [N:Order|s1] schema-file    UNECE-OrderResponseContextCCL.json             | Order Response Context CCL | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-OrderResponseContextCCL.json
+     [N:Order|s1] schema-file    UNECE-CrossIndustryOrderChange.json            | Cross Industry Order Change | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-CrossIndustryOrderChange.json
+     [N:Order|s1] schema-file    UNECE-CrossIndustryOrderResponse.json          | Cross Industry Order Response | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-CrossIndustryOrderResponse.json
+====================================================================================================
+[business_object #13] obj-asset-master | Asset Master | aliases=['Asset master'] | terms=['Asset Master', 'asset']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:asset|s0] cbv:Disp       Disp-needs_replacement                         | needs replacement | Component(s) or other asset(s) must be replaced to ensure fulfilment of functional requirements.  @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:asset|s1] def            returnableAssetInstructionsType                | Returnable Asset_ Instructions. Details | The procedures to follow for returnable assets, such as reusable packaging (pallets, crates).  @returnableAssetInstructionsType
+====================================================================================================
+[business_object #14] obj-cfs-handoff | CFS Handoff | aliases=['CFS handoff'] | terms=['CFS Handoff', 'freight station', 'CFS']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #15] obj-accrual | Accrual | aliases=['Accrual'] | terms=['Accrual']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #16] obj-regulatory-status | Regulatory Status | aliases=['Regulatory status'] | terms=['Regulatory Status', 'regulatory', 'regulated', 'security status']
+  -- one-record: 12 name/label hits, 6 comment-only hits (showing top 6 by exactness)
+     [N:security status|s3] owl:ObjectProp securityStatus                                 | securityStatus | Security status indicator (CXML 1.13) - e.g. SPX- Cargo Secure for Passenger and All-Cargo Aircraft   @IATA-1R-DM-Ontology.ttl
+     [N:security status|s3] owl:Class      SecurityStatus                                 |  |   @IATA-1R-DM-Ontology.ttl
+     [N:security status|s2] owl:Class      ShipmentSecurityStatus                         |  |   @IATA-1R-DM-Ontology.ttl
+     [N:regulated|s1] owl:Class,owl: RegulatedEntity                                | RegulatedEntity | Regulated Entity  @IATA-1R-DM-Ontology.ttl
+     [N:regulated|s1] owl:ObjectProp regulatedEntityIssuer                          | regulatedEntityIssuer | Regulated entity issuing the Security Declaration  @IATA-1R-DM-Ontology.ttl
+     [N:regulated|s1] owl:ObjectProp otherRegulatedEntities                         | otherRegulatedEntities | Any other regulated entity that accepts custody of the cargo and accepts the security status originally issued  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 3 name/label hits, 7 comment-only hits (showing top 6 by exactness)
+     [N:security status|s3] owl:Class,owl: SecurityStatus                                 | SecurityStatus | Restricted code list corresponding to cXML code list 1.103 Security Statuses  @IATA-1R-CL-Ontology.ttl
+     [N:security status|s2] owl:Class,owl: ShipmentSecurityStatus                         | ShipmentSecurityStatus | Restricted code list indicating whether a shipment is secured or not secured  @IATA-1R-CL-Ontology.ttl
+     [N:regulated|s1] owl:Class,owl: RegulatedEntityCategoryCode                    | RegulatedEntityCategoryCode | Full detailed descriptions for RA, KC & AC are contained in Cargo Services Conference Recommended Practice 1630 CARGO SECURITY  @IATA-1R-CL-Ontology.ttl
+     [C:regulated|s0] owl:NamedIndiv RA                                             | RA | Regulated Agent  @IATA-1R-CL-Ontology.ttl
+     [C:regulated|s0] owl:NamedIndiv RC                                             | RC | Regulated Carrier  @IATA-1R-CL-Ontology.ttl
+     [C:regulated|s0] owl:NamedIndiv RBI                                            | RBI | Fully regulated lithium ion batteries (Class 9, UN 3480) as per Section IA and IB of PI 965  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 2 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [N:regulated|s1] def            logisticsRegulatedGoodsType                    | Logistics_ Regulated Goods. Details | Articles of trade or commerce which are subject to, or controlled by a rule, regulation, or law at a particular point during their logistics  @logisticsRegulatedGoodsType
+     [N:regulatory|s1] def            crossBorderRegulatoryProcedureType             | Cross-Border_ Regulatory Procedure. Details | A set of formal steps to satisfy a cross-border regulation, law or convention.  @crossBorderRegulatoryProcedureType
+     [C:regulated|s0] def            dangerousGoodsType                             | Transport_ Dangerous Goods. Details | Goods which may contain a substance which poses risks to people and/or the environment during transportation which is regulated by dangerous  @dangerousGoodsType
+====================================================================================================
+[business_object #17] obj-control-evidence | Control Evidence | aliases=['Control evidence'] | terms=['Control Evidence', 'evidence']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 0 name/label hits, 8 comment-only hits (showing top 6 by exactness)
+     [C:evidence|s0] def            xheDocumentType                                | XHE_ Document. Details | A collection of data for electronic matter that provides XHE (Exchange Header Envelope) information or evidence.  @xheDocumentType
+     [C:evidence|s0] def            animalCertificateType                          | Animal_ Certificate. Details | A collection of data for a piece of written, printed or electronic matter that provides information or evidence about the identity of an ani  @animalCertificateType
+     [C:evidence|s0] def            processCertificateType                         | Process_ Certificate. Details | A piece of written, printed or electronic matter that provides information or evidence that a process has met required criteria.  @processCertificateType
+     [C:evidence|s0] def            productCertificateType                         | Product_ Certificate. Details | A collection of data for a piece of written, printed or electronic matter that provides information or evidence about the product.  @productCertificateType
+     [C:evidence|s0] def            documentLineDocumentType                       | Document Line_ Document. Details | A collection of data for a line on a piece of written, printed or electronic matter that provides information or evidence.  @documentLineDocumentType
+     [C:evidence|s0] def            certifiedAccreditationType                     | Certified_ Accreditation. Details | A certified recognition that provides evidence of a level of competency in a given area, such as certifying a level of skill in a trade.  @certifiedAccreditationType
+====================================================================================================
+[business_object #18] obj-release | Release | aliases=['Release'] | terms=['Release']
+  -- one-record: none
+  -- one-record-cl: 0 name/label hits, 3 comment-only hits (showing top 6 by exactness)
+     [C:Release|s0] owl:NamedIndiv BR                                             | BR | Bank Release  @IATA-1R-CL-Ontology.ttl
+     [C:Release|s0] owl:NamedIndiv DK                                             | DK | Release order  @IATA-1R-CL-Ontology.ttl
+     [C:Release|s0] owl:NamedIndiv SP                                             | SP | Separate Early Release  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #19] obj-execution-state | Execution State | aliases=['Execution state', 'Actual state', 'Authoritative state'] | terms=['Execution State', 'Actual state', 'Authoritative state', 'execution status', 'disposition']
+  -- one-record: 2 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:execution status|s3] owl:ObjectProp executionStatus                                | executionStatus | Enum stating the status of the Activity  @IATA-1R-DM-Ontology.ttl
+     [N:execution status|s3] owl:Class,owl: ExecutionStatus                                | ExecutionStatus | Restricted code list for the execution status of activities  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: none
+  -- gs1-cbv: 1 name/label hits, 4 comment-only hits (showing top 6 by exactness)
+     [N:disposition|s1] owl:Class , rd Disp                                           | Disposition ID | These identifiers populate the disposition field of an EPCIS event or the set / unset fields within the persistentDisposition field of an EP  @CBV.ttl
+     [C:disposition|s0] cbv:Disp       Disp-in_progress                               | in progress | Optional disposition for object proceeding through points in the supply chain.  @CBV.ttl
+     [C:disposition|s0] cbv:Disp,seal  Disp-container_open                            | container open | A container's doors have been opened; or a seal of a shipment has been broken. \nThis disposition makes no indication as to whether the act   @CBV.ttl
+     [C:disposition|s0] cbv:Disp,valid Disp-no_pedigree_match                         | no pedigree match | In validating the pedigree for the object, no match was found, causing the product to be quarantined for further investigation and dispositi  @CBV.ttl
+     [C:disposition|s0] cbv:Disp,shipm Disp-completeness_verified                     | completeness verified | Applied as `disposition` of an `AggregationEvent` with action `DELETE` and business step `unpacking` to explicitly indicate the verified int  @CBV.ttl
+  -- gs1-epcis: 3 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:disposition|s3] owl:ObjectProp disposition                                    | disposition | (Optional) The business condition of the objects associated with the EPCs, presumed to hold true until contradicted by a subsequent event.  @EPCIS.ttl
+     [N:disposition|s2] owl:Class , rd PersistentDisposition                          | PersistentDisposition | The persistentDisposition field of an event specifies one or more business conditions of the event's objects, subsequent to the event. One o  @EPCIS.ttl
+     [N:disposition|s2] owl:ObjectProp persistentDisposition                          | persistentDisposition | (Optional) One or more business conditions of the objects associated with the EPCs.  Each persistentDisposition is explicitly set and unset   @EPCIS.ttl
+  -- uncefact: none
+====================================================================================================
+[business_object #20] obj-appointment | Appointment | aliases=['Appointment'] | terms=['Appointment']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #21] obj-refund | Refund | aliases=['Refund'] | terms=['Refund']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #22] obj-shipment-readiness | Shipment Readiness | aliases=['Shipment readiness'] | terms=['Shipment Readiness', 'ready', 'readiness']
+  -- one-record: none
+  -- one-record-cl: 0 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [C:ready|s0] owl:NamedIndiv FOH                                            | FOH | The consignment is on hand on this date at this location pending “ready for carriage” determination  @IATA-1R-CL-Ontology.ttl
+     [C:ready|s0] owl:NamedIndiv RCS                                            | RCS | The consignment has been physically received from the shipper or the shipper’s agent and is considered by the carrier as ready for carriage   @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #23] obj-reference-code | Reference Code | aliases=['Reference code'] | terms=['Reference Code', 'reference']
+  -- one-record: 10 name/label hits, 97 comment-only hits (showing top 6 by exactness)
+     [N:reference|s2] owl:DatatypePr agentReference                                 | agentReference | String holding the agent or freight forwarder reference of an AWB  @IATA-1R-DM-Ontology.ttl
+     [N:reference|s2] owl:DatatypePr codeListReference                              | codeListReference | URL to access the code list the code is taken from, for example \"https://unece.org/trade/cefact/unlocode-code-list-country-and-territory\"   @IATA-1R-DM-Ontology.ttl
+     [N:reference|s2] owl:Class,owl: ExternalReference                              | ExternalReference | Reference documents details  @IATA-1R-DM-Ontology.ttl
+     [N:reference|s2] owl:DatatypePr fissileExceptionReference                      | fissileExceptionReference | Fissile exception reference, mandatory if Fissile Exception Indicator is true.  @IATA-1R-DM-Ontology.ttl
+     [N:reference|s2] owl:ObjectProp transportMovementReference                     | transportMovementReference | Reference to the transport movement a status update event refers to  @IATA-1R-DM-Ontology.ttl
+     [N:reference|s1] owl:DatatypePr priceReferenceId                               | priceReferenceId | Reference to a price reference if existing (e.g. Allotment number, contract reference, etc.)  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: none
+  -- gs1-cbv: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:reference|s0] cbv:Comp,cylin Comp-height                                    | height | Height parallel to the cylindrical axis in a cylindrical polar coordinate system, above a defined reference origin plane (typically the XY p  @CBV.ttl
+  -- gs1-epcis: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:reference|s1] owl:ObjectProp coordinateReferenceSystem                      | coordinate reference system | (Optional) A URI identifying the Coordinate Reference System. If omitted, the World Geodetic System 1984 (WGS-84) is assumed to apply.  @EPCIS.ttl
+  -- uncefact: 6 name/label hits, 12 comment-only hits (showing top 6 by exactness)
+     [N:reference|s3] def            referenceType                                  | Supply Chain_ Reference. Details | The identification of related information in a supply chain context.  @referenceType
+     [N:reference|s3] def            xheReferenceType                               | XHE_ Reference. Details | Information related to an XHE (Exchange Header Envelope).  @xheReferenceType
+     [N:reference|s3] def            inspectionReferenceType                        | Inspection_ Reference. Details | The identification of related information for an inspection.  @inspectionReferenceType
+     [N:reference|s3] def            laboratoryObservationReferenceType             | Laboratory Observation_ Reference. Details | The direction to related information for this laboratory observation.  @laboratoryObservationReferenceType
+     [N:reference|s1] def            referencePriceType                             | Reference_ Price. Details | A reference to a sum of money for which something is or may be bought or sold.  @referencePriceType
+     [N:reference|s1] def            csEngineeringCoordinateReferenceSystemType     | CS Engineering_ Coordinate Reference System. | A coordinate reference system that is used in a contextually local sense to describe the relative locations of objects in which coordinates   @csEngineeringCoordinateReferenceSystemType
+====================================================================================================
+[business_object #24] obj-rate | Rate | aliases=['Rate'] | terms=['Rate']
+  -- one-record: 23 name/label hits, 6 comment-only hits (showing top 6 by exactness)
+     [N:Rate|s2] owl:DatatypePr slacForRate                                    | slacForRate | Slac used for the rate described by the Line item  @IATA-1R-DM-Ontology.ttl
+     [N:Rate|s2] owl:DatatypePr exchangeRate                                   | exchangeRate | The Rate at which the Air Waybill Amount has been multiplied to arrive at the amount of settlement.  @IATA-1R-DM-Ontology.ttl
+     [N:Rate|s2] owl:ObjectProp hsCodeForRate                                  | hsCodeForRate | Harmonized Commodity code, refer to hsType used. 6 minimum digits are expected.  @IATA-1R-DM-Ontology.ttl
+     [N:Rate|s2] owl:ObjectProp dimensionsForRate                              | dimensionsForRate | Information about the Dimensions used for the rate described by the Line Item  @IATA-1R-DM-Ontology.ttl
+     [N:Rate|s2] owl:DatatypePr pieceCountForRate                              | pieceCountForRate | Number of pieces for which the rate description details apply  @IATA-1R-DM-Ontology.ttl
+     [N:Rate|s2] owl:ObjectProp grossWeightForRate                             | grossWeightForRate | Gross weight for which the rate description details apply  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 2 name/label hits, 11 comment-only hits (showing top 6 by exactness)
+     [N:Rate|s1] owl:Class,owl: RateClassCode                                  | RateClassCode | Restricted code list corresponding to cXML code list 1.4 Rate Class Codes  @IATA-1R-CL-Ontology.ttl
+     [N:Rate|s1] owl:Class,owl: BasicRateClassCode                             | BasicRateClassCode | Restricted sub-code list corresponding to elements of cXML code list 1.4 Rate Class Codes  @IATA-1R-CL-Ontology.ttl
+     [C:Rate|s0] owl:NamedIndiv C                                              | C | Specific Commodity Rate  @IATA-1R-CL-Ontology.ttl
+     [C:Rate|s0] owl:NamedIndiv E                                              | E | Unit Load Device Additional Rate  @IATA-1R-CL-Ontology.ttl
+     [C:Rate|s0] owl:NamedIndiv K                                              | K | Rate per Kilogram  @IATA-1R-CL-Ontology.ttl
+     [C:Rate|s0] owl:NamedIndiv N                                              | N | Normal Rate  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #25] obj-performance-record | Performance Record | aliases=['Performance record', 'scorecard'] | terms=['Performance Record', 'scorecard', 'performance']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 0 name/label hits, 6 comment-only hits (showing top 6 by exactness)
+     [C:performance|s0] def            certificationType                              | Specified_ Certification. Details | The process of certifying that a certain product, process or organization has passed performance tests, or qualification requirements stipul  @certificationType
+     [C:performance|s0] def            animalCertificationType                        | Animal_ Certification. Details | The process of certifying that a certain animal has met performance and quality assurance requirements, or qualification requirements as sti  @animalCertificationType
+     [C:performance|s0] def            processCertificationType                       | Process_ Certification. Details | The process of certifying that a process has met performance and quality assurance tests, or qualification requirements.  @processCertificationType
+     [C:performance|s0] def            productBatchCertificationType                  | Product Batch_ Certification. Details | The process of certifying that a certain product batch has passed performance and quality assurance tests, or qualification requirements sti  @productBatchCertificationType
+     [C:performance|s0] def            tradeProductCertificationType                  | Trade Product_ Certification. Details | The process of certifying that a certain product has passed performance and quality assurance tests, or qualification requirements stipulate  @tradeProductCertificationType
+     [C:performance|s0] def            organizationalCertificationType                | Organizational_ Certification. Details | The process of certifying organizational performance or qualification requirements as stipulated in regulations.  @organizationalCertificationType
+====================================================================================================
+[business_object #26] obj-reserve | Reserve | aliases=['Reserve'] | terms=['Reserve']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #27] obj-emission-record | Emission Record | aliases=['Emission record', 'GHG record'] | terms=['Emission Record', 'GHG record', 'emission', 'CO2', 'greenhouse']
+  -- one-record: 3 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:CO2|s1] owl:ObjectProp co2Emissions                                   | co2Emissions | References to CO2Emissions  @IATA-1R-DM-Ontology.ttl
+     [N:CO2|s1] owl:Class,owl: CO2Emissions                                   | CO2Emissions | CO2 Calculation  @IATA-1R-DM-Ontology.ttl
+     [N:CO2|s1] owl:ObjectProp typicalCo2Coefficient                          | typicalCo2Coefficient | Required for some CO2 calculations  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 1 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [N:emission|s3] def            calculatedEmissionType                         | Calculated_ Emission. Details | A calculation of the pollution (including noise, heat, and radiation etc.) discharged into the environment by a residential, commercial, or   @calculatedEmissionType
+     [C:emission|s0] def            radioactiveMaterialType                        | Radioactive_ Material. Details | Material capable of undergoing spontaneous nuclear decay involving emission of ionizing radiation in the form of particles or gamma rays.  @radioactiveMaterialType
+====================================================================================================
+[business_object #28] obj-wave | Wave | aliases=['wave'] | terms=['Wave']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #29] obj-load-plan | Load Plan | aliases=['Load plan'] | terms=['Load Plan', 'loading plan', 'stowage', 'bay plan', 'load list']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #30] obj-freight-charge | Freight Charge | aliases=['Freight charge'] | terms=['Freight Charge', 'charge']
+  -- one-record: 15 name/label hits, 5 comment-only hits (showing top 6 by exactness)
+     [N:charge|s3] owl:ObjectProp chargeType                                     | chargeType | Charge type related to amount total as per bullet points 2/21 - data elements 24A - 3B  from AWB  @IATA-1R-DM-Ontology.ttl
+     [N:charge|s2] owl:ObjectProp rateCharge                                     | rateCharge | TACT Rate for rate description details  @IATA-1R-DM-Ontology.ttl
+     [N:charge|s2] owl:Class,owl: OtherCharge                                    | OtherCharge | Other Charge details from AWB as per bullet point 19 - data element 23 from AWB  @IATA-1R-DM-Ontology.ttl
+     [N:charge|s2] owl:ObjectProp valuationCharge                                | valuationCharge | Information about the valuation charge (AWB box 25A / 25B)  @IATA-1R-DM-Ontology.ttl
+     [N:charge|s1] owl:ObjectProp chargeCode                                     | chargeCode | Charge code, refer to CargoXML Code List 1.1  @IATA-1R-DM-Ontology.ttl
+     [N:charge|s1] owl:Class      ChargeCode                                     |  |   @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 3 name/label hits, 22 comment-only hits (showing top 6 by exactness)
+     [N:charge|s1] owl:Class,owl: ChargeCode                                     | ChargeCode | Restricted code list corresponding to cXML code list 1.1 Charge Codes  @IATA-1R-CL-Ontology.ttl
+     [N:charge|s1] owl:Class,owl: OtherChargeCode                                | OtherChargeCode | Restricted code list corresponding to cXML code list 1.2 Other Charge Codes  @IATA-1R-CL-Ontology.ttl
+     [N:charge|s1] owl:Class,owl: ChargeIdentifier                               | ChargeIdentifier | Restricted code list corresponding to cXML code list 1.33 Charge Identifiers  @IATA-1R-CL-Ontology.ttl
+     [C:charge|s0] owl:NamedIndiv D                                              | D | Secondary detonating explosive substance or black powder or article containing a secondary detonating explosive substance, in each case with  @IATA-1R-CL-Ontology.ttl
+     [C:charge|s0] owl:NamedIndiv E                                              | E | Article containing a secondary detonating explosive substance, without means of initiation, with a propelling charge (other than one contain  @IATA-1R-CL-Ontology.ttl
+     [C:charge|s0] owl:NamedIndiv F                                              | F | Article containing a secondary detonating explosive substance, with its own means of initiation, with a propelling charge (other than one co  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 3 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:charge|s3] def            tradeAllowanceChargeType                       | Trade_ Allowance Charge. Details | A component of pricing, such as an allowance or charge for trade purposes.  @tradeAllowanceChargeType
+     [N:charge|s3] def            appliedAllowanceChargeType                     | Applied_ Allowance Charge. Details | The applied allowance or charge component of pricing.  @appliedAllowanceChargeType
+     [N:charge|s3] def            logisticsServiceChargeType                     | Logistics_ Service Charge. Details | A charge made for a logistics related service.  @logisticsServiceChargeType
+====================================================================================================
+[business_object #31] obj-pick-confirmation | Pick Confirmation | aliases=['Pick confirmation'] | terms=['Pick Confirmation', 'picking', 'pick']
+  -- one-record: none
+  -- one-record-cl: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:pick|s0] owl:NamedIndiv PU                                             | PU | Pick-Up  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: 1 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [N:picking|s3] cbv:BizStep,sp BizStep-picking                                | picking | Denotes a specific activity within a business process that includes the selecting of objects to fill an order.  @CBV.ttl
+     [C:picking|s0] cbv:BizStep,sp BizStep-commissioning                          | commissioning | Process of associating an instance-level identifier (such as an EPC) with a specific object, or the process of associating a class-level ide  @CBV.ttl
+     [C:pick|s0] cbv:BizStep,sp BizStep-staging_outbound                       | staging outbound | Denotes a specific activity within a business process in which an object moves from a facility to an area where it will await transport pick  @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #32] obj-sourcing-decision | Sourcing Decision | aliases=['Sourcing decision'] | terms=['Sourcing Decision', 'sourcing']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #33] obj-arrival-notice | Arrival Notice | aliases=['arrival notice'] | terms=['Arrival Notice', 'arrival']
+  -- one-record: 3 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:arrival|s1] owl:DatatypePr arrivalDate                                    | arrivalDate | Arrival date and time of the leg  @IATA-1R-DM-Ontology.ttl
+     [N:arrival|s1] owl:ObjectProp arrivalLocation                                | arrivalLocation | Reference to the arrival Location  @IATA-1R-DM-Ontology.ttl
+     [N:arrival|s1] owl:DatatypePr latestArrivalTime                              | latestArrivalTime | Latest arrival time at destination  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 9 comment-only hits (showing top 6 by exactness)
+     [C:arrival|s0] owl:NamedIndiv AA                                             | AA | Actual Arrival (Touchdown)  @IATA-1R-CL-Ontology.ttl
+     [C:arrival|s0] owl:NamedIndiv DA                                             | DA | Doc Arrival  @IATA-1R-CL-Ontology.ttl
+     [C:arrival|s0] owl:NamedIndiv EA                                             | EA | Estimated Arrival (Touchdown)  @IATA-1R-CL-Ontology.ttl
+     [C:arrival|s0] owl:NamedIndiv SA                                             | SA | Scheduled Arrival  @IATA-1R-CL-Ontology.ttl
+     [C:arrival|s0] owl:NamedIndiv FA                                             | FA | Airport arrival  @IATA-1R-CL-Ontology.ttl
+     [C:arrival|s0] owl:NamedIndiv AWD                                            | AWD | The arrival documentation has been physically delivered to the consignee or the consignee’s agent on this date at this location  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:arrival|s3] def            guestArrivalType                               | Specified_ Guest Arrival. Details | The act of coming to or reaching a place by a specified guest.  @guestArrivalType
+====================================================================================================
+[business_object #34] obj-booking | Transport Booking | aliases=['Booking', 'ocean booking', 'Air booking', 'Rail booking'] | terms=['Transport Booking', 'Booking', 'ocean booking', 'Air booking', 'Rail booking']
+  -- one-record: 25 name/label hits, 18 comment-only hits (showing top 6 by exactness)
+     [N:Booking|s3] owl:ObjectProp booking                                        | booking | Reference to the Booking  @IATA-1R-DM-Ontology.ttl
+     [N:Booking|s3] owl:Class,owl: Booking                                        | Booking | Booking object refers to a confirmed booking  @IATA-1R-DM-Ontology.ttl
+     [N:Booking|s1] owl:ObjectProp bookingTimes                                   | bookingTimes | Information about the Booking Times of a provided Booking Option  @IATA-1R-DM-Ontology.ttl
+     [N:Booking|s1] owl:Class,owl: BookingTimes                                   | BookingTimes | Previously called Schedule. This object refers to times used for the Booking Option Request (preferences part of the request) or the Booking  @IATA-1R-DM-Ontology.ttl
+     [N:Booking|s1] owl:ObjectProp bookingStatus                                  | bookingStatus | Status of the Booking  @IATA-1R-DM-Ontology.ttl
+     [N:Booking|s1] owl:Class,owl: BookingOption                                  | BookingOption | Booking details  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 2 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:Booking|s3] def            financialBookingType                           | Financial_ Booking. Details | A result of a financial transaction recorded within a financial account.  @financialBookingType
+     [N:Transport Booking|s3] schema-file    UNECE-MultimodalTransportBooking.json          | Multimodal Transport Booking | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MultimodalTransportBooking.json
+====================================================================================================
+[business_object #35] obj-asn | Advance Shipping Notice | aliases=['ASN'] | terms=['Advance Shipping Notice', 'ASN', 'despatch advice', 'dispatch advice', 'advance ship', 'desadv']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: 1 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [N:despatch advice|s3] cbv:BTT        BTT-desadv                                     | Despatch Advice | A document/message by means of which the seller or consignor informs the consignee about the despatch of goods. \nAlso called an 'Advanced S  @CBV.ttl
+     [C:desadv|s0] cbv:Disp,shipm Disp-completeness_inferred                     | completeness inferred | Applied as `persistentDisposition` of an `AggregationEvent` or `ObjectEvent` with action `OBSERVE` to indicate the **inferred** integrity of  @CBV.ttl
+  -- gs1-epcis: 0 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [C:despatch advice|s0] owl:Class , rd BizTransaction                                 | BizTransaction | Document that describes a particular business transaction. An example is a specific Purchase Order or Despatch Advice. Business Transaction   @EPCIS.ttl
+     [C:despatch advice|s0] owl:ObjectProp bizTransactionType                             | bizTransactionType | An identifier that indicates the type of BizTransaction document (e.g. Purchase Order, Despatch Advice).  @EPCIS.ttl
+  -- uncefact: 2 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:despatch advice|s3] schema-file    UNECE-CrossIndustryDespatchAdvice.json         | Cross Industry Despatch Advice | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-CrossIndustryDespatchAdvice.json
+     [N:despatch advice|s1] schema-file    UNECE-DespatchAdviceContextCCL.json            | Despatch Advice Context CCL | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-DespatchAdviceContextCCL.json
+====================================================================================================
+[business_object #36] obj-tender-response | Tender Response | aliases=['tender response'] | terms=['Tender Response', 'tender']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #37] obj-declaration | Declaration | aliases=['Declaration'] | terms=['Declaration']
+  -- one-record: 11 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [N:Declaration|s2] owl:ObjectProp dgDeclaration                                  | dgDeclaration | Reference to the Dangerous Goods declaration  @IATA-1R-DM-Ontology.ttl
+     [N:Declaration|s2] owl:Class,owl: DgDeclaration                                  | DgDeclaration | Dangerous goods declaration  @IATA-1R-DM-Ontology.ttl
+     [N:Declaration|s2] owl:Class,owl: SecurityDeclaration                            | SecurityDeclaration | Security declaration details  @IATA-1R-DM-Ontology.ttl
+     [N:Declaration|s1] owl:DatatypePr declarationDate                                | declarationDate | Date and time at which the DgDeclaration was declared  @IATA-1R-DM-Ontology.ttl
+     [N:Declaration|s1] owl:ObjectProp declarationPlace                               | declarationPlace | Reference to the Location the DgDeclaration was declared at  @IATA-1R-DM-Ontology.ttl
+     [N:Declaration|s1] owl:DatatypePr carrierDeclarationDate                         | carrierDeclarationDate | Date upon which the certification is made by the carrier  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: none
+  -- gs1-cbv: 0 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [C:Declaration|s0] cbv:ER,CBV-Com ER-did_not_occur                               | did not occur | The prior event is considered erroneous because it did not actually occur. \nThere are no corrective events. \n(In a CBV-Compliant Document,  @CBV.ttl
+     [C:Declaration|s0] cbv:ER,correct ER-incorrect_data                              | incorrect data | The prior event is considered erroneous because some or all of the data in the event are incorrect. \nSubsequent events may provide a correc  @CBV.ttl
+  -- gs1-epcis: 3 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [N:Declaration|s2] owl:Class , rd ErrorDeclaration                               | ErrorDeclaration | When an event contains an ErrorDeclaration element, it indicates that this event has special semantics: instead of the normal semantics whic  @EPCIS.ttl
+     [N:Declaration|s2] owl:ObjectProp errorDeclaration                               | errorDeclaration | (Optional) If present, indicates that this event serves to assert that the assertions made by a prior event are in error.  @EPCIS.ttl
+     [N:Declaration|s1] owl:DatatypePr declarationTime                                | declarationTime | The date and time at which the declaration of error is made. (Note that the eventTime of this event must match the eventTime of the prior ev  @EPCIS.ttl
+     [C:Declaration|s0] owl:ObjectProp correctiveEventIDs                             | correctiveEventIDs | (Optional) If present, indicates that the events having the specified URIs as the value of their eventID fields are to be considered as 'cor  @EPCIS.ttl
+  -- uncefact: 4 name/label hits, 4 comment-only hits (showing top 6 by exactness)
+     [N:Declaration|s3] def            declarationType                                | Specified_ Declaration. Details | An act of notification by formal documentation or action, in any form prescribed or accepted, such as a self-declaration.  @declarationType
+     [N:Declaration|s3] def            exchangedDeclarationType                       | Exchanged_ Declaration. Details | A collection of data for a piece of written, printed or electronic matter that is exchanged between two parties as a formal declaration.  @exchangedDeclarationType
+     [N:Declaration|s3] schema-file    UNECE-AirDangerousGoodsDeclaration.json        | Air Dangerous Goods Declaration | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-AirDangerousGoodsDeclaration.json
+     [N:Declaration|s3] schema-file    UNECE-AirConsignmentSecurityDeclaration.json   | Air Consignment Security Declaration | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-AirConsignmentSecurityDeclaration.json
+     [C:Declaration|s0] def            mdhIllnessType                                 | MDH_ Illness. Details | A WHO MDH (Maritime Declaration of Health) reported illness or disease for an onboard person.  @mdhIllnessType
+     [C:Declaration|s0] def            mdhSanitaryMeasureType                         | MDH_ Sanitary Measure. Details | Sanitary measures as reported for a WHO MDH (Maritime Declaration of Health).  @mdhSanitaryMeasureType
+====================================================================================================
+[business_object #38] obj-recipient | Recipient | aliases=['Recipient'] | terms=['Recipient', 'consignee']
+  -- one-record: 2 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:consignee|s3] owl:ObjectProp consignee                                      | consignee | Reference to the Organization that fulfills the role of the consignee, for a LiveAnimalsEpermit it has to include complete name and address   @IATA-1R-DM-Ontology.ttl
+     [N:consignee|s3] owl:NamedIndiv CONSIGNEE                                      | CONSIGNEE | Consignee's Account  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 6 comment-only hits (showing top 6 by exactness)
+     [C:consignee|s0] owl:NamedIndiv CNE                                            | CNE | Consignee  @IATA-1R-CL-Ontology.ttl
+     [C:consignee|s0] owl:NamedIndiv BUP                                            | BUP | Bulk Unitization Programme, Shipper/Consignee Handled Unit  @IATA-1R-CL-Ontology.ttl
+     [C:consignee|s0] owl:NamedIndiv AWD                                            | AWD | The arrival documentation has been physically delivered to the consignee or the consignee’s agent on this date at this location  @IATA-1R-CL-Ontology.ttl
+     [C:consignee|s0] owl:NamedIndiv DDL                                            | DDL | The consignment has been physically delivered to the consignee’s door on this date at this location  @IATA-1R-CL-Ontology.ttl
+     [C:consignee|s0] owl:NamedIndiv DLV                                            | DLV | The consignment has been physically delivered to the consignee or the Consignee’s agent on this date at this location  @IATA-1R-CL-Ontology.ttl
+     [C:consignee|s0] owl:NamedIndiv NFD                                            | NFD | The consignee or the consignee’s agent has been notified, on this date at this location, of the arrival of the consignment  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:consignee|s0] cbv:BTT        BTT-desadv                                     | Despatch Advice | A document/message by means of which the seller or consignor informs the consignee about the despatch of goods. \nAlso called an 'Advanced S  @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: 0 name/label hits, 3 comment-only hits (showing top 6 by exactness)
+     [C:Recipient|s0] def            paymentCashType                                | Payment_ Cash. Details | Coins, banknotes paid by the recipient of goods or services to the provider.  @paymentCashType
+     [C:consignee|s0] def            consignmentType                                | Supply Chain_ Consignment. Details | A separately identifiable collection of goods items to be transported or available to be transported from one consignor to one consignee in   @consignmentType
+     [C:consignee|s0] def            referencedConsignmentType                      | Referenced_ Supply Chain_ Consignment. Detai | A referenced, separately identifiable collection of goods items to be transported or available to be transported from one consignor to one c  @referencedConsignmentType
+====================================================================================================
+[business_object #39] obj-driver | Driver | aliases=['driver'] | terms=['Driver']
+  -- one-record: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:Driver|s0] owl:ObjectProp documents                                      | documents | Linked documents to the person, e.g. driver's license, ID, etc.  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 5 comment-only hits (showing top 6 by exactness)
+     [C:Driver|s0] owl:NamedIndiv AR                                             | AR | Actual driver reporting time  @IATA-1R-CL-Ontology.ttl
+     [C:Driver|s0] owl:NamedIndiv ER                                             | ER | Estimated driver reporting time  @IATA-1R-CL-Ontology.ttl
+     [C:Driver|s0] owl:NamedIndiv PA                                             | PA | Pre-announcement of the truck - to enable to pre-announce data (driver name, license plates, etc.) to GHA at departure station  @IATA-1R-CL-Ontology.ttl
+     [C:Driver|s0] owl:NamedIndiv SR                                             | SR | Scheduled latest driver reporting time for collection and/or delivery  @IATA-1R-CL-Ontology.ttl
+     [C:Driver|s0] owl:NamedIndiv SS                                             | SS | Scheduled earliest driver reporting time for collection and/or delivery  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[business_object #40] obj-receipt | Receipt | aliases=['Receipt'] | terms=['Receipt', 'receiving', 'recadv', 'receiving advice']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: 2 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [N:receiving|s3] cbv:BizStep,sp BizStep-receiving                              | receiving | Denotes a specific activity within a business process that indicates that an object is being received at a location and is added to the rece  @CBV.ttl
+     [N:receiving|s1] cbv:BTT        BTT-recadv                                     | Receiving Advice | A document/message that provides the receiver of the shipment the capability to inform the shipper of actual goods received, compared to wha  @CBV.ttl
+     [C:Receipt|s0] cbv:BTT,carrie BTT-bol                                        | Bill of Lading | A document issued by a carrier to a shipper, listing and acknowledging receipt of goods for transport and specifying terms of delivery.  @CBV.ttl
+     [C:receiving|s0] cbv:BizStep,sp BizStep-unpacking                              | unpacking | Denotes a specific activity within a business process that includes removing products (individuals, inners, cases, pallets) from a larger co  @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: 2 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [N:receiving|s1] schema-file    UNECE-ReceivingAdviceContextCCL.json           | Receiving Advice Context CCL | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-ReceivingAdviceContextCCL.json
+     [N:receiving|s1] schema-file    UNECE-CrossIndustryReceivingAdvice.json        | Cross Industry Receiving Advice | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-CrossIndustryReceivingAdvice.json
+     [C:receiving|s0] def            communicationEventType                         | Communication_ Event. Details | A significant occurrence or happening communicated by means of sending or receiving information, such as transmitting digital data by using   @communicationEventType
+     [C:Receipt|s0] def            acknowledgementDocumentType                    | Acknowledgement_ Document. Details | A document exchanged between parties for a business application level acknowledgement of the receipt of information.  @acknowledgementDocumentType
+====================================================================================================
+[system #1] sys-customer-portal | Customer Portal | aliases=['Customer portal'] | terms=['Customer Portal', 'portal']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[system #2] sys-ibp | Integrated Business Planning | aliases=['IBP'] | terms=['Integrated Business Planning', 'IBP', 'business planning']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[system #3] sys-billing | Billing Engine | aliases=['Billing engine'] | terms=['Billing Engine', 'billing']
+  -- one-record: 3 name/label hits, 2 comment-only hits (showing top 6 by exactness)
+     [N:billing|s1] owl:ObjectProp billingDetails                                 | billingDetails | Reference to the BillingDetails of the Waybill  @IATA-1R-DM-Ontology.ttl
+     [N:billing|s1] owl:Class,owl: BillingDetails                                 | BillingDetails | In the context of CASS2. process, BillingDetails object is used to integrate specific Billing and Settlement data requirements  @IATA-1R-DM-Ontology.ttl
+     [N:billing|s1] owl:ObjectProp billingChargeIdentifier                        | billingChargeIdentifier | Billing charge identifiers to be used for CASS. Refer to CargoXML Code List 1.33  @IATA-1R-DM-Ontology.ttl
+     [C:billing|s0] owl:DatatypePr awbDeliveryDate                                | awbDeliveryDate | The Date AWB Delivery is also used as the AWB Execution date which will determine which billing period it will be processed and billed in.  @IATA-1R-DM-Ontology.ttl
+     [C:billing|s0] owl:DatatypePr awbExecutionDate                               | awbExecutionDate | The AWB execution date determines which billing period the document will be processed and billed in.  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[system #4] sys-control-tower | Supply-chain control tower | aliases=['Control tower'] | terms=['Supply-chain control tower', 'Control tower']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[system #5] sys-forwarder-platform | Forwarder Platform | aliases=['forwarder platform'] | terms=['Forwarder Platform', 'forwarder']
+  -- one-record: 0 name/label hits, 3 comment-only hits (showing top 6 by exactness)
+     [C:forwarder|s0] owl:NamedIndiv FF                                             | FF | Freight Forwarder Account  @IATA-1R-DM-Ontology.ttl
+     [C:forwarder|s0] owl:DatatypePr agentReference                                 | agentReference | String holding the agent or freight forwarder reference of an AWB  @IATA-1R-DM-Ontology.ttl
+     [C:forwarder|s0] owl:Class,owl: BookingRequest                                 | BookingRequest | A party, usually the freight forwarder, creates the BookingRequest in order to confirm the booking to the Carrier  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:forwarder|s0] owl:NamedIndiv FFW                                            | FFW | Freight Forwarder  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[system #6] sys-cpq | Configure Price Quote | aliases=['CPQ'] | terms=['Configure Price Quote', 'CPQ', 'quote', 'quotation', 'price']
+  -- one-record: 6 name/label hits, 3 comment-only hits (showing top 6 by exactness)
+     [N:price|s3] owl:ObjectProp price                                          | price | Price of the Booking (if different from the offer)  @IATA-1R-DM-Ontology.ttl
+     [N:price|s3] owl:Class,owl: Price                                          | Price | Price associated to the offer/booking  @IATA-1R-DM-Ontology.ttl
+     [N:price|s2] owl:ObjectProp unitPrice                                      | unitPrice | Product price per unit in the base  @IATA-1R-DM-Ontology.ttl
+     [N:price|s2] owl:DatatypePr quantityForUnitPrice                           | quantityForUnitPrice | Product quantity for unit price - e.g. 12 (eggs for one USD 1)  @IATA-1R-DM-Ontology.ttl
+     [N:price|s1] owl:DatatypePr priceReferenceId                               | priceReferenceId | Reference to a price reference if existing (e.g. Allotment number, contract reference, etc.)  @IATA-1R-DM-Ontology.ttl
+     [N:price|s1] owl:DatatypePr priceSpecification                             | priceSpecification | Specification of the price e.g. Street, Group, Spot, etc.  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: none
+  -- gs1-cbv: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:price|s0] cbv:BTT,purcha BTT-poc                                        | Purchase Order Confirmation | A document that provides confirmation from an external supplier to the request of a purchaser to deliver a specified quantity of material, o  @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: 11 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:price|s3] def            tradePriceType                                 | Trade_ Price. Details | A sum of money for which something is or may be bought or sold for trade purposes.  @tradePriceType
+     [N:price|s3] def            referencePriceType                             | Reference_ Price. Details | A reference to a sum of money for which something is or may be bought or sold.  @referencePriceType
+     [N:price|s3] def            calculatedPriceType                            | Calculated_ Price. Details | Information related to a calculated price.  @calculatedPriceType
+     [N:quotation|s3] schema-file    UNECE-CrossIndustryRequestforQuotation.json    | Cross Industry Request for Quotation | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-CrossIndustryRequestforQuotation.json
+     [N:quotation|s1] schema-file    UNECE-QuotationRequestContextCCL.json          | Quotation Request Context CCL | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-QuotationRequestContextCCL.json
+     [N:quotation|s1] schema-file    UNECE-QuotationProposalContextCCL.json         | Quotation Proposal Context CCL | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-QuotationProposalContextCCL.json
+====================================================================================================
+[system #7] sys-oms | Order Management System | aliases=['OMS'] | terms=['Order Management System', 'OMS', 'order management']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[system #8] sys-analytics | Analytics Platform | aliases=['Analytics'] | terms=['Analytics Platform', 'Analytics']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[system #9] sys-carrier-documentation | Carrier Documentation Platform | aliases=['carrier documentation', 'documentation platform'] | terms=['Carrier Documentation Platform', 'carrier documentation', 'documentation platform', 'documentation']
+  -- one-record: none
+  -- one-record-cl: 0 name/label hits, 15 comment-only hits (showing top 6 by exactness)
+     [C:documentation|s0] owl:NamedIndiv DJ                                             | DJ | Proof of delivery (documentation)  @IATA-1R-CL-Ontology.ttl
+     [C:documentation|s0] owl:NamedIndiv AWD                                            | AWD | The arrival documentation has been physically delivered to the consignee or the consignee’s agent on this date at this location  @IATA-1R-CL-Ontology.ttl
+     [C:documentation|s0] owl:NamedIndiv AWR                                            | AWR | The arrival documentation has been physically received from a scheduled flight at this location  @IATA-1R-CL-Ontology.ttl
+     [C:documentation|s0] owl:NamedIndiv DIS_DFLD                                       | DIS_DFLD | An apparent error has occurred, on this date at this location, with the handling of the consignment or its documentation: Definitely Loaded  @IATA-1R-CL-Ontology.ttl
+     [C:documentation|s0] owl:NamedIndiv DIS_FDAV                                       | DIS_FDAV | An apparent error has occurred, on this date at this location, with the handling of the consignment or its documentation: Found Mail Documen  @IATA-1R-CL-Ontology.ttl
+     [C:documentation|s0] owl:NamedIndiv DIS_FDAW                                       | DIS_FDAW | An apparent error has occurred, on this date at this location, with the handling of the consignment or its documentation: Found Air Waybill  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:documentation|s0] cbv:BizStep,sh BizStep-inspecting                             | inspecting | Process of reviewing objects to address potential physical or documentation defects. \n In contrast to *sampled* objects, *inspected* object  @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:documentation|s0] def            declarationType                                | Specified_ Declaration. Details | An act of notification by formal documentation or action, in any form prescribed or accepted, such as a self-declaration.  @declarationType
+====================================================================================================
+[system #10] sys-tax-engine | Tax Engine | aliases=['tax'] | terms=['Tax Engine', 'tax']
+  -- one-record: 3 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:tax|s1] owl:ObjectProp taxAmount                                      | taxAmount | Information about taxes  @IATA-1R-DM-Ontology.ttl
+     [N:tax|s1] owl:ObjectProp taxDueAgent                                    | taxDueAgent | Tax due Agent (VAT/GST on Commission). Total VAT/TAX amount payable by airline to agent  @IATA-1R-DM-Ontology.ttl
+     [N:tax|s1] owl:ObjectProp taxDueAirline                                  | taxDueAirline | Tax due Airline (as per AWB, or VAT/GST as per invoice). Total VAT/TAX amount payable by agent to airline  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 4 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:tax|s3] def            tradeTaxType                                   | Trade_ Tax. Details | A trade related fiscal levy or duty.  @tradeTaxType
+     [N:tax|s3] def            appliedTaxType                                 | Applied_ Tax. Details | A total levy or payment for the support of a government that is required of persons, groups, or businesses within the domain of that governm  @appliedTaxType
+     [N:tax|s3] def            registeredTaxType                              | Registered_ Tax. Details | A registered tax or duty system pertaining to an authority.  @registeredTaxType
+     [N:tax|s1] def            taxRegistrationType                            | Tax_ Registration. Details | Registration with a specific tax authority.  @taxRegistrationType
+====================================================================================================
+[document_event #1] evt-pickup-dispatched | Pickup dispatched | aliases=['pickup', 'dispatch'] | terms=['Pickup dispatched', 'pickup', 'dispatch', 'collection']
+  -- one-record: none
+  -- one-record-cl: 0 name/label hits, 5 comment-only hits (showing top 6 by exactness)
+     [C:collection|s0] owl:NamedIndiv SR                                             | SR | Scheduled latest driver reporting time for collection and/or delivery  @IATA-1R-CL-Ontology.ttl
+     [C:collection|s0] owl:NamedIndiv SS                                             | SS | Scheduled earliest driver reporting time for collection and/or delivery  @IATA-1R-CL-Ontology.ttl
+     [C:collection|s0] owl:NamedIndiv BE                                             | BE | Collection of funds  @IATA-1R-CL-Ontology.ttl
+     [C:collection|s0] owl:NamedIndiv RF                                             | RF | Remit Following Collection Fee  @IATA-1R-CL-Ontology.ttl
+     [C:pickup|s0] owl:NamedIndiv SE                                             | SE | Proof of delivery (pickup and delivery)  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:collection|s0] owl:Class , rd EPCISDocument                                  | EPCISDocument | An EPCISDocument is a means to transport a collection of EPCIS events, optionally accompanied by relevant master data, as a single electroni  @EPCIS.ttl
+  -- uncefact: 0 name/label hits, 24 comment-only hits (showing top 6 by exactness)
+     [C:collection|s0] def            consignmentType                                | Supply Chain_ Consignment. Details | A separately identifiable collection of goods items to be transported or available to be transported from one consignor to one consignee in   @consignmentType
+     [C:collection|s0] def            xheDocumentType                                | XHE_ Document. Details | A collection of data for electronic matter that provides XHE (Exchange Header Envelope) information or evidence.  @xheDocumentType
+     [C:collection|s0] def            tradeLineItemType                              | Supply Chain_ Trade Line Item. Details | A collection of information specific to an item being used or reported on for supply chain trade purposes.  @tradeLineItemType
+     [C:collection|s0] def            experienceItemType                             | Specified_ Experience Item. Details | A collection of information specific to the involvement of a person or persons in a happening, such as a theme park, a guided tour being use  @experienceItemType
+     [C:collection|s0] def            animalCertificateType                          | Animal_ Certificate. Details | A collection of data for a piece of written, printed or electronic matter that provides information or evidence about the identity of an ani  @animalCertificateType
+     [C:collection|s0] def            exchangedDocumentType                          | Exchanged_ Document. Details | A collection of data for a piece of written, printed or electronic matter that is exchanged between two or more parties.  @exchangedDocumentType
+====================================================================================================
+[document_event #2] doc-fiata-fbl | FIATA Multimodal Transport Bill of Lading | aliases=['FBL', 'eFBL'] | terms=['FIATA Multimodal Transport Bill of Lading', 'FBL', 'eFBL', 'multimodal', 'bill of lading']
+  -- one-record: none
+  -- one-record-cl: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:multimodal|s1] owl:NamedIndiv MULTIMODAL_TRANSPORT                           | MULTIMODAL_TRANSPORT | Indicates a Multimodal Transport (6)  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:bill of lading|s3] cbv:BTT,carrie BTT-bol                                        | Bill of Lading | A document issued by a carrier to a shipper, listing and acknowledging receipt of goods for transport and specifying terms of delivery.  @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: 7 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:bill of lading|s3] schema-file    UNECE-MaritimeBillofLading.json                | Maritime Bill of Lading | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MaritimeBillofLading.json
+     [N:multimodal|s1] schema-file    UNECE-MultimodalWaybill.json                   | Multimodal Waybill | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MultimodalWaybill.json
+     [N:multimodal|s1] schema-file    UNECE-MultimodalTransportBooking.json          | Multimodal Transport Booking | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MultimodalTransportBooking.json
+     [N:multimodal|s1] schema-file    UNECE-MultimodalShippingInstructions.json      | Multimodal Shipping Instructions | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MultimodalShippingInstructions.json
+     [N:multimodal|s1] schema-file    UNECE-MultimodalTransportStatusRequest.json    | Multimodal Transport Status Request | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MultimodalTransportStatusRequest.json
+     [N:multimodal|s1] schema-file    UNECE-MultimodalTransportEquipmentStatusReport | Multimodal Transport Equipment Status Report | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MultimodalTransportEquipmentStatusReport.json
+====================================================================================================
+[document_event #3] doc-air-awb | Air waybill / electronic air waybill | aliases=['AWB', 'e-AWB'] | terms=['Air waybill / electronic air waybill', 'AWB', 'e-AWB', 'air waybill', 'waybill']
+  -- one-record: 15 name/label hits, 10 comment-only hits (showing top 6 by exactness)
+     [N:waybill|s3] owl:ObjectProp waybill                                        | waybill | Reference to the Waybill of the shipment  @IATA-1R-DM-Ontology.ttl
+     [N:waybill|s3] owl:Class,owl: Waybill                                        | Waybill | Waybill details  @IATA-1R-DM-Ontology.ttl
+     [N:waybill|s3] owl:ObjectProp waybillType                                    | waybillType | Type of the Waybill: House, Direct or Master  @IATA-1R-DM-Ontology.ttl
+     [N:waybill|s3] owl:Class,owl: WaybillType                                    | WaybillType | Restricted code list for Waybill types  @IATA-1R-DM-Ontology.ttl
+     [N:waybill|s2] owl:ObjectProp masterWaybill                                  | masterWaybill | Reference to the master Waybill if it is contained in one  @IATA-1R-DM-Ontology.ttl
+     [N:waybill|s2] owl:ObjectProp detailedWaybill                                | detailedWaybill | Reference to the Waybill  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 5 comment-only hits (showing top 6 by exactness)
+     [C:air waybill|s0] owl:NamedIndiv AW                                             | AW | Air Waybill Fee  @IATA-1R-CL-Ontology.ttl
+     [C:air waybill|s0] owl:NamedIndiv ATT                                            | ATT | Goods Attached to Air Waybill  @IATA-1R-CL-Ontology.ttl
+     [C:e-AWB|s0] owl:NamedIndiv ECP                                            | ECP | Consignment established with a paper air waybill contract being printed under an e-AWB agreement  @IATA-1R-CL-Ontology.ttl
+     [C:air waybill|s0] owl:NamedIndiv DIS_FDAW                                       | DIS_FDAW | An apparent error has occurred, on this date at this location, with the handling of the consignment or its documentation: Found Air Waybill  @IATA-1R-CL-Ontology.ttl
+     [C:air waybill|s0] owl:NamedIndiv DIS_MSAW                                       | DIS_MSAW | An apparent error has occurred, on this date at this location, with the handling of the consignment or its documentation: Missing Air Waybil  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 2 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:air waybill|s3] schema-file    UNECE-AirWaybill.json                          | Air Waybill | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-AirWaybill.json
+     [N:waybill|s3] schema-file    UNECE-MultimodalWaybill.json                   | Multimodal Waybill | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MultimodalWaybill.json
+====================================================================================================
+[document_event #4] doc-road-cmr-bol | CMR consignment note or road bill of lading | aliases=['CMR note', 'BOL', 'eBOL'] | terms=['CMR consignment note or road bill of lading', 'CMR note', 'BOL', 'eBOL', 'consignment note', 'road']
+  -- one-record: none
+  -- one-record-cl: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:road|s1] owl:NamedIndiv ROAD_TRANSPORT                                 | ROAD_TRANSPORT | Indicates the transport mode to be Road Transport (3)  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:BOL|s2] cbv:BTT,carrie BTT-bol                                        | Bill of Lading | A document issued by a carrier to a shipper, listing and acknowledging receipt of goods for transport and specifying terms of delivery.  @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: 3 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:consignment note|s3] schema-file    UNECE-SMGSConsignmentNote.json                 | SMGS Consignment Note | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-SMGSConsignmentNote.json
+     [N:consignment note|s3] schema-file    UNECE-RailURLConsignmentNote.json              | Rail URL Consignment Note | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-RailURLConsignmentNote.json
+     [N:consignment note|s3] schema-file    UNECE-MMTCIM-SMGSConsignmentNote.json          | MMT CIM-SMGS Consignment Note | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MMTCIM-SMGSConsignmentNote.json
+====================================================================================================
+[document_event #5] doc-vgm-declaration | Verified Gross Mass Declaration | aliases=['VGM declaration', 'verified gross mass declaration'] | terms=['Verified Gross Mass Declaration', 'VGM declaration', 'gross mass', 'VGM']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[document_event #6] doc-rail-consignment | Rail consignment note | aliases=['CIM consignment note', 'SMGS consignment note'] | terms=['Rail consignment note', 'CIM consignment note', 'SMGS consignment note', 'rail', 'consignment note']
+  -- one-record: 0 name/label hits, 3 comment-only hits (showing top 6 by exactness)
+     [C:rail|s0] owl:DatatypePr locationType                                   | locationType | Location type - e.g. Airport, Freight terminal, Rail station, Seaport, etc  @IATA-1R-DM-Ontology.ttl
+     [C:rail|s0] owl:ObjectProp locationCodes                                  | locationCodes | Location code of airport, freight terminal, seaport, rail station. UN/LOCODE city code (5 letter) or IATA airport code (3 letter)  @IATA-1R-DM-Ontology.ttl
+     [C:rail|s0] owl:DatatypePr transportIdentifier                            | transportIdentifier | Airline flight number, or rail/truck/maritime line id  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:rail|s1] owl:NamedIndiv RAIL_TRANSPORT                                 | RAIL_TRANSPORT | Indicates the transport mode to be Rail Transport (2)  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 4 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [N:SMGS consignment note|s3] schema-file    UNECE-SMGSConsignmentNote.json                 | SMGS Consignment Note | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-SMGSConsignmentNote.json
+     [N:rail|s1] schema-file    UNECE-RailWagonList.json                       | Rail Wagon List | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-RailWagonList.json
+     [N:rail|s1] schema-file    UNECE-RailURLConsignmentNote.json              | Rail URL Consignment Note | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-RailURLConsignmentNote.json
+     [N:SMGS consignment note|s1] schema-file    UNECE-MMTCIM-SMGSConsignmentNote.json          | MMT CIM-SMGS Consignment Note | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MMTCIM-SMGSConsignmentNote.json
+     [C:rail|s0] def            associatedTransportEquipmentType               | Associated_ Transport Equipment. Details | A piece of transport equipment that is associated with another piece of transport equipment, such as a maritime container placed on a rail w  @associatedTransportEquipmentType
+====================================================================================================
+[document_event #7] doc-ocean-sea-waybill | Sea Waybill | aliases=['sea waybill'] | terms=['Sea Waybill', 'waybill']
+  -- one-record: 11 name/label hits, 10 comment-only hits (showing top 6 by exactness)
+     [N:waybill|s3] owl:ObjectProp waybill                                        | waybill | Reference to the Waybill of the shipment  @IATA-1R-DM-Ontology.ttl
+     [N:waybill|s3] owl:Class,owl: Waybill                                        | Waybill | Waybill details  @IATA-1R-DM-Ontology.ttl
+     [N:waybill|s3] owl:ObjectProp waybillType                                    | waybillType | Type of the Waybill: House, Direct or Master  @IATA-1R-DM-Ontology.ttl
+     [N:waybill|s3] owl:Class,owl: WaybillType                                    | WaybillType | Restricted code list for Waybill types  @IATA-1R-DM-Ontology.ttl
+     [N:waybill|s2] owl:ObjectProp masterWaybill                                  | masterWaybill | Reference to the master Waybill if it is contained in one  @IATA-1R-DM-Ontology.ttl
+     [N:waybill|s2] owl:ObjectProp detailedWaybill                                | detailedWaybill | Reference to the Waybill  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 5 comment-only hits (showing top 6 by exactness)
+     [C:waybill|s0] owl:NamedIndiv AW                                             | AW | Air Waybill Fee  @IATA-1R-CL-Ontology.ttl
+     [C:waybill|s0] owl:NamedIndiv ATT                                            | ATT | Goods Attached to Air Waybill  @IATA-1R-CL-Ontology.ttl
+     [C:waybill|s0] owl:NamedIndiv ECP                                            | ECP | Consignment established with a paper air waybill contract being printed under an e-AWB agreement  @IATA-1R-CL-Ontology.ttl
+     [C:waybill|s0] owl:NamedIndiv DIS_FDAW                                       | DIS_FDAW | An apparent error has occurred, on this date at this location, with the handling of the consignment or its documentation: Found Air Waybill  @IATA-1R-CL-Ontology.ttl
+     [C:waybill|s0] owl:NamedIndiv DIS_MSAW                                       | DIS_MSAW | An apparent error has occurred, on this date at this location, with the handling of the consignment or its documentation: Missing Air Waybil  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: 2 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:waybill|s3] schema-file    UNECE-AirWaybill.json                          | Air Waybill | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-AirWaybill.json
+     [N:waybill|s3] schema-file    UNECE-MultimodalWaybill.json                   | Multimodal Waybill | Copyright (C) UN/CEFACT (2024). All Rights Reserved.  This document and translations of it may be copied and furnished to others, and deriva  @UNECE-MultimodalWaybill.json
+====================================================================================================
+[document_event #8] doc-arrival-notice | Arrival Notice | aliases=['arrival notice'] | terms=['Arrival Notice']
+  -- one-record: none
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: none
+  -- uncefact: none
+====================================================================================================
+[document_event #9] evt-exception-detected | Execution exception detected | aliases=['exception signal', 'variance'] | terms=['Execution exception detected', 'exception signal', 'variance', 'exception']
+  -- one-record: 2 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:exception|s1] owl:DatatypePr fissileExceptionIndicator                      | fissileExceptionIndicator | Indicates if Fissile is excepted  @IATA-1R-DM-Ontology.ttl
+     [N:exception|s1] owl:DatatypePr fissileExceptionReference                      | fissileExceptionReference | Fissile exception reference, mandatory if Fissile Exception Indicator is true.  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: none
+  -- gs1-cbv: none
+  -- gs1-epcis: 1 name/label hits, 0 comment-only hits (showing top 6 by exactness)
+     [N:exception|s3] owl:ObjectProp exception                                      | exception | (Optional) A sensor alert, including an alarm condition or an error condition. When this field is used, extra details can be specified via `  @EPCIS.ttl
+  -- uncefact: none
+====================================================================================================
+[document_event #10] evt-delivery-attempted | Delivery attempted | aliases=['delivery attempt'] | terms=['Delivery attempted', 'delivery attempt', 'attempt', 'delivery']
+  -- one-record: 1 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [N:delivery|s1] owl:DatatypePr awbDeliveryDate                                | awbDeliveryDate | The Date AWB Delivery is also used as the AWB Execution date which will determine which billing period it will be processed and billed in.  @IATA-1R-DM-Ontology.ttl
+     [C:delivery|s0] owl:DatatypePr awbAcceptanceDate                              | awbAcceptanceDate | The Date AWB Acceptance should be the same as the Date AWB Delivery. (beginning of the process)  @IATA-1R-DM-Ontology.ttl
+  -- one-record-cl: 0 name/label hits, 7 comment-only hits (showing top 6 by exactness)
+     [C:delivery|s0] owl:NamedIndiv SR                                             | SR | Scheduled latest driver reporting time for collection and/or delivery  @IATA-1R-CL-Ontology.ttl
+     [C:delivery|s0] owl:NamedIndiv SS                                             | SS | Scheduled earliest driver reporting time for collection and/or delivery  @IATA-1R-CL-Ontology.ttl
+     [C:delivery|s0] owl:NamedIndiv DJ                                             | DJ | Proof of delivery (documentation)  @IATA-1R-CL-Ontology.ttl
+     [C:delivery|s0] owl:NamedIndiv SA                                             | SA | Delivery  @IATA-1R-CL-Ontology.ttl
+     [C:delivery|s0] owl:NamedIndiv SB                                             | SB | Delivery notification  @IATA-1R-CL-Ontology.ttl
+     [C:delivery|s0] owl:NamedIndiv SE                                             | SE | Proof of delivery (pickup and delivery)  @IATA-1R-CL-Ontology.ttl
+  -- gs1-cbv: 0 name/label hits, 1 comment-only hits (showing top 6 by exactness)
+     [C:delivery|s0] cbv:BTT,carrie BTT-bol                                        | Bill of Lading | A document issued by a carrier to a shipper, listing and acknowledging receipt of goods for transport and specifying terms of delivery.  @CBV.ttl
+  -- gs1-epcis: none
+  -- uncefact: 7 name/label hits, 3 comment-only hits (showing top 6 by exactness)
+     [N:delivery|s3] def            lineTradeDeliveryType                          | Line_ Trade Delivery. Details | Shipping arrangements and movement of products and or services including despatch and delivery at a line level.  @lineTradeDeliveryType
+     [N:delivery|s3] def            headerTradeDeliveryType                        | Header_ Trade Delivery. Details | Shipping arrangements and movement of products and or services including despatch and delivery at a header level.  @headerTradeDeliveryType
+     [N:delivery|s3] def            subordinateLineTradeDeliveryType               | Subordinate Line_ Trade Delivery. Details | Supply chain shipping arrangements and movement of products and or services including despatch and delivery.  @subordinateLineTradeDeliveryType
+     [N:delivery|s1] def            deliveryAdjustmentType                         | Delivery_ Adjustment. Details | A correction or modification to reflect actual delivery conditions.  @deliveryAdjustmentType
+     [N:delivery|s1] def            tradeDeliveryTermsType                         | Trade_ Delivery Terms. Details | Conditions agreed upon between the parties with regard to the delivery of goods and or services for trade purposes.  @tradeDeliveryTermsType
+     [N:delivery|s1] def            deliveryInstructionsType                       | Delivery_ Instructions. Details | Delivery information of an instructive nature.  @deliveryInstructionsType

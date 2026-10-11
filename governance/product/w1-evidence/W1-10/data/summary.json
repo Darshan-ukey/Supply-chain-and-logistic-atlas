@@ -1,0 +1,150 @@
+{
+ "SCOR_all": [
+  41,
+  {
+   "PARTIAL": 8,
+   "FULL": 33
+  }
+ ],
+ "SCOR_L0": [
+  13,
+  {
+   "PARTIAL": 3,
+   "FULL": 10
+  }
+ ],
+ "SCOR_L1": [
+  6,
+  {
+   "FULL": 6
+  }
+ ],
+ "SCOR_L2": [
+  22,
+  {
+   "FULL": 17,
+   "PARTIAL": 5
+  }
+ ],
+ "APQC_L1": [
+  13,
+  {
+   "NONE": 1,
+   "PARTIAL": 10,
+   "FULL": 2
+  }
+ ],
+ "APQC_L2": [
+  74,
+  {
+   "NONE": 30,
+   "PARTIAL": 26,
+   "FULL": 18
+  }
+ ],
+ "APQC_L3": [
+  30,
+  {
+   "PARTIAL": 3,
+   "FULL": 23,
+   "NONE": 4
+  }
+ ],
+ "APQC_L4": [
+  28,
+  {
+   "FULL": 27,
+   "PARTIAL": 1
+  }
+ ],
+ "gap_classes_nonFULL": {
+  "ISO 31000": {
+   "2": 1
+  },
+  "ISO 37301": {
+   "2": 1
+  },
+  "APQC PCF 8.0": {
+   "5": 45,
+   "2": 25,
+   "1": 1,
+   "": 4
+  },
+  "ISO 30414": {
+   "2": 1
+  },
+  "ISO 10002": {
+   "2": 1
+  },
+  "Contract Management Standard 4th ed.": {
+   "2": 1
+  },
+  "ISO 22301": {
+   "2": 1
+  },
+  "ISA-95 / IEC 62264": {
+   "5": 1,
+   "2": 1
+  },
+  "SCOR DS": {
+   "2": 8
+  },
+  "DCSA Industry Blueprint 2026.Q1": {
+   "3": 2
+  },
+  "ISO 44001": {
+   "2": 1
+  },
+  "ISO 55001": {
+   "2": 1
+  },
+  "ISO 30401": {
+   "2": 1
+  },
+  "World CC / CIPS / ISM competency bodies; BPMN; DMN; ISO 22400": {},
+  "UN/CEFACT International Forwarding and Transport BRS v2": {},
+  "ISO 9001": {
+   "2": 1
+  }
+ },
+ "critical": [
+  [
+   "APQC PCF 8.0",
+   "6.4",
+   "Manage product recalls and regulatory audits"
+  ]
+ ],
+ "class1": [
+  [
+   "APQC PCF 8.0",
+   "6.4",
+   "Manage product recalls and regulatory audits"
+  ]
+ ],
+ "class4": [],
+ "APQC_not_class5": [
+  100,
+  {
+   "FULL": 70,
+   "PARTIAL": 29,
+   "NONE": 1
+  }
+ ],
+ "domain_node_counts": {
+  "plan": 28,
+  "exception": 4,
+  "masterdata": 5,
+  "source": 16,
+  "trade": 8,
+  "returns": 14,
+  "transform": 15,
+  "commercial": 11,
+  "assets": 9,
+  "transport": 16,
+  "delivery": 13,
+  "warehouse": 19,
+  "customer": 7,
+  "finance": 7,
+  "claims": 3
+ }
+}
