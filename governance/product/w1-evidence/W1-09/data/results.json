@@ -91,8 +91,8 @@
   ],
   "cat": "NO_BASIS",
   "cc": "CC6",
-  "basis": "Nothing found. Neighbours only: src-iata-one-record class Insurance and src-uncefact-rdm def cargoInsuranceType (insurance cover, not a recovery right); src-apqc-pcf 11.1.3.3.1 Assess adequacy of insurance coverage (18129)",
-  "note": "Subrogation (insurer recovery against a liable third party) is not defined in any registered source searched. Legal instruments (src-cmr, src-montreal, src-hague-visby) were not read at clause level.",
+  "basis": "Nothing found. Neighbours only: src-iata-one-record class Insurance and src-uncefact-rdm def cargoInsuranceType (insurance cover, not a recovery right); src-apqc-pcf 11.1.3.3.1 Assess adequacy of insurance coverage (18129); closest process neighbour src-apqc-pcf 6.3.3 Manage supplier recovery (20106) and 6.3.3.1 Create supplier recovery claims (20107): recovering costs from suppliers for individual claims",
+  "note": "Subrogation (insurer recovery against a liable third party) is not defined in any registered source searched. PCF 6.3.3 is cost recovery from suppliers, not insurer subrogation; it is listed as the closest process-level neighbour for QA/Owner judgement (added 2026-10-11; it does not change the category). Legal instruments (src-cmr, src-montreal, src-hague-visby) were not read at clause level.",
   "ev": "L,P",
   "dec057": "depth gap, not structural: valid claims-domain concept; destination layer = claims/insurance daughter; class 4/5 in the frozen protocol gap classes (proposal)"
  },
@@ -674,12 +674,12 @@
    "delivery",
    "customer"
   ],
-  "cat": "NO_BASIS",
+  "cat": "PASS_WITH_LIMITATION",
   "cc": "CC5",
-  "basis": "Nothing found. src-apqc-pcf mentions portals only in recruiting text and in benchmark measure wording",
-  "note": "No registered source defines a customer portal or its function.",
+  "basis": "src-apqc-pcf: 3.5.4.7 Provide product tracking (11518; visibility of order status for customers); 6.2.2 Manage customer service problems, requests, and inquiries (10388; requests obtained online and by phone); 3.5.8 Perform digital sales (21429; sales in an online environment). The term \"customer portal\" itself is not used by any registered vocabulary read (\"portal\" appears in the PCF only for job portals)",
+  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary. CORRECTION 2026-10-11: first scored NO_BASIS because only the term \"portal\" was searched and the function-level mapping used for the other nine systems was not applied; corrected when the Owner asked what was checked.",
   "ev": "P",
-  "dec057": "client-binding/product category (class 4 proposal); not structural"
+  "dec057": "product category; not structural"
  },
  {
   "stratum": "system",

@@ -51,8 +51,8 @@ r('obj-filing', N_, 'CC2',
 r('obj-seal', P_, 'CC1',
   f'{UNR}: D23B def logisticsSealType ("device used to secure an object ... during transport"); {ONE}: datatype properties seal, sealNumber', '', 'L')
 r('obj-subrogation', X_, 'CC6',
-  f'Nothing found. Neighbours only: {ONE} class Insurance and {UNR} def cargoInsuranceType (insurance cover, not a recovery right); {PCF} 11.1.3.3.1 Assess adequacy of insurance coverage (18129)',
-  'Subrogation (insurer recovery against a liable third party) is not defined in any registered source searched. Legal instruments (src-cmr, src-montreal, src-hague-visby) were not read at clause level.', 'L,P',
+  f'Nothing found. Neighbours only: {ONE} class Insurance and {UNR} def cargoInsuranceType (insurance cover, not a recovery right); {PCF} 11.1.3.3.1 Assess adequacy of insurance coverage (18129); closest process neighbour {PCF} 6.3.3 Manage supplier recovery (20106) and 6.3.3.1 Create supplier recovery claims (20107): recovering costs from suppliers for individual claims',
+  'Subrogation (insurer recovery against a liable third party) is not defined in any registered source searched. PCF 6.3.3 is cost recovery from suppliers, not insurer subrogation; it is listed as the closest process-level neighbour for QA/Owner judgement (added 2026-10-11; it does not change the category). Legal instruments (src-cmr, src-montreal, src-hague-visby) were not read at clause level.', 'L,P',
   'depth gap, not structural: valid claims-domain concept; destination layer = claims/insurance daughter; class 4/5 in the frozen protocol gap classes (proposal)')
 r('obj-shipping-instructions', P_, 'CC1',
   f'{DBL}: Bill of Lading 3.0 introduction section 1.3 defines Shipping Instructions; {UNR}: UNECE-MultimodalShippingInstructions.json', '', 'W,L')
@@ -158,9 +158,10 @@ r('obj-receipt', N_, 'CC2',
 
 # ---------------- systems (10) ----------------
 SYS = ('Function-level basis only; the software system category is not defined by any registered vocabulary.')
-r('sys-customer-portal', X_, 'CC5',
-  f'Nothing found. {PCF} mentions portals only in recruiting text and in benchmark measure wording', 'No registered source defines a customer portal or its function.', 'P',
-  'client-binding/product category (class 4 proposal); not structural')
+r('sys-customer-portal', L_, 'CC5',
+  f'{PCF}: 3.5.4.7 Provide product tracking (11518; visibility of order status for customers); 6.2.2 Manage customer service problems, requests, and inquiries (10388; requests obtained online and by phone); 3.5.8 Perform digital sales (21429; sales in an online environment). The term "customer portal" itself is not used by any registered vocabulary read ("portal" appears in the PCF only for job portals)',
+  SYS + ' CORRECTION 2026-10-11: first scored NO_BASIS because only the term "portal" was searched and the function-level mapping used for the other nine systems was not applied; corrected when the Owner asked what was checked.', 'P',
+  'product category; not structural')
 r('sys-ibp', L_, 'CC5',
   f'{PCF}: 4.1 Plan for and align supply chain resources (10215); 4.1.2 Manage demand for products (10222); src-scor Plan (page not read)', SYS + ' "Integrated business planning" is not named.', 'P',
   'product category; not structural')

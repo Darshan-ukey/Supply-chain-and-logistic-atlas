@@ -20,4 +20,9 @@ Reproduce:
 Vocabulary repo heads used: ONE-Record 698d641a5ed3bebc2ff73ba62665b64edbaa0c1f; EPCIS 6f71468231838e424bb5dfa836e006e8dc69615c; spec-JSONSchema 47d813e9809db02db2c5d841791d7118ab8b835f.
 vocab_index.jsonl (3.5 MB, not committed) sha256 f55c9a55cc60e95cbe2970516cdadcf5950336ccd04d04cfa4af53b9d46d0ef7.
 Web evidence (DCSA, X12, FIATA pages) was read through WebFetch (small-model page summaries); APQC PCF 8.0 is the Project file K016808 (Excel). Neither is in this folder.
-The full receipt is the Project doc claude/W1-09-SOURCE-BASIS-SAMPLE-VERIFICATION-RECEIPT-2026-10-11.md and a Google Drive copy (file IDs in Atlas Wave 0 Control AA18).
+The full receipt (revision 2) is the Project doc claude/W1-09-SOURCE-BASIS-SAMPLE-VERIFICATION-RECEIPT-2026-10-11.md and a Google Drive copy (file IDs in Atlas Wave 0 Control AA18).
+
+Revision history
+- Revision 1 (2026-10-11 07:28-07:30 IST; commits 1bbac597 and d79c8246, first pushed to w1-evidence-20261011): first publication.
+- Revision 2 (2026-10-11): sys-customer-portal corrected from NO_BASIS to PASS_WITH_LIMITATION (the function-level mapping used for the other nine systems had not been applied in revision 1); PCF 6.3.3 neighbour added to obj-subrogation (category unchanged); Owner guidance of 2026-10-11 08:11 IST recorded in the receipt. Changed files: README.md, scripts/classify.py, data/results.json, data/results.tsv, data/summary.json. Counts: NO_BASIS 3 -> 2, PASS_WITH_LIMITATION 23 -> 24, all else unchanged.
+- This folder now lives on w1-evidence-20261010 (the single Wave 1 evidence branch, Owner request 2026-10-11); w1-evidence-20261011 was merged into it and is left in place.
