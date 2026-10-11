@@ -47,7 +47,7 @@ r('obj-knowledge-asset', L_, 'CC3',
   'depth gap: conceptual coverage valid; object definition belongs to a knowledge/enterprise layer')
 r('obj-filing', N_, 'CC2',
   f'{UNR}: D23B defs declarationType, exchangedDeclarationType; {ONE}: classes SecurityDeclaration, DgDeclaration; src-wco-dm registered (page read is generic, object level not confirmed)',
-  '"Filing" is a trade-compliance term; the registered vocabularies use "declaration". Overlaps obj-declaration.', 'L,W')
+  '"Filing" is not a term used in the registered vocabularies searched; they use "declaration". Overlaps obj-declaration.', 'L,W')
 r('obj-seal', P_, 'CC1',
   f'{UNR}: D23B def logisticsSealType ("device used to secure an object ... during transport"); {ONE}: datatype properties seal, sealNumber', '', 'L')
 r('obj-subrogation', X_, 'CC6',
@@ -81,7 +81,7 @@ r('obj-accrual', L_, 'CC3',
   'depth gap: finance-layer object; conceptual coverage valid')
 r('obj-regulatory-status', N_, 'CC2',
   f'{ONE}: classes SecurityStatus (cXML 1.103), ShipmentSecurityStatus (DM and CL ontologies)',
-  'ONE Record covers the security-status sense only; customs or dangerous-goods status are not covered by the same class.', 'L')
+  'ONE Record covers the security-status sense; customs and dangerous-goods information sit in separate constructs there.', 'L')
 r('obj-control-evidence', L_, 'CC3',
   f'{PCF}: 9.8 Manage internal controls (10735); 9.8.3 Report on internal controls compliance (10764)',
   'Process level only. ISO management-system standards (src-iso9001, src-iso37301) were not read at clause level, so no ISO claim is made.', 'P',
@@ -176,7 +176,7 @@ r('sys-cpq', L_, 'CC5',
 r('sys-oms', L_, 'CC5',
   f'{PCF}: 3.5.4 Manage sales orders (10185); {UNR}: UNECE-CrossIndustryOrder.json, OrderChange, OrderResponse', SYS, 'P,L', 'product category; not structural')
 r('sys-analytics', L_, 'CC5',
-  f'{PCF}: 2.1.2.5.4 Apply data and analytics to review supply chain methodologies (19647)', SYS + ' Weak: analytics appears in PCF only as a method inside other processes.', 'P', 'product category; not structural')
+  f'{PCF}: 13.8 Develop, Manage, and Deliver Analytics (20959); 8.4.1 Define business information and analytics strategy (20766); 2.1.2.5.4 Apply data and analytics to review supply chain methodologies (19647)', SYS, 'P', 'product category; not structural')
 r('sys-carrier-documentation', L_, 'CC5',
   f'{DBL}: Bill of Lading 3.0 (carrier issues the Transport Document); src-fiata eFBL; {UNR}: UNECE-MaritimeBillofLading.json', SYS, 'W,L', 'product category; not structural')
 r('sys-tax-engine', L_, 'CC5',
@@ -195,7 +195,7 @@ r('doc-road-cmr-bol', N_, 'CC2',
   'Composite label: two instruments (CMR consignment note, road bill of lading) in one record.', 'L')
 r('doc-vgm-declaration', N_, 'CC2',
   f'src-dcsa-vgm: DCSA Verified Gross Mass v1 (current 1.0.1) release page; {UNR}: logisticsTransportEquipmentType.verifiedGrossWeightMeasure',
-  'DCSA page shows title and versions only; the VGM object and who submits it were not read. "Declaration" wording follows SOLAS per the registry applicability note.', 'W,L')
+  'DCSA page shows title and versions only; the VGM object and who submits it were not read. The registry applicability note names SOLAS as the legal requirement source.', 'W,L')
 r('doc-rail-consignment', P_, 'CC1',
   f'{UNR}: UNECE-RailURLConsignmentNote.json, UNECE-SMGSConsignmentNote.json, UNECE-MMTCIM-SMGSConsignmentNote.json; src-cotif-cim registered (page not fetched)', '', 'L')
 r('doc-ocean-sea-waybill', P_, 'CC1',

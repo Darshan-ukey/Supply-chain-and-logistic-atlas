@@ -60,7 +60,7 @@
   "cat": "PASS_WITH_NOTE",
   "cc": "CC2",
   "basis": "src-uncefact-rdm: D23B defs declarationType, exchangedDeclarationType; src-iata-one-record: classes SecurityDeclaration, DgDeclaration; src-wco-dm registered (page read is generic, object level not confirmed)",
-  "note": "\"Filing\" is a trade-compliance term; the registered vocabularies use \"declaration\". Overlaps obj-declaration.",
+  "note": "\"Filing\" is not a term used in the registered vocabularies searched; they use \"declaration\". Overlaps obj-declaration.",
   "ev": "L,W",
   "dec057": ""
  },
@@ -263,7 +263,7 @@
   "cat": "PASS_WITH_NOTE",
   "cc": "CC2",
   "basis": "src-iata-one-record: classes SecurityStatus (cXML 1.103), ShipmentSecurityStatus (DM and CL ontologies)",
-  "note": "ONE Record covers the security-status sense only; customs or dangerous-goods status are not covered by the same class.",
+  "note": "ONE Record covers the security-status sense; customs and dangerous-goods information sit in separate constructs there.",
   "ev": "L",
   "dec057": ""
  },
@@ -798,8 +798,8 @@
   ],
   "cat": "PASS_WITH_LIMITATION",
   "cc": "CC5",
-  "basis": "src-apqc-pcf: 2.1.2.5.4 Apply data and analytics to review supply chain methodologies (19647)",
-  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary. Weak: analytics appears in PCF only as a method inside other processes.",
+  "basis": "src-apqc-pcf: 13.8 Develop, Manage, and Deliver Analytics (20959); 8.4.1 Define business information and analytics strategy (20766); 2.1.2.5.4 Apply data and analytics to review supply chain methodologies (19647)",
+  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary.",
   "ev": "P",
   "dec057": "product category; not structural"
  },
@@ -923,7 +923,7 @@
   "cat": "PASS_WITH_NOTE",
   "cc": "CC2",
   "basis": "src-dcsa-vgm: DCSA Verified Gross Mass v1 (current 1.0.1) release page; src-uncefact-rdm: logisticsTransportEquipmentType.verifiedGrossWeightMeasure",
-  "note": "DCSA page shows title and versions only; the VGM object and who submits it were not read. \"Declaration\" wording follows SOLAS per the registry applicability note.",
+  "note": "DCSA page shows title and versions only; the VGM object and who submits it were not read. The registry applicability note names SOLAS as the legal requirement source.",
   "ev": "W,L",
   "dec057": ""
  },
