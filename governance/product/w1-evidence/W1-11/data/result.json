@@ -1,0 +1,1406 @@
+{
+ "input": {
+  "sha256": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+  "bytes": 499471,
+  "pageErrors": 0
+ },
+ "sources": 67,
+ "entities": 265,
+ "unresolvedFamilyKeys_domains": [
+  [
+   "finance",
+   "apqcFinance"
+  ],
+  [
+   "claims",
+   "apqcFinance"
+  ],
+  [
+   "claims",
+   "otif"
+  ],
+  [
+   "claims",
+   "uncitral"
+  ]
+ ],
+ "unresolvedFamilyKeys_evidenceProfiles": [
+  [
+   "transport",
+   "otif"
+  ],
+  [
+   "claims",
+   "apqcFinance"
+  ],
+  [
+   "claims",
+   "otif"
+  ],
+  [
+   "claims",
+   "uncitral"
+  ]
+ ],
+ "F4_definition_D3_noStructuredRoute": {
+  "count": 13,
+  "ids": [
+   "src-bpmn",
+   "src-unedifact-d25a",
+   "src-ecmr",
+   "src-hague-visby",
+   "src-rotterdam",
+   "src-ncd",
+   "src-nmfta-dsdc-ltl",
+   "src-nmfc",
+   "src-imo-compendium-2026",
+   "src-imdg-2024-a42-24",
+   "src-ctu-code-2014",
+   "src-tic40-2025-019",
+   "src-smdg-terminal-messages"
+  ],
+  "roles": {
+   "src-bpmn": "Modelling notation",
+   "src-unedifact-d25a": "Data / message semantics",
+   "src-ecmr": "Road-carriage legal / data overlay",
+   "src-hague-visby": "Potential operative legal instrument",
+   "src-rotterdam": "Emerging legal instrument",
+   "src-ncd": "Emerging legal instrument",
+   "src-nmfta-dsdc-ltl": "Road LTL digital-interface standard",
+   "src-nmfc": "North-American Road LTL classification reference",
+   "src-imo-compendium-2026": "Maritime data-harmonization reference",
+   "src-imdg-2024-a42-24": "Mandatory maritime dangerous-goods code",
+   "src-ctu-code-2014": "Non-mandatory global code of practice",
+   "src-tic40-2025-019": "Terminal semantic standard",
+   "src-smdg-terminal-messages": "Terminal / carrier message implementation evidence"
+  }
+ },
+ "sourcesReachingDomains": {
+  "ge1": 54,
+  "zero": 13,
+  "distribution": [
+   [
+    0,
+    13
+   ],
+   [
+    1,
+    20
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    4,
+    9
+   ],
+   [
+    5,
+    5
+   ],
+   [
+    6,
+    4
+   ],
+   [
+    7,
+    4
+   ],
+   [
+    8,
+    1
+   ],
+   [
+    9,
+    2
+   ],
+   [
+    10,
+    3
+   ],
+   [
+    12,
+    1
+   ],
+   [
+    15,
+    2
+   ]
+  ],
+  "oneToThree": 23,
+  "fourToSeven": 22,
+  "eightPlus": 9
+ },
+ "derivedEntityReviewScope_perLinkedSource": {
+  "n": 54,
+  "min": 28,
+  "median": 79.0,
+  "p90": 146,
+  "max": 217
+ },
+ "broadSources": [
+  [
+   "src-scor",
+   15,
+   215
+  ],
+  [
+   "src-apqc-pcf",
+   15,
+   217
+  ],
+  [
+   "src-uncefact-rdm",
+   10,
+   160
+  ],
+  [
+   "src-gs1-genspec",
+   10,
+   146
+  ],
+  [
+   "src-gs1-epcis",
+   9,
+   138
+  ],
+  [
+   "src-iso9001",
+   9,
+   137
+  ],
+  [
+   "src-iso44001",
+   8,
+   141
+  ],
+  [
+   "src-gs1-trace",
+   12,
+   170
+  ],
+  [
+   "src-gs1-gdsn",
+   10,
+   146
+  ]
+ ],
+ "entitiesReachableFromAnySource": {
+  "reachable": 219,
+  "of": 265,
+  "unreachable": 46,
+  "unreachableByGroup": {
+   "systems": 5,
+   "businessObjects": 21,
+   "processRelationships": 20
+  },
+  "unreachableIds": [
+   "obj-arrival-notice",
+   "obj-cfs-handoff",
+   "obj-consignment",
+   "obj-consolidation",
+   "obj-container",
+   "obj-deconsolidation",
+   "obj-driver",
+   "obj-execution-instance",
+   "obj-execution-state",
+   "obj-house-transport-document",
+   "obj-leg",
+   "obj-master-transport-document",
+   "obj-pick-confirmation",
+   "obj-port-call",
+   "obj-seal",
+   "obj-shipping-instructions",
+   "obj-stop",
+   "obj-tender-response",
+   "obj-trailer",
+   "obj-vehicle",
+   "obj-vgm-record",
+   "rel-assets-enable-transport",
+   "rel-commercial-governs-transport",
+   "rel-commercial-source",
+   "rel-customer-monitors-transport",
+   "rel-customer-requests-recovery",
+   "rel-delivery-evidences-finance",
+   "rel-delivery-returns",
+   "rel-event-exception",
+   "rel-exception-state",
+   "rel-finance-settles-transport",
+   "rel-masterdata-enables-transport",
+   "rel-plan-commercial",
+   "rel-source-transform",
+   "rel-trade-regulates-transport",
+   "rel-trade-releases-transport",
+   "rel-transform-warehouse",
+   "rel-transport-claim",
+   "rel-transport-delivery",
+   "rel-transport-evidence-finance",
+   "rel-warehouse-transport",
+   "sys-carrier-documentation",
+   "sys-cfs-platform",
+   "sys-ebl-platform",
+   "sys-maritime-single-window",
+   "sys-terminal-operating"
+  ]
+ },
+ "entitiesWithoutDomainIds": {
+  "systems": 12,
+  "businessObjects": 41,
+  "processRelationships": 20
+ },
+ "placementGroupRoute": {
+  "sourcesWithPlacementGroup": 67,
+  "placements": 192,
+  "placementsWithoutSourceId": 82
+ },
+ "sourceRouteTable": {
+  "src-scor": {
+   "domains": [
+    "assets",
+    "claims",
+    "commercial",
+    "customer",
+    "delivery",
+    "exception",
+    "finance",
+    "masterdata",
+    "plan",
+    "returns",
+    "source",
+    "trade",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-a",
+    "ecl-aa",
+    "ecl-b",
+    "ecl-c",
+    "ecl-d",
+    "ecl-f",
+    "ecl-h",
+    "ecl-i",
+    "ecl-j",
+    "ecl-p",
+    "ecl-q",
+    "ecl-r",
+    "ecl-s",
+    "ecl-u",
+    "ecl-w",
+    "ecl-z"
+   ],
+   "cycles": [
+    "cycle-forecast-plan",
+    "cycle-issue-resolution",
+    "cycle-order-cash",
+    "cycle-order-fulfil",
+    "cycle-plan-produce",
+    "cycle-procure-pay",
+    "cycle-return-refund",
+    "cycle-source-contract"
+   ],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key",
+    "R2 cycle direct sourceIds",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 215,
+   "role": "Primary process / reference architecture"
+  },
+  "src-apqc-pcf": {
+   "domains": [
+    "assets",
+    "claims",
+    "commercial",
+    "customer",
+    "delivery",
+    "exception",
+    "finance",
+    "masterdata",
+    "plan",
+    "returns",
+    "source",
+    "trade",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-a",
+    "ecl-aa",
+    "ecl-b",
+    "ecl-c",
+    "ecl-d",
+    "ecl-e",
+    "ecl-f",
+    "ecl-h",
+    "ecl-i",
+    "ecl-j",
+    "ecl-k",
+    "ecl-l",
+    "ecl-m",
+    "ecl-n",
+    "ecl-o",
+    "ecl-p",
+    "ecl-q",
+    "ecl-r",
+    "ecl-s",
+    "ecl-u",
+    "ecl-v",
+    "ecl-w",
+    "ecl-x",
+    "ecl-z"
+   ],
+   "cycles": [
+    "cycle-forecast-plan",
+    "cycle-issue-resolution",
+    "cycle-order-cash",
+    "cycle-order-fulfil",
+    "cycle-plan-produce",
+    "cycle-procure-pay",
+    "cycle-return-refund",
+    "cycle-shipment-settle",
+    "cycle-source-contract"
+   ],
+   "routes": [
+    "R1 domain family key",
+    "R2 cycle direct sourceIds",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 217,
+   "role": "Primary process / reference architecture"
+  },
+  "src-bpmn": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Modelling notation"
+  },
+  "src-dmn": {
+   "domains": [
+    "customer",
+    "exception",
+    "masterdata",
+    "plan"
+   ],
+   "lenses": [
+    "ecl-aa"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Decision modelling notation"
+  },
+  "src-uncefact-rdm": {
+   "domains": [
+    "claims",
+    "commercial",
+    "customer",
+    "delivery",
+    "finance",
+    "masterdata",
+    "source",
+    "trade",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-c",
+    "ecl-d",
+    "ecl-g",
+    "ecl-o",
+    "ecl-t",
+    "ecl-x"
+   ],
+   "cycles": [
+    "cycle-order-cash",
+    "cycle-procure-pay",
+    "cycle-shipment-settle"
+   ],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key",
+    "R2 cycle direct sourceIds",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 160,
+   "role": "Data / object semantics"
+  },
+  "src-unedifact-d25a": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Data / message semantics"
+  },
+  "src-wco-dm": {
+   "domains": [
+    "finance",
+    "masterdata",
+    "trade",
+    "transport"
+   ],
+   "lenses": [
+    "ecl-t"
+   ],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 105,
+   "role": "Customs data standard"
+  },
+  "src-gs1-genspec": {
+   "domains": [
+    "assets",
+    "commercial",
+    "customer",
+    "delivery",
+    "exception",
+    "masterdata",
+    "source",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-g",
+    "ecl-k"
+   ],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 146,
+   "role": "Identity / data standard"
+  },
+  "src-gs1-epcis": {
+   "domains": [
+    "assets",
+    "commercial",
+    "customer",
+    "delivery",
+    "exception",
+    "masterdata",
+    "trade",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-r"
+   ],
+   "cycles": [
+    "cycle-order-fulfil"
+   ],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key",
+    "R2 cycle direct sourceIds",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 138,
+   "role": "Event / visibility standard"
+  },
+  "src-gs1-cbv": {
+   "domains": [
+    "assets",
+    "customer",
+    "delivery",
+    "exception",
+    "masterdata",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 124,
+   "role": "Event vocabulary"
+  },
+  "src-dcsa-booking": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / service standard"
+  },
+  "src-dcsa-ebl": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / document standard"
+  },
+  "src-dcsa-tt": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / event standard"
+  },
+  "src-iata-one-record": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / data standard"
+  },
+  "src-iata-cargo": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / service reference"
+  },
+  "src-fiata": {
+   "domains": [
+    "claims",
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 79,
+   "role": "Operating-role / document reference"
+  },
+  "src-cmr": {
+   "domains": [
+    "claims",
+    "customer",
+    "exception",
+    "finance"
+   ],
+   "lenses": [
+    "ecl-n"
+   ],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 76,
+   "role": "Operative road-carriage legal instrument"
+  },
+  "src-ecmr": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Road-carriage legal / data overlay"
+  },
+  "src-cotif-cim": {
+   "domains": [
+    "claims",
+    "customer",
+    "exception",
+    "finance"
+   ],
+   "lenses": [
+    "ecl-n"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 76,
+   "role": "Operative rail-carriage legal instrument"
+  },
+  "src-montreal": {
+   "domains": [
+    "claims",
+    "customer",
+    "exception",
+    "finance"
+   ],
+   "lenses": [
+    "ecl-n"
+   ],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 76,
+   "role": "Operative air-carriage legal instrument"
+  },
+  "src-upu": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Postal-network standard"
+  },
+  "src-isa95": {
+   "domains": [
+    "assets",
+    "masterdata",
+    "plan",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-j",
+    "ecl-v"
+   ],
+   "cycles": [
+    "cycle-plan-produce"
+   ],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key",
+    "R2 cycle direct sourceIds",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 114,
+   "role": "Enterprise / control integration reference"
+  },
+  "src-iso8000": {
+   "domains": [
+    "masterdata"
+   ],
+   "lenses": [
+    "ecl-g"
+   ],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 28,
+   "role": "Data-governance reference"
+  },
+  "src-iso14083": {
+   "domains": [
+    "assets",
+    "plan",
+    "returns",
+    "source",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-y"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 121,
+   "role": "Emissions measurement standard"
+  },
+  "src-iso6346": {
+   "domains": [
+    "assets",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-v"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 93,
+   "role": "Equipment identity standard"
+  },
+  "src-cmni": {
+   "domains": [
+    "claims",
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 79,
+   "role": "Operative inland-waterway carriage instrument"
+  },
+  "src-ccnr": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Corridor authority / regulatory source"
+  },
+  "src-cesni-trin": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Inland-navigation technical standard"
+  },
+  "src-cesni-ris": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Inland-navigation information standard"
+  },
+  "src-adn": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Dangerous-goods regulatory condition"
+  },
+  "src-mletr": {
+   "domains": [
+    "finance",
+    "masterdata",
+    "trade",
+    "transport"
+   ],
+   "lenses": [
+    "ecl-t"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 105,
+   "role": "Legal-enablement model"
+  },
+  "src-hague-visby": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Potential operative legal instrument"
+  },
+  "src-rotterdam": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Emerging legal instrument"
+  },
+  "src-ncd": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Emerging legal instrument"
+  },
+  "src-x12": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / message standard"
+  },
+  "src-nmfta-dsdc-ltl": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Road LTL digital-interface standard"
+  },
+  "src-nmfc": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "North-American Road LTL classification reference"
+  },
+  "src-iso9001": {
+   "domains": [
+    "assets",
+    "claims",
+    "exception",
+    "masterdata",
+    "plan",
+    "returns",
+    "source",
+    "transform",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-h",
+    "ecl-j",
+    "ecl-l"
+   ],
+   "cycles": [
+    "cycle-plan-produce"
+   ],
+   "routes": [
+    "R2 cycle direct sourceIds",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 137,
+   "role": "Enterprise quality-management reference"
+  },
+  "src-iso10002": {
+   "domains": [
+    "claims",
+    "commercial",
+    "customer",
+    "delivery",
+    "exception",
+    "finance"
+   ],
+   "lenses": [
+    "ecl-m",
+    "ecl-n"
+   ],
+   "cycles": [
+    "cycle-issue-resolution"
+   ],
+   "routes": [
+    "R2 cycle direct sourceIds",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 100,
+   "role": "Customer complaint and resolution reference"
+  },
+  "src-iso22301": {
+   "domains": [
+    "assets",
+    "exception",
+    "plan",
+    "source",
+    "transport"
+   ],
+   "lenses": [
+    "ecl-u"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 104,
+   "role": "Enterprise resilience reference"
+  },
+  "src-iso30401": {
+   "domains": [
+    "customer",
+    "exception",
+    "masterdata",
+    "plan"
+   ],
+   "lenses": [
+    "ecl-aa"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Knowledge-management system reference"
+  },
+  "src-iso30414": {
+   "domains": [
+    "assets",
+    "plan",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-w"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 106,
+   "role": "Workforce reporting starting point"
+  },
+  "src-iso31000": {
+   "domains": [
+    "assets",
+    "exception",
+    "plan",
+    "source",
+    "transport"
+   ],
+   "lenses": [
+    "ecl-u"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 104,
+   "role": "Enterprise risk reference"
+  },
+  "src-iso37301": {
+   "domains": [
+    "claims",
+    "exception",
+    "finance",
+    "masterdata",
+    "plan",
+    "trade"
+   ],
+   "lenses": [
+    "ecl-z"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 115,
+   "role": "Enterprise compliance reference"
+  },
+  "src-iso44001": {
+   "domains": [
+    "claims",
+    "commercial",
+    "exception",
+    "finance",
+    "masterdata",
+    "plan",
+    "source",
+    "transport"
+   ],
+   "lenses": [
+    "ecl-e",
+    "ecl-h",
+    "ecl-q"
+   ],
+   "cycles": [
+    "cycle-source-contract"
+   ],
+   "routes": [
+    "R2 cycle direct sourceIds",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 141,
+   "role": "Supplier/provider relationship reference"
+  },
+  "src-iso55001": {
+   "domains": [
+    "assets",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-v"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 93,
+   "role": "Enterprise asset-management reference"
+  },
+  "src-iso14064": {
+   "domains": [
+    "assets",
+    "plan",
+    "returns",
+    "source",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-y"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 121,
+   "role": "Organizational GHG inventory standard"
+  },
+  "src-ghg-scope3": {
+   "domains": [
+    "assets",
+    "plan",
+    "returns",
+    "source",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-y"
+   ],
+   "cycles": [],
+   "routes": [
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 121,
+   "role": "Value-chain GHG accounting standard"
+  },
+  "src-worldcc-cms": {
+   "domains": [
+    "claims",
+    "commercial",
+    "finance",
+    "masterdata",
+    "plan",
+    "source"
+   ],
+   "lenses": [
+    "ecl-b",
+    "ecl-e"
+   ],
+   "cycles": [
+    "cycle-source-contract"
+   ],
+   "routes": [
+    "R2 cycle direct sourceIds",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 104,
+   "role": "Recognized industry contract-management framework"
+  },
+  "src-dcsa-blueprint-2026q1": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Source-native Ocean process reference"
+  },
+  "src-dcsa-port-call": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / port-call standard"
+  },
+  "src-dcsa-vgm": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / data-exchange standard"
+  },
+  "src-dcsa-arrival": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / message standard"
+  },
+  "src-dcsa-ovs": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / schedule standard"
+  },
+  "src-dcsa-commercial-schedules": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / schedule standard"
+  },
+  "src-dcsa-load-list-bay-plan": {
+   "domains": [
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 59,
+   "role": "Mode / terminal-cargo standard"
+  },
+  "src-imo-compendium-2026": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Maritime data-harmonization reference"
+  },
+  "src-imdg-2024-a42-24": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Mandatory maritime dangerous-goods code"
+  },
+  "src-ctu-code-2014": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Non-mandatory global code of practice"
+  },
+  "src-tic40-2025-019": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Terminal semantic standard"
+  },
+  "src-fiata-efbl-guide-2026": {
+   "domains": [
+    "claims",
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 79,
+   "role": "Forwarder document / implementation guidance"
+  },
+  "src-uncefact-ift-brs-v2": {
+   "domains": [
+    "commercial",
+    "finance",
+    "masterdata",
+    "trade",
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 108,
+   "role": "Forwarding / multimodal process reference"
+  },
+  "src-smdg-terminal-messages": {
+   "domains": [],
+   "lenses": [],
+   "cycles": [],
+   "routes": [],
+   "derivedEntityScope": 0,
+   "role": "Terminal / carrier message implementation evidence"
+  },
+  "src-fmc-oti-nvocc": {
+   "domains": [
+    "claims"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 43,
+   "role": "Jurisdiction-specific role / regulatory overlay"
+  },
+  "src-uncefact-multimodal-visibility-brs-v1": {
+   "domains": [
+    "commercial",
+    "finance",
+    "masterdata",
+    "trade",
+    "transport"
+   ],
+   "lenses": [],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key"
+   ],
+   "derivedEntityScope": 108,
+   "role": "Multimodal visibility / collaboration reference"
+  },
+  "src-gs1-trace": {
+   "domains": [
+    "assets",
+    "commercial",
+    "customer",
+    "delivery",
+    "exception",
+    "finance",
+    "masterdata",
+    "returns",
+    "source",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-k",
+    "ecl-r",
+    "ecl-s"
+   ],
+   "cycles": [
+    "cycle-return-refund"
+   ],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key",
+    "R2 cycle direct sourceIds",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 170,
+   "role": "Traceability standard"
+  },
+  "src-gs1-gdsn": {
+   "domains": [
+    "assets",
+    "commercial",
+    "customer",
+    "delivery",
+    "exception",
+    "masterdata",
+    "source",
+    "transform",
+    "transport",
+    "warehouse"
+   ],
+   "lenses": [
+    "ecl-g",
+    "ecl-k"
+   ],
+   "cycles": [],
+   "routes": [
+    "R1 domain family key",
+    "R1 evidenceProfile family key",
+    "R2 lens direct sourceIds"
+   ],
+   "derivedEntityScope": 146,
+   "role": "Product-data synchronization standard/service"
+  }
+ },
+ "lensReadiness": {
+  "READY FOR WHITE-SPACE ANALYSIS": 7,
+  "PARTIALLY READY": 13,
+  "EXECUTION DETAIL REQUIRED": 5,
+  "SOURCE RESEARCH REQUIRED": 2
+ },
+ "embeddedIdentity": {
+  "id": "supply-chain-logistics-universe-v7.2",
+  "version": "7.2.0",
+  "releaseDate": "2026-08-30",
+  "correctionCycle": "V7_1_TO_V7_2"
+ }
+}
