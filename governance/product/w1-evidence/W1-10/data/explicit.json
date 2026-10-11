@@ -1,0 +1,1622 @@
+{
+ "scor": [
+  {
+   "level": "L0",
+   "code": "OE1",
+   "name": "Supply Chain Strategy",
+   "explicit": []
+  },
+  {
+   "level": "L0",
+   "code": "OE2",
+   "name": "Business Rules",
+   "explicit": [
+    "lens:ecl-aa",
+    "lens:ecl-f",
+    "lens:ecl-z"
+   ]
+  },
+  {
+   "level": "L0",
+   "code": "OE3",
+   "name": "Performance and Continuous Improvement",
+   "explicit": [
+    "cycle:cycle-issue-resolution",
+    "domain:exception",
+    "lens:ecl-aa",
+    "lens:ecl-l"
+   ]
+  },
+  {
+   "level": "L0",
+   "code": "OE4",
+   "name": "Data, Information and Technology",
+   "explicit": [
+    "domain:masterdata",
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-k"
+   ]
+  },
+  {
+   "level": "L0",
+   "code": "OE5",
+   "name": "Human Resources",
+   "explicit": [
+    "lens:ecl-w"
+   ]
+  },
+  {
+   "level": "L0",
+   "code": "OE6",
+   "name": "Contracts and Agreements",
+   "explicit": [
+    "cycle:cycle-source-contract",
+    "lens:ecl-b",
+    "lens:ecl-e",
+    "lens:ecl-q"
+   ]
+  },
+  {
+   "level": "L0",
+   "code": "OE7",
+   "name": "Network Design",
+   "explicit": [
+    "domain:plan",
+    "lens:ecl-p",
+    "lens:ecl-v"
+   ]
+  },
+  {
+   "level": "L0",
+   "code": "OE8",
+   "name": "Regulatory and Compliance",
+   "explicit": [
+    "domain:trade",
+    "lens:ecl-t",
+    "lens:ecl-z"
+   ]
+  },
+  {
+   "level": "L0",
+   "code": "OE9",
+   "name": "Risk",
+   "explicit": [
+    "lens:ecl-h",
+    "lens:ecl-u",
+    "lens:ecl-z"
+   ]
+  },
+  {
+   "level": "L0",
+   "code": "OE10",
+   "name": "Environmental, Social and Governance",
+   "explicit": [
+    "lens:ecl-y"
+   ]
+  },
+  {
+   "level": "L0",
+   "code": "OE11",
+   "name": "Enterprise Business Planning",
+   "explicit": [
+    "lens:ecl-a"
+   ]
+  },
+  {
+   "level": "L0",
+   "code": "OE12",
+   "name": "Segmentation",
+   "explicit": []
+  },
+  {
+   "level": "L0",
+   "code": "OE13",
+   "name": "Circular Supply Chain Management",
+   "explicit": [
+    "lens:ecl-y"
+   ]
+  },
+  {
+   "level": "L1",
+   "code": "P",
+   "name": "Plan",
+   "explicit": [
+    "cycle:cycle-forecast-plan",
+    "cycle:cycle-plan-produce",
+    "domain:plan",
+    "lens:ecl-a",
+    "lens:ecl-i",
+    "lens:ecl-j",
+    "lens:ecl-p"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "P1",
+   "name": "Plan Supply Chain",
+   "explicit": [
+    "cycle:cycle-forecast-plan",
+    "domain:plan",
+    "lens:ecl-a",
+    "lens:ecl-i",
+    "lens:ecl-p"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "P2",
+   "name": "Plan Order",
+   "explicit": [
+    "cycle:cycle-forecast-plan",
+    "domain:plan",
+    "lens:ecl-a"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "P3",
+   "name": "Plan Source",
+   "explicit": [
+    "cycle:cycle-forecast-plan",
+    "domain:plan",
+    "lens:ecl-a"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "P4",
+   "name": "Plan Transform",
+   "explicit": [
+    "cycle:cycle-forecast-plan",
+    "cycle:cycle-plan-produce",
+    "domain:plan",
+    "lens:ecl-a",
+    "lens:ecl-j"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "P5",
+   "name": "Plan Fulfill",
+   "explicit": [
+    "cycle:cycle-forecast-plan",
+    "domain:plan",
+    "lens:ecl-a",
+    "lens:ecl-i"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "P6",
+   "name": "Plan Return",
+   "explicit": [
+    "cycle:cycle-forecast-plan",
+    "domain:plan",
+    "lens:ecl-a"
+   ]
+  },
+  {
+   "level": "L1",
+   "code": "O",
+   "name": "Order",
+   "explicit": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil",
+    "domain:commercial",
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "O1",
+   "name": "Order B2C",
+   "explicit": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil",
+    "domain:commercial",
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "O2",
+   "name": "Order B2B",
+   "explicit": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil",
+    "domain:commercial",
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "O3",
+   "name": "Order Intra-company",
+   "explicit": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil",
+    "domain:commercial",
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o"
+   ]
+  },
+  {
+   "level": "L1",
+   "code": "S",
+   "name": "Source",
+   "explicit": [
+    "cycle:cycle-procure-pay",
+    "cycle:cycle-return-refund",
+    "cycle:cycle-source-contract",
+    "domain:returns",
+    "domain:source",
+    "domain:transport",
+    "lens:ecl-b",
+    "lens:ecl-c",
+    "lens:ecl-h",
+    "lens:ecl-q",
+    "lens:ecl-s"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "S1",
+   "name": "Strategic Source",
+   "explicit": [
+    "cycle:cycle-source-contract",
+    "domain:source",
+    "lens:ecl-b",
+    "lens:ecl-h",
+    "lens:ecl-q"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "S2",
+   "name": "Direct Procure",
+   "explicit": [
+    "cycle:cycle-procure-pay",
+    "domain:source",
+    "domain:transport",
+    "lens:ecl-c",
+    "lens:ecl-h",
+    "lens:ecl-q"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "S3",
+   "name": "Indirect Procure",
+   "explicit": [
+    "cycle:cycle-procure-pay",
+    "domain:source",
+    "domain:transport",
+    "lens:ecl-c",
+    "lens:ecl-h",
+    "lens:ecl-q"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "S4",
+   "name": "Source Return",
+   "explicit": [
+    "cycle:cycle-return-refund",
+    "domain:returns",
+    "domain:source",
+    "lens:ecl-s"
+   ]
+  },
+  {
+   "level": "L1",
+   "code": "T",
+   "name": "Transform",
+   "explicit": [
+    "cycle:cycle-plan-produce",
+    "domain:assets",
+    "domain:transform",
+    "lens:ecl-j",
+    "lens:ecl-v"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "T1",
+   "name": "Transform Product",
+   "explicit": [
+    "cycle:cycle-plan-produce",
+    "domain:transform",
+    "lens:ecl-j"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "T2",
+   "name": "Transform Service",
+   "explicit": [
+    "cycle:cycle-plan-produce",
+    "domain:transform",
+    "lens:ecl-j"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "T3",
+   "name": "Transform Maintenance, Repair, Overhaul (MRO)",
+   "explicit": [
+    "cycle:cycle-plan-produce",
+    "domain:assets",
+    "domain:transform",
+    "lens:ecl-j",
+    "lens:ecl-v"
+   ]
+  },
+  {
+   "level": "L1",
+   "code": "F",
+   "name": "Fulfill",
+   "explicit": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil",
+    "cycle:cycle-shipment-settle",
+    "domain:delivery",
+    "domain:transport",
+    "domain:warehouse",
+    "lens:ecl-d",
+    "lens:ecl-o",
+    "lens:ecl-r"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "F1",
+   "name": "Fulfill B2C",
+   "explicit": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil",
+    "cycle:cycle-shipment-settle",
+    "domain:delivery",
+    "domain:transport",
+    "domain:warehouse",
+    "lens:ecl-d",
+    "lens:ecl-o",
+    "lens:ecl-r"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "F2",
+   "name": "Fulfill B2B",
+   "explicit": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil",
+    "cycle:cycle-shipment-settle",
+    "domain:delivery",
+    "domain:transport",
+    "domain:warehouse",
+    "lens:ecl-d",
+    "lens:ecl-o",
+    "lens:ecl-r"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "F3",
+   "name": "Fulfill Intra-company",
+   "explicit": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil",
+    "cycle:cycle-shipment-settle",
+    "domain:delivery",
+    "domain:transport",
+    "domain:warehouse",
+    "lens:ecl-d",
+    "lens:ecl-o",
+    "lens:ecl-r"
+   ]
+  },
+  {
+   "level": "L1",
+   "code": "R",
+   "name": "Return",
+   "explicit": [
+    "cycle:cycle-return-refund",
+    "domain:returns",
+    "domain:warehouse",
+    "lens:ecl-s"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "R1",
+   "name": "Return Product",
+   "explicit": [
+    "cycle:cycle-return-refund",
+    "domain:returns",
+    "domain:warehouse",
+    "lens:ecl-s"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "R2",
+   "name": "Return Service",
+   "explicit": [
+    "cycle:cycle-return-refund",
+    "domain:returns",
+    "lens:ecl-s"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "R3",
+   "name": "Return MRO",
+   "explicit": [
+    "cycle:cycle-return-refund",
+    "domain:returns",
+    "domain:warehouse",
+    "lens:ecl-s"
+   ]
+  }
+ ],
+ "apqc": [
+  {
+   "level": "L1",
+   "code": "1.0",
+   "pcf": "10002",
+   "name": "Develop Vision and Strategy",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L1",
+   "code": "2.0",
+   "pcf": "10003",
+   "name": "Develop and Manage Products and Services",
+   "explicit": [
+    "lens:ecl-k"
+   ],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L1",
+   "code": "3.0",
+   "pcf": "10004",
+   "name": "Market and Sell Products and Services",
+   "explicit": [
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o"
+   ],
+   "parent_level": [],
+   "descendant": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil",
+    "domain:commercial",
+    "lens:ecl-d"
+   ]
+  },
+  {
+   "level": "L1",
+   "code": "4.0",
+   "pcf": "20022",
+   "name": "Manage Supply Chain for Physical Products",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": [
+    "cycle:cycle-forecast-plan",
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil",
+    "cycle:cycle-plan-produce",
+    "cycle:cycle-procure-pay",
+    "cycle:cycle-return-refund",
+    "cycle:cycle-shipment-settle",
+    "cycle:cycle-source-contract",
+    "domain:delivery",
+    "domain:finance",
+    "domain:plan",
+    "domain:returns",
+    "domain:source",
+    "domain:transform",
+    "domain:transport",
+    "domain:warehouse",
+    "lens:ecl-a",
+    "lens:ecl-b",
+    "lens:ecl-c",
+    "lens:ecl-e",
+    "lens:ecl-h",
+    "lens:ecl-i",
+    "lens:ecl-j",
+    "lens:ecl-l",
+    "lens:ecl-p",
+    "lens:ecl-q",
+    "lens:ecl-r",
+    "lens:ecl-s"
+   ]
+  },
+  {
+   "level": "L1",
+   "code": "5.0",
+   "pcf": "20025",
+   "name": "Deliver Services",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L1",
+   "code": "6.0",
+   "pcf": "20085",
+   "name": "Manage Customer Service",
+   "explicit": [
+    "cycle:cycle-issue-resolution",
+    "cycle:cycle-order-cash",
+    "domain:customer",
+    "lens:ecl-m",
+    "lens:ecl-n"
+   ],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L1",
+   "code": "7.0",
+   "pcf": "10007",
+   "name": "Develop and Manage Human Resources",
+   "explicit": [
+    "lens:ecl-w"
+   ],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L1",
+   "code": "8.0",
+   "pcf": "20607",
+   "name": "Manage Information Technology (IT)",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L1",
+   "code": "9.0",
+   "pcf": "17058",
+   "name": "Manage Financial Resources",
+   "explicit": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "parent_level": [],
+   "descendant": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-procure-pay",
+    "cycle:cycle-return-refund",
+    "cycle:cycle-shipment-settle",
+    "domain:finance",
+    "lens:ecl-c",
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o",
+    "lens:ecl-x"
+   ]
+  },
+  {
+   "level": "L1",
+   "code": "10.0",
+   "pcf": "19207",
+   "name": "Acquire, Construct, and Manage Assets",
+   "explicit": [
+    "lens:ecl-v"
+   ],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L1",
+   "code": "11.0",
+   "pcf": "16437",
+   "name": "Manage Enterprise Risk, Compliance, Remediation, and Resiliency",
+   "explicit": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-t",
+    "lens:ecl-u",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L1",
+   "code": "12.0",
+   "pcf": "10012",
+   "name": "Manage External Relationships",
+   "explicit": [
+    "lens:ecl-e",
+    "lens:ecl-h"
+   ],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L1",
+   "code": "13.0",
+   "pcf": "10013",
+   "name": "Develop and Manage Business Capabilities",
+   "explicit": [
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-l",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "1.1",
+   "pcf": "17040",
+   "name": "Define the business concept and long-term vision",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "1.2",
+   "pcf": "10015",
+   "name": "Develop business strategy",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "1.3",
+   "pcf": "10016",
+   "name": "Develop and measure strategic initiatives",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "1.4",
+   "pcf": "20944",
+   "name": "Develop and maintain business models",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "2.1",
+   "pcf": "19696",
+   "name": "Govern and manage product/service development program",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-k"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "2.2",
+   "pcf": "19698",
+   "name": "Generate and define new product/service ideas",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-k"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "2.3",
+   "pcf": "10062",
+   "name": "Develop products and services",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-k"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "3.1",
+   "pcf": "10101",
+   "name": "Understand markets, customers, and capabilities",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "3.2",
+   "pcf": "21615",
+   "name": "Develop marketing strategy",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "3.3",
+   "pcf": "20008",
+   "name": "Develop and manage marketing plans",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "3.4",
+   "pcf": "10103",
+   "name": "Develop sales strategy",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "3.5",
+   "pcf": "10105",
+   "name": "Develop and manage sales plans",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o"
+   ],
+   "descendant": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil",
+    "domain:commercial",
+    "lens:ecl-d"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "4.1",
+   "pcf": "10215",
+   "name": "Plan for and align supply chain resources",
+   "explicit": [
+    "cycle:cycle-forecast-plan",
+    "cycle:cycle-plan-produce",
+    "domain:plan",
+    "lens:ecl-a",
+    "lens:ecl-i",
+    "lens:ecl-p"
+   ],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "4.2",
+   "pcf": "10216",
+   "name": "Procure materials and services",
+   "explicit": [
+    "domain:source"
+   ],
+   "parent_level": [],
+   "descendant": [
+    "cycle:cycle-procure-pay",
+    "cycle:cycle-source-contract",
+    "domain:source",
+    "lens:ecl-b",
+    "lens:ecl-c",
+    "lens:ecl-e",
+    "lens:ecl-h",
+    "lens:ecl-q"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "4.3",
+   "pcf": "10217",
+   "name": "Produce/Assemble/Test product",
+   "explicit": [
+    "cycle:cycle-plan-produce",
+    "domain:transform",
+    "lens:ecl-j",
+    "lens:ecl-l"
+   ],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "4.4",
+   "pcf": "10219",
+   "name": "Manage logistics and warehousing",
+   "explicit": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-order-fulfil"
+   ],
+   "parent_level": [],
+   "descendant": [
+    "cycle:cycle-return-refund",
+    "cycle:cycle-shipment-settle",
+    "domain:delivery",
+    "domain:finance",
+    "domain:plan",
+    "domain:returns",
+    "domain:transport",
+    "domain:warehouse",
+    "lens:ecl-i",
+    "lens:ecl-q",
+    "lens:ecl-r",
+    "lens:ecl-s"
+   ]
+  },
+  {
+   "level": "L2",
+   "code": "5.1",
+   "pcf": "20026",
+   "name": "Establish service delivery governance and strategies",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "5.2",
+   "pcf": "20040",
+   "name": "Manage service delivery resources",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "5.3",
+   "pcf": "21634",
+   "name": "Manage and Operate Service Delivery System",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "5.4",
+   "pcf": "20058",
+   "name": "Deliver service to customer",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "6.1",
+   "pcf": "10378",
+   "name": "Develop customer service strategy",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "cycle:cycle-order-cash",
+    "domain:customer",
+    "lens:ecl-m",
+    "lens:ecl-n"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "6.2",
+   "pcf": "10379",
+   "name": "Plan and manage customer service contacts",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "cycle:cycle-order-cash",
+    "domain:customer",
+    "lens:ecl-m",
+    "lens:ecl-n"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "6.3",
+   "pcf": "12658",
+   "name": "Service products after sales",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "cycle:cycle-order-cash",
+    "domain:customer",
+    "lens:ecl-m",
+    "lens:ecl-n"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "6.4",
+   "pcf": "20110",
+   "name": "Manage product recalls and regulatory audits",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "cycle:cycle-order-cash",
+    "domain:customer",
+    "lens:ecl-m",
+    "lens:ecl-n"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "6.5",
+   "pcf": "20595",
+   "name": "Evaluate customer service operations and customer satisfaction",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "cycle:cycle-order-cash",
+    "domain:customer",
+    "lens:ecl-m",
+    "lens:ecl-n"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "7.1",
+   "pcf": "17043",
+   "name": "Develop and manage human resources (HR) planning, policies, and strategies",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-w"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "7.2",
+   "pcf": "10410",
+   "name": "Recruit, source, and select employees",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-w"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "7.3",
+   "pcf": "20599",
+   "name": "Manage employee onboarding, training, and development",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-w"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "7.4",
+   "pcf": "17052",
+   "name": "Manage employee relations",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-w"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "7.5",
+   "pcf": "10412",
+   "name": "Reward and retain employees",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-w"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "7.6",
+   "pcf": "10413",
+   "name": "Redeploy and retire employees",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-w"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "7.7",
+   "pcf": "17056",
+   "name": "Manage employee information and analytics",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-w"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "7.8",
+   "pcf": "21451",
+   "name": "Manage employee communication",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-w"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "8.1",
+   "pcf": "20608",
+   "name": "Develop and manage IT customer relationships",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "8.2",
+   "pcf": "20652",
+   "name": "Develop and manage IT business strategy",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "8.3",
+   "pcf": "20706",
+   "name": "Develop and manage IT resilience and risk",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "8.4",
+   "pcf": "20765",
+   "name": "Manage information",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "8.5",
+   "pcf": "20784",
+   "name": "Develop and manage services/solutions",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "8.6",
+   "pcf": "20824",
+   "name": "Deploy services/solutions",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "8.7",
+   "pcf": "20866",
+   "name": "Create and manage support services/solutions",
+   "explicit": [],
+   "parent_level": [],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "9.1",
+   "pcf": "10728",
+   "name": "Perform planning and management accounting",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "9.2",
+   "pcf": "10729",
+   "name": "Perform revenue accounting",
+   "explicit": [
+    "cycle:cycle-order-cash",
+    "cycle:cycle-return-refund",
+    "cycle:cycle-shipment-settle",
+    "domain:finance",
+    "lens:ecl-d",
+    "lens:ecl-f",
+    "lens:ecl-o",
+    "lens:ecl-x"
+   ],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "9.3",
+   "pcf": "10730",
+   "name": "Perform general accounting and reporting",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "9.4",
+   "pcf": "10731",
+   "name": "Manage fixed-asset project accounting",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "9.5",
+   "pcf": "10732",
+   "name": "Process payroll",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "9.6",
+   "pcf": "10733",
+   "name": "Process accounts payable and expense reimbursements",
+   "explicit": [
+    "cycle:cycle-procure-pay",
+    "cycle:cycle-shipment-settle",
+    "domain:finance",
+    "lens:ecl-c",
+    "lens:ecl-x"
+   ],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "9.7",
+   "pcf": "10734",
+   "name": "Manage treasury operations",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "9.8",
+   "pcf": "10735",
+   "name": "Manage internal controls",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "9.9",
+   "pcf": "10736",
+   "name": "Manage taxes",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "9.10",
+   "pcf": "10737",
+   "name": "Manage international funds/consolidation",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "9.11",
+   "pcf": "17059",
+   "name": "Perform global trade services",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-x"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "10.1",
+   "pcf": "10937",
+   "name": "Plan and acquire assets",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-v"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "10.2",
+   "pcf": "21575",
+   "name": "Design and construct assets",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-v"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "10.3",
+   "pcf": "19238",
+   "name": "Maintain assets",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-v"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "10.4",
+   "pcf": "21576",
+   "name": "Manage asset end-of-life",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-v"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "11.1",
+   "pcf": "17060",
+   "name": "Manage enterprise risk",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-t",
+    "lens:ecl-u",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "11.2",
+   "pcf": "17467",
+   "name": "Manage compliance",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-t",
+    "lens:ecl-u",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "11.3",
+   "pcf": "11185",
+   "name": "Manage remediation efforts",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-t",
+    "lens:ecl-u",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "11.4",
+   "pcf": "11216",
+   "name": "Manage business resiliency",
+   "explicit": [],
+   "parent_level": [
+    "cycle:cycle-issue-resolution",
+    "lens:ecl-n",
+    "lens:ecl-t",
+    "lens:ecl-u",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "12.1",
+   "pcf": "11010",
+   "name": "Build investor relationships",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-e",
+    "lens:ecl-h"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "12.2",
+   "pcf": "11011",
+   "name": "Manage government and industry relationships",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-e",
+    "lens:ecl-h"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "12.3",
+   "pcf": "11012",
+   "name": "Manage relations with board of directors",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-e",
+    "lens:ecl-h"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "12.4",
+   "pcf": "11013",
+   "name": "Manage legal and ethical issues",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-e",
+    "lens:ecl-h"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "12.5",
+   "pcf": "11014",
+   "name": "Manage public relations program",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-e",
+    "lens:ecl-h"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "13.1",
+   "pcf": "16378",
+   "name": "Manage business processes",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-l",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "13.2",
+   "pcf": "16400",
+   "name": "Manage portfolio, program, and project",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-l",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "13.3",
+   "pcf": "17471",
+   "name": "Manage enterprise quality",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-l",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "13.4",
+   "pcf": "11074",
+   "name": "Manage change",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-l",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "13.5",
+   "pcf": "11073",
+   "name": "Develop and manage enterprise-wide knowledge management (KM) capability",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-l",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "13.6",
+   "pcf": "21646",
+   "name": "Manage Content",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-l",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "13.7",
+   "pcf": "21584",
+   "name": "Measure and benchmark",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-l",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "13.8",
+   "pcf": "20959",
+   "name": "Develop, Manage, and Deliver Analytics",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-l",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "13.9",
+   "pcf": "11179",
+   "name": "Manage Environmental Health and Safety (EHS)",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-l",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  },
+  {
+   "level": "L2",
+   "code": "13.10",
+   "pcf": "21588",
+   "name": "Manage sustainability",
+   "explicit": [],
+   "parent_level": [
+    "lens:ecl-aa",
+    "lens:ecl-g",
+    "lens:ecl-l",
+    "lens:ecl-y",
+    "lens:ecl-z"
+   ],
+   "descendant": []
+  }
+ ]
+}
