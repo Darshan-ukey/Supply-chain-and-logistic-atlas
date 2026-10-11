@@ -1,0 +1,34 @@
+=== CONCURRENCY RACE RESULTS (two real sessions; A holds its transaction open 3 s, B starts after 1 s) ===
+[normalization_interface_REV2_DESIGN_ONLY.sql | read committed | race_a.sql vs race_b.sql]
+  B result: (B committed without error)
+  rows committed: obj-a:Shipment record:PROPOSED, obj-b:shipment-record:PROPOSED
+[normalization_interface_REV3_DESIGN_ONLY.sql | read committed | race_a.sql vs race_b.sql]
+  B result: psql:race_b.sql:3: ERROR:  conflicting key value violates exclusion constraint "stg_alias_one_live_owner_per_key"
+  rows committed: obj-a:Shipment record:PROPOSED
+[normalization_interface_REV2_DESIGN_ONLY.sql | repeatable read | race_a.sql vs race_b.sql]
+  B result: (B committed without error)
+  rows committed: obj-a:Shipment record:PROPOSED, obj-b:shipment-record:PROPOSED
+[normalization_interface_REV3_DESIGN_ONLY.sql | repeatable read | race_a.sql vs race_b.sql]
+  B result: psql:race_b.sql:3: ERROR:  conflicting key value violates exclusion constraint "stg_alias_one_live_owner_per_key"
+  rows committed: obj-a:Shipment record:PROPOSED
+[normalization_interface_REV2_DESIGN_ONLY.sql | serializable | race_a.sql vs race_b.sql]
+  B result: (B committed without error)
+  rows committed: obj-b:shipment-record:PROPOSED
+[normalization_interface_REV3_DESIGN_ONLY.sql | serializable | race_a.sql vs race_b.sql]
+  B result: psql:race_b.sql:3: ERROR:  conflicting key value violates exclusion constraint "stg_alias_one_live_owner_per_key"
+  rows committed: obj-a:Shipment record:PROPOSED
+[normalization_interface_REV2_DESIGN_ONLY.sql | read committed | race_amb_a.sql vs race_amb_b.sql]
+  B result: (B committed without error)
+  rows committed: obj-a:Sea waybill:AMBIGUOUS, obj-c:sea-waybill:PROPOSED
+[normalization_interface_REV3_DESIGN_ONLY.sql | read committed | race_amb_a.sql vs race_amb_b.sql]
+  B result: psql:race_amb_b.sql:3: ERROR:  conflicting key value violates exclusion constraint "stg_alias_no_live_beside_ambiguous"
+  rows committed: obj-a:Sea waybill:AMBIGUOUS
+[normalization_interface_REV2_DESIGN_ONLY.sql | repeatable read | race_amb_a.sql vs race_amb_b.sql]
+  B result: (B committed without error)
+  rows committed: obj-a:Sea waybill:AMBIGUOUS, obj-c:sea-waybill:PROPOSED
+[normalization_interface_REV3_DESIGN_ONLY.sql | repeatable read | race_amb_a.sql vs race_amb_b.sql]
+  B result: psql:race_amb_b.sql:3: ERROR:  conflicting key value violates exclusion constraint "stg_alias_no_live_beside_ambiguous"
+  rows committed: obj-a:Sea waybill:AMBIGUOUS
+[normalization_interface_REV3_DESIGN_ONLY.sql | read committed | race_a.sql vs race_samenorm_b.sql]
+  B result: psql:race_samenorm_b.sql:3: ERROR:  duplicate key value violates unique constraint "stg_alias_one_active_owner"
+  rows committed: obj-a:Shipment record:PROPOSED

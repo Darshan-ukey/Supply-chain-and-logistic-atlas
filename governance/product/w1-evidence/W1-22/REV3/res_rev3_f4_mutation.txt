@@ -1,0 +1,64 @@
+psql:test_w122_rev3_f4_mut.sql:73: NOTICE:  drop cascades to 32 other objects
+DETAIL:  drop cascades to table atlas_stg_v73.stg_release
+drop cascades to table atlas_stg_v73.stg_import_run
+drop cascades to table atlas_stg_v73.stg_construct
+drop cascades to table atlas_stg_v73.stg_alias
+drop cascades to table atlas_stg_v73.stg_source
+drop cascades to table atlas_stg_v73.stg_family_alias
+drop cascades to table atlas_stg_v73.stg_lineage
+drop cascades to function atlas_stg_v73.stg_lineage_append_only()
+drop cascades to table atlas_stg_v73.stg_admin_role
+drop cascades to table atlas_stg_v73.stg_change_request
+drop cascades to table atlas_stg_v73.stg_approval
+drop cascades to function atlas_stg_v73.stg_change_hash(text)
+drop cascades to function atlas_stg_v73.stg_change_valid_applied(text)
+drop cascades to function atlas_stg_v73.stg_approval_guard()
+drop cascades to function atlas_stg_v73.stg_approval_immutable()
+drop cascades to function atlas_stg_v73.stg_change_freeze()
+drop cascades to function atlas_stg_v73.stg_apply_guard()
+drop cascades to function atlas_stg_v73.stg_strict_key(text)
+drop cascades to table atlas_stg_v73.stg_ambiguity
+drop cascades to table atlas_stg_v73.stg_ambiguity_member
+drop cascades to function atlas_stg_v73.stg_ambiguity_guard()
+drop cascades to function atlas_stg_v73.stg_ambiguity_member_guard()
+drop cascades to table atlas_stg_v73.stg_id_ledger
+drop cascades to function atlas_stg_v73.stg_validate_mint(text,text,text)
+drop cascades to function atlas_stg_v73.stg_ledger_hash(text,bigint,text,text,text,text,timestamp with time zone)
+drop cascades to function atlas_stg_v73.stg_id_ledger_guard()
+drop cascades to function atlas_stg_v73.stg_id_ledger_no_truncate()
+drop cascades to function atlas_stg_v73.stg_id_ledger_verify()
+drop cascades to function atlas_stg_v73.stg_construct_guard()
+drop cascades to function atlas_stg_v73.stg_alias_guard()
+drop cascades to function atlas_stg_v73.stg_family_alias_guard()
+drop cascades to function atlas_stg_v73.stg_resolve_term(text,text)
+===== RESULTS =====
+ test_id | finding | outcome |                                               name                                                |                                                     detail                                                     
+---------+---------+---------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------
+ F4R3-01 | F4      | PASS    | first live owner accepted (trigger on)                                                            | ok
+ F4R3-02 | F4      | FAIL    | TRIGGER OFF: punctuation variant by another construct refused by the exclusion constraint         | statement succeeded but a refusal was expected
+ F4R3-03 | F4      | FAIL    | TRIGGER OFF: whitespace-run variant refused (unique index on the plain term would not see it)     | statement succeeded but a refusal was expected
+ F4R3-04 | F4      | PASS    | TRIGGER OFF: Bill & Lading by obj-a accepted                                                      | ok
+ F4R3-05 | F4      | FAIL    | TRIGGER OFF: bill and lading by obj-b refused (strict key equal)                                  | statement succeeded but a refusal was expected
+ F4R3-06 | F4      | PASS    | TRIGGER OFF: identical term by another construct refused (unique index or exclusion)              | duplicate key value violates unique constraint "stg_alias_one_active_owner"
+ F4R3-07 | F4      | FAIL    | TRIGGER OFF: the SAME construct may hold two spellings of one key                                 | unexpected error: duplicate key value violates unique constraint "stg_alias_one_active_owner"
+ F4R3-08 | F4      | PASS    | TRIGGER OFF: same key in another kind accepted (cross-kind stays AMBIGUOUS_KIND at lookup)        | ok
+ F4R3-09 | F4      | FAIL    | TRIGGER OFF: AMBIGUOUS holder of another construct beside a live owner refused                    | statement succeeded but a refusal was expected
+ F4R3-10 | F4      | PASS    | TRIGGER OFF: two constructs may both hold a term as AMBIGUOUS (register case)                     | ok
+ F4R3-11 | F4      | PASS    | TRIGGER OFF: second AMBIGUOUS holder                                                              | ok
+ F4R3-12 | F4      | FAIL    | TRIGGER OFF: a live owner of that key beside the AMBIGUOUS holders refused                        | statement succeeded but a refusal was expected
+ F4R3-13 | F4      | PASS    | TRIGGER OFF: RETIRED rows are outside the constraints                                             | ok
+ F4R3-14 | F4      | FAIL    | TRIGGER OFF: moving a row into the live class against another live owner is refused (update path) | wrong error: duplicate key value violates unique constraint "stg_alias_one_active_owner"
+ F4R3-15 | F4      | PASS    | alias_key cannot be written directly (generated)                                                  | column "alias_key" can only be updated to DEFAULT
+ F4R3-16 | F4      | PASS    | alias_key equals the strict key of the raw text                                                   | got [bill and lading] expected [bill and lading]
+ F4R3-17 | F4      | PASS    | alias_class: retired=null, ambiguous=2, live=1                                                    | got [true,2,1] expected [true,2,1]
+ F4R3-18 | F4      | PASS    | TRIGGER ON: readable owner-conflict message still returned first                                  | same-kind alias owner conflict: bill-and-lading is already owned in kind object by another construct (R-AL-2, 
+ F4R3-19 | F4      | FAIL    | two exclusion constraints exist on stg_alias                                                      | got [0] expected [2]
+ F4R3-20 | F4      | PASS    | rollback: schema drop cascade                                                                     | ok
+(20 rows)
+
+ outcome | count 
+---------+-------
+ FAIL    |     8
+ PASS    |    12
+(2 rows)
+

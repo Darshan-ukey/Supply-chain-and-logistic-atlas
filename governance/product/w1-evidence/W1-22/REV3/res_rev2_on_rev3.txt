@@ -1,0 +1,139 @@
+psql:test_w122_rev2_on_rev3.sql:290: NOTICE:  drop cascades to 32 other objects
+DETAIL:  drop cascades to table atlas_stg_v73.stg_release
+drop cascades to table atlas_stg_v73.stg_import_run
+drop cascades to table atlas_stg_v73.stg_construct
+drop cascades to table atlas_stg_v73.stg_alias
+drop cascades to table atlas_stg_v73.stg_source
+drop cascades to table atlas_stg_v73.stg_family_alias
+drop cascades to table atlas_stg_v73.stg_lineage
+drop cascades to function atlas_stg_v73.stg_lineage_append_only()
+drop cascades to table atlas_stg_v73.stg_admin_role
+drop cascades to table atlas_stg_v73.stg_change_request
+drop cascades to table atlas_stg_v73.stg_approval
+drop cascades to function atlas_stg_v73.stg_change_hash(text)
+drop cascades to function atlas_stg_v73.stg_change_valid_applied(text)
+drop cascades to function atlas_stg_v73.stg_approval_guard()
+drop cascades to function atlas_stg_v73.stg_approval_immutable()
+drop cascades to function atlas_stg_v73.stg_change_freeze()
+drop cascades to function atlas_stg_v73.stg_apply_guard()
+drop cascades to function atlas_stg_v73.stg_strict_key(text)
+drop cascades to table atlas_stg_v73.stg_ambiguity
+drop cascades to table atlas_stg_v73.stg_ambiguity_member
+drop cascades to function atlas_stg_v73.stg_ambiguity_guard()
+drop cascades to function atlas_stg_v73.stg_ambiguity_member_guard()
+drop cascades to table atlas_stg_v73.stg_id_ledger
+drop cascades to function atlas_stg_v73.stg_validate_mint(text,text,text)
+drop cascades to function atlas_stg_v73.stg_ledger_hash(text,bigint,text,text,text,text,timestamp with time zone)
+drop cascades to function atlas_stg_v73.stg_id_ledger_guard()
+drop cascades to function atlas_stg_v73.stg_id_ledger_no_truncate()
+drop cascades to function atlas_stg_v73.stg_id_ledger_verify()
+drop cascades to function atlas_stg_v73.stg_construct_guard()
+drop cascades to function atlas_stg_v73.stg_alias_guard()
+drop cascades to function atlas_stg_v73.stg_family_alias_guard()
+drop cascades to function atlas_stg_v73.stg_resolve_term(text,text)
+===== RESULTS =====
+ test_id | finding | outcome |                                                   name                                                    |                                                detail                                                
+---------+---------+---------+-----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------
+ F4-00a  | F4      | PASS    | AMBIGUITY_RESOLUTION is an accepted change_class                                                          | ok
+ F4-00b  | F4      | PASS    | an unknown change_class is still refused                                                                  | new row for relation "stg_change_request" violates check constraint "stg_change_request_change_class
+ F4-L01  | F4      | PASS    | 7 seed ids logged, hash-chained, chain verifies                                                           | got [7/0] expected [7/0]
+ F4-L02  | F4      | PASS    | ledger row cannot be updated                                                                              | stg_id_ledger is append-only (F4)
+ F4-L03  | F4      | PASS    | ledger row cannot be deleted                                                                              | stg_id_ledger is append-only (F4)
+ F4-L04  | F4      | PASS    | ledger cannot be truncated                                                                                | stg_id_ledger is append-only (truncate refused, F4)
+ F4-L05  | F4      | PASS    | a seed id cannot be seeded twice                                                                          | seed id refused: {M3_ID_EXISTS}
+ F4-L06  | F4      | PASS    | seed id with bad grammar refused                                                                          | seed id refused: {M1_ID_GRAMMAR,M2_PREFIX_KIND_MISMATCH}
+ F4-L07  | F4      | PASS    | seed id with the wrong prefix for its kind refused                                                        | seed id refused: {M2_PREFIX_KIND_MISMATCH}
+ F4-L08  | F4      | PASS    | an entity-kind construct cannot exist without a ledger birth event                                        | construct obj-ghost has no ledger birth event (SEED expected) (F4)
+ F4-L09  | F4      | PASS    | a non-entity construct kind (domain) needs no ledger event                                                | ok
+ F4-L10  | F4      | PASS    | a construct cannot be deleted                                                                             | constructs are never deleted; tombstone through the ledger (R-ID-3, F4)
+ F4-L11  | F4      | PASS    | a construct id cannot be edited                                                                           | construct id is immutable (R-ID-3, F4)
+ F4-L12  | F4      | PASS    | MINTED with no request is refused                                                                         | ledger event MINTED for actor-freight-broker needs a request targeting stg_construct actor|actor-fre
+ F4-L13  | F4      | PASS    | MINTED with a PENDING request is refused                                                                  | ledger event MINTED for actor-freight-broker needs a validly applied request (F4)
+ F4-L14  | F4      | PASS    | a request for another key does not authorize this id                                                      | ledger event MINTED for actor-retailer needs a request targeting stg_construct actor|actor-retailer
+ F4-L15  | F4      | PASS    | a daughter candidate never mints a Universe id                                                            | ledger events come only from UNIVERSE_CANDIDATE requests; daughters never mint Universe ids (R-ID-5)
+ F4-L16  | F4      | PASS    | mint without a duplicate-gate result is refused                                                           | mint needs a duplicate-gate result PASS or REVIEW attached to the request; BLOCK or missing is refus
+ F4-L17  | F4      | PASS    | mint with gate_result BLOCK is refused                                                                    | mint needs a duplicate-gate result PASS or REVIEW attached to the request; BLOCK or missing is refus
+ F4-L18  | F4      | PASS    | mint with REVIEW and no recorded disposition is refused                                                   | a REVIEW gate result needs a recorded disposition (R-ID-5)
+ F4-L19  | F4      | PASS    | mint of a non-atomic Business Object name is refused (M5)                                                 | mint refused: {M5_NON_ATOMIC_CANONICAL_NAME}
+ F4-L20  | F4      | PASS    | mint of an id that already exists is refused (M3)                                                         | mint refused: {M3_ID_EXISTS}
+ F4-L21  | F4      | PASS    | a construct with origin GOVERNED_ADDITION and no MINTED event is refused                                  | construct actor-freight-broker has no ledger birth event (MINTED expected) (F4)
+ F4-L22  | F4      | PASS    | mint accepted with a validly applied request, a gate result and a recorded disposition                    | ok
+ F4-L23  | F4      | PASS    | the construct is created after its ledger event                                                           | ok
+ F4-L24  | F4      | PASS    | the same id cannot be minted twice                                                                        | mint refused: {M3_ID_EXISTS}
+ F4-L25  | F4      | PASS    | lifecycle cannot be set to TOMBSTONE without a ledger event                                               | tombstone needs a TOMBSTONED ledger event first (F4)
+ F4-L26  | F4      | PASS    | TOMBSTONED event with a pending request is refused                                                        | ledger event TOMBSTONED for obj-b needs a validly applied request (F4)
+ F4-L27  | F4      | PASS    | TOMBSTONED accepted with a validly applied request                                                        | ok
+ F4-L28  | F4      | PASS    | lifecycle follows the ledger                                                                              | ok
+ F4-L29  | F4      | PASS    | a tombstoned id cannot be minted again (M3/M4)                                                            | mint refused: {M3_ID_EXISTS,M4_TOMBSTONED_ID_REUSE}
+ F4-L30  | F4      | PASS    | validate_mint reports M3 and M4 for the tombstoned id                                                     | got [M3_ID_EXISTS,M4_TOMBSTONED_ID_REUSE] expected [M3_ID_EXISTS,M4_TOMBSTONED_ID_REUSE]
+ F4-L31  | F4      | PASS    | lifecycle cannot return to ACTIVE without a RESTORED event                                                | restore needs a RESTORED ledger event first (F4)
+ F4-L32  | F4      | PASS    | RESTORED accepted for a tombstoned construct (rollback of a merge)                                        | ok
+ F4-L33  | F4      | PASS    | lifecycle back to ACTIVE after the RESTORED event                                                         | ok
+ F4-L34  | F4      | PASS    | REJECTED_PROPOSAL needs a REJECTED request                                                                | a rejected proposal needs a REJECTED request (F4)
+ F4-L35  | F4      | PASS    | REJECTED_PROPOSAL accepted after a recorded rejection                                                     | ok
+ F4-L36  | F4      | PASS    | chain verifies after all legitimate events                                                                | got [0] expected [0]
+ F4-A01  | F4      | PASS    | first owner of a term is accepted                                                                         | ok
+ F4-A02  | F4      | PASS    | a second owner of the same term in the same kind is refused                                               | same-kind alias owner conflict: shipment record is already owned in kind object by another construct
+ F4-A03  | F4      | PASS    | case and whitespace do not create a second owner                                                          | same-kind alias owner conflict: shipment record is already owned in kind object by another construct
+ F4-A04  | F4      | PASS    | strict-key variants (punctuation, ampersand) do not create a second owner                                 | same-kind alias owner conflict: shipment-record is already owned in kind object by another construct
+ F4-A05  | F4      | PASS    | the same term in a different kind is allowed (cross-kind overlap stays AMBIGUOUS_KIND)                    | ok
+ F4-A05b | F4      | PASS    | cross-kind overlap: second kind accepted                                                                  | ok
+ F4-A06  | F4      | PASS    | lookup without a kind hint returns AMBIGUOUS_KIND, never a pick                                           | got [AMBIGUOUS_KIND] expected [AMBIGUOUS_KIND]
+ F4-A07  | F4      | PASS    | lookup with a kind hint resolves to one id                                                                | got [RESOLVED:evt-dispatched] expected [RESOLVED:evt-dispatched]
+ F4-A08  | F4      | PASS    | relationship-type code is not an alias key                                                                | relationship-type codes are labels, not alias keys (R-AL-5)
+ F4-A09  | F4      | PASS    | an alias cannot be inserted already CONFIRMED                                                             | an alias is inserted CONFIRMED_SEED, PROPOSED or AMBIGUOUS; other states are reached by approved tra
+ F4-A10  | F4      | PASS    | CONFIRMED_SEED is refused on a governed addition                                                          | CONFIRMED_SEED is only for constructs imported from V7.3 (R-AL-8)
+ F4-A11  | F4      | PASS    | an alias row cannot be deleted                                                                            | aliases are never deleted; RETIRE through an approved request (F4)
+ F4-A12  | F4      | PASS    | alias identity cannot be edited                                                                           | alias identity is immutable (F4)
+ F4-S01  | F4      | PASS    | first holder of a term loads CONFIRMED_SEED                                                               | ok
+ F4-S02  | F4      | PASS    | V7.3 last-wins is closed: a second CONFIRMED_SEED holder is refused                                       | same-kind alias owner conflict: bill of sale is already owned in kind document by another construct 
+ F4-S03  | F4      | PASS    | AMBIGUOUS cannot be used to sneak in a second holder without an open register row                         | same-kind alias owner conflict: bill of sale is already owned in kind document by another construct 
+ F4-S04  | F4      | PASS    | with an open register row the first holder loads AMBIGUOUS                                                | ok
+ F4-S04b | F4      | PASS    | the second holder loads AMBIGUOUS                                                                         | ok
+ F4-S05  | F4      | PASS    | lookup returns AMBIGUOUS_ENTITY listing both, never the later record                                      | got [AMBIGUOUS_ENTITY:doc-ocean-bl,doc-ocean-sea-waybill] expected [AMBIGUOUS_ENTITY:doc-ocean-bl,do
+ F4-S06  | F4      | PASS    | a third construct cannot take the term as exclusive owner while it is AMBIGUOUS                           | term sea waybill is AMBIGUOUS in kind document: no exclusive owner until an approved resolution (R-A
+ F4-B01  | F4      | PASS    | an ambiguity cannot be registered already decided                                                         | an ambiguity is registered as OPEN; a decision needs an approved request (F4)
+ F4-B02  | F4      | PASS    | status change with no request is refused                                                                  | ambiguity AMB-SW status HITL_KEEP_AMBIGUOUS needs a validly applied AMBIGUITY_RESOLUTION request on 
+ F4-B03  | F4      | PASS    | a PENDING request does not authorize the decision                                                         | ambiguity AMB-SW status HITL_KEEP_AMBIGUOUS needs a validly applied AMBIGUITY_RESOLUTION request on 
+ F4-B04  | F4      | PASS    | an applied request of the wrong class is refused                                                          | ambiguity AMB-SW status HITL_KEEP_AMBIGUOUS needs a validly applied AMBIGUITY_RESOLUTION request on 
+ F4-B05  | F4      | PASS    | an applied request on another ambiguity is refused                                                        | ambiguity AMB-SW status HITL_KEEP_AMBIGUOUS needs a validly applied AMBIGUITY_RESOLUTION request on 
+ F4-B06  | F4      | PASS    | keep-ambiguous accepted with a validly applied request on exactly this ambiguity                          | ok
+ F4-B07  | F4      | PASS    | members cannot be added after the decision                                                                | members can be added only while the ambiguity is OPEN (F4)
+ F4-B08  | F4      | PASS    | members are immutable                                                                                     | ambiguity members are immutable (F4)
+ F4-B09  | F4      | PASS    | an ambiguity row cannot be deleted                                                                        | stg_ambiguity rows are not deleted (F4)
+ F4-B10  | F4      | PASS    | a kept-ambiguous term stays AMBIGUOUS: alias state cannot change on a keep decision                       | alias sea waybill leaves AMBIGUOUS only after an approved HITL_RESOLVED decision of its ambiguity (F
+ F4-B11  | F4      | PASS    | resolved owner must be the owner_id of the request                                                        | resolved owner must be the owner_id of the approved request and a registered member (F4)
+ F4-B12  | F4      | PASS    | resolution accepted with an approved request and a registered owner                                       | ok
+ F4-B13  | F4      | PASS    | a resolved ambiguity is final                                                                             | ambiguity AMB-SW is HITL_RESOLVED and final (F4)
+ F4-B14  | F4      | PASS    | the loser cannot be CONFIRMED                                                                             | after resolution the owner is CONFIRMED and every other member RETIRED (F4)
+ F4-B15  | F4      | PASS    | leaving AMBIGUOUS with no new request reference is refused                                                | alias state change needs a new approved request in state_change_id (R-AL-8, F4)
+ F4-B17  | F4      | PASS    | the other member becomes RETIRED                                                                          | ok
+ F4-B16  | F4      | PASS    | the approved owner becomes CONFIRMED                                                                      | ok
+ F4-B18  | F4      | PASS    | lookup now resolves to the approved owner only                                                            | got [RESOLVED:doc-ocean-sea-waybill] expected [RESOLVED:doc-ocean-sea-waybill]
+ F4-B19  | F4      | PASS    | RETIRED is final                                                                                          | RETIRED is final (F4)
+ F4-B20  | F4      | PASS    | PROPOSED -> CONFIRMED with a pending request is refused                                                   | alias object|obj-a|shipment record state CONFIRMED needs a validly applied request on exactly this a
+ F4-B21  | F4      | PASS    | an applied request on another alias does not authorize this one                                           | alias object|obj-a|shipment record state CONFIRMED needs a validly applied request on exactly this a
+ F4-B22  | F4      | PASS    | PROPOSED -> CONFIRMED accepted with an applied request on exactly this alias                              | ok
+ F4-U01  | F4      | PASS    | a family key cannot enter CONFIRMED                                                                       | a family key enters PROPOSED or AMBIGUOUS (R-XS-3, F4)
+ F4-U02  | F4      | PASS    | AMBIGUOUS family key needs a register row                                                                 | AMBIGUOUS family key uncitral needs an open ambiguity-register row listing src-mletr
+ F4-U03  | F4      | PASS    | uncitral candidates load AMBIGUOUS with original name and URL preserved                                   | ok
+ F4-U04  | F4      | PASS    | confirming a candidate without a request is refused                                                       | family key uncitral -> src-hague-visby needs a validly applied AMBIGUITY_RESOLUTION request on exact
+ F4-U05  | F4      | PASS    | even with an approved request on the member, confirmation is refused while the register row is unresolved | family key uncitral has a register row not resolved to src-hague-visby: confirm only the approved ow
+ F4-U06  | F4      | PASS    | original name and URL cannot be rewritten                                                                 | original key, name and URL are preserved verbatim (R-XS-2)
+ F4-U07  | F4      | PASS    | no uncitral member is confirmed                                                                           | got [0] expected [0]
+ F4-R01b | REG     | PASS    | approval with a wrong hash is refused                                                                     | approval hash does not match the content of change CR-X1b (F1)
+ F4-R02  | REG     | PASS    | stg_lineage remains append-only                                                                           | stg_lineage is append-only
+ F4-R03  | REG     | PASS    | RLS enabled on the three new tables                                                                       | got [3] expected [3]
+ F4-R04  | REG     | PASS    | chain still verifies after the whole suite of legitimate events                                           | got [0] expected [0]
+ F4-L37  | F4      | PASS    | an edit made with the guard disabled is detected at the edited row                                        | got [3 row content does not match row_hash] expected [3 row content does not match row_hash]
+ F4-L38  | F4      | PASS    | restoring the original content restores a valid chain                                                     | got [0] expected [0]
+ F4-L39  | F4      | PASS    | a removed middle row is detected at the next row                                                          | got [5 prev_hash does not match the preceding row] expected [5 prev_hash does not match the precedin
+ F4-R05  | REG     | PASS    | schema drop cascade (rollback) succeeds                                                                   | ok
+ F4-R06  | REG     | PASS    | no object remains                                                                                         | got [0] expected [0]
+(96 rows)
+
+ outcome | count 
+---------+-------
+ PASS    |    96
+(1 row)
+
