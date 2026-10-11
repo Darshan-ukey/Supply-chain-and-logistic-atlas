@@ -1,0 +1,927 @@
+{
+ "sha256Input": "31503394e84d01b4b50831e82cbcd674c5cf77ea83021d95cf2a0ba07e42debd",
+ "seed": 20261010,
+ "generator": "mulberry32",
+ "shuffle": "Fisher-Yates i=n-1..1, j=floor(rnd()*(i+1)); reseeded per stratum",
+ "populations": {
+  "business_object": 128,
+  "system": 78,
+  "document_event": 28,
+  "documents": 19,
+  "events": 9
+ },
+ "business_object": [
+  {
+   "rank": 1,
+   "popIndex": 38,
+   "stratum": "business_object",
+   "id": "obj-vehicle",
+   "code": "",
+   "name": "Vehicle",
+   "aliases": [
+    "vehicle"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": []
+  },
+  {
+   "rank": 2,
+   "popIndex": 37,
+   "stratum": "business_object",
+   "id": "obj-equipment",
+   "code": "",
+   "name": "Equipment",
+   "aliases": [
+    "equipment"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "transport",
+    "assets"
+   ]
+  },
+  {
+   "rank": 3,
+   "popIndex": 126,
+   "stratum": "business_object",
+   "id": "obj-knowledge-asset",
+   "code": "",
+   "name": "Knowledge Asset",
+   "aliases": [
+    "Knowledge asset"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": []
+  },
+  {
+   "rank": 4,
+   "popIndex": 55,
+   "stratum": "business_object",
+   "id": "obj-filing",
+   "code": "",
+   "name": "Filing",
+   "aliases": [
+    "filing"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "trade"
+   ]
+  },
+  {
+   "rank": 5,
+   "popIndex": 26,
+   "stratum": "business_object",
+   "id": "obj-seal",
+   "code": "",
+   "name": "Seal",
+   "aliases": [
+    "seal",
+    "container seal"
+   ],
+   "description": "Seal identity/state associated with applicable equipment and control evidence.",
+   "domainIds": []
+  },
+  {
+   "rank": 6,
+   "popIndex": 77,
+   "stratum": "business_object",
+   "id": "obj-subrogation",
+   "code": "",
+   "name": "Subrogation",
+   "aliases": [
+    "Subrogation"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "claims"
+   ]
+  },
+  {
+   "rank": 7,
+   "popIndex": 31,
+   "stratum": "business_object",
+   "id": "obj-shipping-instructions",
+   "code": "SI",
+   "name": "Shipping Instructions",
+   "aliases": [
+    "shipping instructions",
+    "SI"
+   ],
+   "description": "Instruction/data object preceding or supporting transport-document creation within applicable Ocean/document processes.",
+   "domainIds": []
+  },
+  {
+   "rank": 8,
+   "popIndex": 39,
+   "stratum": "business_object",
+   "id": "obj-trailer",
+   "code": "",
+   "name": "Trailer",
+   "aliases": [
+    "trailer"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": []
+  },
+  {
+   "rank": 9,
+   "popIndex": 69,
+   "stratum": "business_object",
+   "id": "obj-condition-record",
+   "code": "",
+   "name": "Condition Record",
+   "aliases": [
+    "Condition"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "claims",
+    "assets"
+   ]
+  },
+  {
+   "rank": 10,
+   "popIndex": 61,
+   "stratum": "business_object",
+   "id": "obj-supplier-invoice",
+   "code": "",
+   "name": "Supplier Invoice",
+   "aliases": [
+    "Supplier invoice"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "finance"
+   ]
+  },
+  {
+   "rank": 11,
+   "popIndex": 65,
+   "stratum": "business_object",
+   "id": "obj-payment",
+   "code": "",
+   "name": "Payment",
+   "aliases": [
+    "Payment"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "finance"
+   ]
+  },
+  {
+   "rank": 12,
+   "popIndex": 2,
+   "stratum": "business_object",
+   "id": "obj-order",
+   "code": "Order",
+   "name": "Order",
+   "aliases": [
+    "Order"
+   ],
+   "description": "A commercial or supply commitment; distinct from a shipment or booking.",
+   "domainIds": [
+    "commercial",
+    "warehouse",
+    "transport",
+    "finance",
+    "customer"
+   ]
+  },
+  {
+   "rank": 13,
+   "popIndex": 78,
+   "stratum": "business_object",
+   "id": "obj-asset-master",
+   "code": "",
+   "name": "Asset Master",
+   "aliases": [
+    "Asset master"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "assets",
+    "masterdata"
+   ]
+  },
+  {
+   "rank": 14,
+   "popIndex": 29,
+   "stratum": "business_object",
+   "id": "obj-cfs-handoff",
+   "code": "",
+   "name": "CFS Handoff",
+   "aliases": [
+    "CFS handoff"
+   ],
+   "description": "Handoff at a container freight station where applicable.",
+   "domainIds": []
+  },
+  {
+   "rank": 15,
+   "popIndex": 63,
+   "stratum": "business_object",
+   "id": "obj-accrual",
+   "code": "",
+   "name": "Accrual",
+   "aliases": [
+    "Accrual"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "finance"
+   ]
+  },
+  {
+   "rank": 16,
+   "popIndex": 53,
+   "stratum": "business_object",
+   "id": "obj-regulatory-status",
+   "code": "",
+   "name": "Regulatory Status",
+   "aliases": [
+    "Regulatory status"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "transport",
+    "assets"
+   ]
+  },
+  {
+   "rank": 17,
+   "popIndex": 116,
+   "stratum": "business_object",
+   "id": "obj-control-evidence",
+   "code": "",
+   "name": "Control Evidence",
+   "aliases": [
+    "Control evidence"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": []
+  },
+  {
+   "rank": 18,
+   "popIndex": 58,
+   "stratum": "business_object",
+   "id": "obj-release",
+   "code": "",
+   "name": "Release",
+   "aliases": [
+    "Release"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "trade",
+    "delivery"
+   ]
+  },
+  {
+   "rank": 19,
+   "popIndex": 71,
+   "stratum": "business_object",
+   "id": "obj-execution-state",
+   "code": "",
+   "name": "Execution State",
+   "aliases": [
+    "Execution state",
+    "Actual state",
+    "Authoritative state"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": []
+  },
+  {
+   "rank": 20,
+   "popIndex": 48,
+   "stratum": "business_object",
+   "id": "obj-appointment",
+   "code": "",
+   "name": "Appointment",
+   "aliases": [
+    "Appointment"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "delivery"
+   ]
+  },
+  {
+   "rank": 21,
+   "popIndex": 113,
+   "stratum": "business_object",
+   "id": "obj-refund",
+   "code": "",
+   "name": "Refund",
+   "aliases": [
+    "Refund"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": []
+  },
+  {
+   "rank": 22,
+   "popIndex": 46,
+   "stratum": "business_object",
+   "id": "obj-shipment-readiness",
+   "code": "",
+   "name": "Shipment Readiness",
+   "aliases": [
+    "Shipment readiness"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "warehouse"
+   ]
+  },
+  {
+   "rank": 23,
+   "popIndex": 83,
+   "stratum": "business_object",
+   "id": "obj-reference-code",
+   "code": "",
+   "name": "Reference Code",
+   "aliases": [
+    "Reference code"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "masterdata"
+   ]
+  },
+  {
+   "rank": 24,
+   "popIndex": 9,
+   "stratum": "business_object",
+   "id": "obj-rate",
+   "code": "",
+   "name": "Rate",
+   "aliases": [
+    "Rate"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "commercial",
+    "transport",
+    "finance",
+    "claims"
+   ]
+  },
+  {
+   "rank": 25,
+   "popIndex": 117,
+   "stratum": "business_object",
+   "id": "obj-performance-record",
+   "code": "",
+   "name": "Performance Record",
+   "aliases": [
+    "Performance record",
+    "scorecard"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": []
+  },
+  {
+   "rank": 26,
+   "popIndex": 76,
+   "stratum": "business_object",
+   "id": "obj-reserve",
+   "code": "",
+   "name": "Reserve",
+   "aliases": [
+    "Reserve"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "claims"
+   ]
+  },
+  {
+   "rank": 27,
+   "popIndex": 124,
+   "stratum": "business_object",
+   "id": "obj-emission-record",
+   "code": "",
+   "name": "Emission Record",
+   "aliases": [
+    "Emission record",
+    "GHG record"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": []
+  },
+  {
+   "rank": 28,
+   "popIndex": 8,
+   "stratum": "business_object",
+   "id": "obj-wave",
+   "code": "",
+   "name": "Wave",
+   "aliases": [
+    "wave"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "warehouse"
+   ]
+  },
+  {
+   "rank": 29,
+   "popIndex": 20,
+   "stratum": "business_object",
+   "id": "obj-load-plan",
+   "code": "",
+   "name": "Load Plan",
+   "aliases": [
+    "Load plan"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "transport"
+   ]
+  },
+  {
+   "rank": 30,
+   "popIndex": 45,
+   "stratum": "business_object",
+   "id": "obj-freight-charge",
+   "code": "",
+   "name": "Freight Charge",
+   "aliases": [
+    "Freight charge"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "transport"
+   ]
+  },
+  {
+   "rank": 31,
+   "popIndex": 100,
+   "stratum": "business_object",
+   "id": "obj-pick-confirmation",
+   "code": "",
+   "name": "Pick Confirmation",
+   "aliases": [
+    "Pick confirmation"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": []
+  },
+  {
+   "rank": 32,
+   "popIndex": 110,
+   "stratum": "business_object",
+   "id": "obj-sourcing-decision",
+   "code": "",
+   "name": "Sourcing Decision",
+   "aliases": [
+    "Sourcing decision"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "source"
+   ]
+  },
+  {
+   "rank": 33,
+   "popIndex": 33,
+   "stratum": "business_object",
+   "id": "obj-arrival-notice",
+   "code": "AN",
+   "name": "Arrival Notice",
+   "aliases": [
+    "arrival notice"
+   ],
+   "description": "Arrival-notice information object; party and publication/receipt roles remain context specific.",
+   "domainIds": []
+  },
+  {
+   "rank": 34,
+   "popIndex": 3,
+   "stratum": "business_object",
+   "id": "obj-booking",
+   "code": "Booking",
+   "name": "Transport Booking",
+   "aliases": [
+    "Booking",
+    "ocean booking",
+    "Air booking",
+    "Rail booking"
+   ],
+   "description": "A capacity or service request and response; distinct from the transport document.",
+   "domainIds": [
+    "transport"
+   ]
+  },
+  {
+   "rank": 35,
+   "popIndex": 6,
+   "stratum": "business_object",
+   "id": "obj-asn",
+   "code": "ASN",
+   "name": "Advance Shipping Notice",
+   "aliases": [
+    "ASN"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "warehouse"
+   ]
+  },
+  {
+   "rank": 36,
+   "popIndex": 19,
+   "stratum": "business_object",
+   "id": "obj-tender-response",
+   "code": "",
+   "name": "Tender Response",
+   "aliases": [
+    "tender response"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": []
+  },
+  {
+   "rank": 37,
+   "popIndex": 54,
+   "stratum": "business_object",
+   "id": "obj-declaration",
+   "code": "",
+   "name": "Declaration",
+   "aliases": [
+    "Declaration"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "trade"
+   ]
+  },
+  {
+   "rank": 38,
+   "popIndex": 49,
+   "stratum": "business_object",
+   "id": "obj-recipient",
+   "code": "",
+   "name": "Recipient",
+   "aliases": [
+    "Recipient"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "delivery"
+   ]
+  },
+  {
+   "rank": 39,
+   "popIndex": 40,
+   "stratum": "business_object",
+   "id": "obj-driver",
+   "code": "",
+   "name": "Driver",
+   "aliases": [
+    "driver"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": []
+  },
+  {
+   "rank": 40,
+   "popIndex": 97,
+   "stratum": "business_object",
+   "id": "obj-receipt",
+   "code": "",
+   "name": "Receipt",
+   "aliases": [
+    "Receipt"
+   ],
+   "description": "Governed atomic business object; display wording may reference this ID with other IDs.",
+   "domainIds": [
+    "warehouse",
+    "returns"
+   ]
+  }
+ ],
+ "system": [
+  {
+   "rank": 1,
+   "popIndex": 17,
+   "stratum": "system",
+   "id": "sys-customer-portal",
+   "code": "",
+   "name": "Customer Portal",
+   "aliases": [
+    "Customer portal"
+   ],
+   "description": "Governed Universe system entity; authority remains object- and scope-specific.",
+   "domainIds": [
+    "commercial",
+    "delivery",
+    "customer"
+   ]
+  },
+  {
+   "rank": 2,
+   "popIndex": 11,
+   "stratum": "system",
+   "id": "sys-ibp",
+   "code": "IBP",
+   "name": "Integrated Business Planning",
+   "aliases": [
+    "IBP"
+   ],
+   "description": "Governed Universe system entity; authority remains object- and scope-specific.",
+   "domainIds": [
+    "plan"
+   ]
+  },
+  {
+   "rank": 3,
+   "popIndex": 53,
+   "stratum": "system",
+   "id": "sys-billing",
+   "code": "",
+   "name": "Billing Engine",
+   "aliases": [
+    "Billing engine"
+   ],
+   "description": "Governed Universe system entity; authority remains object- and scope-specific.",
+   "domainIds": [
+    "finance"
+   ]
+  },
+  {
+   "rank": 4,
+   "popIndex": 9,
+   "stratum": "system",
+   "id": "sys-control-tower",
+   "code": "Control Tower",
+   "name": "Supply-chain control tower",
+   "aliases": [
+    "Control tower"
+   ],
+   "description": "Governed Universe system entity; authority remains object- and scope-specific.",
+   "domainIds": [
+    "plan",
+    "exception"
+   ]
+  },
+  {
+   "rank": 5,
+   "popIndex": 36,
+   "stratum": "system",
+   "id": "sys-forwarder-platform",
+   "code": "",
+   "name": "Forwarder Platform",
+   "aliases": [
+    "forwarder platform"
+   ],
+   "description": "Governed Universe system entity; authority remains object- and scope-specific.",
+   "domainIds": [
+    "transport"
+   ]
+  },
+  {
+   "rank": 6,
+   "popIndex": 15,
+   "stratum": "system",
+   "id": "sys-cpq",
+   "code": "CPQ",
+   "name": "Configure Price Quote",
+   "aliases": [
+    "CPQ"
+   ],
+   "description": "Governed Universe system entity; authority remains object- and scope-specific.",
+   "domainIds": [
+    "commercial"
+   ]
+  },
+  {
+   "rank": 7,
+   "popIndex": 1,
+   "stratum": "system",
+   "id": "sys-oms",
+   "code": "OMS",
+   "name": "Order Management System",
+   "aliases": [
+    "OMS"
+   ],
+   "description": "Governed Universe system entity; authority remains object- and scope-specific.",
+   "domainIds": [
+    "commercial",
+    "returns",
+    "masterdata"
+   ]
+  },
+  {
+   "rank": 8,
+   "popIndex": 61,
+   "stratum": "system",
+   "id": "sys-analytics",
+   "code": "",
+   "name": "Analytics Platform",
+   "aliases": [
+    "Analytics"
+   ],
+   "description": "Governed Universe system entity; authority remains object- and scope-specific.",
+   "domainIds": [
+    "exception"
+   ]
+  },
+  {
+   "rank": 9,
+   "popIndex": 31,
+   "stratum": "system",
+   "id": "sys-carrier-documentation",
+   "code": "",
+   "name": "Carrier Documentation Platform",
+   "aliases": [
+    "carrier documentation",
+    "documentation platform"
+   ],
+   "description": "Governed Universe system entity; authority remains object- and scope-specific.",
+   "domainIds": []
+  },
+  {
+   "rank": 10,
+   "popIndex": 48,
+   "stratum": "system",
+   "id": "sys-tax-engine",
+   "code": "",
+   "name": "Tax Engine",
+   "aliases": [
+    "tax"
+   ],
+   "description": "Governed Universe system entity; authority remains object- and scope-specific.",
+   "domainIds": [
+    "trade"
+   ]
+  }
+ ],
+ "document_event": [
+  {
+   "rank": 1,
+   "popIndex": 22,
+   "stratum": "event",
+   "id": "evt-pickup-dispatched",
+   "code": "PICKUP_DISPATCHED",
+   "name": "Pickup dispatched",
+   "aliases": [
+    "pickup",
+    "dispatch"
+   ],
+   "domainIds": [
+    "warehouse",
+    "transport"
+   ]
+  },
+  {
+   "rank": 2,
+   "popIndex": 15,
+   "stratum": "document",
+   "id": "doc-fiata-fbl",
+   "code": "FBL/eFBL",
+   "name": "FIATA Multimodal Transport Bill of Lading",
+   "aliases": [
+    "FBL",
+    "eFBL"
+   ],
+   "domainIds": [
+    "transport",
+    "claims"
+   ]
+  },
+  {
+   "rank": 3,
+   "popIndex": 12,
+   "stratum": "document",
+   "id": "doc-air-awb",
+   "code": "AWB/e-AWB",
+   "name": "Air waybill / electronic air waybill",
+   "aliases": [
+    "AWB",
+    "e-AWB"
+   ],
+   "domainIds": [
+    "transport",
+    "trade",
+    "claims"
+   ]
+  },
+  {
+   "rank": 4,
+   "popIndex": 13,
+   "stratum": "document",
+   "id": "doc-road-cmr-bol",
+   "code": "CMR/BOL",
+   "name": "CMR consignment note or road bill of lading",
+   "aliases": [
+    "CMR note",
+    "BOL",
+    "eBOL"
+   ],
+   "domainIds": [
+    "transport",
+    "trade",
+    "claims"
+   ]
+  },
+  {
+   "rank": 5,
+   "popIndex": 7,
+   "stratum": "document",
+   "id": "doc-vgm-declaration",
+   "code": "VGM",
+   "name": "Verified Gross Mass Declaration",
+   "aliases": [
+    "VGM declaration",
+    "verified gross mass declaration"
+   ],
+   "domainIds": [
+    "transport",
+    "trade"
+   ]
+  },
+  {
+   "rank": 6,
+   "popIndex": 14,
+   "stratum": "document",
+   "id": "doc-rail-consignment",
+   "code": "CIM/SMGS",
+   "name": "Rail consignment note",
+   "aliases": [
+    "CIM consignment note",
+    "SMGS consignment note"
+   ],
+   "domainIds": [
+    "transport",
+    "trade",
+    "claims"
+   ]
+  },
+  {
+   "rank": 7,
+   "popIndex": 4,
+   "stratum": "document",
+   "id": "doc-ocean-sea-waybill",
+   "code": "Sea Waybill",
+   "name": "Sea Waybill",
+   "aliases": [
+    "sea waybill"
+   ],
+   "domainIds": [
+    "transport",
+    "trade",
+    "claims"
+   ]
+  },
+  {
+   "rank": 8,
+   "popIndex": 8,
+   "stratum": "document",
+   "id": "doc-arrival-notice",
+   "code": "AN",
+   "name": "Arrival Notice",
+   "aliases": [
+    "arrival notice"
+   ],
+   "domainIds": [
+    "transport",
+    "trade",
+    "delivery"
+   ]
+  },
+  {
+   "rank": 9,
+   "popIndex": 26,
+   "stratum": "event",
+   "id": "evt-exception-detected",
+   "code": "EXCEPTION_DETECTED",
+   "name": "Execution exception detected",
+   "aliases": [
+    "exception signal",
+    "variance"
+   ],
+   "domainIds": [
+    "exception"
+   ]
+  },
+  {
+   "rank": 10,
+   "popIndex": 24,
+   "stratum": "event",
+   "id": "evt-delivery-attempted",
+   "code": "DELIVERY_ATTEMPTED",
+   "name": "Delivery attempted",
+   "aliases": [
+    "delivery attempt"
+   ],
+   "domainIds": [
+    "delivery",
+    "exception"
+   ]
+  }
+ ]
+}

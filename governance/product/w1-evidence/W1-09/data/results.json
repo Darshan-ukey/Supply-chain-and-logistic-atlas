@@ -1,0 +1,1022 @@
+[
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 1,
+  "popIndex": 38,
+  "id": "obj-vehicle",
+  "name": "Vehicle",
+  "domainIds": [],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-iata-one-record: IATA-1R-DM-Ontology.ttl class TransportMeans (\"Transport means details\"), property vehicleType; src-uncefact-rdm: D23B defs logisticsTransportMeansType",
+  "note": "Registered vocabularies name the concept Transport Means; \"Vehicle\" is a label variant. domainIds is empty in the registry.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 2,
+  "popIndex": 37,
+  "id": "obj-equipment",
+  "name": "Equipment",
+  "domainIds": [
+   "transport",
+   "assets"
+  ],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-uncefact-rdm: D23B def logisticsTransportEquipmentType (\"equipment used to hold, protect or secure cargo\"); src-iata-one-record: classes ULD, LoadingUnit; src-iso6346 identifies equipment (not read)",
+  "note": "",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 3,
+  "popIndex": 126,
+  "id": "obj-knowledge-asset",
+  "name": "Knowledge Asset",
+  "domainIds": [],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC3",
+  "basis": "src-apqc-pcf: PCF 8.0 13.6 Manage Content (21646): description names \"enterprise content and knowledge assets\"; src-iso30401 (knowledge-management system, page not read)",
+  "note": "Exact phrase appears in a process description only; no registered data vocabulary defines a knowledge-asset object.",
+  "ev": "P",
+  "dec057": "depth gap: conceptual coverage valid; object definition belongs to a knowledge/enterprise layer"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 4,
+  "popIndex": 55,
+  "id": "obj-filing",
+  "name": "Filing",
+  "domainIds": [
+   "trade"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-uncefact-rdm: D23B defs declarationType, exchangedDeclarationType; src-iata-one-record: classes SecurityDeclaration, DgDeclaration; src-wco-dm registered (page read is generic, object level not confirmed)",
+  "note": "\"Filing\" is a trade-compliance term; the registered vocabularies use \"declaration\". Overlaps obj-declaration.",
+  "ev": "L,W",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 5,
+  "popIndex": 26,
+  "id": "obj-seal",
+  "name": "Seal",
+  "domainIds": [],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-uncefact-rdm: D23B def logisticsSealType (\"device used to secure an object ... during transport\"); src-iata-one-record: datatype properties seal, sealNumber",
+  "note": "",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 6,
+  "popIndex": 77,
+  "id": "obj-subrogation",
+  "name": "Subrogation",
+  "domainIds": [
+   "claims"
+  ],
+  "cat": "NO_BASIS",
+  "cc": "CC6",
+  "basis": "Nothing found. Neighbours only: src-iata-one-record class Insurance and src-uncefact-rdm def cargoInsuranceType (insurance cover, not a recovery right); src-apqc-pcf 11.1.3.3.1 Assess adequacy of insurance coverage (18129)",
+  "note": "Subrogation (insurer recovery against a liable third party) is not defined in any registered source searched. Legal instruments (src-cmr, src-montreal, src-hague-visby) were not read at clause level.",
+  "ev": "L,P",
+  "dec057": "depth gap, not structural: valid claims-domain concept; destination layer = claims/insurance daughter; class 4/5 in the frozen protocol gap classes (proposal)"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 7,
+  "popIndex": 31,
+  "id": "obj-shipping-instructions",
+  "name": "Shipping Instructions",
+  "domainIds": [],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-dcsa-ebl: Bill of Lading 3.0 introduction section 1.3 defines Shipping Instructions; src-uncefact-rdm: UNECE-MultimodalShippingInstructions.json",
+  "note": "",
+  "ev": "W,L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 8,
+  "popIndex": 39,
+  "id": "obj-trailer",
+  "name": "Trailer",
+  "domainIds": [],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-uncefact-rdm: D23B logisticsTransportEquipmentType.categoryCode (\"container or trailer\")",
+  "note": "Trailer is a category value of Transport Equipment, not a class of its own.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 9,
+  "popIndex": 69,
+  "id": "obj-condition-record",
+  "name": "Condition Record",
+  "domainIds": [
+   "claims",
+   "assets"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-uncefact-rdm: D23B def conditionType (\"a state, such as of a specified person or thing\"); src-iata-one-record: class ULDConditionCode (cXML 1.21), property serviceabilityCode; src-gs1-cbv: dispositions (damaged etc.)",
+  "note": "Concept is covered by several condition/state constructs; \"Condition Record\" as a wrapper object is not named anywhere.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 10,
+  "popIndex": 61,
+  "id": "obj-supplier-invoice",
+  "name": "Supplier Invoice",
+  "domainIds": [
+   "finance"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-gs1-cbv: BTT-inv Invoice; src-uncefact-rdm: UNECE-CrossIndustryInvoice.json",
+  "note": "\"Supplier\" is the seller role of an Invoice.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 11,
+  "popIndex": 65,
+  "id": "obj-payment",
+  "name": "Payment",
+  "domainIds": [
+   "finance"
+  ],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-uncefact-rdm: D23B defs tradeSettlementPaymentType, advancePaymentType, instalmentPaymentType; UNECE-CrossIndustryRemittanceAdvice.json",
+  "note": "",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 12,
+  "popIndex": 2,
+  "id": "obj-order",
+  "name": "Order",
+  "domainIds": [
+   "commercial",
+   "warehouse",
+   "transport",
+   "finance",
+   "customer"
+  ],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-gs1-cbv: BTT-po Purchase Order, BTT-prodorder; src-uncefact-rdm: UNECE-CrossIndustryOrder.json (+ OrderChange, OrderResponse)",
+  "note": "",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 13,
+  "popIndex": 78,
+  "id": "obj-asset-master",
+  "name": "Asset Master",
+  "domainIds": [
+   "assets",
+   "masterdata"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC3",
+  "basis": "src-apqc-pcf: 9.3.3.2 Maintain fixed-asset master data files (10829); src-iso55001 (asset-management system, page not read)",
+  "note": "Process-level only; GS1 asset keys (GIAI/GRAI) were not checked.",
+  "ev": "P",
+  "dec057": "depth gap: conceptual coverage valid; master-data object is an enterprise/ERP-layer construct"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 14,
+  "popIndex": 29,
+  "id": "obj-cfs-handoff",
+  "name": "CFS Handoff",
+  "domainIds": [],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC4",
+  "basis": "src-dcsa-booking: DCSA Booking and eBL Logical Data Model 2024.3, class Booking: Receipt Type at Origin / Delivery Type at Destination value CFS defined (\"carrier responsible for stuffing/stripping\")",
+  "note": "CFS is defined as a service-type value. A handoff object at a CFS is not defined; \"handoff\" is an Atlas composite.",
+  "ev": "W",
+  "dec057": "depth gap: valid ocean LCL concept; destination layer = Ocean LCL daughter"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 15,
+  "popIndex": 63,
+  "id": "obj-accrual",
+  "name": "Accrual",
+  "domainIds": [
+   "finance"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC3",
+  "basis": "src-apqc-pcf: 9.6.1.5 Process financial accruals and reversals (10873)",
+  "note": "Exact term, process level; no registered data vocabulary defines an accrual object.",
+  "ev": "P",
+  "dec057": "depth gap: finance-layer object; conceptual coverage valid"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 16,
+  "popIndex": 53,
+  "id": "obj-regulatory-status",
+  "name": "Regulatory Status",
+  "domainIds": [
+   "transport",
+   "assets"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-iata-one-record: classes SecurityStatus (cXML 1.103), ShipmentSecurityStatus (DM and CL ontologies)",
+  "note": "ONE Record covers the security-status sense only; customs or dangerous-goods status are not covered by the same class.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 17,
+  "popIndex": 116,
+  "id": "obj-control-evidence",
+  "name": "Control Evidence",
+  "domainIds": [],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC3",
+  "basis": "src-apqc-pcf: 9.8 Manage internal controls (10735); 9.8.3 Report on internal controls compliance (10764)",
+  "note": "Process level only. ISO management-system standards (src-iso9001, src-iso37301) were not read at clause level, so no ISO claim is made.",
+  "ev": "P",
+  "dec057": "depth gap: enterprise compliance-layer object; conceptual coverage valid"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 18,
+  "popIndex": 58,
+  "id": "obj-release",
+  "name": "Release",
+  "domainIds": [
+   "trade",
+   "delivery"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC4",
+  "basis": "src-iata-one-record: CL ontology code DK \"Release order\"; src-uncefact-rdm: crossBorderRegulatoryProcedureType.transitReleaseCustomsOfficeSpecifiedLogisticsLocation (transit release customs office); DCSA Arrival Notice glossary: \"Release\" not defined",
+  "note": "Label is unqualified (customs release, cargo release, hold release). src-wco-dm is registered but its page gave no object-level confirmation.",
+  "ev": "L,W",
+  "dec057": "depth gap: qualify the sense; conceptual coverage valid"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 19,
+  "popIndex": 71,
+  "id": "obj-execution-state",
+  "name": "Execution State",
+  "domainIds": [],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-iata-one-record: class ExecutionStatus (\"restricted code list for the execution status of activities\"); src-gs1-epcis: properties disposition, persistentDisposition",
+  "note": "Aliases \"Actual state\" and \"Authoritative state\" have no counterpart in any registered vocabulary.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 20,
+  "popIndex": 48,
+  "id": "obj-appointment",
+  "name": "Appointment",
+  "domainIds": [
+   "delivery"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-x12: transaction set 163 Transportation Appointment Schedule Information (x12.org catalogue)",
+  "note": "The X12 set name is \"appointment schedule information\". Catalogue read through a page summary.",
+  "ev": "W",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 21,
+  "popIndex": 113,
+  "id": "obj-refund",
+  "name": "Refund",
+  "domainIds": [],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-uncefact-rdm: D23B paymentTradeSettlementType.refundAmount, tradeTaxType.refundAmount; src-apqc-pcf 6.2.4.1 Authorize return (10364) mentions refund in its description only",
+  "note": "Refund is an attribute (amount) of a payment settlement, not an object.",
+  "ev": "L,P",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 22,
+  "popIndex": 46,
+  "id": "obj-shipment-readiness",
+  "name": "Shipment Readiness",
+  "domainIds": [
+   "warehouse"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC4",
+  "basis": "src-x12: transaction set 216 Motor Carrier Shipment Pickup Notification (shipper tells carrier a shipment is ready for pickup)",
+  "note": "A readiness message exists; no readiness state or object is named in any indexed vocabulary (no term \"ready\"/\"readiness\").",
+  "ev": "W,L",
+  "dec057": "depth gap: warehouse/transport state; conceptual coverage valid"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 23,
+  "popIndex": 83,
+  "id": "obj-reference-code",
+  "name": "Reference Code",
+  "domainIds": [
+   "masterdata"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-uncefact-rdm: D23B def referenceType (\"Supply Chain_ Reference\"); src-iata-one-record: class ExternalReference",
+  "note": "Generic label; many reference types exist.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 24,
+  "popIndex": 9,
+  "id": "obj-rate",
+  "name": "Rate",
+  "domainIds": [
+   "commercial",
+   "transport",
+   "finance",
+   "claims"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-iata-one-record: classes RateClassCode, ChargeCode, property rateCharge (\"TACT rate\"); src-uncefact-rdm: tradePriceType",
+  "note": "No class named Rate; the term covers freight rate, tax rate and exchange rate (domains: commercial, transport, finance, claims).",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 25,
+  "popIndex": 117,
+  "id": "obj-performance-record",
+  "name": "Performance Record",
+  "domainIds": [],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC3",
+  "basis": "src-apqc-pcf: 4.4.4.2 Track carrier delivery performance (10361); PCF measure rows; src-scor registered (page not read)",
+  "note": "Process level only.",
+  "ev": "P",
+  "dec057": "depth gap: KPI/scorecard object belongs to a performance-management layer"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 26,
+  "popIndex": 76,
+  "id": "obj-reserve",
+  "name": "Reserve",
+  "domainIds": [
+   "claims"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC3",
+  "basis": "src-apqc-pcf: 9.2.4.5 Process adjustments/write off balances (10808): \"maintaining reserves for write-offs and adjustments\"",
+  "note": "Finance-reserve sense only. The claims-reserve sense (registry domain: claims) is not defined anywhere searched. Sense mismatch is possible; W1-12 should challenge.",
+  "ev": "P",
+  "dec057": "depth gap: claims/finance daughter; conceptual coverage valid"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 27,
+  "popIndex": 124,
+  "id": "obj-emission-record",
+  "name": "Emission Record",
+  "domainIds": [],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-iata-one-record: class CO2Emissions (\"CO2 calculation\"), property calculatedEmissions; src-uncefact-rdm: def calculatedEmissionType; src-iso14083, src-ghg-scope3, src-iso14064 registered (method standards, not read)",
+  "note": "\"Record\" wrapper is Atlas wording; \"GHG record\" alias is broader than CO2.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 28,
+  "popIndex": 8,
+  "id": "obj-wave",
+  "name": "Wave",
+  "domainIds": [
+   "warehouse"
+  ],
+  "cat": "NO_BASIS",
+  "cc": "CC6",
+  "basis": "Nothing found. Neighbours only: src-gs1-cbv BizStep-picking; src-apqc-pcf 4.4.3.4 Pick, pack, and ship product for delivery (10356)",
+  "note": "Warehouse wave (batch release of orders for picking) is a WMS construct; no registered source defines it.",
+  "ev": "L,P",
+  "dec057": "depth gap, not structural: valid warehouse concept; destination layer = warehouse daughter; class 3/4 in the frozen protocol gap classes (proposal)"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 29,
+  "popIndex": 20,
+  "id": "obj-load-plan",
+  "name": "Load Plan",
+  "domainIds": [
+   "transport"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC4",
+  "basis": "src-dcsa-load-list-bay-plan: DCSA \"Load List and Bay Plan Definitions\" (2020); page uses \"load list\" and \"bay plan\", not \"load plan\"",
+  "note": "Ocean/vessel-specific neighbour. No generic load plan found in ONE Record, UN/CEFACT D23B or CBV.",
+  "ev": "W,L",
+  "dec057": "depth gap: transport-layer object; conceptual coverage valid"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 30,
+  "popIndex": 45,
+  "id": "obj-freight-charge",
+  "name": "Freight Charge",
+  "domainIds": [
+   "transport"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-uncefact-rdm: D23B def logisticsServiceChargeType (\"a charge made for a logistics related service\"); src-iata-one-record: property chargeType, classes OtherCharge, ChargeCode",
+  "note": "",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 31,
+  "popIndex": 100,
+  "id": "obj-pick-confirmation",
+  "name": "Pick Confirmation",
+  "domainIds": [],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-gs1-cbv: BizStep-picking (\"selecting of objects to fill an order\")",
+  "note": "CBV defines the picking activity, not a confirmation record. X12 warehouse sets (944/945) were not found in the catalogue text read.",
+  "ev": "L,W",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 32,
+  "popIndex": 110,
+  "id": "obj-sourcing-decision",
+  "name": "Sourcing Decision",
+  "domainIds": [
+   "source"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC3",
+  "basis": "src-apqc-pcf: 4.2.1 Provide sourcing governance (10277); 4.2.3 Select suppliers and develop/maintain contracts (10278); src-scor Source (page not read)",
+  "note": "Process level only.",
+  "ev": "P",
+  "dec057": "depth gap: procurement-layer object; conceptual coverage valid"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 33,
+  "popIndex": 33,
+  "id": "obj-arrival-notice",
+  "name": "Arrival Notice",
+  "domainIds": [],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-dcsa-arrival: DCSA Arrival Notice v1 (current 1.0.1) release page; v1.0.1 glossary defines \"Arrival notice\" (notice from publisher to receiver that a shipment is scheduled to arrive)",
+  "note": "Same concept is registered twice (obj-arrival-notice and doc-arrival-notice).",
+  "ev": "W",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 34,
+  "popIndex": 3,
+  "id": "obj-booking",
+  "name": "Transport Booking",
+  "domainIds": [
+   "transport"
+  ],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-dcsa-booking: DCSA Booking and eBL Logical Data Model 2024.3/2024.4 class Booking; src-iata-one-record: class Booking; src-uncefact-rdm: UNECE-MultimodalTransportBooking.json",
+  "note": "",
+  "ev": "W,L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 35,
+  "popIndex": 6,
+  "id": "obj-asn",
+  "name": "Advance Shipping Notice",
+  "domainIds": [
+   "warehouse"
+  ],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-gs1-cbv: BTT-desadv Despatch Advice (\"also called an Advanced Shipment Notice\"); src-uncefact-rdm: UNECE-CrossIndustryDespatchAdvice.json",
+  "note": "",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 36,
+  "popIndex": 19,
+  "id": "obj-tender-response",
+  "name": "Tender Response",
+  "domainIds": [],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-uncefact-rdm: UNECE-CrossIndustryRequestforQuotationResponse.json; src-x12: 204 Motor Carrier Load Tender (request side) confirmed on catalogue",
+  "note": "The X12 response set (990) was not found in the catalogue text read (page truncated; not verified). Procurement-tender and load-tender senses differ.",
+  "ev": "L,W",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 37,
+  "popIndex": 54,
+  "id": "obj-declaration",
+  "name": "Declaration",
+  "domainIds": [
+   "trade"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-uncefact-rdm: D23B defs declarationType, exchangedDeclarationType; src-iata-one-record: classes DgDeclaration, SecurityDeclaration; src-gs1-epcis: ErrorDeclaration (different sense)",
+  "note": "Generic label for several typed declarations. Overlaps obj-filing.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 38,
+  "popIndex": 49,
+  "id": "obj-recipient",
+  "name": "Recipient",
+  "domainIds": [
+   "delivery"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-iata-one-record: property consignee (\"Reference to the Organization that fulfills the role of the consignee\"), class Party",
+  "note": "Role name differs (consignee/receiver). GS1 GSRN-Recipient was not checked.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 39,
+  "popIndex": 40,
+  "id": "obj-driver",
+  "name": "Driver",
+  "domainIds": [],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC4",
+  "basis": "src-iata-one-record: class Person (parent); property documents mentions \"driver's license\"; CL code PA (truck pre-announcement: driver name, license plates)",
+  "note": "No Driver class or role in ONE Record, D23B or CBV.",
+  "ev": "L",
+  "dec057": "depth gap: person role; conceptual coverage valid"
+ },
+ {
+  "stratum": "business_object",
+  "subtype": "business_object",
+  "rank": 40,
+  "popIndex": 97,
+  "id": "obj-receipt",
+  "name": "Receipt",
+  "domainIds": [
+   "warehouse",
+   "returns"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-gs1-cbv: BTT-recadv Receiving Advice, BizStep-receiving; src-uncefact-rdm: UNECE-CrossIndustryReceivingAdvice.json",
+  "note": "Goods-receipt sense.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "system",
+  "subtype": "system",
+  "rank": 1,
+  "popIndex": 17,
+  "id": "sys-customer-portal",
+  "name": "Customer Portal",
+  "domainIds": [
+   "commercial",
+   "delivery",
+   "customer"
+  ],
+  "cat": "NO_BASIS",
+  "cc": "CC5",
+  "basis": "Nothing found. src-apqc-pcf mentions portals only in recruiting text and in benchmark measure wording",
+  "note": "No registered source defines a customer portal or its function.",
+  "ev": "P",
+  "dec057": "client-binding/product category (class 4 proposal); not structural"
+ },
+ {
+  "stratum": "system",
+  "subtype": "system",
+  "rank": 2,
+  "popIndex": 11,
+  "id": "sys-ibp",
+  "name": "Integrated Business Planning",
+  "domainIds": [
+   "plan"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC5",
+  "basis": "src-apqc-pcf: 4.1 Plan for and align supply chain resources (10215); 4.1.2 Manage demand for products (10222); src-scor Plan (page not read)",
+  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary. \"Integrated business planning\" is not named.",
+  "ev": "P",
+  "dec057": "product category; not structural"
+ },
+ {
+  "stratum": "system",
+  "subtype": "system",
+  "rank": 3,
+  "popIndex": 53,
+  "id": "sys-billing",
+  "name": "Billing Engine",
+  "domainIds": [
+   "finance"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC5",
+  "basis": "src-apqc-pcf: 9.2.2 Invoice customer (10743); 9.2.2.2 Generate customer billing data (10795); src-uncefact-rdm: UNECE-CrossIndustryInvoice.json (document, not system)",
+  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary.",
+  "ev": "P,L",
+  "dec057": "product category; not structural"
+ },
+ {
+  "stratum": "system",
+  "subtype": "system",
+  "rank": 4,
+  "popIndex": 9,
+  "id": "sys-control-tower",
+  "name": "Supply-chain control tower",
+  "domainIds": [
+   "plan",
+   "exception"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC5",
+  "basis": "src-gs1-epcis/src-gs1-cbv registered as event/visibility standards; src-uncefact-multimodal-visibility-brs-v1 registered (page fetch errored, not verified)",
+  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary. Control-tower function is only indirectly supported by event standards.",
+  "ev": "W",
+  "dec057": "product category; not structural"
+ },
+ {
+  "stratum": "system",
+  "subtype": "system",
+  "rank": 5,
+  "popIndex": 36,
+  "id": "sys-forwarder-platform",
+  "name": "Forwarder Platform",
+  "domainIds": [
+   "transport"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC5",
+  "basis": "src-uncefact-rdm: UNECE-MultimodalShippingInstructions.json, MultimodalTransportBooking.json, FIATATransportContract.json; src-uncefact-ift-brs-v2 registered (page not read)",
+  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary.",
+  "ev": "L",
+  "dec057": "product category; not structural"
+ },
+ {
+  "stratum": "system",
+  "subtype": "system",
+  "rank": 6,
+  "popIndex": 15,
+  "id": "sys-cpq",
+  "name": "Configure Price Quote",
+  "domainIds": [
+   "commercial"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC5",
+  "basis": "src-apqc-pcf: 3.5.3 Develop and manage sales proposals, bids, and quotes (11779); 3.5.3.14 Revise bid/proposal/quote (20018); src-uncefact-rdm: UNECE-CrossIndustryQuotationProposal.json",
+  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary.",
+  "ev": "P,L",
+  "dec057": "product category; not structural"
+ },
+ {
+  "stratum": "system",
+  "subtype": "system",
+  "rank": 7,
+  "popIndex": 1,
+  "id": "sys-oms",
+  "name": "Order Management System",
+  "domainIds": [
+   "commercial",
+   "returns",
+   "masterdata"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC5",
+  "basis": "src-apqc-pcf: 3.5.4 Manage sales orders (10185); src-uncefact-rdm: UNECE-CrossIndustryOrder.json, OrderChange, OrderResponse",
+  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary.",
+  "ev": "P,L",
+  "dec057": "product category; not structural"
+ },
+ {
+  "stratum": "system",
+  "subtype": "system",
+  "rank": 8,
+  "popIndex": 61,
+  "id": "sys-analytics",
+  "name": "Analytics Platform",
+  "domainIds": [
+   "exception"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC5",
+  "basis": "src-apqc-pcf: 2.1.2.5.4 Apply data and analytics to review supply chain methodologies (19647)",
+  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary. Weak: analytics appears in PCF only as a method inside other processes.",
+  "ev": "P",
+  "dec057": "product category; not structural"
+ },
+ {
+  "stratum": "system",
+  "subtype": "system",
+  "rank": 9,
+  "popIndex": 31,
+  "id": "sys-carrier-documentation",
+  "name": "Carrier Documentation Platform",
+  "domainIds": [],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC5",
+  "basis": "src-dcsa-ebl: Bill of Lading 3.0 (carrier issues the Transport Document); src-fiata eFBL; src-uncefact-rdm: UNECE-MaritimeBillofLading.json",
+  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary.",
+  "ev": "W,L",
+  "dec057": "product category; not structural"
+ },
+ {
+  "stratum": "system",
+  "subtype": "system",
+  "rank": 10,
+  "popIndex": 48,
+  "id": "sys-tax-engine",
+  "name": "Tax Engine",
+  "domainIds": [
+   "trade"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC5",
+  "basis": "src-apqc-pcf: 9.9 Manage taxes (10736); src-uncefact-rdm: D23B defs tradeTaxType, appliedTaxType",
+  "note": "Function-level basis only; the software system category is not defined by any registered vocabulary.",
+  "ev": "P,L",
+  "dec057": "product category; not structural"
+ },
+ {
+  "stratum": "document_event",
+  "subtype": "event",
+  "rank": 1,
+  "popIndex": 22,
+  "id": "evt-pickup-dispatched",
+  "name": "Pickup dispatched",
+  "domainIds": [
+   "warehouse",
+   "transport"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-uncefact-rdm: D23B headerTradeDeliveryType.actualPickUpEvent / confirmedPickUpEvent, logisticsTransportEquipmentType.pickUpEvent; src-x12: 216 Motor Carrier Shipment Pickup Notification; src-iata-one-record: CL code PU \"Pick-Up\"",
+  "note": "\"Dispatched\" (carrier assigns a pickup) is an Atlas qualifier; the pick-up event itself is supported.",
+  "ev": "L,W",
+  "dec057": ""
+ },
+ {
+  "stratum": "document_event",
+  "subtype": "document",
+  "rank": 2,
+  "popIndex": 15,
+  "id": "doc-fiata-fbl",
+  "name": "FIATA Multimodal Transport Bill of Lading",
+  "domainIds": [
+   "transport",
+   "claims"
+  ],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-fiata: fiata.org/resources lists the Negotiable FIATA Multimodal Transport Bill of Lading (FBL) and the Digital Negotiable FBL; src-uncefact-rdm: UNECE-FIATATransportContract.json",
+  "note": "Page does not use the abbreviation \"eFBL\".",
+  "ev": "W,L",
+  "dec057": ""
+ },
+ {
+  "stratum": "document_event",
+  "subtype": "document",
+  "rank": 3,
+  "popIndex": 12,
+  "id": "doc-air-awb",
+  "name": "Air waybill / electronic air waybill",
+  "domainIds": [
+   "transport",
+   "trade",
+   "claims"
+  ],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-iata-one-record: class Waybill (waybillType House/Direct/Master); src-uncefact-rdm: UNECE-AirWaybill.json",
+  "note": "e-AWB as an IATA programme is registered under src-iata-cargo (W1-08: page generic).",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "document_event",
+  "subtype": "document",
+  "rank": 4,
+  "popIndex": 13,
+  "id": "doc-road-cmr-bol",
+  "name": "CMR consignment note or road bill of lading",
+  "domainIds": [
+   "transport",
+   "trade",
+   "claims"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-uncefact-rdm: UNECE-eCMR.json; src-cmr and src-ecmr registered (UNECE pages not fetchable in W1-07/W1-08, not re-tried); road BOL: src-nmfta-dsdc-ltl eBOL API Standard 2.1 (W1-08: confirmed latest)",
+  "note": "Composite label: two instruments (CMR consignment note, road bill of lading) in one record.",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "document_event",
+  "subtype": "document",
+  "rank": 5,
+  "popIndex": 7,
+  "id": "doc-vgm-declaration",
+  "name": "Verified Gross Mass Declaration",
+  "domainIds": [
+   "transport",
+   "trade"
+  ],
+  "cat": "PASS_WITH_NOTE",
+  "cc": "CC2",
+  "basis": "src-dcsa-vgm: DCSA Verified Gross Mass v1 (current 1.0.1) release page; src-uncefact-rdm: logisticsTransportEquipmentType.verifiedGrossWeightMeasure",
+  "note": "DCSA page shows title and versions only; the VGM object and who submits it were not read. \"Declaration\" wording follows SOLAS per the registry applicability note.",
+  "ev": "W,L",
+  "dec057": ""
+ },
+ {
+  "stratum": "document_event",
+  "subtype": "document",
+  "rank": 6,
+  "popIndex": 14,
+  "id": "doc-rail-consignment",
+  "name": "Rail consignment note",
+  "domainIds": [
+   "transport",
+   "trade",
+   "claims"
+  ],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-uncefact-rdm: UNECE-RailURLConsignmentNote.json, UNECE-SMGSConsignmentNote.json, UNECE-MMTCIM-SMGSConsignmentNote.json; src-cotif-cim registered (page not fetched)",
+  "note": "",
+  "ev": "L",
+  "dec057": ""
+ },
+ {
+  "stratum": "document_event",
+  "subtype": "document",
+  "rank": 7,
+  "popIndex": 4,
+  "id": "doc-ocean-sea-waybill",
+  "name": "Sea Waybill",
+  "domainIds": [
+   "transport",
+   "trade",
+   "claims"
+  ],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-dcsa-ebl: Bill of Lading 3.0 introduction section 1.3 defines Sea Waybill as a Transport Document type; DCSA model entity \"Transport document type\" (B/L, Sea Waybill)",
+  "note": "",
+  "ev": "W",
+  "dec057": ""
+ },
+ {
+  "stratum": "document_event",
+  "subtype": "document",
+  "rank": 8,
+  "popIndex": 8,
+  "id": "doc-arrival-notice",
+  "name": "Arrival Notice",
+  "domainIds": [
+   "transport",
+   "trade",
+   "delivery"
+  ],
+  "cat": "PASS",
+  "cc": "CC1",
+  "basis": "src-dcsa-arrival: as obj-arrival-notice (v1.0.1 glossary definition; release page)",
+  "note": "Duplicate registration of obj-arrival-notice.",
+  "ev": "W",
+  "dec057": ""
+ },
+ {
+  "stratum": "document_event",
+  "subtype": "event",
+  "rank": 9,
+  "popIndex": 26,
+  "id": "evt-exception-detected",
+  "name": "Execution exception detected",
+  "domainIds": [
+   "exception"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC4",
+  "basis": "src-gs1-epcis: property exception (\"a sensor alert, including an alarm condition or an error condition\"); src-uncefact-multimodal-visibility-brs-v1 registered (page fetch errored)",
+  "note": "EPCIS covers a narrower sensor sense. No logistics execution-exception event found in the registered sources read.",
+  "ev": "L,W",
+  "dec057": "depth gap: valid event; destination layer = visibility/exception daughter"
+ },
+ {
+  "stratum": "document_event",
+  "subtype": "event",
+  "rank": 10,
+  "popIndex": 24,
+  "id": "evt-delivery-attempted",
+  "name": "Delivery attempted",
+  "domainIds": [
+   "delivery",
+   "exception"
+  ],
+  "cat": "PASS_WITH_LIMITATION",
+  "cc": "CC4",
+  "basis": "src-uncefact-rdm: D23B headerTradeDeliveryType.actualDeliveryEvent (delivery event); src-x12: 214 Transportation Carrier Shipment Status Message exists (status-code list not read); src-iata-one-record: CL code SE \"Proof of delivery\"",
+  "note": "No attempt/outcome concept named in any source read.",
+  "ev": "L,W",
+  "dec057": "depth gap: delivery-layer event state; conceptual coverage valid"
+ }
+]
