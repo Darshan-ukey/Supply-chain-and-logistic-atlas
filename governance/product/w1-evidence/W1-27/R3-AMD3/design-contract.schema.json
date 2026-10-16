@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "atlas-w1-27-design-contract-1.0",
+  "title": "W1-27 A4-AMD3 design contract (routing storage, absorption, QA mapping, convergence mapping, RLS rule)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "addendum", "basis", "routing_storage", "absorption_map", "qa_layer_map", "closure_rule", "convergence_map", "rls_rule", "out_of_scope"],
+  "properties": {
+    "contract_version": {"const": "1.0"},
+    "addendum": {"type": "string", "minLength": 1},
+    "basis": {"type": "string", "minLength": 1},
+    "routing_storage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["existing_table", "existing_columns_per_read_only_metadata", "unmodified_by_w1_27", "kind_overloaded", "decision_owner", "decision_status", "required_routing_fields", "options", "constraints_for_w1_28"],
+      "properties": {
+        "existing_table": {"const": "atlas_knowledge_gaps"},
+        "existing_columns_per_read_only_metadata": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "unmodified_by_w1_27": {"type": "boolean"},
+        "kind_overloaded": {"type": "boolean"},
+        "decision_owner": {"type": "string"},
+        "decision_status": {"type": "string"},
+        "required_routing_fields": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "options": {"type": "array", "minItems": 2, "items": {"type": "object", "additionalProperties": false,
+          "required": ["option_id", "summary", "field_homes", "risks", "kind_use"],
+          "properties": {"option_id": {"enum": ["A_ADDITIVE_COLUMNS", "B_SIBLING_TABLE"]}, "summary": {"type": "string"}, "field_homes": {"type": "object", "additionalProperties": {"type": "string"}}, "risks": {"type": "array", "items": {"type": "string"}}, "kind_use": {"type": "string"}}}},
+        "constraints_for_w1_28": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+      }
+    },
+    "absorption_map": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["item", "title", "disposition", "separate_build"],
+      "properties": {"item": {"type": "string", "pattern": "^TMP-AG-[0-9]{2}$"}, "title": {"type": "string"}, "disposition": {"enum": ["ABSORBED", "SPLIT", "REUSED"]}, "separate_build": {"type": "boolean"}}}},
+    "qa_layer_map": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["layer", "meaning", "evidence_task", "kind"],
+      "properties": {"layer": {"enum": ["QA-1", "QA-2", "QA-3", "QA-4"]}, "meaning": {"type": "string"}, "evidence_task": {"type": "string"}, "kind": {"enum": ["TASK", "CYCLE"]}}}},
+    "closure_rule": {"type": "object", "additionalProperties": false, "required": ["qa_layers_required_for_capability_closure", "closed_on_qa1_alone"],
+      "properties": {"qa_layers_required_for_capability_closure": {"type": "array", "items": {"enum": ["QA-1", "QA-2", "QA-3", "QA-4"]}}, "closed_on_qa1_alone": {"type": "boolean"}}},
+    "convergence_map": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false,
+      "required": ["state", "currency_outcome", "gap_route", "terminal_blocker", "outside_in_search", "approval", "may_fill_unknown"],
+      "properties": {
+        "state": {"enum": ["CONFIRMED", "ENRICH", "CONTEXT_SPECIFIC", "CONTRADICTS_CURRENT_ATLAS", "CLIENT_BINDING_REQUIRED", "SOURCE_ACCESS_GAP", "UNKNOWN"]},
+        "currency_outcome": {"enum": ["UNCHANGED", "CONTENT_CHANGED_SAME_VERSION_OR_NEW_VERSION", "SUPERSEDED_OR_WITHDRAWN", "UNREACHABLE_OR_UNVERIFIABLE", "NOT_APPLICABLE"]},
+        "gap_route": {"enum": ["NONE", "LAYER_BY_PLACEMENT", "CLIENT_BINDING_OR_CONSUMER_PROFILE", "CLIENT_BINDING", "SOURCE_FOUNDATION", "DEFERRED_OR_UNROUTED"]},
+        "terminal_blocker": {"type": "boolean"}, "outside_in_search": {"type": "boolean"},
+        "approval": {"enum": ["NONE_RECORD_ONLY", "ADMIN_UNLESS_ALLOWLISTED", "ADMIN", "ADMIN_AND_INDEPENDENT_VALIDATION"]},
+        "may_fill_unknown": {"type": "boolean"}}}},
+    "rls_rule": {"type": "object", "additionalProperties": false, "required": ["applies_to", "rule_text", "readback_required", "proposed_staging_ddl"],
+      "properties": {"applies_to": {"type": "string"}, "rule_text": {"type": "string"}, "readback_required": {"type": "array", "items": {"type": "string"}}, "proposed_staging_ddl": {"type": "array", "items": {"type": "string"}, "minItems": 1}}},
+    "out_of_scope": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "contract_version": "1.0",
+  "addendum": "A4-AMD3",
+  "basis": "requirements v3.2 sections 3, 8, 10 (DEC-075); Generator Mechanism Findings rows 34, 87, 93, 106, 117; specification only, nothing built, nothing approved",
+  "routing_storage": {
+    "existing_table": "atlas_knowledge_gaps",
+    "existing_columns_per_read_only_metadata": ["id", "workspace_id", "gap_key", "status", "kind", "module_id", "context", "details", "created_by", "created_at", "updated_at"],
+    "unmodified_by_w1_27": true,
+    "kind_overloaded": false,
+    "decision_owner": "W1-28 staging design",
+    "decision_status": "OPEN_FOR_W1_28",
+    "required_routing_fields": ["gap_type", "origin_trigger", "subject_kind", "subject_id", "subject_version", "scope_class", "owning_layer", "route", "router_state", "evidence_links", "dedupe_key", "parent_gap_id", "router_version", "routing_history"],
+    "options": [
+      {
+        "option_id": "A_ADDITIVE_COLUMNS",
+        "summary": "Add nullable routing columns to atlas_knowledge_gaps in a staging copy; existing rows untouched; jsonb context/details are not used to hold queryable routing fields.",
+        "field_homes": {
+          "gap_type": "new column", "origin_trigger": "new column", "subject_kind": "new column", "subject_id": "new column", "subject_version": "new column",
+          "scope_class": "new column", "owning_layer": "new column", "route": "new column", "router_state": "new column (status vocabulary of the existing table is not assumed to match the section 3.4 state machine)",
+          "evidence_links": "new column jsonb", "dedupe_key": "new column with unique index per scope", "parent_gap_id": "new column self-reference on gap_key",
+          "router_version": "new column", "routing_history": "append-only child table or jsonb array written only by the router"
+        },
+        "risks": ["workspace_id is nullable but its meaning for DOMAIN_GLOBAL scope is not verified", "alters a table used outside Source Watch (consumer impact unverified)", "status vocabulary mismatch"],
+        "kind_use": "unchanged"
+      },
+      {
+        "option_id": "B_SIBLING_TABLE",
+        "summary": "New staging table gap_routing keyed on gap_key referencing atlas_knowledge_gaps; DOMAIN_GLOBAL gaps may exist in the routing table without a workspace row; atlas_knowledge_gaps untouched.",
+        "field_homes": {
+          "gap_type": "gap_routing column", "origin_trigger": "gap_routing column", "subject_kind": "gap_routing column", "subject_id": "gap_routing column", "subject_version": "gap_routing column",
+          "scope_class": "gap_routing column", "owning_layer": "gap_routing column", "route": "gap_routing column", "router_state": "gap_routing column",
+          "evidence_links": "gap_routing column jsonb", "dedupe_key": "gap_routing column with unique index", "parent_gap_id": "gap_routing self-reference",
+          "router_version": "gap_routing column", "routing_history": "gap_routing_history child table, append-only"
+        },
+        "risks": ["join to atlas_knowledge_gaps required for workspace-scoped gaps", "two places hold gap identity unless gap_key is the single key"],
+        "kind_use": "unchanged"
+      }
+    ],
+    "constraints_for_w1_28": ["decision recorded before any staging DDL", "no change to existing atlas_* tables", "every new staging table follows rls_rule", "layer and resolver registries are rows, not migrations"]
+  },
+  "absorption_map": [
+    {"item": "TMP-AG-02", "title": "Authoritative Source Watch & Semantic Delta", "disposition": "ABSORBED", "specified_in": ["W1-27"], "staged_in": ["W1-28"], "dry_run_in": ["W1-29"], "separate_build": false, "v2_successor": null},
+    {"item": "TMP-AG-13", "title": "Knowledge-Gap Integration Across Atlas Layers", "disposition": "SPLIT", "absorbed_part": "gap store, layer registry, resolver registry, router", "specified_in": ["W1-27"], "staged_in": ["W1-28"], "dry_run_in": ["W1-29"], "separate_build": false, "v2_successor": "wiring of Daughter, Operational Knowledge, On-Demand Depth and Work Decomposition triggers into the shared orchestrator"},
+    {"item": "TMP-AG-07", "title": "Evidence store", "disposition": "REUSED", "reused_store": "PA2-028 / PA2-041", "separate_build": false, "v2_successor": null},
+    {"item": "TMP-AG-08", "title": "Candidate package store", "disposition": "REUSED", "reused_store": "PA2-028", "separate_build": false, "v2_successor": null},
+    {"item": "TMP-AG-09", "title": "Promotion engine", "disposition": "REUSED", "reused_store": "PA2-041", "separate_build": false, "v2_successor": null},
+    {"item": "TMP-AG-10", "title": "Stop, budget, novelty and drift controls", "disposition": "REUSED", "reused_store": "shared research budget envelope", "separate_build": false, "v2_successor": null}
+  ],
+  "qa_layer_map": [
+    {"layer": "QA-1", "meaning": "implementation conformance", "evidence_task": "W1-28", "kind": "TASK"},
+    {"layer": "QA-2", "meaning": "mechanism (seeded dry run, false-change and missed-change rates, router negative paths)", "evidence_task": "W1-29", "kind": "TASK"},
+    {"layer": "QA-3", "meaning": "architecture challenge (fetcher pilot verdict, quarterly versus alternatives)", "evidence_task": "W1-40", "kind": "TASK"},
+    {"layer": "QA-4", "meaning": "outcome on unseen real sources", "evidence_task": "CYCLE-0 AND FIRST-LIVE-CYCLE", "kind": "CYCLE"}
+  ],
+  "closure_rule": {"qa_layers_required_for_capability_closure": ["QA-1", "QA-2", "QA-3", "QA-4"], "closed_on_qa1_alone": false},
+  "convergence_map": [
+    {"state": "CONFIRMED", "currency_outcome": "UNCHANGED", "gap_route": "NONE", "terminal_blocker": false, "outside_in_search": false, "approval": "NONE_RECORD_ONLY", "may_fill_unknown": false},
+    {"state": "ENRICH", "currency_outcome": "CONTENT_CHANGED_SAME_VERSION_OR_NEW_VERSION", "gap_route": "LAYER_BY_PLACEMENT", "terminal_blocker": false, "outside_in_search": false, "approval": "ADMIN_UNLESS_ALLOWLISTED", "may_fill_unknown": false},
+    {"state": "CONTEXT_SPECIFIC", "currency_outcome": "NOT_APPLICABLE", "gap_route": "CLIENT_BINDING_OR_CONSUMER_PROFILE", "terminal_blocker": false, "outside_in_search": false, "approval": "ADMIN", "may_fill_unknown": false},
+    {"state": "CONTRADICTS_CURRENT_ATLAS", "currency_outcome": "CONTENT_CHANGED_SAME_VERSION_OR_NEW_VERSION", "gap_route": "LAYER_BY_PLACEMENT", "terminal_blocker": false, "outside_in_search": false, "approval": "ADMIN_AND_INDEPENDENT_VALIDATION", "may_fill_unknown": false},
+    {"state": "CLIENT_BINDING_REQUIRED", "currency_outcome": "NOT_APPLICABLE", "gap_route": "CLIENT_BINDING", "terminal_blocker": true, "outside_in_search": false, "approval": "ADMIN", "may_fill_unknown": false},
+    {"state": "SOURCE_ACCESS_GAP", "currency_outcome": "UNREACHABLE_OR_UNVERIFIABLE", "gap_route": "SOURCE_FOUNDATION", "terminal_blocker": false, "outside_in_search": false, "approval": "ADMIN", "may_fill_unknown": false},
+    {"state": "UNKNOWN", "currency_outcome": "NOT_APPLICABLE", "gap_route": "DEFERRED_OR_UNROUTED", "terminal_blocker": false, "outside_in_search": false, "approval": "ADMIN", "may_fill_unknown": false}
+  ],
+  "rls_rule": {
+    "applies_to": "every proposed staging table, W1-28 and later",
+    "rule_text": "created with row-level security ENABLED; no privileges for anon or authenticated; readback proves both; no table created with RLS disabled",
+    "readback_required": ["relrowsecurity true for the table", "no table privilege rows for anon or authenticated"],
+    "proposed_staging_ddl": [
+      "CREATE TABLE atlas_stg_v73.sw_watch_locator (locator_id text primary key, source_id text not null, source_class text not null);\nALTER TABLE atlas_stg_v73.sw_watch_locator ENABLE ROW LEVEL SECURITY;\nREVOKE ALL ON atlas_stg_v73.sw_watch_locator FROM anon, authenticated;",
+      "CREATE TABLE atlas_stg_v73.sw_source_snapshot (snapshot_id text primary key, source_id text not null, sha256 text not null);\nALTER TABLE atlas_stg_v73.sw_source_snapshot ENABLE ROW LEVEL SECURITY;\nREVOKE ALL ON atlas_stg_v73.sw_source_snapshot FROM anon, authenticated;",
+      "CREATE TABLE atlas_stg_v73.sw_gap_routing (gap_key text primary key, owning_layer text not null, scope_class text not null);\nALTER TABLE atlas_stg_v73.sw_gap_routing ENABLE ROW LEVEL SECURITY;\nREVOKE ALL ON atlas_stg_v73.sw_gap_routing FROM anon, authenticated;"
+    ]
+  },
+  "out_of_scope": ["no backend write", "no change to frozen V7.3", "no DDL executed", "routing storage option not chosen here", "existing five staging tables with RLS disabled are an Owner item (DEC-075 item 4), not addressed here"]
+}

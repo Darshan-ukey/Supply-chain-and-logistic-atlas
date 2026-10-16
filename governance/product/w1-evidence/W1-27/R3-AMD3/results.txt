@@ -1,0 +1,199 @@
+SW-D01|PASS|expected valid, got valid|valid: NEW_VERSION (APQC 8.0 to 9.0 style) with node split, traced impact, 2 proposals|caught by -: 
+SW-D02|PASS|expected valid, got valid|valid: cycle-0 baseline package, snapshots only|caught by -: 
+SW-D03|PASS|expected valid, got valid|valid: UNREACHABLE source on manual Owner-snapshot path|caught by -: 
+SW-D04|PASS|expected valid, got valid|valid: missing locator is UNREACHABLE|caught by -: 
+SW-D05|PASS|expected valid, got valid|valid: CONTENT_CHANGED_SAME_VERSION high-risk, consequential, proposal|caught by -: 
+SW-D06|PASS|expected valid, got valid|valid: SUPERSEDED_OR_WITHDRAWN consequential with proposal|caught by -: 
+SW-D07|PASS|expected valid, got valid|valid: IMPACT_UNKNOWN held with fail_closed|caught by -: 
+SW-D08|PASS|expected valid, got valid|valid: gap not closable, bounded new-source search, candidate source without authority|caught by -: 
+SW-D09|PASS|expected valid, got valid|valid: relationship change routed through SDCCAE spine|caught by -: 
+SW-D10|PASS|expected valid, got valid|valid: allowlisted low-risk automation under approved policy|caught by -: 
+SW-D11|PASS|expected valid, got valid|valid: independently validated chain (adjudication, approval, validation)|caught by -: 
+SW-D12|PASS|expected valid, got valid|valid: proposals at cap, the unlinked semantic delta carried over by its exact ID|caught by -: 
+SW-D13|PASS|expected valid, got valid|valid: DEFERRED gap with reason|caught by -: 
+SW-D14|PASS|expected valid, got valid|valid: NONE_CONFIRMED segment with index lookup basis|caught by -: 
+SW-N01|PASS|expected invalid, got invalid|invalid: UNCHANGED but hash differs from baseline|caught by semantic: S62 node delta D1 is not listed on its parent source result src-apqc-pcf (orphan delta)
+SW-N02|PASS|expected invalid, got invalid|invalid: UNCHANGED with no retrieved snapshot (not verified)|caught by schema: None is not of type 'object'
+SW-N03|PASS|expected invalid, got invalid|invalid: UNREACHABLE without manual path|caught by schema: None is not of type 'object'
+SW-N04|PASS|expected invalid, got invalid|invalid: UNREACHABLE with empty manual path (no snapshot ref, no reason)|caught by semantic: S62 node delta D1 is not listed on its parent source result src-apqc-pcf (orphan delta)
+SW-N05|PASS|expected invalid, got invalid|invalid: missing locator recorded as UNCHANGED|caught by schema: 'UNREACHABLE_OR_UNVERIFIABLE' was expected
+SW-N06|PASS|expected invalid, got invalid|invalid: quarterly comparison with no cycle-0 baseline|caught by semantic: S04 quarterly comparison without cycle-0 baseline
+SW-N07|PASS|expected invalid, got invalid|invalid: CONTENT_CHANGED with same hash|caught by semantic: S05 CONTENT_CHANGED needs a different hash or effective date under the same version label
+SW-N08|PASS|expected invalid, got invalid|invalid: CONTENT_CHANGED but version label changed|caught by semantic: S05 CONTENT_CHANGED needs a different hash or effective date under the same version label
+SW-N09|PASS|expected invalid, got invalid|invalid: NEW_VERSION with identical label and no successor|caught by semantic: S06 NEW_VERSION needs a different version label or a successor reference
+SW-N10|PASS|expected invalid, got invalid|invalid: unknown outcome class|caught by schema: 'PROBABLY_FINE' is not one of ['UNCHANGED', 'CONTENT_CHANGED
+SW-N11|PASS|expected invalid, got invalid|invalid: opened delta without node deltas after SEMANTIC_DIFFED|caught by semantic: S70 delta research deferred while below max_delta_research
+SW-N12|PASS|expected invalid, got invalid|invalid: UNCHANGED source cites node deltas|caught by semantic: S07 UNCHANGED source cites node deltas
+SW-N13|PASS|expected invalid, got invalid|invalid: duplicate source_id|caught by semantic: S64 a node delta is listed under more than one source result
+SW-N14|PASS|expected invalid, got invalid|invalid: TRACED impact with a MISSING consumer segment|caught by schema: 'MISSING' is not one of ['TRACED', 'NONE_CONFIRMED']
+SW-N15|PASS|expected invalid, got invalid|invalid: MISSING segment reported as IMPACT_UNKNOWN but package ADMIN_REVIEW (not held)|caught by semantic: S18 unresolved lineage/consumer/coverage but package not held with fail_closed
+SW-N16|PASS|expected invalid, got invalid|invalid: IMPACT_UNKNOWN in ADMIN_REVIEW|caught by semantic: S18 unresolved lineage/consumer/coverage but package not held with fail_closed
+SW-N17|PASS|expected invalid, got invalid|invalid: impact IMPACT_UNKNOWN with no reasons|caught by schema: [] should be non-empty
+SW-N18|PASS|expected invalid, got invalid|invalid: NONE_CONFIRMED without lookup basis|caught by schema: '' is too short
+SW-N19|PASS|expected invalid, got invalid|invalid: delta without impact record after IMPACT_ASSESSED|caught by semantic: S16 delta D1 has no impact record after IMPACT_ASSESSED
+SW-N20|PASS|expected invalid, got invalid|invalid: lineage coverage NOT_PRODUCED but impact TRACED|caught by semantic: S17 TRACED impact while lineage coverage report not produced
+SW-N21|PASS|expected invalid, got invalid|invalid: incomplete coverage with uncovered high-risk lineage, high-risk delta, not held|caught by semantic: S61 src-apqc-pcf risk class differs from the pinned watch list
+SW-N22|PASS|expected invalid, got invalid|invalid: fail_closed triggered but state ADMIN_REVIEW|caught by schema: 'ADMIN_REVIEW' is not one of ['HELD', 'REJECTED', 'DEFERRED'
+SW-N23|PASS|expected invalid, got invalid|invalid: fail_closed triggered without reasons|caught by schema: [] should be non-empty
+SW-N24|PASS|expected invalid, got invalid|invalid: withdrawn source with non-consequential proposal|caught by semantic: S20 CR-SW-0001 non-low-risk class marked non-consequential
+SW-N25|PASS|expected invalid, got invalid|invalid: high-risk source delta with non-consequential proposal|caught by semantic: S61 src-apqc-pcf risk class differs from the pinned watch list
+SW-N26|PASS|expected invalid, got invalid|invalid: semantic delta with no proposal after PROPOSED|caught by semantic: S33 PROPOSAL carry-over does not equal the semantic deltas left without a proposal
+SW-N27|PASS|expected invalid, got invalid|invalid: relationship change routed directly (bypasses SDCCAE)|caught by schema: 'SDCCAE' was expected
+SW-N28|PASS|expected invalid, got invalid|invalid: SDCCAE route without candidate ref|caught by schema: None is not of type 'string'
+SW-N29|PASS|expected invalid, got invalid|invalid: profile change marked automatic|caught by schema: 'ADMIN_REQUIRED' was expected
+SW-N30|PASS|expected invalid, got invalid|invalid: automatic low-risk class without policy|caught by schema: None is not of type 'string'
+SW-N31|PASS|expected invalid, got invalid|invalid: automatic low-risk class but proposal consequential|caught by schema: False was expected
+SW-N32|PASS|expected invalid, got invalid|invalid: automatic action against a high-risk source with a delta|caught by semantic: S61 src-apqc-pcf risk class differs from the pinned watch list
+SW-N33|PASS|expected invalid, got invalid|invalid: automatic proposal citing a policy that is not the declared allowlist policy|caught by semantic: S21 consequential change (withdrawn/high-risk/non-low class) with a non-consequential proposal
+SW-N34|PASS|expected invalid, got invalid|invalid: allowlist policy without separation of duties|caught by schema: {'policy_id': 'POL-LOW-1', 'version': '1', 'approved_by': 'O
+SW-N35|PASS|expected invalid, got invalid|invalid: non-low proposal without regression sample (blind reassessment)|caught by semantic: S29 CR-SW-0001 no risk-driven regression sample
+SW-N36|PASS|expected invalid, got invalid|invalid: reassessment scope FULL|caught by schema: 'FULL_REASSESSMENT' is not one of ['IMPACTED_SUBSET']
+SW-N37|PASS|expected invalid, got invalid|invalid: source-trigger structural proposal without delta|caught by semantic: S27 CR-SW-0001 source-trigger proposal without delta
+SW-N38|PASS|expected invalid, got invalid|invalid: proposals above cap and nothing carried over|caught by semantic: S23 proposals exceed max_proposals (carry-over cannot excuse an over-cap package)
+SW-N39|PASS|expected invalid, got invalid|invalid: proposal targets the frozen V7.3 revision|caught by semantic: S30 CR-SW-0001 targets the frozen V7.3
+SW-N40|PASS|expected invalid, got invalid|invalid: package declares a frozen write|caught by schema: False was expected
+SW-N41|PASS|expected invalid, got invalid|invalid: package declares scheduled new-source search|caught by schema: False was expected
+SW-N42|PASS|expected invalid, got invalid|invalid: new-source search although gap closed from registered sources|caught by schema: 'CLOSED' is not one of ['PARTIAL', 'NOT_CLOSABLE']
+SW-N43|PASS|expected invalid, got invalid|invalid: new-source search with no closure attempt|caught by schema: True was expected
+SW-N44|PASS|expected invalid, got invalid|invalid: candidate source with no gap-triggered search (scheduled discovery)|caught by semantic: S73 GAP_SEARCH carry-over does not equal the OPEN not-closable gaps left without a search
+SW-N45|PASS|expected invalid, got invalid|invalid: candidate source holds authority before admission|caught by schema: False was expected
+SW-N46|PASS|expected invalid, got invalid|invalid: ADMITTED source without approval record|caught by schema: None is not of type 'object'
+SW-N47|PASS|expected invalid, got invalid|invalid: ADMITTED by the executor itself|caught by semantic: S42 CS-1 admitted without independent approval
+SW-N48|PASS|expected invalid, got invalid|invalid: RESOLVED gap without resolution reference|caught by schema: None is not of type 'string'
+SW-N49|PASS|expected invalid, got invalid|invalid: BLOCKED gap without reason|caught by schema: None is not of type 'string'
+SW-N50|PASS|expected invalid, got invalid|invalid: duplicate gap dedupe_key|caught by semantic: S39 duplicate gap dedupe_key
+SW-N51|PASS|expected invalid, got invalid|invalid: gap searches above cap and nothing carried over|caught by semantic: S38 gap searches exceed max_gap_searches (carry-over cannot excuse an over-cap package)
+SW-N52|PASS|expected invalid, got invalid|invalid: gap-trigger proposal that cites no gap|caught by schema: [] should be non-empty
+SW-N53|PASS|expected invalid, got invalid|invalid: gap-trigger proposal citing an unknown gap|caught by semantic: S28 CR-SW-0013 gap-trigger proposal without a known gap
+SW-N54|PASS|expected invalid, got invalid|invalid: APPROVED without adjudication|caught by semantic: S44 approved state without independent adjudication
+SW-N55|PASS|expected invalid, got invalid|invalid: APPROVED without approval record|caught by schema: 'approval' is a required property
+SW-N56|PASS|expected invalid, got invalid|invalid: adjudicator equals executor|caught by semantic: S46 adjudicator is not independent of the executor
+SW-N57|PASS|expected invalid, got invalid|invalid: approver equals executor|caught by semantic: S47 approver equals executor or adjudicator (self-approval)
+SW-N58|PASS|expected invalid, got invalid|invalid: approver equals adjudicator|caught by semantic: S47 approver equals executor or adjudicator (self-approval)
+SW-N59|PASS|expected invalid, got invalid|invalid: approver lacks the admin role|caught by semantic: S48 approver lacks the required admin role
+SW-N60|PASS|expected invalid, got invalid|invalid: consequential change approved by the allowlist policy|caught by semantic: S48 approver lacks the required admin role
+SW-N61|PASS|expected invalid, got invalid|invalid: INDEPENDENTLY_VALIDATED without validation record|caught by schema: 'validation' is a required property
+SW-N62|PASS|expected invalid, got invalid|invalid: validation FAIL in a validated state|caught by semantic: S50 validated state without PASS and tested rollback
+SW-N63|PASS|expected invalid, got invalid|invalid: validation without tested rollback|caught by semantic: S50 validated state without PASS and tested rollback
+SW-N64|PASS|expected invalid, got invalid|invalid: validator equals approver|caught by semantic: S51 validator not independent of executor and approver
+SW-N65|PASS|expected invalid, got invalid|invalid: validator equals executor|caught by semantic: S51 validator not independent of executor and approver
+SW-N66|PASS|expected invalid, got invalid|invalid: consumer propagation with consumers unmapped|caught by schema: 'MISSING' is not one of ['TRACED', 'NONE_CONFIRMED']
+SW-N67|PASS|expected invalid, got invalid|invalid: POLICY_ELIGIBLE with an admin-required proposal|caught by semantic: S43 POLICY_ELIGIBLE with a proposal that is not allowlisted-automatic
+SW-N68|PASS|expected invalid, got invalid|invalid: extra top-level field|caught by schema: Additional properties are not allowed ('auto_approve' was un
+SW-N69|PASS|expected invalid, got invalid|invalid: schema_version 1.2 (candidate package) used as cycle package|caught by schema: '2.1' was expected
+SW-N70|PASS|expected invalid, got invalid|invalid: naive timestamp|caught by schema: '2026-10-16T09:30:00' does not match '^\\d{4}-\\d{2}-\\d{2}T
+SW-N71|PASS|expected invalid, got invalid|invalid: unknown package_state|caught by schema: 'PROMOTED' is not one of ['DETECTED', 'TRIAGED', 'EVIDENCE_C
+SW-N72|PASS|expected invalid, got invalid|invalid: unknown node-delta operation|caught by schema: 'REWRITE' is not one of ['ADD', 'MODIFY', 'REMOVE', 'RENAME'
+SW-N73|PASS|expected invalid, got invalid|invalid: unknown gap type|caught by schema: 'FUZZY' is not one of ['MISSING', 'CONTRADICTORY', 'STALE', 
+SW-N74|PASS|expected invalid, got invalid|invalid: digest counts do not match results|caught by semantic: S55 digest counts do not match source results
+SW-N75|PASS|expected invalid, got invalid|invalid: digest hides IMPACT_UNKNOWN items|caught by semantic: S56 digest impact_unknown_items mismatch
+SW-N76|PASS|expected invalid, got invalid|invalid: digest reports automatic application for an admin-required package|caught by semantic: S57 digest reports automatic application without an allowlisted-automatic package
+SW-H01|PASS|tampered content no longer matches package_hash|hash check|
+SW-H02|PASS|untampered package hash verifies and semantic validator is clean|hash check|
+SW-D15|PASS|4320 combinations (5 outcomes x 3 risk x 3 impact x 3 coverage x 2 consequential x 2 automation x 2 state x 2 fail_closed x 2 manual); unsafe packages accepted by BOTH layers: 0; unsafe packages the schema alone would accept but the semantic layer rejects: 765; semantic-layer rejections not explained by the oracle or a consistency rule (S17): 0; safe packages accepted: 918|exhaustive fail-closed differential|
+SW-D16|PASS|guards H* (all schema conditionals) and semantic S01,S02,S18-S21,S26,S49 removed: 2844 unsafe packages accepted (SW-D15 can detect the defects)|mutation check of the differential test|
+SW-D17|PASS|cycle package 2.1 references candidate schema 1.2 and does not redefine it|R3 preservation|
+SW-D18|PASS|expected valid, got valid|valid: research deferred at cap, lower-risk source carried over by ID|
+SW-D19|PASS|expected valid, got valid|valid: deferred HIGH_RISK research in a held fail-closed package|
+SW-D20|PASS|expected valid, got valid|valid: gap search deferred at cap and carried over by gap ID|
+SW-D21|PASS|expected valid, got valid|valid: PUBLISHED with six-destination closure and PASS readback|
+SW-D22|PASS|expected valid, got valid|valid: CONSUMER_PROPAGATED with closure|
+SW-D23|PASS|expected valid, got valid|valid: closure with NO_CHANGE_REQUIRED dispositions (each with a reason)|
+SW-N77|PASS|expected invalid and caught by S58 (semantic); got invalid, codes ['S58', 'S68']|a registered source has no result (silent omission)|
+SW-N78|PASS|expected invalid and caught by S58 (semantic); got invalid, codes ['S55', 'S58']|a result for an unregistered source|
+SW-N79|PASS|expected invalid and caught by S59 (semantic); got invalid, codes ['S59', 'S60', 'S68']|duplicate watch-list entry|
+SW-N80|PASS|expected invalid and caught by S60 (semantic); got invalid, codes ['S60']|list_hash does not match the entries|
+SW-N81|PASS|expected invalid and caught by S61 (semantic); got invalid, codes ['S61']|result risk class differs from the pinned class|
+SW-N82|PASS|expected invalid and caught by S62 (semantic); got invalid, codes ['S08', 'S62', 'S69', 'S70']|orphan delta (not listed on its parent source result)|
+SW-N83|PASS|expected invalid and caught by S63 (semantic); got invalid, codes ['S63']|duplicate delta_id|
+SW-N84|PASS|expected invalid and caught by S64 (semantic); got invalid, codes ['S09', 'S64']|a delta listed under two source results|
+SW-N85|PASS|expected invalid and caught by S65 (semantic); got invalid, codes ['S65']|duplicate impact record|
+SW-N86|PASS|expected invalid and caught by S66 (semantic); got invalid, codes ['S66', 'S76']|higher-risk source deferred while a lower-risk source was researched|
+SW-N87|PASS|expected invalid and caught by S67 (semantic); got invalid, codes ['S67']|researched sources exceed max_delta_research|
+SW-N88|PASS|expected invalid and caught by S68 (semantic); got invalid, codes ['S55', 'S68']|digest sources_total differs from the watch-list size|
+SW-N89|PASS|expected invalid and caught by S69 (semantic); got invalid, codes ['S08', 'S69']|DELTA_RESEARCH carry-over omits a deferred source|
+SW-N90|PASS|expected invalid and caught by S69 (semantic); got invalid, codes ['S69']|DELTA_RESEARCH carry-over names a source that was researched|
+SW-N91|PASS|expected invalid and caught by S70 (semantic); got invalid, codes ['S70']|research deferred while below the cap|
+SW-N92|PASS|expected invalid and caught by S71 (semantic); got invalid, codes ['S71']|gap search deferred while below the gap cap|
+SW-N93|PASS|expected invalid and caught by S72 (semantic); got invalid, codes ['S33', 'S72']|proposal work deferred while below the proposal cap|
+SW-N94|PASS|expected invalid and caught by S73 (semantic); got invalid, codes ['S73']|GAP_SEARCH carry-over omits an unsearched open gap|
+SW-N95|PASS|expected invalid and caught by S74 (semantic); got invalid, codes ['S74']|duplicate carried_over entry|
+SW-N96|PASS|expected invalid and caught by S75 (semantic); got invalid, codes ['S73', 'S75']|carried_over names an ID that is not in the package|
+SW-N97|PASS|expected invalid and caught by S76 (semantic); got invalid, codes ['S76']|deferred HIGH_RISK research in a package that is not held fail-closed|
+SW-N98|PASS|expected invalid and caught by S77 (semantic); got invalid, codes ['S77']|PUBLISHED with a closure record missing for an accepted delta|
+SW-N99|PASS|expected invalid and caught by S77 (semantic); got invalid, codes ['S77']|PUBLISHED with two closure records for one delta|
+SW-N100|PASS|expected invalid and caught by S77 (semantic); got invalid, codes ['S77']|PUBLISHED with a closure record for a delta that was not accepted|
+SW-N101|PASS|expected invalid and caught by S78 (semantic); got invalid, codes ['S78']|a destination appears twice and another is missing|
+SW-N102|PASS|expected invalid and caught by S79 (semantic); got invalid, codes ['S79']|a BLOCKED destination in a published state|
+SW-N103|PASS|expected invalid and caught by S80 (semantic); got invalid, codes ['S80']|readback not performed|
+SW-N104|PASS|expected invalid and caught by S80 (semantic); got invalid, codes ['S80']|readback result FAIL|
+SW-N105|PASS|expected invalid and caught by S80 (semantic); got invalid, codes ['S80']|readback covered fewer than six destinations|
+SW-N106|PASS|expected invalid and caught by H24 (schema); got invalid, codes ['S77'] schema:'delta_closure' is a required property|PUBLISHED without any delta_closure (schema layer)|
+SW-N107|PASS|expected invalid and caught by H24 (schema); got invalid, codes ['S77'] schema:'delta_closure' is a required property|MONITORED without any delta_closure (schema layer)|
+SW-N108|PASS|expected invalid and caught by SCHEMA (schema); got invalid, codes ['S78'] schema:[{'destination': 'PRODUCT_DEFINITION', 'dispositio|closure with only five destination records|
+SW-N109|PASS|expected invalid and caught by SCHEMA (schema); got invalid, codes ['S78'] schema:'SLACK_CHANNEL' is not one of ['PRODUCT_DEFINITION|closure destination outside the six allowed|
+SW-N110|PASS|expected invalid and caught by SCHEMA (schema); got invalid, codes [] schema:'reason' is a required property|NO_CHANGE_REQUIRED without a reason|
+SW-N111|PASS|expected invalid and caught by SCHEMA (schema); got invalid, codes [] schema:'2.1' was expected|schema_version 2.0 (superseded R2 package) used as 2.1|
+SW-D24|PASS|every new semantic rule S58-S80 fires on at least one negative fixture; never fired: []|no dead rules|
+SW-D25|PASS|rule-switch mutation: with its rule disabled no negative still reports that rule; offenders: []|mutation check of S58-S80|
+SW-D26|PASS|108 closure combinations (3 dispositions x 2 performed x 3 results x 3 checked-counts x 2 destination-counts); both layers accept exactly the safe ones; mismatches: 0|exhaustive closure differential|
+TOTAL TESTS: 139
+FAILS: 0
+======
+DC-D01|PASS|baseline contract valid (schema and semantic)|schema errors 0 semantic []
+DC-D02|PASS|proposed staging DDL passes the RLS checker|[]
+DC-D03|PASS|two routing options recorded, choice open for W1-28|no option chosen
+DC-D04|PASS|minimal compliant DDL accepted|
+DC-D05|PASS|two compliant statements accepted|
+DC-N01|PASS|only one routing option|schema_ok False; semantic codes ['R01']; intended R01
+DC-N02|PASS|kind overloaded|schema_ok True; semantic codes ['R02']; intended R02
+DC-N03|PASS|option reuses kind|schema_ok True; semantic codes ['R02']; intended R02
+DC-N04|PASS|W1-27 pre-empts the W1-28 decision|schema_ok True; semantic codes ['R03']; intended R03
+DC-N05|PASS|existing table altered|schema_ok True; semantic codes ['R03']; intended R03
+DC-N06|PASS|scope_class dropped from required fields|schema_ok True; semantic codes ['R04']; intended R04
+DC-N07|PASS|option B has no home for router_version|schema_ok True; semantic codes ['R05']; intended R05
+DC-N08|PASS|owning_layer hidden in details jsonb|schema_ok True; semantic codes ['R05']; intended R05
+DC-N09|PASS|TMP-AG-02 missing|schema_ok True; semantic codes ['A01']; intended A01
+DC-N10|PASS|TMP-AG-13 not split|schema_ok True; semantic codes ['A01']; intended A01
+DC-N11|PASS|TMP-AG-02 built separately|schema_ok True; semantic codes ['A02']; intended A02
+DC-N12|PASS|dry run not in W1-29|schema_ok True; semantic codes ['A03']; intended A03
+DC-N13|PASS|SPLIT without V2 successor|schema_ok True; semantic codes ['A04']; intended A04
+DC-N14|PASS|REUSED without store|schema_ok True; semantic codes ['A05']; intended A05
+DC-N15|PASS|QA-4 missing|schema_ok True; semantic codes ['Q01', 'Q02']; intended Q01
+DC-N16|PASS|QA-1 mapped to W1-29|schema_ok True; semantic codes ['Q02']; intended Q02
+DC-N17|PASS|QA-4 treated as a task|schema_ok True; semantic codes ['Q02']; intended Q02
+DC-N18|PASS|closure on QA-1 alone|schema_ok True; semantic codes ['Q03']; intended Q03
+DC-N19|PASS|QA-4 not required for closure|schema_ok True; semantic codes ['Q03']; intended Q03
+DC-N20|PASS|SOURCE_ACCESS_GAP unmapped|schema_ok True; semantic codes ['C01', 'C05']; intended C01
+DC-N21|PASS|duplicate CONFIRMED mapping|schema_ok True; semantic codes ['C01']; intended C01
+DC-N22|PASS|access gap reported UNCHANGED|schema_ok True; semantic codes ['C02', 'C05']; intended C02
+DC-N23|PASS|client binding researched outside-in|schema_ok True; semantic codes ['C03']; intended C03
+DC-N24|PASS|context-specific researched outside-in|schema_ok True; semantic codes ['C03']; intended C03
+DC-N25|PASS|unknown may be filled|schema_ok True; semantic codes ['C04']; intended C04
+DC-N26|PASS|access gap not routed to SOURCE_FOUNDATION|schema_ok True; semantic codes ['C05']; intended C05
+DC-N27|PASS|client binding not a terminal blocker|schema_ok True; semantic codes ['C06']; intended C06
+DC-N28|PASS|client binding routed by placement|schema_ok True; semantic codes ['C06']; intended C06
+DC-N29|PASS|unknown routed as a resolvable gap|schema_ok True; semantic codes ['C07']; intended C07
+DC-N30|PASS|ENRICH marked terminal blocker|schema_ok True; semantic codes ['C07']; intended C07
+DC-N31|PASS|contradiction auto-approvable|schema_ok True; semantic codes ['C08']; intended C08
+DC-N32|PASS|CONFIRMED not mapped to UNCHANGED|schema_ok True; semantic codes ['C02']; intended C02
+DC-N33|PASS|table without ENABLE RLS|codes ['L01']; intended L01; verdict accepts: False
+DC-N34|PASS|table without REVOKE|codes ['L02']; intended L02; verdict accepts: False
+DC-N35|PASS|REVOKE only from anon|codes ['L02']; intended L02; verdict accepts: False
+DC-N36|PASS|GRANT SELECT to anon|codes ['L03']; intended L03; verdict accepts: False
+DC-N37|PASS|GRANT ALL to authenticated|codes ['L03']; intended L03; verdict accepts: False
+DC-N38|PASS|RLS enabled then disabled|codes ['L03']; intended L03; verdict accepts: False
+DC-N39|PASS|unqualified table name|codes ['L04']; intended L04; verdict accepts: False
+DC-N40|PASS|no proposed DDL|codes ['L04']; intended L04; verdict accepts: False
+DC-N41|PASS|two tables in one statement, one without RLS|codes ['L01', 'L02']; intended L01; verdict accepts: False
+DC-N42|PASS|REVOKE from public only|codes ['L02']; intended L02; verdict accepts: False
+DC-N43|PASS|unknown convergence state rejected by schema|
+DC-N44|PASS|additional root property rejected by schema|
+DC-N45|PASS|QA-5 rejected by schema|
+DC-D06|PASS|every semantic rule fires on at least one negative fixture (L05 covered separately)|never fired: []
+DC-N46|PASS|readback missing anon/authenticated privilege proof|
+DC-D07|PASS|rule-switch mutation: with its intended rule disabled the negative no longer reports that rule|offenders: []
+DC-D08|PASS|no negative fixture is accepted by both layers combined|unsafe accepts: 0
+DC-D09|PASS|mutation check: with all semantic rules disabled every negative semantic-only fixture is accepted by the semantic layer (guards are what reject)|accepted without guards: 32 of 32
+TOTAL TESTS: 55
+FAILS: 0
