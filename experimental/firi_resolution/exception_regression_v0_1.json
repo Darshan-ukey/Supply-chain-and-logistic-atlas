@@ -1,0 +1,21 @@
+{
+  "suite_id": "FIRI-BOL002-EXCEPTION-FIRST-v0.1",
+  "status": "EXPERIMENTAL_FIXTURES_NOT_EMPIRICAL_PASS",
+  "objective": "Test exceptions in which an extraction model collapses, misassociates, contaminates, omits or invents commodity information.",
+  "controls": {"normal_cases": "Only non-regression controls; not evidence of exception-resolution uplift", "ground_truth": "Independently adjudicated; never shown to model arms", "baseline": "Frozen model output identical for B and C"},
+  "cases": [
+    {"id":"EX01","failure":"FIVE_DESCRIPTION_GROUPS_THREE_ROWS","source_groups":5,"baseline_rows":3,"expected":"UNRESOLVED cardinality; flag mismatch, do not assert 5 commodities without independent identity evidence","rules":["FIRI-BOL002-R02"]},
+    {"id":"EX02","failure":"COMPOUND_DESCRIPTION","source":"4 PLT | 80 CTN | MACHINE PARTS | 2400 LB | CLASS 70","baseline_description":"4 PLT MACHINE PARTS","expected":"FLAG contamination and retain original source; no fabricated replacement","rules":["FIRI-BOL002-R01","FIRI-BOL002-R06"]},
+    {"id":"EX03","failure":"WRONG_ATTRIBUTE_ASSOCIATION","source":"Commodity A weight 1200 LB; Commodity B weight 800 LB","baseline":"Commodity A weight 800 LB; Commodity B weight 1200 LB","expected":"FLAG mismatch if independently linked source evidence exists; do not silently swap","rules":["FIRI-BOL002-R03"]},
+    {"id":"EX04","failure":"ONE_PALLET_MULTIPLE_COMMODITIES","source":"One pallet explicitly carries two separate commodity identities","expected":"Permit one HU to two commodity edges only with cited relationship evidence","rules":["FIRI-BOL002-R02","FIRI-BOL002-R03"]},
+    {"id":"EX05","failure":"MULTIPLE_PALLETS_ONE_COMMODITY","source":"Three pallets explicitly hold one commodity","expected":"No forced three-commodity inference","rules":["FIRI-BOL002-R03"]},
+    {"id":"EX06","failure":"AMBIGUOUS_HU_LINE_NUMBER","source":"HU line 2 without established commodity identifier semantics","expected":"UNRESOLVED; no row-key assumption","rules":["FIRI-BOL002-R03","FIRI-BOL002-R08"]},
+    {"id":"EX07","failure":"CONTINUATION_PAGE","source":"Description wraps onto continuation page with no proven precedence","expected":"UNRESOLVED pending source span and page linkage","rules":["FIRI-BOL002-R02","FIRI-BOL002-R08"]},
+    {"id":"EX08","failure":"CONFLICTING_NMFC","source":"Two competing NMFC interpretations without versioned applicable provisions","expected":"UNRESOLVED; no specificity shortcut","rules":["FIRI-BOL002-R04","FIRI-BOL002-R07"]},
+    {"id":"EX09","failure":"HAZMAT_CONTAMINATION","source":"Commodity description adjacent to UN number, hazard class and packing group","expected":"Preserve separate hazardous attributes; no invented commodity wording","rules":["FIRI-BOL002-R01","FIRI-BOL002-R06"]},
+    {"id":"EX10","failure":"VAGUE_PARTS_DESCRIPTION","source":"PARTS","expected":"Retain observed description, do not claim classification sufficient","rules":["FIRI-BOL002-R06","FIRI-BOL002-R08"]},
+    {"id":"EX11","failure":"DUPLICATE_DESCRIPTION_SPANS","source":"Repeated commodity text on invoice and BOL","expected":"Do not infer two commodities solely from repeated descriptions","rules":["FIRI-BOL002-R02"]},
+    {"id":"EX12","failure":"MISSING_SOURCE_SPAN","source":"LLM emits freight class 70 with no supporting source span","expected":"UNRESOLVED provenance; never validate model against its own output","rules":["FIRI-BOL002-R06","FIRI-BOL002-R08"]}
+  ],
+  "promotion_gate": "No runtime accuracy claims until frozen extraction, independently adjudicated source spans and unseen BOL exception holdout are tested."
+}
