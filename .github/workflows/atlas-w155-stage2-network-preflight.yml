@@ -1,0 +1,58 @@
+name: Atlas W1-55 Stage 2 — Network Preflight ONLY
+
+on:
+  workflow_dispatch:
+    inputs:
+      session_pooler_host:
+        description: "Exact host copied from Supabase Connect > Session pooler (no credentials)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-w155-stage2-preflight
+  cancel-in-progress: false
+
+jobs:
+  connectivity:
+    name: Supabase session pooler connectivity (NO DB writes)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Validate target and port reachability
+        shell: bash
+        env:
+          POOLER_HOST: ${{ inputs.session_pooler_host }}
+          EXPECTED_PROJECT: aaoyesktlzhaunqqjhdq
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os, re, socket, struct, ssl
+          host=os.environ["POOLER_HOST"].strip().lower()
+          if not re.fullmatch(r"[a-z0-9-]+(?:\.[a-z0-9-]+)*\.pooler\.supabase\.com",host):
+              raise SystemExit("FAIL: must use the precise Supabase session pooler hostname")
+          port=5432
+          print(f"Checking TCP reachability to {host}:{port}; no credentials, SQL or migrations involved.")
+          try:
+              with socket.create_connection((host,port),timeout=12) as raw:
+                  raw.settimeout(12)
+                  raw.sendall(struct.pack("!II",8,80877103)) # PostgreSQL SSLRequest
+                  response=raw.recv(1)
+                  if response!=b"S":
+                      raise RuntimeError("Server did not accept PostgreSQL SSL negotiation")
+                  ctx=ssl.create_default_context()
+                  with ctx.wrap_socket(raw,server_hostname=host) as tls:
+                      print("TLS certificate verified by system trust store.")
+                      print("TLS version:", tls.version())
+                      cert=tls.getpeercert()
+                      print("Certificate subject:",cert.get("subject"))
+          except Exception as e:
+              raise SystemExit(f"FAIL: session-pooler TCP/TLS connectivity not established: {type(e).__name__}: {e}")
+          print("PASS: network/TLS preflight only. Deployment remains disabled.")
+          PY
+      - name: Deployment boundary
+        run: |
+          echo 'NO deployment in this workflow. No secrets, database role creation, candidate extraction or migrations.'
+          echo 'Live execute requires independently approved package, secret-store binding, L1-L7 and separate workflow review.'
